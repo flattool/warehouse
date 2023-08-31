@@ -122,7 +122,9 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         orphans_list = Gtk.ListBox(selection_mode="none", valign=Gtk.Align.START, margin_top=6, margin_bottom=6, margin_start=12, margin_end=12)
         orphans_list.add_css_class("boxed-list")
         orphans_overlay.set_child(orphans_list)
-        no_data = Adw.StatusPage(icon_name="check-plain-symbolic", title="No Data", description="There is no leftover user data")
+        no_data = Adw.StatusPage(icon_name="check-plain-symbolic", title=_("No Data"), description=_("There is no leftover user data"))
+        installing_please_wait = Adw.StatusPage(title=_("Please Wait"), description=_("Flattool is attempting to install these apps, this could take a while."))
+        orphans_stack.add_child(installing_please_wait)
         orphans_stack.add_child(no_data)
         global total_selected
         total_selected = 0
@@ -222,11 +224,13 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             generate_list(widget, False)
 
         def install_on_response(_a, response_id, _b):
+            if response_id == "cancel":
+                orphans_stack.set_visible_child(orphans_scroll)
+                return(1)
+            
             show_success = True
             for i in range(len(selected_rows)):
                 remote = response_id.split('_')
-                if response_id == "cancel":
-                    return(1)
                 command = ['flatpak-spawn', '--host', 'flatpak', 'install', '-y', remote[0]]
                 if "user" in remote[1]:
                     command.append("--user")
@@ -237,9 +241,11 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 try:
                     subprocess.run(command, capture_output=False, check=True)
                 except:
-                    orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Error Installing {selected_rows[i]}")))
+                    orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Cant install {selected_rows[i]}")))
                     show_success = False
+
             select_all_button.set_active(False)
+            orphans_stack.set_visible_child(orphans_scroll)
 
             if show_success:
                 orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Successfilly Installed All Apps")))
@@ -248,6 +254,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             generate_list(None, False)
 
         def install_button_handler(widget):
+            orphans_stack.set_visible_child(installing_please_wait)
             def get_host_remotes():
                 output = subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'remotes'], capture_output=True, text=True).stdout
                 lines = output.strip().split('\n')
