@@ -106,35 +106,28 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         orphans_window.set_transient_for(self)
         orphans_scroll = Gtk.ScrolledWindow()
         orphans_toast_overlay = Adw.ToastOverlay()
-        orphans_toast_overlay.set_child(orphans_scroll)
+        orphans_stack = Gtk.Stack()
+        orphans_stack.add_child(orphans_scroll)
+        orphans_toast_overlay.set_child(orphans_stack)
         orphans_overlay = Gtk.Overlay()
-        orphans_progress_bar = Gtk.ProgressBar(valign=Gtk.Align.START)
-        orphans_progress_bar.add_css_class("osd")
-        orphans_overlay.add_overlay(orphans_progress_bar)
         orphans_scroll.set_child(orphans_overlay)
-        orphans_title_bar = Adw.ToolbarView()
+        orphans_toolbar_view = Adw.ToolbarView()
         #orphans_toolbar = Gtk.HeaderBar(show_title_buttons=False)
-        orphans_toolbar = Gtk.HeaderBar()
+        orphans_title_bar = Gtk.HeaderBar()
         orphans_action_bar = Gtk.ActionBar()
-        orphans_title_bar.add_top_bar(orphans_toolbar)
-        orphans_title_bar.add_bottom_bar(orphans_action_bar)
-        orphans_title_bar.set_content(orphans_toast_overlay)
-        orphans_window.set_content(orphans_title_bar)
+        orphans_toolbar_view.add_top_bar(orphans_title_bar)
+        orphans_toolbar_view.add_bottom_bar(orphans_action_bar)
+        orphans_toolbar_view.set_content(orphans_toast_overlay)
+        orphans_window.set_content(orphans_toolbar_view)
         orphans_list = Gtk.ListBox(selection_mode="none", valign=Gtk.Align.START, margin_top=6, margin_bottom=6, margin_start=12, margin_end=12)
         orphans_list.add_css_class("boxed-list")
         orphans_overlay.set_child(orphans_list)
+        no_data = Adw.StatusPage(icon_name="check-plain-symbolic", title="No Data", description="There is no leftover user data")
+        orphans_stack.add_child(no_data)
         global total_selected
         total_selected = 0
         global selected_rows
         selected_rows = []
-
-        def progress_pulse():
-            orphans_progress_bar.pulse()
-            if self.pulse:
-                orphans_progress_bar.show()
-                GLib.timeout_add(100, progress_pulse)
-            else:
-                orphans_progress_bar.hide()
 
         def toggle_button_handler(button):
             if button.get_active():
@@ -203,6 +196,10 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                     if is_select_all == True:
                         select_orphans_tickbox.set_active(True)
                     orphans_list.append(orphans_row)
+            if not orphans_list.get_row_at_index(0):
+                orphans_window.set_default_size(350, 400)
+                orphans_stack.set_visible_child(no_data)
+                orphans_action_bar.set_revealed(False)
 
         def key_handler(_a, event, _c, _d):
             if event == Gdk.KEY_Escape:
@@ -215,45 +212,40 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 try:
                     subprocess.run(['flatpak-spawn', '--host', 'gio', 'remove', path], capture_output=True, check=True)
                 except:
-                    orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Error Trashing {selected_rows[i]}")))
+                    orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Can't trash {selected_rows[i]}")))
                     show_success = False
             select_all_button.set_active(False)
 
             if show_success:
-                orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Successfilly Trashed Data")))
+                orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Successfilly trashed data")))
 
             generate_list(widget, False)
 
         def install_on_response(_a, response_id, _b):
-            def install_thread(*args):
-                self.pulse = True
-                progress_pulse()
-                show_success = True
-                for i in range(len(selected_rows)):
-                    remote = response_id.split('_')
-                    if response_id == "cancel":
-                        return(1)
-                    command = ['flatpak-spawn', '--host', 'flatpak', 'install', '-y', remote[0]]
-                    if "user" in remote[1]:
-                        command.append("--user")
-                    else:
-                        command.append("--system")
-                    command.append(selected_rows[i])
-                    
-                    try:
-                        subprocess.run(command, capture_output=False, check=True)
-                    except:
-                        orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Error Installing {selected_rows[i]}")))
-                        show_success = False
-                select_all_button.set_active(False)
+            show_success = True
+            for i in range(len(selected_rows)):
+                remote = response_id.split('_')
+                if response_id == "cancel":
+                    return(1)
+                command = ['flatpak-spawn', '--host', 'flatpak', 'install', '-y', remote[0]]
+                if "user" in remote[1]:
+                    command.append("--user")
+                else:
+                    command.append("--system")
+                command.append(selected_rows[i])
+                
+                try:
+                    subprocess.run(command, capture_output=False, check=True)
+                except:
+                    orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Error Installing {selected_rows[i]}")))
+                    show_success = False
+            select_all_button.set_active(False)
 
-                if show_success:
-                    orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Successfilly Installed All Apps")))
+            if show_success:
+                orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Successfilly Installed All Apps")))
 
-                self.pulse = False
-                self.refresh_list_of_flatpaks()
-                generate_list(None, False)
-            Gio.Task.new().run_in_thread(install_thread)
+            self.refresh_list_of_flatpaks(None, False)
+            generate_list(None, False)
 
         def install_button_handler(widget):
             def get_host_remotes():
@@ -375,7 +367,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 user_data_list.remove(user_data_row)
                 user_data_list.append(Adw.ActionRow(title="No User Data"))
             else:
-                properties_toast_overlay.add_toast(Adw.Toast.new(_(f"Error trashing folder")))
+                properties_toast_overlay.add_toast(Adw.Toast.new(_(f"Can't trash data")))
 
         def clean_button_handler(_widget):
             dialog = Adw.MessageDialog.new(self, _(f"Send {app_name}'s User Data to the Trash?"))
