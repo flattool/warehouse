@@ -1,0 +1,130 @@
+using Gtk 4.0;
+using Adw 1;
+
+template FlattoolGuiWindow : Adw.ApplicationWindow {
+  default-width: 800;
+  default-height: 500;
+  title: "Flattool";
+
+  Adw.ToolbarView {
+    [top]
+    HeaderBar header_bar {
+      [start]
+      ToggleButton search_button {
+        icon-name: "system-search-symbolic";
+        tooltip-text: _("Search for an Installed App");
+      }
+
+      [start]
+      Button refresh_button {
+        icon-name: "view-refresh-symbolic";
+        tooltip-text: _("Refresh the List of Installed Apps");
+      }
+
+      [end]
+      MenuButton {
+        icon-name: "open-menu-symbolic";
+        tooltip-text: _("Main Menu");
+        menu-model: primary_menu;
+      }
+      
+      [end]
+      ToggleButton batch_mode_button {
+        icon-name: "selection-mode-symbolic";
+        tooltip-text: _("Enter Selection Mode");
+      }
+    }
+    [top]
+    SearchBar search_bar {
+      search-mode-enabled: bind-property search_button.active bidirectional;
+      key-capture-widget: FlattoolGuiWindow;
+      Adw.Clamp{
+        maximum-size: 577;
+        tightening-threshold: 220;
+        hexpand: true;
+        SearchEntry search_entry {}
+      }
+    }
+    content:
+    Adw.ToastOverlay toast_overlay {
+      Stack main_stack {
+        Box main_box {
+          orientation: vertical;
+          ScrolledWindow scrolled_window {
+            vexpand: true;
+            Adw.Clamp{
+              tightening-threshold: 15;
+              ListBox list_of_flatpaks{
+                margin-top: 6;
+                margin-bottom: 24;
+                margin-start: 12;
+                margin-end: 12;
+                hexpand: true;
+                valign: start;
+                selection-mode: none;
+                styles["boxed-list"]
+              }
+            }
+          }
+          ActionBar batch_mode_bar {
+            [start]
+            Button {
+              label: "Select All";
+              tooltip-text: _("Select all Flatpaks");
+            }
+            [end]
+            Button  {
+              icon-name: "user-trash-symbolic";
+              tooltip-text: _("Uninstall Selected Flatpaks");
+            }
+            [end]
+            Button  {
+              icon-name: "brush-symbolic";
+              tooltip-text: _("Send Slected Flatpaks' Data to the Trash");
+            }
+            [end]
+            Button  {
+              icon-name: "edit-copy-symbolic";
+              tooltip-text: _("Refresh the List of Installed Apps");
+            }
+          }
+        }
+        Adw.StatusPage no_flatpaks {
+          icon-name: "error-symbolic";
+          description: _("Flattool cannot see the list of installed flatpaks or the system has no flatpaks installed.");
+          title: _("No Flatpaks Found");
+        }
+      }
+    }
+    ;
+  }
+}
+
+menu primary_menu {
+  section {
+    item {
+      label: _("Manage Orphaned Data Folders");
+      action: "app.manage-data-folders";
+    }
+
+    item {
+      label: _("Show Flatpak Runtimes");
+      action: "app.show-runtimes";
+    }
+
+    /*item {
+      label: _("_Preferences");
+      action: "app.preferences";
+    }*/
+
+    item {
+      label: _("_Keyboard Shortcuts");
+      action: "win.show-help-overlay";
+    }
+
+    item {
+      label: _("_About Flattool-gui");
+      action: "app.about";
+    }
+  }
+}

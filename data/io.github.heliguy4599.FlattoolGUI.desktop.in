@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=flattool-gui
+Exec=flattool-gui
+Icon=io.github.heliguy4599.FlattoolGUI
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true

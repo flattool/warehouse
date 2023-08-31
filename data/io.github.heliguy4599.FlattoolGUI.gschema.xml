@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="flattool-gui">
+	<schema id="io.github.heliguy4599.FlattoolGUI" path="/io/github/heliguy4599/FlattoolGUI/">
+	</schema>
+</schemalist>

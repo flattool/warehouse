@@ -1,0 +1,584 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3.0-only
+
+# Settings and stuff, 'as' stands for App Setting. LastUpdateCheck must be 10 digits
+asFirstRun="false"
+asLastUpdateCheck="1692473972"
+asAutoCheckUpdate="true"
+
+# Global variables
+versionNumber="1.4.2"
+owner="heliguy4599"
+repo="flattool"
+appID=''
+boldTxt=$(tput bold)
+normalTxt=$(tput sgr0)
+errTxt=$(tput setaf 1 && tput bold)
+flatpak="flatpak-spawn --host flatpak"
+
+# Haha, April Fools nerd
+if [ "$(date +%m%d)" -eq 0401 ]; then
+    echo "Haha, April 1st, get ejected"
+    eject
+fi
+
+# Functions to save time programming this
+# ====================================================================================
+# Function to make printing error message easier
+printerr() {
+    echo -e "${errTxt}error: ${normalTxt}${1}\n"
+
+    # If a second argument is supplied, print 2 new lines and then it
+    if [ $# -eq 2 ]; then
+        echo "$2"
+    fi
+}
+
+# Check for any new versions
+checkForNewVersion() {
+    currentTime=$(date +%s)
+    if ((currentTime - asLastUpdateCheck < 3600)); then
+        return 2
+    fi
+    sed -E -i "s/^asLastUpdateCheck=\"[0-9]{10}\"$/asLastUpdateCheck=\"${currentTime}\"/" "$0"
+    latestRelease=$(curl -s "https://api.github.com/repos/$owner/$repo/releases/latest")
+    latestTag=$(echo "$latestRelease" | grep -o '"tag_name": "[^"]*' | cut -d'"' -f4 | head -n1)
+    if [ "$latestTag" = "$versionNumber" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Get explicit consent function
+userConsent() {
+    prompt=$1
+    echo -n "$prompt" "[y|N]: "
+    read -r answer
+    case "$answer" in
+        [Yy])
+            echo "Continuing..."
+            return 0
+            ;;
+        *)
+            echo "Aborted"
+            exit 1
+            ;;
+    esac
+}
+
+# Information printing function
+printinfo() {
+    echo -e "  Version\t" "$versionNumber"
+    checkForNewVersion
+    if [ $? -eq 1 ]; then
+        echo -e "  New Version \t" "$latestTag"
+    fi
+    echo -e "  Location\t" "$0"
+}
+
+# Function to easily check that the command called has the right amount of arguments
+checkArgLength() {
+    minLength=$1
+    maxLength=$2
+
+    # Check to make sure that this is being called with the right options, a -1 in the second spot = unlimted
+    if [ "$minLength" -lt 0 ] || { [ "$minLength" -gt "$maxLength" ] && [ "$maxLength" -ge 0 ]; }; then
+        printerr "Internal program error: checkArgLength called with improper min or max values\n$0"
+        exit 1
+    fi
+
+    # Check for proper argument amount
+    shift 3
+    if [ $# -lt "$minLength" ] || { [ "$maxLength" -ge 0 ] && [ $# -gt "$maxLength" ]; }; then
+        printSubcommandHelp "$subcommand"
+        exit 1
+    fi
+}
+
+trashFile() {
+    if command -v trash-put >/dev/null 2>&1; then
+        trash-put "$1"
+        return
+    fi
+    if command -v gio >/dev/null 2>&1; then
+        gio trash "$1"
+        return
+    fi
+    rm -rf "$1"
+    return
+}
+# ====================================================================================
+
+printMasterHelp() {
+    echo -e "Usage: flattool <command>"
+    printinfo
+    echo -e "\nCommands:"
+
+    printSubcommandHelp "install"
+    printSubcommandHelp "uninstall"
+    printSubcommandHelp "purge"
+    printSubcommandHelp "search"
+    printSubcommandHelp "id"
+    printSubcommandHelp "run"
+    printSubcommandHelp "orphans"
+    printSubcommandHelp "export"
+    printSubcommandHelp "data-dir"
+    printSubcommandHelp "add-flathub"
+    printSubcommandHelp "version"
+    printSubcommandHelp "auto-update"
+    printSubcommandHelp "update-check"
+    printSubcommandHelp "help"
+}
+
+printSubcommandHelp() {
+    case $1 in
+        install)
+            echo "  install - usage: flattool install <app-query> <app-query> <app-query> ..."
+            echo -e "    can also be ran with '-i'"
+            echo -e "    about: Installs one or more ${flatpak} apps with separate processes to avoid cancelling the queue if a name cannot be matched\n"
+            ;;
+        uninstall)
+            echo -e "  uninstall - usage: flattool uninstall <app-query> <app-query> <app-query> ..."
+            echo -e "    can also be ran with '-u', 'remove', 'rm'"
+            echo -e "    about: Uninstalls one or more ${flatpak} apps with separate processes to avoid cancelling the queue if a name cannot be matched\n"
+            ;;
+        purge)
+            echo -e "  purge - usage: flattool purge <app-query>"
+            echo -e "    can also be ran with '-p'"
+            echo -e "    about: Uninstalls a ${flatpak} app and deletes its user data folder\n"
+            ;;
+        search)
+            echo -e "  search - usage: flattool search <app-query>"
+            echo -e "    can also be ran with '-s'"
+            echo -e "    about: Searches installed ${flatpak}s and returns lines from '${flatpak} list' that match the query\n"
+            ;;
+        id)
+            echo -e "  id - usage: flattool id <app-query> <app-query> <app-query> ..."
+            echo -e "    about: Returns the first matching Application ID for the query\n"
+            ;;
+        run)
+            echo -e "  run - usage: flattool run <app-query>"
+            echo -e "    can also be ran with '-r'"
+            echo -e "    about: Runs the first matching application for the query, not requiring the full Application ID. Passes any extra arguments to the app to run except '--help' and '-h'\n"
+            ;;
+        orphans)
+            echo -e "  orphans - usage: flattool orphans"
+            echo -e "    can also be ran with '-o'"
+            echo -e "    about: Looks through ~/.var/app (the user data folder) and finds all folders that do not have corrosponding installed ${flatpak}s, then prompts asks user what to do with them\n"
+            ;;
+        export)
+            echo -e "  export - usage: flattool export"
+            echo -e "    can also be ran with '-e'"
+            echo -e "    about: Returns '${flatpak} install <all installed ${flatpak} application IDs>' so that you can copy and paste this to a new machine to install all your ${flatpak}s\n"
+            ;;
+        data-dir)
+            echo -e "  data-dir - usage: flattool data-dir <app query>"
+            echo -e "    can also be ran with '-d'"
+            echo -e "    about: Displays the path to the user data directory of the first matching ${flatpak}, adding '--open' or '-o' at the end will open the path\n"
+            ;;
+        add-flathub)
+            echo -e "  add-flathub - usage: flattool add-flathub <user,system>"
+            echo -e "    about: Adds the flathub remoted repository flathub to either the system install or user install depending on the option chosen\n"
+            ;;
+        version)
+            echo -e "  version - usage: flattool version"
+            echo -e "    can also be ran with '-v', '--version'"
+            echo -e "    about: Prints the currently running version of flattool and where flattool is running from\n"
+            ;;
+        auto-update)
+            echo -e "  auto-update - usage: flattool auto-update"
+            echo -e "    about: Toggles whether flattool will check for updates on each run\n"
+            ;;
+        update-check)
+            echo -e "  update-check: flattool update-check"
+            echo -e "    about: Checks github to see if there is a new release and if there is, prompts to install it. Can only check once an hour.\n"
+            ;;
+        help)
+            echo -e "  help - usage: flattool help"
+            echo -e "    can also be ran with '-h', '--help'"
+            echo -e "    about: Prints the full help message for flattool"
+            ;;
+    esac
+}
+
+# Main functions for the app
+# ====================================================================================
+identifyByQuery() {
+    app=$(${flatpak} list | awk -v app="${1,,}" -F '\t' 'tolower($0) ~ app { print $2 }' | head -n 1)
+    if [ -z "$app" ]; then
+        printerr "No Application ID found from query: '${boldTxt}${1}${normalTxt}'"
+        exit 1
+    fi
+    appID=$app
+}
+
+searchApp() {
+    output=$(${flatpak} list | grep -i "$1")
+    if [ -z "$output" ]; then
+        printerr "No installed application found from query: '${boldTxt}${1}${normalTxt}'"
+        exit 1
+    fi
+    echo "$output"
+}
+
+installApp() {
+    # Do multiple ${flatpak} installs for multiple apps
+    while [ $# -gt 0 ]; do
+        ${flatpak} install "$1"
+        echo
+        if [ $# -gt 0 ]; then
+		echo "${boldTxt}$(($# - 1)) Flatpaks to go${normalTxt}"
+        fi
+        shift
+    done
+}
+
+removeApp() {
+    # Do multiple ${flatpak} removes for multiple apps
+    while [ $# -gt 0 ]; do
+        ${flatpak} remove "$1"
+        echo
+        if [ $# -gt 0 ]; then
+		echo "${boldTxt}$(($# - 1)) Flatpaks to go${normalTxt}"
+        fi
+        shift
+    done
+}
+
+purgeApp() {
+    identifyByQuery "$1"
+    userConsent "Are you sure you want to uninstall ${boldTxt}${appID}${normalTxt} and delete its user data?"
+    ${flatpak} uninstall "$appID"
+    trashFile "${HOME}/.var/app/${appID}"
+}
+
+fixOrphans() {
+    echo "Checking '~/.var/app' for orphaned folders..."
+    appsList="$(${flatpak} list)"
+    orphanedAppsList=()
+    for element in "$HOME/.var/app/"*; do
+        element=$(basename "$element")
+        foundApp=$(grep -i "$element" <<< "$appsList")
+        if [ -z "$foundApp" ]; then
+            orphanedAppsList+=( "$element" )
+        fi
+    done
+
+    if [ -n "${orphanedAppsList[0]}" ]; then #check for if the first element is empty, which will indicate if there is no orphaned apps
+        echo -e "\nThese user data folders exist with no installed ${flatpak}s:"
+        for element in "${orphanedAppsList[@]}"; do
+            echo "  $element"
+        done
+        echo
+
+        echo "What would you like to do with these folders?"
+        echo "  1) Attempt to install matching ${flatpak}s"
+        echo "  2) Delete these folders"
+
+        totalOfOrphans=${#orphanedAppsList[@]}
+        maxChoices=2
+        if [ "$totalOfOrphans" -gt 1 ]; then
+            echo "  3) Decide for each folder individually"
+            maxChoices=3
+        fi
+
+        echo -en "\nWhich option do you want to use (0 to abort)? [0-${maxChoices}]: "
+        while true; do
+            read -r answer
+            if ! [ "$answer" -eq "$answer" ] 2>/dev/null || [ "$answer" -lt 0 ] || [ "$answer" -gt "$maxChoices" ]; then
+                echo -n "Which option do you want to use (0 to abort)? [0-${maxChoices}]: "
+            else
+                break
+            fi
+        done
+
+        case "$answer" in
+            1)
+                echo "Attempting to install..."
+                installApp "${orphanedAppsList[@]}"
+                ;;
+            2)
+                echo "Deleting..."
+                for element in "${orphanedAppsList[@]}"; do
+                    trashFile "${HOME}/.var/app/${element}"
+                done
+                ;;
+            3)
+            	numberOfRound=$totalOfOrphans
+                for element in "${orphanedAppsList[@]}"; do
+                    numberOfRound=$((numberOfRound - 1))
+        	        echo -e "${boldTxt}${numberOfRound} Flatpaks to go${normalTxt}\n"
+                    echo "For folder '${element}', choose an option"
+                    echo -n "[T]rash, [I]install, or [S]kip: "
+                    while true; do
+                        read -r answer
+                        case "$answer" in
+                            [Tt])
+                                echo "Deleting..."
+                                trashFile "${HOME}/.var/app/${element}"
+                                break
+                                ;;
+                            [Ii])
+                                echo "Attempting to install"
+                                installApp "$element"
+                                break
+                                ;;
+                            [Ss])
+                                echo "Skipping"
+                                break
+                                ;;
+                            *)
+                                echo -n "[T]rash, [I]install, or [S]kip: "
+                                ;;
+                        esac
+                    done
+                done
+                ;;
+            *)
+                echo "Aborted"
+                ;;
+        esac
+    else
+        echo "There are no orphaned user data folders"
+    fi
+
+}
+
+flathub-add() {
+    case "$1" in
+        user | -u | --user)
+            ${flatpak} remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.${flatpak}repo --user
+            ;;
+        system | -s | --system)
+            ${flatpak} remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.${flatpak}repo
+            ;;
+        *)
+            printerr "'${1}' is not an option" "Please specify either 'user' or 'system'"
+            ;;
+    esac
+}
+# ====================================================================================
+
+# <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+# <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+# <><><><><><><><><><><=[ B E G I N   M A I N   P R O G R A M ]=<><><><><><><><><><><>
+# <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+# <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+if [ "$asFirstRun" == "true" ]; then
+    sed -i 's/^asFirstRun="true"$/asFirstRun="false"/' "$0"
+    echo -e "Thank you for using flattool! This is the first time its being ran. Make sure to run 'flattool --help' if you are unsure of how to use this.\n"
+
+    # Check which trashing methods, if any, are avaialable
+    if command -v trash-put >/dev/null 2>&1; then
+        echo -e "Trashing Method: trash-cli"
+        echo -e "  All deleted files will be sent to your trash"
+    else
+        if command -v gio >/dev/null 2>&1; then
+            echo -e "Trashing Method: gio"
+            echo -e "  All deleted files will be sent to your trash"
+        else
+            echo -e "Trashing Method: Sadly flattool found no supported method for trashing your files. And deleted data will be ${boldTxt}perminantly deleted${normalTxt}."
+            echo -e "  To allow flattool to send items to your trash instead, please install trash-cli or gio."
+        fi
+    fi
+    echo # For a nice newline
+
+    echo -e "Flattool can check for updates, these checks will occur on every run, so long as it has been an hour since the last check."
+    echo -e "  To install an update, run 'flattool update-check'.\n"
+    echo -n "Do you want to enable auto update checking? (You can change your mind later with 'flattool auto-update') [Y|n]: "
+    read -r answer
+    case $answer in
+        [Nn])
+            sed -i 's/^asAutoCheckUpdate="true"$/asAutoCheckUpdate="false"/' "$0"
+            ;;
+        *)
+            sed -i 's/^asAutoCheckUpdate="false"$/asAutoCheckUpdate="true"/' "$0"
+            ;;
+    esac
+    echo # For a nice newline
+
+    # Adding flathub if its not found
+    hasFlathub=$(${flatpak} remotes | grep flathub)
+    if [ -z "$hasFlathub" ]; then
+        answer=""
+        while [ -z "$answer" ]; do
+            echo -n "The flathub remote has not been found, would you like to add it as a [U]ser remote, [S]ystem remote, or [I]gnore: "
+            read -r answer
+            case $answer in
+                [Uu])
+                    flathub-add user
+                    ;;
+                [Ss])
+                    flathub-add system
+                    ;;
+                [Ii])
+                    echo -e "You can add flathub any time later with 'flattool add-flathub'"
+                    ;;
+                *)
+                    answer="" # Clear the answer variable so the loop runs again
+                    ;;
+            esac
+        done
+        echo # For a nice newline
+    fi
+fi
+
+# Setting the subcommand
+subcommand=$1
+
+if [ "$asAutoCheckUpdate" == "true" ] && [ "$subcommand" != "update-check" ] && [ "$subcommand" != "auto-update" ]; then
+    checkForNewVersion
+    if [ $? -eq 1 ]; then
+        echo "New version of flattool is available: ${latestTag}"
+    fi
+fi
+
+# Check if any subcommand is provided
+if [ $# -eq 0 ]; then
+    printerr "No command specified" "See 'flattool --help'"
+    exit 1
+fi
+
+# Expand flags and aliases
+case $subcommand in
+    -h)
+        subcommand="help"
+        ;;
+    -i)
+        subcommand="install"
+        ;;
+    -u | rm | remove)
+        subcommand="uninstall"
+        ;;
+    -r)
+        subcommand="run"
+        ;;
+    -p)
+        subcommand="purge"
+        ;;
+    -o)
+        subcommand="orphans"
+        ;;
+    -e)
+        subcommand="export"
+        ;;
+    -s)
+        subcommand="search"
+        ;;
+    -d)
+        subcommand="data-dir"
+        ;;
+    -v | --version)
+        subcommand="version"
+        ;;
+esac
+
+# Calling the correct subcommand help responses
+if [ "$#" -gt 0 ] && [ "${*:$#}" == "-h" ] || [ "${*:$#}" == "--help" ]; then
+    if [ "$#" -eq 1 ]; then
+        printMasterHelp
+        exit 0
+    fi
+    printSubcommandHelp "$subcommand"
+    exit 0
+fi
+
+# Switch case to run the proper function per subcommand
+case "$subcommand" in
+    id)
+        checkArgLength 1 -1 "$@"
+        shift
+        while [ $# -gt 0 ]; do
+            identifyByQuery "$1"
+            echo "$appID"
+            shift
+        done
+        ;;
+    run)
+        checkArgLength 1 -1 "$@"
+        if [ "$2" = "-m" ] || [ "$2" = "--multiple" ]; then
+            shift 2
+            while [ $# -gt 0 ]; do
+                identifyByQuery "$1"
+                ${flatpak} run "$appID" & disown
+                shift
+            done
+            exit
+        fi
+        identifyByQuery "$2"
+        shift 2
+        ${flatpak} run "$appID" "$@"
+        ;;
+    install)
+        checkArgLength 1 -1 "$@"
+        shift
+        installApp "$@"
+        ;;
+    uninstall)
+        checkArgLength 1 -1 "$@"
+        shift
+        removeApp "$@"
+        ;;
+    purge)
+        purgeApp "$2"
+        ;;
+    search)
+        searchApp "$2"
+        ;;
+    orphans)
+        fixOrphans
+        ;;
+    export)
+        checkArgLength 0 0 "$@"
+        echo ${flatpak} install "$(${flatpak} list --columns=application | tr '\n' ' ')"
+        ;;
+    data-dir)
+        checkArgLength 1 2 "$@"
+        identifyByQuery "$2"
+        echo "${HOME}/.var/app/${appID}"
+        if [ "$3" == "-o" ] || [ "$3" == "--open" ]; then
+            xdg-open "${HOME}/.var/app/${appID}"
+        fi
+        ;;
+    add-flathub)
+        checkArgLength 1 1 "$@"
+        shift
+        flathub-add "$@"
+        ;;
+    help)
+        printMasterHelp
+        ;;
+    version)
+        printinfo
+        ;;
+    auto-update)
+        if [ "$asAutoCheckUpdate" = "true" ]; then
+            sed -i 's/^asAutoCheckUpdate="true"$/asAutoCheckUpdate="false"/' "$0"
+            echo "flattool will not check for updates on each run. To manually check, run 'flattool update-check'"
+        else
+            sed -i 's/^asAutoCheckUpdate="false"$/asAutoCheckUpdate="true"/' "$0"
+            echo "flattool will check for updates on each run."
+        fi
+        ;;
+    update-check)
+        asLastUpdateCheck="0000000000"
+        checkForNewVersion
+        case $? in
+            0)
+                echo "flattool is up to date"
+                ;;
+            1)
+                echo "New version of flattool is available: ${latestTag}"
+                userConsent "Do you want to install this new update?"
+                echo "Installing new version..."
+                wget -N -P "$(dirname "$0")" "https://raw.githubusercontent.com/${owner}/${repo}/main/flattool"
+                ;;
+        esac
+        exit 0
+        ;;
+    *)
+        printerr "'${subcommand}' is not a flattool command" "See 'flattool --help'"
+        ;;
+esac
