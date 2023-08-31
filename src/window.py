@@ -82,6 +82,38 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         except subprocess.CalledProcessError:
             self.toast_overlay.add_toast(Adw.Toast.new(_(f"Error while trying to uninstall {name}")))
 
+    def get_size_format(self, b):
+        factor=1024
+        suffix="B"
+        for unit in ["", "K", "M", "G", "T", "P", "E", "Z"]:
+            if b < factor:
+                return f"{b:.1f}{unit}{suffix}"
+            b /= factor
+        return f"{b:.1f}{suffix}"
+            
+    def get_directory_size(self, directory):
+        """Returns the `directory` size in bytes."""
+        total = 0
+        try:
+            # print("[+] Getting the size of", directory)
+            for entry in os.scandir(directory):
+                if entry.is_file():
+                    # if it's a file, use stat() function
+                    total += entry.stat().st_size
+                elif entry.is_dir():
+                    # if it's a directory, recursively call this function
+                    try:
+                        total += self.get_directory_size(entry.path)
+                    except FileNotFoundError:
+                        pass
+        except NotADirectoryError:
+            # if `directory` isn't a directory, get the file size then
+            return os.path.getsize(directory)
+        except PermissionError:
+            # if for whatever reason we can't open the folder, return 0
+            return 0
+        return total
+
     def uninstall_flatpak(self, _widget, index):
         name = self.host_flatpaks[index][0]
         dialog = Adw.MessageDialog.new(self, _(f"Uninstall {name}?"))
@@ -154,44 +186,12 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             for i in range(len(self.host_flatpaks)):
                 id_list.append(self.host_flatpaks[i][2])
 
-            def get_size_format(b):
-                factor=1024
-                suffix="B"
-                for unit in ["", "K", "M", "G", "T", "P", "E", "Z"]:
-                    if b < factor:
-                        return f"{b:.1f}{unit}{suffix}"
-                    b /= factor
-                return f"{b:.1f}{suffix}"
-            
-            def get_directory_size(directory):
-                """Returns the `directory` size in bytes."""
-                total = 0
-                try:
-                    # print("[+] Getting the size of", directory)
-                    for entry in os.scandir(directory):
-                        if entry.is_file():
-                            # if it's a file, use stat() function
-                            total += entry.stat().st_size
-                        elif entry.is_dir():
-                            # if it's a directory, recursively call this function
-                            try:
-                                total += get_directory_size(entry.path)
-                            except FileNotFoundError:
-                                pass
-                except NotADirectoryError:
-                    # if `directory` isn't a directory, get the file size then
-                    return os.path.getsize(directory)
-                except PermissionError:
-                    # if for whatever reason we can't open the folder, return 0
-                    return 0
-                return total
-
             row_index = -1
             for i in range(len(file_list)):
                 if not file_list[i] in id_list:
                     row_index += 1
                     select_orphans_tickbox = Gtk.CheckButton(halign=Gtk.Align.CENTER)
-                    orphans_row = Adw.ActionRow(title=file_list[i], subtitle=_("~") + get_size_format(get_directory_size(f"{self.user_data_path}{file_list[i]}")))
+                    orphans_row = Adw.ActionRow(title=file_list[i], subtitle=_("~") + self.get_size_format(self.get_directory_size(f"{self.user_data_path}{file_list[i]}")))
                     orphans_row.add_suffix(select_orphans_tickbox)
                     orphans_row.set_activatable_widget(select_orphans_tickbox)
                     select_orphans_tickbox.connect("toggled", selection_handler, orphans_row.get_title())
@@ -206,8 +206,12 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         def key_handler(_a, event, _c, _d):
             if event == Gdk.KEY_Escape:
                 orphans_window.close()
+            elif event == Gdk.KEY_Delete or event == Gdk.KEY_BackSpace:
+                trash_button_handler(event)
 
         def trash_button_handler(widget):
+            if total_selected == 0:
+                return(1)
             show_success = True
             for i in range(len(selected_rows)):
                 path = f"{self.user_data_path}{selected_rows[i]}"
@@ -354,12 +358,12 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         user_data_list.append(user_data_row)
         user_data_list.add_css_class("boxed-list")
 
-        def close_window(_a, event, _c, _d):
+        def key_handler(_a, event, _c, _d):
             if event == Gdk.KEY_Escape:
                 properties_window.close()
 
         event_controller = Gtk.EventControllerKey()
-        event_controller.connect("key-pressed", close_window)
+        event_controller.connect("key-pressed", key_handler)
         properties_window.add_controller(event_controller)
 
         app_name = self.host_flatpaks[index][0]
@@ -419,7 +423,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         
         if os.path.exists(path):
             user_data_row.set_title("User Data")
-            user_data_row.set_subtitle(path)
+            user_data_row.set_subtitle(f"{path}\n~{self.get_size_format(self.get_directory_size(path))}")
 
             open_button = Gtk.Button(icon_name="document-open-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Open Data Folder"))
             open_button.add_css_class("flat")
