@@ -79,7 +79,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         try:
             subprocess.run(command, capture_output=True, check=True)
             self.toast_overlay.add_toast(Adw.Toast.new(_(f"Uninstalled {name}")))
-            self.refresh_list(self, False)
+            self.refresh_list_of_flatpaks(self, False)
         except subprocess.CalledProcessError:
             self.toast_overlay.add_toast(Adw.Toast.new(_(f"Error while trying to uninstall {name}")))
 
@@ -108,8 +108,11 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         orphans_scroll = Gtk.ScrolledWindow()
         orphans_toast_overlay = Adw.ToastOverlay()
         orphans_toast_overlay.set_child(orphans_scroll)
-        orphans_box = Gtk.Box(orientation="vertical", vexpand=True)
-        orphans_scroll.set_child(orphans_box)
+        orphans_overlay = Gtk.Overlay()
+        orphans_progress_bar = Gtk.ProgressBar(valign=Gtk.Align.START)
+        orphans_progress_bar.add_css_class("osd")
+        orphans_overlay.add_overlay(orphans_progress_bar)
+        orphans_scroll.set_child(orphans_overlay)
         orphans_title_bar = Adw.ToolbarView()
         #orphans_toolbar = Gtk.HeaderBar(show_title_buttons=False)
         orphans_toolbar = Gtk.HeaderBar()
@@ -118,13 +121,21 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         orphans_title_bar.add_bottom_bar(orphans_action_bar)
         orphans_title_bar.set_content(orphans_toast_overlay)
         orphans_window.set_content(orphans_title_bar)
-        orphans_list = Gtk.ListBox(selection_mode="none", margin_top=6, margin_bottom=6, margin_start=12, margin_end=12)
+        orphans_list = Gtk.ListBox(selection_mode="none", valign=Gtk.Align.START, margin_top=6, margin_bottom=6, margin_start=12, margin_end=12)
         orphans_list.add_css_class("boxed-list")
-        orphans_box.append(orphans_list)
+        orphans_overlay.set_child(orphans_list)
         global total_selected
         total_selected = 0
         global selected_rows
         selected_rows = []
+
+        def progress_pulse():
+            orphans_progress_bar.pulse()
+            if self.pulse:
+                orphans_progress_bar.show()
+                GLib.timeout_add(100, progress_pulse)
+            else:
+                orphans_progress_bar.hide()
 
         def toggle_button_handler(button):
             if button.get_active():
@@ -188,6 +199,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                     select_orphans_tickbox = Gtk.CheckButton(halign=Gtk.Align.CENTER)
                     orphans_row = Adw.ActionRow(title=file_list[i], subtitle=_("~") + get_size_format(get_directory_size(f"{self.user_data_path}{file_list[i]}")))
                     orphans_row.add_suffix(select_orphans_tickbox)
+                    orphans_row.set_activatable_widget(select_orphans_tickbox)
                     select_orphans_tickbox.connect("toggled", selection_handler, orphans_row.get_title())
                     if is_select_all == True:
                         select_orphans_tickbox.set_active(True)
@@ -214,30 +226,35 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             generate_list(widget, False)
 
         def install_on_response(_a, response_id, _b):
-            show_success = True
-            for i in range(len(selected_rows)):
-                remote = response_id.split('_')
-                if response_id == "cancel":
-                    return(1)
-                command = ['flatpak-spawn', '--host', 'flatpak', 'install', '-y', remote[0]]
-                if "user" in remote[1]:
-                    command.append("--user")
-                else:
-                    command.append("--system")
-                command.append(selected_rows[i])
-                
-                try:
-                    subprocess.run(command, capture_output=False, check=True)
-                except:
-                    orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Error Installing {selected_rows[i]}")))
-                    show_success = False
-            select_all_button.set_active(False)
+            def install_thread(*args):
+                self.pulse = True
+                progress_pulse()
+                show_success = True
+                for i in range(len(selected_rows)):
+                    remote = response_id.split('_')
+                    if response_id == "cancel":
+                        return(1)
+                    command = ['flatpak-spawn', '--host', 'flatpak', 'install', '-y', remote[0]]
+                    if "user" in remote[1]:
+                        command.append("--user")
+                    else:
+                        command.append("--system")
+                    command.append(selected_rows[i])
+                    
+                    try:
+                        subprocess.run(command, capture_output=False, check=True)
+                    except:
+                        orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Error Installing {selected_rows[i]}")))
+                        show_success = False
+                select_all_button.set_active(False)
 
-            if show_success:
-                orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Successfilly Installed All Apps")))
+                if show_success:
+                    orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Successfilly Installed All Apps")))
 
-            self.generate_list()
-            generate_list(widget, False)
+                self.pulse = False
+                self.refresh_list_of_flatpaks()
+                generate_list(None, False)
+            Gio.Task.new().run_in_thread(install_thread)
 
         def install_button_handler(widget):
             def get_host_remotes():
@@ -434,7 +451,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         properties_window.set_content(properties_title_bar)
         properties_window.present()
 
-    def generate_list(self):
+    def generate_list_of_flatpaks(self):
         def get_host_flatpaks():
             output = subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'list', '--columns=all'], capture_output=True, text=True).stdout
             lines = output.strip().split('\n')
@@ -502,9 +519,9 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             flatpak_row.add_suffix(row_button_box)
             self.list_of_flatpaks.append(flatpak_row)
 
-    def refresh_list(self, widget, should_toast):
+    def refresh_list_of_flatpaks(self, widget, should_toast):
         self.list_of_flatpaks.remove_all()
-        self.generate_list()
+        self.generate_list_of_flatpaks()
         if should_toast:
             self.toast_overlay.add_toast(Adw.Toast.new(_("List refreshed")))
         
@@ -513,14 +530,14 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             self.show_runtimes = True
         else:
             self.show_runtimes = False
-        self.refresh_list(self, False)
+        self.refresh_list_of_flatpaks(self, False)
 
     def batch_mode_handler(self, widget):
         if widget.get_active():
             self.in_batch_mode = True
         else:
             self.in_batch_mode = False
-        self.refresh_list(self, False)
+        self.refresh_list_of_flatpaks(self, False)
         
     def flatpak_row_select_handler(self, tickbox, row):
         if tickbox.get_active():
@@ -529,8 +546,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.list_of_flatpaks.set_filter_func(self.filter_func)
-        self.generate_list()
+        self.generate_list_of_flatpaks()
         self.search_entry.connect("search-changed",  lambda *_: self.list_of_flatpaks.invalidate_filter())
         self.search_bar.connect_entry(self.search_entry)
-        self.refresh_button.connect("clicked", self.refresh_list, True)
+        self.refresh_button.connect("clicked", self.refresh_list_of_flatpaks, True)
         self.batch_mode_button.connect("toggled", self.batch_mode_handler)
