@@ -69,7 +69,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         try:
             subprocess.run(['flatpak-spawn', '--host', 'gio', 'trash', path], capture_output=True, check=True)
             return(0)
-        except e in subprocess.CalledProcessError:
+        except subprocess.CalledProcessError:
             return(2)
 
     def uninstall_response(self, widget, response_id, _c, index):
@@ -562,10 +562,38 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     def batch_copy_handler(self, widget):
         to_copy = ""
         for i in range(len(self.selected_host_flatpak_indexes)):
-            self.host_flatpak_index = self.selected_host_flatpak_indexes[i]
-            to_copy += f"{(self.host_flatpaks[self.host_flatpak_index][8])}\n"
+            host_flatpak_index = self.selected_host_flatpak_indexes[i]
+            to_copy += f"{(self.host_flatpaks[host_flatpak_index][8])}\n"
         print(to_copy)
         self.clipboard.set(to_copy)
+
+    def on_batch_clean_response(self, dialog, response, _a):
+        if response == "cancel":
+            return(1)
+        show_success = True
+        for i in range(len(self.selected_host_flatpak_indexes)):
+            app_id = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][2]
+            app_name = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][0]
+            path = f"{self.user_data_path}{app_id}"
+            trash = self.trash_folder(path)
+            if trash == 1:
+                show_success = False
+                self.toast_overlay.add_toast(Adw.Toast.new(_(f"No User Data for {app_name}")))
+            elif trash == 2:
+                show_success = False
+                self.toast_overlay.add_toast(Adw.Toast.new(_(f"Can't Trash User Data for {app_name}")))
+        if show_success:
+            self.toast_overlay.add_toast(Adw.Toast.new(_(f"Trashed Data")))
+        self.refresh_list_of_flatpaks(_a, False)
+
+    def batch_clean_handler(self, widget):
+        dialog = Adw.MessageDialog.new(self, _("Delete Selected User Data?"), _("This user data will be sent to the trash."))
+        dialog.set_close_response("cancel")
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Trash Data"))
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.connect("response", self.on_batch_clean_response, dialog.choose_finish)
+        Gtk.Window.present(dialog)
         
     def flatpak_row_select_handler(self, tickbox, index):
         if tickbox.get_active():
@@ -591,6 +619,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.refresh_button.connect("clicked", self.refresh_list_of_flatpaks, True)
         self.batch_mode_button.connect("toggled", self.batch_mode_handler)
         self.batch_copy_button.connect("clicked", self.batch_copy_handler)
+        self.batch_clean_button.connect("clicked", self.batch_clean_handler)
+        self.batch_clean_button.add_css_class("destructive-action")
 
         self.batch_uninstall_button.add_css_class("destructive-action")
         self.batch_actions_enable(False)
