@@ -357,7 +357,9 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         properties_toast_overlay = Adw.ToastOverlay()
         properties_toast_overlay.set_child(properties_scroll)
         properties_box = Gtk.Box(orientation="vertical", vexpand=True)
-        properties_scroll.set_child(properties_box)
+        properties_clamp = Adw.Clamp()
+        properties_scroll.set_child(properties_clamp)
+        properties_clamp.set_child(properties_box)
         properties_title_bar = Adw.ToolbarView()
         properties_title_bar.add_top_bar(Gtk.HeaderBar())
         properties_title_bar.set_content(properties_toast_overlay)
@@ -453,6 +455,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             properties_copy_button.add_css_class("flat")
             properties_copy_button.connect("clicked", copy_button_handler, column_headers[column], self.host_flatpaks[index][column])
             row_item.add_suffix(properties_copy_button)
+            row_item.set_activatable_widget(properties_copy_button)
 
             properties_list.append(row_item)
 
@@ -576,6 +579,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             host_flatpak_index = self.selected_host_flatpak_indexes[i]
             to_copy += f"{(self.host_flatpaks[host_flatpak_index][2])}\n"
         self.clipboard.set(to_copy)
+        self.toast_overlay.add_toast(Adw.Toast.new(_(f"Copied Selected App IDs")))
 
     def on_batch_clean_response(self, dialog, response, _a):
         if response == "cancel":

@@ -39,6 +39,7 @@ class FlattoolGuiApplication(Adw.Application):
         self.create_action('preferences', self.on_preferences_action)
         self.create_action('search', self.on_search_action, ['<primary>f'])
         self.create_action('manage-data-folders', self.on_manage_data_folders_action)
+        #self.create_action('toggle ba')
 
         self.show_runtimes_stateful = Gio.SimpleAction.new_stateful("show-runtimes", None, GLib.Variant.new_boolean(False))
         self.show_runtimes_stateful.connect("activate", self.on_show_runtimes_action)
