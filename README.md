@@ -4,7 +4,7 @@
   <img src="https://github.com/flattool/flattool-cli/raw/main/flattool_logo-name.png" alt="Flattool Logo">
 </p>
 
-Flattool GUI is a versatile toolbox for managing flatpak user data, viewing flatpak app info, and batch managing installed flatpaks.
+## Flattool GUI is a versatile toolbox for managing flatpak user data, viewing flatpak app info, and batch managing installed flatpaks.
 
 ## 🚀 Main Features:
 
