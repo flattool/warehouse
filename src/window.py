@@ -598,6 +598,9 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", self.on_batch_clean_response, dialog.choose_finish)
         Gtk.Window.present(dialog)
+
+    def batch_select_all_handler(self, widget):
+        print("all")
         
     def flatpak_row_select_handler(self, tickbox, index):
         if tickbox.get_active():
@@ -627,4 +630,5 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.batch_clean_button.add_css_class("destructive-action")
 
         self.batch_uninstall_button.add_css_class("destructive-action")
+        self.batch_select_all_button.connect("clicked", self.batch_select_all_handler)
         self.batch_actions_enable(False)
