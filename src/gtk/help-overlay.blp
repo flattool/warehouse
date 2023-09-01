@@ -24,6 +24,21 @@ ShortcutsWindow help_overlay {
         title: C_("shortcut window", "Quit");
         action-name: "app.quit";
       }
+
+      ShortcutsShortcut {
+        title: C_("shortcut window", "Toggle Batch Mode");
+        action-name: "app.toggle-batch-mode";
+      }
+
+      ShortcutsShortcut {
+        title: C_("shortcut window", "Manage Orphaned Data Folders");
+        action-name: "app.open-orphans-window";
+      }
+
+      ShortcutsShortcut {
+        title: C_("shortcut window", "Select All Flatpaks");
+        action-name: "app.select-all-in-batch-mode";
+      }
     }
   }
 }

@@ -39,11 +39,27 @@ class FlattoolGuiApplication(Adw.Application):
         self.create_action('preferences', self.on_preferences_action)
         self.create_action('search', self.on_search_action, ['<primary>f'])
         self.create_action('manage-data-folders', self.on_manage_data_folders_action)
-        #self.create_action('toggle ba')
+        self.create_action('toggle-batch-mode', self.batch_mode_shortcut, ['<primary>b'])
+        self.create_action('select-all-in-batch-mode', self.select_all_shortcut, ['<primary>a'])
+        self.create_action('open-orphans-window', self.manage_data_shortcut, ['<primary>d'])
 
         self.show_runtimes_stateful = Gio.SimpleAction.new_stateful("show-runtimes", None, GLib.Variant.new_boolean(False))
         self.show_runtimes_stateful.connect("activate", self.on_show_runtimes_action)
         self.add_action(self.show_runtimes_stateful)
+
+    def batch_mode_shortcut(self, widget, _):
+        button = self.props.active_window.batch_mode_button
+        button.set_active(not button.get_active())
+
+    def select_all_shortcut(self, widget, _):
+        batch_button = self.props.active_window.batch_mode_button
+        batch_button.set_active(True)
+        select_button = self.props.active_window.batch_select_all_button
+        select_button.set_active(not select_button.get_active())
+        self.props.active_window.batch_select_all_handler(select_button)
+
+    def manage_data_shortcut(self, widget, _):
+        self.props.active_window.orphans_window()
 
     def do_activate(self):
         """Called when the application is activated.

@@ -643,6 +643,10 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         dialog.set_response_appearance("purge", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", self.batch_uninstall_on_response, dialog.choose_finish)
         Gtk.Window.present(dialog)
+
+    def batch_key_handler(self, _b, event, _c, _d):
+        if event == Gdk.KEY_Escape:
+            self.batch_mode_button.set_active(False)
         
     def flatpak_row_select_handler(self, tickbox, index):
         if tickbox.get_active():
@@ -674,3 +678,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.batch_uninstall_button.add_css_class("destructive-action")
         self.batch_select_all_button.connect("clicked", self.batch_select_all_handler)
         self.batch_actions_enable(False)
+        event_controller = Gtk.EventControllerKey()
+        event_controller.connect("key-pressed", self.batch_key_handler)
+        self.add_controller(event_controller)
