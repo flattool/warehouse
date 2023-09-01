@@ -68,22 +68,22 @@ template FlattoolGuiWindow : Adw.ApplicationWindow {
           }
           ActionBar batch_mode_bar {
             [start]
-            Button {
+            Button batch_select_all_button {
               label: "Select All";
               tooltip-text: _("Select all Flatpaks");
             }
             [end]
-            Button  {
+            Button batch_uninstall_button {
               icon-name: "user-trash-symbolic";
               tooltip-text: _("Uninstall Selected Flatpaks");
             }
             [end]
-            Button  {
+            Button batch_clean_button {
               icon-name: "brush-symbolic";
               tooltip-text: _("Send Slected Flatpaks' Data to the Trash");
             }
             [end]
-            Button  {
+            Button batch_copy_button {
               icon-name: "edit-copy-symbolic";
               tooltip-text: _("Refresh the List of Installed Apps");
             }

@@ -35,6 +35,12 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     main_stack = Gtk.Template.Child()
     batch_mode_button = Gtk.Template.Child()
     batch_mode_bar = Gtk.Template.Child()
+    batch_select_all_button = Gtk.Template.Child()
+    batch_uninstall_button = Gtk.Template.Child()
+    batch_clean_button = Gtk.Template.Child()
+    batch_copy_button = Gtk.Template.Child()
+
+    selected_host_flatpak_indexes = []
 
     clipboard = Gdk.Display.get_default().get_clipboard()
     host_home = str(pathlib.Path.home())
@@ -474,7 +480,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         for index in range(len(self.host_flatpaks)):
             app_name = self.host_flatpaks[index][0]
             app_id = self.host_flatpaks[index][2]
-            flatpak_row = Adw.ActionRow(title=app_name, subtitle=app_id)
+            app_ref = self.host_flatpaks[index][8]
+            flatpak_row = Adw.ActionRow(title=app_name, subtitle=app_ref)
             image = None
             try:
                 icon_path = self.icon_theme.lookup_icon(app_id, None, 512, 1, self.get_direction(), 0).get_file().get_path()
@@ -493,7 +500,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 if not self.show_runtimes:
                     flatpak_row.set_visible(False)
 
-            
             row_button_box = Gtk.Box()
 
             trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_(f"Uninstall {app_name}"))
@@ -508,11 +514,12 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
             select_flatpak_tickbox = Gtk.CheckButton(halign=Gtk.Align.CENTER)
             select_flatpak_tickbox.add_css_class("flat")
+            select_flatpak_tickbox.connect("toggled", self.flatpak_row_select_handler, index)
             flatpak_row.add_suffix(select_flatpak_tickbox)
-            select_flatpak_tickbox.connect("toggled", self.flatpak_row_select_handler, flatpak_row)
 
             if self.in_batch_mode:
                 row_button_box.set_visible(False)
+                flatpak_row.set_activatable_widget(select_flatpak_tickbox)
                 self.batch_mode_bar.set_revealed(True)
             else:
                 select_flatpak_tickbox.set_visible(False)
@@ -533,6 +540,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         else:
             self.show_runtimes = False
         self.refresh_list_of_flatpaks(self, False)
+        self.selected_host_flatpak_indexes.clear()
 
     def batch_mode_handler(self, widget):
         if widget.get_active():
@@ -541,9 +549,13 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             self.in_batch_mode = False
         self.refresh_list_of_flatpaks(self, False)
         
-    def flatpak_row_select_handler(self, tickbox, row):
+    def flatpak_row_select_handler(self, tickbox, index):
         if tickbox.get_active():
-            print("active" + row.get_subtitle())
+            self.selected_host_flatpak_indexes.append(index)
+            print(self.selected_host_flatpak_indexes)
+        else:
+            self.selected_host_flatpak_indexes.remove(index)
+            print(self.selected_host_flatpak_indexes)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
