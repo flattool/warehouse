@@ -121,14 +121,18 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
     def uninstall_flatpak(self, _widget, index):
         name = self.host_flatpaks[index][0]
-        dialog = Adw.MessageDialog.new(self, _(f"Uninstall {name}?"))
-        dialog.set_body(_("The app will be removed from your system but its user data will be preserved"))
+        id = self.host_flatpaks[index][2]
+        dialog = Adw.MessageDialog.new(self, _(f"Uninstall {name}?"), _("The app will be removed from your system."))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Uninstall"))
-        dialog.add_response("purge", _("Uninstall and Trash Data"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.set_response_appearance("purge", Adw.ResponseAppearance.DESTRUCTIVE)
+
+        if os.path.exists(f"{self.user_data_path}{id}"):
+            dialog.set_body(_("The app will be removed from your system. Optionally, you can also trash its user data."))
+            dialog.add_response("purge", _("Uninstall and Trash Data"))
+            dialog.set_response_appearance("purge", Adw.ResponseAppearance.DESTRUCTIVE)
+
         dialog.connect("response", self.uninstall_response, dialog.choose_finish, index)
         Gtk.Window.present(dialog)
 
