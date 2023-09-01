@@ -1,26 +1,39 @@
-![Flattool Logo a simple icon of a tower crane holding a dangling letter F in front of "lattool"](https://github.com/flattool/flattool-cli/raw/main/flattool_logo-name.png)
+# 🛠️ Flattool GUI
 
-Flattool GUI is a toolbox for managing flatpak user data, viewing flatpak app info, and batch managing installed flatpaks.
+<p align="center">
+  <img src="https://github.com/flattool/flattool-cli/raw/main/flattool_logo-name.png" alt="Flattool Logo">
+</p>
 
-## Main Features:
+Flattool GUI is a versatile toolbox for managing flatpak user data, viewing flatpak app info, and batch managing installed flatpaks.
 
-1. **Viewing Flatpak info:** Flattool can show all of the info that the `flatpak list` command does, in a nice graphical window. Each item has a button to copy it as well.
-2. **Managing User Data:** Flatpaks store user data in a specific location on the system, and this data is often not removed when an app is uninstalled. Flattool can uninstall an app and trash its data, just trash the data without uninstalling, or just show you if an app has user data.
-3. **Batch Actions:** Flattool has a batch mode that allows fast uninstalls, user data trashing, and app ID copying to be done en mass.
-4. **Leftover Data Management:** Flattool can scan the user data folder to check if there are any installed apps for the data, if there is not, then it can trash the data or attempt to install a matching flatpak.
+## 🚀 Main Features:
 
-## Important Notes:
-- This is still a new project by me, a new developer, I appreciate your understanding if there are any bugs.
-- Flattool assumes that flatpak user data is stored within the default location: `~/.var/app`.
-- Flattool is not meant to replace flatpak; it simply sends appropriate flatpak commands for the desired actions.
+1. **Viewing Flatpak Info:** 📋 Flattool can display all the information provided by the `flatpak list` command in a user-friendly graphical window. Each item includes a button for easy copying.
 
-## Dependencies:
-To use Flattool effectively, you need to ensure the following dependencies are installed on your system:
+2. **Managing User Data:** 🗑️ Flatpaks store user data in a specific system location, often left behind when an app is uninstalled. Flattool can uninstall an app and delete its data, delete data without uninstalling, or simply show if an app has user data.
+
+3. **Batch Actions:** ⚡ Flattool features a batch mode for swift uninstallations, user data deletions, and app ID copying in bulk.
+
+4. **Leftover Data Management:** 📁 Flattool scans the user data folder to check for installed apps associated with the data. If none are found, it can delete the data or attempt to install a matching flatpak.
+
+## ℹ️ Important Notes:
+- This project is still in its early stages, developed by a newcomer. Your understanding of potential bugs is greatly appreciated.
+- Flattool assumes flatpak user data is located in the default directory: `~/.var/app`.
+- Flattool does not aim to replace flatpak; it simply facilitates appropriate flatpak commands for the desired actions.
+
+## 📦 Dependencies:
+To use Flattool effectively, ensure the following dependencies are installed on your system:
 - GIO
 - [GNOME Nightly Flatpak Remote](https://wiki.gnome.org/Apps/Nightly)
 
-## Installation Steps
-1. Make sure you have the above dependencies installed
-2. Head to [releases](https://github.com/flattool/flattool-gui/releases) and download `io.github.heliguy4599.FlattoolGUI.flatpak`
-3. Click on it to install it with your software store or run `flatpak install /path/to/io.github.heliguy4599.FlattoolGUI.flatpak`
-You're all set. Just click its icon in your app menu or run `flatpak run io.github.heliguy4599.FlattoolGUI.flatpak`
+## 🛠️ Installation Steps:
+1. Make sure you have the above dependencies installed.
+2. Visit the [releases](https://github.com/flattool/flattool-gui/releases) page and download `io.github.heliguy4599.FlattoolGUI.flatpak`.
+3. Install it using your software store or run the following command:
+   ```shell
+   $ flatpak install /path/to/io.github.heliguy4599.FlattoolGUI.flatpak
+   ```
+You're all set! Launch the application by clicking its icon in your app menu or running:
+```shell
+$ flatpak run io.github.heliguy4599.FlattoolGUI.flatpak
+```
