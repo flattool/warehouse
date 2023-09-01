@@ -40,6 +40,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     batch_uninstall_button = Gtk.Template.Child()
     batch_clean_button = Gtk.Template.Child()
     batch_copy_button = Gtk.Template.Child()
+    uninstall_please_wait = Gtk.Template.Child()
+    main_box = Gtk.Template.Child()
 
     clipboard = Gdk.Display.get_default().get_clipboard()
     host_home = str(pathlib.Path.home())
@@ -73,21 +75,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         except subprocess.CalledProcessError:
             return(2)
 
-    def uninstall_response(self, widget, response_id, _c, index):
-        ref = self.host_flatpaks[index][8]
-        name = self.host_flatpaks[index][0]
-        command = ['flatpak-spawn', '--host', 'flatpak', 'remove', ref, '-y']
-        if response_id == "cancel":
-            return(1)
-        if response_id == "purge":
-            command.append('--delete-data')
-        try:
-            subprocess.run(command, capture_output=True, check=True)
-            self.toast_overlay.add_toast(Adw.Toast.new(_(f"Uninstalled {name}")))
-            self.refresh_list_of_flatpaks(self, False)
-        except subprocess.CalledProcessError:
-            self.toast_overlay.add_toast(Adw.Toast.new(_(f"Error while trying to uninstall {name}")))
-
     def get_size_format(self, b):
         factor=1024
         suffix="B"
@@ -120,7 +107,25 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             return 0
         return total
 
+    def uninstall_response(self, widget, response_id, _c, index):
+        ref = self.host_flatpaks[index][8]
+        name = self.host_flatpaks[index][0]
+        command = ['flatpak-spawn', '--host', 'flatpak', 'remove', ref, '-y']
+        if response_id == "cancel":
+            self.main_stack.set_visible_child(self.main_box)
+            return(1)
+        if response_id == "purge":
+            command.append('--delete-data')
+        try:
+            subprocess.run(command, capture_output=True, check=True)
+            self.toast_overlay.add_toast(Adw.Toast.new(_(f"Uninstalled {name}")))
+            self.refresh_list_of_flatpaks(self, False)
+        except subprocess.CalledProcessError:
+            self.toast_overlay.add_toast(Adw.Toast.new(_(f"Error while trying to uninstall {name}")))
+        self.main_stack.set_visible_child(self.main_box)
+
     def uninstall_flatpak(self, _widget, index):
+        self.main_stack.set_visible_child(self.uninstall_please_wait)
         name = self.host_flatpaks[index][0]
         id = self.host_flatpaks[index][2]
         dialog = Adw.MessageDialog.new(self, _(f"Uninstall {name}?"), _("The app will be removed from your system."))

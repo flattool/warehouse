@@ -93,8 +93,13 @@ template FlattoolGuiWindow : Adw.ApplicationWindow {
         }
         Adw.StatusPage no_flatpaks {
           icon-name: "error-symbolic";
-          description: _("Flattool cannot see the list of installed flatpaks or the system has no flatpaks installed.");
           title: _("No Flatpaks Found");
+          description: _("Flattool cannot see the list of installed flatpaks or the system has no flatpaks installed.");
+        }
+        Adw.StatusPage uninstall_please_wait {
+          icon-name: "user-trash-symbolic";
+          title: _("Please Wait");
+          description: _("Flattool is uninstalling the selected apps. This could take a while.");
         }
       }
     }
