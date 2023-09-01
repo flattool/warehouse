@@ -255,7 +255,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 try:
                     subprocess.run(command, capture_output=False, check=True)
                 except:
-                    orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Cant install {selected_rows[i]}")))
+                    orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Can't install {selected_rows[i]}")))
                     show_success = False
 
             select_all_button.set_active(False)
@@ -280,8 +280,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 return(data)
 
             host_remotes = get_host_remotes()
-            if host_remotes == [['']]:
-                print("none")
             
             dialog = Adw.MessageDialog.new(self, _(f"Choose a Remote"))
             dialog.set_close_response("cancel")
@@ -469,6 +467,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.set_title(self.main_window_title)
         self.batch_actions_enable(False)
         self.selected_host_flatpak_indexes = []
+        self.should_select_all = self.batch_select_all_button.get_active()
         def get_host_flatpaks():
             output = subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'list', '--columns=all'], capture_output=True, text=True).stdout
             lines = output.strip().split('\n')
@@ -509,17 +508,15 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 if not self.show_runtimes:
                     flatpak_row.set_visible(False)
 
-            row_button_box = Gtk.Box()
-
             trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_(f"Uninstall {app_name}"))
             trash_button.add_css_class("flat")
             trash_button.connect("clicked", self.uninstall_flatpak, index)
-            row_button_box.append(trash_button)
+            flatpak_row.add_suffix(trash_button)
 
             properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_(f"View Properties"))
             properties_button.add_css_class("flat")
             properties_button.connect("clicked", self.show_properties_window, index)
-            row_button_box.append(properties_button)
+            flatpak_row.add_suffix(properties_button)
 
             select_flatpak_tickbox = Gtk.CheckButton(halign=Gtk.Align.CENTER)
             select_flatpak_tickbox.add_css_class("flat")
@@ -527,7 +524,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             flatpak_row.add_suffix(select_flatpak_tickbox)
 
             if self.in_batch_mode:
-                row_button_box.set_visible(False)
+                trash_button.set_visible(False)
                 flatpak_row.set_activatable_widget(select_flatpak_tickbox)
                 if self.should_select_all:
                     select_flatpak_tickbox.set_active(True)
@@ -536,7 +533,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 select_flatpak_tickbox.set_visible(False)
                 self.batch_mode_bar.set_revealed(False)
             
-            flatpak_row.add_suffix(row_button_box)
             self.list_of_flatpaks.append(flatpak_row)
 
     def refresh_list_of_flatpaks(self, widget, should_toast):
@@ -555,7 +551,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
     def batch_mode_handler(self, widget):
         self.batch_select_all_button.set_active(False)
-        self.should_select_all = False
         if widget.get_active():
             self.in_batch_mode = True
         else:
@@ -573,7 +568,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         for i in range(len(self.selected_host_flatpak_indexes)):
             host_flatpak_index = self.selected_host_flatpak_indexes[i]
             to_copy += f"{(self.host_flatpaks[host_flatpak_index][2])}\n"
-        print(to_copy)
         self.clipboard.set(to_copy)
 
     def on_batch_clean_response(self, dialog, response, _a):
@@ -607,6 +601,37 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     def batch_select_all_handler(self, widget):
         self.should_select_all = widget.get_active()
         self.refresh_list_of_flatpaks(widget, False)
+
+    def batch_uninstall_on_response(self, widget, response_id, _c):
+        for i in range(len(self.selected_host_flatpak_indexes)):
+            app_id = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][2]
+            ref = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][8]
+            name = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][0]
+            command = ['flatpak-spawn', '--host', 'flatpak', 'remove', ref, '-y']
+            if response_id == "cancel":
+                return(1)
+            if response_id == "purge":
+                command.append('--delete-data')
+            
+            try:
+                subprocess.run(command, capture_output=False, check=True)
+            except subprocess.CalledProcessError:
+                self.toast_overlay.add_toast(Adw.Toast.new(_(f"Can't uninstall {name}")))
+
+        self.toast_overlay.add_toast(Adw.Toast.new(_(f"Uninstalled Apps")))
+        self.batch_select_all_button.set_active(False)
+        self.refresh_list_of_flatpaks(self, False)
+
+    def batch_uninstall_handler(self, widget):
+        dialog = Adw.MessageDialog.new(self, _("Uninstall Selected Apps?"), _("Optionally, you can also trash their user data"))
+        dialog.set_close_response("cancel")
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Uninstall"))
+        dialog.add_response("purge", _("Uninstall and Trash Data"))
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.set_response_appearance("purge", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.connect("response", self.batch_uninstall_on_response, dialog.choose_finish)
+        Gtk.Window.present(dialog)
         
     def flatpak_row_select_handler(self, tickbox, index):
         if tickbox.get_active():
@@ -634,7 +659,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.batch_copy_button.connect("clicked", self.batch_copy_handler)
         self.batch_clean_button.connect("clicked", self.batch_clean_handler)
         self.batch_clean_button.add_css_class("destructive-action")
-
+        self.batch_uninstall_button.connect("clicked", self.batch_uninstall_handler)
         self.batch_uninstall_button.add_css_class("destructive-action")
         self.batch_select_all_button.connect("clicked", self.batch_select_all_handler)
         self.batch_actions_enable(False)
