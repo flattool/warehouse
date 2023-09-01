@@ -39,7 +39,7 @@ class FlattoolGuiApplication(Adw.Application):
         self.create_action('preferences', self.on_preferences_action)
         self.create_action('search', self.on_search_action, ['<primary>f'])
         self.create_action('manage-data-folders', self.on_manage_data_folders_action)
-        self.create_action('toggle-batch-mode', self.batch_mode_shortcut, ['<primary>b'])
+        self.create_action('toggle-batch-mode', self.batch_mode_shortcut, ['<primary>b', '<primary>Return'])
         self.create_action('select-all-in-batch-mode', self.select_all_shortcut, ['<primary>a'])
         self.create_action('open-orphans-window', self.manage_data_shortcut, ['<primary>d'])
 
