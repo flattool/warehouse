@@ -508,6 +508,13 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 if not self.show_runtimes:
                     flatpak_row.set_visible(False)
 
+            if os.path.exists(f"{self.user_data_path}{app_id}"):
+                has_data_icon = Gtk.Image.new_from_icon_name("paper-filled-symbolic")
+                has_data_icon.set_tooltip_text("This App Has User Data")
+                has_data_icon.set_opacity(0.5)
+                has_data_icon.set_margin_end(10)
+                flatpak_row.add_suffix(has_data_icon)
+
             trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_(f"Uninstall {app_name}"))
             trash_button.add_css_class("flat")
             trash_button.connect("clicked", self.uninstall_flatpak, index)

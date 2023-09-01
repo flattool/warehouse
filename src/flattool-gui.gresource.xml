@@ -11,5 +11,6 @@
     <file preprocess="xml-stripblanks">folder-visiting-symbolic.svg</file>
     <file preprocess="xml-stripblanks">info-symbolic.svg</file>
     <file preprocess="xml-stripblanks">check-plain-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">paper-filled-symbolic.svg</file>
   </gresource>
 </gresources>
