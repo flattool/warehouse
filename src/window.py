@@ -462,6 +462,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
     def generate_list_of_flatpaks(self):
         self.set_title(self.main_window_title)
+        self.batch_actions_enable(False)
         self.selected_host_flatpak_indexes = []
         def get_host_flatpaks():
             output = subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'list', '--columns=all'], capture_output=True, text=True).stdout
@@ -551,6 +552,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         else:
             self.in_batch_mode = False
         self.refresh_list_of_flatpaks(self, False)
+        self.batch_actions_enable(False)
 
     def batch_actions_enable(self, should_enable):
         self.batch_copy_button.set_sensitive(should_enable)
