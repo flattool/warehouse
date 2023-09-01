@@ -25,6 +25,7 @@ import os
 @Gtk.Template(resource_path='/io/github/heliguy4599/FlattoolGUI/window.ui')
 class FlattoolGuiWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'FlattoolGuiWindow'
+    main_window_title = "Flattool"
     list_of_flatpaks = Gtk.Template.Child()
     search_entry = Gtk.Template.Child()
     search_button = Gtk.Template.Child()
@@ -39,8 +40,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     batch_uninstall_button = Gtk.Template.Child()
     batch_clean_button = Gtk.Template.Child()
     batch_copy_button = Gtk.Template.Child()
-
-    selected_host_flatpak_indexes = []
 
     clipboard = Gdk.Display.get_default().get_clipboard()
     host_home = str(pathlib.Path.home())
@@ -459,7 +458,11 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         properties_window.set_content(properties_title_bar)
         properties_window.present()
 
+    selected_host_flatpak_indexes = []
+
     def generate_list_of_flatpaks(self):
+        self.set_title(self.main_window_title)
+        self.selected_host_flatpak_indexes = []
         def get_host_flatpaks():
             output = subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'list', '--columns=all'], capture_output=True, text=True).stdout
             lines = output.strip().split('\n')
@@ -548,14 +551,34 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         else:
             self.in_batch_mode = False
         self.refresh_list_of_flatpaks(self, False)
+
+    def batch_actions_enable(self, should_enable):
+        self.batch_copy_button.set_sensitive(should_enable)
+        self.batch_clean_button.set_sensitive(should_enable)
+        self.batch_uninstall_button.set_sensitive(should_enable)
+
+    def batch_copy_handler(self, widget):
+        to_copy = ""
+        for i in range(len(self.selected_host_flatpak_indexes)):
+            self.host_flatpak_index = self.selected_host_flatpak_indexes[i]
+            to_copy += f"{(self.host_flatpaks[self.host_flatpak_index][8])}\n"
+        print(to_copy)
+        self.clipboard.set(to_copy)
         
     def flatpak_row_select_handler(self, tickbox, index):
         if tickbox.get_active():
             self.selected_host_flatpak_indexes.append(index)
-            print(self.selected_host_flatpak_indexes)
         else:
             self.selected_host_flatpak_indexes.remove(index)
-            print(self.selected_host_flatpak_indexes)
+
+        buttons_enable = True
+        if len(self.selected_host_flatpak_indexes) == 0:
+            buttons_enable = False
+            self.set_title(self.main_window_title)
+        else:
+            self.set_title(f"{len(self.selected_host_flatpak_indexes)} Selected")
+
+        self.batch_actions_enable(buttons_enable)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -565,3 +588,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.search_bar.connect_entry(self.search_entry)
         self.refresh_button.connect("clicked", self.refresh_list_of_flatpaks, True)
         self.batch_mode_button.connect("toggled", self.batch_mode_handler)
+        self.batch_copy_button.connect("clicked", self.batch_copy_handler)
+
+        self.batch_uninstall_button.add_css_class("destructive-action")
+        self.batch_actions_enable(False)
