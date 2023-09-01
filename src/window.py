@@ -155,7 +155,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         orphans_list.add_css_class("boxed-list")
         orphans_overlay.set_child(orphans_list)
         no_data = Adw.StatusPage(icon_name="check-plain-symbolic", title=_("No Data"), description=_("There is no leftover user data"))
-        installing_please_wait = Adw.StatusPage(title=_("Please Wait"), description=_("Flattool is attempting to install these apps, this could take a while."))
+        installing_please_wait = Adw.StatusPage(title=_("Please Wait"), description=_("Flattool is attempting to install the selected apps. This could take a while."))
         orphans_stack.add_child(installing_please_wait)
         orphans_stack.add_child(no_data)
         global total_selected
