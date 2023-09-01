@@ -563,7 +563,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         to_copy = ""
         for i in range(len(self.selected_host_flatpak_indexes)):
             host_flatpak_index = self.selected_host_flatpak_indexes[i]
-            to_copy += f"{(self.host_flatpaks[host_flatpak_index][8])}\n"
+            to_copy += f"{(self.host_flatpaks[host_flatpak_index][2])}\n"
         print(to_copy)
         self.clipboard.set(to_copy)
 
