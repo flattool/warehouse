@@ -46,6 +46,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     user_data_path = host_home + "/.var/app/"
     show_runtimes = False
     in_batch_mode = False
+    should_select_all = False
     host_flatpaks = None
 
     icon_theme = Gtk.IconTheme.new()
@@ -528,6 +529,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             if self.in_batch_mode:
                 row_button_box.set_visible(False)
                 flatpak_row.set_activatable_widget(select_flatpak_tickbox)
+                if self.should_select_all:
+                    select_flatpak_tickbox.set_active(True)
                 self.batch_mode_bar.set_revealed(True)
             else:
                 select_flatpak_tickbox.set_visible(False)
@@ -551,6 +554,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.selected_host_flatpak_indexes.clear()
 
     def batch_mode_handler(self, widget):
+        self.batch_select_all_button.set_active(False)
+        self.should_select_all = False
         if widget.get_active():
             self.in_batch_mode = True
         else:
@@ -600,7 +605,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         Gtk.Window.present(dialog)
 
     def batch_select_all_handler(self, widget):
-        print("all")
+        self.should_select_all = widget.get_active()
+        self.refresh_list_of_flatpaks(widget, False)
         
     def flatpak_row_select_handler(self, tickbox, index):
         if tickbox.get_active():
