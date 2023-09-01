@@ -36,15 +36,6 @@ configure_file(
   install_mode: 'r-xr--r--'
 )
 
-configure_file(
-  input: 'flattool',
-  output: 'flattool',
-  configuration: conf,
-  install: true,
-  install_dir: get_option('bindir'),
-  install_mode: 'r-xr--r--'
-)
-
 flattool_gui_sources = [
   '__init__.py',
   'main.py',
