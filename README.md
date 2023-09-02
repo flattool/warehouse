@@ -35,5 +35,5 @@ To use Flattool effectively, ensure the following dependencies are installed on 
    ```
 You're all set! Launch the application by clicking its icon in your app menu or running:
 ```shell
-$ flatpak run io.github.heliguy4599.FlattoolGUI.flatpak
+$ flatpak run io.github.heliguy4599.FlattoolGUI
 ```
