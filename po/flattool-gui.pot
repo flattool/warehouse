@@ -81,7 +81,7 @@ msgid "Can't trash {}"
 msgstr ""
 
 #: src/window.py:243
-msgid "Successfilly trashed data"
+msgid "Successfully trashed data"
 msgstr ""
 
 #: src/window.py:265
@@ -207,7 +207,7 @@ msgid "Trash User Data"
 msgstr ""
 
 #: src/window.blp:84
-msgid "Send Slected Flatpaks' Data to the Trash"
+msgid "Send Selected Flatpaks' Data to the Trash"
 msgstr ""
 
 #: src/window.blp:89
