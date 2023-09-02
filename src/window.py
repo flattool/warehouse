@@ -456,6 +456,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
         column_headers = [_('Name'), _('Description'), _('App ID'), _('Version'), _('Branch'), _('Arch'), _('Origin'), _('Installation'), _('Ref'), _('Active Commit'), _('Latest Commit'), _('Installed Size'), _('Options')]
         for column in range(len(self.host_flatpaks[index])):
+            if self.host_flatpaks[index][column] == "":
+                continue
             row_item = Adw.ActionRow(title=column_headers[column], subtitle=self.host_flatpaks[index][column])
 
             properties_copy_button = Gtk.Button(icon_name="edit-copy-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_(f"Copy {column_headers[column]}"))
