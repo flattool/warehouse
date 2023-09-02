@@ -1,0 +1,364 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the flattool-gui package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: flattool-gui\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-02 02:08-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/io.github.heliguy4599.FlattoolGUI.desktop.in:3
+msgid "Flattool"
+msgstr ""
+
+#: data/io.github.heliguy4599.FlattoolGUI.appdata.xml.in:7
+msgid "No description"
+msgstr ""
+
+#: src/window.py:121
+#, python-brace-format
+msgid "Uninstalled {name}"
+msgstr ""
+
+#: src/window.py:124
+#, python-brace-format
+msgid "Error while trying to uninstall {name}"
+msgstr ""
+
+#: src/window.py:131
+#, python-brace-format
+msgid "Uninstall {name}?"
+msgstr ""
+
+#: src/window.py:131
+msgid "The app will be removed from your system."
+msgstr ""
+
+#: src/window.py:133 src/window.py:290 src/window.py:401 src/window.py:615
+#: src/window.py:648
+msgid "Cancel"
+msgstr ""
+
+#: src/window.py:134 src/window.py:649 src/window.blp:77
+msgid "Uninstall"
+msgstr ""
+
+#: src/window.py:138
+msgid ""
+"The app will be removed from your system. Optionally, you can also trash its "
+"user data."
+msgstr ""
+
+#: src/window.py:139 src/window.py:650
+msgid "Uninstall and Trash Data"
+msgstr ""
+
+#: src/window.py:147
+msgid "Manage Leftover Data"
+msgstr ""
+
+#: src/window.py:172
+msgid "No Data"
+msgstr ""
+
+#: src/window.py:172
+msgid "There is no leftover user data"
+msgstr ""
+
+#: src/window.py:173 src/window.blp:101
+msgid "Please Wait"
+msgstr ""
+
+#: src/window.py:173
+msgid ""
+"Flattool is attempting to install the selected apps. This could take a while."
+msgstr ""
+
+#: src/window.py:209
+msgid "~"
+msgstr ""
+
+#: src/window.py:235
+#, python-brace-format
+msgid "Can't trash {selected_rows[i]}"
+msgstr ""
+
+#: src/window.py:240
+msgid "Successfilly trashed data"
+msgstr ""
+
+#: src/window.py:262
+#, python-brace-format
+msgid "Can't install {selected_rows[i]}"
+msgstr ""
+
+#: src/window.py:269
+msgid "Successfilly Installed All Apps"
+msgstr ""
+
+#: src/window.py:288
+msgid "Choose a Remote"
+msgstr ""
+
+#: src/window.py:294
+msgid ""
+"Choose the Flatpak Remote Repository where attempted app downloads will be "
+"from."
+msgstr ""
+
+#: src/window.py:304
+msgid "Continue"
+msgstr ""
+
+#: src/window.py:311
+msgid "Select All"
+msgstr ""
+
+#: src/window.py:315
+msgid "Trash Selected"
+msgstr ""
+
+#: src/window.py:320
+msgid "Attempt to Install Selected"
+msgstr ""
+
+#: src/window.py:346
+#, python-brace-format
+msgid "{total_selected} Selected"
+msgstr ""
+
+#: src/window.py:354
+#, python-brace-format
+msgid "Properties of {self.host_flatpaks[index][0]}"
+msgstr ""
+
+#: src/window.py:391
+msgid "Trashed User Data"
+msgstr ""
+
+#: src/window.py:395
+msgid "Can't trash data"
+msgstr ""
+
+#: src/window.py:398
+#, python-brace-format
+msgid "Send {app_name}'s User Data to the Trash?"
+msgstr ""
+
+#: src/window.py:399
+msgid "Your user files and data for this app will be sent to the trash."
+msgstr ""
+
+#: src/window.py:402
+msgid "Send Data to Trash"
+msgstr ""
+
+#: src/window.py:412
+msgid "Error opening folder"
+msgstr ""
+
+#: src/window.py:416
+#, python-brace-format
+msgid "Copied {title}"
+msgstr ""
+
+#: src/window.py:444
+msgid "Open Data Folder"
+msgstr ""
+
+#: src/window.py:456
+msgid "Name"
+msgstr ""
+
+#: src/window.py:456
+msgid "Description"
+msgstr ""
+
+#: src/window.py:456
+msgid "App ID"
+msgstr ""
+
+#: src/window.py:456
+msgid "Version"
+msgstr ""
+
+#: src/window.py:456
+msgid "Branch"
+msgstr ""
+
+#: src/window.py:456
+msgid "Arch"
+msgstr ""
+
+#: src/window.py:456
+msgid "Origin"
+msgstr ""
+
+#: src/window.py:456
+msgid "Installation"
+msgstr ""
+
+#: src/window.py:456
+msgid "Ref"
+msgstr ""
+
+#: src/window.py:456
+msgid "Active Commit"
+msgstr ""
+
+#: src/window.py:456
+msgid "Latest Commit"
+msgstr ""
+
+#: src/window.py:456
+msgid "Installed Size"
+msgstr ""
+
+#: src/window.py:456
+msgid "Options"
+msgstr ""
+
+#: src/window.py:463
+#, python-brace-format
+msgid "Copy {column_headers[column]}"
+msgstr ""
+
+#: src/window.py:530
+#, python-brace-format
+msgid "Uninstall {app_name}"
+msgstr ""
+
+#: src/window.py:535
+msgid "View Properties"
+msgstr ""
+
+#: src/window.py:561
+msgid "List refreshed"
+msgstr ""
+
+#: src/window.py:591
+msgid "Copied Selected App IDs"
+msgstr ""
+
+#: src/window.py:604
+#, python-brace-format
+msgid "No User Data for {app_name}"
+msgstr ""
+
+#: src/window.py:607
+#, python-brace-format
+msgid "Can't Trash User Data for {app_name}"
+msgstr ""
+
+#: src/window.py:609
+msgid "Trashed Data"
+msgstr ""
+
+#: src/window.py:613
+msgid "Delete Selected User Data?"
+msgstr ""
+
+#: src/window.py:613
+msgid "This user data will be sent to the trash."
+msgstr ""
+
+#: src/window.py:616
+msgid "Trash Data"
+msgstr ""
+
+#: src/window.py:639
+#, python-brace-format
+msgid "Can't uninstall {name}"
+msgstr ""
+
+#: src/window.py:641
+msgid "Uninstalled Apps"
+msgstr ""
+
+#: src/window.py:646
+msgid "Uninstall Selected Apps?"
+msgstr ""
+
+#: src/window.py:646
+msgid "Optionally, you can also trash their user data"
+msgstr ""
+
+#: src/window.blp:14
+msgid "Search for an Installed App"
+msgstr ""
+
+#: src/window.blp:20
+msgid "Refresh the List of Installed Apps"
+msgstr ""
+
+#: src/window.blp:26
+msgid "Main Menu"
+msgstr ""
+
+#: src/window.blp:33
+msgid "Enter Selection Mode"
+msgstr ""
+
+#: src/window.blp:72
+msgid "Select all Flatpaks"
+msgstr ""
+
+#: src/window.blp:78
+msgid "Uninstall Selected Flatpaks"
+msgstr ""
+
+#: src/window.blp:83
+msgid "Trash User Data"
+msgstr ""
+
+#: src/window.blp:84
+msgid "Send Slected Flatpaks' Data to the Trash"
+msgstr ""
+
+#: src/window.blp:89
+msgid "Copy App ID"
+msgstr ""
+
+#: src/window.blp:90
+msgid "Copy Selected Flatpaks' IDs Seperated by a New Line"
+msgstr ""
+
+#: src/window.blp:96
+msgid "No Flatpaks Found"
+msgstr ""
+
+#: src/window.blp:97
+msgid ""
+"Flattool cannot see the list of installed flatpaks or the system has no "
+"flatpaks installed."
+msgstr ""
+
+#: src/window.blp:102
+msgid "Flattool is uninstalling the selected apps. This could take a while."
+msgstr ""
+
+#: src/window.blp:113
+msgid "Show Flatpak Runtimes"
+msgstr ""
+
+#: src/window.blp:118
+msgid "Manage Orphaned Data Folders"
+msgstr ""
+
+#: src/window.blp:128
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: src/window.blp:133
+msgid "_About Flattool-gui"
+msgstr ""

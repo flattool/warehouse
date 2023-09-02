@@ -3,4 +3,4 @@ data/io.github.heliguy4599.FlattoolGUI.appdata.xml.in
 data/io.github.heliguy4599.FlattoolGUI.gschema.xml
 src/main.py
 src/window.py
-src/window.ui
+src/window.blp
