@@ -25,7 +25,7 @@ import os
 @Gtk.Template(resource_path='/io/github/heliguy4599/FlattoolGUI/window.ui')
 class FlattoolGuiWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'FlattoolGuiWindow'
-    main_window_title = "Flattool"
+    main_window_title = _("Flattool")
     list_of_flatpaks = Gtk.Template.Child()
     search_entry = Gtk.Template.Child()
     search_button = Gtk.Template.Child()
@@ -54,7 +54,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     icon_theme = Gtk.IconTheme.new()
     icon_theme.add_search_path("/var/lib/flatpak/exports/share/icons/")
     icon_theme.add_search_path(host_home + "/.local/share/flatpak/exports/share/icons")
-    print(pathlib.Path(host_home + "/.local/share/flatpak/exports/share/icons").exists())
 
     #host_flatpak_ids = subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'list', '--columns=application'], capture_output=True, encoding="utf-8").stdout.split("\n")[:-1]
     #host_flatpak_names = subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'list', '--columns=name'], capture_output=True, encoding="utf-8").stdout.split("\n")[:-1]
