@@ -233,14 +233,14 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             for i in range(len(selected_rows)):
                 path = f"{self.user_data_path}{selected_rows[i]}"
                 try:
-                    subprocess.run(['flatpak-spawn', '--host', 'gio', 'remove', path], capture_output=True, check=True)
+                    subprocess.run(['flatpak-spawn', '--host', 'gio', 'trash', path], capture_output=False, check=True)
                 except:
                     orphans_toast_overlay.add_toast(Adw.Toast.new(_("Can't trash {}").format(selected_rows[i])))
                     show_success = False
             select_all_button.set_active(False)
 
             if show_success:
-                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Successfilly trashed data")))
+                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Trashed data")))
 
             generate_list(widget, False)
 
