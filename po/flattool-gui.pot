@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flattool-gui\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 14:12-0400\n"
+"POT-Creation-Date: 2023-09-02 14:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,21 +27,6 @@ msgstr ""
 
 #: src/window.py:28
 msgid "Flattwol"
-msgstr ""
-
-#: src/window.py:123
-#, python-brace-format
-msgid "Uninstalled {name}"
-msgstr ""
-
-#: src/window.py:126
-#, python-brace-format
-msgid "Error while trying to uninstall {name}"
-msgstr ""
-
-#: src/window.py:133
-#, python-brace-format
-msgid "Uninstall {name}?"
 msgstr ""
 
 #: src/window.py:133
@@ -343,8 +328,8 @@ msgstr ""
 
 #: src/window.blp:97
 msgid ""
-"Flattool cannot see the list of installed flatpaks or the system has no "
-"flatpaks installed."
+"Flattool cannot see the list of installed Flatpaks or the system has no "
+"Flatpaks installed."
 msgstr ""
 
 #: src/window.blp:102
