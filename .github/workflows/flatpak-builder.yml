@@ -18,4 +18,4 @@ jobs:
       uses: flatpak/flatpak-github-actions/flatpak-builder@v6.1
       with:
         bundle: io.github.heliguy4599.FlattoolGUI.flatpak
-        manifest-path: io.github.heliguy4599.FlattoolGUI.flatpak.json
+        manifest-path: io.github.heliguy4599.FlattoolGUI.json
