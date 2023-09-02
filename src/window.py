@@ -25,7 +25,7 @@ import os
 @Gtk.Template(resource_path='/io/github/heliguy4599/FlattoolGUI/window.ui')
 class FlattoolGuiWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'FlattoolGuiWindow'
-    main_window_title = _("Flattwol")
+    main_window_title = _("Flattool")
     list_of_flatpaks = Gtk.Template.Child()
     search_entry = Gtk.Template.Child()
     search_button = Gtk.Template.Child()
