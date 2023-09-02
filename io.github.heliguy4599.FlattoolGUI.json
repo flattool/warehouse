@@ -12,8 +12,8 @@
         "--socket=wayland",
         "--talk-name=org.freedesktop.Flatpak",
         "--filesystem=/var/lib/flatpak/:ro",
-        "--filesystem=~/.local/share/flatpak/exports/share/icons/:ro",
-        "--filesystem=~/.var/app/:rw"
+        "--filesystem=~/.local/share/flatpak/:ro",
+        "--filesystem=~/.var/app/"
     ],
     "cleanup" : [
         "/include",
