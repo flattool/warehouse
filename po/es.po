@@ -14,7 +14,7 @@ msgstr ""
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/io.github.heliguy4599.FlattoolGUI.desktop.in:3
