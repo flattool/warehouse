@@ -120,17 +120,17 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             command.append('--delete-data')
         try:
             subprocess.run(command, capture_output=True, check=True)
-            self.toast_overlay.add_toast(Adw.Toast.new(_(f"Uninstalled {name}")))
+            self.toast_overlay.add_toast(Adw.Toast.new(("Uninstalled {}").format(name)))
             self.refresh_list_of_flatpaks(self, False)
         except subprocess.CalledProcessError:
-            self.toast_overlay.add_toast(Adw.Toast.new(_(f"Error while trying to uninstall {name}")))
+            self.toast_overlay.add_toast(Adw.Toast.new(("Error while trying to uninstall {}").format(name)))
         self.main_stack.set_visible_child(self.main_box)
 
     def uninstall_flatpak(self, _widget, index):
         self.main_stack.set_visible_child(self.uninstall_please_wait)
         name = self.host_flatpaks[index][0]
         id = self.host_flatpaks[index][2]
-        dialog = Adw.MessageDialog.new(self, _(f"Uninstall {name}?"), _("The app will be removed from your system."))
+        dialog = Adw.MessageDialog.new(self, ("Uninstall {}?").format(name), _("The app will be removed from your system."))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Uninstall"))
@@ -234,12 +234,12 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 try:
                     subprocess.run(['flatpak-spawn', '--host', 'gio', 'remove', path], capture_output=True, check=True)
                 except:
-                    orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Can't trash {selected_rows[i]}")))
+                    orphans_toast_overlay.add_toast(Adw.Toast.new(_("Can't trash {}").format(selected_rows[i])))
                     show_success = False
             select_all_button.set_active(False)
 
             if show_success:
-                orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Successfilly trashed data")))
+                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Successfilly trashed data")))
 
             generate_list(widget, False)
 
@@ -261,14 +261,14 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 try:
                     subprocess.run(command, capture_output=False, check=True)
                 except:
-                    orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Can't install {selected_rows[i]}")))
+                    orphans_toast_overlay.add_toast(Adw.Toast.new(_("Can't install {}").format(selected_rows[i])))
                     show_success = False
 
             select_all_button.set_active(False)
             orphans_stack.set_visible_child(orphans_scroll)
 
             if show_success:
-                orphans_toast_overlay.add_toast(Adw.Toast.new(_(f"Successfilly Installed All Apps")))
+                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Successfilly Installed All Apps")))
 
             self.refresh_list_of_flatpaks(None, False)
             generate_list(None, False)
@@ -287,7 +287,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
             host_remotes = get_host_remotes()
             
-            dialog = Adw.MessageDialog.new(self, _(f"Choose a Remote"))
+            dialog = Adw.MessageDialog.new(self, _("Choose a Remote"))
             dialog.set_close_response("cancel")
             dialog.add_response("cancel", _("Cancel"))
             dialog.connect("response", install_on_response, dialog.choose_finish)
@@ -314,12 +314,12 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         select_all_button.connect("toggled", toggle_button_handler)
         orphans_action_bar.pack_start(select_all_button)
 
-        trash_button = Gtk.Button(label="Trash", valign=Gtk.Align.CENTER, tooltip_text=_(f"Trash Selected"))
+        trash_button = Gtk.Button(label="Trash", valign=Gtk.Align.CENTER, tooltip_text=_("Trash Selected"))
         trash_button.add_css_class("destructive-action")
         trash_button.connect("clicked", trash_button_handler)
         orphans_action_bar.pack_end(trash_button)
 
-        install_button = Gtk.Button(label="Install", valign=Gtk.Align.CENTER, tooltip_text=_(f"Attempt to Install Selected"))
+        install_button = Gtk.Button(label="Install", valign=Gtk.Align.CENTER, tooltip_text=_("Attempt to Install Selected"))
         install_button.connect("clicked", install_button_handler)
         install_button.set_visible(False)
         orphans_action_bar.pack_end(install_button)
@@ -345,7 +345,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 install_button.set_sensitive(False)
                 select_all_button.set_active(False)
             else:
-                orphans_window.set_title(_(f"{total_selected} Selected"))
+                orphans_window.set_title(_("{} Selected").format(total_selected))
                 trash_button.set_sensitive(True)
                 install_button.set_sensitive(True)
 
@@ -353,7 +353,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         orphans_window.present()
 
     def show_properties_window(self, widget, index):
-        properties_window = Adw.Window(title=_(f"Properties of {self.host_flatpaks[index][0]}"))
+        properties_window = Adw.Window(title=_("Properties of {}").format(self.host_flatpaks[index][0]))
         properties_window.set_default_size(350, 600)
         properties_window.set_size_request(250, 0)
         properties_window.set_modal(True)
@@ -390,14 +390,14 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             if response_id != "continue":
                 return
             if self.trash_folder(data_folder) == 0:
-                properties_toast_overlay.add_toast(Adw.Toast.new(_(f"Trashed User Data")))
+                properties_toast_overlay.add_toast(Adw.Toast.new(_("Trashed user data")))
                 user_data_list.remove(user_data_row)
                 user_data_list.append(Adw.ActionRow(title="No User Data"))
             else:
-                properties_toast_overlay.add_toast(Adw.Toast.new(_(f"Can't trash data")))
+                properties_toast_overlay.add_toast(Adw.Toast.new(_("Can't trash data")))
 
         def clean_button_handler(_widget):
-            dialog = Adw.MessageDialog.new(self, _(f"Send {app_name}'s User Data to the Trash?"))
+            dialog = Adw.MessageDialog.new(self, _("Send {}'s User Data to the Trash?").format(app_name))
             dialog.set_body(_("Your user files and data for this app will be sent to the trash."))
             dialog.set_close_response("cancel")
             dialog.add_response("cancel", _("Cancel"))
@@ -411,11 +411,11 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             try:
                 Gio.AppInfo.launch_default_for_uri(f"file://{path}", None)
             except:
-                properties_toast_overlay.add_toast(Adw.Toast.new(_(f"Error opening folder")))
+                properties_toast_overlay.add_toast(Adw.Toast.new(_("Error opening folder")))
 
         def copy_button_handler(widget, title, to_copy):
             self.clipboard.set(to_copy)
-            properties_toast_overlay.add_toast(Adw.Toast.new(_(f"Copied {title}")))
+            properties_toast_overlay.add_toast(Adw.Toast.new(_("Copied {}").format(title)))
         
         try:
             icon_path = self.icon_theme.lookup_icon(self.host_flatpaks[index][2], None, 512, 1, self.get_direction(), 0).get_file().get_path()

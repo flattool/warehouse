@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flattool-gui\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 14:22-0400\n"
+"POT-Creation-Date: 2023-09-02 14:31-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,8 +78,7 @@ msgid "~"
 msgstr ""
 
 #: src/window.py:237
-#, python-brace-format
-msgid "Can't trash {selected_rows[i]}"
+msgid "Can't trash {}"
 msgstr ""
 
 #: src/window.py:242
@@ -87,8 +86,7 @@ msgid "Successfilly trashed data"
 msgstr ""
 
 #: src/window.py:264
-#, python-brace-format
-msgid "Can't install {selected_rows[i]}"
+msgid "Can't install {}"
 msgstr ""
 
 #: src/window.py:271
@@ -122,17 +120,15 @@ msgid "Attempt to Install Selected"
 msgstr ""
 
 #: src/window.py:348
-#, python-brace-format
-msgid "{total_selected} Selected"
+msgid "{} Selected"
 msgstr ""
 
 #: src/window.py:356
-#, python-brace-format
-msgid "Properties of {self.host_flatpaks[index][0]}"
+msgid "Properties of {}"
 msgstr ""
 
 #: src/window.py:393
-msgid "Trashed User Data"
+msgid "Trashed user data"
 msgstr ""
 
 #: src/window.py:397
@@ -140,8 +136,7 @@ msgid "Can't trash data"
 msgstr ""
 
 #: src/window.py:400
-#, python-brace-format
-msgid "Send {app_name}'s User Data to the Trash?"
+msgid "Send {}'s User Data to the Trash?"
 msgstr ""
 
 #: src/window.py:401
@@ -157,8 +152,7 @@ msgid "Error opening folder"
 msgstr ""
 
 #: src/window.py:418
-#, python-brace-format
-msgid "Copied {title}"
+msgid "Copied {}"
 msgstr ""
 
 #: src/window.py:446
