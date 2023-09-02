@@ -1,0 +1,248 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Heliguy
+# This file is distributed under the same license as the flattool-gui package.
+# FIRST AUTHOR <racsufkoficial@gmail.com>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: flattool-gui\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-02 16:11-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Racsu\n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/io.github.heliguy4599.FlattoolGUI.desktop.in:3
+msgid "Flattool"
+msgstr "Flattool"
+
+#: data/io.github.heliguy4599.FlattoolGUI.appdata.xml.in:7
+msgid "No description"
+msgstr ""
+
+#: src/window.py:134
+msgid "The app will be removed from your system."
+msgstr "La aplicación será removida de tu sistema"
+
+#: src/window.py:136 src/window.py:293 src/window.py:495 src/window.py:528
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/window.py:137 src/window.py:529 src/window.blp:77
+msgid "Uninstall"
+msgstr "Desinstalar"
+
+#: src/window.py:141
+msgid ""
+"The app will be removed from your system. Optionally, you can also trash its "
+"user data."
+msgstr "La aplicación será removida de tu sistema. Opcionalmente, puedes remover sus "
+"datos de usuario"
+#: src/window.py:142 src/window.py:530
+msgid "Uninstall and Trash Data"
+msgstr "Desinstalar y borrar datos"
+
+#: src/window.py:150
+msgid "Manage Leftover Data"
+msgstr "Gestionar los datos sobrantes"
+
+#: src/window.py:175
+msgid "No Data"
+msgstr "Sin Datos "
+
+#: src/window.py:175
+msgid "There is no leftover user data"
+msgstr "No hay datos de usuario sobrantes"
+
+#: src/window.py:176 src/window.blp:101
+msgid "Please Wait"
+msgstr "Espere, por favor"
+
+#: src/window.py:176
+msgid ""
+"Flattool is attempting to install the selected apps. This could take a while."
+msgstr "Flattool está intentando instalar las aplicaciones seleccionadas. Esto puede tardar un poco."
+
+#: src/window.py:212
+msgid "~"
+msgstr ""
+
+#: src/window.py:238
+msgid "Can't trash {}"
+msgstr "No se puede remover {}"
+
+#: src/window.py:243
+msgid "Successfully trashed data"
+msgstr "Datos eliminados con éxito"
+
+#: src/window.py:265
+msgid "Can't install {}"
+msgstr "No se puede instalar {}"
+
+#: src/window.py:272
+msgid "Installed all apps"
+msgstr "Todas las aplicaciones han sido instaladas"
+
+#: src/window.py:291
+msgid "Choose a Remote"
+msgstr "Escoja un Remoto (Remote)"
+
+#: src/window.py:297
+msgid ""
+"Choose the Flatpak Remote Repository where attempted app downloads will be "
+"from."
+msgstr ""
+"Elija el Repositorio Remoto Flatpak donde se intentará descargar la aplicación"
+
+#: src/window.py:307
+msgid "Continue"
+msgstr "Continuar"
+
+#: src/window.py:314
+msgid "Select All"
+msgstr "Seleccionar todo"
+
+#: src/window.py:318
+msgid "Trash Selected"
+msgstr "Basura seleccionada"
+
+#: src/window.py:323
+msgid "Attempt to Install Selected"
+msgstr "Intentar de instalar lo seleccionado"
+
+#: src/window.py:349
+msgid "{} Selected"
+msgstr "{} Seleccionado"
+
+#: src/window.py:410
+msgid "Uninstall {}"
+msgstr "Desinstalar"
+
+#: src/window.py:415
+msgid "View Properties"
+msgstr "Ver propiedades"
+
+#: src/window.py:441
+msgid "List refreshed"
+msgstr "Lista actualizada "
+
+#: src/window.py:471
+msgid "Copied selected app IDs"
+msgstr "Copiar los ID de las apps seleccionadas "
+
+#: src/window.py:484
+msgid "No user data for {}"
+msgstr "No hay datos de usuario para {}"
+
+#: src/window.py:487
+msgid "Can't trash user data for {}"
+msgstr "No se pueden borrar los datos de usuario de {} "
+
+#: src/window.py:489
+msgid "Trashed user data"
+msgstr "Datos de usuario borrados "
+
+#: src/window.py:493
+msgid "Delete Selected User Data?"
+msgstr "¿Borrar datos de usuario seleccionados? "
+
+#: src/window.py:493
+msgid "This user data will be sent to the trash."
+msgstr "Estos datos del usuario se enviarán a la papelera. "
+
+#: src/window.py:496
+msgid "Trash Data"
+msgstr "Datos de la basura"
+
+#: src/window.py:519
+msgid "Can't uninstall {}"
+msgstr "No se puede desinstalar {}"
+
+#: src/window.py:521
+msgid "Uninstalled apps"
+msgstr "Aplicaciones desinstaladas"
+
+#: src/window.py:526
+msgid "Uninstall Selected Apps?"
+msgstr "¿Desinstalar aplicaciones seleccionadas? "
+
+#: src/window.py:526
+msgid "Optionally, you can also trash their user data"
+msgstr "Opcionalmente, también puedes borrar sus datos de usuario"
+
+#: src/window.blp:14
+msgid "Search for an Installed App"
+msgstr "Buscar una aplicación instalada"
+
+#: src/window.blp:20
+msgid "Refresh the List of Installed Apps"
+msgstr "Actualizar la lista de aplicaciones instaladas "
+
+#: src/window.blp:26
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: src/window.blp:33
+msgid "Enter Selection Mode"
+msgstr "Acceder al modo de selección "
+
+#: src/window.blp:72
+msgid "Select all Flatpaks"
+msgstr "Seleccionar todas las Flatpaks"
+
+#: src/window.blp:78
+msgid "Uninstall Selected Flatpaks"
+msgstr "Desinstalar flatpaks seleccionadas"
+
+#: src/window.blp:83
+msgid "Trash User Data"
+msgstr "Borrar datos de usuario"
+
+#: src/window.blp:84
+msgid "Send Selected Flatpaks' Data to the Trash"
+msgstr "Enviar a la papelera los datos de las Flatpaks seleccionadas "
+
+#: src/window.blp:89
+msgid "Copy App ID"
+msgstr "Copiar ID de aplicación "
+
+#: src/window.blp:90
+msgid "Copy Selected Flatpaks' IDs Seperated by a New Line"
+msgstr "Copiar los ID de las Flatpaks seleccionadas separadas por una nueva línea "
+
+#: src/window.blp:96
+msgid "No Flatpaks Found"
+msgstr "No se han encontrado Flatpaks "
+
+#: src/window.blp:97
+msgid ""
+"Flattool cannot see the list of installed Flatpaks or the system has no "
+"Flatpaks installed."
+msgstr ""
+"Flattool no puede ver la lista de Flatpaks instalados o el sistema no tiene "
+"Flatpaks instaladas."
+
+#: src/window.blp:102
+msgid "Flattool is uninstalling the selected apps. This could take a while."
+msgstr "Flattool está desinstalando las aplicaciones seleccionadas. Esto puede tardar un rato."
+
+#: src/window.blp:113
+msgid "Show Flatpak Runtimes"
+msgstr "Mostrar los runtimes de las Flatpaks"
+
+#: src/window.blp:118
+msgid "Manage Orphaned Data Folders"
+msgstr "Gestión de carpetas de datos no usados"
+
+#: src/window.blp:128
+msgid "_Keyboard Shortcuts"
+msgstr "_Atajos de teclado"
+
+#: src/window.blp:133
+msgid "_About Flattool-gui"
+msgstr "_Sobre Flattool-gui"
