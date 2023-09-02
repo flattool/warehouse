@@ -123,7 +123,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             self.toast_overlay.add_toast(Adw.Toast.new(("Uninstalled {}").format(name)))
             self.refresh_list_of_flatpaks(self, False)
         except subprocess.CalledProcessError:
-            self.toast_overlay.add_toast(Adw.Toast.new(("Error while trying to uninstall {}").format(name)))
+            self.toast_overlay.add_toast(Adw.Toast.new(("Can't uninstall {}").format(name)))
         self.main_stack.set_visible_child(self.main_box)
 
     def uninstall_flatpak(self, _widget, index):
@@ -268,7 +268,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             orphans_stack.set_visible_child(orphans_scroll)
 
             if show_success:
-                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Successfilly Installed All Apps")))
+                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Installed all apps")))
 
             self.refresh_list_of_flatpaks(None, False)
             generate_list(None, False)
@@ -411,7 +411,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             try:
                 Gio.AppInfo.launch_default_for_uri(f"file://{path}", None)
             except:
-                properties_toast_overlay.add_toast(Adw.Toast.new(_("Error opening folder")))
+                properties_toast_overlay.add_toast(Adw.Toast.new(_("Can't open folder")))
 
         def copy_button_handler(widget, title, to_copy):
             self.clipboard.set(to_copy)
@@ -462,7 +462,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             row_item = Adw.ActionRow(title=column_headers[column])
             row_item.set_subtitle(GLib.markup_escape_text(self.host_flatpaks[index][column]))
 
-            properties_copy_button = Gtk.Button(icon_name="edit-copy-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_(f"Copy {column_headers[column]}"))
+            properties_copy_button = Gtk.Button(icon_name="edit-copy-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Copy {}").format(column_headers[column]))
             properties_copy_button.add_css_class("flat")
             properties_copy_button.connect("clicked", copy_button_handler, column_headers[column], self.host_flatpaks[index][column])
             row_item.add_suffix(properties_copy_button)
@@ -529,12 +529,12 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 has_data_icon.set_margin_end(10)
                 flatpak_row.add_suffix(has_data_icon)
 
-            trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_(f"Uninstall {app_name}"))
+            trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Uninstall {}").format(app_name))
             trash_button.add_css_class("flat")
             trash_button.connect("clicked", self.uninstall_flatpak, index)
             flatpak_row.add_suffix(trash_button)
 
-            properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_(f"View Properties"))
+            properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
             properties_button.add_css_class("flat")
             properties_button.connect("clicked", self.show_properties_window, index)
             flatpak_row.add_suffix(properties_button)
@@ -590,7 +590,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             host_flatpak_index = self.selected_host_flatpak_indexes[i]
             to_copy += f"{(self.host_flatpaks[host_flatpak_index][2])}\n"
         self.clipboard.set(to_copy)
-        self.toast_overlay.add_toast(Adw.Toast.new(_(f"Copied Selected App IDs")))
+        self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app IDs")))
 
     def on_batch_clean_response(self, dialog, response, _a):
         if response == "cancel":
@@ -603,12 +603,12 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             trash = self.trash_folder(path)
             if trash == 1:
                 show_success = False
-                self.toast_overlay.add_toast(Adw.Toast.new(_(f"No User Data for {app_name}")))
+                self.toast_overlay.add_toast(Adw.Toast.new(_("No user data for {}").format(app_name)))
             elif trash == 2:
                 show_success = False
-                self.toast_overlay.add_toast(Adw.Toast.new(_(f"Can't Trash User Data for {app_name}")))
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Can't trash user data for {}").format(app_name)))
         if show_success:
-            self.toast_overlay.add_toast(Adw.Toast.new(_(f"Trashed Data")))
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Trashed user data")))
         self.refresh_list_of_flatpaks(_a, False)
 
     def batch_clean_handler(self, widget):
@@ -638,9 +638,9 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             try:
                 subprocess.run(command, capture_output=False, check=True)
             except subprocess.CalledProcessError:
-                self.toast_overlay.add_toast(Adw.Toast.new(_(f"Can't uninstall {name}")))
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Can't uninstall {}").format(name)))
 
-        self.toast_overlay.add_toast(Adw.Toast.new(_(f"Uninstalled Apps")))
+        self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled apps")))
         self.batch_select_all_button.set_active(False)
         self.refresh_list_of_flatpaks(self, False)
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flattool-gui\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 14:31-0400\n"
+"POT-Creation-Date: 2023-09-02 14:45-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,7 +90,7 @@ msgid "Can't install {}"
 msgstr ""
 
 #: src/window.py:271
-msgid "Successfilly Installed All Apps"
+msgid "Installed all apps"
 msgstr ""
 
 #: src/window.py:290
@@ -127,7 +127,7 @@ msgstr ""
 msgid "Properties of {}"
 msgstr ""
 
-#: src/window.py:393
+#: src/window.py:393 src/window.py:611
 msgid "Trashed user data"
 msgstr ""
 
@@ -148,7 +148,7 @@ msgid "Send Data to Trash"
 msgstr ""
 
 #: src/window.py:414
-msgid "Error opening folder"
+msgid "Can't open folder"
 msgstr ""
 
 #: src/window.py:418
@@ -212,13 +212,11 @@ msgid "Options"
 msgstr ""
 
 #: src/window.py:465
-#, python-brace-format
-msgid "Copy {column_headers[column]}"
+msgid "Copy {}"
 msgstr ""
 
 #: src/window.py:532
-#, python-brace-format
-msgid "Uninstall {app_name}"
+msgid "Uninstall {}"
 msgstr ""
 
 #: src/window.py:537
@@ -230,21 +228,15 @@ msgid "List refreshed"
 msgstr ""
 
 #: src/window.py:593
-msgid "Copied Selected App IDs"
+msgid "Copied selected app IDs"
 msgstr ""
 
 #: src/window.py:606
-#, python-brace-format
-msgid "No User Data for {app_name}"
+msgid "No user data for {}"
 msgstr ""
 
 #: src/window.py:609
-#, python-brace-format
-msgid "Can't Trash User Data for {app_name}"
-msgstr ""
-
-#: src/window.py:611
-msgid "Trashed Data"
+msgid "Can't trash user data for {}"
 msgstr ""
 
 #: src/window.py:615
@@ -260,12 +252,11 @@ msgid "Trash Data"
 msgstr ""
 
 #: src/window.py:641
-#, python-brace-format
-msgid "Can't uninstall {name}"
+msgid "Can't uninstall {}"
 msgstr ""
 
 #: src/window.py:643
-msgid "Uninstalled Apps"
+msgid "Uninstalled apps"
 msgstr ""
 
 #: src/window.py:648
