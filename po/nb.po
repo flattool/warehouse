@@ -25,10 +25,6 @@ msgstr "Flattool"
 msgid "No description"
 msgstr "Ingen beskrivelse"
 
-#: src/window.py:29
-msgid "Flattool"
-msgstr "Flattool"
-
 #: src/window.py:134
 msgid "The app will be removed from your system."
 msgstr "Programmet vil bli slettet fra systemet ditt."
