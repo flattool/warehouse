@@ -90,6 +90,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         try:
             # print("[+] Getting the size of", directory)
             for entry in os.scandir(directory):
+                if entry.is_symlink():
+                    continue # Skip symlinks
                 if entry.is_file():
                     # if it's a file, use stat() function
                     total += entry.stat().st_size
