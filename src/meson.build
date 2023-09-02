@@ -40,6 +40,7 @@ flattool_gui_sources = [
   '__init__.py',
   'main.py',
   'window.py',
+  'show_properties_window.py',
 ]
 
 install_data(flattool_gui_sources, install_dir: moduledir)
