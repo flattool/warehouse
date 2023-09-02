@@ -146,7 +146,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         global window_title
         window_title = _("Manage Leftover Data")
         orphans_window = Adw.Window(title=window_title)
-        orphans_window.set_default_size(350, 300)
+        orphans_window.set_default_size(350, 400)
         #orphans_window.set_size_request(250, 0)
         orphans_window.set_modal(True)
         orphans_window.set_resizable(True)
@@ -206,7 +206,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 if not file_list[i] in id_list:
                     row_index += 1
                     select_orphans_tickbox = Gtk.CheckButton(halign=Gtk.Align.CENTER)
-                    orphans_row = Adw.ActionRow(title=file_list[i], subtitle=_("~") + self.get_size_format(self.get_directory_size(f"{self.user_data_path}{file_list[i]}")))
+                    orphans_row = Adw.ActionRow(title=GLib.markup_escape_text(file_list[i]), subtitle=_("~") + self.get_size_format(self.get_directory_size(f"{self.user_data_path}{file_list[i]}")))
                     orphans_row.add_suffix(select_orphans_tickbox)
                     orphans_row.set_activatable_widget(select_orphans_tickbox)
                     select_orphans_tickbox.connect("toggled", selection_handler, orphans_row.get_title())
@@ -214,7 +214,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                         select_orphans_tickbox.set_active(True)
                     orphans_list.append(orphans_row)
             if not orphans_list.get_row_at_index(0):
-                orphans_window.set_default_size(350, 400)
                 orphans_stack.set_visible_child(no_data)
                 orphans_action_bar.set_revealed(False)
 
@@ -458,7 +457,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         for column in range(len(self.host_flatpaks[index])):
             if self.host_flatpaks[index][column] == "":
                 continue
-            row_item = Adw.ActionRow(title=column_headers[column], subtitle=self.host_flatpaks[index][column])
+            row_item = Adw.ActionRow(title=column_headers[column])
+            row_item.set_subtitle(GLib.markup_escape_text(self.host_flatpaks[index][column]))
 
             properties_copy_button = Gtk.Button(icon_name="edit-copy-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_(f"Copy {column_headers[column]}"))
             properties_copy_button.add_css_class("flat")
@@ -501,7 +501,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             app_name = self.host_flatpaks[index][0]
             app_id = self.host_flatpaks[index][2]
             app_ref = self.host_flatpaks[index][8]
-            flatpak_row = Adw.ActionRow(title=app_name, subtitle=app_ref)
+            flatpak_row = Adw.ActionRow(title=GLib.markup_escape_text(app_name), subtitle=app_ref)
             image = None
             try:
                 icon_path = self.icon_theme.lookup_icon(app_id, None, 512, 1, self.get_direction(), 0).get_file().get_path()
