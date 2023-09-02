@@ -19,3 +19,4 @@ jobs:
       with:
         bundle: io.github.heliguy4599.FlattoolGUI.flatpak
         manifest-path: io.github.heliguy4599.FlattoolGUI.json
+        repository-url: https://nightly.gnome.org/gnome-nightly.flatpakrepo
