@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR Heliguy
 # This file is distributed under the same license as the flattool-gui package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flattool-gui\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 02:08-0400\n"
+"POT-Creation-Date: 2023-09-02 13:56-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,271 +25,275 @@ msgstr ""
 msgid "No description"
 msgstr ""
 
-#: src/window.py:121
+#: src/window.py:28
+msgid "Flattwol"
+msgstr ""
+
+#: src/window.py:123
 #, python-brace-format
 msgid "Uninstalled {name}"
 msgstr ""
 
-#: src/window.py:124
+#: src/window.py:126
 #, python-brace-format
 msgid "Error while trying to uninstall {name}"
 msgstr ""
 
-#: src/window.py:131
+#: src/window.py:133
 #, python-brace-format
 msgid "Uninstall {name}?"
 msgstr ""
 
-#: src/window.py:131
+#: src/window.py:133
 msgid "The app will be removed from your system."
 msgstr ""
 
-#: src/window.py:133 src/window.py:290 src/window.py:401 src/window.py:615
-#: src/window.py:648
+#: src/window.py:135 src/window.py:292 src/window.py:403 src/window.py:617
+#: src/window.py:650
 msgid "Cancel"
 msgstr ""
 
-#: src/window.py:134 src/window.py:649 src/window.blp:77
+#: src/window.py:136 src/window.py:651 src/window.blp:77
 msgid "Uninstall"
 msgstr ""
 
-#: src/window.py:138
+#: src/window.py:140
 msgid ""
 "The app will be removed from your system. Optionally, you can also trash its "
 "user data."
 msgstr ""
 
-#: src/window.py:139 src/window.py:650
+#: src/window.py:141 src/window.py:652
 msgid "Uninstall and Trash Data"
 msgstr ""
 
-#: src/window.py:147
+#: src/window.py:149
 msgid "Manage Leftover Data"
 msgstr ""
 
-#: src/window.py:172
+#: src/window.py:174
 msgid "No Data"
 msgstr ""
 
-#: src/window.py:172
+#: src/window.py:174
 msgid "There is no leftover user data"
 msgstr ""
 
-#: src/window.py:173 src/window.blp:101
+#: src/window.py:175 src/window.blp:101
 msgid "Please Wait"
 msgstr ""
 
-#: src/window.py:173
+#: src/window.py:175
 msgid ""
 "Flattool is attempting to install the selected apps. This could take a while."
 msgstr ""
 
-#: src/window.py:209
+#: src/window.py:211
 msgid "~"
 msgstr ""
 
-#: src/window.py:235
+#: src/window.py:237
 #, python-brace-format
 msgid "Can't trash {selected_rows[i]}"
 msgstr ""
 
-#: src/window.py:240
+#: src/window.py:242
 msgid "Successfilly trashed data"
 msgstr ""
 
-#: src/window.py:262
+#: src/window.py:264
 #, python-brace-format
 msgid "Can't install {selected_rows[i]}"
 msgstr ""
 
-#: src/window.py:269
+#: src/window.py:271
 msgid "Successfilly Installed All Apps"
 msgstr ""
 
-#: src/window.py:288
+#: src/window.py:290
 msgid "Choose a Remote"
 msgstr ""
 
-#: src/window.py:294
+#: src/window.py:296
 msgid ""
 "Choose the Flatpak Remote Repository where attempted app downloads will be "
 "from."
 msgstr ""
 
-#: src/window.py:304
+#: src/window.py:306
 msgid "Continue"
 msgstr ""
 
-#: src/window.py:311
+#: src/window.py:313
 msgid "Select All"
 msgstr ""
 
-#: src/window.py:315
+#: src/window.py:317
 msgid "Trash Selected"
 msgstr ""
 
-#: src/window.py:320
+#: src/window.py:322
 msgid "Attempt to Install Selected"
 msgstr ""
 
-#: src/window.py:346
+#: src/window.py:348
 #, python-brace-format
 msgid "{total_selected} Selected"
 msgstr ""
 
-#: src/window.py:354
+#: src/window.py:356
 #, python-brace-format
 msgid "Properties of {self.host_flatpaks[index][0]}"
 msgstr ""
 
-#: src/window.py:391
+#: src/window.py:393
 msgid "Trashed User Data"
 msgstr ""
 
-#: src/window.py:395
+#: src/window.py:397
 msgid "Can't trash data"
 msgstr ""
 
-#: src/window.py:398
+#: src/window.py:400
 #, python-brace-format
 msgid "Send {app_name}'s User Data to the Trash?"
 msgstr ""
 
-#: src/window.py:399
+#: src/window.py:401
 msgid "Your user files and data for this app will be sent to the trash."
 msgstr ""
 
-#: src/window.py:402
+#: src/window.py:404
 msgid "Send Data to Trash"
 msgstr ""
 
-#: src/window.py:412
+#: src/window.py:414
 msgid "Error opening folder"
 msgstr ""
 
-#: src/window.py:416
+#: src/window.py:418
 #, python-brace-format
 msgid "Copied {title}"
 msgstr ""
 
-#: src/window.py:444
+#: src/window.py:446
 msgid "Open Data Folder"
 msgstr ""
 
-#: src/window.py:456
+#: src/window.py:458
 msgid "Name"
 msgstr ""
 
-#: src/window.py:456
+#: src/window.py:458
 msgid "Description"
 msgstr ""
 
-#: src/window.py:456
+#: src/window.py:458
 msgid "App ID"
 msgstr ""
 
-#: src/window.py:456
+#: src/window.py:458
 msgid "Version"
 msgstr ""
 
-#: src/window.py:456
+#: src/window.py:458
 msgid "Branch"
 msgstr ""
 
-#: src/window.py:456
+#: src/window.py:458
 msgid "Arch"
 msgstr ""
 
-#: src/window.py:456
+#: src/window.py:458
 msgid "Origin"
 msgstr ""
 
-#: src/window.py:456
+#: src/window.py:458
 msgid "Installation"
 msgstr ""
 
-#: src/window.py:456
+#: src/window.py:458
 msgid "Ref"
 msgstr ""
 
-#: src/window.py:456
+#: src/window.py:458
 msgid "Active Commit"
 msgstr ""
 
-#: src/window.py:456
+#: src/window.py:458
 msgid "Latest Commit"
 msgstr ""
 
-#: src/window.py:456
+#: src/window.py:458
 msgid "Installed Size"
 msgstr ""
 
-#: src/window.py:456
+#: src/window.py:458
 msgid "Options"
 msgstr ""
 
-#: src/window.py:463
+#: src/window.py:465
 #, python-brace-format
 msgid "Copy {column_headers[column]}"
 msgstr ""
 
-#: src/window.py:530
+#: src/window.py:532
 #, python-brace-format
 msgid "Uninstall {app_name}"
 msgstr ""
 
-#: src/window.py:535
+#: src/window.py:537
 msgid "View Properties"
 msgstr ""
 
-#: src/window.py:561
+#: src/window.py:563
 msgid "List refreshed"
 msgstr ""
 
-#: src/window.py:591
+#: src/window.py:593
 msgid "Copied Selected App IDs"
 msgstr ""
 
-#: src/window.py:604
+#: src/window.py:606
 #, python-brace-format
 msgid "No User Data for {app_name}"
 msgstr ""
 
-#: src/window.py:607
+#: src/window.py:609
 #, python-brace-format
 msgid "Can't Trash User Data for {app_name}"
 msgstr ""
 
-#: src/window.py:609
+#: src/window.py:611
 msgid "Trashed Data"
 msgstr ""
 
-#: src/window.py:613
+#: src/window.py:615
 msgid "Delete Selected User Data?"
 msgstr ""
 
-#: src/window.py:613
+#: src/window.py:615
 msgid "This user data will be sent to the trash."
 msgstr ""
 
-#: src/window.py:616
+#: src/window.py:618
 msgid "Trash Data"
 msgstr ""
 
-#: src/window.py:639
+#: src/window.py:641
 #, python-brace-format
 msgid "Can't uninstall {name}"
 msgstr ""
 
-#: src/window.py:641
+#: src/window.py:643
 msgid "Uninstalled Apps"
 msgstr ""
 
-#: src/window.py:646
+#: src/window.py:648
 msgid "Uninstall Selected Apps?"
 msgstr ""
 
-#: src/window.py:646
+#: src/window.py:648
 msgid "Optionally, you can also trash their user data"
 msgstr ""
 
