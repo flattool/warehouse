@@ -240,7 +240,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             select_all_button.set_active(False)
 
             if show_success:
-                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Successfilly trashed data")))
+                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Trashed data")))
 
             generate_list(widget, False)
 

@@ -26,8 +26,8 @@ msgid "No description"
 msgstr "Ingen beskrivelse"
 
 #: src/window.py:29
-msgid "Flattwol"
-msgstr "Flattwol"
+msgid "Flattool"
+msgstr "Flattool"
 
 #: src/window.py:134
 msgid "The app will be removed from your system."
@@ -85,8 +85,8 @@ msgid "Can't trash {}"
 msgstr "Kan ikke slette {}"
 
 #: src/window.py:243
-msgid "Successfully trashed data"
-msgstr "Sletting av data vellykket"
+msgid "Trashed data"
+msgstr "Sletting av data"
 
 #: src/window.py:265
 msgid "Can't install {}"
