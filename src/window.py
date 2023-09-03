@@ -355,6 +355,20 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
     selected_host_flatpak_indexes = []
 
+    def find_app_icon(self, app_id):
+        try:
+            icon_path = self.icon_theme.lookup_icon(app_id, None, 512, 1, self.get_direction(), 0).get_file().get_path()
+        except GLib.GError:
+            icon_path = None
+        if icon_path:
+            image=Gtk.Image.new_from_file(icon_path)
+            image.set_icon_size(Gtk.IconSize.LARGE)
+            image.add_css_class("icon-dropshadow")
+        else:
+            image=Gtk.Image.new_from_icon_name("application-x-executable-symbolic")
+            image.set_icon_size(Gtk.IconSize.LARGE)
+        return(image)
+
     def generate_list_of_flatpaks(self):
         self.set_title(self.main_window_title)
         self.batch_actions_enable(False)
@@ -382,23 +396,11 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             app_id = self.host_flatpaks[index][2]
             app_ref = self.host_flatpaks[index][8]
             flatpak_row = Adw.ActionRow(title=GLib.markup_escape_text(app_name), subtitle=app_ref)
-            image = None
-            try:
-                icon_path = self.icon_theme.lookup_icon(app_id, None, 512, 1, self.get_direction(), 0).get_file().get_path()
-            except GLib.GError:
-                icon_path = None
-            if icon_path:
-                image=Gtk.Image.new_from_file(icon_path)
-                image.set_icon_size(Gtk.IconSize.LARGE)
-                image.add_css_class("icon-dropshadow")
-                flatpak_row.add_prefix(image)
+            flatpak_row.add_prefix(self.find_app_icon(app_id))
 
-            if "runtime" in self.host_flatpaks[index][12]:
-                runtime_icon = Gtk.Image.new_from_icon_name("system-run-symbolic")
-                runtime_icon.set_icon_size(Gtk.IconSize.LARGE)
-                flatpak_row.add_prefix(runtime_icon)
-                if not self.show_runtimes:
-                    flatpak_row.set_visible(False)
+            if (not self.show_runtimes) and "runtime" in self.host_flatpaks[index][12]:
+                continue
+                
 
             if os.path.exists(f"{self.user_data_path}{app_id}"):
                 has_data_icon = Gtk.Image.new_from_icon_name("paper-filled-symbolic")

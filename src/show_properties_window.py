@@ -68,22 +68,11 @@ def show_properties_window(widget, index, window):
         window.clipboard.set(to_copy)
         properties_toast_overlay.add_toast(Adw.Toast.new(_("Copied {}").format(title)))
     
-    try:
-        icon_path = window.icon_theme.lookup_icon(window.host_flatpaks[index][2], None, 512, 1, window.get_direction(), 0).get_file().get_path()
-    except GLib.GError:
-        icon_path = None
-    if icon_path:
-        image = Gtk.Image.new_from_file(icon_path)
-        image.add_css_class("icon-dropshadow")
-        image.set_size_request(100, 100)
-        image.set_margin_top(12)
-        properties_box.append(image)
-    if "runtime" in window.host_flatpaks[index][12]:
-        image = Gtk.Image.new_from_icon_name("system-run-symbolic")
-        image.set_icon_size(Gtk.IconSize.LARGE)
-        image.set_margin_top(12)
-        properties_box.append(image)
-
+    image = window.find_app_icon(window.host_flatpaks[index][2])
+    image.add_css_class("icon-dropshadow")
+    image.set_margin_top(12)
+    image.set_pixel_size(100)
+    properties_box.append(image)
 
     properties_list = Gtk.ListBox(selection_mode="none", margin_top=12, margin_bottom=12, margin_start=12, margin_end=12)
     properties_list.add_css_class("boxed-list")
