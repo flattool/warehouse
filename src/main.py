@@ -41,7 +41,9 @@ class FlattoolGuiApplication(Adw.Application):
         self.create_action('manage-data-folders', self.on_manage_data_folders_action)
         self.create_action('toggle-batch-mode', self.batch_mode_shortcut, ['<primary>b', '<primary>Return'])
         self.create_action('select-all-in-batch-mode', self.select_all_shortcut, ['<primary>a'])
-        self.create_action('open-orphans-window', self.manage_data_shortcut, ['<primary>d'])
+        self.create_action('manage-data-folders', self.manage_data_shortcut, ['<primary>d'])
+        self.create_action('refresh-list', self.refresh_list_shortcut, ['<primary>r','F5'])
+        self.create_action('show-runtimes', self.show_runtimes_shortcut, ['<primary>t'])
 
         self.show_runtimes_stateful = Gio.SimpleAction.new_stateful("show-runtimes", None, GLib.Variant.new_boolean(False))
         self.show_runtimes_stateful.connect("activate", self.on_show_runtimes_action)
@@ -60,6 +62,13 @@ class FlattoolGuiApplication(Adw.Application):
 
     def manage_data_shortcut(self, widget, _):
         self.props.active_window.orphans_window()
+
+    def refresh_list_shortcut(self, widget, _):
+        self.props.active_window.refresh_list_of_flatpaks(widget, True)
+
+    def show_runtimes_shortcut(self, widget, _):
+        window = self.props.active_window
+        window.show_runtimes_toggle_handler(window, not window.show_runtimes)
 
     def do_activate(self):
         """Called when the application is activated.
