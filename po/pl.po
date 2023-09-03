@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the flattool-gui package.
 # runarcn <eryn@blahaj.land>, 2023.
 #
+msgid ""
 msgstr ""
 "Project-Id-Version: flattool-gui\n"
 "Report-Msgid-Bugs-To: \n"
