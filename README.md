@@ -16,6 +16,8 @@
 
 4. **Leftover Data Management:** 📁 Flattool scans the user data folder to check for installed apps associated with the data. If none are found, it can delete the data or attempt to install a matching flatpak.
 
+![Alt text](screenshots.png)
+
 ## ℹ️ Important Notes:
 - This project is still in its early stages, developed by a newcomer. Your understanding of potential bugs is greatly appreciated.
 - Flattool assumes flatpak user data is located in the default directory: `~/.var/app`.
