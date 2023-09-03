@@ -252,7 +252,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             show_success = True
             for i in range(len(selected_rows)):
                 remote = response_id.split('_')
-                command = ['flatpak-spawn', '--host', 'flatpak', 'install', '-y', remote[0]]
+                command = ['flatpak-spawn', '--host', 'flatpak', 'installd', '-y', remote[0]]
                 if "user" in remote[1]:
                     command.append("--user")
                 else:
