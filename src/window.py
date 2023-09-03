@@ -68,20 +68,14 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.list_of_flatpaks.remove(row)
 
     def filter_func(self, row):
-        if (self.search_entry.get_text().lower() in row.get_title().lower()) or (
-            self.search_entry.get_text().lower() in row.get_subtitle().lower()
-        ):
+        if (self.search_entry.get_text().lower() in row.get_title().lower()) or (self.search_entry.get_text().lower() in row.get_subtitle().lower()):
             return True
 
     def trash_folder(self, _a, path):
         if not os.path.exists(path):
             return 1
         try:
-            subprocess.run(
-                ["flatpak-spawn", "--host", "gio", "trash", path],
-                capture_output=True,
-                check=True,
-            )
+            subprocess.run(["flatpak-spawn", "--host", "gio", "trash", path], capture_output=True, check=True)
             return 0
         except subprocess.CalledProcessError:
             return 2
@@ -131,13 +125,11 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             command.append("--delete-data")
 
         def uninstall_callback(*_args):
-            self.toast_overlay.add_toast(
-                Adw.Toast.new(
-                    _("Uninstalled {}").format(name)
-                    if self.uninstall_success
-                    else _("Can't uninstall {}").format(name)
-                )
-            )
+            if self.uninstall_success:
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled {}").format(name)))
+            else:
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled {}").format(name)))
+
             self.refresh_list_of_flatpaks(None, False)
             self.main_stack.set_visible_child(self.main_box)
 
@@ -145,7 +137,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             try:
                 subprocess.run(command, capture_output=True, check=True)
                 self.uninstall_success = True
-
             except subprocess.CalledProcessError:
                 self.uninstall_success = False
 
@@ -156,22 +147,14 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.main_stack.set_visible_child(self.uninstall_please_wait)
         name = self.host_flatpaks[index][0]
         id = self.host_flatpaks[index][2]
-        dialog = Adw.MessageDialog.new(
-            self,
-            ("Uninstall {}?").format(name),
-            _("The app will be removed from your system."),
-        )
+        dialog = Adw.MessageDialog.new(self, _("Uninstall {}?").format(name), _("The app will be removed from your system."))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Uninstall"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
 
         if os.path.exists(f"{self.user_data_path}{id}"):
-            dialog.set_body(
-                _(
-                    "The app will be removed from your system. Optionally, you can also trash its user data."
-                )
-            )
+            dialog.set_body(_("The app will be removed from your system. Optionally, you can also trash its user data."))
             dialog.add_response("purge", _("Uninstall and Trash Data"))
             dialog.set_response_appearance("purge", Adw.ResponseAppearance.DESTRUCTIVE)
 
@@ -202,27 +185,11 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         orphans_toolbar_view.add_bottom_bar(orphans_action_bar)
         orphans_toolbar_view.set_content(orphans_toast_overlay)
         orphans_window.set_content(orphans_toolbar_view)
-        orphans_list = Gtk.ListBox(
-            selection_mode="none",
-            valign=Gtk.Align.START,
-            margin_top=6,
-            margin_bottom=6,
-            margin_start=12,
-            margin_end=12,
-        )
+        orphans_list = Gtk.ListBox(selection_mode="none", valign=Gtk.Align.START, margin_top=6, margin_bottom=6, margin_start=12, margin_end=12)
         orphans_list.add_css_class("boxed-list")
         orphans_overlay.set_child(orphans_list)
-        no_data = Adw.StatusPage(
-            icon_name="check-plain-symbolic",
-            title=_("No Data"),
-            description=_("There is no leftover user data"),
-        )
-        installing_please_wait = Adw.StatusPage(
-            title=_("Please Wait"),
-            description=_(
-                "Flattool is attempting to install the selected apps. This could take a while."
-            ),
-        )
+        no_data = Adw.StatusPage(icon_name="check-plain-symbolic", title=_("No Data"), description=_("There is no leftover user data"))
+        installing_please_wait = Adw.StatusPage(title=_("Please Wait"),description=_("Flattool is attempting to install the selected apps. This could take a while."))
         orphans_stack.add_child(installing_please_wait)
         orphans_stack.add_child(no_data)
         global total_selected
@@ -258,20 +225,10 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 if not file_list[i] in id_list:
                     row_index += 1
                     select_orphans_tickbox = Gtk.CheckButton(halign=Gtk.Align.CENTER)
-                    orphans_row = Adw.ActionRow(
-                        title=GLib.markup_escape_text(file_list[i]),
-                        subtitle=_("~")
-                        + self.get_size_format(
-                            self.get_directory_size(
-                                f"{self.user_data_path}{file_list[i]}"
-                            )
-                        ),
-                    )
+                    orphans_row = Adw.ActionRow(title=GLib.markup_escape_text(file_list[i]), subtitle=_("~") + self.get_size_format(self.get_directory_size(f"{self.user_data_path}{file_list[i]}")))
                     orphans_row.add_suffix(select_orphans_tickbox)
                     orphans_row.set_activatable_widget(select_orphans_tickbox)
-                    select_orphans_tickbox.connect(
-                        "toggled", selection_handler, orphans_row.get_title()
-                    )
+                    select_orphans_tickbox.connect("toggled", selection_handler, orphans_row.get_title())
                     if is_select_all == True:
                         select_orphans_tickbox.set_active(True)
                     orphans_list.append(orphans_row)
@@ -292,15 +249,9 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             for i in range(len(selected_rows)):
                 path = f"{self.user_data_path}{selected_rows[i]}"
                 try:
-                    subprocess.run(
-                        ["flatpak-spawn", "--host", "gio", "trash", path],
-                        capture_output=False,
-                        check=True,
-                    )
+                    subprocess.run(["flatpak-spawn", "--host", "gio", "trash", path], capture_output=False, check=True)
                 except:
-                    orphans_toast_overlay.add_toast(
-                        Adw.Toast.new(_("Can't trash {}").format(selected_rows[i]))
-                    )
+                    orphans_toast_overlay.add_toast(Adw.Toast.new(_("Can't trash {}").format(selected_rows[i])))
                     show_success = False
             select_all_button.set_active(False)
 
@@ -310,14 +261,11 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             generate_list(widget, False)
 
         def install_callback(*_args):
-            orphans_toast_overlay.add_toast(
-                Adw.Toast.new(
-                    _("Installed all apps")
-                    if self.install_success
-                    else _("Can't install selected apps")
-                )
-            )
-
+            if self.install_success:
+                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Installed all apps")))
+            else:
+                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Can't install selected apps")))
+                
             select_all_button.set_active(False)
             orphans_stack.set_visible_child(orphans_scroll)
 
@@ -338,14 +286,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
             for i in range(len(selected_rows)):
                 remote = response_id.split("_")
-                command = [
-                    "flatpak-spawn",
-                    "--host",
-                    "flatpak",
-                    "install",
-                    "-y",
-                    remote[0],
-                ]
+                command = ["flatpak-spawn", "--host", "flatpak", "install", "-y", remote[0]]
                 if "user" in remote[1]:
                     command.append("--user")
                 else:
@@ -353,19 +294,13 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 command.append(selected_rows[i])
 
             task = Gio.Task.new(None, None, install_callback)
-            task.run_in_thread(
-                lambda _task, _obj, _data, _cancellable, cmd=command: thread_func(cmd)
-            )
+            task.run_in_thread(lambda _task, _obj, _data, _cancellable, cmd=command: thread_func(cmd))
 
         def install_button_handler(widget):
             orphans_stack.set_visible_child(installing_please_wait)
 
             def get_host_remotes():
-                output = subprocess.run(
-                    ["flatpak-spawn", "--host", "flatpak", "remotes"],
-                    capture_output=True,
-                    text=True,
-                ).stdout
+                output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes"], capture_output=True, text=True).stdout
                 lines = output.strip().split("\n")
                 columns = lines[0].split("\t")
                 data = [columns]
@@ -382,22 +317,12 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             dialog.connect("response", install_on_response, dialog.choose_finish)
             dialog.set_transient_for(orphans_window)
             if len(host_remotes) > 1:
-                dialog.set_body(
-                    _(
-                        "Choose the Flatpak Remote Repository where attempted app downloads will be from."
-                    )
-                )
+                dialog.set_body(_("Choose the Flatpak Remote Repository where attempted app downloads will be from."))
                 for i in range(len(host_remotes)):
                     remote_name = host_remotes[i][0]
                     remote_option = host_remotes[i][1]
-                    dialog.add_response(
-                        f"{remote_name}_{remote_option}",
-                        f"{remote_name} {remote_option}",
-                    )
-                    dialog.set_response_appearance(
-                        f"{remote_name}_{remote_option}",
-                        Adw.ResponseAppearance.SUGGESTED,
-                    )
+                    dialog.add_response(f"{remote_name}_{remote_option}", f"{remote_name} {remote_option}")
+                    dialog.set_response_appearance(f"{remote_name}_{remote_option}", Adw.ResponseAppearance.SUGGESTED,)
             else:
                 remote_name = host_remotes[0][0]
                 remote_option = host_remotes[0][1]
@@ -413,26 +338,16 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         select_all_button.connect("toggled", toggle_button_handler)
         orphans_action_bar.pack_start(select_all_button)
 
-        trash_button = Gtk.Button(
-            label="Trash", valign=Gtk.Align.CENTER, tooltip_text=_("Trash Selected")
-        )
+        trash_button = Gtk.Button(label="Trash", valign=Gtk.Align.CENTER, tooltip_text=_("Trash Selected"))
         trash_button.add_css_class("destructive-action")
         trash_button.connect("clicked", trash_button_handler)
         orphans_action_bar.pack_end(trash_button)
 
-        install_button = Gtk.Button(
-            label="Install",
-            valign=Gtk.Align.CENTER,
-            tooltip_text=_("Attempt to Install Selected"),
-        )
+        install_button = Gtk.Button(label="Install", valign=Gtk.Align.CENTER, tooltip_text=_("Attempt to Install Selected"))
         install_button.connect("clicked", install_button_handler)
         install_button.set_visible(False)
         orphans_action_bar.pack_end(install_button)
-        test = subprocess.run(
-            ["flatpak-spawn", "--host", "flatpak", "remotes"],
-            capture_output=True,
-            text=True,
-        ).stdout
+        test = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes"], capture_output=True, text=True).stdout
         for char in test:
             if char.isalnum():
                 install_button.set_visible(True)
@@ -466,12 +381,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     def find_app_icon(self, app_id):
         try:
             icon_path = (
-                self.icon_theme.lookup_icon(
-                    app_id, None, 512, 1, self.get_direction(), 0
-                )
-                .get_file()
-                .get_path()
-            )
+                self.icon_theme.lookup_icon(app_id, None, 512, 1, self.get_direction(), 0).get_file().get_path())
         except GLib.GError:
             icon_path = None
         if icon_path:
@@ -490,11 +400,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.should_select_all = self.batch_select_all_button.get_active()
 
         def get_host_flatpaks():
-            output = subprocess.run(
-                ["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"],
-                capture_output=True,
-                text=True,
-            ).stdout
+            output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"], capture_output=True, text=True).stdout
             lines = output.strip().split("\n")
             columns = lines[0].split("\t")
             data = [columns]
@@ -530,29 +436,19 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 has_data_icon.set_margin_end(10)
                 flatpak_row.add_suffix(has_data_icon)
 
-            trash_button = Gtk.Button(
-                icon_name="user-trash-symbolic",
-                valign=Gtk.Align.CENTER,
-                tooltip_text=_("Uninstall {}").format(app_name),
-            )
+            trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Uninstall {}").format(app_name))
             trash_button.add_css_class("flat")
             trash_button.connect("clicked", self.uninstall_flatpak, index)
             flatpak_row.add_suffix(trash_button)
 
-            properties_button = Gtk.Button(
-                icon_name="info-symbolic",
-                valign=Gtk.Align.CENTER,
-                tooltip_text=_("View Properties"),
-            )
+            properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
             properties_button.add_css_class("flat")
             properties_button.connect("clicked", show_properties_window, index, self)
             flatpak_row.add_suffix(properties_button)
 
             select_flatpak_tickbox = Gtk.CheckButton(halign=Gtk.Align.CENTER)
             select_flatpak_tickbox.add_css_class("flat")
-            select_flatpak_tickbox.connect(
-                "toggled", self.flatpak_row_select_handler, index
-            )
+            select_flatpak_tickbox.connect("toggled", self.flatpak_row_select_handler, index)
             flatpak_row.add_suffix(select_flatpak_tickbox)
 
             if self.in_batch_mode:
@@ -614,24 +510,16 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             trash = self.trash_folder(None, path)
             if trash == 1:
                 show_success = False
-                self.toast_overlay.add_toast(
-                    Adw.Toast.new(_("No user data for {}").format(app_name))
-                )
+                self.toast_overlay.add_toast(Adw.Toast.new(_("No user data for {}").format(app_name)))
             elif trash == 2:
                 show_success = False
-                self.toast_overlay.add_toast(
-                    Adw.Toast.new(_("Can't trash user data for {}").format(app_name))
-                )
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Can't trash user data for {}").format(app_name)))
         if show_success:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Trashed user data")))
         self.refresh_list_of_flatpaks(_a, False)
 
     def batch_clean_handler(self, widget):
-        dialog = Adw.MessageDialog.new(
-            self,
-            _("Delete Selected User Data?"),
-            _("This user data will be sent to the trash."),
-        )
+        dialog = Adw.MessageDialog.new(self, _("Delete Selected User Data?"), _("This user data will be sent to the trash."))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Trash Data"))
@@ -657,29 +545,21 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             try:
                 subprocess.run(command, capture_output=False, check=True)
             except subprocess.CalledProcessError:
-                self.toast_overlay.add_toast(
-                    Adw.Toast.new(_("Can't uninstall {}").format(name))
-                )
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Can't uninstall {}").format(name)))
 
         self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled apps")))
         self.batch_select_all_button.set_active(False)
         self.refresh_list_of_flatpaks(None, False)
 
     def batch_uninstall_handler(self, widget):
-        dialog = Adw.MessageDialog.new(
-            self,
-            _("Uninstall Selected Apps?"),
-            _("Optionally, you can also trash their user data"),
-        )
+        dialog = Adw.MessageDialog.new(self, _("Uninstall Selected Apps?"), _("Optionally, you can also trash their user data"))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Uninstall"))
         dialog.add_response("purge", _("Uninstall and Trash Data"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.set_response_appearance("purge", Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.connect(
-            "response", self.batch_uninstall_on_response, dialog.choose_finish
-        )
+        dialog.connect("response", self.batch_uninstall_on_response, dialog.choose_finish)
         Gtk.Window.present(dialog)
 
     def batch_key_handler(self, _b, event, _c, _d):
@@ -705,9 +585,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         super().__init__(**kwargs)
         self.list_of_flatpaks.set_filter_func(self.filter_func)
         self.generate_list_of_flatpaks()
-        self.search_entry.connect(
-            "search-changed", lambda *_: self.list_of_flatpaks.invalidate_filter()
-        )
+        self.search_entry.connect("search-changed", lambda *_: self.list_of_flatpaks.invalidate_filter())
         self.search_bar.connect_entry(self.search_entry)
         self.refresh_button.connect("clicked", self.refresh_list_of_flatpaks, True)
         self.batch_mode_button.connect("toggled", self.batch_mode_handler)
