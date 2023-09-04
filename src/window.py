@@ -59,10 +59,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     icon_theme.add_search_path("/var/lib/flatpak/exports/share/icons/")
     icon_theme.add_search_path(host_home + "/.local/share/flatpak/exports/share/icons")
 
-    # host_flatpak_ids = subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'list', '--columns=application'], capture_output=True, encoding="utf-8").stdout.split("\n")[:-1]
-    # host_flatpak_names = subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'list', '--columns=name'], capture_output=True, encoding="utf-8").stdout.split("\n")[:-1]
-    # host_flatpak_runtime_ids = subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'list', '--columns=application', '--runtime'], capture_output=True, encoding="utf-8").stdout.split("\n")[:-1]
-
     def delete_row(self, widget, row):
         self.list_of_flatpaks.remove(row)
 
@@ -174,10 +170,14 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         orphans_stack = Gtk.Stack()
         orphans_stack.add_child(orphans_scroll)
         orphans_toast_overlay.set_child(orphans_stack)
+        
         orphans_overlay = Gtk.Overlay()
+        orphans_progress_bar = Gtk.ProgressBar(visible=False, pulse_step=0.7)
+        orphans_progress_bar.add_css_class("osd")
+        orphans_overlay.add_overlay(orphans_progress_bar)
+
         orphans_scroll.set_child(orphans_overlay)
         orphans_toolbar_view = Adw.ToolbarView()
-        # orphans_toolbar = Gtk.HeaderBar(show_title_buttons=False)
         orphans_title_bar = Gtk.HeaderBar()
         orphans_action_bar = Gtk.ActionBar()
         orphans_toolbar_view.add_top_bar(orphans_title_bar)
@@ -188,14 +188,20 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         orphans_list.add_css_class("boxed-list")
         orphans_overlay.set_child(orphans_list)
         no_data = Adw.StatusPage(icon_name="check-plain-symbolic", title=_("No Data"), description=_("There is no leftover user data"))
-        installing_please_wait = Adw.StatusPage(title=_("Please Wait"),description=_("Flattool is attempting to install the selected apps. This could take a while."))
-        orphans_stack.add_child(installing_please_wait)
         orphans_stack.add_child(no_data)
         global total_selected
         total_selected = 0
         global selected_rows
         selected_rows = []
+        should_pulse = False
         show_orphans_window()
+
+        def orphans_pulser():
+            nonlocal should_pulse
+            print("pulse")
+            if should_pulse:
+                orphans_progress_bar.pulse()
+                GLib.timeout_add(500, orphans_pulser)
 
         def toggle_button_handler(button):
             if button.get_active():
@@ -261,14 +267,15 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             generate_list(widget, False)
 
         def install_callback(*_args):
+            nonlocal should_pulse
             if self.install_success:
                 orphans_toast_overlay.add_toast(Adw.Toast.new(_("Installed all apps")))
             else:
                 orphans_toast_overlay.add_toast(Adw.Toast.new(_("Can't install selected apps")))
                 
             select_all_button.set_active(False)
-            orphans_stack.set_visible_child(orphans_scroll)
-
+            orphans_progress_bar.set_visible(False)
+            should_pulse = False
             self.refresh_list_of_flatpaks(None, False)
             generate_list(None, False)
 
@@ -281,9 +288,10 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
         def install_on_response(_a, response_id, _b):
             if response_id == "cancel":
-                orphans_stack.set_visible_child(orphans_scroll)
+                orphans_progress_bar.set_visible(False)
                 return 1
 
+            orphans_progress_bar.set_visible(True)
             for i in range(len(selected_rows)):
                 remote = response_id.split("_")
                 command = ["flatpak-spawn", "--host", "flatpak", "install", "-y", remote[0]]
@@ -297,7 +305,9 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             task.run_in_thread(lambda _task, _obj, _data, _cancellable, cmd=command: thread_func(cmd))
 
         def install_button_handler(widget):
-            orphans_stack.set_visible_child(installing_please_wait)
+            nonlocal should_pulse
+            should_pulse = True
+            orphans_pulser()
 
             def get_host_remotes():
                 output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes"], capture_output=True, text=True).stdout
