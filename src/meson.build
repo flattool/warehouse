@@ -41,6 +41,7 @@ flattool_gui_sources = [
   'main.py',
   'window.py',
   'show_properties_window.py',
+  'orphans_window.py',
 ]
 
 install_data(flattool_gui_sources, install_dir: moduledir)

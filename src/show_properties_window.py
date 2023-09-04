@@ -1,6 +1,5 @@
 from gi.repository import Gtk, Adw, GLib, Gdk, Gio
 import subprocess
-#import pathlib
 import os
 
 def show_properties_window(widget, index, window):

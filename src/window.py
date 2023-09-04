@@ -21,9 +21,8 @@ import pathlib
 import subprocess
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
-
 from .show_properties_window import show_properties_window
-
+from .orphans_window import show_orphans_window
 
 @Gtk.Template(resource_path="/io/github/heliguy4599/FlattoolGUI/window.ui")
 class FlattoolGuiWindow(Adw.ApplicationWindow):
@@ -196,6 +195,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         total_selected = 0
         global selected_rows
         selected_rows = []
+        show_orphans_window()
 
         def toggle_button_handler(button):
             if button.get_active():
