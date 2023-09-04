@@ -276,8 +276,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             select_all_button.set_active(False)
             orphans_progress_bar.set_visible(False)
             should_pulse = False
-            self.refresh_list_of_flatpaks(None, False)
             generate_list(None, False)
+            self.refresh_list_of_flatpaks(None, False)
 
         def thread_func(command):
             try:
@@ -301,8 +301,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                     command.append("--system")
                 command.append(selected_rows[i])
 
-            task = Gio.Task.new(None, None, install_callback)
-            task.run_in_thread(lambda _task, _obj, _data, _cancellable, cmd=command: thread_func(cmd))
+                task = Gio.Task.new(None, None, install_callback)
+                task.run_in_thread(lambda _task, _obj, _data, _cancellable, cmd=command: thread_func(cmd))
 
         def install_button_handler(widget):
             nonlocal should_pulse
