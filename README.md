@@ -18,6 +18,10 @@
 
 ![Alt text](screenshots.png)
 
+## 💬 Get in Contact
+- We have a [Discord Server](https://discord.gg/HVPF9Yg6) to discuss and send announcements in!
+- You can always open issues, PRs, and use other GitHub features here
+
 ## ℹ️ Important Notes:
 - Translators, I thank you very much for your interest and contributions, but as of now Flattool GUI is not accpeting any translation work until its 1.0 release.
 - This project is still in its early stages, developed by a newcomer. Your understanding of potential bugs is greatly appreciated.
