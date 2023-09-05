@@ -131,7 +131,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         def thread_func(*_args):
             try:
                 subprocess.run(command, capture_output=True, check=True)
-                self.uninstall_success = True
             except subprocess.CalledProcessError:
                 self.uninstall_success = False
 
@@ -194,11 +193,11 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         global selected_rows
         selected_rows = []
         should_pulse = False
+        total_to_install = 0
         show_orphans_window()
 
         def orphans_pulser():
             nonlocal should_pulse
-            print("pulse")
             if should_pulse:
                 orphans_progress_bar.pulse()
                 GLib.timeout_add(500, orphans_pulser)
@@ -267,32 +266,41 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             generate_list(widget, False)
 
         def install_callback(*_args):
+            nonlocal total_to_install
+            total_to_install = total_to_install - 1
             nonlocal should_pulse
-            if self.install_success:
-                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Installed all apps")))
-            else:
-                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Can't install selected apps")))
                 
-            select_all_button.set_active(False)
-            orphans_progress_bar.set_visible(False)
-            should_pulse = False
-            generate_list(None, False)
-            self.refresh_list_of_flatpaks(None, False)
+            if total_to_install == 0:
+                if self.install_success:
+                    orphans_toast_overlay.add_toast(Adw.Toast.new(_("Installed all apps")))
+                else:
+                    orphans_toast_overlay.add_toast(Adw.Toast.new(_("Can't install selected apps")))
+                select_all_button.set_active(False)
+                orphans_progress_bar.set_visible(False)
+                should_pulse = False
+                self.refresh_list_of_flatpaks(None, False)
+                generate_list(None, False)
 
         def thread_func(command):
             try:
                 subprocess.run(command, capture_output=False, check=True)
-                self.install_success = True
             except subprocess.CalledProcessError:
                 self.install_success = False
 
         def install_on_response(_a, response_id, _b):
+            nonlocal should_pulse
             if response_id == "cancel":
+                should_pulse = False
                 orphans_progress_bar.set_visible(False)
                 return 1
 
+            nonlocal total_to_install
+            total_to_install = len(selected_rows)
+            print(total_to_install)
+
             orphans_progress_bar.set_visible(True)
             for i in range(len(selected_rows)):
+                print(total_to_install)
                 remote = response_id.split("_")
                 command = ["flatpak-spawn", "--host", "flatpak", "install", "-y", remote[0]]
                 if "user" in remote[1]:
