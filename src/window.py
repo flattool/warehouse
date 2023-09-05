@@ -44,6 +44,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     batch_copy_button = Gtk.Template.Child()
     main_box = Gtk.Template.Child()
     main_overlay = Gtk.Template.Child()
+    main_toolbar_view = Gtk.Template.Child()
 
     main_progress_bar = Gtk.ProgressBar(visible=False, pulse_step=0.7)
     main_progress_bar.add_css_class("osd")
@@ -151,6 +152,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     def uninstall_flatpak(self, _widget, index):
         self.should_pulse = True
         self.main_pulser()
+        self.uninstall_success = True
         name = self.host_flatpaks[index][0]
         id = self.host_flatpaks[index][2]
         dialog = Adw.MessageDialog.new(self, _("Uninstall {}?").format(name), _("The app will be removed from your system."))
@@ -171,7 +173,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         global window_title
         window_title = _("Manage Leftover Data")
         orphans_window = Adw.Window(title=window_title)
-        orphans_window.set_default_size(350, 400)
+        orphans_window.set_default_size(350, 450)
         # orphans_window.set_size_request(250, 0)
         orphans_window.set_modal(True)
         orphans_window.set_resizable(True)
@@ -311,6 +313,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 orphans_progress_bar.set_visible(False)
                 return 1
 
+            orphans_toast_overlay.add_toast(Adw.Toast.new(_("This could take some time")))
             nonlocal orphans_toolbar_view
             orphans_toolbar_view.set_sensitive(False)
             nonlocal handler_id
@@ -570,10 +573,14 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         total_to_uninstall = len(self.selected_host_flatpak_indexes)
         delete_data = False
         if response_id == "cancel":
+            self.should_pulse = False
             return 1
         if response_id == "purge":
             delete_data = True
 
+        handler_id = self.connect('close-request', lambda event: True) # Make window unable to close
+        self.main_toolbar_view.set_sensitive(False)
+        self.main_progress_bar.set_visible(True)
         def batch_thread_func(command):
             try:
                 subprocess.run(command, capture_output=False, check=True)
@@ -591,8 +598,10 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         
                 self.main_progress_bar.set_visible(False)
                 self.should_pulse = False
+                self.main_progress_bar.set_visible(False)
                 self.refresh_list_of_flatpaks(None, False)
-                #self.disconnect(handler_id)
+                self.disconnect(handler_id)
+                self.main_toolbar_view.set_sensitive(True)
             
         for i in range(len(self.selected_host_flatpak_indexes)):
             app_id = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][2]
@@ -611,6 +620,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             task.run_in_thread(lambda _task, _obj, _data, _cancellable, cmd=command: batch_thread_func(cmd))
 
     def batch_uninstall_handler(self, widget):
+        self.should_pulse = True
+        self.main_pulser()
         self.uninstall_success = True
         dialog = Adw.MessageDialog.new(self, _("Uninstall Selected Apps?"), _("Optionally, you can also trash their user data"))
         dialog.set_close_response("cancel")
