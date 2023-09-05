@@ -16,11 +16,11 @@
 
 4. **Leftover Data Management:** 📁 Flattool scans the user data folder to check for installed apps associated with the data. If none are found, it can delete the data or attempt to install a matching flatpak.
 
+![Alt text](screenshots.png)
+
 ## 💬 Get in Contact
 - We have a [Discord Server](https://discord.gg/HVPF9Yg6) to discuss and send announcements in!
 - You can always open issues, PRs, and use other GitHub features here
-
-![Alt text](screenshots.png)
 
 ## ℹ️ Important Notes:
 - Translators, I thank you very much for your interest and contributions, but as of now Flattool GUI is not accpeting any translation work until its 1.0 release.
