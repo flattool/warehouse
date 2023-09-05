@@ -64,7 +64,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     icon_theme.add_search_path(host_home + "/.local/share/flatpak/exports/share/icons")
 
     def main_pulser(self):
-        print("main pulse")
         if self.should_pulse:
             self.main_progress_bar.pulse()
             GLib.timeout_add(500, self.main_pulser)

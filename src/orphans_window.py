@@ -3,4 +3,4 @@ import subprocess
 import os
 
 def show_orphans_window():
-    print("hi")
+    x = 12 # place holder until I properly seperate the files
