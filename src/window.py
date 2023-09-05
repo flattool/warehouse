@@ -116,6 +116,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         return total
 
     def uninstall_response(self, widget, response_id, _c, index):
+        app_id = self.host_flatpaks[index][2]
         ref = self.host_flatpaks[index][8]
         name = self.host_flatpaks[index][0]
         command = ["flatpak-spawn", "--host", "flatpak", "remove", ref, "-y"]
@@ -123,7 +124,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             self.should_pulse = False
             return 1
         if response_id == "purge":
-            command.append("--delete-data")
+            subprocess.run(['flatpak-spawn', '--host', 'gio', 'trash', f"{self.user_data_path}{app_id}"])
 
         handler_id = self.connect('close-request', lambda event: True) # Make window unable to close
         self.main_progress_bar.set_visible(True)
@@ -610,7 +611,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             name = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][0]
             command = ["flatpak-spawn", "--host", "flatpak", "remove", ref, "-y"]
             if delete_data:
-                command.append("--delete-data")
+                subprocess.run(['flatpak-spawn', '--host', 'gio', 'trash', f"{self.user_data_path}{app_id}"])
 
             '''try:
                 subprocess.run(command, capture_output=False, check=True)
