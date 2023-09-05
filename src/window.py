@@ -265,10 +265,12 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
             generate_list(widget, False)
 
+        handler_id = 0
         def install_callback(*_args):
             nonlocal total_to_install
             total_to_install = total_to_install - 1
             nonlocal should_pulse
+            nonlocal handler_id
                 
             if total_to_install == 0:
                 if self.install_success:
@@ -280,6 +282,9 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 should_pulse = False
                 self.refresh_list_of_flatpaks(None, False)
                 generate_list(None, False)
+                nonlocal orphans_window
+                orphans_window.set_sensitive(True)
+                orphans_window.disconnect(handler_id) # Make window able to close
 
         def thread_func(command):
             try:
@@ -294,6 +299,10 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 orphans_progress_bar.set_visible(False)
                 return 1
 
+            nonlocal orphans_window
+            orphans_window.set_sensitive(False)
+            nonlocal handler_id
+            handler_id = orphans_window.connect('close-request', lambda event: True) # Make window unable to close
             nonlocal total_to_install
             total_to_install = len(selected_rows)
 
