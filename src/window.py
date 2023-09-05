@@ -282,8 +282,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 should_pulse = False
                 self.refresh_list_of_flatpaks(None, False)
                 generate_list(None, False)
-                nonlocal orphans_window
-                orphans_window.set_sensitive(True)
+                nonlocal orphans_toolbar_view
+                orphans_toolbar_view.set_sensitive(True)
                 orphans_window.disconnect(handler_id) # Make window able to close
 
         def thread_func(command):
@@ -299,8 +299,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 orphans_progress_bar.set_visible(False)
                 return 1
 
-            nonlocal orphans_window
-            orphans_window.set_sensitive(False)
+            nonlocal orphans_toolbar_view
+            orphans_toolbar_view.set_sensitive(False)
             nonlocal handler_id
             handler_id = orphans_window.connect('close-request', lambda event: True) # Make window unable to close
             nonlocal total_to_install
