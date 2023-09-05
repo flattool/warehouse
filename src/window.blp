@@ -49,19 +49,21 @@ template FlattoolGuiWindow : Adw.ApplicationWindow {
       Stack main_stack {
         Box main_box {
           orientation: vertical;
-          ScrolledWindow scrolled_window {
-            vexpand: true;
-            Adw.Clamp{
-              tightening-threshold: 15;
-              ListBox list_of_flatpaks{
-                margin-top: 6;
-                margin-bottom: 24;
-                margin-start: 12;
-                margin-end: 12;
-                hexpand: true;
-                valign: start;
-                selection-mode: none;
-                styles["boxed-list"]
+          Overlay main_overlay {
+            ScrolledWindow scrolled_window {
+              vexpand: true;
+              Adw.Clamp{
+                tightening-threshold: 15;
+                ListBox list_of_flatpaks{
+                  margin-top: 6;
+                  margin-bottom: 24;
+                  margin-start: 12;
+                  margin-end: 12;
+                  hexpand: true;
+                  valign: start;
+                  selection-mode: none;
+                  styles["boxed-list"]
+                }
               }
             }
           }
@@ -95,11 +97,6 @@ template FlattoolGuiWindow : Adw.ApplicationWindow {
           icon-name: "error-symbolic";
           title: _("No Flatpaks Found");
           description: _("Flattool cannot see the list of installed Flatpaks or the system has no Flatpaks installed.");
-        }
-        Adw.StatusPage uninstall_please_wait {
-          icon-name: "user-trash-symbolic";
-          title: _("Please Wait");
-          description: _("Flattool is uninstalling the selected apps. This could take a while.");
         }
       }
     }

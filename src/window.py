@@ -42,9 +42,11 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     batch_uninstall_button = Gtk.Template.Child()
     batch_clean_button = Gtk.Template.Child()
     batch_copy_button = Gtk.Template.Child()
-    uninstall_please_wait = Gtk.Template.Child()
     main_box = Gtk.Template.Child()
+    main_overlay = Gtk.Template.Child()
 
+    main_progress_bar = Gtk.ProgressBar(visible=False, pulse_step=0.7)
+    main_progress_bar.add_css_class("osd")
     clipboard = Gdk.Display.get_default().get_clipboard()
     host_home = str(pathlib.Path.home())
     user_data_path = host_home + "/.var/app/"
@@ -54,13 +56,17 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     host_flatpaks = None
     uninstall_success = True
     install_success = True
+    should_pulse = True
 
     icon_theme = Gtk.IconTheme.new()
     icon_theme.add_search_path("/var/lib/flatpak/exports/share/icons/")
     icon_theme.add_search_path(host_home + "/.local/share/flatpak/exports/share/icons")
 
-    def delete_row(self, widget, row):
-        self.list_of_flatpaks.remove(row)
+    def main_pulser(self):
+        print("main pulse")
+        if self.should_pulse:
+            self.main_progress_bar.pulse()
+            GLib.timeout_add(500, self.main_pulser)
 
     def filter_func(self, row):
         if (self.search_entry.get_text().lower() in row.get_title().lower()) or (self.search_entry.get_text().lower() in row.get_subtitle().lower()):
@@ -114,19 +120,22 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         name = self.host_flatpaks[index][0]
         command = ["flatpak-spawn", "--host", "flatpak", "remove", ref, "-y"]
         if response_id == "cancel":
-            self.main_stack.set_visible_child(self.main_box)
+            self.should_pulse = False
             return 1
         if response_id == "purge":
             command.append("--delete-data")
+
+        self.main_progress_bar.set_visible(True)
 
         def uninstall_callback(*_args):
             if self.uninstall_success:
                 self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled {}").format(name)))
             else:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled {}").format(name)))
-
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not uninstall {}").format(name)))
+            
+            self.main_progress_bar.set_visible(False)
+            self.should_pulse = False
             self.refresh_list_of_flatpaks(None, False)
-            self.main_stack.set_visible_child(self.main_box)
 
         def thread_func(*_args):
             try:
@@ -138,7 +147,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         task.run_in_thread(thread_func)
 
     def uninstall_flatpak(self, _widget, index):
-        self.main_stack.set_visible_child(self.uninstall_please_wait)
+        self.should_pulse = True
+        self.main_pulser()
         name = self.host_flatpaks[index][0]
         id = self.host_flatpaks[index][2]
         dialog = Adw.MessageDialog.new(self, _("Uninstall {}?").format(name), _("The app will be removed from your system."))
@@ -405,8 +415,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
     def find_app_icon(self, app_id):
         try:
-            icon_path = (
-                self.icon_theme.lookup_icon(app_id, None, 512, 1, self.get_direction(), 0).get_file().get_path())
+            icon_path = (self.icon_theme.lookup_icon(app_id, None, 512, 1, self.get_direction(), 0).get_file().get_path())
         except GLib.GError:
             icon_path = None
         if icon_path:
@@ -446,9 +455,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             app_name = self.host_flatpaks[index][0]
             app_id = self.host_flatpaks[index][2]
             app_ref = self.host_flatpaks[index][8]
-            flatpak_row = Adw.ActionRow(
-                title=GLib.markup_escape_text(app_name), subtitle=app_ref
-            )
+            flatpak_row = Adw.ActionRow(title=GLib.markup_escape_text(app_name), subtitle=app_ref)
             flatpak_row.add_prefix(self.find_app_icon(app_id))
 
             if (not self.show_runtimes) and "runtime" in self.host_flatpaks[index][12]:
@@ -624,3 +631,4 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.batch_key_handler)
         self.add_controller(event_controller)
+        self.main_overlay.add_overlay(self.main_progress_bar)
