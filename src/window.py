@@ -118,13 +118,14 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     def uninstall_response(self, widget, response_id, _c, index):
         ref = self.host_flatpaks[index][8]
         name = self.host_flatpaks[index][0]
-        command = ["flatpak-spawn", "--host", "flatpak", "removed", ref, "-y"]
+        command = ["flatpak-spawn", "--host", "flatpak", "remove", ref, "-y"]
         if response_id == "cancel":
             self.should_pulse = False
             return 1
         if response_id == "purge":
             command.append("--delete-data")
 
+        handler_id = self.connect('close-request', lambda event: True) # Make window unable to close
         self.main_progress_bar.set_visible(True)
 
         def uninstall_callback(*_args):
@@ -136,6 +137,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             self.main_progress_bar.set_visible(False)
             self.should_pulse = False
             self.refresh_list_of_flatpaks(None, False)
+            self.disconnect(handler_id)
 
         def thread_func(*_args):
             try:
