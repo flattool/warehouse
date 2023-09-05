@@ -91,7 +91,7 @@ class FlattoolGuiApplication(Adw.Application):
                                 application_name='flattool-gui',
                                 application_icon='io.github.heliguy4599.FlattoolGUI',
                                 developer_name='Heliguy',
-                                version='0.1.0',
+                                version='0.2.0',
                                 developers=['Heliguy'],
                                 copyright='© 2023 Heliguy')
         about.present()
