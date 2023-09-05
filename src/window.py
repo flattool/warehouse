@@ -274,7 +274,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 if self.install_success:
                     orphans_toast_overlay.add_toast(Adw.Toast.new(_("Installed all apps")))
                 else:
-                    orphans_toast_overlay.add_toast(Adw.Toast.new(_("Can't install selected apps")))
+                    orphans_toast_overlay.add_toast(Adw.Toast.new(_("Some apps didn't install")))
                 select_all_button.set_active(False)
                 orphans_progress_bar.set_visible(False)
                 should_pulse = False
@@ -296,11 +296,9 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
             nonlocal total_to_install
             total_to_install = len(selected_rows)
-            print(total_to_install)
 
             orphans_progress_bar.set_visible(True)
             for i in range(len(selected_rows)):
-                print(total_to_install)
                 remote = response_id.split("_")
                 command = ["flatpak-spawn", "--host", "flatpak", "install", "-y", remote[0]]
                 if "user" in remote[1]:
