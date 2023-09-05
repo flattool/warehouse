@@ -127,6 +127,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
         handler_id = self.connect('close-request', lambda event: True) # Make window unable to close
         self.main_progress_bar.set_visible(True)
+        self.main_toolbar_view.set_sensitive(False)
 
         def uninstall_callback(*_args):
             if self.uninstall_success:
@@ -138,6 +139,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             self.should_pulse = False
             self.refresh_list_of_flatpaks(None, False)
             self.disconnect(handler_id)
+            self.main_toolbar_view.set_sensitive(True)
 
         def thread_func(*_args):
             try:
