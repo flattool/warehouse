@@ -118,7 +118,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     def uninstall_response(self, widget, response_id, _c, index):
         ref = self.host_flatpaks[index][8]
         name = self.host_flatpaks[index][0]
-        command = ["flatpak-spawn", "--host", "flatpak", "remove", ref, "-y"]
+        command = ["flatpak-spawn", "--host", "flatpak", "removed", ref, "-y"]
         if response_id == "cancel":
             self.should_pulse = False
             return 1
@@ -177,15 +177,15 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         orphans_scroll = Gtk.ScrolledWindow()
         orphans_toast_overlay = Adw.ToastOverlay()
         orphans_stack = Gtk.Stack()
-        orphans_stack.add_child(orphans_scroll)
+        orphans_overlay = Gtk.Overlay()
+        orphans_stack.add_child(orphans_overlay)
         orphans_toast_overlay.set_child(orphans_stack)
         
-        orphans_overlay = Gtk.Overlay()
         orphans_progress_bar = Gtk.ProgressBar(visible=False, pulse_step=0.7)
         orphans_progress_bar.add_css_class("osd")
         orphans_overlay.add_overlay(orphans_progress_bar)
 
-        orphans_scroll.set_child(orphans_overlay)
+        orphans_overlay.set_child(orphans_scroll)
         orphans_toolbar_view = Adw.ToolbarView()
         orphans_title_bar = Gtk.HeaderBar()
         orphans_action_bar = Gtk.ActionBar()
@@ -195,7 +195,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         orphans_window.set_content(orphans_toolbar_view)
         orphans_list = Gtk.ListBox(selection_mode="none", valign=Gtk.Align.START, margin_top=6, margin_bottom=6, margin_start=12, margin_end=12)
         orphans_list.add_css_class("boxed-list")
-        orphans_overlay.set_child(orphans_list)
+        orphans_scroll.set_child(orphans_list)
         no_data = Adw.StatusPage(icon_name="check-plain-symbolic", title=_("No Data"), description=_("There is no leftover user data"))
         orphans_stack.add_child(no_data)
         global total_selected
