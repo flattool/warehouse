@@ -26,6 +26,7 @@ gi.require_version('Adw', '1')
 
 from gi.repository import Gtk, Gio, Adw, GLib
 from .window import FlattoolGuiWindow
+from .orphans_window import OrphansWindow
 
 
 class FlattoolGuiApplication(Adw.Application):
@@ -61,7 +62,7 @@ class FlattoolGuiApplication(Adw.Application):
         self.props.active_window.batch_select_all_handler(select_button)
 
     def manage_data_shortcut(self, widget, _):
-        self.props.active_window.orphans_window()
+        OrphansWindow(self.props.active_window)
 
     def refresh_list_shortcut(self, widget, _):
         self.props.active_window.refresh_list_of_flatpaks(widget, True)
