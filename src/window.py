@@ -150,7 +150,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         task = Gio.Task.new(None, None, uninstall_callback)
         task.run_in_thread(thread_func)
 
-    def uninstall_flatpak(self, _widget, index):
+    def uninstall_button_handler(self, _widget, index):
         self.should_pulse = True
         self.main_pulser()
         self.uninstall_success = True
@@ -230,7 +230,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
             trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Uninstall {}").format(app_name))
             trash_button.add_css_class("flat")
-            trash_button.connect("clicked", self.uninstall_flatpak, index)
+            trash_button.connect("clicked", self.uninstall_button_handler, index)
             flatpak_row.add_suffix(trash_button)
 
             properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
