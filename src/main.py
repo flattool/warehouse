@@ -90,9 +90,9 @@ class FlattoolGuiApplication(Adw.Application):
         about = Adw.AboutWindow(transient_for=self.props.active_window,
                                 application_name='flattool-gui',
                                 application_icon='io.github.heliguy4599.FlattoolGUI',
-                                developer_name='Heliguy',
+                                developer_name='Heliguy  with help from the Kramo Enterprise Advisory board',
                                 version='0.2.0',
-                                developers=['Heliguy'],
+                                developers=['Heliguy with help from the Kramo Enterprise Advisory board'],
                                 copyright='© 2023 Heliguy')
         about.present()
 
