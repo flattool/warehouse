@@ -356,6 +356,9 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
                 try:
                     subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'install', '-y', remote[0], f'--{remote[1]}', id_list[i]], capture_output=False, check=True)
                 except subprocess.CalledProcessError:
+                    if remote[1] == "user":
+                        self.install_success = False
+                        continue
                     try:
                         subprocess.run(['flatpak-spawn', '--host', 'pkexec', 'flatpak', 'install', '-y', remote[0], f'--{remote[1]}', id_list[i]], capture_output=False, check=True)
                     except subprocess.CalledProcessError:
