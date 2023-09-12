@@ -262,7 +262,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         global selected_rows
         selected_rows = []
         should_pulse = False
-        total_to_install = 0
         show_orphans_window()
 
         def orphans_pulser():
@@ -336,30 +335,31 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
         handler_id = 0
         def install_callback(*_args):
-            nonlocal total_to_install
-            total_to_install = total_to_install - 1
             nonlocal should_pulse
             nonlocal handler_id
-                
-            if total_to_install == 0:
-                if self.install_success:
-                    orphans_toast_overlay.add_toast(Adw.Toast.new(_("Installed all apps")))
-                else:
-                    orphans_toast_overlay.add_toast(Adw.Toast.new(_("Some apps didn't install")))
-                select_all_button.set_active(False)
-                orphans_progress_bar.set_visible(False)
-                should_pulse = False
-                self.refresh_list_of_flatpaks(None, False)
-                generate_list(None, False)
-                nonlocal orphans_toolbar_view
-                orphans_toolbar_view.set_sensitive(True)
-                orphans_window.disconnect(handler_id) # Make window able to close
+            
+            if self.install_success:
+                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Installed all apps")))
+            else:
+                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Some apps didn't install")))
+            select_all_button.set_active(False)
+            orphans_progress_bar.set_visible(False)
+            should_pulse = False
+            self.refresh_list_of_flatpaks(None, False)
+            generate_list(None, False)
+            nonlocal orphans_toolbar_view
+            orphans_toolbar_view.set_sensitive(True)
+            orphans_window.disconnect(handler_id) # Make window able to close
 
-        def thread_func(command):
-            try:
-                subprocess.run(command, capture_output=False, check=True)
-            except subprocess.CalledProcessError:
-                self.install_success = False
+        def thread_func(id_list, remote):
+            for i in range(len(id_list)):
+                try:
+                    subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'install', '-y', remote[0], f'--{remote[1]}', id_list[i]], capture_output=False, check=True)
+                except subprocess.CalledProcessError:
+                    try:
+                        subprocess.run(['flatpak-spawn', '--host', 'pkexec', 'flatpak', 'install', '-y', remote[0], f'--{remote[1]}', id_list[i]], capture_output=False, check=True)
+                    except subprocess.CalledProcessError:
+                        self.install_success = False
 
         def install_on_response(_a, response_id, _b):
             nonlocal should_pulse
@@ -373,21 +373,12 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             orphans_toolbar_view.set_sensitive(False)
             nonlocal handler_id
             handler_id = orphans_window.connect('close-request', lambda event: True) # Make window unable to close
-            nonlocal total_to_install
-            total_to_install = len(selected_rows)
+            remote = response_id.split("_")
 
             orphans_progress_bar.set_visible(True)
-            for i in range(len(selected_rows)):
-                remote = response_id.split("_")
-                command = ["flatpak-spawn", "--host", "flatpak", "install", "-y", remote[0]]
-                if "user" in remote[1]:
-                    command.append("--user")
-                else:
-                    command.append("--system")
-                command.append(selected_rows[i])
 
-                task = Gio.Task.new(None, None, install_callback)
-                task.run_in_thread(lambda _task, _obj, _data, _cancellable, cmd=command: thread_func(cmd))
+            task = Gio.Task.new(None, None, install_callback)
+            task.run_in_thread(lambda _task, _obj, _data, _cancellable, id_list=selected_rows, remote=remote: thread_func(id_list, remote))
 
         def install_button_handler(widget):
             self.install_success = True

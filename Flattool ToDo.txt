@@ -1,5 +1,3 @@
-- Make install use pkexec on a second try
-
 After 1.0
 - Separate Orphans Window
 - Export in batch mode
