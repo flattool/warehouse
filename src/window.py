@@ -124,17 +124,28 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.disconnect(self.no_close)
 
     def uninstall_flatpak_thread(self, ref_arr, id_arr, should_trash):
+        command = ['flatpak-spawn', '--host']
+        command.append('flatpak')
+        command.append('remove')
+        command.append('-y')
         for i in range(len(ref_arr)):
-            ref_arr = ' '.join(ref_arr)
-            print(ref_arr)
+            command.append(ref_arr[i])
+
+        try:
+            subprocess.run(command, capture_output=False, check=True)
+        except subprocess.CalledProcessError:
             try:
-                subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'remove', '-y', str(ref_arr)], capture_output=False, check=True)
+                command = ['flatpak-spawn', '--host']
+                command.append('pkexec')
+                command.append('flatpak')
+                command.append('remove')
+                command.append('-y')
+                for i in range(len(ref_arr)):
+                    command.append(ref_arr[i])
+                subprocess.run(command, capture_output=False, check=True)
             except subprocess.CalledProcessError:
-                try:
-                    subprocess.run(['flatpak-spawn', '--host', 'pkexec', 'flatpak', 'remove', '-y', str(ref_arr)], capture_output=False, check=True)
-                except subprocess.CalledProcessError:
-                    self.toast_overlay.add_toast(Adw.Toast.new(_("Some apps could not be uninstalled")))
-                    return # Avoid trashing user data if the app cant be uninstalled
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Some apps could not be uninstalled")))
+                return # Avoid trashing user data if the app cant be uninstalled
 
         if should_trash:
             for i in range(len(id_arr)):    
@@ -154,7 +165,43 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         task = Gio.Task.new(None, None, self.uninstall_flatpak_callback)
         task.run_in_thread(lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, should_trash=should_trash: self.uninstall_flatpak_thread(ref_arr, id_arr, should_trash))
 
-    #def batch_uninstall_button_handler
+    def batch_uninstall_button_handler(self, _widget):
+        self.should_pulse = True
+        self.main_pulser()
+        
+        def batch_uninstall_response(_idk, response_id, _widget):
+            if response_id == "cancel":
+                self.should_pulse = False
+                return 1
+
+            should_trash = False
+            if response_id == "purge":
+                should_trash = True
+
+            self.main_toolbar_view.set_sensitive(False)
+            self.no_close = self.connect('close-request', lambda event: True) # Make window unable to close
+            self.main_progress_bar.set_visible(True)
+            self.uninstall_flatpak(self.selected_host_flatpak_indexes, should_trash)
+
+        print(self.selected_host_flatpak_indexes)
+        dialog = Adw.MessageDialog.new(self, _("Uninstall Selected Apps?"), _("The app will be removed from your system. Optionally, you can also trash its user data."))
+        dialog.set_close_response("cancel")
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Uninstall"))
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.add_response("purge", _("Uninstall and Trash Data"))
+        dialog.set_response_appearance("purge", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.connect("response", batch_uninstall_response, dialog.choose_finish)
+        Gtk.Window.present(dialog)
+
+
+
+
+
+        '''for i in range(len(self.selected_host_flatpak_indexes)):
+            name = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][0]
+            ref = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][8]
+            id = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][2]'''
 
     def uninstall_button_handler(self, _widget, index):
         name = self.host_flatpaks[index][0]
@@ -162,8 +209,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         id = self.host_flatpaks[index][2]
         self.should_pulse = True
         self.main_pulser()
-        self.main_toolbar_view.set_sensitive(False)
-        self.no_close = self.connect('close-request', lambda event: True) # Make window unable to close
 
         def uninstall_response(_idk, response_id, _widget):
             if response_id == "cancel":
@@ -174,6 +219,8 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             if response_id == "purge":
                 should_trash = True
 
+            self.main_toolbar_view.set_sensitive(False)
+            self.no_close = self.connect('close-request', lambda event: True) # Make window unable to close
             self.main_progress_bar.set_visible(True)
             self.uninstall_flatpak([index], should_trash)
 
@@ -589,70 +636,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.should_select_all = widget.get_active()
         self.refresh_list_of_flatpaks(widget, False)
 
-    def batch_uninstall_on_response(self, widget, response_id, _c):
-        total_to_uninstall = len(self.selected_host_flatpak_indexes)
-        delete_data = False
-        if response_id == "cancel":
-            self.should_pulse = False
-            return 1
-        if response_id == "purge":
-            delete_data = True
-
-        handler_id = self.connect('close-request', lambda event: True) # Make window unable to close
-        self.main_toolbar_view.set_sensitive(False)
-        self.main_progress_bar.set_visible(True)
-        def batch_thread_func(command):
-            try:
-                subprocess.run(command, capture_output=False, check=True)
-            except subprocess.CalledProcessError:
-                self.uninstall_success = False
-
-        def batch_uninstall_callback(*_args):
-            nonlocal total_to_uninstall
-            total_to_uninstall = total_to_uninstall - 1
-            if total_to_uninstall == 0:
-                if self.uninstall_success:
-                    self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled all apps")))
-                else:
-                    self.toast_overlay.add_toast(Adw.Toast.new(_("Some apps didn't uninstall")))
-        
-                self.main_progress_bar.set_visible(False)
-                self.should_pulse = False
-                self.main_progress_bar.set_visible(False)
-                self.refresh_list_of_flatpaks(None, False)
-                self.disconnect(handler_id)
-                self.main_toolbar_view.set_sensitive(True)
-            
-        for i in range(len(self.selected_host_flatpak_indexes)):
-            app_id = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][2]
-            ref = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][8]
-            name = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][0]
-            command = ["flatpak-spawn", "--host", "flatpak", "remove", ref, "-y"]
-            if delete_data:
-                subprocess.run(['flatpak-spawn', '--host', 'gio', 'trash', f"{self.user_data_path}{app_id}"])
-
-            '''try:
-                subprocess.run(command, capture_output=False, check=True)
-            except subprocess.CalledProcessError:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Can't uninstall {}").format(name)))'''
-
-            task = Gio.Task.new(None, None, batch_uninstall_callback)
-            task.run_in_thread(lambda _task, _obj, _data, _cancellable, cmd=command: batch_thread_func(cmd))
-
-    def batch_uninstall_handler(self, widget):
-        self.should_pulse = True
-        self.main_pulser()
-        self.uninstall_success = True
-        dialog = Adw.MessageDialog.new(self, _("Uninstall Selected Apps?"), _("Optionally, you can also trash their user data"))
-        dialog.set_close_response("cancel")
-        dialog.add_response("cancel", _("Cancel"))
-        dialog.add_response("continue", _("Uninstall"))
-        dialog.add_response("purge", _("Uninstall and Trash Data"))
-        dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.set_response_appearance("purge", Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.connect("response", self.batch_uninstall_on_response, dialog.choose_finish)
-        Gtk.Window.present(dialog)
-
     def batch_key_handler(self, _b, event, _c, _d):
         if event == Gdk.KEY_Escape:
             self.batch_mode_button.set_active(False)
@@ -683,7 +666,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.batch_copy_button.connect("clicked", self.batch_copy_handler)
         self.batch_clean_button.connect("clicked", self.batch_clean_handler)
         self.batch_clean_button.add_css_class("destructive-action")
-        self.batch_uninstall_button.connect("clicked", self.batch_uninstall_handler)
+        self.batch_uninstall_button.connect("clicked", self.batch_uninstall_button_handler)
         self.batch_uninstall_button.add_css_class("destructive-action")
         self.batch_select_all_button.connect("clicked", self.batch_select_all_handler)
         self.batch_actions_enable(False)
