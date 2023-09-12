@@ -194,15 +194,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         dialog.connect("response", batch_uninstall_response, dialog.choose_finish)
         Gtk.Window.present(dialog)
 
-
-
-
-
-        '''for i in range(len(self.selected_host_flatpak_indexes)):
-            name = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][0]
-            ref = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][8]
-            id = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][2]'''
-
     def uninstall_button_handler(self, _widget, index):
         name = self.host_flatpaks[index][0]
         ref = self.host_flatpaks[index][8]
