@@ -58,6 +58,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
     uninstall_success = True
     install_success = True
     should_pulse = True
+    no_close = None
 
     icon_theme = Gtk.IconTheme.new()
     icon_theme.add_search_path("/var/lib/flatpak/exports/share/icons/")
@@ -115,60 +116,77 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             return 0
         return total
 
-    def uninstall_response(self, widget, response_id, _c, index):
-        app_id = self.host_flatpaks[index][2]
-        ref = self.host_flatpaks[index][8]
-        name = self.host_flatpaks[index][0]
-        command = ["flatpak-spawn", "--host", "flatpak", "remove", ref, "-y"]
-        if response_id == "cancel":
-            self.should_pulse = False
-            return 1
-        if response_id == "purge":
-            subprocess.run(['flatpak-spawn', '--host', 'gio', 'trash', f"{self.user_data_path}{app_id}"])
+    def uninstall_flatpak_callback(self, _a, _b):
+        self.main_progress_bar.set_visible(False)
+        self.should_pulse = False
+        self.refresh_list_of_flatpaks(_a, False)
+        self.main_toolbar_view.set_sensitive(True)
+        self.disconnect(self.no_close)
 
-        handler_id = self.connect('close-request', lambda event: True) # Make window unable to close
-        self.main_progress_bar.set_visible(True)
-        self.main_toolbar_view.set_sensitive(False)
-
-        def uninstall_callback(*_args):
-            if self.uninstall_success:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled {}").format(name)))
-            else:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not uninstall {}").format(name)))
-            
-            self.main_progress_bar.set_visible(False)
-            self.should_pulse = False
-            self.refresh_list_of_flatpaks(None, False)
-            self.disconnect(handler_id)
-            self.main_toolbar_view.set_sensitive(True)
-
-        def thread_func(*_args):
+    def uninstall_flatpak_thread(self, ref_arr, id_arr, should_trash):
+        for i in range(len(ref_arr)):
+            ref_arr = ' '.join(ref_arr)
+            print(ref_arr)
             try:
-                subprocess.run(command, capture_output=True, check=True)
+                subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'remove', '-y', str(ref_arr)], capture_output=False, check=True)
             except subprocess.CalledProcessError:
-                self.uninstall_success = False
+                try:
+                    subprocess.run(['flatpak-spawn', '--host', 'pkexec', 'flatpak', 'remove', '-y', str(ref_arr)], capture_output=False, check=True)
+                except subprocess.CalledProcessError:
+                    self.toast_overlay.add_toast(Adw.Toast.new(_("Some apps could not be uninstalled")))
+                    return # Avoid trashing user data if the app cant be uninstalled
 
-        task = Gio.Task.new(None, None, uninstall_callback)
-        task.run_in_thread(thread_func)
+        if should_trash:
+            for i in range(len(id_arr)):    
+                try:
+                    subprocess.run(['flatpak-spawn', '--host', 'gio', 'trash', f'{self.user_data_path}{id_arr[i]}'])
+                except subprocess.CalledProcessError:
+                    self.toast_overlay.add_toast(Adw.Toast.new(_("Could not trash data")))
 
-    def uninstall_flatpak(self, _widget, index):
+    def uninstall_flatpak(self, index_arr, should_trash):
+        ref_arr = []
+        id_arr = []
+        for i in range(len(index_arr)):
+            ref = self.host_flatpaks[index_arr[i]][8]
+            id = self.host_flatpaks[index_arr[i]][2]
+            ref_arr.append(ref)
+            id_arr.append(id)
+        task = Gio.Task.new(None, None, self.uninstall_flatpak_callback)
+        task.run_in_thread(lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, should_trash=should_trash: self.uninstall_flatpak_thread(ref_arr, id_arr, should_trash))
+
+    #def batch_uninstall_button_handler
+
+    def uninstall_button_handler(self, _widget, index):
+        name = self.host_flatpaks[index][0]
+        ref = self.host_flatpaks[index][8]
+        id = self.host_flatpaks[index][2]
         self.should_pulse = True
         self.main_pulser()
-        self.uninstall_success = True
-        name = self.host_flatpaks[index][0]
-        id = self.host_flatpaks[index][2]
+        self.main_toolbar_view.set_sensitive(False)
+        self.no_close = self.connect('close-request', lambda event: True) # Make window unable to close
+
+        def uninstall_response(_idk, response_id, _widget):
+            if response_id == "cancel":
+                self.should_pulse = False
+                return 1
+                
+            should_trash = False
+            if response_id == "purge":
+                should_trash = True
+
+            self.main_progress_bar.set_visible(True)
+            self.uninstall_flatpak([index], should_trash)
+
         dialog = Adw.MessageDialog.new(self, _("Uninstall {}?").format(name), _("The app will be removed from your system."))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Uninstall"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
-
         if os.path.exists(f"{self.user_data_path}{id}"):
             dialog.set_body(_("The app will be removed from your system. Optionally, you can also trash its user data."))
             dialog.add_response("purge", _("Uninstall and Trash Data"))
             dialog.set_response_appearance("purge", Adw.ResponseAppearance.DESTRUCTIVE)
-
-        dialog.connect("response", self.uninstall_response, dialog.choose_finish, index)
+        dialog.connect("response", uninstall_response, dialog.choose_finish)
         Gtk.Window.present(dialog)
 
     def orphans_window(self):
@@ -478,7 +496,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
             trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Uninstall {}").format(app_name))
             trash_button.add_css_class("flat")
-            trash_button.connect("clicked", self.uninstall_flatpak, index)
+            trash_button.connect("clicked", self.uninstall_button_handler, index)
             flatpak_row.add_suffix(trash_button)
 
             properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
