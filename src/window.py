@@ -122,6 +122,10 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.refresh_list_of_flatpaks(_a, False)
         self.main_toolbar_view.set_sensitive(True)
         self.disconnect(self.no_close)
+        if self.uninstall_success:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled selected apps")))
+        else:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not uninstall some apps")))
 
     def uninstall_flatpak_thread(self, ref_arr, id_arr, should_trash):
         failures = []
@@ -138,7 +142,7 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             try:
                 subprocess.run(pk_command, capture_output=False, check=True)
             except subprocess.CalledProcessError:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not uninstall some apps")))
+                self.uninstall_success = False
 
         if should_trash:
             for i in range(len(id_arr)):    
