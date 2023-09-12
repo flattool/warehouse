@@ -124,28 +124,21 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
         self.disconnect(self.no_close)
 
     def uninstall_flatpak_thread(self, ref_arr, id_arr, should_trash):
-        command = ['flatpak-spawn', '--host']
-        command.append('flatpak')
-        command.append('remove')
-        command.append('-y')
+        failures = []
         for i in range(len(ref_arr)):
-            command.append(ref_arr[i])
-
-        try:
-            subprocess.run(command, capture_output=False, check=True)
-        except subprocess.CalledProcessError:
             try:
-                command = ['flatpak-spawn', '--host']
-                command.append('pkexec')
-                command.append('flatpak')
-                command.append('remove')
-                command.append('-y')
-                for i in range(len(ref_arr)):
-                    command.append(ref_arr[i])
-                subprocess.run(command, capture_output=False, check=True)
+                subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'remove', '-y', ref_arr[i]], capture_output=False, check=True)
             except subprocess.CalledProcessError:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Some apps could not be uninstalled")))
-                return # Avoid trashing user data if the app cant be uninstalled
+                failures.append(ref_arr[i])
+
+        if len(failures) > 0:
+            pk_command = ['flatpak-spawn', '--host', 'pkexec','flatpak', 'remove', '-y']
+            for i in range(len(failures)):
+                pk_command.append(failures[i])
+            try:
+                subprocess.run(pk_command, capture_output=False, check=True)
+            except subprocess.CalledProcessError:
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not uninstall some apps")))
 
         if should_trash:
             for i in range(len(id_arr)):    
