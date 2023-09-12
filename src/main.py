@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier: GPL-3.0-only
 
 import sys
 import gi
@@ -92,8 +92,8 @@ class FlattoolGuiApplication(Adw.Application):
                                 application_icon='io.github.heliguy4599.FlattoolGUI',
                                 developer_name='Heliguy',
                                 version='0.2.0',
-                                developers=['Heliguy'],
-                                copyright='© 2023 Heliguy')
+                                developers=['Heliguy', 'Kramo', 'Eryn'],
+                                copyright='© 2023 Heliguy\nGPL V3.0')
         about.present()
 
     def on_preferences_action(self, widget, _):
