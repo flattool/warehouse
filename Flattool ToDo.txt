@@ -1,3 +1,5 @@
+- Proper credits in About Window
+
 After 1.0
 - Separate Orphans Window
 - Export in batch mode
