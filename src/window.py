@@ -180,7 +180,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             self.main_progress_bar.set_visible(True)
             self.uninstall_flatpak(self.selected_host_flatpak_indexes, should_trash)
 
-        print(self.selected_host_flatpak_indexes)
         dialog = Adw.MessageDialog.new(self, _("Uninstall Selected Apps?"), _("The app will be removed from your system. Optionally, you can also trash its user data."))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
@@ -515,13 +514,6 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
 
             if (not self.show_runtimes) and "runtime" in self.host_flatpaks[index][12]:
                 continue
-
-            if os.path.exists(f"{self.user_data_path}{app_id}"):
-                has_data_icon = Gtk.Image.new_from_icon_name("paper-filled-symbolic")
-                has_data_icon.set_tooltip_text("This App Has User Data")
-                has_data_icon.set_opacity(0.5)
-                has_data_icon.set_margin_end(10)
-                flatpak_row.add_suffix(has_data_icon)
 
             trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Uninstall {}").format(app_name))
             trash_button.add_css_class("flat")
