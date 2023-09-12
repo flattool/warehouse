@@ -9,15 +9,15 @@ template FlattoolGuiWindow : Adw.ApplicationWindow {
     [top]
     HeaderBar header_bar {
       [start]
-      ToggleButton search_button {
-        icon-name: "system-search-symbolic";
-        tooltip-text: _("Search for an Installed App");
-      }
-
-      [start]
       Button refresh_button {
         icon-name: "view-refresh-symbolic";
         tooltip-text: _("Refresh the List of Installed Apps");
+      }
+      
+      [start]
+      ToggleButton search_button {
+        icon-name: "system-search-symbolic";
+        tooltip-text: _("Search for an Installed App");
       }
 
       [end]

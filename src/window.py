@@ -515,17 +515,19 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             if (not self.show_runtimes) and "runtime" in self.host_flatpaks[index][12]:
                 continue
 
-            trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Uninstall {}").format(app_name))
-            trash_button.add_css_class("flat")
-            trash_button.connect("clicked", self.uninstall_button_handler, index)
-            flatpak_row.add_suffix(trash_button)
-
             properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
             properties_button.add_css_class("flat")
             properties_button.connect("clicked", show_properties_window, index, self)
             flatpak_row.add_suffix(properties_button)
 
+            trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Uninstall {}").format(app_name))
+            trash_button.add_css_class("flat")
+            trash_button.connect("clicked", self.uninstall_button_handler, index)
+            flatpak_row.add_suffix(trash_button)
+
             select_flatpak_tickbox = Gtk.CheckButton(halign=Gtk.Align.CENTER)
+            select_flatpak_tickbox.set_margin_start(4)
+            select_flatpak_tickbox.set_margin_end(4)
             select_flatpak_tickbox.add_css_class("flat")
             select_flatpak_tickbox.connect("toggled", self.flatpak_row_select_handler, index)
             flatpak_row.add_suffix(select_flatpak_tickbox)
