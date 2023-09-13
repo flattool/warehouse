@@ -19,7 +19,7 @@
 ![Alt text](screenshots.png)
 
 ## 💬 Get in Contact
-- We have a [Discord Server](https://discord.gg/HVPF9Yg6) to discuss and send announcements in!
+- We have a [Discord Server](https://discord.gg/HVPF9Yg6) and a [Matrix Room](https://matrix.to/#/!SxRiApuHYRpJNgqxso:matrix.org) to discuss and send announcements in!
 - You can always open issues, PRs, and use other GitHub features here
 
 ## ℹ️ Important Notes:
