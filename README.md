@@ -23,7 +23,7 @@
 - You can always open issues, PRs, and use other GitHub features here
 
 ## ℹ️ Important Notes:
-- Translators, I thank you very much for your interest and contributions, but as of now Flattool GUI is not accpeting any translation work until its 1.0 release.
+- Translators, I thank you very much for your interest and contributions, but as of now Flattool GUI is not accpeting any translation work until proper translation infrastructure is in place.
 - This project is still in its early stages, developed by a newcomer. Your understanding of potential bugs is greatly appreciated.
 - Flattool assumes flatpak user data is located in the default directory: `~/.var/app`.
 - Flattool does not aim to replace flatpak; it simply facilitates appropriate flatpak commands for the desired actions.
