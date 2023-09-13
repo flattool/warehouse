@@ -88,12 +88,13 @@ class FlattoolGuiApplication(Adw.Application):
     def on_about_action(self, widget, _):
         """Callback for the app.about action."""
         about = Adw.AboutWindow(transient_for=self.props.active_window,
-                                application_name='flattool-gui',
+                                application_name='Flattool',
                                 application_icon='io.github.heliguy4599.FlattoolGUI',
                                 developer_name='Heliguy',
                                 version='0.2.0',
-                                developers=['Heliguy', 'Kramo', 'Eryn'],
-                                copyright='© 2023 Heliguy\nGPL V3.0')
+                                developers=['Heliguy https://github.com/heliguy4599', 'kramo https://kramo.hu'],
+                                artists=['Heliguy https://github.com/heliguy4599', 'eryn https://github.com/hericiumvevo'],
+                                copyright='© 2023 The Files Authors\n\nThis application comes with absolutely no warranty. See the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License, version 3 only</a> for details.')
         about.present()
 
     def on_preferences_action(self, widget, _):
