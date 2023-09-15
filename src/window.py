@@ -27,7 +27,7 @@ from .orphans_window import show_orphans_window
 @Gtk.Template(resource_path="/io/github/heliguy4599/FlattoolGUI/window.ui")
 class FlattoolGuiWindow(Adw.ApplicationWindow):
     __gtype_name__ = "FlattoolGuiWindow"
-    main_window_title = "Flattool"
+    main_window_title = "Warehouse"
     list_of_flatpaks = Gtk.Template.Child()
     search_entry = Gtk.Template.Child()
     search_button = Gtk.Template.Child()

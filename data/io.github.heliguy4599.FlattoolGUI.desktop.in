@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Flattool
+Name=Warehouse
 Exec=flattool-gui
 Icon=io.github.heliguy4599.FlattoolGUI
 Terminal=false
