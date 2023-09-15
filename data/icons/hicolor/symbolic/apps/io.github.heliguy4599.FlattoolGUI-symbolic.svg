@@ -1,7 +1,5 @@
 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="4" y="8" width="5" height="1" fill="black"/>
-<rect x="4" y="10" width="3" height="1" fill="black"/>
-<rect x="2" y="2" width="12" height="12" rx="2" stroke="black" stroke-width="2"/>
-<rect x="2" y="2" width="12" height="4" rx="2" stroke="black" stroke-width="2"/>
-<rect x="7" y="3" width="2" height="4" fill="black"/>
+<path d="M4 8H9V9H4V8Z" fill="black"/>
+<path d="M4 10H7V11H4V10Z" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4 3C3.44772 3 3 3.44772 3 4C3 4.55228 3.44772 5 4 5H7V3H4ZM9 3V5H12C12.5523 5 13 4.55228 13 4C13 3.44772 12.5523 3 12 3H9ZM9 7H7H4C3.64936 7 3.31278 6.93985 3 6.82929V12C3 12.5523 3.44772 13 4 13H12C12.5523 13 13 12.5523 13 12V6.82929C12.6872 6.93985 12.3506 7 12 7H9ZM4 1C2.34315 1 1 2.34315 1 4V12C1 13.6569 2.34315 15 4 15H12C13.6569 15 15 13.6569 15 12V4C15 2.34315 13.6569 1 12 1H4Z" fill="black"/>
 </svg>
