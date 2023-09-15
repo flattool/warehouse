@@ -511,11 +511,16 @@ class FlattoolGuiWindow(Adw.ApplicationWindow):
             app_name = self.host_flatpaks[index][0]
             app_id = self.host_flatpaks[index][2]
             app_ref = self.host_flatpaks[index][8]
-            flatpak_row = Adw.ActionRow(title=GLib.markup_escape_text(app_name), subtitle=app_ref)
+            flatpak_row = Adw.ActionRow(title=GLib.markup_escape_text(app_name))
             flatpak_row.add_prefix(self.find_app_icon(app_id))
 
             if (not self.show_runtimes) and "runtime" in self.host_flatpaks[index][12]:
                 continue
+            
+            if self.show_runtimes:
+                flatpak_row.set_subtitle(self.host_flatpaks[index][8])
+            else: 
+                flatpak_row.set_subtitle(self.host_flatpaks[index][2])
 
             properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
             properties_button.add_css_class("flat")
