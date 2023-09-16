@@ -42,7 +42,7 @@
             ]
         },
         {
-            "name" : "flattool-gui",
+            "name" : "warehouse",
             "builddir" : true,
             "buildsystem" : "meson",
             "sources" : [
