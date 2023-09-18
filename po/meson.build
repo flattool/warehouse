@@ -1,1 +1,1 @@
-i18n.gettext('flattool-gui', preset: 'glib')
+i18n.gettext('warehouse', preset: 'glib')

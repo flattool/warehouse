@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template FlattoolGuiWindow : Adw.ApplicationWindow {
+template WarehouseWindow : Adw.ApplicationWindow {
   default-width: 800;
   default-height: 500;
 
@@ -36,7 +36,7 @@ template FlattoolGuiWindow : Adw.ApplicationWindow {
     [top]
     SearchBar search_bar {
       search-mode-enabled: bind-property search_button.active bidirectional;
-      key-capture-widget: FlattoolGuiWindow;
+      key-capture-widget: WarehouseWindow;
       Adw.Clamp{
         maximum-size: 577;
         tightening-threshold: 220;
@@ -96,7 +96,7 @@ template FlattoolGuiWindow : Adw.ApplicationWindow {
         Adw.StatusPage no_flatpaks {
           icon-name: "error-symbolic";
           title: _("No Flatpaks Found");
-          description: _("Flattool cannot see the list of installed Flatpaks or the system has no Flatpaks installed.");
+          description: _("Warehouse cannot see the list of installed Flatpaks or the system has no Flatpaks installed.");
         }
       }
     }
