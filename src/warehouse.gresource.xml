@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/io/github/heliguy4599/FlattoolGUI">
+  <gresource prefix="/io/github/heliguy4599/Warehouse">
     <file preprocess="xml-stripblanks">window.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
   </gresource>
-  <gresource prefix="/io/github/heliguy4599/FlattoolGUI/icons/scalable/actions/">
+  <gresource prefix="/io/github/heliguy4599/Warehouse/icons/scalable/actions/">
     <file preprocess="xml-stripblanks">selection-mode-symbolic.svg</file>
     <file preprocess="xml-stripblanks">error-symbolic.svg</file>
     <file preprocess="xml-stripblanks">brush-symbolic.svg</file>

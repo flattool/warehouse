@@ -1,11 +1,11 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Heliguy
-# This file is distributed under the same license as the flattool-gui package.
+# This file is distributed under the same license as the warehouse package.
 # runarcn <eryn@blahaj.land>, 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: flattool-gui\n"
+"Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 16:25-0400\n"
 "PO-Revision-Date: 2023-09-02 22:39+0200\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.3.1\n"
 
-#: data/io.github.heliguy4599.FlattoolGUI.desktop.in:3
-msgid "Flattool"
-msgstr "Flattool"
+#: data/io.github.heliguy4599.Warehouse.desktop.in:3
+msgid "Warehouse"
+msgstr "Warehouse"
 
-#: data/io.github.heliguy4599.FlattoolGUI.appdata.xml.in:7
+#: data/io.github.heliguy4599.Warehouse.appdata.xml.in:7
 msgid "No description"
 msgstr "Brak opisu"
 
@@ -67,8 +67,8 @@ msgstr "Proszę czekać"
 
 #: src/window.py:176
 msgid ""
-"Flattool is attempting to install the selected apps. This could take a while."
-msgstr "Flattool próbuje zainstalować wybrane aplikacje. To może chwilę potrwać."
+"Warehouse is attempting to install the selected apps. This could take a while."
+msgstr "Warehouse próbuje zainstalować wybrane aplikacje. To może chwilę potrwać."
 
 #: src/window.py:212
 msgid "~"
@@ -223,15 +223,15 @@ msgstr "Nie znaleziono aplikacji Flatpak"
 
 #: src/window.blp:97
 msgid ""
-"Flattool cannot see the list of installed Flatpaks or the system has no "
+"Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed."
 msgstr ""
-"Flattool nie widzi listy zainstalowanych aplikacji Flatpak lub system nie ma "
+"Warehouse nie widzi listy zainstalowanych aplikacji Flatpak lub system nie ma "
 "zainstalowanych aplikacji Flatpak."
 
 #: src/window.blp:102
-msgid "Flattool is uninstalling the selected apps. This could take a while."
-msgstr "Flattool odinstalowuje wybrane aplikacje. To może chwilę potrwać."
+msgid "Warehouse is uninstalling the selected apps. This could take a while."
+msgstr "Warehouse odinstalowuje wybrane aplikacje. To może chwilę potrwać."
 
 #: src/window.blp:113
 msgid "Show Flatpak Runtimes"
@@ -246,5 +246,5 @@ msgid "_Keyboard Shortcuts"
 msgstr "_Skróty klawiszowe"
 
 #: src/window.blp:133
-msgid "_About Flattool-gui"
-msgstr "_O Flattool-gui"
+msgid "_About Warehouse"
+msgstr "_O Warehouse"

@@ -11,8 +11,8 @@ blueprints = custom_target('blueprints',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
 )
 
-gnome.compile_resources('flattool-gui',
-  'flattool-gui.gresource.xml',
+gnome.compile_resources('warehouse',
+  'warehouse.gresource.xml',
   gresource_bundle: true,
   install: true,
   install_dir: pkgdatadir,
@@ -28,8 +28,8 @@ conf.set('localedir', join_paths(get_option('prefix'), get_option('localedir')))
 conf.set('pkgdatadir', pkgdatadir)
 
 configure_file(
-  input: 'flattool-gui.in',
-  output: 'flattool-gui',
+  input: 'warehouse.in',
+  output: 'warehouse',
   configuration: conf,
   install: true,
   install_dir: get_option('bindir'),

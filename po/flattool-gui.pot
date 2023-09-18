@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Heliguy
-# This file is distributed under the same license as the flattool-gui package.
+# This file is distributed under the same license as the warehouse package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: flattool-gui\n"
+"Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 17:37-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/io.github.heliguy4599.FlattoolGUI.desktop.in:3
-msgid "Flattool"
+#: data/io.github.heliguy4599.Warehouse.desktop.in:3
+msgid "Warehouse"
 msgstr ""
 
-#: data/io.github.heliguy4599.FlattoolGUI.appdata.xml.in:7
+#: data/io.github.heliguy4599.Warehouse.appdata.xml.in:7
 msgid "No description"
 msgstr ""
 
@@ -65,7 +65,7 @@ msgstr ""
 
 #: src/window.py:176
 msgid ""
-"Flattool is attempting to install the selected apps. This could take a while."
+"Warehouse is attempting to install the selected apps. This could take a while."
 msgstr ""
 
 #: src/window.py:212
@@ -220,12 +220,12 @@ msgstr ""
 
 #: src/window.blp:97
 msgid ""
-"Flattool cannot see the list of installed Flatpaks or the system has no "
+"Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed."
 msgstr ""
 
 #: src/window.blp:102
-msgid "Flattool is uninstalling the selected apps. This could take a while."
+msgid "Warehouse is uninstalling the selected apps. This could take a while."
 msgstr ""
 
 #: src/window.blp:113
@@ -241,5 +241,5 @@ msgid "_Keyboard Shortcuts"
 msgstr ""
 
 #: src/window.blp:133
-msgid "_About Flattool-gui"
+msgid "_About Warehouse"
 msgstr ""
