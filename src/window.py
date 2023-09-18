@@ -124,7 +124,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.main_toolbar_view.set_sensitive(True)
         self.disconnect(self.no_close)
         if self.uninstall_success:
-            self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled selected apps")))
+            if self.in_batch_mode:
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled selected apps")))
+            else:
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled app")))
         else:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not uninstall some apps")))
 
