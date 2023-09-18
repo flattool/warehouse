@@ -1,9 +1,5 @@
 # 🛠️ Warehouse
 
-<p align="center">
-  <img src="https://github.com/flattool/flattool-cli/raw/main/flattool_logo-name.png" alt="Warehouse Logo">
-</p>
-
 ## Warehouse is a versatile toolbox for managing flatpak user data, viewing flatpak app info, and batch managing installed flatpaks.
 
 ## 🚀 Main Features:
