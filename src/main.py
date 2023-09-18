@@ -99,7 +99,8 @@ class WarehouseApplication(Adw.Application):
             developers=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu"],
             artists=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu", "eryn https://github.com/hericiumvevo"],
             copyright='© 2023 The Files Authors',
-            license_type=Gtk.License.GPL_3_0_ONLY)
+            license_type=Gtk.License.GPL_3_0_ONLY,
+            website='https://github.com/flattool/warehouse')
         about.present()
 
     def on_preferences_action(self, widget, _):
