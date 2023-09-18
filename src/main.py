@@ -42,25 +42,13 @@ class WarehouseApplication(Adw.Application):
         self.create_action("preferences", self.on_preferences_action)
         self.create_action("search", self.on_search_action, ["<primary>f"])
         self.create_action("manage-data-folders", self.on_manage_data_folders_action)
-        self.create_action(
-            "toggle-batch-mode",
-            self.batch_mode_shortcut,
-            ["<primary>b", "<primary>Return"],
-        )
-        self.create_action(
-            "select-all-in-batch-mode", self.select_all_shortcut, ["<primary>a"]
-        )
-        self.create_action(
-            "manage-data-folders", self.manage_data_shortcut, ["<primary>d"]
-        )
-        self.create_action(
-            "refresh-list", self.refresh_list_shortcut, ["<primary>r", "F5"]
-        )
+        self.create_action("toggle-batch-mode", self.batch_mode_shortcut, ["<primary>b", "<primary>Return"])
+        self.create_action("select-all-in-batch-mode", self.select_all_shortcut, ["<primary>a"])
+        self.create_action("manage-data-folders", self.manage_data_shortcut, ["<primary>d"])
+        self.create_action("refresh-list", self.refresh_list_shortcut, ["<primary>r", "F5"])
         self.create_action("show-runtimes", self.show_runtimes_shortcut, ["<primary>t"])
 
-        self.show_runtimes_stateful = Gio.SimpleAction.new_stateful(
-            "show-runtimes", None, GLib.Variant.new_boolean(False)
-        )
+        self.show_runtimes_stateful = Gio.SimpleAction.new_stateful("show-runtimes", None, GLib.Variant.new_boolean(False))
         self.show_runtimes_stateful.connect("activate", self.on_show_runtimes_action)
         self.add_action(self.show_runtimes_stateful)
 
@@ -108,17 +96,10 @@ class WarehouseApplication(Adw.Application):
             application_icon="io.github.heliguy4599.Warehouse",
             developer_name="Heliguy",
             version="0.3.0",
-            developers=[
-                "Heliguy https://github.com/heliguy4599",
-                "kramo https://kramo.hu",
-            ],
-            artists=[
-                "Heliguy https://github.com/heliguy4599",
-                "kramo https://kramo.hu",
-                "eryn https://github.com/hericiumvevo",
-            ],
-            copyright='© 2023 The Files Authors\n\nThis application comes with absolutely no warranty. See the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License, version 3 only</a> for details.',
-        )
+            developers=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu"],
+            artists=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu", "eryn https://github.com/hericiumvevo"],
+            copyright='© 2023 The Files Authors',
+            license_type=Gtk.License.GPL_3_0_ONLY)
         about.present()
 
     def on_preferences_action(self, widget, _):
@@ -126,21 +107,13 @@ class WarehouseApplication(Adw.Application):
         print("app.preferences action activated")
 
     def on_search_action(self, widget, _):
-        self.props.active_window.search_bar.set_search_mode(
-            not self.props.active_window.search_bar.get_search_mode()
-        )
+        self.props.active_window.search_bar.set_search_mode(not self.props.active_window.search_bar.get_search_mode())
 
     def on_manage_data_folders_action(self, widget, _):
         self.props.active_window.orphans_window()
 
     def on_show_runtimes_action(self, widget, _):
-        self.show_runtimes_stateful.set_state(
-            GLib.Variant.new_boolean(
-                state := (
-                    not self.show_runtimes_stateful.get_property("state").get_boolean()
-                )
-            )
-        )
+        self.show_runtimes_stateful.set_state(GLib.Variant.new_boolean(state := (not self.show_runtimes_stateful.get_property("state").get_boolean())))
         self.props.active_window.show_runtimes_toggle_handler(state)
 
     def create_action(self, name, callback, shortcuts=None):
