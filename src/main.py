@@ -27,6 +27,7 @@ gi.require_version("Adw", "1")
 
 from gi.repository import Gtk, Gio, Adw, GLib
 from .window import WarehouseWindow
+from .remotes import RemotesWindow
 
 
 class WarehouseApplication(Adw.Application):
@@ -47,6 +48,7 @@ class WarehouseApplication(Adw.Application):
         self.create_action("manage-data-folders", self.manage_data_shortcut, ["<primary>d"])
         self.create_action("refresh-list", self.refresh_list_shortcut, ["<primary>r", "F5"])
         self.create_action("show-runtimes", self.show_runtimes_shortcut, ["<primary>t"])
+        self.create_action("show-remotes-window", self.show_remotes_shortcut, ["<primary>m"])
 
         self.show_runtimes_stateful = Gio.SimpleAction.new_stateful("show-runtimes", None, GLib.Variant.new_boolean(False))
         self.show_runtimes_stateful.connect("activate", self.on_show_runtimes_action)
@@ -72,6 +74,9 @@ class WarehouseApplication(Adw.Application):
     def show_runtimes_shortcut(self, widget, _):
         window = self.props.active_window
         window.show_runtimes_toggle_handler(window, not window.show_runtimes)
+
+    def show_remotes_shortcut(self, widget, _):
+        RemotesWindow(self.props.active_window).present()
 
     def do_activate(self):
         """Called when the application is activated.

@@ -231,8 +231,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         global window_title
         window_title = _("Manage Leftover Data")
         orphans_window = Adw.Window(title=window_title)
-        orphans_window.set_default_size(350, 450)
-        # orphans_window.set_size_request(250, 0)
+        orphans_window.set_default_size(500, 450)
+        orphans_window.set_size_request(0, 230)
         orphans_window.set_modal(True)
         orphans_window.set_resizable(True)
         orphans_window.set_transient_for(self)
@@ -647,6 +647,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.list_of_flatpaks.set_filter_func(self.filter_func)
+        self.set_size_request(0, 230)
         self.generate_list_of_flatpaks()
         self.search_entry.connect("search-changed", lambda *_: self.list_of_flatpaks.invalidate_filter())
         self.search_bar.connect_entry(self.search_entry)

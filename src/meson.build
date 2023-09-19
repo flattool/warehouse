@@ -36,12 +36,13 @@ configure_file(
   install_mode: 'r-xr--r--'
 )
 
-flattool_gui_sources = [
+warehouse_sources = [
   '__init__.py',
   'main.py',
   'window.py',
   'show_properties_window.py',
   'orphans_window.py',
+  'remotes.py',
 ]
 
-install_data(flattool_gui_sources, install_dir: moduledir)
+install_data(warehouse_sources, install_dir: moduledir)

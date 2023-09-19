@@ -5,10 +5,10 @@ ShortcutsWindow help_overlay {
 
   ShortcutsSection {
     section-name: "shortcuts";
-    max-height: 10;
+    max-height: 6;
 
     ShortcutsGroup {
-      title: C_("shortcut window", "General");
+      title: C_("shortcut window", "App Management");
 
       ShortcutsShortcut {
         title: C_("shortcut window", "Search");
@@ -26,14 +26,30 @@ ShortcutsWindow help_overlay {
       }
 
       ShortcutsShortcut {
+        title: C_("shortcut window", "Select All Flatpaks");
+        action-name: "app.select-all-in-batch-mode";
+      }
+
+      ShortcutsShortcut {
+        title: C_("shortcut window", "Show Flatpak Runtimes");
+        action-name: "app.show-runtimes";
+      }
+    }
+    ShortcutsGroup {
+      title: C_("shortcut window", "More Functions");
+
+      ShortcutsShortcut {
         title: C_("shortcut window", "Manage Orphaned Data Folders");
         action-name: "app.manage-data-folders";
       }
 
       ShortcutsShortcut {
-        title: C_("shortcut window", "Select All Flatpaks");
-        action-name: "app.select-all-in-batch-mode";
+        title: C_("shortcut window", "Manage Remotes");
+        action-name: "app.show-remotes-window";
       }
+    }
+    ShortcutsGroup {
+      title: C_("shortcut window", "General");
 
       ShortcutsShortcut {
         title: C_("shortcut window", "Show Shortcuts");
