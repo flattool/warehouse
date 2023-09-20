@@ -172,6 +172,11 @@ class RemotesWindow(Adw.Window):
         self.remotes_list.remove_all()
         self.host_remotes = self.get_host_remotes()
         self.host_flatpaks = self.get_host_flatpaks()
+        if len(self.host_remotes) <= 1:
+            no_remotes = Adw.StatusPage(icon_name="error-symbolic", title=_("No Remotes"), description=_("Warehouse cannot see the list of remotes or the system has no remotes added"))
+            self.stack.add_child(no_remotes)
+            self.stack.set_visible_child(no_remotes)
+            return
         for i in range(len(self.host_remotes)):
             name = self.host_remotes[i][0]
             title = self.host_remotes[i][1]
@@ -232,11 +237,6 @@ class RemotesWindow(Adw.Window):
         self.set_resizable(True)
         self.set_content(self.toolbar)
         self.generate_list()
-
-        if len(self.host_remotes) == 0:
-            no_remotes = Adw.StatusPage(icon_name="error-symbolic", title=_("No Remotes"), description=_("Warehouse cannot see the list of remotes or the system has no remotes added"))
-            self.stack.add_child(no_remotes)
-            self.stack.set_visible_child(no_remotes)
 
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.key_handler)
