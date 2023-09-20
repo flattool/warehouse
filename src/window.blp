@@ -30,7 +30,7 @@ template WarehouseWindow : Adw.ApplicationWindow {
       [end]
       ToggleButton batch_mode_button {
         icon-name: "selection-mode-symbolic";
-        tooltip-text: _("Enter Selection Mode");
+        tooltip-text: _("Toggle Selection Mode");
       }
     }
     [top]
@@ -39,7 +39,6 @@ template WarehouseWindow : Adw.ApplicationWindow {
       key-capture-widget: WarehouseWindow;
       Adw.Clamp{
         maximum-size: 577;
-        tightening-threshold: 220;
         hexpand: true;
         SearchEntry search_entry {}
       }
@@ -53,7 +52,6 @@ template WarehouseWindow : Adw.ApplicationWindow {
             ScrolledWindow scrolled_window {
               vexpand: true;
               Adw.Clamp{
-                tightening-threshold: 15;
                 ListBox list_of_flatpaks{
                   margin-top: 6;
                   margin-bottom: 24;
@@ -67,31 +65,6 @@ template WarehouseWindow : Adw.ApplicationWindow {
               }
             }
           }
-          ActionBar batch_mode_bar {
-            [start]
-            ToggleButton batch_select_all_button {
-              label: "Select All";
-              tooltip-text: _("Select all Flatpaks");
-            }
-            [end]
-            Button batch_uninstall_button {
-              icon-name: "user-trash-symbolic";
-              label: _("Uninstall");
-              tooltip-text: _("Uninstall Selected Flatpaks");
-            }
-            [end]
-            Button batch_clean_button {
-              icon-name: "brush-symbolic";
-              label: _("Trash User Data");
-              tooltip-text: _("Send Selected Flatpaks' Data to the Trash");
-            }
-            [end]
-            Button batch_copy_button {
-              icon-name: "edit-copy-symbolic";
-              label: _("Copy App ID");
-              tooltip-text: _("Copy Selected Flatpaks' IDs Seperated by a New Line");
-            }
-          }
         }
         Adw.StatusPage no_flatpaks {
           icon-name: "error-symbolic";
@@ -99,8 +72,33 @@ template WarehouseWindow : Adw.ApplicationWindow {
           description: _("Warehouse cannot see the list of installed Flatpaks or the system has no Flatpaks installed.");
         }
       }
+    };
+    [bottom]
+    ActionBar batch_mode_bar {
+      [start]
+      ToggleButton batch_select_all_button {
+        label: "Select All";
+        tooltip-text: _("Select all Flatpaks");
+      }
+      [end]
+      Button batch_uninstall_button {
+        icon-name: "user-trash-symbolic";
+        // label: _("Uninstall");
+        tooltip-text: _("Uninstall Selected Apps");
+      }
+      [end]
+      Button batch_clean_button {
+        icon-name: "brush-symbolic";
+        // label: _("Trash User Data");
+        tooltip-text: _("Send Selected Apps' Data to the Trash");
+      }
+      [end]
+      Button batch_copy_button {
+        icon-name: "edit-copy-symbolic";
+        // label: _("Copy App ID");
+        tooltip-text: _("Copy Selected App IDs");
+      }
     }
-    ;
   }
 }
 

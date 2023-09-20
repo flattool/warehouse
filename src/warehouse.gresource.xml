@@ -12,5 +12,6 @@
     <file preprocess="xml-stripblanks">info-symbolic.svg</file>
     <file preprocess="xml-stripblanks">check-plain-symbolic.svg</file>
     <file preprocess="xml-stripblanks">paper-filled-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">plus-large-symbolic.svg</file>
   </gresource>
 </gresources>

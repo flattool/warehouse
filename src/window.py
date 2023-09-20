@@ -231,37 +231,39 @@ class WarehouseWindow(Adw.ApplicationWindow):
         global window_title
         window_title = _("Manage Leftover Data")
         orphans_window = Adw.Window(title=window_title)
-        orphans_window.set_default_size(500, 450)
-        orphans_window.set_size_request(0, 230)
-        orphans_window.set_modal(True)
-        orphans_window.set_resizable(True)
-        orphans_window.set_transient_for(self)
         orphans_clamp = Adw.Clamp()
         orphans_scroll = Gtk.ScrolledWindow()
         orphans_toast_overlay = Adw.ToastOverlay()
         orphans_stack = Gtk.Stack()
         orphans_overlay = Gtk.Overlay()
-        orphans_stack.add_child(orphans_clamp)
-        orphans_clamp.set_child(orphans_overlay)
-        orphans_toast_overlay.set_child(orphans_stack)
-
         orphans_progress_bar = Gtk.ProgressBar(visible=False, pulse_step=0.7)
-        orphans_progress_bar.add_css_class("osd")
-        orphans_overlay.add_overlay(orphans_progress_bar)
-
-        orphans_overlay.set_child(orphans_scroll)
         orphans_toolbar_view = Adw.ToolbarView()
         orphans_title_bar = Gtk.HeaderBar()
         orphans_action_bar = Gtk.ActionBar()
+        orphans_list = Gtk.ListBox(selection_mode="none", valign=Gtk.Align.START, margin_top=6, margin_bottom=6, margin_start=12, margin_end=12)
+        no_data = Adw.StatusPage(icon_name="check-plain-symbolic", title=_("No Data"), description=_("There is no leftover user data"))
+
+        orphans_window.set_default_size(500, 450)
+        orphans_window.set_size_request(260, 230)
+        orphans_window.set_modal(True)
+        orphans_window.set_resizable(True)
+        orphans_window.set_transient_for(self)
+
+        orphans_stack.add_child(orphans_overlay)
+        orphans_toast_overlay.set_child(orphans_stack)
+        orphans_progress_bar.add_css_class("osd")
+        orphans_overlay.add_overlay(orphans_progress_bar)
+        orphans_overlay.set_child(orphans_scroll)
+
         orphans_toolbar_view.add_top_bar(orphans_title_bar)
         orphans_toolbar_view.add_bottom_bar(orphans_action_bar)
         orphans_toolbar_view.set_content(orphans_toast_overlay)
         orphans_window.set_content(orphans_toolbar_view)
-        orphans_list = Gtk.ListBox(selection_mode="none", valign=Gtk.Align.START, margin_top=6, margin_bottom=6, margin_start=12, margin_end=12)
         orphans_list.add_css_class("boxed-list")
-        orphans_scroll.set_child(orphans_list)
-        no_data = Adw.StatusPage(icon_name="check-plain-symbolic", title=_("No Data"), description=_("There is no leftover user data"))
+        orphans_scroll.set_child(orphans_clamp)
+        orphans_clamp.set_child(orphans_list)
         orphans_stack.add_child(no_data)
+
         global total_selected
         total_selected = 0
         global selected_rows
@@ -575,8 +577,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.batch_select_all_button.set_active(False)
         if widget.get_active():
             self.in_batch_mode = True
+            self.list_of_flatpaks.set_margin_bottom(6)
         else:
             self.in_batch_mode = False
+            self.list_of_flatpaks.set_margin_bottom(24)
         self.refresh_list_of_flatpaks(None, False)
         self.batch_actions_enable(False)
 
@@ -613,7 +617,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.refresh_list_of_flatpaks(_a, False)
 
     def batch_clean_handler(self, widget):
-        dialog = Adw.MessageDialog.new(self, _("Delete Selected User Data?"), _("This user data will be sent to the trash."))
+        dialog = Adw.MessageDialog.new(self, _("Trash Selected Apps' User Data?"), _("This user data will be sent to the trash."))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Trash Data"))
@@ -655,9 +659,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.batch_mode_button.connect("toggled", self.batch_mode_handler)
         self.batch_copy_button.connect("clicked", self.batch_copy_handler)
         self.batch_clean_button.connect("clicked", self.batch_clean_handler)
-        self.batch_clean_button.add_css_class("destructive-action")
         self.batch_uninstall_button.connect("clicked", self.batch_uninstall_button_handler)
-        self.batch_uninstall_button.add_css_class("destructive-action")
         self.batch_select_all_button.connect("clicked", self.batch_select_all_handler)
         self.batch_actions_enable(False)
         event_controller = Gtk.EventControllerKey()

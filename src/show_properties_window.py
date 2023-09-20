@@ -5,7 +5,7 @@ import os
 def show_properties_window(widget, index, window):
     properties_window = Adw.Window(title=_("Properties of {}").format(window.host_flatpaks[index][0]))
     properties_window.set_default_size(350, 600)
-    properties_window.set_size_request(250, 0)
+    properties_window.set_size_request(260, 230)
     properties_window.set_modal(True)
     properties_window.set_resizable(True)
     properties_window.set_transient_for(window)

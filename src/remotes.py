@@ -35,10 +35,8 @@ class RemotesWindow(Adw.Window):
         if response_id == "cancel":
             return
 
-        if response_id == "user":
-            install_type = "--user"
-
-        if response_id == "system":
+        install_type = "--user"
+        if not self.add_as_user:
             install_type = "--system"
 
         self.name_to_add = self.name_to_add.strip()
@@ -53,14 +51,12 @@ class RemotesWindow(Adw.Window):
         self.generate_list()
 
     def add_handler(self, _widget):
-        dialog = Adw.MessageDialog.new(self, _("Add a New Flatpak Remote"))
+        dialog = Adw.MessageDialog.new(self, _("Add Flatpak Remote"))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
-        dialog.add_response("system", _("Add System Wide"))
-        dialog.add_response("user", _("Add User Wide"))
-        dialog.set_response_enabled("system", False)
-        dialog.set_response_enabled("user", False)
-        dialog.set_response_appearance("user", Adw.ResponseAppearance.SUGGESTED)
+        dialog.add_response("continue", _("Add"))
+        dialog.set_response_enabled("continue", False)
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.SUGGESTED)
 
         def name_update(widget):
             is_enabled = True
@@ -99,22 +95,50 @@ class RemotesWindow(Adw.Window):
         def confirm_enabler(is_enabled):
             if len(self.name_to_add) == 0 or len(self.url_to_add) == 0:
                 is_enabled = False
-            dialog.set_response_enabled("user", is_enabled)
-            dialog.set_response_enabled("system", is_enabled)
+            dialog.set_response_enabled("continue", is_enabled)
+
+        def set_user(widget):
+            self.add_as_user = widget.get_active()
 
         self.name_to_add = ""
         self.url_to_add = ""
+        self.add_as_user = True
 
-        entry_list = Gtk.ListBox(selection_mode="none")
+        info_box = Gtk.Box(orientation="vertical")
+        entry_list = Gtk.ListBox(selection_mode="none", margin_bottom=12)
         entry_list.add_css_class("boxed-list")
-        name_entry = Adw.EntryRow(title=_("Enter Remote Name"))
+        
+        name_entry = Adw.EntryRow(title=_("Name"))
         name_entry.connect("changed", name_update)
-        url_entry = Adw.EntryRow(title=_("Enter URL Name"))
+
+        url_entry = Adw.EntryRow(title=_("URL"))
         url_entry.connect("changed", url_update)
+
         entry_list.append(name_entry)
         entry_list.append(url_entry)
+        info_box.append(entry_list)
 
-        dialog.set_extra_child(entry_list)
+        install_type_list = Gtk.ListBox(selection_mode="none")
+        install_type_list.add_css_class("boxed-list")
+
+        user_row = Adw.ActionRow(title=_("User"), subtitle=_("Remote will be available to only you"))
+        user_check = Gtk.CheckButton(active=True)
+        user_check.connect("toggled", set_user)
+        user_row.add_prefix(user_check)
+        user_row.set_activatable_widget(user_check)
+
+        system_row = Adw.ActionRow(title=_("System"), subtitle=_("Remote will be available to every user on the system"))
+        system_check = Gtk.CheckButton()
+        system_row.add_prefix(system_check)
+        system_check.set_group(user_check)
+        system_row.set_activatable_widget(system_check)
+
+        install_type_list.append(user_row)
+        install_type_list.append(system_row)
+
+        info_box.append(install_type_list)
+
+        dialog.set_extra_child(info_box)
         dialog.connect("response", self.on_add_response, dialog.choose_finish)
         Gtk.Window.present(dialog)
 
@@ -136,7 +160,7 @@ class RemotesWindow(Adw.Window):
         name = self.host_remotes[index][0]
         title = self.host_remotes[index][1]
         install_type = self.host_remotes[index][7]
-        dialog = Adw.MessageDialog.new(self, _("Remove {}?").format(name), _("This cannot be undone, and any installed apps from remote {} will stop receiving updates").format(name))
+        dialog = Adw.MessageDialog.new(self, _("Remove {}?").format(name), _("Any installed apps from {} will stop receiving updates").format(name))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Remove"))
@@ -152,7 +176,10 @@ class RemotesWindow(Adw.Window):
             name = self.host_remotes[i][0]
             title = self.host_remotes[i][1]
             install_type = self.host_remotes[i][7]
-            remote_row = Adw.ActionRow(title=title, subtitle=name)
+            url = self.host_remotes[i][2]
+            remote_row = Adw.ActionRow(title=title, subtitle=url)
+            if title == "-":
+                remote_row.set_title(name)
             self.remotes_list.append(remote_row)
             label = Gtk.Label(label=install_type)
             label.add_css_class("subtitle")
@@ -161,14 +188,7 @@ class RemotesWindow(Adw.Window):
             remove_button.add_css_class("flat")
             remove_button.connect("clicked", self.remove_handler, i)
             remote_row.add_suffix(remove_button)
-
-            # for i in range(len(self.host_flatpaks)):
-            #     if name == self.host_flatpaks[i][6] and install_type == self.host_flatpaks[i][7]:
-            #         remove_button.set_sensitive(False)
-            #         remove_button.set_tooltip_text(_("There are apps installed from this remote"))
-            #         break
     
-
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
@@ -186,9 +206,7 @@ class RemotesWindow(Adw.Window):
         self.headerbar = Gtk.HeaderBar()
         self.remotes_list = Gtk.ListBox(selection_mode="none", margin_top=6, margin_bottom=12, margin_start=12, margin_end=12)
         self.user_data_row = Adw.ActionRow(title="No User Data")
-        self.add_button = Gtk.Button(icon_name="list-add-symbolic", tooltip_text="Add Remote")
-        self.add_button.add_css_class("flat")
-        self.add_button.add_css_class("suggested-action")
+        self.add_button = Gtk.Button(icon_name="plus-large-symbolic", tooltip_text="Add Remote")
         self.stack = Gtk.Stack()
         
         # Apply Widgets
@@ -209,7 +227,7 @@ class RemotesWindow(Adw.Window):
         # Window Stuffs
         self.set_title(self.window_title)
         self.set_default_size(500, 450)
-        self.set_size_request(250, 230)
+        self.set_size_request(260, 230)
         self.set_modal(True)
         self.set_resizable(True)
         self.set_content(self.toolbar)
