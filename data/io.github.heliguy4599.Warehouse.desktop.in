@@ -4,5 +4,5 @@ Exec=warehouse
 Icon=io.github.heliguy4599.Warehouse
 Terminal=false
 Type=Application
-Categories=GTK;
+Categories=GTK;System;Utility;
 StartupNotify=true
