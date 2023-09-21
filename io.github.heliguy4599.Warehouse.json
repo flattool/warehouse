@@ -1,7 +1,7 @@
 {
     "id" : "io.github.heliguy4599.Warehouse",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "master",
+    "runtime-version" : "45",
     "sdk" : "org.gnome.Sdk",
     "command" : "warehouse",
     "finish-args" : [

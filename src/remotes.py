@@ -172,7 +172,7 @@ class RemotesWindow(Adw.Window):
         self.remotes_list.remove_all()
         self.host_remotes = self.get_host_remotes()
         self.host_flatpaks = self.get_host_flatpaks()
-        if len(self.host_remotes) <= 1:
+        if len(self.host_remotes) < 1:
             no_remotes = Adw.StatusPage(icon_name="error-symbolic", title=_("No Remotes"), description=_("Warehouse cannot see the list of remotes or the system has no remotes added"))
             self.stack.add_child(no_remotes)
             self.stack.set_visible_child(no_remotes)
@@ -186,7 +186,7 @@ class RemotesWindow(Adw.Window):
             if title == "-":
                 remote_row.set_title(name)
             self.remotes_list.append(remote_row)
-            label = Gtk.Label(label=install_type)
+            label = Gtk.Label(label=("{} wide").format(install_type))
             label.add_css_class("subtitle")
             remote_row.add_suffix(label)
             remove_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Remove {}").format(name))
