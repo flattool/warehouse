@@ -1,4 +1,5 @@
 from gi.repository import Gtk, Adw, GLib, Gdk, Gio
+from .functions import functions
 import subprocess
 import os
 
@@ -24,6 +25,8 @@ def show_properties_window(widget, index, window):
     user_data_list.append(user_data_row)
     user_data_list.add_css_class("boxed-list")
 
+    func = functions(window)
+
     def key_handler(_a, event, _c, _d):
         if event == Gdk.KEY_Escape:
             properties_window.close()
@@ -39,7 +42,7 @@ def show_properties_window(widget, index, window):
     def on_response(_a, response_id, _b):
         if response_id != "continue":
             return
-        if window.trash_folder(data_folder) == 0:
+        if func.trash_folder(data_folder) == 0:
             properties_toast_overlay.add_toast(Adw.Toast.new(_("Trashed user data")))
             user_data_list.remove(user_data_row)
             user_data_list.append(Adw.ActionRow(title="No User Data"))
@@ -67,7 +70,7 @@ def show_properties_window(widget, index, window):
         window.clipboard.set(to_copy)
         properties_toast_overlay.add_toast(Adw.Toast.new(_("Copied {}").format(title)))
     
-    image = window.find_app_icon(window.host_flatpaks[index][2])
+    image = func.find_app_icon(window.host_flatpaks[index][2])
     image.add_css_class("icon-dropshadow")
     image.set_margin_top(12)
     image.set_pixel_size(100)
@@ -80,7 +83,7 @@ def show_properties_window(widget, index, window):
     
     if os.path.exists(path):
         user_data_row.set_title("User Data")
-        user_data_row.set_subtitle(f"{path}\n~{window.get_size_format(window.get_directory_size(path))}")
+        user_data_row.set_subtitle(f"{path}\n~{func.get_size_format(func.get_directory_size(path))}")
 
         open_button = Gtk.Button(icon_name="document-open-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Open Data Folder"))
         open_button.add_css_class("flat")

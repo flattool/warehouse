@@ -23,7 +23,7 @@ import subprocess
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from .properties_window import show_properties_window
 from .orphans_window import show_orphans_window
-
+from .functions import functions
 
 @Gtk.Template(resource_path="/io/github/heliguy4599/Warehouse/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):
@@ -61,10 +61,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
     should_pulse = True
     no_close = None
 
-    icon_theme = Gtk.IconTheme.new()
-    icon_theme.add_search_path("/var/lib/flatpak/exports/share/icons/")
-    icon_theme.add_search_path(host_home + "/.local/share/flatpak/exports/share/icons")
-
     def main_pulser(self):
         if self.should_pulse:
             self.main_progress_bar.pulse()
@@ -73,49 +69,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def filter_func(self, row):
         if (self.search_entry.get_text().lower() in row.get_title().lower()) or (self.search_entry.get_text().lower() in row.get_subtitle().lower()):
             return True
-
-    def trash_folder(self, _a, path):
-        if not os.path.exists(path):
-            return 1
-        try:
-            subprocess.run(["flatpak-spawn", "--host", "gio", "trash", path], capture_output=True, check=True)
-            return 0
-        except subprocess.CalledProcessError:
-            return 2
-
-    def get_size_format(self, b):
-        factor = 1024
-        suffix = "B"
-        for unit in ["", "K", "M", "G", "T", "P", "E", "Z"]:
-            if b < factor:
-                return f"{b:.1f}{unit}{suffix}"
-            b /= factor
-        return f"{b:.1f}{suffix}"
-
-    def get_directory_size(self, directory):
-        """Returns the `directory` size in bytes."""
-        total = 0
-        try:
-            # print("[+] Getting the size of", directory)
-            for entry in os.scandir(directory):
-                if entry.is_symlink():
-                    continue  # Skip symlinks
-                if entry.is_file():
-                    # if it's a file, use stat() function
-                    total += entry.stat().st_size
-                elif entry.is_dir():
-                    # if it's a directory, recursively call this function
-                    try:
-                        total += self.get_directory_size(entry.path)
-                    except FileNotFoundError:
-                        pass
-        except NotADirectoryError:
-            # if `directory` isn't a directory, get the file size then
-            return os.path.getsize(directory)
-        except PermissionError:
-            # if for whatever reason we can't open the folder, return 0
-            return 0
-        return total
 
     def uninstall_flatpak_callback(self, _a, _b):
         self.main_progress_bar.set_visible(False)
@@ -305,7 +258,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 if not file_list[i] in id_list:
                     row_index += 1
                     select_orphans_tickbox = Gtk.CheckButton(halign=Gtk.Align.CENTER)
-                    orphans_row = Adw.ActionRow(title=GLib.markup_escape_text(file_list[i]), subtitle=_("~") + self.get_size_format(self.get_directory_size(f"{self.user_data_path}{file_list[i]}")))
+                    orphans_row = Adw.ActionRow(title=GLib.markup_escape_text(file_list[i]), subtitle=_("~") + self.func.get_size_format(self.func.get_directory_size(f"{self.user_data_path}{file_list[i]}")))
                     orphans_row.add_suffix(select_orphans_tickbox)
                     orphans_row.set_activatable_widget(select_orphans_tickbox)
                     select_orphans_tickbox.connect("toggled", selection_handler, orphans_row.get_title())
@@ -476,20 +429,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     selected_host_flatpak_indexes = []
 
-    def find_app_icon(self, app_id):
-        try:
-            icon_path = (self.icon_theme.lookup_icon(app_id, None, 512, 1, self.get_direction(), 0).get_file().get_path())
-        except GLib.GError:
-            icon_path = None
-        if icon_path:
-            image = Gtk.Image.new_from_file(icon_path)
-            image.set_icon_size(Gtk.IconSize.LARGE)
-            image.add_css_class("icon-dropshadow")
-        else:
-            image = Gtk.Image.new_from_icon_name("application-x-executable-symbolic")
-            image.set_icon_size(Gtk.IconSize.LARGE)
-        return image
-
     def generate_list_of_flatpaks(self):
         self.set_title(self.main_window_title)
         self.batch_actions_enable(False)
@@ -519,7 +458,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             app_id = self.host_flatpaks[index][2]
             app_ref = self.host_flatpaks[index][8]
             flatpak_row = Adw.ActionRow(title=GLib.markup_escape_text(app_name))
-            flatpak_row.add_prefix(self.find_app_icon(app_id))
+            flatpak_row.add_prefix(self.func.find_app_icon(app_id))
 
             if (not self.show_runtimes) and "runtime" in self.host_flatpaks[index][12]:
                 continue
@@ -604,7 +543,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             app_id = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][2]
             app_name = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][0]
             path = f"{self.user_data_path}{app_id}"
-            trash = self.trash_folder(None, path)
+            trash = self.func.trash_folder(None, path)
             if trash == 1:
                 show_success = False
                 self.toast_overlay.add_toast(Adw.Toast.new(_("No user data for {}").format(app_name)))
@@ -649,6 +588,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.func = functions(self)
         self.list_of_flatpaks.set_filter_func(self.filter_func)
         self.set_size_request(0, 230)
         self.generate_list_of_flatpaks()
@@ -665,3 +605,4 @@ class WarehouseWindow(Adw.ApplicationWindow):
         event_controller.connect("key-pressed", self.batch_key_handler)
         self.add_controller(event_controller)
         self.main_overlay.add_overlay(self.main_progress_bar)
+

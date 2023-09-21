@@ -43,6 +43,7 @@ warehouse_sources = [
   'properties_window.py',
   'orphans_window.py',
   'remotes.py',
+  'functions.py',
 ]
 
 install_data(warehouse_sources, install_dir: moduledir)
