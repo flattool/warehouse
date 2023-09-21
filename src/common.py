@@ -3,14 +3,13 @@ import os
 import subprocess
 import pathlib
 
-class functions():
+class myUtils:
     def __init__(self, window, **kwargs):
-        super().__init__(**kwargs)
         self.main_window = window
         self.host_home = str(pathlib.Path.home())
         self.user_data_path = self.host_home + "/.var/app/"
 
-    def trash_folder(self, path):
+    def trashFolder(self, path):
         if not os.path.exists(path):
             return 1
         try:
@@ -19,7 +18,7 @@ class functions():
         except subprocess.CalledProcessError:
             return 2
 
-    def get_size_format(self, b):
+    def getSizeFormat(self, b):
         factor = 1024
         suffix = "B"
         for unit in ["", "K", "M", "G", "T", "P", "E", "Z"]:
@@ -28,7 +27,7 @@ class functions():
             b /= factor
         return f"{b:.1f}{suffix}"
 
-    def get_directory_size(self, directory):
+    def getDirectorySize(self, directory):
         """Returns the `directory` size in bytes."""
         total = 0
         try:
@@ -42,7 +41,7 @@ class functions():
                 elif entry.is_dir():
                     # if it's a directory, recursively call this function
                     try:
-                        total += self.get_directory_size(entry.path)
+                        total += self.getDirectorySize(entry.path)
                     except FileNotFoundError:
                         pass
         except NotADirectoryError:
@@ -53,7 +52,7 @@ class functions():
             return 0
         return total
 
-    def find_app_icon(self, app_id):
+    def findAppIcon(self, app_id):
         icon_theme = Gtk.IconTheme.new()
         icon_theme.add_search_path("/var/lib/flatpak/exports/share/icons/")
         icon_theme.add_search_path(self.host_home + "/.local/share/flatpak/exports/share/icons")

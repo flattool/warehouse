@@ -23,7 +23,7 @@ import subprocess
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from .properties_window import show_properties_window
 from .orphans_window import show_orphans_window
-from .functions import functions
+from .common import myUtils
 
 @Gtk.Template(resource_path="/io/github/heliguy4599/Warehouse/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):
@@ -258,7 +258,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 if not file_list[i] in id_list:
                     row_index += 1
                     select_orphans_tickbox = Gtk.CheckButton(halign=Gtk.Align.CENTER)
-                    orphans_row = Adw.ActionRow(title=GLib.markup_escape_text(file_list[i]), subtitle=_("~") + self.func.get_size_format(self.func.get_directory_size(f"{self.user_data_path}{file_list[i]}")))
+                    orphans_row = Adw.ActionRow(title=GLib.markup_escape_text(file_list[i]), subtitle=_("~") + self.my_utils.getSizeFormat(self.my_utils.getDirectorySize(f"{self.user_data_path}{file_list[i]}")))
                     orphans_row.add_suffix(select_orphans_tickbox)
                     orphans_row.set_activatable_widget(select_orphans_tickbox)
                     select_orphans_tickbox.connect("toggled", selection_handler, orphans_row.get_title())
@@ -458,7 +458,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             app_id = self.host_flatpaks[index][2]
             app_ref = self.host_flatpaks[index][8]
             flatpak_row = Adw.ActionRow(title=GLib.markup_escape_text(app_name))
-            flatpak_row.add_prefix(self.func.find_app_icon(app_id))
+            flatpak_row.add_prefix(self.my_utils.findAppIcon(app_id))
 
             if (not self.show_runtimes) and "runtime" in self.host_flatpaks[index][12]:
                 continue
@@ -543,7 +543,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             app_id = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][2]
             app_name = self.host_flatpaks[self.selected_host_flatpak_indexes[i]][0]
             path = f"{self.user_data_path}{app_id}"
-            trash = self.func.trash_folder(None, path)
+            trash = self.my_utils.trash_folder(None, path)
             if trash == 1:
                 show_success = False
                 self.toast_overlay.add_toast(Adw.Toast.new(_("No user data for {}").format(app_name)))
@@ -588,7 +588,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.func = functions(self)
+        self.my_utils = myUtils(self)
         self.list_of_flatpaks.set_filter_func(self.filter_func)
         self.set_size_request(0, 230)
         self.generate_list_of_flatpaks()
