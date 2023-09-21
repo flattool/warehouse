@@ -189,7 +189,7 @@ class RemotesWindow(Adw.Window):
             label = Gtk.Label(label=install_type)
             label.add_css_class("subtitle")
             remote_row.add_suffix(label)
-            remove_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Remove remote"))
+            remove_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Remove {}").format(name))
             remove_button.add_css_class("flat")
             remove_button.connect("clicked", self.remove_handler, i)
             remote_row.add_suffix(remove_button)

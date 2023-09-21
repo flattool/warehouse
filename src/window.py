@@ -478,8 +478,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def find_app_icon(self, app_id):
         try:
-            icon_path = (
-                self.icon_theme.lookup_icon(app_id, None, 512, 1, self.get_direction(), 0).get_file().get_path())
+            icon_path = (self.icon_theme.lookup_icon(app_id, None, 512, 1, self.get_direction(), 0).get_file().get_path())
         except GLib.GError:
             icon_path = None
         if icon_path:

@@ -78,7 +78,7 @@ template WarehouseWindow : Adw.ApplicationWindow {
       [start]
       ToggleButton batch_select_all_button {
         label: "Select All";
-        tooltip-text: _("Select all Flatpaks");
+        // tooltip-text: _("Select all Apps");
       }
       [end]
       Button batch_uninstall_button {
@@ -105,12 +105,12 @@ template WarehouseWindow : Adw.ApplicationWindow {
 menu primary_menu {
   section {
     item {
-      label: _("Show Flatpak Runtimes");
+      label: _("Show Runtimes");
       action: "app.show-runtimes";
     }
 
     item {
-      label: _("Manage Orphaned Data Folders");
+      label: _("Manage Orphaned Data");
       action: "app.manage-data-folders";
     }
 
@@ -120,7 +120,7 @@ menu primary_menu {
     }*/
 
     item {
-      label: _("Manage Flatpak Remotes");
+      label: _("Manage Remotes");
       action: "app.show-remotes-window";
     }
 
