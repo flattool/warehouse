@@ -19,5 +19,3 @@ jobs:
       with:
         bundle: io.github.heliguy4599.Warehouse.flatpak
         manifest-path: io.github.heliguy4599.Warehouse.json
-        repository-name: gnome-nightly
-        repository-url: https://nightly.gnome.org/gnome-nightly.flatpakrepo
