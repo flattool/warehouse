@@ -21,7 +21,7 @@ import pathlib
 import subprocess
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
-from .show_properties_window import show_properties_window
+from .properties_window import show_properties_window
 from .orphans_window import show_orphans_window
 
 

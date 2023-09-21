@@ -40,7 +40,7 @@ warehouse_sources = [
   '__init__.py',
   'main.py',
   'window.py',
-  'show_properties_window.py',
+  'properties_window.py',
   'orphans_window.py',
   'remotes.py',
 ]
