@@ -22,16 +22,6 @@ class RemotesWindow(Adw.Window):
             data.append(row)
         return data
 
-    # def get_host_remotes(self):
-    #     output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes", "--columns=all"], capture_output=True, text=True).stdout
-    #     lines = output.strip().split("\n")
-    #     columns = lines[0].split("\t")
-    #     data = [columns]
-    #     for line in lines[1:]:
-    #         row = line.split("\t")
-    #         data.append(row)
-    #     return data
-
     def on_add_response(self, _dialog, response_id, _function):
         if response_id == "cancel":
             return
@@ -206,7 +196,7 @@ class RemotesWindow(Adw.Window):
         self.remotes_list.remove_all()
         self.host_remotes = self.my_utils.getHostRemotes()
         self.host_flatpaks = self.get_host_flatpaks()
-        if len(self.host_remotes) < 1:
+        if self.host_remotes[0][0] == '':
             no_remotes = Adw.StatusPage(icon_name="error-symbolic", title=_("No Remotes"), description=_("Warehouse cannot see the list of remotes or the system has no remotes added"))
             self.stack.add_child(no_remotes)
             self.stack.set_visible_child(no_remotes)
