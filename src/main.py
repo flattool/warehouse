@@ -28,7 +28,7 @@ gi.require_version("Adw", "1")
 from gi.repository import Gtk, Gio, Adw, GLib
 from .window import WarehouseWindow
 from .remotes import RemotesWindow
-
+from .orphans_window import OrphansWindow
 
 class WarehouseApplication(Adw.Application):
     """The main application singleton class."""
@@ -42,7 +42,7 @@ class WarehouseApplication(Adw.Application):
         self.create_action("about", self.on_about_action)
         self.create_action("preferences", self.on_preferences_action)
         self.create_action("search", self.on_search_action, ["<primary>f"])
-        self.create_action("manage-data-folders", self.on_manage_data_folders_action)
+        self.create_action("manage-data-folders", self.manage_data_shortcut)
         self.create_action("toggle-batch-mode", self.batch_mode_shortcut, ["<primary>b", "<primary>Return"])
         self.create_action("select-all-in-batch-mode", self.select_all_shortcut, ["<primary>a"])
         self.create_action("manage-data-folders", self.manage_data_shortcut, ["<primary>d"])
@@ -66,7 +66,8 @@ class WarehouseApplication(Adw.Application):
         self.props.active_window.batch_select_all_handler(select_button)
 
     def manage_data_shortcut(self, widget, _):
-        self.props.active_window.orphans_window()
+        #self.props.active_window.orphans_window()
+        OrphansWindow(self.props.active_window).present()
 
     def refresh_list_shortcut(self, widget, _):
         self.props.active_window.refresh_list_of_flatpaks(widget, True)
@@ -77,6 +78,10 @@ class WarehouseApplication(Adw.Application):
 
     def show_remotes_shortcut(self, widget, _):
         RemotesWindow(self.props.active_window).present()
+
+    # def on_manage_data_folders_action(self, widget, _):
+    #     #self.props.active_window.orphans_window()
+    #     OrphansWindow(self.props.active_window).present()
 
     def do_activate(self):
         """Called when the application is activated.
@@ -115,8 +120,6 @@ class WarehouseApplication(Adw.Application):
     def on_search_action(self, widget, _):
         self.props.active_window.search_bar.set_search_mode(not self.props.active_window.search_bar.get_search_mode())
 
-    def on_manage_data_folders_action(self, widget, _):
-        self.props.active_window.orphans_window()
 
     def on_show_runtimes_action(self, widget, _):
         self.show_runtimes_stateful.set_state(GLib.Variant.new_boolean(state := (not self.show_runtimes_stateful.get_property("state").get_boolean())))

@@ -8,6 +8,8 @@ class myUtils:
         self.main_window = window
         self.host_home = str(pathlib.Path.home())
         self.user_data_path = self.host_home + "/.var/app/"
+        self.install_success = True
+        self.uninstall_success = True
 
     def trashFolder(self, path):
         if not os.path.exists(path):
@@ -17,6 +19,9 @@ class myUtils:
             return 0
         except subprocess.CalledProcessError:
             return 2
+
+    def getSizeWithFormat(self, path):
+        return self.getSizeFormat(self.getDirectorySize(path))
 
     def getSizeFormat(self, b):
         factor = 1024
@@ -69,3 +74,97 @@ class myUtils:
             image = Gtk.Image.new_from_icon_name("application-x-executable-symbolic")
             image.set_icon_size(Gtk.IconSize.LARGE)
         return image
+
+    def getHostRemotes(self):
+        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes", "--columns=all"], capture_output=True, text=True).stdout
+        lines = output.strip().split("\n")
+        columns = lines[0].split("\t")
+        data = [columns]
+        for line in lines[1:]:
+            row = line.split("\t")
+            data.append(row)
+        return data
+
+    def getHostFlatpaks(self):
+        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"], capture_output=True, text=True).stdout
+        lines = output.strip().split("\n")
+        columns = lines[0].split("\t")
+        data = [columns]
+        for line in lines[1:]:
+            row = line.split("\t")
+            data.append(row)
+        return data
+
+    def uninstallFlatpak(self, ref_arr, type_arr, should_trash):
+        self.uninstall_success = True
+
+        to_uninstall = []
+        for i in range(len(ref_arr)):
+            to_uninstall.append([ref_arr[i], type_arr[i]])
+
+        apps = []
+        fails = []
+        for i in range(len(to_uninstall)):
+            ref = to_uninstall[i][0]
+            id = to_uninstall[i][0].split("/")[0]
+            app_type = to_uninstall[i][1]
+            apps.append([ref, id, app_type])
+        # apps array guide: [app_ref, app_id, user_or_system_install]
+
+        for i in range(len(apps)):
+            command = ['flatpak-spawn', '--host', 'flatpak', 'remove', '-y', f"--{apps[i][2]}", apps[i][0]]
+            try:
+                subprocess.run(command, capture_output=False, check=True)
+            except subprocess.CalledProcessError:
+                fails.append(apps[i])
+
+        if len(fails) > 0: # Run this only if there is 1 or more non uninstalled apps
+            pk_command = ['flatpak-spawn', '--host', 'pkexec', 'flatpak', 'remove', '-y', '--system']
+            print("second uninstall process")
+            for i in range(len(fails)):
+
+                if fails[i][2] == "user":
+                    self.uninstall_success = False
+                    continue # Skip if app is a user install app
+
+                pk_command.append(fails[i][0])
+            try:
+                print(pk_command)
+                subprocess.run(pk_command, capture_output=False, check=True)
+            except subprocess.CalledProcessError:
+                self.uninstall_success = False
+
+        if should_trash:
+            host_paks = self.getHostFlatpaks()
+            host_refs = []
+            for i in range(len(host_paks)):
+                host_refs.append(host_paks[i][8])
+
+            for i in range(len(apps)):
+                if apps[i][0] in host_refs:
+                    print(f"{apps[i][1]} is still installed")
+                else:
+                    self.trashFolder(f"{self.user_data_path}{apps[i][1]}")
+
+    def installFlatpak(self, app_arr, remote, user_or_system):
+        self.install_success = True
+        fails = []
+
+        for i in range(len(app_arr)):
+            command = ['flatpak-spawn', '--host', 'flatpak', 'install', remote, f"--{user_or_system}", '-y', app_arr[i]]
+            try:
+                subprocess.run(command, capture_output=False, check=True)
+            except subprocess.CalledProcessError:
+                fails.append(app_arr[i])
+        
+        if (len(fails) > 0) and (user_or_system == "system"):
+            pk_command = ['flatpak-spawn', '--host', 'pkexec', 'flatpak', 'install', remote, f"--{user_or_system}", '-y']
+            for i in range(len(fails)):
+                pk_command.append(fails[i])
+            try:
+                subprocess.run(pk_command, capture_output=False, check=True)
+            except subprocess.CalledProcessError:
+                self.install_success = False
+
+        if (len(fails) > 0) and (user_or_system == "user"):
+            self.install_success = False

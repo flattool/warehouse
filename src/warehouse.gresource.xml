@@ -2,6 +2,7 @@
 <gresources>
   <gresource prefix="/io/github/heliguy4599/Warehouse">
     <file preprocess="xml-stripblanks">window.ui</file>
+    <file preprocess="xml-stripblanks">orphans.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
   </gresource>
   <gresource prefix="/io/github/heliguy4599/Warehouse/icons/scalable/actions/">

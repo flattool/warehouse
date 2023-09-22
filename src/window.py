@@ -22,7 +22,7 @@ import subprocess
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from .properties_window import show_properties_window
-from .orphans_window import show_orphans_window
+#from .orphans_window import show_orphans_window
 from .common import myUtils
 
 @Gtk.Template(resource_path="/io/github/heliguy4599/Warehouse/window.ui")
@@ -56,7 +56,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
     in_batch_mode = False
     should_select_all = False
     host_flatpaks = None
-    uninstall_success = True
     install_success = True
     should_pulse = True
     no_close = None
@@ -76,7 +75,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.refresh_list_of_flatpaks(_a, False)
         self.main_toolbar_view.set_sensitive(True)
         self.disconnect(self.no_close)
-        if self.uninstall_success:
+        if self.my_utils.uninstall_success:
             if self.in_batch_mode:
                 self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled selected apps")))
             else:
@@ -84,40 +83,22 @@ class WarehouseWindow(Adw.ApplicationWindow):
         else:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not uninstall some apps")))
 
-    def uninstall_flatpak_thread(self, ref_arr, id_arr, should_trash):
-        failures = []
-        for i in range(len(ref_arr)):
-            try:
-                subprocess.run(["flatpak-spawn", "--host", "flatpak", "remove", "-y", ref_arr[i]], capture_output=False, check=True)
-            except subprocess.CalledProcessError:
-                failures.append(ref_arr[i])
-
-        if len(failures) > 0:
-            pk_command = ["flatpak-spawn", "--host", "pkexec", "flatpak", "remove", "-y"]
-            for i in range(len(failures)):
-                pk_command.append(failures[i])
-            try:
-                subprocess.run(pk_command, capture_output=False, check=True)
-            except subprocess.CalledProcessError:
-                self.uninstall_success = False
-
-        if should_trash:
-            for i in range(len(id_arr)):
-                try:
-                    subprocess.run(["flatpak-spawn", "--host", "gio", "trash", f"{self.user_data_path}{id_arr[i]}"])
-                except subprocess.CalledProcessError:
-                    self.toast_overlay.add_toast(Adw.Toast.new(_("Could not trash data")))
+    def uninstall_flatpak_thread(self, ref_arr, id_arr, type_arr, should_trash):
+        self.my_utils.uninstallFlatpak(ref_arr, type_arr, should_trash)
 
     def uninstall_flatpak(self, index_arr, should_trash):
         ref_arr = []
         id_arr = []
+        type_arr = []
         for i in range(len(index_arr)):
             ref = self.host_flatpaks[index_arr[i]][8]
             id = self.host_flatpaks[index_arr[i]][2]
+            app_type = self.host_flatpaks[index_arr[i]][7]
             ref_arr.append(ref)
             id_arr.append(id)
+            type_arr.append(app_type)
         task = Gio.Task.new(None, None, self.uninstall_flatpak_callback)
-        task.run_in_thread(lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, should_trash=should_trash: self.uninstall_flatpak_thread(ref_arr, id_arr, should_trash))
+        task.run_in_thread(lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, type_arr=type_arr ,should_trash=should_trash: self.uninstall_flatpak_thread(ref_arr, id_arr, type_arr, should_trash))
 
     def batch_uninstall_button_handler(self, _widget):
         self.should_pulse = True
@@ -179,253 +160,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
             dialog.set_response_appearance("purge", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", uninstall_response, dialog.choose_finish)
         Gtk.Window.present(dialog)
-
-    def orphans_window(self):
-        global window_title
-        window_title = _("Manage Leftover Data")
-        orphans_window = Adw.Window(title=window_title)
-        orphans_clamp = Adw.Clamp()
-        orphans_scroll = Gtk.ScrolledWindow()
-        orphans_toast_overlay = Adw.ToastOverlay()
-        orphans_stack = Gtk.Stack()
-        orphans_overlay = Gtk.Overlay()
-        orphans_progress_bar = Gtk.ProgressBar(visible=False, pulse_step=0.7)
-        orphans_toolbar_view = Adw.ToolbarView()
-        orphans_title_bar = Gtk.HeaderBar()
-        orphans_action_bar = Gtk.ActionBar()
-        orphans_list = Gtk.ListBox(selection_mode="none", valign=Gtk.Align.START, margin_top=6, margin_bottom=6, margin_start=12, margin_end=12)
-        no_data = Adw.StatusPage(icon_name="check-plain-symbolic", title=_("No Data"), description=_("There is no leftover user data"))
-
-        orphans_window.set_default_size(500, 450)
-        orphans_window.set_size_request(260, 230)
-        orphans_window.set_modal(True)
-        orphans_window.set_resizable(True)
-        orphans_window.set_transient_for(self)
-
-        orphans_stack.add_child(orphans_overlay)
-        orphans_toast_overlay.set_child(orphans_stack)
-        orphans_progress_bar.add_css_class("osd")
-        orphans_overlay.add_overlay(orphans_progress_bar)
-        orphans_overlay.set_child(orphans_scroll)
-
-        orphans_toolbar_view.add_top_bar(orphans_title_bar)
-        orphans_toolbar_view.add_bottom_bar(orphans_action_bar)
-        orphans_toolbar_view.set_content(orphans_toast_overlay)
-        orphans_window.set_content(orphans_toolbar_view)
-        orphans_list.add_css_class("boxed-list")
-        orphans_scroll.set_child(orphans_clamp)
-        orphans_clamp.set_child(orphans_list)
-        orphans_stack.add_child(no_data)
-
-        global total_selected
-        total_selected = 0
-        global selected_rows
-        selected_rows = []
-        should_pulse = False
-        show_orphans_window()
-
-        def orphans_pulser():
-            nonlocal should_pulse
-            if should_pulse:
-                orphans_progress_bar.pulse()
-                GLib.timeout_add(500, orphans_pulser)
-
-        def toggle_button_handler(button):
-            if button.get_active():
-                generate_list(button, True)
-            else:
-                generate_list(button, False)
-
-        def generate_list(widget, is_select_all):
-            global window_title
-            orphans_window.set_title(window_title)
-            global total_selected
-            total_selected = 0
-            global selected_rows
-            selected_rows = []
-            trash_button.set_sensitive(False)
-            install_button.set_sensitive(False)
-
-            orphans_list.remove_all()
-            file_list = os.listdir(self.user_data_path)
-            id_list = []
-
-            for i in range(len(self.host_flatpaks)):
-                id_list.append(self.host_flatpaks[i][2])
-
-            row_index = -1
-            for i in range(len(file_list)):
-                if not file_list[i] in id_list:
-                    row_index += 1
-                    select_orphans_tickbox = Gtk.CheckButton(halign=Gtk.Align.CENTER)
-                    orphans_row = Adw.ActionRow(title=GLib.markup_escape_text(file_list[i]), subtitle=_("~") + self.my_utils.getSizeFormat(self.my_utils.getDirectorySize(f"{self.user_data_path}{file_list[i]}")))
-                    orphans_row.add_suffix(select_orphans_tickbox)
-                    orphans_row.set_activatable_widget(select_orphans_tickbox)
-                    select_orphans_tickbox.connect("toggled", selection_handler, orphans_row.get_title())
-                    if is_select_all == True:
-                        select_orphans_tickbox.set_active(True)
-                    orphans_list.append(orphans_row)
-            if not orphans_list.get_row_at_index(0):
-                orphans_stack.set_visible_child(no_data)
-                orphans_action_bar.set_revealed(False)
-
-        def key_handler(_a, event, _c, _d):
-            if event == Gdk.KEY_Escape:
-                orphans_window.close()
-            elif event == Gdk.KEY_Delete or event == Gdk.KEY_BackSpace:
-                trash_button_handler(event)
-
-        def trash_button_handler(widget):
-            if total_selected == 0:
-                return 1
-            show_success = True
-            for i in range(len(selected_rows)):
-                path = f"{self.user_data_path}{selected_rows[i]}"
-                try:
-                    subprocess.run(["flatpak-spawn", "--host", "gio", "trash", path], capture_output=False, check=True)
-                except:
-                    orphans_toast_overlay.add_toast(Adw.Toast.new(_("Can't trash {}").format(selected_rows[i])))
-                    show_success = False
-            select_all_button.set_active(False)
-
-            if show_success:
-                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Trashed data")))
-
-            generate_list(widget, False)
-
-        handler_id = 0
-
-        def install_callback(*_args):
-            nonlocal should_pulse
-            nonlocal handler_id
-
-            if self.install_success:
-                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Installed all apps")))
-            else:
-                orphans_toast_overlay.add_toast(Adw.Toast.new(_("Some apps didn't install")))
-            select_all_button.set_active(False)
-            orphans_progress_bar.set_visible(False)
-            should_pulse = False
-            self.refresh_list_of_flatpaks(None, False)
-            generate_list(None, False)
-            nonlocal orphans_toolbar_view
-            orphans_toolbar_view.set_sensitive(True)
-            orphans_window.disconnect(handler_id)  # Make window able to close
-
-        def thread_func(id_list, remote):
-            for i in range(len(id_list)):
-                try:
-                    subprocess.run(["flatpak-spawn", "--host", "flatpak", "install", "-y", remote[0], f"--{remote[1]}", id_list[i]], capture_output=False, check=True)
-                except subprocess.CalledProcessError:
-                    if remote[1] == "user":
-                        self.install_success = False
-                        continue
-                    try:
-                        subprocess.run(["flatpak-spawn", "--host", "pkexec", "flatpak", "install", "-y", remote[0], f"--{remote[1]}", id_list[i]], capture_output=False, check=True)
-                    except subprocess.CalledProcessError:
-                        self.install_success = False
-
-        def install_on_response(_a, response_id, _b):
-            nonlocal should_pulse
-            if response_id == "cancel":
-                should_pulse = False
-                orphans_progress_bar.set_visible(False)
-                return 1
-
-            orphans_toast_overlay.add_toast(Adw.Toast.new(_("This could take some time")))
-            nonlocal orphans_toolbar_view
-            orphans_toolbar_view.set_sensitive(False)
-            nonlocal handler_id
-            handler_id = orphans_window.connect("close-request", lambda event: True)  # Make window unable to close
-            remote = response_id.split("_")
-
-            orphans_progress_bar.set_visible(True)
-
-            task = Gio.Task.new(None, None, install_callback)
-            task.run_in_thread(lambda _task, _obj, _data, _cancellable, id_list=selected_rows, remote=remote: thread_func(id_list, remote))
-
-        def install_button_handler(widget):
-            self.install_success = True
-            nonlocal should_pulse
-            should_pulse = True
-            orphans_pulser()
-
-            def get_host_remotes():
-                output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes"], capture_output=True, text=True).stdout
-                lines = output.strip().split("\n")
-                columns = lines[0].split("\t")
-                data = [columns]
-                for line in lines[1:]:
-                    row = line.split("\t")
-                    data.append(row)
-                return data
-
-            host_remotes = get_host_remotes()
-
-            dialog = Adw.MessageDialog.new(self, _("Choose a Remote"))
-            dialog.set_close_response("cancel")
-            dialog.add_response("cancel", _("Cancel"))
-            dialog.connect("response", install_on_response, dialog.choose_finish)
-            dialog.set_transient_for(orphans_window)
-            if len(host_remotes) > 1:
-                dialog.set_body(_("Choose the Flatpak Remote Repository where attempted app downloads will be from."))
-                for i in range(len(host_remotes)):
-                    remote_name = host_remotes[i][0]
-                    remote_option = host_remotes[i][1]
-                    dialog.add_response(f"{remote_name}_{remote_option}", f"{remote_name} {remote_option}")
-                    dialog.set_response_appearance(f"{remote_name}_{remote_option}", Adw.ResponseAppearance.SUGGESTED)
-            else:
-                remote_name = host_remotes[0][0]
-                remote_option = host_remotes[0][1]
-                dialog.set_heading("Attempt to Install Matching Flatpaks?")
-                dialog.add_response(f"{remote_name}_{remote_option}", _("Continue"))
-            Gtk.Window.present(dialog)
-
-        event_controller = Gtk.EventControllerKey()
-        event_controller.connect("key-pressed", key_handler)
-        orphans_window.add_controller(event_controller)
-
-        select_all_button = Gtk.ToggleButton(label=_("Select All"))
-        select_all_button.connect("toggled", toggle_button_handler)
-        orphans_action_bar.pack_start(select_all_button)
-
-        trash_button = Gtk.Button(label="Trash", valign=Gtk.Align.CENTER, tooltip_text=_("Trash Selected"))
-        trash_button.add_css_class("destructive-action")
-        trash_button.connect("clicked", trash_button_handler)
-        orphans_action_bar.pack_end(trash_button)
-
-        install_button = Gtk.Button(label="Install", valign=Gtk.Align.CENTER, tooltip_text=_("Attempt to Install Selected"))
-        install_button.connect("clicked", install_button_handler)
-        install_button.set_visible(False)
-        orphans_action_bar.pack_end(install_button)
-        test = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes"], capture_output=True, text=True).stdout
-        for char in test:
-            if char.isalnum():
-                install_button.set_visible(True)
-
-        def selection_handler(tickbox, file):
-            global total_selected
-            global selected_rows
-            if tickbox.get_active() == True:
-                total_selected += 1
-                selected_rows.append(file)
-            else:
-                total_selected -= 1
-                to_find = file
-                selected_rows.remove(to_find)
-
-            if total_selected == 0:
-                orphans_window.set_title(window_title)
-                trash_button.set_sensitive(False)
-                install_button.set_sensitive(False)
-                select_all_button.set_active(False)
-            else:
-                orphans_window.set_title(_("{} Selected").format(total_selected))
-                trash_button.set_sensitive(True)
-                install_button.set_sensitive(True)
-
-        generate_list(self, False)
-        orphans_window.present()
 
     selected_host_flatpak_indexes = []
 
