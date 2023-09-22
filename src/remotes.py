@@ -148,13 +148,6 @@ class RemotesWindow(Adw.Window):
         self.generate_list()
 
     def remove_handler(self, _widget, index):
-        def remove_apps_check_handler(button):
-            if button.get_active():
-                apps_box.prepend(apps_scroll)
-                apps_box.prepend(label)
-            else:
-                apps_box.remove(label)
-                apps_box.remove(apps_scroll)
         name = self.host_remotes[index][0]
         title = self.host_remotes[index][1]
         install_type = self.host_remotes[index][7]
@@ -166,30 +159,6 @@ class RemotesWindow(Adw.Window):
         dialog.add_response("continue", _("Remove"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", self.remove_on_response, dialog.choose_finish, index)
-
-        label = Gtk.Label(label=_("These apps will be uninstalled"))
-        remove_apps = Gtk.CheckButton(label=_("Uninstall apps from this remote"))
-        remove_apps.connect("toggled", remove_apps_check_handler)
-
-        height = 400
-        apps_box = Gtk.Box(orientation="vertical")
-        apps_scroll = Gtk.ScrolledWindow(vexpand=True, min_content_height=height, margin_top=6, margin_bottom=6)
-        apps_list = Gtk.ListBox(selection_mode="none", valign="start")
-        apps_list.add_css_class("boxed-list")
-        apps_box.append(remove_apps)
-        #apps_box.append(apps_scroll)
-        
-        for i in range(len(self.host_flatpaks)):
-            if self.host_flatpaks[i][6] != name:
-                continue
-            if self.host_flatpaks[i][7] != install_type:
-                continue
-            
-            app_row = Adw.ActionRow(title=self.host_flatpaks[i][0])
-            apps_list.append(app_row)
-
-        apps_scroll.set_child(apps_list)
-        dialog.set_extra_child(apps_box)
         dialog.present()
 
     def generate_list(self):
@@ -220,9 +189,9 @@ class RemotesWindow(Adw.Window):
     
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
-        self.my_utils = myUtils(self)
 
         # Create Variables
+        self.my_utils = myUtils(self)
         self.window_title = _("Manage Remotes")
         self.host_remotes = []
         self.host_flatpaks = []
