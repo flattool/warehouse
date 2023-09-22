@@ -93,10 +93,6 @@ class WarehouseApplication(Adw.Application):
         if not win:
             win = WarehouseWindow(application=self)
         win.present()
-        # try:
-        # subprocess.run(['flattool', 'id', 'abcdefg'], check=True)
-        # except subprocess.CalledProcessError:
-        # print("Not found")
 
     def on_about_action(self, widget, _):
         """Callback for the app.about action."""
