@@ -1,4 +1,5 @@
 from gi.repository import Gtk, Adw, GLib, Gdk, Gio
+from .common import myUtils
 import subprocess
 import re
 
@@ -21,15 +22,15 @@ class RemotesWindow(Adw.Window):
             data.append(row)
         return data
 
-    def get_host_remotes(self):
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes", "--columns=all"], capture_output=True, text=True).stdout
-        lines = output.strip().split("\n")
-        columns = lines[0].split("\t")
-        data = [columns]
-        for line in lines[1:]:
-            row = line.split("\t")
-            data.append(row)
-        return data
+    # def get_host_remotes(self):
+    #     output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes", "--columns=all"], capture_output=True, text=True).stdout
+    #     lines = output.strip().split("\n")
+    #     columns = lines[0].split("\t")
+    #     data = [columns]
+    #     for line in lines[1:]:
+    #         row = line.split("\t")
+    #         data.append(row)
+    #     return data
 
     def on_add_response(self, _dialog, response_id, _function):
         if response_id == "cancel":
@@ -197,18 +198,13 @@ class RemotesWindow(Adw.Window):
             app_row = Adw.ActionRow(title=self.host_flatpaks[i][0])
             apps_list.append(app_row)
 
-
-
-
-
-
         apps_scroll.set_child(apps_list)
         dialog.set_extra_child(apps_box)
         dialog.present()
 
     def generate_list(self):
         self.remotes_list.remove_all()
-        self.host_remotes = self.get_host_remotes()
+        self.host_remotes = self.my_utils.getHostRemotes()
         self.host_flatpaks = self.get_host_flatpaks()
         if len(self.host_remotes) < 1:
             no_remotes = Adw.StatusPage(icon_name="error-symbolic", title=_("No Remotes"), description=_("Warehouse cannot see the list of remotes or the system has no remotes added"))
@@ -234,6 +230,7 @@ class RemotesWindow(Adw.Window):
     
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
+        self.my_utils = myUtils(self)
 
         # Create Variables
         self.window_title = _("Manage Remotes")

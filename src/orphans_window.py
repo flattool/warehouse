@@ -14,6 +14,9 @@ class OrphansWindow(Adw.Window):
     select_all_button = Gtk.Template.Child()
     main_overlay = Gtk.Template.Child()
     toast_overlay = Gtk.Template.Child()
+    main_stack = Gtk.Template.Child()
+    no_data = Gtk.Template.Child()
+    action_bar = Gtk.Template.Child()
 
     window_title = _("Manage Leftover Data")
     host_home = str(pathlib.Path.home())
@@ -188,6 +191,9 @@ class OrphansWindow(Adw.Window):
 
             # Add row to list
             self.list_of_data.append(dir_row)
+        if self.list_of_data.get_row_at_index(0) == None:
+            self.main_stack.set_visible_child(self.no_data)
+            self.action_bar.set_visible(False)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -209,6 +215,8 @@ class OrphansWindow(Adw.Window):
         self.add_controller(event_controller)
 
         self.install_button.connect("clicked", self.installButtonHandler)
+        if self.host_remotes[0][0] == '':
+            self.install_button.set_visible(False)
         self.trash_button.connect("clicked", self.trashHandler)
         self.select_all_button.connect("toggled", self.selectAllHandler)
         self.main_overlay.add_overlay(self.progress_bar)

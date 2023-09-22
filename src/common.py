@@ -76,13 +76,18 @@ class myUtils:
         return image
 
     def getHostRemotes(self):
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes", "--columns=all"], capture_output=True, text=True).stdout
+        output = subprocess.run(["flatpak-spawn", "--host", "flatpakd", "remotes", "--columns=all"], capture_output=True, text=True).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
         data = [columns]
         for line in lines[1:]:
             row = line.split("\t")
             data.append(row)
+        try:
+            for i in range(len(data)):
+                data[i][7] = data[i][7].split(",")[0]
+        except:
+            pass
         return data
 
     def getHostFlatpaks(self):
