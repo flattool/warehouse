@@ -44,17 +44,8 @@ template FilterWindow : Adw.Window {
                                     selection-mode: none;
                                     styles["boxed-list"]
                                     
-                                    Adw.ActionRow runtimes_row {
+                                    Adw.SwitchRow runtimes_row {
                                         title: _("Show Runtimes");
-
-                                        [suffix]
-                                        Box {
-                                            valign: center;
-                                            Switch runtimes_switch {
-                                            }
-                                        }
-
-                                        activatable-widget: runtimes_switch;
                                     }
                                 }
                                 // ListBox install_type_list {
