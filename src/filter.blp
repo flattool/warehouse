@@ -1,0 +1,121 @@
+using Gtk 4.0;
+using Adw 1;
+
+template FilterWindow : Adw.Window {
+    default-width: 500;
+    default-height: 450;
+    title: _("Set a Filter");
+    modal: true;
+
+    Adw.ToolbarView main_toolbar_view {
+        [top]
+        HeaderBar header_bar {
+            show-title-buttons: false;
+
+            [start]
+            Button cancel_button {
+                label: _("Cancel");
+            }
+            [end]
+            Button apply_button {
+                label: _("Apply");
+                styles["suggested-action"]
+            }
+        }
+        content:
+        Adw.ToastOverlay toast_overlay {
+          Stack main_stack {
+            Box main_box {
+                orientation: vertical;
+                Overlay main_overlay {
+                    ScrolledWindow scrolled_window {
+                        vexpand: true;
+                        Adw.Clamp{
+                            Box outerbox {
+                                orientation: vertical;
+
+                                ListBox show_runtimes_list {
+                                    margin-top: 6;
+                                    margin-bottom: 6;
+                                    margin-start: 12;
+                                    margin-end: 12;
+                                    hexpand: true;
+                                    valign: start;
+                                    selection-mode: none;
+                                    styles["boxed-list"]
+                                    
+                                    Adw.ActionRow runtimes_row {
+                                        title: _("Show Runtimes");
+
+                                        [suffix]
+                                        Box {
+                                            valign: center;
+                                            Switch runtimes_switch {
+                                            }
+                                        }
+
+                                        activatable-widget: runtimes_switch;
+                                    }
+                                }
+                                // ListBox install_type_list {
+                                //     margin-top: 6;
+                                //     margin-bottom: 6;
+                                //     margin-start: 12;
+                                //     margin-end: 12;
+                                //     hexpand: true;
+                                //     valign: start;
+                                //     selection-mode: none;
+                                //     styles["boxed-list"]
+                                    
+                                //     Adw.ActionRow user {
+                                //         title: _("User wide");
+                                //         subtitle: _("Apps only available to you");
+
+                                //         [suffix]
+                                //         CheckButton user_check {
+                                //         }
+
+                                //         activatable-widget: user_check;
+                                //     }
+                                //     Adw.ActionRow system {
+                                //         title: _("System wide");
+                                //         subtitle: _("Apps available to everyone on this system");
+
+                                //         [suffix]
+                                //         CheckButton system_check {
+                                //         }
+
+                                //         activatable-widget: system_check;
+                                //     }
+                                // }
+                                ListBox remotes_list {
+                                    margin-top: 6;
+                                    margin-bottom: 6;
+                                    margin-start: 12;
+                                    margin-end: 12;
+                                    hexpand: true;
+                                    valign: start;
+                                    selection-mode: none;
+                                    styles["boxed-list"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            Adw.StatusPage no_data {
+              icon-name: "check-plain-symbolic";
+              title: _("No Leftover Data");
+              description: _("There is no leftover user data");
+            }
+          }
+        };
+        // [bottom]
+        // ActionBar action_bar {
+        //     [start]
+        //     ToggleButton select_all_button {
+        //         label: _("Select All");
+        //     }
+        // }
+    }
+}

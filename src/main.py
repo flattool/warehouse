@@ -49,6 +49,7 @@ class WarehouseApplication(Adw.Application):
         self.create_action("refresh-list", self.refresh_list_shortcut, ["<primary>r", "F5"])
         self.create_action("show-runtimes", self.show_runtimes_shortcut, ["<primary>t"])
         self.create_action("show-remotes-window", self.show_remotes_shortcut, ["<primary>m"])
+        self.create_action("set-filter", self.filters_shortcut, ["<primary>y"])
 
         self.show_runtimes_stateful = Gio.SimpleAction.new_stateful("show-runtimes", None, GLib.Variant.new_boolean(False))
         self.show_runtimes_stateful.connect("activate", self.on_show_runtimes_action)
@@ -66,7 +67,6 @@ class WarehouseApplication(Adw.Application):
         self.props.active_window.batch_select_all_handler(select_button)
 
     def manage_data_shortcut(self, widget, _):
-        #self.props.active_window.orphans_window()
         OrphansWindow(self.props.active_window).present()
 
     def refresh_list_shortcut(self, widget, _):
@@ -79,9 +79,9 @@ class WarehouseApplication(Adw.Application):
     def show_remotes_shortcut(self, widget, _):
         RemotesWindow(self.props.active_window).present()
 
-    # def on_manage_data_folders_action(self, widget, _):
-    #     #self.props.active_window.orphans_window()
-    #     OrphansWindow(self.props.active_window).present()
+    def filters_shortcut(self, widget, _):
+        window = self.props.active_window
+        window.filterWindowHandler(window)
 
     def do_activate(self):
         """Called when the application is activated.

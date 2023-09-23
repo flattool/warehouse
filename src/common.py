@@ -10,7 +10,7 @@ class myUtils:
         self.user_data_path = self.host_home + "/.var/app/"
         self.install_success = True
         self.uninstall_success = True
-
+        
     def trashFolder(self, path):
         if not os.path.exists(path):
             return 1

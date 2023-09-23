@@ -22,7 +22,7 @@ import subprocess
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from .properties_window import show_properties_window
-#from .orphans_window import show_orphans_window
+from .filter_window import FilterWindow
 from .common import myUtils
 
 @Gtk.Template(resource_path="/io/github/heliguy4599/Warehouse/window.ui")
@@ -46,6 +46,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     main_box = Gtk.Template.Child()
     main_overlay = Gtk.Template.Child()
     main_toolbar_view = Gtk.Template.Child()
+    filter_button = Gtk.Template.Child()
 
     main_progress_bar = Gtk.ProgressBar(visible=False, pulse_step=0.7)
     main_progress_bar.add_css_class("osd")
@@ -169,6 +170,18 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.selected_host_flatpak_indexes = []
         self.should_select_all = self.batch_select_all_button.get_active()
 
+
+
+
+
+
+
+
+
+
+
+
+
         def get_host_flatpaks():
             output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"], capture_output=True, text=True).stdout
             lines = output.strip().split("\n")
@@ -180,12 +193,15 @@ class WarehouseWindow(Adw.ApplicationWindow):
             return data
 
         self.host_flatpaks = get_host_flatpaks()
-        if self.host_flatpaks == [[""]]:
-            self.main_stack.set_visible_child(self.no_flatpaks)
-            self.search_button.set_visible(False)
-            self.search_bar.set_visible(False)
-            self.batch_mode_button.set_visible(False)
-            return
+
+
+
+
+
+
+
+
+
 
         for index in range(len(self.host_flatpaks)):
             app_name = self.host_flatpaks[index][0]
@@ -228,6 +244,13 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 self.batch_mode_bar.set_revealed(False)
 
             self.list_of_flatpaks.append(flatpak_row)
+
+        if not self.list_of_flatpaks.get_row_at_index(0):
+            self.main_stack.set_visible_child(self.no_flatpaks)
+            self.search_button.set_visible(False)
+            self.search_bar.set_visible(False)
+            self.batch_mode_button.set_visible(False)
+            return
 
     def refresh_list_of_flatpaks(self, widget, should_toast):
         self.list_of_flatpaks.remove_all()
@@ -349,6 +372,15 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.clipboard.set(to_copy)
         self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app refs")))
 
+    def filterWindowHandler(self, widget):
+        filtwin = FilterWindow(self)
+        filtwin.present()
+
+    def updateFilter(self, filter):
+        self.filter_list = filter
+        self.refresh_list_of_flatpaks(self, True)
+        print(self.filter_list)
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
@@ -371,4 +403,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.create_action("copy-names", self.copyNames)
         self.create_action("copy-ids", self.copyIDs)
         self.create_action("copy-refs", self.copyRefs)
+
+        self.filter_button.connect("clicked", self.filterWindowHandler)
+
+        self.filter_list = ""
 

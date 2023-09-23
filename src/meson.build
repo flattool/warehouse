@@ -7,6 +7,7 @@ blueprints = custom_target('blueprints',
     'gtk/help-overlay.blp',
     'window.blp',
     'orphans.blp',
+    'filter.blp',
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
@@ -46,6 +47,8 @@ warehouse_sources = [
   'remotes.py',
   'common.py',
   'orphans.blp',
+  'filter_window.py',
+  'filter.blp'
 ]
 
 install_data(warehouse_sources, install_dir: moduledir)
