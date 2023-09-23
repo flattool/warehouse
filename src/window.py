@@ -213,9 +213,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             flatpak_row.add_suffix(trash_button)
 
             select_flatpak_tickbox = Gtk.CheckButton(halign=Gtk.Align.CENTER)
-            select_flatpak_tickbox.set_margin_start(4)
-            select_flatpak_tickbox.set_margin_end(4)
-            select_flatpak_tickbox.add_css_class("flat")
+            select_flatpak_tickbox.add_css_class("selection-mode")
             select_flatpak_tickbox.connect("toggled", self.flatpak_row_select_handler, index)
             flatpak_row.add_suffix(select_flatpak_tickbox)
 
@@ -260,14 +258,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.batch_copy_button.set_sensitive(should_enable)
         self.batch_clean_button.set_sensitive(should_enable)
         self.batch_uninstall_button.set_sensitive(should_enable)
-
-    def batch_copy_handler(self, widget):
-        to_copy = ""
-        for i in range(len(self.selected_host_flatpak_indexes)):
-            host_flatpak_index = self.selected_host_flatpak_indexes[i]
-            to_copy += f"{(self.host_flatpaks[host_flatpak_index][2])}\n"
-        self.clipboard.set(to_copy)
-        self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app IDs")))
 
     def on_batch_clean_response(self, dialog, response, _a):
         if response == "cancel":
@@ -320,6 +310,45 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
         self.batch_actions_enable(buttons_enable)
 
+    def create_action(self, name, callback, shortcuts=None):
+        """Add a window action.
+
+        Args:
+            name: the name of the action
+            callback: the function to be called when the action is
+              activated
+            shortcuts: an optional list of accelerators
+        """
+        action = Gio.SimpleAction.new(name, None)
+        action.connect("activate", callback)
+        self.add_action(action)
+        if shortcuts:
+            self.set_accels_for_action(f"app.{name}", shortcuts)
+
+    def copyNames(self, widget, _a):
+        to_copy = ""
+        for i in range(len(self.selected_host_flatpak_indexes)):
+            host_flatpak_index = self.selected_host_flatpak_indexes[i]
+            to_copy += f"{(self.host_flatpaks[host_flatpak_index][0])}\n"
+        self.clipboard.set(to_copy)
+        self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app names")))
+
+    def copyIDs(self, widget, _a):
+        to_copy = ""
+        for i in range(len(self.selected_host_flatpak_indexes)):
+            host_flatpak_index = self.selected_host_flatpak_indexes[i]
+            to_copy += f"{(self.host_flatpaks[host_flatpak_index][2])}\n"
+        self.clipboard.set(to_copy)
+        self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app IDs")))
+
+    def copyRefs(self, widget, _a):
+        to_copy = ""
+        for i in range(len(self.selected_host_flatpak_indexes)):
+            host_flatpak_index = self.selected_host_flatpak_indexes[i]
+            to_copy += f"{(self.host_flatpaks[host_flatpak_index][8])}\n"
+        self.clipboard.set(to_copy)
+        self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app refs")))
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
@@ -330,7 +359,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.search_bar.connect_entry(self.search_entry)
         self.refresh_button.connect("clicked", self.refresh_list_of_flatpaks, True)
         self.batch_mode_button.connect("toggled", self.batch_mode_handler)
-        self.batch_copy_button.connect("clicked", self.batch_copy_handler)
         self.batch_clean_button.connect("clicked", self.batch_clean_handler)
         self.batch_uninstall_button.connect("clicked", self.batch_uninstall_button_handler)
         self.batch_select_all_button.connect("clicked", self.batch_select_all_handler)
@@ -339,4 +367,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         event_controller.connect("key-pressed", self.batch_key_handler)
         self.add_controller(event_controller)
         self.main_overlay.add_overlay(self.main_progress_bar)
+
+        self.create_action("copy-names", self.copyNames)
+        self.create_action("copy-ids", self.copyIDs)
+        self.create_action("copy-refs", self.copyRefs)
 

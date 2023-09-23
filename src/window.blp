@@ -93,10 +93,10 @@ template WarehouseWindow : Adw.ApplicationWindow {
         tooltip-text: _("Send Selected Apps' Data to the Trash");
       }
       [end]
-      Button batch_copy_button {
+      MenuButton batch_copy_button {
         icon-name: "edit-copy-symbolic";
-        // label: _("Copy App ID");
         tooltip-text: _("Copy Selected App IDs");
+        menu-model: copy_menu;
       }
     }
   }
@@ -132,6 +132,25 @@ menu primary_menu {
     item {
       label: _("_About Warehouse");
       action: "app.about";
+    }
+  }
+}
+
+menu copy_menu {
+  section {
+    item {
+      label: _("Copy Names");
+      action: "win.copy-names";
+    }
+    
+    item {
+      label: _("Copy IDs");
+      action: "win.copy-ids";
+    }
+
+    item {
+      label: _("Copy Refs");
+      action: "win.copy-refs";
     }
   }
 }
