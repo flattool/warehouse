@@ -221,7 +221,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             app_ref = self.host_flatpaks[index][8]
             flatpak_row = Adw.ActionRow(title=GLib.markup_escape_text(app_name))
             flatpak_row.add_prefix(self.my_utils.findAppIcon(app_id))
-            flatpak_row.set_subtitle(self.host_flatpaks[index][8])
+            flatpak_row.set_subtitle(app_id)
 
             # Check the filter and skip row if it does not meet the filter
             if (not self.show_apps) and (not "runtime" in self.host_flatpaks[index][12]):
@@ -235,6 +235,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             if (not 'all' in self.filter_remotes_list) and (not self.host_flatpaks[index][6] in self.filter_remotes_list):
                 continue
+
+            # Change the subtitle from id to ref if the list is set to show runtimes
+            if self.show_runtimes:
+                flatpak_row.set_subtitle(app_ref)
 
             properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
             properties_button.add_css_class("flat")
