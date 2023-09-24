@@ -85,9 +85,17 @@ class myUtils:
             data.append(row)
         try:
             for i in range(len(data)):
-                data[i][7] = data[i][7].split(",")[0]
+                data[i][7] = data[i][7].split(",")
+                for j in range(len(data[i])):
+                    if data[i][7][j] == "user":
+                        data[i][7] = "user"
+                        break
+
+                    if data[i][7][j] == "system":
+                        data[i][7] = "system"
+                        break
         except:
-            pass
+            print("error getting remote installation types")
         return data
 
     def getHostFlatpaks(self):
