@@ -34,7 +34,7 @@ template FilterWindow : Adw.Window {
                             Box outerbox {
                                 orientation: vertical;
 
-                                ListBox show_runtimes_list {
+                                ListBox install_type_list {
                                     margin-top: 6;
                                     margin-bottom: 6;
                                     margin-start: 12;
@@ -44,8 +44,23 @@ template FilterWindow : Adw.Window {
                                     selection-mode: none;
                                     styles["boxed-list"]
                                     
-                                    Adw.SwitchRow runtimes_row {
+                                    Adw.ActionRow apps_row {
+                                        title: _("Show Apps");
+
+                                        Switch apps_switch {
+                                            valign: center;
+                                        }
+
+                                        activatable-widget: apps_switch;
+                                    }
+                                    Adw.ActionRow runtimes_row {
                                         title: _("Show Runtimes");
+
+                                        Switch runtimes_switch {
+                                            valign: center;
+                                        }
+
+                                        activatable-widget: runtimes_switch;
                                     }
                                 }
                                 // ListBox install_type_list {
@@ -79,6 +94,13 @@ template FilterWindow : Adw.Window {
                                 //         activatable-widget: system_check;
                                 //     }
                                 // }
+                                Label header_label {
+                                    margin-top: 6;
+                                    margin-bottom: 3;
+                                    margin-start: 12;
+                                    halign: start;
+                                    label: _("Show Flatpaks from these remotes");
+                                }
                                 ListBox remotes_list {
                                     margin-top: 6;
                                     margin-bottom: 6;

@@ -210,11 +210,11 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
 
         # Setting up filter stuff
-        self.show_runtimes = self.filter_list[0]
-        self.filter_install_type = self.filter_list[1]
-        self.filter_remotes_list = self.filter_list[2]
+        self.show_apps = self.filter_list[0]
+        self.show_runtimes = self.filter_list[1]
+        self.filter_install_type = self.filter_list[2]
+        self.filter_remotes_list = self.filter_list[3]
 
-        print(self.filter_list)
         for index in range(len(self.host_flatpaks)):
             app_name = self.host_flatpaks[index][0]
             app_id = self.host_flatpaks[index][2]
@@ -224,18 +224,16 @@ class WarehouseWindow(Adw.ApplicationWindow):
             flatpak_row.set_subtitle(self.host_flatpaks[index][8])
 
             # Check the filter and skip row if it does not meet the filter
+            if (not self.show_apps) and (not "runtime" in self.host_flatpaks[index][12]):
+                continue
+
             if (not self.show_runtimes) and "runtime" in self.host_flatpaks[index][12]:
-                print("skip runtime", app_id)
                 continue
 
             if (not 'all' in self.filter_install_type) and (not self.host_flatpaks[index][7] in self.filter_install_type):
-                print(self.filter_install_type)
-                print("skip install type", app_name)
                 continue
 
             if (not 'all' in self.filter_remotes_list) and (not self.host_flatpaks[index][6] in self.filter_remotes_list):
-                print(self.filter_install_type)
-                print("skip remote", app_name)
                 continue
 
             properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
@@ -265,7 +263,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             self.list_of_flatpaks.append(flatpak_row)
 
-        print(self.list_of_flatpaks.get_row_at_index(0))
         windowSetEmpty(self.list_of_flatpaks.get_row_at_index(0))
 
     def refresh_list_of_flatpaks(self, widget, should_toast):
@@ -273,14 +270,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.generate_list_of_flatpaks()
         if should_toast:
             self.toast_overlay.add_toast(Adw.Toast.new(_("List refreshed")))
-
-    def show_runtimes_toggle_handler(self, state):
-        if state:
-            self.show_runtimes = True
-        else:
-            self.show_runtimes = False
-        self.refresh_list_of_flatpaks(None, False)
-        self.selected_host_flatpak_indexes.clear()
 
     def batch_mode_handler(self, widget):
         self.batch_select_all_button.set_active(False)
@@ -390,16 +379,20 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def filterWindowHandler(self, widget):
         if widget.get_active():
-            # filtwin = FilterWindow(self)
-            # filtwin.present()
-            self.filter_list = [False, ["user"], ["kdeapps"]]
-            self.refresh_list_of_flatpaks(self, False)
+            filtwin = FilterWindow(self)
+            filtwin.present()
         else:
-            self.filter_list = [False, ["all"], ["all"]]
-            self.refresh_list_of_flatpaks(self, False)
+            old_list = self.filter_list
+            self.resetFilterList()
+            if old_list != self.filter_list:
+                self.refresh_list_of_flatpaks(self, False)
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Filter reset")))
 
     def filterWindowKeyboardHandler(self, widget):
         self.filter_button.set_active(not self.filter_button.get_active())
+
+    def resetFilterList(self):
+        self.filter_list = [True, False, ["all"], ["all"]]
 
     def updateFilter(self, filter):
         self.filter_list = filter
@@ -408,7 +401,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
-        self.filter_list = [False, ["all"], ["all"]]
+        self.filter_list = []
+        self.resetFilterList()
 
         self.list_of_flatpaks.set_filter_func(self.filter_func)
         self.set_size_request(0, 230)

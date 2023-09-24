@@ -47,13 +47,8 @@ class WarehouseApplication(Adw.Application):
         self.create_action("select-all-in-batch-mode", self.select_all_shortcut, ["<primary>a"])
         self.create_action("manage-data-folders", self.manage_data_shortcut, ["<primary>d"])
         self.create_action("refresh-list", self.refresh_list_shortcut, ["<primary>r", "F5"])
-        self.create_action("show-runtimes", self.show_runtimes_shortcut, ["<primary>t"])
         self.create_action("show-remotes-window", self.show_remotes_shortcut, ["<primary>m"])
-        self.create_action("set-filter", self.filters_shortcut, ["<primary>y"])
-
-        self.show_runtimes_stateful = Gio.SimpleAction.new_stateful("show-runtimes", None, GLib.Variant.new_boolean(False))
-        self.show_runtimes_stateful.connect("activate", self.on_show_runtimes_action)
-        self.add_action(self.show_runtimes_stateful)
+        self.create_action("set-filter", self.filters_shortcut, ["<primary>t"])
 
     def batch_mode_shortcut(self, widget, _):
         button = self.props.active_window.batch_mode_button
@@ -71,10 +66,6 @@ class WarehouseApplication(Adw.Application):
 
     def refresh_list_shortcut(self, widget, _):
         self.props.active_window.refresh_list_of_flatpaks(widget, True)
-
-    def show_runtimes_shortcut(self, widget, _):
-        window = self.props.active_window
-        window.show_runtimes_toggle_handler(window, not window.show_runtimes)
 
     def show_remotes_shortcut(self, widget, _):
         RemotesWindow(self.props.active_window).present()
@@ -115,11 +106,6 @@ class WarehouseApplication(Adw.Application):
 
     def on_search_action(self, widget, _):
         self.props.active_window.search_bar.set_search_mode(not self.props.active_window.search_bar.get_search_mode())
-
-
-    def on_show_runtimes_action(self, widget, _):
-        self.show_runtimes_stateful.set_state(GLib.Variant.new_boolean(state := (not self.show_runtimes_stateful.get_property("state").get_boolean())))
-        self.props.active_window.show_runtimes_toggle_handler(state)
 
     def create_action(self, name, callback, shortcuts=None):
         """Add an application action.

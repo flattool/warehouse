@@ -20,17 +20,17 @@ template WarehouseWindow : Adw.ApplicationWindow {
         tooltip-text: _("Search for an Installed App");
       }
 
+      [start]
+      ToggleButton filter_button {
+        icon-name: "funnel-symbolic";
+        tooltip-text: _("Filter Apps List");
+      }
+
       [end]
       MenuButton {
         icon-name: "open-menu-symbolic";
         tooltip-text: _("Main Menu");
         menu-model: primary_menu;
-      }
-
-      [end]
-      ToggleButton filter_button {
-        icon-name: "funnel-symbolic";
-        tooltip-text: _("Filter Apps List");
       }
       
       [end]
@@ -101,7 +101,7 @@ template WarehouseWindow : Adw.ApplicationWindow {
       [end]
       MenuButton batch_copy_button {
         icon-name: "edit-copy-symbolic";
-        tooltip-text: _("Copy Selected App IDs");
+        tooltip-text: _("Open Copy Menu");
         menu-model: copy_menu;
       }
     }
@@ -110,10 +110,6 @@ template WarehouseWindow : Adw.ApplicationWindow {
 
 menu primary_menu {
   section {
-    item {
-      label: _("Show Runtimes");
-      action: "app.show-runtimes";
-    }
 
     item {
       label: _("Manage Orphaned Data");
