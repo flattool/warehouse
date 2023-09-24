@@ -26,17 +26,17 @@ template WarehouseWindow : Adw.ApplicationWindow {
         tooltip-text: _("Main Menu");
         menu-model: primary_menu;
       }
+
+      [end]
+      ToggleButton filter_button {
+        icon-name: "funnel-symbolic";
+        tooltip-text: _("Filter Apps List");
+      }
       
       [end]
       ToggleButton batch_mode_button {
         icon-name: "selection-mode-symbolic";
         tooltip-text: _("Toggle Selection Mode");
-      }
-
-      [end]
-      Button filter_button {
-        icon-name: "funnel-symbolic";
-        tooltip-text: _("Filter Apps List");
       }
     }
     [top]

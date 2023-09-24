@@ -169,7 +169,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.batch_actions_enable(False)
         self.selected_host_flatpak_indexes = []
         self.should_select_all = self.batch_select_all_button.get_active()
-
+        self.main_stack.set_visible_child(self.main_box)
 
 
 
@@ -195,28 +195,48 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.host_flatpaks = get_host_flatpaks()
 
 
+        def windowSetEmpty(has_row):
+            self.batch_mode_button.set_sensitive(has_row)
+            self.search_button.set_sensitive(has_row)
+
+            if has_row:
+                self.main_stack.set_visible_child(self.main_box)
+            else:
+                self.batch_mode_button.set_active(False)
+                self.main_stack.set_visible_child(self.no_flatpaks)
 
 
 
 
 
+        # Setting up filter stuff
+        self.show_runtimes = self.filter_list[0]
+        self.filter_install_type = self.filter_list[1]
+        self.filter_remotes_list = self.filter_list[2]
 
-
-
+        print(self.filter_list)
         for index in range(len(self.host_flatpaks)):
             app_name = self.host_flatpaks[index][0]
             app_id = self.host_flatpaks[index][2]
             app_ref = self.host_flatpaks[index][8]
             flatpak_row = Adw.ActionRow(title=GLib.markup_escape_text(app_name))
             flatpak_row.add_prefix(self.my_utils.findAppIcon(app_id))
+            flatpak_row.set_subtitle(self.host_flatpaks[index][8])
 
+            # Check the filter and skip row if it does not meet the filter
             if (not self.show_runtimes) and "runtime" in self.host_flatpaks[index][12]:
+                print("skip runtime", app_id)
                 continue
 
-            if self.show_runtimes:
-                flatpak_row.set_subtitle(self.host_flatpaks[index][8])
-            else:
-                flatpak_row.set_subtitle(self.host_flatpaks[index][2])
+            if (not 'all' in self.filter_install_type) and (not self.host_flatpaks[index][7] in self.filter_install_type):
+                print(self.filter_install_type)
+                print("skip install type", app_name)
+                continue
+
+            if (not 'all' in self.filter_remotes_list) and (not self.host_flatpaks[index][6] in self.filter_remotes_list):
+                print(self.filter_install_type)
+                print("skip remote", app_name)
+                continue
 
             properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
             properties_button.add_css_class("flat")
@@ -245,12 +265,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             self.list_of_flatpaks.append(flatpak_row)
 
-        if not self.list_of_flatpaks.get_row_at_index(0):
-            self.main_stack.set_visible_child(self.no_flatpaks)
-            self.search_button.set_visible(False)
-            self.search_bar.set_visible(False)
-            self.batch_mode_button.set_visible(False)
-            return
+        print(self.list_of_flatpaks.get_row_at_index(0))
+        windowSetEmpty(self.list_of_flatpaks.get_row_at_index(0))
 
     def refresh_list_of_flatpaks(self, widget, should_toast):
         self.list_of_flatpaks.remove_all()
@@ -373,17 +389,27 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app refs")))
 
     def filterWindowHandler(self, widget):
-        filtwin = FilterWindow(self)
-        filtwin.present()
+        if widget.get_active():
+            # filtwin = FilterWindow(self)
+            # filtwin.present()
+            self.filter_list = [False, ["user"], ["kdeapps"]]
+            self.refresh_list_of_flatpaks(self, False)
+        else:
+            self.filter_list = [False, ["all"], ["all"]]
+            self.refresh_list_of_flatpaks(self, False)
+
+    def filterWindowKeyboardHandler(self, widget):
+        self.filter_button.set_active(not self.filter_button.get_active())
 
     def updateFilter(self, filter):
         self.filter_list = filter
-        self.refresh_list_of_flatpaks(self, True)
-        print(self.filter_list)
+        self.refresh_list_of_flatpaks(self, False)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
+        self.filter_list = [False, ["all"], ["all"]]
+
         self.list_of_flatpaks.set_filter_func(self.filter_func)
         self.set_size_request(0, 230)
         self.generate_list_of_flatpaks()
@@ -404,7 +430,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.create_action("copy-ids", self.copyIDs)
         self.create_action("copy-refs", self.copyRefs)
 
-        self.filter_button.connect("clicked", self.filterWindowHandler)
+        self.filter_button.connect("toggled", self.filterWindowHandler)
 
-        self.filter_list = ""
 

@@ -13,6 +13,10 @@ class FilterWindow(Adw.Window):
     remotes_list = Gtk.Template.Child()
     runtimes_row = Gtk.Template.Child()
 
+    def key_handler(self, _a, event, _c, _d):
+        if event == Gdk.KEY_Escape:
+            self.close()
+
     def runtimesHandler(self, switch, _a):
         print(switch.get_active())
 
@@ -37,16 +41,20 @@ class FilterWindow(Adw.Window):
         self.my_utils = myUtils(self)
         self.host_remotes = self.my_utils.getHostRemotes()
         self.filter_list = "the guh"
+        event_controller = Gtk.EventControllerKey()
 
         # Window Things
         self.set_transient_for(main_window)
+        self.add_controller(event_controller)
 
         # Connections
         self.apply_button.connect("clicked", lambda *_: main_window.updateFilter(self.filter_list))
         self.apply_button.connect("clicked", lambda *_: self.close())
         self.cancel_button.connect("clicked", lambda *_: self.close())
         self.runtimes_row.connect("notify::active", self.runtimesHandler)
+        event_controller.connect("key-pressed", self.key_handler)
 
         # Calls
         self.generateList()
+
 

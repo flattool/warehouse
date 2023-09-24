@@ -81,7 +81,7 @@ class WarehouseApplication(Adw.Application):
 
     def filters_shortcut(self, widget, _):
         window = self.props.active_window
-        window.filterWindowHandler(window)
+        window.filterWindowKeyboardHandler(window)
 
     def do_activate(self):
         """Called when the application is activated.

@@ -165,6 +165,11 @@ class RemotesWindow(Adw.Window):
         self.remotes_list.remove_all()
         self.host_remotes = self.my_utils.getHostRemotes()
         self.host_flatpaks = self.get_host_flatpaks()
+
+        def rowCopyHandler(widget, to_copy):
+            self.app_window.clipboard.set(to_copy)
+            self.make_toast(_("Copied {}").format(to_copy))
+
         if self.host_remotes[0][0] == '':
             no_remotes = Adw.StatusPage(icon_name="error-symbolic", title=_("No Remotes"), description=_("Warehouse cannot see the list of remotes or the system has no remotes added"))
             self.stack.add_child(no_remotes)
@@ -182,9 +187,13 @@ class RemotesWindow(Adw.Window):
             label = Gtk.Label(label=("{} wide").format(install_type))
             label.add_css_class("subtitle")
             remote_row.add_suffix(label)
+            copy_button = Gtk.Button(icon_name="edit-copy-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Copy remote name"))
+            copy_button.add_css_class("flat")
+            copy_button.connect("clicked", rowCopyHandler, name)
             remove_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Remove {}").format(name))
             remove_button.add_css_class("flat")
             remove_button.connect("clicked", self.remove_handler, i)
+            remote_row.add_suffix(copy_button)
             remote_row.add_suffix(remove_button)
     
     def __init__(self, main_window, **kwargs):
@@ -220,6 +229,7 @@ class RemotesWindow(Adw.Window):
         self.outer_box.append(self.remotes_list)
         self.remotes_list.append(self.user_data_row)
         self.remotes_list.add_css_class("boxed-list")
+        self.app_window = main_window
 
         self.add_button.connect("clicked", self.add_handler)
 
