@@ -311,7 +311,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.refresh_list_of_flatpaks(_a, False)
 
     def batch_clean_handler(self, widget):
-        dialog = Adw.MessageDialog.new(self, _("Trash Selected Apps' User Data?"), _("This user data will be sent to the trash."))
+        dialog = Adw.MessageDialog.new(self, _("Trash Selected Apps' User Data?"), _("Your user files and data for these apps will be sent to the trash."))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Trash Data"))

@@ -54,7 +54,7 @@ def show_properties_window(widget, index, window):
         dialog.set_body(_("Your user files and data for this app will be sent to the trash."))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
-        dialog.add_response("continue", _("Send Data to Trash"))
+        dialog.add_response("continue", _("Trash Data"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.set_transient_for(properties_window)
         dialog.connect("response", on_response, dialog.choose_finish)

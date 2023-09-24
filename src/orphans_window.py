@@ -149,7 +149,7 @@ class OrphansWindow(Adw.Window):
             self.select_all_button.set_active(False)
             self.generateList()
             
-        dialog = Adw.MessageDialog.new(self, _("Trash folders?"), _("These folders will be moved to the trash."))
+        dialog = Adw.MessageDialog.new(self, _("Trash folders?"), _("These folders will be sent to the trash."))
         dialog.connect("response", onResponse, dialog.choose_finish)
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
