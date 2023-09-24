@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
 	<id>io.github.heliguy4599.Warehouse.desktop</id>
+  <launchable type="desktop-id">io.github.heliguy4599.Warehouse.desktop</launchable>
+  <name translatable='no'>Warehouse</name>
+  <developer_name translatable="no">Heliguy</developer_name>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-only</project_license>
-	<description>
-	  <p>No description</p>
+	<summary translatable='yes'>Manage most things Flatpak</summary>
+	<description translatable='yes'>
+	  <p>Warehouse is a simple app that can manage installed Flatpaks, Flatpak user data, and Flaptak remotes.</p>
+	  <p>Warehouse features the following capabilities:</p>
+      <ul>
+        <li>Show and filter the list of installed Flatpaks</li>
+        <li>Display properties of installed Flatpaks</li>
+        <li>Manage large groups of Flatpaks at once</li>
+        <li>Add and remove Flatpak remotes</li>
+        <li>Find and trash orphaned user data</li>
+        <li>Reinstall apps that match orphaned user data</li>
+      </ul>
+    <p>Warehouse is made with Libadwaita and GTK4 in Python</p>
 	</description>
+  <content_rating type="oars-1.1"/>
+  <url type="homepage">https://github.com/flattool/warehouse</url>
+  <url type="bugtracker">https://github.com/flattool/warehouse/issues</url>
+  <releases>
+    <release version="1.0.0" date="2023-9-24">
+			<description translatable="yes">
+				<p>First release of Warehouse</p>
+			</description>
+		</release>
+  </releases>
 </component>
