@@ -106,11 +106,11 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.main_pulser()
 
         def batch_uninstall_response(_idk, response_id, _widget):
+            should_trash = trash_check.get_active()
             if response_id == "cancel":
                 self.should_pulse = False
                 return 1
 
-            should_trash = False
             if response_id == "purge":
                 should_trash = True
 
@@ -119,14 +119,40 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.main_progress_bar.set_visible(True)
             self.uninstall_flatpak(self.selected_host_flatpak_indexes, should_trash)
 
-        dialog = Adw.MessageDialog.new(self, _("Uninstall Selected Apps?"), _("The app will be removed from your system. Optionally, you can also trash its user data."))
+        # Create Widgets
+        dialog = Adw.MessageDialog.new(self, _("Uninstall Selected Apps?"), _("It will not be possible to use these apps after removal."))
+        options_box = Gtk.Box(orientation="vertical")
+        header = Gtk.Label(label=_("App Settings & Data"), halign="start", margin_top=10)
+        options_list = Gtk.ListBox(selection_mode="none", margin_top=15)
+        keep_data = Adw.ActionRow(title=_("Keep"), subtitle=_("Allow restoring app settings and content"))
+        trash_data = Adw.ActionRow(title=_("Trash"), subtitle=_("Send app settings and content to the trash"))
+        keep_check = Gtk.CheckButton()
+        trash_check = Gtk.CheckButton()
+
+        # Apply Widgets
+        keep_data.add_prefix(keep_check)
+        keep_data.set_activatable_widget(keep_check)
+        trash_data.add_prefix(trash_check)
+        trash_data.set_activatable_widget(trash_check)
+        keep_check.set_group(trash_check)
+        dialog.set_extra_child(options_box)
+        options_list.append(keep_data)
+        options_list.append(trash_data)
+        options_box.append(header)
+        options_box.append(options_list)
+
+        # Connections
+        dialog.connect("response", batch_uninstall_response, dialog.choose_finish)
+
+        # Calls
+        keep_check.set_active(True)
+        options_list.add_css_class("boxed-list")
+        header.add_css_class("heading")
+        header.add_css_class("h4")
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Uninstall"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.add_response("purge", _("Uninstall and Trash Data"))
-        dialog.set_response_appearance("purge", Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.connect("response", batch_uninstall_response, dialog.choose_finish)
         Gtk.Window.present(dialog)
 
     def uninstall_button_handler(self, _widget, index):
@@ -137,11 +163,15 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.main_pulser()
 
         def uninstall_response(_idk, response_id, _widget):
+            try:
+                should_trash = trash_check.get_active()
+            except:
+                should_trash = False
+            
             if response_id == "cancel":
                 self.should_pulse = False
                 return 1
 
-            should_trash = False
             if response_id == "purge":
                 should_trash = True
 
@@ -150,15 +180,36 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.main_progress_bar.set_visible(True)
             self.uninstall_flatpak([index], should_trash)
 
-        dialog = Adw.MessageDialog.new(self, _("Uninstall {}?").format(name), _("The app will be removed from your system."))
+        # Create Widgets
+        dialog = Adw.MessageDialog.new(self, _("Uninstall {}?").format(name), _("It will not be possible to use {} after removal.").format(name))
+
+        if os.path.exists(f"{self.user_data_path}{id}"):
+            # Create Widgets for Trash
+            options_box = Gtk.Box(orientation="vertical")
+            header = Gtk.Label(label=_("App Settings & Data"), halign="start", margin_top=10)
+            options_list = Gtk.ListBox(selection_mode="none", margin_top=15)
+            keep_data = Adw.ActionRow(title=_("Keep"), subtitle=_("Allow restoring app settings and content"))
+            trash_data = Adw.ActionRow(title=_("Trash"), subtitle=_("Send app settings and content to the trash"))
+            keep_check = Gtk.CheckButton(active=True)
+            trash_check = Gtk.CheckButton()
+
+            # Apply Widgets for Trash
+            keep_data.add_prefix(keep_check)
+            keep_data.set_activatable_widget(keep_check)
+            trash_data.add_prefix(trash_check)
+            trash_data.set_activatable_widget(trash_check)
+            keep_check.set_group(trash_check)
+            dialog.set_extra_child(options_box)
+            options_list.append(keep_data)
+            options_list.append(trash_data)
+            options_box.append(header)
+            options_box.append(options_list)
+            options_list.add_css_class("boxed-list")
+
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Uninstall"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
-        if os.path.exists(f"{self.user_data_path}{id}"):
-            dialog.set_body(_("The app will be removed from your system. Optionally, you can also trash its user data."))
-            dialog.add_response("purge", _("Uninstall and Trash Data"))
-            dialog.set_response_appearance("purge", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", uninstall_response, dialog.choose_finish)
         Gtk.Window.present(dialog)
 
