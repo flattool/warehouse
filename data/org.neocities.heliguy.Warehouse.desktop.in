@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Warehouse
 Exec=warehouse
-Icon=io.github.heliguy4599.Warehouse
+Icon=org.neocities.heliguy.Warehouse
 Terminal=false
 Type=Application
 Categories=GTK;System;Utility;

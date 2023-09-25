@@ -35,7 +35,7 @@ class WarehouseApplication(Adw.Application):
 
     def __init__(self):
         super().__init__(
-            application_id="io.github.heliguy4599.Warehouse",
+            application_id="org.neocities.heliguy.Warehouse",
             flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
         )
         self.create_action("quit", lambda *_: self.quit(), ["<primary>q"])
@@ -90,7 +90,7 @@ class WarehouseApplication(Adw.Application):
         about = Adw.AboutWindow(
             transient_for=self.props.active_window,
             application_name="Warehouse",
-            application_icon="io.github.heliguy4599.Warehouse",
+            application_icon="org.neocities.heliguy.Warehouse",
             developer_name="Heliguy",
             version="0.6.0",
             developers=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu"],
