@@ -4,7 +4,7 @@ import subprocess
 import os
 
 def show_properties_window(widget, index, window):
-    properties_window = Adw.Window(title=_("Properties of {}").format(window.host_flatpaks[index][0]))
+    properties_window = Adw.Window(title=_("{} Properties").format(window.host_flatpaks[index][0]))
     properties_window.set_default_size(350, 600)
     properties_window.set_size_request(260, 230)
     properties_window.set_modal(True)
