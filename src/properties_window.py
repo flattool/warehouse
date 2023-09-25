@@ -72,7 +72,7 @@ def show_properties_window(widget, index, window):
     
     image = my_utils.findAppIcon(window.host_flatpaks[index][2])
     image.add_css_class("icon-dropshadow")
-    image.set_margin_top(12)
+    image.set_margin_top(6)
     image.set_pixel_size(100)
     properties_box.append(image)
 
