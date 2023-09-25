@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.3.1\n"
 
-#: data/org.neocities.heliguy.Warehouse.desktop.in:3
+#: data/io.github.heliguy4599.Warehouse.desktop.in:3
 msgid "Warehouse"
 msgstr "Warehouse"
 
-#: data/org.neocities.heliguy.Warehouse.metainfo.xml.in:7
+#: data/io.github.heliguy4599.Warehouse.metainfo.xml.in:7
 msgid "No description"
 msgstr "Brak opisu"
 

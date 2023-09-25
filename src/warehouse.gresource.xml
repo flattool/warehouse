@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/org/neocities/heliguy/Warehouse">
+  <gresource prefix="/io/github/heliguy4599/Warehouse">
     <file preprocess="xml-stripblanks">window.ui</file>
     <file preprocess="xml-stripblanks">orphans.ui</file>
     <file preprocess="xml-stripblanks">filter.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
-    <!-- <file preprocess="xml-stripblanks">../data/org.neocities.heliguy.Warehouse.metainfo.xml.in</file> -->
+    <!-- <file preprocess="xml-stripblanks">../data/io.github.heliguy4599.Warehouse.metainfo.xml.in</file> -->
   </gresource>
-  <gresource prefix="/org/neocities/heliguy/Warehouse/icons/scalable/actions/">
+  <gresource prefix="/io/github/heliguy4599/Warehouse/icons/scalable/actions/">
     <file preprocess="xml-stripblanks">selection-mode-symbolic.svg</file>
     <file preprocess="xml-stripblanks">error-symbolic.svg</file>
     <file preprocess="xml-stripblanks">brush-symbolic.svg</file>

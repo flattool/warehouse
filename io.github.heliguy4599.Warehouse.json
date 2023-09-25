@@ -1,5 +1,5 @@
 {
-    "id" : "org.neocities.heliguy.Warehouse",
+    "id" : "io.github.heliguy4599.Warehouse",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "45",
     "sdk" : "org.gnome.Sdk",

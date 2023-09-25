@@ -33,12 +33,12 @@ To use Warehouse effectively, ensure the following dependencies are installed on
 
 ## 🛠️ Installation Steps:
 1. Make sure you have the above dependencies installed.
-2. Visit the [releases](https://github.com/flattool/warehouse/releases) page and download `org.neocities.heliguy.Warehouse.flatpak`.
+2. Visit the [releases](https://github.com/flattool/warehouse/releases) page and download `io.github.heliguy4599.Warehouse.flatpak`.
 3. Install it using your software store or run the following command:
    ```shell
-   $ flatpak install /path/to/org.neocities.heliguy.Warehouse.flatpak
+   $ flatpak install /path/to/io.github.heliguy4599.Warehouse.flatpak
    ```
 You're all set! Launch the application by clicking its icon in your app menu or running:
 ```shell
-$ flatpak run org.neocities.heliguy.Warehouse
+$ flatpak run io.github.heliguy4599.Warehouse
 ```

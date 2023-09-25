@@ -4,7 +4,7 @@ import subprocess
 import os
 import pathlib
 
-@Gtk.Template(resource_path="org/neocities/heliguy/Warehouse/orphans.ui")
+@Gtk.Template(resource_path="/io/github/heliguy4599/Warehouse/orphans.ui")
 class OrphansWindow(Adw.Window):
     __gtype_name__ = "OrphansWindow"
 

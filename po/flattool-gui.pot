@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/org.neocities.heliguy.Warehouse.desktop.in:3
+#: data/io.github.heliguy4599.Warehouse.desktop.in:3
 msgid "Warehouse"
 msgstr ""
 
-#: data/org.neocities.heliguy.Warehouse.metainfo.xml.in:7
+#: data/io.github.heliguy4599.Warehouse.metainfo.xml.in:7
 msgid "No description"
 msgstr ""
 

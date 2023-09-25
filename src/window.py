@@ -25,7 +25,7 @@ from .properties_window import show_properties_window
 from .filter_window import FilterWindow
 from .common import myUtils
 
-@Gtk.Template(resource_path="org/neocities/heliguy/Warehouse/window.ui")
+@Gtk.Template(resource_path="/io/github/heliguy4599/Warehouse/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):
     __gtype_name__ = "WarehouseWindow"
     main_window_title = "Warehouse"
