@@ -92,7 +92,7 @@ class WarehouseApplication(Adw.Application):
             application_name="Warehouse",
             application_icon="io.github.flattool.Warehouse",
             developer_name="Heliguy",
-            version="0.6.0",
+            version="0.7.0",
             developers=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu"],
             artists=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu", "eryn https://github.com/hericiumvevo"],
             copyright='© 2023 The Files Authors',
