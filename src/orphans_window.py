@@ -56,6 +56,9 @@ class OrphansWindow(Adw.Window):
 
     def selectAllHandler(self, button):
         self.should_select_all = button.get_active()
+        if not button.get_active():
+            self.install_button.set_sensitive(False)
+            self.trash_button.set_sensitive(False)
         self.generateList()
 
     def installCallback(self, *_args):
@@ -159,6 +162,7 @@ class OrphansWindow(Adw.Window):
 
     # Create the list of folders in the window
     def generateList(self):
+
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
         self.list_of_data.remove_all()
         self.selected_dirs = []
