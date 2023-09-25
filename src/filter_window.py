@@ -4,7 +4,7 @@ import subprocess
 import os
 import pathlib
 
-@Gtk.Template(resource_path="/io/github/heliguy4599/Warehouse/filter.ui")
+@Gtk.Template(resource_path="/io/github/flattool/Warehouse/filter.ui")
 class FilterWindow(Adw.Window):
     __gtype_name__ = "FilterWindow"
 

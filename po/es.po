@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/io.github.heliguy4599.Warehouse.desktop.in:3
+#: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
 msgstr "Warehouse"
 
-#: data/io.github.heliguy4599.Warehouse.metainfo.xml.in:7
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:7
 msgid "No description"
 msgstr ""
 

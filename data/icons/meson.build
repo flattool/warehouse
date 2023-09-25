@@ -1,4 +1,4 @@
-application_id = 'io.github.heliguy4599.Warehouse'
+application_id = 'io.github.flattool.Warehouse'
 
 scalable_dir = join_paths('hicolor', 'scalable', 'apps')
 install_data(

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="warehouse">
-	<schema id="io.github.heliguy4599.Warehouse" path="/io/github/heliguy4599/Warehouse/">
+	<schema id="io.github.flattool.Warehouse" path="/io/github/flattool/Warehouse/">
 	</schema>
 </schemalist>

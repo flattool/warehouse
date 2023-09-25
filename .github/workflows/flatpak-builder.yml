@@ -17,5 +17,5 @@ jobs:
     - name: Flatpak Builder
       uses: flatpak/flatpak-github-actions/flatpak-builder@v6.1
       with:
-        bundle: io.github.heliguy4599.Warehouse.flatpak
-        manifest-path: io.github.heliguy4599.Warehouse.json
+        bundle: io.github.flattool.Warehouse.flatpak
+        manifest-path: io.github.flattool.Warehouse.json

@@ -1,6 +1,6 @@
-data/io.github.heliguy4599.Warehouse.desktop.in
-data/io.github.heliguy4599.Warehouse.metainfo.xml.in
-data/io.github.heliguy4599.Warehouse.gschema.xml
+data/io.github.flattool.Warehouse.desktop.in
+data/io.github.flattool.Warehouse.metainfo.xml.in
+data/io.github.flattool.Warehouse.gschema.xml
 src/main.py
 src/window.py
 src/window.blp
