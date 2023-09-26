@@ -14,7 +14,7 @@
 
 5. **Manage Remotes:** 📦 Installed and enabled Flatpak remotes can be deleted, and new remotes can be added.
 
-![Alt text](screenshots.png)
+![Various screenshots of Warehouse's abilities](screenshots.png)
 
 ## 💬 Get in Contact
 - We have a [Discord Server](https://discord.gg/HVPF9Yg6) and a [Matrix Room](https://matrix.to/#/!SxRiApuHYRpJNgqxso:matrix.org) to discuss and send announcements in!
@@ -29,7 +29,7 @@
 ## 📦 Dependencies:
 To use Warehouse effectively, ensure the following dependencies are installed on your system:
 - GIO
-- GNOME Runtime and SDK version 45 as a Flatpak
+- GNOME Flatpak Runtime and SDK version 45
 
 ## 🛠️ Installation Steps:
 1. Make sure you have the above dependencies installed.
