@@ -55,7 +55,7 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="1.0.0" date="2023-9-24">
+    <release version="1.0.0" date="2023-9-25" timestamp="1695695940">
 			<description translatable="yes">
 				<p>First release of Warehouse</p>
 			</description>
