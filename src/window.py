@@ -104,15 +104,17 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def batch_uninstall_button_handler(self, _widget):
         self.should_pulse = True
         self.main_pulser()
+        has_user_data = [] # This is only an array so I can edit it in a sub-function without using nonlocal prefix
 
         def batch_uninstall_response(_idk, response_id, _widget):
-            should_trash = trash_check.get_active()
             if response_id == "cancel":
                 self.should_pulse = False
                 return 1
 
-            if response_id == "purge":
-                should_trash = True
+            try:
+                should_trash = trash_check.get_active()
+            except:
+                should_trash = False
 
             self.main_toolbar_view.set_sensitive(False)
             self.no_close = self.connect("close-request", lambda event: True)  # Make window unable to close
@@ -121,34 +123,45 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
         # Create Widgets
         dialog = Adw.MessageDialog.new(self, _("Uninstall Selected Apps?"), _("It will not be possible to use these apps after removal."))
-        options_box = Gtk.Box(orientation="vertical")
-        header = Gtk.Label(label=_("App Settings & Data"), halign="start", margin_top=10)
-        options_list = Gtk.ListBox(selection_mode="none", margin_top=15)
-        keep_data = Adw.ActionRow(title=_("Keep"), subtitle=_("Allow restoring app settings and content"))
-        trash_data = Adw.ActionRow(title=_("Trash"), subtitle=_("Send app settings and content to the trash"))
-        keep_check = Gtk.CheckButton()
-        trash_check = Gtk.CheckButton()
 
-        # Apply Widgets
-        keep_data.add_prefix(keep_check)
-        keep_data.set_activatable_widget(keep_check)
-        trash_data.add_prefix(trash_check)
-        trash_data.set_activatable_widget(trash_check)
-        keep_check.set_group(trash_check)
-        dialog.set_extra_child(options_box)
-        options_list.append(keep_data)
-        options_list.append(trash_data)
-        options_box.append(header)
-        options_box.append(options_list)
+        # Check to see if at least one app in the list has user data
+        for i in range(len(self.selected_host_flatpak_indexes)):
+            if os.path.exists(f"{self.user_data_path}{self.host_flatpaks[self.selected_host_flatpak_indexes[i]][2]}"):
+                has_user_data.append(True)
+                break
+
+        if len(has_user_data) > 0:
+            # Create Widgets
+            options_box = Gtk.Box(orientation="vertical")
+            header = Gtk.Label(label=_("App Settings & Data"), halign="start", margin_top=10)
+            options_list = Gtk.ListBox(selection_mode="none", margin_top=15)
+            keep_data = Adw.ActionRow(title=_("Keep"), subtitle=_("Allow restoring app settings and content"))
+            trash_data = Adw.ActionRow(title=_("Trash"), subtitle=_("Send app settings and content to the trash"))
+            keep_check = Gtk.CheckButton()
+            trash_check = Gtk.CheckButton()
+
+            # Apply Widgets
+            keep_data.add_prefix(keep_check)
+            keep_data.set_activatable_widget(keep_check)
+            trash_data.add_prefix(trash_check)
+            trash_data.set_activatable_widget(trash_check)
+            keep_check.set_group(trash_check)
+            options_list.append(keep_data)
+            options_list.append(trash_data)
+            options_box.append(header)
+            options_box.append(options_list)
+            dialog.set_extra_child(options_box)
+
+            # Calls
+            keep_check.set_active(True)
+            options_list.add_css_class("boxed-list")
+            header.add_css_class("heading")
+            header.add_css_class("h4")
 
         # Connections
         dialog.connect("response", batch_uninstall_response, dialog.choose_finish)
 
         # Calls
-        keep_check.set_active(True)
-        options_list.add_css_class("boxed-list")
-        header.add_css_class("heading")
-        header.add_css_class("h4")
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Uninstall"))
@@ -221,30 +234,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.selected_host_flatpak_indexes = []
         self.should_select_all = self.batch_select_all_button.get_active()
         self.main_stack.set_visible_child(self.main_box)
-
-
-
-
-
-
-
-
-
-
-
-
-        def get_host_flatpaks():
-            output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"], capture_output=True, text=True).stdout
-            lines = output.strip().split("\n")
-            columns = lines[0].split("\t")
-            data = [columns]
-            for line in lines[1:]:
-                row = line.split("\t")
-                data.append(row)
-            return data
-
-        self.host_flatpaks = get_host_flatpaks()
-
+        self.host_flatpaks = self.my_utils.getHostFlatpaks()
 
         def windowSetEmpty(has_row):
             self.batch_mode_button.set_sensitive(has_row)
@@ -255,10 +245,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
             else:
                 self.batch_mode_button.set_active(False)
                 self.main_stack.set_visible_child(self.no_flatpaks)
-
-
-
-
 
         # Setting up filter stuff
         self.show_apps = self.filter_list[0]
