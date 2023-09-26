@@ -427,7 +427,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.resetFilterList()
             if old_list != self.filter_list:
                 self.refresh_list_of_flatpaks(self, False)
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Filter reset")))
 
     def filterWindowKeyboardHandler(self, widget):
         self.filter_button.set_active(not self.filter_button.get_active())
