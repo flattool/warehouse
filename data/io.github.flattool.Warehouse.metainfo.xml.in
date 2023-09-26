@@ -6,19 +6,18 @@
   <developer_name translatable="no">Heliguy</developer_name>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-only</project_license>
-	<summary translatable='yes'>Manage most things Flatpak</summary>
+	<summary translatable='yes'>Manage all things Flatpak</summary>
 	<description translatable='yes'>
-	  <p>Warehouse is a simple app that can manage installed Flatpaks, Flatpak user data, and Flaptak remotes.</p>
-	  <p>Warehouse features the following capabilities:</p>
+	  <p>Warehouse is an app that manages installed Flatpaks, their user data, and Flaptak remotes.</p>
+	  <p>Features:</p>
       <ul>
         <li>Show and filter the list of installed Flatpaks</li>
         <li>Display properties of installed Flatpaks</li>
         <li>Manage large groups of Flatpaks at once</li>
         <li>Add and remove Flatpak remotes</li>
-        <li>Find and trash orphaned user data</li>
-        <li>Reinstall apps that match orphaned user data</li>
+        <li>Find and trash leftover user data</li>
+        <li>Reinstall apps that have leftover data</li>
       </ul>
-    <p>Warehouse is made with Libadwaita and GTK4 in Python</p>
 	</description>
   <recommends>
     <control>keyboard</control>
