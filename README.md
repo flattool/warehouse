@@ -32,7 +32,6 @@
   <img width="200" src="https://flathub.org/assets/badges/flathub-badge-i-en.png">
 </a>
 
-
 The recommended way of installing Warehouse is through Flatpak. If you don't have
 Flatpak installed, you can get it from [the Flatpak website](https://flatpak.org/setup).
 
