@@ -25,14 +25,19 @@
 - This project is still in its early stages, developed by a newcomer. Your understanding of potential bugs is greatly appreciated.
 - Warehouse assumes flatpak user data is located in the default directory: `~/.var/app`.
 - Warehouse does not aim to replace flatpak; it simply facilitates appropriate flatpak commands for the desired actions.
-
-## 📦 Dependencies:
-To use Warehouse effectively, ensure the following dependencies are installed on your system:
-- GIO
-- GNOME Flatpak Runtime and SDK version 45
-
+- 
 ## 🛠️ Download
 
 <a href="https://flathub.org/apps/io.github.flattool.Warehouse" align="center">
   <img width="200" src="https://flathub.org/assets/badges/flathub-badge-i-en.png">
 </a>
+
+The recommended way of installing Warehouse is through Flatpak. If you don't have
+Flatpak installed, you can get it from [the Flatpak website](https://flatpak.org/setup).
+
+You can install stable builds of Warehouse from [Flathub](https://flathub.org)
+by using this commands:
+   ```shell
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    flatpak install flathub io.github.flattool.Warehouse
+   ```
