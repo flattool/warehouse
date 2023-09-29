@@ -14,6 +14,12 @@
 
 5. **Manage Remotes:** 📦 Installed and enabled Flatpak remotes can be deleted, and new remotes can be added.
 
+## 🛠️ Download
+
+<a href="https://flathub.org/apps/io.github.flattool.Warehouse" align="center">
+  <img width="200" src="https://flathub.org/assets/badges/flathub-badge-i-en.png">
+</a>
+
 ![Various screenshots of Warehouse's abilities](screenshots.png)
 
 ## 💬 Get in Contact
@@ -30,15 +36,3 @@
 To use Warehouse effectively, ensure the following dependencies are installed on your system:
 - GIO
 - GNOME Flatpak Runtime and SDK version 45
-
-## 🛠️ Installation Steps:
-1. Make sure you have the above dependencies installed.
-2. Visit the [releases](https://github.com/flattool/warehouse/releases) page and download `io.github.flattool.Warehouse.flatpak`.
-3. Install it using your software store or run the following command:
-   ```shell
-   $ flatpak install /path/to/io.github.flattool.Warehouse.flatpak
-   ```
-You're all set! Launch the application by clicking its icon in your app menu or running:
-```shell
-$ flatpak run io.github.flattool.Warehouse
-```
