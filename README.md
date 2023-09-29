@@ -16,6 +16,12 @@
 
 ![Various screenshots of Warehouse's abilities](screenshots.png)
 
+## ⏬ Installation:
+
+Warehouse is now available on Flathub! Visit your software store and search for Warehouse, or click this badge.
+
+<a href=https://flathub.org/apps/io.github.flattool.Warehouse><img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/></a>
+
 ## 💬 Get in Contact
 - We have a [Discord Server](https://discord.gg/HVPF9Yg6) and a [Matrix Room](https://matrix.to/#/!SxRiApuHYRpJNgqxso:matrix.org) to discuss and send announcements in!
 - You can always open issues, PRs, and use other GitHub features here
@@ -26,24 +32,14 @@
 - Warehouse assumes flatpak user data is located in the default directory: `~/.var/app`.
 - Warehouse does not aim to replace flatpak; it simply facilitates appropriate flatpak commands for the desired actions.
 
-## 📦 Dependencies:
-To use Warehouse effectively, ensure the following dependencies are installed on your system:
-- GIO
-- GNOME Flatpak Runtime and SDK version 45
+## 🛠️ Installation from Repo Steps:
 
-## 🛠️ Installation Steps:
-
-Warehouse is now available on Flathub! Visit your software store and search for Warehouse to install it, or click this badge.
-
-
-
-1. Make sure you have the above dependencies installed.
-2. Visit the [releases](https://github.com/flattool/warehouse/releases) page and download `io.github.flattool.Warehouse.flatpak`.
-3. Install it using your software store or run the following command:
+1. Visit the [releases](https://github.com/flattool/warehouse/releases) page and download `io.github.flattool.Warehouse.flatpak`.
+2. Install it using your software store or run the following command:
    ```shell
-   $ flatpak install /path/to/io.github.flattool.Warehouse.flatpak
+   flatpak install /path/to/io.github.flattool.Warehouse.flatpak
    ```
 You're all set! Launch the application by clicking its icon in your app menu or running:
 ```shell
-$ flatpak run io.github.flattool.Warehouse
+flatpak run io.github.flattool.Warehouse
 ```
