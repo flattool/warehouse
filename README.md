@@ -32,6 +32,11 @@ To use Warehouse effectively, ensure the following dependencies are installed on
 - GNOME Flatpak Runtime and SDK version 45
 
 ## 🛠️ Installation Steps:
+
+Warehouse is now available on Flathub! Visit your software store and search for Warehouse to install it, or click this badge.
+
+
+
 1. Make sure you have the above dependencies installed.
 2. Visit the [releases](https://github.com/flattool/warehouse/releases) page and download `io.github.flattool.Warehouse.flatpak`.
 3. Install it using your software store or run the following command:
