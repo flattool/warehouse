@@ -23,7 +23,7 @@ Warehouse is now available on Flathub! Visit your software store and search for 
 <a href=https://flathub.org/apps/io.github.flattool.Warehouse><img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
 ## 💬 Get in Contact
-- We have a [Discord Server](https://discord.gg/HVPF9Yg6) and a [Matrix Room](https://matrix.to/#/!SxRiApuHYRpJNgqxso:matrix.org) to discuss and send announcements in!
+- We have a [Discord Server](https://discord.gg/TcBZEB495K) and a [Matrix Room](https://matrix.to/#/!SxRiApuHYRpJNgqxso:matrix.org) to discuss and send announcements in!
 - You can always open issues, PRs, and use other GitHub features here
 
 ## ℹ️ Important Notes:
