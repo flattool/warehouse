@@ -1,0 +1,62 @@
+using Gtk 4.0;
+using Adw 1;
+
+template PopularRemotesWindow : Adw.Window {
+    default-width: 500;
+    default-height: 450;
+    title: _("Add a Remote");
+
+    Adw.ToolbarView main_toolbar_view {
+        [top]
+        HeaderBar header_bar {
+            // [start]
+            // Button refresh_button {
+            //     icon-name: "view-refresh-symbolic";
+            //     tooltip-text: _("Refresh the List of Installed Apps");
+            // }
+        }
+        content:
+        Adw.ToastOverlay toast_overlay {
+          Stack main_stack {
+            Box main_box {
+                orientation: vertical;
+                Overlay main_overlay {
+                    ScrolledWindow scrolled_window {
+                        vexpand: true;
+                        Adw.Clamp{
+                            Box {
+                                orientation: vertical;
+                                ListBox list_of_remotes {
+                                    margin-top: 6;
+                                    margin-bottom: 6;
+                                    margin-start: 12;
+                                    margin-end: 12;
+                                    hexpand: true;
+                                    valign: start;
+                                    selection-mode: none;
+                                    styles["boxed-list"]
+                                }
+                                ListBox custom_list {
+                                    margin-top: 6;
+                                    margin-bottom: 6;
+                                    margin-start: 12;
+                                    margin-end: 12;
+                                    hexpand: true;
+                                    valign: start;
+                                    selection-mode: none;
+                                    styles["boxed-list"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            Adw.StatusPage no_data {
+              icon-name: "check-plain-symbolic";
+              title: _("No Leftover Data");
+              description: _("There is no leftover user data");
+            }
+          }
+        };
+    }
+}

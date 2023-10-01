@@ -1,5 +1,6 @@
 from gi.repository import Gtk, Adw, GLib, Gdk, Gio
 from .common import myUtils
+from .popular_remotes_window import PopularRemotesWindow
 import subprocess
 import re
 
@@ -21,117 +22,6 @@ class RemotesWindow(Adw.Window):
             row = line.split("\t")
             data.append(row)
         return data
-
-    def on_add_response(self, _dialog, response_id, _function):
-        if response_id == "cancel":
-            return
-
-        install_type = "--user"
-        if not self.add_as_user:
-            install_type = "--system"
-
-        self.name_to_add = self.name_to_add.strip()
-        self.url_to_add = self.url_to_add.strip()
-
-        command = ['flatpak-spawn', '--host', 'flatpak', 'remote-add', '--if-not-exists', self.name_to_add, self.url_to_add, install_type]
-        try:
-            subprocess.run(command, capture_output=True, check=True)
-        except Exception as e:
-            self.make_toast(_("Could not add {}").format(self.name_to_add))
-            print(e)
-        self.generate_list()
-
-    def add_handler(self, _widget):
-        dialog = Adw.MessageDialog.new(self, _("Add Flatpak Remote"))
-        dialog.set_close_response("cancel")
-        dialog.add_response("cancel", _("Cancel"))
-        dialog.add_response("continue", _("Add"))
-        dialog.set_response_enabled("continue", False)
-        dialog.set_response_appearance("continue", Adw.ResponseAppearance.SUGGESTED)
-
-        def name_update(widget):
-            is_enabled = True
-            self.name_to_add = widget.get_text()
-            name_pattern = re.compile(r'^[a-zA-Z\-]+$')
-            if not name_pattern.match(self.name_to_add):
-                is_enabled = False
-
-            if is_enabled:
-                widget.remove_css_class("error")
-            else:
-                widget.add_css_class("error")
-
-            if len(self.name_to_add) == 0:
-                is_enabled = False
-
-            confirm_enabler(is_enabled)
-
-        def url_update(widget):
-            is_enabled = True
-            self.url_to_add = widget.get_text()
-            url_pattern = re.compile(r'^[a-zA-Z0-9\-._~:/?#[\]@!$&\'()*+,;=]+$')
-            if not url_pattern.match(self.url_to_add):
-                is_enabled = False
-
-            if is_enabled:
-                widget.remove_css_class("error")
-            else:
-                widget.add_css_class("error")
-
-            if len(self.url_to_add) == 0:
-                is_enabled = False
-
-            confirm_enabler(is_enabled)
-
-        def confirm_enabler(is_enabled):
-            if len(self.name_to_add) == 0 or len(self.url_to_add) == 0:
-                is_enabled = False
-            dialog.set_response_enabled("continue", is_enabled)
-
-        def set_user(widget):
-            self.add_as_user = widget.get_active()
-
-        self.name_to_add = ""
-        self.url_to_add = ""
-        self.add_as_user = True
-
-        info_box = Gtk.Box(orientation="vertical")
-        entry_list = Gtk.ListBox(selection_mode="none", margin_bottom=12)
-        entry_list.add_css_class("boxed-list")
-        
-        name_entry = Adw.EntryRow(title=_("Name"))
-        name_entry.connect("changed", name_update)
-
-        url_entry = Adw.EntryRow(title=_("URL"))
-        url_entry.connect("changed", url_update)
-
-        entry_list.append(name_entry)
-        entry_list.append(url_entry)
-        info_box.append(entry_list)
-
-        install_type_list = Gtk.ListBox(selection_mode="none")
-        install_type_list.add_css_class("boxed-list")
-
-        user_row = Adw.ActionRow(title=_("User"), subtitle=_("Remote will be available to only you"))
-        user_check = Gtk.CheckButton(active=True)
-        user_check.connect("toggled", set_user)
-        user_row.add_prefix(user_check)
-        user_row.set_activatable_widget(user_check)
-
-        system_row = Adw.ActionRow(title=_("System"), subtitle=_("Remote will be available to every user on the system"))
-        system_check = Gtk.CheckButton()
-        system_row.add_prefix(system_check)
-        system_check.set_group(user_check)
-        system_row.set_activatable_widget(system_check)
-
-        install_type_list.append(user_row)
-        install_type_list.append(system_row)
-
-        info_box.append(install_type_list)
-
-        dialog.set_extra_child(info_box)
-        dialog.connect("response", self.on_add_response, dialog.choose_finish)
-        Gtk.Window.present(dialog)
 
     def remove_on_response(self, _dialog, response_id, _function, index):
         if response_id == "cancel":
@@ -195,6 +85,9 @@ class RemotesWindow(Adw.Window):
             remove_button.connect("clicked", self.remove_handler, i)
             remote_row.add_suffix(copy_button)
             remote_row.add_suffix(remove_button)
+
+    def showPopularRemotes(self, widget):
+        PopularRemotesWindow(self).present()
     
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -231,7 +124,7 @@ class RemotesWindow(Adw.Window):
         self.remotes_list.add_css_class("boxed-list")
         self.app_window = main_window
 
-        self.add_button.connect("clicked", self.add_handler)
+        self.add_button.connect("clicked", self.showPopularRemotes)
 
         # Window Stuffs
         self.set_title(self.window_title)
