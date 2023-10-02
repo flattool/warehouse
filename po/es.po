@@ -57,7 +57,7 @@ msgstr "Gestionar los datos sobrantes"
 
 #: src/window.py:175
 msgid "No Data"
-msgstr "Sin datos "
+msgstr "Sin datos"
 
 #: src/window.py:175
 msgid "There is no leftover user data"
