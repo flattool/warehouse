@@ -14,7 +14,7 @@ class PopularRemotesWindow(Adw.Window):
     toast_overlay = Gtk.Template.Child()
 
     remotes = [
-        ["elementary", "https://flatpak.elementary.io/repo.flatpakrepo", _("ElementoryOS's Apps")],
+        ["elementary", "https://flatpak.elementary.io/repo.flatpakrepo", _("elementary OS's Apps")],
         ["flathub", "https://dl.flathub.org/repo/flathub.flatpakrepo", _("The biggest repository of Flatpaks")],
         ["flathub-beta", "https://flathub.org/beta-repo/flathub-beta.flatpakrepo", _("The beta branch of the biggest repository of Flatpaks")],
         ["fedora", "oci+https://registry.fedoraproject.org", _("Flatpaks packaged by Fedora Linux")],
