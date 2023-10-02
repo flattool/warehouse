@@ -60,6 +60,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     install_success = True
     should_pulse = True
     no_close = None
+    re_get_flatpaks = False
 
     def main_pulser(self):
         if self.should_pulse:
@@ -119,6 +120,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.main_toolbar_view.set_sensitive(False)
             self.no_close = self.connect("close-request", lambda event: True)  # Make window unable to close
             self.main_progress_bar.set_visible(True)
+            self.main_progress_bar.set_can_target(False)
             self.uninstall_flatpak(self.selected_host_flatpak_indexes, should_trash)
 
         # Create Widgets
@@ -227,14 +229,19 @@ class WarehouseWindow(Adw.ApplicationWindow):
         Gtk.Window.present(dialog)
 
     selected_host_flatpak_indexes = []
+    main_list_select_ticks = []
+    main_list_trash_buttons = []
+    current_shown_flatpak_indexies = []
 
     def generate_list_of_flatpaks(self):
         self.set_title(self.main_window_title)
         self.batch_actions_enable(False)
         self.selected_host_flatpak_indexes = []
+        self.main_list_select_ticks = []
+        self.main_list_trash_buttons = []
+        self.current_shown_flatpak_indexies = []
         self.should_select_all = self.batch_select_all_button.get_active()
         self.main_stack.set_visible_child(self.main_box)
-        self.host_flatpaks = self.my_utils.getHostFlatpaks()
 
         def windowSetEmpty(has_row):
             self.batch_mode_button.set_sensitive(has_row)
@@ -282,25 +289,28 @@ class WarehouseWindow(Adw.ApplicationWindow):
             properties_button.connect("clicked", show_properties_window, index, self)
             flatpak_row.add_suffix(properties_button)
 
-            trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Uninstall {}").format(app_name))
+            trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Uninstall {}").format(app_name), visible=not self.in_batch_mode)
+            self.main_list_trash_buttons.append(trash_button)
             trash_button.add_css_class("flat")
             trash_button.connect("clicked", self.uninstall_button_handler, index)
             flatpak_row.add_suffix(trash_button)
 
-            select_flatpak_tickbox = Gtk.CheckButton(halign=Gtk.Align.CENTER)
+            select_flatpak_tickbox = Gtk.CheckButton(visible=self.in_batch_mode)
+            self.main_list_select_ticks.append(select_flatpak_tickbox)
             select_flatpak_tickbox.add_css_class("selection-mode")
             select_flatpak_tickbox.connect("toggled", self.flatpak_row_select_handler, index)
+            select_flatpak_tickbox.set_active(self.should_select_all)
             flatpak_row.add_suffix(select_flatpak_tickbox)
 
-            if self.in_batch_mode:
-                trash_button.set_visible(False)
-                flatpak_row.set_activatable_widget(select_flatpak_tickbox)
-                if self.should_select_all:
-                    select_flatpak_tickbox.set_active(True)
-                self.batch_mode_bar.set_revealed(True)
-            else:
-                select_flatpak_tickbox.set_visible(False)
-                self.batch_mode_bar.set_revealed(False)
+            # if self.in_batch_mode:
+            #     flatpak_row.set_activatable_widget(select_flatpak_tickbox)
+            #     trash_button.set_visible(False)
+            #     if self.should_select_all:
+            #         select_flatpak_tickbox.set_active(True)
+            #     self.batch_mode_bar.set_revealed(True)
+            # else:
+            #     select_flatpak_tickbox.set_visible(False)
+            #     self.batch_mode_bar.set_revealed(False)
 
             self.list_of_flatpaks.append(flatpak_row)
 
@@ -309,19 +319,27 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def refresh_list_of_flatpaks(self, widget, should_toast):
         self.list_of_flatpaks.remove_all()
         self.generate_list_of_flatpaks()
+        self.host_flatpaks = self.my_utils.getHostFlatpaks()
         if should_toast:
             self.toast_overlay.add_toast(Adw.Toast.new(_("List refreshed")))
 
     def batch_mode_handler(self, widget):
-        self.batch_select_all_button.set_active(False)
+        for i in range(len(self.main_list_select_ticks)):
+            self.main_list_select_ticks[i].set_visible(widget.get_active())
+            self.main_list_trash_buttons[i].set_visible(not widget.get_active())
+            if widget.get_active():
+                self.list_of_flatpaks.get_row_at_index(i).set_activatable(True)
+                self.list_of_flatpaks.get_row_at_index(i).set_activatable_widget(self.main_list_select_ticks[i])
+            else:
+                self.main_list_select_ticks[i].set_active(False)
+                self.list_of_flatpaks.get_row_at_index(i).set_activatable(False)
+        self.in_batch_mode = widget.get_active()
+        self.batch_mode_bar.set_revealed(widget.get_active())
         if widget.get_active():
-            self.in_batch_mode = True
             self.list_of_flatpaks.set_margin_bottom(6)
         else:
-            self.in_batch_mode = False
+            self.batch_select_all_button.set_active(False)
             self.list_of_flatpaks.set_margin_bottom(24)
-        self.refresh_list_of_flatpaks(None, False)
-        self.batch_actions_enable(False)
 
     def batch_actions_enable(self, should_enable):
         self.batch_copy_button.set_sensitive(should_enable)
@@ -357,8 +375,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         Gtk.Window.present(dialog)
 
     def batch_select_all_handler(self, widget):
-        self.should_select_all = widget.get_active()
-        self.refresh_list_of_flatpaks(widget, False)
+        for i in range(len(self.main_list_select_ticks)):
+            self.main_list_select_ticks[i].set_active(widget.get_active())
 
     def batch_key_handler(self, _b, event, _c, _d):
         if event == Gdk.KEY_Escape:
@@ -436,13 +454,45 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def updateFilter(self, filter):
         self.filter_list = filter
-        self.refresh_list_of_flatpaks(self, False)
+        show_apps = filter[0]
+        #show_runtimes = filter[1]
+        show_runtimes = True
+        filter_install_type = filter[2]
+        filter_remotes_list = filter[3]
+
+        for i in range(len(self.current_shown_flatpak_indexies)):
+            current = self.list_of_flatpaks.get_row_at_index(i)
+            print(self.current_shown_flatpak_indexies[i])
+            print(self.host_flatpaks[self.current_shown_flatpak_indexies[i]])
+
+
+
+        #         # Check the filter and skip row if it does not meet the filter
+        # if (not self.show_apps) and (not "runtime" in self.host_flatpaks[index][12]):
+        #     continue
+
+        # if (not self.show_runtimes) and "runtime" in self.host_flatpaks[index][12]:
+        #     continue
+
+        # if (not 'all' in self.filter_install_type) and (not self.host_flatpaks[index][7] in self.filter_install_type):
+        #     continue
+
+        # if (not 'all' in self.filter_remotes_list) and (not self.host_flatpaks[index][6] in self.filter_remotes_list):
+        #     continue
+
+        #     # Change the subtitle from id to ref if the list is set to show runtimes
+        #     if self.show_runtimes:
+        #         flatpak_row.set_subtitle(app_ref)
+
+
+        #self.refresh_list_of_flatpaks(self, False)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
         self.filter_list = []
         self.resetFilterList()
+        self.host_flatpaks = self.my_utils.getHostFlatpaks()
 
         self.list_of_flatpaks.set_filter_func(self.filter_func)
         self.set_size_request(0, 230)
@@ -465,5 +515,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.create_action("copy-refs", self.copyRefs)
 
         self.filter_button.connect("toggled", self.filterWindowHandler)
+
 
 
