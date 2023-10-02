@@ -137,11 +137,11 @@ msgstr "Ver propiedades"
 
 #: src/window.py:441
 msgid "List refreshed"
-msgstr "Lista actualizada "
+msgstr "Lista actualizada"
 
 #: src/window.py:471
 msgid "Copied selected app IDs"
-msgstr "Copiar los ID de las apps seleccionadas "
+msgstr "Copiar los ID de las apps seleccionadas"
 
 #: src/window.py:484
 msgid "No user data for {}"
@@ -149,19 +149,19 @@ msgstr "No hay datos de usuario para {}"
 
 #: src/window.py:487
 msgid "Can't trash user data for {}"
-msgstr "No se pueden borrar los datos de usuario de {} "
+msgstr "No se pueden borrar los datos de usuario de {}"
 
 #: src/window.py:489
 msgid "Trashed user data"
-msgstr "Datos de usuario borrados "
+msgstr "Datos de usuario borrados"
 
 #: src/window.py:493
 msgid "Delete Selected User Data?"
-msgstr "¿Borrar datos de usuario seleccionados? "
+msgstr "¿Borrar datos de usuario seleccionados?"
 
 #: src/window.py:493
 msgid "This user data will be sent to the trash."
-msgstr "Estos datos de usuario se enviarán a la papelera. "
+msgstr "Estos datos de usuario se enviarán a la papelera."
 
 #: src/window.py:496
 msgid "Trash Data"
@@ -177,7 +177,7 @@ msgstr "Aplicaciones desinstaladas"
 
 #: src/window.py:526
 msgid "Uninstall Selected Apps?"
-msgstr "¿Desinstalar aplicaciones seleccionadas? "
+msgstr "¿Desinstalar aplicaciones seleccionadas?"
 
 #: src/window.py:526
 msgid "Optionally, you can also trash their user data"
@@ -189,7 +189,7 @@ msgstr "Buscar una aplicación instalada"
 
 #: src/window.blp:20
 msgid "Refresh the List of Installed Apps"
-msgstr "Actualizar la lista de aplicaciones instaladas "
+msgstr "Actualizar la lista de aplicaciones instaladas"
 
 #: src/window.blp:26
 msgid "Main Menu"
@@ -197,7 +197,7 @@ msgstr "Menú principal"
 
 #: src/window.blp:33
 msgid "Enter Selection Mode"
-msgstr "Acceder al modo de selección "
+msgstr "Acceder al modo de selección"
 
 #: src/window.blp:72
 msgid "Select all Flatpaks"
@@ -213,20 +213,20 @@ msgstr "Borrar datos de usuario"
 
 #: src/window.blp:84
 msgid "Send Selected Flatpaks' Data to the Trash"
-msgstr "Enviar a la papelera los datos de las Flatpaks seleccionadas "
+msgstr "Enviar a la papelera los datos de las Flatpaks seleccionadas"
 
 #: src/window.blp:89
 msgid "Copy App ID"
-msgstr "Copiar ID de aplicación "
+msgstr "Copiar ID de aplicación"
 
 #: src/window.blp:90
 msgid "Copy Selected Flatpaks' IDs Seperated by a New Line"
 msgstr ""
-"Copiar los ID de las Flatpaks seleccionadas separadas por una nueva línea "
+"Copiar los ID de las Flatpaks seleccionadas separadas por una nueva línea"
 
 #: src/window.blp:96
 msgid "No Flatpaks Found"
-msgstr "No se han encontrado Flatpaks "
+msgstr "No se han encontrado Flatpaks"
 
 #: src/window.blp:97
 msgid ""
