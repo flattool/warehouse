@@ -454,38 +454,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def updateFilter(self, filter):
         self.filter_list = filter
-        show_apps = filter[0]
-        #show_runtimes = filter[1]
-        show_runtimes = True
-        filter_install_type = filter[2]
-        filter_remotes_list = filter[3]
-
-        for i in range(len(self.current_shown_flatpak_indexies)):
-            current = self.list_of_flatpaks.get_row_at_index(i)
-            print(self.current_shown_flatpak_indexies[i])
-            print(self.host_flatpaks[self.current_shown_flatpak_indexies[i]])
-
-
-
-        #         # Check the filter and skip row if it does not meet the filter
-        # if (not self.show_apps) and (not "runtime" in self.host_flatpaks[index][12]):
-        #     continue
-
-        # if (not self.show_runtimes) and "runtime" in self.host_flatpaks[index][12]:
-        #     continue
-
-        # if (not 'all' in self.filter_install_type) and (not self.host_flatpaks[index][7] in self.filter_install_type):
-        #     continue
-
-        # if (not 'all' in self.filter_remotes_list) and (not self.host_flatpaks[index][6] in self.filter_remotes_list):
-        #     continue
-
-        #     # Change the subtitle from id to ref if the list is set to show runtimes
-        #     if self.show_runtimes:
-        #         flatpak_row.set_subtitle(app_ref)
-
-
-        #self.refresh_list_of_flatpaks(self, False)
+        self.refresh_list_of_flatpaks(self, False)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
