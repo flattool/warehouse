@@ -2,8 +2,8 @@ using Gtk 4.0;
 using Adw 1;
 
 template PopularRemotesWindow : Adw.Window {
-    default-width: 500;
-    default-height: 450;
+    default-width: 450;
+    default-height: 550;
     title: _("Add a Remote");
 
     Adw.ToolbarView main_toolbar_view {
@@ -26,6 +26,13 @@ template PopularRemotesWindow : Adw.Window {
                         Adw.Clamp{
                             Box {
                                 orientation: vertical;
+                                Label {
+                                    label: _("Choose from a list of popular remotes");
+                                    halign: start;
+                                    margin-start: 12;
+                                    margin-bottom: 3;
+                                    styles["title-4"]
+                                }
                                 ListBox list_of_remotes {
                                     margin-top: 6;
                                     margin-bottom: 6;

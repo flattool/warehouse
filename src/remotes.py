@@ -87,7 +87,32 @@ class RemotesWindow(Adw.Window):
             remote_row.add_suffix(remove_button)
 
     def showPopularRemotes(self, widget):
-        PopularRemotesWindow(self).present()
+
+        remotes = [
+            ["elementary", "https://flatpak.elementary.io/repo.flatpakrepo", _("ElementoryOS's Apps")],
+            ["flathub", "https://dl.flathub.org/repo/flathub.flatpakrepo", _("The biggest repository of Flatpaks")],
+            ["flathub-beta", "https://flathub.org/beta-repo/flathub-beta.flatpakrepo", _("The beta branch of the biggest repository of Flatpaks")],
+            ["fedora", "oci+https://registry.fedoraproject.org", _("Flatpaks packaged by Fedora Linux")],
+            ["gnome-nightly", "https://nightly.gnome.org/gnome-nightly.flatpakrepo", _("Beta GNOME Apps and Runtimes")],
+            ["kdeapps", "https://distribute.kde.org/kdeapps.flatpakrepo", _("Beta KDE Apps and Runtimes")],
+        ]
+
+        non_added_remotes = []
+
+        host_remotes = self.my_utils.getHostRemotes()
+        host_remotes_names = []
+
+        for i in range(len(self.host_remotes)):
+            host_remotes_names.append(self.host_remotes[i][0])
+
+        for i in range(len(remotes)):
+            if remotes[i][0] not in host_remotes_names:
+                non_added_remotes.append(remotes[i])
+
+        if len(non_added_remotes) > 0:
+            PopularRemotesWindow(self).present()
+        else:
+            PopularRemotesWindow(self).add_handler(widget)
     
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)

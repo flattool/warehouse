@@ -39,7 +39,7 @@ class PopularRemotesWindow(Adw.Window):
         except Exception as e:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not add {}").format(self.name_to_add)))
             print(e)
-        self.generate_list()
+        self.parent_window.generate_list()
         self.close()
 
     def add_handler(self, _widget, name="", link=""):
@@ -49,6 +49,7 @@ class PopularRemotesWindow(Adw.Window):
         dialog.add_response("continue", _("Add"))
         dialog.set_response_enabled("continue", False)
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.SUGGESTED)
+        dialog.set_transient_for(self.parent_window)
 
         def name_update(widget):
             is_enabled = True
@@ -172,8 +173,8 @@ class PopularRemotesWindow(Adw.Window):
     def __init__(self, parent_window, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
+        self.parent_window = parent_window
 
-        self.connect("close-request", lambda *_: parent_window.generate_list())
         self.set_modal(True)
         self.set_transient_for(parent_window)
         self.generate_list()
