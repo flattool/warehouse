@@ -35,7 +35,7 @@ class PopularRemotesWindow(Adw.Window):
 
         command = ['flatpak-spawn', '--host', 'flatpak', 'remote-add', '--if-not-exists', self.name_to_add, self.url_to_add, install_type]
         try:
-            subprocess.run(command, capture_output=True, check=True)
+            subprocess.run(command, capture_output=True, check=True, env=self.new_env)
         except Exception as e:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not add {}").format(self.name_to_add)))
             print(e)
@@ -174,6 +174,9 @@ class PopularRemotesWindow(Adw.Window):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
         self.parent_window = parent_window
+
+        self.new_env = dict( os.environ ) 
+        self.new_env['LC_ALL'] = 'C' 
 
         self.set_modal(True)
         self.set_transient_for(parent_window)

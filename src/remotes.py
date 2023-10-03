@@ -2,10 +2,10 @@ from gi.repository import Gtk, Adw, GLib, Gdk, Gio
 from .common import myUtils
 from .popular_remotes_window import PopularRemotesWindow
 import subprocess
+import os
 import re
 
 class RemotesWindow(Adw.Window):
-
     def key_handler(self, _a, event, _c, _d):
         if event == Gdk.KEY_Escape:
             self.close()
@@ -14,7 +14,7 @@ class RemotesWindow(Adw.Window):
         self.toast_overlay.add_toast(Adw.Toast.new(text))
 
     def get_host_flatpaks(self):
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"], capture_output=True, text=True).stdout
+        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"], capture_output=True, text=True, env=self.new_env).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
         data = [columns]
@@ -32,7 +32,7 @@ class RemotesWindow(Adw.Window):
         install_type = self.host_remotes[index][7]
         command = ['flatpak-spawn', '--host', 'flatpak', 'remote-delete', '--force', name, f'--{install_type}']
         try:
-            subprocess.run(command, capture_output=True, check=True)
+            subprocess.run(command, capture_output=True, check=True, env=self.new_env)
         except subprocess.CalledProcessError as e:
             self.make_toast(_("Could not remove {}").format(title))
         self.generate_list()
@@ -122,6 +122,8 @@ class RemotesWindow(Adw.Window):
         self.window_title = _("Manage Remotes")
         self.host_remotes = []
         self.host_flatpaks = []
+        self.new_env = dict( os.environ )
+        self.new_env['LC_ALL'] = 'C' 
 
         # Create Widgets
         self.scroll = Gtk.ScrolledWindow()
@@ -134,6 +136,8 @@ class RemotesWindow(Adw.Window):
         self.user_data_row = Adw.ActionRow(title="No User Data")
         self.add_button = Gtk.Button(icon_name="plus-large-symbolic", tooltip_text="Add Remote")
         self.stack = Gtk.Stack()
+        self.new_env = dict( os.environ )
+        self.new_env['LC_ALL'] = 'C' 
         
         # Apply Widgets
         self.toolbar.set_content(self.toast_overlay)

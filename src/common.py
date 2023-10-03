@@ -10,12 +10,14 @@ class myUtils:
         self.user_data_path = self.host_home + "/.var/app/"
         self.install_success = True
         self.uninstall_success = True
+        self.new_env = dict( os.environ ) 
+        self.new_env['LC_ALL'] = 'C' 
         
     def trashFolder(self, path):
         if not os.path.exists(path):
             return 1
         try:
-            subprocess.run(["flatpak-spawn", "--host", "gio", "trash", path], capture_output=True, check=True)
+            subprocess.run(["flatpak-spawn", "--host", "gio", "trash", path], capture_output=True, check=True, env=self.new_env)
             return 0
         except subprocess.CalledProcessError:
             return 2
@@ -76,7 +78,7 @@ class myUtils:
         return image
 
     def getHostRemotes(self):
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes", "--columns=all"], capture_output=True, text=True).stdout
+        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes", "--columns=all"], capture_output=True, text=True, env=self.new_env).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
         data = [columns]
@@ -99,7 +101,7 @@ class myUtils:
         return data
 
     def getHostFlatpaks(self):
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"], capture_output=True, text=True).stdout
+        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"], capture_output=True, text=True, env=self.new_env).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
         data = [columns]
@@ -127,7 +129,7 @@ class myUtils:
         for i in range(len(apps)):
             command = ['flatpak-spawn', '--host', 'flatpak', 'remove', '-y', f"--{apps[i][2]}", apps[i][0]]
             try:
-                subprocess.run(command, capture_output=False, check=True)
+                subprocess.run(command, capture_output=False, check=True, env=self.new_env)
             except subprocess.CalledProcessError:
                 fails.append(apps[i])
 
@@ -143,7 +145,7 @@ class myUtils:
                 pk_command.append(fails[i][0])
             try:
                 print(pk_command)
-                subprocess.run(pk_command, capture_output=False, check=True)
+                subprocess.run(pk_command, capture_output=False, check=True, env=self.new_env)
             except subprocess.CalledProcessError:
                 self.uninstall_success = False
 
@@ -166,7 +168,7 @@ class myUtils:
         for i in range(len(app_arr)):
             command = ['flatpak-spawn', '--host', 'flatpak', 'install', remote, f"--{user_or_system}", '-y', app_arr[i]]
             try:
-                subprocess.run(command, capture_output=False, check=True)
+                subprocess.run(command, capture_output=False, check=True, env=self.new_env)
             except subprocess.CalledProcessError:
                 fails.append(app_arr[i])
         
@@ -175,7 +177,7 @@ class myUtils:
             for i in range(len(fails)):
                 pk_command.append(fails[i])
             try:
-                subprocess.run(pk_command, capture_output=False, check=True)
+                subprocess.run(pk_command, capture_output=False, check=True, env=self.new_env)
             except subprocess.CalledProcessError:
                 self.install_success = False
 

@@ -81,7 +81,7 @@ class FilterWindow(Adw.Window):
         self.add_controller(event_controller)
 
         # Connections
-        self.apply_button.connect("clicked", lambda *_: main_window.updateFilter(self.filter_list))
+        self.apply_button.connect("clicked", lambda *_: main_window.applyFilter(self.filter_list))
         self.apply_button.connect("clicked", lambda *_: self.close())
 
         self.cancel_button.connect("clicked", lambda *_: main_window.filter_button.set_active(False))
