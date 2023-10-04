@@ -65,7 +65,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
     flatpak_rows = []
     # ^ {Row visibility, Row selected, the row itself, properties, trash, select, the flatpak row from `flatpak list`}
 
-
     def mainPulser(self):
         if self.should_pulse:
             self.main_progress_bar.pulse()
@@ -75,13 +74,19 @@ class WarehouseWindow(Adw.ApplicationWindow):
         if (self.search_entry.get_text().lower() in row.get_title().lower()) or (self.search_entry.get_text().lower() in row.get_subtitle().lower()):
             return True
 
-    def enableUninstallButtons(self, should_enable):
+    def removeRow(self, row):
+        row[5].set_active(False)
+        row[0] = False
+        row[2].set_visible(False)
+
+    def uninstallButtonsEnable(self, should_enable):
         if self.currently_uninstalling:
             return
-        total_selected = 0
-        self.batch_uninstall_button.set_sensitive(should_enable)
+        self.refresh_button.set_sensitive(should_enable)
         for i in range(len(self.flatpak_rows)):
             self.flatpak_rows[i][4].set_sensitive(should_enable)
+        if not should_enable:
+            self.batch_uninstall_button.set_sensitive(False)
 
     def uninstallFlatpakCallback(self, _a, _b):
         self.currently_uninstalling = False
@@ -90,7 +95,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.refresh_list_of_flatpaks(_a, False)
         self.main_toolbar_view.set_sensitive(True)
         self.disconnect(self.no_close)
-        self.enableUninstallButtons(True)
+        self.uninstallButtonsEnable(True)
         if self.my_utils.uninstall_success:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled successfully")))
         else:
@@ -113,6 +118,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             ref_arr.append(ref)
             id_arr.append(id)
             type_arr.append(app_type)
+            self.removeRow(self.flatpak_rows[i])
         task = Gio.Task.new(None, None, self.uninstallFlatpakCallback)
         task.run_in_thread(lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, type_arr=type_arr ,should_trash=should_trash: self.uninstallFlatpakThread(ref_arr, id_arr, type_arr, should_trash))
 
@@ -124,7 +130,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         def batchUninstallResponse(_idk, response_id, _widget):
             if response_id == "cancel":
                 self.should_pulse = False
-                return 1
+                return 1                    
 
             try:
                 should_trash = trash_check.get_active()
@@ -133,7 +139,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             #self.main_toolbar_view.set_sensitive(False)
 
-            self.enableUninstallButtons(False)
+            self.uninstallButtonsEnable(False)
 
             self.no_close = self.connect("close-request", lambda event: True)  # Make window unable to close
             self.main_progress_bar.set_visible(True)
@@ -194,6 +200,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         id = self.host_flatpaks[index][2]
         self.should_pulse = True
         self.mainPulser()
+        self.flatpak_rows[index][1] = True
 
         def uninstallResponse(_idk, response_id, _widget):
             try:
@@ -208,12 +215,12 @@ class WarehouseWindow(Adw.ApplicationWindow):
             if response_id == "purge":
                 should_trash = True
 
-            self.enableUninstallButtons(False)
+            self.uninstallButtonsEnable(False)
 
             #self.main_toolbar_view.set_sensitive(False)
             self.no_close = self.connect("close-request", lambda event: True)  # Make window unable to close
             self.main_progress_bar.set_visible(True)
-            self.uninstallFlatpak([index], should_trash)
+            self.uninstallFlatpak(should_trash)
 
         # Create Widgets
         dialog = Adw.MessageDialog.new(self, _("Uninstall {}?").format(name), _("It will not be possible to use {} after removal.").format(name))
@@ -248,15 +255,16 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.connect("response", uninstallResponse, dialog.choose_finish)
         Gtk.Window.present(dialog)
 
-    def windowSetEmpty(self, has_row):
-        self.batch_mode_button.set_sensitive(has_row)
-        self.search_button.set_sensitive(has_row)
+    def windowSetEmpty(self, is_empty):
+        self.batch_mode_button.set_sensitive(not is_empty)
+        self.search_button.set_sensitive(not is_empty)
+        self.filter_button.set_sensitive(not is_empty)
 
-        if has_row:
-            self.main_stack.set_visible_child(self.main_box)
-        else:
+        if is_empty:
             self.batch_mode_button.set_active(False)
             self.main_stack.set_visible_child(self.no_flatpaks)
+        else:
+            self.main_stack.set_visible_child(self.main_box)
     
     def generate_list_of_flatpaks(self):
         self.set_title(self.main_window_title)
@@ -285,7 +293,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             select_flatpak_tickbox = Gtk.CheckButton(visible=self.in_batch_mode)
             select_flatpak_tickbox.add_css_class("selection-mode")
-            select_flatpak_tickbox.connect("toggled", self.flatpak_row_select_handler, index)
+            select_flatpak_tickbox.connect("toggled", self.rowSelectHandler, index)
             flatpak_row.add_suffix(select_flatpak_tickbox)
 
             if self.in_batch_mode:
@@ -295,11 +303,13 @@ class WarehouseWindow(Adw.ApplicationWindow):
             #                         {Row visibility, Row selected, the row itself, properties, trash, select, the flatpak row from `flatpak list`}
             self.flatpak_rows.append([True, False, flatpak_row, properties_button, trash_button, select_flatpak_tickbox, self.host_flatpaks[index]])
 
-        self.windowSetEmpty(self.flatpaks_list_box.get_row_at_index(0))
+        self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
         self.applyFilter(self.filter_list)
-        self.batch_actions_enable(False)
+        self.batchActionsEnable(False)
 
     def refresh_list_of_flatpaks(self, widget, should_toast):
+        if self.currently_uninstalling:
+            return
         self.flatpaks_list_box.remove_all()
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
         self.generate_list_of_flatpaks()
@@ -331,13 +341,13 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.flatpaks_list_box.set_margin_bottom(24)
             self.batch_select_all_button.set_active(False)
 
-    def batch_actions_enable(self, should_enable):
+    def batchActionsEnable(self, should_enable):
         self.batch_copy_button.set_sensitive(should_enable)
         self.batch_clean_button.set_sensitive(should_enable)
         if not self.currently_uninstalling:
             self.batch_uninstall_button.set_sensitive(should_enable)
 
-    def on_batch_clean_response(self, dialog, response, _a):
+    def onBatchCleanResponse(self, dialog, response, _a):
         if response == "cancel":
             return 1
         show_success = True
@@ -358,38 +368,39 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.toast_overlay.add_toast(Adw.Toast.new(_("Trashed user data")))
         #self.refresh_list_of_flatpaks(_a, False)
 
-    def batch_clean_handler(self, widget):
+    def batchCleanHandler(self, widget):
         dialog = Adw.MessageDialog.new(self, _("Trash Selected Apps' User Data?"), _("Your user files and data for these apps will be sent to the trash."))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Trash Data"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.connect("response", self.on_batch_clean_response, dialog.choose_finish)
+        dialog.connect("response", self.onBatchCleanResponse, dialog.choose_finish)
         Gtk.Window.present(dialog)
 
-    def batch_select_all_handler(self, widget):
+    def batchSelectAllHandler(self, widget):
         for i in range(len(self.flatpak_rows)):
             if self.flatpak_rows[i][0]:
                 self.flatpak_rows[i][5].set_active(widget.get_active())
 
-    def batch_key_handler(self, _b, event, _c, _d):
+    def batchKeyHandler(self, _b, event, _c, _d):
         if event == Gdk.KEY_Escape:
             self.batch_mode_button.set_active(False)
 
-    def flatpak_row_select_handler(self, tickbox, index):
+    def rowSelectHandler(self, tickbox, index):
         self.flatpak_rows[index][1] = tickbox.get_active()
 
         total_selected = 0
         for i in range(len(self.flatpak_rows)):
             if self.flatpak_rows[i][1]:
                 total_selected += 1
+
         if total_selected == 0:
             buttons_enable = False
             self.set_title(self.main_window_title)
-            self.batch_actions_enable(False)
+            self.batchActionsEnable(False)
         else:
             self.set_title(f"{total_selected} Selected")
-            self.batch_actions_enable(True)
+            self.batchActionsEnable(True)
 
     def create_action(self, name, callback, shortcuts=None):
         """Add a window action.
@@ -431,6 +442,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app refs")))
 
     def filterWindowHandler(self, widget):
+        for i in range(len(self.flatpak_rows)):
+            self.flatpak_rows[i][5].set_active(False)
+        self.batch_select_all_button.set_active(False)
         if widget.get_active():
             filtwin = FilterWindow(self)
             filtwin.present()
@@ -476,20 +490,24 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.my_utils = myUtils(self)
         self.filter_list = [True, False, ["all"], ["all"]]
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
+        self.set_size_request(0, 230)
+
+        if self.host_flatpaks == [['']]:
+            self.windowSetEmpty(True)
+            return
 
         self.flatpaks_list_box.set_filter_func(self.filter_func)
-        self.set_size_request(0, 230)
         self.generate_list_of_flatpaks()
         self.search_entry.connect("search-changed", lambda *_: self.flatpaks_list_box.invalidate_filter())
         self.search_bar.connect_entry(self.search_entry)
         self.refresh_button.connect("clicked", self.refresh_list_of_flatpaks, True)
         self.batch_mode_button.connect("toggled", self.batch_mode_handler)
-        self.batch_clean_button.connect("clicked", self.batch_clean_handler)
+        self.batch_clean_button.connect("clicked", self.batchCleanHandler)
         self.batch_uninstall_button.connect("clicked", self.batchUninstallButtonHandler)
-        self.batch_select_all_button.connect("clicked", self.batch_select_all_handler)
-        self.batch_actions_enable(False)
+        self.batch_select_all_button.connect("clicked", self.batchSelectAllHandler)
+        self.batchActionsEnable(False)
         event_controller = Gtk.EventControllerKey()
-        event_controller.connect("key-pressed", self.batch_key_handler)
+        event_controller.connect("key-pressed", self.batchKeyHandler)
         self.add_controller(event_controller)
         self.main_overlay.add_overlay(self.main_progress_bar)
 

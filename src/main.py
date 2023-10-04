@@ -59,7 +59,7 @@ class WarehouseApplication(Adw.Application):
         batch_button.set_active(True)
         select_button = self.props.active_window.batch_select_all_button
         select_button.set_active(not select_button.get_active())
-        self.props.active_window.batch_select_all_handler(select_button)
+        self.props.active_window.batchSelectAllHandler(select_button)
 
     def manage_data_shortcut(self, widget, _):
         OrphansWindow(self.props.active_window).present()
