@@ -160,6 +160,9 @@ class OrphansWindow(Adw.Window):
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.present()
 
+    def sizeThread(self, row, path):
+        row.set_subtitle(self.my_utils.getSizeWithFormat(path))
+
     # Create the list of folders in the window
     def generateList(self):
 
@@ -184,7 +187,9 @@ class OrphansWindow(Adw.Window):
 
             # Create row element
             dir_row = Adw.ActionRow(title=dir_name)
-            dir_row.set_subtitle(self.my_utils.getSizeWithFormat(self.user_data_path + dir_name))
+            task = Gio.Task.new(None, None, None)
+            path = self.user_data_path + dir_name
+            task.run_in_thread(lambda _task, _obj, _data, _cancellable: self.sizeThread(dir_row, path))
 
             select_button = Gtk.CheckButton()
             select_button.add_css_class("selection-mode")
