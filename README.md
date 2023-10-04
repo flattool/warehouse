@@ -53,11 +53,11 @@ flatpak run io.github.flattool.Warehouse
 - [x] +Display dependent runtimes in app properties
 - [ ] +Filter by runtimes
 - [x] +Indicate apps & runtimes that are EOL
+- [x] Remember window size
 
 [ * = Needed before new release, + = New feature, ! = Bug fix ]
 ## Ideas that might get added but no promise of happening
 - Installing new apps via ID match
-- Remember window size
 - Pin / unpin runtimes and apps
 - Option to uninstall apps when removing a remote
 - Make refreshing the main list after install and uninstall happen in a thread

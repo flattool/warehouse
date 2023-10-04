@@ -510,12 +510,23 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.windowSetEmpty(True)
             self.filter_button.set_sensitive(True)
 
+    def loadSettings(self):
+        width = self.settings.get_int("window-width")
+        height = self.settings.get_int("window-height")
+        self.set_default_size(width, height)
+
+    def saveSettings(self, _a):
+        self.settings.set_int("window-width", self.get_allocated_width())
+        self.settings.set_int("window-height", self.get_allocated_height())
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
         self.filter_list = [True, False, ["all"], ["all"]]
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
         self.set_size_request(0, 230)
+        self.settings = Gio.Settings.new("io.github.flattool.Warehouse")
+        self.loadSettings()
 
         if self.host_flatpaks == [['']]:
             self.windowSetEmpty(True)
@@ -541,6 +552,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.create_action("copy-refs", self.copyRefs)
 
         self.filter_button.connect("toggled", self.filterWindowHandler)
+
+        self.connect("close-request", self.saveSettings)
 
 
 
