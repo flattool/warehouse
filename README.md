@@ -51,7 +51,7 @@ flatpak run io.github.flattool.Warehouse
 - [x] *Make orphaned data get size in a thread
 - [ ] Somehow make installation of apps not freeze the UI
 - [x] +Display dependent runtimes in app properties
-- [ ]+Filter by runtimes
+- [ ] +Filter by runtimes
 - [x] +Indicate apps & runtimes that are EOL
 [ * = Needed before new release, + = New feature, ! = Bug fix ]
 ## Ideas that might get added but no promise of happening
