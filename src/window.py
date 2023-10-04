@@ -480,6 +480,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         show_runtimes = filter[1]
         filter_install_type = filter[2]
         filter_remotes_list = filter[3]
+        total_visible = 0
 
         for i in range(len(self.flatpak_rows)):
             self.flatpak_rows[i][0] = True
@@ -497,6 +498,17 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 self.flatpak_rows[i][0] = False
 
             self.flatpak_rows[i][2].set_visible(self.flatpak_rows[i][0])
+
+            if self.flatpak_rows[i][0]:
+                total_visible += 1
+
+        if total_visible > 0:
+            #self.main_stack.set_visible_child(self.main_box)
+            self.windowSetEmpty(False)
+        else:
+            # self.main_stack.set_visible_child(self.no_flatpaks)
+            self.windowSetEmpty(True)
+            self.filter_button.set_sensitive(True)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
