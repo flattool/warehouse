@@ -526,7 +526,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
         self.set_size_request(0, 230)
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse")
-        self.loadSettings()
+        self.settings.bind("window-width", self, "default-width", Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind("window-height", self, "default-height", Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind("is-maximized", self, "maximized", Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind("is-fullscreen", self, "fullscreened", Gio.SettingsBindFlags.DEFAULT)
 
         if self.host_flatpaks == [['']]:
             self.windowSetEmpty(True)

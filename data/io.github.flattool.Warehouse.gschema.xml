@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="warehouse">
 	<schema id="io.github.flattool.Warehouse" path="/io/github/flattool/Warehouse/">
-	    <key name="window-width" type="i">
-			<default>800</default>
-			<summary>Window Width</summary>
-			<description>The width of the main window</description>
-    	</key>
-    	<key name="window-height" type="i">
-			<default>500</default>
-			<summary>Window Height</summary>
-			<description>The height of the main window</description>
-    	</key>
+		<key name="window-width" type="i">
+			<default>640</default>
+		</key>
+		<key name="window-height" type="i">
+			<default>480</default>
+		</key>
+		<key name="is-maximized" type="b">
+			<default>false</default>
+		</key>
+		<key name="is-fullscreen" type="b">
+			<default>false</default>
+		</key>
 	</schema>
 </schemalist>
