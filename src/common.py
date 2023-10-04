@@ -108,6 +108,11 @@ class myUtils:
         for line in lines[1:]:
             row = line.split("\t")
             data.append(row)
+
+        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "list", "--columns=runtime"], capture_output=True, text=True, env=self.new_env).stdout
+        lines = output.strip().split("\n")
+        for i in range(len(lines)):
+            data[i].append(lines[i])
         return data
 
     def uninstallFlatpak(self, ref_arr, type_arr, should_trash):
