@@ -522,7 +522,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.settings.bind("is-maximized", self, "maximized", Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind("is-fullscreen", self, "fullscreened", Gio.SettingsBindFlags.DEFAULT)
 
-        if self.host_flatpaks == [['']]:
+        if self.host_flatpaks == [['', '']]:
             self.windowSetEmpty(True)
             return
 

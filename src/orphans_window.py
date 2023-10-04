@@ -165,8 +165,13 @@ class OrphansWindow(Adw.Window):
 
     # Create the list of folders in the window
     def generateList(self):
-
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
+
+        if self.host_flatpaks == [['', '']]:
+            self.app_window.toast_overlay.add_toast(Adw.Toast.new(_("Could not manage data")))
+            self.this_just_crashes_the_window_so_it_doesnt_open()
+            return
+
         self.list_of_data.remove_all()
         self.selected_dirs = []
         self.set_title(self.window_title)
