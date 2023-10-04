@@ -26,6 +26,16 @@ class PopularRemotesWindow(Adw.Window):
         if event == Gdk.KEY_Escape:
             self.close()
 
+    def addRemoteCallback(self, _a, _b):
+        self.parent_window.generate_list()
+
+    def addRemoteThread(self, command):
+        try:
+            subprocess.run(command, capture_output=True, check=True, env=self.new_env)
+        except Exception as e:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not add {}").format(self.name_to_add)))
+            print(e)
+
     def on_add_response(self, _dialog, response_id, _function):
         if response_id == "cancel":
             return
@@ -38,12 +48,8 @@ class PopularRemotesWindow(Adw.Window):
         self.url_to_add = self.url_to_add.strip()
 
         command = ['flatpak-spawn', '--host', 'flatpak', 'remote-add', '--if-not-exists', self.name_to_add, self.url_to_add, install_type]
-        try:
-            subprocess.run(command, capture_output=True, check=True, env=self.new_env)
-        except Exception as e:
-            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not add {}").format(self.name_to_add)))
-            print(e)
-        self.parent_window.generate_list()
+        task = Gio.Task.new(None, None, self.addRemoteCallback)
+        task.run_in_thread(lambda _task, _obj, _data, _cancellable: self.addRemoteThread(command))
         self.close()
 
     def add_handler(self, _widget, name="", link=""):

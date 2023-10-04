@@ -187,8 +187,8 @@ class OrphansWindow(Adw.Window):
 
             # Create row element
             dir_row = Adw.ActionRow(title=dir_name)
-            task = Gio.Task.new(None, None, None)
             path = self.user_data_path + dir_name
+            task = Gio.Task.new(None, None, None)
             task.run_in_thread(lambda _task, _obj, _data, _cancellable: self.sizeThread(dir_row, path))
 
             select_button = Gtk.CheckButton()
