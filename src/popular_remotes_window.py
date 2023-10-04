@@ -174,6 +174,7 @@ class PopularRemotesWindow(Adw.Window):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
         self.parent_window = parent_window
+        self.set_size_request(260, 230)
 
         self.new_env = dict( os.environ ) 
         self.new_env['LC_ALL'] = 'C' 
