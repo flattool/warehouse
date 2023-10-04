@@ -9,12 +9,18 @@ def show_properties_window(widget, index, window):
     properties_window.set_size_request(260, 230)
     properties_window.set_modal(True)
     properties_window.set_resizable(True)
+    outer_box = Gtk.Box(orientation="vertical")
     properties_window.set_transient_for(window)
     properties_scroll = Gtk.ScrolledWindow()
     properties_toast_overlay = Adw.ToastOverlay()
-    properties_toast_overlay.set_child(properties_scroll)
+    properties_toast_overlay.set_child(outer_box)
     properties_box = Gtk.Box(orientation="vertical", vexpand=True)
     properties_clamp = Adw.Clamp()
+    eol_app_banner = Adw.Banner(title=_("This Flatpak has reached its End of Life and will not receive any security updates"))
+    eol_runtime_banner = Adw.Banner(title=_("The runtime used by this app has reached its End of Life and will not receive any security updates"))
+    outer_box.append(eol_app_banner)
+    outer_box.append(eol_runtime_banner)
+    outer_box.append(properties_scroll)
     properties_scroll.set_child(properties_clamp)
     properties_clamp.set_child(properties_box)
     properties_title_bar = Adw.ToolbarView()
@@ -89,6 +95,11 @@ def show_properties_window(widget, index, window):
         task = Gio.Task.new(None, None, None)
         task.run_in_thread(lambda _task, _obj, _data, _cancellable: size_thread(path))
 
+    def test(button, query):
+        for i in range(len(window.host_flatpaks)):
+            if query in window.host_flatpaks[i][8]:
+                show_properties_window(button, i, window)
+
     if os.path.exists(path):
         user_data_row.set_title("User Data")
         # user_data_row.set_subtitle(f"{path}\n~{my_utils.getSizeWithFormat(path)}")
@@ -99,7 +110,7 @@ def show_properties_window(widget, index, window):
         open_button.connect("clicked", open_button_handler)
         user_data_row.add_suffix(open_button)
 
-        clean_button = Gtk.Button(icon_name="brush-symbolic", valign=Gtk.Align.CENTER, tooltip_text="Send User Data to the Trash")
+        clean_button = Gtk.Button(icon_name="brush-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Send User Data to the Trash"))
         clean_button.add_css_class("flat")
         clean_button.connect("clicked", clean_button_handler)
         user_data_row.add_suffix(clean_button)
@@ -108,19 +119,35 @@ def show_properties_window(widget, index, window):
 
     column_headers = [_('Name'), _('Description'), _('App ID'), _('Version'), _('Branch'), _('Arch'), _('Origin'), _('Installation'), _('Ref'), _('Active Commit'), _('Latest Commit'), _('Installed Size'), _('Options'), _('Runtime')]
     for column in range(len(window.host_flatpaks[index])):
+        visible = True
         if window.host_flatpaks[index][column] == "":
-            continue
+            visible = False
         row_item = Adw.ActionRow(title=column_headers[column])
         row_item.set_subtitle(GLib.markup_escape_text(window.host_flatpaks[index][column]))
 
         properties_copy_button = Gtk.Button(icon_name="edit-copy-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Copy {}").format(column_headers[column]))
         properties_copy_button.add_css_class("flat")
         properties_copy_button.connect("clicked", copy_button_handler, column_headers[column], window.host_flatpaks[index][column])
+
+        if column == 13:
+            runtime_properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
+            runtime_properties_button.add_css_class("flat")
+            runtime_properties_button.connect("clicked", test, row_item.get_subtitle())
+            row_item.add_suffix(runtime_properties_button)
+
+            if row_item.get_subtitle() in window.eol_list:
+                row_item.add_css_class("error")
+                eol_runtime_banner.set_revealed(True)
+
         row_item.add_suffix(properties_copy_button)
 
+        row_item.set_visible(visible)
         properties_list.append(row_item)
 
     properties_box.append(properties_list)
+
+    if "eol" in window.host_flatpaks[index][12]:
+        eol_app_banner.set_revealed(True)
 
     properties_window.set_content(properties_title_bar)
     properties_window.present()

@@ -272,6 +272,11 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.should_select_all = self.batch_select_all_button.get_active()
         self.main_stack.set_visible_child(self.main_box)
         self.batch_select_all_button.set_active(False)
+        self.eol_list = []
+
+        for index in range(len(self.host_flatpaks)):
+            if "eol" in self.host_flatpaks[index][12]:
+                self.eol_list.append(self.host_flatpaks[index][8])
 
         for index in range(len(self.host_flatpaks)):
             app_name = self.host_flatpaks[index][0]
@@ -280,6 +285,18 @@ class WarehouseWindow(Adw.ApplicationWindow):
             flatpak_row = Adw.ActionRow(title=GLib.markup_escape_text(app_name))
             flatpak_row.add_prefix(self.my_utils.findAppIcon(app_id))
             flatpak_row.set_subtitle(app_id)
+
+            if "eol" in self.host_flatpaks[index][12]:
+                eol_runtime_label = Gtk.Label(label=_("Flatpak EOL"), tooltip_text=_("This Flatpak has reached its End of Life and will not receive any security updates"))
+                eol_runtime_label.add_css_class("subtitle")
+                eol_runtime_label.add_css_class("error")
+                flatpak_row.add_suffix(eol_runtime_label)
+
+            if self.host_flatpaks[index][13] in self.eol_list:
+                eol_app_label = Gtk.Label(label=_("Runtime EOL"), tooltip_text=_("The runtime used by this app has reached its End of Life and will not receive any security updates"))
+                eol_app_label.add_css_class("subtitle")
+                eol_app_label.add_css_class("error")
+                flatpak_row.add_suffix(eol_app_label)
 
             properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
             properties_button.add_css_class("flat")
@@ -478,10 +495,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             if (not 'all' in filter_remotes_list) and (not self.host_flatpaks[i][6] in filter_remotes_list):
                 self.flatpak_rows[i][0] = False
-
-        # # Change the subtitle from id to ref if the list is set to show runtimes
-        # if self.show_runtimes:
-        #     flatpak_row.set_subtitle(app_ref)
 
             self.flatpak_rows[i][2].set_visible(self.flatpak_rows[i][0])
 
