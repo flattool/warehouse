@@ -65,6 +65,9 @@ class RemotesWindow(Adw.Window):
             self.stack.add_child(no_remotes)
             self.stack.set_visible_child(no_remotes)
             return
+        else:
+            self.stack.set_visible_child(self.scroll)
+
         for i in range(len(self.host_remotes)):
             name = self.host_remotes[i][0]
             title = self.host_remotes[i][1]
