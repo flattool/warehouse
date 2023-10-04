@@ -22,6 +22,10 @@ class PopularRemotesWindow(Adw.Window):
         ["kdeapps", "https://distribute.kde.org/kdeapps.flatpakrepo", _("Beta KDE Apps and Runtimes")],
     ]
 
+    def key_handler(self, _a, event, _c, _d):
+        if event == Gdk.KEY_Escape:
+            self.close()
+
     def on_add_response(self, _dialog, response_id, _function):
         if response_id == "cancel":
             return
@@ -175,6 +179,9 @@ class PopularRemotesWindow(Adw.Window):
         self.my_utils = myUtils(self)
         self.parent_window = parent_window
         self.set_size_request(260, 230)
+        event_controller = Gtk.EventControllerKey()
+        event_controller.connect("key-pressed", self.key_handler)
+        self.add_controller(event_controller)
 
         self.new_env = dict( os.environ ) 
         self.new_env['LC_ALL'] = 'C' 
