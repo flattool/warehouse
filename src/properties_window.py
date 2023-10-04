@@ -106,7 +106,7 @@ def show_properties_window(widget, index, window):
 
     properties_box.append(user_data_list)
 
-    column_headers = [_('Name'), _('Description'), _('App ID'), _('Version'), _('Branch'), _('Arch'), _('Origin'), _('Installation'), _('Ref'), _('Active Commit'), _('Latest Commit'), _('Installed Size'), _('Options'), _('Runtimes')]
+    column_headers = [_('Name'), _('Description'), _('App ID'), _('Version'), _('Branch'), _('Arch'), _('Origin'), _('Installation'), _('Ref'), _('Active Commit'), _('Latest Commit'), _('Installed Size'), _('Options'), _('Runtime')]
     for column in range(len(window.host_flatpaks[index])):
         if window.host_flatpaks[index][column] == "":
             continue
