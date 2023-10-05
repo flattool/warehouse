@@ -95,7 +95,7 @@ class WarehouseApplication(Adw.Application):
             version="1.1.0",
             developers=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu"],
             artists=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu", "eryn https://github.com/hericiumvevo"],
-            copyright='© 2023 The Files Authors',
+            copyright='© 2023 Heliguy',
             license_type=Gtk.License.GPL_3_0_ONLY,
             website='https://github.com/flattool/warehouse')
         about.present()
