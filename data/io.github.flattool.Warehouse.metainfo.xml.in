@@ -8,7 +8,7 @@
 	<project_license>GPL-3.0-only</project_license>
 	<summary translatable='yes'>Manage all things Flatpak</summary>
 	<description translatable='yes'>
-	  <p>Warehouse is an app that manages installed Flatpaks, their user data, and Flaptak remotes.</p>
+	  <p>Warehouse is an app that manages installed Flatpaks, their user data, and Flatpak remotes.</p>
 	  <p>Features:</p>
       <ul>
         <li>Show and filter the list of installed Flatpaks</li>
