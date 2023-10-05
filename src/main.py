@@ -97,7 +97,9 @@ class WarehouseApplication(Adw.Application):
             artists=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu", "eryn https://github.com/hericiumvevo"],
             copyright='© 2023 The Files Authors',
             license_type=Gtk.License.GPL_3_0_ONLY,
-            website='https://github.com/flattool/warehouse')
+            website='https://github.com/flattool/warehouse',
+            support_url='https://matrix.to/#/#warehouse:beeper.com',
+            issue_url='https://github.com/flattool/warehouse/issues')
         about.present()
 
     def on_preferences_action(self, widget, _):
