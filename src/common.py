@@ -117,8 +117,8 @@ class myUtils:
             data.append(row)
 
         output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "list", "--columns=runtime"], capture_output=True, text=True, env=self.new_env).stdout
-        lines = output.strip().split("\n")
-        for i in range(len(lines)):
+        lines = output.split("\n")
+        for i in range(len(data)):
             data[i].append(lines[i])
         return data
 
