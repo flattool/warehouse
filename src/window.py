@@ -548,4 +548,3 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.filter_button.connect("toggled", self.filterWindowHandler)
 
 
-

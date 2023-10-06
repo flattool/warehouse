@@ -77,6 +77,13 @@ class myUtils:
             image.set_icon_size(Gtk.IconSize.LARGE)
         return image
 
+    def getHostPins(self):
+        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "pin"], capture_output=True, text=True, env=self.new_env).stdout
+        data = output.strip().split("\n")
+        for i in range(len(data)):
+            data[i] = data[i].strip()
+        return data
+
     def getHostRemotes(self):
         output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes", "--columns=all"], capture_output=True, text=True, env=self.new_env).stdout
         lines = output.strip().split("\n")
