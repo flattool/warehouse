@@ -303,6 +303,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
             properties_button.connect("clicked", show_properties_window, index, self)
             flatpak_row.add_suffix(properties_button)
 
+            flatpak_row.set_activatable(True)
+            flatpak_row.set_activatable_widget(properties_button)
+
             trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Uninstall {}").format(app_name), visible=not self.in_batch_mode)
             trash_button.add_css_class("flat")
             trash_button.connect("clicked", self.uninstallButtonHandler, index)
@@ -336,6 +339,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def batch_mode_handler(self, widget):
         for i in range(len(self.flatpak_rows)):
             adw_row = self.flatpak_rows[i][2]
+            properties_button = self.flatpak_rows[i][3]
             trash_button = self.flatpak_rows[i][4]
             select_tick = self.flatpak_rows[i][5]
 
@@ -343,11 +347,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
             trash_button.set_visible(not widget.get_active())
 
             if widget.get_active():
-                adw_row.set_activatable(True)
                 adw_row.set_activatable_widget(select_tick)
             else:
+                adw_row.set_activatable_widget(properties_button)
                 select_tick.set_active(False)
-                adw_row.set_activatable(False)
 
         self.in_batch_mode = widget.get_active()
         self.batch_mode_bar.set_revealed(widget.get_active())
