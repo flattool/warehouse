@@ -54,6 +54,15 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.1.1" date="2023-10-6" timestamp="1696572524">
+      <description translatable="yes">
+        <p>Emergency Bug Fix</p>
+        <ul>
+          <li>Fix error causing a crash on Linux Mint</li>
+          <li>Correct typo in the app summary</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.0" date="2023-10-4" timestamp="1696461734">
 			<description translatable="yes">
 				<p>New Features and Changes</p>
