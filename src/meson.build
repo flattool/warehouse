@@ -51,6 +51,7 @@ warehouse_sources = [
   'filter_window.py',
   'filter.blp',
   'popular_remotes_window.py',
+  'style.css',
 ]
 
 install_data(warehouse_sources, install_dir: moduledir)

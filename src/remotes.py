@@ -77,8 +77,8 @@ class RemotesWindow(Adw.Window):
             if title == "-":
                 remote_row.set_title(name)
             self.remotes_list.append(remote_row)
-            label = Gtk.Label(label=("{} wide").format(install_type))
-            label.add_css_class("subtitle")
+            label = Gtk.Label(label=("{} wide").format(install_type), valign=Gtk.Align.CENTER)
+            label.add_css_class("installType")
             remote_row.add_suffix(label)
             copy_button = Gtk.Button(icon_name="edit-copy-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Copy remote name"))
             copy_button.add_css_class("flat")

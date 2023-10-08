@@ -120,7 +120,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             type_arr.append(app_type)
             self.removeRow(self.flatpak_rows[i])
         task = Gio.Task.new(None, None, self.uninstallFlatpakCallback)
-        task.run_in_thread(lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, type_arr=type_arr ,should_trash=should_trash: self.uninstallFlatpakThread(ref_arr, id_arr, type_arr, should_trash))
+        task.run_in_thread(lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, type_arr=type_arr, should_trash=should_trash: self.uninstallFlatpakThread(ref_arr, id_arr, type_arr, should_trash))
 
     def batchUninstallButtonHandler(self, _widget):
         self.should_pulse = True
@@ -287,16 +287,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
             flatpak_row.set_subtitle(app_id)
 
             if "eol" in self.host_flatpaks[index][12]:
-                eol_runtime_label = Gtk.Label(label=_("Flatpak EOL"), tooltip_text=_("This Flatpak has reached its End of Life and will not receive any security updates"))
-                eol_runtime_label.add_css_class("subtitle")
-                eol_runtime_label.add_css_class("error")
-                flatpak_row.add_suffix(eol_runtime_label)
+                eol_app_label = Gtk.Label(label=_("Flatpak EOL"), valign=Gtk.Align.CENTER, tooltip_text=_("This Flatpak has reached its End of Life and will not receive any security updates"))
+                eol_app_label.add_css_class("eolText")
+                flatpak_row.add_suffix(eol_app_label)
 
             if self.host_flatpaks[index][13] in self.eol_list:
-                eol_app_label = Gtk.Label(label=_("Runtime EOL"), tooltip_text=_("The runtime used by this app has reached its End of Life and will not receive any security updates"))
-                eol_app_label.add_css_class("subtitle")
-                eol_app_label.add_css_class("error")
-                flatpak_row.add_suffix(eol_app_label)
+                eol_runtime_label = Gtk.Label(label=_("Runtime EOL"), valign=Gtk.Align.CENTER, tooltip_text=_("The runtime used by this app has reached its End of Life and will not receive any security updates"))
+                eol_runtime_label.add_css_class("eolText")
+                flatpak_row.add_suffix(eol_runtime_label)
 
             properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
             properties_button.add_css_class("flat")
@@ -352,10 +350,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.in_batch_mode = widget.get_active()
         self.batch_mode_bar.set_revealed(widget.get_active())
 
-        if widget.get_active():
-            self.flatpaks_list_box.set_margin_bottom(6)
-        else:
-            self.flatpaks_list_box.set_margin_bottom(24)
+        if not widget.get_active():
             self.batch_select_all_button.set_active(False)
 
     def batchActionsEnable(self, should_enable):
