@@ -26,6 +26,11 @@ Warehouse is now available on Flathub! Visit your software store and search for 
 - We have a [Discord Server](https://discord.gg/Sq85C42Xkt) and a [Matrix Room](https://matrix.to/#/#warehouse:beeper.com) to discuss and send announcements in!
 - You can always open issues, PRs, and use other GitHub features here
 
+## 🤝 Code of conduct:
+
+- The project follows the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct).
+- See [CODE_OF_CONDUCT.md](https://github.com/flattool/warehouse/blob/main/CODE_OF_CONDUCT.md).
+
 ## ℹ️ Important Notes:
 - Translators, I thank you very much for your interest and contributions, but as of now Warehouse is not accpeting any translation work until proper translation infrastructure is in place.
 - This project is still in its early stages, developed by a newcomer. Your understanding of potential bugs is greatly appreciated.
