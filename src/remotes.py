@@ -73,7 +73,7 @@ class RemotesWindow(Adw.Window):
             title = self.host_remotes[i][1]
             install_type = self.host_remotes[i][7]
             url = self.host_remotes[i][2]
-            remote_row = Adw.ActionRow(title=title, subtitle=url)
+            remote_row = Adw.ActionRow(title=title, subtitle=name)
             if title == "-":
                 remote_row.set_title(name)
             self.remotes_list.append(remote_row)
@@ -92,30 +92,31 @@ class RemotesWindow(Adw.Window):
     def showPopularRemotes(self, widget):
 
         remotes = [
-            ["elementary", "https://flatpak.elementary.io/repo.flatpakrepo", _("ElementoryOS's Apps")],
-            ["flathub", "https://dl.flathub.org/repo/flathub.flatpakrepo", _("The biggest repository of Flatpaks")],
-            ["flathub-beta", "https://flathub.org/beta-repo/flathub-beta.flatpakrepo", _("The beta branch of the biggest repository of Flatpaks")],
-            ["fedora", "oci+https://registry.fedoraproject.org", _("Flatpaks packaged by Fedora Linux")],
-            ["gnome-nightly", "https://nightly.gnome.org/gnome-nightly.flatpakrepo", _("Beta GNOME Apps and Runtimes")],
-            ["kdeapps", "https://distribute.kde.org/kdeapps.flatpakrepo", _("Beta KDE Apps and Runtimes")],
+          # [Name to show in GUI, Name of remote for system, Link to repo to add, Description of remote]
+            ["AppCenter", "appcenter", "https://flatpak.elementary.io/repo.flatpakrepo", _("The open source, pay-what-you-want app store from elementary")],
+            ["Flathub", "flathub", "https://dl.flathub.org/repo/flathub.flatpakrepo", _("Central repository of Flatpak applications")],
+            ["Flathub beta", "flathub-beta", "https://flathub.org/beta-repo/flathub-beta.flatpakrepo", _("Beta builds of Flatpak applications")],
+            ["Fedora", "fedora", "oci+https://registry.fedoraproject.org", _("Flatpaks packaged by Fedora Linux")],
+            ["GNOME Nightly", "gnome-nightly", "https://nightly.gnome.org/gnome-nightly.flatpakrepo", _("The latest beta GNOME Apps and Runtimes")],
+            ["KDE Testing Applications", "kdeapps", "https://distribute.kde.org/kdeapps.flatpakrepo", _("Beta KDE Apps and Runtimes")],
+            ["WebKit Developer SDK", "webkit-sdk", "https://software.igalia.com/flatpak-refs/webkit-sdk.flatpakrepo", _("Central repository of the WebKit Developer and Runtime SDK")],
         ]
 
         non_added_remotes = []
-
         host_remotes = self.my_utils.getHostRemotes()
-        host_remotes_urls = []
+        host_remotes_names = []
 
         for i in range(len(self.host_remotes)):
-            host_remotes_urls.append(self.host_remotes[i][2])
+            host_remotes_names.append(self.host_remotes[i][0])
 
         for i in range(len(remotes)):
-            if remotes[i][2] not in host_remotes_urls:
+            if remotes[i][1] not in host_remotes_names:
                 non_added_remotes.append(remotes[i])
 
         if len(non_added_remotes) > 0:
-            PopularRemotesWindow(self).present()
+            PopularRemotesWindow(self, non_added_remotes).present()
         else:
-            PopularRemotesWindow(self).add_handler(widget)
+            PopularRemotesWindow(self, non_added_remotes).add_handler(widget)
     
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)

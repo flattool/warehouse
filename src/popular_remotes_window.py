@@ -13,15 +13,6 @@ class PopularRemotesWindow(Adw.Window):
     custom_list = Gtk.Template.Child()
     toast_overlay = Gtk.Template.Child()
 
-    remotes = [
-        ["elementary", "https://flatpak.elementary.io/repo.flatpakrepo", _("elementary OS's Apps")],
-        ["flathub", "https://dl.flathub.org/repo/flathub.flatpakrepo", _("The biggest repository of Flatpaks")],
-        ["flathub-beta", "https://flathub.org/beta-repo/flathub-beta.flatpakrepo", _("The beta branch of the biggest repository of Flatpaks")],
-        ["fedora", "oci+https://registry.fedoraproject.org", _("Flatpaks packaged by Fedora Linux")],
-        ["gnome-nightly", "https://nightly.gnome.org/gnome-nightly.flatpakrepo", _("Beta GNOME Apps and Runtimes")],
-        ["kdeapps", "https://distribute.kde.org/kdeapps.flatpakrepo", _("Beta KDE Apps and Runtimes")],
-    ]
-
     def key_handler(self, _a, event, _c, _d):
         if event == Gdk.KEY_Escape:
             self.close()
@@ -157,18 +148,15 @@ class PopularRemotesWindow(Adw.Window):
         self.list_of_remotes.remove_all()
         self.custom_list.remove_all()
         host_remotes_names = []
-        for i in range(len(self.host_remotes)):
-            host_remotes_names.append(self.host_remotes[i][0])
 
         for i in range(len(self.remotes)):
             remote_row = Adw.ActionRow(activatable=True)
             remote_row.set_title(self.remotes[i][0])
-            remote_row.set_subtitle(self.remotes[i][2])
+            remote_row.set_subtitle(self.remotes[i][3])
             image = Gtk.Image.new_from_icon_name("right-large-symbolic")
             remote_row.add_suffix(image)
-            remote_row.connect("activated", self.add_handler, self.remotes[i][0], self.remotes[i][1])
-            if self.remotes[i][0] not in host_remotes_names:
-                self.list_of_remotes.append(remote_row)
+            remote_row.connect("activated", self.add_handler, self.remotes[i][1], self.remotes[i][2])
+            self.list_of_remotes.append(remote_row)
 
         image2 = Gtk.Image.new_from_icon_name("right-large-symbolic")
         custom_remote = Adw.ActionRow(activatable=True)
@@ -180,7 +168,7 @@ class PopularRemotesWindow(Adw.Window):
         if not self.list_of_remotes.get_row_at_index(0):
             self.list_of_remotes.set_visible(False)
 
-    def __init__(self, parent_window, **kwargs):
+    def __init__(self, parent_window, remotes, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
         self.parent_window = parent_window
@@ -188,6 +176,7 @@ class PopularRemotesWindow(Adw.Window):
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.key_handler)
         self.add_controller(event_controller)
+        self.remotes = remotes
 
         self.new_env = dict( os.environ ) 
         self.new_env['LC_ALL'] = 'C' 
