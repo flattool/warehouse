@@ -103,13 +103,13 @@ class RemotesWindow(Adw.Window):
         non_added_remotes = []
 
         host_remotes = self.my_utils.getHostRemotes()
-        host_remotes_names = []
+        host_remotes_urls = []
 
         for i in range(len(self.host_remotes)):
-            host_remotes_names.append(self.host_remotes[i][0])
+            host_remotes_urls.append(self.host_remotes[i][2])
 
         for i in range(len(remotes)):
-            if remotes[i][0] not in host_remotes_names:
+            if remotes[i][2] not in host_remotes_urls:
                 non_added_remotes.append(remotes[i])
 
         if len(non_added_remotes) > 0:
