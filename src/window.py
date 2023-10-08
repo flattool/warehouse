@@ -287,13 +287,13 @@ class WarehouseWindow(Adw.ApplicationWindow):
             flatpak_row.set_subtitle(app_id)
 
             if "eol" in self.host_flatpaks[index][12]:
-                eol_app_label = Gtk.Label(label=_("Flatpak EOL"), valign=Gtk.Align.CENTER, tooltip_text=_("This Flatpak has reached its End of Life and will not receive any security updates"))
-                eol_app_label.add_css_class("eolText")
+                eol_app_label = Gtk.Label(label=_("EOL"), valign=Gtk.Align.CENTER, tooltip_text=_("This Flatpak has reached its End of Life and will not receive any security updates"))
+                eol_app_label.add_css_class("error")
                 flatpak_row.add_suffix(eol_app_label)
 
             if self.host_flatpaks[index][13] in self.eol_list:
-                eol_runtime_label = Gtk.Label(label=_("Runtime EOL"), valign=Gtk.Align.CENTER, tooltip_text=_("The runtime used by this app has reached its End of Life and will not receive any security updates"))
-                eol_runtime_label.add_css_class("eolText")
+                eol_runtime_label = Gtk.Label(label=_("EOL"), valign=Gtk.Align.CENTER, tooltip_text=_("The runtime used by this app has reached its End of Life and will not receive any security updates"))
+                eol_runtime_label.add_css_class("error")
                 flatpak_row.add_suffix(eol_runtime_label)
 
             properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))

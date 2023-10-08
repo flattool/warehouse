@@ -119,7 +119,7 @@ class OrphansWindow(Adw.Window):
             remote_row = Adw.ActionRow(title=self.host_remotes[i][1])
             label = Gtk.Label(label=_("{} wide").format(self.host_remotes[i][7]), valign=Gtk.Align.CENTER)
             remote_select = Gtk.CheckButton()
-            label.add_css_class("installType")
+            label.add_css_class("subtitle")
             remote_select_buttons.append(remote_select)
             remote_select.connect("toggled", remote_select_handler)
             remote_row.set_activatable_widget(remote_select)
