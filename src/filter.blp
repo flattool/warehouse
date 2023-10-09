@@ -71,6 +71,13 @@ template FilterWindow : Adw.Window {
                                         title: _("Filter Apps by Runtime");
                                     }
                                 }
+                                Button remove_filters_button {
+                                    visible: false;
+                                    margin-bottom: 18;
+                                    halign: center;
+                                    label: _("Clear Filters");
+                                    styles ["pill"]
+                                }
                             }
                         }
                     }
