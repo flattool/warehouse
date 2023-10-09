@@ -19,6 +19,7 @@ class OrphansWindow(Adw.Window):
     action_bar = Gtk.Template.Child()
     search_bar = Gtk.Template.Child()
     search_entry = Gtk.Template.Child()
+    oepn_folder_button = Gtk.Template.Child()
 
     window_title = _("Manage Leftover Data")
     host_home = str(pathlib.Path.home())
@@ -163,6 +164,12 @@ class OrphansWindow(Adw.Window):
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.present()
 
+    def open_button_handler(self, _widget, path=user_data_path):
+        try:
+            Gio.AppInfo.launch_default_for_uri(f"file://{path}", None)
+        except GLib.GError:
+            properties_toast_overlay.add_toast(Adw.Toast.new(_("Can't open folder")))
+
     def sizeThread(self, row, path):
         row.set_subtitle(self.my_utils.getSizeWithFormat(path))
 
@@ -198,6 +205,11 @@ class OrphansWindow(Adw.Window):
             path = self.user_data_path + dir_name
             task = Gio.Task.new(None, None, None)
             task.run_in_thread(lambda _task, _obj, _data, _cancellable: self.sizeThread(dir_row, path))
+
+            open_row_button = Gtk.Button(icon_name="document-open-symbolic", valign=Gtk.Align.CENTER)
+            open_row_button.add_css_class("flat")
+            open_row_button.connect("clicked", self.open_button_handler, (self.user_data_path + dir_name))
+            dir_row.add_suffix(open_row_button)
 
             select_button = Gtk.CheckButton()
             select_button.add_css_class("selection-mode")
@@ -245,3 +257,4 @@ class OrphansWindow(Adw.Window):
         self.list_of_data.set_filter_func(self.filter_func)
         self.search_entry.connect("search-changed", lambda *_: self.list_of_data.invalidate_filter())
         self.search_bar.connect_entry(self.search_entry)
+        self.oepn_folder_button.connect("clicked", self.open_button_handler)
