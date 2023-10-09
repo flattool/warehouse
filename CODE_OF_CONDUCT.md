@@ -75,3 +75,7 @@ Outreach and diversity efforts directed at under-represented groups are permitte
 Basic expectations for conduct are not covered by the “reverse-ism clause” and would be enforced irrespective of the demographics of those involved. For example, racial discrimination will not be tolerated, irrespective of the race of those involved. Nor would unwanted sexual attention be tolerated, whatever someone’s gender or sexual orientation. Members of our community have the right to expect that participants in the project will uphold these standards.
 
 If a participant engages in behavior that violates this code of conduct, the Warehouse maintainers may take any action they deem appropriate. 
+
+## Attribution
+This Code of Conduct is licensed under a [CC BY-SA 3.0 License](creativecommons.org/licenses/by-sa/3.0/), and is forked from the [GNOME CoC](https://wiki.gnome.org/Foundation/CodeOfConduct)
+
