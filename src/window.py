@@ -467,14 +467,15 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.filter_button.set_active(not self.filter_button.get_active())
 
     def resetFilterList(self):
-        self.filter_list = [True, False, ["all"], ["all"]]
+        self.filter_list = [True, False, ["all"], ["all"], ["all"]]
 
-    def applyFilter(self, filter=[True, False, ["all"], ["all"]]):
+    def applyFilter(self, filter=[True, False, ["all"], ["all"], ["all"]]):
         self.filter_list = filter
         show_apps = filter[0]
         show_runtimes = filter[1]
         filter_install_type = filter[2]
         filter_remotes_list = filter[3]
+        filter_runtimes_list = filter[4]
         total_visible = 0
 
         for i in range(len(self.flatpak_rows)):
@@ -486,10 +487,13 @@ class WarehouseWindow(Adw.ApplicationWindow):
             if (not show_runtimes) and "runtime" in self.flatpak_rows[i][6][12]:
                 self.flatpak_rows[i][0] = False
 
-            if (not 'all' in filter_install_type) and (not self.host_flatpaks[i][7] in filter_install_type):
+            if (not 'all' in filter_install_type) and (not self.flatpak_rows[i][6][7] in filter_install_type):
                 self.flatpak_rows[i][0] = False
 
-            if (not 'all' in filter_remotes_list) and (not self.host_flatpaks[i][6] in filter_remotes_list):
+            if (not 'all' in filter_remotes_list) and (not self.flatpak_rows[i][6][6] in filter_remotes_list):
+                self.flatpak_rows[i][0] = False
+
+            if (not 'all' in filter_runtimes_list) and (not self.flatpak_rows[i][6][13] in filter_runtimes_list):
                 self.flatpak_rows[i][0] = False
 
             self.flatpak_rows[i][2].set_visible(self.flatpak_rows[i][0])
@@ -508,7 +512,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
-        self.filter_list = [True, False, ["all"], ["all"]]
+        self.filter_list = [True, False, ["all"], ["all"], ["all"]]
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
         self.set_size_request(0, 230)
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse")
