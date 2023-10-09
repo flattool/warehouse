@@ -8,11 +8,21 @@ template OrphansWindow : Adw.Window {
     Adw.ToolbarView main_toolbar_view {
         [top]
         HeaderBar header_bar {
-            // [start]
-            // Button refresh_button {
-            //     icon-name: "view-refresh-symbolic";
-            //     tooltip-text: _("Refresh the List of Installed Apps");
-            // }
+            [start]
+            ToggleButton search_button {
+                icon-name: "system-search-symbolic";
+                tooltip-text: _("Search for an Installed App");
+            }
+        }
+        [top]
+        SearchBar search_bar {
+            search-mode-enabled: bind-property search_button.active bidirectional;
+            key-capture-widget: OrphansWindow;
+            Adw.Clamp{
+                maximum-size: 577;
+                hexpand: true;
+                SearchEntry search_entry {}
+            }
         }
         content:
         Adw.ToastOverlay toast_overlay {

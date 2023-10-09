@@ -17,6 +17,8 @@ class OrphansWindow(Adw.Window):
     main_stack = Gtk.Template.Child()
     no_data = Gtk.Template.Child()
     action_bar = Gtk.Template.Child()
+    search_bar = Gtk.Template.Child()
+    search_entry = Gtk.Template.Child()
 
     window_title = _("Manage Leftover Data")
     host_home = str(pathlib.Path.home())
@@ -210,6 +212,10 @@ class OrphansWindow(Adw.Window):
             self.main_stack.set_visible_child(self.no_data)
             self.action_bar.set_visible(False)
 
+    def filter_func(self, row):
+        if (self.search_entry.get_text().lower() in row.get_title().lower()):
+            return True
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self) # Access common utils and set the window to this window
@@ -235,3 +241,7 @@ class OrphansWindow(Adw.Window):
         self.trash_button.connect("clicked", self.trashHandler)
         self.select_all_button.connect("toggled", self.selectAllHandler)
         self.main_overlay.add_overlay(self.progress_bar)
+
+        self.list_of_data.set_filter_func(self.filter_func)
+        self.search_entry.connect("search-changed", lambda *_: self.list_of_data.invalidate_filter())
+        self.search_bar.connect_entry(self.search_entry)
