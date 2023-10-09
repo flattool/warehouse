@@ -21,25 +21,39 @@ class FilterWindow(Adw.Window):
             self.close()
 
     def isListApplicable(self):
-        self.apply_button.set_sensitive(False)
+        self.apply_button.set_sensitive(True)
 
-        if self.filter_list[0] == True or self.filter_list[1] == True:
-            if self.filter_list[3] == []:
-                self.apply_button.set_sensitive(False)
-                return
-            else:
-                self.apply_button.set_sensitive(True)
+        if not self.filter_list[0] == True and not self.filter_list[1] == True:
+            self.apply_button.set_sensitive(False)
+            return
 
-            if self.filter_list[4] == []:
-                self.apply_button.set_sensitive(False)
-                return
-            else:
-                self.apply_button.set_sensitive(True)
+        if self.filter_list[3] == []:
+            self.apply_button.set_sensitive(False)
+            return
 
-            print(self.filter_list[4])
+        if self.filter_list[4] == []:
+            self.apply_button.set_sensitive(False)
+            return
 
-        # if self.apps_switch.get_active() and not self.runtimes_switch.get_active() and not self.remotes_expander_switch.get_active() and not self.runtimes_expander_switch.get_active():
-        #     self.apply_button.set_sensitive(False)
+        if self.apps_switch.get_active() and\
+          (not self.runtimes_switch.get_active()) and\
+          (not self.remotes_expander_switch.get_active()) and\
+          (not self.runtimes_expander_switch.get_active()):
+            self.apply_button.set_sensitive(False)
+            return
+
+        # if self.filter_list[0] == True or self.filter_list[1] == True:
+        #     if self.filter_list[3] == []:
+        #         self.apply_button.set_sensitive(False)
+        #         return
+        #     else:
+        #         self.apply_button.set_sensitive(True)
+
+        #     if self.filter_list[4] == []:
+        #         self.apply_button.set_sensitive(False)
+        #         return
+        #     else:
+        #         self.apply_button.set_sensitive(True)
 
     def appsHandler(self, switch, _a):
         self.filter_list[0] = switch.get_active()
@@ -63,13 +77,10 @@ class FilterWindow(Adw.Window):
             self.filter_list[2].remove(install_type)
             self.filter_list[3].remove(remote)
 
+        self.isListApplicable()
+
     def runtimesEnableHandler(self, switch, is_enabled):
         self.runtimes_expander.set_enable_expansion(is_enabled)
-
-        if is_enabled:
-            self.filter_list[4] = []
-        else:
-            self.filter_list[4] = "all"
         
         for i in range(len(self.runtime_checkboxes)):
             self.runtime_checkboxes[i].set_active(not is_enabled)
@@ -78,6 +89,8 @@ class FilterWindow(Adw.Window):
 
     def runtimeCheckHandler(self, checkbox, runtime):
         if checkbox.get_active():
+            if self.filter_list[4] == "all":
+                self.filter_list[4] = []
             self.filter_list[4].append(runtime)
         else:
             self.filter_list[4].remove(runtime)
@@ -85,6 +98,8 @@ class FilterWindow(Adw.Window):
         self.isListApplicable()
 
     def generateList(self):
+        self.remotes_expander_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
+        self.runtimes_expander_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
 
         dependant_runtimes = []
         for i in range(len(self.host_flatpaks)):
@@ -117,7 +132,6 @@ class FilterWindow(Adw.Window):
             remote_check.connect("toggled", self.remoteCheckHandler, install_type, name)
             self.remote_checkboxes.append(remote_check)
             remote_check.set_active(True)
-        self.remotes_expander_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
         self.remotes_expander_switch.connect("state-set", self.remotesEnableHandler)
         self.remotes_expander.add_suffix(self.remotes_expander_switch)
 
@@ -132,15 +146,17 @@ class FilterWindow(Adw.Window):
             runtime_row.add_suffix(runtime_check)
             runtime_row.set_activatable_widget(runtime_check)
             self.runtimes_expander.add_row(runtime_row)
-        self.runtimes_expander_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
         self.runtimes_expander_switch.connect("state-set", self.runtimesEnableHandler)
         self.runtimes_expander.add_suffix(self.runtimes_expander_switch)
 
     def setHas_apply_button_been_clicked(self, is_clicked):
         self.has_apply_button_been_clicked = is_clicked
+        if not self.remotes_expander_switch.get_active():
+            self.filter_list[3] = "all"
+        if not self.runtimes_expander_switch.get_active():
+            self.filter_list[4] = "all" 
 
     def disableFilterToggle(self, _widget):
-        print(self.has_apply_button_been_clicked)
         self.app_window.filter_button.set_active(self.has_apply_button_been_clicked)
 
     def __init__(self, main_window, **kwargs):
@@ -160,8 +176,8 @@ class FilterWindow(Adw.Window):
         self.add_controller(event_controller)
 
         # Connections
-        self.apply_button.connect("clicked", lambda *_: main_window.applyFilter(self.filter_list))
         self.apply_button.connect("clicked", lambda *_: self.setHas_apply_button_been_clicked(True))
+        self.apply_button.connect("clicked", lambda *_: main_window.applyFilter(self.filter_list))
         self.apply_button.connect("clicked", lambda *_: self.close())
 
         #self.cancel_button.connect("clicked", lambda *_: main_window.filter_button.set_active(False))
