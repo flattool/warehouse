@@ -42,19 +42,6 @@ class FilterWindow(Adw.Window):
             self.apply_button.set_sensitive(False)
             return
 
-        # if self.filter_list[0] == True or self.filter_list[1] == True:
-        #     if self.filter_list[3] == []:
-        #         self.apply_button.set_sensitive(False)
-        #         return
-        #     else:
-        #         self.apply_button.set_sensitive(True)
-
-        #     if self.filter_list[4] == []:
-        #         self.apply_button.set_sensitive(False)
-        #         return
-        #     else:
-        #         self.apply_button.set_sensitive(True)
-
     def appsHandler(self, switch, _a):
         self.filter_list[0] = switch.get_active()
         self.isListApplicable()
