@@ -457,7 +457,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         for i in range(len(self.flatpak_rows)):
             self.flatpak_rows[i][5].set_active(False)
         self.batch_select_all_button.set_active(False)
-        if widget.get_active():
+        if widget.get_active() and self.should_open_filter_window:
             filtwin = FilterWindow(self)
             filtwin.present()
         else:
@@ -539,6 +539,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         event_controller.connect("key-pressed", self.batchKeyHandler)
         self.add_controller(event_controller)
         self.main_overlay.add_overlay(self.main_progress_bar)
+        self.should_open_filter_window = True
 
         self.create_action("copy-names", self.copyNames)
         self.create_action("copy-ids", self.copyIDs)

@@ -24,7 +24,8 @@ def show_properties_window(widget, index, window):
     properties_scroll.set_child(properties_clamp)
     properties_clamp.set_child(properties_box)
     properties_title_bar = Adw.ToolbarView()
-    properties_title_bar.add_top_bar(Gtk.HeaderBar())
+    properties_header_bar = Gtk.HeaderBar()
+    properties_title_bar.add_top_bar(properties_header_bar)
     properties_title_bar.set_content(properties_toast_overlay)
     user_data_list = Gtk.ListBox(selection_mode="none", margin_top=12, margin_bottom=0, margin_start=12, margin_end=12)
     user_data_row = Adw.ActionRow(title="No User Data")
@@ -32,6 +33,21 @@ def show_properties_window(widget, index, window):
     user_data_list.add_css_class("boxed-list")
 
     my_utils = myUtils(window)
+
+    def viewAppsHandler(button):
+        window.should_open_filter_window = False
+        window.filter_button.set_active(True)
+        window.applyFilter([[False], [False], "all", "all", [window.host_flatpaks[index][8]]])
+        window.should_open_filter_window = True
+        properties_window.close()
+
+
+
+    if "runtime" in window.host_flatpaks[index][12]:
+        view_apps_button = Gtk.Button(icon_name="funnel-symbolic", tooltip_text=_("Show Apps Using this Runtime"))
+        view_apps_button.connect("clicked", viewAppsHandler)
+        properties_header_bar.pack_start(view_apps_button)
+
 
     def key_handler(_a, event, _c, _d):
         if event == Gdk.KEY_Escape:
@@ -95,10 +111,11 @@ def show_properties_window(widget, index, window):
         task = Gio.Task.new(None, None, None)
         task.run_in_thread(lambda _task, _obj, _data, _cancellable: size_thread(path))
 
-    def test(button, query):
+    def showPropertiesHandler(button, query):
         for i in range(len(window.host_flatpaks)):
             if query in window.host_flatpaks[i][8]:
                 show_properties_window(button, i, window)
+                properties_window.close()
 
     if os.path.exists(path):
         user_data_row.set_title("User Data")
@@ -132,7 +149,7 @@ def show_properties_window(widget, index, window):
         if column == 13:
             runtime_properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
             runtime_properties_button.add_css_class("flat")
-            runtime_properties_button.connect("clicked", test, row_item.get_subtitle())
+            runtime_properties_button.connect("clicked", showPropertiesHandler, row_item.get_subtitle())
             row_item.add_suffix(runtime_properties_button)
 
             if row_item.get_subtitle() in window.eol_list:
