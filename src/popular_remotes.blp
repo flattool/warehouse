@@ -3,7 +3,7 @@ using Adw 1;
 
 template PopularRemotesWindow : Adw.Window {
     default-width: 450;
-    default-height: 613;
+    default-height: 530;
     title: "";
 
     Adw.ToolbarView main_toolbar_view {
@@ -16,7 +16,7 @@ template PopularRemotesWindow : Adw.Window {
             Adw.StatusPage {
                 valign: start;
                 title: _("Add a Remote");
-                description: _("Choose from a list of popular remotes.");
+                description: _("Choose from a list of popular remotes or add a new one.");
                 Adw.Clamp {
                     Box {
                         orientation: vertical;
@@ -31,6 +31,15 @@ template PopularRemotesWindow : Adw.Window {
                             valign: start;
                             selection-mode: none;
                             styles["boxed-list"]
+
+                            Adw.ActionRow add_from_file {
+                                title: _("Add a Repo File");
+                                activatable: true;
+                            }
+                            Adw.ActionRow custom_remote {
+                                title: _("Add a Custom Remote");
+                                activatable: true;
+                            }
                         }
                     }
                 }

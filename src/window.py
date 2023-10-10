@@ -19,11 +19,13 @@
 import os
 import pathlib
 import subprocess
+import re
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from .properties_window import show_properties_window
 from .filter_window import FilterWindow
 from .common import myUtils
+from .remotes_window import RemotesWindow
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):
@@ -48,6 +50,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     main_toolbar_view = Gtk.Template.Child()
     filter_button = Gtk.Template.Child()
     scrolled_window = Gtk.Template.Child()
+    main_menu = Gtk.Template.Child()
 
     main_progress_bar = Gtk.ProgressBar(visible=False, pulse_step=0.7, can_target=False)
     main_progress_bar.add_css_class("osd")
@@ -503,17 +506,20 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 total_visible += 1
 
         if total_visible > 0:
-            #self.main_stack.set_visible_child(self.main_box)
             self.windowSetEmpty(False)
         else:
-            # self.main_stack.set_visible_child(self.no_flatpaks)
             self.windowSetEmpty(True)
             self.filter_button.set_sensitive(True)
 
     def installCallback(self, _a, _b):
         self.main_progress_bar.set_visible(False)
         self.should_pulse = False
-        self.refresh_list_of_flatpaks(self, False)
+
+        if self.my_utils.install_success:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Installed successfully")))
+            self.refresh_list_of_flatpaks(self, False)
+        else:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not install app")))
 
     def installThread(self, filepath, user_or_system):
         self.my_utils.installFlatpak([filepath], None, user_or_system)
@@ -570,7 +576,15 @@ class WarehouseWindow(Adw.ApplicationWindow):
         Gtk.Window.present(dialog)
 
     def drop_callback(self, target, _x, _y, _data):
-        print(target.get_value().get_path())
+        filepath = target.get_value().get_path()
+        if filepath.endswith(".flatpak") or filepath.endswith(".flatpakref"):
+            self.install_file(filepath)
+        elif filepath.endswith(".flatpakrepo"):
+            remotes_window = RemotesWindow(self)
+            remotes_window.present()
+            remotes_window.addRemoteFromFile(filepath)
+        else:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("File type not supported")))
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -583,6 +597,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.settings.bind("window-height", self, "default-height", Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind("is-maximized", self, "maximized", Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind("is-fullscreen", self, "fullscreened", Gio.SettingsBindFlags.DEFAULT)
+
+        self.new_env = dict( os.environ )
+        self.new_env['LC_ALL'] = 'C'
 
         if self.host_flatpaks == [['', '']]:
             self.windowSetEmpty(True)

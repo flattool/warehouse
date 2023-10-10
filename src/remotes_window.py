@@ -106,7 +106,7 @@ class RemotesWindow(Adw.Window):
     def addRemoteThread(self, command):
         try:
             subprocess.run(command, capture_output=True, check=True, env=self.new_env)
-        except Exception as e:
+        except subprocess.CalledProcessError as e:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not add {}").format(self.name_to_add)))
             print(e)
 
@@ -235,6 +235,86 @@ class RemotesWindow(Adw.Window):
         if link != "":
             url_update(url_entry)
 
+    def addRemoteFromFileThread(self, filepath, system_or_user, name):
+        try:
+            subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'remote-add', name, filepath, f"--{system_or_user}"], capture_output=True, check=True, env=self.new_env)
+            self.toast_overlay.add_toast(Adw.Toast.new(_("{} successfully added").format(name)))
+        except subprocess.CalledProcessError as e:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not add {}").format(self.name_to_add)))
+            print(e)
+
+    def addRemoteFromFile(self, filepath):
+        def response(dialog, response, _a):
+            if response == "cancel":
+                self.should_pulse = False
+                return
+
+            self.progress_bar.set_visible(True)
+            user_or_system = "user"
+            if system_check.get_active():
+                user_or_system = "system"
+
+            task = Gio.Task.new(None, None, self.addRemoteCallback)
+            task.run_in_thread(lambda *_: self.addRemoteFromFileThread(filepath, user_or_system, name_row.get_text()))
+
+        def name_update(widget):
+            is_enabled = True
+            self.name_to_add = widget.get_text()
+            name_pattern = re.compile(r'^[a-zA-Z\-]+$')
+            if not name_pattern.match(self.name_to_add):
+                is_enabled = False
+
+            if is_enabled:
+                widget.remove_css_class("error")
+            else:
+                widget.add_css_class("error")
+
+            if len(self.name_to_add) == 0:
+                is_enabled = False
+
+            dialog.set_response_enabled("continue", is_enabled)
+
+        self.should_pulse = True
+        self.mainPulser()
+
+        name = filepath.split('/')
+        name = name[len(name) - 1]
+
+        dialog = Adw.MessageDialog.new(self, _("Add {}?").format(name))
+        dialog.set_close_response("cancel")
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Add"))
+        dialog.set_response_enabled("continue", False)
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.SUGGESTED)
+        dialog.connect("response", response, dialog.choose_finish)
+
+        # Create Widgets
+        options_box = Gtk.Box(orientation="vertical")
+        options_list = Gtk.ListBox(selection_mode="none", margin_top=15)
+        name_row = Adw.EntryRow(title=_("Name"))
+        name_row.connect("changed", name_update)
+        user_row = Adw.ActionRow(title=_("User"), subtitle=_("The app will be available to only you"))
+        system_row = Adw.ActionRow(title=_("System"), subtitle=_("The app will be available to every user on the system"))
+        user_check = Gtk.CheckButton()
+        system_check = Gtk.CheckButton()
+
+        # Apply Widgets
+        user_row.add_prefix(user_check)
+        user_row.set_activatable_widget(user_check)
+        system_row.add_prefix(system_check)
+        system_row.set_activatable_widget(system_check)
+        user_check.set_group(system_check)
+        options_list.append(name_row)
+        options_list.append(user_row)
+        options_list.append(system_row)
+        options_box.append(options_list)
+        dialog.set_extra_child(options_box)
+
+        # Calls
+        user_check.set_active(True)
+        options_list.add_css_class("boxed-list")
+        Gtk.Window.present(dialog)
+
     def showPopularRemotes(self, widget):
 
         remotes = [
@@ -259,10 +339,7 @@ class RemotesWindow(Adw.Window):
             if remotes[i][1] not in host_remotes_names:
                 non_added_remotes.append(remotes[i])
 
-        if len(non_added_remotes) > 0:
-            PopularRemotesWindow(self, non_added_remotes).present()
-        else:
-            self.add_handler(widget)
+        PopularRemotesWindow(self, non_added_remotes).present()
     
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)

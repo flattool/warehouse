@@ -5,7 +5,7 @@ ShortcutsWindow help_overlay {
 
   ShortcutsSection {
     section-name: "shortcuts";
-    max-height: 7;
+    max-height: 8;
 
     ShortcutsGroup {
       title: C_("shortcut window", "App Management");
@@ -55,6 +55,11 @@ ShortcutsWindow help_overlay {
     }
     ShortcutsGroup {
       title: C_("shortcut window", "General");
+
+      ShortcutsShortcut {
+        title: C_("shortcut window", "Open Menu");
+        action-name: "app.open-menu";
+      }
 
       ShortcutsShortcut {
         title: C_("shortcut window", "Show Shortcuts");

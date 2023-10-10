@@ -50,6 +50,7 @@ class WarehouseApplication(Adw.Application):
         self.create_action("show-remotes-window", self.show_remotes_shortcut, ["<primary>m"])
         self.create_action("set-filter", self.filters_shortcut, ["<primary>t"])
         self.create_action("install-from-file", self.install_from_file, ["<primary>o"])
+        self.create_action("open-menu", self.main_menu_shortcut, ["F10"])
 
     def batch_mode_shortcut(self, widget, _):
         button = self.props.active_window.batch_mode_button
@@ -74,6 +75,10 @@ class WarehouseApplication(Adw.Application):
     def filters_shortcut(self, widget, _):
         window = self.props.active_window
         window.filterWindowKeyboardHandler(window)
+
+    def main_menu_shortcut(self, widget, _):
+        window = self.props.active_window
+        window.main_menu.set_active(True)
 
     def file_callback(self, object, result):
         window = self.props.active_window
