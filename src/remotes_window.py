@@ -5,7 +5,18 @@ import subprocess
 import os
 import re
 
+@Gtk.Template(resource_path="/io/github/flattool/Warehouse/remotes.ui")
 class RemotesWindow(Adw.Window):
+    __gtype_name__ = "RemotesWindow"
+
+    add_button = Gtk.Template.Child()
+    remotes_list = Gtk.Template.Child()
+    stack = Gtk.Template.Child()
+    main_overlay = Gtk.Template.Child()
+    no_remotes = Gtk.Template.Child()
+    toast_overlay = Gtk.Template.Child()
+    progress_bar = Gtk.Template.Child()
+
     def key_handler(self, _a, event, _c, _d):
         if event == Gdk.KEY_Escape:
             self.close()
@@ -61,12 +72,10 @@ class RemotesWindow(Adw.Window):
             self.make_toast(_("Copied {}").format(to_copy))
 
         if self.host_remotes[0][0] == '':
-            no_remotes = Adw.StatusPage(icon_name="error-symbolic", title=_("No Remotes"), description=_("Warehouse cannot see the list of remotes or the system has no remotes added"))
-            self.stack.add_child(no_remotes)
-            self.stack.set_visible_child(no_remotes)
+            self.stack.set_visible_child(self.no_remotes)
             return
         else:
-            self.stack.set_visible_child(self.scroll)
+            self.stack.set_visible_child(self.main_overlay)
 
         for i in range(len(self.host_remotes)):
             name = self.host_remotes[i][0]
@@ -88,6 +97,143 @@ class RemotesWindow(Adw.Window):
             remove_button.connect("clicked", self.remove_handler, i)
             remote_row.add_suffix(copy_button)
             remote_row.add_suffix(remove_button)
+
+    def addRemoteCallback(self, _a, _b):
+        self.should_pulse = False
+        self.progress_bar.set_visible(False)
+        self.generate_list()
+
+    def addRemoteThread(self, command):
+        try:
+            subprocess.run(command, capture_output=True, check=True, env=self.new_env)
+        except Exception as e:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not add {}").format(self.name_to_add)))
+            print(e)
+
+    def mainPulser(self):
+        if self.should_pulse:
+            self.progress_bar.pulse()
+            GLib.timeout_add(500, self.mainPulser)
+
+    def on_add_response(self, _dialog, response_id, _function):
+        if response_id == "cancel":
+            self.should_pulse = False
+            return
+
+        self.progress_bar.set_visible(True)
+        install_type = "--user"
+        if not self.add_as_user:
+            install_type = "--system"
+
+        self.name_to_add = self.name_to_add.strip()
+        self.url_to_add = self.url_to_add.strip()
+
+        command = ['flatpak-spawn', '--host', 'flatpak', 'remote-add', '--if-not-exists', self.name_to_add, self.url_to_add, install_type]
+        task = Gio.Task.new(None, None, self.addRemoteCallback)
+        task.run_in_thread(lambda _task, _obj, _data, _cancellable: self.addRemoteThread(command))
+
+    def add_handler(self, _widget, name="", link=""):
+        dialog = Adw.MessageDialog.new(self, _("Add Flatpak Remote"))
+        dialog.set_close_response("cancel")
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Add"))
+        dialog.set_response_enabled("continue", False)
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.SUGGESTED)
+        dialog.set_transient_for(self)
+
+        def name_update(widget):
+            is_enabled = True
+            self.name_to_add = widget.get_text()
+            name_pattern = re.compile(r'^[a-zA-Z\-]+$')
+            if not name_pattern.match(self.name_to_add):
+                is_enabled = False
+
+            if is_enabled:
+                widget.remove_css_class("error")
+            else:
+                widget.add_css_class("error")
+
+            if len(self.name_to_add) == 0:
+                is_enabled = False
+
+            confirm_enabler(is_enabled)
+
+        def url_update(widget):
+            is_enabled = True
+            self.url_to_add = widget.get_text()
+            url_pattern = re.compile(r'^[a-zA-Z0-9\-._~:/?#[\]@!$&\'()*+,;=]+$')
+            if not url_pattern.match(self.url_to_add):
+                is_enabled = False
+
+            if is_enabled:
+                widget.remove_css_class("error")
+            else:
+                widget.add_css_class("error")
+
+            if len(self.url_to_add) == 0:
+                is_enabled = False
+
+            confirm_enabler(is_enabled)
+
+        def confirm_enabler(is_enabled):
+            if len(self.name_to_add) == 0 or len(self.url_to_add) == 0:
+                is_enabled = False
+            dialog.set_response_enabled("continue", is_enabled)
+
+        def set_user(widget):
+            self.add_as_user = widget.get_active()
+
+        self.name_to_add = ""
+        self.url_to_add = ""
+        self.add_as_user = True
+
+        self.should_pulse = True
+        self.mainPulser()
+
+        info_box = Gtk.Box(orientation="vertical")
+        entry_list = Gtk.ListBox(selection_mode="none", margin_bottom=12)
+        entry_list.add_css_class("boxed-list")
+        
+        name_entry = Adw.EntryRow(title=_("Name"))
+        name_entry.set_text(name)
+        name_entry.connect("changed", name_update)
+
+        url_entry = Adw.EntryRow(title=_("URL"))
+        url_entry.set_text(link)
+        url_entry.connect("changed", url_update)
+
+        entry_list.append(name_entry)
+        entry_list.append(url_entry)
+        info_box.append(entry_list)
+
+        install_type_list = Gtk.ListBox(selection_mode="none")
+        install_type_list.add_css_class("boxed-list")
+
+        user_row = Adw.ActionRow(title=_("User"), subtitle=_("Remote will be available to only you"))
+        user_check = Gtk.CheckButton(active=True)
+        user_check.connect("toggled", set_user)
+        user_row.add_prefix(user_check)
+        user_row.set_activatable_widget(user_check)
+
+        system_row = Adw.ActionRow(title=_("System"), subtitle=_("Remote will be available to every user on the system"))
+        system_check = Gtk.CheckButton()
+        system_row.add_prefix(system_check)
+        system_check.set_group(user_check)
+        system_row.set_activatable_widget(system_check)
+
+        install_type_list.append(user_row)
+        install_type_list.append(system_row)
+
+        info_box.append(install_type_list)
+
+        dialog.set_extra_child(info_box)
+        dialog.connect("response", self.on_add_response, dialog.choose_finish)
+        Gtk.Window.present(dialog)
+
+        if name != "":
+            name_update(name_entry)
+        if link != "":
+            url_update(url_entry)
 
     def showPopularRemotes(self, widget):
 
@@ -126,46 +272,18 @@ class RemotesWindow(Adw.Window):
         self.window_title = _("Manage Remotes")
         self.host_remotes = []
         self.host_flatpaks = []
-        self.new_env = dict( os.environ )
-        self.new_env['LC_ALL'] = 'C' 
-
-        # Create Widgets
-        self.scroll = Gtk.ScrolledWindow()
-        self.toast_overlay = Adw.ToastOverlay()
-        self.outer_box = Gtk.Box(orientation="vertical", vexpand=True)
-        self.clamp = Adw.Clamp()
-        self.toolbar = Adw.ToolbarView()
-        self.headerbar = Gtk.HeaderBar()
-        self.remotes_list = Gtk.ListBox(selection_mode="none", margin_top=6, margin_bottom=12, margin_start=12, margin_end=12)
-        self.user_data_row = Adw.ActionRow(title="No User Data")
-        self.add_button = Gtk.Button(icon_name="plus-large-symbolic", tooltip_text="Add Remote")
-        self.stack = Gtk.Stack()
-        self.new_env = dict( os.environ )
-        self.new_env['LC_ALL'] = 'C' 
-        
-        # Apply Widgets
-        self.toolbar.set_content(self.toast_overlay)
-        self.toolbar.add_top_bar(self.headerbar)
-        self.headerbar.pack_start(self.add_button)
-        self.toast_overlay.set_child(self.stack)
-        self.stack.add_child(self.scroll)
-        self.stack.set_visible_child(self.scroll)
-        self.scroll.set_child(self.clamp)
-        self.clamp.set_child(self.outer_box)
-        self.outer_box.append(self.remotes_list)
-        self.remotes_list.append(self.user_data_row)
-        self.remotes_list.add_css_class("boxed-list")
         self.app_window = main_window
+        self.new_env = dict( os.environ )
+        self.new_env['LC_ALL'] = 'C'
+        self.should_pulse = False
 
         self.add_button.connect("clicked", self.showPopularRemotes)
 
         # Window Stuffs
         self.set_title(self.window_title)
-        self.set_default_size(500, 450)
         self.set_size_request(260, 230)
         self.set_modal(True)
         self.set_resizable(True)
-        self.set_content(self.toolbar)
         self.generate_list()
 
         event_controller = Gtk.EventControllerKey()

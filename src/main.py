@@ -27,7 +27,7 @@ gi.require_version("Adw", "1")
 
 from gi.repository import Gtk, Gio, Adw, GLib
 from .window import WarehouseWindow
-from .remotes import RemotesWindow
+from .remotes_window import RemotesWindow
 from .orphans_window import OrphansWindow
 
 class WarehouseApplication(Adw.Application):

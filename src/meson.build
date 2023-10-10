@@ -9,6 +9,7 @@ blueprints = custom_target('blueprints',
     'orphans.blp',
     'filter.blp',
     'popular_remotes.blp',
+    'remotes.blp'
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
@@ -45,13 +46,14 @@ warehouse_sources = [
   'window.py',
   'properties_window.py',
   'orphans_window.py',
-  'remotes.py',
+  'remotes_window.py',
   'common.py',
   'orphans.blp',
   'filter_window.py',
   'filter.blp',
   'popular_remotes_window.py',
   'style.css',
+  'remotes.blp'
 ]
 
 install_data(warehouse_sources, install_dir: moduledir)

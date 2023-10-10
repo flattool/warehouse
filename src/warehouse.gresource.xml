@@ -5,6 +5,7 @@
     <file preprocess="xml-stripblanks">orphans.ui</file>
     <file preprocess="xml-stripblanks">filter.ui</file>
     <file preprocess="xml-stripblanks">popular_remotes.ui</file>
+    <file preprocess="xml-stripblanks">remotes.ui</file>
     <file>style.css</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
     <!-- <file preprocess="xml-stripblanks">../data/io.github.flattool.Warehouse.metainfo.xml.in</file> -->
