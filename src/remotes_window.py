@@ -262,7 +262,7 @@ class RemotesWindow(Adw.Window):
         if len(non_added_remotes) > 0:
             PopularRemotesWindow(self, non_added_remotes).present()
         else:
-            PopularRemotesWindow(self, non_added_remotes).add_handler(widget)
+            self.add_handler(widget)
     
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
