@@ -178,7 +178,12 @@ class myUtils:
         fails = []
 
         for i in range(len(app_arr)):
-            command = ['flatpak-spawn', '--host', 'flatpak', 'install', remote, f"--{user_or_system}", '-y', app_arr[i]]
+            command = ['flatpak-spawn', '--host', 'flatpak', 'install']
+            if remote != None:
+                command.append(remote)
+            command.append(f"--{user_or_system}")
+            command.append('-y')
+            command.append(app_arr[i])
             try:
                 subprocess.run(command, capture_output=False, check=True, env=self.new_env)
             except subprocess.CalledProcessError:

@@ -49,6 +49,7 @@ class WarehouseApplication(Adw.Application):
         self.create_action("refresh-list", self.refresh_list_shortcut, ["<primary>r", "F5"])
         self.create_action("show-remotes-window", self.show_remotes_shortcut, ["<primary>m"])
         self.create_action("set-filter", self.filters_shortcut, ["<primary>t"])
+        self.create_action("install-from-file", self.install_from_file, ["<primary>o"])
 
     def batch_mode_shortcut(self, widget, _):
         button = self.props.active_window.batch_mode_button
@@ -73,6 +74,27 @@ class WarehouseApplication(Adw.Application):
     def filters_shortcut(self, widget, _):
         window = self.props.active_window
         window.filterWindowKeyboardHandler(window)
+
+    def file_callback(self, object, result):
+        window = self.props.active_window
+        try:
+            file = object.open_finish(result)
+            window.install_file(file.get_path())
+        except GLib.GError:
+            pass
+
+    def install_from_file(self, widget, _a):
+        window = self.props.active_window
+
+        filter = Gtk.FileFilter(name=_("Flatpaks"))
+        filter.add_suffix("flatpak")
+        filter.add_suffix("flatpakref")
+        filters = Gio.ListStore.new(Gtk.FileFilter)
+        filters.append(filter)
+        file_chooser = Gtk.FileDialog()
+        file_chooser.set_filters(filters)
+        file_chooser.set_default_filter(filter)
+        file_chooser.open(window, None, self.file_callback)
 
     def do_activate(self):
         """Called when the application is activated.

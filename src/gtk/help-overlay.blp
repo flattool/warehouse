@@ -5,7 +5,7 @@ ShortcutsWindow help_overlay {
 
   ShortcutsSection {
     section-name: "shortcuts";
-    max-height: 6;
+    max-height: 7;
 
     ShortcutsGroup {
       title: C_("shortcut window", "App Management");
@@ -46,6 +46,11 @@ ShortcutsWindow help_overlay {
       ShortcutsShortcut {
         title: C_("shortcut window", "Manage Remotes");
         action-name: "app.show-remotes-window";
+      }
+
+      ShortcutsShortcut {
+        title: C_("shortcut window", "Install From File");
+        action-name: "app.install-from-file";
       }
     }
     ShortcutsGroup {

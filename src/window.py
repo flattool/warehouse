@@ -47,6 +47,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     main_overlay = Gtk.Template.Child()
     main_toolbar_view = Gtk.Template.Child()
     filter_button = Gtk.Template.Child()
+    scrolled_window = Gtk.Template.Child()
 
     main_progress_bar = Gtk.ProgressBar(visible=False, pulse_step=0.7, can_target=False)
     main_progress_bar.add_css_class("osd")
@@ -509,6 +510,68 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.windowSetEmpty(True)
             self.filter_button.set_sensitive(True)
 
+    def installCallback(self, _a, _b):
+        self.main_progress_bar.set_visible(False)
+        self.should_pulse = False
+        self.refresh_list_of_flatpaks(self, False)
+
+    def installThread(self, filepath, user_or_system):
+        self.my_utils.installFlatpak([filepath], None, user_or_system)
+
+    def install_file(self, filepath):
+        def response(dialog, response, _a):
+            if response == "cancel":
+                self.should_pulse = False
+                return
+
+            self.main_progress_bar.set_visible(True)
+            user_or_system = "user"
+            if system_check.get_active():
+                user_or_system = "system"
+
+            task = Gio.Task.new(None, None, self.installCallback)
+            task.run_in_thread(lambda *_: self.installThread(filepath, user_or_system))
+
+        self.should_pulse = True
+        self.mainPulser()
+
+        name = filepath.split('/')
+        name = name[len(name) - 1]
+
+        dialog = Adw.MessageDialog.new(self, _("Install {}?").format(name))
+        dialog.set_close_response("cancel")
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Install"))
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.SUGGESTED)
+        dialog.connect("response", response, dialog.choose_finish)
+
+        # Create Widgets
+        options_box = Gtk.Box(orientation="vertical")
+        options_list = Gtk.ListBox(selection_mode="none", margin_top=15)
+        user_row = Adw.ActionRow(title=_("User"), subtitle=_("The app will be available to only you"))
+        system_row = Adw.ActionRow(title=_("System"), subtitle=_("The app will be available to every user on the system"))
+        user_check = Gtk.CheckButton()
+        system_check = Gtk.CheckButton()
+
+        # Apply Widgets
+        user_row.add_prefix(user_check)
+        user_row.set_activatable_widget(user_check)
+        system_row.add_prefix(system_check)
+        system_row.set_activatable_widget(system_check)
+        user_check.set_group(system_check)
+        options_list.append(user_row)
+        options_list.append(system_row)
+        options_box.append(options_list)
+        dialog.set_extra_child(options_box)
+
+        # Calls
+        user_check.set_active(True)
+        options_list.add_css_class("boxed-list")
+        Gtk.Window.present(dialog)
+
+    def drop_callback(self, target, _x, _y, _data):
+        print(target.get_value().get_path())
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
@@ -546,5 +609,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.create_action("copy-refs", self.copyRefs)
 
         self.filter_button.connect("toggled", self.filterWindowHandler)
+
+        file_drop = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
+        file_drop.connect("drop", self.drop_callback)
+        self.scrolled_window.add_controller(file_drop)
 
 
