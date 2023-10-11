@@ -170,11 +170,17 @@ class OrphansWindow(Adw.Window):
         except GLib.GError:
             properties_toast_overlay.add_toast(Adw.Toast.new(_("Can't open folder")))
 
-    def sizeThread(self, row, path):
-        row.set_subtitle(self.my_utils.getSizeWithFormat(path))
+    def sizeCallBack(self, row_index):
+        row = self.list_of_data.get_row_at_index(row_index)
+        row.set_subtitle(f"~{self.data_rows[row_index][1]}")
+
+    def sizeThread(self, index, path):
+        size = self.my_utils.getSizeWithFormat(path)
+        self.data_rows[index].append(size)
 
     # Create the list of folders in the window
     def generateList(self):
+        self.data_rows = []
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
 
         if self.host_flatpaks == [['', '']]:
@@ -202,9 +208,11 @@ class OrphansWindow(Adw.Window):
 
             # Create row element
             dir_row = Adw.ActionRow(title=dir_name)
+            self.data_rows.append([dir_row])
             path = self.user_data_path + dir_name
-            task = Gio.Task.new(None, None, None)
-            task.run_in_thread(lambda _task, _obj, _data, _cancellable: self.sizeThread(dir_row, path))
+            index = len(self.data_rows) - 1
+            task = Gio.Task.new(None, None, lambda *_, index=index: self.sizeCallBack(index))
+            task.run_in_thread(lambda _task, _obj, _data, _cancellable, *_, index=index: self.sizeThread(index, path))
 
             open_row_button = Gtk.Button(icon_name="document-open-symbolic", valign=Gtk.Align.CENTER)
             open_row_button.add_css_class("flat")

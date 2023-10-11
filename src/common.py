@@ -57,7 +57,9 @@ class myUtils:
         except PermissionError:
             # if for whatever reason we can't open the folder, return 0
             return 0
-        return total
+        if total == 0:
+            return 0
+        return total + 1500
 
     def findAppIcon(self, app_id):
         icon_theme = Gtk.IconTheme.new()
