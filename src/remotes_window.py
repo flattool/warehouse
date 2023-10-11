@@ -237,7 +237,7 @@ class RemotesWindow(Adw.Window):
 
     def addRemoteFromFileThread(self, filepath, system_or_user, name):
         try:
-            subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'remote-add', name, filepath, f"--{system_or_user}"], capture_output=True, check=True, env=self.new_env)
+            subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'remote-add', '--if-not-exists', name, filepath, f"--{system_or_user}"], capture_output=True, check=True, env=self.new_env)
             self.toast_overlay.add_toast(Adw.Toast.new(_("{} successfully added").format(name)))
         except subprocess.CalledProcessError as e:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not add {}").format(self.name_to_add)))
@@ -293,8 +293,8 @@ class RemotesWindow(Adw.Window):
         options_list = Gtk.ListBox(selection_mode="none", margin_top=15)
         name_row = Adw.EntryRow(title=_("Name"))
         name_row.connect("changed", name_update)
-        user_row = Adw.ActionRow(title=_("User"), subtitle=_("The app will be available to only you"))
-        system_row = Adw.ActionRow(title=_("System"), subtitle=_("The app will be available to every user on the system"))
+        user_row = Adw.ActionRow(title=_("User"), subtitle=_("Remote will be available to only you"))
+        system_row = Adw.ActionRow(title=_("System"), subtitle=_("Remote will be available to every user on the system"))
         user_check = Gtk.CheckButton()
         system_check = Gtk.CheckButton()
 
