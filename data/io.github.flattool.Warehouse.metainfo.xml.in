@@ -60,7 +60,7 @@
         <ul>
           <li>Flatpaks files can be installed with a drag and drop or from a file selection</li>
           <li>Flatpak remotes can be added with a drag and drop or from a file selection</li>
-          <li>Apps can now be filtered by dependant runtimes</li>
+          <li>Apps can now be filtered by dependent runtimes</li>
           <li>Properties of a runtime now shows a button to show only apps that rely on the runtime</li>
           <li>A loading indicator is now shown when adding a remote</li>
           <li>Added Wbekit Testing to the list of popular remotes</li>
