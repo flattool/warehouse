@@ -98,7 +98,7 @@ def show_properties_window(widget, index, window):
     image.set_pixel_size(100)
     properties_box.append(image)
 
-    properties_list = Gtk.ListBox(selection_mode="none", margin_top=12, margin_bottom=18, margin_start=12, margin_end=12)
+    properties_list = Gtk.ListBox(selection_mode="none", margin_top=12, margin_bottom=12, margin_start=12, margin_end=12)
     properties_list.add_css_class("boxed-list")
 
     path = str(window.user_data_path) + window.host_flatpaks[index][2]
