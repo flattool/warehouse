@@ -122,7 +122,8 @@ class myUtils:
         lines = output.split("\n")
         for i in range(len(data)):
             data[i].append(lines[i])
-        return data
+        sorted_array = sorted(data, key=lambda item: item[0].lower())
+        return sorted_array
 
     def uninstallFlatpak(self, ref_arr, type_arr, should_trash):
         self.uninstall_success = True
