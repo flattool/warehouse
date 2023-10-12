@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 17:37-0400\n"
-"PO-Revision-Date: 2023-10-12 22:20+0200\n"
+"POT-Creation-Date: 2023-10-12 23:37+0200\n"
+"PO-Revision-Date: 2023-10-12 23:39+0200\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -23,240 +23,686 @@ msgstr ""
 msgid "Warehouse"
 msgstr "Entrepôt"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:7
-msgid "No description"
-msgstr "Aucune description"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:9
+msgid "Manage all things Flatpak"
+msgstr "Gérez tout ce qui concerne Flatpak"
 
-#: src/window.py:134
-msgid "The app will be removed from your system."
-msgstr "L’application sera supprimée de votre système."
-
-#: src/window.py:136 src/window.py:293 src/window.py:495 src/window.py:528
-msgid "Cancel"
-msgstr "Annuler"
-
-#: src/window.py:137 src/window.py:529 src/window.blp:77
-msgid "Uninstall"
-msgstr "Désinstaller"
-
-#: src/window.py:141
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
-"The app will be removed from your system. Optionally, you can also trash its "
-"user data."
+"Warehouse is an app that manages installed Flatpaks, their user data, and "
+"Flatpak remotes."
 msgstr ""
-"L’application sera supprimée de votre système. Facultativement vous pouvez "
-"aussi mettre ses données utilisateur à la corbeille."
+"Entrepôt est une application qui gère les Flatpaks installés, leurs données "
+"utilisateur et les dépôt Flatpak distants."
 
-#: src/window.py:142 src/window.py:530
-msgid "Uninstall and Trash Data"
-msgstr "Désinstaller et supprimer les données"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:12
+msgid "Features:"
+msgstr "Fonctionnalités :"
 
-#: src/window.py:150
-msgid "Manage Leftover Data"
-msgstr "Gérer les données résiduelles"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:14
+msgid "Show and filter the list of installed Flatpaks"
+msgstr "Afficher et filtrer la liste des Flatpaks installés"
 
-#: src/window.py:175
-msgid "No Data"
-msgstr "Aucune donnée"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:15
+msgid "Display properties of installed Flatpaks"
+msgstr "Afficher les propriétés des Flatpaks installés"
 
-#: src/window.py:175
-msgid "There is no leftover user data"
-msgstr "Pas de données résiduelles"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:16
+msgid "Manage large groups of Flatpaks at once"
+msgstr "Gérer de grands groupes de Flatpaks à la fois"
 
-#: src/window.py:176 src/window.blp:101
-msgid "Please Wait"
-msgstr "Veuillez patienter"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:17
+msgid "Add and remove Flatpak remotes"
+msgstr "Ajouter et supprimer des dépôts de logiciels Flatpak"
 
-#: src/window.py:176
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:18
+msgid "Find and trash leftover user data"
+msgstr "Chercher et supprimer les données utilisateur résiduelles"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:19
+msgid "Reinstall apps that have leftover data"
+msgstr "Réinstaller les applications dont des données ont été conservées"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:59
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:93
+msgid "New Features and Changes"
+msgstr "Nouvelles fonctionnalités et changements"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:61
 msgid ""
-"Warehouse is attempting to install the selected apps. This could take a "
-"while."
+"Flatpaks files can be installed with a drag and drop or from a file selection"
 msgstr ""
-"Entrepôt essaye d’installer les applications sélectionnées. Cela pourrait "
-"prendre du temps."
+"Les fichiers Flatpaks peuvent être installés par glisser-déposer ou à partir "
+"d’une sélection de fichiers"
 
-#: src/window.py:212
-msgid "~"
-msgstr "~"
-
-#: src/window.py:238
-msgid "Can't trash {}"
-msgstr "Impossible de mettre {} à la corbeille"
-
-#: src/window.py:243
-msgid "Trashed data"
-msgstr "Données mises à la corbeille"
-
-#: src/window.py:265
-msgid "Can't install {}"
-msgstr "Impossible d’installer {}"
-
-#: src/window.py:272
-msgid "Installed all apps"
-msgstr "Toutes les applis ont été installées"
-
-#: src/window.py:291
-msgid "Choose a Remote"
-msgstr "Choisissez un dépôt"
-
-#: src/window.py:297
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
 msgid ""
-"Choose the Flatpak Remote Repository where attempted app downloads will be "
-"from."
+"Flatpak remotes can be added with a drag and drop or from a file selection"
 msgstr ""
-"Choisissez le dépôt Flatpak distant depuis lequel les téléchargements "
-"d’applications seront effectués."
+"Les dépôts Flatpak peuvent être ajoutés par glisser-déposer ou à partir "
+"d’une sélection de fichiers"
 
-#: src/window.py:307
-msgid "Continue"
-msgstr "Continuer"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:63
+msgid "Apps can now be filtered by dependent runtimes"
+msgstr ""
+"Les applications peuvent être filtrées selon l’environnement d’exécution"
 
-#: src/window.py:314
-msgid "Select All"
-msgstr "Sélectionner tout"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:64
+msgid ""
+"Properties of a runtime now shows a button to show only apps that rely on "
+"the runtime"
+msgstr ""
+"Les propriétés d’un environnement d’exécution affichent désormais un bouton "
+"permettant d’afficher uniquement les applications qui en dépendent"
 
-#: src/window.py:318
-msgid "Trash Selected"
-msgstr "Mettre la sélection à la corbeille"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:65
+msgid "A loading indicator is now shown when adding a remote"
+msgstr ""
+"Un indicateur de chargement est désormais affiché lors de l’ajout d’un dépôt"
 
-#: src/window.py:323
-msgid "Attempt to Install Selected"
-msgstr "Sélection en cours d’installation"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
+msgid "Added Wbekit Testing to the list of popular remotes"
+msgstr "Ajout de Webkit Testing à la liste des dépôts populaires"
 
-#: src/window.py:349
-msgid "{} Selected"
-msgstr "{} sélection(s)"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:67
+msgid "Added a search bar to the Leftover Data window"
+msgstr "Ajout d’une barre de recherche à la fenêtre des données résiduelles"
 
-#: src/window.py:410
-msgid "Uninstall {}"
-msgstr "Désinstaller {}"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:68
+msgid ""
+"Added a button to open the entire user data folder the Leftover Data window"
+msgstr ""
+"Ajout d’un bouton permettant d’ouvrir l’ensemble du dossier de données "
+"utilisateur dans la fenêtre des données résiduelles"
 
-#: src/window.py:415
-msgid "View Properties"
-msgstr "Afficher les propriétés"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:69
+msgid ""
+"Added a button on each row in the Leftover Data list to open them directly"
+msgstr ""
+"Ajout d’un bouton sur chaque ligne de la liste des données résiduelles pour "
+"les ouvrir directement"
 
-#: src/window.py:441
-msgid "List refreshed"
-msgstr "Liste actualisée"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
+msgid "Changed margins of lists to improve legibility"
+msgstr "Modification des marges des listes pour améliorer la lisibilité"
 
-#: src/window.py:471
-msgid "Copied selected app IDs"
-msgstr "Les identifiants d’application sélectionnés ont été copiés"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:71
+msgid "F10 now opens the main menu"
+msgstr "La touche F10 ouvre désormais le menu principal"
 
-#: src/window.py:484
-msgid "No user data for {}"
-msgstr "Pas de données utilisateur pour {}"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:73
+msgid "Bug Fixes and Stability Improvements"
+msgstr "Corrections de bugs et améliorations de la stabilité"
 
-#: src/window.py:487
-msgid "Can't trash user data for {}"
-msgstr "Impossible de mettre les données utilisateur de {} à la corbeille"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:75
+msgid ""
+"Fixed a crash that would sometimes occur when opening the Leftover Data "
+"window"
+msgstr ""
+"Correction d’un plantage qui se produisait parfois lors de l’ouverture de la "
+"fenêtre des données résiduelles"
 
-#: src/window.py:489
-msgid "Trashed user data"
-msgstr "Données utilisateur mises à la corbeille"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:76
+msgid "Popular remotes are now named correcting and have proper descriptions"
+msgstr ""
+"Les dépôts populaires sont désormais nommés correctement et ont des "
+"descriptions adéquates"
 
-#: src/window.py:493
-msgid "Delete Selected User Data?"
-msgstr "Supprimer les données utilisateur sélectionnées ?"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:77
+msgid ""
+"The filter button now disables when the Filter window is closed by the "
+"keyboard"
+msgstr ""
+"Le bouton de filtrage est désormais désactivé lorsque la fenêtre de filtrage "
+"est fermée par le clavier"
 
-#: src/window.py:493
-msgid "This user data will be sent to the trash."
-msgstr "Ces données utilisateur seront mises à la corbeille."
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:78
+msgid "The default filter is no longer allowed to be set as a new filter"
+msgstr "Le filtre par défaut ne peut plus être défini comme nouveau filtre"
 
-#: src/window.py:496
-msgid "Trash Data"
-msgstr "Mettre les données à la corbeille"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:84
+msgid "Emergency Bug Fix"
+msgstr "Correction d’un bug d’urgence"
 
-#: src/window.py:519
-msgid "Can't uninstall {}"
-msgstr "Impossible de désinstaller {}"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:86
+msgid "Fix error causing a crash on Linux Mint"
+msgstr "Correction d’une erreur provoquant un crash sous Linux Mint"
 
-#: src/window.py:521
-msgid "Uninstalled apps"
-msgstr "Applications désinstallées"
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:87
+msgid "Correct typo in the app summary"
+msgstr "Correction d’une coquille dans le résumé de l’application"
 
-#: src/window.py:526
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:95
+msgid "Choose from a list of popular remotes when adding a new remote"
+msgstr ""
+"Choix d’un dépôt depuis une liste de dépôts populaires lors de l’ajout d’un "
+"nouveau dépôt"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:96
+msgid "App properties now shows the runtime that the app relies on"
+msgstr ""
+"Les propriétés des applications affichent désormais l’environnement "
+"d’exécution dont elles dépendent"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:97
+msgid "Apps and runtimes that are End of Life are now noted as such"
+msgstr ""
+"Les applications et environnements d’exécution en fin de vie sont désormais "
+"indiqués"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:98
+msgid "Window size and state is remembered between sessions"
+msgstr "La taille et l’état de la fenêtre sont mémorisés entre les sessions"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:100
+msgid "Bug Fixes and Performance Improvements"
+msgstr "Corrections de bogues et améliorations des performances"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:102
+msgid "The UI no longer freezes when uninstalling apps"
+msgstr "L’interface ne gèle plus lors de la désinstallation d’applications"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:103
+msgid "The UI no longer freezes when getting file sizes of large files"
+msgstr "L’interface ne gèle plus à la réception d’un fichier de grande taille"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:104
+msgid "Toggling batch mode no longer causes a freeze"
+msgstr "Le basculement en mode sélection ne cause plus de gel de l’interface"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:105
+msgid "Selecting all apps no longer causes a freeze"
+msgstr ""
+"La sélection de toutes les applications ne cause plus de gel de l’interface"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:106
+msgid "Applying and removing a filter no longer causes a freeze"
+msgstr "L’application et la suppression d’un filtre ne gèle plus l’interface"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:107
+msgid ""
+"Fixed issue where the no remotes status page would not be removed when a new "
+"remote was added"
+msgstr ""
+"Correction d’un problème où la page d’état « Pas de dépôts » n’était pas "
+"supprimée lors de l’ajout d’un nouveau dépôt"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:113
+msgid "First release of Warehouse"
+msgstr "Première version d’Entrepôt"
+
+#: src/main.py:94
+msgid "Flatpaks"
+msgstr "Flatpaks"
+
+#: src/window.py:104
+msgid "Uninstalled successfully"
+msgstr "Désinstallation achevée"
+
+#: src/window.py:106
+msgid "Could not uninstall some apps"
+msgstr "Certaines applications n’ont pu être désinstallées"
+
+#: src/window.py:153
 msgid "Uninstall Selected Apps?"
 msgstr "Désinstaller les applications sélectionnées ?"
 
-#: src/window.py:526
-msgid "Optionally, you can also trash their user data"
+#: src/window.py:153
+msgid "It will not be possible to use these apps after removal."
+msgstr "Vous ne pourrez plus utiliser ces applications après la suppression."
+
+#: src/window.py:166 src/window.py:235
+msgid "App Settings & Data"
+msgstr "Paramètres et données de l’application"
+
+#: src/window.py:168 src/window.py:237
+msgid "Keep"
+msgstr "Conserver"
+
+#: src/window.py:168 src/window.py:237
+msgid "Allow restoring app settings and content"
 msgstr ""
-"Facultativement vous pouvez aussi mettre leurs données utilisateur à la "
-"corbeille"
+"Permet de restaurer les paramètres et le contenu de l’application "
+"ultérieurement"
 
-#: src/window.blp:14
-msgid "Search for an Installed App"
-msgstr "Rechercher une application installée"
+#: src/window.py:169 src/window.py:238
+msgid "Trash"
+msgstr "Mettre à la corbeille"
 
-#: src/window.blp:20
-msgid "Refresh the List of Installed Apps"
-msgstr "Actualiser la liste des applications installées"
+#: src/window.py:169 src/window.py:238
+msgid "Send app settings and content to the trash"
+msgstr "Mettre les paramètres et le contenu de l’application à la corbeille"
 
-#: src/window.blp:26
-msgid "Main Menu"
-msgstr "Menu principal"
+#: src/window.py:196 src/window.py:256 src/window.py:390 src/window.py:549
+#: src/orphans_window.py:108 src/orphans_window.py:162 src/remotes_window.py:59
+#: src/remotes_window.py:138 src/remotes_window.py:285
+#: src/properties_window.py:78
+msgid "Cancel"
+msgstr "Annuler"
 
-#: src/window.blp:33
-msgid "Enter Selection Mode"
-msgstr "Entrer en mode sélection"
+#: src/window.py:197 src/window.py:257
+msgid "Uninstall"
+msgstr "Désinstaller"
 
-#: src/window.blp:72
-msgid "Select all Flatpaks"
-msgstr "Sélectionner tous les Flatpaks"
+#: src/window.py:230
+msgid "Uninstall {}?"
+msgstr "Désinstaller {} ?"
 
-#: src/window.blp:78
-msgid "Uninstall Selected Flatpaks"
-msgstr "Désinstaller les Flatpaks sélectionnés"
+#: src/window.py:230
+msgid "It will not be possible to use {} after removal."
+msgstr "Vous ne pourrez plus utiliser {} après la suppression."
 
-#: src/window.blp:83
-msgid "Trash User Data"
+#: src/window.py:294 src/window.py:299
+msgid "EOL"
+msgstr "EFV"
+
+#: src/window.py:294 src/properties_window.py:19
+msgid ""
+"This Flatpak has reached its End of Life and will not receive any security "
+"updates"
+msgstr ""
+"Ce Flatpak arrive en fin de vie et ne recevra plus de mises à jour de "
+"sécurité"
+
+#: src/window.py:299 src/properties_window.py:20
+msgid ""
+"The runtime used by this app has reached its End of Life and will not "
+"receive any security updates"
+msgstr ""
+"L’environnement d’exécution utilisé par cette application est en fin de vie "
+"et ne recevra plus de mises à jour de sécurité"
+
+#: src/window.py:303 src/properties_window.py:150
+msgid "View Properties"
+msgstr "Afficher les propriétés"
+
+#: src/window.py:308
+msgid "Uninstall {}"
+msgstr "Désinstaller {}"
+
+#: src/window.py:336
+msgid "List refreshed"
+msgstr "Liste actualisée"
+
+#: src/window.py:379
+msgid "No user data for {}"
+msgstr "Pas de données utilisateur pour {}"
+
+#: src/window.py:382
+msgid "Can't trash user data for {}"
+msgstr "Impossible de mettre les données utilisateur de {} à la corbeille"
+
+#: src/window.py:384 src/properties_window.py:68
+msgid "Trashed user data"
+msgstr "Données utilisateur mises à la corbeille"
+
+#: src/window.py:388
+msgid "Trash Selected Apps' User Data?"
+msgstr "Supprimer les données utilisateur des applications sélectionnées ?"
+
+#: src/window.py:388
+msgid "Your user files and data for these apps will be sent to the trash."
+msgstr ""
+"Vos fichiers et données utilisateur pour ces applications seront mises à la "
+"corbeille."
+
+#: src/window.py:391 src/properties_window.py:79
+msgid "Trash Data"
+msgstr "Mettre les données à la corbeille"
+
+#: src/window.py:442
+msgid "Copied selected app names"
+msgstr "Les nom d’application sélectionnés ont été copiés"
+
+#: src/window.py:450
+msgid "Copied selected app IDs"
+msgstr "Les identifiants d’application sélectionnés ont été copiés"
+
+#: src/window.py:458
+msgid "Copied selected app refs"
+msgstr "Les références des applications sélectionnées ont été copiées"
+
+#: src/window.py:519 src/orphans_window.py:76
+msgid "Installed successfully"
+msgstr "Installation réussie"
+
+#: src/window.py:522
+msgid "Could not install app"
+msgstr "Impossible d’installer l’application"
+
+#: src/window.py:547
+msgid "Install {}?"
+msgstr "Installer {} ?"
+
+#: src/window.py:550 src/orphans_window.py:109
+msgid "Install"
+msgstr "Installer"
+
+#: src/window.py:557 src/remotes_window.py:212 src/remotes_window.py:296
+msgid "User"
+msgstr "Utilisateur"
+
+#: src/window.py:557
+msgid "The app will be available to only you"
+msgstr "L’application ne sera disponible que sur votre session"
+
+#: src/window.py:558 src/remotes_window.py:218 src/remotes_window.py:297
+msgid "System"
+msgstr "Système"
+
+#: src/window.py:558
+msgid "The app will be available to every user on the system"
+msgstr "L’application sera disponible pour tous les utilisateurs de ce système"
+
+#: src/window.py:587
+msgid "File type not supported"
+msgstr "Type de fichier non pris en charge"
+
+#: src/orphans_window.py:24
+msgid "Manage Leftover Data"
+msgstr "Gérer les données résiduelles"
+
+#: src/orphans_window.py:78
+msgid "Some apps didn't install"
+msgstr "Certaines applications ne se sont pas installées"
+
+#: src/orphans_window.py:81
+msgid "Installing... This could take a while"
+msgstr "Installations en cours… Cela peut prendre du temps"
+
+#: src/orphans_window.py:106
+msgid "Attempt to Install?"
+msgstr "Essayer d’installer ?"
+
+#: src/orphans_window.py:106
+msgid "Warehouse will attempt to install apps matching the selected data."
+msgstr ""
+"Entrepôt essayera d’installer les applications correspondant aux données "
+"sélectionnées."
+
+#: src/orphans_window.py:123
+msgid "{} wide"
+msgstr ""
+
+#: src/orphans_window.py:159
+msgid "Trash folders?"
+msgstr "Mettre les dossiers à la corbeille ?"
+
+#: src/orphans_window.py:159
+msgid "These folders will be sent to the trash."
+msgstr "Ces dossiers seront mis à la corbeille."
+
+#: src/orphans_window.py:163
+msgid "Continue"
+msgstr "Continuer"
+
+#: src/orphans_window.py:171 src/properties_window.py:89
+msgid "Can't open folder"
+msgstr "Impossible d’ouvrir le dossier"
+
+#: src/orphans_window.py:187
+msgid "Could not manage data"
+msgstr "Impossible de gérer les données"
+
+#: src/remotes_window.py:48
+msgid "Could not remove {}"
+msgstr "Impossible de supprimer {}"
+
+#: src/remotes_window.py:56
+msgid "Any installed apps from {} will stop receiving updates"
+msgstr ""
+"Toutes les applications installées depuis {} cesseront de recevoir des mises "
+"à jour"
+
+#: src/remotes_window.py:57
+msgid "Remove {}?"
+msgstr "Supprimer ?"
+
+#: src/remotes_window.py:60
+msgid "Remove"
+msgstr "Supprimer"
+
+#: src/remotes_window.py:72 src/properties_window.py:93
+msgid "Copied {}"
+msgstr "{} copié"
+
+#: src/remotes_window.py:92
+msgid "Copy remote name"
+msgstr "Copier le nom du dépôt"
+
+#: src/remotes_window.py:95
+msgid "Remove {}"
+msgstr "Supprimer {}"
+
+#: src/remotes_window.py:110 src/remotes_window.py:243
+msgid "Could not add {}"
+msgstr "Impossible d’ajouter {}"
+
+#: src/remotes_window.py:136
+msgid "Add Flatpak Remote"
+msgstr "Ajouter un dépôt de logiciels Flatpak"
+
+#: src/remotes_window.py:139 src/remotes_window.py:286
+msgid "Add"
+msgstr "Ajouter"
+
+#: src/remotes_window.py:197 src/remotes_window.py:294
+#: src/properties_window.py:137
+msgid "Name"
+msgstr "Nom"
+
+#: src/remotes_window.py:201
+msgid "URL"
+msgstr "URL"
+
+#: src/remotes_window.py:212 src/remotes_window.py:296
+msgid "Remote will be available to only you"
+msgstr "Le dépôt ne sera accessible que sur votre session"
+
+#: src/remotes_window.py:218 src/remotes_window.py:297
+msgid "Remote will be available to every user on the system"
+msgstr "Le dépôt sera accessible pour tous les utilisateurs de ce système"
+
+#: src/remotes_window.py:241
+msgid "{} successfully added"
+msgstr "{} a été ajouté avec succès"
+
+#: src/remotes_window.py:283
+msgid "Add {}?"
+msgstr "Ajouter {} ?"
+
+#: src/remotes_window.py:322
+msgid "The open source, pay-what-you-want app store from elementary"
+msgstr "Le magasin d’applications open-source et à prix libre de elementary"
+
+#: src/remotes_window.py:323
+msgid "Central repository of Flatpak applications"
+msgstr "Répertoire central des applications Flatpak"
+
+#: src/remotes_window.py:324
+msgid "Beta builds of Flatpak applications"
+msgstr "Versions bêta des applications Flatpak"
+
+#: src/remotes_window.py:325
+msgid "Flatpaks packaged by Fedora Linux"
+msgstr "Flatpaks empaquetés par Fedora Linux"
+
+#: src/remotes_window.py:326
+msgid "The latest beta GNOME Apps and Runtimes"
+msgstr "Les dernières applis et environnements d’exécution bêta de GNOME"
+
+#: src/remotes_window.py:327
+msgid "Beta KDE Apps and Runtimes"
+msgstr "Applis et environnements d’exécution bêta de KDE"
+
+#: src/remotes_window.py:328
+msgid "Central repository of the WebKit Developer and Runtime SDK"
+msgstr "Répertoire central des développeurs WebKit et Runtime SDK"
+
+#: src/remotes_window.py:349
+msgid "Manage Remotes"
+msgstr "Gérer les dépôts"
+
+#: src/properties_window.py:7
+msgid "{} Properties"
+msgstr "Propriétés de {}"
+
+#: src/properties_window.py:47
+msgid "Show Apps Using this Runtime"
+msgstr "Afficher les applications utilisant cette environnement d’exécution"
+
+#: src/properties_window.py:72
+msgid "Can't trash data"
+msgstr "Impossible de mettre les données à la corbeille"
+
+#: src/properties_window.py:75
+msgid "Send {}'s User Data to the Trash?"
+msgstr "Mettre les données utilisateur de {} à la corbeille ?"
+
+#: src/properties_window.py:76
+msgid "Your user files and data for this app will be sent to the trash."
+msgstr ""
+"Vos fichiers et données utilisateur pour cette application seront mis à la "
+"corbeille."
+
+#: src/properties_window.py:125
+msgid "Open Data Folder"
+msgstr "Ouvrir le dossiers des données"
+
+#: src/properties_window.py:130
+msgid "Send User Data to the Trash"
 msgstr "Mettre les données utilisateur à la corbeille"
 
-#: src/window.blp:84
-msgid "Send Selected Flatpaks' Data to the Trash"
-msgstr ""
-"Mettre les données utilisateur des Flatpaks sélectionnés à la corbeille"
+#: src/properties_window.py:137
+msgid "Description"
+msgstr "Description"
 
-#: src/window.blp:89
-msgid "Copy App ID"
-msgstr "Copier l’identifiant de l’application"
+#: src/properties_window.py:137
+msgid "App ID"
+msgstr "Identifiant de l’appli"
 
-#: src/window.blp:90
-msgid "Copy Selected Flatpaks' IDs Seperated by a New Line"
-msgstr ""
-"Copier les identifiants des Flatpaks sélectionnés séparés par un interligne"
+#: src/properties_window.py:137
+msgid "Version"
+msgstr "Version"
 
-#: src/window.blp:96
-msgid "No Flatpaks Found"
-msgstr "Aucun Flatpak trouvé"
+#: src/properties_window.py:137
+msgid "Branch"
+msgstr "Branche"
 
-#: src/window.blp:97
-msgid ""
-"Warehouse cannot see the list of installed Flatpaks or the system has no "
-"Flatpaks installed."
-msgstr ""
-"Entrepôt ne peut accéder à la liste des Flatpaks installés ou bien le "
-"système n’a pas de Flatpaks installés."
+#: src/properties_window.py:137
+msgid "Arch"
+msgstr "Architecture"
 
-#: src/window.blp:102
-msgid "Warehouse is uninstalling the selected apps. This could take a while."
-msgstr ""
-"Entrepôt est en train de désinstaller les applis sélectionnées. Cela peut "
-"prendre du temps."
+#: src/properties_window.py:137
+msgid "Origin"
+msgstr "Origine"
 
-#: src/window.blp:113
-msgid "Show Flatpak Runtimes"
-msgstr "Afficher les environnements d’exécution Flatpak"
+#: src/properties_window.py:137
+msgid "Installation"
+msgstr "Installation"
 
-#: src/window.blp:118
-msgid "Manage Orphaned Data Folders"
-msgstr "Gérer les dossiers de données orphelins"
+#: src/properties_window.py:137
+msgid "Ref"
+msgstr "Référence"
 
-#: src/window.blp:128
-msgid "_Keyboard Shortcuts"
-msgstr "Raccourcis _clavier"
+#: src/properties_window.py:137
+msgid "Active Commit"
+msgstr "Commit actif"
 
-#: src/window.blp:133
-msgid "_About Warehouse"
-msgstr "À _propos d’Entrepôt"
+#: src/properties_window.py:137
+msgid "Latest Commit"
+msgstr "Dernier commit"
+
+#: src/properties_window.py:137
+msgid "Installed Size"
+msgstr "Taille installée"
+
+#: src/properties_window.py:137
+msgid "Options"
+msgstr "Options"
+
+#: src/properties_window.py:137
+msgid "Runtime"
+msgstr "Environnement d’exécution"
+
+#: src/properties_window.py:145
+msgid "Copy {}"
+msgstr "Copier {}"
+
+#~ msgid ""
+#~ "The app will be removed from your system. Optionally, you can also trash "
+#~ "its user data."
+#~ msgstr ""
+#~ "L’application sera supprimée de votre système. Facultativement vous "
+#~ "pouvez aussi mettre ses données utilisateur à la corbeille."
+
+#~ msgid "Uninstall and Trash Data"
+#~ msgstr "Désinstaller et supprimer les données"
+
+#~ msgid "No Data"
+#~ msgstr "Aucune donnée"
+
+#~ msgid "Please Wait"
+#~ msgstr "Veuillez patienter"
+
+#~ msgid "~"
+#~ msgstr "~"
+
+#~ msgid "Trashed data"
+#~ msgstr "Données mises à la corbeille"
+
+#~ msgid "Choose a Remote"
+#~ msgstr "Choisissez un dépôt"
+
+#~ msgid ""
+#~ "Choose the Flatpak Remote Repository where attempted app downloads will "
+#~ "be from."
+#~ msgstr ""
+#~ "Choisissez le dépôt Flatpak distant depuis lequel les téléchargements "
+#~ "d’applications seront effectués."
+
+#~ msgid "Select All"
+#~ msgstr "Sélectionner tout"
+
+#~ msgid "Trash Selected"
+#~ msgstr "Mettre la sélection à la corbeille"
+
+#~ msgid "{} Selected"
+#~ msgstr "{} sélection(s)"
+
+#~ msgid "Can't uninstall {}"
+#~ msgstr "Impossible de désinstaller {}"
+
+#~ msgid "Optionally, you can also trash their user data"
+#~ msgstr ""
+#~ "Facultativement vous pouvez aussi mettre leurs données utilisateur à la "
+#~ "corbeille"
+
+#~ msgid "Search for an Installed App"
+#~ msgstr "Rechercher une application installée"
+
+#~ msgid "Main Menu"
+#~ msgstr "Menu principal"
+
+#~ msgid "Enter Selection Mode"
+#~ msgstr "Entrer en mode sélection"
+
+#~ msgid "Select all Flatpaks"
+#~ msgstr "Sélectionner tous les Flatpaks"
+
+#~ msgid "Uninstall Selected Flatpaks"
+#~ msgstr "Désinstaller les Flatpaks sélectionnés"
+
+#~ msgid "Trash User Data"
+#~ msgstr "Mettre les données utilisateur à la corbeille"
+
+#~ msgid "Copy Selected Flatpaks' IDs Seperated by a New Line"
+#~ msgstr ""
+#~ "Copier les identifiants des Flatpaks sélectionnés séparés par un "
+#~ "interligne"
+
+#~ msgid "_Keyboard Shortcuts"
+#~ msgstr "Raccourcis _clavier"
+
+#~ msgid "_About Warehouse"
+#~ msgstr "À _propos d’Entrepôt"

@@ -4,3 +4,15 @@ data/io.github.flattool.Warehouse.gschema.xml
 src/main.py
 src/window.py
 src/window.blp
+src/orphans_window.py
+src/orphans.blp
+src/remotes_window.py
+src/remotes.blp
+src/properties_window.py
+src/popular_remotes.blp
+src/orphans_window.py
+src/remotes.blp
+src/filter_window.py
+src/filter.blp
+src/gtk/help-overlay.blp
+
