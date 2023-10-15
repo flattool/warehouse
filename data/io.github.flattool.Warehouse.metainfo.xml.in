@@ -54,6 +54,15 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.2.1" date="2023-10-15" timestamp="1697405182">
+      <description translatable="yes">
+        <ul>
+          <li>The main list of Flatpaks is now sorted by name instead of ID</li>
+          <li>Warehouse can now be found in your app menu by searching for "flatpak"</li>
+          <li>Corrected typo in the previous release's change log</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.0" date="2023-10-11" timestamp="1697076304">
       <description translatable="yes">
         <p>New Features and Changes</p>
@@ -63,7 +72,7 @@
           <li>Apps can now be filtered by dependent runtimes</li>
           <li>Properties of a runtime now shows a button to show only apps that rely on the runtime</li>
           <li>A loading indicator is now shown when adding a remote</li>
-          <li>Added Wbekit Testing to the list of popular remotes</li>
+          <li>Added Webkit Testing to the list of popular remotes</li>
           <li>Added a search bar to the Leftover Data window</li>
           <li>Added a button to open the entire user data folder the Leftover Data window</li>
           <li>Added a button on each row in the Leftover Data list to open them directly</li>
