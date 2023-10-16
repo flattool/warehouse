@@ -1,17 +1,17 @@
-from gi.repository import GLib, Gtk #Adw, Gdk, Gio
+from gi.repository import GLib, Gtk, Adw #, Gdk, Gio
 import os
 import subprocess
 import pathlib
 
 class myUtils:
     def __init__(self, window, **kwargs):
-        self.main_window = window
+        self.parent_window = window
         self.host_home = str(pathlib.Path.home())
         self.user_data_path = self.host_home + "/.var/app/"
         self.install_success = True
         self.uninstall_success = True
-        self.new_env = dict( os.environ ) 
-        self.new_env['LC_ALL'] = 'C' 
+        self.new_env = dict( os.environ )
+        self.new_env['LC_ALL'] = 'C'
         
     def trashFolder(self, path):
         if not os.path.exists(path):
@@ -67,7 +67,7 @@ class myUtils:
         icon_theme.add_search_path(self.host_home + "/.local/share/flatpak/exports/share/icons")
         
         try:
-            icon_path = (icon_theme.lookup_icon(app_id, None, 512, 1, self.main_window.get_direction(), 0).get_file().get_path())
+            icon_path = (icon_theme.lookup_icon(app_id, None, 512, 1, self.parent_window.get_direction(), 0).get_file().get_path())
         except GLib.GError:
             icon_path = None
         if icon_path:
@@ -203,3 +203,13 @@ class myUtils:
 
         if (len(fails) > 0) and (user_or_system == "user"):
             self.install_success = False
+
+    def runApp(self, ref):
+        self.run_app_error = False
+        self.run_app_error_message = ""
+        try:
+            subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'run', ref], check=True, env=self.new_env, start_new_session=True)
+        except subprocess.CalledProcessError as e:
+            self.run_app_error_message = str(e)
+            self.run_app_error = True
+            

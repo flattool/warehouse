@@ -67,7 +67,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     currently_uninstalling = False
     selected_rows = []
     flatpak_rows = []
-    # ^ {Row visibility, Row selected, the row itself, properties, trash, select, the flatpak row from `flatpak list`}
+    # ^ {Row visibility, Row selected, the row itself, properties, row menu, select, the flatpak row from `flatpak list`}
 
     def mainPulser(self):
         if self.should_pulse:
@@ -87,8 +87,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         if self.currently_uninstalling:
             return
         self.refresh_button.set_sensitive(should_enable)
-        for i in range(len(self.flatpak_rows)):
-            self.flatpak_rows[i][4].set_sensitive(should_enable)
         if not should_enable:
             self.batch_uninstall_button.set_sensitive(False)
 
@@ -199,6 +197,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         Gtk.Window.present(dialog)
 
     def uninstallButtonHandler(self, _widget, index):
+        if self.currently_uninstalling:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Cannot uninstall while already uninstalling")))
+            return
+
         name = self.host_flatpaks[index][0]
         ref = self.host_flatpaks[index][8]
         id = self.host_flatpaks[index][2]
@@ -305,26 +307,73 @@ class WarehouseWindow(Adw.ApplicationWindow):
             properties_button.connect("clicked", show_properties_window, index, self)
             flatpak_row.add_suffix(properties_button)
 
-            trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Uninstall {}").format(app_name), visible=not self.in_batch_mode)
-            trash_button.add_css_class("flat")
-            trash_button.connect("clicked", self.uninstallButtonHandler, index)
-            flatpak_row.add_suffix(trash_button)
+            # trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Uninstall {}").format(app_name), visible=not self.in_batch_mode)
+            # trash_button.add_css_class("flat")
+            # trash_button.connect("clicked", self.uninstallButtonHandler, index)
+            # flatpak_row.add_suffix(trash_button)
 
             select_flatpak_tickbox = Gtk.CheckButton(visible=self.in_batch_mode)
             select_flatpak_tickbox.add_css_class("selection-mode")
             select_flatpak_tickbox.connect("toggled", self.rowSelectHandler, index)
             flatpak_row.add_suffix(select_flatpak_tickbox)
 
+            row_menu = Gtk.MenuButton(icon_name="view-more-symbolic", valign=Gtk.Align.CENTER)
+            row_menu.add_css_class("flat")
+            row_menu_model = Gio.Menu()
+
+            # self.create_action(("properties" + str(index)), lambda *_, index=index: show_properties_window(None, index, self))
+            # properties_item = Gio.MenuItem.new(_("Show Properties"), f"win.properties{index}")
+            # row_menu_model.append_item(properties_item)
+
+            if "runtime" not in self.host_flatpaks[index][12]:
+                self.create_action(("run" + str(index)), lambda *_, ref=app_ref: self.runAppThread(ref))
+                run_item = Gio.MenuItem.new(_("Open {}").format(app_name), f"win.run{index}")
+                row_menu_model.append_item(run_item)
+
+            # if os.path.exists(self.user_data_path + app_id):
+            #     self.create_action(("open-data" + str(index)), lambda *_, path=(self.user_data_path + app_id): Gio.AppInfo.launch_default_for_uri(f"file://{path}", None))
+            #     open_data_item = Gio.MenuItem.new(_("Open Data Folder"), f"win.open-data{index}")
+            #     row_menu_model.append_item(open_data_item)
+
+            self.create_action(("uninstall" + str(index)), lambda *_, index=index: self.uninstallButtonHandler(self, index))
+            uninstall_item = Gio.MenuItem.new(_("Uninstall {}").format(app_name), f"win.uninstall{index}")
+            row_menu_model.append_item(uninstall_item)
+
+            # row_menu_model.remove(1)
+
+            row_menu.set_menu_model(row_menu_model)
+            flatpak_row.add_suffix(row_menu)
+
             if self.in_batch_mode:
                 flatpak_row.set_activatable_widget(select_flatpak_tickbox)
 
             self.flatpaks_list_box.append(flatpak_row)
-            #                         {Row visibility, Row selected, the row itself, properties, trash, select, the flatpak row from `flatpak list`}
-            self.flatpak_rows.append([True, False, flatpak_row, properties_button, trash_button, select_flatpak_tickbox, self.host_flatpaks[index]])
+            #                         {Row visibility, Row selected, the row itself, properties, menu button, select, the flatpak row from `flatpak list`}
+            self.flatpak_rows.append([True, False, flatpak_row, properties_button, row_menu, select_flatpak_tickbox, self.host_flatpaks[index]])
 
         self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
         self.applyFilter(self.filter_list)
         self.batchActionsEnable(False)
+
+    def test(self, _a, _b):
+        if not self.my_utils.run_app_error:
+            return
+        
+        error = self.my_utils.run_app_error_message
+        dialog = Adw.MessageDialog.new(self, _("Could not Run App"), error)
+        copy_button = Gtk.Button(label=_("Copy"), halign=Gtk.Align.CENTER, margin_top=12)
+        copy_button.add_css_class("pill")
+        copy_button.add_css_class("suggested-action")
+        copy_button.connect("clicked", lambda *_: self.clipboard.set(error))
+        dialog.set_extra_child(copy_button)
+        dialog.add_response("ok", _("OK"))
+        dialog.set_close_response("ok")
+        dialog.present()
+
+    def runAppThread(self, ref):
+        self.run_app_error = False
+        task = Gio.Task.new(None, None, self.test)
+        task.run_in_thread(lambda *_: self.my_utils.runApp(ref))
 
     def refresh_list_of_flatpaks(self, widget, should_toast):
         if self.currently_uninstalling:
@@ -338,11 +387,11 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def batch_mode_handler(self, widget):
         for i in range(len(self.flatpak_rows)):
             adw_row = self.flatpak_rows[i][2]
-            trash_button = self.flatpak_rows[i][4]
+            menu_button = self.flatpak_rows[i][4]
             select_tick = self.flatpak_rows[i][5]
 
+            menu_button.set_visible(not widget.get_active())
             select_tick.set_visible(widget.get_active())
-            trash_button.set_visible(not widget.get_active())
 
             if widget.get_active():
                 adw_row.set_activatable(True)
