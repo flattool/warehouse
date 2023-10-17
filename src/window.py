@@ -320,13 +320,25 @@ class WarehouseWindow(Adw.ApplicationWindow):
             row_menu = Gtk.MenuButton(icon_name="view-more-symbolic", valign=Gtk.Align.CENTER)
             row_menu.add_css_class("flat")
             row_menu_model = Gio.Menu()
+            copy_menu_model = Gio.Menu()
 
             # self.create_action(("properties" + str(index)), lambda *_, index=index: show_properties_window(None, index, self))
             # properties_item = Gio.MenuItem.new(_("Show Properties"), f"win.properties{index}")
             # row_menu_model.append_item(properties_item)
 
+            self.create_action(("copy-name" + str(index)), lambda *_, name=app_name, toast=_("Copied name"): self.copyItem(name, toast))
+            copy_menu_model.append_item(Gio.MenuItem.new(_("Copy Name"), f"win.copy-name{index}"))
+
+            self.create_action(("copy-id" + str(index)), lambda *_, id=app_id, toast=_("Copied ID"): self.copyItem(id, toast))
+            copy_menu_model.append_item(Gio.MenuItem.new(_("Copy ID"), f"win.copy-id{index}"))
+
+            self.create_action(("copy-ref" + str(index)), lambda *_, ref=app_ref, toast=_("Copied ref"): self.copyItem(ref, toast))
+            copy_menu_model.append_item(Gio.MenuItem.new(_("Copy Ref"), f"win.copy-ref{index}"))
+
+            row_menu_model.append_submenu(_("Copy"), copy_menu_model)
+
             if "runtime" not in self.host_flatpaks[index][12]:
-                self.create_action(("run" + str(index)), lambda *_, ref=app_ref: self.runAppThread(ref))
+                self.create_action(("run" + str(index)), lambda *_a, ref=app_ref, name=app_name: self.runAppThread(ref, _("Opened {}").format(name)))
                 run_item = Gio.MenuItem.new(_("Open {}").format(app_name), f"win.run{index}")
                 row_menu_model.append_item(run_item)
 
@@ -355,6 +367,11 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.applyFilter(self.filter_list)
         self.batchActionsEnable(False)
 
+    def copyItem(self, to_copy, to_toast=None):
+        self.clipboard.set(to_copy)
+        if to_toast:
+            self.toast_overlay.add_toast(Adw.Toast.new(to_toast))
+
     def test(self, _a, _b):
         if not self.my_utils.run_app_error:
             return
@@ -370,10 +387,12 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.set_close_response("ok")
         dialog.present()
 
-    def runAppThread(self, ref):
+    def runAppThread(self, ref, to_toast=None):
         self.run_app_error = False
         task = Gio.Task.new(None, None, self.test)
         task.run_in_thread(lambda *_: self.my_utils.runApp(ref))
+        if to_toast:
+            self.toast_overlay.add_toast(Adw.Toast.new(to_toast))
 
     def refresh_list_of_flatpaks(self, widget, should_toast):
         if self.currently_uninstalling:
