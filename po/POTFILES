@@ -1,6 +1,0 @@
-data/io.github.flattool.Warehouse.desktop.in
-data/io.github.flattool.Warehouse.metainfo.xml.in
-data/io.github.flattool.Warehouse.gschema.xml
-src/main.py
-src/window.py
-src/window.blp
