@@ -335,6 +335,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.create_action(("copy-ref" + str(index)), lambda *_, ref=app_ref, toast=_("Copied ref"): self.copyItem(ref, toast))
             copy_menu_model.append_item(Gio.MenuItem.new(_("Copy Ref"), f"win.copy-ref{index}"))
 
+            self.create_action(("copy-command" + str(index)), lambda *_, ref=app_ref, toast=_("Copied launch command"): self.copyItem(f"flatpak run {ref}", toast))
+            copy_menu_model.append_item(Gio.MenuItem.new(_("Copy Launch Command"), f"win.copy-command{index}"))
+
             row_menu_model.append_submenu(_("Copy"), copy_menu_model)
 
             if "runtime" not in self.host_flatpaks[index][12]:
