@@ -18,8 +18,10 @@ def show_properties_window(widget, index, window):
     properties_clamp = Adw.Clamp()
     eol_app_banner = Adw.Banner(title=_("This Flatpak has reached its End of Life and will not receive any security updates"))
     eol_runtime_banner = Adw.Banner(title=_("The runtime used by this app has reached its End of Life and will not receive any security updates"))
+    mask_banner = Adw.Banner(title=_("This Flatpak has been masked and will not be updated"))
     outer_box.append(eol_app_banner)
     outer_box.append(eol_runtime_banner)
+    outer_box.append(mask_banner)
     outer_box.append(properties_scroll)
     properties_scroll.set_child(properties_clamp)
     properties_clamp.set_child(properties_box)
@@ -33,6 +35,9 @@ def show_properties_window(widget, index, window):
     user_data_list.add_css_class("boxed-list")
 
     my_utils = myUtils(window)
+
+    system_mask_list = my_utils.getHostMasks("system")
+    user_mask_list = my_utils.getHostMasks("user")
 
     def viewAppsHandler(button):
         window.should_open_filter_window = False
@@ -59,6 +64,7 @@ def show_properties_window(widget, index, window):
 
     app_name = window.host_flatpaks[index][0]
     app_id = window.host_flatpaks[index][2]
+    install_type = window.host_flatpaks[index][7]
     data_folder = window.user_data_path + app_id
 
     def on_response(_a, response_id, _b):
@@ -165,6 +171,17 @@ def show_properties_window(widget, index, window):
 
     if "eol" in window.host_flatpaks[index][12]:
         eol_app_banner.set_revealed(True)
+
+    def maskHandler():
+        x = my_utils.maskFlatpak(app_id, install_type, True)
+        if x == 0:
+            mask_banner.set_revealed(False)
+            window.flatpak_rows[index][7].set_visible(False) # Sets the mask label invisble
+
+    if app_id in system_mask_list or app_id in user_mask_list:
+        mask_banner.set_revealed(True)
+        mask_banner.set_button_label(_("Unmask"))
+        mask_banner.connect("button-clicked", lambda *_: maskHandler())
 
     properties_window.set_content(properties_title_bar)
     properties_window.present()

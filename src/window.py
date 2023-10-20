@@ -68,7 +68,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     currently_uninstalling = False
     selected_rows = []
     flatpak_rows = []
-    # ^ {Row visibility, Row selected, the row itself, properties, row menu, select, the flatpak row from `flatpak list`}
+    # ^ {Row visibility, Row selected, the row itself, properties, row menu, select, the flatpak row from `flatpak list`, mask label}
 
     def mainPulser(self):
         if self.should_pulse:
@@ -280,6 +280,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.main_stack.set_visible_child(self.main_box)
         self.batch_select_all_button.set_active(False)
         self.eol_list = []
+        self.system_mask_list = self.my_utils.getHostMasks("system")
+        self.user_mask_list = self.my_utils.getHostMasks("user")
 
         for index in range(len(self.host_flatpaks)):
             if "eol" in self.host_flatpaks[index][12]:
@@ -296,12 +298,17 @@ class WarehouseWindow(Adw.ApplicationWindow):
             if "eol" in self.host_flatpaks[index][12]:
                 eol_app_label = Gtk.Label(label=_("EOL"), valign=Gtk.Align.CENTER, tooltip_text=_("This Flatpak has reached its End of Life and will not receive any security updates"))
                 eol_app_label.add_css_class("error")
-                flatpak_row.add_suffix(eol_app_label)
 
             if self.host_flatpaks[index][13] in self.eol_list:
                 eol_runtime_label = Gtk.Label(label=_("EOL"), valign=Gtk.Align.CENTER, tooltip_text=_("The runtime used by this app has reached its End of Life and will not receive any security updates"))
                 eol_runtime_label.add_css_class("error")
                 flatpak_row.add_suffix(eol_runtime_label)
+
+            mask_label = Gtk.Label(label=_("Masked"), valign=Gtk.Align.CENTER, tooltip_text=_("This Flatpak is masked and will not be updated"))
+            # ^ This is up here as we need to add this to flatpak_rows regardless of if its visible or not
+            if app_id in self.system_mask_list or app_id in self.user_mask_list:
+                mask_label.set_visible(True)
+                flatpak_row.add_suffix(mask_label)
 
             properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
             properties_button.add_css_class("flat")
@@ -369,7 +376,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             self.flatpaks_list_box.append(flatpak_row)
             #                         {Row visibility, Row selected, the row itself, properties, menu button, select, the flatpak row from `flatpak list`}
-            self.flatpak_rows.append([True, False, flatpak_row, properties_button, row_menu, select_flatpak_tickbox, self.host_flatpaks[index]])
+            self.flatpak_rows.append([True, False, flatpak_row, properties_button, row_menu, select_flatpak_tickbox, self.host_flatpaks[index], mask_label])
 
         self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
         self.applyFilter(self.filter_list)

@@ -125,6 +125,27 @@ class myUtils:
         sorted_array = sorted(data, key=lambda item: item[0].lower())
         return sorted_array
 
+    def getHostMasks(self, user_or_system):
+        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "mask", f"--{user_or_system}"], capture_output=True, text=True, env=self.new_env).stdout
+        lines = output.strip().split("\n")
+        for i in range(len(lines)):
+            lines[i] = lines[i].strip()
+        return(lines)
+
+    def maskFlatpak(self, app_id, user_or_system, remove=False):
+        command = ["flatpak-spawn", "--host", "flatpak", "mask", f"--{user_or_system}", app_id]
+        if remove:
+            command.append("--remove")
+        response = ""
+        try:
+            response = subprocess.run(command, capture_output=True, text=True, env=self.new_env)
+        except subprocess.CalledProcessError as e:
+            print(f"Error setting mask for {app_id}:\n", e)
+            return(1)
+        if len(response.stderr) > 0:
+            return(1)
+        return(0)
+
     def uninstallFlatpak(self, ref_arr, type_arr, should_trash):
         self.uninstall_success = True
 

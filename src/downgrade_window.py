@@ -63,7 +63,7 @@ class DowngradeWindow(Adw.Window):
         self.should_pulse = False
         for i in range(len(self.versions)):
             version = self.versions[i]
-            row = Adw.ActionRow(title=version[2], subtitle=version[1])
+            row = Adw.ActionRow(title=version[2], subtitle=GLib.markup_escape_text(version[1]))
             select = Gtk.CheckButton()
             select.connect("toggled", self.selectionHandler, i)
             
@@ -78,6 +78,11 @@ class DowngradeWindow(Adw.Window):
     def generateList(self):
         task = Gio.Task.new(None, None, lambda *_: self.commitsResponse())
         task.run_in_thread(lambda *_: self.getCommits())
+
+    def onApply(self):
+        if self.mask_row.get_active():
+            self.my_utils.maskFlatpak(self.app_id, self.install_type)  
+        self.close()
 
     def __init__(self, parent_window, flatpak_row_item, **kwargs):
         super().__init__(**kwargs)
@@ -97,6 +102,7 @@ class DowngradeWindow(Adw.Window):
         # Connections
         event_controller.connect("key-pressed", self.key_handler)
         self.cancel_button.connect("clicked", lambda *_: self.close())
+        self.apply_button.connect("clicked", lambda *_: self.onApply())
 
         # Apply
         self.pulser()
