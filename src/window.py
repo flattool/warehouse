@@ -290,6 +290,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         for index in range(len(self.host_flatpaks)):
             app_name = self.host_flatpaks[index][0]
             app_id = self.host_flatpaks[index][2]
+            install_type = self.host_flatpaks[index][7]
             app_ref = self.host_flatpaks[index][8]
             flatpak_row = Adw.ActionRow(title=GLib.markup_escape_text(app_name))
             flatpak_row.add_prefix(self.my_utils.findAppIcon(app_id))
@@ -304,11 +305,11 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 eol_runtime_label.add_css_class("error")
                 flatpak_row.add_suffix(eol_runtime_label)
 
-            mask_label = Gtk.Label(label=_("Masked"), valign=Gtk.Align.CENTER, tooltip_text=_("This Flatpak is masked and will not be updated"))
+            mask_label = Gtk.Label(label=_("Masked"), valign=Gtk.Align.CENTER, tooltip_text=_("This Flatpak is masked and will not be updated"), visible=False)
+            flatpak_row.add_suffix(mask_label)
             # ^ This is up here as we need to add this to flatpak_rows regardless of if its visible or not
             if app_id in self.system_mask_list or app_id in self.user_mask_list:
                 mask_label.set_visible(True)
-                flatpak_row.add_suffix(mask_label)
 
             properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
             properties_button.add_css_class("flat")
@@ -330,6 +331,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
             row_menu_model = Gio.Menu()
             copy_menu_model = Gio.Menu()
 
+            self.flatpak_rows.append([True, False, flatpak_row, properties_button, row_menu, select_flatpak_tickbox, self.host_flatpaks[index], mask_label, row_menu_model])
+            # {Row visibility, Row selected, the row itself, properties, menu button, select, the flatpak row from `flatpak list`, mask label, the dropdown menu model}
+
             # self.create_action(("properties" + str(index)), lambda *_, index=index: show_properties_window(None, index, self))
             # properties_item = Gio.MenuItem.new(_("Show Properties"), f"win.properties{index}")
             # row_menu_model.append_item(properties_item)
@@ -348,10 +352,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             row_menu_model.append_submenu(_("Copy"), copy_menu_model)
 
+            self.create_action(("run" + str(index)), lambda *_, ref=app_ref, name=app_name: self.runAppThread(ref, _("Opened {}").format(name)))
+            run_item = Gio.MenuItem.new(_("Open {}").format(app_name), f"win.run{index}")
             if "runtime" not in self.host_flatpaks[index][12]:
-                self.create_action(("run" + str(index)), lambda *_a, ref=app_ref, name=app_name: self.runAppThread(ref, _("Opened {}").format(name)))
-                run_item = Gio.MenuItem.new(_("Open {}").format(app_name), f"win.run{index}")
                 row_menu_model.append_item(run_item)
+
+            self.create_action(("mask" + str(index)), lambda *_, id=app_id, type=install_type, index=index: self.maskFlatpak(id, type, index))
+            mask_item = Gio.MenuItem.new(_("Toggle Mask"), f"win.mask{index}")
+            row_menu_model.append_item(mask_item)
 
             # if os.path.exists(self.user_data_path + app_id):
             #     self.create_action(("open-data" + str(index)), lambda *_, path=(self.user_data_path + app_id): Gio.AppInfo.launch_default_for_uri(f"file://{path}", None))
@@ -362,7 +370,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             uninstall_item = Gio.MenuItem.new(_("Uninstall {}").format(app_name), f"win.uninstall{index}")
             row_menu_model.append_item(uninstall_item)
 
-            self.create_action(("downgrade" + str(index)), lambda *_, row=self.host_flatpaks[index]: DowngradeWindow(self, row))
+            self.create_action(("downgrade" + str(index)), lambda *_, row=self.flatpak_rows[index]: DowngradeWindow(self, row))
             downgrade_item = Gio.MenuItem.new(_("Downgrade {}").format(app_name), f"win.downgrade{index}")
             row_menu_model.append_item(downgrade_item)
 
@@ -375,12 +383,28 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 flatpak_row.set_activatable_widget(select_flatpak_tickbox)
 
             self.flatpaks_list_box.append(flatpak_row)
-            #                         {Row visibility, Row selected, the row itself, properties, menu button, select, the flatpak row from `flatpak list`}
-            self.flatpak_rows.append([True, False, flatpak_row, properties_button, row_menu, select_flatpak_tickbox, self.host_flatpaks[index], mask_label])
 
         self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
         self.applyFilter(self.filter_list)
         self.batchActionsEnable(False)
+
+    def maskFlatpak(self, id, type, index):
+        is_masked = self.flatpak_rows[index][7].get_visible() # Check the visibility of the mask label to see if the flatpak is masked
+        response = []
+
+        def callback():
+            if response[0] == 1:
+                name = self.host_flatpaks[index][0]
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not toggle {}'s mask").format(name)))
+                return
+            self.flatpak_rows[index][7].set_visible(not is_masked)
+
+        def thread():
+            response.append(self.my_utils.maskFlatpak(id, type, is_masked))
+
+        task = Gio.Task.new(None, None, lambda *_: callback())
+        task.run_in_thread(lambda *_: thread())
+
 
     def copyItem(self, to_copy, to_toast=None):
         self.clipboard.set(to_copy)

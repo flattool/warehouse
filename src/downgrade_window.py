@@ -13,9 +13,11 @@ class DowngradeWindow(Adw.Window):
 
     cancel_button = Gtk.Template.Child()
     apply_button = Gtk.Template.Child()
-    versions_listbox = Gtk.Template.Child()
+    versions_group = Gtk.Template.Child()
     progress_bar = Gtk.Template.Child()
+    toast_overlay = Gtk.Template.Child()
     mask_row = Gtk.Template.Child()
+    main_toolbar_view = Gtk.Template.Child()
 
     def pulser(self):
         if self.should_pulse:
@@ -58,12 +60,20 @@ class DowngradeWindow(Adw.Window):
         for i in range(len(commits)):
             self.versions.append([commits[i], changes[i], dates[i]])
 
-    def commitsResponse(self):
+    def commitsCallback(self):
         self.progress_bar.set_visible(False)
         self.should_pulse = False
         for i in range(len(self.versions)):
             version = self.versions[i]
-            row = Adw.ActionRow(title=version[2], subtitle=GLib.markup_escape_text(version[1]))
+            date_time = version[2].split(' ')
+            date = date_time[0].split('-')
+            offset = date_time[2][:3] + ":" + date_time[2][3:]
+            time = date_time[1].split(':')
+            display_time = GLib.DateTime.new(GLib.TimeZone.new(offset), int(date[0]), int(date[1]), int(date[2]), int(time[0]), int(time[1]), int(time[2]))
+            display_time = display_time.format("%x %X")
+            change = version[1].split('(')
+            change[1] = change[1][:-1]
+            row = Adw.ActionRow(title=GLib.markup_escape_text(change[0]), subtitle=str(display_time + "  -  " + change[1]))
             select = Gtk.CheckButton()
             select.connect("toggled", self.selectionHandler, i)
             
@@ -73,30 +83,60 @@ class DowngradeWindow(Adw.Window):
             version.append(select)
             row.set_activatable_widget(select)
             row.add_prefix(select)
-            self.versions_listbox.append(row)
+            self.versions_group.add(row)
 
     def generateList(self):
-        task = Gio.Task.new(None, None, lambda *_: self.commitsResponse())
+        task = Gio.Task.new(None, None, lambda *_: self.commitsCallback())
         task.run_in_thread(lambda *_: self.getCommits())
 
-    def onApply(self):
+    def downgradeCallack(self):
+        self.progress_bar.set_visible(False)
+        self.should_pulse = False
+        self.disconnect(self.no_close)
+        self.main_toolbar_view.set_sensitive(True)
+        self.progress_bar.set_visible = False
+
+        if self.response != 0:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not downgrade {}").format(self.app_name)))
+            return
+        
         if self.mask_row.get_active():
-            self.my_utils.maskFlatpak(self.app_id, self.install_type)  
+            if self.my_utils.maskFlatpak(self.app_id, self.install_type) == 0:
+                self.flatpak_row[7].set_visible(True)
+            else:
+                self.parent_window.toast_overlay.add_toast(Adw.Toast.new(_("Could not mask {}").format(self.app_name)))
+
         self.close()
 
-    def __init__(self, parent_window, flatpak_row_item, **kwargs):
+    def downgradeThread(self):
+        self.response = self.my_utils.downgradeFlatpak(self.app_ref, self.commit_to_use, self.install_type)
+
+    def onApply(self):
+        self.no_close = self.connect("close-request", lambda event: True)
+        self.main_toolbar_view.set_sensitive(False)
+        self.should_pulse = True
+        self.progress_bar.set_visible(True)
+        self.pulser()
+        
+        task = Gio.Task.new(None, None, lambda *_: self.downgradeCallack())
+        task.run_in_thread(lambda *_: self.downgradeThread())
+
+    def __init__(self, parent_window, flatpak_row, **kwargs):
         super().__init__(**kwargs)
 
         # Create Variables
         self.my_utils = myUtils(self)
-        self.app_name = flatpak_row_item[0]
-        self.app_id = flatpak_row_item[2]
-        self.remote = flatpak_row_item[6]
-        self.install_type = flatpak_row_item[7]
-        self.app_ref = flatpak_row_item[8]
+        self.app_name = flatpak_row[6][0]
+        self.app_id = flatpak_row[6][2]
+        self.remote = flatpak_row[6][6]
+        self.install_type = flatpak_row[6][7]
+        self.app_ref = flatpak_row[6][8]
         self.versions = []
         self.should_pulse = True
         self.commit_to_use = ""
+        self.parent_window = parent_window
+        self.flatpak_row = flatpak_row
+        self.response = 0
         event_controller = Gtk.EventControllerKey()
 
         # Connections
@@ -109,7 +149,6 @@ class DowngradeWindow(Adw.Window):
         self.add_controller(event_controller)
         self.set_title(_("Downgrade {}").format(self.app_name))
         self.set_transient_for(parent_window)
-        # print(self.mask_row.get_active())
 
         self.generateList()
 

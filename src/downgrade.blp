@@ -3,7 +3,7 @@ using Adw 1;
 
 template DowngradeWindow : Adw.Window {
     default-width: 500;
-    default-height: 750;
+    default-height: 450;
     modal: true;
 
     Adw.ToolbarView main_toolbar_view {
@@ -18,7 +18,7 @@ template DowngradeWindow : Adw.Window {
             [end]
             Button apply_button {
                 sensitive: false;
-                label: _("Apply");
+                label: _("Downgrade");
                 styles["suggested-action"]
             }
         }
@@ -33,47 +33,19 @@ template DowngradeWindow : Adw.Window {
                         styles["osd"]
                     }
 
-                    ScrolledWindow scrolled_window {
-                        vexpand: true;
-                        Adw.Clamp{
-                            Box outerbox {
-                                orientation: vertical;
-                                
-                                ListBox {
-                                    margin-top: 12;
-                                    margin-start: 12;
-                                    margin-end: 12;
-                                    hexpand: true;
-                                    valign: start;
-                                    selection-mode: none;
-                                    styles["boxed-list"]
-
-                                    Adw.SwitchRow mask_row {
-                                        title: _("Mask this Flatpak");
-                                        subtitle: _("Ensure that the flatpak will never update to a newer version");
-                                        active: true;
-                                    }
-                                }
-
-                                Label {
-                                    label: _("Select a Version");
-                                    margin-top: 12;
-                                    margin-start: 12;
-                                    halign: start;
-                                    styles["title-3"]
-                                }
-
-                                ListBox versions_listbox {
-                                    margin-top: 12;
-                                    margin-bottom: 12;
-                                    margin-start: 12;
-                                    margin-end: 12;
-                                    hexpand: true;
-                                    valign: start;
-                                    selection-mode: none;
-                                    styles["boxed-list"]
-                                }
+                    Adw.PreferencesPage outerbox {
+                        
+                        Adw.PreferencesGroup {
+                            Adw.SwitchRow mask_row {
+                                title: _("Mask this Flatpak");
+                                subtitle: _("Ensure that the flatpak will never be updated to a newer version");
+                                active: true;
                             }
+                        }
+
+                        Adw.PreferencesGroup versions_group {
+                            title: _("Select a Release");
+                            description: _("This will uninstall the current release and install the chosen one instead. Note that downgrading can cause issues.");
                         }
                     }
                 }

@@ -146,6 +146,17 @@ class myUtils:
             return(1)
         return(0)
 
+    def downgradeFlatpak(self, ref, commit, install_type="system"):
+        command = ['flatpak-spawn', '--host', 'pkexec', 'flatpak', 'update', ref, f"--commit={commit}", f"--{install_type}", '-y']
+        try:
+            response = subprocess.run(command, capture_output=True, text=True, env=self.new_env).stderr
+        except subprocess.CalledProcessError as e:
+            if "note that" in response.lower():
+                return(0)
+            print(f"Error setting mask for {app_id}:\n", e)
+            return(1)
+        return(0)
+
     def uninstallFlatpak(self, ref_arr, type_arr, should_trash):
         self.uninstall_success = True
 
