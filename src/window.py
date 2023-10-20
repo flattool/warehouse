@@ -352,7 +352,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             row_menu_model.append_submenu(_("Copy"), copy_menu_model)
 
-            self.create_action(("run" + str(index)), lambda *_, ref=app_ref, name=app_name: self.runAppThread(ref, _("Opened {}").format(name)))
+            self.create_action(("run" + str(index)), lambda *_a, ref=app_ref, name=app_name: self.runAppThread(ref, _("Opened {}").format(name)))
             run_item = Gio.MenuItem.new(_("Open {}").format(app_name), f"win.run{index}")
             if "runtime" not in self.host_flatpaks[index][12]:
                 row_menu_model.append_item(run_item)
