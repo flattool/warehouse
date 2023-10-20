@@ -326,7 +326,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             select_flatpak_tickbox.connect("toggled", self.rowSelectHandler, index)
             flatpak_row.add_suffix(select_flatpak_tickbox)
 
-            row_menu = Gtk.MenuButton(icon_name="view-more-symbolic", valign=Gtk.Align.CENTER)
+            row_menu = Gtk.MenuButton(icon_name="view-more-symbolic", valign=Gtk.Align.CENTER, visible=not self.in_batch_mode)
             row_menu.add_css_class("flat")
             row_menu_model = Gio.Menu()
             copy_menu_model = Gio.Menu()

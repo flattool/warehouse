@@ -84,6 +84,7 @@ class DowngradeWindow(Adw.Window):
             row.set_activatable_widget(select)
             row.add_prefix(select)
             self.versions_group.add(row)
+        self.set_title(self.window_title)
 
     def generateList(self):
         task = Gio.Task.new(None, None, lambda *_: self.commitsCallback())
@@ -112,6 +113,7 @@ class DowngradeWindow(Adw.Window):
         self.response = self.my_utils.downgradeFlatpak(self.app_ref, self.commit_to_use, self.install_type)
 
     def onApply(self):
+        self.set_title(_("Downgrading..."))
         self.no_close = self.connect("close-request", lambda event: True)
         self.main_toolbar_view.set_sensitive(False)
         self.should_pulse = True
@@ -137,6 +139,7 @@ class DowngradeWindow(Adw.Window):
         self.parent_window = parent_window
         self.flatpak_row = flatpak_row
         self.response = 0
+        self.window_title = _("Downgrade {}").format(self.app_name)
         event_controller = Gtk.EventControllerKey()
 
         # Connections
@@ -147,7 +150,7 @@ class DowngradeWindow(Adw.Window):
         # Apply
         self.pulser()
         self.add_controller(event_controller)
-        self.set_title(_("Downgrade {}").format(self.app_name))
+        self.set_title(_("Fetching Releases..."))
         self.set_transient_for(parent_window)
 
         self.generateList()
