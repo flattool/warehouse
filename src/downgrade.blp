@@ -1,0 +1,83 @@
+using Gtk 4.0;
+using Adw 1;
+
+template DowngradeWindow : Adw.Window {
+    default-width: 500;
+    default-height: 750;
+    modal: true;
+
+    Adw.ToolbarView main_toolbar_view {
+        [top]
+        HeaderBar header_bar {
+            show-title-buttons: false;
+
+            [start]
+            Button cancel_button {
+                label: _("Cancel");
+            }
+            [end]
+            Button apply_button {
+                sensitive: false;
+                label: _("Apply");
+                styles["suggested-action"]
+            }
+        }
+        content:
+        Adw.ToastOverlay toast_overlay {
+            Stack main_stack {
+                Overlay main_overlay {
+                    [overlay]
+                    ProgressBar progress_bar {
+                        pulse-step: 0.7;
+                        can-target: false;
+                        styles["osd"]
+                    }
+
+                    ScrolledWindow scrolled_window {
+                        vexpand: true;
+                        Adw.Clamp{
+                            Box outerbox {
+                                orientation: vertical;
+                                
+                                ListBox {
+                                    margin-top: 12;
+                                    margin-start: 12;
+                                    margin-end: 12;
+                                    hexpand: true;
+                                    valign: start;
+                                    selection-mode: none;
+                                    styles["boxed-list"]
+
+                                    Adw.SwitchRow mask_row {
+                                        title: _("Mask this Flatpak");
+                                        subtitle: _("Ensure that the flatpak will never update to a newer version");
+                                        active: true;
+                                    }
+                                }
+
+                                Label {
+                                    label: _("Select a Version");
+                                    margin-top: 12;
+                                    margin-start: 12;
+                                    halign: start;
+                                    styles["title-3"]
+                                }
+
+                                ListBox versions_listbox {
+                                    margin-top: 12;
+                                    margin-bottom: 12;
+                                    margin-start: 12;
+                                    margin-end: 12;
+                                    hexpand: true;
+                                    valign: start;
+                                    selection-mode: none;
+                                    styles["boxed-list"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        };
+    }
+}

@@ -24,9 +24,7 @@ template FilterWindow : Adw.Window {
         }
         content:
         Adw.ToastOverlay toast_overlay {
-          Stack main_stack {
-            //Box main_box {
-                //orientation: vertical;
+            Stack main_stack {
                 Overlay main_overlay {
                     ScrolledWindow scrolled_window {
                         vexpand: true;
@@ -82,7 +80,6 @@ template FilterWindow : Adw.Window {
                         }
                     }
                 }
-            //}
             Adw.StatusPage no_data {
               icon-name: "check-plain-symbolic";
               title: _("No Leftover Data");
@@ -90,12 +87,5 @@ template FilterWindow : Adw.Window {
             }
           }
         };
-        // [bottom]
-        // ActionBar action_bar {
-        //     [start]
-        //     ToggleButton select_all_button {
-        //         label: _("Select All");
-        //     }
-        // }
     }
 }

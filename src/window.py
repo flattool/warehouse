@@ -26,6 +26,7 @@ from .properties_window import show_properties_window
 from .filter_window import FilterWindow
 from .common import myUtils
 from .remotes_window import RemotesWindow
+from .downgrade_window import DowngradeWindow
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):
@@ -353,6 +354,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.create_action(("uninstall" + str(index)), lambda *_, index=index: self.uninstallButtonHandler(self, index))
             uninstall_item = Gio.MenuItem.new(_("Uninstall {}").format(app_name), f"win.uninstall{index}")
             row_menu_model.append_item(uninstall_item)
+
+            self.create_action(("downgrade" + str(index)), lambda *_, row=self.host_flatpaks[index]: DowngradeWindow(self, row))
+            downgrade_item = Gio.MenuItem.new(_("Downgrade {}").format(app_name), f"win.downgrade{index}")
+            row_menu_model.append_item(downgrade_item)
 
             # row_menu_model.remove(1)
 
