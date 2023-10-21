@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-21 05:35-0400\n"
+"POT-Creation-Date: 2023-10-21 05:42-0400\n"
 "PO-Revision-Date: 2023-10-21 09:43+0000\n"
 "Last-Translator: Win <winsdominoes2018@gmail.com>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
@@ -250,8 +250,10 @@ msgid "Trash Selected Apps' User Data?"
 msgstr ""
 
 #: src/window.py:493
-msgid "Your user files and data for these apps will be sent to the trash."
-msgstr ""
+#, fuzzy
+#| msgid "These folders will be sent to the trash."
+msgid "Your files and data for these apps will be sent to the trash."
+msgstr "โฟลเดอร์เหล่านี้จะถูกในไปไว้ในถังขยะ"
 
 #: src/window.py:496 src/properties_window.py:85
 msgid "Trash Data"
@@ -471,8 +473,10 @@ msgid "Send {}'s User Data to the Trash?"
 msgstr ""
 
 #: src/properties_window.py:82
-msgid "Your user files and data for this app will be sent to the trash."
-msgstr ""
+#, fuzzy
+#| msgid "These folders will be sent to the trash."
+msgid "Your files and data for this app will be sent to the trash."
+msgstr "โฟลเดอร์เหล่านี้จะถูกในไปไว้ในถังขยะ"
 
 #: src/properties_window.py:95 src/orphans_window.py:171
 msgid "Can't open folder"
@@ -651,9 +655,7 @@ msgstr "ไม่มีรีโมต"
 #: src/remotes.blp:46
 msgid ""
 "Warehouse cannot see the list of remotes or the system has no remotes added"
-msgstr ""
-"แวร์เฮาส์ไม่สามารถค้นหารายการของรีโมตได้ หรือ "
-"ระบบไม่มีรีโมตใดๆที่ได้ติดตั้งไว้"
+msgstr "แวร์เฮาส์ไม่สามารถค้นหารายการของรีโมตได้ หรือ ระบบไม่มีรีโมตใดๆที่ได้ติดตั้งไว้"
 
 #: src/popular_remotes_window.py:31
 msgid "Flatpaks Repos"
