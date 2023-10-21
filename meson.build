@@ -1,5 +1,5 @@
 project('warehouse',
-          version: '1.2.1',
+          version: '1.3.Beta',
     meson_version: '>= 0.62.0',
   default_options: [ 'warning_level=2', 'werror=false', ],
 )
