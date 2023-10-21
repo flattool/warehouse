@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:35-0400\n"
 "PO-Revision-Date: 2023-10-21 09:43+0000\n"
-"Last-Translator: Amy/Atius <www.dappertransformer@proton.me>\n"
+"Last-Translator: Win <winsdominoes2018@gmail.com>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/th/>\n"
 "Language: th\n"
@@ -642,16 +642,18 @@ msgstr ""
 
 #: src/remotes.blp:13
 msgid "Add Remote"
-msgstr ""
+msgstr "เพิ่มรีโมต"
 
 #: src/remotes.blp:45
 msgid "No Remotes"
-msgstr ""
+msgstr "ไม่มีรีโมต"
 
 #: src/remotes.blp:46
 msgid ""
 "Warehouse cannot see the list of remotes or the system has no remotes added"
 msgstr ""
+"แวร์เฮาส์ไม่สามารถค้นหารายการของรีโมตได้ หรือ "
+"ระบบไม่มีรีโมตใดๆที่ได้ติดตั้งไว้"
 
 #: src/popular_remotes_window.py:31
 msgid "Flatpaks Repos"
