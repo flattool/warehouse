@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:04-0400\n"
 "PO-Revision-Date: 2023-10-21 09:35+0000\n"
-"Last-Translator: Amy/Atius <www.dappertransformer@proton.me>\n"
+"Last-Translator: Win <winsdominoes2018@gmail.com>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/th/>\n"
 "Language: th\n"
@@ -702,87 +702,87 @@ msgstr ""
 
 #: src/orphans_window.py:159
 msgid "These folders will be sent to the trash."
-msgstr ""
+msgstr "โฟลเดอร์เหล่านี้จะถูกในไปไว้ในถังขยะ"
 
 #: src/orphans_window.py:163
 msgid "Continue"
-msgstr ""
+msgstr "ดำเนินการต่อ"
 
 #: src/orphans_window.py:187
 msgid "Could not manage data"
-msgstr ""
+msgstr "ไม่สามารถจัดการข้อมูลได้"
 
 #: src/orphans.blp:19
 msgid "Open the User Data Folder"
-msgstr ""
+msgstr "เปิดโฟลเดอร์ข้อมูลผู้ใช้"
 
 #: src/orphans.blp:57 src/filter.blp:85
 msgid "No Leftover Data"
-msgstr ""
+msgstr "ไม่มีข้อมูลเหลืออยู่"
 
 #: src/orphans.blp:58 src/filter.blp:86
 msgid "There is no leftover user data"
-msgstr ""
+msgstr "ไม่มีข้อมูลผู้ใช้เหลืออยู่"
 
 #: src/orphans.blp:66
 msgid "Select All"
-msgstr ""
+msgstr "เลือกทั้งหมด"
 
 #: src/filter.blp:7
 msgid "Set Filters"
-msgstr ""
+msgstr "เพิ่มตัวกรอง"
 
 #: src/filter.blp:21
 msgid "Apply"
-msgstr ""
+msgstr "เซ็ตการตั้งค่า"
 
 #: src/filter.blp:46
 msgid "Show Apps"
-msgstr ""
+msgstr "แสดงแอป"
 
 #: src/filter.blp:55
 msgid "Show Runtimes"
-msgstr ""
+msgstr "แสดงเวลาการทำงานของแอป"
 
 #: src/filter.blp:65
 msgid "Filter Apps by Remotes"
-msgstr ""
+msgstr "กรองแอปตามรีโมต"
 
 #: src/filter.blp:69
 msgid "Filter Apps by Runtime"
-msgstr ""
+msgstr "กรองแอปตามสถานะการทำงาน"
 
 #: src/filter.blp:76
 msgid "Clear Filters"
-msgstr ""
+msgstr "ล้างฟิลเตอร์"
 
 #: src/downgrade_window.py:76
 msgid "Commit Hash: {}"
-msgstr ""
+msgstr "เพิ่มแฮช {}"
 
 #: src/downgrade_window.py:101
 msgid "Could not downgrade {}"
-msgstr ""
+msgstr "ไม่สามารถดาวน์เกรด {}"
 
 #: src/downgrade_window.py:108
 msgid "Could not mask {}"
-msgstr ""
+msgstr "ไม่สามารถมาสก์ {}"
 
 #: src/downgrade_window.py:116
 msgid "Downgrading..."
-msgstr ""
+msgstr "กำลังดาวน์เกรด"
 
 #: src/downgrade_window.py:153
 msgid "Fetching Releases..."
-msgstr ""
+msgstr "กำลังค้นหารุ่น"
 
 #: src/downgrade.blp:21
 msgid "Downgrade"
-msgstr ""
+msgstr "ดาวน์เกรด"
 
 #: src/downgrade.blp:40
 msgid "Mask this Flatpak"
-msgstr ""
+msgstr "มาสก์แอปนี้"
 
 #: src/downgrade.blp:41
 msgid "Ensure that the flatpak will never be updated to a newer version"
