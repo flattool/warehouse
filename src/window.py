@@ -334,9 +334,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.flatpak_rows.append([True, False, flatpak_row, properties_button, row_menu, select_flatpak_tickbox, self.host_flatpaks[index], mask_label, row_menu_model])
             # {Row visibility, Row selected, the row itself, properties, menu button, select, the flatpak row from `flatpak list`, mask label, the dropdown menu model}
 
-            # self.create_action(("properties" + str(index)), lambda *_, index=index: show_properties_window(None, index, self))
-            # properties_item = Gio.MenuItem.new(_("Show Properties"), f"win.properties{index}")
-            # row_menu_model.append_item(properties_item)
+            #
 
             self.create_action(("copy-name" + str(index)), lambda *_, name=app_name, toast=_("Copied name"): self.copyItem(name, toast))
             copy_menu_model.append_item(Gio.MenuItem.new(_("Copy Name"), f"win.copy-name{index}"))
