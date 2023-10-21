@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:04-0400\n"
-"PO-Revision-Date: 2023-10-21 09:05+0000\n"
-"Last-Translator: Win <winsdominoes2018@gmail.com>\n"
+"PO-Revision-Date: 2023-10-21 09:35+0000\n"
+"Last-Translator: Amy/Atius <www.dappertransformer@proton.me>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/th/>\n"
 "Language: th\n"
@@ -67,44 +67,44 @@ msgstr "ติดตั้งแอปที่ยังมีข้อมูล
 
 #: src/main.py:86
 msgid "Flatpaks"
-msgstr ""
+msgstr "Flatpaks"
 
 #: src/window.py:103
 msgid "Uninstalled successfully"
-msgstr ""
+msgstr "การถอนการติดตั้งสำเหร็จแล้ว"
 
 #: src/window.py:105
 msgid "Could not uninstall some apps"
-msgstr ""
+msgstr "ไม่สามารถถอนการติดตั้งได้บางแอป"
 
 #. Create Widgets
 #: src/window.py:152
 msgid "Uninstall Selected Apps?"
-msgstr ""
+msgstr "จะถอนการติดตั้งแอปที่เลือกมั้ย?"
 
 #: src/window.py:152
 msgid "It will not be possible to use these apps after removal."
-msgstr ""
+msgstr "ไม่สามารถใช้แอปเหล่านี้ได้หลังจากการลบออก"
 
 #: src/window.py:165 src/window.py:238
 msgid "App Settings & Data"
-msgstr ""
+msgstr "การตั้งค่าแอปและข้อมูล"
 
 #: src/window.py:167 src/window.py:240
 msgid "Keep"
-msgstr ""
+msgstr "เก็บไว้"
 
 #: src/window.py:167 src/window.py:240
 msgid "Allow restoring app settings and content"
-msgstr ""
+msgstr "อนุญาตให้กู้คืนการตั้งค่าแอปและเนื้อหา"
 
 #: src/window.py:168 src/window.py:241 src/orphans.blp:70
 msgid "Trash"
-msgstr ""
+msgstr "ทิ้ง"
 
 #: src/window.py:168 src/window.py:241
 msgid "Send app settings and content to the trash"
-msgstr ""
+msgstr "ส่งการตั้งค่าแอปและเนื้อหาไปที่ถังขยะ"
 
 #: src/window.py:195 src/window.py:259 src/window.py:497 src/window.py:656
 #: src/properties_window.py:84 src/remotes_window.py:59
@@ -112,34 +112,34 @@ msgstr ""
 #: src/orphans_window.py:108 src/orphans_window.py:162 src/filter.blp:17
 #: src/downgrade.blp:16
 msgid "Cancel"
-msgstr ""
+msgstr "ยกเลิก"
 
 #: src/window.py:196 src/window.py:260
 msgid "Uninstall"
-msgstr ""
+msgstr "ถอนการติดตั้ง"
 
 #: src/window.py:202
 msgid "Cannot uninstall while already uninstalling"
-msgstr ""
+msgstr "ไม่สามารถถอนการติดตั้งในขณะที่ถอนการติดตั้งแล้ว"
 
 #. Create Widgets
 #: src/window.py:233
 msgid "Uninstall {}?"
-msgstr ""
+msgstr "ถอนการติดตั้ง {}?"
 
 #: src/window.py:233
 msgid "It will not be possible to use {} after removal."
-msgstr ""
+msgstr "คุณจะไม่สามารถใช้ {} ได้หลังจากถอนการติดตั้ง"
 
 #: src/window.py:300 src/window.py:304
 msgid "EOL"
-msgstr ""
+msgstr "EOL"
 
 #: src/window.py:300 src/properties_window.py:19
 msgid ""
 "This Flatpak has reached its End of Life and will not receive any security "
 "updates"
-msgstr ""
+msgstr "แอปนี้ได้ถึงการจบอัปเดตและจะไม่ได้รับอัปเดต"
 
 #: src/window.py:304 src/properties_window.py:20
 msgid ""
