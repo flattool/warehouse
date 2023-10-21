@@ -55,7 +55,7 @@
   </screenshots>
   <releases>
     <release version="1.2.1" date="2023-10-15" timestamp="1697405182">
-      <description translatable="yes">
+      <description translatable="no">
         <ul>
           <li>The main list of Flatpaks is now sorted by name instead of ID</li>
           <li>Warehouse can now be found in your app menu by searching for "flatpak"</li>
@@ -64,7 +64,7 @@
       </description>
     </release>
     <release version="1.2.0" date="2023-10-11" timestamp="1697076304">
-      <description translatable="yes">
+      <description translatable="no">
         <p>New Features and Changes</p>
         <ul>
           <li>Flatpaks files can be installed with a drag and drop or from a file selection</li>
@@ -89,7 +89,7 @@
       </description>
     </release>
     <release version="1.1.1" date="2023-10-6" timestamp="1696572524">
-      <description translatable="yes">
+      <description translatable="no">
         <p>Emergency Bug Fix</p>
         <ul>
           <li>Fix error causing a crash on Linux Mint</li>
@@ -98,7 +98,7 @@
       </description>
     </release>
     <release version="1.1.0" date="2023-10-4" timestamp="1696461734">
-			<description translatable="yes">
+			<description translatable="no">
 				<p>New Features and Changes</p>
         <ul>
           <li>Choose from a list of popular remotes when adding a new remote</li>
@@ -118,7 +118,7 @@
 			</description>
 		</release>
     <release version="1.0.0" date="2023-9-25" timestamp="1695695940">
-			<description translatable="yes">
+			<description translatable="no">
 				<p>First release of Warehouse</p>
 			</description>
 		</release>
