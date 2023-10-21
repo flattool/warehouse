@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:42-0400\n"
-"PO-Revision-Date: 2023-10-21 09:43+0000\n"
+"PO-Revision-Date: 2023-10-21 10:14+0000\n"
 "Last-Translator: kramo <login@kramo.hu>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hu/>\n"
@@ -254,8 +254,6 @@ msgid "Trash Selected Apps' User Data?"
 msgstr "Kukázza a kijelölt applikációk adatait?"
 
 #: src/window.py:493
-#, fuzzy
-#| msgid "Your user files and data for these apps will be sent to the trash."
 msgid "Your files and data for these apps will be sent to the trash."
 msgstr "Az adatai a kukába lesznek helyezve."
 
@@ -305,180 +303,180 @@ msgstr "Rendszer"
 
 #: src/window.py:663
 msgid "The app will be available to every user on the system"
-msgstr ""
+msgstr "Az applikáció minden felhasználó számára elérhető lesz"
 
 #: src/window.py:692
 msgid "File type not supported"
-msgstr ""
+msgstr "A fájl típus nem támogatott"
 
 #: src/window.blp:12
 msgid "Refresh the List of Installed Apps"
-msgstr ""
+msgstr "Telepített applikációk listájának frissítése"
 
 #: src/window.blp:18 src/orphans.blp:14
 msgid "Search for an Installed App"
-msgstr ""
+msgstr "Telepített app keresése"
 
 #: src/window.blp:24
 msgid "Filter Apps List"
-msgstr ""
+msgstr "Lista szűrése"
 
 #: src/window.blp:30
 msgid "Main Menu"
-msgstr ""
+msgstr "Főmenü"
 
 #: src/window.blp:37
 msgid "Toggle Selection Mode"
-msgstr ""
+msgstr "Kiválasztási mód váltása"
 
 #: src/window.blp:75
 msgid "No Flatpaks Found"
-msgstr ""
+msgstr "Nem találhatóak Flatpak-ek"
 
 #: src/window.blp:76
 msgid ""
 "There are either no Flatpaks that match the current filter, Warehouse cannot "
 "see the list of installed Flatpaks, or the system has no Flatpaks installed."
 msgstr ""
+"Vagy egy Flatpak sem felel meg a jelenlegi szűrőnek, vagy az applikáció nem "
+"látja a Flatpak-ek listáját, nincs egy Flatpak se telepítve."
 
 #. label: _("Uninstall");
 #: src/window.blp:92
 msgid "Uninstall Selected Apps"
-msgstr ""
+msgstr "Kiválasztott applikációk eltávolítása"
 
 #. label: _("Trash User Data");
 #: src/window.blp:98
 msgid "Send Selected Apps' Data to the Trash"
-msgstr ""
+msgstr "Kiválasztott applikációk adatainak kukázása"
 
 #: src/window.blp:103
 msgid "Open Copy Menu"
-msgstr ""
+msgstr "Másolás menü megnyitása"
 
 #: src/window.blp:114
 msgid "Install From File"
-msgstr ""
+msgstr "Fájlból való telepítés"
 
 #: src/window.blp:119 src/orphans_window.py:24
 msgid "Manage Leftover Data"
-msgstr ""
+msgstr "Maradék adatok kezelése"
 
 #: src/window.blp:129 src/remotes_window.py:349
 msgid "Manage Remotes"
-msgstr ""
+msgstr "Tárolók kezelése"
 
 #: src/window.blp:134
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Billentyűparancsok"
 
 #: src/window.blp:139
 msgid "_About Warehouse"
-msgstr ""
+msgstr "_A Raktárról"
 
 #: src/window.blp:148
 msgid "Copy Names"
-msgstr ""
+msgstr "Nevek másolása"
 
 #: src/window.blp:153
 msgid "Copy IDs"
-msgstr ""
+msgstr "Azonosítók másolása"
 
 #: src/window.blp:158
 msgid "Copy Refs"
-msgstr ""
+msgstr "Hivatkozások másolása"
 
 #: src/window.blp:167
 msgid "Open app"
-msgstr ""
+msgstr "Applikáció megnyitása"
 
 #: src/gtk/help-overlay.blp:11
 msgctxt "shortcut window"
 msgid "App Management"
-msgstr ""
+msgstr "Applikációkezelés"
 
 #: src/gtk/help-overlay.blp:14
 msgctxt "shortcut window"
 msgid "Search"
-msgstr ""
+msgstr "Keresés"
 
 #: src/gtk/help-overlay.blp:19
 msgctxt "shortcut window"
 msgid "Set a Filter"
-msgstr ""
+msgstr "Szűrő beállítása"
 
 #: src/gtk/help-overlay.blp:24
 msgctxt "shortcut window"
 msgid "Refresh"
-msgstr ""
+msgstr "Frissítés"
 
 #: src/gtk/help-overlay.blp:29
 msgctxt "shortcut window"
 msgid "Toggle Selection Mode"
-msgstr ""
+msgstr "Kiválasztási mód váltása"
 
 #: src/gtk/help-overlay.blp:34
 msgctxt "shortcut window"
 msgid "More Functions"
-msgstr ""
+msgstr "Több funkció"
 
 #: src/gtk/help-overlay.blp:37
 msgctxt "shortcut window"
 msgid "Manage Leftover Data"
-msgstr ""
+msgstr "Maradék adatok kezelése"
 
 #: src/gtk/help-overlay.blp:42
 msgctxt "shortcut window"
 msgid "Manage Remotes"
-msgstr ""
+msgstr "Tárolók kezelése"
 
 #: src/gtk/help-overlay.blp:47
 msgctxt "shortcut window"
 msgid "Install From File"
-msgstr ""
+msgstr "Fájlból való telepítés"
 
 #: src/gtk/help-overlay.blp:52
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Általános"
 
 #: src/gtk/help-overlay.blp:55
 msgctxt "shortcut window"
 msgid "Open Menu"
-msgstr ""
+msgstr "Menü megnyitása"
 
 #: src/gtk/help-overlay.blp:60
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Billentyűparancsok megjelenítése"
 
 #: src/gtk/help-overlay.blp:65
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "Kilépés"
 
 #: src/properties_window.py:7
 msgid "{} Properties"
-msgstr ""
+msgstr "{} tulajdonságai"
 
 #: src/properties_window.py:21
 msgid "This Flatpak has been masked and will not be updated"
-msgstr ""
+msgstr "Ez a Flatpak maszkolva van és nem lesz frissítve"
 
 #: src/properties_window.py:52
 msgid "Show Apps Using this Runtime"
-msgstr ""
+msgstr "Applikációk megjelenítése, amelyek ezt a futtatókörnyezetet használják"
 
 #: src/properties_window.py:78
 msgid "Can't trash data"
-msgstr ""
+msgstr "Az adatok kukázása sikertelen"
 
 #: src/properties_window.py:81
 msgid "Send {}'s User Data to the Trash?"
-msgstr ""
+msgstr "Kukázza a(z) {} adatait?"
 
 #: src/properties_window.py:82
-#, fuzzy
-#| msgid "Your user files and data for these apps will be sent to the trash."
 msgid "Your files and data for this app will be sent to the trash."
 msgstr "Az adatai a kukába lesznek helyezve."
 
