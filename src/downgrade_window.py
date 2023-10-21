@@ -72,8 +72,8 @@ class DowngradeWindow(Adw.Window):
             display_time = GLib.DateTime.new(GLib.TimeZone.new(offset), int(date[0]), int(date[1]), int(date[2]), int(time[0]), int(time[1]), int(time[2]))
             display_time = display_time.format("%x %X")
             change = version[1].split('(')
-            change[1] = change[1][:-1]
-            row = Adw.ActionRow(title=GLib.markup_escape_text(change[0]), subtitle=str(display_time + "  -  " + change[1]))
+            row = Adw.ActionRow(title=GLib.markup_escape_text(change[0]), subtitle=str(display_time))
+            row.set_tooltip_text(_("Commit Hash: {}").format(version[0]))
             select = Gtk.CheckButton()
             select.connect("toggled", self.selectionHandler, i)
             
