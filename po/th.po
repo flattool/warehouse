@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:35-0400\n"
-"PO-Revision-Date: 2023-10-21 09:41+0000\n"
+"PO-Revision-Date: 2023-10-21 09:43+0000\n"
 "Last-Translator: Amy/Atius <www.dappertransformer@proton.me>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/th/>\n"
@@ -157,13 +157,13 @@ msgstr "แอปนี้ได้ถูกระยับยั้งอัป
 
 #: src/window.py:314 src/properties_window.py:156
 msgid "View Properties"
-msgstr ""
+msgstr "ดูคุณสมบัติ"
 
 #. {Row visibility, Row selected, the row itself, properties, menu button, select, the flatpak row from `flatpak list`, mask label, the dropdown menu model}
 #.
 #: src/window.py:339
 msgid "Copied name"
-msgstr ""
+msgstr "คัดลอกชื่อแล้ว"
 
 #: src/window.py:340
 msgid "Copy Name"
