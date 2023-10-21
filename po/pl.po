@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:04-0400\n"
-"PO-Revision-Date: 2023-10-21 09:00+0000\n"
+"PO-Revision-Date: 2023-10-21 09:35+0000\n"
 "Last-Translator: eryn <hericiumvevo@getcryst.al>\n"
 "Language-Team: Polish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/pl/>\n"
@@ -60,19 +60,19 @@ msgstr "Zarządzaj wieloma Flatpakami naraz"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Add and remove Flatpak remotes"
-msgstr ""
+msgstr "Dodaj lub usuń źródła"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "Find and trash leftover user data"
-msgstr ""
+msgstr "Znajdź i przenieś do kosza pozostałe dane użytkownika"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
-msgstr ""
+msgstr "Zainstaluj ponownie aplikacje których danych pozostały na systemie"
 
 #: src/main.py:86
 msgid "Flatpaks"
-msgstr ""
+msgstr "Flatpaki"
 
 #: src/window.py:103
 msgid "Uninstalled successfully"
