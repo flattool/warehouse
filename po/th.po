@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 01:00-0700\n"
-"PO-Revision-Date: 2023-10-21 08:40+0000\n"
+"PO-Revision-Date: 2023-10-21 09:00+0000\n"
 "Last-Translator: Amy/Atius <www.dappertransformer@proton.me>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/th/>\n"
@@ -35,63 +35,63 @@ msgstr "จัดการทุกอย่าง Flatpak"
 msgid ""
 "Warehouse is an app that manages installed Flatpaks, their user data, and "
 "Flatpak remotes."
-msgstr ""
+msgstr "Warehouse คือแอปที่จัดการ Flatpak ที่ติดตั้ง, ข้อมูล, และแหล่ง Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr ""
+msgstr "คุณสมบัติ:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Show and filter the list of installed Flatpaks"
-msgstr ""
+msgstr "แสดงและฟิลเตอร์ Flatpak ที่ติดตั้ง"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Display properties of installed Flatpaks"
-msgstr ""
+msgstr "แสดงคุณสมบัติของ Flatpak ที่ติดตั้ง"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Manage large groups of Flatpaks at once"
-msgstr ""
+msgstr "จัดการกลุ่ม Flatpak พร้อมกันทั้งหมด"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Add and remove Flatpak remotes"
-msgstr ""
+msgstr "เพิ่มและลบแหล่ง Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "Find and trash leftover user data"
-msgstr ""
+msgstr "หาและทิ้งข้อมูลที่เหลือ"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
-msgstr ""
+msgstr "ติดตั้งแอปที่ยังมีข้อมูลเหลือ"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:60
 msgid "The main list of Flatpaks is now sorted by name instead of ID"
-msgstr ""
+msgstr "Flatpak เรียงตามชื่อแทน ID"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:61
 msgid ""
 "Warehouse can now be found in your app menu by searching for \"flatpak\""
-msgstr ""
+msgstr "Warehouse สามารถถูกค้นพบได้ด้วยการค้นหา \"flatpak\""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:62
 msgid "Corrected typo in the previous release's change log"
-msgstr ""
+msgstr "แก้การพิมพ์ผิดในบันทึกการเปลี่ยนแปลงของรุ่นก่อนหน้า"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:68
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:102
 msgid "New Features and Changes"
-msgstr ""
+msgstr "คุณสมบัติใหม่และการเปลี่ยนแปลง"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid ""
 "Flatpaks files can be installed with a drag and drop or from a file selection"
-msgstr ""
+msgstr "Flatpak สามารถติดตั้งได้ด้วยการลากและวางหรือจากการเลือกไฟล์"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:71
 msgid ""
 "Flatpak remotes can be added with a drag and drop or from a file selection"
-msgstr ""
+msgstr "แหล่ง Flatpak สามารถเพิ่มได้ด้วยการลากและวางหรือจากการเลือกไฟล์"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:72
 msgid "Apps can now be filtered by dependent runtimes"
