@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:35-0400\n"
-"PO-Revision-Date: 2023-10-21 09:35+0000\n"
+"PO-Revision-Date: 2023-10-21 09:41+0000\n"
 "Last-Translator: kramo <login@kramo.hu>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hu/>\n"
@@ -223,51 +223,51 @@ msgstr "{} visszafejlesztése"
 
 #: src/window.py:396
 msgid "Could not toggle {}'s mask"
-msgstr ""
+msgstr "A(z) {} maszkját nem lehetett átváltani"
 
 #: src/window.py:417
 msgid "Could not Run App"
-msgstr ""
+msgstr "Az applikációt nem lehetett futtatni"
 
 #: src/window.py:423
 msgid "OK"
-msgstr ""
+msgstr "Rendben"
 
 #: src/window.py:441
 msgid "List refreshed"
-msgstr ""
+msgstr "Lista frissítve"
 
 #: src/window.py:484
 msgid "No user data for {}"
-msgstr ""
+msgstr "A(z) {} nem tartalmaz felhasználói adatokat"
 
 #: src/window.py:487
 msgid "Can't trash user data for {}"
-msgstr ""
+msgstr "Nem lehet a(z) {} felhasználói adatait törölni"
 
 #: src/window.py:489 src/properties_window.py:74
 msgid "Trashed user data"
-msgstr ""
+msgstr "Felhasználói adatok kukázva"
 
 #: src/window.py:493
 msgid "Trash Selected Apps' User Data?"
-msgstr ""
+msgstr "Kukázza a kijelölt applikációk adatait?"
 
 #: src/window.py:493
 msgid "Your user files and data for these apps will be sent to the trash."
-msgstr ""
+msgstr "Az adatai a kukába lesznek helyezve."
 
 #: src/window.py:496 src/properties_window.py:85
 msgid "Trash Data"
-msgstr ""
+msgstr "Adatok kukázása"
 
 #: src/window.py:547
 msgid "Copied selected app names"
-msgstr ""
+msgstr "A kiválasztott applikációk neve másolva"
 
 #: src/window.py:555
 msgid "Copied selected app IDs"
-msgstr ""
+msgstr "A kiválasztott applikációk azonosítója másolva"
 
 #: src/window.py:563
 msgid "Copied selected app refs"
