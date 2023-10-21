@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:42-0400\n"
 "PO-Revision-Date: 2023-10-21 10:14+0000\n"
-"Last-Translator: Win <winsdominoes2018@gmail.com>\n"
+"Last-Translator: Amy/Atius <www.dappertransformer@proton.me>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/th/>\n"
 "Language: th\n"
@@ -167,169 +167,167 @@ msgstr "คัดลอกชื่อแล้ว"
 
 #: src/window.py:340
 msgid "Copy Name"
-msgstr ""
+msgstr "คัดลอกชื่อ"
 
 #: src/window.py:342
 msgid "Copied ID"
-msgstr ""
+msgstr "คัดลอก ID แล้ว"
 
 #: src/window.py:343
 msgid "Copy ID"
-msgstr ""
+msgstr "คัดลอก ID"
 
 #: src/window.py:345
 msgid "Copied ref"
-msgstr ""
+msgstr "คัดลอก ref แล้ว"
 
 #: src/window.py:346
 msgid "Copy Ref"
-msgstr ""
+msgstr "คัดลอก Ref"
 
 #: src/window.py:348
 msgid "Copied launch command"
-msgstr ""
+msgstr "คัดลอกคำสั่งเปิดแล้ว"
 
 #: src/window.py:349
 msgid "Copy Launch Command"
-msgstr ""
+msgstr "คัดลอกคำสั่งเปิด"
 
 #: src/window.py:351 src/window.py:418
 msgid "Copy"
-msgstr ""
+msgstr "คัดลอก"
 
 #: src/window.py:353
 msgid "Opened {}"
-msgstr ""
+msgstr "เปิด {} แล้ว"
 
 #: src/window.py:354
 msgid "Open {}"
-msgstr ""
+msgstr "เปิด {} แล้ว"
 
 #: src/window.py:359
 msgid "Toggle Mask"
-msgstr ""
+msgstr "สลับมาสก์"
 
 #: src/window.py:368
 msgid "Uninstall {}"
-msgstr ""
+msgstr "ถอนการติดตั้ง {}"
 
 #: src/window.py:372 src/downgrade_window.py:142
 msgid "Downgrade {}"
-msgstr ""
+msgstr "ย้อนหลัง {}"
 
 #: src/window.py:396
 msgid "Could not toggle {}'s mask"
-msgstr ""
+msgstr "ไม่สามารถสลับ {} มาสก์ได้"
 
 #: src/window.py:417
 msgid "Could not Run App"
-msgstr ""
+msgstr "ไม่สามารถเปิดแอปได้"
 
 #: src/window.py:423
 msgid "OK"
-msgstr ""
+msgstr "โอเค"
 
 #: src/window.py:441
 msgid "List refreshed"
-msgstr ""
+msgstr "รีเฟรชรายการแล้ว"
 
 #: src/window.py:484
 msgid "No user data for {}"
-msgstr ""
+msgstr "ไม่มีข้อมูลของ {}"
 
 #: src/window.py:487
 msgid "Can't trash user data for {}"
-msgstr ""
+msgstr "ไม่สามารถทิ้งข้อมูลของ {} ได้"
 
 #: src/window.py:489 src/properties_window.py:74
 msgid "Trashed user data"
-msgstr ""
+msgstr "ทิ้งข้อมูลแล้ว"
 
 #: src/window.py:493
 msgid "Trash Selected Apps' User Data?"
-msgstr ""
+msgstr "ทิ้งข้อมูลของแอปที่เลือก?"
 
 #: src/window.py:493
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "Your files and data for these apps will be sent to the trash."
-msgstr "โฟลเดอร์เหล่านี้จะถูกในไปไว้ในถังขยะ"
+msgstr "โฟลเดอร์ของคุณจะถูกในไปไว้ในถังขยะ"
 
 #: src/window.py:496 src/properties_window.py:85
 msgid "Trash Data"
-msgstr ""
+msgstr "ทิ้งข้อมูล"
 
 #: src/window.py:547
 msgid "Copied selected app names"
-msgstr ""
+msgstr "คัดลอกชื่อแอปที่เลือกแล้ว"
 
 #: src/window.py:555
 msgid "Copied selected app IDs"
-msgstr ""
+msgstr "คัดลอก ID แอปที่เลือกแล้ว"
 
 #: src/window.py:563
 msgid "Copied selected app refs"
-msgstr ""
+msgstr "คัดลอก refs แอปที่เลือกแล้ว"
 
 #: src/window.py:624 src/orphans_window.py:76
 msgid "Installed successfully"
-msgstr ""
+msgstr "ติดตั้งสำเหร็จ"
 
 #: src/window.py:627
 msgid "Could not install app"
-msgstr ""
+msgstr "ไม่สามารถติดตั้งแอป"
 
 #: src/window.py:652
 msgid "Install {}?"
-msgstr ""
+msgstr "ติดตั้ง {}?"
 
 #: src/window.py:655 src/orphans_window.py:109 src/orphans.blp:75
 msgid "Install"
-msgstr ""
+msgstr "ติดตั้ง"
 
 #: src/window.py:662 src/remotes_window.py:212 src/remotes_window.py:296
 msgid "User"
-msgstr ""
+msgstr "ผู้ใช้"
 
 #: src/window.py:662
 msgid "The app will be available to only you"
-msgstr ""
+msgstr "แอปนี้จะใช้ได้สำหรับคุณเท่านั้น"
 
 #: src/window.py:663 src/remotes_window.py:218 src/remotes_window.py:297
 msgid "System"
-msgstr ""
+msgstr "ระบบ"
 
 #: src/window.py:663
 msgid "The app will be available to every user on the system"
-msgstr ""
+msgstr "แอปจะพร้อมใช้งานสำหรับผู้ใช้ทุกคนในระบบ"
 
 #: src/window.py:692
 msgid "File type not supported"
-msgstr ""
+msgstr "ไม่รองรับประเภทไฟล์"
 
 #: src/window.blp:12
 msgid "Refresh the List of Installed Apps"
-msgstr ""
+msgstr "รีเฟรชรายการแอปที่ติดตั้ง"
 
 #: src/window.blp:18 src/orphans.blp:14
 msgid "Search for an Installed App"
-msgstr ""
+msgstr "ค้นหาแอปที่ติดตั้ง"
 
 #: src/window.blp:24
 msgid "Filter Apps List"
-msgstr ""
+msgstr "กรองรายการแอป"
 
 #: src/window.blp:30
 msgid "Main Menu"
-msgstr ""
+msgstr "เมนูหลัก"
 
 #: src/window.blp:37
 msgid "Toggle Selection Mode"
-msgstr ""
+msgstr "สลับโหมดการเลือก"
 
 #: src/window.blp:75
 msgid "No Flatpaks Found"
-msgstr ""
+msgstr "ไม่เจอแอป"
 
 #: src/window.blp:76
 msgid ""
