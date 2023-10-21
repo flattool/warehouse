@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:42-0400\n"
-"PO-Revision-Date: 2023-10-21 09:43+0000\n"
+"PO-Revision-Date: 2023-10-21 10:14+0000\n"
 "Last-Translator: Win <winsdominoes2018@gmail.com>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/th/>\n"
@@ -336,313 +336,313 @@ msgid ""
 "There are either no Flatpaks that match the current filter, Warehouse cannot "
 "see the list of installed Flatpaks, or the system has no Flatpaks installed."
 msgstr ""
+"ไม่มีแอปที่ตรงกับฟิลเตอร์ของคุณ หรือ แวร์เฮาส์ "
+"ไม่สามารถดูรายการแอปที่ติดตั้งไว้ หรือระบบไม่ได้ติดตั้งแอปใดๆ"
 
 #. label: _("Uninstall");
 #: src/window.blp:92
 msgid "Uninstall Selected Apps"
-msgstr ""
+msgstr "ถอนการติดตั้งแอปที่เลือกไว้"
 
 #. label: _("Trash User Data");
 #: src/window.blp:98
 msgid "Send Selected Apps' Data to the Trash"
-msgstr ""
+msgstr "ลบแอปที่เลือกไว้ไปที่ถังขยะ"
 
 #: src/window.blp:103
 msgid "Open Copy Menu"
-msgstr ""
+msgstr "เปิดเมนูคัดลอก"
 
 #: src/window.blp:114
 msgid "Install From File"
-msgstr ""
+msgstr "ติดตั้งแอปจากไฟล์"
 
 #: src/window.blp:119 src/orphans_window.py:24
 msgid "Manage Leftover Data"
-msgstr ""
+msgstr "จัดการข้อมูลหลงเหลือ"
 
 #: src/window.blp:129 src/remotes_window.py:349
 msgid "Manage Remotes"
-msgstr ""
+msgstr "จัดการรีโมต"
 
 #: src/window.blp:134
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_คีย์ลัด"
 
 #: src/window.blp:139
 msgid "_About Warehouse"
-msgstr ""
+msgstr "_เกี่ยวกับแวร์เฮาส์"
 
 #: src/window.blp:148
 msgid "Copy Names"
-msgstr ""
+msgstr "คัดลอกชื่อ"
 
 #: src/window.blp:153
 msgid "Copy IDs"
-msgstr ""
+msgstr "คัดลอด ID"
 
 #: src/window.blp:158
 msgid "Copy Refs"
-msgstr ""
+msgstr "คัดลอก Refs"
 
 #: src/window.blp:167
 msgid "Open app"
-msgstr ""
+msgstr "เปิดแอป"
 
 #: src/gtk/help-overlay.blp:11
 msgctxt "shortcut window"
 msgid "App Management"
-msgstr ""
+msgstr "การจัดการของแอป"
 
 #: src/gtk/help-overlay.blp:14
 msgctxt "shortcut window"
 msgid "Search"
-msgstr ""
+msgstr "ค้นหา"
 
 #: src/gtk/help-overlay.blp:19
 msgctxt "shortcut window"
 msgid "Set a Filter"
-msgstr ""
+msgstr "กำหนดฟิลเตอร์"
 
 #: src/gtk/help-overlay.blp:24
 msgctxt "shortcut window"
 msgid "Refresh"
-msgstr ""
+msgstr "รีเฟรช"
 
 #: src/gtk/help-overlay.blp:29
 msgctxt "shortcut window"
 msgid "Toggle Selection Mode"
-msgstr ""
+msgstr "เปิดโหมด Selection"
 
 #: src/gtk/help-overlay.blp:34
 msgctxt "shortcut window"
 msgid "More Functions"
-msgstr ""
+msgstr "ฟังค์ชั่นเพิ่มเติม"
 
 #: src/gtk/help-overlay.blp:37
 msgctxt "shortcut window"
 msgid "Manage Leftover Data"
-msgstr ""
+msgstr "จัดการข้อมูลที่หลงเหลืออยู่"
 
 #: src/gtk/help-overlay.blp:42
 msgctxt "shortcut window"
 msgid "Manage Remotes"
-msgstr ""
+msgstr "จัดการรีโมต"
 
 #: src/gtk/help-overlay.blp:47
 msgctxt "shortcut window"
 msgid "Install From File"
-msgstr ""
+msgstr "ติดตั้งจากไฟล์"
 
 #: src/gtk/help-overlay.blp:52
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "ทั่วไป"
 
 #: src/gtk/help-overlay.blp:55
 msgctxt "shortcut window"
 msgid "Open Menu"
-msgstr ""
+msgstr "เปิดเมนู"
 
 #: src/gtk/help-overlay.blp:60
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "แสดงชอร์ตคัท"
 
 #: src/gtk/help-overlay.blp:65
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "ออก"
 
 #: src/properties_window.py:7
 msgid "{} Properties"
-msgstr ""
+msgstr "เกี่ยวกับ {}"
 
 #: src/properties_window.py:21
 msgid "This Flatpak has been masked and will not be updated"
-msgstr ""
+msgstr "แอปนี้ได้ถูกมาสก์ไว้และจะไม่ถูกอัพเดท"
 
 #: src/properties_window.py:52
 msgid "Show Apps Using this Runtime"
-msgstr ""
+msgstr "แสดงแอปที่ใช้รันไทม์นี้"
 
 #: src/properties_window.py:78
 msgid "Can't trash data"
-msgstr ""
+msgstr "ไม่สามารถลบข้อมูลไปที่ถังขยะได้"
 
 #: src/properties_window.py:81
 msgid "Send {}'s User Data to the Trash?"
-msgstr ""
+msgstr "ลบข้อมูลผู้ใช้ของ {} ไปในถังขยะหรือไม่?"
 
 #: src/properties_window.py:82
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "Your files and data for this app will be sent to the trash."
-msgstr "โฟลเดอร์เหล่านี้จะถูกในไปไว้ในถังขยะ"
+msgstr "ไฟล์ของคุณและข้อมูลสำหรับแอปนี้จะถูกในไปไว้ในถังขยะ"
 
 #: src/properties_window.py:95 src/orphans_window.py:171
 msgid "Can't open folder"
-msgstr ""
+msgstr "ไม่สามารถเปิดโฟลเดอร์ได้"
 
 #: src/properties_window.py:99 src/remotes_window.py:72
 msgid "Copied {}"
-msgstr ""
+msgstr "คัดลอก {} แล้ว"
 
 #: src/properties_window.py:131
 msgid "Open Data Folder"
-msgstr ""
+msgstr "เปิดโฟลเดอร์ข้อมูล"
 
 #: src/properties_window.py:136
 msgid "Send User Data to the Trash"
-msgstr ""
+msgstr "ลบข้อมูลไปถังขยะ"
 
 #: src/properties_window.py:143 src/remotes_window.py:197
 #: src/remotes_window.py:294
 msgid "Name"
-msgstr ""
+msgstr "ชื่อ"
 
 #: src/properties_window.py:143
 msgid "Description"
-msgstr ""
+msgstr "คำอธิบาย"
 
 #: src/properties_window.py:143
 msgid "App ID"
-msgstr ""
+msgstr "ไอดีชองแอป"
 
 #: src/properties_window.py:143
 msgid "Version"
-msgstr ""
+msgstr "เวอร์ชั่น"
 
 #: src/properties_window.py:143
 msgid "Branch"
-msgstr ""
+msgstr "บรานช์"
 
 #: src/properties_window.py:143
 msgid "Arch"
-msgstr ""
+msgstr "Arch"
 
 #: src/properties_window.py:143
 msgid "Origin"
-msgstr ""
+msgstr "ที่มา"
 
 #: src/properties_window.py:143
 msgid "Installation"
-msgstr ""
+msgstr "การติดตั้ง"
 
 #: src/properties_window.py:143
 msgid "Ref"
-msgstr ""
+msgstr "Ref"
 
 #: src/properties_window.py:143
 msgid "Active Commit"
-msgstr ""
+msgstr "Commit ที่แอ็กทิฟ"
 
 #: src/properties_window.py:143
 msgid "Latest Commit"
-msgstr ""
+msgstr "Commit ล่าสุด"
 
 #: src/properties_window.py:143
 msgid "Installed Size"
-msgstr ""
+msgstr "ขนาดแอป"
 
 #: src/properties_window.py:143
 msgid "Options"
-msgstr ""
+msgstr "ตัวเลือก"
 
 #: src/properties_window.py:143
 msgid "Runtime"
-msgstr ""
+msgstr "รันไทม์"
 
 #: src/properties_window.py:151
 msgid "Copy {}"
-msgstr ""
+msgstr "คัดลอก {}"
 
 #: src/properties_window.py:183
 msgid "Unmask"
-msgstr ""
+msgstr "ยกเลิกการมาสก์"
 
 #: src/remotes_window.py:48
 msgid "Could not remove {}"
-msgstr ""
+msgstr "ไม่สามารถถอนการติดตั้ง {}"
 
 #: src/remotes_window.py:56
 msgid "Any installed apps from {} will stop receiving updates"
-msgstr ""
+msgstr "แอปที่ได้ถูกติดตั้งจาก {} จะไม่ได้รับการอัพเดท"
 
 #: src/remotes_window.py:57
 msgid "Remove {}?"
-msgstr ""
+msgstr "นำ {} ออก?"
 
 #: src/remotes_window.py:60
 msgid "Remove"
-msgstr ""
+msgstr "นำออก"
 
 #: src/remotes_window.py:92
 msgid "Copy remote name"
-msgstr ""
+msgstr "คัดลอกชื่อรีโมต"
 
 #: src/remotes_window.py:95
 msgid "Remove {}"
-msgstr ""
+msgstr "นำ {} ออก"
 
 #: src/remotes_window.py:110 src/remotes_window.py:243
 msgid "Could not add {}"
-msgstr ""
+msgstr "ไม่สามารถเพิ่ม {}"
 
 #: src/remotes_window.py:136
 msgid "Add Flatpak Remote"
-msgstr ""
+msgstr "เพิ่มรีโมต Flatpak"
 
 #: src/remotes_window.py:139 src/remotes_window.py:286
 msgid "Add"
-msgstr ""
+msgstr "เพิ่ม"
 
 #: src/remotes_window.py:201
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/remotes_window.py:212 src/remotes_window.py:296
 msgid "Remote will be available to only you"
-msgstr ""
+msgstr "คุณจะสามารถใช้รีโมตได้เท่านั้น"
 
 #: src/remotes_window.py:218 src/remotes_window.py:297
 msgid "Remote will be available to every user on the system"
-msgstr ""
+msgstr "ผู้ใช้ทุกคนสามารถมองเห็นรีโมตนี้ได้"
 
 #: src/remotes_window.py:241
 msgid "{} successfully added"
-msgstr ""
+msgstr "{} ได้ถูกเพิ่มแล้ว"
 
 #: src/remotes_window.py:283
 msgid "Add {}?"
-msgstr ""
+msgstr "เพิ่ม {}?"
 
 #. [Name to show in GUI, Name of remote for system, Link to repo to add, Description of remote]
 #: src/remotes_window.py:322
 msgid "The open source, pay-what-you-want app store from elementary"
-msgstr ""
+msgstr "แอปสโตร์ที่ open source และเลือกลงแอปได้"
 
 #: src/remotes_window.py:323
 msgid "Central repository of Flatpak applications"
-msgstr ""
+msgstr "พื้นที่จัดเก็บ Repository ส่วนกลางของแอป Flatpak"
 
 #: src/remotes_window.py:324
 msgid "Beta builds of Flatpak applications"
-msgstr ""
+msgstr "แอป Flatpak รุ่นเบต้า"
 
 #: src/remotes_window.py:325
 msgid "Flatpaks packaged by Fedora Linux"
-msgstr ""
+msgstr "แอปโดย Fedora Linux"
 
 #: src/remotes_window.py:326
 msgid "The latest beta GNOME Apps and Runtimes"
-msgstr ""
+msgstr "แอปและรันไทม์เบต้าล่าสุดของ GNOME"
 
 #: src/remotes_window.py:327
 msgid "Beta KDE Apps and Runtimes"
-msgstr ""
+msgstr "แอปและรันไทม์เบต้าของ KDE"
 
 #: src/remotes_window.py:328
 msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr ""
+msgstr "พื้นที่จัดเก็บข้อมูลกลางของ WebKit Developer และ Runtime SDK"
 
 #: src/remotes.blp:13
 msgid "Add Remote"
