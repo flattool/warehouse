@@ -1,5 +1,7 @@
 # 🛠️ Warehouse
 
+![Image banner in the style of GNOME art showing a box truck, tower crane, and storage garage sat on and next to a road.](readme_banner.svg)
+
 ## Warehouse is a versatile toolbox for managing flatpak user data, viewing flatpak app info, and batch managing installed flatpaks.
 
 ## 🚀 Main Features:
@@ -46,21 +48,3 @@ You're all set! Launch the application by clicking its icon in your app menu or 
 ```shell
 flatpak run io.github.flattool.Warehouse
 ```
-
-# A ToDo list of the current tasks being worked on
-- [x] *Add threading to the addition of remotes
-- [x] *!Fix no remotes status page not going away when a new remote is added
-- [x] *Allow popular remotes window to be closed by pressing Escape
-- [x] *Make orphaned data get size in a thread
-- [ ] Somehow make installation of apps not freeze the UI
-- [x] +Display dependent runtimes in app properties
-- [ ] +Filter by runtimes
-- [x] +Indicate apps & runtimes that are EOL
-- [x] Remember window size
-
-[ * = Needed before new release, + = New feature, ! = Bug fix ]
-## Ideas that might get added but no promise of happening
-- Installing new apps via ID match
-- Pin / unpin runtimes and apps
-- Option to uninstall apps when removing a remote
-- Make refreshing the main list after install and uninstall happen in a thread
