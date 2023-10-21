@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:42-0400\n"
-"PO-Revision-Date: 2023-10-21 10:14+0000\n"
+"PO-Revision-Date: 2023-10-21 10:58+0000\n"
 "Last-Translator: kramo <login@kramo.hu>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hu/>\n"
@@ -482,322 +482,328 @@ msgstr "Az adatai a kukába lesznek helyezve."
 
 #: src/properties_window.py:95 src/orphans_window.py:171
 msgid "Can't open folder"
-msgstr ""
+msgstr "Nem lehet megnyitni a mappát"
 
 #: src/properties_window.py:99 src/remotes_window.py:72
 msgid "Copied {}"
-msgstr ""
+msgstr "{} másolva"
 
 #: src/properties_window.py:131
 msgid "Open Data Folder"
-msgstr ""
+msgstr "Adatmappa megnyitása"
 
 #: src/properties_window.py:136
 msgid "Send User Data to the Trash"
-msgstr ""
+msgstr "Felhasználói adatok kukázása"
 
 #: src/properties_window.py:143 src/remotes_window.py:197
 #: src/remotes_window.py:294
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 #: src/properties_window.py:143
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
 #: src/properties_window.py:143
 msgid "App ID"
-msgstr ""
+msgstr "Azonosító"
 
 #: src/properties_window.py:143
 msgid "Version"
-msgstr ""
+msgstr "Verzió"
 
 #: src/properties_window.py:143
 msgid "Branch"
-msgstr ""
+msgstr "Ág"
 
 #: src/properties_window.py:143
 msgid "Arch"
-msgstr ""
+msgstr "Architektúra"
 
 #: src/properties_window.py:143
 msgid "Origin"
-msgstr ""
+msgstr "Eredet"
 
 #: src/properties_window.py:143
 msgid "Installation"
-msgstr ""
+msgstr "Telepítés"
 
 #: src/properties_window.py:143
 msgid "Ref"
-msgstr ""
+msgstr "Hivatkozás"
 
 #: src/properties_window.py:143
 msgid "Active Commit"
-msgstr ""
+msgstr "Aktív véglegesítő"
 
 #: src/properties_window.py:143
 msgid "Latest Commit"
-msgstr ""
+msgstr "Legutóbbi véglegesítő"
 
 #: src/properties_window.py:143
 msgid "Installed Size"
-msgstr ""
+msgstr "Telepítés mérete"
 
 #: src/properties_window.py:143
 msgid "Options"
-msgstr ""
+msgstr "Beállítások"
 
 #: src/properties_window.py:143
 msgid "Runtime"
-msgstr ""
+msgstr "Futtatókörnyezet"
 
 #: src/properties_window.py:151
 msgid "Copy {}"
-msgstr ""
+msgstr "{} másolása"
 
 #: src/properties_window.py:183
 msgid "Unmask"
-msgstr ""
+msgstr "Maszk levétele"
 
 #: src/remotes_window.py:48
 msgid "Could not remove {}"
-msgstr ""
+msgstr "Nem lehet eltávolítani a következőt: {}"
 
 #: src/remotes_window.py:56
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr ""
+"A(z) {} helyről telepített applikációk nem fognak további frissítéseket kapni"
 
 #: src/remotes_window.py:57
 msgid "Remove {}?"
-msgstr ""
+msgstr "{} eltávolítása?"
 
 #: src/remotes_window.py:60
 msgid "Remove"
-msgstr ""
+msgstr "Eltávolítás"
 
 #: src/remotes_window.py:92
 msgid "Copy remote name"
-msgstr ""
+msgstr "Tároló nevének másolása"
 
 #: src/remotes_window.py:95
 msgid "Remove {}"
-msgstr ""
+msgstr "{} eltávolítása"
 
 #: src/remotes_window.py:110 src/remotes_window.py:243
 msgid "Could not add {}"
-msgstr ""
+msgstr "A(z) {} tárolót nem lehetett hozzáadni"
 
 #: src/remotes_window.py:136
 msgid "Add Flatpak Remote"
-msgstr ""
+msgstr "Flatpak tároló hozzáadása"
 
 #: src/remotes_window.py:139 src/remotes_window.py:286
 msgid "Add"
-msgstr ""
+msgstr "Hozzáad"
 
 #: src/remotes_window.py:201
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/remotes_window.py:212 src/remotes_window.py:296
 msgid "Remote will be available to only you"
-msgstr ""
+msgstr "Csak önnek lesz elérhető a tároló"
 
 #: src/remotes_window.py:218 src/remotes_window.py:297
 msgid "Remote will be available to every user on the system"
-msgstr ""
+msgstr "Minden felhasználó számára elérhető lesz a tároló"
 
 #: src/remotes_window.py:241
 msgid "{} successfully added"
-msgstr ""
+msgstr "{} sikeresen hozzáadva"
 
 #: src/remotes_window.py:283
 msgid "Add {}?"
-msgstr ""
+msgstr "Hozzáadja a {} tárolót?"
 
 #. [Name to show in GUI, Name of remote for system, Link to repo to add, Description of remote]
 #: src/remotes_window.py:322
 msgid "The open source, pay-what-you-want app store from elementary"
-msgstr ""
+msgstr "Az elementary nyílt forráskódú, fizessen-amennyit-akar alkalmazásüzlete"
 
 #: src/remotes_window.py:323
 msgid "Central repository of Flatpak applications"
-msgstr ""
+msgstr "A Flatpak alkalmazások központi tárolója"
 
 #: src/remotes_window.py:324
 msgid "Beta builds of Flatpak applications"
-msgstr ""
+msgstr "Flatpak alkalmazások bétaverziói"
 
 #: src/remotes_window.py:325
 msgid "Flatpaks packaged by Fedora Linux"
-msgstr ""
+msgstr "Flatpak-ek a Fedora Linux által csomagolva"
 
 #: src/remotes_window.py:326
 msgid "The latest beta GNOME Apps and Runtimes"
-msgstr ""
+msgstr "A legutóbbi GNOME alkalmazások és futtatókörnyezetek bétái"
 
 #: src/remotes_window.py:327
 msgid "Beta KDE Apps and Runtimes"
-msgstr ""
+msgstr "Béta KDE applikációk és futtatókörnyezetek"
 
 #: src/remotes_window.py:328
 msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr ""
+msgstr "A WebKit Developer futtatókörnyezet és SDK központi tárolója"
 
 #: src/remotes.blp:13
 msgid "Add Remote"
-msgstr ""
+msgstr "Tároló hozzáadása"
 
 #: src/remotes.blp:45
 msgid "No Remotes"
-msgstr ""
+msgstr "Nincsenek tárolók"
 
 #: src/remotes.blp:46
 msgid ""
 "Warehouse cannot see the list of remotes or the system has no remotes added"
 msgstr ""
+"A Raktár nem látja a tárolók listáját, vagy nincs egy tároló se a rendszeren"
 
 #: src/popular_remotes_window.py:31
 msgid "Flatpaks Repos"
-msgstr ""
+msgstr "Flatpak tárolók"
 
 #: src/popular_remotes.blp:18
 msgid "Add a Remote"
-msgstr ""
+msgstr "Tároló hozzáadása"
 
 #: src/popular_remotes.blp:19
 msgid "Choose from a list of popular remotes or add a new one."
-msgstr ""
+msgstr "Válasszon a népszerű tárolók listájából, vagy adjon hozzá egy újat."
 
 #: src/popular_remotes.blp:36
 msgid "Add a Repo File"
-msgstr ""
+msgstr "Tároló fájl hozzáadása"
 
 #: src/popular_remotes.blp:40
 msgid "Add a Custom Remote"
-msgstr ""
+msgstr "Egyedi tároló hozzáadása"
 
 #: src/orphans_window.py:78
 msgid "Some apps didn't install"
-msgstr ""
+msgstr "Pár appot nem lehetett telepíteni"
 
 #: src/orphans_window.py:81
 msgid "Installing... This could take a while"
-msgstr ""
+msgstr "Telepítés… Ez eltarthat egy ideig"
 
 #. Make window unable to close
 #: src/orphans_window.py:106
 msgid "Attempt to Install?"
-msgstr ""
+msgstr "Megpróbálja a telepítést?"
 
 #: src/orphans_window.py:106
 msgid "Warehouse will attempt to install apps matching the selected data."
 msgstr ""
+"A Raktár megpróbálja telepíteni az applikációkat, amik egyeznek a "
+"kiválasztott adatokkal."
 
 #: src/orphans_window.py:123
 msgid "{} wide"
-msgstr ""
+msgstr "Erre kihat: {}"
 
 #: src/orphans_window.py:159
 msgid "Trash folders?"
-msgstr ""
+msgstr "Kukázza a mappákat?"
 
 #: src/orphans_window.py:159
 msgid "These folders will be sent to the trash."
-msgstr ""
+msgstr "A mappák a kukába kerülnek."
 
 #: src/orphans_window.py:163
 msgid "Continue"
-msgstr ""
+msgstr "Folytatás"
 
 #: src/orphans_window.py:187
 msgid "Could not manage data"
-msgstr ""
+msgstr "Az adatok kezelése sikertelen"
 
 #: src/orphans.blp:19
 msgid "Open the User Data Folder"
-msgstr ""
+msgstr "Adatmappa megnyitása"
 
 #: src/orphans.blp:57 src/filter.blp:85
 msgid "No Leftover Data"
-msgstr ""
+msgstr "Nincsenek maradék adatok"
 
 #: src/orphans.blp:58 src/filter.blp:86
 msgid "There is no leftover user data"
-msgstr ""
+msgstr "Nincsenek maradék adatok"
 
 #: src/orphans.blp:66
 msgid "Select All"
-msgstr ""
+msgstr "Összes kiválasztása"
 
 #: src/filter.blp:7
 msgid "Set Filters"
-msgstr ""
+msgstr "Szűrők beállítása"
 
 #: src/filter.blp:21
 msgid "Apply"
-msgstr ""
+msgstr "Alkalmaz"
 
 #: src/filter.blp:46
 msgid "Show Apps"
-msgstr ""
+msgstr "Applikációk megjelenítése"
 
 #: src/filter.blp:55
 msgid "Show Runtimes"
-msgstr ""
+msgstr "Futtatókörnyezetek megjelenítése"
 
 #: src/filter.blp:65
 msgid "Filter Apps by Remotes"
-msgstr ""
+msgstr "Applikációk szűrése tároló alapján"
 
 #: src/filter.blp:69
 msgid "Filter Apps by Runtime"
-msgstr ""
+msgstr "Applikációk szűrése futtatókörnyezet alapján"
 
 #: src/filter.blp:76
 msgid "Clear Filters"
-msgstr ""
+msgstr "Szűrők törlése"
 
 #: src/downgrade_window.py:76
 msgid "Commit Hash: {}"
-msgstr ""
+msgstr "Véglegesítő hash: {}"
 
 #: src/downgrade_window.py:101
 msgid "Could not downgrade {}"
-msgstr ""
+msgstr "A(z) {} visszafejlesztése sikertelen"
 
 #: src/downgrade_window.py:108
 msgid "Could not mask {}"
-msgstr ""
+msgstr "A(z) {} maszkolása sikertelen"
 
 #: src/downgrade_window.py:116
 msgid "Downgrading..."
-msgstr ""
+msgstr "Visszafejlesztés…"
 
 #: src/downgrade_window.py:153
 msgid "Fetching Releases..."
-msgstr ""
+msgstr "Kiadások lekérése…"
 
 #: src/downgrade.blp:21
 msgid "Downgrade"
-msgstr ""
+msgstr "Visszafejlesztés"
 
 #: src/downgrade.blp:40
 msgid "Mask this Flatpak"
-msgstr ""
+msgstr "Flatpak maszkolása"
 
 #: src/downgrade.blp:41
 msgid "Ensure that the flatpak will never be updated to a newer version"
-msgstr ""
+msgstr "Biztosátja, hogy a Flatpak sose lesz frissítve"
 
 #: src/downgrade.blp:47
 msgid "Select a Release"
-msgstr ""
+msgstr "Kiadás kiválasztása"
 
 #: src/downgrade.blp:48
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
+"Eltávolítja a jelenlegi kiadást és telepíti a kiválasztottat. A "
+"visszafejlesztés problémákkal járhat."
