@@ -8,100 +8,106 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:42-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-10-21 22:37+0000\n"
+"Last-Translator: Runar <runarcn@proton.me>\n"
+"Language-Team: Norwegian Bokmål <https://weblate.fyralabs.com/projects/"
+"flattool/warehouse/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.0\n"
 
 #: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
-msgstr ""
+msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak"
-msgstr ""
+msgstr "flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
-msgstr ""
+msgstr "Behandle alt Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
 "Warehouse is an app that manages installed Flatpaks, their user data, and "
 "Flatpak remotes."
 msgstr ""
+"Warehouse er et program som behandler installerte Flatpak-er, brukerdataene "
+"deres, og Flatpak-fjernservere."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr ""
+msgstr "Egenskaper:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Show and filter the list of installed Flatpaks"
-msgstr ""
+msgstr "Vis og sorter lista over installerte Flatpak-er"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Display properties of installed Flatpaks"
-msgstr ""
+msgstr "Vis egenskaper til installerte Flatpak-er"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Manage large groups of Flatpaks at once"
-msgstr ""
+msgstr "Behandle store mengder Flatpak-er samtidig"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Add and remove Flatpak remotes"
-msgstr ""
+msgstr "Legg til og fjern Flatpak-fjernservere"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "Find and trash leftover user data"
-msgstr ""
+msgstr "Find og slett gjenværende brukerdata"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
-msgstr ""
+msgstr "Re-installer programmene som har gjenværende data"
 
 #: src/main.py:86
 msgid "Flatpaks"
-msgstr ""
+msgstr "Flatpak-er"
 
 #: src/window.py:103
 msgid "Uninstalled successfully"
-msgstr ""
+msgstr "Avinstallering vellykket"
 
 #: src/window.py:105
 msgid "Could not uninstall some apps"
-msgstr ""
+msgstr "Klarte ikke å avinstallere noen programmer"
 
 #. Create Widgets
 #: src/window.py:152
 msgid "Uninstall Selected Apps?"
-msgstr ""
+msgstr "Avinstaller valgte programmer?"
 
 #: src/window.py:152
 msgid "It will not be possible to use these apps after removal."
-msgstr ""
+msgstr "Det vil ikke være mulig å bruke disse programmene etter de er fjernet."
 
 #: src/window.py:165 src/window.py:238
 msgid "App Settings & Data"
-msgstr ""
+msgstr "Programinnstillinger & Data"
 
 #: src/window.py:167 src/window.py:240
 msgid "Keep"
-msgstr ""
+msgstr "Behold"
 
 #: src/window.py:167 src/window.py:240
 msgid "Allow restoring app settings and content"
-msgstr ""
+msgstr "Tillat gjenopprettelse av programinnstillinger og innhold"
 
 #: src/window.py:168 src/window.py:241 src/orphans.blp:70
+#, fuzzy
 msgid "Trash"
-msgstr ""
+msgstr "Papirkurv"
 
 #: src/window.py:168 src/window.py:241
 msgid "Send app settings and content to the trash"
-msgstr ""
+msgstr "Slett programinnstillinger og programinnhold"
 
 #: src/window.py:195 src/window.py:259 src/window.py:495 src/window.py:654
 #: src/properties_window.py:84 src/remotes_window.py:59
@@ -109,24 +115,24 @@ msgstr ""
 #: src/orphans_window.py:108 src/orphans_window.py:162 src/filter.blp:17
 #: src/downgrade.blp:16
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: src/window.py:196 src/window.py:260
 msgid "Uninstall"
-msgstr ""
+msgstr "Avinstaller"
 
 #: src/window.py:202
 msgid "Cannot uninstall while already uninstalling"
-msgstr ""
+msgstr "Kan ikke avinstallere mens programmet allerede avinstalleres"
 
 #. Create Widgets
 #: src/window.py:233
 msgid "Uninstall {}?"
-msgstr ""
+msgstr "Avinstaller {}?"
 
 #: src/window.py:233
 msgid "It will not be possible to use {} after removal."
-msgstr ""
+msgstr "Det vil ikke være mulig å bruke {} etter fjerning."
 
 #: src/window.py:300 src/window.py:304
 msgid "EOL"
@@ -154,25 +160,25 @@ msgstr ""
 
 #: src/window.py:314 src/properties_window.py:156
 msgid "View Properties"
-msgstr ""
+msgstr "Vis Egenskaper"
 
 #. {Row visibility, Row selected, the row itself, properties, menu button, select, the flatpak row from `flatpak list`, mask label, the dropdown menu model}
 #.
 #: src/window.py:339
 msgid "Copied name"
-msgstr ""
+msgstr "Navnet er kopiert"
 
 #: src/window.py:340
 msgid "Copy Name"
-msgstr ""
+msgstr "Kopier navn"
 
 #: src/window.py:342
 msgid "Copied ID"
-msgstr ""
+msgstr "ID-en er kopiert"
 
 #: src/window.py:343
 msgid "Copy ID"
-msgstr ""
+msgstr "Kopier ID"
 
 #: src/window.py:345
 msgid "Copied ref"
@@ -192,15 +198,15 @@ msgstr ""
 
 #: src/window.py:351 src/window.py:418
 msgid "Copy"
-msgstr ""
+msgstr "Kopier"
 
 #: src/window.py:353
 msgid "Opened {}"
-msgstr ""
+msgstr "Åpnet {}"
 
 #: src/window.py:354
 msgid "Open {}"
-msgstr ""
+msgstr "Åpne {}"
 
 #: src/window.py:359
 msgid "Toggle Mask"
@@ -208,11 +214,11 @@ msgstr ""
 
 #: src/window.py:368
 msgid "Uninstall {}"
-msgstr ""
+msgstr "Avinstaller {}"
 
 #: src/window.py:372 src/downgrade_window.py:142
 msgid "Downgrade {}"
-msgstr ""
+msgstr "Nedgrader {}"
 
 #: src/window.py:396
 msgid "Could not toggle {}'s mask"
@@ -224,7 +230,7 @@ msgstr ""
 
 #: src/window.py:423
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/window.py:441
 msgid "List refreshed"
@@ -232,27 +238,27 @@ msgstr ""
 
 #: src/window.py:484
 msgid "No user data for {}"
-msgstr ""
+msgstr "Ingen brukerdata funnet for {}"
 
 #: src/window.py:487
 msgid "Can't trash user data for {}"
-msgstr ""
+msgstr "Kan ikke slette brukerdata for {}"
 
 #: src/window.py:489 src/properties_window.py:74
 msgid "Trashed user data"
-msgstr ""
+msgstr "Slettet brukerdata"
 
 #: src/window.py:493
 msgid "Trash Selected Apps' User Data?"
-msgstr ""
+msgstr "Slett Valgte Programmers Brukerdata?"
 
 #: src/window.py:493
 msgid "Your files and data for these apps will be sent to the trash."
-msgstr ""
+msgstr "Dine filer og dataer for disse programmene vil bli slettet."
 
 #: src/window.py:496 src/properties_window.py:85
 msgid "Trash Data"
-msgstr ""
+msgstr "Slett Data"
 
 #: src/window.py:547
 msgid "Copied selected app names"
