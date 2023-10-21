@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-21 05:35-0400\n"
+"POT-Creation-Date: 2023-10-21 05:42-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -248,7 +248,7 @@ msgid "Trash Selected Apps' User Data?"
 msgstr ""
 
 #: src/window.py:493
-msgid "Your user files and data for these apps will be sent to the trash."
+msgid "Your files and data for these apps will be sent to the trash."
 msgstr ""
 
 #: src/window.py:496 src/properties_window.py:85
@@ -469,7 +469,7 @@ msgid "Send {}'s User Data to the Trash?"
 msgstr ""
 
 #: src/properties_window.py:82
-msgid "Your user files and data for this app will be sent to the trash."
+msgid "Your files and data for this app will be sent to the trash."
 msgstr ""
 
 #: src/properties_window.py:95 src/orphans_window.py:171
