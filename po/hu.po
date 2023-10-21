@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:04-0400\n"
-"PO-Revision-Date: 2023-10-21 09:00+0000\n"
+"PO-Revision-Date: 2023-10-21 09:35+0000\n"
 "Last-Translator: kramo <login@kramo.hu>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hu/>\n"
@@ -64,48 +64,48 @@ msgstr "Maradék felhasználói adatok törlése"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
-msgstr ""
+msgstr "Applikációk újratelepítése, amelyeknek van maradék adatuk"
 
 #: src/main.py:86
 msgid "Flatpaks"
-msgstr ""
+msgstr "Flatpak-ek"
 
 #: src/window.py:103
 msgid "Uninstalled successfully"
-msgstr ""
+msgstr "Sikeresen eltávolítva"
 
 #: src/window.py:105
 msgid "Could not uninstall some apps"
-msgstr ""
+msgstr "Pár applikációt nem lehetett eltávolítani"
 
 #. Create Widgets
 #: src/window.py:152
 msgid "Uninstall Selected Apps?"
-msgstr ""
+msgstr "Eltávolítja a kiválasztott appokat?"
 
 #: src/window.py:152
 msgid "It will not be possible to use these apps after removal."
-msgstr ""
+msgstr "Eltávolítás után nem lehet őket használni."
 
 #: src/window.py:165 src/window.py:238
 msgid "App Settings & Data"
-msgstr ""
+msgstr "App beállítások & adatok"
 
 #: src/window.py:167 src/window.py:240
 msgid "Keep"
-msgstr ""
+msgstr "Megtart"
 
 #: src/window.py:167 src/window.py:240
 msgid "Allow restoring app settings and content"
-msgstr ""
+msgstr "Engedélyezi az applikáció beállításainak és tartalmának helyreállítását"
 
 #: src/window.py:168 src/window.py:241 src/orphans.blp:70
 msgid "Trash"
-msgstr ""
+msgstr "Kuka"
 
 #: src/window.py:168 src/window.py:241
 msgid "Send app settings and content to the trash"
-msgstr ""
+msgstr "Az applikáció beállításainak és tartalmának kukázása"
 
 #: src/window.py:195 src/window.py:259 src/window.py:497 src/window.py:656
 #: src/properties_window.py:84 src/remotes_window.py:59
@@ -113,52 +113,54 @@ msgstr ""
 #: src/orphans_window.py:108 src/orphans_window.py:162 src/filter.blp:17
 #: src/downgrade.blp:16
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 #: src/window.py:196 src/window.py:260
 msgid "Uninstall"
-msgstr ""
+msgstr "Eltávolítás"
 
 #: src/window.py:202
 msgid "Cannot uninstall while already uninstalling"
-msgstr ""
+msgstr "Nem lehet eltávolítani, ha az eltávolítás már folyamatban van"
 
 #. Create Widgets
 #: src/window.py:233
 msgid "Uninstall {}?"
-msgstr ""
+msgstr "Eltávolítja a következőt: {}?"
 
 #: src/window.py:233
 msgid "It will not be possible to use {} after removal."
-msgstr ""
+msgstr "Nem lesz lehetséges a(z) {} használata az eltávolítás után."
 
 #: src/window.py:300 src/window.py:304
 msgid "EOL"
-msgstr ""
+msgstr "Elavult"
 
 #: src/window.py:300 src/properties_window.py:19
 msgid ""
 "This Flatpak has reached its End of Life and will not receive any security "
 "updates"
-msgstr ""
+msgstr "Ez a Flatpak elavult és nem fog többé biztonsági frissítéseket kapni"
 
 #: src/window.py:304 src/properties_window.py:20
 msgid ""
 "The runtime used by this app has reached its End of Life and will not "
 "receive any security updates"
 msgstr ""
+"A Flatpak által használt futtatókörnyezet elavult és nem fog többé "
+"biztonsági frissítéseket kapni"
 
 #: src/window.py:308
 msgid "Masked"
-msgstr ""
+msgstr "Maszkolva"
 
 #: src/window.py:308
 msgid "This Flatpak is masked and will not be updated"
-msgstr ""
+msgstr "Ez a Flatpak maszkolva van és nem lesz frissítve"
 
 #: src/window.py:314 src/properties_window.py:156
 msgid "View Properties"
-msgstr ""
+msgstr "Tulajdonságok"
 
 #. {Row visibility, Row selected, the row itself, properties, menu button, select, the flatpak row from `flatpak list`, mask label, the dropdown menu model}
 #. self.create_action(("properties" + str(index)), lambda *_, index=index: show_properties_window(None, index, self))
@@ -166,59 +168,59 @@ msgstr ""
 #. row_menu_model.append_item(properties_item)
 #: src/window.py:341
 msgid "Copied name"
-msgstr ""
+msgstr "Név másolva"
 
 #: src/window.py:342
 msgid "Copy Name"
-msgstr ""
+msgstr "Név másolása"
 
 #: src/window.py:344
 msgid "Copied ID"
-msgstr ""
+msgstr "Azonosító másolva"
 
 #: src/window.py:345
 msgid "Copy ID"
-msgstr ""
+msgstr "Azonosító másolása"
 
 #: src/window.py:347
 msgid "Copied ref"
-msgstr ""
+msgstr "Hivatkozás másolva"
 
 #: src/window.py:348
 msgid "Copy Ref"
-msgstr ""
+msgstr "Hivatkozás másolása"
 
 #: src/window.py:350
 msgid "Copied launch command"
-msgstr ""
+msgstr "Indítási parancs másolva"
 
 #: src/window.py:351
 msgid "Copy Launch Command"
-msgstr ""
+msgstr "Indítási parancs másolása"
 
 #: src/window.py:353 src/window.py:420
 msgid "Copy"
-msgstr ""
+msgstr "Másol"
 
 #: src/window.py:355
 msgid "Opened {}"
-msgstr ""
+msgstr "{} megnyitva"
 
 #: src/window.py:356
 msgid "Open {}"
-msgstr ""
+msgstr "{} megnyitása"
 
 #: src/window.py:361
 msgid "Toggle Mask"
-msgstr ""
+msgstr "Maszk átváltása"
 
 #: src/window.py:370
 msgid "Uninstall {}"
-msgstr ""
+msgstr "{} eltávolítása"
 
 #: src/window.py:374 src/downgrade_window.py:142
 msgid "Downgrade {}"
-msgstr ""
+msgstr "{} visszafejlesztése"
 
 #: src/window.py:398
 msgid "Could not toggle {}'s mask"
