@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:42-0400\n"
-"PO-Revision-Date: 2023-10-21 22:37+0000\n"
-"Last-Translator: Racsu <me@racsu.com>\n"
+"PO-Revision-Date: 2023-10-22 03:42+0000\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
 "Language: es\n"
@@ -37,7 +37,7 @@ msgid ""
 "Flatpak remotes."
 msgstr ""
 "Warehouse es una aplicación que gestiona las Flatpaks instaladas, sus datos "
-"de usuario y los repositorios remotos"
+"de usuario y los repositorios remotos."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -61,11 +61,11 @@ msgstr "Añadir y eliminar repositorios remotos de Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "Find and trash leftover user data"
-msgstr "Encuentra y elimina los datos de usuario sobrantes"
+msgstr "Encuentre y elimine los datos de usuario sobrantes"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
-msgstr "Reinstala las aplicaciones que tengan datos sobrantes"
+msgstr "Reinstale las aplicaciones que tengan datos sobrantes"
 
 #: src/main.py:86
 msgid "Flatpaks"
@@ -86,7 +86,7 @@ msgstr "¿Desinstalar aplicaciones seleccionadas?"
 
 #: src/window.py:152
 msgid "It will not be possible to use these apps after removal."
-msgstr "No será posible utilizar estas aplicaciones después de la eliminación."
+msgstr "No será posible usar estas aplicaciones después de la eliminación."
 
 #: src/window.py:165 src/window.py:238
 msgid "App Settings & Data"
@@ -131,7 +131,7 @@ msgstr "¿Desinstalar {}?"
 
 #: src/window.py:233
 msgid "It will not be possible to use {} after removal."
-msgstr "No será posible utilizar {} después de la eliminación."
+msgstr "No será posible usar {} después de la eliminación."
 
 #: src/window.py:300 src/window.py:304
 msgid "EOL"
@@ -143,15 +143,15 @@ msgid ""
 "updates"
 msgstr ""
 "Esta Flatpak ha llegado al final de su vida útil y no recibirá "
-"actualizaciones de seguridad."
+"actualizaciones de seguridad"
 
 #: src/window.py:304 src/properties_window.py:20
 msgid ""
 "The runtime used by this app has reached its End of Life and will not "
 "receive any security updates"
 msgstr ""
-"El tiempo de ejecución utilizado por esta aplicación ha llegado al final de "
-"su vida útil y no recibirá actualizaciones de seguridad"
+"El tiempo de ejecución usado por esta aplicación ha llegado al final de su "
+"vida útil y no recibirá actualizaciones de seguridad"
 
 #: src/window.py:308
 msgid "Masked"
@@ -163,7 +163,7 @@ msgstr "Este Flatpak está restringido y no recibirá actualizaciones"
 
 #: src/window.py:314 src/properties_window.py:156
 msgid "View Properties"
-msgstr "Ver Propiedades"
+msgstr "Ver propiedades"
 
 #. {Row visibility, Row selected, the row itself, properties, menu button, select, the flatpak row from `flatpak list`, mask label, the dropdown menu model}
 #.
@@ -173,11 +173,11 @@ msgstr "Nombre copiado"
 
 #: src/window.py:340
 msgid "Copy Name"
-msgstr "Copiar Nombre"
+msgstr "Copiar nombre"
 
 #: src/window.py:342
 msgid "Copied ID"
-msgstr "ID Copiada"
+msgstr "ID copiada"
 
 #: src/window.py:343
 msgid "Copy ID"
@@ -185,7 +185,7 @@ msgstr "Copiar ID"
 
 #: src/window.py:345
 msgid "Copied ref"
-msgstr "Ref Copiada"
+msgstr "Ref copiada"
 
 #: src/window.py:346
 msgid "Copy Ref"
@@ -213,7 +213,7 @@ msgstr "Abrir {}"
 
 #: src/window.py:359
 msgid "Toggle Mask"
-msgstr "Alternar Restricción"
+msgstr "Conmutar restricción"
 
 #: src/window.py:368
 msgid "Uninstall {}"
@@ -221,11 +221,11 @@ msgstr "Desinstalar {}"
 
 #: src/window.py:372 src/downgrade_window.py:142
 msgid "Downgrade {}"
-msgstr "Degradar {}"
+msgstr "Revertir {}"
 
 #: src/window.py:396
 msgid "Could not toggle {}'s mask"
-msgstr "No se ha podido alternar la restricción de {}"
+msgstr "No se ha podido conmutar la restricción de {}"
 
 #: src/window.py:417
 msgid "Could not Run App"
@@ -233,7 +233,7 @@ msgstr "No se puede ejecutar la aplicación"
 
 #: src/window.py:423
 msgid "OK"
-msgstr "OK"
+msgstr "De acuerdo"
 
 #: src/window.py:441
 msgid "List refreshed"
@@ -253,27 +253,27 @@ msgstr "Datos de usuario borrados"
 
 #: src/window.py:493
 msgid "Trash Selected Apps' User Data?"
-msgstr "¿Basura los datos de usuario de las aplicaciones seleccionadas?"
+msgstr "¿Eliminar los datos de usuario de las aplicaciones seleccionadas?"
 
 #: src/window.py:493
 msgid "Your files and data for these apps will be sent to the trash."
-msgstr "Tus archivos y datos de estas aplicaciones se enviarán a la papelera."
+msgstr "Sus archivos y datos de estas aplicaciones se enviarán a la papelera."
 
 #: src/window.py:496 src/properties_window.py:85
 msgid "Trash Data"
-msgstr "Borrar Datos"
+msgstr "Borrar datos"
 
 #: src/window.py:547
 msgid "Copied selected app names"
-msgstr "Copia de los nombres de las aplicaciones seleccionadas"
+msgstr "Copiados los nombres de las aplicaciones seleccionadas"
 
 #: src/window.py:555
 msgid "Copied selected app IDs"
-msgstr "Copia los ID de las aplicaciones seleccionadas"
+msgstr "Copiados los ID de las aplicaciones seleccionadas"
 
 #: src/window.py:563
 msgid "Copied selected app refs"
-msgstr "Copiar refs de las aplicaciones seleccionadas"
+msgstr "Copiadas las refs de las aplicaciones seleccionadas"
 
 #: src/window.py:624 src/orphans_window.py:76
 msgid "Installed successfully"
@@ -297,7 +297,7 @@ msgstr "Usuario"
 
 #: src/window.py:662
 msgid "The app will be available to only you"
-msgstr "La aplicación sólo estará disponible para ti"
+msgstr "La aplicación solo estará disponible para usted"
 
 #: src/window.py:663 src/remotes_window.py:218 src/remotes_window.py:297
 msgid "System"
@@ -329,7 +329,7 @@ msgstr "Menú principal"
 
 #: src/window.blp:37
 msgid "Toggle Selection Mode"
-msgstr "Alternar modo de selección"
+msgstr "Conmutar modo de selección"
 
 #: src/window.blp:75
 msgid "No Flatpaks Found"
@@ -367,19 +367,19 @@ msgstr "Gestionar los datos sobrantes"
 
 #: src/window.blp:129 src/remotes_window.py:349
 msgid "Manage Remotes"
-msgstr "Manejar Repositorios Remotos"
+msgstr "Gestionar los repositorios remotos"
 
 #: src/window.blp:134
 msgid "_Keyboard Shortcuts"
-msgstr "_Atajos de teclado"
+msgstr "Atajos del _teclado"
 
 #: src/window.blp:139
 msgid "_About Warehouse"
-msgstr "_Sobre Warehouse"
+msgstr "_Acerca de Warehouse"
 
 #: src/window.blp:148
 msgid "Copy Names"
-msgstr "Copiar Nombres"
+msgstr "Copiar nombres"
 
 #: src/window.blp:153
 msgid "Copy IDs"
@@ -387,7 +387,7 @@ msgstr "Copiar IDs"
 
 #: src/window.blp:158
 msgid "Copy Refs"
-msgstr "Copiar Refs"
+msgstr "Copiar refs"
 
 #: src/window.blp:167
 msgid "Open app"
@@ -416,7 +416,7 @@ msgstr "Refrescar"
 #: src/gtk/help-overlay.blp:29
 msgctxt "shortcut window"
 msgid "Toggle Selection Mode"
-msgstr "Alternar modo de selección"
+msgstr "Conmutar modo de selección"
 
 #: src/gtk/help-overlay.blp:34
 msgctxt "shortcut window"
@@ -431,7 +431,7 @@ msgstr "Gestionar los datos sobrantes"
 #: src/gtk/help-overlay.blp:42
 msgctxt "shortcut window"
 msgid "Manage Remotes"
-msgstr "Gestionar Repositorios Remotos"
+msgstr "Gestionar los repositorios remotos"
 
 #: src/gtk/help-overlay.blp:47
 msgctxt "shortcut window"
@@ -446,12 +446,12 @@ msgstr "General"
 #: src/gtk/help-overlay.blp:55
 msgctxt "shortcut window"
 msgid "Open Menu"
-msgstr "Abrir Menú"
+msgstr "Abrir menú"
 
 #: src/gtk/help-overlay.blp:60
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Mostrar Atajos"
+msgstr "Mostrar atajos"
 
 #: src/gtk/help-overlay.blp:65
 msgctxt "shortcut window"
@@ -464,11 +464,11 @@ msgstr "Propiedades de {}"
 
 #: src/properties_window.py:21
 msgid "This Flatpak has been masked and will not be updated"
-msgstr "Esta Flatpak ha sido Restringida y no será actualizada"
+msgstr "Esta Flatpak ha sido restringida y no será actualizada"
 
 #: src/properties_window.py:52
 msgid "Show Apps Using this Runtime"
-msgstr "Mostrar aplicaciones que utilizan este Runtime"
+msgstr "Mostrar aplicaciones que usan este tiempo de ejecución"
 
 #: src/properties_window.py:78
 msgid "Can't trash data"
@@ -480,7 +480,7 @@ msgstr "¿Enviar los datos de usuario de {} a la papelera?"
 
 #: src/properties_window.py:82
 msgid "Your files and data for this app will be sent to the trash."
-msgstr "Tus archivos y datos de esta aplicación se enviarán a la papelera."
+msgstr "Sus archivos y datos de esta aplicación se enviarán a la papelera."
 
 #: src/properties_window.py:95 src/orphans_window.py:171
 msgid "Can't open folder"
@@ -521,7 +521,7 @@ msgstr "Rama"
 
 #: src/properties_window.py:143
 msgid "Arch"
-msgstr "Arch"
+msgstr "Arquitectura"
 
 #: src/properties_window.py:143
 msgid "Origin"
@@ -537,11 +537,11 @@ msgstr "Ref"
 
 #: src/properties_window.py:143
 msgid "Active Commit"
-msgstr "Versión en Uso"
+msgstr "Versión en uso"
 
 #: src/properties_window.py:143
 msgid "Latest Commit"
-msgstr "Última Versión"
+msgstr "Última versión"
 
 #: src/properties_window.py:143
 msgid "Installed Size"
@@ -553,7 +553,7 @@ msgstr "Opciones"
 
 #: src/properties_window.py:143
 msgid "Runtime"
-msgstr "Runtime"
+msgstr "Tiempo de ejecución"
 
 #: src/properties_window.py:151
 msgid "Copy {}"
@@ -561,7 +561,7 @@ msgstr "Copiar {}"
 
 #: src/properties_window.py:183
 msgid "Unmask"
-msgstr "Habilitar"
+msgstr "Activar"
 
 #: src/remotes_window.py:48
 msgid "Could not remove {}"
@@ -593,7 +593,7 @@ msgstr "No se ha podido añadir {}"
 
 #: src/remotes_window.py:136
 msgid "Add Flatpak Remote"
-msgstr "Añadir Repositorio Flatpak"
+msgstr "Añadir repositorio Flatpak"
 
 #: src/remotes_window.py:139 src/remotes_window.py:286
 msgid "Add"
@@ -605,7 +605,7 @@ msgstr "URL"
 
 #: src/remotes_window.py:212 src/remotes_window.py:296
 msgid "Remote will be available to only you"
-msgstr "El repositorio solo estará disponible para ti"
+msgstr "El repositorio solo estará disponible para usted"
 
 #: src/remotes_window.py:218 src/remotes_window.py:297
 msgid "Remote will be available to every user on the system"
@@ -640,11 +640,12 @@ msgstr "Flatpaks empaquetadas por Fedora Linux"
 
 #: src/remotes_window.py:326
 msgid "The latest beta GNOME Apps and Runtimes"
-msgstr "La última versión beta de las aplicaciones y runtimes de GNOME"
+msgstr ""
+"La última versión beta de las aplicaciones y tiempos de ejecución de GNOME"
 
 #: src/remotes_window.py:327
 msgid "Beta KDE Apps and Runtimes"
-msgstr "Aplicaciones y Runtimes Beta de KDE"
+msgstr "Aplicaciones y tiempos de ejecución beta de KDE"
 
 #: src/remotes_window.py:328
 msgid "Central repository of the WebKit Developer and Runtime SDK"
@@ -653,11 +654,11 @@ msgstr ""
 
 #: src/remotes.blp:13
 msgid "Add Remote"
-msgstr "Agregar Repositorio"
+msgstr "Agregar repositorio"
 
 #: src/remotes.blp:45
 msgid "No Remotes"
-msgstr "No Hay Repositorios"
+msgstr "No hay repositorios"
 
 #: src/remotes.blp:46
 msgid ""
@@ -666,11 +667,11 @@ msgstr ""
 
 #: src/popular_remotes_window.py:31
 msgid "Flatpaks Repos"
-msgstr "Repositorios para Flatpaks"
+msgstr "Repositorios Flatpaks"
 
 #: src/popular_remotes.blp:18
 msgid "Add a Remote"
-msgstr ""
+msgstr "Añadir un remoto"
 
 #: src/popular_remotes.blp:19
 msgid "Choose from a list of popular remotes or add a new one."
