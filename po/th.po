@@ -8,25 +8,28 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 01:00-0700\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-10-21 08:40+0000\n"
+"Last-Translator: Amy/Atius <www.dappertransformer@proton.me>\n"
+"Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
+"warehouse/th/>\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.0\n"
 
 #: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
-msgstr ""
+msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak"
-msgstr ""
+msgstr "flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
-msgstr ""
+msgstr "จัดการทุกอย่าง Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
