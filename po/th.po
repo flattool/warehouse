@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 01:00-0700\n"
 "PO-Revision-Date: 2023-10-21 09:00+0000\n"
-"Last-Translator: Amy/Atius <www.dappertransformer@proton.me>\n"
+"Last-Translator: Win <winsdominoes2018@gmail.com>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/th/>\n"
 "Language: th\n"
@@ -944,10 +944,12 @@ msgstr ""
 
 #: src/downgrade.blp:47
 msgid "Select a Release"
-msgstr ""
+msgstr "เลือกรุ่นที่ต้องการ"
 
 #: src/downgrade.blp:48
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
+"การดำเนินการนี้จะถอนการติดตั้งเวอร์ชันปัจจุบันและติดตั้งเวอร์ชันที่เลือกแทน "
+"โปรดทราบว่าการดาวน์เกรดอาจทำให้เกิดปัญหาได้"
