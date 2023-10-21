@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:35-0400\n"
-"PO-Revision-Date: 2023-10-21 09:41+0000\n"
+"PO-Revision-Date: 2023-10-21 09:43+0000\n"
 "Last-Translator: kramo <login@kramo.hu>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hu/>\n"
@@ -271,35 +271,35 @@ msgstr "A kiválasztott applikációk azonosítója másolva"
 
 #: src/window.py:563
 msgid "Copied selected app refs"
-msgstr ""
+msgstr "A kiválasztott applikációk hivatkozása másolva"
 
 #: src/window.py:624 src/orphans_window.py:76
 msgid "Installed successfully"
-msgstr ""
+msgstr "Sikeresen telepítve"
 
 #: src/window.py:627
 msgid "Could not install app"
-msgstr ""
+msgstr "Az applikáció telepítése sikertelen"
 
 #: src/window.py:652
 msgid "Install {}?"
-msgstr ""
+msgstr "{} telepítése?"
 
 #: src/window.py:655 src/orphans_window.py:109 src/orphans.blp:75
 msgid "Install"
-msgstr ""
+msgstr "Telepítés"
 
 #: src/window.py:662 src/remotes_window.py:212 src/remotes_window.py:296
 msgid "User"
-msgstr ""
+msgstr "Felhasználó"
 
 #: src/window.py:662
 msgid "The app will be available to only you"
-msgstr ""
+msgstr "Az applikáció csak önnek lesz elérhető"
 
 #: src/window.py:663 src/remotes_window.py:218 src/remotes_window.py:297
 msgid "System"
-msgstr ""
+msgstr "Rendszer"
 
 #: src/window.py:663
 msgid "The app will be available to every user on the system"
