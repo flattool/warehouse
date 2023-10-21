@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:35-0400\n"
 "PO-Revision-Date: 2023-10-21 09:41+0000\n"
-"Last-Translator: Win <winsdominoes2018@gmail.com>\n"
+"Last-Translator: Amy/Atius <www.dappertransformer@proton.me>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/th/>\n"
 "Language: th\n"
@@ -145,15 +145,15 @@ msgstr "แอปนี้ได้ถึงการจบอัปเดตแ
 msgid ""
 "The runtime used by this app has reached its End of Life and will not "
 "receive any security updates"
-msgstr ""
+msgstr "รันไทม์นี้ได้ถึงการจบอัปเดตและจะไม่ได้รับอัปเดต"
 
 #: src/window.py:308
 msgid "Masked"
-msgstr ""
+msgstr "มาสก์"
 
 #: src/window.py:308
 msgid "This Flatpak is masked and will not be updated"
-msgstr ""
+msgstr "แอปนี้ได้ถูกระยับยั้งอัปเดต"
 
 #: src/window.py:314 src/properties_window.py:156
 msgid "View Properties"
