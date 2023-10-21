@@ -79,7 +79,7 @@ def show_properties_window(widget, index, window):
 
     def clean_button_handler(_widget):
         dialog = Adw.MessageDialog.new(window, _("Send {}'s User Data to the Trash?").format(app_name))
-        dialog.set_body(_("Your user files and data for this app will be sent to the trash."))
+        dialog.set_body(_("Your files and data for this app will be sent to the trash."))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Trash Data"))
