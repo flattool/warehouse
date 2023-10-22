@@ -78,7 +78,7 @@ class OrphansWindow(Adw.Window):
             self.toast_overlay.add_toast(Adw.Toast.new(_("Some apps didn't install")))
 
     def installHandler(self):
-        self.set_title(_("Installing... This could take a while"))
+        self.set_title(_("Installing… This could take a while"))
         task = Gio.Task.new(None, None, self.installCallback)
         task.run_in_thread(lambda _task, _obj, _data, _cancellable, id_list=self.selected_dirs, remote=self.selected_remote, app_type=self.selected_remote_type: self.my_utils.installFlatpak(id_list, remote, app_type))
 

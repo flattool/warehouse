@@ -297,15 +297,15 @@ class WarehouseWindow(Adw.ApplicationWindow):
             flatpak_row.set_subtitle(app_id)
 
             if "eol" in self.host_flatpaks[index][12]:
-                eol_app_label = Gtk.Label(label=_("EOL"), valign=Gtk.Align.CENTER, tooltip_text=_("This Flatpak has reached its End of Life and will not receive any security updates"))
+                eol_app_label = Gtk.Label(label=_("EOL"), valign=Gtk.Align.CENTER, tooltip_text=_("{} has reached its End of Life and will not receive any security updates").format(app_name))
                 eol_app_label.add_css_class("error")
 
             if self.host_flatpaks[index][13] in self.eol_list:
-                eol_runtime_label = Gtk.Label(label=_("EOL"), valign=Gtk.Align.CENTER, tooltip_text=_("The runtime used by this app has reached its End of Life and will not receive any security updates"))
+                eol_runtime_label = Gtk.Label(label=_("EOL"), valign=Gtk.Align.CENTER, tooltip_text=_("{}' runtime has reached its End of Life and will not receive any security updates").format(app_name))
                 eol_runtime_label.add_css_class("error")
                 flatpak_row.add_suffix(eol_runtime_label)
 
-            mask_label = Gtk.Label(label=_("Masked"), valign=Gtk.Align.CENTER, tooltip_text=_("This Flatpak is masked and will not be updated"), visible=False)
+            mask_label = Gtk.Label(label=_("Updates Disabled"), hexpand=True, wrap=True, justify=Gtk.Justification.RIGHT, valign=Gtk.Align.CENTER, tooltip_text=_("{} is masked and will not be updated").format(app_name), visible=False)
             flatpak_row.add_suffix(mask_label)
             # ^ This is up here as we need to add this to flatpak_rows regardless of if its visible or not
             if app_id in self.system_mask_list or app_id in self.user_mask_list:
@@ -356,7 +356,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 row_menu_model.append_item(run_item)
 
             self.create_action(("mask" + str(index)), lambda *_, id=app_id, type=install_type, index=index: self.maskFlatpak(id, type, index))
-            mask_item = Gio.MenuItem.new(_("Toggle Mask"), f"win.mask{index}")
+            mask_item = Gio.MenuItem.new(_("Disable Updates"), f"win.mask{index}")
             row_menu_model.append_item(mask_item)
 
             # if os.path.exists(self.user_data_path + app_id):
@@ -388,21 +388,31 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def maskFlatpak(self, id, type, index):
         is_masked = self.flatpak_rows[index][7].get_visible() # Check the visibility of the mask label to see if the flatpak is masked
-        response = []
+        result = []
+        name = self.host_flatpaks[index][0]
 
         def callback():
-            if response[0] == 1:
-                name = self.host_flatpaks[index][0]
+            if result[0] == 1:
                 self.toast_overlay.add_toast(Adw.Toast.new(_("Could not toggle {}'s mask").format(name)))
                 return
             self.flatpak_rows[index][7].set_visible(not is_masked)
 
-        def thread():
-            response.append(self.my_utils.maskFlatpak(id, type, is_masked))
+        def onContinue(dialog, response):
+            if response == "cancel":
+                return
+            task = Gio.Task.new(None, None, lambda *_: callback())
+            task.run_in_thread(lambda *_: result.append(self.my_utils.maskFlatpak(id, type, is_masked)))
 
-        task = Gio.Task.new(None, None, lambda *_: callback())
-        task.run_in_thread(lambda *_: thread())
-
+        if is_masked:
+            onContinue(self, None)
+        else:
+            dialog = Adw.MessageDialog.new(self, _("Disable Updates for {}?").format(name))
+            dialog.set_body(_("This will mask {} ensuring it will never recieve any feature or security updates.").format(name))
+            dialog.add_response("cancel", _("Cancel"))
+            dialog.set_close_response("cancel")
+            dialog.add_response("continue", _("Disable Updates"))
+            dialog.connect("response", onContinue)
+            dialog.present()
 
     def copyItem(self, to_copy, to_toast=None):
         self.clipboard.set(to_copy)

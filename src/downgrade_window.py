@@ -113,7 +113,7 @@ class DowngradeWindow(Adw.Window):
         self.response = self.my_utils.downgradeFlatpak(self.app_ref, self.commit_to_use, self.install_type)
 
     def onApply(self):
-        self.set_title(_("Downgrading..."))
+        self.set_title(_("Downgrading…"))
         self.no_close = self.connect("close-request", lambda event: True)
         self.main_toolbar_view.set_sensitive(False)
         self.should_pulse = True
@@ -150,8 +150,9 @@ class DowngradeWindow(Adw.Window):
         # Apply
         self.pulser()
         self.add_controller(event_controller)
-        self.set_title(_("Fetching Releases..."))
+        self.set_title(_("Fetching Releases…"))
         self.set_transient_for(parent_window)
+        self.mask_row.set_subtitle(_("Ensure that {} will never be updated to a newer version").format(self.app_name))
 
         self.generateList()
 

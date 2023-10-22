@@ -4,6 +4,12 @@ import subprocess
 import os
 
 def show_properties_window(widget, index, window):
+
+    app_name = window.host_flatpaks[index][0]
+    app_id = window.host_flatpaks[index][2]
+    install_type = window.host_flatpaks[index][7]
+    data_folder = window.user_data_path + app_id 
+
     properties_window = Adw.Window(title=_("{} Properties").format(window.host_flatpaks[index][0]))
     properties_window.set_default_size(350, 600)
     properties_window.set_size_request(260, 230)
@@ -16,9 +22,9 @@ def show_properties_window(widget, index, window):
     properties_toast_overlay.set_child(outer_box)
     properties_box = Gtk.Box(orientation="vertical", vexpand=True)
     properties_clamp = Adw.Clamp()
-    eol_app_banner = Adw.Banner(title=_("This Flatpak has reached its End of Life and will not receive any security updates"))
-    eol_runtime_banner = Adw.Banner(title=_("The runtime used by this app has reached its End of Life and will not receive any security updates"))
-    mask_banner = Adw.Banner(title=_("This Flatpak has been masked and will not be updated"))
+    eol_app_banner = Adw.Banner(title=_("{} has reached its End of Life and will not receive any security updates").format(app_name))
+    eol_runtime_banner = Adw.Banner(title=_("{}' runtime has reached its End of Life and will not receive any security updates").format(app_name))
+    mask_banner = Adw.Banner(title=_("{} is masked and will not be updated").format(window.host_flatpaks[index][0]))
     outer_box.append(eol_app_banner)
     outer_box.append(eol_runtime_banner)
     outer_box.append(mask_banner)
@@ -61,11 +67,6 @@ def show_properties_window(widget, index, window):
     event_controller = Gtk.EventControllerKey()
     event_controller.connect("key-pressed", key_handler)
     properties_window.add_controller(event_controller)
-
-    app_name = window.host_flatpaks[index][0]
-    app_id = window.host_flatpaks[index][2]
-    install_type = window.host_flatpaks[index][7]
-    data_folder = window.user_data_path + app_id
 
     def on_response(_a, response_id, _b):
         if response_id != "continue":
@@ -180,7 +181,7 @@ def show_properties_window(widget, index, window):
 
     if app_id in system_mask_list or app_id in user_mask_list:
         mask_banner.set_revealed(True)
-        mask_banner.set_button_label(_("Unmask"))
+        mask_banner.set_button_label(_("Enable Updates"))
         mask_banner.connect("button-clicked", lambda *_: maskHandler())
 
     properties_window.set_content(properties_title_bar)
