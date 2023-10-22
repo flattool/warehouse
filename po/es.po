@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-21 05:42-0400\n"
-"PO-Revision-Date: 2023-10-22 03:42+0000\n"
+"PO-Revision-Date: 2023-10-22 20:31+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
@@ -664,6 +664,8 @@ msgstr "No hay repositorios"
 msgid ""
 "Warehouse cannot see the list of remotes or the system has no remotes added"
 msgstr ""
+"Warehouse no puede ver la lista de remotos o el sistema no tiene remotos "
+"añadidos"
 
 #: src/popular_remotes_window.py:31
 msgid "Flatpaks Repos"
@@ -675,135 +677,140 @@ msgstr "Añadir un remoto"
 
 #: src/popular_remotes.blp:19
 msgid "Choose from a list of popular remotes or add a new one."
-msgstr ""
+msgstr "Elija entre una lista de remotos populares o añada uno nuevo."
 
 #: src/popular_remotes.blp:36
 msgid "Add a Repo File"
-msgstr ""
+msgstr "Añadir un archivo repo"
 
 #: src/popular_remotes.blp:40
 msgid "Add a Custom Remote"
-msgstr ""
+msgstr "Añadir un remoto personalizado"
 
 #: src/orphans_window.py:78
 msgid "Some apps didn't install"
-msgstr ""
+msgstr "Algunas aplicaciones no se han instalado"
 
 #: src/orphans_window.py:81
 msgid "Installing... This could take a while"
-msgstr ""
+msgstr "Instalando… Esto podría tardar un poco"
 
 #. Make window unable to close
 #: src/orphans_window.py:106
 msgid "Attempt to Install?"
-msgstr ""
+msgstr "¿Intentar instalar?"
 
 #: src/orphans_window.py:106
 msgid "Warehouse will attempt to install apps matching the selected data."
 msgstr ""
+"Warehouse intentará instalar aplicaciones que coincidan con los datos "
+"seleccionados."
 
 #: src/orphans_window.py:123
 msgid "{} wide"
-msgstr ""
+msgstr "{} ancho"
 
 #: src/orphans_window.py:159
 msgid "Trash folders?"
-msgstr ""
+msgstr "¿Eliminar carpetas?"
 
 #: src/orphans_window.py:159
 msgid "These folders will be sent to the trash."
-msgstr ""
+msgstr "Estas carpetas se enviarán a la papelera."
 
 #: src/orphans_window.py:163
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
 
 #: src/orphans_window.py:187
 msgid "Could not manage data"
-msgstr ""
+msgstr "No se pueden gestionar los datos"
 
 #: src/orphans.blp:19
 msgid "Open the User Data Folder"
-msgstr ""
+msgstr "Abrir la carpeta de datos de usuario"
 
 #: src/orphans.blp:57 src/filter.blp:85
 msgid "No Leftover Data"
-msgstr ""
+msgstr "No hay datos sobrantes"
 
 #: src/orphans.blp:58 src/filter.blp:86
 msgid "There is no leftover user data"
-msgstr ""
+msgstr "No hay datos de usuario sobrantes"
 
 #: src/orphans.blp:66
 msgid "Select All"
-msgstr ""
+msgstr "Seleccionar todo"
 
 #: src/filter.blp:7
 msgid "Set Filters"
-msgstr ""
+msgstr "Establecer filtros"
 
 #: src/filter.blp:21
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #: src/filter.blp:46
 msgid "Show Apps"
-msgstr ""
+msgstr "Mostrar apps"
 
 #: src/filter.blp:55
 msgid "Show Runtimes"
-msgstr ""
+msgstr "Mostrar tiempos de ejecución"
 
 #: src/filter.blp:65
 msgid "Filter Apps by Remotes"
-msgstr ""
+msgstr "Filtrar apps por remotos"
 
 #: src/filter.blp:69
 msgid "Filter Apps by Runtime"
-msgstr ""
+msgstr "Filtrar apps por tiempos de ejecución"
 
 #: src/filter.blp:76
 msgid "Clear Filters"
-msgstr ""
+msgstr "Limpiar filtros"
 
 #: src/downgrade_window.py:76
 msgid "Commit Hash: {}"
-msgstr ""
+msgstr "Hash de la confirmación: {}"
 
 #: src/downgrade_window.py:101
 msgid "Could not downgrade {}"
-msgstr ""
+msgstr "No se pudo revertir {}"
 
 #: src/downgrade_window.py:108
 msgid "Could not mask {}"
-msgstr ""
+msgstr "No se pudo restringir {}"
 
 #: src/downgrade_window.py:116
 msgid "Downgrading..."
-msgstr ""
+msgstr "Revirtiendo..."
 
 #: src/downgrade_window.py:153
 msgid "Fetching Releases..."
-msgstr ""
+msgstr "Obteniendo versiones..."
 
 #: src/downgrade.blp:21
 msgid "Downgrade"
-msgstr ""
+msgstr "Revertir"
 
 #: src/downgrade.blp:40
 msgid "Mask this Flatpak"
-msgstr ""
+msgstr "Restringir este Flatpak"
 
 #: src/downgrade.blp:41
 msgid "Ensure that the flatpak will never be updated to a newer version"
 msgstr ""
+"Garantizar que el Flatpak nunca se actualizará a una versión más reciente"
 
 #: src/downgrade.blp:47
 msgid "Select a Release"
-msgstr ""
+msgstr "Seleccionar una versión"
 
 #: src/downgrade.blp:48
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
+"Esto desinstalará la versión actual e instalará la elegida en su lugar. "
+"Tenga en cuenta que la desinstalación puede causar problemas."
