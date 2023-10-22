@@ -32,10 +32,9 @@ Warehouse is now available on Flathub! Visit your software store and search for 
 - The Warehouse project follows the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct). See `CODE_OF_CONDUCT.md` for more information.
 
 ## ℹ️ Important Notes:
-- Translators, I thank you very much for your interest and contributions, but as of now Warehouse is not accpeting any translation work until proper translation infrastructure is in place.
-- This project is still in its early stages, developed by a newcomer. Your understanding of potential bugs is greatly appreciated.
 - Warehouse assumes flatpak user data is located in the default directory: `~/.var/app`.
 - Warehouse does not aim to replace flatpak; it simply facilitates appropriate flatpak commands for the desired actions.
+- This project is still in its early stages, developed by a newcomer. Your understanding of potential bugs is greatly appreciated.
 
 ## 🛠️ Installation from Repo Steps:
 
