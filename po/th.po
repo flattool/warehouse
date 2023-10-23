@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-23 03:04-0400\n"
-"PO-Revision-Date: 2023-10-23 07:04+0000\n"
+"PO-Revision-Date: 2023-10-23 07:07+0000\n"
 "Last-Translator: Win <winsdominoes2018@gmail.com>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/th/>\n"
@@ -162,13 +162,11 @@ msgstr "{} นี้ได้ถึงการสิ้นอายุการ
 
 #: src/window.py:310
 msgid "Updates Disabled"
-msgstr ""
+msgstr "ปิดการอัพเดต"
 
 #: src/window.py:310 src/properties_window.py:28
-#, fuzzy
-#| msgid "This Flatpak is masked and will not be updated"
 msgid "{} is masked and will not be updated"
-msgstr "แอปนี้ได้ถูกระยับยั้งอัปเดต"
+msgstr "{} ได้ถูกระยับยั้งอัปเดต"
 
 #. ^ This is up here as we need to add this to flatpak_rows regardless of if its visible or not
 #: src/window.py:315 src/properties_window.py:158
@@ -218,38 +216,30 @@ msgid "Opened {}"
 msgstr "เปิด {} แล้ว"
 
 #: src/window.py:352
-#, fuzzy
-#| msgid "Open {}"
 msgid "Open"
-msgstr "เปิด {} แล้ว"
+msgstr "เปิด"
 
 #: src/window.py:360 src/window.py:461 src/downgrade.blp:40
 msgid "Disable Updates"
-msgstr ""
+msgstr "ระงับการอัพเดท"
 
 #: src/window.py:365 src/properties_window.py:186
 msgid "Enable Updates"
-msgstr ""
+msgstr "เปิดการอัพเดท"
 
 #: src/window.py:379 src/properties_window.py:133
-#, fuzzy
-#| msgid "Open the User Data Folder"
 msgid "Open User Data Folder"
 msgstr "เปิดโฟลเดอร์ข้อมูลผู้ใช้"
 
 #: src/window.py:384 src/properties_window.py:138
-#, fuzzy
-#| msgid "Trashed user data"
 msgid "Trash User Data"
-msgstr "ทิ้งข้อมูลแล้ว"
+msgstr "ทิ้งข้อมูลขอผู้ใช้"
 
 #: src/window.py:391 src/downgrade.blp:21
 msgid "Downgrade"
 msgstr "ดาวน์เกรด"
 
 #: src/window.py:412 src/properties_window.py:98 src/orphans_window.py:171
-#, fuzzy
-#| msgid "Can't open folder"
 msgid "Could not open folder"
 msgstr "ไม่สามารถเปิดโฟลเดอร์ได้"
 
