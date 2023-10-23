@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-23 03:07-0400\n"
-"PO-Revision-Date: 2023-10-23 07:07+0000\n"
+"PO-Revision-Date: 2023-10-23 07:36+0000\n"
 "Last-Translator: Win <winsdominoes2018@gmail.com>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/th/>\n"
@@ -244,10 +244,8 @@ msgid "Could not open folder"
 msgstr "ไม่สามารถเปิดโฟลเดอร์ได้"
 
 #: src/window.py:420 src/window.py:545
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not trash user data"
-msgstr "ไม่สามารถจัดการข้อมูลได้"
+msgstr "ไม่สามารถทิ้งข้อมูลผู้ใช้ได้"
 
 #: src/window.py:424 src/window.py:547 src/properties_window.py:77
 msgid "Trashed user data"
@@ -266,26 +264,18 @@ msgid "Trash Data"
 msgstr "ทิ้งข้อมูล"
 
 #: src/window.py:442 src/downgrade_window.py:108
-#, fuzzy
-#| msgid "No user data for {}"
 msgid "Could disable updates for {}"
-msgstr "ไม่มีข้อมูลของ {}"
+msgstr "ปิดการอัพเดทของ {}"
 
 #: src/window.py:457
-#, fuzzy
-#| msgid "No user data for {}"
 msgid "Disable Updates for {}?"
-msgstr "ไม่มีข้อมูลของ {}"
+msgstr "ปิดการอัพเดทของ {} หรือไม่?"
 
 #: src/window.py:458
-#, fuzzy
-#| msgid ""
-#| "This Flatpak has reached its End of Life and will not receive any "
-#| "security updates"
 msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
-msgstr "แอปนี้ได้ถึงการจบอัปเดตและจะไม่ได้รับอัปเดต"
+msgstr "แอปนี้จะไม่ได้รับการอัปเดตใดๆ"
 
 #: src/window.py:475
 msgid "Could not Run App"
@@ -360,18 +350,14 @@ msgid "File type not supported"
 msgstr "ไม่รองรับประเภทไฟล์"
 
 #: src/window.blp:12
-#, fuzzy
-#| msgid "Refresh the List of Installed Apps"
 msgid "Refresh the List"
-msgstr "รีเฟรชรายการแอปที่ติดตั้ง"
+msgstr "รีเฟรชรายการแอป"
 
 #: src/window.blp:18 src/orphans.blp:14
 msgid "Search the List"
-msgstr ""
+msgstr "ค้นหารายการ"
 
 #: src/window.blp:24
-#, fuzzy
-#| msgid "Filter Apps List"
 msgid "Filter the List"
 msgstr "กรองรายการแอป"
 
@@ -448,16 +434,10 @@ msgid "Open app"
 msgstr "เปิดแอป"
 
 #: src/gtk/help-overlay.blp:11
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "App Management"
 msgid "App Management"
-msgstr "การจัดการของแอป"
+msgstr "จัดการแอป"
 
 #: src/gtk/help-overlay.blp:14
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Search"
 msgid "Search"
 msgstr "ค้นหา"
 
@@ -466,44 +446,26 @@ msgid "Set Filters"
 msgstr "เพิ่มตัวกรอง"
 
 #: src/gtk/help-overlay.blp:24
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Refresh"
 msgid "Refresh"
 msgstr "รีเฟรช"
 
 #: src/gtk/help-overlay.blp:34
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "More Functions"
 msgid "More Functions"
 msgstr "ฟังค์ชั่นเพิ่มเติม"
 
 #: src/gtk/help-overlay.blp:52
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "General"
 msgid "General"
 msgstr "ทั่วไป"
 
 #: src/gtk/help-overlay.blp:55
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Open Menu"
 msgid "Open Menu"
 msgstr "เปิดเมนู"
 
 #: src/gtk/help-overlay.blp:60
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Show Shortcuts"
 msgid "Show Shortcuts"
 msgstr "แสดงชอร์ตคัท"
 
 #: src/gtk/help-overlay.blp:65
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Quit"
 msgid "Quit"
 msgstr "ออก"
 
@@ -516,10 +478,8 @@ msgid "Show Apps Using this Runtime"
 msgstr "แสดงแอปที่ใช้รันไทม์นี้"
 
 #: src/properties_window.py:81
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not trash data"
-msgstr "ไม่สามารถจัดการข้อมูลได้"
+msgstr "ไม่สามารถทิ้งข้อมูลได้"
 
 #: src/properties_window.py:102 src/remotes_window.py:72
 msgid "Copied {}"
@@ -685,8 +645,6 @@ msgid ""
 msgstr "แวร์เฮาส์ไม่สามารถค้นหารายการของรีโมตได้ หรือ ระบบไม่มีรีโมตใดๆที่ได้ติดตั้งไว้"
 
 #: src/popular_remotes_window.py:31
-#, fuzzy
-#| msgid "Flatpaks Repos"
 msgid "Flatpak Repos"
 msgstr "Repo ของแอป"
 
@@ -707,14 +665,10 @@ msgid "Add a Custom Remote"
 msgstr "เพิ่มรีโมต"
 
 #: src/orphans_window.py:78
-#, fuzzy
-#| msgid "Could not uninstall some apps"
 msgid "Could not install some apps"
-msgstr "ไม่สามารถถอนการติดตั้งได้บางแอป"
+msgstr "ไม่สามารถติดตั้งได้บางแอป"
 
 #: src/orphans_window.py:81
-#, fuzzy
-#| msgid "Installing... This could take a while"
 msgid "Installing… This could take a while"
 msgstr "กำลังติดตั้ง... อาจจะใช้เวลาระยะหนึ่ง"
 
@@ -788,26 +742,20 @@ msgid "Could not downgrade {}"
 msgstr "ไม่สามารถดาวน์เกรด {}"
 
 #: src/downgrade_window.py:116
-#, fuzzy
-#| msgid "Downgrading..."
 msgid "Downgrading…"
-msgstr "กำลังดาวน์เกรด"
+msgstr "กำลังดาวน์เกรด…"
 
 #: src/downgrade_window.py:142
 msgid "Downgrade {}"
 msgstr "ย้อนหลัง {}"
 
 #: src/downgrade_window.py:153
-#, fuzzy
-#| msgid "Fetching Releases..."
 msgid "Fetching Releases…"
-msgstr "กำลังค้นหารุ่น"
+msgstr "กำลังค้นหารุ่น…"
 
 #: src/downgrade_window.py:155
-#, fuzzy
-#| msgid "Ensure that the flatpak will never be updated to a newer version"
 msgid "Ensure that {} will never be updated to a newer version"
-msgstr "แอปจะไม่ได้รับการอัพเดตเป็นเวอร์ชันที่ใหม่กว่า"
+msgstr "{} จะไม่ได้รับการอัพเดตเป็นเวอร์ชันที่ใหม่กว่า"
 
 #: src/downgrade.blp:46
 msgid "Select a Release"
