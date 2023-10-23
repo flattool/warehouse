@@ -128,7 +128,6 @@ def show_properties_window(widget, index, window):
 
     if os.path.exists(path):
         user_data_row.set_title("User Data")
-        # user_data_row.set_subtitle(f"{path}\n~{my_utils.getSizeWithFormat(path)}")
         calc_size(path)
 
         open_button = Gtk.Button(icon_name="document-open-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Open User Data Folder"))
