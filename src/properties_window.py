@@ -131,12 +131,12 @@ def show_properties_window(widget, index, window):
         # user_data_row.set_subtitle(f"{path}\n~{my_utils.getSizeWithFormat(path)}")
         calc_size(path)
 
-        open_button = Gtk.Button(icon_name="document-open-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Open Data Folder"))
+        open_button = Gtk.Button(icon_name="document-open-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Open User Data Folder"))
         open_button.add_css_class("flat")
         open_button.connect("clicked", open_button_handler)
         user_data_row.add_suffix(open_button)
 
-        clean_button = Gtk.Button(icon_name="brush-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Send User Data to the Trash"))
+        clean_button = Gtk.Button(icon_name="brush-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Trash User Data"))
         clean_button.add_css_class("flat")
         clean_button.connect("clicked", clean_button_handler)
         user_data_row.add_suffix(clean_button)

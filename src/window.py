@@ -164,8 +164,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
             options_box = Gtk.Box(orientation="vertical")
             header = Gtk.Label(label=_("App Settings & Data"), halign="start", margin_top=10)
             options_list = Gtk.ListBox(selection_mode="none", margin_top=15)
-            keep_data = Adw.ActionRow(title=_("Keep"), subtitle=_("Allow restoring app settings and content"))
-            trash_data = Adw.ActionRow(title=_("Trash"), subtitle=_("Send app settings and content to the trash"))
+            keep_data = Adw.ActionRow(title=_("Keep"), subtitle=_("Allow restoring these apps' settings and content"))
+            trash_data = Adw.ActionRow(title=_("Trash"), subtitle=_("Send these apps' settings and content to the trash"))
             keep_check = Gtk.CheckButton()
             trash_check = Gtk.CheckButton()
 
@@ -237,8 +237,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
             options_box = Gtk.Box(orientation="vertical")
             header = Gtk.Label(label=_("App Settings & Data"), halign="start", margin_top=10)
             options_list = Gtk.ListBox(selection_mode="none", margin_top=15)
-            keep_data = Adw.ActionRow(title=_("Keep"), subtitle=_("Allow restoring app settings and content"))
-            trash_data = Adw.ActionRow(title=_("Trash"), subtitle=_("Send app settings and content to the trash"))
+            keep_data = Adw.ActionRow(title=_("Keep"), subtitle=_("Allow restoring this app's settings and content"))
+            trash_data = Adw.ActionRow(title=_("Trash"), subtitle=_("Send this app's settings and content to the trash"))
             keep_check = Gtk.CheckButton(active=True)
             trash_check = Gtk.CheckButton()
 
@@ -297,11 +297,11 @@ class WarehouseWindow(Adw.ApplicationWindow):
             flatpak_row.set_subtitle(app_id)
 
             if "eol" in self.host_flatpaks[index][12]:
-                eol_app_label = Gtk.Label(label=_("EOL"), hexpand=True, wrap=True, justify=Gtk.Justification.RIGHT, valign=Gtk.Align.CENTER, tooltip_text=_("{} has reached its End of Life and will not receive any security updates").format(app_name))
+                eol_app_label = Gtk.Label(label=_("App EOL"), hexpand=True, wrap=True, justify=Gtk.Justification.RIGHT, valign=Gtk.Align.CENTER, tooltip_text=_("{} has reached its End of Life and will not receive any security updates").format(app_name))
                 eol_app_label.add_css_class("error")
 
             if self.host_flatpaks[index][13] in self.eol_list:
-                eol_runtime_label = Gtk.Label(label=_("EOL"), hexpand=True, wrap=True, justify=Gtk.Justification.RIGHT, valign=Gtk.Align.CENTER, tooltip_text=_("{}'s runtime has reached its End of Life and will not receive any security updates").format(app_name))
+                eol_runtime_label = Gtk.Label(label=_("Runtime EOL"), hexpand=True, wrap=True, justify=Gtk.Justification.RIGHT, valign=Gtk.Align.CENTER, tooltip_text=_("{}'s runtime has reached its End of Life and will not receive any security updates").format(app_name))
                 eol_runtime_label.add_css_class("error")
                 flatpak_row.add_suffix(eol_runtime_label)
 
@@ -347,11 +347,11 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             if "runtime" not in self.host_flatpaks[index][12]:
                 self.create_action(("run" + str(index)), lambda *_a, ref=app_ref, name=app_name: self.runAppThread(ref, _("Opened {}").format(name)))
-                run_item = Gio.MenuItem.new(_("Open").format(app_name), f"win.run{index}")
+                run_item = Gio.MenuItem.new(_("Open"), f"win.run{index}")
                 row_menu_model.append_item(run_item)
 
             self.create_action(("uninstall" + str(index)), lambda *_, index=index: self.uninstallButtonHandler(self, index))
-            uninstall_item = Gio.MenuItem.new(_("Uninstall").format(app_name), f"win.uninstall{index}")
+            uninstall_item = Gio.MenuItem.new(_("Uninstall"), f"win.uninstall{index}")
             row_menu_model.append_item(uninstall_item)
 
             self.create_action(("mask" + str(index)), lambda *_, id=app_id, type=install_type, index=index: self.maskFlatpak(id, type, index))
@@ -386,7 +386,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 row_menu_model.append_section(None, data_menu_model)
 
             self.create_action(("downgrade" + str(index)), lambda *_, row=self.flatpak_rows[index]: DowngradeWindow(self, row))
-            downgrade_item = Gio.MenuItem.new(_("Downgrade").format(app_name), f"win.downgrade{index}")
+            downgrade_item = Gio.MenuItem.new(_("Downgrade"), f"win.downgrade{index}")
             advanced_menu_model.append_item(downgrade_item)
 
             row_menu_model.append_section(None, advanced_menu_model)
@@ -415,10 +415,11 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 return
             result = self.my_utils.trashFolder(f"{self.user_data_path}{id}")
             if result != 0:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not trash data")))
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not trash user data")))
                 return
             self.lookup_action(f"open-data{index}").set_enabled(False)
             self.lookup_action(f"trash{index}").set_enabled(False)
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Trashed user data")))
 
         dialog = Adw.MessageDialog.new(self,_("Send {}'s User Data to the trash?").format(name))
         dialog.set_body(_("Your files and data for this app will be sent to the trash."))
@@ -436,7 +437,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
         def callback():
             if result[0] == 1:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not toggle {}'s mask").format(name)))
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Could disable updates for {}").format(name)))
                 return
             self.flatpak_rows[index][7].set_visible(not is_masked)
             self.lookup_action(f"mask{index}").set_enabled(is_masked)
@@ -464,7 +465,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         if to_toast:
             self.toast_overlay.add_toast(Adw.Toast.new(to_toast))
 
-    def test(self, _a, _b):
+    def runCallback(self, _a, _b):
         if not self.my_utils.run_app_error:
             return
         
@@ -481,7 +482,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def runAppThread(self, ref, to_toast=None):
         self.run_app_error = False
-        task = Gio.Task.new(None, None, self.test)
+        task = Gio.Task.new(None, None, self.runCallback)
         task.run_in_thread(lambda *_: self.my_utils.runApp(ref))
         if to_toast:
             self.toast_overlay.add_toast(Adw.Toast.new(to_toast))
@@ -539,7 +540,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 self.toast_overlay.add_toast(Adw.Toast.new(_("No user data for {}").format(app_name)))
             elif trash == 2:
                 show_success = False
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Can't trash user data for {}").format(app_name)))
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not trash user data")))
         if show_success:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Trashed user data")))
         #self.refresh_list_of_flatpaks(_a, False)

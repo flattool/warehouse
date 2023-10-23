@@ -75,7 +75,7 @@ class OrphansWindow(Adw.Window):
         if self.my_utils.install_success:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Installed successfully")))
         else:
-            self.toast_overlay.add_toast(Adw.Toast.new(_("Some apps didn't install")))
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not install some apps")))
 
     def installHandler(self):
         self.set_title(_("Installing… This could take a while"))
@@ -168,7 +168,7 @@ class OrphansWindow(Adw.Window):
         try:
             Gio.AppInfo.launch_default_for_uri(f"file://{path}", None)
         except GLib.GError:
-            properties_toast_overlay.add_toast(Adw.Toast.new(_("Can't open folder")))
+            properties_toast_overlay.add_toast(Adw.Toast.new(_("Could not open folder")))
 
     def sizeCallBack(self, row_index):
         row = self.list_of_data.get_row_at_index(row_index)

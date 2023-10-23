@@ -28,7 +28,7 @@ class PopularRemotesWindow(Adw.Window):
             pass
 
     def addFromFileHandler(self, widet):
-        filter = Gtk.FileFilter(name=_("Flatpaks Repos"))
+        filter = Gtk.FileFilter(name=_("Flatpak Repos"))
         filter.add_suffix("flatpakrepo")
         filters = Gio.ListStore.new(Gtk.FileFilter)
         filters.append(filter)

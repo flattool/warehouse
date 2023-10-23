@@ -9,19 +9,19 @@ template WarehouseWindow : Adw.ApplicationWindow {
       [start]
       Button refresh_button {
         icon-name: "view-refresh-symbolic";
-        tooltip-text: _("Refresh the List of Installed Apps");
+        tooltip-text: _("Refresh the List");
       }
       
       [start]
       ToggleButton search_button {
         icon-name: "system-search-symbolic";
-        tooltip-text: _("Search for an Installed App");
+        tooltip-text: _("Search the List");
       }
 
       [start]
       ToggleButton filter_button {
         icon-name: "funnel-symbolic";
-        tooltip-text: _("Filter Apps List");
+        tooltip-text: _("Filter the List");
       }
 
       [end]
@@ -82,19 +82,16 @@ template WarehouseWindow : Adw.ApplicationWindow {
       revealed: false;
       [start]
       ToggleButton batch_select_all_button {
-        label: "Select All";
-        // tooltip-text: _("Select all Apps");
+        label: _("Select All");
       }
       [end]
       Button batch_uninstall_button {
         icon-name: "user-trash-symbolic";
-        // label: _("Uninstall");
         tooltip-text: _("Uninstall Selected Apps");
       }
       [end]
       Button batch_clean_button {
         icon-name: "brush-symbolic";
-        // label: _("Trash User Data");
         tooltip-text: _("Send Selected Apps' Data to the Trash");
       }
       [end]
