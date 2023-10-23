@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-23 03:07-0400\n"
-"PO-Revision-Date: 2023-10-23 07:07+0000\n"
+"PO-Revision-Date: 2023-10-23 07:36+0000\n"
 "Last-Translator: kramo <login@kramo.hu>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hu/>\n"
@@ -357,18 +357,14 @@ msgid "File type not supported"
 msgstr "A fájl típus nem támogatott"
 
 #: src/window.blp:12
-#, fuzzy
-#| msgid "Refresh the List of Installed Apps"
 msgid "Refresh the List"
-msgstr "Telepített applikációk listájának frissítése"
+msgstr "Lista frissítése"
 
 #: src/window.blp:18 src/orphans.blp:14
 msgid "Search the List"
-msgstr ""
+msgstr "Keresés a listában"
 
 #: src/window.blp:24
-#, fuzzy
-#| msgid "Filter Apps List"
 msgid "Filter the List"
 msgstr "Lista szűrése"
 
@@ -445,16 +441,10 @@ msgid "Open app"
 msgstr "Applikáció megnyitása"
 
 #: src/gtk/help-overlay.blp:11
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "App Management"
 msgid "App Management"
 msgstr "Applikációkezelés"
 
 #: src/gtk/help-overlay.blp:14
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Search"
 msgid "Search"
 msgstr "Keresés"
 
@@ -463,44 +453,26 @@ msgid "Set Filters"
 msgstr "Szűrők beállítása"
 
 #: src/gtk/help-overlay.blp:24
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Refresh"
 msgid "Refresh"
 msgstr "Frissítés"
 
 #: src/gtk/help-overlay.blp:34
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "More Functions"
 msgid "More Functions"
 msgstr "Több funkció"
 
 #: src/gtk/help-overlay.blp:52
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "General"
 msgid "General"
 msgstr "Általános"
 
 #: src/gtk/help-overlay.blp:55
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Open Menu"
 msgid "Open Menu"
 msgstr "Menü megnyitása"
 
 #: src/gtk/help-overlay.blp:60
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Show Shortcuts"
 msgid "Show Shortcuts"
 msgstr "Billentyűparancsok megjelenítése"
 
 #: src/gtk/help-overlay.blp:65
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Quit"
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -513,10 +485,8 @@ msgid "Show Apps Using this Runtime"
 msgstr "Applikációk megjelenítése, amelyek ezt a futtatókörnyezetet használják"
 
 #: src/properties_window.py:81
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not trash data"
-msgstr "Az adatok kezelése sikertelen"
+msgstr "Az adatok kukázása sikertelen"
 
 #: src/properties_window.py:102 src/remotes_window.py:72
 msgid "Copied {}"
@@ -685,8 +655,6 @@ msgstr ""
 "A Raktár nem látja a tárolók listáját, vagy nincs egy tároló se a rendszeren"
 
 #: src/popular_remotes_window.py:31
-#, fuzzy
-#| msgid "Flatpaks Repos"
 msgid "Flatpak Repos"
 msgstr "Flatpak tárolók"
 
@@ -707,14 +675,10 @@ msgid "Add a Custom Remote"
 msgstr "Egyedi tároló hozzáadása"
 
 #: src/orphans_window.py:78
-#, fuzzy
-#| msgid "Could not uninstall some apps"
 msgid "Could not install some apps"
-msgstr "Pár applikációt nem lehetett eltávolítani"
+msgstr "Pár applikációt nem lehetett telepíteni"
 
 #: src/orphans_window.py:81
-#, fuzzy
-#| msgid "Installing... This could take a while"
 msgid "Installing… This could take a while"
 msgstr "Telepítés… Ez eltarthat egy ideig"
 
@@ -790,8 +754,6 @@ msgid "Could not downgrade {}"
 msgstr "A(z) {} visszafejlesztése sikertelen"
 
 #: src/downgrade_window.py:116
-#, fuzzy
-#| msgid "Downgrading..."
 msgid "Downgrading…"
 msgstr "Visszafejlesztés…"
 
@@ -800,16 +762,12 @@ msgid "Downgrade {}"
 msgstr "{} visszafejlesztése"
 
 #: src/downgrade_window.py:153
-#, fuzzy
-#| msgid "Fetching Releases..."
 msgid "Fetching Releases…"
 msgstr "Kiadások lekérése…"
 
 #: src/downgrade_window.py:155
-#, fuzzy
-#| msgid "Ensure that the flatpak will never be updated to a newer version"
 msgid "Ensure that {} will never be updated to a newer version"
-msgstr "Biztosátja, hogy a Flatpak sose lesz frissítve"
+msgstr "Biztosátja, hogy a(z) {} sose lesz frissítve"
 
 #: src/downgrade.blp:46
 msgid "Select a Release"
