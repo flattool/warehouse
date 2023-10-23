@@ -87,12 +87,8 @@ class FilterWindow(Adw.Window):
     def generateList(self):
         self.remotes_expander_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
         self.runtimes_expander_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
-
-        dependant_runtimes = []
-        for i in range(len(self.host_flatpaks)):
-            current = self.host_flatpaks[i]
-            if current[13] not in dependant_runtimes and current[13] != "":
-                dependant_runtimes.append(current[13])
+        
+        dependant_runtimes = self.my_utils.getDependantRuntimes()
 
         if len(self.host_remotes) < 2: # Don't give the ability to filter by remotes if there is only 1
             self.remotes_expander.set_visible(False)
