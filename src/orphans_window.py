@@ -214,7 +214,7 @@ class OrphansWindow(Adw.Window):
             task = Gio.Task.new(None, None, lambda *_, index=index: self.sizeCallBack(index))
             task.run_in_thread(lambda _task, _obj, _data, _cancellable, *_, index=index: self.sizeThread(index, path))
 
-            open_row_button = Gtk.Button(icon_name="document-open-symbolic", valign=Gtk.Align.CENTER)
+            open_row_button = Gtk.Button(icon_name="document-open-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Open User Data Folder"))
             open_row_button.add_css_class("flat")
             open_row_button.connect("clicked", self.open_button_handler, (self.user_data_path + dir_name))
             dir_row.add_suffix(open_row_button)

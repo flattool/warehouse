@@ -78,7 +78,7 @@ def show_properties_window(widget, index, window):
             user_data_list.remove(user_data_row)
             user_data_list.append(Adw.ActionRow(title="No User Data"))
         else:
-            properties_toast_overlay.add_toast(Adw.Toast.new(_("Could not trash data")))
+            properties_toast_overlay.add_toast(Adw.Toast.new(_("Could not trash user data")))
 
     def clean_button_handler(_widget):
         dialog = Adw.MessageDialog.new(window, _("Send {}'s User Data to the Trash?").format(app_name))
