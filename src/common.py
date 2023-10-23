@@ -125,6 +125,15 @@ class myUtils:
         sorted_array = sorted(data, key=lambda item: item[0].lower())
         return sorted_array
 
+    def getDependantRuntimes(self):
+        paks = self.getHostFlatpaks()
+        dependant_runtimes = []
+        for i in range(len(paks)):
+            current = paks[i]
+            if current[13] not in dependant_runtimes and current[13] != "":
+                dependant_runtimes.append(current[13])
+        return(dependant_runtimes)
+
     def getHostMasks(self, user_or_system):
         output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "mask", f"--{user_or_system}"], capture_output=True, text=True, env=self.new_env).stdout
         lines = output.strip().split("\n")
