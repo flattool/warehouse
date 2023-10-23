@@ -306,20 +306,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 flatpak_row.add_suffix(eol_runtime_label)
 
             mask_label = Gtk.Label(label=_("Updates Disabled"), hexpand=True, wrap=True, justify=Gtk.Justification.RIGHT, valign=Gtk.Align.CENTER, tooltip_text=_("{} is masked and will not be updated").format(app_name), visible=False)
+            mask_label.add_css_class("warning")
             flatpak_row.add_suffix(mask_label)
             # ^ This is up here as we need to add this to flatpak_rows regardless of if its visible or not
-            if app_id in self.system_mask_list or app_id in self.user_mask_list:
-                mask_label.set_visible(True)
 
             properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
             properties_button.add_css_class("flat")
             properties_button.connect("clicked", show_properties_window, index, self)
             flatpak_row.add_suffix(properties_button)
-
-            # trash_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Uninstall {}").format(app_name), visible=not self.in_batch_mode)
-            # trash_button.add_css_class("flat")
-            # trash_button.connect("clicked", self.uninstallButtonHandler, index)
-            # flatpak_row.add_suffix(trash_button)
 
             select_flatpak_tickbox = Gtk.CheckButton(visible=self.in_batch_mode)
             select_flatpak_tickbox.add_css_class("selection-mode")
@@ -330,8 +324,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
             row_menu.add_css_class("flat")
             row_menu_model = Gio.Menu()
             copy_menu_model = Gio.Menu()
+            advanced_menu_model = Gio.Menu()
 
-            self.flatpak_rows.append([True, False, flatpak_row, properties_button, row_menu, select_flatpak_tickbox, self.host_flatpaks[index], mask_label, row_menu_model])
+            self.flatpak_rows.append([True, False, flatpak_row, properties_button, row_menu, select_flatpak_tickbox, self.host_flatpaks[index], mask_label])
             # {Row visibility, Row selected, the row itself, properties, menu button, select, the flatpak row from `flatpak list`, mask label, the dropdown menu model}
 
             #
@@ -350,29 +345,51 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             row_menu_model.append_submenu(_("Copy"), copy_menu_model)
 
-            self.create_action(("run" + str(index)), lambda *_a, ref=app_ref, name=app_name: self.runAppThread(ref, _("Opened {}").format(name)))
-            run_item = Gio.MenuItem.new(_("Open {}").format(app_name), f"win.run{index}")
             if "runtime" not in self.host_flatpaks[index][12]:
+                self.create_action(("run" + str(index)), lambda *_a, ref=app_ref, name=app_name: self.runAppThread(ref, _("Opened {}").format(name)))
+                run_item = Gio.MenuItem.new(_("Open").format(app_name), f"win.run{index}")
                 row_menu_model.append_item(run_item)
+
+            self.create_action(("uninstall" + str(index)), lambda *_, index=index: self.uninstallButtonHandler(self, index))
+            uninstall_item = Gio.MenuItem.new(_("Uninstall").format(app_name), f"win.uninstall{index}")
+            row_menu_model.append_item(uninstall_item)
 
             self.create_action(("mask" + str(index)), lambda *_, id=app_id, type=install_type, index=index: self.maskFlatpak(id, type, index))
             mask_item = Gio.MenuItem.new(_("Disable Updates"), f"win.mask{index}")
-            row_menu_model.append_item(mask_item)
+            mask_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
+            advanced_menu_model.append_item(mask_item)
 
-            # if os.path.exists(self.user_data_path + app_id):
-            #     self.create_action(("open-data" + str(index)), lambda *_, path=(self.user_data_path + app_id): Gio.AppInfo.launch_default_for_uri(f"file://{path}", None))
-            #     open_data_item = Gio.MenuItem.new(_("Open Data Folder"), f"win.open-data{index}")
-            #     row_menu_model.append_item(open_data_item)
+            self.create_action(("unmask" + str(index)), lambda *_, id=app_id, type=install_type, index=index: self.maskFlatpak(id, type, index))
+            unmask_item = Gio.MenuItem.new(_("Enable Updates"), f"win.unmask{index}")
+            unmask_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
+            advanced_menu_model.append_item(unmask_item)
 
-            self.create_action(("uninstall" + str(index)), lambda *_, index=index: self.uninstallButtonHandler(self, index))
-            uninstall_item = Gio.MenuItem.new(_("Uninstall {}").format(app_name), f"win.uninstall{index}")
-            row_menu_model.append_item(uninstall_item)
+            if app_id in self.system_mask_list or app_id in self.user_mask_list:
+                mask_label.set_visible(True)
+                self.lookup_action(f"mask{index}").set_enabled(False)
+            else:
+                self.lookup_action(f"unmask{index}").set_enabled(False)
+
+            if os.path.exists(self.user_data_path + app_id):
+                data_menu_model = Gio.Menu()
+
+                self.create_action(("open-data" + str(index)), lambda *_, path=(self.user_data_path + app_id): Gio.AppInfo.launch_default_for_uri(f"file://{path}", None))
+                open_data_item = Gio.MenuItem.new(_("Open User Data Folder"), f"win.open-data{index}")
+                open_data_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
+                data_menu_model.append_item(open_data_item)
+
+                self.create_action(("trash" + str(index)), lambda *_, name=app_name, id=app_id, index=index: self.trashData(name, id, index))
+                trash_item = Gio.MenuItem.new(_("Trash User Data"), f"win.trash{index}")
+                trash_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
+                data_menu_model.append_item(trash_item)
+
+                row_menu_model.append_section(None, data_menu_model)
 
             self.create_action(("downgrade" + str(index)), lambda *_, row=self.flatpak_rows[index]: DowngradeWindow(self, row))
-            downgrade_item = Gio.MenuItem.new(_("Downgrade {}").format(app_name), f"win.downgrade{index}")
-            row_menu_model.append_item(downgrade_item)
+            downgrade_item = Gio.MenuItem.new(_("Downgrade").format(app_name), f"win.downgrade{index}")
+            advanced_menu_model.append_item(downgrade_item)
 
-            # row_menu_model.remove(1)
+            row_menu_model.append_section(None, advanced_menu_model)
 
             row_menu.set_menu_model(row_menu_model)
             flatpak_row.add_suffix(row_menu)
@@ -386,6 +403,26 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.applyFilter(self.filter_list)
         self.batchActionsEnable(False)
 
+    def trashData(self, name, id, index):
+        def onContinue(dialog, response):
+            if response == "cancel":
+                return
+            result = self.my_utils.trashFolder(f"{self.user_data_path}{id}")
+            if result != 0:
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not trash data")))
+                return
+            self.lookup_action(f"open-data{index}").set_enabled(False)
+            self.lookup_action(f"trash{index}").set_enabled(False)
+
+        dialog = Adw.MessageDialog.new(self,_("Send {}'s User Data to the trash?").format(name))
+        dialog.set_body(_("Your files and data for this app will be sent to the trash."))
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.set_close_response("cancel")
+        dialog.add_response("continue", _("Trash Data"))
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.connect("response", onContinue)
+        dialog.present()
+
     def maskFlatpak(self, id, type, index):
         is_masked = self.flatpak_rows[index][7].get_visible() # Check the visibility of the mask label to see if the flatpak is masked
         result = []
@@ -396,6 +433,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 self.toast_overlay.add_toast(Adw.Toast.new(_("Could not toggle {}'s mask").format(name)))
                 return
             self.flatpak_rows[index][7].set_visible(not is_masked)
+            self.lookup_action(f"mask{index}").set_enabled(is_masked)
+            self.lookup_action(f"unmask{index}").set_enabled(not is_masked)
 
         def onContinue(dialog, response):
             if response == "cancel":
@@ -745,5 +784,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         file_drop = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
         file_drop.connect("drop", self.drop_callback)
         self.scrolled_window.add_controller(file_drop)
+
+
 
 
