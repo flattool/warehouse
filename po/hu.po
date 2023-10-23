@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-23 03:04-0400\n"
-"PO-Revision-Date: 2023-10-23 07:04+0000\n"
+"PO-Revision-Date: 2023-10-23 07:07+0000\n"
 "Last-Translator: kramo <login@kramo.hu>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hu/>\n"
@@ -277,14 +277,12 @@ msgid "Disable Updates for {}?"
 msgstr "Kikapcsolja a(z) {} frissítését?"
 
 #: src/window.py:458
-#, fuzzy
-#| msgid ""
-#| "This Flatpak has reached its End of Life and will not receive any "
-#| "security updates"
 msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
-msgstr "Ez a Flatpak elavult és nem fog többé biztonsági frissítéseket kapni"
+msgstr ""
+"Ez maszkolja a(z) {} Flatpaket, biztosítva, hogy nem fog többé biztonsági "
+"vagy funkciófrissítéseket kapni."
 
 #: src/window.py:475
 msgid "Could not Run App"
