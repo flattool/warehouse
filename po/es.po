@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-23 03:36-0400\n"
-"PO-Revision-Date: 2023-10-23 10:42+0000\n"
-"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
+"PO-Revision-Date: 2023-10-23 12:28+0000\n"
+"Last-Translator: Racsu <me@racsu.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
 "Language: es\n"
@@ -146,7 +146,7 @@ msgstr "Enviar la configuración y el contenido de esta aplicación a la papeler
 #. EOL = End Of Life, meaning the app will not be updated
 #: src/window.py:301
 msgid "App EOL"
-msgstr "Fin de vida de la app"
+msgstr "Fin de soporte de la app"
 
 #: src/window.py:301 src/properties_window.py:26
 msgid ""
@@ -157,7 +157,7 @@ msgstr ""
 #. EOL = End Of Life, meaning the runtime will not be updated
 #: src/window.py:306
 msgid "Runtime EOL"
-msgstr "Fin de vida del tiempo de ejecución"
+msgstr "Fin del soporte para el tiempo de ejecución"
 
 #: src/window.py:306 src/properties_window.py:27
 msgid ""
@@ -569,7 +569,7 @@ msgstr "Eliminar"
 
 #: src/remotes_window.py:92
 msgid "Copy remote name"
-msgstr "Copiar el nombre remoto"
+msgstr "Copiar nombre del repositorio"
 
 #: src/remotes_window.py:95
 msgid "Remove {}"
@@ -652,8 +652,8 @@ msgstr "No hay repositorios"
 msgid ""
 "Warehouse cannot see the list of remotes or the system has no remotes added"
 msgstr ""
-"Warehouse no puede ver la lista de remotos o el sistema no tiene remotos "
-"añadidos"
+"Warehouse no puede ver la lista de repositorios o el sistema no tiene "
+"repositorios añadidos"
 
 #: src/popular_remotes_window.py:31
 msgid "Flatpak Repos"
@@ -661,7 +661,7 @@ msgstr "Repositorios Flatpak"
 
 #: src/popular_remotes.blp:19
 msgid "Choose from a list of popular remotes or add a new one."
-msgstr "Elija entre una lista de remotos populares o añada uno nuevo."
+msgstr "Elija entre una lista de repositorios populares o añada uno nuevo."
 
 #: src/popular_remotes.blp:36
 msgid "Add a Repo File"
@@ -669,7 +669,7 @@ msgstr "Añadir un archivo repo"
 
 #: src/popular_remotes.blp:40
 msgid "Add a Custom Remote"
-msgstr "Añadir un remoto personalizado"
+msgstr "Añadir un repositorio personalizado"
 
 #: src/orphans_window.py:78
 msgid "Could not install some apps"
@@ -736,7 +736,7 @@ msgstr "Mostrar tiempos de ejecución"
 
 #: src/filter.blp:65
 msgid "Filter Apps by Remotes"
-msgstr "Filtrar apps por remotos"
+msgstr "Filtrar apps por repositorios"
 
 #: src/filter.blp:69
 msgid "Filter Apps by Runtime"
