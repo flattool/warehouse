@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-23 02:25-0400\n"
-"PO-Revision-Date: 2023-10-21 10:14+0000\n"
-"Last-Translator: Amy/Atius <www.dappertransformer@proton.me>\n"
+"PO-Revision-Date: 2023-10-23 07:04+0000\n"
+"Last-Translator: Win <winsdominoes2018@gmail.com>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/th/>\n"
 "Language: th\n"
@@ -95,20 +95,16 @@ msgid "Keep"
 msgstr "เก็บไว้"
 
 #: src/window.py:167
-#, fuzzy
-#| msgid "Allow restoring app settings and content"
 msgid "Allow restoring these apps' settings and content"
-msgstr "อนุญาตให้กู้คืนการตั้งค่าแอปและเนื้อหา"
+msgstr "อนุญาตให้กู้คืนการตั้งค่าแอปและเนื้อหาเหล่านี้"
 
 #: src/window.py:168 src/window.py:241 src/orphans.blp:70
 msgid "Trash"
 msgstr "ทิ้ง"
 
 #: src/window.py:168
-#, fuzzy
-#| msgid "Send app settings and content to the trash"
 msgid "Send these apps' settings and content to the trash"
-msgstr "ส่งการตั้งค่าแอปและเนื้อหาไปที่ถังขยะ"
+msgstr "ส่งการตั้งค่าแอปและเนื้อหาเหล่านี้ไปที่ถังขยะ"
 
 #: src/window.py:195 src/window.py:259 src/window.py:426 src/window.py:457
 #: src/window.py:551 src/window.py:710 src/properties_window.py:87
@@ -136,47 +132,32 @@ msgid "It will not be possible to use {} after removal."
 msgstr "คุณจะไม่สามารถใช้ {} ได้หลังจากถอนการติดตั้ง"
 
 #: src/window.py:240
-#, fuzzy
-#| msgid "Allow restoring app settings and content"
 msgid "Allow restoring this app's settings and content"
-msgstr "อนุญาตให้กู้คืนการตั้งค่าแอปและเนื้อหา"
+msgstr "อนุญาตให้กู้คืนการตั้งค่าชองแอปและเนื้อหานี้"
 
 #: src/window.py:241
-#, fuzzy
-#| msgid "Send app settings and content to the trash"
 msgid "Send this app's settings and content to the trash"
-msgstr "ส่งการตั้งค่าแอปและเนื้อหาไปที่ถังขยะ"
+msgstr "ส่งการตั้งค่าแอปและเนื้อหาของแอปนี้ไปที่ถังขยะ"
 
 #: src/window.py:300
-#, fuzzy
-#| msgid "App ID"
 msgid "App EOL"
-msgstr "ไอดีชองแอป"
+msgstr "การสิ้นสุดอายุใช้งานของแอป"
 
 #: src/window.py:300 src/properties_window.py:26
-#, fuzzy
-#| msgid ""
-#| "This Flatpak has reached its End of Life and will not receive any "
-#| "security updates"
 msgid ""
 "{} has reached its End of Life and will not receive any security updates"
-msgstr "แอปนี้ได้ถึงการจบอัปเดตและจะไม่ได้รับอัปเดต"
+msgstr "{} ได้ถึงการจบอัปเดตและจะไม่ได้รับอัปเดต"
 
 #: src/window.py:304
-#, fuzzy
-#| msgid "Runtime"
 msgid "Runtime EOL"
-msgstr "รันไทม์"
+msgstr "การสิ้นอายุการใช้งานของรันไทม์"
 
 #: src/window.py:304 src/properties_window.py:27
-#, fuzzy
-#| msgid ""
-#| "This Flatpak has reached its End of Life and will not receive any "
-#| "security updates"
 msgid ""
 "{}'s runtime has reached its End of Life and will not receive any security "
 "updates"
-msgstr "แอปนี้ได้ถึงการจบอัปเดตและจะไม่ได้รับอัปเดต"
+msgstr ""
+"{} นี้ได้ถึงการสิ้นอายุการใช้งานและจะไม่ได้รับอัปเดตในด้านความปลอดภัยอีกต่อไป"
 
 #: src/window.py:308
 msgid "Updates Disabled"
