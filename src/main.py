@@ -118,7 +118,7 @@ class WarehouseApplication(Adw.Application):
             copyright='© 2023 Heliguy',
             license_type=Gtk.License.GPL_3_0_ONLY,
             website='https://github.com/flattool/warehouse',
-            support_url='https://matrix.to/#/#warehouse:beeper.com',
+            support_url='https://matrix.to/#/#warehouse-development:matrix.org',
             issue_url='https://github.com/flattool/warehouse/issues')
         about.present()
 
