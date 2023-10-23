@@ -8,6 +8,7 @@ def show_properties_window(widget, index, window):
     app_name = window.host_flatpaks[index][0]
     app_id = window.host_flatpaks[index][2]
     install_type = window.host_flatpaks[index][7]
+    app_ref = window.host_flatpaks[index][8]
     data_folder = window.user_data_path + app_id 
 
     properties_window = Adw.Window(title=_("{} Properties").format(window.host_flatpaks[index][0]))
@@ -53,11 +54,12 @@ def show_properties_window(widget, index, window):
         properties_window.close()
 
 
-
     if "runtime" in window.host_flatpaks[index][12]:
-        view_apps_button = Gtk.Button(icon_name="funnel-symbolic", tooltip_text=_("Show Apps Using this Runtime"))
-        view_apps_button.connect("clicked", viewAppsHandler)
-        properties_header_bar.pack_start(view_apps_button)
+        dependant_runtimes = my_utils.getDependantRuntimes()
+        if app_ref in dependant_runtimes:
+            view_apps_button = Gtk.Button(icon_name="funnel-symbolic", tooltip_text=_("Show Apps Using this Runtime"))
+            view_apps_button.connect("clicked", viewAppsHandler)
+            properties_header_bar.pack_start(view_apps_button)
 
 
     def key_handler(_a, event, _c, _d):
@@ -76,7 +78,7 @@ def show_properties_window(widget, index, window):
             user_data_list.remove(user_data_row)
             user_data_list.append(Adw.ActionRow(title="No User Data"))
         else:
-            properties_toast_overlay.add_toast(Adw.Toast.new(_("Can't trash data")))
+            properties_toast_overlay.add_toast(Adw.Toast.new(_("Could not trash data")))
 
     def clean_button_handler(_widget):
         dialog = Adw.MessageDialog.new(window, _("Send {}'s User Data to the Trash?").format(app_name))
@@ -93,7 +95,7 @@ def show_properties_window(widget, index, window):
         try:
             Gio.AppInfo.launch_default_for_uri(f"file://{path}", None)
         except GLib.GError:
-            properties_toast_overlay.add_toast(Adw.Toast.new(_("Can't open folder")))
+            properties_toast_overlay.add_toast(Adw.Toast.new(_("Could not open folder")))
 
     def copy_button_handler(widget, title, to_copy):
         window.clipboard.set(to_copy)
@@ -179,6 +181,7 @@ def show_properties_window(widget, index, window):
             mask_banner.set_revealed(False)
             window.flatpak_rows[index][7].set_visible(False) # Sets the mask label invisble
 
+    # properties_window.set_default_size(8, 8)
     if app_id in system_mask_list or app_id in user_mask_list:
         mask_banner.set_revealed(True)
         mask_banner.set_button_label(_("Enable Updates"))
