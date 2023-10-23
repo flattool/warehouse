@@ -7,10 +7,10 @@ assignees: ''
 
 ---
 
-[ ] I have read the README
-[ ] I am using the latest version of Warehouse
-[ ] I am using the Flatpak package of Warehouse
-[ ] I have not found any other opened issues on the same topic
+- [ ] I have read the README
+- [ ] I am using the latest version of Warehouse
+- [ ] I am using the Flatpak package of Warehouse
+- [ ] I have not found any other opened issues on the same topic
 
 ## Describe the issue in detail
 
