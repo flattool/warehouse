@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 03:07-0400\n"
+"POT-Creation-Date: 2023-10-23 03:36-0400\n"
 "PO-Revision-Date: 2023-10-23 07:36+0000\n"
 "Last-Translator: Win <winsdominoes2018@gmail.com>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
@@ -227,7 +227,7 @@ msgstr "ระงับการอัพเดท"
 msgid "Enable Updates"
 msgstr "เปิดการอัพเดท"
 
-#: src/window.py:379 src/properties_window.py:133
+#: src/window.py:379 src/properties_window.py:133 src/orphans_window.py:217
 msgid "Open User Data Folder"
 msgstr "เปิดโฟลเดอร์ข้อมูลผู้ใช้"
 
@@ -243,7 +243,7 @@ msgstr "ดาวน์เกรด"
 msgid "Could not open folder"
 msgstr "ไม่สามารถเปิดโฟลเดอร์ได้"
 
-#: src/window.py:420 src/window.py:545
+#: src/window.py:420 src/window.py:545 src/properties_window.py:81
 msgid "Could not trash user data"
 msgstr "ไม่สามารถทิ้งข้อมูลผู้ใช้ได้"
 
@@ -350,15 +350,21 @@ msgid "File type not supported"
 msgstr "ไม่รองรับประเภทไฟล์"
 
 #: src/window.blp:12
-msgid "Refresh the List"
+#, fuzzy
+#| msgid "Refresh the List"
+msgid "Refresh List"
 msgstr "รีเฟรชรายการแอป"
 
 #: src/window.blp:18 src/orphans.blp:14
-msgid "Search the List"
+#, fuzzy
+#| msgid "Search the List"
+msgid "Search List"
 msgstr "ค้นหารายการ"
 
 #: src/window.blp:24
-msgid "Filter the List"
+#, fuzzy
+#| msgid "Filter the List"
+msgid "Filter List"
 msgstr "กรองรายการแอป"
 
 #: src/window.blp:30
@@ -476,10 +482,6 @@ msgstr "เกี่ยวกับ {}"
 #: src/properties_window.py:60
 msgid "Show Apps Using this Runtime"
 msgstr "แสดงแอปที่ใช้รันไทม์นี้"
-
-#: src/properties_window.py:81
-msgid "Could not trash data"
-msgstr "ไม่สามารถทิ้งข้อมูลได้"
 
 #: src/properties_window.py:102 src/remotes_window.py:72
 msgid "Copied {}"
@@ -631,7 +633,7 @@ msgstr "แอปและรันไทม์เบต้าของ KDE"
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr "พื้นที่จัดเก็บข้อมูลกลางของ WebKit Developer และ Runtime SDK"
 
-#: src/remotes.blp:13
+#: src/remotes.blp:13 src/popular_remotes.blp:18
 msgid "Add Remote"
 msgstr "เพิ่มรีโมต"
 
@@ -647,10 +649,6 @@ msgstr "แวร์เฮาส์ไม่สามารถค้นหาร
 #: src/popular_remotes_window.py:31
 msgid "Flatpak Repos"
 msgstr "Repo ของแอป"
-
-#: src/popular_remotes.blp:18
-msgid "Add a Remote"
-msgstr "เพิ่มรีโมต"
 
 #: src/popular_remotes.blp:19
 msgid "Choose from a list of popular remotes or add a new one."
@@ -702,8 +700,8 @@ msgid "Could not manage data"
 msgstr "ไม่สามารถจัดการข้อมูลได้"
 
 #: src/orphans.blp:19
-msgid "Open the User Data Folder"
-msgstr "เปิดโฟลเดอร์ข้อมูลผู้ใช้"
+msgid "Open Data Folder"
+msgstr "เปิดโฟลเดอร์ข้อมูล"
 
 #: src/orphans.blp:57
 msgid "No Leftover Data"
@@ -769,6 +767,15 @@ msgstr ""
 "การดำเนินการนี้จะถอนการติดตั้งเวอร์ชันปัจจุบันและติดตั้งเวอร์ชันที่เลือกแทน "
 "โปรดทราบว่าการดาวน์เกรดอาจทำให้เกิดปัญหาได้"
 
+#~ msgid "Could not trash data"
+#~ msgstr "ไม่สามารถทิ้งข้อมูลได้"
+
+#~ msgid "Add a Remote"
+#~ msgstr "เพิ่มรีโมต"
+
+#~ msgid "Open the User Data Folder"
+#~ msgstr "เปิดโฟลเดอร์ข้อมูลผู้ใช้"
+
 #, fuzzy
 #~| msgid "Send {}'s User Data to the Trash?"
 #~ msgid "Send {}'s User Data to the trash?"
@@ -825,9 +832,6 @@ msgstr ""
 
 #~ msgid "Can't trash data"
 #~ msgstr "ไม่สามารถลบข้อมูลไปที่ถังขยะได้"
-
-#~ msgid "Open Data Folder"
-#~ msgstr "เปิดโฟลเดอร์ข้อมูล"
 
 #~ msgid "Send User Data to the Trash"
 #~ msgstr "ลบข้อมูลไปถังขยะ"

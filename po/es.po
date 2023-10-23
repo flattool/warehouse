@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 03:07-0400\n"
+"POT-Creation-Date: 2023-10-23 03:36-0400\n"
 "PO-Revision-Date: 2023-10-22 20:31+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
@@ -257,7 +257,7 @@ msgstr ""
 msgid "Enable Updates"
 msgstr ""
 
-#: src/window.py:379 src/properties_window.py:133
+#: src/window.py:379 src/properties_window.py:133 src/orphans_window.py:217
 #, fuzzy
 #| msgid "Open the User Data Folder"
 msgid "Open User Data Folder"
@@ -279,7 +279,7 @@ msgstr "Revertir"
 msgid "Could not open folder"
 msgstr "No se puede abrir la carpeta"
 
-#: src/window.py:420 src/window.py:545
+#: src/window.py:420 src/window.py:545 src/properties_window.py:81
 #, fuzzy
 #| msgid "Could not manage data"
 msgid "Could not trash user data"
@@ -400,17 +400,20 @@ msgstr "Tipo de archivo no compatible"
 #: src/window.blp:12
 #, fuzzy
 #| msgid "Refresh the List of Installed Apps"
-msgid "Refresh the List"
+msgid "Refresh List"
 msgstr "Refrescar la lista de aplicaciones instaladas"
 
 #: src/window.blp:18 src/orphans.blp:14
-msgid "Search the List"
-msgstr ""
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "Search"
+msgid "Search List"
+msgstr "Buscar"
 
 #: src/window.blp:24
 #, fuzzy
 #| msgid "Filter Apps List"
-msgid "Filter the List"
+msgid "Filter List"
 msgstr "Filtrar la lista de aplicaciones"
 
 #: src/window.blp:30
@@ -552,12 +555,6 @@ msgstr "Propiedades de {}"
 #: src/properties_window.py:60
 msgid "Show Apps Using this Runtime"
 msgstr "Mostrar aplicaciones que usan este tiempo de ejecución"
-
-#: src/properties_window.py:81
-#, fuzzy
-#| msgid "Could not manage data"
-msgid "Could not trash data"
-msgstr "No se pueden gestionar los datos"
 
 #: src/properties_window.py:102 src/remotes_window.py:72
 msgid "Copied {}"
@@ -713,7 +710,7 @@ msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr ""
 "Repositorio central del SDK de desarrollo y tiempo de ejecución de WebKit"
 
-#: src/remotes.blp:13
+#: src/remotes.blp:13 src/popular_remotes.blp:18
 msgid "Add Remote"
 msgstr "Agregar repositorio"
 
@@ -733,10 +730,6 @@ msgstr ""
 #| msgid "Flatpaks Repos"
 msgid "Flatpak Repos"
 msgstr "Repositorios Flatpaks"
-
-#: src/popular_remotes.blp:18
-msgid "Add a Remote"
-msgstr "Añadir un remoto"
 
 #: src/popular_remotes.blp:19
 msgid "Choose from a list of popular remotes or add a new one."
@@ -794,8 +787,8 @@ msgid "Could not manage data"
 msgstr "No se pueden gestionar los datos"
 
 #: src/orphans.blp:19
-msgid "Open the User Data Folder"
-msgstr "Abrir la carpeta de datos de usuario"
+msgid "Open Data Folder"
+msgstr "Abrir carpeta de datos"
 
 #: src/orphans.blp:57
 msgid "No Leftover Data"
@@ -869,6 +862,17 @@ msgstr ""
 "Tenga en cuenta que la desinstalación puede causar problemas."
 
 #, fuzzy
+#~| msgid "Could not manage data"
+#~ msgid "Could not trash data"
+#~ msgstr "No se pueden gestionar los datos"
+
+#~ msgid "Add a Remote"
+#~ msgstr "Añadir un remoto"
+
+#~ msgid "Open the User Data Folder"
+#~ msgstr "Abrir la carpeta de datos de usuario"
+
+#, fuzzy
 #~| msgid "Send {}'s User Data to the Trash?"
 #~ msgid "Send {}'s User Data to the trash?"
 #~ msgstr "¿Enviar los datos de usuario de {} a la papelera?"
@@ -926,9 +930,6 @@ msgstr ""
 
 #~ msgid "Can't trash data"
 #~ msgstr "No se pueden eliminar los datos"
-
-#~ msgid "Open Data Folder"
-#~ msgstr "Abrir carpeta de datos"
 
 #~ msgid "Send User Data to the Trash"
 #~ msgstr "Enviar datos de usuario a la papelera"

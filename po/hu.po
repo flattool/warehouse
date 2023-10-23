@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 03:07-0400\n"
+"POT-Creation-Date: 2023-10-23 03:36-0400\n"
 "PO-Revision-Date: 2023-10-23 07:36+0000\n"
 "Last-Translator: kramo <login@kramo.hu>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
@@ -232,7 +232,7 @@ msgstr "Frissítések kikapcsolása"
 msgid "Enable Updates"
 msgstr "Frissítések engedélyezése"
 
-#: src/window.py:379 src/properties_window.py:133
+#: src/window.py:379 src/properties_window.py:133 src/orphans_window.py:217
 msgid "Open User Data Folder"
 msgstr "Adatmappa megnyitása"
 
@@ -248,7 +248,7 @@ msgstr "Visszafejlesztés"
 msgid "Could not open folder"
 msgstr "Nem lehet megnyitni a mappát"
 
-#: src/window.py:420 src/window.py:545
+#: src/window.py:420 src/window.py:545 src/properties_window.py:81
 msgid "Could not trash user data"
 msgstr "Az adatok kukázása sikertelen"
 
@@ -357,15 +357,21 @@ msgid "File type not supported"
 msgstr "A fájl típus nem támogatott"
 
 #: src/window.blp:12
-msgid "Refresh the List"
+#, fuzzy
+#| msgid "Refresh the List"
+msgid "Refresh List"
 msgstr "Lista frissítése"
 
 #: src/window.blp:18 src/orphans.blp:14
-msgid "Search the List"
+#, fuzzy
+#| msgid "Search the List"
+msgid "Search List"
 msgstr "Keresés a listában"
 
 #: src/window.blp:24
-msgid "Filter the List"
+#, fuzzy
+#| msgid "Filter the List"
+msgid "Filter List"
 msgstr "Lista szűrése"
 
 #: src/window.blp:30
@@ -483,10 +489,6 @@ msgstr "{} tulajdonságai"
 #: src/properties_window.py:60
 msgid "Show Apps Using this Runtime"
 msgstr "Applikációk megjelenítése, amelyek ezt a futtatókörnyezetet használják"
-
-#: src/properties_window.py:81
-msgid "Could not trash data"
-msgstr "Az adatok kukázása sikertelen"
 
 #: src/properties_window.py:102 src/remotes_window.py:72
 msgid "Copied {}"
@@ -640,7 +642,7 @@ msgstr "Béta KDE applikációk és futtatókörnyezetek"
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr "A WebKit Developer futtatókörnyezet és SDK központi tárolója"
 
-#: src/remotes.blp:13
+#: src/remotes.blp:13 src/popular_remotes.blp:18
 msgid "Add Remote"
 msgstr "Tároló hozzáadása"
 
@@ -657,10 +659,6 @@ msgstr ""
 #: src/popular_remotes_window.py:31
 msgid "Flatpak Repos"
 msgstr "Flatpak tárolók"
-
-#: src/popular_remotes.blp:18
-msgid "Add a Remote"
-msgstr "Tároló hozzáadása"
 
 #: src/popular_remotes.blp:19
 msgid "Choose from a list of popular remotes or add a new one."
@@ -714,7 +712,7 @@ msgid "Could not manage data"
 msgstr "Az adatok kezelése sikertelen"
 
 #: src/orphans.blp:19
-msgid "Open the User Data Folder"
+msgid "Open Data Folder"
 msgstr "Adatmappa megnyitása"
 
 #: src/orphans.blp:57
@@ -781,6 +779,15 @@ msgstr ""
 "Eltávolítja a jelenlegi kiadást és telepíti a kiválasztottat. A "
 "visszafejlesztés problémákkal járhat."
 
+#~ msgid "Could not trash data"
+#~ msgstr "Az adatok kukázása sikertelen"
+
+#~ msgid "Add a Remote"
+#~ msgstr "Tároló hozzáadása"
+
+#~ msgid "Open the User Data Folder"
+#~ msgstr "Adatmappa megnyitása"
+
 #~ msgid "Send {}'s User Data to the trash?"
 #~ msgstr "Kukázza a(z) {} adatait?"
 
@@ -837,9 +844,6 @@ msgstr ""
 
 #~ msgid "Can't trash data"
 #~ msgstr "Az adatok kukázása sikertelen"
-
-#~ msgid "Open Data Folder"
-#~ msgstr "Adatmappa megnyitása"
 
 #~ msgid "Send User Data to the Trash"
 #~ msgstr "Felhasználói adatok kukázása"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 03:07-0400\n"
+"POT-Creation-Date: 2023-10-23 03:36-0400\n"
 "PO-Revision-Date: 2023-10-22 06:04+0000\n"
 "Last-Translator: Maxim Therrien <maxim@acerspyro.ca>\n"
 "Language-Team: French <https://weblate.fyralabs.com/projects/flattool/"
@@ -257,7 +257,7 @@ msgstr ""
 msgid "Enable Updates"
 msgstr ""
 
-#: src/window.py:379 src/properties_window.py:133
+#: src/window.py:379 src/properties_window.py:133 src/orphans_window.py:217
 msgid "Open User Data Folder"
 msgstr ""
 
@@ -277,7 +277,7 @@ msgstr ""
 msgid "Could not open folder"
 msgstr "Impossible de lancer l'application"
 
-#: src/window.py:420 src/window.py:545
+#: src/window.py:420 src/window.py:545 src/properties_window.py:81
 #, fuzzy
 #| msgid "Can't trash user data for {}"
 msgid "Could not trash user data"
@@ -401,17 +401,20 @@ msgstr "Type de fichier non pris en charge"
 #: src/window.blp:12
 #, fuzzy
 #| msgid "Refresh the List of Installed Apps"
-msgid "Refresh the List"
+msgid "Refresh List"
 msgstr "Rafraîchir la liste des applications installées"
 
 #: src/window.blp:18 src/orphans.blp:14
-msgid "Search the List"
-msgstr ""
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "Search"
+msgid "Search List"
+msgstr "Recherche"
 
 #: src/window.blp:24
 #, fuzzy
 #| msgid "Filter Apps List"
-msgid "Filter the List"
+msgid "Filter List"
 msgstr "Filtrer la liste des applications"
 
 #: src/window.blp:30
@@ -546,12 +549,6 @@ msgstr ""
 #: src/properties_window.py:60
 msgid "Show Apps Using this Runtime"
 msgstr ""
-
-#: src/properties_window.py:81
-#, fuzzy
-#| msgid "Could not install app"
-msgid "Could not trash data"
-msgstr "L'application n'a pas pu être installée"
 
 #: src/properties_window.py:102 src/remotes_window.py:72
 msgid "Copied {}"
@@ -703,7 +700,7 @@ msgstr ""
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr ""
 
-#: src/remotes.blp:13
+#: src/remotes.blp:13 src/popular_remotes.blp:18
 msgid "Add Remote"
 msgstr ""
 
@@ -721,10 +718,6 @@ msgstr ""
 #| msgid "Flatpaks"
 msgid "Flatpak Repos"
 msgstr "Flatpaks"
-
-#: src/popular_remotes.blp:18
-msgid "Add a Remote"
-msgstr ""
 
 #: src/popular_remotes.blp:19
 msgid "Choose from a list of popular remotes or add a new one."
@@ -778,7 +771,7 @@ msgid "Could not manage data"
 msgstr ""
 
 #: src/orphans.blp:19
-msgid "Open the User Data Folder"
+msgid "Open Data Folder"
 msgstr ""
 
 #: src/orphans.blp:57
@@ -844,6 +837,11 @@ msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
+
+#, fuzzy
+#~| msgid "Could not install app"
+#~ msgid "Could not trash data"
+#~ msgstr "L'application n'a pas pu être installée"
 
 #, fuzzy
 #~| msgid "Send Selected Apps' Data to the Trash"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 03:07-0400\n"
+"POT-Creation-Date: 2023-10-23 03:36-0400\n"
 "PO-Revision-Date: 2023-10-21 09:35+0000\n"
 "Last-Translator: eryn <hericiumvevo@getcryst.al>\n"
 "Language-Team: Polish <https://weblate.fyralabs.com/projects/flattool/"
@@ -232,7 +232,7 @@ msgstr ""
 msgid "Enable Updates"
 msgstr ""
 
-#: src/window.py:379 src/properties_window.py:133
+#: src/window.py:379 src/properties_window.py:133 src/orphans_window.py:217
 msgid "Open User Data Folder"
 msgstr ""
 
@@ -248,7 +248,7 @@ msgstr ""
 msgid "Could not open folder"
 msgstr ""
 
-#: src/window.py:420 src/window.py:545
+#: src/window.py:420 src/window.py:545 src/properties_window.py:81
 #, fuzzy
 #| msgid "Find and trash leftover user data"
 msgid "Could not trash user data"
@@ -357,15 +357,15 @@ msgid "File type not supported"
 msgstr ""
 
 #: src/window.blp:12
-msgid "Refresh the List"
+msgid "Refresh List"
 msgstr ""
 
 #: src/window.blp:18 src/orphans.blp:14
-msgid "Search the List"
+msgid "Search List"
 msgstr ""
 
 #: src/window.blp:24
-msgid "Filter the List"
+msgid "Filter List"
 msgstr ""
 
 #: src/window.blp:30
@@ -480,10 +480,6 @@ msgstr ""
 
 #: src/properties_window.py:60
 msgid "Show Apps Using this Runtime"
-msgstr ""
-
-#: src/properties_window.py:81
-msgid "Could not trash data"
 msgstr ""
 
 #: src/properties_window.py:102 src/remotes_window.py:72
@@ -636,7 +632,7 @@ msgstr ""
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr ""
 
-#: src/remotes.blp:13
+#: src/remotes.blp:13 src/popular_remotes.blp:18
 msgid "Add Remote"
 msgstr ""
 
@@ -654,10 +650,6 @@ msgstr ""
 #| msgid "Flatpaks"
 msgid "Flatpak Repos"
 msgstr "Flatpaki"
-
-#: src/popular_remotes.blp:18
-msgid "Add a Remote"
-msgstr ""
 
 #: src/popular_remotes.blp:19
 msgid "Choose from a list of popular remotes or add a new one."
@@ -709,7 +701,7 @@ msgid "Could not manage data"
 msgstr ""
 
 #: src/orphans.blp:19
-msgid "Open the User Data Folder"
+msgid "Open Data Folder"
 msgstr ""
 
 #: src/orphans.blp:57
