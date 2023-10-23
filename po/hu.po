@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-23 02:25-0400\n"
-"PO-Revision-Date: 2023-10-21 10:58+0000\n"
+"PO-Revision-Date: 2023-10-23 07:04+0000\n"
 "Last-Translator: kramo <login@kramo.hu>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hu/>\n"
@@ -96,21 +96,17 @@ msgid "Keep"
 msgstr "Megtart"
 
 #: src/window.py:167
-#, fuzzy
-#| msgid "Allow restoring app settings and content"
 msgid "Allow restoring these apps' settings and content"
 msgstr ""
-"Engedélyezi az applikáció beállításainak és tartalmának helyreállítását"
+"Engedélyezi az applikációk beállításainak és tartalmának helyreállítását"
 
 #: src/window.py:168 src/window.py:241 src/orphans.blp:70
 msgid "Trash"
 msgstr "Kuka"
 
 #: src/window.py:168
-#, fuzzy
-#| msgid "Send app settings and content to the trash"
 msgid "Send these apps' settings and content to the trash"
-msgstr "Az applikáció beállításainak és tartalmának kukázása"
+msgstr "Az applikációk beállításainak és tartalmának kukázása"
 
 #: src/window.py:195 src/window.py:259 src/window.py:426 src/window.py:457
 #: src/window.py:551 src/window.py:710 src/properties_window.py:87
@@ -138,58 +134,41 @@ msgid "It will not be possible to use {} after removal."
 msgstr "Nem lesz lehetséges a(z) {} használata az eltávolítás után."
 
 #: src/window.py:240
-#, fuzzy
-#| msgid "Allow restoring app settings and content"
 msgid "Allow restoring this app's settings and content"
-msgstr ""
-"Engedélyezi az applikáció beállításainak és tartalmának helyreállítását"
+msgstr "Engedélyezi az applikáció beállításainak és tartalmának helyreállítását"
 
 #: src/window.py:241
-#, fuzzy
-#| msgid "Send app settings and content to the trash"
 msgid "Send this app's settings and content to the trash"
 msgstr "Az applikáció beállításainak és tartalmának kukázása"
 
 #: src/window.py:300
-#, fuzzy
-#| msgid "App ID"
 msgid "App EOL"
-msgstr "Azonosító"
+msgstr "Az applikáció elavult"
 
 #: src/window.py:300 src/properties_window.py:26
-#, fuzzy
-#| msgid ""
-#| "This Flatpak has reached its End of Life and will not receive any "
-#| "security updates"
 msgid ""
 "{} has reached its End of Life and will not receive any security updates"
-msgstr "Ez a Flatpak elavult és nem fog többé biztonsági frissítéseket kapni"
+msgstr "A(z) {} elavult és nem fog többé biztonsági frissítéseket kapni"
 
 #: src/window.py:304
-#, fuzzy
-#| msgid "Runtime"
 msgid "Runtime EOL"
-msgstr "Futtatókörnyezet"
+msgstr "Futtatókörnyezet elavult"
 
 #: src/window.py:304 src/properties_window.py:27
-#, fuzzy
-#| msgid ""
-#| "This Flatpak has reached its End of Life and will not receive any "
-#| "security updates"
 msgid ""
 "{}'s runtime has reached its End of Life and will not receive any security "
 "updates"
-msgstr "Ez a Flatpak elavult és nem fog többé biztonsági frissítéseket kapni"
+msgstr ""
+"A(z) {} futtatókörnyezete elavult és nem fog többé biztonsági frissítéseket "
+"kapni"
 
 #: src/window.py:308
 msgid "Updates Disabled"
-msgstr ""
+msgstr "Frissítések kikapcsolva"
 
 #: src/window.py:308 src/properties_window.py:28
-#, fuzzy
-#| msgid "This Flatpak is masked and will not be updated"
 msgid "{} is masked and will not be updated"
-msgstr "Ez a Flatpak maszkolva van és nem lesz frissítve"
+msgstr "A(z) {} maszkolva van és nem lesz frissítve"
 
 #. ^ This is up here as we need to add this to flatpak_rows regardless of if its visible or not
 #: src/window.py:313 src/properties_window.py:159
@@ -239,54 +218,42 @@ msgid "Opened {}"
 msgstr "{} megnyitva"
 
 #: src/window.py:350
-#, fuzzy
-#| msgid "Open {}"
 msgid "Open"
-msgstr "{} megnyitása"
+msgstr "Megnyitás"
 
 #: src/window.py:358 src/window.py:459 src/downgrade.blp:40
 msgid "Disable Updates"
-msgstr ""
+msgstr "Frissítések kikapcsolása"
 
 #: src/window.py:363 src/properties_window.py:187
 msgid "Enable Updates"
-msgstr ""
+msgstr "Frissítések engedélyezése"
 
 #: src/window.py:377 src/properties_window.py:134
-#, fuzzy
-#| msgid "Open the User Data Folder"
 msgid "Open User Data Folder"
 msgstr "Adatmappa megnyitása"
 
 #: src/window.py:382 src/properties_window.py:139
-#, fuzzy
-#| msgid "Trashed user data"
 msgid "Trash User Data"
-msgstr "Felhasználói adatok kukázva"
+msgstr "Felhasználói adatok kukázása"
 
 #: src/window.py:389 src/downgrade.blp:21
 msgid "Downgrade"
 msgstr "Visszafejlesztés"
 
 #: src/window.py:410 src/properties_window.py:98 src/orphans_window.py:171
-#, fuzzy
-#| msgid "Can't open folder"
 msgid "Could not open folder"
 msgstr "Nem lehet megnyitni a mappát"
 
 #: src/window.py:418 src/window.py:543
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not trash user data"
-msgstr "Az adatok kezelése sikertelen"
+msgstr "Az adatok kukázása sikertelen"
 
 #: src/window.py:422 src/window.py:545 src/properties_window.py:77
 msgid "Trashed user data"
 msgstr "Felhasználói adatok kukázva"
 
 #: src/window.py:424
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
 msgid "Send {}'s User Data to the trash?"
 msgstr "Kukázza a(z) {} adatait?"
 
@@ -299,16 +266,12 @@ msgid "Trash Data"
 msgstr "Adatok kukázása"
 
 #: src/window.py:440 src/downgrade_window.py:108
-#, fuzzy
-#| msgid "No user data for {}"
 msgid "Could disable updates for {}"
-msgstr "A(z) {} nem tartalmaz felhasználói adatokat"
+msgstr "A(z) {} frissítéseinek kikapcsolása sikertelen"
 
 #: src/window.py:455
-#, fuzzy
-#| msgid "No user data for {}"
 msgid "Disable Updates for {}?"
-msgstr "A(z) {} nem tartalmaz felhasználói adatokat"
+msgstr "Kikapcsolja a(z) {} frissítését?"
 
 #: src/window.py:456
 #, fuzzy
