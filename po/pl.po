@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 03:04-0400\n"
+"POT-Creation-Date: 2023-10-23 03:07-0400\n"
 "PO-Revision-Date: 2023-10-21 09:35+0000\n"
 "Last-Translator: eryn <hericiumvevo@getcryst.al>\n"
 "Language-Team: Polish <https://weblate.fyralabs.com/projects/flattool/"
@@ -258,8 +258,8 @@ msgstr "Znajdź i przenieś do kosza pozostałe dane użytkownika"
 msgid "Trashed user data"
 msgstr ""
 
-#: src/window.py:426
-msgid "Send {}'s User Data to the trash?"
+#: src/window.py:426 src/properties_window.py:84
+msgid "Send {}'s User Data to the Trash?"
 msgstr ""
 
 #: src/window.py:427 src/properties_window.py:85
@@ -484,10 +484,6 @@ msgstr ""
 
 #: src/properties_window.py:81
 msgid "Could not trash data"
-msgstr ""
-
-#: src/properties_window.py:84
-msgid "Send {}'s User Data to the Trash?"
 msgstr ""
 
 #: src/properties_window.py:102 src/remotes_window.py:72

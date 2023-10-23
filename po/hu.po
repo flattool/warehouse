@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 03:04-0400\n"
+"POT-Creation-Date: 2023-10-23 03:07-0400\n"
 "PO-Revision-Date: 2023-10-23 07:07+0000\n"
 "Last-Translator: kramo <login@kramo.hu>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
@@ -256,8 +256,8 @@ msgstr "Az adatok kukázása sikertelen"
 msgid "Trashed user data"
 msgstr "Felhasználói adatok kukázva"
 
-#: src/window.py:426
-msgid "Send {}'s User Data to the trash?"
+#: src/window.py:426 src/properties_window.py:84
+msgid "Send {}'s User Data to the Trash?"
 msgstr "Kukázza a(z) {} adatait?"
 
 #: src/window.py:427 src/properties_window.py:85
@@ -517,10 +517,6 @@ msgstr "Applikációk megjelenítése, amelyek ezt a futtatókörnyezetet haszn�
 #| msgid "Could not manage data"
 msgid "Could not trash data"
 msgstr "Az adatok kezelése sikertelen"
-
-#: src/properties_window.py:84
-msgid "Send {}'s User Data to the Trash?"
-msgstr "Kukázza a(z) {} adatait?"
 
 #: src/properties_window.py:102 src/remotes_window.py:72
 msgid "Copied {}"
@@ -826,6 +822,9 @@ msgid ""
 msgstr ""
 "Eltávolítja a jelenlegi kiadást és telepíti a kiválasztottat. A "
 "visszafejlesztés problémákkal járhat."
+
+#~ msgid "Send {}'s User Data to the trash?"
+#~ msgstr "Kukázza a(z) {} adatait?"
 
 #~ msgid "EOL"
 #~ msgstr "Elavult"

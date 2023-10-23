@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 03:04-0400\n"
+"POT-Creation-Date: 2023-10-23 03:07-0400\n"
 "PO-Revision-Date: 2023-10-22 20:31+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
@@ -289,10 +289,8 @@ msgstr "No se pueden gestionar los datos"
 msgid "Trashed user data"
 msgstr "Datos de usuario borrados"
 
-#: src/window.py:426
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
-msgid "Send {}'s User Data to the trash?"
+#: src/window.py:426 src/properties_window.py:84
+msgid "Send {}'s User Data to the Trash?"
 msgstr "¿Enviar los datos de usuario de {} a la papelera?"
 
 #: src/window.py:427 src/properties_window.py:85
@@ -560,10 +558,6 @@ msgstr "Mostrar aplicaciones que usan este tiempo de ejecución"
 #| msgid "Could not manage data"
 msgid "Could not trash data"
 msgstr "No se pueden gestionar los datos"
-
-#: src/properties_window.py:84
-msgid "Send {}'s User Data to the Trash?"
-msgstr "¿Enviar los datos de usuario de {} a la papelera?"
 
 #: src/properties_window.py:102 src/remotes_window.py:72
 msgid "Copied {}"
@@ -873,6 +867,11 @@ msgid ""
 msgstr ""
 "Esto desinstalará la versión actual e instalará la elegida en su lugar. "
 "Tenga en cuenta que la desinstalación puede causar problemas."
+
+#, fuzzy
+#~| msgid "Send {}'s User Data to the Trash?"
+#~ msgid "Send {}'s User Data to the trash?"
+#~ msgstr "¿Enviar los datos de usuario de {} a la papelera?"
 
 #~ msgid "EOL"
 #~ msgstr "EOL"
