@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-23 03:36-0400\n"
-"PO-Revision-Date: 2023-10-23 07:36+0000\n"
+"PO-Revision-Date: 2023-10-23 10:42+0000\n"
 "Last-Translator: Win <winsdominoes2018@gmail.com>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/th/>\n"
@@ -350,20 +350,14 @@ msgid "File type not supported"
 msgstr "ไม่รองรับประเภทไฟล์"
 
 #: src/window.blp:12
-#, fuzzy
-#| msgid "Refresh the List"
 msgid "Refresh List"
 msgstr "รีเฟรชรายการแอป"
 
 #: src/window.blp:18 src/orphans.blp:14
-#, fuzzy
-#| msgid "Search the List"
 msgid "Search List"
 msgstr "ค้นหารายการ"
 
 #: src/window.blp:24
-#, fuzzy
-#| msgid "Filter the List"
 msgid "Filter List"
 msgstr "กรองรายการแอป"
 
