@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 02:25-0400\n"
+"POT-Creation-Date: 2023-10-23 03:04-0400\n"
 "PO-Revision-Date: 2023-10-21 22:37+0000\n"
 "Last-Translator: Runar <runarcn@proton.me>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.fyralabs.com/projects/"
@@ -113,15 +113,15 @@ msgstr "Papirkurv"
 msgid "Send these apps' settings and content to the trash"
 msgstr "Slett programinnstillinger og programinnhold"
 
-#: src/window.py:195 src/window.py:259 src/window.py:426 src/window.py:457
-#: src/window.py:551 src/window.py:710 src/properties_window.py:87
+#: src/window.py:195 src/window.py:259 src/window.py:428 src/window.py:459
+#: src/window.py:553 src/window.py:712 src/properties_window.py:87
 #: src/remotes_window.py:59 src/remotes_window.py:138 src/remotes_window.py:285
 #: src/orphans_window.py:108 src/orphans_window.py:162 src/filter.blp:17
 #: src/downgrade.blp:16
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/window.py:196 src/window.py:260 src/window.py:354
+#: src/window.py:196 src/window.py:260 src/window.py:356
 msgid "Uninstall"
 msgstr "Avinstaller"
 
@@ -150,223 +150,225 @@ msgstr "Tillat gjenopprettelse av programinnstillinger og innhold"
 msgid "Send this app's settings and content to the trash"
 msgstr "Slett programinnstillinger og programinnhold"
 
-#: src/window.py:300
+#. EOL = End Of Life, meaning the app will not be updated
+#: src/window.py:301
 msgid "App EOL"
 msgstr ""
 
-#: src/window.py:300 src/properties_window.py:26
+#: src/window.py:301 src/properties_window.py:26
 msgid ""
 "{} has reached its End of Life and will not receive any security updates"
 msgstr ""
 
-#: src/window.py:304
+#. EOL = End Of Life, meaning the runtime will not be updated
+#: src/window.py:306
 msgid "Runtime EOL"
 msgstr ""
 
-#: src/window.py:304 src/properties_window.py:27
+#: src/window.py:306 src/properties_window.py:27
 msgid ""
 "{}'s runtime has reached its End of Life and will not receive any security "
 "updates"
 msgstr ""
 
-#: src/window.py:308
+#: src/window.py:310
 msgid "Updates Disabled"
 msgstr ""
 
-#: src/window.py:308 src/properties_window.py:28
+#: src/window.py:310 src/properties_window.py:28
 msgid "{} is masked and will not be updated"
 msgstr ""
 
 #. ^ This is up here as we need to add this to flatpak_rows regardless of if its visible or not
-#: src/window.py:313 src/properties_window.py:159
+#: src/window.py:315 src/properties_window.py:158
 msgid "View Properties"
 msgstr "Vis Egenskaper"
 
 #. {Row visibility, Row selected, the row itself, properties, menu button, select, the flatpak row from `flatpak list`, mask label, the dropdown menu model}
 #.
-#: src/window.py:334
+#: src/window.py:336
 msgid "Copied name"
 msgstr "Navnet er kopiert"
 
-#: src/window.py:335
+#: src/window.py:337
 msgid "Copy Name"
 msgstr "Kopier navn"
 
-#: src/window.py:337
+#: src/window.py:339
 msgid "Copied ID"
 msgstr "ID-en er kopiert"
 
-#: src/window.py:338
+#: src/window.py:340
 msgid "Copy ID"
 msgstr "Kopier ID"
 
-#: src/window.py:340
+#: src/window.py:342
 msgid "Copied ref"
 msgstr ""
 
-#: src/window.py:341
+#: src/window.py:343
 msgid "Copy Ref"
 msgstr ""
 
-#: src/window.py:343
+#: src/window.py:345
 msgid "Copied launch command"
 msgstr ""
 
-#: src/window.py:344
+#: src/window.py:346
 msgid "Copy Launch Command"
 msgstr ""
 
-#: src/window.py:346 src/window.py:474
+#: src/window.py:348 src/window.py:476
 msgid "Copy"
 msgstr "Kopier"
 
-#: src/window.py:349
+#: src/window.py:351
 msgid "Opened {}"
 msgstr "Åpnet {}"
 
-#: src/window.py:350
+#: src/window.py:352
 #, fuzzy
 #| msgid "Open {}"
 msgid "Open"
 msgstr "Åpne {}"
 
-#: src/window.py:358 src/window.py:459 src/downgrade.blp:40
+#: src/window.py:360 src/window.py:461 src/downgrade.blp:40
 msgid "Disable Updates"
 msgstr ""
 
-#: src/window.py:363 src/properties_window.py:187
+#: src/window.py:365 src/properties_window.py:186
 msgid "Enable Updates"
 msgstr ""
 
-#: src/window.py:377 src/properties_window.py:134
+#: src/window.py:379 src/properties_window.py:133
 msgid "Open User Data Folder"
 msgstr ""
 
-#: src/window.py:382 src/properties_window.py:139
+#: src/window.py:384 src/properties_window.py:138
 #, fuzzy
 #| msgid "Trashed user data"
 msgid "Trash User Data"
 msgstr "Slettet brukerdata"
 
-#: src/window.py:389 src/downgrade.blp:21
+#: src/window.py:391 src/downgrade.blp:21
 msgid "Downgrade"
 msgstr ""
 
-#: src/window.py:410 src/properties_window.py:98 src/orphans_window.py:171
+#: src/window.py:412 src/properties_window.py:98 src/orphans_window.py:171
 msgid "Could not open folder"
 msgstr ""
 
-#: src/window.py:418 src/window.py:543
+#: src/window.py:420 src/window.py:545
 #, fuzzy
 #| msgid "Can't trash user data for {}"
 msgid "Could not trash user data"
 msgstr "Kan ikke slette brukerdata for {}"
 
-#: src/window.py:422 src/window.py:545 src/properties_window.py:77
+#: src/window.py:424 src/window.py:547 src/properties_window.py:77
 msgid "Trashed user data"
 msgstr "Slettet brukerdata"
 
-#: src/window.py:424
+#: src/window.py:426
 #, fuzzy
 #| msgid "Send app settings and content to the trash"
 msgid "Send {}'s User Data to the trash?"
 msgstr "Slett programinnstillinger og programinnhold"
 
-#: src/window.py:425 src/properties_window.py:85
+#: src/window.py:427 src/properties_window.py:85
 msgid "Your files and data for this app will be sent to the trash."
 msgstr ""
 
-#: src/window.py:428 src/window.py:552 src/properties_window.py:88
+#: src/window.py:430 src/window.py:554 src/properties_window.py:88
 msgid "Trash Data"
 msgstr "Slett Data"
 
-#: src/window.py:440 src/downgrade_window.py:108
+#: src/window.py:442 src/downgrade_window.py:108
 #, fuzzy
 #| msgid "No user data for {}"
 msgid "Could disable updates for {}"
 msgstr "Ingen brukerdata funnet for {}"
 
-#: src/window.py:455
+#: src/window.py:457
 #, fuzzy
 #| msgid "No user data for {}"
 msgid "Disable Updates for {}?"
 msgstr "Ingen brukerdata funnet for {}"
 
-#: src/window.py:456
+#: src/window.py:458
 msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
 msgstr ""
 
-#: src/window.py:473
+#: src/window.py:475
 msgid "Could not Run App"
 msgstr ""
 
-#: src/window.py:479
+#: src/window.py:481
 msgid "OK"
 msgstr "OK"
 
-#: src/window.py:497
+#: src/window.py:499
 msgid "List refreshed"
 msgstr ""
 
-#: src/window.py:540
+#: src/window.py:542
 msgid "No user data for {}"
 msgstr "Ingen brukerdata funnet for {}"
 
-#: src/window.py:549
+#: src/window.py:551
 msgid "Trash Selected Apps' User Data?"
 msgstr "Slett Valgte Programmers Brukerdata?"
 
-#: src/window.py:549
+#: src/window.py:551
 msgid "Your files and data for these apps will be sent to the trash."
 msgstr "Dine filer og dataer for disse programmene vil bli slettet."
 
-#: src/window.py:603
+#: src/window.py:605
 msgid "Copied selected app names"
 msgstr ""
 
-#: src/window.py:611
+#: src/window.py:613
 msgid "Copied selected app IDs"
 msgstr ""
 
-#: src/window.py:619
+#: src/window.py:621
 msgid "Copied selected app refs"
 msgstr ""
 
-#: src/window.py:680 src/orphans_window.py:76
+#: src/window.py:682 src/orphans_window.py:76
 msgid "Installed successfully"
 msgstr ""
 
-#: src/window.py:683
+#: src/window.py:685
 msgid "Could not install app"
 msgstr ""
 
-#: src/window.py:708
+#: src/window.py:710
 msgid "Install {}?"
 msgstr ""
 
-#: src/window.py:711 src/orphans_window.py:109 src/orphans.blp:75
+#: src/window.py:713 src/orphans_window.py:109 src/orphans.blp:75
 msgid "Install"
 msgstr ""
 
-#: src/window.py:718 src/remotes_window.py:212 src/remotes_window.py:296
+#: src/window.py:720 src/remotes_window.py:212 src/remotes_window.py:296
 msgid "User"
 msgstr ""
 
-#: src/window.py:718
+#: src/window.py:720
 msgid "The app will be available to only you"
 msgstr ""
 
-#: src/window.py:719 src/remotes_window.py:218 src/remotes_window.py:297
+#: src/window.py:721 src/remotes_window.py:218 src/remotes_window.py:297
 msgid "System"
 msgstr ""
 
-#: src/window.py:719
+#: src/window.py:721
 msgid "The app will be available to every user on the system"
 msgstr ""
 
-#: src/window.py:748
+#: src/window.py:750
 msgid "File type not supported"
 msgstr ""
 
@@ -512,64 +514,64 @@ msgstr ""
 msgid "Copied {}"
 msgstr ""
 
-#: src/properties_window.py:146 src/remotes_window.py:197
+#: src/properties_window.py:145 src/remotes_window.py:197
 #: src/remotes_window.py:294
 msgid "Name"
 msgstr ""
 
-#: src/properties_window.py:146
+#: src/properties_window.py:145
 msgid "Description"
 msgstr ""
 
-#: src/properties_window.py:146
+#: src/properties_window.py:145
 msgid "App ID"
 msgstr ""
 
-#: src/properties_window.py:146
+#: src/properties_window.py:145
 msgid "Version"
 msgstr ""
 
-#: src/properties_window.py:146
+#: src/properties_window.py:145
 msgid "Branch"
 msgstr ""
 
-#: src/properties_window.py:146
+#: src/properties_window.py:145
 msgid "Arch"
 msgstr ""
 
-#: src/properties_window.py:146
+#: src/properties_window.py:145
 msgid "Origin"
 msgstr ""
 
-#: src/properties_window.py:146
+#: src/properties_window.py:145
 msgid "Installation"
 msgstr ""
 
-#: src/properties_window.py:146
+#: src/properties_window.py:145
 msgid "Ref"
 msgstr ""
 
-#: src/properties_window.py:146
+#: src/properties_window.py:145
 msgid "Active Commit"
 msgstr ""
 
-#: src/properties_window.py:146
+#: src/properties_window.py:145
 msgid "Latest Commit"
 msgstr ""
 
-#: src/properties_window.py:146
+#: src/properties_window.py:145
 msgid "Installed Size"
 msgstr ""
 
-#: src/properties_window.py:146
+#: src/properties_window.py:145
 msgid "Options"
 msgstr ""
 
-#: src/properties_window.py:146
+#: src/properties_window.py:145
 msgid "Runtime"
 msgstr ""
 
-#: src/properties_window.py:154
+#: src/properties_window.py:153
 msgid "Copy {}"
 msgstr ""
 
