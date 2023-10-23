@@ -24,7 +24,7 @@ def show_properties_window(widget, index, window):
     properties_box = Gtk.Box(orientation="vertical", vexpand=True)
     properties_clamp = Adw.Clamp()
     eol_app_banner = Adw.Banner(title=_("{} has reached its End of Life and will not receive any security updates").format(app_name))
-    eol_runtime_banner = Adw.Banner(title=_("{}' runtime has reached its End of Life and will not receive any security updates").format(app_name))
+    eol_runtime_banner = Adw.Banner(title=_("{}'s runtime has reached its End of Life and will not receive any security updates").format(app_name))
     mask_banner = Adw.Banner(title=_("{} is masked and will not be updated").format(window.host_flatpaks[index][0]))
     outer_box.append(eol_app_banner)
     outer_box.append(eol_runtime_banner)

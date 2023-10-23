@@ -301,7 +301,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 eol_app_label.add_css_class("error")
 
             if self.host_flatpaks[index][13] in self.eol_list:
-                eol_runtime_label = Gtk.Label(label=_("EOL"), hexpand=True, wrap=True, justify=Gtk.Justification.RIGHT, valign=Gtk.Align.CENTER, tooltip_text=_("{}' runtime has reached its End of Life and will not receive any security updates").format(app_name))
+                eol_runtime_label = Gtk.Label(label=_("EOL"), hexpand=True, wrap=True, justify=Gtk.Justification.RIGHT, valign=Gtk.Align.CENTER, tooltip_text=_("{}'s runtime has reached its End of Life and will not receive any security updates").format(app_name))
                 eol_runtime_label.add_css_class("error")
                 flatpak_row.add_suffix(eol_runtime_label)
 
@@ -373,7 +373,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             if os.path.exists(self.user_data_path + app_id):
                 data_menu_model = Gio.Menu()
 
-                self.create_action(("open-data" + str(index)), lambda *_, path=(self.user_data_path + app_id): Gio.AppInfo.launch_default_for_uri(f"file://{path}", None))
+                self.create_action(("open-data" + str(index)), lambda *_, path=(self.user_data_path + app_id): self.openDataFolder(path))
                 open_data_item = Gio.MenuItem.new(_("Open User Data Folder"), f"win.open-data{index}")
                 open_data_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
                 data_menu_model.append_item(open_data_item)
@@ -402,6 +402,12 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
         self.applyFilter(self.filter_list)
         self.batchActionsEnable(False)
+
+    def openDataFolder(self, path):
+        try:
+            Gio.AppInfo.launch_default_for_uri(f"file://{path}", None)
+        except GLib.GError:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not open folder")))
 
     def trashData(self, name, id, index):
         def onContinue(dialog, response):
