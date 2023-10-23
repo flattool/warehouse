@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 03:04-0400\n"
+"POT-Creation-Date: 2023-10-23 03:07-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -249,8 +249,8 @@ msgstr ""
 msgid "Trashed user data"
 msgstr ""
 
-#: src/window.py:426
-msgid "Send {}'s User Data to the trash?"
+#: src/window.py:426 src/properties_window.py:84
+msgid "Send {}'s User Data to the Trash?"
 msgstr ""
 
 #: src/window.py:427 src/properties_window.py:85
@@ -475,10 +475,6 @@ msgstr ""
 
 #: src/properties_window.py:81
 msgid "Could not trash data"
-msgstr ""
-
-#: src/properties_window.py:84
-msgid "Send {}'s User Data to the Trash?"
 msgstr ""
 
 #: src/properties_window.py:102 src/remotes_window.py:72

@@ -423,7 +423,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.lookup_action(f"trash{index}").set_enabled(False)
             self.toast_overlay.add_toast(Adw.Toast.new(_("Trashed user data")))
 
-        dialog = Adw.MessageDialog.new(self,_("Send {}'s User Data to the trash?").format(name))
+        dialog = Adw.MessageDialog.new(self,_("Send {}'s User Data to the Trash?").format(name))
         dialog.set_body(_("Your files and data for this app will be sent to the trash."))
         dialog.add_response("cancel", _("Cancel"))
         dialog.set_close_response("cancel")
