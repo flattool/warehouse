@@ -25,7 +25,7 @@ Warehouse is now available on Flathub! Visit your software store and search for 
 <a href=https://flathub.org/apps/io.github.flattool.Warehouse><img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
 ## 🗣️ Translation
-- Translation is hosted with Weblate on Fyra Labs, [click here](ℹhttps://weblate.fyralabs.com/projects/flattool/warehouse/) to contribute
+- Translation is hosted with Weblate on Fyra Labs, [click here](https://weblate.fyralabs.com/projects/flattool/warehouse/) to contribute
 
 ## 💬 Get in Contact
 - We have a [Discord Server](https://discord.gg/Sq85C42Xkt) and a [Matrix Space](https://matrix.to/#/#warehouse-development:matrix.org) to discuss and send announcements in!
