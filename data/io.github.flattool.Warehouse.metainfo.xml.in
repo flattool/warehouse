@@ -60,15 +60,15 @@
         <ul>
           <li>Names, IDs, Refs, and Launch Commands can now be copied from a dropdown</li>
           <li>Updates can now be disabled and enabled for Flatpaks</li>
-          <li>Warehous can now downgrade Flatpaks</li>
+          <li>Warehouse can now downgrade Flatpaks</li>
           <li>Apps can be now be ran from Warehouse</li>
           <li>Control + Keypad Enter now also toggles select mode</li>
           <li>Added translations (HG, ES, TH)</li>
         </ul>
         <p>Bug Fixes</p>
         <ul>
-          <li>The runtime filter button in the properties window now only shows when that runtime is a dependant runtime</li>
-          <li>Removed the Select All keyboard shortcut as it interfiered with the search bar</li>
+          <li>The runtime filter button in the properties window now only shows when that runtime is a dependent runtime</li>
+          <li>Removed the Select All keyboard shortcut as it interfered with the search bar</li>
         </ul>
       </description>
     </release>
