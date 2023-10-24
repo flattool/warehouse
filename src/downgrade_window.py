@@ -105,7 +105,7 @@ class DowngradeWindow(Adw.Window):
             if self.my_utils.maskFlatpak(self.app_id, self.install_type) == 0:
                 self.flatpak_row[7].set_visible(True)
             else:
-                self.parent_window.toast_overlay.add_toast(Adw.Toast.new(_("Could disable updates for {}").format(name)))
+                self.parent_window.toast_overlay.add_toast(Adw.Toast.new(_("Could not disable updates for {}").format(self.app_name)))
 
         self.close()
 
