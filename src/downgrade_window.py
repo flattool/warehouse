@@ -63,6 +63,8 @@ class DowngradeWindow(Adw.Window):
     def commitsCallback(self):
         self.progress_bar.set_visible(False)
         self.should_pulse = False
+        group_button = Gtk.CheckButton(visible=False)
+        self.versions_group.add(group_button)
         for i in range(len(self.versions)):
             version = self.versions[i]
             date_time = version[2].split(' ')
@@ -76,9 +78,7 @@ class DowngradeWindow(Adw.Window):
             row.set_tooltip_text(_("Commit Hash: {}").format(version[0]))
             select = Gtk.CheckButton()
             select.connect("toggled", self.selectionHandler, i)
-            
-            if i > 0:
-                select.set_group(self.versions[i-1][3])
+            select.set_group(group_button)
 
             version.append(select)
             row.set_activatable_widget(select)
