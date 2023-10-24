@@ -114,7 +114,7 @@ class WarehouseApplication(Adw.Application):
             developer_name="Heliguy",
             version="1.3.1.beta",
             developers=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu"],
-            artists=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu", "eryn https://github.com/hericiumvevo"],
+            artists=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu", "Amy https://github.com/AtiusAmy", "eryn https://github.com/hericiumvevo"],
             copyright='© 2023 Heliguy',
             license_type=Gtk.License.GPL_3_0_ONLY,
             website='https://github.com/flattool/warehouse',
