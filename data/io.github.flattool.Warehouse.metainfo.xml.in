@@ -54,6 +54,24 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.3.0" date="2023-10-23" timestamp="1698112217">
+      <description translatable="no">
+        <p>New Features and Changes</p>
+        <ul>
+          <li>Names, IDs, Refs, and Launch Commands can now be copied from a dropdown</li>
+          <li>Updates can now be disabled and enabled for Flatpaks</li>
+          <li>Warehous can now downgrade Flatpaks</li>
+          <li>Apps can be now be ran from Warehouse</li>
+          <li>Control + Keypad Enter now also toggles select mode</li>
+          <li>Added translations (HG, ES, TH)</li>
+        </ul>
+        <p>Bug Fixes</p>
+        <ul>
+          <li>The runtime filter button in the properties window now only shows when that runtime is a dependant runtime</li>
+          <li>Removed the Select All keyboard shortcut as it interfiered with the search bar</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.1" date="2023-10-15" timestamp="1697405182">
       <description translatable="no">
         <ul>
