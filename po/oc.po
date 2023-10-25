@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-23 03:36-0400\n"
-"PO-Revision-Date: 2023-10-25 17:23+0000\n"
+"PO-Revision-Date: 2023-10-25 22:31+0000\n"
 "Last-Translator: Mejans <farga@mejans.fr>\n"
 "Language-Team: Occitan <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/oc/>\n"
@@ -69,7 +69,7 @@ msgstr ""
 
 #: src/main.py:87
 msgid "Flatpaks"
-msgstr ""
+msgstr "Flatpaks"
 
 #: src/window.py:103
 msgid "Uninstalled successfully"
@@ -90,11 +90,11 @@ msgstr ""
 
 #: src/window.py:165 src/window.py:238
 msgid "App Settings & Data"
-msgstr ""
+msgstr "Donadas e paramètres de l'aplicacion"
 
 #: src/window.py:167 src/window.py:240
 msgid "Keep"
-msgstr ""
+msgstr "Gardar"
 
 #: src/window.py:167
 msgid "Allow restoring these apps' settings and content"
@@ -102,7 +102,7 @@ msgstr ""
 
 #: src/window.py:168 src/window.py:241 src/orphans.blp:70
 msgid "Trash"
-msgstr ""
+msgstr "Bordilhièr"
 
 #: src/window.py:168
 msgid "Send these apps' settings and content to the trash"
@@ -114,11 +114,11 @@ msgstr ""
 #: src/orphans_window.py:108 src/orphans_window.py:162 src/filter.blp:17
 #: src/downgrade.blp:16
 msgid "Cancel"
-msgstr ""
+msgstr "Anullar"
 
 #: src/window.py:196 src/window.py:260 src/window.py:356
 msgid "Uninstall"
-msgstr ""
+msgstr "Desinstallar"
 
 #: src/window.py:202
 msgid "Cannot uninstall while already uninstalling"
@@ -183,7 +183,7 @@ msgstr ""
 
 #: src/window.py:337
 msgid "Copy Name"
-msgstr ""
+msgstr "Copiar lo nom"
 
 #: src/window.py:339
 msgid "Copied ID"
@@ -211,7 +211,7 @@ msgstr ""
 
 #: src/window.py:348 src/window.py:476
 msgid "Copy"
-msgstr ""
+msgstr "Copiar"
 
 #: src/window.py:351
 msgid "Opened {}"
@@ -219,7 +219,7 @@ msgstr ""
 
 #: src/window.py:352
 msgid "Open"
-msgstr ""
+msgstr "Dobrir"
 
 #: src/window.py:360 src/window.py:461 src/downgrade.blp:40
 msgid "Disable Updates"
@@ -239,7 +239,7 @@ msgstr ""
 
 #: src/window.py:391 src/downgrade.blp:21
 msgid "Downgrade"
-msgstr ""
+msgstr "Installar una version anteriora"
 
 #: src/window.py:412 src/properties_window.py:98 src/orphans_window.py:171
 msgid "Could not open folder"
@@ -285,7 +285,7 @@ msgstr ""
 
 #: src/window.py:481
 msgid "OK"
-msgstr ""
+msgstr "D’ACÒRDI"
 
 #: src/window.py:499
 msgid "List refreshed"
@@ -325,15 +325,15 @@ msgstr ""
 
 #: src/window.py:710
 msgid "Install {}?"
-msgstr ""
+msgstr "Installar {} ?"
 
 #: src/window.py:713 src/orphans_window.py:109 src/orphans.blp:75
 msgid "Install"
-msgstr ""
+msgstr "installar"
 
 #: src/window.py:720 src/remotes_window.py:212 src/remotes_window.py:296
 msgid "User"
-msgstr ""
+msgstr "Utilizaire"
 
 #: src/window.py:720
 msgid "The app will be available to only you"
@@ -341,7 +341,7 @@ msgstr ""
 
 #: src/window.py:721 src/remotes_window.py:218 src/remotes_window.py:297
 msgid "System"
-msgstr ""
+msgstr "Sistèma"
 
 #: src/window.py:721
 msgid "The app will be available to every user on the system"
@@ -353,7 +353,7 @@ msgstr ""
 
 #: src/window.blp:12
 msgid "Refresh List"
-msgstr ""
+msgstr "Refrescar la lista"
 
 #: src/window.blp:18 src/orphans.blp:14
 msgid "Search List"
@@ -365,7 +365,7 @@ msgstr ""
 
 #: src/window.blp:30
 msgid "Main Menu"
-msgstr ""
+msgstr "Menú principal"
 
 #: src/window.blp:37 src/gtk/help-overlay.blp:29
 msgid "Toggle Selection Mode"
@@ -373,7 +373,7 @@ msgstr ""
 
 #: src/window.blp:75
 msgid "No Flatpaks Found"
-msgstr ""
+msgstr "Cap de Flatpak pas trobat"
 
 #: src/window.blp:76
 msgid ""
@@ -383,7 +383,7 @@ msgstr ""
 
 #: src/window.blp:85 src/orphans.blp:66
 msgid "Select All"
-msgstr ""
+msgstr "Tot seleccionar"
 
 #: src/window.blp:90
 msgid "Uninstall Selected Apps"
@@ -411,35 +411,35 @@ msgstr ""
 
 #: src/window.blp:131
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Acorchis de clavièr"
 
 #: src/window.blp:136
 msgid "_About Warehouse"
-msgstr ""
+msgstr "_A prepaus d’Entrepaus"
 
 #: src/window.blp:145
 msgid "Copy Names"
-msgstr ""
+msgstr "Copiar los noms"
 
 #: src/window.blp:150
 msgid "Copy IDs"
-msgstr ""
+msgstr "Copiar los identificants"
 
 #: src/window.blp:155
 msgid "Copy Refs"
-msgstr ""
+msgstr "Copiar las referéncias"
 
 #: src/window.blp:164
 msgid "Open app"
-msgstr ""
+msgstr "Dobrir l’aplicacion"
 
 #: src/gtk/help-overlay.blp:11
 msgid "App Management"
-msgstr ""
+msgstr "Gestion de l’aplicacion"
 
 #: src/gtk/help-overlay.blp:14
 msgid "Search"
-msgstr ""
+msgstr "Recercar"
 
 #: src/gtk/help-overlay.blp:19 src/filter.blp:7
 msgid "Set Filters"
@@ -447,27 +447,27 @@ msgstr ""
 
 #: src/gtk/help-overlay.blp:24
 msgid "Refresh"
-msgstr ""
+msgstr "Refrescar"
 
 #: src/gtk/help-overlay.blp:34
 msgid "More Functions"
-msgstr ""
+msgstr "Mai de foncions"
 
 #: src/gtk/help-overlay.blp:52
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Open Menu"
-msgstr ""
+msgstr "Dobrir lo menú"
 
 #: src/gtk/help-overlay.blp:60
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Afichar los acorchis"
 
 #: src/gtk/help-overlay.blp:65
 msgid "Quit"
-msgstr ""
+msgstr "Quitar"
 
 #: src/properties_window.py:14
 msgid "{} Properties"
@@ -484,39 +484,39 @@ msgstr ""
 #: src/properties_window.py:145 src/remotes_window.py:197
 #: src/remotes_window.py:294
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: src/properties_window.py:145
 msgid "Description"
-msgstr ""
+msgstr "Descripcion"
 
 #: src/properties_window.py:145
 msgid "App ID"
-msgstr ""
+msgstr "Identificant de l’aplicacion"
 
 #: src/properties_window.py:145
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 #: src/properties_window.py:145
 msgid "Branch"
-msgstr ""
+msgstr "Branca"
 
 #: src/properties_window.py:145
 msgid "Arch"
-msgstr ""
+msgstr "Arq."
 
 #: src/properties_window.py:145
 msgid "Origin"
-msgstr ""
+msgstr "Origina"
 
 #: src/properties_window.py:145
 msgid "Installation"
-msgstr ""
+msgstr "Installacion"
 
 #: src/properties_window.py:145
 msgid "Ref"
-msgstr ""
+msgstr "Referéncia"
 
 #: src/properties_window.py:145
 msgid "Active Commit"
@@ -528,19 +528,19 @@ msgstr ""
 
 #: src/properties_window.py:145
 msgid "Installed Size"
-msgstr ""
+msgstr "Talha installada"
 
 #: src/properties_window.py:145
 msgid "Options"
-msgstr ""
+msgstr "Opcions"
 
 #: src/properties_window.py:145
 msgid "Runtime"
-msgstr ""
+msgstr "Environament d’execucion"
 
 #: src/properties_window.py:153
 msgid "Copy {}"
-msgstr ""
+msgstr "Copiar {}"
 
 #: src/remotes_window.py:48
 msgid "Could not remove {}"
@@ -556,7 +556,7 @@ msgstr ""
 
 #: src/remotes_window.py:60
 msgid "Remove"
-msgstr ""
+msgstr "Suprimir"
 
 #: src/remotes_window.py:92
 msgid "Copy remote name"
@@ -576,11 +576,11 @@ msgstr ""
 
 #: src/remotes_window.py:139 src/remotes_window.py:286
 msgid "Add"
-msgstr ""
+msgstr "Apondre"
 
 #: src/remotes_window.py:201
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/remotes_window.py:212 src/remotes_window.py:296
 msgid "Remote will be available to only you"
@@ -629,7 +629,7 @@ msgstr ""
 
 #: src/remotes.blp:13 src/popular_remotes.blp:18
 msgid "Add Remote"
-msgstr ""
+msgstr "Apondre un depaus distant"
 
 #: src/remotes.blp:45
 msgid "No Remotes"
@@ -687,7 +687,7 @@ msgstr ""
 
 #: src/orphans_window.py:163
 msgid "Continue"
-msgstr ""
+msgstr "Contunhar"
 
 #: src/orphans_window.py:187
 msgid "Could not manage data"
@@ -707,15 +707,15 @@ msgstr ""
 
 #: src/filter.blp:21
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #: src/filter.blp:46
 msgid "Show Apps"
-msgstr ""
+msgstr "Afichar las aplicacions"
 
 #: src/filter.blp:55
 msgid "Show Runtimes"
-msgstr ""
+msgstr "Afichar los environaments d’execucion"
 
 #: src/filter.blp:65
 msgid "Filter Apps by Remotes"
