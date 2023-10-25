@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-23 03:36-0400\n"
-"PO-Revision-Date: 2023-10-25 09:10+0000\n"
+"PO-Revision-Date: 2023-10-25 22:31+0000\n"
 "Last-Translator: Сергей Ворон <voron.s.a@gmail.com>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ru/>\n"
@@ -62,7 +62,7 @@ msgstr "Добавление и удаление репозиториев Flatpa
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "Find and trash leftover user data"
-msgstr "Поиск и удаление оставшихся пользовательских данных"
+msgstr "Поиск и очистка оставшихся пользовательских данных"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
@@ -103,11 +103,11 @@ msgstr "Позволяет восстановить настройки и дан
 
 #: src/window.py:168 src/window.py:241 src/orphans.blp:70
 msgid "Trash"
-msgstr "Удалить"
+msgstr "Очистить"
 
 #: src/window.py:168
 msgid "Send these apps' settings and content to the trash"
-msgstr "Удалить настройки и данные этих приложений"
+msgstr "Очистить настройки и данные этих приложений"
 
 #: src/window.py:195 src/window.py:259 src/window.py:428 src/window.py:459
 #: src/window.py:553 src/window.py:712 src/properties_window.py:87
@@ -140,7 +140,7 @@ msgstr "Позволяет восстановить настройки и кон
 
 #: src/window.py:241
 msgid "Send this app's settings and content to the trash"
-msgstr "Удалить настройки и данные этого приложения"
+msgstr "Очистить настройки и данные этого приложения"
 
 #. EOL = End Of Life, meaning the app will not be updated
 #: src/window.py:301
@@ -240,7 +240,7 @@ msgstr "Открыть папку с данными приложения"
 
 #: src/window.py:384 src/properties_window.py:138
 msgid "Trash User Data"
-msgstr "Удалить данные приложения"
+msgstr "Очистить данные приложения"
 
 #: src/window.py:391 src/downgrade.blp:21
 msgid "Downgrade"
@@ -252,23 +252,23 @@ msgstr "Не удалось открыть папку"
 
 #: src/window.py:420 src/window.py:545 src/properties_window.py:81
 msgid "Could not trash user data"
-msgstr "Не удалось удалить данные приложения"
+msgstr "Не удалось очистить данные приложения"
 
 #: src/window.py:424 src/window.py:547 src/properties_window.py:77
 msgid "Trashed user data"
-msgstr "Данные приложения удалены"
+msgstr "Данные приложения очищены"
 
 #: src/window.py:426 src/properties_window.py:84
 msgid "Send {}'s User Data to the Trash?"
-msgstr "Удалить данные приложения {}?"
+msgstr "Очистить данные приложения {}?"
 
 #: src/window.py:427 src/properties_window.py:85
 msgid "Your files and data for this app will be sent to the trash."
-msgstr "Ваши файлы и данные этого приложения будут удалены."
+msgstr "Ваши файлы и данные этого приложения будут очищены."
 
 #: src/window.py:430 src/window.py:554 src/properties_window.py:88
 msgid "Trash Data"
-msgstr "Удалить данные"
+msgstr "Очистить данные"
 
 #: src/window.py:442 src/downgrade_window.py:108
 msgid "Could disable updates for {}"
@@ -304,11 +304,11 @@ msgstr "Нет данных для {}"
 
 #: src/window.py:551
 msgid "Trash Selected Apps' User Data?"
-msgstr "Удалить данные выбранных приложений?"
+msgstr "Очистить данные выбранных приложений?"
 
 #: src/window.py:551
 msgid "Your files and data for these apps will be sent to the trash."
-msgstr "Ваши файлы и данные этих приложений будут удалены."
+msgstr "Ваши файлы и данные этих приложений будут очищены."
 
 #: src/window.py:605
 msgid "Copied selected app names"
@@ -401,7 +401,7 @@ msgstr "Удалить выбранные приложения"
 
 #: src/window.blp:95
 msgid "Send Selected Apps' Data to the Trash"
-msgstr "Удалить данные выбранных приложений"
+msgstr "Очистить данные выбранных приложений"
 
 #: src/window.blp:100
 msgid "Open Copy Menu"
@@ -692,11 +692,11 @@ msgstr "Тип {}"
 
 #: src/orphans_window.py:159
 msgid "Trash folders?"
-msgstr "Удалить папки?"
+msgstr "Очистить папки?"
 
 #: src/orphans_window.py:159
 msgid "These folders will be sent to the trash."
-msgstr "Эти папки будут удалены."
+msgstr "Эти папки будут очищены."
 
 #: src/orphans_window.py:163
 msgid "Continue"
