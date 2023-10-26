@@ -1,0 +1,80 @@
+using Gtk 4.0;
+using Adw 1;
+
+template SearchInstallWindow : Adw.Window {
+    default-width: 500;
+    default-height: 450;
+    title: _("Install From Online");
+    modal: true;
+
+    Adw.ToolbarView main_toolbar_view {
+        [top]
+        HeaderBar header_bar {
+            show-title-buttons: false;
+            [start]
+            Button cancel_button {
+                label: _("Cancel");
+            }
+            [end]
+            Button install_button {
+                label: _("Install");
+                styles["suggested-action"]
+            }
+        }
+        [top]
+        Adw.Clamp {
+            Box {
+                margin-top: 6;
+                margin-start: 6;
+                margin-end: 6;
+                styles["linked"]
+                [start]
+                SearchEntry search_entry {
+                    hexpand: true;
+                    placeholder-text: _("Search for Flatpaks, press Enter to search.");
+                }
+                [start]
+                ToggleButton remotes_dropdown {
+                    label: "Remote Name";
+                }
+            }
+        }
+        content:
+        Adw.ToastOverlay toast_overlay {
+            Stack main_stack {
+                Overlay main_overlay {
+                    [overlay]
+                    ProgressBar progress_bar {
+                        pulse-step: 0.7;
+                        can-target: false;
+                        styles["osd"]
+                    }
+                    ScrolledWindow {
+                        Adw.Clamp {
+                            ListBox results_list_box {
+                                margin-top: 12;
+                                margin-bottom: 12;
+                                margin-start: 12;
+                                margin-end: 12;
+                                hexpand: true;
+                                valign: start;
+                                selection-mode: none;
+                                styles["boxed-list"]
+                            }
+                        }
+                    }
+                }
+                Adw.StatusPage no_results {
+                    icon-name: "error-symbolic";
+                    title: _("No matches found");
+                    description: _("Try a different search term");
+                }
+                Adw.StatusPage too_many {
+                    icon-name: "error-symbolic";
+                    title: _("Too many results");
+                    description: _("Try being more specific with your search");
+                }
+            }
+        };
+    }
+}

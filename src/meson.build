@@ -11,6 +11,7 @@ blueprints = custom_target('blueprints',
     'popular_remotes.blp',
     'remotes.blp',
     'downgrade.blp',
+    'search_install.blp',
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
@@ -56,7 +57,9 @@ warehouse_sources = [
   'style.css',
   'remotes.blp',
   'downgrade_window.py',
-  'downgrade.blp'
+  'downgrade.blp',
+  'search_install.blp',
+  'search_install_window.py',
 ]
 
 install_data(warehouse_sources, install_dir: moduledir)

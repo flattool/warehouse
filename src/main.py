@@ -29,6 +29,7 @@ from gi.repository import Gtk, Gio, Adw, GLib
 from .window import WarehouseWindow
 from .remotes_window import RemotesWindow
 from .orphans_window import OrphansWindow
+from .search_install_window import SearchInstallWindow
 
 class WarehouseApplication(Adw.Application):
     """The main application singleton class."""
@@ -51,6 +52,10 @@ class WarehouseApplication(Adw.Application):
         self.create_action("set-filter", self.filters_shortcut, ["<primary>t"])
         self.create_action("install-from-file", self.install_from_file, ["<primary>o"])
         self.create_action("open-menu", self.main_menu_shortcut, ["F10"])
+        self.create_action("open-search-install", self.open_search_install, ["<primary>i"])
+
+    def open_search_install(self, widget, _):
+        SearchInstallWindow(self.props.active_window).present()
 
     def batch_mode_shortcut(self, widget, _):
         button = self.props.active_window.batch_mode_button
