@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-23 03:36-0400\n"
-"PO-Revision-Date: 2023-10-25 22:31+0000\n"
+"PO-Revision-Date: 2023-10-27 18:07+0000\n"
 "Last-Translator: Mejans <farga@mejans.fr>\n"
 "Language-Team: Occitan <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/oc/>\n"
@@ -49,15 +49,15 @@ msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Display properties of installed Flatpaks"
-msgstr ""
+msgstr "Afichar las proprietats dels Flatpaks installats"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Manage large groups of Flatpaks at once"
-msgstr ""
+msgstr "Gerir un grand nombre de Flatpaks a l’encòp"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Add and remove Flatpak remotes"
-msgstr ""
+msgstr "Apondre o levar de depauses Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "Find and trash leftover user data"
@@ -73,7 +73,7 @@ msgstr "Flatpaks"
 
 #: src/window.py:103
 msgid "Uninstalled successfully"
-msgstr ""
+msgstr "Desinstallacion amb succès"
 
 #: src/window.py:105
 msgid "Could not uninstall some apps"
