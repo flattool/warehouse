@@ -9,8 +9,10 @@ template RemotesWindow : Adw.Window {
         [top]
         HeaderBar header_bar {
             Button add_button {
-                icon-name: "plus-large-symbolic";
-                tooltip-text: _("Add Remote");
+                Adw.ButtonContent {
+                    label: _("Add Remote");
+                    icon-name: "plus-large-symbolic";
+                }
             }
         }
         content:
