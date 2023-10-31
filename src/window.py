@@ -381,17 +381,16 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 open_data_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
                 data_menu_model.append_item(open_data_item)
 
-                self.create_action(("snapshot" + str(index)), lambda *_, row=self.flatpak_rows[index][6]: SnapshotsWindow(self, row).present())
-                snapshot_item = Gio.MenuItem.new(_("Manage Snapshots"), f"win.snapshot{index}")
-                snapshot_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-dsiabled"))
-                data_menu_model.append_item(snapshot_item)
-
                 self.create_action(("trash" + str(index)), lambda *_, name=app_name, id=app_id, index=index: self.trashData(name, id, index))
                 trash_item = Gio.MenuItem.new(_("Trash User Data"), f"win.trash{index}")
                 trash_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
                 data_menu_model.append_item(trash_item)
 
                 row_menu_model.append_section(None, data_menu_model)
+
+            self.create_action(("snapshot" + str(index)), lambda *_, row=self.flatpak_rows[index][6]: SnapshotsWindow(self, row).present())
+            snapshot_item = Gio.MenuItem.new(_("Manage Snapshots"), f"win.snapshot{index}")
+            advanced_menu_model.append_item(snapshot_item)
 
             self.create_action(("downgrade" + str(index)), lambda *_, row=self.flatpak_rows[index]: DowngradeWindow(self, row))
             downgrade_item = Gio.MenuItem.new(_("Downgrade"), f"win.downgrade{index}")
@@ -427,7 +426,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 return
             self.lookup_action(f"open-data{index}").set_enabled(False)
             self.lookup_action(f"trash{index}").set_enabled(False)
-            self.lookup_action(f"snapshot{index}").set_enabled(False)
             self.toast_overlay.add_toast(Adw.Toast.new(_("Trashed user data")))
 
         dialog = Adw.MessageDialog.new(self,_("Send {}'s User Data to the Trash?").format(name))
