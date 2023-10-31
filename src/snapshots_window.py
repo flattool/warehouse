@@ -68,6 +68,7 @@ class SnapshotsWindow(Adw.Window):
         row.add_suffix(label)
 
         apply = Gtk.Button(icon_name="check-plain-symbolic", valign=Gtk.Align.CENTER)
+        apply.connect("clicked", self.apply_snapshot, file, row)
         apply.add_css_class("flat")
         row.add_suffix(apply)
 
@@ -117,6 +118,8 @@ class SnapshotsWindow(Adw.Window):
             self.new_snapshot.set_sensitive(True)
             self.new_snapshot_pill.set_sensitive(True)
             self.progress_bar.set_visible(False)
+            self.disconnect(self.no_close_id) # Make window able to close
+            self.main_stack.set_sensitive(True)
 
         if not os.path.exists(self.snapshots_of_app_path):
             file = Gio.File.new_for_path(self.snapshots_of_app_path)
@@ -125,9 +128,53 @@ class SnapshotsWindow(Adw.Window):
         self.new_snapshot.set_sensitive(False)
         self.new_snapshot_pill.set_sensitive(False)
         self.progress_bar.set_visible(True)
+        self.no_close_id = self.connect("close-request", lambda event: True)  # Make window unable to close
+        self.main_stack.set_sensitive(False)
 
         task = Gio.Task.new(None, None, lambda *_: callback())
         task.run_in_thread(lambda *_: thread())
+
+    def apply_snapshot(self, button, file, row):
+        self.applied = False
+        def thread():
+            try:
+                subprocess.run(
+                    ['tar', '--zstd', '-xvf', f"{self.snapshots_of_app_path}{file}", "-C", f"{self.app_user_data}"],
+                    check=True, env=self.new_env
+                )
+                self.applied = True
+            except subprocess.CalledProcessError as e:
+                print("error in snapshots_window.apply_snapshot.thread: CalledProcessError:", e)
+
+        def callback():
+            if not self.applied:
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not apply snapshot")))
+
+        def on_response(dialog, response, func):
+            if response == "cancel":
+                return
+            to_apply = self.snapshots_of_app_path + file
+            to_trash = self.app_user_data
+            if os.path.exists(to_trash):
+                a = self.my_utils.trashFolder(to_trash)
+                if a != 0:
+                    self.toast_overlay.add_toast(Adw.Toast.new(_("Could not apply snapshot")))
+                    return
+            data = Gio.File.new_for_path(self.app_user_data)
+            data.make_directory()
+            if not os.path.exists(data.get_path()):
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not apply snapshot")))
+                return
+            task = Gio.Task.new(None, None, lambda *_: callback())
+            task.run_in_thread(lambda *_: thread())
+        
+        dialog = Adw.MessageDialog.new(self, _("Apply Snapshot?"), _("Applying this snapshot will trash any current user data for {}.").format(self.app_name))
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.set_close_response("cancel")
+        dialog.add_response("continue", _("Apply Snapshot"))
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.connect("response", on_response, dialog.choose_finish)
+        dialog.present()
 
     def open_button_handler(self, widget, path):
         try:
