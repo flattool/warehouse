@@ -381,7 +381,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 open_data_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
                 data_menu_model.append_item(open_data_item)
 
-                self.create_action(("snapshot" + str(index)), lambda *_, row=self.flatpak_rows[index]: SnapshotsWindow(self, row))
+                self.create_action(("snapshot" + str(index)), lambda *_, row=self.flatpak_rows[index][6]: SnapshotsWindow(self, row).present())
                 snapshot_item = Gio.MenuItem.new(_("Manage Snapshots"), f"win.snapshot{index}")
                 snapshot_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-dsiabled"))
                 data_menu_model.append_item(snapshot_item)

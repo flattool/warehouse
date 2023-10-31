@@ -3,43 +3,58 @@ using Adw 1;
 
 template SnapshotsWindow : Adw.Window {
     default-width: 500;
-    default-height: 450;
+    default-height: 455;
     modal: true;
 
     Adw.ToolbarView main_toolbar_view {
         [top]
         HeaderBar header_bar {
             [start]
-            Button new_button {
+            Button new_snapshot {
                 Adw.ButtonContent {
                     label: _("New Snapshot");
                     icon-name: "plus-large-symbolic";
                 }
             }
+            [end]
+            Button oepn_folder_button {
+                icon-name: "document-open-symbolic";
+                tooltip-text: _("Open Snapshots Folder");
+            }
         }
         content:
         Adw.ToastOverlay toast_overlay {
-            Stack main_stack {
-                Overlay main_overlay {
-                    [overlay]
-                    ProgressBar progress_bar {
-                        pulse-step: 0.7;
-                        can-target: false;
-                        styles["osd"]
-                    }
-
-                    Adw.PreferencesPage outerbox {
-                        
-                        Adw.PreferencesGroup {
-                            Adw.SwitchRow mask_row {
-                                title: _("Disable Updates");
-                                active: true;
+            Overlay main_overlay {
+                [overlay]
+                ProgressBar progress_bar {
+                    pulse-step: 0.7;
+                    can-target: false;
+                    visible: false;
+                    styles["osd"]
+                }
+                Stack main_stack {
+                    ScrolledWindow outerbox {
+                        Adw.Clamp {
+                            ListBox snapshots_group {
+                                margin-top: 12;
+                                margin-bottom: 12;
+                                margin-start: 12;
+                                margin-end: 12;
+                                valign: start;
+                                selection-mode: none;
+                                styles["boxed-list"]
                             }
                         }
+                    }
+                    Adw.StatusPage no_snapshots {
+                        title: _("No Snapshots");
+                        description: _("Snapshots are backups of the app's user data. They can be reapplied at any time.");
+                        icon-name: "clock-alt-symbolic";
 
-                        Adw.PreferencesGroup versions_group {
-                            title: _("Select a Release");
-                            description: _("This will uninstall the current release and install the chosen one instead. Note that downgrading can cause issues.");
+                        Button new_snapshot_pill {
+                            label: _("New Snapshot");
+                            halign: center;
+                            styles["pill", "suggested-action"]
                         }
                     }
                 }

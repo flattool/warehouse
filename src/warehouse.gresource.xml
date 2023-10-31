@@ -25,5 +25,6 @@
     <file preprocess="xml-stripblanks">funnel-symbolic.svg</file>
     <file preprocess="xml-stripblanks">right-large-symbolic.svg</file>
     <file preprocess="xml-stripblanks">view-more-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">clock-alt-symbolic.svg</file>
   </gresource>
 </gresources>

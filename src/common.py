@@ -15,11 +15,13 @@ class myUtils:
         
     def trashFolder(self, path):
         if not os.path.exists(path):
+            print("error in common.trashFolder: path does not exists. path =", path)
             return 1
         try:
-            subprocess.run(["flatpak-spawn", "--host", "gio", "trash", path], capture_output=True, check=True, env=self.new_env)
+            subprocess.run(["gio", "trash", path], capture_output=False, check=True, env=self.new_env)
             return 0
-        except subprocess.CalledProcessError:
+        except subprocess.CalledProcessError as e:
+            print("error in common.trashFolder: CalledProcessError:", e)
             return 2
 
     def getSizeWithFormat(self, path):

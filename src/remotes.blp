@@ -17,37 +17,37 @@ template RemotesWindow : Adw.Window {
         }
         content:
         Adw.ToastOverlay toast_overlay {
-          Stack stack {
-            Overlay main_overlay {
-                [overlay]
-                ProgressBar progress_bar {
-                    visible: false;
-                    pulse-step: 0.7;
-                    can-target: false;
-                    styles ["osd"]
-                }
-                ScrolledWindow scroll {
-                    vexpand: true;
-                    Adw.Clamp{
-                        ListBox remotes_list {
-                            margin-top: 12;
-                            margin-bottom: 12;
-                            margin-start: 12;
-                            margin-end: 12;
-                            hexpand: true;
-                            valign: start;
-                            selection-mode: none;
-                            styles["boxed-list"]
+            Stack stack {
+                Overlay main_overlay {
+                    [overlay]
+                    ProgressBar progress_bar {
+                        visible: false;
+                        pulse-step: 0.7;
+                        can-target: false;
+                        styles ["osd"]
+                    }
+                    ScrolledWindow scroll {
+                        vexpand: true;
+                        Adw.Clamp{
+                            ListBox remotes_list {
+                                margin-top: 12;
+                                margin-bottom: 12;
+                                margin-start: 12;
+                                margin-end: 12;
+                                hexpand: true;
+                                valign: start;
+                                selection-mode: none;
+                                styles["boxed-list"]
+                            }
                         }
                     }
                 }
+                Adw.StatusPage no_remotes {
+                icon-name: "error-symbolic";
+                title: _("No Remotes");
+                description: _("Warehouse cannot see the list of remotes or the system has no remotes added");
+                }
             }
-            Adw.StatusPage no_remotes {
-              icon-name: "error-symbolic";
-              title: _("No Remotes");
-              description: _("Warehouse cannot see the list of remotes or the system has no remotes added");
-            }
-          }
         };
     }
 }
