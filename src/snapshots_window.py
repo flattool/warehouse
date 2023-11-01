@@ -194,6 +194,10 @@ class SnapshotsWindow(Adw.Window):
         except GLib.GError:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not open folder")))
 
+    def key_handler(self, _a, event, _c, _d):
+        if event == Gdk.KEY_Escape:
+            self.close()
+
     def __init__(self, parent_window, flatpak_row, **kwargs):
         super().__init__(**kwargs)
 
@@ -220,6 +224,10 @@ class SnapshotsWindow(Adw.Window):
         self.new_snapshot.connect("clicked", lambda *_: self.createSnapshot())
         self.new_snapshot_pill.connect("clicked", lambda *_: self.createSnapshot())
         self.pulser()
+        
+        event_controller = Gtk.EventControllerKey()
+        event_controller.connect("key-pressed", self.key_handler)
+        self.add_controller(event_controller)
 
         # Window stuffs
         self.set_title(_("{} Snapshots").format(self.app_name))
