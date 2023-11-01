@@ -154,6 +154,7 @@ class SnapshotsWindow(Adw.Window):
             self.progress_bar.set_visible(False)
             self.disconnect(self.no_close_id) # Make window able to close
             self.main_stack.set_sensitive(True)
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Snapshot applied")))
 
         def on_response(dialog, response, func):
             if response == "cancel":
