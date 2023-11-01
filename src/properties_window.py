@@ -61,6 +61,10 @@ def show_properties_window(widget, index, window):
             view_apps_button.connect("clicked", viewAppsHandler)
             properties_header_bar.pack_start(view_apps_button)
 
+    details = Gtk.Button(label=_("Show Details"))
+    properties_header_bar.pack_end(details)
+    details.connect("clicked", lambda *_: Gio.AppInfo.launch_default_for_uri(f"appstream://{app_id}", None))
+
 
     def key_handler(_a, event, _c, _d):
         if event == Gdk.KEY_Escape:

@@ -388,9 +388,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
                 row_menu_model.append_section(None, data_menu_model)
 
-            self.create_action(("snapshot" + str(index)), lambda *_, row=self.flatpak_rows[index][6]: SnapshotsWindow(self, row).present())
-            snapshot_item = Gio.MenuItem.new(_("Manage Snapshots"), f"win.snapshot{index}")
-            advanced_menu_model.append_item(snapshot_item)
+            if "runtime" not in self.host_flatpaks[index][12]:
+                self.create_action(("snapshot" + str(index)), lambda *_, row=self.flatpak_rows[index][6]: SnapshotsWindow(self, row).present())
+                snapshot_item = Gio.MenuItem.new(_("Manage Snapshots"), f"win.snapshot{index}")
+                advanced_menu_model.append_item(snapshot_item)
 
             self.create_action(("downgrade" + str(index)), lambda *_, row=self.flatpak_rows[index]: DowngradeWindow(self, row))
             downgrade_item = Gio.MenuItem.new(_("Downgrade"), f"win.downgrade{index}")

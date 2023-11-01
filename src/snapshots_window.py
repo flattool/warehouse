@@ -62,7 +62,7 @@ class SnapshotsWindow(Adw.Window):
         size = self.my_utils.getSizeWithFormat(self.snapshots_of_app_path + file)
         split_file = file.removesuffix(".tar.zst").split("_")
         time = GLib.DateTime.new_from_unix_local(int(split_file[0])).format("%x %X")
-        row = Adw.ActionRow(title=time, subtitle=size)
+        row = Adw.ActionRow(title=time, subtitle="~"+size)
         
         label = Gtk.Label(label=_("Version {}").format(split_file[1]), hexpand=True, wrap=True, justify=Gtk.Justification.RIGHT)
         row.add_suffix(label)
@@ -149,6 +149,11 @@ class SnapshotsWindow(Adw.Window):
         def callback():
             if not self.applied:
                 self.toast_overlay.add_toast(Adw.Toast.new(_("Could not apply snapshot")))
+            self.new_snapshot.set_sensitive(True)
+            self.new_snapshot_pill.set_sensitive(True)
+            self.progress_bar.set_visible(False)
+            self.disconnect(self.no_close_id) # Make window able to close
+            self.main_stack.set_sensitive(True)
 
         def on_response(dialog, response, func):
             if response == "cancel":
@@ -165,6 +170,13 @@ class SnapshotsWindow(Adw.Window):
             if not os.path.exists(data.get_path()):
                 self.toast_overlay.add_toast(Adw.Toast.new(_("Could not apply snapshot")))
                 return
+
+            self.new_snapshot.set_sensitive(False)
+            self.new_snapshot_pill.set_sensitive(False)
+            self.progress_bar.set_visible(True)
+            self.no_close_id = self.connect("close-request", lambda event: True)  # Make window unable to close
+            self.main_stack.set_sensitive(False)
+
             task = Gio.Task.new(None, None, lambda *_: callback())
             task.run_in_thread(lambda *_: thread())
         
