@@ -158,7 +158,7 @@ def show_properties_window(widget, index, window):
         row_item.connect("activated", copy_button_handler, column_headers[column], window.host_flatpaks[index][column])
 
         if column == 13:
-            runtime_properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
+            runtime_properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"), margin_end=6)
             runtime_properties_button.add_css_class("flat")
             runtime_properties_button.connect("clicked", showPropertiesHandler, row_item.get_subtitle())
             row_item.add_suffix(runtime_properties_button)
