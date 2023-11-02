@@ -16,6 +16,7 @@ class SearchInstallWindow (Adw.Window):
     cancel_button = Gtk.Template.Child()
     # search_bar = Gtk.Template.Child()
     search_entry = Gtk.Template.Child()
+    remotes_dropdown = Gtk.Template.Child()
 
     def searchResponse(self, a, b):
         self.results_list_box.remove_all()
@@ -31,14 +32,23 @@ class SearchInstallWindow (Adw.Window):
             row = Adw.ActionRow(title=GLib.markup_escape_text(self.search_results[i][0]), subtitle=self.search_results[i][2])
             check = Gtk.CheckButton()
             check.add_css_class("selection-mode")
+            check.connect("toggled", self.on_check)
             label = Gtk.Label(label=self.search_results[i][3], justify=Gtk.Justification.RIGHT, wrap=True, hexpand=True)
             row.add_suffix(label)
             row.add_suffix(check)
             row.set_activatable_widget(check)
             self.results_list_box.append(row)
 
+    def on_check(self, button):
+        print(button.get_active())
+
     def searchThread(self):
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "search", "--columns=all", self.to_search], capture_output=True, text=True, env=self.new_env).stdout
+        command = ["flatpak-spawn", "--host", "flatpak", "search", "--columns=all", self.to_search]
+        if self.remote_to_search:
+            command += self.remote_to_search
+
+
+        output = subprocess.run(command, capture_output=True, text=True, env=self.new_env).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
         data = [columns]
@@ -56,6 +66,34 @@ class SearchInstallWindow (Adw.Window):
             return
         task = Gio.Task.new(None, None, self.searchResponse)
         task.run_in_thread(lambda *_: self.searchThread())
+
+    def remotesChooserCreator(self):
+        remotes_popover = Gtk.Popover(hexpand=True)
+        
+        def set_remote(button, index=None):
+            remotes_popover.popdown()
+            self.remotes_dropdown.set_label(button.get_label())
+            if index == None:
+                return
+
+            self.remote_to_search = [self.host_remotes[index][0], f"--{self.host_remotes[index][7]}"]
+
+
+
+        self.remotes_dropdown.set_popover(remotes_popover)
+        remotes_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        remotes_popover.set_child(remotes_box)
+        all_remotes = Gtk.Button(label="All Remotes")
+        all_remotes.add_css_class("flat")
+        all_remotes.connect("clicked", set_remote)
+        remotes_box.append(all_remotes)
+        i = 0
+        for remote in (self.host_remotes):
+            remote_button = Gtk.Button(label=remote[1] + " -- " + remote[7])
+            remote_button.add_css_class("flat")
+            remote_button.connect("clicked", set_remote, i)
+            remotes_box.append(remote_button)
+            i += 1
 
     def key_handler(self, _a, event, _c, _d):
         if event == Gdk.KEY_Escape:
@@ -82,3 +120,12 @@ class SearchInstallWindow (Adw.Window):
         self.search_entry.connect("changed", lambda *_: self.search_entry.grab_focus())
         # self.search_entry.set_key_capture_widget(self.results_list_box)
         self.search_entry.grab_focus()
+
+        self.host_remotes = self.my_utils.getHostRemotes()
+        if len(self.host_remotes) > 1:
+            self.remotesChooserCreator()
+
+        self.remote_to_search = []
+
+        
+        
