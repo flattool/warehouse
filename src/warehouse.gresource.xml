@@ -27,5 +27,7 @@
     <file preprocess="xml-stripblanks">view-more-symbolic.svg</file>
     <file preprocess="xml-stripblanks">clock-alt-symbolic.svg</file>
     <file preprocess="xml-stripblanks">arrow2-top-right-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">software-update-available-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">software-update-urgent-symbolic.svg</file>
   </gresource>
 </gresources>
