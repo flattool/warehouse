@@ -53,19 +53,6 @@ def show_properties_window(widget, index, window):
         window.should_open_filter_window = True
         properties_window.close()
 
-
-    if "runtime" in window.host_flatpaks[index][12]:
-        dependant_runtimes = my_utils.getDependantRuntimes()
-        if app_ref in dependant_runtimes:
-            view_apps_button = Gtk.Button(icon_name="funnel-symbolic", tooltip_text=_("Show Apps Using this Runtime"))
-            view_apps_button.connect("clicked", viewAppsHandler)
-            properties_header_bar.pack_start(view_apps_button)
-
-    details = Gtk.Button(label=_("Show Details"))
-    properties_header_bar.pack_end(details)
-    details.connect("clicked", lambda *_: Gio.AppInfo.launch_default_for_uri(f"appstream://{app_id}", None))
-
-
     def key_handler(_a, event, _c, _d):
         if event == Gdk.KEY_Escape:
             properties_window.close()
@@ -144,19 +131,31 @@ def show_properties_window(widget, index, window):
         clean_button.connect("clicked", clean_button_handler)
         user_data_row.add_suffix(clean_button)
 
+    details_row = Adw.ActionRow(title=_("Show Details in Store"), activatable=True)
+    details_row.add_suffix(Gtk.Image.new_from_icon_name("arrow2-top-right-symbolic"))
+    details_row.connect("activated", lambda *_: Gio.AppInfo.launch_default_for_uri(f"appstream://{app_id}", None))
+    user_data_list.append(details_row)
     properties_box.append(user_data_list)
+
+    if "runtime" in window.host_flatpaks[index][12]:
+        dependant_runtimes = my_utils.getDependantRuntimes()
+        if app_ref in dependant_runtimes:
+            view_apps = Adw.ActionRow(title=_("Show Apps Using this Runtime"), activatable=True)
+            view_apps.add_suffix(Gtk.Image.new_from_icon_name("funnel-symbolic"))
+            view_apps.connect("activated", viewAppsHandler)
+            user_data_list.append(view_apps)
+            # view_apps_button = Gtk.Button(icon_name="funnel-symbolic", tooltip_text=_("Show Apps Using this Runtime"))
+            # view_apps_button.connect("clicked", viewAppsHandler)
+            # properties_header_bar.pack_start(view_apps_button)
 
     column_headers = [_('Name'), _('Description'), _('App ID'), _('Version'), _('Branch'), _('Arch'), _('Origin'), _('Installation'), _('Ref'), _('Active Commit'), _('Latest Commit'), _('Installed Size'), _('Options'), _('Runtime')]
     for column in range(len(window.host_flatpaks[index])):
         visible = True
         if window.host_flatpaks[index][column] == "":
             visible = False
-        row_item = Adw.ActionRow(title=column_headers[column])
+        row_item = Adw.ActionRow(title=column_headers[column], activatable=True)
         row_item.set_subtitle(GLib.markup_escape_text(window.host_flatpaks[index][column]))
-
-        properties_copy_button = Gtk.Button(icon_name="edit-copy-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Copy {}").format(column_headers[column]))
-        properties_copy_button.add_css_class("flat")
-        properties_copy_button.connect("clicked", copy_button_handler, column_headers[column], window.host_flatpaks[index][column])
+        row_item.connect("activated", copy_button_handler, column_headers[column], window.host_flatpaks[index][column])
 
         if column == 13:
             runtime_properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
@@ -168,9 +167,8 @@ def show_properties_window(widget, index, window):
                 row_item.add_css_class("error")
                 eol_runtime_banner.set_revealed(True)
 
-        row_item.add_suffix(properties_copy_button)
-
         row_item.set_visible(visible)
+        row_item.add_suffix(Gtk.Image.new_from_icon_name("edit-copy-symbolic"))
         properties_list.append(row_item)
 
     properties_box.append(properties_list)

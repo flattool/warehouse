@@ -26,5 +26,6 @@
     <file preprocess="xml-stripblanks">right-large-symbolic.svg</file>
     <file preprocess="xml-stripblanks">view-more-symbolic.svg</file>
     <file preprocess="xml-stripblanks">clock-alt-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">arrow2-top-right-symbolic.svg</file>
   </gresource>
 </gresources>

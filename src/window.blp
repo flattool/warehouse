@@ -100,6 +100,12 @@ template WarehouseWindow : Adw.ApplicationWindow {
         tooltip-text: _("Open Copy Menu");
         menu-model: copy_menu;
       }
+      [end]
+      Button batch_snapshot_button {
+        icon-name: "clock-alt-symbolic";
+        tooltip-text: _("Snapshot Selected Apps' Data");
+        visible: false;
+      }
     }
   }
 }
