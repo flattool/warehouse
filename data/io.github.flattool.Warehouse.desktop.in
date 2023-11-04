@@ -8,3 +8,4 @@ Categories=GTK;System;Utility;
 StartupNotify=true
 Keywords=flatpak
 Comment=Manage all things Flatpak
+X-Purism-FormFactor=Workstation;Mobile;
