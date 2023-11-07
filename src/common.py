@@ -205,8 +205,8 @@ class myUtils:
             try:
                 subprocess.run(command, capture_output=False, check=True, env=self.new_env)
                 if progress_bar:
-                    progress_bar.set_visible(True)
-                    progress_bar.set_fraction((i + 1.0) / len(app_arr))
+                    GLib.idle_add(progress_bar.set_visible, True)
+                    GLib.idle_add(progress_bar.set_fraction, (i + 1.0) / len(ref_arr))
             except subprocess.CalledProcessError:
                 fails.append(apps[i])
 
@@ -223,8 +223,8 @@ class myUtils:
             try:
                 print(pk_command)
                 if progress_bar:
-                    progress_bar.set_visible(True)
-                    progress_bar.set_fraction(0.9)
+                    GLib.idle_add(progress_bar.set_visible, True)
+                    GLib.idle_add(progress_bar.set_fraction, 0.9)
                 subprocess.run(pk_command, capture_output=False, check=True, env=self.new_env)
             except subprocess.CalledProcessError:
                 self.uninstall_success = False
@@ -255,8 +255,8 @@ class myUtils:
             try:
                 subprocess.run(command, capture_output=False, check=True, env=self.new_env)
                 if progress_bar:
-                    progress_bar.set_visible(True)
-                    progress_bar.set_fraction((i + 1.0) / len(app_arr))
+                    GLib.idle_add(progress_bar.set_visible, True)
+                    GLib.idle_add(progress_bar.set_fraction, (i + 1.0) / len(app_arr))
             except subprocess.CalledProcessError:
                 fails.append(app_arr[i])
         
@@ -266,8 +266,8 @@ class myUtils:
                 pk_command.append(fails[i])
             try:
                 if progress_bar:
-                    progress_bar.set_visible(True)
-                    progress_bar.set_fraction(0.9)
+                    GLib.idle_add(progress_bar.set_visible, True)
+                    GLib.idle_add(progress_bar.set_fraction, 0.9)
                 subprocess.run(pk_command, capture_output=False, check=True, env=self.new_env)
             except subprocess.CalledProcessError:
                 self.install_success = False

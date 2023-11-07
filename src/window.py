@@ -53,6 +53,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     filter_button = Gtk.Template.Child()
     scrolled_window = Gtk.Template.Child()
     main_menu = Gtk.Template.Child()
+    uninstalling = Gtk.Template.Child()
 
     main_progress_bar = Gtk.ProgressBar(visible=False, pulse_step=0.7, can_target=False)
     main_progress_bar.add_css_class("osd")
@@ -95,18 +96,19 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def uninstallFlatpakCallback(self, _a, _b):
         self.currently_uninstalling = False
         self.main_progress_bar.set_visible(False)
-        self.should_pulse = False
+        # self.should_pulse = False
         self.refresh_list_of_flatpaks(_a, False)
         self.main_toolbar_view.set_sensitive(True)
         self.disconnect(self.no_close)
         self.uninstallButtonsEnable(True)
+        self.main_stack.set_visible_child(self.main_box)
         if self.my_utils.uninstall_success:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled successfully")))
         else:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not uninstall some apps")))
 
     def uninstallFlatpakThread(self, ref_arr, id_arr, type_arr, should_trash):
-        self.my_utils.uninstallFlatpak(ref_arr, type_arr, should_trash)
+        self.my_utils.uninstallFlatpak(ref_arr, type_arr, should_trash, self.main_progress_bar)
 
     def uninstallFlatpak(self, should_trash):
         ref_arr = []
@@ -127,13 +129,13 @@ class WarehouseWindow(Adw.ApplicationWindow):
         task.run_in_thread(lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, type_arr=type_arr, should_trash=should_trash: self.uninstallFlatpakThread(ref_arr, id_arr, type_arr, should_trash))
 
     def batchUninstallButtonHandler(self, _widget):
-        self.should_pulse = True
-        self.mainPulser()
+        # self.should_pulse = True
+        # self.mainPulser()
         has_user_data = [] # This is only an array so I can edit it in a sub-function without using nonlocal prefix
 
         def batchUninstallResponse(_idk, response_id, _widget):
             if response_id == "cancel":
-                self.should_pulse = False
+                # self.should_pulse = False
                 return 1                    
 
             try:
@@ -146,7 +148,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.uninstallButtonsEnable(False)
 
             self.no_close = self.connect("close-request", lambda event: True)  # Make window unable to close
-            self.main_progress_bar.set_visible(True)
+            # self.main_progress_bar.set_visible(True)
+            self.main_stack.set_visible_child(self.uninstalling)
             self.uninstallFlatpak(should_trash)
 
         # Create Widgets
@@ -211,14 +214,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.flatpak_rows[index][1] = True
 
         def uninstallResponse(_idk, response_id, _widget):
+            if response_id == "cancel":
+                # self.should_pulse = False
+                return 1
+
             try:
                 should_trash = trash_check.get_active()
             except:
                 should_trash = False
-            
-            if response_id == "cancel":
-                self.should_pulse = False
-                return 1
 
             if response_id == "purge":
                 should_trash = True
@@ -227,7 +230,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             #self.main_toolbar_view.set_sensitive(False)
             self.no_close = self.connect("close-request", lambda event: True)  # Make window unable to close
-            self.main_progress_bar.set_visible(True)
+            # self.main_progress_bar.set_visible(True)
+            self.main_stack.set_visible_child(self.uninstalling)
             self.uninstallFlatpak(should_trash)
 
         # Create Widgets
