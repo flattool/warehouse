@@ -241,6 +241,10 @@ class myUtils:
                 else:
                     self.trashFolder(f"{self.user_data_path}{apps[i][1]}")
 
+        if progress_bar:
+            GLib.idle_add(progress_bar.set_visible, False)
+            GLib.idle_add(progress_bar.set_fraction, 0.0)
+
     def installFlatpak(self, app_arr, remote, user_or_system, progress_bar=None):
         self.install_success = True
         fails = []
@@ -274,6 +278,10 @@ class myUtils:
 
         if (len(fails) > 0) and (user_or_system == "user"):
             self.install_success = False
+
+        if progress_bar:
+            GLib.idle_add(progress_bar.set_visible, False)
+            GLib.idle_add(progress_bar.set_fraction, 0.0)
 
     def runApp(self, ref):
         self.run_app_error = False

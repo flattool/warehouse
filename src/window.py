@@ -53,6 +53,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     filter_button = Gtk.Template.Child()
     scrolled_window = Gtk.Template.Child()
     main_menu = Gtk.Template.Child()
+    installing = Gtk.Template.Child()
     uninstalling = Gtk.Template.Child()
 
     main_progress_bar = Gtk.ProgressBar(visible=False, pulse_step=0.7, can_target=False)
@@ -131,7 +132,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def batchUninstallButtonHandler(self, _widget):
         # self.should_pulse = True
         # self.mainPulser()
-        has_user_data = [] # This is only an array so I can edit it in a sub-function without using nonlocal prefix
+        has_user_data = False
 
         def batchUninstallResponse(_idk, response_id, _widget):
             if response_id == "cancel":
@@ -160,10 +161,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
             if not self.flatpak_rows[1]:
                 continue # Skip if not selected
             if os.path.exists(f"{self.user_data_path}{self.flatpak_rows[i][6][2]}"):
-                has_user_data.append(True)
+                has_user_data = True
                 break
 
-        if len(has_user_data) > 0:
+        if has_user_data:
             # Create Widgets
             options_box = Gtk.Box(orientation="vertical")
             header = Gtk.Label(label=_("App Settings & Data"), halign="start", margin_top=10)
@@ -688,25 +689,26 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.filter_button.set_sensitive(True)
 
     def installCallback(self, _a, _b):
+        # self.should_pulse = False
+        self.main_stack.set_visible_child(self.main_box)
         self.main_progress_bar.set_visible(False)
-        self.should_pulse = False
-
         if self.my_utils.install_success:
-            self.toast_overlay.add_toast(Adw.Toast.new(_("Installed successfully")))
             self.refresh_list_of_flatpaks(self, False)
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Installed successfully")))
         else:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not install app")))
 
     def installThread(self, filepath, user_or_system):
-        self.my_utils.installFlatpak([filepath], None, user_or_system)
+        self.my_utils.installFlatpak([filepath], None, user_or_system, self.main_progress_bar)
 
     def install_file(self, filepath):
         def response(dialog, response, _a):
             if response == "cancel":
-                self.should_pulse = False
+                # self.should_pulse = False
                 return
 
-            self.main_progress_bar.set_visible(True)
+            # self.main_progress_bar.set_visible(True)
+            self.main_stack.set_visible_child(self.installing)
             user_or_system = "user"
             if system_check.get_active():
                 user_or_system = "system"
@@ -714,8 +716,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
             task = Gio.Task.new(None, None, self.installCallback)
             task.run_in_thread(lambda *_: self.installThread(filepath, user_or_system))
 
-        self.should_pulse = True
-        self.mainPulser()
+        # self.should_pulse = True
+        # self.mainPulser()
 
         name = filepath.split('/')
         name = name[len(name) - 1]

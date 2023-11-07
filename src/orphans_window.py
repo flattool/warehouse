@@ -76,8 +76,6 @@ class OrphansWindow(Adw.Window):
         self.keep_checking = True
         task = Gio.Task.new(None, None, self.installCallback)
         task.run_in_thread(lambda _task, _obj, _data, _cancellable, id_list=self.selected_dirs, remote=self.selected_remote, app_type=self.selected_remote_type, progress_bar=self.progress_bar: self.my_utils.installFlatpak(id_list, remote, app_type, progress_bar))
-        other_task = Gio.Task.new(None, None, None)
-        other_task.run_in_thread(lambda *_: self.installCheker())
     
     def installButtonHandler(self, button):
         remote_select_buttons = []
