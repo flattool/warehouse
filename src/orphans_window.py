@@ -20,6 +20,8 @@ class OrphansWindow(Adw.Window):
     search_bar = Gtk.Template.Child()
     search_entry = Gtk.Template.Child()
     oepn_folder_button = Gtk.Template.Child()
+    installing = Gtk.Template.Child()
+    main_box = Gtk.Template.Child()
 
     window_title = _("Manage Leftover Data")
     host_home = str(pathlib.Path.home())
@@ -27,17 +29,11 @@ class OrphansWindow(Adw.Window):
     should_select_all = False
     selected_remote = ""
     selected_remote_install_type = ""
-    should_pulse = False
     no_close_id = 0
 
     def key_handler(self, _a, event, _c, _d):
         if event == Gdk.KEY_Escape:
             self.close()
-
-    def pulser(self):
-        if self.should_pulse:
-            self.progress_bar.pulse()
-            GLib.timeout_add(500, self.pulser)
     
     def selectionHandler(self, widget, dir_name):
         if widget.get_active():
@@ -65,11 +61,8 @@ class OrphansWindow(Adw.Window):
         self.generateList()
 
     def installCallback(self, *_args):
-        self.set_title(self.window_title)
         self.generateList()
-        self.should_pulse = False
         self.progress_bar.set_visible(False)
-        self.set_sensitive(True)
         self.app_window.refresh_list_of_flatpaks(self, False)
         self.disconnect(self.no_close_id) # Make window able to close
         if self.my_utils.install_success:
@@ -78,14 +71,16 @@ class OrphansWindow(Adw.Window):
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not install some apps")))
 
     def installHandler(self):
-        self.set_title(_("Installing… This could take a while"))
+        self.main_stack.set_visible_child(self.installing)
+        self.set_title(self.window_title)
+        self.keep_checking = True
         task = Gio.Task.new(None, None, self.installCallback)
-        task.run_in_thread(lambda _task, _obj, _data, _cancellable, id_list=self.selected_dirs, remote=self.selected_remote, app_type=self.selected_remote_type: self.my_utils.installFlatpak(id_list, remote, app_type))
-
+        task.run_in_thread(lambda _task, _obj, _data, _cancellable, id_list=self.selected_dirs, remote=self.selected_remote, app_type=self.selected_remote_type, progress_bar=self.progress_bar: self.my_utils.installFlatpak(id_list, remote, app_type, progress_bar))
+        other_task = Gio.Task.new(None, None, None)
+        other_task.run_in_thread(lambda *_: self.installCheker())
+    
     def installButtonHandler(self, button):
         remote_select_buttons = []
-        self.should_pulse = True
-        self.pulser()
 
         def remote_select_handler(button):
             if not button.get_active():
@@ -96,11 +91,10 @@ class OrphansWindow(Adw.Window):
 
         def onResponse(dialog, response_id, _function):
             if response_id == "cancel":
-                self.should_pulse = False
                 return
             self.installHandler()
             self.progress_bar.set_visible(True)
-            self.set_sensitive(False)
+            self.action_bar.set_visible(False)
             self.no_close_id = self.connect("close-request", lambda event: True)  # Make window unable to close
             
         dialog = Adw.MessageDialog.new(self, _("Attempt to Install?"), _("Warehouse will attempt to install apps matching the selected data."))
@@ -191,7 +185,6 @@ class OrphansWindow(Adw.Window):
         self.list_of_data.remove_all()
         self.selected_dirs = []
         self.set_title(self.window_title)
-        self.should_pulse = False
         dir_list = os.listdir(self.user_data_path)
 
         # This is a list that only holds IDs of install flatpaks
@@ -228,9 +221,13 @@ class OrphansWindow(Adw.Window):
 
             # Add row to list
             self.list_of_data.append(dir_row)
+
         if self.list_of_data.get_row_at_index(0) == None:
             self.main_stack.set_visible_child(self.no_data)
             self.action_bar.set_visible(False)
+        else:
+            self.main_stack.set_visible_child(self.main_box)
+            self.action_bar.set_visible(True)
 
     def filter_func(self, row):
         if (self.search_entry.get_text().lower() in row.get_title().lower()):
@@ -242,7 +239,7 @@ class OrphansWindow(Adw.Window):
         self.host_remotes = self.my_utils.getHostRemotes()
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
 
-        self.progress_bar = Gtk.ProgressBar(visible=False, pulse_step=0.7)
+        self.progress_bar = Gtk.ProgressBar(visible=False)
         self.progress_bar.add_css_class("osd")
         self.app_window = main_window
 

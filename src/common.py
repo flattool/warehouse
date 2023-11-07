@@ -235,7 +235,7 @@ class myUtils:
                 else:
                     self.trashFolder(f"{self.user_data_path}{apps[i][1]}")
 
-    def installFlatpak(self, app_arr, remote, user_or_system):
+    def installFlatpak(self, app_arr, remote, user_or_system, progress_bar=None):
         self.install_success = True
         fails = []
 
@@ -248,15 +248,22 @@ class myUtils:
             command.append(app_arr[i])
             try:
                 subprocess.run(command, capture_output=False, check=True, env=self.new_env)
+                if progress_bar:
+                    progress_bar.set_visible(True)
+                    progress_bar.set_fraction((i + 1.0) / len(app_arr))
             except subprocess.CalledProcessError:
                 fails.append(app_arr[i])
         
         if (len(fails) > 0) and (user_or_system == "system"):
+            if progress_bar:
+                progress_bar.set_fraction(0.9)
             pk_command = ['flatpak-spawn', '--host', 'pkexec', 'flatpak', 'install', remote, f"--{user_or_system}", '-y']
             for i in range(len(fails)):
                 pk_command.append(fails[i])
             try:
                 subprocess.run(pk_command, capture_output=False, check=True, env=self.new_env)
+                if progress_bar:
+                    progress_bar.set_fraction(1)
             except subprocess.CalledProcessError:
                 self.install_success = False
 
