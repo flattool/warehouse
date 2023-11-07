@@ -36,6 +36,7 @@ template SearchInstallWindow : Adw.Window {
                 [start]
                 MenuButton remotes_dropdown {
                     label: _("All Remotes");
+                    menu-model: remotes_menu;
                 }
             }
         }
@@ -77,4 +78,7 @@ template SearchInstallWindow : Adw.Window {
             }
         };
     }
+}
+
+menu remotes_menu {
 }

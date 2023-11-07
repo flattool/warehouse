@@ -17,6 +17,7 @@ class SearchInstallWindow (Adw.Window):
     # search_bar = Gtk.Template.Child()
     search_entry = Gtk.Template.Child()
     remotes_dropdown = Gtk.Template.Child()
+    remotes_menu = Gtk.Template.Child()
 
     def searchResponse(self, a, b):
         self.results_list_box.remove_all()
@@ -67,33 +68,25 @@ class SearchInstallWindow (Adw.Window):
         task = Gio.Task.new(None, None, self.searchResponse)
         task.run_in_thread(lambda *_: self.searchThread())
 
+    def set_choice(self, index):
+        print(index)
+
     def remotesChooserCreator(self):
-        remotes_popover = Gtk.Popover(hexpand=True)
-        
-        def set_remote(button, index=None):
-            remotes_popover.popdown()
-            self.remotes_dropdown.set_label(button.get_label())
-            if index == None:
-                return
-
-            self.remote_to_search = [self.host_remotes[index][0], f"--{self.host_remotes[index][7]}"]
 
 
+        # self.remote_to_search = [self.host_remotes[index][0], f"--{self.host_remotes[index][7]}"]
+        # self.create_action("all", lambda *_: set_choice(0))
+        # self.remotes_menu.append_item(Gio.Menu)
 
-        self.remotes_dropdown.set_popover(remotes_popover)
-        remotes_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        remotes_popover.set_child(remotes_box)
-        all_remotes = Gtk.Button(label="All Remotes")
-        all_remotes.add_css_class("flat")
-        all_remotes.connect("clicked", set_remote)
-        remotes_box.append(all_remotes)
-        i = 0
-        for remote in (self.host_remotes):
-            remote_button = Gtk.Button(label=remote[1] + " -- " + remote[7])
-            remote_button.add_css_class("flat")
-            remote_button.connect("clicked", set_remote, i)
-            remotes_box.append(remote_button)
-            i += 1
+        # self.create_action(("downgrade" + str(index)), lambda *_, row=self.flatpak_rows[index]: DowngradeWindow(self, row))
+        # downgrade_item = Gio.MenuItem.new(_("Downgrade"), f"win.downgrade{index}")
+        # advanced_menu_model.append_item(downgrade_item)
+
+        # self.remotes_dropdown
+        for i in range(len(self.host_remotes)):
+            self.create_action(("remote" + str(i)), lambda *_: print("g"))
+            test = Gio.MenuItem.new(self.host_remotes[i][1], f"win.remote{i}")
+            self.remotes_menu.append_item(test)
 
     def key_handler(self, _a, event, _c, _d):
         if event == Gdk.KEY_Escape:
@@ -111,6 +104,7 @@ class SearchInstallWindow (Adw.Window):
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.key_handler)
         self.cancel_button.connect("clicked", lambda *_: self.close())
+        self.parent_window = parent_window
 
         # Apply Widgets
         self.add_controller(event_controller)
