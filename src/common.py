@@ -184,7 +184,7 @@ class myUtils:
             return(1)
         return(0)
 
-    def uninstallFlatpak(self, ref_arr, type_arr, should_trash):
+    def uninstallFlatpak(self, ref_arr, type_arr, should_trash, progress_bar=None):
         self.uninstall_success = True
 
         to_uninstall = []
@@ -204,6 +204,9 @@ class myUtils:
             command = ['flatpak-spawn', '--host', 'flatpak', 'remove', '-y', f"--{apps[i][2]}", apps[i][0]]
             try:
                 subprocess.run(command, capture_output=False, check=True, env=self.new_env)
+                if progress_bar:
+                    progress_bar.set_visible(True)
+                    progress_bar.set_fraction((i + 1.0) / len(app_arr))
             except subprocess.CalledProcessError:
                 fails.append(apps[i])
 
@@ -219,6 +222,9 @@ class myUtils:
                 pk_command.append(fails[i][0])
             try:
                 print(pk_command)
+                if progress_bar:
+                    progress_bar.set_visible(True)
+                    progress_bar.set_fraction(0.9)
                 subprocess.run(pk_command, capture_output=False, check=True, env=self.new_env)
             except subprocess.CalledProcessError:
                 self.uninstall_success = False
@@ -255,15 +261,14 @@ class myUtils:
                 fails.append(app_arr[i])
         
         if (len(fails) > 0) and (user_or_system == "system"):
-            if progress_bar:
-                progress_bar.set_fraction(0.9)
             pk_command = ['flatpak-spawn', '--host', 'pkexec', 'flatpak', 'install', remote, f"--{user_or_system}", '-y']
             for i in range(len(fails)):
                 pk_command.append(fails[i])
             try:
-                subprocess.run(pk_command, capture_output=False, check=True, env=self.new_env)
                 if progress_bar:
-                    progress_bar.set_fraction(1)
+                    progress_bar.set_visible(True)
+                    progress_bar.set_fraction(0.9)
+                subprocess.run(pk_command, capture_output=False, check=True, env=self.new_env)
             except subprocess.CalledProcessError:
                 self.install_success = False
 
