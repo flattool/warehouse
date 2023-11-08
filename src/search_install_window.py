@@ -17,7 +17,6 @@ class SearchInstallWindow (Adw.Window):
     # search_bar = Gtk.Template.Child()
     search_entry = Gtk.Template.Child()
     remotes_dropdown = Gtk.Template.Child()
-    remotes_menu = Gtk.Template.Child()
 
     def searchResponse(self, a, b):
         self.results_list_box.remove_all()
@@ -48,7 +47,6 @@ class SearchInstallWindow (Adw.Window):
         if self.remote_to_search:
             command += self.remote_to_search
 
-
         output = subprocess.run(command, capture_output=True, text=True, env=self.new_env).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
@@ -72,21 +70,21 @@ class SearchInstallWindow (Adw.Window):
         print(index)
 
     def remotesChooserCreator(self):
+        remotes_pop = Gtk.Popover()
+        remotes_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        remotes_pop.set_size_request(400, 1)
+        scroll = Gtk.ScrolledWindow()
+        remotes_pop.set_child(scroll)
+        scroll.set_child(remotes_box)
+        for i in range(1, 3):
+            x = 0
+            height = remotes_pop.get_size(x)
+            all = Gtk.Button(label="all")
+            all.add_css_class("flat")
+            remotes_box.append(all)
+        print(x)
 
-
-        # self.remote_to_search = [self.host_remotes[index][0], f"--{self.host_remotes[index][7]}"]
-        # self.create_action("all", lambda *_: set_choice(0))
-        # self.remotes_menu.append_item(Gio.Menu)
-
-        # self.create_action(("downgrade" + str(index)), lambda *_, row=self.flatpak_rows[index]: DowngradeWindow(self, row))
-        # downgrade_item = Gio.MenuItem.new(_("Downgrade"), f"win.downgrade{index}")
-        # advanced_menu_model.append_item(downgrade_item)
-
-        # self.remotes_dropdown
-        for i in range(len(self.host_remotes)):
-            self.create_action(("remote" + str(i)), lambda *_: print("g"))
-            test = Gio.MenuItem.new(self.host_remotes[i][1], f"win.remote{i}")
-            self.remotes_menu.append_item(test)
+        self.remotes_dropdown.set_popover(remotes_pop)
 
     def key_handler(self, _a, event, _c, _d):
         if event == Gdk.KEY_Escape:
