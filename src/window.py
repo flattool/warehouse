@@ -56,7 +56,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     installing = Gtk.Template.Child()
     uninstalling = Gtk.Template.Child()
 
-    main_progress_bar = Gtk.ProgressBar(visible=False, pulse_step=0.7, can_target=False)
+    main_progress_bar = Gtk.ProgressBar(visible=False, can_target=False)
     main_progress_bar.add_css_class("osd")
     clipboard = Gdk.Display.get_default().get_clipboard()
     host_home = str(pathlib.Path.home())
@@ -65,18 +65,12 @@ class WarehouseWindow(Adw.ApplicationWindow):
     should_select_all = False
     host_flatpaks = None
     install_success = True
-    should_pulse = True
     no_close = None
     re_get_flatpaks = False
     currently_uninstalling = False
     selected_rows = []
     flatpak_rows = []
     # ^ {Row visibility, Row selected, the row itself, properties, row menu, select, the flatpak row from `flatpak list`, mask label}
-
-    def mainPulser(self):
-        if self.should_pulse:
-            self.main_progress_bar.pulse()
-            GLib.timeout_add(500, self.mainPulser)
 
     def filter_func(self, row):
         if (self.search_entry.get_text().lower() in row.get_title().lower()) or (self.search_entry.get_text().lower() in row.get_subtitle().lower()):
@@ -96,8 +90,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def uninstallFlatpakCallback(self, _a, _b):
         self.currently_uninstalling = False
-        self.main_progress_bar.set_visible(False)
-        # self.should_pulse = False
         self.refresh_list_of_flatpaks(_a, False)
         self.main_toolbar_view.set_sensitive(True)
         self.disconnect(self.no_close)
@@ -130,13 +122,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         task.run_in_thread(lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, type_arr=type_arr, should_trash=should_trash: self.uninstallFlatpakThread(ref_arr, id_arr, type_arr, should_trash))
 
     def batchUninstallButtonHandler(self, _widget):
-        # self.should_pulse = True
-        # self.mainPulser()
         has_user_data = False
 
         def batchUninstallResponse(_idk, response_id, _widget):
             if response_id == "cancel":
-                # self.should_pulse = False
                 return 1                    
 
             try:
@@ -144,12 +133,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
             except:
                 should_trash = False
 
-            #self.main_toolbar_view.set_sensitive(False)
-
             self.uninstallButtonsEnable(False)
 
             self.no_close = self.connect("close-request", lambda event: True)  # Make window unable to close
-            # self.main_progress_bar.set_visible(True)
             self.main_stack.set_visible_child(self.uninstalling)
             self.uninstallFlatpak(should_trash)
 
@@ -210,13 +196,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         name = self.host_flatpaks[index][0]
         ref = self.host_flatpaks[index][8]
         id = self.host_flatpaks[index][2]
-        self.should_pulse = True
-        self.mainPulser()
         self.flatpak_rows[index][1] = True
 
         def uninstallResponse(_idk, response_id, _widget):
             if response_id == "cancel":
-                # self.should_pulse = False
                 return 1
 
             try:
@@ -229,9 +212,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             self.uninstallButtonsEnable(False)
 
-            #self.main_toolbar_view.set_sensitive(False)
             self.no_close = self.connect("close-request", lambda event: True)  # Make window unable to close
-            # self.main_progress_bar.set_visible(True)
             self.main_stack.set_visible_child(self.uninstalling)
             self.uninstallFlatpak(should_trash)
 
@@ -689,9 +670,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.filter_button.set_sensitive(True)
 
     def installCallback(self, _a, _b):
-        # self.should_pulse = False
         self.main_stack.set_visible_child(self.main_box)
-        self.main_progress_bar.set_visible(False)
         if self.my_utils.install_success:
             self.refresh_list_of_flatpaks(self, False)
             self.toast_overlay.add_toast(Adw.Toast.new(_("Installed successfully")))
@@ -704,10 +683,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def install_file(self, filepath):
         def response(dialog, response, _a):
             if response == "cancel":
-                # self.should_pulse = False
                 return
 
-            # self.main_progress_bar.set_visible(True)
             self.main_stack.set_visible_child(self.installing)
             user_or_system = "user"
             if system_check.get_active():
@@ -715,9 +692,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             task = Gio.Task.new(None, None, self.installCallback)
             task.run_in_thread(lambda *_: self.installThread(filepath, user_or_system))
-
-        # self.should_pulse = True
-        # self.mainPulser()
 
         name = filepath.split('/')
         name = name[len(name) - 1]
