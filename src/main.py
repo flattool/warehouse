@@ -110,7 +110,7 @@ class WarehouseApplication(Adw.Application):
             win = WarehouseWindow(application=self)
         win.present()
 
-    def on_about_action(self, widget, _):
+    def on_about_action(self, widget, _a):
         """Callback for the app.about action."""
         about = Adw.AboutWindow(
             transient_for=self.props.active_window,
@@ -125,6 +125,7 @@ class WarehouseApplication(Adw.Application):
             website='https://github.com/flattool/warehouse',
             support_url='https://matrix.to/#/#warehouse-development:matrix.org',
             issue_url='https://github.com/flattool/warehouse/issues')
+        about.add_link(_("Donate"), "https://github.com/flattool/warehouse/issues")
         about.present()
 
     def on_preferences_action(self, widget, _):
