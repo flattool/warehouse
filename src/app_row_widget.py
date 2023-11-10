@@ -10,6 +10,7 @@ from .common import myUtils
 
 class AppRow(Adw.ActionRow):
 
+
     def __init__(self, parent_window, host_flatpaks, flatpak_index, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(parent_window)
@@ -31,10 +32,10 @@ class AppRow(Adw.ActionRow):
         properties_button.connect("clicked", lambda *_: PropertiesWindow(flatpak_index, host_flatpaks, parent_window))
         self.add_suffix(properties_button)
         
-        select_flatpak_tickbox = Gtk.CheckButton() # visible=self.in_batch_mode
-        select_flatpak_tickbox.add_css_class("selection-mode")
-        # select_flatpak_tickbox.connect("toggled", self.rowSelectHandler, index)
-        self.add_suffix(select_flatpak_tickbox)
+        self.select_flatpak_tickbox = Gtk.CheckButton() # visible=self.in_batch_mode
+        self.select_flatpak_tickbox.add_css_class("selection-mode")
+        # self.select_flatpak_tickbox.connect("toggled", self.rowSelectHandler, index)
+        self.add_suffix(self.select_flatpak_tickbox)
 
         row_menu = Gtk.MenuButton(icon_name="view-more-symbolic", valign=Gtk.Align.CENTER) # visible=not self.in_batch_mode
         row_menu.add_css_class("flat")

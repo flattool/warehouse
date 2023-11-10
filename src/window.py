@@ -404,8 +404,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.batchActionsEnable(False)
 
         cool_row = AppRow(self, self.host_flatpaks, 7)
-        print(cool_row.app_id)
         self.flatpaks_list_box.append(cool_row)
+        cool_row.select_flatpak_tickbox.set_active(True)
 
     def openDataFolder(self, path):
         try:
