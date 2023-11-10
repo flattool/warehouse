@@ -2,191 +2,179 @@ from gi.repository import Gtk, Adw, GLib, Gdk, Gio
 from .common import myUtils
 import subprocess
 import os
+import pathlib
 
-def show_properties_window(widget, index, window):
+@Gtk.Template(resource_path="/io/github/flattool/Warehouse/properties.ui")
+class PropertiesWindow(Adw.Window):
+    __gtype_name__ = "PropertiesWindow"
+    
+    new_env = dict( os.environ )
+    new_env['LC_ALL'] = 'C'
+    host_home = str(pathlib.Path.home())
+    user_data_path = host_home + "/.var/app/"
 
-    app_name = window.host_flatpaks[index][0]
-    app_id = window.host_flatpaks[index][2]
-    install_type = window.host_flatpaks[index][7]
-    app_ref = window.host_flatpaks[index][8]
-    data_folder = window.user_data_path + app_id 
+    toast_overlay = Gtk.Template.Child()
+    upper = Gtk.Template.Child()
+    app_icon = Gtk.Template.Child()
+    data_row = Gtk.Template.Child()
+    open_data = Gtk.Template.Child()
+    trash_data = Gtk.Template.Child()
+    spinner = Gtk.Template.Child()
+    details = Gtk.Template.Child()
+    view_apps = Gtk.Template.Child()
+    runtime = Gtk.Template.Child()
+    runtime_properties = Gtk.Template.Child()
+    runtime_copy = Gtk.Template.Child()
+    lower = Gtk.Template.Child()
+    eol_app_banner = Gtk.Template.Child()
+    eol_runtime_banner = Gtk.Template.Child()
+    mask_banner = Gtk.Template.Child()
 
-    properties_window = Adw.Window(title=_("{} Properties").format(window.host_flatpaks[index][0]))
-    properties_window.set_default_size(350, 600)
-    properties_window.set_size_request(260, 230)
-    properties_window.set_modal(True)
-    properties_window.set_resizable(True)
-    outer_box = Gtk.Box(orientation="vertical")
-    properties_window.set_transient_for(window)
-    properties_scroll = Gtk.ScrolledWindow()
-    properties_toast_overlay = Adw.ToastOverlay()
-    properties_toast_overlay.set_child(outer_box)
-    properties_box = Gtk.Box(orientation="vertical", vexpand=True)
-    properties_clamp = Adw.Clamp()
-    eol_app_banner = Adw.Banner(title=_("{} has reached its End of Life and will not receive any security updates").format(app_name))
-    eol_runtime_banner = Adw.Banner(title=_("{}'s runtime has reached its End of Life and will not receive any security updates").format(app_name))
-    mask_banner = Adw.Banner(title=_("{} is masked and will not be updated").format(window.host_flatpaks[index][0]))
-    outer_box.append(eol_app_banner)
-    outer_box.append(eol_runtime_banner)
-    outer_box.append(mask_banner)
-    outer_box.append(properties_scroll)
-    properties_scroll.set_child(properties_clamp)
-    properties_clamp.set_child(properties_box)
-    properties_title_bar = Adw.ToolbarView()
-    properties_header_bar = Gtk.HeaderBar()
-    properties_title_bar.add_top_bar(properties_header_bar)
-    properties_title_bar.set_content(properties_toast_overlay)
-    user_data_list = Gtk.ListBox(selection_mode="none", margin_top=12, margin_bottom=0, margin_start=12, margin_end=12)
-    user_data_row = Adw.ActionRow(title="No User Data")
-    user_data_list.append(user_data_row)
-    user_data_list.add_css_class("boxed-list")
+    def copyItem(self, to_copy, to_toast=None):
+        self.get_clipboard().set(to_copy)
+        if to_toast:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Copied {}").format(to_toast)))
 
-    my_utils = myUtils(window)
+    def open_button_handler(self, widget):
+        try:
+            Gio.AppInfo.launch_default_for_uri(f"file://{self.user_data_path}", None)
+        except GLib.GError:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not open folder")))
 
-    system_mask_list = my_utils.getHostMasks("system")
-    user_mask_list = my_utils.getHostMasks("user")
+    def show_details(self, widget):
+        try:
+            Gio.AppInfo.launch_default_for_uri(f"appstream://{self.app_id}", None)
+        except GLib.GError:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not show details")))
 
-    def viewAppsHandler(button):
-        window.should_open_filter_window = False
-        window.filter_button.set_active(True)
-        window.applyFilter([[False], [False], "all", "all", [window.host_flatpaks[index][8]]])
-        window.should_open_filter_window = True
-        properties_window.close()
+    def getSizeCallback(self, *args):
+        self.open_data.set_visible(True)
+        self.open_data.connect("clicked", self.open_button_handler)
+        self.trash_data.set_visible(True)
+        self.data_row.set_title(_("User Data"))
+        self.data_row.set_subtitle(f"~{self.size}")
+        self.spinner.set_visible(False)
 
-    def key_handler(_a, event, _c, _d):
-        if event == Gdk.KEY_Escape:
-            properties_window.close()
+    def getSizeThread(self, *args):
+        self.size = self.my_utils.getSizeWithFormat(self.user_data_path)
 
-    event_controller = Gtk.EventControllerKey()
-    event_controller.connect("key-pressed", key_handler)
-    properties_window.add_controller(event_controller)
-
-    def on_response(_a, response_id, _b):
-        if response_id != "continue":
-            return
-        if my_utils.trashFolder(data_folder) == 0:
-            properties_toast_overlay.add_toast(Adw.Toast.new(_("Trashed user data")))
-            user_data_list.remove(user_data_row)
-            user_data_list.append(Adw.ActionRow(title="No User Data"))
+    def generateUpper(self):
+        image = self.my_utils.findAppIcon(self.app_id)
+        self.runtime.set_subtitle(self.current_flatpak[13])
+        if image.get_paintable() == None:
+            self.app_icon.set_from_icon_name(image.get_icon_name())
         else:
-            properties_toast_overlay.add_toast(Adw.Toast.new(_("Could not trash user data")))
+            self.app_icon.set_from_paintable(image.get_paintable())
 
-    def clean_button_handler(_widget):
-        dialog = Adw.MessageDialog.new(window, _("Send {}'s User Data to the Trash?").format(app_name))
-        dialog.set_body(_("Your files and data for this app will be sent to the trash."))
-        dialog.set_close_response("cancel")
+        if os.path.exists(self.user_data_path):
+            task = Gio.Task.new(None, None, self.getSizeCallback)
+            task.run_in_thread(self.getSizeThread)
+        else:
+            self.data_row.set_title(_("No User Data"))
+            self.spinner.set_visible(False)
+
+        if "runtime" in self.current_flatpak[12]:
+            self.runtime.set_visible(False)
+        else:
+            self.view_apps.set_visible(False)
+
+    def generateLower(self):
+        column_headers = [
+            _('Name'), _('Description'), _('App ID'), _('Version'), _('Branch'),
+            _('Arch'), _('Origin'), _('Installation'), _('Ref'), _('Active Commit'),
+            _('Latest Commit'), _('Installed Size'), _('Options')
+        ]
+
+        for i in range(len(column_headers)):
+            if self.current_flatpak[i] == "":
+                continue
+
+            row = Adw.ActionRow(title=column_headers[i], activatable=True)
+            row.add_suffix(Gtk.Image.new_from_icon_name("edit-copy-symbolic"))
+            row.set_subtitle(GLib.markup_escape_text(self.current_flatpak[i]))
+            row.connect("activated", lambda *_a, row=row: self.copyItem(row.get_subtitle(), row.get_title()))
+            self.lower.add(row)
+
+    def viewAppsHandler(self, widget):
+        self.parent_window.should_open_filter_window = False
+        self.parent_window.filter_button.set_active(True)
+        self.parent_window.applyFilter([True, False, ["all"], ["all"], [self.app_ref]])
+        self.parent_window.should_open_filter_window = True
+        self.close()
+
+    def showPropertiesHandler(self):
+        runtime = self.current_flatpak[13]
+        for i in range(len(self.host_flatpaks)):
+            if runtime in self.host_flatpaks[i][8]:
+                PropertiesWindow(i, self.host_flatpaks, self.parent_window)
+
+    def trashDataHandler(self):
+        def onResponse(response, *args):
+            if response == "cancel":
+                return
+
+            if self.my_utils.trashFolder(self.user_data_path) == 0:
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Trashed user data")))
+                self.data_row.set_title(_("No User Data"))
+                self.data_row.set_subtitle("")
+                self.open_data.set_visible(False)
+                self.trash_data.set_visible(False)
+            else:
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not trash user data")))
+
+        dialog = Adw.MessageDialog.new(self, _("Send {}'s User Data to the Trash?").format(self.app_name))
         dialog.add_response("cancel", _("Cancel"))
+        dialog.set_close_response("cancel")
         dialog.add_response("continue", _("Trash Data"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.set_transient_for(properties_window)
-        dialog.connect("response", on_response, dialog.choose_finish)
-        Gtk.Window.present(dialog)
-
-    def open_button_handler(_widget):
-        try:
-            Gio.AppInfo.launch_default_for_uri(f"file://{path}", None)
-        except GLib.GError:
-            properties_toast_overlay.add_toast(Adw.Toast.new(_("Could not open folder")))
-
-    def copy_button_handler(widget, title, to_copy):
-        window.clipboard.set(to_copy)
-        properties_toast_overlay.add_toast(Adw.Toast.new(_("Copied {}").format(title)))
+        dialog.connect("response", onResponse, dialog.choose_finish)
+        dialog.present()
     
-    image = my_utils.findAppIcon(window.host_flatpaks[index][2])
-    image.add_css_class("icon-dropshadow")
-    image.set_margin_top(6)
-    image.set_pixel_size(100)
-    properties_box.append(image)
+    def __init__(self, flatpak_index, host_flatpaks, parent_window, **kwargs):
+        super().__init__(**kwargs)
+        self.my_utils = myUtils(self)
+        self.current_flatpak = host_flatpaks[flatpak_index]
+        self.parent_window = parent_window
+        self.host_flatpaks = host_flatpaks
+        self.flatpak_index = flatpak_index
 
-    properties_list = Gtk.ListBox(selection_mode="none", margin_top=12, margin_bottom=12, margin_start=12, margin_end=12)
-    properties_list.add_css_class("boxed-list")
+        self.app_name = self.current_flatpak[0]
+        self.app_id = self.current_flatpak[2]
+        self.origin_remote = self.current_flatpak[6]
+        self.install_type = self.current_flatpak[7]
+        self.app_ref = self.current_flatpak[8]
+        self.user_data_path += self.app_id
 
-    path = str(window.user_data_path) + window.host_flatpaks[index][2]
+        self.details.connect("activated", self.show_details)
+        self.runtime_copy.connect("clicked", lambda *_: self.copyItem(self.runtime.get_subtitle(), self.runtime.get_title()))
+        self.runtime_properties.connect("clicked", lambda *_: self.close())
+        self.runtime_properties.connect("clicked", lambda *_: self.showPropertiesHandler())
+        self.view_apps.connect("activated", self.viewAppsHandler)
+        self.trash_data.connect("clicked", lambda *_: self.trashDataHandler())
+        
+        if "eol" in self.current_flatpak[12]:
+            self.eol_app_banner.set_revealed(True)
+            self.eol_app_banner.set_title(_("{} has reached its End of Life and will not receive any security updates").format(self.app_name))
 
-    def size_thread(path):
-        size = f"{path}\n~{my_utils.getSizeWithFormat(path)}"
-        user_data_row.set_subtitle(size)
+        if self.current_flatpak[13] in parent_window.eol_list:
+            self.eol_runtime_banner.set_revealed(True)
+            self.eol_runtime_banner.set_title(_("{}'s runtime has reached its End of Life and will not receive any security updates").format(self.app_name))
 
-    def calc_size(path):
-        task = Gio.Task.new(None, None, None)
-        task.run_in_thread(lambda _task, _obj, _data, _cancellable: size_thread(path))
+        if self.app_id in self.my_utils.getHostMasks("system") or self.app_id in self.my_utils.getHostMasks("user"):
+            self.mask_banner.set_revealed(True)
+            self.mask_banner.set_title(_("{} is masked and will not be updated").format(self.app_name))
 
-    def showPropertiesHandler(button, query):
-        for i in range(len(window.host_flatpaks)):
-            if query in window.host_flatpaks[i][8]:
-                show_properties_window(button, i, window)
-                properties_window.close()
+        def key_handler(_a, event, _c, _d):
+            if event == Gdk.KEY_Escape:
+                self.close()
+        event_controller = Gtk.EventControllerKey()
+        event_controller.connect("key-pressed", key_handler)
+        self.add_controller(event_controller)
 
-    if os.path.exists(path):
-        user_data_row.set_title("User Data")
-        calc_size(path)
+        self.generateUpper()
+        self.generateLower()
 
-        open_button = Gtk.Button(icon_name="document-open-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Open User Data Folder"))
-        open_button.add_css_class("flat")
-        open_button.connect("clicked", open_button_handler)
-        user_data_row.add_suffix(open_button)
-
-        clean_button = Gtk.Button(icon_name="brush-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Trash User Data"))
-        clean_button.add_css_class("flat")
-        clean_button.connect("clicked", clean_button_handler)
-        user_data_row.add_suffix(clean_button)
-
-    details_row = Adw.ActionRow(title=_("Show Details in Store"), activatable=True)
-    details_row.add_suffix(Gtk.Image.new_from_icon_name("arrow2-top-right-symbolic"))
-    details_row.connect("activated", lambda *_: Gio.AppInfo.launch_default_for_uri(f"appstream://{app_id}", None))
-    user_data_list.append(details_row)
-    properties_box.append(user_data_list)
-
-    if "runtime" in window.host_flatpaks[index][12]:
-        dependant_runtimes = my_utils.getDependantRuntimes()
-        if app_ref in dependant_runtimes:
-            view_apps = Adw.ActionRow(title=_("Show Apps Using this Runtime"), activatable=True)
-            view_apps.add_suffix(Gtk.Image.new_from_icon_name("funnel-symbolic"))
-            view_apps.connect("activated", viewAppsHandler)
-            user_data_list.append(view_apps)
-            # view_apps_button = Gtk.Button(icon_name="funnel-symbolic", tooltip_text=_("Show Apps Using this Runtime"))
-            # view_apps_button.connect("clicked", viewAppsHandler)
-            # properties_header_bar.pack_start(view_apps_button)
-
-    column_headers = [_('Name'), _('Description'), _('App ID'), _('Version'), _('Branch'), _('Arch'), _('Origin'), _('Installation'), _('Ref'), _('Active Commit'), _('Latest Commit'), _('Installed Size'), _('Options'), _('Runtime')]
-    for column in range(len(window.host_flatpaks[index])):
-        visible = True
-        if window.host_flatpaks[index][column] == "":
-            visible = False
-        row_item = Adw.ActionRow(title=column_headers[column], activatable=True)
-        row_item.set_subtitle(GLib.markup_escape_text(window.host_flatpaks[index][column]))
-        row_item.connect("activated", copy_button_handler, column_headers[column], window.host_flatpaks[index][column])
-
-        if column == 13:
-            runtime_properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"), margin_end=6)
-            runtime_properties_button.add_css_class("flat")
-            runtime_properties_button.connect("clicked", showPropertiesHandler, row_item.get_subtitle())
-            row_item.add_suffix(runtime_properties_button)
-
-            if row_item.get_subtitle() in window.eol_list:
-                row_item.add_css_class("error")
-                eol_runtime_banner.set_revealed(True)
-
-        row_item.set_visible(visible)
-        row_item.add_suffix(Gtk.Image.new_from_icon_name("edit-copy-symbolic"))
-        properties_list.append(row_item)
-
-    properties_box.append(properties_list)
-
-    if "eol" in window.host_flatpaks[index][12]:
-        eol_app_banner.set_revealed(True)
-
-    def maskHandler():
-        x = my_utils.maskFlatpak(app_id, install_type, True)
-        if x == 0:
-            mask_banner.set_revealed(False)
-            window.flatpak_rows[index][7].set_visible(False) # Sets the mask label invisble
-
-    # properties_window.set_default_size(8, 8)
-    if app_id in system_mask_list or app_id in user_mask_list:
-        mask_banner.set_revealed(True)
-        mask_banner.set_button_label(_("Enable Updates"))
-        mask_banner.connect("button-clicked", lambda *_: maskHandler())
-
-    properties_window.set_content(properties_title_bar)
-    properties_window.present()
+        self.set_title(_("{} Properties").format(self.app_name))
+        self.set_size_request(260, 230)
+        self.set_transient_for(parent_window)
+        self.present()

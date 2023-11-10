@@ -22,12 +22,14 @@ import subprocess
 import re
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
-from .properties_window import show_properties_window
+from .properties_window import PropertiesWindow
 from .filter_window import FilterWindow
 from .common import myUtils
 from .remotes_window import RemotesWindow
 from .downgrade_window import DowngradeWindow
 from .snapshots_window import SnapshotsWindow
+
+from .app_row_widget import AppRow
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):
@@ -273,6 +275,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             # EOL = End Of Life, meaning the app will not be updated
             eol_app_label = Gtk.Label(label=_("App EOL"), hexpand=True, wrap=True, justify=Gtk.Justification.RIGHT, valign=Gtk.Align.CENTER, tooltip_text=_("{} has reached its End of Life and will not receive any security updates").format(app_name))
             eol_app_label.add_css_class("error")
+            flatpak_row.add_suffix(eol_app_label)
 
         if self.host_flatpaks[index][13] in self.eol_list:
             # EOL = End Of Life, meaning the runtime will not be updated
@@ -287,7 +290,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
         properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
         properties_button.add_css_class("flat")
-        properties_button.connect("clicked", show_properties_window, index, self)
+        properties_button.connect("clicked", lambda *_, index=index: PropertiesWindow(index, self.host_flatpaks, self))
         flatpak_row.add_suffix(properties_button)
 
         select_flatpak_tickbox = Gtk.CheckButton(visible=self.in_batch_mode)
@@ -399,6 +402,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
         self.applyFilter(self.filter_list)
         self.batchActionsEnable(False)
+
+        cool_row = AppRow(self, self.host_flatpaks, 7)
+        print(cool_row.app_id)
+        self.flatpaks_list_box.append(cool_row)
 
     def openDataFolder(self, path):
         try:

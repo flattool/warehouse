@@ -1,0 +1,103 @@
+using Gtk 4.0;
+using Adw 1;
+
+template PropertiesWindow : Adw.Window {
+    default-width: 350;
+    default-height: 600;
+    modal: true;
+
+    Adw.ToolbarView main_toolbar_view {
+        [top]
+        HeaderBar header_bar {
+        }
+        content:
+        Adw.ToastOverlay toast_overlay {
+            Box {
+                orientation: vertical;
+                Adw.Banner eol_app_banner {
+                }
+                Adw.Banner eol_runtime_banner {
+                }
+                Adw.Banner mask_banner {
+                }
+                ScrolledWindow {
+                    Adw.Clamp {
+                        Box {
+                            orientation: vertical;
+                            hexpand: false;
+                            vexpand: true;
+                            spacing: 12;
+                            margin-top: 12;
+                            margin-start: 12;
+                            margin-end: 12;
+                            margin-bottom: 12;
+                            Image app_icon {
+                                pixel-size: 100;
+                                styles["icon-dropshadow"]
+                            }
+                            Adw.PreferencesGroup upper {
+                                Adw.ActionRow data_row {
+                                    title: _("Loading User Data…");
+                                    [suffix]
+                                    Button open_data {
+                                        icon-name: "document-open-symbolic";
+                                        tooltip-text: _("Open User Data Folder");
+                                        valign: center;
+                                        visible: false;
+                                        styles["flat"]
+                                    }
+                                    [suffix]
+                                    Button trash_data {
+                                        icon-name: "brush-symbolic";
+                                        tooltip-text: _("Trash User Data");
+                                        valign: center;
+                                        visible: false;
+                                        styles["flat"]
+                                    }
+                                    [suffix]
+                                    Spinner spinner {
+                                        spinning: true;
+                                    }
+                                }
+                                Adw.ActionRow view_apps {
+                                    title: _("Show Apps Using this Runtime");
+                                    activatable: true;
+                                    [suffix]
+                                    Image {
+                                        icon-name: "funnel-symbolic";
+                                    }
+                                }
+                                Adw.ActionRow runtime {
+                                    title: _("Runtime");
+                                    [suffix]
+                                    Button runtime_properties {
+                                        icon-name: "info-symbolic";
+                                        valign: center;
+                                        styles["flat"]
+                                    }
+                                    [suffix]
+                                    Button runtime_copy {
+                                        icon-name: "edit-copy-symbolic";
+                                        valign: center;
+                                        styles["flat"]
+                                    }
+                                }
+                                Adw.ActionRow details {
+                                    title: _("Show Details in Store");
+                                    activatable: true;
+                                    [suffix]
+                                    Image {
+                                        icon-name: "arrow2-top-right-symbolic";
+                                    }
+                                }
+                            }
+                            Adw.PreferencesGroup lower {
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        };
+    }
+}

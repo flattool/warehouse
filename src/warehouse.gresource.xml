@@ -9,6 +9,7 @@
     <file preprocess="xml-stripblanks">downgrade.ui</file>
     <file preprocess="xml-stripblanks">search_install.ui</file>
     <file preprocess="xml-stripblanks">snapshots.ui</file>
+    <file preprocess="xml-stripblanks">properties.ui</file>
     <file>style.css</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
     <!-- <file preprocess="xml-stripblanks">../data/io.github.flattool.Warehouse.metainfo.xml.in</file> -->

@@ -13,6 +13,7 @@ blueprints = custom_target('blueprints',
     'downgrade.blp',
     'search_install.blp',
     'snapshots.blp',
+    'properties.blp',
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
@@ -63,6 +64,8 @@ warehouse_sources = [
   'search_install_window.py',
   'snapshots_window.py',
   'snapshots.blp',
+  'app_row_widget.py',
+  'properties.blp',
 ]
 
 install_data(warehouse_sources, install_dir: moduledir)
