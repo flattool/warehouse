@@ -10,6 +10,11 @@ from .common import myUtils
 
 class AppRow(Adw.ActionRow):
 
+    def set_selectable(self, is_selectable):
+        self.select_flatpak_tickbox.set_active(False)
+        self.select_flatpak_tickbox.set_visible(is_selectable)
+        self.row_menu.set_visible(not is_selectable)
+        self.set_activatable(is_selectable)
 
     def __init__(self, parent_window, host_flatpaks, flatpak_index, **kwargs):
         super().__init__(**kwargs)
@@ -32,21 +37,23 @@ class AppRow(Adw.ActionRow):
         properties_button.connect("clicked", lambda *_: PropertiesWindow(flatpak_index, host_flatpaks, parent_window))
         self.add_suffix(properties_button)
         
-        self.select_flatpak_tickbox = Gtk.CheckButton() # visible=self.in_batch_mode
+        self.select_flatpak_tickbox = Gtk.CheckButton(visible=False) # visible=self.in_batch_mode
         self.select_flatpak_tickbox.add_css_class("selection-mode")
         # self.select_flatpak_tickbox.connect("toggled", self.rowSelectHandler, index)
         self.add_suffix(self.select_flatpak_tickbox)
+        self.set_activatable_widget(self.select_flatpak_tickbox)
+        self.set_activatable(False)
 
-        row_menu = Gtk.MenuButton(icon_name="view-more-symbolic", valign=Gtk.Align.CENTER) # visible=not self.in_batch_mode
-        row_menu.add_css_class("flat")
+        self.row_menu = Gtk.MenuButton(icon_name="view-more-symbolic", valign=Gtk.Align.CENTER) # visible=not self.in_batch_mode
+        self.row_menu.add_css_class("flat")
         row_menu_model = Gio.Menu()
         copy_menu_model = Gio.Menu()
         advanced_menu_model = Gio.Menu()
-        self.add_suffix(row_menu)
+        self.add_suffix(self.row_menu)
 
         parent_window.create_action(("copy-name" + str(flatpak_index)), lambda *_, name=self.app_name, toast=_("Copied name"): self.copyItem(name, toast))
         copy_menu_model.append_item(Gio.MenuItem.new(_("Copy Name"), f"win.copy-name{flatpak_index}"))
 
         row_menu_model.append_submenu(_("Copy"), copy_menu_model)
 
-        row_menu.set_menu_model(row_menu_model)
+        self.row_menu.set_menu_model(row_menu_model)
