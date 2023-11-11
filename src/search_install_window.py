@@ -5,7 +5,7 @@ import os
 import pathlib
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/search_install.ui")
-class SearchInstallWindow (Adw.Window):
+class SearchInstallWindow (Adw.Window): # TODO: stop execution of thread when search is changed
     __gtype_name__ = "SearchInstallWindow"
 
     results_list_box = Gtk.Template.Child()
@@ -16,7 +16,7 @@ class SearchInstallWindow (Adw.Window):
     cancel_button = Gtk.Template.Child()
     blank_page = Gtk.Template.Child()
     loading_page = Gtk.Template.Child()
-    # search_bar = Gtk.Template.Child()
+    search_button = Gtk.Template.Child()
     search_entry = Gtk.Template.Child()
     remotes_dropdown = Gtk.Template.Child()
 
@@ -68,7 +68,7 @@ class SearchInstallWindow (Adw.Window):
 
     def onSearch(self, widget):
         self.main_stack.set_visible_child(self.loading_page)
-        self.to_search = widget.get_text()
+        self.to_search = self.search_entry.get_text()
         if len(self.to_search) < 1 or " " in self.to_search:
             self.results_list_box.remove_all()
             self.main_stack.set_visible_child(self.blank_page)
@@ -119,6 +119,7 @@ class SearchInstallWindow (Adw.Window):
         self.set_transient_for(parent_window)
         # self.search_bar.connect_entry(self.search_entry)
         self.search_entry.connect("activate", self.onSearch)
+        self.search_button.connect("clicked", self.onSearch)
         self.search_entry.connect("changed", lambda *_: self.search_entry.grab_focus())
         # self.search_entry.set_key_capture_widget(self.results_list_box)
         self.search_entry.grab_focus()
