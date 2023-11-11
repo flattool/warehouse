@@ -34,6 +34,9 @@ from .search_install_window import SearchInstallWindow
 class WarehouseApplication(Adw.Application):
     """The main application singleton class."""
 
+    troubleshooting = "OS: {os}\nWarehouse version: {wv}\nGTK: {gtk}\nlibadwaita: {adw}\nApp ID: {app_id}\nLanguage: {lang}"
+    version = "1.3.1.beta"
+
     def __init__(self):
         super().__init__(
             application_id="io.github.flattool.Warehouse",
@@ -53,6 +56,13 @@ class WarehouseApplication(Adw.Application):
         self.create_action("install-from-file", self.install_from_file, ["<primary>o"])
         self.create_action("open-menu", self.main_menu_shortcut, ["F10"])
         self.create_action("open-search-install", self.open_search_install, ["<primary>i"])
+
+        gtk_version = str(Gtk.MAJOR_VERSION) + "." + str(Gtk.MINOR_VERSION) + "." + str(Gtk.MICRO_VERSION)
+        adw_version = str(Adw.MAJOR_VERSION) + "." + str(Adw.MINOR_VERSION) + "." + str(Adw.MICRO_VERSION)
+        os_string = GLib.get_os_info("NAME") + " " + GLib.get_os_info("VERSION")
+        lang = GLib.environ_getenv(GLib.get_environ(), "LANG")
+
+        self.troubleshooting = self.troubleshooting.format( os = os_string, wv = self.version, gtk = gtk_version, adw = adw_version, app_id = self.get_application_id(), lang = lang )
 
     def open_search_install(self, widget, _):
         SearchInstallWindow(self.props.active_window).present()
@@ -117,11 +127,13 @@ class WarehouseApplication(Adw.Application):
             application_name="Warehouse",
             application_icon="io.github.flattool.Warehouse",
             developer_name="Heliguy",
-            version="1.3.1.beta",
+            version=self.version, # TODO: make this version number automatically loaded from meson
             developers=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu"],
             artists=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu", "Amy https://github.com/AtiusAmy", "eryn https://github.com/hericiumvevo"],
             copyright='© 2023 Heliguy',
             license_type=Gtk.License.GPL_3_0_ONLY,
+            debug_info=self.troubleshooting,
+            debug_info_filename="{}.txt".format(self.get_application_id()),
             website='https://github.com/flattool/warehouse',
             support_url='https://matrix.to/#/#warehouse-development:matrix.org',
             issue_url='https://github.com/flattool/warehouse/issues')
