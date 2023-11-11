@@ -42,6 +42,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     toast_overlay = Gtk.Template.Child()
     refresh_button = Gtk.Template.Child()
     no_flatpaks = Gtk.Template.Child()
+    no_results = Gtk.Template.Child()
     main_stack = Gtk.Template.Child()
     batch_mode_button = Gtk.Template.Child()
     batch_mode_bar = Gtk.Template.Child()
@@ -70,12 +71,15 @@ class WarehouseWindow(Adw.ApplicationWindow):
     no_close = None
     re_get_flatpaks = False
     currently_uninstalling = False
+    is_result = False
+    is_empty = False
     selected_rows = []
     flatpak_rows = []
     # ^ {Row visibility, Row selected, the row itself, properties, row menu, select, the flatpak row from `flatpak list`, mask label}
 
     def filter_func(self, row):
         if (self.search_entry.get_text().lower() in row.get_title().lower()) or (self.search_entry.get_text().lower() in row.get_subtitle().lower()):
+            self.is_result = True
             return True
 
     def removeRow(self, row):
@@ -255,6 +259,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.batch_mode_button.set_sensitive(not is_empty)
         self.search_button.set_sensitive(not is_empty)
         self.filter_button.set_sensitive(not is_empty)
+        self.is_empty = is_empty
 
         if is_empty:
             self.batch_mode_button.set_active(False)
@@ -752,6 +757,28 @@ class WarehouseWindow(Adw.ApplicationWindow):
         else:
             self.toast_overlay.add_toast(Adw.Toast.new(_("File type not supported")))
 
+    def on_invalidate(self, row):
+        if self.is_empty:
+            self.batch_mode_button.set_active(False)
+            self.main_stack.set_visible_child(self.no_flatpaks)
+        else:
+            self.main_stack.set_visible_child(self.main_box)
+
+        self.is_result = False
+        self.flatpaks_list_box.invalidate_filter()
+        if self.is_result == False:
+            self.main_stack.set_visible_child(self.no_results)
+
+    def on_change(self, prop, prop2):
+        if self.search_bar.get_search_mode() == False:
+            if self.is_empty:
+                self.batch_mode_button.set_active(False)
+                self.main_stack.set_visible_child(self.no_flatpaks)
+            else:
+                self.main_stack.set_visible_child(self.main_box)
+
+
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
@@ -773,8 +800,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
         self.flatpaks_list_box.set_filter_func(self.filter_func)
         self.generate_list_of_flatpaks()
-        self.search_entry.connect("search-changed", lambda *_: self.flatpaks_list_box.invalidate_filter())
+        self.search_entry.connect("search-changed", self.on_invalidate)
         self.search_bar.connect_entry(self.search_entry)
+        self.search_bar.connect("notify", self.on_change)
         self.refresh_button.connect("clicked", self.refresh_list_of_flatpaks, True)
         self.batch_mode_button.connect("toggled", self.batch_mode_handler)
         self.batch_clean_button.connect("clicked", self.batchCleanHandler)

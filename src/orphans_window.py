@@ -234,7 +234,7 @@ class OrphansWindow(Adw.Window):
 
     def filter_func(self, row):
         if (self.search_entry.get_text().lower() in row.get_title().lower()):
-            is_result = True
+            self.is_result = True
             return True
 
     def on_invalidate(self, row):
@@ -245,9 +245,9 @@ class OrphansWindow(Adw.Window):
             self.main_stack.set_visible_child(self.main_box)
             self.action_bar.set_visible(True)
 
-        is_result = False
+        self.is_result = False
         self.list_of_data.invalidate_filter()
-        if is_result == False:
+        if self.is_result == False:
             self.main_stack.set_visible_child(self.no_results)
 
     def on_change(self, prop, prop2):
