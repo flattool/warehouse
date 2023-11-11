@@ -30,12 +30,13 @@ from .window import WarehouseWindow
 from .remotes_window import RemotesWindow
 from .orphans_window import OrphansWindow
 from .search_install_window import SearchInstallWindow
+from .const import Config
 
 class WarehouseApplication(Adw.Application):
     """The main application singleton class."""
 
-    troubleshooting = "OS: {os}\nWarehouse version: {wv}\nGTK: {gtk}\nlibadwaita: {adw}\nApp ID: {app_id}\nLanguage: {lang}"
-    version = "1.3.1.beta"
+    troubleshooting = "OS: {os}\nWarehouse version: {wv}\nGTK: {gtk}\nlibadwaita: {adw}\nApp ID: {app_id}\nProfile: {profile}\nLanguage: {lang}"
+    version = Config.VERSION
 
     def __init__(self):
         super().__init__(
@@ -62,7 +63,7 @@ class WarehouseApplication(Adw.Application):
         os_string = GLib.get_os_info("NAME") + " " + GLib.get_os_info("VERSION")
         lang = GLib.environ_getenv(GLib.get_environ(), "LANG")
 
-        self.troubleshooting = self.troubleshooting.format( os = os_string, wv = self.version, gtk = gtk_version, adw = adw_version, app_id = self.get_application_id(), lang = lang )
+        self.troubleshooting = self.troubleshooting.format( os = os_string, wv = self.version, gtk = gtk_version, adw = adw_version, profile = Config.PROFILE, app_id = self.get_application_id(), lang = lang )
 
     def open_search_install(self, widget, _):
         SearchInstallWindow(self.props.active_window).present()

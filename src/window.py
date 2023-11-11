@@ -28,6 +28,7 @@ from .common import myUtils
 from .remotes_window import RemotesWindow
 from .downgrade_window import DowngradeWindow
 from .snapshots_window import SnapshotsWindow
+from .const import Config
 
 from .app_row_widget import AppRow
 
@@ -824,6 +825,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
         file_drop = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
         file_drop.connect("drop", self.drop_callback)
         self.scrolled_window.add_controller(file_drop)
+
+        if Config.DEVEL:
+            self.add_css_class("devel")
 
 
 
