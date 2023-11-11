@@ -14,14 +14,18 @@ class SearchInstallWindow (Adw.Window):
     no_results = Gtk.Template.Child()
     too_many = Gtk.Template.Child()
     cancel_button = Gtk.Template.Child()
+    blank_page = Gtk.Template.Child()
+    loading_page = Gtk.Template.Child()
     # search_bar = Gtk.Template.Child()
     search_entry = Gtk.Template.Child()
     remotes_dropdown = Gtk.Template.Child()
 
+    is_debug = GLib.environ_getenv(GLib.get_environ(), "G_MESSAGES_DEBUG") == "all"
+
     def searchResponse(self, a, b):
         self.results_list_box.remove_all()
         print(self.search_results)
-        if len(self.search_results) == 1 and len(self.search_results[0]) == 1:
+        if (self.is_debug and len(self.search_results) == 5) or (len(self.search_results) == 1 and len(self.search_results[0]) == 1): #This is unreliable with G_DEBUG
             self.main_stack.set_visible_child(self.no_results)
             return
         if len(self.search_results) > 50:
@@ -29,15 +33,20 @@ class SearchInstallWindow (Adw.Window):
             return
         self.main_stack.set_visible_child(self.main_overlay)
         for i in range(len(self.search_results)):
-            row = Adw.ActionRow(title=GLib.markup_escape_text(self.search_results[i][0]), subtitle=self.search_results[i][2])
-            check = Gtk.CheckButton()
-            check.add_css_class("selection-mode")
-            check.connect("toggled", self.on_check)
-            label = Gtk.Label(label=self.search_results[i][3], justify=Gtk.Justification.RIGHT, wrap=True, hexpand=True)
-            row.add_suffix(label)
-            row.add_suffix(check)
-            row.set_activatable_widget(check)
-            self.results_list_box.append(row)
+            try:
+                print("creating row {}".format(str(i)))
+                row = Adw.ActionRow(title=GLib.markup_escape_text(self.search_results[i][0]), subtitle=self.search_results[i][2])
+                print("row {} is {}".format(str(i), self.search_results[i][0]))
+                check = Gtk.CheckButton()
+                check.add_css_class("selection-mode")
+                check.connect("toggled", self.on_check)
+                label = Gtk.Label(label=self.search_results[i][3], justify=Gtk.Justification.RIGHT, wrap=True, hexpand=True)
+                row.add_suffix(label)
+                row.add_suffix(check)
+                row.set_activatable_widget(check)
+                self.results_list_box.append(row)
+            except:
+                print("Could not create row")
 
     def on_check(self, button):
         print(button.get_active())
@@ -58,10 +67,11 @@ class SearchInstallWindow (Adw.Window):
         self.search_results = data
 
     def onSearch(self, widget):
+        self.main_stack.set_visible_child(self.loading_page)
         self.to_search = widget.get_text()
         if len(self.to_search) < 1 or " " in self.to_search:
             self.results_list_box.remove_all()
-            self.main_stack.set_visible_child(self.no_results)
+            self.main_stack.set_visible_child(self.blank_page)
             return
         task = Gio.Task.new(None, None, self.searchResponse)
         task.run_in_thread(lambda *_: self.searchThread())
@@ -72,10 +82,10 @@ class SearchInstallWindow (Adw.Window):
     def remotesChooserCreator(self):
         remotes_pop = Gtk.Popover()
         remotes_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        remotes_pop.set_size_request(400, 1)
-        scroll = Gtk.ScrolledWindow()
-        remotes_pop.set_child(scroll)
-        scroll.set_child(remotes_box)
+        # remotes_pop.set_size_request(400, 1) # why?
+        remotes_pop.set_child(remotes_box) # don't use ScrolledWindows in popovers!
+
+        # why not just comment this code out and leave it unimplemented— it does nothing of use
         for i in range(1, 3):
             x = 0
             height = remotes_pop.get_size(x)
@@ -118,6 +128,7 @@ class SearchInstallWindow (Adw.Window):
             self.remotesChooserCreator()
 
         self.remote_to_search = []
+        self.main_stack.set_visible_child(self.blank_page)
 
         
         

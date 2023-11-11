@@ -4,7 +4,7 @@ using Adw 1;
 template $SearchInstallWindow: Adw.Window {
   default-width: 500;
   default-height: 450;
-  title: _("Install From Online");
+  title: _("Install From The Web…");
   modal: true;
 
   Adw.ToolbarView main_toolbar_view {
@@ -87,6 +87,20 @@ template $SearchInstallWindow: Adw.Window {
           icon-name: "system-search-symbolic";
           title: _("No Results Found");
           description: _("Try a different search term");
+        }
+
+        Adw.StatusPage blank_page {
+          title: _("Search for Flatpaks");
+          icon-name: "flatpak-symbolic";
+          description: _("Search for Flatpaks that you want to install");
+        }
+
+        Adw.StatusPage loading_page {
+          title: C_("Shown with a spinner while search operation is pending", "Searching…");
+
+          Spinner {
+            spinning: true;
+          }
         }
 
         Adw.StatusPage too_many {
