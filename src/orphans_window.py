@@ -249,6 +249,7 @@ class OrphansWindow(Adw.Window):
         self.list_of_data.invalidate_filter()
         if self.is_result == False:
             self.main_stack.set_visible_child(self.no_results)
+            self.action_bar.set_visible(False)
 
     def on_change(self, prop, prop2):
         if self.search_bar.get_search_mode() == False:
