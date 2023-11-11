@@ -1,8 +1,11 @@
 using Gtk 4.0;
 using Adw 1;
 
-template WarehouseWindow : Adw.ApplicationWindow {
-  styles["devel"]
+template $WarehouseWindow: Adw.ApplicationWindow {
+  styles [
+    "devel"
+  ]
+
   Adw.ToolbarView main_toolbar_view {
     [top]
     HeaderBar header_bar {
@@ -11,7 +14,7 @@ template WarehouseWindow : Adw.ApplicationWindow {
         icon-name: "view-refresh-symbolic";
         tooltip-text: _("Refresh List");
       }
-      
+
       [start]
       ToggleButton search_button {
         icon-name: "system-search-symbolic";
@@ -30,32 +33,37 @@ template WarehouseWindow : Adw.ApplicationWindow {
         tooltip-text: _("Main Menu");
         menu-model: primary_menu;
       }
-      
+
       [end]
       ToggleButton batch_mode_button {
         icon-name: "selection-mode-symbolic";
         tooltip-text: _("Toggle Selection Mode");
       }
     }
+
     [top]
     SearchBar search_bar {
-      search-mode-enabled: bind-property search_button.active bidirectional;
-      key-capture-widget: WarehouseWindow;
-      Adw.Clamp{
+      search-mode-enabled: bind search_button.active bidirectional;
+      key-capture-widget: main_toolbar_view;
+
+      Adw.Clamp {
         maximum-size: 577;
         hexpand: true;
+
         SearchEntry search_entry {}
       }
     }
-    content:
-    Adw.ToastOverlay toast_overlay {
+
+    content: Adw.ToastOverlay toast_overlay {
       Overlay main_overlay {
         Stack main_stack {
           Box main_box {
             orientation: vertical;
+
             ScrolledWindow scrolled_window {
               vexpand: true;
-              Adw.Clamp{
+
+              Adw.Clamp {
                 ListBox flatpaks_list_box {
                   margin-top: 12;
                   margin-bottom: 12;
@@ -64,11 +72,15 @@ template WarehouseWindow : Adw.ApplicationWindow {
                   hexpand: true;
                   valign: start;
                   selection-mode: none;
-                  styles["boxed-list"]
+
+                  styles [
+                    "boxed-list"
+                  ]
                 }
               }
             }
           }
+
           Box installing {
             orientation: vertical;
             spacing: 10;
@@ -76,22 +88,34 @@ template WarehouseWindow : Adw.ApplicationWindow {
             margin-bottom: 20;
             halign: center;
             valign: center;
+
             Spinner {
               margin-bottom: 35;
-              width-request:  30;
+              width-request: 30;
               height-request: 30;
               opacity: 0.5;
               spinning: true;
             }
+
             Label {
               label: _("Installing…");
-              styles["title-1", "title"]
+
+              styles [
+                "title-1",
+                "title"
+              ]
             }
+
             Label {
               label: _("This could take a while.");
-              styles["description", "body"]
+
+              styles [
+                "description",
+                "body"
+              ]
             }
           }
+
           Box uninstalling {
             orientation: vertical;
             spacing: 10;
@@ -99,53 +123,77 @@ template WarehouseWindow : Adw.ApplicationWindow {
             margin-bottom: 20;
             halign: center;
             valign: center;
+
             Spinner {
               margin-bottom: 35;
-              width-request:  30;
+              width-request: 30;
               height-request: 30;
               opacity: 0.5;
               spinning: true;
             }
+
             Label {
               label: _("Uninstalling…");
-              styles["title-1", "title"]
+
+              styles [
+                "title-1",
+                "title"
+              ]
             }
+
             Label {
               label: _("This could take a while.");
-              styles["description", "body"]
+
+              styles [
+                "description",
+                "body"
+              ]
             }
           }
+
           Adw.StatusPage no_flatpaks {
             icon-name: "error-symbolic";
             title: _("No Flatpaks Found");
             description: _("There are either no Flatpaks that match the current filter, Warehouse cannot see the list of installed Flatpaks, or the system has no Flatpaks installed.");
           }
+
+          Adw.StatusPage no_results {
+            icon-name: "system-search-symbolic";
+            title: _("No Results Found");
+            description: _("Try a different search term");
+          }
         }
       }
     };
+
     [bottom]
     ActionBar batch_mode_bar {
       revealed: false;
+
       [start]
       ToggleButton batch_select_all_button {
         label: _("Select All");
       }
+
       [end]
       Button batch_uninstall_button {
         icon-name: "user-trash-symbolic";
         tooltip-text: _("Uninstall Selected Apps");
       }
+
       [end]
       Button batch_clean_button {
         icon-name: "brush-symbolic";
         tooltip-text: _("Send Selected Apps' Data to the Trash");
       }
+
       [end]
       MenuButton batch_copy_button {
         icon-name: "edit-copy-symbolic";
         tooltip-text: _("Open Copy Menu");
         menu-model: copy_menu;
       }
+
       [end]
       Button batch_snapshot_button {
         icon-name: "clock-alt-symbolic";
@@ -158,7 +206,6 @@ template WarehouseWindow : Adw.ApplicationWindow {
 
 menu primary_menu {
   section {
-
     item {
       label: _("Install From File");
       action: "app.install-from-file";
@@ -173,7 +220,6 @@ menu primary_menu {
       label: _("_Preferences");
       action: "app.preferences";
     }*/
-
     item {
       label: _("Manage Remotes");
       action: "app.show-remotes-window";
@@ -202,7 +248,7 @@ menu copy_menu {
       label: _("Copy Names");
       action: "win.copy-names";
     }
-    
+
     item {
       label: _("Copy IDs");
       action: "win.copy-ids";

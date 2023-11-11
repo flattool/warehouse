@@ -1,54 +1,60 @@
 using Gtk 4.0;
 using Adw 1;
 
-template DowngradeWindow : Adw.Window {
-    default-width: 500;
-    default-height: 450;
-    modal: true;
+template DowngradeWindow: Adw.Window {
+  default-width: 500;
+  default-height: 450;
+  modal: true;
 
-    Adw.ToolbarView main_toolbar_view {
-        [top]
-        HeaderBar header_bar {
-            show-title-buttons: false;
+  Adw.ToolbarView main_toolbar_view {
+    [top]
+    HeaderBar header_bar {
+      show-title-buttons: false;
 
-            [start]
-            Button cancel_button {
-                label: _("Cancel");
-            }
-            [end]
-            Button apply_button {
-                sensitive: false;
-                label: _("Downgrade");
-                styles["suggested-action"]
-            }
-        }
-        content:
-        Adw.ToastOverlay toast_overlay {
-            Stack main_stack {
-                Overlay main_overlay {
-                    [overlay]
-                    ProgressBar progress_bar {
-                        pulse-step: 0.7;
-                        can-target: false;
-                        styles["osd"]
-                    }
+      [start]
+      Button cancel_button {
+        label: _("Cancel");
+      }
 
-                    Adw.PreferencesPage outerbox {
-                        
-                        Adw.PreferencesGroup {
-                            Adw.SwitchRow mask_row {
-                                title: _("Disable Updates");
-                                active: true;
-                            }
-                        }
+      [end]
+      Button apply_button {
+        sensitive: false;
+        label: _("Downgrade");
 
-                        Adw.PreferencesGroup versions_group {
-                            title: _("Select a Release");
-                            description: _("This will uninstall the current release and install the chosen one instead. Note that downgrading can cause issues.");
-                        }
-                    }
-                }
-            }
-        };
+        styles [
+          "suggested-action"
+        ]
+      }
     }
+
+    content: Adw.ToastOverlay toast_overlay {
+      Stack main_stack {
+        Overlay main_overlay {
+          [overlay]
+          ProgressBar progress_bar {
+            pulse-step: 0.7;
+            can-target: false;
+
+            styles [
+              "osd"
+            ]
+          }
+
+          Adw.PreferencesPage outerbox {
+            Adw.PreferencesGroup {
+              Adw.SwitchRow mask_row {
+                title: _("Disable Updates");
+                active: true;
+              }
+            }
+
+            Adw.PreferencesGroup versions_group {
+              title: _("Select a Release");
+              description: _("This will uninstall the current release and install the chosen one instead. Note that downgrading can cause issues.");
+            }
+          }
+        }
+      }
+    };
+  }
 }
