@@ -393,11 +393,17 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.user_mask_list = self.my_utils.getHostMasks("user")
 
         for index in range(len(self.host_flatpaks)):
-            if "eol" in self.host_flatpaks[index][12]:
-                self.eol_list.append(self.host_flatpaks[index][8])
+            try:
+                if "eol" in self.host_flatpaks[index][12]:
+                    self.eol_list.append(self.host_flatpaks[index][8])
+            except:
+                print("Could not find EOL")
 
         for index in range(len(self.host_flatpaks)):
-            self.creat_row(index)
+            try:
+                self.creat_row(index)
+            except:
+                print("Could not create row")
 
         self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
         self.applyFilter(self.filter_list)
