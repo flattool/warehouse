@@ -5,7 +5,7 @@ import os
 import pathlib
 import time
 
-@Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshots.ui")
+@Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/snapshots.ui")
 class SnapshotsWindow(Adw.Window):
     __gtype_name__ = "SnapshotsWindow"
     

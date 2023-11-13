@@ -4,7 +4,7 @@ import subprocess
 import os
 import pathlib
 
-@Gtk.Template(resource_path="/io/github/flattool/Warehouse/downgrade.ui")
+@Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/downgrade.ui")
 class DowngradeWindow(Adw.Window):
     __gtype_name__ = "DowngradeWindow"
     

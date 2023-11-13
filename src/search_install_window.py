@@ -4,7 +4,7 @@ import subprocess
 import os
 import pathlib
 
-@Gtk.Template(resource_path="/io/github/flattool/Warehouse/search_install.ui")
+@Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/search_install.ui")
 class SearchInstallWindow (Adw.Window): # TODO: stop execution of thread when search is changed
     __gtype_name__ = "SearchInstallWindow"
 

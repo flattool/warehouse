@@ -5,7 +5,7 @@ import subprocess
 import os
 import re
 
-@Gtk.Template(resource_path="/io/github/flattool/Warehouse/remotes.ui")
+@Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/remotes.ui")
 class RemotesWindow(Adw.Window):
     __gtype_name__ = "RemotesWindow"
 

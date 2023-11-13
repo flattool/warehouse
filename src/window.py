@@ -32,7 +32,7 @@ from .const import Config
 
 from .app_row_widget import AppRow
 
-@Gtk.Template(resource_path="/io/github/flattool/Warehouse/window.ui")
+@Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):
     __gtype_name__ = "WarehouseWindow"
     main_window_title = "Warehouse"
