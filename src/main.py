@@ -125,20 +125,29 @@ class WarehouseApplication(Adw.Application):
         """Callback for the app.about action."""
         about = Adw.AboutWindow(
             transient_for=self.props.active_window,
-            application_name="Warehouse",
+            application_name=_("Warehouse"),
             application_icon="io.github.flattool.Warehouse",
             developer_name="Heliguy",
-            version=self.version, # TODO: make this version number automatically loaded from meson
+            version=self.version,
             developers=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu"],
             artists=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu", "Amy https://github.com/AtiusAmy", "eryn https://github.com/hericiumvevo"],
             copyright='© 2023 Heliguy',
             license_type=Gtk.License.GPL_3_0_ONLY,
             debug_info=self.troubleshooting,
+            # Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
+            translator_credits=_("translator-credits"),
             debug_info_filename="{}.txt".format(self.get_application_id()),
             website='https://github.com/flattool/warehouse',
             support_url='https://matrix.to/#/#warehouse-development:matrix.org',
             issue_url='https://github.com/flattool/warehouse/issues')
         about.add_link(_("Donate"), "https://github.com/flattool/warehouse/issues")
+        about.add_credit_section(_("Contributors"), [
+	    # Contributors: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
+	    "WinsDominoes https://github.com/WinsDominoes",
+	    "Óscar Fernández Díaz",
+	    "Runar https://github.com/runarcn",
+	    "skøldis <warehouse@turtle.garden>"
+        ])
         about.present()
 
     def on_preferences_action(self, widget, _):
