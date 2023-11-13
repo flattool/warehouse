@@ -1,103 +1,134 @@
 using Gtk 4.0;
 using Adw 1;
 
-template OrphansWindow : Adw.Window {
-    default-width: 500;
-    default-height: 450;
+template $OrphansWindow: Adw.Window {
+  default-width: 500;
+  default-height: 450;
 
-    Adw.ToolbarView main_toolbar_view {
-        [top]
-        HeaderBar header_bar {
-            [start]
-            ToggleButton search_button {
-                icon-name: "system-search-symbolic";
-                tooltip-text: _("Search List");
-            }
-            [end]
-            Button oepn_folder_button {
-                icon-name: "document-open-symbolic";
-                tooltip-text: _("Open Data Folder");
-            }
-        }
-        [top]
-        SearchBar search_bar {
-            search-mode-enabled: bind-property search_button.active bidirectional;
-            key-capture-widget: OrphansWindow;
-            Adw.Clamp{
-                maximum-size: 577;
-                hexpand: true;
-                SearchEntry search_entry {}
-            }
-        }
-        content:
-        Adw.ToastOverlay toast_overlay {
-            Overlay main_overlay {
-                Stack main_stack {
-                    Box main_box {
-                        orientation: vertical;
-                        ScrolledWindow scrolled_window {
-                            vexpand: true;
-                            Adw.Clamp{
-                                ListBox list_of_data {
-                                    margin-top: 12;
-                                    margin-bottom: 12;
-                                    margin-start: 12;
-                                    margin-end: 12;
-                                    hexpand: true;
-                                    valign: start;
-                                    selection-mode: none;
-                                    styles["boxed-list"]
-                                }
-                            }
-                        }
-                    }
-                    Box installing {
-                        orientation: vertical;
-                        spacing: 10;
-                        margin-top: 40;
-                        margin-bottom: 20;
-                        halign: center;
-                        valign: center;
-                        Spinner spinner {
-                            margin-bottom: 35;
-                            width-request:  30;
-                            height-request: 30;
-                            opacity: 0.5;
-                            spinning: true;
-                        }
-                        Label {
-                            label: _("Installing…");
-                            styles["title-1", "title"]
-                        }
-                        Label {
-                            label: _("This could take a while.");
-                            styles["description", "body"]
-                        }
-                    }
-                    Adw.StatusPage no_data {
-                        icon-name: "check-plain-symbolic";
-                        title: _("No Leftover Data");
-                        description: _("There is no leftover user data");
-                    }
-                }
-            }
-        };
-        [bottom]
-        ActionBar action_bar {
-            [start]
-            ToggleButton select_all_button {
-                label: _("Select All");
-            }
-            [end]
-            Button trash_button {
-                label: _("Trash");
-                sensitive: false;
-            }
-            [end]
-            Button install_button {
-                label: _("Install");
-                sensitive: false;
-            }
-        }
+  Adw.ToolbarView main_toolbar_view {
+    [top]
+    HeaderBar header_bar {
+      [start]
+      ToggleButton search_button {
+        icon-name: "system-search-symbolic";
+        tooltip-text: _("Search List");
+      }
+
+      [end]
+      Button oepn_folder_button {
+        icon-name: "document-open-symbolic";
+        tooltip-text: _("Open Data Folder");
+      }
     }
+
+    [top]
+    SearchBar search_bar {
+      search-mode-enabled: bind search_button.active bidirectional;
+      key-capture-widget: main_toolbar_view;
+
+      Adw.Clamp {
+        maximum-size: 577;
+        hexpand: true;
+
+        SearchEntry search_entry {}
+      }
+    }
+
+    content: Adw.ToastOverlay toast_overlay {
+      Overlay main_overlay {
+        Stack main_stack {
+          Box main_box {
+            orientation: vertical;
+
+            ScrolledWindow scrolled_window {
+              vexpand: true;
+
+              Adw.Clamp {
+                ListBox list_of_data {
+                  margin-top: 12;
+                  margin-bottom: 12;
+                  margin-start: 12;
+                  margin-end: 12;
+                  hexpand: true;
+                  valign: start;
+                  selection-mode: none;
+
+                  styles [
+                    "boxed-list"
+                  ]
+                }
+              }
+            }
+          }
+
+          Box installing {
+            orientation: vertical;
+            spacing: 10;
+            margin-top: 40;
+            margin-bottom: 20;
+            halign: center;
+            valign: center;
+
+            Spinner spinner {
+              margin-bottom: 35;
+              width-request: 30;
+              height-request: 30;
+              opacity: 0.5;
+              spinning: true;
+            }
+
+            Label {
+              label: _("Installing…");
+
+              styles [
+                "title-1",
+                "title"
+              ]
+            }
+
+            Label {
+              label: _("This could take a while.");
+
+              styles [
+                "description",
+                "body"
+              ]
+            }
+          }
+
+          Adw.StatusPage no_data {
+            icon-name: "check-plain-symbolic";
+            title: _("No Leftover Data");
+            description: _("There is no leftover user data");
+          }
+
+          Adw.StatusPage no_results {
+            icon-name: "system-search-symbolic";
+            title: _("No Results Found");
+            description: _("Try a different search term");
+          }
+        }
+      }
+    };
+
+    [bottom]
+    ActionBar action_bar {
+      [start]
+      ToggleButton select_all_button {
+        label: _("Select All");
+      }
+
+      [end]
+      Button trash_button {
+        label: _("Trash");
+        sensitive: false;
+      }
+
+      [end]
+      Button install_button {
+        label: _("Install");
+        sensitive: false;
+      }
+    }
+  }
 }

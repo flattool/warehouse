@@ -16,6 +16,7 @@ class OrphansWindow(Adw.Window):
     toast_overlay = Gtk.Template.Child()
     main_stack = Gtk.Template.Child()
     no_data = Gtk.Template.Child()
+    no_results = Gtk.Template.Child()
     action_bar = Gtk.Template.Child()
     search_bar = Gtk.Template.Child()
     search_entry = Gtk.Template.Child()
@@ -30,6 +31,7 @@ class OrphansWindow(Adw.Window):
     selected_remote = ""
     selected_remote_install_type = ""
     no_close_id = 0
+    is_result = False
 
     def key_handler(self, _a, event, _c, _d):
         if event == Gdk.KEY_Escape:
@@ -188,7 +190,10 @@ class OrphansWindow(Adw.Window):
         # This is a list that only holds IDs of install flatpaks
         id_list = []
         for i in range(len(self.host_flatpaks)):
-            id_list.append(self.host_flatpaks[i][2])
+            try:
+                id_list.append(self.host_flatpaks[i][2])
+            except:
+                print("Could not get data")
 
         for i in range(len(dir_list)):
             dir_name = dir_list[i]
@@ -229,7 +234,31 @@ class OrphansWindow(Adw.Window):
 
     def filter_func(self, row):
         if (self.search_entry.get_text().lower() in row.get_title().lower()):
+            self.is_result = True
             return True
+
+    def on_invalidate(self, row):
+        if self.list_of_data.get_row_at_index(0) == None:
+            self.main_stack.set_visible_child(self.no_data)
+            self.action_bar.set_visible(False)
+        else:
+            self.main_stack.set_visible_child(self.main_box)
+            self.action_bar.set_visible(True)
+
+        self.is_result = False
+        self.list_of_data.invalidate_filter()
+        if self.is_result == False:
+            self.main_stack.set_visible_child(self.no_results)
+            self.action_bar.set_visible(False)
+
+    def on_change(self, prop, prop2):
+        if self.search_bar.get_search_mode() == False:
+            if self.list_of_data.get_row_at_index(0) == None:
+                self.main_stack.set_visible_child(self.no_data)
+                self.action_bar.set_visible(False)
+            else:
+                self.main_stack.set_visible_child(self.main_box)
+                self.action_bar.set_visible(True)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -258,6 +287,7 @@ class OrphansWindow(Adw.Window):
         self.main_overlay.add_overlay(self.progress_bar)
 
         self.list_of_data.set_filter_func(self.filter_func)
-        self.search_entry.connect("search-changed", lambda *_: self.list_of_data.invalidate_filter())
+        self.search_entry.connect("search-changed", self.on_invalidate)
+        self.search_bar.connect("notify", self.on_change)
         self.search_bar.connect_entry(self.search_entry)
         self.oepn_folder_button.connect("clicked", self.open_button_handler)

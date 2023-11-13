@@ -88,39 +88,42 @@ class FilterWindow(Adw.Window):
         self.remotes_expander_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
         self.runtimes_expander_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
         
-        dependant_runtimes = self.my_utils.getDependantRuntimes()
+        dependent_runtimes = self.my_utils.getDependentRuntimes()
 
         if len(self.host_remotes) < 2: # Don't give the ability to filter by remotes if there is only 1
             self.remotes_expander.set_visible(False)
 
-        if len(dependant_runtimes) < 2: # Don't give the ability to filter by runtimes if there is only 1
+        if len(dependent_runtimes) < 2: # Don't give the ability to filter by runtimes if there is only 1
             self.runtimes_expander.set_visible(False)
             
         self.remote_checkboxes = []
         for i in range(len(self.host_remotes)):
-            name = self.host_remotes[i][0]
-            title = self.host_remotes[i][1]
-            install_type = self.host_remotes[i][7]
-            url = self.host_remotes[i][2]
-            remote_row = Adw.ActionRow(title=title, subtitle=url)
-            if title == "-":
-                remote_row.set_title(name)
-            self.remotes_expander.add_row(remote_row)
-            label = Gtk.Label(label=("{} wide").format(install_type))
-            label.add_css_class("subtitle")
-            remote_check = Gtk.CheckButton()
-            remote_row.add_suffix(label)
-            remote_row.add_suffix(remote_check)
-            remote_row.set_activatable_widget(remote_check)
-            remote_check.connect("toggled", self.remoteCheckHandler, install_type, name)
-            self.remote_checkboxes.append(remote_check)
-            remote_check.set_active(True)
+            try:
+                name = self.host_remotes[i][0]
+                title = self.host_remotes[i][1]
+                install_type = self.host_remotes[i][7]
+                url = self.host_remotes[i][2]
+                remote_row = Adw.ActionRow(title=title, subtitle=url)
+                if title == "-":
+                    remote_row.set_title(name)
+                self.remotes_expander.add_row(remote_row)
+                label = Gtk.Label(label=("{} wide").format(install_type))
+                label.add_css_class("subtitle")
+                remote_check = Gtk.CheckButton()
+                remote_row.add_suffix(label)
+                remote_row.add_suffix(remote_check)
+                remote_row.set_activatable_widget(remote_check)
+                remote_check.connect("toggled", self.remoteCheckHandler, install_type, name)
+                self.remote_checkboxes.append(remote_check)
+                remote_check.set_active(True)
+            except:
+                print("Could not make remote row")
         self.remotes_expander_switch.connect("state-set", self.remotesEnableHandler)
         self.remotes_expander.add_suffix(self.remotes_expander_switch)
 
         self.runtime_checkboxes = []
-        for i in range(len(dependant_runtimes)):
-            current = dependant_runtimes[i]
+        for i in range(len(dependent_runtimes)):
+            current = dependent_runtimes[i]
             runtime_row = Adw.ActionRow(title=current)
             runtime_check = Gtk.CheckButton()
             runtime_check.connect("toggled", self.runtimeCheckHandler, current)

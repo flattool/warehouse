@@ -31,7 +31,15 @@ python = import('python')
 
 conf = configuration_data()
 conf.set('PYTHON', python.find_installation('python3').full_path())
-conf.set('VERSION', meson.project_version())
+conf.set('APPID', 'io.github.flattool.Warehouse') # TODO: dynamic version and appID
+if get_option('profile') == 'development'
+  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
+  conf.set('DEVEL', 'Development')
+  conf.set('VERSION', meson.project_version() + '.dev-' + vcs_tag)
+else
+  conf.set('DEVEL', 'Default')
+  conf.set('VERSION', meson.project_version())
+endif
 conf.set('localedir', join_paths(get_option('prefix'), get_option('localedir')))
 conf.set('pkgdatadir', pkgdatadir)
 
@@ -67,5 +75,14 @@ warehouse_sources = [
   'app_row_widget.py',
   'properties.blp',
 ]
+
+configure_file(
+  input: 'const.py.in',
+  output: 'const.py',
+  configuration: conf,
+  install: true,
+  install_dir: moduledir,
+  install_mode: 'r-xr--r--',
+)
 
 install_data(warehouse_sources, install_dir: moduledir)

@@ -78,25 +78,28 @@ class RemotesWindow(Adw.Window):
             self.stack.set_visible_child(self.main_overlay)
 
         for i in range(len(self.host_remotes)):
-            name = self.host_remotes[i][0]
-            title = self.host_remotes[i][1]
-            install_type = self.host_remotes[i][7]
-            url = self.host_remotes[i][2]
-            remote_row = Adw.ActionRow(title=title, subtitle=name)
-            if title == "-":
-                remote_row.set_title(name)
-            self.remotes_list.append(remote_row)
-            label = Gtk.Label(label=("{} wide").format(install_type), valign=Gtk.Align.CENTER)
-            label.add_css_class("subtitle")
-            remote_row.add_suffix(label)
-            copy_button = Gtk.Button(icon_name="edit-copy-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Copy remote name"))
-            copy_button.add_css_class("flat")
-            copy_button.connect("clicked", rowCopyHandler, name)
-            remove_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Remove {}").format(name))
-            remove_button.add_css_class("flat")
-            remove_button.connect("clicked", self.remove_handler, i)
-            remote_row.add_suffix(copy_button)
-            remote_row.add_suffix(remove_button)
+            try:
+                name = self.host_remotes[i][0]
+                title = self.host_remotes[i][1]
+                install_type = self.host_remotes[i][7]
+                url = self.host_remotes[i][2]
+                remote_row = Adw.ActionRow(title=title, subtitle=name)
+                if title == "-":
+                    remote_row.set_title(name)
+                self.remotes_list.append(remote_row)
+                label = Gtk.Label(label=("{} wide").format(install_type), valign=Gtk.Align.CENTER)
+                label.add_css_class("subtitle")
+                remote_row.add_suffix(label)
+                copy_button = Gtk.Button(icon_name="edit-copy-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Copy remote name"))
+                copy_button.add_css_class("flat")
+                copy_button.connect("clicked", rowCopyHandler, name)
+                remove_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Remove {}").format(name))
+                remove_button.add_css_class("flat")
+                remove_button.connect("clicked", self.remove_handler, i)
+                remote_row.add_suffix(copy_button)
+                remote_row.add_suffix(remove_button)
+            except:
+                print("Could not get remote")
 
     def addRemoteCallback(self, _a, _b):
         self.should_pulse = False

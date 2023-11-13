@@ -1,86 +1,98 @@
 using Gtk 4.0;
 using Adw 1;
 
-template FilterWindow : Adw.Window {
-    default-width: 500;
-    default-height: 450;
-    title: _("Set Filters");
-    modal: true;
+template FilterWindow: Adw.Window {
+  default-width: 500;
+  default-height: 450;
+  title: _("Set Filters");
+  modal: true;
 
-    Adw.ToolbarView main_toolbar_view {
-        [top]
-        HeaderBar header_bar {
-            show-title-buttons: false;
+  Adw.ToolbarView main_toolbar_view {
+    [top]
+    HeaderBar header_bar {
+      show-title-buttons: false;
 
-            [start]
-            Button cancel_button {
-                label: _("Cancel");
-            }
-            [end]
-            Button apply_button {
-                label: _("Apply");
-                styles["suggested-action"]
-            }
-        }
-        content:
-        Adw.ToastOverlay toast_overlay {
-            Stack main_stack {
-                Overlay main_overlay {
-                    ScrolledWindow scrolled_window {
-                        vexpand: true;
-                        Adw.Clamp{
-                            Box outerbox {
-                                orientation: vertical;
+      [start]
+      Button cancel_button {
+        label: _("Cancel");
+      }
 
-                                ListBox install_type_list {
-                                    margin-top: 12;
-                                    margin-bottom: 12;
-                                    margin-start: 12;
-                                    margin-end: 12;
-                                    hexpand: true;
-                                    valign: start;
-                                    selection-mode: none;
-                                    styles["boxed-list"]
-                                    
-                                    Adw.ActionRow apps_row {
-                                        title: _("Show Apps");
+      [end]
+      Button apply_button {
+        label: _("Apply");
 
-                                        Switch apps_switch {
-                                            valign: center;
-                                        }
-
-                                        activatable-widget: apps_switch;
-                                    }
-                                    Adw.ActionRow runtimes_row {
-                                        title: _("Show Runtimes");
-
-                                        Switch runtimes_switch {
-                                            valign: center;
-                                        }
-
-                                        activatable-widget: runtimes_switch;
-                                    }
-                                    Adw.ExpanderRow remotes_expander {
-                                        enable-expansion: false;
-                                        title: _("Filter Apps by Remotes");
-                                    }
-                                    Adw.ExpanderRow runtimes_expander {
-                                        enable-expansion: false;
-                                        title: _("Filter Apps by Runtime");
-                                    }
-                                }
-                                // Button remove_filters_button {
-                                //     visible: false;
-                                //     margin-bottom: 18;
-                                //     halign: center;
-                                //     label: _("Clear Filters");
-                                //     styles ["pill"]
-                                // }
-                            }
-                        }
-                    }
-                }
-            }
-        };
+        styles [
+          "suggested-action"
+        ]
+      }
     }
+
+    content: Adw.ToastOverlay toast_overlay {
+      Stack main_stack {
+        Overlay main_overlay {
+          ScrolledWindow scrolled_window {
+            vexpand: true;
+
+            Adw.Clamp {
+              Box outerbox {
+                orientation: vertical;
+
+                ListBox install_type_list {
+                  margin-top: 12;
+                  margin-bottom: 12;
+                  margin-start: 12;
+                  margin-end: 12;
+                  hexpand: true;
+                  valign: start;
+                  selection-mode: none;
+
+                  styles [
+                    "boxed-list"
+                  ]
+
+                  Adw.ActionRow apps_row {
+                    title: _("Show Apps");
+
+                    Switch apps_switch {
+                      valign: center;
+                    }
+
+                    activatable-widget: apps_switch;
+                  }
+
+                  Adw.ActionRow runtimes_row {
+                    title: _("Show Runtimes");
+
+                    Switch runtimes_switch {
+                      valign: center;
+                    }
+
+                    activatable-widget: runtimes_switch;
+                  }
+
+                  Adw.ExpanderRow remotes_expander {
+                    enable-expansion: false;
+                    title: _("Filter Apps by Remotes");
+                  }
+
+                  Adw.ExpanderRow runtimes_expander {
+                    enable-expansion: false;
+                    title: _("Filter Apps by Runtime");
+                  }
+                }
+
+                // Button remove_filters_button {
+                //     visible: false;
+                //     margin-bottom: 18;
+                //     halign: center;
+                //     label: _("Clear Filters");
+                //     styles ["pill"]
+                // }
+              }
+            }
+          }
+        }
+      }
+    };
+  }
 }
