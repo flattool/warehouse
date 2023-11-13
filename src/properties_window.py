@@ -4,7 +4,7 @@ import subprocess
 import os
 import pathlib
 
-@Gtk.Template(resource_path="/io/github/flattool/Warehouse/properties.ui")
+@Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/properties.ui")
 class PropertiesWindow(Adw.Window):
     __gtype_name__ = "PropertiesWindow"
     

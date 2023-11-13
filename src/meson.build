@@ -5,15 +5,15 @@ gnome = import('gnome')
 blueprints = custom_target('blueprints',
   input: files(
     'gtk/help-overlay.blp',
-    'window.blp',
-    'orphans.blp',
-    'filter.blp',
-    'popular_remotes.blp',
-    'remotes.blp',
-    'downgrade.blp',
-    'search_install.blp',
-    'snapshots.blp',
-    'properties.blp',
+    '../data/ui/window.blp',
+    '../data/ui/orphans.blp',
+    '../data/ui/filter.blp',
+    '../data/ui/popular_remotes.blp',
+    '../data/ui/remotes.blp',
+    '../data/ui/downgrade.blp',
+    '../data/ui/search_install.blp',
+    '../data/ui/snapshots.blp',
+    '../data/ui/properties.blp',
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
@@ -55,25 +55,32 @@ configure_file(
 warehouse_sources = [
   '__init__.py',
   'main.py',
-  'window.py',
-  'properties_window.py',
-  'orphans_window.py',
-  'remotes_window.py',
   'common.py',
-  'orphans.blp',
-  'filter_window.py',
-  'filter.blp',
+  'window.py',
   'popular_remotes_window.py',
-  'style.css',
-  'remotes.blp',
-  'downgrade_window.py',
-  'downgrade.blp',
-  'search_install.blp',
-  'search_install_window.py',
-  'snapshots_window.py',
-  'snapshots.blp',
   'app_row_widget.py',
-  'properties.blp',
+  '../data/style.css',
+  
+  'properties_window.py',
+  '../data/ui/properties.blp',
+  
+  'orphans_window.py',
+  '../data/ui/orphans.blp',
+  
+  'remotes_window.py',
+  '../data/ui/remotes.blp',
+  
+  'filter_window.py',
+  '../data/ui/filter.blp',
+  
+  'downgrade_window.py',
+  '../data/ui/downgrade.blp',
+  
+  'search_install_window.py',
+  '../data/ui/search_install.blp',
+  
+  'snapshots_window.py',
+  '../data/ui/snapshots.blp',
 ]
 
 configure_file(

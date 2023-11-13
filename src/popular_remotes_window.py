@@ -5,7 +5,7 @@ import os
 import pathlib
 import re
 
-@Gtk.Template(resource_path="/io/github/flattool/Warehouse/popular_remotes.ui")
+@Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/popular_remotes.ui")
 class PopularRemotesWindow(Adw.Window):
     __gtype_name__ = "PopularRemotesWindow"
 
