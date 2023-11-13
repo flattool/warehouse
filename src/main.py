@@ -143,7 +143,7 @@ class WarehouseApplication(Adw.Application):
         about.add_link(_("Donate"), "https://github.com/flattool/warehouse/issues")
         about.add_credit_section(_("Contributors"), [
 	    # Contributors: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
-	    "WinsDominoes https://github.com/WinsDominoes",
+	    "Win <winsdominoes2018@gmail.com>",
 	    "Óscar Fernández Díaz",
 	    "Runar https://github.com/runarcn",
 	    "skøldis <warehouse@turtle.garden>"
