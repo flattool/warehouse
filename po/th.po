@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-13 13:49+0100\n"
+"POT-Creation-Date: 2023-11-13 03:57-0500\n"
 "PO-Revision-Date: 2023-10-23 10:42+0000\n"
 "Last-Translator: Win <winsdominoes2018@gmail.com>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
@@ -252,6 +252,7 @@ msgstr "ทิ้งข้อมูลขอผู้ใช้"
 
 #: src/window.py:374
 #, fuzzy
+#| msgid "Manage Remotes"
 msgid "Manage Snapshots"
 msgstr "จัดการรีโมต"
 
@@ -391,16 +392,19 @@ msgstr "สลับโหมดการเลือก"
 
 #: data/ui/window.blp:97 data/ui/orphans.blp:81
 #, fuzzy
+#| msgid "Installation"
 msgid "Installing…"
 msgstr "การติดตั้ง"
 
 #: data/ui/window.blp:106 data/ui/window.blp:133 data/ui/orphans.blp:90
 #, fuzzy
+#| msgid "Installing… This could take a while"
 msgid "This could take a while."
 msgstr "กำลังติดตั้ง... อาจจะใช้เวลาระยะหนึ่ง"
 
 #: data/ui/window.blp:128
 #, fuzzy
+#| msgid "Uninstall"
 msgid "Uninstalling…"
 msgstr "ถอนการติดตั้ง"
 
@@ -418,6 +422,7 @@ msgstr ""
 
 #: data/ui/window.blp:146 data/ui/orphans.blp:107
 #, fuzzy
+#| msgid "No Flatpaks Found"
 msgid "No Results Found"
 msgstr "ไม่เจอแอป"
 
@@ -443,26 +448,31 @@ msgstr "เปิดเมนูคัดลอก"
 
 #: data/ui/window.blp:184
 #, fuzzy
+#| msgid "Trash Selected Apps' User Data?"
 msgid "Snapshot Selected Apps' Data"
 msgstr "ทิ้งข้อมูลของแอปที่เลือก?"
 
 #: data/ui/window.blp:194
 #, fuzzy
+#| msgid "Install From File"
 msgid "Install From File…"
 msgstr "ติดตั้งแอปจากไฟล์"
 
 #: data/ui/window.blp:199
 #, fuzzy
+#| msgid "Manage Leftover Data"
 msgid "Manage Leftover Data…"
 msgstr "จัดการข้อมูลหลงเหลือ"
 
 #: data/ui/window.blp:208
 #, fuzzy
+#| msgid "Manage Remotes"
 msgid "Manage Remotes…"
 msgstr "จัดการรีโมต"
 
 #: data/ui/window.blp:213
 #, fuzzy
+#| msgid "Install From File"
 msgid "Install From The Web…"
 msgstr "ติดตั้งแอปจากไฟล์"
 
@@ -544,16 +554,19 @@ msgstr "คัดลอก {} แล้ว"
 
 #: src/properties_window.py:48
 #, fuzzy
+#| msgid "Could not trash data"
 msgid "Could not show details"
 msgstr "ไม่สามารถทิ้งข้อมูลได้"
 
 #: src/properties_window.py:54
 #, fuzzy
+#| msgid "Trash User Data"
 msgid "User Data"
 msgstr "ทิ้งข้อมูลขอผู้ใช้"
 
 #: src/properties_window.py:73 src/properties_window.py:118
 #, fuzzy
+#| msgid "Trash User Data"
 msgid "No User Data"
 msgstr "ทิ้งข้อมูลขอผู้ใช้"
 
@@ -803,6 +816,7 @@ msgstr "ไม่สามารถดาวน์เกรด {}"
 
 #: src/downgrade_window.py:108
 #, fuzzy
+#| msgid "Could disable updates for {}"
 msgid "Could not disable updates for {}"
 msgstr "ปิดการอัพเดทของ {}"
 

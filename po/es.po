@@ -260,6 +260,7 @@ msgstr "Eliminar datos de usuario"
 
 #: src/window.py:374
 #, fuzzy
+#| msgid "Manage Remotes"
 msgid "Manage Snapshots"
 msgstr "Gestionar los repositorios remotos"
 
@@ -401,16 +402,19 @@ msgstr "Conmutar modo de selección"
 
 #: data/ui/window.blp:97 data/ui/orphans.blp:81
 #, fuzzy
+#| msgid "Installation"
 msgid "Installing…"
 msgstr "Instalación"
 
 #: data/ui/window.blp:106 data/ui/window.blp:133 data/ui/orphans.blp:90
 #, fuzzy
+#| msgid "Installing… This could take a while"
 msgid "This could take a while."
 msgstr "Instalando… Esto podría tardar un poco"
 
 #: data/ui/window.blp:128
 #, fuzzy
+#| msgid "Uninstall"
 msgid "Uninstalling…"
 msgstr "Desinstalar"
 
@@ -428,6 +432,7 @@ msgstr ""
 
 #: data/ui/window.blp:146 data/ui/orphans.blp:107
 #, fuzzy
+#| msgid "No Flatpaks Found"
 msgid "No Results Found"
 msgstr "No se han encontrado Flatpaks"
 
@@ -453,26 +458,31 @@ msgstr "Abrir el menú para copiar datos"
 
 #: data/ui/window.blp:184
 #, fuzzy
+#| msgid "Trash Selected Apps' User Data?"
 msgid "Snapshot Selected Apps' Data"
 msgstr "¿Eliminar los datos de usuario de las aplicaciones seleccionadas?"
 
 #: data/ui/window.blp:194
 #, fuzzy
+#| msgid "Install From File"
 msgid "Install From File…"
 msgstr "Instalar desde archivo"
 
 #: data/ui/window.blp:199
 #, fuzzy
+#| msgid "Manage Leftover Data"
 msgid "Manage Leftover Data…"
 msgstr "Gestionar los datos sobrantes"
 
 #: data/ui/window.blp:208
 #, fuzzy
+#| msgid "Manage Remotes"
 msgid "Manage Remotes…"
 msgstr "Gestionar los repositorios remotos"
 
 #: data/ui/window.blp:213
 #, fuzzy
+#| msgid "Install From File"
 msgid "Install From The Web…"
 msgstr "Instalar desde archivo"
 
@@ -554,16 +564,19 @@ msgstr "Copiado {}"
 
 #: src/properties_window.py:48
 #, fuzzy
+#| msgid "Could not manage data"
 msgid "Could not show details"
 msgstr "No se pueden gestionar los datos"
 
 #: src/properties_window.py:54
 #, fuzzy
+#| msgid "Trash User Data"
 msgid "User Data"
 msgstr "Eliminar datos de usuario"
 
 #: src/properties_window.py:73 src/properties_window.py:118
 #, fuzzy
+#| msgid "Trash User Data"
 msgid "No User Data"
 msgstr "Eliminar datos de usuario"
 
@@ -821,6 +834,7 @@ msgstr "No se pudo revertir {}"
 
 #: src/downgrade_window.py:108
 #, fuzzy
+#| msgid "Could disable updates for {}"
 msgid "Could not disable updates for {}"
 msgstr "Puede desactivar las actualizaciones para {}"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-13 13:49+0100\n"
+"POT-Creation-Date: 2023-11-13 03:57-0500\n"
 "PO-Revision-Date: 2023-10-23 10:42+0000\n"
 "Last-Translator: kramo <login@kramo.hu>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
@@ -257,6 +257,7 @@ msgstr "Felhasználói adatok kukázása"
 
 #: src/window.py:374
 #, fuzzy
+#| msgid "Manage Remotes"
 msgid "Manage Snapshots"
 msgstr "Tárolók kezelése"
 
@@ -398,16 +399,19 @@ msgstr "Kiválasztási mód váltása"
 
 #: data/ui/window.blp:97 data/ui/orphans.blp:81
 #, fuzzy
+#| msgid "Installation"
 msgid "Installing…"
 msgstr "Telepítés"
 
 #: data/ui/window.blp:106 data/ui/window.blp:133 data/ui/orphans.blp:90
 #, fuzzy
+#| msgid "Installing… This could take a while"
 msgid "This could take a while."
 msgstr "Telepítés… Ez eltarthat egy ideig"
 
 #: data/ui/window.blp:128
 #, fuzzy
+#| msgid "Uninstall"
 msgid "Uninstalling…"
 msgstr "Eltávolítás"
 
@@ -425,6 +429,7 @@ msgstr ""
 
 #: data/ui/window.blp:146 data/ui/orphans.blp:107
 #, fuzzy
+#| msgid "No Flatpaks Found"
 msgid "No Results Found"
 msgstr "Nem találhatóak Flatpak-ek"
 
@@ -450,26 +455,31 @@ msgstr "Másolás menü megnyitása"
 
 #: data/ui/window.blp:184
 #, fuzzy
+#| msgid "Trash Selected Apps' User Data?"
 msgid "Snapshot Selected Apps' Data"
 msgstr "Kukázza a kijelölt applikációk adatait?"
 
 #: data/ui/window.blp:194
 #, fuzzy
+#| msgid "Install From File"
 msgid "Install From File…"
 msgstr "Fájlból való telepítés"
 
 #: data/ui/window.blp:199
 #, fuzzy
+#| msgid "Manage Leftover Data"
 msgid "Manage Leftover Data…"
 msgstr "Maradék adatok kezelése"
 
 #: data/ui/window.blp:208
 #, fuzzy
+#| msgid "Manage Remotes"
 msgid "Manage Remotes…"
 msgstr "Tárolók kezelése"
 
 #: data/ui/window.blp:213
 #, fuzzy
+#| msgid "Install From File"
 msgid "Install From The Web…"
 msgstr "Fájlból való telepítés"
 
@@ -551,16 +561,19 @@ msgstr "{} másolva"
 
 #: src/properties_window.py:48
 #, fuzzy
+#| msgid "Could not trash data"
 msgid "Could not show details"
 msgstr "Az adatok kukázása sikertelen"
 
 #: src/properties_window.py:54
 #, fuzzy
+#| msgid "Trash User Data"
 msgid "User Data"
 msgstr "Felhasználói adatok kukázása"
 
 #: src/properties_window.py:73 src/properties_window.py:118
 #, fuzzy
+#| msgid "Trash User Data"
 msgid "No User Data"
 msgstr "Felhasználói adatok kukázása"
 
@@ -815,6 +828,7 @@ msgstr "A(z) {} visszafejlesztése sikertelen"
 
 #: src/downgrade_window.py:108
 #, fuzzy
+#| msgid "Could disable updates for {}"
 msgid "Could not disable updates for {}"
 msgstr "A(z) {} frissítéseinek kikapcsolása sikertelen"
 
