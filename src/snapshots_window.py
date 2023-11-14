@@ -131,7 +131,7 @@ class SnapshotsWindow(Adw.Window):
             except subprocess.CalledProcessError as e:
                 print("Error in snapshots_windopw.py: createSnapshot():", e)
                 GLib.idle_add(lambda *_a: self.toast_overlay.add_toast(Adw.Toast.new(_("Could not create snapshot"))))
-            if(int(time.time()) == epoch):
+            if(int(time.time()) == epoch): # Wait 1s if the snapshot is made too quickly, to prevent overriding a snapshot file
                 subprocess.run(['sleep', '1s'])
 
         # `tar -tf filepath` to see the contents of a tar file

@@ -125,7 +125,7 @@ class WarehouseApplication(Adw.Application):
         """Callback for the app.about action."""
         about = Adw.AboutWindow(
             transient_for=self.props.active_window,
-            application_name=_("Warehouse"),
+            application_name="Warehouse",
             application_icon="io.github.flattool.Warehouse",
             developer_name="Heliguy",
             version=self.version,
