@@ -10,24 +10,25 @@ template SnapshotsWindow: Adw.Window {
     [top]
     HeaderBar header_bar {
       [end]
-      Button oepn_folder_button {
+      Button open_folder_button {
         icon-name: "document-open-symbolic";
         tooltip-text: _("Open Snapshots Folder");
       }
     }
 
     [bottom]
-    ActionBar {
+    ActionBar action_bar {
       Box {
         halign: center;
         hexpand: true;
         Button new_snapshot {
+          sensitive: bind action_bar.revealed;
           margin-top: 6;
           margin-bottom: 6;
           styles[
             "pill",
             "suggested-action"
-            ]
+          ]
 
           Adw.ButtonContent {
             label: _("New Snapshot");
@@ -38,41 +39,53 @@ template SnapshotsWindow: Adw.Window {
     }
 
     content: Adw.ToastOverlay toast_overlay {
-      Overlay main_overlay {
-        [overlay]
-        ProgressBar progress_bar {
-          pulse-step: 0.7;
-          can-target: false;
-          visible: false;
+      Stack main_stack {
+        ScrolledWindow outerbox {
+          Adw.Clamp {
+            ListBox snapshots_group {
+              margin-top: 12;
+              margin-bottom: 12;
+              margin-start: 12;
+              margin-end: 12;
+              valign: start;
+              selection-mode: none;
 
-          styles [
-            "osd"
-          ]
-        }
-
-        Stack main_stack {
-          ScrolledWindow outerbox {
-            Adw.Clamp {
-              ListBox snapshots_group {
-                margin-top: 12;
-                margin-bottom: 12;
-                margin-start: 12;
-                margin-end: 12;
-                valign: start;
-                selection-mode: none;
-
-                styles [
-                  "boxed-list"
-                ]
-              }
+              styles [
+                "boxed-list"
+              ]
             }
           }
+        }
 
-          Adw.StatusPage no_snapshots {
-            title: _("No Snapshots");
-            description: _("Snapshots are backups of the app's user data. They can be reapplied at any time.");
-            icon-name: "clock-alt-symbolic";
+        Box loading {
+          orientation: vertical;
+          spacing: 10;
+          margin-top: 40;
+          margin-bottom: 20;
+          halign: center;
+          valign: center;
+
+          Spinner {
+            margin-bottom: 35;
+            width-request: 30;
+            height-request: 30;
+            opacity: 0.5;
+            spinning: true;
           }
+
+          Label loading_label {
+            styles [
+              "title-1",
+              "title"
+            ]
+          }
+        }
+
+
+        Adw.StatusPage no_snapshots {
+          title: _("No Snapshots");
+          description: _("Snapshots are backups of the app's user data. They can be reapplied at any time.");
+          icon-name: "clock-alt-symbolic";
         }
       }
     };
