@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Standard bug and issue report template.
+about: Report any bugs or issues in this project
 title: ''
 labels: ''
 assignees: ''
