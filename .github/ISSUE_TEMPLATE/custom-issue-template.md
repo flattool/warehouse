@@ -1,5 +1,5 @@
 ---
-name: Custom Issue Template
+name: Issue & Bug Report Template
 about: Standard bug and issue report template.
 title: ''
 labels: ''
