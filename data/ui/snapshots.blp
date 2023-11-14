@@ -9,18 +9,31 @@ template SnapshotsWindow: Adw.Window {
   Adw.ToolbarView main_toolbar_view {
     [top]
     HeaderBar header_bar {
-      [start]
-      Button new_snapshot {
-        Adw.ButtonContent {
-          label: _("New Snapshot");
-          icon-name: "plus-large-symbolic";
-        }
-      }
-
       [end]
       Button oepn_folder_button {
         icon-name: "document-open-symbolic";
         tooltip-text: _("Open Snapshots Folder");
+      }
+    }
+
+    [bottom]
+    ActionBar {
+      Box {
+        halign: center;
+        hexpand: true;
+        Button new_snapshot {
+          margin-top: 6;
+          margin-bottom: 6;
+          styles[
+            "pill",
+            "suggested-action"
+            ]
+
+          Adw.ButtonContent {
+            label: _("New Snapshot");
+            icon-name: "plus-large-symbolic";
+          }
+        }
       }
     }
 
@@ -59,16 +72,6 @@ template SnapshotsWindow: Adw.Window {
             title: _("No Snapshots");
             description: _("Snapshots are backups of the app's user data. They can be reapplied at any time.");
             icon-name: "clock-alt-symbolic";
-
-            Button new_snapshot_pill {
-              label: _("New Snapshot");
-              halign: center;
-
-              styles [
-                "pill",
-                "suggested-action"
-              ]
-            }
           }
         }
       }

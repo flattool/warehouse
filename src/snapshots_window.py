@@ -19,7 +19,6 @@ class SnapshotsWindow(Adw.Window):
     main_stack = Gtk.Template.Child()
     no_snapshots = Gtk.Template.Child()
     new_snapshot = Gtk.Template.Child()
-    new_snapshot_pill = Gtk.Template.Child()
     oepn_folder_button = Gtk.Template.Child()
     toast_overlay = Gtk.Template.Child()
     outerbox = Gtk.Template.Child()
@@ -116,7 +115,6 @@ class SnapshotsWindow(Adw.Window):
         def callback():
             self.create_row(f"{epoch}_{self.app_version}.tar.zst")
             self.new_snapshot.set_sensitive(True)
-            self.new_snapshot_pill.set_sensitive(True)
             self.progress_bar.set_visible(False)
             self.disconnect(self.no_close_id) # Make window able to close
             self.main_stack.set_sensitive(True)
@@ -126,7 +124,6 @@ class SnapshotsWindow(Adw.Window):
             file.make_directory()
 
         self.new_snapshot.set_sensitive(False)
-        self.new_snapshot_pill.set_sensitive(False)
         self.progress_bar.set_visible(True)
         self.no_close_id = self.connect("close-request", lambda event: True)  # Make window unable to close
         self.main_stack.set_sensitive(False)
@@ -150,7 +147,6 @@ class SnapshotsWindow(Adw.Window):
             if not self.applied:
                 self.toast_overlay.add_toast(Adw.Toast.new(_("Could not apply snapshot")))
             self.new_snapshot.set_sensitive(True)
-            self.new_snapshot_pill.set_sensitive(True)
             self.progress_bar.set_visible(False)
             self.disconnect(self.no_close_id) # Make window able to close
             self.main_stack.set_sensitive(True)
@@ -173,7 +169,6 @@ class SnapshotsWindow(Adw.Window):
                 return
 
             self.new_snapshot.set_sensitive(False)
-            self.new_snapshot_pill.set_sensitive(False)
             self.progress_bar.set_visible(True)
             self.no_close_id = self.connect("close-request", lambda event: True)  # Make window unable to close
             self.main_stack.set_sensitive(False)
@@ -223,7 +218,6 @@ class SnapshotsWindow(Adw.Window):
         self.generateList()
         self.oepn_folder_button.connect("clicked", self.open_button_handler, self.snapshots_of_app_path)
         self.new_snapshot.connect("clicked", lambda *_: self.createSnapshot())
-        self.new_snapshot_pill.connect("clicked", lambda *_: self.createSnapshot())
         self.pulser()
         
         event_controller = Gtk.EventControllerKey()
