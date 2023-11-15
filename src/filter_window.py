@@ -166,7 +166,6 @@ class FilterWindow(Adw.Window):
         self.apply_button.connect("clicked", lambda *_: main_window.applyFilter(self.filter_list))
         self.apply_button.connect("clicked", lambda *_: self.close())
 
-        #self.cancel_button.connect("clicked", lambda *_: main_window.filter_button.set_active(False))
         self.cancel_button.connect("clicked", lambda *_: self.close())
 
         self.connect("close-request", self.disableFilterToggle)

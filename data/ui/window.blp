@@ -2,6 +2,7 @@ using Gtk 4.0;
 using Adw 1;
 
 template $WarehouseWindow: Adw.ApplicationWindow {
+  title: "Warehouse";
   Adw.ToolbarView main_toolbar_view {
     [top]
     HeaderBar header_bar {
@@ -53,6 +54,33 @@ template $WarehouseWindow: Adw.ApplicationWindow {
     content: Adw.ToastOverlay toast_overlay {
       Overlay main_overlay {
         Stack main_stack {
+          Box loading_flatpaks {
+            orientation: vertical;
+            spacing: 10;
+            margin-top: 40;
+            margin-bottom: 20;
+            halign: center;
+            valign: center;
+
+            Spinner {
+              margin-bottom: 35;
+              width-request: 30;
+              height-request: 30;
+              opacity: 0.5;
+              spinning: true;
+            }
+
+            Label {
+              label: _("Loading Flatpaks…");
+              styles ["title-1", "title"]
+            }
+
+            Label {
+              label: _("This should only take a moment.");
+              styles ["description", "body"]
+            }
+          }
+
           Box main_box {
             orientation: vertical;
 
@@ -138,13 +166,19 @@ template $WarehouseWindow: Adw.ApplicationWindow {
           Adw.StatusPage no_flatpaks {
             icon-name: "error-symbolic";
             title: _("No Flatpaks Found");
-            description: _("There are either no Flatpaks that match the current filter, Warehouse cannot see the list of installed Flatpaks, or the system has no Flatpaks installed.");
+            description: _("Warehouse cannot see the list of installed Flatpaks or the system has no Flatpaks installed.");
+          }
+
+          Adw.StatusPage no_matches {
+            icon-name: "funnel-symbolic";
+            title: _("No Flatpaks Match Filters");
+            description: _("No installed Flatpak matches any of the currently applied filters.");
           }
 
           Adw.StatusPage no_results {
             icon-name: "system-search-symbolic";
             title: _("No Results Found");
-            description: _("Try a different search term");
+            description: _("Try a different search term.");
           }
         }
       }

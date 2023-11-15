@@ -128,11 +128,11 @@ class DowngradeWindow(Adw.Window):
 
         # Create Variables
         self.my_utils = myUtils(self)
-        self.app_name = flatpak_row[6][0]
-        self.app_id = flatpak_row[6][2]
-        self.remote = flatpak_row[6][6]
-        self.install_type = flatpak_row[6][7]
-        self.app_ref = flatpak_row[6][8]
+        self.app_name = flatpak_row[0]
+        self.app_id = flatpak_row[2]
+        self.remote = flatpak_row[6]
+        self.install_type = flatpak_row[7]
+        self.app_ref = flatpak_row[8]
         self.versions = []
         self.should_pulse = True
         self.commit_to_use = ""

@@ -59,6 +59,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     main_menu = Gtk.Template.Child()
     installing = Gtk.Template.Child()
     uninstalling = Gtk.Template.Child()
+    no_matches = Gtk.Template.Child()
 
     main_progress_bar = Gtk.ProgressBar(visible=False, can_target=False)
     main_progress_bar.add_css_class("osd")
@@ -77,6 +78,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     selected_rows = []
     flatpak_rows = []
     # ^ {Row visibility, Row selected, the row itself, properties, row menu, select, the flatpak row from `flatpak list`, mask label}
+    default_filter = [True, False, ["all"], ["all"], ["all"]]
 
     def filter_func(self, row):
         if (self.search_entry.get_text().lower() in row.get_title().lower()) or (self.search_entry.get_text().lower() in row.get_subtitle().lower()):
@@ -265,130 +267,18 @@ class WarehouseWindow(Adw.ApplicationWindow):
         if is_empty:
             self.batch_mode_button.set_active(False)
             self.main_stack.set_visible_child(self.no_flatpaks)
+            print("le empt")
         else:
             self.main_stack.set_visible_child(self.main_box)
 
-    def creat_row(self, index):
-        app_name = self.host_flatpaks[index][0]
-        app_id = self.host_flatpaks[index][2]
-        install_type = self.host_flatpaks[index][7]
-        app_ref = self.host_flatpaks[index][8]
-        flatpak_row = Adw.ActionRow(title=GLib.markup_escape_text(app_name))
-        flatpak_row.add_prefix(self.my_utils.findAppIcon(app_id))
-        flatpak_row.set_subtitle(app_id)
-
-        if "eol" in self.host_flatpaks[index][12]:
-            # EOL = End Of Life, meaning the app will not be updated
-            eol_app_label = Gtk.Label(label=_("App EOL"), hexpand=True, wrap=True, justify=Gtk.Justification.RIGHT, valign=Gtk.Align.CENTER, tooltip_text=_("{} has reached its End of Life and will not receive any security updates").format(app_name))
-            eol_app_label.add_css_class("error")
-            flatpak_row.add_suffix(eol_app_label)
-
-        if self.host_flatpaks[index][13] in self.eol_list:
-            # EOL = End Of Life, meaning the runtime will not be updated
-            eol_runtime_label = Gtk.Label(label=_("Runtime EOL"), hexpand=True, wrap=True, justify=Gtk.Justification.RIGHT, valign=Gtk.Align.CENTER, tooltip_text=_("{}'s runtime has reached its End of Life and will not receive any security updates").format(app_name))
-            eol_runtime_label.add_css_class("error")
-            flatpak_row.add_suffix(eol_runtime_label)
-
-        mask_label = Gtk.Label(label=_("Updates Disabled"), hexpand=True, wrap=True, justify=Gtk.Justification.RIGHT, valign=Gtk.Align.CENTER, tooltip_text=_("{} is masked and will not be updated").format(app_name), visible=False)
-        mask_label.add_css_class("warning")
-        flatpak_row.add_suffix(mask_label)
-        # ^ This is up here as we need to add this to flatpak_rows regardless of if its visible or not
-
-        properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
-        properties_button.add_css_class("flat")
-        properties_button.connect("clicked", lambda *_, index=index: PropertiesWindow(index, self.host_flatpaks, self))
-        flatpak_row.add_suffix(properties_button)
-
-        select_flatpak_tickbox = Gtk.CheckButton(visible=self.in_batch_mode)
-        select_flatpak_tickbox.add_css_class("selection-mode")
-        select_flatpak_tickbox.connect("toggled", self.rowSelectHandler, index)
-        flatpak_row.add_suffix(select_flatpak_tickbox)
-
-        row_menu = Gtk.MenuButton(icon_name="view-more-symbolic", valign=Gtk.Align.CENTER, visible=not self.in_batch_mode)
-        row_menu.add_css_class("flat")
-        row_menu_model = Gio.Menu()
-        copy_menu_model = Gio.Menu()
-        advanced_menu_model = Gio.Menu()
-
-        self.flatpak_rows.append([True, False, flatpak_row, properties_button, row_menu, select_flatpak_tickbox, self.host_flatpaks[index], mask_label])
-        # {Row visibility, Row selected, the row itself, properties, menu button, select, the flatpak row from `flatpak list`, mask label, the dropdown menu model}
-
-        #
-
-        self.create_action(("copy-name" + str(index)), lambda *_, name=app_name, toast=_("Copied name"): self.copyItem(name, toast))
-        copy_menu_model.append_item(Gio.MenuItem.new(_("Copy Name"), f"win.copy-name{index}"))
-
-        self.create_action(("copy-id" + str(index)), lambda *_, id=app_id, toast=_("Copied ID"): self.copyItem(id, toast))
-        copy_menu_model.append_item(Gio.MenuItem.new(_("Copy ID"), f"win.copy-id{index}"))
-
-        self.create_action(("copy-ref" + str(index)), lambda *_, ref=app_ref, toast=_("Copied ref"): self.copyItem(ref, toast))
-        copy_menu_model.append_item(Gio.MenuItem.new(_("Copy Ref"), f"win.copy-ref{index}"))
-
-        self.create_action(("copy-command" + str(index)), lambda *_, ref=app_ref, toast=_("Copied launch command"): self.copyItem(f"flatpak run {ref}", toast))
-        copy_menu_model.append_item(Gio.MenuItem.new(_("Copy Launch Command"), f"win.copy-command{index}"))
-
-        row_menu_model.append_submenu(_("Copy"), copy_menu_model)
-
-        if "runtime" not in self.host_flatpaks[index][12]:
-            self.create_action(("run" + str(index)), lambda *_a, ref=app_ref, name=app_name: self.runAppThread(ref, _("Opened {}").format(name)))
-            run_item = Gio.MenuItem.new(_("Open"), f"win.run{index}")
-            row_menu_model.append_item(run_item)
-
-        self.create_action(("uninstall" + str(index)), lambda *_, index=index: self.uninstallButtonHandler(self, index))
-        uninstall_item = Gio.MenuItem.new(_("Uninstall"), f"win.uninstall{index}")
-        row_menu_model.append_item(uninstall_item)
-
-        self.create_action(("mask" + str(index)), lambda *_, id=app_id, type=install_type, index=index: self.maskFlatpak(id, type, index))
-        mask_item = Gio.MenuItem.new(_("Disable Updates"), f"win.mask{index}")
-        mask_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
-        advanced_menu_model.append_item(mask_item)
-
-        self.create_action(("unmask" + str(index)), lambda *_, id=app_id, type=install_type, index=index: self.maskFlatpak(id, type, index))
-        unmask_item = Gio.MenuItem.new(_("Enable Updates"), f"win.unmask{index}")
-        unmask_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
-        advanced_menu_model.append_item(unmask_item)
-
-        if app_id in self.system_mask_list or app_id in self.user_mask_list:
-            mask_label.set_visible(True)
-            self.lookup_action(f"mask{index}").set_enabled(False)
-        else:
-            self.lookup_action(f"unmask{index}").set_enabled(False)
-
-        if os.path.exists(self.user_data_path + app_id):
-            data_menu_model = Gio.Menu()
-
-            self.create_action(("open-data" + str(index)), lambda *_, path=(self.user_data_path + app_id): self.openDataFolder(path))
-            open_data_item = Gio.MenuItem.new(_("Open User Data Folder"), f"win.open-data{index}")
-            open_data_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
-            data_menu_model.append_item(open_data_item)
-
-            self.create_action(("trash" + str(index)), lambda *_, name=app_name, id=app_id, index=index: self.trashData(name, id, index))
-            trash_item = Gio.MenuItem.new(_("Trash User Data"), f"win.trash{index}")
-            trash_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
-            data_menu_model.append_item(trash_item)
-
-            row_menu_model.append_section(None, data_menu_model)
-
-        if "runtime" not in self.host_flatpaks[index][12]:
-            self.create_action(("snapshot" + str(index)), lambda *_, row=self.flatpak_rows[index][6]: SnapshotsWindow(self, row).present())
-            snapshot_item = Gio.MenuItem.new(_("Manage Snapshots"), f"win.snapshot{index}")
-            advanced_menu_model.append_item(snapshot_item)
-
-        self.create_action(("downgrade" + str(index)), lambda *_, row=self.flatpak_rows[index]: DowngradeWindow(self, row))
-        downgrade_item = Gio.MenuItem.new(_("Downgrade"), f"win.downgrade{index}")
-        advanced_menu_model.append_item(downgrade_item)
-
-        row_menu_model.append_section(None, advanced_menu_model)
-
-        row_menu.set_menu_model(row_menu_model)
-        flatpak_row.add_suffix(row_menu)
-
-        if self.in_batch_mode:
-            flatpak_row.set_activatable_widget(select_flatpak_tickbox)
-
-        self.flatpaks_list_box.insert(flatpak_row, index)
+    def create_rows(self):
+        for index in range(len(self.host_flatpaks)):
+            row = AppRow(self, self.host_flatpaks, index)
+            self.flatpaks_list_box.insert(row, index)
+        self.applyFilter()
     
     def generate_list_of_flatpaks(self):
+        self.host_flatpaks = self.my_utils.getHostFlatpaks()
         self.set_title(self.main_window_title)
         self.flatpak_rows = []
         self.should_select_all = self.batch_select_all_button.get_active()
@@ -405,20 +295,18 @@ class WarehouseWindow(Adw.ApplicationWindow):
             except:
                 print("Could not find EOL")
 
-        for index in range(len(self.host_flatpaks)):
-            try:
-                self.creat_row(index)
-            except:
-                print("Could not create row")
+        task = Gio.Task()
+        task.run_in_thread(lambda *_: GLib.idle_add(lambda *_: self.create_rows()))
 
-        self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
-        self.applyFilter(self.filter_list)
+        # self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
         self.batchActionsEnable(False)
 
-        cool_row = AppRow(self, self.host_flatpaks, 7)
-        self.flatpaks_list_box.append(cool_row)
-        cool_row.set_selectable(True)
-        cool_row.select_flatpak_tickbox.set_active(True)
+    def refresh_list_of_flatpaks(self, widget, should_toast):
+        if self.currently_uninstalling:
+            return
+
+        task = Gio.Task()
+        self.generate_list_of_flatpaks()
 
     def openDataFolder(self, path):
         try:
@@ -503,15 +391,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         task.run_in_thread(lambda *_: self.my_utils.runApp(ref))
         if to_toast:
             self.toast_overlay.add_toast(Adw.Toast.new(to_toast))
-
-    def refresh_list_of_flatpaks(self, widget, should_toast):
-        if self.currently_uninstalling:
-            return
-        self.flatpaks_list_box.remove_all()
-        self.host_flatpaks = self.my_utils.getHostFlatpaks()
-        self.generate_list_of_flatpaks()
-        if should_toast:
-            self.toast_overlay.add_toast(Adw.Toast.new(_("List refreshed")))
 
     def batch_mode_handler(self, widget):
         for i in range(len(self.flatpak_rows)):
@@ -648,10 +527,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def filterWindowKeyboardHandler(self, widget):
         self.filter_button.set_active(not self.filter_button.get_active())
 
-    def resetFilterList(self):
-        self.filter_list = [True, False, ["all"], ["all"], ["all"]]
-
-    def applyFilter(self, filter=[True, False, ["all"], ["all"], ["all"]]):
+    def applyFilter(self, filter=default_filter):
         self.filter_list = filter
         show_apps = filter[0]
         show_runtimes = filter[1]
@@ -660,34 +536,67 @@ class WarehouseWindow(Adw.ApplicationWindow):
         filter_runtimes_list = filter[4]
         total_visible = 0
 
-        for i in range(len(self.flatpak_rows)):
-            self.flatpak_rows[i][0] = True
+        index = 0
+        while(self.flatpaks_list_box.get_row_at_index(index) != None):
+            current = self.flatpaks_list_box.get_row_at_index(index)
+            visible = True
 
-            if (not show_apps) and (not "runtime" in self.flatpak_rows[i][6][12]):
-                self.flatpak_rows[i][0] = False
+            if show_apps == False and current.is_runtime == False:
+                visible = False
+            
+            if show_runtimes == False and current.is_runtime == True:
+                visible = False
 
-            if (not show_runtimes) and "runtime" in self.flatpak_rows[i][6][12]:
-                self.flatpak_rows[i][0] = False
+            if (not 'all' in filter_install_type):
+                if not current.install_type in filter_install_type:
+                    visible = False
 
-            if (not 'all' in filter_install_type) and (not self.flatpak_rows[i][6][7] in filter_install_type):
-                self.flatpak_rows[i][0] = False
+            if (not 'all' in filter_remotes_list):
+                if not current.origin_remote in filter_remotes_list:
+                    visible = False
 
-            if (not 'all' in filter_remotes_list) and (not self.flatpak_rows[i][6][6] in filter_remotes_list):
-                self.flatpak_rows[i][0] = False
-
-            if (not 'all' in filter_runtimes_list) and (not self.flatpak_rows[i][6][13] in filter_runtimes_list):
-                self.flatpak_rows[i][0] = False
-
-            self.flatpak_rows[i][2].set_visible(self.flatpak_rows[i][0])
-
-            if self.flatpak_rows[i][0]:
+            if (not 'all' in filter_runtimes_list):
+                if not current.dependent_runtime in filter_runtimes_list:
+                    visible = False
+            
+            if visible == True:
                 total_visible += 1
-
-        if total_visible > 0:
-            self.windowSetEmpty(False)
+            
+            current.set_visible(visible)
+            index += 1
+        
+        if total_visible == 0:
+            self.main_stack.set_visible_child(self.no_matches)
         else:
-            self.windowSetEmpty(True)
-            self.filter_button.set_sensitive(True)
+            self.main_stack.set_visible_child(self.main_box)
+
+            # self.flatpak_rows[i][0] = True
+
+            # if (not show_apps) and (not "runtime" in self.flatpak_rows[i][6][12]):
+            #     self.flatpak_rows[i][0] = False
+
+            # if (not show_runtimes) and "runtime" in self.flatpak_rows[i][6][12]:
+            #     self.flatpak_rows[i][0] = False
+
+            # if (not 'all' in filter_install_type) and (not self.flatpak_rows[i][6][7] in filter_install_type):
+            #     self.flatpak_rows[i][0] = False
+
+            # if (not 'all' in filter_remotes_list) and (not self.flatpak_rows[i][6][6] in filter_remotes_list):
+            #     self.flatpak_rows[i][0] = False
+
+            # if (not 'all' in filter_runtimes_list) and (not self.flatpak_rows[i][6][13] in filter_runtimes_list):
+            #     self.flatpak_rows[i][0] = False
+
+            # self.flatpak_rows[i][2].set_visible(self.flatpak_rows[i][0])
+
+            # if self.flatpak_rows[i][0]:
+            #     total_visible += 1
+
+        # if total_visible > 0:
+        #     self.windowSetEmpty(False)
+        # else:
+        #     self.windowSetEmpty(True)
+        #     self.filter_button.set_sensitive(True)
 
     def installCallback(self, _a, _b):
         self.main_stack.set_visible_child(self.main_box)
@@ -784,7 +693,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
         self.filter_list = [True, False, ["all"], ["all"], ["all"]]
-        self.host_flatpaks = self.my_utils.getHostFlatpaks()
         self.set_size_request(0, 230)
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse")
         self.settings.bind("window-width", self, "default-width", Gio.SettingsBindFlags.DEFAULT)
