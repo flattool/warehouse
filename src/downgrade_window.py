@@ -102,11 +102,11 @@ class DowngradeWindow(Adw.Window):
             return
         
         if self.mask_row.get_active():
-            if self.my_utils.maskFlatpak(self.app_id, self.install_type) == 0:
-                self.flatpak_row[7].set_visible(True)
-            else:
+            if self.my_utils.maskFlatpak(self.app_id, self.install_type) != 0:
                 self.parent_window.toast_overlay.add_toast(Adw.Toast.new(_("Could not disable updates for {}").format(self.app_name)))
 
+        self.parent_window.flatpaks_list_box.remove(self.parent_window.flatpaks_list_box.get_row_at_index(self.index))
+        self.parent_window.create_row(self.index)
         self.close()
 
     def downgradeThread(self):
@@ -123,7 +123,7 @@ class DowngradeWindow(Adw.Window):
         task = Gio.Task.new(None, None, lambda *_: self.downgradeCallack())
         task.run_in_thread(lambda *_: self.downgradeThread())
 
-    def __init__(self, parent_window, flatpak_row, **kwargs):
+    def __init__(self, parent_window, flatpak_row, index, **kwargs):
         super().__init__(**kwargs)
 
         # Create Variables
@@ -140,6 +140,7 @@ class DowngradeWindow(Adw.Window):
         self.flatpak_row = flatpak_row
         self.response = 0
         self.window_title = _("Downgrade {}").format(self.app_name)
+        self.index = index
         event_controller = Gtk.EventControllerKey()
 
         # Connections

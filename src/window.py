@@ -60,6 +60,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     installing = Gtk.Template.Child()
     uninstalling = Gtk.Template.Child()
     no_matches = Gtk.Template.Child()
+    loading_flatpaks = Gtk.Template.Child()
 
     main_progress_bar = Gtk.ProgressBar(visible=False, can_target=False)
     main_progress_bar.add_css_class("osd")
@@ -271,18 +272,15 @@ class WarehouseWindow(Adw.ApplicationWindow):
         else:
             self.main_stack.set_visible_child(self.main_box)
 
-    def create_rows(self):
-        for index in range(len(self.host_flatpaks)):
-            row = AppRow(self, self.host_flatpaks, index)
-            self.flatpaks_list_box.insert(row, index)
-        self.applyFilter()
+    def create_row(self, index):
+        row = AppRow(self, self.host_flatpaks, index)
+        self.flatpaks_list_box.insert(row, index)
     
     def generate_list_of_flatpaks(self):
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
         self.set_title(self.main_window_title)
         self.flatpak_rows = []
         self.should_select_all = self.batch_select_all_button.get_active()
-        self.main_stack.set_visible_child(self.main_box)
         self.batch_select_all_button.set_active(False)
         self.eol_list = []
         self.system_mask_list = self.my_utils.getHostMasks("system")
@@ -295,17 +293,18 @@ class WarehouseWindow(Adw.ApplicationWindow):
             except:
                 print("Could not find EOL")
 
-        task = Gio.Task()
-        task.run_in_thread(lambda *_: GLib.idle_add(lambda *_: self.create_rows()))
+        for index in range(len(self.host_flatpaks)):
+            self.create_row(index)
+
+        self.applyFilter()
 
         # self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
         self.batchActionsEnable(False)
+        self.main_stack.set_visible_child(self.main_box)
 
     def refresh_list_of_flatpaks(self, widget, should_toast):
         if self.currently_uninstalling:
             return
-
-        task = Gio.Task()
         self.generate_list_of_flatpaks()
 
     def openDataFolder(self, path):
@@ -336,7 +335,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.present()
 
     def maskFlatpak(self, id, type, index):
-        is_masked = self.flatpak_rows[index][7].get_visible() # Check the visibility of the mask label to see if the flatpak is masked
+        is_masked = self.flatpaks_list_box.get_row_at_index(index).mask_label.get_visible() # Check the visibility of the mask label to see if the flatpak is masked
         result = []
         name = self.host_flatpaks[index][0]
 
@@ -344,7 +343,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             if result[0] == 1:
                 self.toast_overlay.add_toast(Adw.Toast.new(_("Could disable updates for {}").format(name)))
                 return
-            self.flatpak_rows[index][7].set_visible(not is_masked)
+            self.flatpaks_list_box.get_row_at_index(index).mask_label.set_visible(not is_masked)
             self.lookup_action(f"mask{index}").set_enabled(is_masked)
             self.lookup_action(f"unmask{index}").set_enabled(not is_masked)
 
@@ -708,7 +707,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
             return
 
         self.flatpaks_list_box.set_filter_func(self.filter_func)
-        self.generate_list_of_flatpaks()
+        
+        task = Gio.Task()
+        task.run_in_thread(lambda *_: GLib.idle_add(lambda *_: self.generate_list_of_flatpaks()))
+        
         self.search_entry.connect("search-changed", self.on_invalidate)
         self.search_bar.connect_entry(self.search_entry)
         self.search_bar.connect("notify", self.on_change)

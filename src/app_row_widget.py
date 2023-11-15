@@ -24,6 +24,7 @@ class AppRow(Adw.ActionRow):
 
         current_flatpak = host_flatpaks[index]
 
+        self.index = index
         self.app_name = current_flatpak[0]
         self.app_id = current_flatpak[2]
         self.origin_remote = current_flatpak[6]
@@ -42,14 +43,8 @@ class AppRow(Adw.ActionRow):
         info_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, valign=Gtk.Align.CENTER, halign=Gtk.Align.CENTER, hexpand=True, vexpand=True, spacing=6)
 
         # justify=Gtk.Justification.RIGHT
-        mask_label = Gtk.Label(label=_("Updates Disabled"), visible=False, hexpand=True, wrap=True, valign=Gtk.Align.CENTER, tooltip_text=_("{} is masked and will not be updated").format(self.app_name))
-        mask_label.add_css_class("warning")
-
-        if self.app_id in parent_window.system_mask_list or self.app_id in parent_window.user_mask_list:
-            mask_label.set_visible(True)
-        #     parent_window.lookup_action(f"mask{index}").set_enabled(False)
-        # else:
-        #     parent_window.lookup_action(f"unmask{index}").set_enabled(False)
+        self.mask_label = Gtk.Label(label=_("Updates Disabled"), visible=False, hexpand=True, wrap=True, valign=Gtk.Align.CENTER, tooltip_text=_("{} is masked and will not be updated").format(self.app_name))
+        self.mask_label.add_css_class("warning")
 
         eol_app_label = Gtk.Label(label=_("App EOL"), visible=True, hexpand=True, wrap=True, valign=Gtk.Align.CENTER, tooltip_text=_("{} has reached its End of Life and will not receive any security updates").format(self.app_name))
         eol_app_label.add_css_class("error")
@@ -72,10 +67,10 @@ class AppRow(Adw.ActionRow):
         info_button = Gtk.MenuButton(visible=False, valign=Gtk.Align.CENTER, popover=info_pop, icon_name="software-update-urgent-symbolic")
         info_button.add_css_class("flat")
 
-        info_box.append(mask_label)
+        info_box.append(self.mask_label)
         self.add_suffix(info_button)
 
-        if(mask_label.get_visible() == True or eol_app_label.get_visible() == True or eol_runtime_label == True):
+        if(self.mask_label.get_visible() == True or eol_app_label.get_visible() == True or eol_runtime_label == True):
             info_button.set_visible(True)
         
 
@@ -151,9 +146,15 @@ class AppRow(Adw.ActionRow):
             snapshot_item = Gio.MenuItem.new(_("Manage Snapshots"), f"win.snapshot{index}")
             advanced_menu_model.append_item(snapshot_item)
 
-        parent_window.create_action(("downgrade" + str(index)), lambda *_, row=current_flatpak: DowngradeWindow(parent_window, row))
+        parent_window.create_action(("downgrade" + str(index)), lambda *_, row=current_flatpak, index=index: DowngradeWindow(parent_window, row, index))
         downgrade_item = Gio.MenuItem.new(_("Downgrade"), f"win.downgrade{index}")
         advanced_menu_model.append_item(downgrade_item)
+
+        if self.app_id in parent_window.system_mask_list or self.app_id in parent_window.user_mask_list:
+            self.mask_label.set_visible(True)
+            parent_window.lookup_action(f"mask{index}").set_enabled(False)
+        else:
+            parent_window.lookup_action(f"unmask{index}").set_enabled(False)
 
         row_menu_model.append_section(None, advanced_menu_model)
         self.row_menu.set_menu_model(row_menu_model)
