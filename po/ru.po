@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-13 03:57-0500\n"
+"POT-Creation-Date: 2023-11-14 16:58-0500\n"
 "PO-Revision-Date: 2023-11-14 01:28+0000\n"
 "Last-Translator: Сергей Ворон <voron.s.a@gmail.com>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
@@ -16,11 +16,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.0\n"
 
-#: data/io.github.flattool.Warehouse.desktop.in:3 src/main.py:128
+#: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
 msgstr "Warehouse"
 
@@ -73,14 +73,14 @@ msgstr "Переустановка приложений, в которых ос�
 msgid "Flatpaks"
 msgstr "Пакеты Flatpak"
 
-#: src/main.py:141
-msgid "Donate"
-msgstr "Пожертвовать"
-
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
 #: src/main.py:138
 msgid "translator-credits"
 msgstr ""
+
+#: src/main.py:143
+msgid "Donate"
+msgstr "Пожертвовать"
 
 #: src/main.py:144
 msgid "Contributors"
