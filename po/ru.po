@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-14 16:58-0500\n"
-"PO-Revision-Date: 2023-11-14 01:28+0000\n"
+"PO-Revision-Date: 2023-11-15 06:50+0000\n"
 "Last-Translator: Сергей Ворон <voron.s.a@gmail.com>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ru/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.0\n"
 
 #: data/io.github.flattool.Warehouse.desktop.in:3
@@ -76,7 +76,7 @@ msgstr "Пакеты Flatpak"
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
 #: src/main.py:138
 msgid "translator-credits"
-msgstr ""
+msgstr "Сергей Ворон <voron@duck.com>"
 
 #: src/main.py:143
 msgid "Donate"
@@ -84,7 +84,7 @@ msgstr "Пожертвовать"
 
 #: src/main.py:144
 msgid "Contributors"
-msgstr ""
+msgstr "Участники"
 
 #: src/window.py:106
 msgid "Uninstalled successfully"
