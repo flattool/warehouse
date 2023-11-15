@@ -46,7 +46,7 @@ class AppRow(Adw.ActionRow):
         self.mask_label = Gtk.Label(label=_("Updates Disabled"), visible=False, hexpand=True, wrap=True, valign=Gtk.Align.CENTER, tooltip_text=_("{} is masked and will not be updated").format(self.app_name))
         self.mask_label.add_css_class("warning")
 
-        eol_app_label = Gtk.Label(label=_("App EOL"), visible=True, hexpand=True, wrap=True, valign=Gtk.Align.CENTER, tooltip_text=_("{} has reached its End of Life and will not receive any security updates").format(self.app_name))
+        eol_app_label = Gtk.Label(label=_("App EOL"), visible=False, hexpand=True, wrap=True, valign=Gtk.Align.CENTER, tooltip_text=_("{} has reached its End of Life and will not receive any security updates").format(self.app_name))
         eol_app_label.add_css_class("error")
         info_box.append(eol_app_label)
         if "eol" in parent_window.host_flatpaks[index][12]:
@@ -54,7 +54,7 @@ class AppRow(Adw.ActionRow):
             # justify=Gtk.Justification.RIGHT
             eol_app_label.set_visible(True)
 
-        eol_runtime_label = Gtk.Label(label=_("Runtime EOL"), visible=True, hexpand=True, wrap=True, valign=Gtk.Align.CENTER, tooltip_text=_("{}'s runtime has reached its End of Life and will not receive any security updates").format(self.app_name))
+        eol_runtime_label = Gtk.Label(label=_("Runtime EOL"), visible=False, hexpand=True, wrap=True, valign=Gtk.Align.CENTER, tooltip_text=_("{}'s runtime has reached its End of Life and will not receive any security updates").format(self.app_name))
         eol_runtime_label.add_css_class("error")
         info_box.append(eol_runtime_label)
         if current_flatpak[13] in parent_window.eol_list:
@@ -69,10 +69,6 @@ class AppRow(Adw.ActionRow):
 
         info_box.append(self.mask_label)
         self.add_suffix(info_button)
-
-        if(self.mask_label.get_visible() == True or eol_app_label.get_visible() == True or eol_runtime_label == True):
-            info_button.set_visible(True)
-        
 
         properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
         properties_button.add_css_class("flat")
@@ -155,6 +151,9 @@ class AppRow(Adw.ActionRow):
             parent_window.lookup_action(f"mask{index}").set_enabled(False)
         else:
             parent_window.lookup_action(f"unmask{index}").set_enabled(False)
+
+        if(self.mask_label.get_visible() == True or eol_app_label.get_visible() == True or eol_runtime_label == True):
+            info_button.set_visible(True)
 
         row_menu_model.append_section(None, advanced_menu_model)
         self.row_menu.set_menu_model(row_menu_model)
