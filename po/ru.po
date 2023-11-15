@@ -82,10 +82,6 @@ msgstr "Пожертвовать"
 msgid "translator-credits"
 msgstr ""
 
-#: src/main.py:143
-msgid "Donate"
-msgstr ""
-
 #: src/main.py:144
 msgid "Contributors"
 msgstr ""
