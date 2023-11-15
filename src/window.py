@@ -305,6 +305,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def refresh_list_of_flatpaks(self, widget, should_toast):
         if self.currently_uninstalling:
             return
+        self.main_stack.set_visible_child(self.loading_flatpaks)
+        self.flatpaks_list_box.remove_all()
         self.generate_list_of_flatpaks()
 
     def openDataFolder(self, path):
