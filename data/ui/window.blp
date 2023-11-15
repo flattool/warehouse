@@ -54,31 +54,10 @@ template $WarehouseWindow: Adw.ApplicationWindow {
     content: Adw.ToastOverlay toast_overlay {
       Overlay main_overlay {
         Stack main_stack {
-          Box loading_flatpaks {
-            orientation: vertical;
-            spacing: 10;
-            margin-top: 40;
-            margin-bottom: 20;
-            halign: center;
-            valign: center;
-
-            Spinner {
-              margin-bottom: 35;
-              width-request: 30;
-              height-request: 30;
-              opacity: 0.5;
-              spinning: true;
-            }
-
-            Label {
-              label: _("Loading Flatpaks…");
-              styles ["title-1", "title"]
-            }
-
-            Label {
-              label: _("This should only take a moment.");
-              styles ["description", "body"]
-            }
+          Adw.StatusPage loading_flatpaks {
+            icon-name: "clock-alt-symbolic";
+            title: _("Loading Flatpaks…");
+            description: _("This should only take a moment.");
           }
 
           Box main_box {
