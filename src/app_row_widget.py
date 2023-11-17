@@ -13,10 +13,14 @@ from .common import myUtils
 class AppRow(Adw.ActionRow):
 
     def set_selectable(self, is_selectable):
-        self.select_flatpak_tickbox.set_active(False)
-        self.select_flatpak_tickbox.set_visible(is_selectable)
+        self.tickbox.set_active(False)
+        self.tickbox.set_visible(is_selectable)
         self.row_menu.set_visible(not is_selectable)
         self.set_activatable(is_selectable)
+
+    def set_is_visible(self, is_visible):
+        self.set_visible(is_visible)
+        self.set_selectable(False)
 
     def __init__(self, parent_window, host_flatpaks, index, **kwargs):
         super().__init__(**kwargs)
@@ -75,11 +79,11 @@ class AppRow(Adw.ActionRow):
         properties_button.connect("clicked", lambda *_: PropertiesWindow(index, host_flatpaks, parent_window))
         self.add_suffix(properties_button)
         
-        self.select_flatpak_tickbox = Gtk.CheckButton(visible=False) # visible=self.in_batch_mode
-        self.select_flatpak_tickbox.add_css_class("selection-mode")
-        # self.select_flatpak_tickbox.connect("toggled", self.rowSelectHandler, index)
-        self.add_suffix(self.select_flatpak_tickbox)
-        self.set_activatable_widget(self.select_flatpak_tickbox)
+        self.tickbox = Gtk.CheckButton(visible=False) # visible=self.in_batch_mode
+        self.tickbox.add_css_class("selection-mode")
+        self.tickbox.connect("toggled", parent_window.rowSelectHandler)
+        self.add_suffix(self.tickbox)
+        self.set_activatable_widget(self.tickbox)
         self.set_activatable(False)
 
         self.row_menu = Gtk.MenuButton(icon_name="view-more-symbolic", valign=Gtk.Align.CENTER) # visible=not self.in_batch_mode

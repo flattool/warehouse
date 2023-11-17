@@ -80,6 +80,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     flatpak_rows = []
     # ^ {Row visibility, Row selected, the row itself, properties, row menu, select, the flatpak row from `flatpak list`, mask label}
     default_filter = [True, False, ["all"], ["all"], ["all"]]
+    total_selected = 0
 
     def filter_func(self, row):
         if (self.search_entry.get_text().lower() in row.get_title().lower()) or (self.search_entry.get_text().lower() in row.get_subtitle().lower()):
@@ -279,9 +280,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def generate_list_of_flatpaks(self):
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
         self.set_title(self.main_window_title)
-        self.flatpak_rows = []
-        self.should_select_all = self.batch_select_all_button.get_active()
-        self.batch_select_all_button.set_active(False)
         self.eol_list = []
         self.system_mask_list = self.my_utils.getHostMasks("system")
         self.user_mask_list = self.my_utils.getHostMasks("user")
@@ -308,6 +306,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.main_stack.set_visible_child(self.loading_flatpaks)
         self.flatpaks_list_box.remove_all()
         self.generate_list_of_flatpaks()
+        self.batch_mode_button.set_active(False)
 
     def openDataFolder(self, path):
         try:
@@ -394,26 +393,21 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.toast_overlay.add_toast(Adw.Toast.new(to_toast))
 
     def batch_mode_handler(self, widget):
-        for i in range(len(self.flatpak_rows)):
-            adw_row = self.flatpak_rows[i][2]
-            menu_button = self.flatpak_rows[i][4]
-            select_tick = self.flatpak_rows[i][5]
-
-            menu_button.set_visible(not widget.get_active())
-            select_tick.set_visible(widget.get_active())
-
-            if widget.get_active():
-                adw_row.set_activatable(True)
-                adw_row.set_activatable_widget(select_tick)
-            else:
-                select_tick.set_active(False)
-                adw_row.set_activatable(False)
-
-        self.in_batch_mode = widget.get_active()
-        self.batch_mode_bar.set_revealed(widget.get_active())
+        batch_mode = widget.get_active()
+        i = 0
+        while(self.flatpaks_list_box.get_row_at_index(i) != None):
+            current = self.flatpaks_list_box.get_row_at_index(i)
+            current.set_selectable(batch_mode)
+            i += 1
+        self.in_batch_mode = batch_mode
+        self.batch_mode_bar.set_revealed(batch_mode)
 
         if not widget.get_active():
             self.batch_select_all_button.set_active(False)
+
+    def batchKeyHandler(self, _b, event, _c, _d):
+        if event == Gdk.KEY_Escape:
+            self.batch_mode_button.set_active(False)
 
     def batchActionsEnable(self, should_enable):
         self.batch_copy_button.set_sensitive(should_enable)
@@ -451,29 +445,33 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.connect("response", self.onBatchCleanResponse, dialog.choose_finish)
         Gtk.Window.present(dialog)
 
-    def batchSelectAllHandler(self, widget):
-        for i in range(len(self.flatpak_rows)):
-            if self.flatpak_rows[i][0]:
-                self.flatpak_rows[i][5].set_active(widget.get_active())
 
-    def batchKeyHandler(self, _b, event, _c, _d):
-        if event == Gdk.KEY_Escape:
-            self.batch_mode_button.set_active(False)
 
-    def rowSelectHandler(self, tickbox, index):
-        self.flatpak_rows[index][1] = tickbox.get_active()
 
-        total_selected = 0
-        for i in range(len(self.flatpak_rows)):
-            if self.flatpak_rows[i][1]:
-                total_selected += 1
 
-        if total_selected == 0:
+    def batchSelectAllButtonHandler(self, widget):
+        self.set_select_all(widget.get_active())
+                
+    def set_select_all(self, should_select_all):
+        i = 0
+        while(self.flatpaks_list_box.get_row_at_index(i) != None):
+            current = self.flatpaks_list_box.get_row_at_index(i)
+            if current.get_visible() == True:
+                current.tickbox.set_active(should_select_all)
+            i += 1
+
+    def rowSelectHandler(self, tickbox):
+        if tickbox.get_active() == True:
+            self.total_selected += 1
+        else:
+            self.total_selected -= 1
+
+        if self.total_selected == 0:
             buttons_enable = False
             self.set_title(self.main_window_title)
             self.batchActionsEnable(False)
         else:
-            self.set_title(f"{total_selected} Selected")
+            self.set_title(f"{self.total_selected} Selected")
             self.batchActionsEnable(True)
 
     def create_action(self, name, callback, shortcuts=None):
@@ -516,9 +514,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app refs")))
 
     def filterWindowHandler(self, widget):
-        for i in range(len(self.flatpak_rows)):
-            self.flatpak_rows[i][5].set_active(False)
-        self.batch_select_all_button.set_active(False)
         if widget.get_active() and self.should_open_filter_window:
             filtwin = FilterWindow(self)
             filtwin.present()
@@ -570,34 +565,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.main_stack.set_visible_child(self.no_matches)
         else:
             self.main_stack.set_visible_child(self.main_box)
-
-            # self.flatpak_rows[i][0] = True
-
-            # if (not show_apps) and (not "runtime" in self.flatpak_rows[i][6][12]):
-            #     self.flatpak_rows[i][0] = False
-
-            # if (not show_runtimes) and "runtime" in self.flatpak_rows[i][6][12]:
-            #     self.flatpak_rows[i][0] = False
-
-            # if (not 'all' in filter_install_type) and (not self.flatpak_rows[i][6][7] in filter_install_type):
-            #     self.flatpak_rows[i][0] = False
-
-            # if (not 'all' in filter_remotes_list) and (not self.flatpak_rows[i][6][6] in filter_remotes_list):
-            #     self.flatpak_rows[i][0] = False
-
-            # if (not 'all' in filter_runtimes_list) and (not self.flatpak_rows[i][6][13] in filter_runtimes_list):
-            #     self.flatpak_rows[i][0] = False
-
-            # self.flatpak_rows[i][2].set_visible(self.flatpak_rows[i][0])
-
-            # if self.flatpak_rows[i][0]:
-            #     total_visible += 1
-
-        # if total_visible > 0:
-        #     self.windowSetEmpty(False)
-        # else:
-        #     self.windowSetEmpty(True)
-        #     self.filter_button.set_sensitive(True)
 
     def installCallback(self, _a, _b):
         self.main_stack.set_visible_child(self.main_box)
@@ -720,7 +687,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.batch_mode_button.connect("toggled", self.batch_mode_handler)
         self.batch_clean_button.connect("clicked", self.batchCleanHandler)
         self.batch_uninstall_button.connect("clicked", self.batchUninstallButtonHandler)
-        self.batch_select_all_button.connect("clicked", self.batchSelectAllHandler)
+        self.batch_select_all_button.connect("clicked", self.batchSelectAllButtonHandler)
         self.batchActionsEnable(False)
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.batchKeyHandler)
