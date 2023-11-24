@@ -22,8 +22,21 @@ class AppRow(Adw.ActionRow):
         self.set_visible(is_visible)
         self.set_selectable(False)
 
+    def info_button_show_or_hide(self):
+        self.info_button.set_visible(False)
+
+        if self.mask_label.get_visible() == True:
+            self.info_button.set_visible(True)
+
+        if self.eol_app_label.get_visible() == True:
+            self.info_button.set_visible(True)
+
+        if self.eol_runtime_label.get_visible() == True:
+            self.info_button.set_visible(True)
+
     def set_masked(self, is_masked):
         self.mask_label.set_visible(is_masked)
+        self.info_button_show_or_hide()
 
     def __init__(self, parent_window, host_flatpaks, index, **kwargs):
         super().__init__(**kwargs)
@@ -53,29 +66,29 @@ class AppRow(Adw.ActionRow):
         self.mask_label = Gtk.Label(label=_("Updates Disabled"), visible=False, hexpand=True, wrap=True, valign=Gtk.Align.CENTER, tooltip_text=_("{} is masked and will not be updated").format(self.app_name))
         self.mask_label.add_css_class("warning")
 
-        eol_app_label = Gtk.Label(label=_("App EOL"), visible=False, hexpand=True, wrap=True, valign=Gtk.Align.CENTER, tooltip_text=_("{} has reached its End of Life and will not receive any security updates").format(self.app_name))
-        eol_app_label.add_css_class("error")
-        info_box.append(eol_app_label)
+        self.eol_app_label = Gtk.Label(label=_("App EOL"), visible=False, hexpand=True, wrap=True, valign=Gtk.Align.CENTER, tooltip_text=_("{} has reached its End of Life and will not receive any security updates").format(self.app_name))
+        self.eol_app_label.add_css_class("error")
+        info_box.append(self.eol_app_label)
         if "eol" in parent_window.host_flatpaks[index][12]:
             # EOL = End Of Life, meaning the app will not be updated
             # justify=Gtk.Justification.RIGHT
-            eol_app_label.set_visible(True)
+            self.eol_app_label.set_visible(True)
 
-        eol_runtime_label = Gtk.Label(label=_("Runtime EOL"), visible=False, hexpand=True, wrap=True, valign=Gtk.Align.CENTER, tooltip_text=_("{}'s runtime has reached its End of Life and will not receive any security updates").format(self.app_name))
-        eol_runtime_label.add_css_class("error")
-        info_box.append(eol_runtime_label)
+        self.eol_runtime_label = Gtk.Label(label=_("Runtime EOL"), visible=False, hexpand=True, wrap=True, valign=Gtk.Align.CENTER, tooltip_text=_("{}'s runtime has reached its End of Life and will not receive any security updates").format(self.app_name))
+        self.eol_runtime_label.add_css_class("error")
+        info_box.append(self.eol_runtime_label)
         if current_flatpak[13] in parent_window.eol_list:
             # EOL = End Of Life, meaning the runtime will not be updated
             # justify=Gtk.Justification.RIGHT
-            eol_runtime_label.set_visible(True)
+            self.eol_runtime_label.set_visible(True)
 
         info_pop = Gtk.Popover()
         info_pop.set_child(info_box)
-        info_button = Gtk.MenuButton(visible=False, valign=Gtk.Align.CENTER, popover=info_pop, icon_name="software-update-urgent-symbolic")
-        info_button.add_css_class("flat")
+        self.info_button = Gtk.MenuButton(visible=False, valign=Gtk.Align.CENTER, popover=info_pop, icon_name="software-update-urgent-symbolic")
+        self.info_button.add_css_class("flat")
 
         info_box.append(self.mask_label)
-        self.add_suffix(info_button)
+        self.add_suffix(self.info_button)
 
         properties_button = Gtk.Button(icon_name="info-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View Properties"))
         properties_button.add_css_class("flat")
@@ -134,12 +147,12 @@ class AppRow(Adw.ActionRow):
 
             row_menu_model.append_section(None, data_menu_model)
 
-        parent_window.create_action(("mask" + str(index)), lambda *_, id=self.app_id, type=self.install_type, index=index: parent_window.maskFlatpak(id, type, index))
+        parent_window.create_action(("mask" + str(index)), lambda *_, id=self.app_id, type=self.install_type, index=index: parent_window.maskFlatpak(self))
         mask_item = Gio.MenuItem.new(_("Disable Updates"), f"win.mask{index}")
         mask_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
         advanced_menu_model.append_item(mask_item)
 
-        parent_window.create_action(("unmask" + str(index)), lambda *_, id=self.app_id, type=self.install_type, index=index: parent_window.maskFlatpak(id, type, index))
+        parent_window.create_action(("unmask" + str(index)), lambda *_, id=self.app_id, type=self.install_type, index=index: parent_window.maskFlatpak(self))
         unmask_item = Gio.MenuItem.new(_("Enable Updates"), f"win.unmask{index}")
         unmask_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
         advanced_menu_model.append_item(unmask_item)
@@ -159,8 +172,7 @@ class AppRow(Adw.ActionRow):
         else:
             parent_window.lookup_action(f"unmask{index}").set_enabled(False)
 
-        if(self.mask_label.get_visible() == True or eol_app_label.get_visible() == True or eol_runtime_label == True):
-            info_button.set_visible(True)
-
         row_menu_model.append_section(None, advanced_menu_model)
         self.row_menu.set_menu_model(row_menu_model)
+
+        self.info_button_show_or_hide()

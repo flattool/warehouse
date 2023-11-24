@@ -6,7 +6,6 @@
 
 - Snapshots (backing up app data)
 - Installing flatpaks from a search
-- Removing lag when refreshing the main list
 
 # Features Being Considered
 

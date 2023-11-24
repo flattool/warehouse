@@ -120,16 +120,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
         id_arr = []
         type_arr = []
         self.currently_uninstalling = True
-        for i in range(len(self.flatpak_rows)):
-            if not self.flatpak_rows[i][1]:
-                continue # Skip if not selected
-            ref = self.flatpak_rows[i][6][8]
-            id = self.flatpak_rows[i][6][2]
-            app_type = self.flatpak_rows[i][6][7]
-            ref_arr.append(ref)
-            id_arr.append(id)
-            type_arr.append(app_type)
-            self.removeRow(self.flatpak_rows[i])
+        i = 0
+        while(self.flatpaks_list_box.get_row_at_index(i) != None):
+            current = self.flatpaks_list_box.get_row_at_index(i)
+            if current.tickbox.get_active() == True:
+                ref_arr.append(current.app_ref)
+                id_arr.append(current.app_id)
+                type_arr.append(current.install_type)
+            i += 1
         task = Gio.Task.new(None, None, self.uninstallFlatpakCallback)
         task.run_in_thread(lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, type_arr=type_arr, should_trash=should_trash: self.uninstallFlatpakThread(ref_arr, id_arr, type_arr, should_trash))
 
@@ -331,30 +329,29 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.connect("response", onContinue)
         dialog.present()
 
-    def maskFlatpak(self, id, type, index):
-        is_masked = self.flatpaks_list_box.get_row_at_index(index).mask_label.get_visible() # Check the visibility of the mask label to see if the flatpak is masked
+    def maskFlatpak(self, row):
+        is_masked = row.mask_label.get_visible() # Check the visibility of the mask label to see if the flatpak is masked
         result = []
-        name = self.host_flatpaks[index][0]
 
         def callback():
             if result[0] == 1:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Could disable updates for {}").format(name)))
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not disable updates for {}").format(row.app_name)))
                 return
-            self.flatpaks_list_box.get_row_at_index(index).mask_label.set_visible(not is_masked)
-            self.lookup_action(f"mask{index}").set_enabled(is_masked)
-            self.lookup_action(f"unmask{index}").set_enabled(not is_masked)
+            row.set_masked(not is_masked)
+            self.lookup_action(f"mask{row.index}").set_enabled(is_masked)
+            self.lookup_action(f"unmask{row.index}").set_enabled(not is_masked)
 
         def onContinue(dialog, response):
             if response == "cancel":
                 return
             task = Gio.Task.new(None, None, lambda *_: callback())
-            task.run_in_thread(lambda *_: result.append(self.my_utils.maskFlatpak(id, type, is_masked)))
+            task.run_in_thread(lambda *_: result.append(self.my_utils.maskFlatpak(row.app_id, row.install_type, is_masked)))
 
         if is_masked:
             onContinue(self, None)
         else:
-            dialog = Adw.MessageDialog.new(self, _("Disable Updates for {}?").format(name))
-            dialog.set_body(_("This will mask {} ensuring it will never recieve any feature or security updates.").format(name))
+            dialog = Adw.MessageDialog.new(self, _("Disable Updates for {}?").format(row.app_name))
+            dialog.set_body(_("This will mask {} ensuring it will never recieve any feature or security updates.").format(row.app_name))
             dialog.add_response("cancel", _("Cancel"))
             dialog.set_close_response("cancel")
             dialog.add_response("continue", _("Disable Updates"))
