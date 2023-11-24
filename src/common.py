@@ -189,7 +189,7 @@ class myUtils:
 
     def uninstallFlatpak(self, ref_arr, type_arr, should_trash, progress_bar=None):
         self.uninstall_success = True
-
+        print(ref_arr)
         to_uninstall = []
         for i in range(len(ref_arr)):
             to_uninstall.append([ref_arr[i], type_arr[i]])

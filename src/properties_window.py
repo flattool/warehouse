@@ -109,7 +109,7 @@ class PropertiesWindow(Adw.Window):
                 PropertiesWindow(i, self.host_flatpaks, self.parent_window)
 
     def trashDataHandler(self):
-        def onResponse(response, *args):
+        def onResponse(_none, response, widget):
             if response == "cancel":
                 return
 

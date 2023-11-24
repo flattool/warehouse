@@ -105,8 +105,7 @@ class DowngradeWindow(Adw.Window):
             if self.my_utils.maskFlatpak(self.app_id, self.install_type) != 0:
                 self.parent_window.toast_overlay.add_toast(Adw.Toast.new(_("Could not disable updates for {}").format(self.app_name)))
 
-        self.parent_window.flatpaks_list_box.remove(self.parent_window.flatpaks_list_box.get_row_at_index(self.index))
-        self.parent_window.create_row(self.index)
+        self.parent_window.refresh_list_of_flatpaks(self, False)
         self.close()
 
     def downgradeThread(self):

@@ -22,6 +22,9 @@ class AppRow(Adw.ActionRow):
         self.set_visible(is_visible)
         self.set_selectable(False)
 
+    def set_masked(self, is_masked):
+        self.mask_label.set_visible(is_masked)
+
     def __init__(self, parent_window, host_flatpaks, index, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(parent_window)
@@ -112,7 +115,7 @@ class AppRow(Adw.ActionRow):
             run_item = Gio.MenuItem.new(_("Open"), f"win.run{index}")
             row_menu_model.append_item(run_item)
 
-        parent_window.create_action(("uninstall" + str(index)), lambda *_, index=index: parent_window.uninstallButtonHandler(self, index))
+        parent_window.create_action(("uninstall" + str(index)), lambda *_: parent_window.uninstallButtonHandler(self, self.app_name, self.app_ref, self.app_id))
         uninstall_item = Gio.MenuItem.new(_("Uninstall"), f"win.uninstall{index}")
         row_menu_model.append_item(uninstall_item)
 

@@ -107,6 +107,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.uninstallButtonsEnable(True)
         self.main_stack.set_visible_child(self.main_box)
         if self.my_utils.uninstall_success:
+            self.refresh_list_of_flatpaks(self, False)
             self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled successfully")))
         else:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not uninstall some apps")))
@@ -199,15 +200,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         Gtk.Window.present(dialog)
 
-    def uninstallButtonHandler(self, _widget, index):
+    def uninstallButtonHandler(self, widget, name, ref, id):
         if self.currently_uninstalling:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Cannot uninstall while already uninstalling")))
             return
-
-        name = self.host_flatpaks[index][0]
-        ref = self.host_flatpaks[index][8]
-        id = self.host_flatpaks[index][2]
-        self.flatpak_rows[index][1] = True
 
         def uninstallResponse(_idk, response_id, _widget):
             if response_id == "cancel":
