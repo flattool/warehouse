@@ -18,6 +18,7 @@ class OrphansWindow(Adw.Window):
     no_data = Gtk.Template.Child()
     no_results = Gtk.Template.Child()
     action_bar = Gtk.Template.Child()
+    search_button = Gtk.Template.Child()
     search_bar = Gtk.Template.Child()
     search_entry = Gtk.Template.Child()
     oepn_folder_button = Gtk.Template.Child()
@@ -67,6 +68,7 @@ class OrphansWindow(Adw.Window):
         self.progress_bar.set_visible(False)
         self.app_window.refresh_list_of_flatpaks(self, False)
         self.disconnect(self.no_close_id) # Make window able to close
+        self.search_button.set_sensitive(True)
         if self.my_utils.install_success:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Installed successfully")))
         else:
@@ -74,6 +76,7 @@ class OrphansWindow(Adw.Window):
 
     def installHandler(self):
         self.main_stack.set_visible_child(self.installing)
+        self.search_button.set_sensitive(False)
         self.set_title(self.window_title)
         self.keep_checking = True
         task = Gio.Task.new(None, None, self.installCallback)

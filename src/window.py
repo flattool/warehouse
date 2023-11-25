@@ -106,6 +106,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.disconnect(self.no_close)
         self.uninstallButtonsEnable(True)
         self.main_stack.set_visible_child(self.main_box)
+        self.search_button.set_sensitive(True)
         if self.my_utils.uninstall_success:
             self.refresh_list_of_flatpaks(self, False)
             self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled successfully")))
@@ -128,6 +129,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 id_arr.append(current.app_id)
                 type_arr.append(current.install_type)
             i += 1
+        self.set_title(self.main_window_title)
         task = Gio.Task.new(None, None, self.uninstallFlatpakCallback)
         task.run_in_thread(lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, type_arr=type_arr, should_trash=should_trash: self.uninstallFlatpakThread(ref_arr, id_arr, type_arr, should_trash))
 
@@ -147,6 +149,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             self.no_close = self.connect("close-request", lambda event: True)  # Make window unable to close
             self.main_stack.set_visible_child(self.uninstalling)
+            self.search_button.set_sensitive(False)
             self.uninstallFlatpak(should_trash)
 
         # Create Widgets
@@ -198,7 +201,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         Gtk.Window.present(dialog)
 
-    def uninstallButtonHandler(self, widget, name, ref, id):
+    def uninstallButtonHandler(self, row, name, ref, id):
         if self.currently_uninstalling:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Cannot uninstall while already uninstalling")))
             return
@@ -219,7 +222,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             self.no_close = self.connect("close-request", lambda event: True)  # Make window unable to close
             self.main_stack.set_visible_child(self.uninstalling)
+            self.search_button.set_sensitive(False)
             self.uninstallFlatpak(should_trash)
+
+        row.tickbox.set_active(True)
 
         # Create Widgets
         dialog = Adw.MessageDialog.new(self, _("Uninstall {}?").format(name), _("It will not be possible to use {} after removal.").format(name))
@@ -263,9 +269,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         if is_empty:
             self.batch_mode_button.set_active(False)
             self.main_stack.set_visible_child(self.no_flatpaks)
-            print("le empt")
+            self.search_button.set_sensitive(False)
         else:
             self.main_stack.set_visible_child(self.main_box)
+            self.search_button.set_sensitive(True)
 
     def create_row(self, index):
         row = AppRow(self, self.host_flatpaks, index)
@@ -292,12 +299,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
         # self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
         self.batchActionsEnable(False)
-        self.main_stack.set_visible_child(self.main_box)
 
     def refresh_list_of_flatpaks(self, widget, should_toast):
         if self.currently_uninstalling:
             return
-        self.main_stack.set_visible_child(self.loading_flatpaks)
         self.flatpaks_list_box.remove_all()
         self.generate_list_of_flatpaks()
         self.batch_mode_button.set_active(False)
@@ -556,11 +561,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
         
         if total_visible == 0:
             self.main_stack.set_visible_child(self.no_matches)
+            self.search_button.set_sensitive(False)
         else:
             self.main_stack.set_visible_child(self.main_box)
+            self.search_button.set_sensitive(True)
 
     def installCallback(self, _a, _b):
         self.main_stack.set_visible_child(self.main_box)
+        self.search_button.set_sensitive(True)
         if self.my_utils.install_success:
             self.refresh_list_of_flatpaks(self, False)
             self.toast_overlay.add_toast(Adw.Toast.new(_("Installed successfully")))
@@ -576,6 +584,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 return
 
             self.main_stack.set_visible_child(self.installing)
+            self.search_button.set_sensitive(False)
             user_or_system = "user"
             if system_check.get_active():
                 user_or_system = "system"
@@ -632,21 +641,26 @@ class WarehouseWindow(Adw.ApplicationWindow):
         if self.is_empty:
             self.batch_mode_button.set_active(False)
             self.main_stack.set_visible_child(self.no_flatpaks)
+            self.search_button.set_sensitive(False)
         else:
             self.main_stack.set_visible_child(self.main_box)
+            self.search_button.set_sensitive(True)
 
         self.is_result = False
         self.flatpaks_list_box.invalidate_filter()
         if self.is_result == False:
             self.main_stack.set_visible_child(self.no_results)
+            self.search_button.set_sensitive(False)
 
     def on_change(self, prop, prop2):
         if self.search_bar.get_search_mode() == False:
             if self.is_empty:
                 self.batch_mode_button.set_active(False)
                 self.main_stack.set_visible_child(self.no_flatpaks)
+                self.search_button.set_sensitive(False)
             else:
                 self.main_stack.set_visible_child(self.main_box)
+                self.search_button.set_sensitive(True)
 
 
 
