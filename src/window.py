@@ -716,6 +716,3 @@ class WarehouseWindow(Adw.ApplicationWindow):
         if Config.DEVEL:
             self.add_css_class("devel")
 
-
-
-

@@ -1,4 +1,4 @@
-from gi.repository import GLib, Gtk, Adw #, Gdk, Gio
+from gi.repository import GLib, Gtk, Adw, Gio #, Gdk
 import os
 import subprocess
 import pathlib
@@ -28,7 +28,7 @@ class myUtils:
         return self.getSizeFormat(self.getDirectorySize(path))
 
     def getSizeFormat(self, b):
-        factor = 1024
+        factor = 1000
         suffix = "B"
         for unit in ["", "K", "M", "G", "T", "P", "E", "Z"]:
             if b < factor:
@@ -61,7 +61,8 @@ class myUtils:
             return 0
         if total == 0:
             return 0
-        return total + 1500
+        # Adding 4000 seems to make it more accurate to whatever data we can't scan from within the sandbox
+        return total + 4000
 
     def findAppIcon(self, app_id):
         icon_theme = Gtk.IconTheme.new()
