@@ -74,9 +74,10 @@ class PropertiesWindow(Adw.Window):
             self.spinner.set_visible(False)
 
         if "runtime" in self.current_flatpak[12]:
+            # Pak is a runtime
             self.runtime.set_visible(False)
-        else:
-            self.view_apps.set_visible(False)
+            if self.app_ref in self.parent_window.dependent_runtimes:
+                self.view_apps.set_visible(True)
 
     def generateLower(self):
         column_headers = [

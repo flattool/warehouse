@@ -280,6 +280,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     
     def generate_list_of_flatpaks(self):
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
+        self.dependent_runtimes = self.my_utils.getDependentRuntimes()
         self.set_title(self.main_window_title)
         self.eol_list = []
         self.system_mask_list = self.my_utils.getHostMasks("system")
