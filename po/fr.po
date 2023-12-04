@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-14 16:58-0500\n"
-"PO-Revision-Date: 2023-11-07 22:01+0000\n"
-"Last-Translator: Maxim Therrien <maxim@acerspyro.ca>\n"
+"PO-Revision-Date: 2023-12-05 08:43+0000\n"
+"Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/fr/>\n"
 "Language: fr\n"
@@ -79,11 +79,11 @@ msgstr "Maxim Therrien <maxim@acerspyro.ca>"
 
 #: src/main.py:143
 msgid "Donate"
-msgstr ""
+msgstr "Faire un don"
 
 #: src/main.py:144
 msgid "Contributors"
-msgstr ""
+msgstr "Contributeurs"
 
 #: src/window.py:106
 msgid "Uninstalled successfully"
@@ -261,10 +261,8 @@ msgid "Trash User Data"
 msgstr "Mettre les données utilisateur à la corbeille"
 
 #: src/window.py:374
-#, fuzzy
-#| msgid "Manage Remotes"
 msgid "Manage Snapshots"
-msgstr "Gérer les dépôts de logiciels"
+msgstr "Gérer les sauvegardes"
 
 #: src/window.py:378 data/ui/downgrade.blp:22
 msgid "Downgrade"
@@ -409,22 +407,16 @@ msgid "Toggle Selection Mode"
 msgstr "Basculer en mode sélection"
 
 #: data/ui/window.blp:97 data/ui/orphans.blp:81
-#, fuzzy
-#| msgid "Installation"
 msgid "Installing…"
-msgstr "Installation"
+msgstr "Installation…"
 
 #: data/ui/window.blp:106 data/ui/window.blp:133 data/ui/orphans.blp:90
-#, fuzzy
-#| msgid "Installing… This could take a while"
 msgid "This could take a while."
-msgstr "Installations en cours… Cela peut prendre du temps"
+msgstr "Cela peut prendre du temps."
 
 #: data/ui/window.blp:128
-#, fuzzy
-#| msgid "Uninstall"
 msgid "Uninstalling…"
-msgstr "Désinstaller"
+msgstr "Désinstallation…"
 
 #: data/ui/window.blp:140
 msgid "No Flatpaks Found"
@@ -440,14 +432,12 @@ msgstr ""
 "installé sur ce système."
 
 #: data/ui/window.blp:146 data/ui/orphans.blp:107
-#, fuzzy
-#| msgid "No Flatpaks Found"
 msgid "No Results Found"
-msgstr "Aucun Flatpak trouvé"
+msgstr "Aucun résultat"
 
 #: data/ui/window.blp:147 data/ui/orphans.blp:108
 msgid "Try a different search term"
-msgstr ""
+msgstr "Essayez une recherche différente"
 
 #: data/ui/window.blp:159 data/ui/orphans.blp:118
 msgid "Select All"
@@ -466,36 +456,24 @@ msgid "Open Copy Menu"
 msgstr "Ouvrir le menu de copie"
 
 #: data/ui/window.blp:184
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Snapshot Selected Apps' Data"
-msgstr ""
-"Mettre les données utilisateur des applications sélectionnées à la "
-"corbeille ?"
+msgstr "Sauvegarder les données utilisateur des applications sélectionnées"
 
 #: data/ui/window.blp:194
-#, fuzzy
-#| msgid "Install From File"
 msgid "Install From File…"
-msgstr "Installer à partir d’un fichier"
+msgstr "Installer à partir d’un fichier…"
 
 #: data/ui/window.blp:199
-#, fuzzy
-#| msgid "Manage Leftover Data"
 msgid "Manage Leftover Data…"
-msgstr "Gérer les données résiduelles"
+msgstr "Gérer les données résiduelles…"
 
 #: data/ui/window.blp:208
-#, fuzzy
-#| msgid "Manage Remotes"
 msgid "Manage Remotes…"
-msgstr "Gérer les dépôts de logiciels"
+msgstr "Gérer les dépôts de logiciels…"
 
 #: data/ui/window.blp:213
-#, fuzzy
-#| msgid "Install From File"
 msgid "Install From The Web…"
-msgstr "Installer à partir d’un fichier"
+msgstr "Installer à partir du web…"
 
 #: data/ui/window.blp:218
 msgid "_Keyboard Shortcuts"
@@ -574,22 +552,16 @@ msgid "Copied {}"
 msgstr "{} copié"
 
 #: src/properties_window.py:48
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not show details"
-msgstr "L'application n'a pas pu être installée"
+msgstr "Impossible d’afficher les détails"
 
 #: src/properties_window.py:54
-#, fuzzy
-#| msgid "Trash User Data"
 msgid "User Data"
-msgstr "Mettre les données utilisateur à la corbeille"
+msgstr "Données utilisateur"
 
 #: src/properties_window.py:73 src/properties_window.py:118
-#, fuzzy
-#| msgid "Trash User Data"
 msgid "No User Data"
-msgstr "Mettre les données utilisateur à la corbeille"
+msgstr "Aucune donnée utilisateur"
 
 #: src/properties_window.py:83 src/remotes_window.py:200
 #: src/remotes_window.py:297
@@ -844,10 +816,8 @@ msgid "Could not downgrade {}"
 msgstr "Impossible de rétrograder {}"
 
 #: src/downgrade_window.py:108
-#, fuzzy
-#| msgid "Could disable updates for {}"
 msgid "Could not disable updates for {}"
-msgstr "Mises à jour désactivables pour {}"
+msgstr "Impossible de désactiver les mises à jour pour {}"
 
 #: src/downgrade_window.py:116
 msgid "Downgrading…"
