@@ -8,17 +8,20 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-14 16:58-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-12-07 10:43+0000\n"
+"Last-Translator: windowsboy111 <windowsboy111@fyralabs.com>\n"
+"Language-Team: Chinese (Traditional) <https://weblate.fyralabs.com/projects/"
+"flattool/warehouse/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.0\n"
 
 #: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
-msgstr ""
+msgstr "倉庫"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak"
@@ -27,95 +30,95 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
-msgstr ""
+msgstr "管理所有 Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
 "Warehouse is an app that manages installed Flatpaks, their user data, and "
 "Flatpak remotes."
-msgstr ""
+msgstr "倉庫是一個管理已安裝的 Flatpak、其使用者數據及 Flatpak 遠程。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr ""
+msgstr "功能："
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Show and filter the list of installed Flatpaks"
-msgstr ""
+msgstr "顯示並篩選已安裝 Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Display properties of installed Flatpaks"
-msgstr ""
+msgstr "顯示已安裝 Flatpak 的屬性"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Manage large groups of Flatpaks at once"
-msgstr ""
+msgstr "大量管理多組 Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Add and remove Flatpak remotes"
-msgstr ""
+msgstr "添加和刪除 Flatpak 遠程"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "Find and trash leftover user data"
-msgstr ""
+msgstr "搜尋並移除剩餘使用者數據"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
-msgstr ""
+msgstr "重新安裝有剩餘數據的應用"
 
 #: src/main.py:103
 msgid "Flatpaks"
-msgstr ""
+msgstr "Flatpak 應用"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
 #: src/main.py:138
 msgid "translator-credits"
-msgstr ""
+msgstr "madomado nuko <mado@fyralabs.com>"
 
 #: src/main.py:143
 msgid "Donate"
-msgstr ""
+msgstr "捐款"
 
 #: src/main.py:144
 msgid "Contributors"
-msgstr ""
+msgstr "貢獻者"
 
 #: src/window.py:106
 msgid "Uninstalled successfully"
-msgstr ""
+msgstr "卸載成功"
 
 #: src/window.py:108
 msgid "Could not uninstall some apps"
-msgstr ""
+msgstr "無法卸載一些應用"
 
 #. Create Widgets
 #: src/window.py:150
 msgid "Uninstall Selected Apps?"
-msgstr ""
+msgstr "確定卸載選擇的應用？"
 
 #: src/window.py:150
 msgid "It will not be possible to use these apps after removal."
-msgstr ""
+msgstr "移除後將無法使用這些應用。"
 
 #: src/window.py:163 src/window.py:232
 msgid "App Settings & Data"
-msgstr ""
+msgstr "應用設定與數據"
 
 #: src/window.py:165 src/window.py:234
 msgid "Keep"
-msgstr ""
+msgstr "保存"
 
 #: src/window.py:165
 msgid "Allow restoring these apps' settings and content"
-msgstr ""
+msgstr "允許恢復這些應用的設定及內容"
 
 #: src/window.py:166 src/window.py:235 data/ui/orphans.blp:123
 msgid "Trash"
-msgstr ""
+msgstr "回收"
 
 #: src/window.py:166
 msgid "Send these apps' settings and content to the trash"
-msgstr ""
+msgstr "回收這些應用設定及內容至"
 
 #: src/window.py:193 src/window.py:253 src/window.py:443 src/window.py:474
 #: src/window.py:568 src/window.py:721 src/properties_window.py:126
@@ -123,160 +126,160 @@ msgstr ""
 #: src/orphans_window.py:102 src/orphans_window.py:156 data/ui/filter.blp:17
 #: data/ui/downgrade.blp:16
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: src/window.py:194 src/window.py:254 src/window.py:338
 msgid "Uninstall"
-msgstr ""
+msgstr "卸載"
 
 #: src/window.py:200
 msgid "Cannot uninstall while already uninstalling"
-msgstr ""
+msgstr "當正在卸載時無法卸載"
 
 #. Create Widgets
 #: src/window.py:227
 msgid "Uninstall {}?"
-msgstr ""
+msgstr "確定卸載 {}？"
 
 #: src/window.py:227
 msgid "It will not be possible to use {} after removal."
-msgstr ""
+msgstr "刪除後將無法使用 {}。"
 
 #: src/window.py:234
 msgid "Allow restoring this app's settings and content"
-msgstr ""
+msgstr "容許恢復這個應用的設定及內容"
 
 #: src/window.py:235
 msgid "Send this app's settings and content to the trash"
-msgstr ""
+msgstr "回收此應用的設定及內容"
 
 #. EOL = End Of Life, meaning the app will not be updated
 #: src/window.py:282
 msgid "App EOL"
-msgstr ""
+msgstr "應用壽命終止"
 
 #: src/window.py:282 src/properties_window.py:157
 msgid ""
 "{} has reached its End of Life and will not receive any security updates"
-msgstr ""
+msgstr "{} 壽命已終結並不會再有任何安全更新"
 
 #. EOL = End Of Life, meaning the runtime will not be updated
 #: src/window.py:288
 msgid "Runtime EOL"
-msgstr ""
+msgstr "運行時壽命終結"
 
 #: src/window.py:288 src/properties_window.py:161
 msgid ""
 "{}'s runtime has reached its End of Life and will not receive any security "
 "updates"
-msgstr ""
+msgstr "{} 運行時壽命已終結普不會再有任何安全更新"
 
 #: src/window.py:292
 msgid "Updates Disabled"
-msgstr ""
+msgstr "更新已禁用"
 
 #: src/window.py:292 src/properties_window.py:165
 msgid "{} is masked and will not be updated"
-msgstr ""
+msgstr "{} 被隱藏並不會被更新"
 
 #. ^ This is up here as we need to add this to flatpak_rows regardless of if its visible or not
 #: src/window.py:297
 msgid "View Properties"
-msgstr ""
+msgstr "查看屬性"
 
 #. {Row visibility, Row selected, the row itself, properties, menu button, select, the flatpak row from `flatpak list`, mask label, the dropdown menu model}
 #.
 #: src/window.py:318
 msgid "Copied name"
-msgstr ""
+msgstr "已複製名稱"
 
 #: src/window.py:319
 msgid "Copy Name"
-msgstr ""
+msgstr "複製名稱"
 
 #: src/window.py:321
 msgid "Copied ID"
-msgstr ""
+msgstr "已複製 ID"
 
 #: src/window.py:322
 msgid "Copy ID"
-msgstr ""
+msgstr "複製 ID"
 
 #: src/window.py:324
 msgid "Copied ref"
-msgstr ""
+msgstr "已複製引用"
 
 #: src/window.py:325
 msgid "Copy Ref"
-msgstr ""
+msgstr "複製引用"
 
 #: src/window.py:327
 msgid "Copied launch command"
-msgstr ""
+msgstr "已複製起動命令"
 
 #: src/window.py:328
 msgid "Copy Launch Command"
-msgstr ""
+msgstr "複製起動命令"
 
 #: src/window.py:330 src/window.py:491
 msgid "Copy"
-msgstr ""
+msgstr "複製"
 
 #: src/window.py:333
 msgid "Opened {}"
-msgstr ""
+msgstr "已開啟 {}"
 
 #: src/window.py:334
 msgid "Open"
-msgstr ""
+msgstr "開啟"
 
 #: src/window.py:342 src/window.py:476 data/ui/downgrade.blp:46
 msgid "Disable Updates"
-msgstr ""
+msgstr "停止更新"
 
 #: src/window.py:347
 msgid "Enable Updates"
-msgstr ""
+msgstr "啟用更新"
 
 #: src/window.py:361 src/orphans_window.py:213
 msgid "Open User Data Folder"
-msgstr ""
+msgstr "開啟用戶資料文件夾"
 
 #: src/window.py:366
 msgid "Trash User Data"
-msgstr ""
+msgstr "回收使用者資料"
 
 #: src/window.py:374
 msgid "Manage Snapshots"
-msgstr ""
+msgstr "管理快照"
 
 #: src/window.py:378 data/ui/downgrade.blp:22
 msgid "Downgrade"
-msgstr ""
+msgstr "回滾"
 
 #: src/window.py:427 src/properties_window.py:42 src/orphans_window.py:165
 msgid "Could not open folder"
-msgstr ""
+msgstr "無法打開文件夾"
 
 #: src/window.py:435 src/window.py:560 src/properties_window.py:123
 msgid "Could not trash user data"
-msgstr ""
+msgstr "無法回收用戶資料"
 
 #: src/window.py:439 src/window.py:562 src/properties_window.py:117
 msgid "Trashed user data"
-msgstr ""
+msgstr "已回收用戶資料"
 
 #: src/window.py:441 src/properties_window.py:125
 msgid "Send {}'s User Data to the Trash?"
-msgstr ""
+msgstr "確定回收 {} 的用戶數據？"
 
 #: src/window.py:442
 msgid "Your files and data for this app will be sent to the trash."
-msgstr ""
+msgstr "此應用的檔案及資料將被回收。"
 
 #: src/window.py:445 src/window.py:569 src/properties_window.py:128
 msgid "Trash Data"
-msgstr ""
+msgstr "回收數據"
 
 #: src/window.py:457
 msgid "Could disable updates for {}"
