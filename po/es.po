@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-14 16:58-0500\n"
-"PO-Revision-Date: 2023-10-23 12:28+0000\n"
+"PO-Revision-Date: 2023-12-08 04:55+0000\n"
 "Last-Translator: Racsu <me@racsu.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
@@ -79,12 +79,11 @@ msgstr "Racsu <me@racsu.com>"
 
 #: src/main.py:143
 msgid "Donate"
-msgstr ""
+msgstr "Donar"
 
 #: src/main.py:144
-#, fuzzy
 msgid "Contributors"
-msgstr "Continuar"
+msgstr "Contribuidores"
 
 #: src/window.py:106
 msgid "Uninstalled successfully"
@@ -259,10 +258,8 @@ msgid "Trash User Data"
 msgstr "Eliminar datos de usuario"
 
 #: src/window.py:374
-#, fuzzy
-#| msgid "Manage Remotes"
 msgid "Manage Snapshots"
-msgstr "Gestionar los repositorios remotos"
+msgstr "Gestionar Snapshots"
 
 #: src/window.py:378 data/ui/downgrade.blp:22
 msgid "Downgrade"
@@ -401,22 +398,16 @@ msgid "Toggle Selection Mode"
 msgstr "Conmutar modo de selección"
 
 #: data/ui/window.blp:97 data/ui/orphans.blp:81
-#, fuzzy
-#| msgid "Installation"
 msgid "Installing…"
-msgstr "Instalación"
+msgstr "Instalando…"
 
 #: data/ui/window.blp:106 data/ui/window.blp:133 data/ui/orphans.blp:90
-#, fuzzy
-#| msgid "Installing… This could take a while"
 msgid "This could take a while."
-msgstr "Instalando… Esto podría tardar un poco"
+msgstr "Esto podría tardar un poco."
 
 #: data/ui/window.blp:128
-#, fuzzy
-#| msgid "Uninstall"
 msgid "Uninstalling…"
-msgstr "Desinstalar"
+msgstr "Desinstalando…"
 
 #: data/ui/window.blp:140
 msgid "No Flatpaks Found"
@@ -431,14 +422,12 @@ msgstr ""
 "la lista de Flatpaks instaladas o el sistema no tiene Flatpaks instaladas."
 
 #: data/ui/window.blp:146 data/ui/orphans.blp:107
-#, fuzzy
-#| msgid "No Flatpaks Found"
 msgid "No Results Found"
-msgstr "No se han encontrado Flatpaks"
+msgstr "No se han encontrado resultados"
 
 #: data/ui/window.blp:147 data/ui/orphans.blp:108
 msgid "Try a different search term"
-msgstr ""
+msgstr "Intentar un término de búsqueda diferente"
 
 #: data/ui/window.blp:159 data/ui/orphans.blp:118
 msgid "Select All"
@@ -469,22 +458,16 @@ msgid "Install From File…"
 msgstr "Instalar desde archivo"
 
 #: data/ui/window.blp:199
-#, fuzzy
-#| msgid "Manage Leftover Data"
 msgid "Manage Leftover Data…"
-msgstr "Gestionar los datos sobrantes"
+msgstr "Gestionar los datos sobrantes…"
 
 #: data/ui/window.blp:208
-#, fuzzy
-#| msgid "Manage Remotes"
 msgid "Manage Remotes…"
-msgstr "Gestionar los repositorios remotos"
+msgstr "Gestionar los repositorios remotos…"
 
 #: data/ui/window.blp:213
-#, fuzzy
-#| msgid "Install From File"
 msgid "Install From The Web…"
-msgstr "Instalar desde archivo"
+msgstr "Instalar desde la web…"
 
 #: data/ui/window.blp:218
 msgid "_Keyboard Shortcuts"
