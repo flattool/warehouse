@@ -31,5 +31,7 @@
     <file preprocess="xml-stripblanks" alias="arrow2-top-right-symbolic.svg">../data/icons/arrow2-top-right-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="software-update-available-symbolic.svg">../data/icons/software-update-available-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="software-update-urgent-symbolic.svg">../data/icons/software-update-urgent-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="cross-filled-symbolic.svg">../data/icons/cross-filled-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="important-small-symbolic.svg">../data/icons/important-small-symbolic.svg</file>
   </gresource>
 </gresources>

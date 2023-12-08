@@ -132,20 +132,23 @@ class AppRow(Adw.ActionRow):
         uninstall_item = Gio.MenuItem.new(_("Uninstall"), f"win.uninstall{index}")
         row_menu_model.append_item(uninstall_item)
 
-        if os.path.exists(parent_window.user_data_path + self.app_id):
-            data_menu_model = Gio.Menu()
+        data_menu_model = Gio.Menu()
 
-            parent_window.create_action(("open-data" + str(index)), lambda *_, path=(parent_window.user_data_path + self.app_id): parent_window.openDataFolder(path))
-            open_data_item = Gio.MenuItem.new(_("Open User Data Folder"), f"win.open-data{index}")
-            open_data_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
-            data_menu_model.append_item(open_data_item)
+        parent_window.create_action(("open-data" + str(index)), lambda *_, path=(parent_window.user_data_path + self.app_id): parent_window.openDataFolder(path))
+        open_data_item = Gio.MenuItem.new(_("Open User Data Folder"), f"win.open-data{index}")
+        open_data_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
+        data_menu_model.append_item(open_data_item)
 
-            parent_window.create_action(("trash" + str(index)), lambda *_, name=self.app_name, id=self.app_id, index=index: parent_window.trashData(name, id, index))
-            trash_item = Gio.MenuItem.new(_("Trash User Data"), f"win.trash{index}")
-            trash_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
-            data_menu_model.append_item(trash_item)
+        parent_window.create_action(("trash" + str(index)), lambda *_, name=self.app_name, id=self.app_id, index=index: parent_window.trashData(name, id, index))
+        trash_item = Gio.MenuItem.new(_("Trash User Data"), f"win.trash{index}")
+        trash_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
+        data_menu_model.append_item(trash_item)
 
-            row_menu_model.append_section(None, data_menu_model)
+        row_menu_model.append_section(None, data_menu_model)
+        
+        if not os.path.exists(parent_window.user_data_path + self.app_id):
+            parent_window.lookup_action(f"open-data{self.index}").set_enabled(False)
+            parent_window.lookup_action(f"trash{self.index}").set_enabled(False)
 
         parent_window.create_action(("mask" + str(index)), lambda *_, id=self.app_id, type=self.install_type, index=index: parent_window.maskFlatpak(self))
         mask_item = Gio.MenuItem.new(_("Disable Updates"), f"win.mask{index}")

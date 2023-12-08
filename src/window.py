@@ -156,10 +156,13 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog = Adw.MessageDialog.new(self, _("Uninstall Selected Apps?"), _("It will not be possible to use these apps after removal."))
 
         # Check to see if at least one app in the list has user data
-        for i in range(len(self.flatpak_rows)):
-            if not self.flatpak_rows[1]:
-                continue # Skip if not selected
-            if os.path.exists(f"{self.user_data_path}{self.flatpak_rows[i][6][2]}"):
+        i = 0
+        while(True):
+            current = self.flatpaks_list_box.get_row_at_index(i)
+            i += 1
+            if(current == None):
+                break
+            if current.tickbox.get_active() and os.path.exists(f"{self.user_data_path}{current.app_id}"):
                 has_user_data = True
                 break
 
@@ -304,6 +307,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def refresh_list_of_flatpaks(self, widget, should_toast):
         if self.currently_uninstalling:
             return
+        if should_toast:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("List refreshed")))
         self.flatpaks_list_box.remove_all()
         self.generate_list_of_flatpaks()
         self.batch_mode_button.set_active(False)
@@ -415,25 +420,24 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.batch_uninstall_button.set_sensitive(should_enable)
 
     def onBatchCleanResponse(self, dialog, response, _a):
-        if response == "cancel":
-            return 1
-        show_success = True
-        for i in range(len(self.flatpak_rows)):
-            if not self.flatpak_rows[i][1]:
-                continue # Skip if not selected
-            app_id = self.flatpak_rows[i][6][2]
-            app_name = self.flatpak_rows[i][6][0]
-            path = f"{self.user_data_path}{app_id}"
-            trash = self.my_utils.trashFolder(path)
+        i = 0
+        trashReturnCodes = 0
+        while(True):
+            current = self.flatpaks_list_box.get_row_at_index(i)
+            i += 1
+            if current == None:
+                break
+            if current.tickbox.get_active() == False:
+                continue
+            trash = self.my_utils.trashFolder(f"{self.user_data_path}{current.app_id}")
             if trash == 1:
-                show_success = False
-                self.toast_overlay.add_toast(Adw.Toast.new(_("No user data for {}").format(app_name)))
-            elif trash == 2:
-                show_success = False
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not trash user data")))
-        if show_success:
-            self.toast_overlay.add_toast(Adw.Toast.new(_("Trashed user data")))
-        #self.refresh_list_of_flatpaks(_a, False)
+                self.toast_overlay.add_toast(Adw.Toast.new(_("{} has no data to trash").format(current.app_name)))
+                continue
+            if trash == 2:
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not trash {}'s data").format(current.app_name)))
+                continue
+            self.lookup_action(f"open-data{current.index}").set_enabled(False) # Disable the Open User Data dropdown option when the data was deleted
+            self.lookup_action(f"trash{current.index}").set_enabled(False) # Disable the Trash User Data dropdown option when the data was deleted
 
     def batchCleanHandler(self, widget):
         dialog = Adw.MessageDialog.new(self, _("Trash Selected Apps' User Data?"), _("Your files and data for these apps will be sent to the trash."))
@@ -443,10 +447,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", self.onBatchCleanResponse, dialog.choose_finish)
         Gtk.Window.present(dialog)
-
-
-
-
 
     def batchSelectAllButtonHandler(self, widget):
         self.set_select_all(widget.get_active())
@@ -490,25 +490,40 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def copyNames(self, widget, _a):
         to_copy = ""
-        for i in range(len(self.flatpak_rows)):
-            if self.flatpak_rows[i][1]:
-                to_copy += f"{(self.flatpak_rows[i][6][0])}\n"
+        i = 0
+        while(True):
+            current = self.flatpaks_list_box.get_row_at_index(i)
+            i += 1
+            if(current == None):
+                break
+            if current.tickbox.get_active():
+                to_copy += f"{current.app_name}\n"
         self.clipboard.set(to_copy)
         self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app names")))
 
     def copyIDs(self, widget, _a):
         to_copy = ""
-        for i in range(len(self.flatpak_rows)):
-            if self.flatpak_rows[i][1]:
-                to_copy += f"{(self.flatpak_rows[i][6][2])}\n"
+        i = 0
+        while(True):
+            current = self.flatpaks_list_box.get_row_at_index(i)
+            i += 1
+            if(current == None):
+                break
+            if current.tickbox.get_active():
+                to_copy += f"{current.app_id}\n"
         self.clipboard.set(to_copy)
         self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app IDs")))
 
     def copyRefs(self, widget, _a):
         to_copy = ""
-        for i in range(len(self.flatpak_rows)):
-            if self.flatpak_rows[i][1]:
-                to_copy += f"{(self.flatpak_rows[i][6][8])}\n"
+        i = 0
+        while(True):
+            current = self.flatpaks_list_box.get_row_at_index(i)
+            i += 1
+            if(current == None):
+                break
+            if current.tickbox.get_active():
+                to_copy += f"{current.app_ref}\n"
         self.clipboard.set(to_copy)
         self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app refs")))
 
