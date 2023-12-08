@@ -12,10 +12,13 @@ class RemotesWindow(Adw.Window):
     add_button = Gtk.Template.Child()
     remotes_list = Gtk.Template.Child()
     stack = Gtk.Template.Child()
-    main_overlay = Gtk.Template.Child()
+    main_group = Gtk.Template.Child()
     no_remotes = Gtk.Template.Child()
     toast_overlay = Gtk.Template.Child()
-    progress_bar = Gtk.Template.Child()
+    popular_remotes_list = Gtk.Template.Child()
+    add_from_file = Gtk.Template.Child()
+    custom_remote = Gtk.Template.Child()
+    # progress_bar = Gtk.Template.Child()
 
     def key_handler(self, _a, event, _c, _d):
         if event == Gdk.KEY_Escape:
@@ -63,7 +66,6 @@ class RemotesWindow(Adw.Window):
         dialog.present()
 
     def generate_list(self):
-        self.remotes_list.remove_all()
         self.host_remotes = self.my_utils.getHostRemotes()
         self.host_flatpaks = self.get_host_flatpaks()
 
@@ -75,7 +77,7 @@ class RemotesWindow(Adw.Window):
             self.stack.set_visible_child(self.no_remotes)
             return
         else:
-            self.stack.set_visible_child(self.main_overlay)
+            self.stack.set_visible_child(self.main_group)
 
         for i in range(len(self.host_remotes)):
             try:
@@ -86,7 +88,7 @@ class RemotesWindow(Adw.Window):
                 remote_row = Adw.ActionRow(title=title, subtitle=name)
                 if title == "-":
                     remote_row.set_title(name)
-                self.remotes_list.append(remote_row)
+                self.remotes_list.add(remote_row)
                 label = Gtk.Label(label=("{} wide").format(install_type), valign=Gtk.Align.CENTER)
                 label.add_css_class("subtitle")
                 remote_row.add_suffix(label)
@@ -98,13 +100,11 @@ class RemotesWindow(Adw.Window):
                 remove_button.connect("clicked", self.remove_handler, i)
                 remote_row.add_suffix(copy_button)
                 remote_row.add_suffix(remove_button)
-            except:
-                print("Could not get remote")
+            except Exception as e:
+                print("Could not get remote. Error:", e)
 
     def addRemoteCallback(self, _a, _b):
-        self.should_pulse = False
-        self.progress_bar.set_visible(False)
-        self.generate_list()
+        pass
 
     def addRemoteThread(self, command):
         try:
@@ -113,17 +113,11 @@ class RemotesWindow(Adw.Window):
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not add {}").format(self.name_to_add)))
             print(e)
 
-    def mainPulser(self):
-        if self.should_pulse:
-            self.progress_bar.pulse()
-            GLib.timeout_add(500, self.mainPulser)
-
     def on_add_response(self, _dialog, response_id, _function):
         if response_id == "cancel":
             self.should_pulse = False
             return
 
-        self.progress_bar.set_visible(True)
         install_type = "--user"
         if not self.add_as_user:
             install_type = "--system"
@@ -189,9 +183,6 @@ class RemotesWindow(Adw.Window):
         self.name_to_add = ""
         self.url_to_add = ""
         self.add_as_user = True
-
-        self.should_pulse = True
-        self.mainPulser()
 
         info_box = Gtk.Box(orientation="vertical")
         entry_list = Gtk.ListBox(selection_mode="none", margin_bottom=12)
@@ -318,7 +309,7 @@ class RemotesWindow(Adw.Window):
         options_list.add_css_class("boxed-list")
         Gtk.Window.present(dialog)
 
-    def showPopularRemotes(self, widget):
+    def show_new_remote_options(self):
 
         remotes = [
           # [Name to show in GUI, Name of remote for system, Link to repo to add, Description of remote]
@@ -331,7 +322,6 @@ class RemotesWindow(Adw.Window):
             ["WebKit Developer SDK", "webkit-sdk", "https://software.igalia.com/flatpak-refs/webkit-sdk.flatpakrepo", _("Central repository of the WebKit Developer and Runtime SDK")],
         ]
 
-        non_added_remotes = []
         host_remotes = self.my_utils.getHostRemotes()
         host_remotes_names = []
 
@@ -339,17 +329,22 @@ class RemotesWindow(Adw.Window):
             host_remotes_names.append(self.host_remotes[i][0])
 
         for i in range(len(remotes)):
-            if remotes[i][1] not in host_remotes_names:
-                non_added_remotes.append(remotes[i])
+            if remotes[i][1] in host_remotes_names:
+                continue
 
-        PopularRemotesWindow(self, non_added_remotes).present()
+            row = Adw.ActionRow(title=remotes[i][0], subtitle=(remotes[i][2]), activatable=True)
+            row.connect("activated", self.add_handler, remotes[i][1], remotes[i][2])
+            row.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
+            self.popular_remotes_list.add(row)
+
+        self.add_from_file.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
+        self.custom_remote.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
     
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
         # Create Variables
         self.my_utils = myUtils(self)
-        self.window_title = _("Manage Remotes")
         self.host_remotes = []
         self.host_flatpaks = []
         self.app_window = main_window
@@ -357,17 +352,17 @@ class RemotesWindow(Adw.Window):
         self.new_env['LC_ALL'] = 'C'
         self.should_pulse = False
 
-        self.add_button.connect("clicked", self.showPopularRemotes)
-
         # Window Stuffs
-        self.set_title(self.window_title)
         self.set_size_request(260, 230)
         self.set_modal(True)
         self.set_resizable(True)
-        self.generate_list()
 
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.key_handler)
         self.add_controller(event_controller)
 
         self.set_transient_for(main_window)
+
+        # Calls
+        self.generate_list()
+        self.show_new_remote_options()

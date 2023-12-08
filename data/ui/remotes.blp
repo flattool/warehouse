@@ -2,6 +2,7 @@ using Gtk 4.0;
 using Adw 1;
 
 template RemotesWindow: Adw.Window {
+  title: _("Manage Remotes");
   default-width: 500;
   default-height: 450;
 
@@ -18,36 +19,63 @@ template RemotesWindow: Adw.Window {
 
     content: Adw.ToastOverlay toast_overlay {
       Stack stack {
-        Overlay main_overlay {
-          [overlay]
-          ProgressBar progress_bar {
-            visible: false;
-            pulse-step: 0.7;
-            can-target: false;
+
+        Adw.PreferencesPage main_group {
+          Adw.PreferencesGroup remotes_list {
+            title: _("Installed Remotes");
+            header-suffix: Button refresh {
+              Adw.ButtonContent {
+                label: _("Refresh");
+                icon-name: "view-refresh-symbolic";
+              }
+              styles["flat"]
+            };
+          }
+          Adw.PreferencesGroup popular_remotes_list {
+            title: _("Add a Popular Remote");
+          }
+          Adw.PreferencesGroup manual_remotes_list {
+            title: _("Add Other Remotes");
+            Adw.ActionRow add_from_file {
+              title: _("Add a Repo File");
+              activatable: true;
+            }
+
+            Adw.ActionRow custom_remote {
+              title: _("Add a Custom Remote");
+              activatable: true;
+            }
+          }
+        }
+
+        Box adding {
+          orientation: vertical;
+          spacing: 10;
+          margin-top: 40;
+          margin-bottom: 20;
+          halign: center;
+          valign: center;
+
+          Spinner {
+            margin-bottom: 35;
+            width-request: 30;
+            height-request: 30;
+            opacity: 0.5;
+            spinning: true;
+          }
+
+          Label {
+            label: _("Adding Remote…");
 
             styles [
-              "osd"
+              "title-1",
+              "title"
             ]
           }
 
-          ScrolledWindow scroll {
-            vexpand: true;
-
-            Adw.Clamp {
-              ListBox remotes_list {
-                margin-top: 12;
-                margin-bottom: 12;
-                margin-start: 12;
-                margin-end: 12;
-                hexpand: true;
-                valign: start;
-                selection-mode: none;
-
-                styles [
-                  "boxed-list"
-                ]
-              }
-            }
+          Label {
+            label: _("This should only take a moment.");
+            styles ["description", "body"]
           }
         }
 
