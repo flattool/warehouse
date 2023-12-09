@@ -87,11 +87,7 @@ class RemotesWindow(Adw.Window):
             self.app_window.clipboard.set(to_copy)
             self.make_toast(_("Copied {}").format(to_copy))
 
-        if self.host_remotes[0][0] == '':
-            self.stack.set_visible_child(self.no_remotes)
-            return
-        else:
-            self.stack.set_visible_child(self.main_group)
+        self.no_remotes.set_visible(True)
 
         for i in range(len(self.host_remotes)):
             try:
@@ -120,6 +116,7 @@ class RemotesWindow(Adw.Window):
                 remote_row.add_suffix(copy_button)
                 remote_row.add_suffix(remove_button)
                 self.rows_in_list.append(remote_row)
+                self.no_remotes.set_visible(False)
             except Exception as e:
                 print("error in remotes_window.generate_list: could not add remote. error:", e)
 

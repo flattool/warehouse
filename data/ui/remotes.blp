@@ -24,6 +24,9 @@ template RemotesWindow: Adw.Window {
               }
               styles["flat"]
             };
+            Adw.ActionRow no_remotes {
+              title: _("No remotes on the system, add some from below");
+            }
           }
           Adw.PreferencesGroup popular_remotes_list {
             title: _("Add a Popular Remote");
@@ -72,12 +75,6 @@ template RemotesWindow: Adw.Window {
             label: _("This should only take a moment.");
             styles ["description", "body"]
           }
-        }
-
-        Adw.StatusPage no_remotes {
-          icon-name: "error-symbolic";
-          title: _("No Remotes");
-          description: _("Warehouse cannot see the list of remotes or the system has no remotes added");
         }
       }
     };
