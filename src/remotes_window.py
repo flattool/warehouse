@@ -17,6 +17,7 @@ class RemotesWindow(Adw.Window):
     add_from_file = Gtk.Template.Child()
     custom_remote = Gtk.Template.Child()
     refresh = Gtk.Template.Child()
+    adding = Gtk.Template.Child()
     # progress_bar = Gtk.Template.Child()
 
     rows_in_list = []
@@ -67,6 +68,13 @@ class RemotesWindow(Adw.Window):
         dialog.connect("response", self.remove_on_response, dialog.choose_finish, index)
         dialog.present()
 
+    def view_apps(self, type, id):
+        self.app_window.should_open_filter_window = False
+        self.app_window.filter_button.set_active(True)
+        self.app_window.applyFilter([True, False, [type], [id], ["all"]])
+        self.app_window.should_open_filter_window = True
+        self.close()
+
     def generate_list(self):
         self.host_remotes = self.my_utils.getHostRemotes()
         self.host_flatpaks = self.get_host_flatpaks()
@@ -97,13 +105,18 @@ class RemotesWindow(Adw.Window):
                 self.remotes_list.add(remote_row)
                 label = Gtk.Label(label=("{} wide").format(install_type), valign=Gtk.Align.CENTER)
                 label.add_css_class("subtitle")
+                # subprocess.run(['wget', f'{self.host_remotes[i][11]}'])  Idea to display remote icons... Need internet connection. Not sure if that is worth it
                 remote_row.add_suffix(label)
+                filter_button = Gtk.Button(icon_name="funnel-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View apps from this remote"))
+                filter_button.add_css_class("flat")
+                filter_button.connect("clicked", lambda *_, i=i: self.view_apps(self.host_remotes[i][7], self.host_remotes[i][0]))
                 copy_button = Gtk.Button(icon_name="edit-copy-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Copy remote name"))
                 copy_button.add_css_class("flat")
                 copy_button.connect("clicked", rowCopyHandler, name)
                 remove_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Remove {}").format(name))
                 remove_button.add_css_class("flat")
                 remove_button.connect("clicked", self.remove_handler, i)
+                remote_row.add_suffix(filter_button)
                 remote_row.add_suffix(copy_button)
                 remote_row.add_suffix(remove_button)
                 self.rows_in_list.append(remote_row)
@@ -150,6 +163,7 @@ class RemotesWindow(Adw.Window):
 
     def addRemoteCallback(self, _a, _b):
         self.generate_list()
+        self.stack.set_visible_child(self.main_group)
 
     def addRemoteThread(self, command):
         try:
@@ -162,6 +176,8 @@ class RemotesWindow(Adw.Window):
         if response_id == "cancel":
             self.should_pulse = False
             return
+
+        self.stack.set_visible_child(self.adding)
 
         install_type = "--user"
         if not self.add_as_user:
