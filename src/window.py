@@ -545,6 +545,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         filter_remotes_list = filter[3]
         filter_runtimes_list = filter[4]
         total_visible = 0
+        self.batch_select_all_button.set_active(False)
+        self.set_select_all(False)
 
         index = 0
         while(self.flatpaks_list_box.get_row_at_index(index) != None):
@@ -677,8 +679,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
             else:
                 self.main_stack.set_visible_child(self.main_box)
                 self.search_button.set_sensitive(True)
-
-
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

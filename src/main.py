@@ -56,7 +56,7 @@ class WarehouseApplication(Adw.Application):
         self.create_action("set-filter", self.filters_shortcut, ["<primary>t"])
         self.create_action("install-from-file", self.install_from_file, ["<primary>o"])
         self.create_action("open-menu", self.main_menu_shortcut, ["F10"])
-        self.create_action("open-search-install", self.open_search_install, ["<primary>i"])
+        # self.create_action("open-search-install", self.open_search_install, ["<primary>i"])
 
         gtk_version = str(Gtk.MAJOR_VERSION) + "." + str(Gtk.MINOR_VERSION) + "." + str(Gtk.MICRO_VERSION)
         adw_version = str(Adw.MAJOR_VERSION) + "." + str(Adw.MINOR_VERSION) + "." + str(Adw.MICRO_VERSION)
@@ -142,11 +142,11 @@ class WarehouseApplication(Adw.Application):
             issue_url='https://github.com/flattool/warehouse/issues')
         about.add_link(_("Donate"), "https://github.com/flattool/warehouse/issues")
         about.add_credit_section(_("Contributors"), [
-	    # Contributors: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
-	    "Win <winsdominoes2018@gmail.com>",
-	    "Óscar Fernández Díaz",
-	    "Runar https://github.com/runarcn",
-	    "skøldis <warehouse@turtle.garden>"
+            # Contributors: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
+            "Win <winsdominoes2018@gmail.com>",
+            "Óscar Fernández Díaz",
+            "Runar https://github.com/runarcn",
+            "skøldis <warehouse@turtle.garden>"
         ])
         about.present()
 
