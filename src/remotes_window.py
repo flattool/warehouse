@@ -1,6 +1,5 @@
 from gi.repository import Gtk, Adw, GLib, Gdk, Gio
 from .common import myUtils
-from .popular_remotes_window import PopularRemotesWindow
 import subprocess
 import os
 import re
@@ -9,7 +8,6 @@ import re
 class RemotesWindow(Adw.Window):
     __gtype_name__ = "RemotesWindow"
 
-    add_button = Gtk.Template.Child()
     remotes_list = Gtk.Template.Child()
     stack = Gtk.Template.Child()
     main_group = Gtk.Template.Child()
@@ -18,7 +16,11 @@ class RemotesWindow(Adw.Window):
     popular_remotes_list = Gtk.Template.Child()
     add_from_file = Gtk.Template.Child()
     custom_remote = Gtk.Template.Child()
+    refresh = Gtk.Template.Child()
     # progress_bar = Gtk.Template.Child()
+
+    rows_in_list = []
+    rows_in_popular_list = []
 
     def key_handler(self, _a, event, _c, _d):
         if event == Gdk.KEY_Escape:
@@ -68,6 +70,10 @@ class RemotesWindow(Adw.Window):
     def generate_list(self):
         self.host_remotes = self.my_utils.getHostRemotes()
         self.host_flatpaks = self.get_host_flatpaks()
+        for i in range(len(self.rows_in_list)):
+            self.remotes_list.remove(self.rows_in_list[i])
+
+        self.rows_in_list = []
 
         def rowCopyHandler(widget, to_copy):
             self.app_window.clipboard.set(to_copy)
@@ -100,11 +106,50 @@ class RemotesWindow(Adw.Window):
                 remove_button.connect("clicked", self.remove_handler, i)
                 remote_row.add_suffix(copy_button)
                 remote_row.add_suffix(remove_button)
+                self.rows_in_list.append(remote_row)
             except Exception as e:
                 print("Could not get remote. Error:", e)
 
+        # Popular remotes
+        for i in range(len(self.rows_in_popular_list)):
+            self.popular_remotes_list.remove(self.rows_in_popular_list[i])
+        
+        self.rows_in_popular_list = []
+
+        remotes = [
+          # [Name to show in GUI, Name of remote for system, Link to repo to add, Description of remote]
+            ["AppCenter", "appcenter", "https://flatpak.elementary.io/repo.flatpakrepo", _("The open source, pay-what-you-want app store from elementary")],
+            ["Flathub", "flathub", "https://dl.flathub.org/repo/flathub.flatpakrepo", _("Central repository of Flatpak applications")],
+            ["Flathub beta", "flathub-beta", "https://flathub.org/beta-repo/flathub-beta.flatpakrepo", _("Beta builds of Flatpak applications")],
+            ["Fedora", "fedora", "oci+https://registry.fedoraproject.org", _("Flatpaks packaged by Fedora Linux")],
+            ["GNOME Nightly", "gnome-nightly", "https://nightly.gnome.org/gnome-nightly.flatpakrepo", _("The latest beta GNOME Apps and Runtimes")],
+            ["KDE Testing Applications", "kdeapps", "https://distribute.kde.org/kdeapps.flatpakrepo", _("Beta KDE Apps and Runtimes")],
+            ["WebKit Developer SDK", "webkit-sdk", "https://software.igalia.com/flatpak-refs/webkit-sdk.flatpakrepo", _("Central repository of the WebKit Developer and Runtime SDK")],
+        ]
+
+        host_remotes = self.my_utils.getHostRemotes()
+        host_remotes_names = []
+
+        total_added = 0
+
+        for i in range(len(self.host_remotes)):
+            host_remotes_names.append(self.host_remotes[i][0])
+
+        for i in range(len(remotes)):
+            if remotes[i][1] in host_remotes_names:
+                continue
+            
+            total_added += 1
+            row = Adw.ActionRow(title=remotes[i][0], subtitle=(remotes[i][2]), activatable=True)
+            row.connect("activated", self.add_handler, remotes[i][1], remotes[i][2])
+            row.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
+            self.rows_in_popular_list.append(row)
+            self.popular_remotes_list.add(row)
+
+        self.popular_remotes_list.set_visible(total_added > 0)
+
     def addRemoteCallback(self, _a, _b):
-        pass
+        self.generate_list()
 
     def addRemoteThread(self, command):
         try:
@@ -113,7 +158,7 @@ class RemotesWindow(Adw.Window):
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not add {}").format(self.name_to_add)))
             print(e)
 
-    def on_add_response(self, _dialog, response_id, _function):
+    def on_add_response(self, _dialog, response_id, _function, row):
         if response_id == "cancel":
             self.should_pulse = False
             return
@@ -129,7 +174,7 @@ class RemotesWindow(Adw.Window):
         task = Gio.Task.new(None, None, self.addRemoteCallback)
         task.run_in_thread(lambda _task, _obj, _data, _cancellable: self.addRemoteThread(command))
 
-    def add_handler(self, _widget, name="", link=""):
+    def add_handler(self, row, name="", link=""):
         dialog = Adw.MessageDialog.new(self, _("Add Flatpak Remote"))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
@@ -221,7 +266,7 @@ class RemotesWindow(Adw.Window):
         info_box.append(install_type_list)
 
         dialog.set_extra_child(info_box)
-        dialog.connect("response", self.on_add_response, dialog.choose_finish)
+        dialog.connect("response", self.on_add_response, dialog.choose_finish, row)
         Gtk.Window.present(dialog)
 
         if name != "":
@@ -243,7 +288,6 @@ class RemotesWindow(Adw.Window):
                 self.should_pulse = False
                 return
 
-            self.progress_bar.set_visible(True)
             user_or_system = "user"
             if system_check.get_active():
                 user_or_system = "system"
@@ -269,7 +313,6 @@ class RemotesWindow(Adw.Window):
             dialog.set_response_enabled("continue", is_enabled)
 
         self.should_pulse = True
-        self.mainPulser()
 
         name = filepath.split('/')
         name = name[len(name) - 1]
@@ -308,38 +351,24 @@ class RemotesWindow(Adw.Window):
         user_check.set_active(True)
         options_list.add_css_class("boxed-list")
         Gtk.Window.present(dialog)
-
-    def show_new_remote_options(self):
-
-        remotes = [
-          # [Name to show in GUI, Name of remote for system, Link to repo to add, Description of remote]
-            ["AppCenter", "appcenter", "https://flatpak.elementary.io/repo.flatpakrepo", _("The open source, pay-what-you-want app store from elementary")],
-            ["Flathub", "flathub", "https://dl.flathub.org/repo/flathub.flatpakrepo", _("Central repository of Flatpak applications")],
-            ["Flathub beta", "flathub-beta", "https://flathub.org/beta-repo/flathub-beta.flatpakrepo", _("Beta builds of Flatpak applications")],
-            ["Fedora", "fedora", "oci+https://registry.fedoraproject.org", _("Flatpaks packaged by Fedora Linux")],
-            ["GNOME Nightly", "gnome-nightly", "https://nightly.gnome.org/gnome-nightly.flatpakrepo", _("The latest beta GNOME Apps and Runtimes")],
-            ["KDE Testing Applications", "kdeapps", "https://distribute.kde.org/kdeapps.flatpakrepo", _("Beta KDE Apps and Runtimes")],
-            ["WebKit Developer SDK", "webkit-sdk", "https://software.igalia.com/flatpak-refs/webkit-sdk.flatpakrepo", _("Central repository of the WebKit Developer and Runtime SDK")],
-        ]
-
-        host_remotes = self.my_utils.getHostRemotes()
-        host_remotes_names = []
-
-        for i in range(len(self.host_remotes)):
-            host_remotes_names.append(self.host_remotes[i][0])
-
-        for i in range(len(remotes)):
-            if remotes[i][1] in host_remotes_names:
-                continue
-
-            row = Adw.ActionRow(title=remotes[i][0], subtitle=(remotes[i][2]), activatable=True)
-            row.connect("activated", self.add_handler, remotes[i][1], remotes[i][2])
-            row.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
-            self.popular_remotes_list.add(row)
-
-        self.add_from_file.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
-        self.custom_remote.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
     
+    def file_callback(self, object, result):
+        try:
+            file = object.open_finish(result)
+            self.addRemoteFromFile(file.get_path())
+        except GLib.GError:
+            pass
+
+    def addFromFileHandler(self, widet):
+        filter = Gtk.FileFilter(name=_("Flatpak Repos"))
+        filter.add_suffix("flatpakrepo")
+        filters = Gio.ListStore.new(Gtk.FileFilter)
+        filters.append(filter)
+        file_chooser = Gtk.FileDialog()
+        file_chooser.set_filters(filters)
+        file_chooser.set_default_filter(filter)
+        file_chooser.open(self, None, self.file_callback)
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
@@ -360,9 +389,14 @@ class RemotesWindow(Adw.Window):
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.key_handler)
         self.add_controller(event_controller)
-
+        self.refresh.connect("clicked", lambda *_: self.generate_list())
         self.set_transient_for(main_window)
+
+        self.add_from_file.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
+        self.add_from_file.connect("activated", self.addFromFileHandler)
+        self.custom_remote.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
+        self.custom_remote.connect("activated", self.add_handler)
 
         # Calls
         self.generate_list()
-        self.show_new_remote_options()
+        # self.show_new_remote_options()

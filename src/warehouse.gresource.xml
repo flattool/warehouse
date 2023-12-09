@@ -4,7 +4,6 @@
     <file preprocess="xml-stripblanks">../data/ui/window.ui</file>
     <file preprocess="xml-stripblanks">../data/ui/orphans.ui</file>
     <file preprocess="xml-stripblanks">../data/ui/filter.ui</file>
-    <file preprocess="xml-stripblanks">../data/ui/popular_remotes.ui</file>
     <file preprocess="xml-stripblanks">../data/ui/remotes.ui</file>
     <file preprocess="xml-stripblanks">../data/ui/downgrade.ui</file>
     <file preprocess="xml-stripblanks">../data/ui/search_install.ui</file>

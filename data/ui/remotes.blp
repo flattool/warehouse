@@ -9,12 +9,6 @@ template RemotesWindow: Adw.Window {
   Adw.ToolbarView main_toolbar_view {
     [top]
     HeaderBar header_bar {
-      Button add_button {
-        Adw.ButtonContent {
-          label: _("Add Remote");
-          icon-name: "plus-large-symbolic";
-        }
-      }
     }
 
     content: Adw.ToastOverlay toast_overlay {
@@ -33,6 +27,7 @@ template RemotesWindow: Adw.Window {
           }
           Adw.PreferencesGroup popular_remotes_list {
             title: _("Add a Popular Remote");
+            visible: false;
           }
           Adw.PreferencesGroup manual_remotes_list {
             title: _("Add Other Remotes");
