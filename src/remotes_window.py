@@ -121,7 +121,7 @@ class RemotesWindow(Adw.Window):
                 remote_row.add_suffix(remove_button)
                 self.rows_in_list.append(remote_row)
             except Exception as e:
-                print("Could not get remote. Error:", e)
+                print("error in remotes_window.generate_list: could not add remote. error:", e)
 
         # Popular remotes
         for i in range(len(self.rows_in_popular_list)):
@@ -170,7 +170,7 @@ class RemotesWindow(Adw.Window):
             subprocess.run(command, capture_output=True, check=True, env=self.new_env)
         except subprocess.CalledProcessError as e:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not add {}").format(self.name_to_add)))
-            print(e)
+            print("error in remotes_window.addRemoteThread: could not add remote. error:", e)
 
     def on_add_response(self, _dialog, response_id, _function, row):
         if response_id == "cancel":
@@ -296,7 +296,7 @@ class RemotesWindow(Adw.Window):
             self.toast_overlay.add_toast(Adw.Toast.new(_("{} successfully added").format(name)))
         except subprocess.CalledProcessError as e:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not add {}").format(self.name_to_add)))
-            print(e)
+            print("error in remotes_window.addRemoteFromFileThread: could not add remote. error:", e)
 
     def addRemoteFromFile(self, filepath):
         def response(dialog, response, _a):
