@@ -106,7 +106,7 @@ class myUtils:
         return data
 
     def getHostRemotes(self):
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes", "--columns=all"], capture_output=True, text=True, env=self.new_env).stdout
+        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes", "--columns=all", "--show-disabled"], capture_output=True, text=True, env=self.new_env).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
         data = [columns]
