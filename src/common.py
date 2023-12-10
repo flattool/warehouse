@@ -116,14 +116,12 @@ class myUtils:
         try:
             for i in range(len(data)):
                 data[i][7] = data[i][7].split(",")
-                for j in range(len(data[i])):
-                    if data[i][7][j] == "user":
-                        data[i][7] = "user"
-                        break
-
-                    if data[i][7][j] == "system":
-                        data[i][7] = "system"
-                        break
+                if "disabled" in data[i][7]:
+                    data[i][7] = "disabled"
+                if "user" in data[i][7]:
+                    data[i][7] = "user"
+                if "system" in data[i][7]:
+                    data[i][7] = "system"
         except:
             print("error getting remote installation types")
         return data

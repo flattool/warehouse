@@ -18,6 +18,9 @@ class RemotesWindow(Adw.Window):
     custom_remote = Gtk.Template.Child()
     refresh = Gtk.Template.Child()
     adding = Gtk.Template.Child()
+    show_disabled_button = Gtk.Template.Child()
+    show_disabled_button_button_content = Gtk.Template.Child()
+    show_disabled = False
     # progress_bar = Gtk.Template.Child()
 
     rows_in_list = []
@@ -76,6 +79,11 @@ class RemotesWindow(Adw.Window):
         self.close()
 
     def generate_list(self):
+        if self.show_disabled_button.get_active():
+            self.show_disabled_button_button_content.set_icon_name("eye-open-negative-filled-symbolic")
+        else:
+            self.show_disabled_button_button_content.set_icon_name("eye-not-looking-symbolic")
+
         self.host_remotes = self.my_utils.getHostRemotes()
         self.host_flatpaks = self.get_host_flatpaks()
         for i in range(len(self.rows_in_list)):
@@ -94,12 +102,23 @@ class RemotesWindow(Adw.Window):
                 name = self.host_remotes[i][0]
                 title = self.host_remotes[i][1]
                 install_type = self.host_remotes[i][7]
-                url = self.host_remotes[i][2]
                 remote_row = Adw.ActionRow(title=title, subtitle=name)
+                
+                if install_type == "disabled":
+                    if not self.show_disabled_button.get_active():
+                        continue
+                    
+                    remote_row.add_css_class("warning")
+
+                url = self.host_remotes[i][2]
                 if title == "-":
                     remote_row.set_title(name)
                 self.remotes_list.add(remote_row)
-                label = Gtk.Label(label=("{} wide").format(install_type), valign=Gtk.Align.CENTER)
+                label = Gtk.Label(valign=Gtk.Align.CENTER)
+                if install_type == "disabled":
+                    remote_row.set_subtitle(_("Disabled"))
+                else:
+                    remote_row.set_subtitle(_("{} wide").format(install_type))
                 label.add_css_class("subtitle")
                 # subprocess.run(['wget', f'{self.host_remotes[i][11]}'])  Idea to display remote icons... Need internet connection. Not sure if that is worth it
                 remote_row.add_suffix(label)
@@ -409,6 +428,7 @@ class RemotesWindow(Adw.Window):
         self.add_from_file.connect("activated", self.addFromFileHandler)
         self.custom_remote.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
         self.custom_remote.connect("activated", self.add_handler)
+        self.show_disabled_button.connect("clicked", lambda *_: self.generate_list())
 
         # Calls
         self.generate_list()

@@ -9,6 +9,10 @@ template RemotesWindow: Adw.Window {
   Adw.ToolbarView main_toolbar_view {
     [top]
     HeaderBar header_bar {
+      Button refresh {
+        icon-name: "view-refresh-symbolic";
+        tooltip-text: "Refresh list of remotes";
+      }
     }
 
     content: Adw.ToastOverlay toast_overlay {
@@ -17,12 +21,21 @@ template RemotesWindow: Adw.Window {
         Adw.PreferencesPage main_group {
           Adw.PreferencesGroup remotes_list {
             title: _("Installed Remotes");
-            header-suffix: Button refresh {
-              Adw.ButtonContent {
-                label: _("Refresh");
-                icon-name: "view-refresh-symbolic";
+            header-suffix: ToggleButton show_disabled_button {
+              Adw.ButtonContent show_disabled_button_button_content {
+                icon-name: "eye-not-looking-symbolic";
+                label: _("Show disabled");
+                styles["flat"]
               }
-              styles["flat"]
+              // spacing: 6;
+              // margin-end: 6;
+              // Label {
+              //   label: _("Show Disabled");
+              //   styles["heading", "h4"]
+              // }
+              // Switch show_disabled {
+              //   valign: center;
+              // }
             };
             Adw.ActionRow no_remotes {
               title: _("No remotes on the system, add some from below");
