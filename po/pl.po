@@ -428,7 +428,7 @@ msgstr "Więcej funkcji"
 msgid "Manage Leftover Data"
 msgstr ""
 
-#: src/gtk/help-overlay.blp:42
+#: src/gtk/help-overlay.blp:42 data/ui/remotes.blp:5
 msgid "Manage Remotes"
 msgstr ""
 
@@ -544,7 +544,7 @@ msgstr "Właściwości {}"
 msgid "Could not remove {}"
 msgstr "Nie udało się usunąć {}"
 
-#: src/remotes_window.py:65
+#: src/remotes_window.py:65 src/remotes_window.py:59
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr ""
 
@@ -558,7 +558,6 @@ msgstr "Usuń"
 
 #: src/remotes_window.py:119
 #, fuzzy
-#| msgid "Disable Updates"
 msgid "Disabled"
 msgstr "Wyłącz aktualizacje"
 
@@ -570,7 +569,7 @@ msgstr "{} szerokość"
 msgid "View apps from this remote"
 msgstr ""
 
-#: src/remotes_window.py:128
+#: src/remotes_window.py:128 src/remotes_window.py:95
 msgid "Copy remote name"
 msgstr ""
 
@@ -579,7 +578,7 @@ msgid "Remove {}"
 msgstr "Usuń {}"
 
 #. [Name to show in GUI, Name of remote for system, Link to repo to add, Description of remote]
-#: src/remotes_window.py:150
+#: src/remotes_window.py:150 src/remotes_window.py:316
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr ""
 
@@ -595,17 +594,17 @@ msgstr "Wydania Beta aplikacji Flatpak"
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "Flatpaki spakowane przez Fedora Linux"
 
-#: src/remotes_window.py:154
+#: src/remotes_window.py:154 src/remotes_window.py:320
 #, fuzzy
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "Najnowsze wydania Beta aplikacji i środowisk GNOME"
 
-#: src/remotes_window.py:155
+#: src/remotes_window.py:155 src/remotes_window.py:321
 #, fuzzy
 msgid "Beta KDE Apps and Runtimes"
 msgstr "Wydania Beta aplikacji i środowisk KDE"
 
-#: src/remotes_window.py:156
+#: src/remotes_window.py:156 src/remotes_window.py:322
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr ""
 
@@ -613,7 +612,7 @@ msgstr ""
 msgid "Could not add {}"
 msgstr "Nie udało się dodać {}"
 
-#: src/remotes_window.py:210
+#: src/remotes_window.py:210 src/remotes_window.py:133
 msgid "Add Flatpak Remote"
 msgstr ""
 
@@ -626,10 +625,12 @@ msgid "URL"
 msgstr "URL"
 
 #: src/remotes_window.py:283 src/remotes_window.py:365
+#: src/remotes_window.py:206 src/remotes_window.py:290
 msgid "Remote will be available to only you"
 msgstr ""
 
 #: src/remotes_window.py:289 src/remotes_window.py:366
+#: src/remotes_window.py:212 src/remotes_window.py:291
 msgid "Remote will be available to every user on the system"
 msgstr ""
 
@@ -645,7 +646,7 @@ msgstr "Dodać {}?"
 msgid "Flatpak Repos"
 msgstr "Repozytoria Flatpak"
 
-#: data/ui/remotes.blp:22
+#: data/ui/remotes.blp:22 data/ui/remotes.blp:25
 msgid "Installed Remotes"
 msgstr ""
 
@@ -661,7 +662,7 @@ msgstr ""
 msgid "Add a Popular Remote"
 msgstr "Dodaj popularne źródło aplikacji"
 
-#: data/ui/remotes.blp:48
+#: data/ui/remotes.blp:48 data/ui/remotes.blp:38
 msgid "Add Other Remotes"
 msgstr ""
 
@@ -669,11 +670,11 @@ msgstr ""
 msgid "Add a Repo File"
 msgstr "Dodaj plik Repo"
 
-#: data/ui/remotes.blp:55
+#: data/ui/remotes.blp:55 data/ui/remotes.blp:45 data/ui/popular_remotes.blp:50
 msgid "Add a Custom Remote"
 msgstr ""
 
-#: data/ui/remotes.blp:78
+#: data/ui/remotes.blp:78 data/ui/remotes.blp:68
 msgid "Adding Remote…"
 msgstr ""
 
@@ -778,6 +779,29 @@ msgstr "Wybierz wydanie"
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
+msgstr ""
+
+#: src/window.py:365
+msgid ""
+"This will mask {} ensuring it will never recieve any feature or security "
+"updates."
+msgstr ""
+
+#: data/ui/remotes.blp:14 data/ui/popular_remotes.blp:18
+msgid "Add Remote"
+msgstr ""
+
+#: data/ui/remotes.blp:84
+msgid "No Remotes"
+msgstr ""
+
+#: data/ui/remotes.blp:85
+msgid ""
+"Warehouse cannot see the list of remotes or the system has no remotes added"
+msgstr ""
+
+#: data/ui/popular_remotes.blp:19
+msgid "Choose from a list of popular remotes or add a new one."
 msgstr ""
 
 #~ msgid "Install From The Web…"

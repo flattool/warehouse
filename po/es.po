@@ -128,7 +128,8 @@ msgstr ""
 #: src/window.py:445 src/window.py:618 src/properties_window.py:127
 #: src/remotes_window.py:68 src/remotes_window.py:212 src/remotes_window.py:354
 #: src/orphans_window.py:105 src/orphans_window.py:159 data/ui/filter.blp:17
-#: data/ui/downgrade.blp:16
+#: data/ui/downgrade.blp:16 src/window.py:616 src/remotes_window.py:62
+#: src/remotes_window.py:135 src/remotes_window.py:279
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -188,7 +189,6 @@ msgstr "Borrar datos"
 
 #: src/window.py:349 src/downgrade_window.py:106
 #, fuzzy
-#| msgid "Could disable updates for {}"
 msgid "Could not disable updates for {}"
 msgstr "Puede desactivar las actualizaciones para {}"
 
@@ -222,13 +222,11 @@ msgstr "De acuerdo"
 
 #: src/window.py:434
 #, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
 msgid "{} has no data to trash"
 msgstr "¿Enviar los datos de usuario de {} a la papelera?"
 
 #: src/window.py:437
 #, fuzzy
-#| msgid "Could not trash user data"
 msgid "Could not trash {}'s data"
 msgstr "No se han podido borrar los datos del usuario"
 
@@ -252,39 +250,42 @@ msgstr "Copiados los ID de las aplicaciones seleccionadas"
 msgid "Copied selected app refs"
 msgstr "Copiadas las refs de las aplicaciones seleccionadas"
 
-#: src/window.py:592 src/orphans_window.py:73
+#: src/window.py:592 src/orphans_window.py:73 src/window.py:590
 msgid "Installed successfully"
 msgstr "Instalado correctamente"
 
-#: src/window.py:594
+#: src/window.py:594 src/window.py:592
 msgid "Could not install app"
 msgstr "No se ha podido instalar la aplicación"
 
-#: src/window.py:616
+#: src/window.py:616 src/window.py:614
 msgid "Install {}?"
 msgstr "¿Instalar {}?"
 
 #: src/window.py:619 src/orphans_window.py:106 data/ui/orphans.blp:129
+#: src/window.py:617
 msgid "Install"
 msgstr "Instalar"
 
 #: src/window.py:626 src/remotes_window.py:283 src/remotes_window.py:365
+#: src/window.py:624 src/remotes_window.py:206 src/remotes_window.py:290
 msgid "User"
 msgstr "Usuario"
 
-#: src/window.py:626
+#: src/window.py:626 src/window.py:624
 msgid "The app will be available to only you"
 msgstr "La aplicación solo estará disponible para usted"
 
 #: src/window.py:627 src/remotes_window.py:289 src/remotes_window.py:366
+#: src/window.py:625 src/remotes_window.py:212 src/remotes_window.py:291
 msgid "System"
 msgstr "Sistema"
 
-#: src/window.py:627
+#: src/window.py:627 src/window.py:625
 msgid "The app will be available to every user on the system"
 msgstr "La aplicación estará disponible para todos los usuarios del sistema"
 
-#: src/window.py:656
+#: src/window.py:656 src/window.py:654
 msgid "File type not supported"
 msgstr "Tipo de archivo no compatible"
 
@@ -312,9 +313,8 @@ msgstr "Conmutar modo de selección"
 msgid "Loading Flatpaks…"
 msgstr ""
 
-#: data/ui/window.blp:60 data/ui/remotes.blp:87
+#: data/ui/window.blp:60 data/ui/remotes.blp:87 data/ui/remotes.blp:77
 #, fuzzy
-#| msgid "This could take a while."
 msgid "This should only take a moment."
 msgstr "Esto podría tardar un poco."
 
@@ -336,9 +336,6 @@ msgstr "No se han encontrado Flatpaks"
 
 #: data/ui/window.blp:148
 #, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of remotes or the system has no remotes "
-#| "added"
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed."
@@ -348,7 +345,6 @@ msgstr ""
 
 #: data/ui/window.blp:153
 #, fuzzy
-#| msgid "No Flatpaks Found"
 msgid "No Flatpaks Match Filters"
 msgstr "No se han encontrado Flatpaks"
 
@@ -362,7 +358,6 @@ msgstr "No se han encontrado resultados"
 
 #: data/ui/window.blp:160 data/ui/orphans.blp:108
 #, fuzzy
-#| msgid "Try a different search term"
 msgid "Try a different search term."
 msgstr "Intentar un término de búsqueda diferente"
 
@@ -384,13 +379,11 @@ msgstr "Abrir el menú para copiar datos"
 
 #: data/ui/window.blp:197
 #, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Snapshot Selected Apps' Data"
 msgstr "¿Eliminar los datos de usuario de las aplicaciones seleccionadas?"
 
 #: data/ui/window.blp:207
 #, fuzzy
-#| msgid "Install From File"
 msgid "Install From File…"
 msgstr "Instalar desde archivo"
 
@@ -438,7 +431,7 @@ msgstr "Buscar"
 msgid "Set Filters"
 msgstr "Establecer filtros"
 
-#: src/gtk/help-overlay.blp:24
+#: src/gtk/help-overlay.blp:24 data/ui/remotes.blp:28
 msgid "Refresh"
 msgstr "Refrescar"
 
@@ -450,7 +443,7 @@ msgstr "Más funciones"
 msgid "Manage Leftover Data"
 msgstr "Gestionar los datos sobrantes"
 
-#: src/gtk/help-overlay.blp:42
+#: src/gtk/help-overlay.blp:42 data/ui/remotes.blp:5
 msgid "Manage Remotes"
 msgstr "Gestionar los repositorios remotos"
 
@@ -475,29 +468,28 @@ msgid "Quit"
 msgstr "Salir"
 
 #: src/properties_window.py:36 src/remotes_window.py:96
+#: src/remotes_window.py:74
 msgid "Copied {}"
 msgstr "Copiado {}"
 
 #: src/properties_window.py:48
 #, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not show details"
 msgstr "No se pueden gestionar los datos"
 
 #: src/properties_window.py:54
 #, fuzzy
-#| msgid "Trash User Data"
 msgid "User Data"
 msgstr "Eliminar datos de usuario"
 
 #: src/properties_window.py:73 src/properties_window.py:119
 #, fuzzy
-#| msgid "Trash User Data"
 msgid "No User Data"
 msgstr "Eliminar datos de usuario"
 
 #: src/properties_window.py:84 src/remotes_window.py:268
-#: src/remotes_window.py:363
+#: src/remotes_window.py:363 src/remotes_window.py:191
+#: src/remotes_window.py:288
 msgid "Name"
 msgstr "Nombre"
 
@@ -571,25 +563,24 @@ msgstr "{} está restringido y no recibirá actualizaciones"
 msgid "{} Properties"
 msgstr "Propiedades de {}"
 
-#: src/remotes_window.py:57
+#: src/remotes_window.py:57 src/remotes_window.py:51
 msgid "Could not remove {}"
 msgstr "No se ha podido eliminar {}"
 
-#: src/remotes_window.py:65
+#: src/remotes_window.py:65 src/remotes_window.py:59
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr "Las aplicaciones instaladas de {} dejarán de recibir actualizaciones"
 
-#: src/remotes_window.py:66
+#: src/remotes_window.py:66 src/remotes_window.py:60
 msgid "Remove {}?"
 msgstr "¿Eliminar {}?"
 
-#: src/remotes_window.py:69
+#: src/remotes_window.py:69 src/remotes_window.py:63
 msgid "Remove"
 msgstr "Eliminar"
 
 #: src/remotes_window.py:119
 #, fuzzy
-#| msgid "Disable Updates"
 msgid "Disabled"
 msgstr "Desactivar actualizaciones"
 
@@ -601,86 +592,89 @@ msgstr "{} ancho"
 msgid "View apps from this remote"
 msgstr ""
 
-#: src/remotes_window.py:128
+#: src/remotes_window.py:128 src/remotes_window.py:95
 msgid "Copy remote name"
 msgstr "Copiar nombre del repositorio"
 
-#: src/remotes_window.py:131
+#: src/remotes_window.py:131 src/remotes_window.py:98
 msgid "Remove {}"
 msgstr "Eliminar {}"
 
 #. [Name to show in GUI, Name of remote for system, Link to repo to add, Description of remote]
-#: src/remotes_window.py:150
+#: src/remotes_window.py:150 src/remotes_window.py:316
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr ""
 "La tienda de aplicaciones de código abierto y \"paga lo que quieras\" de "
 "elementary"
 
-#: src/remotes_window.py:151
+#: src/remotes_window.py:151 src/remotes_window.py:317
 msgid "Central repository of Flatpak applications"
 msgstr "Repositorio central de aplicaciones Flatpak"
 
-#: src/remotes_window.py:152
+#: src/remotes_window.py:152 src/remotes_window.py:318
 msgid "Beta builds of Flatpak applications"
 msgstr "Versiones beta de aplicaciones Flatpak"
 
-#: src/remotes_window.py:153
+#: src/remotes_window.py:153 src/remotes_window.py:319
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "Flatpaks empaquetadas por Fedora Linux"
 
-#: src/remotes_window.py:154
+#: src/remotes_window.py:154 src/remotes_window.py:320
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr ""
 "La última versión beta de las aplicaciones y tiempos de ejecución de GNOME"
 
-#: src/remotes_window.py:155
+#: src/remotes_window.py:155 src/remotes_window.py:321
 msgid "Beta KDE Apps and Runtimes"
 msgstr "Aplicaciones y tiempos de ejecución beta de KDE"
 
-#: src/remotes_window.py:156
+#: src/remotes_window.py:156 src/remotes_window.py:322
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr ""
 "Repositorio central del SDK de desarrollo y tiempo de ejecución de WebKit"
 
 #: src/remotes_window.py:188 src/remotes_window.py:314
+#: src/remotes_window.py:113 src/remotes_window.py:237
 msgid "Could not add {}"
 msgstr "No se ha podido añadir {}"
 
-#: src/remotes_window.py:210
+#: src/remotes_window.py:210 src/remotes_window.py:133
 msgid "Add Flatpak Remote"
 msgstr "Añadir repositorio Flatpak"
 
 #: src/remotes_window.py:213 src/remotes_window.py:355
+#: src/remotes_window.py:136 src/remotes_window.py:280
 msgid "Add"
 msgstr "Añadir"
 
-#: src/remotes_window.py:272
+#: src/remotes_window.py:272 src/remotes_window.py:195
 msgid "URL"
 msgstr "URL"
 
 #: src/remotes_window.py:283 src/remotes_window.py:365
+#: src/remotes_window.py:206 src/remotes_window.py:290
 msgid "Remote will be available to only you"
 msgstr "El repositorio solo estará disponible para usted"
 
 #: src/remotes_window.py:289 src/remotes_window.py:366
+#: src/remotes_window.py:212 src/remotes_window.py:291
 msgid "Remote will be available to every user on the system"
 msgstr "El repositorio estará disponible para todos los usuarios del sistema"
 
-#: src/remotes_window.py:312
+#: src/remotes_window.py:312 src/remotes_window.py:235
 msgid "{} successfully added"
 msgstr "{} añadido con éxito"
 
-#: src/remotes_window.py:352
+#: src/remotes_window.py:352 src/remotes_window.py:277
 msgid "Add {}?"
 msgstr "¿Añadir {}?"
 
-#: src/remotes_window.py:395
+#: src/remotes_window.py:395 src/popular_remotes_window.py:31
 msgid "Flatpak Repos"
 msgstr "Repositorios Flatpak"
 
-#: data/ui/remotes.blp:22
+#: data/ui/remotes.blp:22 data/ui/remotes.blp:25
 #, fuzzy
-#| msgid "Installed Size"
 msgid "Installed Remotes"
 msgstr "Tamaño de instalación"
 
@@ -692,29 +686,26 @@ msgstr ""
 msgid "No remotes on the system, add some from below"
 msgstr ""
 
-#: data/ui/remotes.blp:44
+#: data/ui/remotes.blp:44 data/ui/remotes.blp:35
 #, fuzzy
-#| msgid "Add a Remote"
 msgid "Add a Popular Remote"
 msgstr "Añadir un remoto"
 
-#: data/ui/remotes.blp:48
+#: data/ui/remotes.blp:48 data/ui/remotes.blp:38
 #, fuzzy
-#| msgid "Add a Remote"
 msgid "Add Other Remotes"
 msgstr "Añadir un remoto"
 
-#: data/ui/remotes.blp:50
+#: data/ui/remotes.blp:50 data/ui/remotes.blp:40 data/ui/popular_remotes.blp:45
 msgid "Add a Repo File"
 msgstr "Añadir un archivo repo"
 
-#: data/ui/remotes.blp:55
+#: data/ui/remotes.blp:55 data/ui/remotes.blp:45 data/ui/popular_remotes.blp:50
 msgid "Add a Custom Remote"
 msgstr "Añadir un repositorio personalizado"
 
-#: data/ui/remotes.blp:78
+#: data/ui/remotes.blp:78 data/ui/remotes.blp:68
 #, fuzzy
-#| msgid "Add Remote"
 msgid "Adding Remote…"
 msgstr "Agregar repositorio"
 
@@ -825,24 +816,36 @@ msgstr ""
 "Esto desinstalará la versión actual e instalará la elegida en su lugar. "
 "Tenga en cuenta que la desinstalación puede causar problemas."
 
-#~ msgid "Install From The Web…"
-#~ msgstr "Instalar desde la web…"
+#: data/ui/window.blp:226
+msgid "Install From The Web…"
+msgstr "Instalar desde la web…"
 
-#~ msgid "Add Remote"
-#~ msgstr "Agregar repositorio"
+#: data/ui/remotes.blp:14 data/ui/popular_remotes.blp:18
+msgid "Add Remote"
+msgstr "Agregar repositorio"
 
-#~ msgid "No Remotes"
-#~ msgstr "No hay repositorios"
+#: data/ui/remotes.blp:84
+msgid "No Remotes"
+msgstr "No hay repositorios"
 
-#~ msgid ""
-#~ "Warehouse cannot see the list of remotes or the system has no remotes "
-#~ "added"
-#~ msgstr ""
-#~ "Warehouse no puede ver la lista de repositorios o el sistema no tiene "
-#~ "repositorios añadidos"
+#: data/ui/remotes.blp:85
+msgid ""
+"Warehouse cannot see the list of remotes or the system has no remotes added"
+msgstr ""
+"Warehouse no puede ver la lista de repositorios o el sistema no tiene "
+"repositorios añadidos"
 
-#~ msgid "Choose from a list of popular remotes or add a new one."
-#~ msgstr "Elija entre una lista de repositorios populares o añada uno nuevo."
+#: data/ui/popular_remotes.blp:19
+msgid "Choose from a list of popular remotes or add a new one."
+msgstr "Elija entre una lista de repositorios populares o añada uno nuevo."
+
+#: src/window.py:365
+msgid ""
+"This will mask {} ensuring it will never recieve any feature or security "
+"updates."
+msgstr ""
+"Esto restringirá {} asegurando que nunca reciba ninguna función o "
+"actualización de seguridad."
 
 #~ msgid "App EOL"
 #~ msgstr "Fin de soporte de la app"
@@ -993,3 +996,14 @@ msgstr ""
 
 #~ msgid "Mask this Flatpak"
 #~ msgstr "Restringir este Flatpak"
+
+#~ msgid "Try a different search term"
+#~ msgstr "Intentar un término de búsqueda diferente"
+
+#~ msgid "Add a Remote"
+#~ msgstr "Añadir un remoto"
+
+#, fuzzy
+#~| msgid "Send {}'s User Data to the Trash?"
+#~ msgid "Send {}'s User Data to the trash?"
+#~ msgstr "¿Enviar los datos de usuario de {} a la papelera?"
