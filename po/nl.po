@@ -294,7 +294,7 @@ msgstr "Updates voor {} uitschakelen?"
 
 #: src/window.py:473
 msgid ""
-"This will mask {} ensuring it will never recieve any feature or security "
+"This will mask {} ensuring it will never receive any feature or security "
 "updates."
 msgstr ""
 "Dit zal {} maskeren waardoor toekomstige versies of beveiligingsupdates "

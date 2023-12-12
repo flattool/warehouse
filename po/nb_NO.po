@@ -303,7 +303,7 @@ msgstr "Ingen brukerdata funnet for {}"
 
 #: src/window.py:473
 msgid ""
-"This will mask {} ensuring it will never recieve any feature or security "
+"This will mask {} ensuring it will never receive any feature or security "
 "updates."
 msgstr ""
 

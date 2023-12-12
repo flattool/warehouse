@@ -362,7 +362,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             onContinue(self, None)
         else:
             dialog = Adw.MessageDialog.new(self, _("Disable Updates for {}?").format(row.app_name))
-            dialog.set_body(_("This will mask {} ensuring it will never recieve any feature or security updates.").format(row.app_name))
+            dialog.set_body(_("This will mask {} ensuring it will never receive any feature or security updates.").format(row.app_name))
             dialog.add_response("cancel", _("Cancel"))
             dialog.set_close_response("cancel")
             dialog.add_response("continue", _("Disable Updates"))

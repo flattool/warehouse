@@ -306,7 +306,7 @@ msgstr "Désactiver les mises à jour pour {} ?"
 
 #: src/window.py:473
 msgid ""
-"This will mask {} ensuring it will never recieve any feature or security "
+"This will mask {} ensuring it will never receive any feature or security "
 "updates."
 msgstr ""
 "Ceci masquera {} pour que cette application ne reçoive plus de mises à jour "

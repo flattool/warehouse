@@ -298,7 +298,7 @@ msgstr "Отключить обновления для {}?"
 
 #: src/window.py:473
 msgid ""
-"This will mask {} ensuring it will never recieve any feature or security "
+"This will mask {} ensuring it will never receive any feature or security "
 "updates."
 msgstr ""
 "Это скроет {}, гарантируя, что он никогда не получит никаких обновлений "

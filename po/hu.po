@@ -299,7 +299,7 @@ msgstr "Kikapcsolja a(z) {} frissítését?"
 
 #: src/window.py:473
 msgid ""
-"This will mask {} ensuring it will never recieve any feature or security "
+"This will mask {} ensuring it will never receive any feature or security "
 "updates."
 msgstr ""
 "Ez maszkolja a(z) {} Flatpak-et, biztosítva, hogy nem fog többé biztonsági "
