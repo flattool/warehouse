@@ -342,7 +342,6 @@ msgstr ""
 
 #: data/ui/window.blp:53
 #, fuzzy
-#| msgid "Flatpaks"
 msgid "Loading Flatpaks"
 msgstr "Flatpaki"
 
@@ -556,7 +555,6 @@ msgstr ""
 
 #: src/filter_window.py:130 src/orphans_window.py:148 src/remotes_window.py:311
 #, fuzzy
-#| msgid "{} wide"
 msgid "User wide"
 msgstr "{} szerokość"
 
