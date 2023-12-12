@@ -83,14 +83,12 @@ class OrphansWindow(Adw.Window):
         task.run_in_thread(lambda _task, _obj, _data, _cancellable, id_list=self.selected_dirs, remote=self.selected_remote, app_type=self.selected_remote_type, progress_bar=self.progress_bar: self.my_utils.installFlatpak(id_list, remote, app_type, progress_bar))
     
     def installButtonHandler(self, button):
-        remote_select_buttons = []
 
-        def remote_select_handler(button):
+        def remote_select_handler(button, index):
             if not button.get_active():
                 return
-            remote_index = remote_select_buttons.index(button)
-            self.selected_remote = self.host_remotes[remote_index][0]
-            self.selected_remote_type = self.host_remotes[remote_index][7]
+            self.selected_remote = self.host_remotes[index][0]
+            self.selected_remote_type = self.my_utils.getInstallType(self.host_remotes[index][7])
 
         def onResponse(dialog, response_id, _function):
             if response_id == "cancel":
@@ -115,28 +113,41 @@ class OrphansWindow(Adw.Window):
         remotes_scroll.set_child(remote_list)
         remote_list.add_css_class("boxed-list")
 
+        total_added = 0
+        remote_select_buttons = []
         for i in range(len(self.host_remotes)):
-            remote_row = Adw.ActionRow(title=self.host_remotes[i][1])
-            label = Gtk.Label(label=_("{} wide").format(self.host_remotes[i][7]), valign=Gtk.Align.CENTER)
+            title = self.host_remotes[i][1]
+            name = self.host_remotes[i][0]
+            type_arr = self.host_remotes[i][7]
+            if "disabled" in type_arr:
+                continue
+            remote_row = Adw.ActionRow(title=title)
             remote_select = Gtk.CheckButton()
-            label.add_css_class("subtitle")
             remote_select_buttons.append(remote_select)
-            remote_select.connect("toggled", remote_select_handler)
+            remote_select.connect("toggled", remote_select_handler, i)
             remote_row.set_activatable_widget(remote_select)
+
+            type = self.my_utils.getInstallType(type_arr)
+            if type == "user":
+                remote_row.set_subtitle(_("User wide"))
+            elif type == "system":
+                remote_row.set_subtitle(_("System wide"))
+            else:
+                remote_row.set_subtitle(_("Unknown install type"))
 
             if remote_row.get_title() == '-':
                 remote_row.set_title(self.host_remotes[i][0])
 
-            if i > 0:
-                remote_select.set_group(remote_select_buttons[i-1])
+            if total_added > 0:
+                remote_select.set_group(remote_select_buttons[0])
 
             remote_row.add_prefix(remote_select)
-            remote_row.add_suffix(label)
             remote_list.append(remote_row)
+            total_added += 1
 
         remote_select_buttons[0].set_active(True)
             
-        if len(self.host_remotes) > 1:
+        if total_added > 1:
             dialog.set_extra_child(remotes_scroll)
 
         dialog.connect("response", onResponse, dialog.choose_finish)
