@@ -8,114 +8,121 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-08 09:01-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-12-14 04:42+0000\n"
+"Last-Translator: Lennart Weller <lhw+github@ring0.de>\n"
+"Language-Team: German <https://weblate.fyralabs.com/projects/flattool/"
+"warehouse/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.0\n"
 
 #: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
-msgstr ""
+msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak"
-msgstr ""
+msgstr "flatpak"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
-msgstr ""
+msgstr "Verwalten Sie alles rund um Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
 "Warehouse is an app that manages installed Flatpaks, their user data, and "
 "Flatpak remotes."
 msgstr ""
+"Warehouse ist eine Anwendung die installierte Flatpaks, deren Nutzerdaten "
+"und Flatpak Remote Repositories verwaltet."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr ""
+msgstr "Merkmale:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Show and filter the list of installed Flatpaks"
-msgstr ""
+msgstr "Zeige und filter installierte Flatpaks"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Display properties of installed Flatpaks"
-msgstr ""
+msgstr "Zeige Eigenschaften installierter Flatpaks"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Manage large groups of Flatpaks at once"
-msgstr ""
+msgstr "Verwalte mehrere Flatpaks auf einmal"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Add and remove Flatpak remotes"
-msgstr ""
+msgstr "Erstelle und Lösche Flatpak Remote Repositories"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "Find and trash leftover user data"
-msgstr ""
+msgstr "Suche und lösche übrig gebliebene Nutzerdaten"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
-msgstr ""
+msgstr "Installiere Anwendungen mit übrig gebliebenen Benutzerdaten neu"
 
 #: src/main.py:103
 msgid "Flatpaks"
-msgstr ""
+msgstr "Flatpaks"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
 #: src/main.py:138
 msgid "translator-credits"
-msgstr ""
+msgstr "Übersetzer-Credits"
 
 #: src/main.py:143
 msgid "Donate"
-msgstr ""
+msgstr "Spenden"
 
 #: src/main.py:144
 msgid "Contributors"
-msgstr ""
+msgstr "Mitwirkende"
 
 #: src/window.py:112
 msgid "Uninstalled successfully"
-msgstr ""
+msgstr "Erfolgreich deinstalliert"
 
 #: src/window.py:114
 msgid "Could not uninstall some apps"
-msgstr ""
+msgstr "Konnte nicht alle Anwendungen deinstallieren"
 
 #. Create Widgets
 #: src/window.py:156
 msgid "Uninstall Selected Apps?"
-msgstr ""
+msgstr "Deinstalliere ausgewählte Anwendungen?"
 
 #: src/window.py:156
 msgid "It will not be possible to use these apps after removal."
 msgstr ""
+"Es ist nicht möglich diese Anwendungen nach der Deinstallation zu verwenden."
 
 #: src/window.py:172 src/window.py:239
 msgid "App Settings & Data"
-msgstr ""
+msgstr "Anwendungs Einstellungen & Daten"
 
 #: src/window.py:174 src/window.py:241
 msgid "Keep"
-msgstr ""
+msgstr "Behalten"
 
 #: src/window.py:174
 msgid "Allow restoring these apps' settings and content"
 msgstr ""
+"Erlaube es die Einstellungen und Daten der Anwendungen wiederherzustellen"
 
 #: src/window.py:175 src/window.py:242 data/ui/orphans.blp:123
 msgid "Trash"
-msgstr ""
+msgstr "Müll"
 
 #: src/window.py:175
 msgid "Send these apps' settings and content to the trash"
-msgstr ""
+msgstr "Sende die Einstellungen und Daten der Anwendungen in den Müll"
 
 #: src/window.py:202 src/window.py:260 src/window.py:336 src/window.py:366
 #: src/window.py:445 src/window.py:616 src/properties_window.py:127
@@ -123,24 +130,25 @@ msgstr ""
 #: src/orphans_window.py:105 src/orphans_window.py:159 data/ui/filter.blp:17
 #: data/ui/downgrade.blp:16
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: src/window.py:203 src/window.py:261
 msgid "Uninstall"
-msgstr ""
+msgstr "Deinstallieren"
 
 #: src/window.py:209
 msgid "Cannot uninstall while already uninstalling"
-msgstr ""
+msgstr "Kann nicht deinstallieren während eine Deinstallation läuft"
 
 #. Create Widgets
 #: src/window.py:234
 msgid "Uninstall {}?"
-msgstr ""
+msgstr "Deinstalliere {}?"
 
 #: src/window.py:234
 msgid "It will not be possible to use {} after removal."
 msgstr ""
+"Es wird nicht mehr möglich sein {} nach der Deinstallation zu verwenden."
 
 #: src/window.py:241
 msgid "Allow restoring this app's settings and content"
