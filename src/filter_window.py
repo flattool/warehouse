@@ -57,6 +57,7 @@ class FilterWindow(Adw.Window):
             self.remote_checkboxes[i].set_active(not is_enabled)
 
     def remoteCheckHandler(self, checkbox, install_type, remote):
+        install_type = self.my_utils.getInstallType(install_type)
         if checkbox.get_active():
             self.filter_list[2].append(install_type)
             self.filter_list[3].append(remote)
@@ -97,20 +98,31 @@ class FilterWindow(Adw.Window):
             self.runtimes_expander.set_visible(False)
             
         self.remote_checkboxes = []
+        total = 0
         for i in range(len(self.host_remotes)):
             try:
                 name = self.host_remotes[i][0]
                 title = self.host_remotes[i][1]
-                install_type = self.host_remotes[i][7]
                 url = self.host_remotes[i][2]
-                remote_row = Adw.ActionRow(title=title, subtitle=url)
+                install_type = self.host_remotes[i][7]
+                remote_row = Adw.ActionRow(title=title)
+                if "disabled" in install_type:
+                    continue
+                total += 1
                 if title == "-":
                     remote_row.set_title(name)
                 self.remotes_expander.add_row(remote_row)
                 label = Gtk.Label(label=("{} wide").format(install_type))
                 label.add_css_class("subtitle")
                 remote_check = Gtk.CheckButton()
-                remote_row.add_suffix(label)
+
+                if "user" in install_type:
+                    remote_row.set_subtitle(_("User wide"))
+                elif "system" in install_type:
+                    remote_row.set_subtitle(_("System wide"))
+                else:
+                    remote_row.set_subtitle(_("Unknown install type"))
+
                 remote_row.add_suffix(remote_check)
                 remote_row.set_activatable_widget(remote_check)
                 remote_check.connect("toggled", self.remoteCheckHandler, install_type, name)
@@ -118,6 +130,8 @@ class FilterWindow(Adw.Window):
                 remote_check.set_active(True)
             except:
                 print("Could not make remote row")
+        if total < 2:
+            self.remotes_expander.set_visible(False)
         self.remotes_expander_switch.connect("state-set", self.remotesEnableHandler)
         self.remotes_expander.add_suffix(self.remotes_expander_switch)
 

@@ -123,10 +123,18 @@ class RemotesWindow(Adw.Window):
         dialog.connect("response", disable_response, dialog.choose_finish)
         dialog.present()
 
-    def view_apps(self, type, id):
+    def view_paks(self, type, id):
+        if "user" in type:
+            type = "user"
+        elif "system" in type:
+            type = "system"
+        else:
+            self.make_toast(_("Could not view apps").format(to_copy))
+            print("error in remotes_window.view_apps(): remote installation type is not either system or user. type is:", type)
+            return
         self.app_window.should_open_filter_window = False
         self.app_window.filter_button.set_active(True)
-        self.app_window.applyFilter([True, False, [type], [id], ["all"]])
+        self.app_window.applyFilter([True, True, [type], [id], ["all"]])
         self.app_window.should_open_filter_window = True
         self.close()
 
@@ -162,9 +170,9 @@ class RemotesWindow(Adw.Window):
                 options_box = Gtk.Box(halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER, orientation=Gtk.Orientation.VERTICAL)
                 
                 filter_button = Gtk.Button()
-                filter_button.set_child(Adw.ButtonContent(icon_name="funnel-symbolic", label=_("View Apps")))
+                filter_button.set_child(Adw.ButtonContent(icon_name="funnel-symbolic", label=_("Set Filter")))
                 filter_button.add_css_class("flat")
-                filter_button.connect("clicked", lambda *_, i=i: self.view_apps(self.host_remotes[i][7], self.host_remotes[i][0]))
+                filter_button.connect("clicked", lambda *_, i=i: self.view_paks(self.host_remotes[i][7], self.host_remotes[i][0]))
 
                 enable_button = Gtk.Button(visible=False)
                 enable_button.set_child(Adw.ButtonContent(icon_name="eye-open-negative-filled-symbolic", label=_("Enable")))
