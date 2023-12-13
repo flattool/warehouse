@@ -420,6 +420,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.batch_uninstall_button.set_sensitive(should_enable)
 
     def onBatchCleanResponse(self, dialog, response, _a):
+        if response == "cancel":
+            return
         i = 0
         trashReturnCodes = 0
         while(True):
