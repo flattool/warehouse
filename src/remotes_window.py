@@ -57,13 +57,14 @@ class RemotesWindow(Adw.Window):
             self.make_toast(_("Could not remove {}").format(title))
         self.generate_list()
 
-    def remove_handler(self, _widget, index):
+    def remove_handler(self, _widget, index, popoever):
+        popoever.popdown()
         name = self.host_remotes[index][0]
         title = self.host_remotes[index][1]
         install_type = self.host_remotes[index][7]
 
         body_text = _("Any installed apps from {} will stop receiving updates").format(name)
-        dialog = Adw.MessageDialog.new(self, _("Remove {}?").format(name), body_text)
+        dialog = Adw.MessageDialog.new(self, _("Remove {}?").format(title), body_text)
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Remove"))
@@ -71,10 +72,69 @@ class RemotesWindow(Adw.Window):
         dialog.connect("response", self.remove_on_response, dialog.choose_finish, index)
         dialog.present()
 
-    def view_apps(self, type, id):
+    def enable_handler(self, button, index):
+        name = self.host_remotes[index][0]
+        typeArr = self.host_remotes[index][7]
+        type = ""
+        if "system" in typeArr:
+            type = "system"
+        else:
+            type = "user"
+
+        try:
+            command = ['flatpak-spawn', '--host', 'flatpak', 'remote-modify', name, f"--{type}", "--enable"]
+            subprocess.run(command, capture_output=False, check=True, env=self.new_env)
+        except subprocess.CalledProcessError as e:
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not enable {}").format(name)))
+            print(f"error in remotes_window.enable_handler: could not enable remote {name}:", e)
+
+        self.generate_list()
+
+    def disable_handler(self, button, index, popoever):
+        def disable_response(_a, response, _b):
+            if response == "cancel":
+                return
+            try:
+                command = ['flatpak-spawn', '--host', 'flatpak', 'remote-modify', name, f"--{type}", "--disable"]
+                subprocess.run(command, capture_output=False, check=True, env=self.new_env)
+            except subprocess.CalledProcessError as e:
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not disable {}").format(name)))
+                print(f"error in remotes_window.enable_handler: could not disable remote {name}:", e)
+
+            self.generate_list()
+
+        name = self.host_remotes[index][0]
+        title = self.host_remotes[index][1]
+        typeArr = self.host_remotes[index][7]
+        type = ""
+        if "system" in typeArr:
+            type = "system"
+        else:
+            type = "user"
+
+        popoever.popdown()
+
+        body_text = _("Any installed apps from {} will stop receiving updates").format(name)
+        dialog = Adw.MessageDialog.new(self, _("Disable {}?").format(title), body_text)
+        dialog.set_close_response("cancel")
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Disable"))
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.connect("response", disable_response, dialog.choose_finish)
+        dialog.present()
+
+    def view_paks(self, type, id):
+        if "user" in type:
+            type = "user"
+        elif "system" in type:
+            type = "system"
+        else:
+            self.make_toast(_("Could not view apps").format(to_copy))
+            print("error in remotes_window.view_apps(): remote installation type is not either system or user. type is:", type)
+            return
         self.app_window.should_open_filter_window = False
         self.app_window.filter_button.set_active(True)
-        self.app_window.applyFilter([True, False, [type], [id], ["all"]])
+        self.app_window.applyFilter([True, True, [type], [id], ["all"]])
         self.app_window.should_open_filter_window = True
         self.close()
 
@@ -102,38 +162,68 @@ class RemotesWindow(Adw.Window):
                 name = self.host_remotes[i][0]
                 title = self.host_remotes[i][1]
                 install_type = self.host_remotes[i][7]
-                remote_row = Adw.ActionRow(title=title, subtitle=name)
+                remote_row = Adw.ActionRow(title=title)
+
+                more = Gtk.MenuButton(icon_name="view-more-symbolic",  valign=Gtk.Align.CENTER)
+                more.add_css_class("flat")
+                options = Gtk.Popover()
+                options_box = Gtk.Box(halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER, orientation=Gtk.Orientation.VERTICAL)
                 
+                filter_button = Gtk.Button()
+                filter_button.set_child(Adw.ButtonContent(icon_name="funnel-symbolic", label=_("Set Filter")))
+                filter_button.add_css_class("flat")
+                filter_button.connect("clicked", lambda *_, i=i: self.view_paks(self.host_remotes[i][7], self.host_remotes[i][0]))
+
+                enable_button = Gtk.Button(visible=False)
+                enable_button.set_child(Adw.ButtonContent(icon_name="eye-open-negative-filled-symbolic", label=_("Enable")))
+                enable_button.add_css_class("flat")
+                enable_button.connect("clicked", self.enable_handler, i)
+
+                disable_button = Gtk.Button()
+                disable_button.set_child(Adw.ButtonContent(icon_name="eye-not-looking-symbolic", label=_("Disable")))
+                disable_button.add_css_class("flat")
+                disable_button.connect("clicked", self.disable_handler, i, options)
+
+                remove_button = Gtk.Button()
+                remove_button.set_child(Adw.ButtonContent(icon_name="user-trash-symbolic", label=_("Remove")))
+                remove_button.add_css_class("flat")
+                remove_button.connect("clicked", self.remove_handler, i, options)
+
+                options_box.append(filter_button)
+                options_box.append(enable_button)
+                options_box.append(disable_button)
+                options_box.append(remove_button)
+                options.set_child(options_box)
+                more.set_popover(options)
+
+                copy_button = Gtk.Button(icon_name="edit-copy-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Copy remote name"))
+                copy_button.add_css_class("flat")
+                copy_button.connect("clicked", rowCopyHandler, name)
+
+                remote_row.add_suffix(copy_button)
+                remote_row.add_suffix(more)
+
+                install_type = self.my_utils.getInstallType(install_type)
                 if install_type == "disabled":
                     if not self.show_disabled_button.get_active():
                         continue
                     
+                    remote_row.set_subtitle(_("Disabled"))
+                    enable_button.set_visible(True)
+                    disable_button.set_visible(False)
                     remote_row.add_css_class("warning")
+                elif install_type == "user":
+                    remote_row.set_subtitle(_("User wide"))
+                elif install_type == "system":
+                    remote_row.set_subtitle(_("System wide"))
+                else:
+                    remote_row.set_subtitle(_("Unknown install type"))
 
                 url = self.host_remotes[i][2]
                 if title == "-":
                     remote_row.set_title(name)
                 self.remotes_list.add(remote_row)
-                label = Gtk.Label(valign=Gtk.Align.CENTER)
-                if install_type == "disabled":
-                    remote_row.set_subtitle(_("Disabled"))
-                else:
-                    remote_row.set_subtitle(_("{} wide").format(install_type))
-                label.add_css_class("subtitle")
                 # subprocess.run(['wget', f'{self.host_remotes[i][11]}'])  Idea to display remote icons... Need internet connection. Not sure if that is worth it
-                remote_row.add_suffix(label)
-                filter_button = Gtk.Button(icon_name="funnel-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View apps from this remote"))
-                filter_button.add_css_class("flat")
-                filter_button.connect("clicked", lambda *_, i=i: self.view_apps(self.host_remotes[i][7], self.host_remotes[i][0]))
-                copy_button = Gtk.Button(icon_name="edit-copy-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Copy remote name"))
-                copy_button.add_css_class("flat")
-                copy_button.connect("clicked", rowCopyHandler, name)
-                remove_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Remove {}").format(name))
-                remove_button.add_css_class("flat")
-                remove_button.connect("clicked", self.remove_handler, i)
-                remote_row.add_suffix(filter_button)
-                remote_row.add_suffix(copy_button)
-                remote_row.add_suffix(remove_button)
                 self.rows_in_list.append(remote_row)
                 self.no_remotes.set_visible(False)
             except Exception as e:

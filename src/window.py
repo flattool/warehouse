@@ -420,6 +420,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.batch_uninstall_button.set_sensitive(should_enable)
 
     def onBatchCleanResponse(self, dialog, response, _a):
+        if response == "cancel":
+            return
         i = 0
         trashReturnCodes = 0
         while(True):
@@ -538,7 +540,12 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.filter_button.set_active(not self.filter_button.get_active())
 
     def applyFilter(self, filter=default_filter):
-        self.filter_list = filter
+        for i in range(len(self.filter_list)):
+            current = self.filter_list[i]
+            if "user" == current:
+                self.filter_list[i] = "user"
+            else:
+                self.filter_list[i] = "system"
         show_apps = filter[0]
         show_runtimes = filter[1]
         filter_install_type = filter[2]

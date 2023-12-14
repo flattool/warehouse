@@ -169,6 +169,7 @@ class SnapshotsWindow(Adw.Window):
                 self.toast_overlay.add_toast(Adw.Toast.new(_("Could not apply snapshot")))
             else:
                 self.toast_overlay.add_toast(Adw.Toast.new(_("Snapshot applied")))
+                self.parent_window.refresh_list_of_flatpaks(self, False)
 
             self.new_snapshot.set_tooltip_text("")
             self.showListOrEmpty()
@@ -226,6 +227,7 @@ class SnapshotsWindow(Adw.Window):
         self.app_ref = flatpak_row[8]
         self.snapshots_of_app_path = self.snapshots_path + self.app_id + "/"
         self.app_user_data = self.user_data_path + self.app_id + "/"
+        self.parent_window = parent_window
 
         if self.app_version == "" or self.app_version == "-" or self.app_version == None:
             self.app_version = 0.0

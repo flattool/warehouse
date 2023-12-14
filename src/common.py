@@ -113,17 +113,6 @@ class myUtils:
         for line in lines[1:]:
             row = line.split("\t")
             data.append(row)
-        try:
-            for i in range(len(data)):
-                data[i][7] = data[i][7].split(",")
-                if "disabled" in data[i][7]:
-                    data[i][7] = "disabled"
-                if "user" in data[i][7]:
-                    data[i][7] = "user"
-                if "system" in data[i][7]:
-                    data[i][7] = "system"
-        except:
-            print("error getting remote installation types")
         return data
 
     def getHostFlatpaks(self):
@@ -293,4 +282,11 @@ class myUtils:
         except subprocess.CalledProcessError as e:
             self.run_app_error_message = str(e)
             self.run_app_error = True
-            
+
+    def getInstallType(self, type_arr):
+        if "disabled" in type_arr:
+            return "disabled"
+        if "user" in type_arr:
+            return "user"
+        if "system" in type_arr:
+            return "system"
