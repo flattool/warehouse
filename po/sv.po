@@ -290,7 +290,7 @@ msgstr "Inaktivera Uppdateringar för {}?"
 
 #: src/window.py:473
 msgid ""
-"This will mask {} ensuring it will never recieve any feature or security "
+"This will mask {} ensuring it will never receive any feature or security "
 "updates."
 msgstr ""
 "Detta kommer att maska {} och säkerställar att det kommer att aldrig få "
