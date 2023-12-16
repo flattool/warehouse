@@ -129,8 +129,7 @@ msgstr "Werp de instellingen en inhoud van deze applicaties in de prullenbak"
 #: src/window.py:445 src/window.py:618 src/properties_window.py:127
 #: src/remotes_window.py:68 src/remotes_window.py:212 src/remotes_window.py:354
 #: src/orphans_window.py:105 src/orphans_window.py:159 data/ui/filter.blp:17
-#: data/ui/downgrade.blp:16 src/window.py:616 src/remotes_window.py:62
-#: src/remotes_window.py:135 src/remotes_window.py:279
+#: data/ui/downgrade.blp:16
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -254,42 +253,39 @@ msgstr "Geselecteerde applicatie-IDs gekopieerd"
 msgid "Copied selected app refs"
 msgstr "Geselecteerde applicatie-refs gekopieerd"
 
-#: src/window.py:592 src/orphans_window.py:73 src/window.py:590
+#: src/window.py:592 src/orphans_window.py:73
 msgid "Installed successfully"
 msgstr "Met succes geïnstalleerd"
 
-#: src/window.py:594 src/window.py:592
+#: src/window.py:594
 msgid "Could not install app"
 msgstr "Kon applicatie niet installeren"
 
-#: src/window.py:616 src/window.py:614
+#: src/window.py:616
 msgid "Install {}?"
 msgstr "{} installeren?"
 
 #: src/window.py:619 src/orphans_window.py:106 data/ui/orphans.blp:129
-#: src/window.py:617
 msgid "Install"
 msgstr "Installeren"
 
 #: src/window.py:626 src/remotes_window.py:283 src/remotes_window.py:365
-#: src/window.py:624 src/remotes_window.py:206 src/remotes_window.py:290
 msgid "User"
 msgstr "Gebruiker"
 
-#: src/window.py:626 src/window.py:624
+#: src/window.py:626
 msgid "The app will be available to only you"
 msgstr "De applicatie zal enkel voor jou beschikbaar zijn"
 
 #: src/window.py:627 src/remotes_window.py:289 src/remotes_window.py:366
-#: src/window.py:625 src/remotes_window.py:212 src/remotes_window.py:291
 msgid "System"
 msgstr "Systeem"
 
-#: src/window.py:627 src/window.py:625
+#: src/window.py:627
 msgid "The app will be available to every user on the system"
 msgstr "De applicatie zal voor elke gebruiker op het systeem beschikbaar zijn"
 
-#: src/window.py:656 src/window.py:654
+#: src/window.py:656
 msgid "File type not supported"
 msgstr "Bestandstype niet ondersteund"
 
@@ -317,7 +313,7 @@ msgstr "Selectiemodus omschakelen"
 msgid "Loading Flatpaks…"
 msgstr ""
 
-#: data/ui/window.blp:60 data/ui/remotes.blp:87 data/ui/remotes.blp:77
+#: data/ui/window.blp:60 data/ui/remotes.blp:87
 #, fuzzy
 msgid "This should only take a moment."
 msgstr "Bezig met installeren... Dit kan even duren"
@@ -438,7 +434,7 @@ msgstr "Zoeken"
 msgid "Set Filters"
 msgstr "Filters instellen"
 
-#: src/gtk/help-overlay.blp:24 data/ui/remotes.blp:28
+#: src/gtk/help-overlay.blp:24
 msgid "Refresh"
 msgstr "Vernieuwen"
 
@@ -450,7 +446,7 @@ msgstr "Meer functies"
 msgid "Manage Leftover Data"
 msgstr "Overgebleven data beheren"
 
-#: src/gtk/help-overlay.blp:42 data/ui/remotes.blp:5
+#: src/gtk/help-overlay.blp:42
 msgid "Manage Remotes"
 msgstr "Bronnen beheren"
 
@@ -475,7 +471,6 @@ msgid "Quit"
 msgstr "Afsluiten"
 
 #: src/properties_window.py:36 src/remotes_window.py:96
-#: src/remotes_window.py:74
 msgid "Copied {}"
 msgstr "{} gekopieerd"
 
@@ -495,8 +490,7 @@ msgid "No User Data"
 msgstr "Gebruikersdata in prullenbak gooien"
 
 #: src/properties_window.py:84 src/remotes_window.py:268
-#: src/remotes_window.py:363 src/remotes_window.py:191
-#: src/remotes_window.py:288
+#: src/remotes_window.py:363
 msgid "Name"
 msgstr "Naam"
 
@@ -571,19 +565,19 @@ msgstr "{} is gemaskeerd en zal niet bijgewerkt worden"
 msgid "{} Properties"
 msgstr "Eigenschappen van {}"
 
-#: src/remotes_window.py:57 src/remotes_window.py:51
+#: src/remotes_window.py:57
 msgid "Could not remove {}"
 msgstr "Kon {} niet verwijderen"
 
-#: src/remotes_window.py:65 src/remotes_window.py:59
+#: src/remotes_window.py:65
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr "Alle applicaties geïnstalleerd uit {} zullen geen updates meer krijgen"
 
-#: src/remotes_window.py:66 src/remotes_window.py:60
+#: src/remotes_window.py:66
 msgid "Remove {}?"
 msgstr "{} verwijderen?"
 
-#: src/remotes_window.py:69 src/remotes_window.py:63
+#: src/remotes_window.py:69
 msgid "Remove"
 msgstr "Verwijderen"
 
@@ -600,84 +594,80 @@ msgstr "{} breed"
 msgid "View apps from this remote"
 msgstr ""
 
-#: src/remotes_window.py:128 src/remotes_window.py:95
+#: src/remotes_window.py:128
 msgid "Copy remote name"
 msgstr "Naam bron kopiëren"
 
-#: src/remotes_window.py:131 src/remotes_window.py:98
+#: src/remotes_window.py:131
 msgid "Remove {}"
 msgstr "{} verwijderen"
 
 #. [Name to show in GUI, Name of remote for system, Link to repo to add, Description of remote]
-#: src/remotes_window.py:150 src/remotes_window.py:316
+#: src/remotes_window.py:150
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr "De open source, 'betaal wat je wil', applicatiewinkel van elementary"
 
-#: src/remotes_window.py:151 src/remotes_window.py:317
+#: src/remotes_window.py:151
 msgid "Central repository of Flatpak applications"
 msgstr "Centrale collectie van Flatpak-applicaties"
 
-#: src/remotes_window.py:152 src/remotes_window.py:318
+#: src/remotes_window.py:152
 msgid "Beta builds of Flatpak applications"
 msgstr "Bèta-versies van Flatpak-applicaties"
 
-#: src/remotes_window.py:153 src/remotes_window.py:319
+#: src/remotes_window.py:153
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "Flatpaks beheerd door Fedora Linux"
 
-#: src/remotes_window.py:154 src/remotes_window.py:320
+#: src/remotes_window.py:154
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "De laatste bèta-versies van GNOME-applicaties en -runtimes"
 
-#: src/remotes_window.py:155 src/remotes_window.py:321
+#: src/remotes_window.py:155
 msgid "Beta KDE Apps and Runtimes"
 msgstr "Bèta-versies van KDE-applicaties en -runtimes"
 
-#: src/remotes_window.py:156 src/remotes_window.py:322
+#: src/remotes_window.py:156
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr "Centrale collectie met de WebKit-ontwikkelaars- en runtime-SDK"
 
 #: src/remotes_window.py:188 src/remotes_window.py:314
-#: src/remotes_window.py:113 src/remotes_window.py:237
 msgid "Could not add {}"
 msgstr "Kon {} niet toevoegen"
 
-#: src/remotes_window.py:210 src/remotes_window.py:133
+#: src/remotes_window.py:210
 msgid "Add Flatpak Remote"
 msgstr "Flatpak-bron toevoegen"
 
 #: src/remotes_window.py:213 src/remotes_window.py:355
-#: src/remotes_window.py:136 src/remotes_window.py:280
 msgid "Add"
 msgstr "Toevoegen"
 
-#: src/remotes_window.py:272 src/remotes_window.py:195
+#: src/remotes_window.py:272
 msgid "URL"
 msgstr "URL"
 
 #: src/remotes_window.py:283 src/remotes_window.py:365
-#: src/remotes_window.py:206 src/remotes_window.py:290
 msgid "Remote will be available to only you"
 msgstr "De bron zal enkel voor jou beschikbaar zijn"
 
 #: src/remotes_window.py:289 src/remotes_window.py:366
-#: src/remotes_window.py:212 src/remotes_window.py:291
 msgid "Remote will be available to every user on the system"
 msgstr "De bron zal voor elke gebruiker op het systeem beschikbaar zijn"
 
-#: src/remotes_window.py:312 src/remotes_window.py:235
+#: src/remotes_window.py:312
 msgid "{} successfully added"
 msgstr "{} met succes toegevoegd"
 
-#: src/remotes_window.py:352 src/remotes_window.py:277
+#: src/remotes_window.py:352
 msgid "Add {}?"
 msgstr "{} toevoegen?"
 
-#: src/remotes_window.py:395 src/popular_remotes_window.py:31
+#: src/remotes_window.py:395
 msgid "Flatpak Repos"
 msgstr "Flatpak-bronnen"
 
-#: data/ui/remotes.blp:22 data/ui/remotes.blp:25
+#: data/ui/remotes.blp:22
 #, fuzzy
 msgid "Installed Remotes"
 msgstr "Geïnstalleerde grootte"
@@ -690,25 +680,25 @@ msgstr ""
 msgid "No remotes on the system, add some from below"
 msgstr ""
 
-#: data/ui/remotes.blp:44 data/ui/remotes.blp:35
+#: data/ui/remotes.blp:44
 #, fuzzy
 msgid "Add a Popular Remote"
 msgstr "Flatpak-bron toevoegen"
 
-#: data/ui/remotes.blp:48 data/ui/remotes.blp:38
+#: data/ui/remotes.blp:48
 #, fuzzy
 msgid "Add Other Remotes"
 msgstr "Bron toevoegen"
 
-#: data/ui/remotes.blp:50 data/ui/remotes.blp:40 data/ui/popular_remotes.blp:45
+#: data/ui/remotes.blp:50
 msgid "Add a Repo File"
 msgstr "Collectiebestand toevoegen"
 
-#: data/ui/remotes.blp:55 data/ui/remotes.blp:45 data/ui/popular_remotes.blp:50
+#: data/ui/remotes.blp:55
 msgid "Add a Custom Remote"
 msgstr "Aangepaste bron toevoegen"
 
-#: data/ui/remotes.blp:78 data/ui/remotes.blp:68
+#: data/ui/remotes.blp:78
 #, fuzzy
 msgid "Adding Remote…"
 msgstr "Bron toevoegen"
@@ -820,35 +810,31 @@ msgstr ""
 "Dit zal de huidige versie deïnstalleren en vervangen met de gekozen versie. "
 "Merk op dat downgraden problemen kan veroorzaken."
 
-#: data/ui/window.blp:226
 #, fuzzy
-msgid "Install From The Web…"
-msgstr "Uit bestand installeren"
+#~ msgid "Install From The Web…"
+#~ msgstr "Uit bestand installeren"
 
-#: data/ui/remotes.blp:14 data/ui/popular_remotes.blp:18
-msgid "Add Remote"
-msgstr "Bron toevoegen"
+#~ msgid "Add Remote"
+#~ msgstr "Bron toevoegen"
 
-#: data/ui/remotes.blp:84
-msgid "No Remotes"
-msgstr "Geen bronnen"
+#~ msgid "No Remotes"
+#~ msgstr "Geen bronnen"
 
-#: data/ui/remotes.blp:85
-msgid ""
-"Warehouse cannot see the list of remotes or the system has no remotes added"
-msgstr "Warehouse kan de lijst van bronnen niet ophalen of er zijn er nog geen"
+#~ msgid ""
+#~ "Warehouse cannot see the list of remotes or the system has no remotes "
+#~ "added"
+#~ msgstr ""
+#~ "Warehouse kan de lijst van bronnen niet ophalen of er zijn er nog geen"
 
-#: data/ui/popular_remotes.blp:19
-msgid "Choose from a list of popular remotes or add a new one."
-msgstr "Kies uit een lijst van populaire bronnen of voeg een nieuwe toe."
+#~ msgid "Choose from a list of popular remotes or add a new one."
+#~ msgstr "Kies uit een lijst van populaire bronnen of voeg een nieuwe toe."
 
-#: src/window.py:365
-msgid ""
-"This will mask {} ensuring it will never recieve any feature or security "
-"updates."
-msgstr ""
-"Dit zal {} maskeren waardoor toekomstige versies of beveiligingsupdates "
-"genegeerd worden."
+#~ msgid ""
+#~ "This will mask {} ensuring it will never recieve any feature or security "
+#~ "updates."
+#~ msgstr ""
+#~ "Dit zal {} maskeren waardoor toekomstige versies of beveiligingsupdates "
+#~ "genegeerd worden."
 
 #~ msgid "App EOL"
 #~ msgstr "App EOL"
