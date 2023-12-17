@@ -290,4 +290,3 @@ class myUtils:
             return "user"
         if "system" in type_arr:
             return "system"
-            
