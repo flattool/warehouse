@@ -142,6 +142,33 @@ template $WarehouseWindow: Adw.ApplicationWindow {
             }
           }
 
+          Box snapshotting {
+            orientation: vertical;
+            spacing: 10;
+            margin-top: 40;
+            margin-bottom: 20;
+            halign: center;
+            valign: center;
+
+            Spinner {
+              margin-bottom: 35;
+              width-request: 30;
+              height-request: 30;
+              opacity: 0.5;
+              spinning: true;
+            }
+
+            Label {
+              label: _("Creating Snapshots…");
+              styles ["title-1", "title"]
+            }
+
+            Label {
+              label: _("This could take a while.");
+              styles ["description", "body"]
+            }
+          }
+
           Adw.StatusPage no_flatpaks {
             icon-name: "error-symbolic";
             title: _("No Flatpaks Found");
@@ -195,7 +222,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
       Button batch_snapshot_button {
         icon-name: "clock-alt-symbolic";
         tooltip-text: _("Snapshot Selected Apps' Data");
-        visible: false;
+        visible: true;
       }
     }
   }

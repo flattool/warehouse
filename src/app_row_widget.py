@@ -47,6 +47,7 @@ class AppRow(Adw.ActionRow):
         self.index = index
         self.app_name = current_flatpak[0]
         self.app_id = current_flatpak[2]
+        self.app_version = current_flatpak[3]
         self.origin_remote = current_flatpak[6]
         self.install_type = current_flatpak[7]
         self.app_ref = current_flatpak[8]

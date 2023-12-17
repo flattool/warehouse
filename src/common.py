@@ -2,6 +2,7 @@ from gi.repository import GLib, Gtk, Adw, Gio #, Gdk
 import os
 import subprocess
 import pathlib
+import time
 
 class myUtils:
     def __init__(self, window, **kwargs):
@@ -290,4 +291,44 @@ class myUtils:
             return "user"
         if "system" in type_arr:
             return "system"
-            
+
+    def snapshotApps(self, epoch, app_snapshot_path_arr, app_version_arr, app_user_data_arr, progress_bar=None):
+        if not (len(app_snapshot_path_arr) == len(app_version_arr) == len(app_user_data_arr)):
+            print("error in common.snapshotApp: the lengths of app_snapshot_path_arr, app_version_arr, and app_user_data_arr do not match.")
+            return 1
+
+        fails = []
+
+        for i in range(len(app_snapshot_path_arr)):
+            snapshot_path = app_snapshot_path_arr[i]
+            version = app_version_arr[i]
+            user_data = app_user_data_arr[i]
+            command = ['tar', 'cafv', f"{snapshot_path}{epoch}_{version}.tar.zst", "-C", f"{user_data}", "."]
+
+            try:
+                if not os.path.exists(snapshot_path):
+                    file = Gio.File.new_for_path(snapshot_path)
+                    file.make_directory()
+                subprocess.run(command, check=True, env=self.new_env)
+                if progress_bar:
+                    GLib.idle_add(progress_bar.set_visible, True)
+                    GLib.idle_add(progress_bar.set_fraction, (i + 1.0) / len(app_snapshot_path_arr))
+            except subprocess.CalledProcessError as e:
+                print("error in common.snapshotApp:", e)
+                fails.append(user_data)
+
+            if(int(time.time()) == epoch): # Wait 1s if the snapshot is made too quickly, to prevent overriding a snapshot file
+                subprocess.run(['sleep', '1s'])
+
+        if progress_bar:
+            GLib.idle_add(progress_bar.set_visible, False)
+            GLib.idle_add(progress_bar.set_fraction, 0.0)
+
+        if len(fails) > 0:
+            print("These paths could not be archived:")
+            for i in range(fails):
+                print(fails[i])
+            print("")
+            return 1
+        else:
+            return 0

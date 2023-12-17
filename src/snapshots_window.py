@@ -123,33 +123,19 @@ class SnapshotsWindow(Adw.Window):
         epoch = int(time.time())
 
         def thread():
-            try:
-                subprocess.run(
-                    ['tar', 'cafv', f"{self.snapshots_of_app_path}{epoch}_{self.app_version}.tar.zst", "-C", f"{self.app_user_data}", "."],
-                    check=True, env=self.new_env
-                )
-            except subprocess.CalledProcessError as e:
-                print("Error in snapshots_windopw.py: createSnapshot():", e)
-                GLib.idle_add(lambda *_a: self.toast_overlay.add_toast(Adw.Toast.new(_("Could not create snapshot"))))
-            if(int(time.time()) == epoch): # Wait 1s if the snapshot is made too quickly, to prevent overriding a snapshot file
-                subprocess.run(['sleep', '1s'])
-
-        # `tar -tf filepath` to see the contents of a tar file
-
-        def callback():
+            response = self.my_utils.snapshotApps(epoch, [self.snapshots_of_app_path], [self.app_version], [self.app_user_data])
+            if response != 0:
+                GLib.idle_add(self.toast_overlay.add_toast(Adw.Toast.new(_("Could not create snapshot"))))
+                return
             if self.showListOrEmpty() == "list":
                 self.create_row(f"{epoch}_{self.app_version}.tar.zst")
-
-        if not os.path.exists(self.snapshots_of_app_path):
-            file = Gio.File.new_for_path(self.snapshots_of_app_path)
-            file.make_directory()
 
         self.no_close_id = self.connect("close-request", lambda event: True)  # Make window unable to close
         self.loading_label.set_label(_("Creating Snapshot…"))
         self.action_bar.set_revealed(False)
         self.main_stack.set_visible_child(self.loading)
 
-        task = Gio.Task.new(None, None, lambda *_: callback())
+        task = Gio.Task()
         task.run_in_thread(lambda *_: thread())
 
     def apply_snapshot(self, button, file, row):

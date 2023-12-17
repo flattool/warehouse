@@ -20,6 +20,7 @@ import os
 import pathlib
 import subprocess
 import re
+import time
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from .properties_window import PropertiesWindow
@@ -51,6 +52,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     batch_uninstall_button = Gtk.Template.Child()
     batch_clean_button = Gtk.Template.Child()
     batch_copy_button = Gtk.Template.Child()
+    batch_snapshot_button = Gtk.Template.Child()
     main_box = Gtk.Template.Child()
     main_overlay = Gtk.Template.Child()
     main_toolbar_view = Gtk.Template.Child()
@@ -59,8 +61,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
     main_menu = Gtk.Template.Child()
     installing = Gtk.Template.Child()
     uninstalling = Gtk.Template.Child()
-    no_matches = Gtk.Template.Child()
+    snapshotting = Gtk.Template.Child()
     loading_flatpaks = Gtk.Template.Child()
+    no_matches = Gtk.Template.Child()
 
     main_progress_bar = Gtk.ProgressBar(visible=False, can_target=False)
     main_progress_bar.add_css_class("osd")
@@ -362,7 +365,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             onContinue(self, None)
         else:
             dialog = Adw.MessageDialog.new(self, _("Disable Updates for {}?").format(row.app_name))
-            dialog.set_body(_("This will mask {} ensuring it will never receive any feature or security updates.").format(row.app_name))
+            dialog.set_body(_("This will mask {} ensuring it will never recieve any feature or security updates.").format(row.app_name))
             dialog.add_response("cancel", _("Cancel"))
             dialog.set_close_response("cancel")
             dialog.add_response("continue", _("Disable Updates"))
@@ -416,6 +419,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def batchActionsEnable(self, should_enable):
         self.batch_copy_button.set_sensitive(should_enable)
         self.batch_clean_button.set_sensitive(should_enable)
+        self.batch_snapshot_button.set_sensitive(should_enable)
         if not self.currently_uninstalling:
             self.batch_uninstall_button.set_sensitive(should_enable)
 
@@ -452,6 +456,60 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def batchSelectAllButtonHandler(self, widget):
         self.set_select_all(widget.get_active())
+
+    def batchSnapshotHandler(self, widget):
+
+        def batchSnapshotResponse(dialog, response, _a):
+            if response == "cancel":
+                return
+            i = 0
+            snapshots_path = self.host_home + "/.var/app/io.github.flattool.Warehouse/data/Snapshots/"
+            snapshot_arr = []
+            app_ver_arr = []
+            app_data_arr = []
+            epoch = int(time.time())
+            self.no_close = self.connect("close-request", lambda event: True)  # Make window unable to close
+            while(self.flatpaks_list_box.get_row_at_index(i) != None):
+                current = self.flatpaks_list_box.get_row_at_index(i)
+                i += 1
+                if current.tickbox.get_active() == False:
+                    continue
+                if not os.path.exists(f"{self.user_data_path}{current.app_id}"):
+                    continue
+                snapshot_arr.append(snapshots_path + current.app_id + "/")
+                app_ver_arr.append(current.app_version)
+                app_data_arr.append(f"{self.user_data_path}{current.app_id}")
+            
+            def thread():
+                capture = self.my_utils.snapshotApps(epoch, snapshot_arr, app_ver_arr, app_data_arr, self.main_progress_bar)
+                if capture != 0:
+                    GLib.idle_add(lambda *_: self.toast_overlay.add_toast(Adw.Toast.new(_("Could not snapshot some apps"))))
+
+            def callback(*args):
+                self.main_stack.set_visible_child(self.main_box)
+                self.disconnect(self.no_close)
+                self.batch_select_all_button.set_active(True)
+                self.set_select_all(True)
+                self.search_button.set_sensitive(True)
+                self.batch_mode_button.set_sensitive(True)
+                self.batch_mode_bar.set_revealed(True)
+
+            self.batch_select_all_button.set_active(False)
+            self.set_select_all(False)
+            self.search_button.set_sensitive(False)
+            self.batch_mode_button.set_sensitive(False)
+            self.batch_mode_bar.set_revealed(False)
+            self.main_stack.set_visible_child(self.snapshotting)
+            task = Gio.Task.new(None, None, callback)
+            task.run_in_thread(lambda *_: thread())
+
+        dialog = Adw.MessageDialog.new(self, _("Create Snapshots?"), _("Snapshots are backups of the app's user data. They can be reapplied at any time. This could take a while."))
+        dialog.set_close_response("cancel")
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Create Snapshots"))
+        dialog.connect("response", batchSnapshotResponse, dialog.choose_finish)
+        Gtk.Window.present(dialog)
+
                 
     def set_select_all(self, should_select_all):
         i = 0
@@ -718,6 +776,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.batch_clean_button.connect("clicked", self.batchCleanHandler)
         self.batch_uninstall_button.connect("clicked", self.batchUninstallButtonHandler)
         self.batch_select_all_button.connect("clicked", self.batchSelectAllButtonHandler)
+        self.batch_snapshot_button.connect("clicked", self.batchSnapshotHandler)
         self.batchActionsEnable(False)
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.batchKeyHandler)
