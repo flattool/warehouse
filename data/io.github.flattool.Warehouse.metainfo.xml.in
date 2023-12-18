@@ -59,7 +59,7 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="1.4.0" date="2023-12-17" timestamp="1702875060">
+    <release version="1.4.0" date="2023-12-17" timestamp="1702875630">
       <description translatable="no">
         <p>New Features and Changes</p>
         <ul>
@@ -69,7 +69,7 @@
           <li>Revamped the Properties window, and it can also open app details in the software store</li>
           <li>Merged the Popular Remotes window into the Manage Remotes window</li>
           <li>Removed labels in the main list, placing them in popup text buttons instead, to save room</li>
-          <li>Added progress bars to show progress about batch actions</li>
+          <li>Added progress bars to show progress of batch actions</li>
           <li>Empty search pages now display a message</li>
           <li>Added a troubleshooting information page</li>
           <li>Added a donation link</li>
