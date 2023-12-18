@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-05 11:31-0500\n"
+"POT-Creation-Date: 2023-12-17 20:33-0500\n"
 "PO-Revision-Date: 2023-12-20 03:14+0000\n"
 "Last-Translator: Vovkiv <generalvolkov2@gmail.com>\n"
 "Language-Team: Ukrainian <https://weblate.fyralabs.com/projects/flattool/"
@@ -16,6 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.0\n"
@@ -223,8 +225,10 @@ msgstr "Відкрити таку з даними користувача"
 msgid "Trash User Data"
 msgstr "Відправити дані користувача у Смітник"
 
-#: data/ui/properties.blp:80
-msgid "Show Apps Using This Runtime"
+#: src/window.py:368 src/window.py:365
+msgid ""
+"This will mask {} ensuring it will never recieve any feature or security "
+"updates."
 msgstr ""
 
 #: data/ui/properties.blp:91
@@ -246,45 +250,41 @@ msgstr "Скопіювати"
 msgid "Show Details in Store"
 msgstr ""
 
-#: data/ui/remotes.blp:5 src/gtk/help-overlay.blp:42
-msgid "Manage Remotes"
-msgstr "Керувати віддаленими сховищами"
+#: src/window.py:440 src/window.py:434
+msgid "{} has no data to trash"
+msgstr "{} не має даних у Смітнику"
 
-#: data/ui/remotes.blp:14
-#, fuzzy
-#| msgid "Refresh List"
-msgid "Refresh List of Remotes"
-msgstr "Оновити список"
+#: src/window.py:443 src/window.py:437
+msgid "Could not trash {}'s data"
+msgstr "Не вдалося видалити дані {}"
+
+#: src/window.py:449 src/window.py:443
+msgid "Trash Selected Apps' User Data?"
+msgstr "Відправити у Смітник дані користувача обраних додатків?"
 
 #: data/ui/remotes.blp:23
 msgid "Installed Remotes"
 msgstr "Встановлені віддалені сховища"
 
-#: data/ui/remotes.blp:27
-#, fuzzy
-#| msgid "Show disabled"
-msgid "Show Disabled"
-msgstr "Показати вимкнені"
+#: src/window.py:486
+msgid "Could not snapshot some apps"
+msgstr "Не вдалося створити снапшоти деяких додатків"
 
-#: data/ui/remotes.blp:41
-#, fuzzy
-#| msgid "No Results Found"
-msgid "No Remotes Found"
-msgstr "Не знайдено жодного результату"
+#: src/window.py:506
+msgid "Create Snapshots?"
+msgstr "Створити снапшоти?"
 
-#: data/ui/remotes.blp:45
-msgid "Add a Popular Remote"
-msgstr "Додати популярне віддалене сховище"
+#: src/window.py:506
+msgid ""
+"Snapshots are backups of the app's user data. They can be reapplied at any "
+"time. This could take a while."
+msgstr ""
+"Снапшоти це резервні копії даних додатків користувача. Їх можна відновити у "
+"будь-який час. Цей процес може зайняти певний час."
 
-#: data/ui/remotes.blp:49
-msgid "Add Other Remotes"
-msgstr "Додати інші віддалені сховища"
-
-#: data/ui/remotes.blp:79
-#, fuzzy
-#| msgid "Adding Remote…"
-msgid "Adding Remote"
-msgstr "Додаємо віддалене сховище…"
+#: src/window.py:509
+msgid "Create Snapshots"
+msgstr "Створити снапшоти"
 
 #: data/ui/remotes.blp:88 data/ui/window.blp:54
 #, fuzzy
@@ -382,11 +382,17 @@ msgstr "Головне меню"
 msgid "Toggle Selection Mode"
 msgstr "Перемкнути режим вибору"
 
-#: data/ui/window.blp:53
-#, fuzzy
-#| msgid "Loading Flatpaks…"
-msgid "Loading Flatpaks"
+#: data/ui/window.blp:59
+msgid "Loading Flatpaks…"
 msgstr "Завантажуємо Flatpak-и…"
+
+#: data/ui/window.blp:60 data/ui/remotes.blp:88 data/ui/remotes.blp:77
+msgid "This should only take a moment."
+msgstr "Це не займе багато часу."
+
+#: data/ui/window.blp:104 data/ui/orphans.blp:81
+msgid "Installing…"
+msgstr "Встановлюємо…"
 
 #: data/ui/window.blp:129
 #, fuzzy
@@ -394,30 +400,27 @@ msgstr "Завантажуємо Flatpak-и…"
 msgid "Uninstalling"
 msgstr "Видаляємо…"
 
-#: data/ui/window.blp:157
-#, fuzzy
-#| msgid "Creating Snapshots…"
-msgid "Creating Snapshots"
+#: data/ui/window.blp:162
+msgid "Creating Snapshots…"
 msgstr "Створюємо снапшоти…"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr "Не знайдено жодного Flatpak пакунку"
 
-#: data/ui/window.blp:170
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed."
+#: data/ui/window.blp:175 data/ui/window.blp:148
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
 msgstr ""
 "Warehouse не може побачити список установлених Flatpak пакунків або у "
 "системі немає встановлених Flatpak пакунків."
+"Warehouse не може побачити список установлених Flatpak пакунків або у "
+"системі немає встановлених Flatpak пакунків."
 
-#: data/ui/window.blp:175
+#: data/ui/window.blp:180 data/ui/window.blp:153
 msgid "No Flatpaks Match Filters"
+msgstr "Не знайдено жодного Flatpak пакунку який відповідає параметрам пошуку"
 msgstr "Не знайдено жодного Flatpak пакунку який відповідає параметрам пошуку"
 
 #: data/ui/window.blp:176
@@ -426,6 +429,18 @@ msgstr "Не знайдено жодного Flatpak пакунку який в�
 msgid "No installed Flatpak matches all of the currently applied filters"
 msgstr ""
 "Не знайдено жодного Flatpak пакунку який відповідає поточним фільтрам пошуку."
+
+#: data/ui/window.blp:186 data/ui/orphans.blp:107 data/ui/window.blp:159
+msgid "No Results Found"
+msgstr "Не знайдено жодного результату"
+
+#: data/ui/window.blp:187 data/ui/orphans.blp:108 data/ui/window.blp:160
+msgid "Try a different search term."
+msgstr "Спробуйте використати інші пошукові терміни."
+
+#: data/ui/window.blp:199 data/ui/orphans.blp:118 data/ui/window.blp:172
+msgid "Select All"
+msgstr "Обрати всі"
 
 #: data/ui/window.blp:206
 msgid "Uninstall Selected Apps"
@@ -830,22 +845,8 @@ msgstr "Видалити {}?"
 msgid "Remove"
 msgstr "Видалити"
 
-#: src/remotes_window.py:121
-#, fuzzy
-#| msgid "Could not add {}"
-msgid "Could not enable {}"
-msgstr "Не вдалося додати {}"
-
-#: src/remotes_window.py:149
-#, fuzzy
-#| msgid "Could not add {}"
-msgid "Could not disable {}"
-msgstr "Не вдалося додати {}"
-
-#: src/remotes_window.py:172
-#, fuzzy
-#| msgid "Disabled"
-msgid "Disable {}?"
+#: src/remotes_window.py:119
+msgid "Disabled"
 msgstr "Вимкнено"
 
 #: src/remotes_window.py:175 src/remotes_window.py:267
@@ -854,17 +855,9 @@ msgstr "Вимкнено"
 msgid "Disable"
 msgstr "Вимкнено"
 
-#: src/remotes_window.py:186
-#, fuzzy
-#| msgid "Could not install app"
-msgid "Could not view apps"
-msgstr "Не вдалося встановити додаток"
-
-#: src/remotes_window.py:244
-#, fuzzy
-#| msgid "Set Filters"
-msgid "Set Filter"
-msgstr "Встановити фільтри"
+#: src/remotes_window.py:125
+msgid "View apps from this remote"
+msgstr "Переглянути додатки із цього віддаленого сховища"
 
 #: src/remotes_window.py:258
 #, fuzzy
@@ -954,35 +947,25 @@ msgstr "Додати {}?"
 msgid "Flatpak Repos"
 msgstr "Репозиторії Flatpak"
 
-#: src/snapshots_window.py:54
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
-msgid "There is no User Data to Snapshot"
-msgstr "Відправити дані користувача додатку {} у Смітник?"
+#: data/ui/remotes.blp:23 data/ui/remotes.blp:25
+msgid "Installed Remotes"
+msgstr "Встановлені віддалені сховища"
 
-#: src/snapshots_window.py:93
-#, fuzzy
-#| msgid "Version"
-msgid "Version {}"
-msgstr "Версія"
+#: data/ui/remotes.blp:27
+msgid "Show disabled"
+msgstr "Показати вимкнені"
 
-#: src/snapshots_window.py:101 src/snapshots_window.py:246
-#, fuzzy
-#| msgid "Create Snapshots"
-msgid "Apply Snapshot"
-msgstr "Створити снапшоти"
+#: data/ui/remotes.blp:41
+msgid "No remotes on the system, add some from below"
+msgstr "Немає віддалених сховищ у системі, дадайте нові знизу"
 
-#: src/snapshots_window.py:107 src/snapshots_window.py:137
-#, fuzzy
-#| msgid "Create Snapshots"
-msgid "Trash Snapshot"
-msgstr "Створити снапшоти"
+#: data/ui/remotes.blp:45 data/ui/remotes.blp:35
+msgid "Add a Popular Remote"
+msgstr "Додати популярне віддалене сховище"
 
-#: src/snapshots_window.py:127
-#, fuzzy
-#| msgid "Could not trash user data"
-msgid "Could not trash snapshot"
-msgstr "Не вдалося видалити дані користувача"
+#: data/ui/remotes.blp:49 data/ui/remotes.blp:38
+msgid "Add Other Remotes"
+msgstr "Додати інші віддалені сховища"
 
 #: src/snapshots_window.py:132
 #, fuzzy
@@ -996,11 +979,13 @@ msgstr "Створити снапшоти?"
 msgid "This snapshot and its contents will be sent to the trash."
 msgstr "Ця тека буде відправлена в Смітник."
 
-#: src/snapshots_window.py:155
-#, fuzzy
-#| msgid "Create Snapshots"
-msgid "Could not create snapshot"
-msgstr "Створити снапшоти"
+#: data/ui/remotes.blp:79 data/ui/remotes.blp:68
+msgid "Adding Remote…"
+msgstr "Додаємо віддалене сховище…"
+
+#: src/orphans_window.py:75
+msgid "Could not install some apps"
+msgstr "Не вдалося встановити деякі додатки"
 
 #. Make window unable to close
 #: src/snapshots_window.py:165
