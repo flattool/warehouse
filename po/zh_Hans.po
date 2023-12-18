@@ -715,38 +715,6 @@ msgstr ""
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr ""
 
-#: src/remotes_window.py:188 src/remotes_window.py:314
-msgid "Could not add {}"
-msgstr ""
-
-#: src/remotes_window.py:210
-msgid "Add Flatpak Remote"
-msgstr ""
-
-#: src/remotes_window.py:213 src/remotes_window.py:355
-msgid "Add"
-msgstr ""
-
-#: src/remotes_window.py:272
-msgid "URL"
-msgstr ""
-
-#: src/remotes_window.py:283 src/remotes_window.py:365
-msgid "Remote will be available to only you"
-msgstr ""
-
-#: src/remotes_window.py:289 src/remotes_window.py:366
-msgid "Remote will be available to every user on the system"
-msgstr ""
-
-#: src/remotes_window.py:312
-msgid "{} successfully added"
-msgstr ""
-
-#: src/remotes_window.py:352
-msgid "Add {}?"
-msgstr ""
-
 #: src/remotes_window.py:395
 msgid "Flatpak Repos"
 msgstr ""
@@ -792,10 +760,6 @@ msgstr ""
 
 #: src/orphans_window.py:100
 msgid "Warehouse will attempt to install apps matching the selected data."
-msgstr ""
-
-#: src/orphans_window.py:117
-msgid "{} wide"
 msgstr ""
 
 #: src/orphans_window.py:153
@@ -853,12 +817,6 @@ msgstr ""
 #: src/downgrade_window.py:101
 msgid "Could not downgrade {}"
 msgstr ""
-
-#: src/downgrade_window.py:108
-#, fuzzy
-#| msgid "Could not open folder"
-msgid "Could not disable updates for {}"
-msgstr "无法打开目录"
 
 #: src/downgrade_window.py:116
 msgid "Downgrading…"

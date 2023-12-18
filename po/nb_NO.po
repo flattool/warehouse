@@ -668,10 +668,6 @@ msgstr ""
 msgid "Warehouse will attempt to install apps matching the selected data."
 msgstr ""
 
-#: src/orphans_window.py:117
-msgid "{} wide"
-msgstr ""
-
 #: src/orphans_window.py:153
 msgid "Trash folders?"
 msgstr ""
@@ -728,12 +724,6 @@ msgstr ""
 msgid "Could not downgrade {}"
 msgstr ""
 
-#: src/downgrade_window.py:108
-#, fuzzy
-#| msgid "No user data for {}"
-msgid "Could not disable updates for {}"
-msgstr "Ingen brukerdata funnet for {}"
-
 #: src/downgrade_window.py:116
 #, fuzzy
 msgid "Downgrading…"
@@ -768,8 +758,3 @@ msgstr ""
 
 #~ msgid "Uninstall {}"
 #~ msgstr "Avinstaller {}"
-
-#, fuzzy
-#~| msgid "Send app settings and content to the trash"
-#~ msgid "Send {}'s User Data to the trash?"
-#~ msgstr "Slett programinnstillinger og programinnhold"

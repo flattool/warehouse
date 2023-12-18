@@ -783,10 +783,6 @@ msgstr ""
 "Lagerhus kommer att försöka att installera appar som matcherar de utvalda "
 "datorna."
 
-#: src/orphans_window.py:117
-msgid "{} wide"
-msgstr "{} bred"
-
 #: src/orphans_window.py:153
 msgid "Trash folders?"
 msgstr "Trasha mappar?"
@@ -843,12 +839,6 @@ msgstr "Commit Hash: {}"
 msgid "Could not downgrade {}"
 msgstr "Kunde inte nedgradera {}"
 
-#: src/downgrade_window.py:108
-#, fuzzy
-#| msgid "Could disable updates for {}"
-msgid "Could not disable updates for {}"
-msgstr "Kunde inaktivera uppdateringar för {}"
-
 #: src/downgrade_window.py:116
 msgid "Downgrading…"
 msgstr "Nedgraderar…"
@@ -875,101 +865,16 @@ msgid ""
 "Note that downgrading can cause issues."
 msgstr ""
 
-#, fuzzy
-#~ msgid "Install From The Web…"
-#~ msgstr "Installera från fil"
-
-#~ msgid "Add Remote"
-#~ msgstr "Lägg till fjärrkontroll"
-
-#~ msgid "No Remotes"
-#~ msgstr "Inga fjärrkontroller"
-
-#~ msgid ""
-#~ "Warehouse cannot see the list of remotes or the system has no remotes "
-#~ "added"
-#~ msgstr ""
-#~ "Lagerhus kan inte se listan över fjärrkontroller eller systemet har inga "
-#~ "fjärrkontroller installerad"
-
 #~ msgid "Choose from a list of popular remotes or add a new one."
 #~ msgstr ""
 #~ "Välja från en lista över de mest popuära fjärrkontrollerna eller lägg "
 #~ "till en ny fjärrkontroll."
-
-#~ msgid ""
-#~ "This will mask {} ensuring it will never recieve any feature or security "
-#~ "updates."
-#~ msgstr ""
-#~ "Detta kommer att maska {} och säkerställar att det kommer att aldrig få "
-#~ "funktions- eller säkerhetsuppdateringar."
-
-#~ msgid "App EOL"
-#~ msgstr "Uttjänt"
-
-#~ msgid "Runtime EOL"
-#~ msgstr "Exekveringsmiljö uttjänt"
-
-#~ msgid "Updates Disabled"
-#~ msgstr "Uppdateringar inaktiverad"
-
-#~ msgid "View Properties"
-#~ msgstr "Visa egenskaper"
-
-#~ msgid "Copied name"
-#~ msgstr "Koperiade namn"
-
-#~ msgid "Copy Name"
-#~ msgstr "Kopiera namn"
-
-#~ msgid "Copied ID"
-#~ msgstr "Kopierade ID"
-
-#~ msgid "Copy ID"
-#~ msgstr "Kopiera ID"
-
-#~ msgid "Copied ref"
-#~ msgstr "Kopierade ref"
-
-#~ msgid "Copy Ref"
-#~ msgstr "Kopiera Ref"
-
-#~ msgid "Copied launch command"
-#~ msgstr "Kopierade körningskommando"
-
-#~ msgid "Copy Launch Command"
-#~ msgstr "Kopiera körningskommando"
-
-#~ msgid "Opened {}"
-#~ msgstr "Öppnade {}"
-
-#~ msgid "Open"
-#~ msgstr "Öppna"
-
-#~ msgid "Enable Updates"
-#~ msgstr "Aktivera uppdateringar"
-
-#~ msgid "Trash User Data"
-#~ msgstr "Trasha användardata"
-
-#, fuzzy
-#~ msgid "Manage Snapshots"
-#~ msgstr "Hantera fjärrkontroller"
 
 #~ msgid "Could disable updates for {}"
 #~ msgstr "Kunde inaktivera uppdateringar för {}"
 
 #~ msgid "No user data for {}"
 #~ msgstr "Ingen anvandärdata för {}"
-
-#~ msgid ""
-#~ "There are either no Flatpaks that match the current filter, Warehouse "
-#~ "cannot see the list of installed Flatpaks, or the system has no Flatpaks "
-#~ "installed."
-#~ msgstr ""
-#~ "Det finns antigen inga Flatpak som matcherar det aktuella filtret, "
-#~ "Lagerhus kan inte se listan av installerade Flatpak, eller systemet har "
-#~ "inga Flatpak installerade."
 
 #~ msgid "Show Apps Using this Runtime"
 #~ msgstr "Visa appar som använder detta exekveringsmiljö"

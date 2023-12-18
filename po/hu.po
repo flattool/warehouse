@@ -789,10 +789,6 @@ msgstr ""
 "A Raktár megpróbálja telepíteni az applikációkat, amik egyeznek a "
 "kiválasztott adatokkal."
 
-#: src/orphans_window.py:117
-msgid "{} wide"
-msgstr "Erre kihat: {}"
-
 #: src/orphans_window.py:153
 msgid "Trash folders?"
 msgstr "Kukázza a mappákat?"
@@ -849,12 +845,6 @@ msgstr "Véglegesítő hash: {}"
 msgid "Could not downgrade {}"
 msgstr "A(z) {} visszafejlesztése sikertelen"
 
-#: src/downgrade_window.py:108
-#, fuzzy
-#| msgid "Could disable updates for {}"
-msgid "Could not disable updates for {}"
-msgstr "A(z) {} frissítéseinek kikapcsolása sikertelen"
-
 #: src/downgrade_window.py:116
 msgid "Downgrading…"
 msgstr "Visszafejlesztés…"
@@ -883,98 +873,14 @@ msgstr ""
 "Eltávolítja a jelenlegi kiadást és telepíti a kiválasztottat. A "
 "visszafejlesztés problémákkal járhat."
 
-#, fuzzy
-#~ msgid "Install From The Web…"
-#~ msgstr "Fájlból való telepítés"
-
 #~ msgid "Add Remote"
 #~ msgstr "Tároló hozzáadása"
-
-#~ msgid "No Remotes"
-#~ msgstr "Nincsenek tárolók"
-
-#~ msgid ""
-#~ "Warehouse cannot see the list of remotes or the system has no remotes "
-#~ "added"
-#~ msgstr ""
-#~ "A Raktár nem látja a tárolók listáját, vagy nincs egy tároló se a "
-#~ "rendszeren"
-
-#~ msgid "Choose from a list of popular remotes or add a new one."
-#~ msgstr "Válasszon a népszerű tárolók listájából, vagy adjon hozzá egy újat."
-
-#~ msgid ""
-#~ "This will mask {} ensuring it will never recieve any feature or security "
-#~ "updates."
-#~ msgstr ""
-#~ "Ez maszkolja a(z) {} Flatpak-et, biztosítva, hogy nem fog többé "
-#~ "biztonsági vagy funkciófrissítéseket kapni."
-
-#~ msgid "App EOL"
-#~ msgstr "Az applikáció elavult"
-
-#~ msgid "Runtime EOL"
-#~ msgstr "Futtatókörnyezet elavult"
-
-#~ msgid "Updates Disabled"
-#~ msgstr "Frissítések kikapcsolva"
-
-#~ msgid "View Properties"
-#~ msgstr "Tulajdonságok"
-
-#~ msgid "Copied name"
-#~ msgstr "Név másolva"
-
-#~ msgid "Copy Name"
-#~ msgstr "Név másolása"
-
-#~ msgid "Copied ID"
-#~ msgstr "Azonosító másolva"
-
-#~ msgid "Copy ID"
-#~ msgstr "Azonosító másolása"
-
-#~ msgid "Copied ref"
-#~ msgstr "Hivatkozás másolva"
-
-#~ msgid "Copy Ref"
-#~ msgstr "Hivatkozás másolása"
-
-#~ msgid "Copied launch command"
-#~ msgstr "Indítási parancs másolva"
-
-#~ msgid "Copy Launch Command"
-#~ msgstr "Indítási parancs másolása"
-
-#~ msgid "Opened {}"
-#~ msgstr "{} megnyitva"
-
-#~ msgid "Open"
-#~ msgstr "Megnyitás"
-
-#~ msgid "Enable Updates"
-#~ msgstr "Frissítések engedélyezése"
-
-#~ msgid "Trash User Data"
-#~ msgstr "Felhasználói adatok kukázása"
-
-#, fuzzy
-#~ msgid "Manage Snapshots"
-#~ msgstr "Tárolók kezelése"
 
 #~ msgid "Could disable updates for {}"
 #~ msgstr "A(z) {} frissítéseinek kikapcsolása sikertelen"
 
 #~ msgid "No user data for {}"
 #~ msgstr "A(z) {} nem tartalmaz felhasználói adatokat"
-
-#~ msgid ""
-#~ "There are either no Flatpaks that match the current filter, Warehouse "
-#~ "cannot see the list of installed Flatpaks, or the system has no Flatpaks "
-#~ "installed."
-#~ msgstr ""
-#~ "Vagy egy Flatpak sem felel meg a jelenlegi szűrőnek, vagy az applikáció "
-#~ "nem látja a Flatpak-ek listáját, nincs egy Flatpak se telepítve."
 
 #~ msgid "Show Apps Using this Runtime"
 #~ msgstr ""
@@ -1066,9 +972,3 @@ msgstr ""
 
 #~ msgid "Mask this Flatpak"
 #~ msgstr "Flatpak maszkolása"
-
-#~ msgid "Add a Remote"
-#~ msgstr "Tároló hozzáadása"
-
-#~ msgid "Send {}'s User Data to the trash?"
-#~ msgstr "Kukázza a(z) {} adatait?"

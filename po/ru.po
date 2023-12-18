@@ -779,10 +779,6 @@ msgid "Warehouse will attempt to install apps matching the selected data."
 msgstr ""
 "Warehouse попытается установить приложения, соответствующие выбранным данным."
 
-#: src/orphans_window.py:117
-msgid "{} wide"
-msgstr "Тип {}"
-
 #: src/orphans_window.py:153
 msgid "Trash folders?"
 msgstr "Очистить папки?"
@@ -871,84 +867,8 @@ msgstr ""
 "Это приведет к удалению текущей версии и вместо нее установится выбранная. "
 "Обратите внимание, что понижение версии может вызвать проблемы."
 
-#~ msgid "Install From The Web…"
-#~ msgstr "Установить из сети…"
-
 #~ msgid "Add Remote"
 #~ msgstr "Добавить репозиторий"
-
-#~ msgid "No Remotes"
-#~ msgstr "Нет репозиториев"
-
-#~ msgid ""
-#~ "Warehouse cannot see the list of remotes or the system has no remotes "
-#~ "added"
-#~ msgstr ""
-#~ "Warehouse не видит список репозиториев или они не добавлены в системе"
-
-#~ msgid "Choose from a list of popular remotes or add a new one."
-#~ msgstr "Выберите из списка популярные репозитории или добавьте новый."
-
-#~ msgid ""
-#~ "This will mask {} ensuring it will never recieve any feature or security "
-#~ "updates."
-#~ msgstr ""
-#~ "Это скроет {}, гарантируя, что он никогда не получит никаких обновлений "
-#~ "функций и безопасности."
-
-#~ msgid "App EOL"
-#~ msgstr "Cрок поддержки приложения"
-
-#~ msgid "Runtime EOL"
-#~ msgstr "Cрок поддержки среды выполнения"
-
-#~ msgid "Updates Disabled"
-#~ msgstr "Обновления отключены"
-
-#~ msgid "View Properties"
-#~ msgstr "Просмотр свойств"
-
-#~ msgid "Copied name"
-#~ msgstr "Имя скопировано"
-
-#~ msgid "Copy Name"
-#~ msgstr "Копировать имя"
-
-#~ msgid "Copied ID"
-#~ msgstr "ИД скопирован"
-
-#~ msgid "Copy ID"
-#~ msgstr "Копировать ИД"
-
-#~ msgid "Copied ref"
-#~ msgstr "Ссылка скопирована"
-
-#~ msgid "Copy Ref"
-#~ msgstr "Копировать ссылку"
-
-#~ msgid "Copied launch command"
-#~ msgstr "Команда запуска скопирована"
-
-#~ msgid "Copy Launch Command"
-#~ msgstr "Копировать команду запуска"
-
-#~ msgid "Opened {}"
-#~ msgstr "Открыто {}"
-
-#~ msgid "Open"
-#~ msgstr "Открыть"
-
-#~ msgid "Enable Updates"
-#~ msgstr "Включить обновления"
-
-#~ msgid "Trash User Data"
-#~ msgstr "Очистить данные приложения"
-
-#~ msgid "Manage Snapshots"
-#~ msgstr "Управление снимками"
-
-#~ msgid "Could disable updates for {}"
-#~ msgstr "Можно отключить обновления для {}"
 
 #~ msgid "No user data for {}"
 #~ msgstr "Нет данных для {}"

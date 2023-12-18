@@ -789,10 +789,6 @@ msgstr ""
 "Warehouse zal proberen applicaties te installeren die overeenkomen met de "
 "geselecteerde data."
 
-#: src/orphans_window.py:117
-msgid "{} wide"
-msgstr "{} breed"
-
 #: src/orphans_window.py:153
 msgid "Trash folders?"
 msgstr "Mappen in de prullenbak gooien?"
@@ -849,12 +845,6 @@ msgstr "Commit-hash: {}"
 msgid "Could not downgrade {}"
 msgstr "Kon {} niet downgraden"
 
-#: src/downgrade_window.py:108
-#, fuzzy
-#| msgid "Could disable updates for {}"
-msgid "Could not disable updates for {}"
-msgstr "Updates voor {} uitgeschakeld"
-
 #: src/downgrade_window.py:116
 msgid "Downgrading…"
 msgstr "Downgraden…"
@@ -883,83 +873,8 @@ msgstr ""
 "Dit zal de huidige versie deïnstalleren en vervangen met de gekozen versie. "
 "Merk op dat downgraden problemen kan veroorzaken."
 
-#, fuzzy
-#~ msgid "Install From The Web…"
-#~ msgstr "Uit bestand installeren"
-
 #~ msgid "Add Remote"
 #~ msgstr "Bron toevoegen"
-
-#~ msgid "No Remotes"
-#~ msgstr "Geen bronnen"
-
-#~ msgid ""
-#~ "Warehouse cannot see the list of remotes or the system has no remotes "
-#~ "added"
-#~ msgstr ""
-#~ "Warehouse kan de lijst van bronnen niet ophalen of er zijn er nog geen"
-
-#~ msgid "Choose from a list of popular remotes or add a new one."
-#~ msgstr "Kies uit een lijst van populaire bronnen of voeg een nieuwe toe."
-
-#~ msgid ""
-#~ "This will mask {} ensuring it will never recieve any feature or security "
-#~ "updates."
-#~ msgstr ""
-#~ "Dit zal {} maskeren waardoor toekomstige versies of beveiligingsupdates "
-#~ "genegeerd worden."
-
-#~ msgid "App EOL"
-#~ msgstr "App EOL"
-
-#~ msgid "Runtime EOL"
-#~ msgstr "Runtime EOL"
-
-#~ msgid "Updates Disabled"
-#~ msgstr "Updates uitgeschakeld"
-
-#~ msgid "View Properties"
-#~ msgstr "Eigenschappen weergeven"
-
-#~ msgid "Copied name"
-#~ msgstr "Naam gekopieerd"
-
-#~ msgid "Copy Name"
-#~ msgstr "Naam kopiëren"
-
-#~ msgid "Copied ID"
-#~ msgstr "ID gekopieerd"
-
-#~ msgid "Copy ID"
-#~ msgstr "ID kopiëren"
-
-#~ msgid "Copied ref"
-#~ msgstr "Ref gekopieerd"
-
-#~ msgid "Copy Ref"
-#~ msgstr "Ref kopiëren"
-
-#~ msgid "Copied launch command"
-#~ msgstr "Startcommando gekopieerd"
-
-#~ msgid "Copy Launch Command"
-#~ msgstr "Startcommando kopiëren"
-
-#~ msgid "Opened {}"
-#~ msgstr "{} geopend"
-
-#~ msgid "Open"
-#~ msgstr "Openen"
-
-#~ msgid "Enable Updates"
-#~ msgstr "Updates inschakelen"
-
-#~ msgid "Trash User Data"
-#~ msgstr "Gebruikersdata in prullenbak gooien"
-
-#, fuzzy
-#~ msgid "Manage Snapshots"
-#~ msgstr "Bronnen beheren"
 
 #~ msgid "Could disable updates for {}"
 #~ msgstr "Updates voor {} uitgeschakeld"

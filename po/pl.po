@@ -747,10 +747,6 @@ msgstr ""
 msgid "Warehouse will attempt to install apps matching the selected data."
 msgstr ""
 
-#: src/orphans_window.py:117
-msgid "{} wide"
-msgstr ""
-
 #: src/orphans_window.py:153
 msgid "Trash folders?"
 msgstr ""

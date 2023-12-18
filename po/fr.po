@@ -810,10 +810,6 @@ msgstr ""
 "Entrepôt essayera d’installer les applications correspondant aux données "
 "sélectionnées."
 
-#: src/orphans_window.py:117
-msgid "{} wide"
-msgstr "{} wide"
-
 #: src/orphans_window.py:153
 msgid "Trash folders?"
 msgstr "Mettre les dossiers à la corbeille ?"
@@ -905,99 +901,11 @@ msgstr ""
 "Ceci désinstallera la version actuelle et installera celle choisie à la "
 "place. Noter que le rétrogradage peut causer des problèmes."
 
-#~ msgid "Install From The Web…"
-#~ msgstr "Installer à partir du web…"
-
 #~ msgid "Add Remote"
 #~ msgstr "Ajouter un dépôt de logiciels"
 
-#~ msgid "No Remotes"
-#~ msgstr "Aucun dépôt de logiciels"
-
-#~ msgid ""
-#~ "Warehouse cannot see the list of remotes or the system has no remotes "
-#~ "added"
-#~ msgstr ""
-#~ "Soit Entrepôt ne peut voir la liste des dépôts soit aucun dépôt n’a été "
-#~ "ajouté sur ce système"
-
-#~ msgid "Choose from a list of popular remotes or add a new one."
-#~ msgstr ""
-#~ "Choisissez depuis la liste des dépôts logiciels populaires ou ajoutez-en "
-#~ "un nouveau."
-
-#~ msgid ""
-#~ "This will mask {} ensuring it will never recieve any feature or security "
-#~ "updates."
-#~ msgstr ""
-#~ "Ceci masquera {} pour que cette application ne reçoive plus de mises à "
-#~ "jour de sécurité ou de fonctionnalités."
-
-#~ msgid "App EOL"
-#~ msgstr "Appli EFV"
-
-#~ msgid "Runtime EOL"
-#~ msgstr "Environnement d’exécution EFV"
-
-#~ msgid "Updates Disabled"
-#~ msgstr "Mises à jour désactivées"
-
-#~ msgid "View Properties"
-#~ msgstr "Voir les propriétés"
-
-#~ msgid "Copied name"
-#~ msgstr "Nom copié"
-
-#~ msgid "Copy Name"
-#~ msgstr "Copier le nom"
-
-#~ msgid "Copied ID"
-#~ msgstr "Identifiant copié"
-
-#~ msgid "Copy ID"
-#~ msgstr "Copier l’identifiant"
-
-#~ msgid "Copied ref"
-#~ msgstr "Référentiel copié"
-
-#~ msgid "Copy Ref"
-#~ msgstr "Copier le référentiel"
-
-#~ msgid "Copied launch command"
-#~ msgstr "Commande de lancement copiée"
-
-#~ msgid "Copy Launch Command"
-#~ msgstr "Copier la commande de lancement"
-
-#~ msgid "Opened {}"
-#~ msgstr "{} ouverte"
-
-#~ msgid "Open"
-#~ msgstr "Ouvrir"
-
-#~ msgid "Enable Updates"
-#~ msgstr "Activer les mises à jour"
-
-#~ msgid "Trash User Data"
-#~ msgstr "Mettre les données utilisateur à la corbeille"
-
-#~ msgid "Manage Snapshots"
-#~ msgstr "Gérer les sauvegardes"
-
-#~ msgid "Could disable updates for {}"
-#~ msgstr "Mises à jour désactivables pour {}"
-
 #~ msgid "No user data for {}"
 #~ msgstr "Aucune donnée utilisateur pour {}"
-
-#~ msgid ""
-#~ "There are either no Flatpaks that match the current filter, Warehouse "
-#~ "cannot see the list of installed Flatpaks, or the system has no Flatpaks "
-#~ "installed."
-#~ msgstr ""
-#~ "Soit il n’y a aucun Flatpak correspondant au filtre actuel, soit Entrepôt "
-#~ "ne peut voir la liste des Flatpaks installés, soit aucun Flatpak n’a été "
-#~ "installé sur ce système."
 
 #~ msgid "Show Apps Using this Runtime"
 #~ msgstr "Afficher les applications utilisant cet environnement d’exécution"
@@ -1057,11 +965,3 @@ msgstr ""
 #~ msgctxt "shortcut window"
 #~ msgid "Install From File"
 #~ msgstr "Installer à partir d'un fichier"
-
-#~ msgid "Try a different search term"
-#~ msgstr "Essayez une recherche différente"
-
-#, fuzzy
-#~| msgid "Send Selected Apps' Data to the Trash"
-#~ msgid "Send {}'s User Data to the trash?"
-#~ msgstr "Envoyer les données des applications sélectionnées à la corbeille"

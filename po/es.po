@@ -819,10 +819,6 @@ msgstr ""
 "Warehouse intentará instalar aplicaciones que coincidan con los datos "
 "seleccionados."
 
-#: src/orphans_window.py:117
-msgid "{} wide"
-msgstr "{} ancho"
-
 #: src/orphans_window.py:153
 msgid "Trash folders?"
 msgstr "¿Eliminar carpetas?"
@@ -879,12 +875,6 @@ msgstr "Hash de la confirmación: {}"
 msgid "Could not downgrade {}"
 msgstr "No se pudo revertir {}"
 
-#: src/downgrade_window.py:108
-#, fuzzy
-#| msgid "Could disable updates for {}"
-msgid "Could not disable updates for {}"
-msgstr "Puede desactivar las actualizaciones para {}"
-
 #: src/downgrade_window.py:116
 msgid "Downgrading…"
 msgstr "Revirtiendo…"
@@ -913,97 +903,14 @@ msgstr ""
 "Esto desinstalará la versión actual e instalará la elegida en su lugar. "
 "Tenga en cuenta que la desinstalación puede causar problemas."
 
-#~ msgid "Install From The Web…"
-#~ msgstr "Instalar desde la web…"
-
-#~ msgid "Add Remote"
-#~ msgstr "Agregar repositorio"
-
-#~ msgid "No Remotes"
-#~ msgstr "No hay repositorios"
-
-#~ msgid ""
-#~ "Warehouse cannot see the list of remotes or the system has no remotes "
-#~ "added"
-#~ msgstr ""
-#~ "Warehouse no puede ver la lista de repositorios o el sistema no tiene "
-#~ "repositorios añadidos"
-
 #~ msgid "Choose from a list of popular remotes or add a new one."
 #~ msgstr "Elija entre una lista de repositorios populares o añada uno nuevo."
-
-#~ msgid ""
-#~ "This will mask {} ensuring it will never recieve any feature or security "
-#~ "updates."
-#~ msgstr ""
-#~ "Esto restringirá {} asegurando que nunca reciba ninguna función o "
-#~ "actualización de seguridad."
-
-#~ msgid "App EOL"
-#~ msgstr "Fin de soporte de la app"
-
-#~ msgid "Runtime EOL"
-#~ msgstr "Fin del soporte para el tiempo de ejecución"
-
-#~ msgid "Updates Disabled"
-#~ msgstr "Actualizaciones desactivadas"
-
-#~ msgid "View Properties"
-#~ msgstr "Ver propiedades"
-
-#~ msgid "Copied name"
-#~ msgstr "Nombre copiado"
-
-#~ msgid "Copy Name"
-#~ msgstr "Copiar nombre"
-
-#~ msgid "Copied ID"
-#~ msgstr "ID copiada"
-
-#~ msgid "Copy ID"
-#~ msgstr "Copiar ID"
-
-#~ msgid "Copied ref"
-#~ msgstr "Ref copiada"
-
-#~ msgid "Copy Ref"
-#~ msgstr "Copiar Ref"
-
-#~ msgid "Copied launch command"
-#~ msgstr "Comando de lanzamiento copiado"
-
-#~ msgid "Copy Launch Command"
-#~ msgstr "Copiar comando de lanzamiento"
-
-#~ msgid "Opened {}"
-#~ msgstr "Abierto {}"
-
-#~ msgid "Open"
-#~ msgstr "Abrir"
-
-#~ msgid "Enable Updates"
-#~ msgstr "Activar actualizaciones"
-
-#~ msgid "Trash User Data"
-#~ msgstr "Eliminar datos de usuario"
-
-#~ msgid "Manage Snapshots"
-#~ msgstr "Gestionar Snapshots"
 
 #~ msgid "Could disable updates for {}"
 #~ msgstr "Puede desactivar las actualizaciones para {}"
 
 #~ msgid "No user data for {}"
 #~ msgstr "No hay datos de usuario para {}"
-
-#~ msgid ""
-#~ "There are either no Flatpaks that match the current filter, Warehouse "
-#~ "cannot see the list of installed Flatpaks, or the system has no Flatpaks "
-#~ "installed."
-#~ msgstr ""
-#~ "No hay Flatpaks que coincidan con el filtro actual, Warehouse no puede "
-#~ "ver la lista de Flatpaks instaladas o el sistema no tiene Flatpaks "
-#~ "instaladas."
 
 #~ msgid "Show Apps Using this Runtime"
 #~ msgstr "Mostrar aplicaciones que usan este tiempo de ejecución"
@@ -1096,14 +1003,3 @@ msgstr ""
 
 #~ msgid "Mask this Flatpak"
 #~ msgstr "Restringir este Flatpak"
-
-#~ msgid "Try a different search term"
-#~ msgstr "Intentar un término de búsqueda diferente"
-
-#~ msgid "Add a Remote"
-#~ msgstr "Añadir un remoto"
-
-#, fuzzy
-#~| msgid "Send {}'s User Data to the Trash?"
-#~ msgid "Send {}'s User Data to the trash?"
-#~ msgstr "¿Enviar los datos de usuario de {} a la papelera?"

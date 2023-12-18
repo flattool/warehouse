@@ -782,10 +782,6 @@ msgstr "ลงแอปหรือไม่?"
 msgid "Warehouse will attempt to install apps matching the selected data."
 msgstr "แวร์เฮาส์จะทำการลงแอปตามข้อมูลที่ได้เลือกไว้"
 
-#: src/orphans_window.py:117
-msgid "{} wide"
-msgstr "{} กว้าง"
-
 #: src/orphans_window.py:153
 msgid "Trash folders?"
 msgstr "โฟลเดอร์ขยะ?"
@@ -842,12 +838,6 @@ msgstr "เพิ่มแฮช {}"
 msgid "Could not downgrade {}"
 msgstr "ไม่สามารถดาวน์เกรด {}"
 
-#: src/downgrade_window.py:108
-#, fuzzy
-#| msgid "Could disable updates for {}"
-msgid "Could not disable updates for {}"
-msgstr "ปิดการอัพเดทของ {}"
-
 #: src/downgrade_window.py:116
 msgid "Downgrading…"
 msgstr "กำลังดาวน์เกรด…"
@@ -876,80 +866,8 @@ msgstr ""
 "การดำเนินการนี้จะถอนการติดตั้งเวอร์ชันปัจจุบันและติดตั้งเวอร์ชันที่เลือกแทน "
 "โปรดทราบว่าการดาวน์เกรดอาจทำให้เกิดปัญหาได้"
 
-#, fuzzy
-#~ msgid "Install From The Web…"
-#~ msgstr "ติดตั้งแอปจากไฟล์"
-
 #~ msgid "Add Remote"
 #~ msgstr "เพิ่มรีโมต"
-
-#~ msgid "No Remotes"
-#~ msgstr "ไม่มีรีโมต"
-
-#~ msgid ""
-#~ "Warehouse cannot see the list of remotes or the system has no remotes "
-#~ "added"
-#~ msgstr "แวร์เฮาส์ไม่สามารถค้นหารายการของรีโมตได้ หรือ ระบบไม่มีรีโมตใดๆที่ได้ติดตั้งไว้"
-
-#~ msgid "Choose from a list of popular remotes or add a new one."
-#~ msgstr "เพิ่มรีโมตจากรายการหรือเพิ่มรีโมตของตนเอง"
-
-#~ msgid ""
-#~ "This will mask {} ensuring it will never recieve any feature or security "
-#~ "updates."
-#~ msgstr "แอปนี้จะไม่ได้รับการอัปเดตใดๆ"
-
-#~ msgid "App EOL"
-#~ msgstr "การสิ้นสุดอายุใช้งานของแอป"
-
-#~ msgid "Runtime EOL"
-#~ msgstr "การสิ้นอายุการใช้งานของรันไทม์"
-
-#~ msgid "Updates Disabled"
-#~ msgstr "ปิดการอัพเดต"
-
-#~ msgid "View Properties"
-#~ msgstr "ดูคุณสมบัติ"
-
-#~ msgid "Copied name"
-#~ msgstr "คัดลอกชื่อแล้ว"
-
-#~ msgid "Copy Name"
-#~ msgstr "คัดลอกชื่อ"
-
-#~ msgid "Copied ID"
-#~ msgstr "คัดลอก ID แล้ว"
-
-#~ msgid "Copy ID"
-#~ msgstr "คัดลอก ID"
-
-#~ msgid "Copied ref"
-#~ msgstr "คัดลอก ref แล้ว"
-
-#~ msgid "Copy Ref"
-#~ msgstr "คัดลอก Ref"
-
-#~ msgid "Copied launch command"
-#~ msgstr "คัดลอกคำสั่งเปิดแล้ว"
-
-#~ msgid "Copy Launch Command"
-#~ msgstr "คัดลอกคำสั่งเปิด"
-
-#~ msgid "Opened {}"
-#~ msgstr "เปิด {} แล้ว"
-
-#~ msgid "Open"
-#~ msgstr "เปิด"
-
-#~ msgid "Enable Updates"
-#~ msgstr "เปิดการอัพเดท"
-
-#~ msgid "Trash User Data"
-#~ msgstr "ทิ้งข้อมูลขอผู้ใช้"
-
-#, fuzzy
-#~ msgid "Manage Snapshots"
-#~ msgstr "จัดการรีโมต"
 
 #~ msgid "Could disable updates for {}"
 #~ msgstr "ปิดการอัพเดทของ {}"
@@ -1076,11 +994,3 @@ msgstr ""
 #~ msgid ""
 #~ "Flatpak remotes can be added with a drag and drop or from a file selection"
 #~ msgstr "แหล่ง Flatpak สามารถเพิ่มได้ด้วยการลากและวางหรือจากการเลือกไฟล์"
-
-#~ msgid "Add a Remote"
-#~ msgstr "เพิ่มรีโมต"
-
-#, fuzzy
-#~| msgid "Send {}'s User Data to the Trash?"
-#~ msgid "Send {}'s User Data to the trash?"
-#~ msgstr "ลบข้อมูลผู้ใช้ของ {} ไปในถังขยะหรือไม่?"
