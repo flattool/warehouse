@@ -809,7 +809,6 @@ msgstr ""
 
 #: data/ui/downgrade.blp:22
 #, fuzzy
-#| msgid "Downgrade {}"
 msgid "Downgrade"
 msgstr "Nedgrader {}"
 
@@ -827,7 +826,6 @@ msgstr ""
 #~ msgstr "Ingen brukerdata funnet for {}"
 
 #, fuzzy
-#~| msgid "Send app settings and content to the trash"
 #~ msgid "Send {}'s User Data to the trash?"
 #~ msgstr "Slett programinnstillinger og programinnhold"
 

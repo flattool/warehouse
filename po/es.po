@@ -241,13 +241,11 @@ msgstr "Sus archivos y datos de estas aplicaciones se enviarán a la papelera."
 
 #: src/window.py:486
 #, fuzzy
-#| msgid "Could not install some apps"
 msgid "Could not snapshot some apps"
 msgstr "No se pueden instalar algunas aplicaciones"
 
 #: src/window.py:506
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Create Snapshots?"
 msgstr "Gestionar los repositorios remotos"
 
@@ -259,7 +257,6 @@ msgstr ""
 
 #: src/window.py:509
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Create Snapshots"
 msgstr "Gestionar los repositorios remotos"
 
@@ -347,19 +344,16 @@ msgstr "Instalación"
 #: data/ui/window.blp:113 data/ui/window.blp:140 data/ui/window.blp:167
 #: data/ui/orphans.blp:90
 #, fuzzy
-#| msgid "Installing… This could take a while"
 msgid "This could take a while."
 msgstr "Instalando… Esto podría tardar un poco"
 
 #: data/ui/window.blp:135
 #, fuzzy
-#| msgid "Uninstall"
 msgid "Uninstalling…"
 msgstr "Desinstalar"
 
 #: data/ui/window.blp:162
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Creating Snapshots…"
 msgstr "Gestionar los repositorios remotos"
 
@@ -369,9 +363,6 @@ msgstr "No se han encontrado Flatpaks"
 
 #: data/ui/window.blp:175
 #, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of remotes or the system has no remotes "
-#| "added"
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed."
@@ -425,13 +416,11 @@ msgstr "Instalar desde archivo"
 
 #: data/ui/window.blp:239
 #, fuzzy
-#| msgid "Manage Leftover Data"
 msgid "Manage Leftover Data…"
 msgstr "Gestionar los datos sobrantes"
 
 #: data/ui/window.blp:248
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Manage Remotes…"
 msgstr "Gestionar los repositorios remotos"
 
@@ -909,7 +898,6 @@ msgstr ""
 #~ "instaladas."
 
 #, fuzzy
-#~| msgid "Install From File"
 #~ msgid "Install From The Web…"
 #~ msgstr "Instalar desde archivo"
 
@@ -944,7 +932,6 @@ msgstr ""
 #~ msgstr "Abrir la carpeta de datos de usuario"
 
 #, fuzzy
-#~| msgid "Send {}'s User Data to the Trash?"
 #~ msgid "Send {}'s User Data to the trash?"
 #~ msgstr "¿Enviar los datos de usuario de {} a la papelera?"
 
@@ -1019,3 +1006,15 @@ msgstr ""
 
 #~ msgid "Mask this Flatpak"
 #~ msgstr "Restringir este Flatpak"
+
+#, fuzzy
+#~| msgid "Manage Remotes"
+#~ msgid "Manage Snapshots"
+#~ msgstr "Gestionar los repositorios remotos"
+
+#~ msgid ""
+#~ "Warehouse cannot see the list of remotes or the system has no remotes "
+#~ "added"
+#~ msgstr ""
+#~ "Warehouse no puede ver la lista de repositorios o el sistema no tiene "
+#~ "repositorios añadidos"

@@ -235,7 +235,6 @@ msgstr ""
 
 #: src/window.py:486
 #, fuzzy
-#| msgid "Could not uninstall some apps"
 msgid "Could not snapshot some apps"
 msgstr "无法卸载一些应用"
 

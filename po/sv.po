@@ -243,13 +243,11 @@ msgstr ""
 
 #: src/window.py:486
 #, fuzzy
-#| msgid "Could not install some apps"
 msgid "Could not snapshot some apps"
 msgstr "Kunde inte installera vissa appar"
 
 #: src/window.py:506
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Create Snapshots?"
 msgstr "Hantera fjärrkontroller"
 
@@ -261,7 +259,6 @@ msgstr ""
 
 #: src/window.py:509
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Create Snapshots"
 msgstr "Hantera fjärrkontroller"
 
@@ -360,7 +357,6 @@ msgstr "Avinstallera"
 
 #: data/ui/window.blp:162
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Creating Snapshots…"
 msgstr "Hantera fjärrkontroller"
 
@@ -643,7 +639,6 @@ msgstr "Standardfjärrkontrol för Flatpak"
 
 #: src/remotes_window.py:152
 #, fuzzy
-#| msgid "Central repository of Flatpak applications"
 msgid "Beta builds of Flatpak applications"
 msgstr "Standardfjärrkontrol för Flatpak"
 
@@ -657,7 +652,6 @@ msgstr ""
 
 #: src/remotes_window.py:155
 #, fuzzy
-#| msgid "Filter Apps by Runtime"
 msgid "Beta KDE Apps and Runtimes"
 msgstr "Filtrera appar med exekveringsmiljö"
 
@@ -701,7 +695,6 @@ msgstr "Lägg till {}?"
 
 #: src/remotes_window.py:395
 #, fuzzy
-#| msgid "Flatpaks"
 msgid "Flatpak Repos"
 msgstr "Flatpak"
 
@@ -896,7 +889,6 @@ msgstr ""
 #~ msgstr "Trasha användardata"
 
 #, fuzzy
-#~| msgid "Install From File"
 #~ msgid "Install From The Web…"
 #~ msgstr "Installera från fil"
 
@@ -925,3 +917,17 @@ msgstr ""
 
 #~ msgid "Copy {}"
 #~ msgstr "Kopiera {}"
+
+#, fuzzy
+#~| msgid "Manage Remotes"
+#~ msgid "Manage Snapshots"
+#~ msgstr "Hantera fjärrkontroller"
+
+#, fuzzy
+#~ msgid ""
+#~ "There are either no Flatpaks that match the current filter, Warehouse "
+#~ "cannot see the list of installed Flatpaks, or the system has no Flatpaks "
+#~ "installed."
+#~ msgstr ""
+#~ "Lagerhus kan inte se listan över fjärrkontroller eller systemet har inga "
+#~ "fjärrkontroller installerad"

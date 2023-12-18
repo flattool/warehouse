@@ -237,7 +237,6 @@ msgstr ""
 
 #: src/window.py:486
 #, fuzzy
-#| msgid "Find and trash leftover user data"
 msgid "Could not snapshot some apps"
 msgstr "Znajdź i przenieś do kosza pozostałe dane użytkownika"
 
@@ -354,9 +353,6 @@ msgstr ""
 
 #: data/ui/window.blp:175
 #, fuzzy
-#| msgid ""
-#| "Warehouse is an app that manages installed Flatpaks, their user data, and "
-#| "Flatpak remotes."
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed."
@@ -490,7 +486,6 @@ msgstr ""
 
 #: src/properties_window.py:48
 #, fuzzy
-#| msgid "Find and trash leftover user data"
 msgid "Could not show details"
 msgstr "Znajdź i przenieś do kosza pozostałe dane użytkownika"
 
@@ -692,7 +687,6 @@ msgstr ""
 
 #: data/ui/remotes.blp:45
 #, fuzzy
-#| msgid "Add and remove Flatpak remotes"
 msgid "Add a Popular Remote"
 msgstr "Dodaj lub usuń źródła"
 
