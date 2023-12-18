@@ -933,9 +933,6 @@ msgstr "Оберіть із списку популярних віддалени
 #~ msgstr "Керувати снапшотами"
 
 #, fuzzy
-#~| msgid ""
-#~| "This will mask {} ensuring it will never recieve any feature or security "
-#~| "updates."
 #~ msgid ""
 #~ "This will mask {} ensuring it will never receive any feature or security "
 #~ "updates."
