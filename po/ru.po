@@ -262,15 +262,13 @@ msgstr "Установленные репозитории"
 
 #: data/ui/remotes.blp:27
 #, fuzzy
-#| msgid "Show disabled"
-msgid "Show Disabled"
-msgstr "Показать отключенные"
+msgid "Could not snapshot some apps"
+msgstr "Не удалось установить некоторые приложения"
 
 #: data/ui/remotes.blp:41
 #, fuzzy
-#| msgid "No Results Found"
-msgid "No Remotes Found"
-msgstr "Результатов не найдено"
+msgid "Create Snapshots?"
+msgstr "Управление снимками"
 
 #: data/ui/remotes.blp:45
 msgid "Add a Popular Remote"
@@ -282,9 +280,8 @@ msgstr "Добавить другие репозитории"
 
 #: data/ui/remotes.blp:79
 #, fuzzy
-#| msgid "Adding Remote…"
-msgid "Adding Remote"
-msgstr "Добавление репозитория…"
+msgid "Create Snapshots"
+msgstr "Управление снимками"
 
 #: data/ui/remotes.blp:88 data/ui/window.blp:54
 #, fuzzy
@@ -389,9 +386,8 @@ msgstr "Удаление…"
 
 #: data/ui/window.blp:157
 #, fuzzy
-#| msgid "Creating Snapshots…"
-msgid "Creating Snapshots"
-msgstr "Создание снимков…"
+msgid "Creating Snapshots…"
+msgstr "Управление снимками"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
@@ -861,7 +857,8 @@ msgstr ""
 "Магазин приложений с открытым исходным кодом и оплатой по желанию от "
 "elementary"
 
-#: src/remotes_window.py:349
+#: src/remotes_window.py:151
+#, fuzzy
 msgid "Central repository of Flatpak applications"
 msgstr "Центральный репозиторий приложений Flatpak"
 
@@ -877,7 +874,8 @@ msgstr "Flatpak, упакованные Fedora Linux"
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "Последняя бета-версия приложений и сред выполнения GNOME"
 
-#: src/remotes_window.py:373
+#: src/remotes_window.py:155
+#, fuzzy
 msgid "Beta KDE Apps and Runtimes"
 msgstr "Бета-приложения KDE и среды выполнения"
 
@@ -1193,3 +1191,9 @@ msgstr "Тип файла не поддерживается"
 
 #~ msgid "Copy {}"
 #~ msgstr "Копировать {}"
+
+#~ msgid "Try a different search term"
+#~ msgstr "Попробуйте другой поисковый запрос"
+
+#~ msgid "Manage Snapshots"
+#~ msgstr "Управление снимками"

@@ -270,13 +270,13 @@ msgstr "Geen Flatpaks teruggevonden"
 
 #: data/ui/remotes.blp:45
 #, fuzzy
-msgid "Add a Popular Remote"
-msgstr "Flatpak-bron toevoegen"
+msgid "Could not snapshot some apps"
+msgstr "Kon sommige applicaties niet installeren"
 
 #: data/ui/remotes.blp:49
 #, fuzzy
-msgid "Add Other Remotes"
-msgstr "Bron toevoegen"
+msgid "Create Snapshots?"
+msgstr "Bronnen beheren"
 
 #: data/ui/remotes.blp:79
 #, fuzzy
@@ -285,8 +285,8 @@ msgstr "Bron toevoegen"
 
 #: data/ui/remotes.blp:88 data/ui/window.blp:54
 #, fuzzy
-msgid "This should only take a moment"
-msgstr "Bezig met installeren... Dit kan even duren"
+msgid "Create Snapshots"
+msgstr "Bronnen beheren"
 
 #: data/ui/search_install.blp:15
 #, fuzzy
@@ -382,7 +382,7 @@ msgstr "Deïnstalleren"
 
 #: data/ui/window.blp:157
 #, fuzzy
-msgid "Creating Snapshots"
+msgid "Creating Snapshots…"
 msgstr "Bronnen beheren"
 
 #: data/ui/window.blp:169
@@ -1177,17 +1177,11 @@ msgstr "{} installeren?"
 msgid "The app will be available to only you"
 msgstr "De applicatie zal enkel voor jou beschikbaar zijn"
 
-#: src/window.py:781
-msgid "The app will be available to every user on the system"
-msgstr "De applicatie zal voor elke gebruiker op het systeem beschikbaar zijn"
-
-#: src/window.py:811
-msgid "File type not supported"
-msgstr "Bestandstype niet ondersteund"
-
 #, fuzzy
-#~| msgid "No Remotes"
-#~ msgid "All Remotes"
+#~ msgid "Install From The Web…"
+#~ msgstr "Uit bestand installeren"
+
+#~ msgid "No Remotes"
 #~ msgstr "Geen bronnen"
 
 #, fuzzy
@@ -1223,3 +1217,8 @@ msgstr "Bestandstype niet ondersteund"
 
 #~ msgid "Copy {}"
 #~ msgstr "{} kopiëren"
+
+#, fuzzy
+#~| msgid "Manage Remotes"
+#~ msgid "Manage Snapshots"
+#~ msgstr "Bronnen beheren"

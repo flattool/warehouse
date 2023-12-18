@@ -1302,3 +1302,8 @@ msgstr "ไม่รองรับประเภทไฟล์"
 #~ msgid ""
 #~ "Flatpak remotes can be added with a drag and drop or from a file selection"
 #~ msgstr "แหล่ง Flatpak สามารถเพิ่มได้ด้วยการลากและวางหรือจากการเลือกไฟล์"
+
+#, fuzzy
+#~| msgid "Manage Remotes"
+#~ msgid "Manage Snapshots"
+#~ msgstr "จัดการรีโมต"

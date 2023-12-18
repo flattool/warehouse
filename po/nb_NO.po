@@ -1116,8 +1116,13 @@ msgstr ""
 msgid "The app will be available to only you"
 msgstr ""
 
-#: src/window.py:781
-msgid "The app will be available to every user on the system"
+#: data/ui/downgrade.blp:22
+#, fuzzy
+msgid "Downgrade"
+msgstr "Nedgrader {}"
+
+#: data/ui/downgrade.blp:52
+msgid "Select a Release"
 msgstr ""
 
 #: src/window.py:811
@@ -1130,3 +1135,10 @@ msgstr ""
 
 #~ msgid "No user data for {}"
 #~ msgstr "Ingen brukerdata funnet for {}"
+
+#, fuzzy
+#~ msgid "Send {}'s User Data to the trash?"
+#~ msgstr "Slett programinnstillinger og programinnhold"
+
+#~ msgid "Uninstall {}"
+#~ msgstr "Avinstaller {}"

@@ -267,15 +267,15 @@ msgstr "Añadir otros remotos"
 msgid "Adding Remote"
 msgstr "Añadiendo remoto"
 
-#: data/ui/remotes.blp:88 data/ui/window.blp:54
-msgid "This should only take a moment"
-msgstr "Esto solo debería llevar un momento"
+#: src/window.py:486
+#, fuzzy
+msgid "Could not snapshot some apps"
+msgstr "No se pueden instalar algunas aplicaciones"
 
 #: data/ui/search_install.blp:15
 #, fuzzy
-#| msgid "Search List"
-msgid "Search Criteria"
-msgstr "Buscar en la lista"
+msgid "Create Snapshots?"
+msgstr "Gestionar los repositorios remotos"
 
 #: data/ui/search_install.blp:23
 msgid "Choose a Remote to Search"
@@ -283,9 +283,8 @@ msgstr ""
 
 #: data/ui/search_install.blp:37
 #, fuzzy
-#| msgid "No Results Found"
-msgid "Results"
-msgstr "No se han encontrado resultados"
+msgid "Create Snapshots"
+msgstr "Gestionar los repositorios remotos"
 
 #: data/ui/search_install.blp:43
 msgid "Back"
@@ -358,19 +357,28 @@ msgstr "Conmutar modo de selección"
 msgid "Loading Flatpaks"
 msgstr "Cargando Flatpaks"
 
-#: data/ui/window.blp:129
-msgid "Uninstalling"
-msgstr "Desinstalando"
+#: data/ui/window.blp:113 data/ui/window.blp:140 data/ui/window.blp:167
+#: data/ui/orphans.blp:90
+#, fuzzy
+msgid "This could take a while."
+msgstr "Instalando… Esto podría tardar un poco"
 
-#: data/ui/window.blp:157
-msgid "Creating Snapshots"
-msgstr "Creando instantáneas"
+#: data/ui/window.blp:135
+#, fuzzy
+msgid "Uninstalling…"
+msgstr "Desinstalar"
+
+#: data/ui/window.blp:162
+#, fuzzy
+msgid "Creating Snapshots…"
+msgstr "Gestionar los repositorios remotos"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr "No se han encontrado Flatpaks"
 
-#: data/ui/window.blp:170
+#: data/ui/window.blp:175
+#, fuzzy
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
@@ -404,11 +412,18 @@ msgstr "Abrir el menú para copiar datos"
 msgid "Snapshot Selected Apps' Data"
 msgstr "Instantánea de los datos de las aplicaciones seleccionadas"
 
-#: data/ui/window.blp:235
+#: data/ui/window.blp:234
+#, fuzzy
+msgid "Install From File…"
+msgstr "Instalar desde archivo"
+
+#: data/ui/window.blp:239
+#, fuzzy
 msgid "Manage Leftover Data…"
 msgstr "Gestionar los datos sobrantes…"
 
-#: data/ui/window.blp:244
+#: data/ui/window.blp:248
+#, fuzzy
 msgid "Manage Remotes…"
 msgstr "Gestionar los remotos…"
 
@@ -1143,6 +1158,19 @@ msgstr "Tipo de archivo no compatible"
 #~ "ver la lista de Flatpaks instaladas o el sistema no tiene Flatpaks "
 #~ "instaladas."
 
+#, fuzzy
+#~ msgid "Install From The Web…"
+#~ msgstr "Instalar desde archivo"
+
+#~ msgid "Add Remote"
+#~ msgstr "Agregar repositorio"
+
+#~ msgid "No Remotes"
+#~ msgstr "No hay repositorios"
+
+#~ msgid "Choose from a list of popular remotes or add a new one."
+#~ msgstr "Elija entre una lista de repositorios populares o añada uno nuevo."
+
 #~ msgid "Could disable updates for {}"
 #~ msgstr "Puede desactivar las actualizaciones para {}"
 
@@ -1224,6 +1252,11 @@ msgstr "Tipo de archivo no compatible"
 
 #~ msgid "Mask this Flatpak"
 #~ msgstr "Restringir este Flatpak"
+
+#, fuzzy
+#~| msgid "Manage Remotes"
+#~ msgid "Manage Snapshots"
+#~ msgstr "Gestionar los repositorios remotos"
 
 #~ msgid ""
 #~ "Warehouse cannot see the list of remotes or the system has no remotes "

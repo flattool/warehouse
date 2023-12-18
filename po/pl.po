@@ -245,8 +245,8 @@ msgstr ""
 
 #: data/ui/remotes.blp:27
 #, fuzzy
-msgid "Show Disabled"
-msgstr "Wyłącz aktualizacje"
+msgid "Could not snapshot some apps"
+msgstr "Znajdź i przenieś do kosza pozostałe dane użytkownika"
 
 #: data/ui/remotes.blp:41
 msgid "No Remotes Found"
@@ -915,8 +915,8 @@ msgstr ""
 
 #: src/snapshots_window.py:155
 #, fuzzy
-msgid "Could not create snapshot"
-msgstr "Znajdź i przenieś do kosza pozostałe dane użytkownika"
+msgid "Add a Popular Remote"
+msgstr "Dodaj lub usuń źródła"
 
 #. Make window unable to close
 #: src/snapshots_window.py:165

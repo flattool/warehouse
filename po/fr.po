@@ -213,14 +213,12 @@ msgstr "Ajouter un dépôt personnalisé"
 
 #: data/ui/properties.blp:45
 #, fuzzy
-#| msgid "Loading Flatpaks…"
-msgid "Loading User Data"
-msgstr "Chargement des Flatpaks…"
+msgid "Could not disable updates for {}"
+msgstr "Mises à jour désactivables pour {}"
 
-#: data/ui/properties.blp:50 src/app_row_widget.py:231
-#: src/orphans_window.py:258
-msgid "Open User Data Folder"
-msgstr "Ouvrir le dossier des données utilisateur"
+#: src/window.py:367
+msgid "Disable Updates for {}?"
+msgstr "Désactiver les mises à jour pour {} ?"
 
 #: data/ui/properties.blp:62 src/app_row_widget.py:244
 msgid "Trash User Data"
@@ -265,15 +263,13 @@ msgstr "Dépôts logiciels installés"
 
 #: data/ui/remotes.blp:27
 #, fuzzy
-#| msgid "Show disabled"
-msgid "Show Disabled"
-msgstr "Afficher les désactivés"
+msgid "Could not snapshot some apps"
+msgstr "Certaines applications n’ont pu être installées"
 
 #: data/ui/remotes.blp:41
 #, fuzzy
-#| msgid "No Results Found"
-msgid "No Remotes Found"
-msgstr "Aucun résultat"
+msgid "Create Snapshots?"
+msgstr "Gérer les dépôts de logiciels"
 
 #: data/ui/remotes.blp:45
 msgid "Add a Popular Remote"
@@ -285,15 +281,12 @@ msgstr "Ajouter d’autres dépôts"
 
 #: data/ui/remotes.blp:79
 #, fuzzy
-#| msgid "Adding Remote…"
-msgid "Adding Remote"
-msgstr "Ajout d’un dépôt…"
+msgid "Create Snapshots"
+msgstr "Gérer les dépôts de logiciels"
 
-#: data/ui/remotes.blp:88 data/ui/window.blp:54
-#, fuzzy
-#| msgid "This should only take a moment."
-msgid "This should only take a moment"
-msgstr "Cela ne devrait prendre qu’un instant."
+#: src/window.py:562
+msgid "Copied selected app names"
+msgstr "Les noms des applications sélectionnées ont été copiés"
 
 #: data/ui/search_install.blp:15
 #, fuzzy
@@ -396,15 +389,18 @@ msgstr "Chargement des Flatpaks…"
 
 #: data/ui/window.blp:129
 #, fuzzy
-#| msgid "Uninstalling…"
-msgid "Uninstalling"
-msgstr "Désinstallation…"
+msgid "This could take a while."
+msgstr "Installations en cours… Cela peut prendre du temps"
 
 #: data/ui/window.blp:157
 #, fuzzy
-#| msgid "Creating Snapshots…"
-msgid "Creating Snapshots"
-msgstr "Création d’instantanés…"
+msgid "Uninstalling…"
+msgstr "Désinstaller"
+
+#: data/ui/window.blp:162
+#, fuzzy
+msgid "Creating Snapshots…"
+msgstr "Gérer les dépôts de logiciels"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
@@ -412,9 +408,6 @@ msgstr "Aucun Flatpak trouvé"
 
 #: data/ui/window.blp:170
 #, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed."
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
@@ -445,30 +438,25 @@ msgstr "Mettre les données des applications sélectionnées à la corbeille"
 msgid "Open Copy Menu"
 msgstr "Ouvrir le menu de copie"
 
-#: data/ui/window.blp:225
+#: data/ui/window.blp:224
+#, fuzzy
 msgid "Snapshot Selected Apps' Data"
 msgstr "Créer un instantané des données des applications sélectionnées"
 
-#: data/ui/window.blp:235
-msgid "Manage Leftover Data…"
-msgstr "Gérer les données résiduelles…"
-
-#: data/ui/window.blp:244
-msgid "Manage Remotes…"
-msgstr "Gérer les dépôts de logiciels…"
-
-#: data/ui/window.blp:250
+#: data/ui/window.blp:234
+#, fuzzy
 msgid "Install From File…"
 msgstr "Installer à partir d’un fichier…"
 
 #: data/ui/window.blp:255
 #, fuzzy
-msgid "Install From The Web…"
-msgstr "Installer à partir d’un fichier"
+msgid "Manage Leftover Data…"
+msgstr "Gérer les données résiduelles"
 
-#: data/ui/window.blp:261
-msgid "Refresh List"
-msgstr "Actualiser la liste"
+#: data/ui/window.blp:248
+#, fuzzy
+msgid "Manage Remotes…"
+msgstr "Gérer les dépôts de logiciels"
 
 #: data/ui/window.blp:265
 msgid "_Keyboard Shortcuts"
@@ -738,15 +726,18 @@ msgstr "Impossible de gérer les données"
 msgid "Copied {}"
 msgstr "{} copié"
 
-#: src/properties_window.py:53
+#: src/properties_window.py:48
+#, fuzzy
 msgid "Could not show details"
 msgstr "Impossible d’afficher les détails"
 
-#: src/properties_window.py:59
+#: src/properties_window.py:54
+#, fuzzy
 msgid "User Data"
 msgstr "Données utilisateur"
 
-#: src/properties_window.py:79 src/properties_window.py:142
+#: src/properties_window.py:73 src/properties_window.py:119
+#, fuzzy
 msgid "No User Data"
 msgstr "Aucune donnée utilisateur"
 
@@ -911,7 +902,8 @@ msgstr "Flatpaks empaquetés par Fedora Linux"
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "Les dernières applis et environnements d’exécution bêta de GNOME"
 
-#: src/remotes_window.py:373
+#: src/remotes_window.py:155
+#, fuzzy
 msgid "Beta KDE Apps and Runtimes"
 msgstr "Applications et environnements d’exécution bêta de KDE"
 
@@ -1255,6 +1247,21 @@ msgstr "Type de fichier non pris en charge"
 #~ "ne peut voir la liste des Flatpaks installés, soit aucun Flatpak n’a été "
 #~ "installé sur ce système."
 
+#, fuzzy
+#~ msgid "Install From The Web…"
+#~ msgstr "Installer à partir d’un fichier"
+
+#~ msgid "No Remotes"
+#~ msgstr "Aucun dépôt de logiciels"
+
+#~ msgid "Choose from a list of popular remotes or add a new one."
+#~ msgstr ""
+#~ "Choisissez depuis la liste des dépôts logiciels populaires ou ajoutez-en "
+#~ "un nouveau."
+
+#~ msgid "Add Remote"
+#~ msgstr "Ajouter un dépôt de logiciels"
+
 #~ msgid "No user data for {}"
 #~ msgstr "Aucune donnée utilisateur pour {}"
 
@@ -1303,6 +1310,11 @@ msgstr "Type de fichier non pris en charge"
 #~ msgctxt "shortcut window"
 #~ msgid "Install From File"
 #~ msgstr "Installer à partir d'un fichier"
+
+#, fuzzy
+#~| msgid "Manage Remotes"
+#~ msgid "Manage Snapshots"
+#~ msgstr "Gérer les dépôts de logiciels"
 
 #~ msgid ""
 #~ "Warehouse cannot see the list of remotes or the system has no remotes "

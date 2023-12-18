@@ -269,13 +269,13 @@ msgstr "Nem találhatóak Flatpak-ek"
 
 #: data/ui/remotes.blp:45
 #, fuzzy
-msgid "Add a Popular Remote"
-msgstr "Tároló hozzáadása"
+msgid "Could not snapshot some apps"
+msgstr "Pár applikációt nem lehetett telepíteni"
 
 #: data/ui/remotes.blp:49
 #, fuzzy
-msgid "Add Other Remotes"
-msgstr "Tároló hozzáadása"
+msgid "Create Snapshots?"
+msgstr "Tárolók kezelése"
 
 #: data/ui/remotes.blp:79
 #, fuzzy
@@ -284,8 +284,8 @@ msgstr "Tároló hozzáadása"
 
 #: data/ui/remotes.blp:88 data/ui/window.blp:54
 #, fuzzy
-msgid "This should only take a moment"
-msgstr "Telepítés… Ez eltarthat egy ideig"
+msgid "Create Snapshots"
+msgstr "Tárolók kezelése"
 
 #: data/ui/search_install.blp:15
 #, fuzzy
@@ -383,7 +383,7 @@ msgstr "Eltávolítás"
 
 #: data/ui/window.blp:157
 #, fuzzy
-msgid "Creating Snapshots"
+msgid "Creating Snapshots…"
 msgstr "Tárolók kezelése"
 
 #: data/ui/window.blp:169
@@ -1204,6 +1204,19 @@ msgstr "A fájl típus nem támogatott"
 #~ "A Raktár nem látja a tárolók listáját, vagy nincs egy tároló se a "
 #~ "rendszeren"
 
+#, fuzzy
+#~ msgid "Install From The Web…"
+#~ msgstr "Fájlból való telepítés"
+
+#~ msgid "No Remotes"
+#~ msgstr "Nincsenek tárolók"
+
+#~ msgid "Choose from a list of popular remotes or add a new one."
+#~ msgstr "Válasszon a népszerű tárolók listájából, vagy adjon hozzá egy újat."
+
+#~ msgid "Add Remote"
+#~ msgstr "Tároló hozzáadása"
+
 #~ msgid "Could disable updates for {}"
 #~ msgstr "A(z) {} frissítéseinek kikapcsolása sikertelen"
 
@@ -1284,6 +1297,11 @@ msgstr "A fájl típus nem támogatott"
 
 #~ msgid "Mask this Flatpak"
 #~ msgstr "Flatpak maszkolása"
+
+#, fuzzy
+#~| msgid "Manage Remotes"
+#~ msgid "Manage Snapshots"
+#~ msgstr "Tárolók kezelése"
 
 #~ msgid ""
 #~ "Warehouse cannot see the list of remotes or the system has no remotes "

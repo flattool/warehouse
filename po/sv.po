@@ -269,13 +269,13 @@ msgstr "Visa avaktiverade"
 
 #: data/ui/remotes.blp:41
 #, fuzzy
-#| msgid "No Results Found"
-msgid "No Remotes Found"
-msgstr "Inga resultat hittades"
+msgid "Could not snapshot some apps"
+msgstr "Kunde inte installera vissa appar"
 
-#: data/ui/remotes.blp:45
-msgid "Add a Popular Remote"
-msgstr "Lägg till en populär fjärr"
+#: src/window.py:506
+#, fuzzy
+msgid "Create Snapshots?"
+msgstr "Hantera fjärrkontroller"
 
 #: data/ui/remotes.blp:49
 msgid "Add Other Remotes"
@@ -283,9 +283,8 @@ msgstr "Lägg till andra fjärrar"
 
 #: data/ui/remotes.blp:79
 #, fuzzy
-#| msgid "Adding Remote…"
-msgid "Adding Remote"
-msgstr "Lägger till fjärren…"
+msgid "Create Snapshots"
+msgstr "Hantera fjärrkontroller"
 
 #: data/ui/remotes.blp:88 data/ui/window.blp:54
 #, fuzzy
@@ -390,9 +389,18 @@ msgstr "Avinstallerar…"
 
 #: data/ui/window.blp:157
 #, fuzzy
-#| msgid "Creating Snapshots…"
-msgid "Creating Snapshots"
-msgstr "Skapar ögonblicksbilder…"
+msgid "This could take a while."
+msgstr "Installerar… Detta kan ta ett tag"
+
+#: data/ui/window.blp:135
+#, fuzzy
+msgid "Uninstalling…"
+msgstr "Avinstallera"
+
+#: data/ui/window.blp:162
+#, fuzzy
+msgid "Creating Snapshots…"
+msgstr "Hantera fjärrkontroller"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
@@ -1183,25 +1191,17 @@ msgstr "Appen kommer att vara tillgänglig till bara dig"
 msgid "The app will be available to every user on the system"
 msgstr "Appen kommer att vara tillgänglig till varje användare på systemet"
 
-#: src/window.py:811
-msgid "File type not supported"
-msgstr "Filtyp stöds inte"
-
-#~ msgid "Search for Flatpaks…"
-#~ msgstr "Sök efter Flatpakpaket…"
-
-#~ msgid "All Remotes"
-#~ msgstr "Alla fjärrar"
-
 #, fuzzy
-#~| msgid "Open app"
-#~ msgid "Open App"
-#~ msgstr "Öppna app"
+#~ msgid "Install From The Web…"
+#~ msgstr "Installera från fil"
 
-#~ msgid "Apply"
-#~ msgstr "Tillämpa"
+#~ msgid "Add Remote"
+#~ msgstr "Lägg till fjärrkontroll"
 
-#~ msgid "No remotes on the system, add some from below"
+#~ msgid "No Remotes"
+#~ msgstr "Inga fjärrkontroller"
+
+#~ msgid "Choose from a list of popular remotes or add a new one."
 #~ msgstr ""
 #~ "Inga fjärrar installerade på systemet, lägg till några från listan nedan"
 
@@ -1216,6 +1216,11 @@ msgstr "Filtyp stöds inte"
 
 #~ msgid "Copy {}"
 #~ msgstr "Kopiera {}"
+
+#, fuzzy
+#~| msgid "Manage Remotes"
+#~ msgid "Manage Snapshots"
+#~ msgstr "Hantera fjärrkontroller"
 
 #, fuzzy
 #~ msgid ""
