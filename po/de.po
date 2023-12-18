@@ -603,7 +603,7 @@ msgstr ""
 msgid "Search"
 msgstr "Suchen"
 
-#: src/gtk/help-overlay.blp:24
+#: src/gtk/help-overlay.blp:24 data/ui/remotes.blp:28
 msgid "Refresh"
 msgstr "Aktualisieren"
 
