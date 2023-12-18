@@ -7,15 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-05 11:31-0500\n"
-"PO-Revision-Date: 2024-01-06 09:15+0000\n"
-"Last-Translator: Сергей Ворон <voron.s.a@gmail.com>\n"
+"POT-Creation-Date: 2023-12-17 20:33-0500\n"
+"PO-Revision-Date: 2023-12-20 03:14+0000\n"
+"Last-Translator: \"Sergej A.\" <asvmail.as@gmail.com>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.0\n"
@@ -75,19 +77,22 @@ msgstr "Поиск и очистка оставшихся пользовател
 msgid "Reinstall apps that have leftover data"
 msgstr "Переустановка приложений, в которых остались пользовательские данные"
 
-#: data/ui/downgrade.blp:16 src/orphans_window.py:119 src/orphans_window.py:187
-#: src/properties_window.py:154 src/remotes_window.py:93
-#: src/remotes_window.py:174 src/remotes_window.py:454
-#: src/remotes_window.py:626 src/snapshots_window.py:135
-#: src/snapshots_window.py:244 src/window.py:224 src/window.py:298
-#: src/window.py:429 src/window.py:475 src/window.py:577 src/window.py:648
-#: src/window.py:768
-msgid "Cancel"
-msgstr "Отмена"
+#: src/main.py:103
+msgid "Flatpaks"
+msgstr "Пакеты Flatpak"
 
-#: data/ui/downgrade.blp:22 src/app_row_widget.py:298
-msgid "Downgrade"
-msgstr "Понизить версию"
+#. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
+#: src/main.py:138
+msgid "translator-credits"
+msgstr "Сергей Ворон <voron@duck.com>"
+
+#: src/main.py:143
+msgid "Donate"
+msgstr "Пожертвовать"
+
+#: src/main.py:144
+msgid "Contributors"
+msgstr "Участники"
 
 #: data/ui/downgrade.blp:49
 #, fuzzy
@@ -177,9 +182,9 @@ msgstr "Результатов не найдено"
 msgid "Try a different search term"
 msgstr "Попробуйте другой поисковый запрос"
 
-#: data/ui/orphans.blp:119 data/ui/window.blp:200
-msgid "Select All"
-msgstr "Выбрать все"
+#: src/window.py:314
+msgid "List refreshed"
+msgstr "Список обновлён"
 
 #: data/ui/orphans.blp:124 src/window.py:195 src/window.py:278
 msgid "Trash"
@@ -246,42 +251,41 @@ msgstr "Копировать"
 msgid "Show Details in Store"
 msgstr "Показать подробности в магазине"
 
-#: data/ui/remotes.blp:5 src/gtk/help-overlay.blp:42
-msgid "Manage Remotes"
-msgstr "Управление репозиториями"
+#: src/window.py:440
+msgid "{} has no data to trash"
+msgstr "{} не имеет данных для удаления"
 
-#: data/ui/remotes.blp:14
-#, fuzzy
-#| msgid "Refresh list of remotes"
-msgid "Refresh List of Remotes"
-msgstr "Обновить список репозиториев"
+#: src/window.py:443
+msgid "Could not trash {}'s data"
+msgstr "Не удалось очистить данные {}"
+
+#: src/window.py:449
+msgid "Trash Selected Apps' User Data?"
+msgstr "Очистить данные выбранных приложений?"
 
 #: data/ui/remotes.blp:23
 msgid "Installed Remotes"
 msgstr "Установленные репозитории"
 
-#: data/ui/remotes.blp:27
-#, fuzzy
+#: src/window.py:486
 msgid "Could not snapshot some apps"
-msgstr "Не удалось установить некоторые приложения"
+msgstr "Не удалось сделать мгновенный снимок некоторых приложений"
 
-#: data/ui/remotes.blp:41
-#, fuzzy
+#: src/window.py:506
 msgid "Create Snapshots?"
-msgstr "Управление снимками"
+msgstr "Создать мгновенные снимки?"
 
-#: data/ui/remotes.blp:45
-msgid "Add a Popular Remote"
-msgstr "Добавить популярные репозитории"
+#: src/window.py:506
+msgid ""
+"Snapshots are backups of the app's user data. They can be reapplied at any "
+"time. This could take a while."
+msgstr ""
+"Мгновенные снимки - это резервные копии данных приложений пользователя. Их "
+"можно применить в любое время. Это действие может занять некоторое время."
 
-#: data/ui/remotes.blp:49
-msgid "Add Other Remotes"
-msgstr "Добавить другие репозитории"
-
-#: data/ui/remotes.blp:79
-#, fuzzy
+#: src/window.py:509
 msgid "Create Snapshots"
-msgstr "Управление снимками"
+msgstr "Создать снимки"
 
 #: data/ui/remotes.blp:88 data/ui/window.blp:54
 #, fuzzy
@@ -348,17 +352,9 @@ msgstr "Открыть папку снимков"
 msgid "New Snapshot"
 msgstr "Новый снимок"
 
-#: data/ui/snapshots.blp:84
-msgid "No Snapshots"
-msgstr "Нет снимков"
-
-#: data/ui/snapshots.blp:85
-msgid ""
-"Snapshots are backups of the app's user data. They can be reapplied at any "
-"time."
-msgstr ""
-"Снимки — это резервные копии пользовательских данных приложения. Их можно "
-"повторно применить в любое время."
+#: data/ui/window.blp:18 data/ui/orphans.blp:14
+msgid "Search List"
+msgstr "Поиск в списке"
 
 #: data/ui/window.blp:18
 msgid "Filter List"
@@ -372,11 +368,17 @@ msgstr "Главное меню"
 msgid "Toggle Selection Mode"
 msgstr "Переключение режима выбора"
 
-#: data/ui/window.blp:53
-#, fuzzy
-#| msgid "Loading Flatpaks…"
-msgid "Loading Flatpaks"
-msgstr "Загрузка пакетов Flatpak…"
+#: data/ui/window.blp:59
+msgid "Loading Flatpaks…"
+msgstr ""
+
+#: data/ui/window.blp:60 data/ui/remotes.blp:88
+msgid "This should only take a moment."
+msgstr "Это займет всего минуту."
+
+#: data/ui/window.blp:104 data/ui/orphans.blp:81
+msgid "Installing…"
+msgstr "Установка…"
 
 #: data/ui/window.blp:129
 #, fuzzy
@@ -384,10 +386,9 @@ msgstr "Загрузка пакетов Flatpak…"
 msgid "Uninstalling"
 msgstr "Удаление…"
 
-#: data/ui/window.blp:157
-#, fuzzy
+#: data/ui/window.blp:162
 msgid "Creating Snapshots…"
-msgstr "Управление снимками"
+msgstr "Создание снимков…"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
@@ -418,7 +419,19 @@ msgstr ""
 "не видит список установленных пакетов Flatpak, либо в системе не установлены "
 "пакеты Flatpak."
 
-#: data/ui/window.blp:206
+#: data/ui/window.blp:186 data/ui/orphans.blp:107
+msgid "No Results Found"
+msgstr "Результатов не найдено"
+
+#: data/ui/window.blp:187 data/ui/orphans.blp:108
+msgid "Try a different search term."
+msgstr "Попробуйте другой поисковый запрос."
+
+#: data/ui/window.blp:199 data/ui/orphans.blp:118
+msgid "Select All"
+msgstr "Выбрать все"
+
+#: data/ui/window.blp:205
 msgid "Uninstall Selected Apps"
 msgstr "Удалить выбранные приложения"
 
@@ -432,6 +445,7 @@ msgstr "Открыть меню копирования"
 
 #: data/ui/window.blp:225
 msgid "Snapshot Selected Apps' Data"
+msgstr "Снимок данных выбранных приложений"
 msgstr "Снимок данных выбранных приложений"
 
 #: data/ui/window.blp:235
@@ -960,10 +974,9 @@ msgstr "Этот снимок и его содержимое будут удал
 msgid "Could not create snapshot"
 msgstr "Не удалось создать снимок"
 
-#. Make window unable to close
-#: src/snapshots_window.py:165
-msgid "Creating Snapshot…"
-msgstr "Создание снимка…"
+#: data/ui/remotes.blp:79
+msgid "Adding Remote…"
+msgstr "Добавление репозитория…"
 
 #: src/snapshots_window.py:199 src/snapshots_window.py:216
 #: src/snapshots_window.py:223
