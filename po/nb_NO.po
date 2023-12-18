@@ -160,113 +160,11 @@ msgstr "Tillat gjenopprettelse av programinnstillinger og innhold"
 msgid "Send this app's settings and content to the trash"
 msgstr "Slett programinnstillinger og programinnhold"
 
-#. EOL = End Of Life, meaning the app will not be updated
-#: src/window.py:282
-msgid "App EOL"
+#: src/window.py:311
+msgid "List refreshed"
 msgstr ""
 
-#: src/window.py:282 src/properties_window.py:157
-msgid ""
-"{} has reached its End of Life and will not receive any security updates"
-msgstr ""
-
-#. EOL = End Of Life, meaning the runtime will not be updated
-#: src/window.py:288
-msgid "Runtime EOL"
-msgstr ""
-
-#: src/window.py:288 src/properties_window.py:161
-msgid ""
-"{}'s runtime has reached its End of Life and will not receive any security "
-"updates"
-msgstr ""
-
-#: src/window.py:292
-msgid "Updates Disabled"
-msgstr ""
-
-#: src/window.py:292 src/properties_window.py:165
-msgid "{} is masked and will not be updated"
-msgstr ""
-
-#. ^ This is up here as we need to add this to flatpak_rows regardless of if its visible or not
-#: src/window.py:297
-msgid "View Properties"
-msgstr "Vis Egenskaper"
-
-#. {Row visibility, Row selected, the row itself, properties, menu button, select, the flatpak row from `flatpak list`, mask label, the dropdown menu model}
-#.
-#: src/window.py:318
-msgid "Copied name"
-msgstr "Navnet er kopiert"
-
-#: src/window.py:319
-msgid "Copy Name"
-msgstr "Kopier navn"
-
-#: src/window.py:321
-msgid "Copied ID"
-msgstr "ID-en er kopiert"
-
-#: src/window.py:322
-msgid "Copy ID"
-msgstr "Kopier ID"
-
-#: src/window.py:324
-msgid "Copied ref"
-msgstr ""
-
-#: src/window.py:325
-msgid "Copy Ref"
-msgstr ""
-
-#: src/window.py:327
-msgid "Copied launch command"
-msgstr ""
-
-#: src/window.py:328
-msgid "Copy Launch Command"
-msgstr ""
-
-#: src/window.py:330 src/window.py:491
-msgid "Copy"
-msgstr "Kopier"
-
-#: src/window.py:333
-msgid "Opened {}"
-msgstr "Åpnet {}"
-
-#: src/window.py:334
-#, fuzzy
-msgid "Open"
-msgstr "Åpne {}"
-
-#: src/window.py:342 src/window.py:476 data/ui/downgrade.blp:46
-msgid "Disable Updates"
-msgstr ""
-
-#: src/window.py:347
-msgid "Enable Updates"
-msgstr ""
-
-#: src/window.py:361 src/orphans_window.py:213
-msgid "Open User Data Folder"
-msgstr ""
-
-#: src/window.py:366
-#, fuzzy
-msgid "Trash User Data"
-msgstr "Slettet brukerdata"
-
-#: src/window.py:374
-msgid "Manage Snapshots"
-msgstr ""
-
-#: src/window.py:378 data/ui/downgrade.blp:22
-msgid "Downgrade"
-msgstr ""
-
-#: src/window.py:427 src/properties_window.py:42 src/orphans_window.py:165
+#: src/window.py:320 src/properties_window.py:42 src/orphans_window.py:168
 msgid "Could not open folder"
 msgstr ""
 
@@ -293,7 +191,7 @@ msgstr "Slett Data"
 
 #: src/window.py:457
 #, fuzzy
-msgid "Could disable updates for {}"
+msgid "Could not disable updates for {}"
 msgstr "Ingen brukerdata funnet for {}"
 
 #: src/window.py:472
@@ -315,9 +213,10 @@ msgstr ""
 msgid "OK"
 msgstr "OK"
 
-#: src/window.py:514
-msgid "List refreshed"
-msgstr ""
+#: src/window.py:434
+#, fuzzy
+msgid "{} has no data to trash"
+msgstr "Slett programinnstillinger og programinnhold"
 
 #: src/window.py:557
 msgid "No user data for {}"
@@ -416,10 +315,18 @@ msgstr "Avinstaller"
 msgid "No Flatpaks Found"
 msgstr ""
 
+#: data/ui/window.blp:148
+#, fuzzy
 #: data/ui/window.blp:141
 msgid ""
-"There are either no Flatpaks that match the current filter, Warehouse cannot "
-"see the list of installed Flatpaks, or the system has no Flatpaks installed."
+"Warehouse cannot see the list of installed Flatpaks or the system has no "
+"Flatpaks installed."
+msgstr ""
+"Warehouse er et program som behandler installerte Flatpak-er, brukerdataene "
+"deres, og Flatpak-fjernservere."
+
+#: data/ui/window.blp:153
+msgid "No Flatpaks Match Filters"
 msgstr ""
 
 #: data/ui/window.blp:146 data/ui/orphans.blp:107
@@ -448,7 +355,6 @@ msgstr ""
 
 #: data/ui/window.blp:184
 #, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Snapshot Selected Apps' Data"
 msgstr "Slett Valgte Programmers Brukerdata?"
 
@@ -547,19 +453,16 @@ msgstr ""
 
 #: src/properties_window.py:48
 #, fuzzy
-#| msgid "Could not uninstall some apps"
 msgid "Could not show details"
 msgstr "Klarte ikke å avinstallere noen programmer"
 
 #: src/properties_window.py:54
 #, fuzzy
-#| msgid "Trashed user data"
 msgid "User Data"
 msgstr "Slettet brukerdata"
 
 #: src/properties_window.py:73 src/properties_window.py:118
 #, fuzzy
-#| msgid "Trashed user data"
 msgid "No User Data"
 msgstr "Slettet brukerdata"
 
@@ -636,89 +539,88 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: src/remotes_window.py:93
+#: src/remotes_window.py:119
+msgid "Disabled"
+msgstr ""
+
+#: src/remotes_window.py:121 src/orphans_window.py:120
+msgid "{} wide"
+msgstr ""
+
+#: src/remotes_window.py:125
+msgid "View apps from this remote"
+msgstr ""
+
+#: src/remotes_window.py:128
 msgid "Copy remote name"
 msgstr ""
 
-#: src/remotes_window.py:96
+#: src/remotes_window.py:131
 msgid "Remove {}"
 msgstr ""
 
-#: src/remotes_window.py:113 src/remotes_window.py:246
-msgid "Could not add {}"
-msgstr ""
-
-#: src/remotes_window.py:139
-msgid "Add Flatpak Remote"
-msgstr ""
-
-#: src/remotes_window.py:142 src/remotes_window.py:289
-msgid "Add"
-msgstr ""
-
-#: src/remotes_window.py:204
-msgid "URL"
-msgstr ""
-
-#: src/remotes_window.py:215 src/remotes_window.py:299
-msgid "Remote will be available to only you"
-msgstr ""
-
-#: src/remotes_window.py:221 src/remotes_window.py:300
-msgid "Remote will be available to every user on the system"
-msgstr ""
-
-#: src/remotes_window.py:244
-msgid "{} successfully added"
-msgstr ""
-
-#: src/remotes_window.py:286
-msgid "Add {}?"
-msgstr ""
-
 #. [Name to show in GUI, Name of remote for system, Link to repo to add, Description of remote]
-#: src/remotes_window.py:325
+#: src/remotes_window.py:150
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr ""
 
-#: src/remotes_window.py:326
+#: src/remotes_window.py:151
 msgid "Central repository of Flatpak applications"
 msgstr ""
 
-#: src/remotes_window.py:327
+#: src/remotes_window.py:152
 msgid "Beta builds of Flatpak applications"
 msgstr ""
 
-#: src/remotes_window.py:328
+#: src/remotes_window.py:153
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr ""
 
-#: src/remotes_window.py:329
+#: src/remotes_window.py:154
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr ""
 
-#: src/remotes_window.py:330
+#: src/remotes_window.py:155
 msgid "Beta KDE Apps and Runtimes"
 msgstr ""
 
-#: src/remotes_window.py:331
+#: src/remotes_window.py:156
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr ""
 
-#: data/ui/remotes.blp:13 data/ui/popular_remotes.blp:18
-msgid "Add Remote"
+#: src/remotes_window.py:188 src/remotes_window.py:314
+msgid "Could not add {}"
 msgstr ""
 
-#: data/ui/remotes.blp:56
-msgid "No Remotes"
+#: src/remotes_window.py:210
+msgid "Add Flatpak Remote"
 msgstr ""
 
-#: data/ui/remotes.blp:57
-msgid ""
-"Warehouse cannot see the list of remotes or the system has no remotes added"
+#: src/remotes_window.py:213 src/remotes_window.py:355
+msgid "Add"
 msgstr ""
 
-#: src/popular_remotes_window.py:31
+#: src/remotes_window.py:272
+msgid "URL"
+msgstr ""
+
+#: src/remotes_window.py:283 src/remotes_window.py:365
+msgid "Remote will be available to only you"
+msgstr ""
+
+#: src/remotes_window.py:289 src/remotes_window.py:366
+msgid "Remote will be available to every user on the system"
+msgstr ""
+
+#: src/remotes_window.py:312
+msgid "{} successfully added"
+msgstr ""
+
+#: src/remotes_window.py:352
+msgid "Add {}?"
+msgstr ""
+
+#: src/remotes_window.py:395
 #, fuzzy
 msgid "Flatpak Repos"
 msgstr "Flatpak-er"
@@ -727,7 +629,24 @@ msgstr "Flatpak-er"
 msgid "Choose from a list of popular remotes or add a new one."
 msgstr ""
 
-#: data/ui/popular_remotes.blp:45
+#: data/ui/remotes.blp:26
+msgid "Show disabled"
+msgstr ""
+
+#: data/ui/remotes.blp:40
+msgid "No remotes on the system, add some from below"
+msgstr ""
+
+#: data/ui/remotes.blp:44
+#, fuzzy
+msgid "Add a Popular Remote"
+msgstr "Legg til og fjern Flatpak-fjernservere"
+
+#: data/ui/remotes.blp:48
+msgid "Add Other Remotes"
+msgstr ""
+
+#: data/ui/remotes.blp:50
 msgid "Add a Repo File"
 msgstr ""
 
@@ -849,3 +768,8 @@ msgstr ""
 
 #~ msgid "Uninstall {}"
 #~ msgstr "Avinstaller {}"
+
+#, fuzzy
+#~| msgid "Send app settings and content to the trash"
+#~ msgid "Send {}'s User Data to the trash?"
+#~ msgstr "Slett programinnstillinger og programinnhold"

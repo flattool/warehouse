@@ -76,7 +76,12 @@ msgstr "Flatpaks"
 msgid "Donate"
 msgstr ""
 
-#: src/window.py:106
+#: src/main.py:144
+#, fuzzy
+msgid "Contributors"
+msgstr "Verdergaan"
+
+#: src/window.py:112
 msgid "Uninstalled successfully"
 msgstr "Met succes gedeïnstalleerd"
 
@@ -284,8 +289,9 @@ msgstr ""
 msgid "Trash Data"
 msgstr "Data in de prullenbak gooien"
 
-#: src/window.py:457
-msgid "Could disable updates for {}"
+#: src/window.py:349 src/downgrade_window.py:106
+#, fuzzy
+msgid "Could not disable updates for {}"
 msgstr "Updates voor {} uitgeschakeld"
 
 #: src/window.py:472
@@ -308,13 +314,15 @@ msgstr "Kon applicatie niet starten"
 msgid "OK"
 msgstr "OK"
 
-#: src/window.py:514
-msgid "List refreshed"
-msgstr "Lijst bijgewerkt"
+#: src/window.py:434
+#, fuzzy
+msgid "{} has no data to trash"
+msgstr "Gebruikersdata van {} in de prullenbak gooien?"
 
-#: src/window.py:557
-msgid "No user data for {}"
-msgstr "Geen gebruikersdata voor {}"
+#: src/window.py:437
+#, fuzzy
+msgid "Could not trash {}'s data"
+msgstr "Kon gebruikersdata niet in prullenbak gooien"
 
 #: src/window.py:566
 msgid "Trash Selected Apps' User Data?"
@@ -394,21 +402,27 @@ msgstr "Hoofdmenu"
 msgid "Toggle Selection Mode"
 msgstr "Selectiemodus omschakelen"
 
-#: data/ui/window.blp:97 data/ui/orphans.blp:81
+#: data/ui/window.blp:59
+msgid "Loading Flatpaks…"
+msgstr ""
+
+#: data/ui/window.blp:60 data/ui/remotes.blp:87
 #, fuzzy
-#| msgid "Installation"
+msgid "This should only take a moment."
+msgstr "Bezig met installeren... Dit kan even duren"
+
+#: data/ui/window.blp:104 data/ui/orphans.blp:81
+#, fuzzy
 msgid "Installing…"
 msgstr "Installatie"
 
 #: data/ui/window.blp:106 data/ui/window.blp:133 data/ui/orphans.blp:90
 #, fuzzy
-#| msgid "Installing… This could take a while"
 msgid "This could take a while."
 msgstr "Bezig met installeren... Dit kan even duren"
 
 #: data/ui/window.blp:128
 #, fuzzy
-#| msgid "Uninstall"
 msgid "Uninstalling…"
 msgstr "Deïnstalleren"
 
@@ -416,17 +430,26 @@ msgstr "Deïnstalleren"
 msgid "No Flatpaks Found"
 msgstr "Geen Flatpaks teruggevonden"
 
-#: data/ui/window.blp:141
+#: data/ui/window.blp:148
+#, fuzzy
 msgid ""
-"There are either no Flatpaks that match the current filter, Warehouse cannot "
-"see the list of installed Flatpaks, or the system has no Flatpaks installed."
+"Warehouse cannot see the list of installed Flatpaks or the system has no "
+"Flatpaks installed."
+msgstr "Warehouse kan de lijst van bronnen niet ophalen of er zijn er nog geen"
+
+#: data/ui/window.blp:153
+#, fuzzy
+msgid "No Flatpaks Match Filters"
+msgstr "Geen Flatpaks teruggevonden"
+
+#: data/ui/window.blp:154
+msgid "No installed Flatpak matches any of the currently applied filters."
 msgstr ""
 "Er zijn ofwel geen Flatpaks die voldoen aan de huidige filter, ofwel kan "
 "Warehouse de lijst van geïnstalleerde Flatpaks niet opvragen."
 
 #: data/ui/window.blp:146 data/ui/orphans.blp:107
 #, fuzzy
-#| msgid "No Flatpaks Found"
 msgid "No Results Found"
 msgstr "Geen Flatpaks teruggevonden"
 
@@ -452,25 +475,21 @@ msgstr "Kopieermenu openen"
 
 #: data/ui/window.blp:184
 #, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Snapshot Selected Apps' Data"
 msgstr "Gebruikersdata van geselecteerde applicatie in prullenbak gooien?"
 
 #: data/ui/window.blp:194
 #, fuzzy
-#| msgid "Install From File"
 msgid "Install From File…"
 msgstr "Uit bestand installeren"
 
 #: data/ui/window.blp:199
 #, fuzzy
-#| msgid "Manage Leftover Data"
 msgid "Manage Leftover Data…"
 msgstr "Overgebleven data beheren"
 
 #: data/ui/window.blp:208
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Manage Remotes…"
 msgstr "Bronnen beheren"
 
@@ -558,19 +577,16 @@ msgstr "{} gekopieerd"
 
 #: src/properties_window.py:48
 #, fuzzy
-#| msgid "Could not trash user data"
 msgid "Could not show details"
 msgstr "Kon gebruikersdata niet in prullenbak gooien"
 
 #: src/properties_window.py:54
 #, fuzzy
-#| msgid "Trash User Data"
 msgid "User Data"
 msgstr "Gebruikersdata in prullenbak gooien"
 
 #: src/properties_window.py:73 src/properties_window.py:118
 #, fuzzy
-#| msgid "Trash User Data"
 msgid "No User Data"
 msgstr "Gebruikersdata in prullenbak gooien"
 
@@ -647,7 +663,20 @@ msgstr "{} verwijderen?"
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: src/remotes_window.py:93
+#: src/remotes_window.py:119
+#, fuzzy
+msgid "Disabled"
+msgstr "Updates uitschakelen"
+
+#: src/remotes_window.py:121 src/orphans_window.py:120
+msgid "{} wide"
+msgstr "{} breed"
+
+#: src/remotes_window.py:125
+msgid "View apps from this remote"
+msgstr ""
+
+#: src/remotes_window.py:128
 msgid "Copy remote name"
 msgstr "Naam bron kopiëren"
 
@@ -692,13 +721,10 @@ msgstr "{} toevoegen?"
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr "De open source, 'betaal wat je wil', applicatiewinkel van elementary"
 
-#: src/remotes_window.py:326
-msgid "Central repository of Flatpak applications"
-msgstr "Centrale collectie van Flatpak-applicaties"
-
-#: src/remotes_window.py:327
-msgid "Beta builds of Flatpak applications"
-msgstr "Bèta-versies van Flatpak-applicaties"
+#: data/ui/remotes.blp:22
+#, fuzzy
+msgid "Installed Remotes"
+msgstr "Geïnstalleerde grootte"
 
 #: src/remotes_window.py:328
 msgid "Flatpaks packaged by Fedora Linux"
@@ -708,16 +734,14 @@ msgstr "Flatpaks beheerd door Fedora Linux"
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "De laatste bèta-versies van GNOME-applicaties en -runtimes"
 
-#: src/remotes_window.py:330
-msgid "Beta KDE Apps and Runtimes"
-msgstr "Bèta-versies van KDE-applicaties en -runtimes"
+#: data/ui/remotes.blp:44
+#, fuzzy
+msgid "Add a Popular Remote"
+msgstr "Flatpak-bron toevoegen"
 
-#: src/remotes_window.py:331
-msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr "Centrale collectie met de WebKit-ontwikkelaars- en runtime-SDK"
-
-#: data/ui/remotes.blp:13 data/ui/popular_remotes.blp:18
-msgid "Add Remote"
+#: data/ui/remotes.blp:48
+#, fuzzy
+msgid "Add Other Remotes"
 msgstr "Bron toevoegen"
 
 #: data/ui/remotes.blp:56
@@ -745,7 +769,12 @@ msgstr "Collectiebestand toevoegen"
 msgid "Add a Custom Remote"
 msgstr "Aangepaste bron toevoegen"
 
-#: src/orphans_window.py:73
+#: data/ui/remotes.blp:78
+#, fuzzy
+msgid "Adding Remote…"
+msgstr "Bron toevoegen"
+
+#: src/orphans_window.py:75
 msgid "Could not install some apps"
 msgstr "Kon sommige applicaties niet installeren"
 
@@ -853,6 +882,98 @@ msgid ""
 msgstr ""
 "Dit zal de huidige versie deïnstalleren en vervangen met de gekozen versie. "
 "Merk op dat downgraden problemen kan veroorzaken."
+
+#, fuzzy
+#~ msgid "Install From The Web…"
+#~ msgstr "Uit bestand installeren"
+
+#~ msgid "Add Remote"
+#~ msgstr "Bron toevoegen"
+
+#~ msgid "No Remotes"
+#~ msgstr "Geen bronnen"
+
+#~ msgid ""
+#~ "Warehouse cannot see the list of remotes or the system has no remotes "
+#~ "added"
+#~ msgstr ""
+#~ "Warehouse kan de lijst van bronnen niet ophalen of er zijn er nog geen"
+
+#~ msgid "Choose from a list of popular remotes or add a new one."
+#~ msgstr "Kies uit een lijst van populaire bronnen of voeg een nieuwe toe."
+
+#~ msgid ""
+#~ "This will mask {} ensuring it will never recieve any feature or security "
+#~ "updates."
+#~ msgstr ""
+#~ "Dit zal {} maskeren waardoor toekomstige versies of beveiligingsupdates "
+#~ "genegeerd worden."
+
+#~ msgid "App EOL"
+#~ msgstr "App EOL"
+
+#~ msgid "Runtime EOL"
+#~ msgstr "Runtime EOL"
+
+#~ msgid "Updates Disabled"
+#~ msgstr "Updates uitgeschakeld"
+
+#~ msgid "View Properties"
+#~ msgstr "Eigenschappen weergeven"
+
+#~ msgid "Copied name"
+#~ msgstr "Naam gekopieerd"
+
+#~ msgid "Copy Name"
+#~ msgstr "Naam kopiëren"
+
+#~ msgid "Copied ID"
+#~ msgstr "ID gekopieerd"
+
+#~ msgid "Copy ID"
+#~ msgstr "ID kopiëren"
+
+#~ msgid "Copied ref"
+#~ msgstr "Ref gekopieerd"
+
+#~ msgid "Copy Ref"
+#~ msgstr "Ref kopiëren"
+
+#~ msgid "Copied launch command"
+#~ msgstr "Startcommando gekopieerd"
+
+#~ msgid "Copy Launch Command"
+#~ msgstr "Startcommando kopiëren"
+
+#~ msgid "Opened {}"
+#~ msgstr "{} geopend"
+
+#~ msgid "Open"
+#~ msgstr "Openen"
+
+#~ msgid "Enable Updates"
+#~ msgstr "Updates inschakelen"
+
+#~ msgid "Trash User Data"
+#~ msgstr "Gebruikersdata in prullenbak gooien"
+
+#, fuzzy
+#~ msgid "Manage Snapshots"
+#~ msgstr "Bronnen beheren"
+
+#~ msgid "Could disable updates for {}"
+#~ msgstr "Updates voor {} uitgeschakeld"
+
+#~ msgid "No user data for {}"
+#~ msgstr "Geen gebruikersdata voor {}"
+
+#~ msgid ""
+#~ "There are either no Flatpaks that match the current filter, Warehouse "
+#~ "cannot see the list of installed Flatpaks, or the system has no Flatpaks "
+#~ "installed."
+#~ msgstr ""
+#~ "Er zijn ofwel geen Flatpaks die voldoen aan de huidige filter, ofwel kan "
+#~ "Warehouse de lijst van geïnstalleerde Flatpaks niet opvragen."
 
 #~ msgid "Show Apps Using this Runtime"
 #~ msgstr "Toon applicaties op deze runtime"

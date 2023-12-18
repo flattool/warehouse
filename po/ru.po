@@ -312,13 +312,15 @@ msgstr "Не удалось запустить приложение"
 msgid "OK"
 msgstr "ОК"
 
-#: src/window.py:514
-msgid "List refreshed"
-msgstr "Список обновлен"
+#: src/window.py:434
+#, fuzzy
+msgid "{} has no data to trash"
+msgstr "Очистить данные приложения {}?"
 
-#: src/window.py:557
-msgid "No user data for {}"
-msgstr "Нет данных для {}"
+#: src/window.py:437
+#, fuzzy
+msgid "Could not trash {}'s data"
+msgstr "Не удалось очистить данные приложения"
 
 #: src/window.py:566
 msgid "Trash Selected Apps' User Data?"
@@ -396,7 +398,16 @@ msgstr "Главное меню"
 msgid "Toggle Selection Mode"
 msgstr "Переключение режима выбора"
 
-#: data/ui/window.blp:97 data/ui/orphans.blp:81
+#: data/ui/window.blp:59
+msgid "Loading Flatpaks…"
+msgstr ""
+
+#: data/ui/window.blp:60 data/ui/remotes.blp:87
+#, fuzzy
+msgid "This should only take a moment."
+msgstr "Это займет некоторое время."
+
+#: data/ui/window.blp:104 data/ui/orphans.blp:81
 msgid "Installing…"
 msgstr "Установка…"
 
@@ -412,10 +423,20 @@ msgstr "Удаление…"
 msgid "No Flatpaks Found"
 msgstr "Пакеты Flatpak не найдены"
 
-#: data/ui/window.blp:141
+#: data/ui/window.blp:148
+#, fuzzy
 msgid ""
-"There are either no Flatpaks that match the current filter, Warehouse cannot "
-"see the list of installed Flatpaks, or the system has no Flatpaks installed."
+"Warehouse cannot see the list of installed Flatpaks or the system has no "
+"Flatpaks installed."
+msgstr "Warehouse не видит список репозиториев или они не добавлены в системе"
+
+#: data/ui/window.blp:153
+#, fuzzy
+msgid "No Flatpaks Match Filters"
+msgstr "Пакеты Flatpak не найдены"
+
+#: data/ui/window.blp:154
+msgid "No installed Flatpak matches any of the currently applied filters."
 msgstr ""
 "Либо нет пакетов Flatpak, соответствующих текущему фильтру, либо Warehouse "
 "не видит список установленных пакетов Flatpak, либо в системе не установлены "
@@ -425,8 +446,9 @@ msgstr ""
 msgid "No Results Found"
 msgstr "Результатов не найдено"
 
-#: data/ui/window.blp:147 data/ui/orphans.blp:108
-msgid "Try a different search term"
+#: data/ui/window.blp:160 data/ui/orphans.blp:108
+#, fuzzy
+msgid "Try a different search term."
 msgstr "Попробуйте другой поисковый запрос"
 
 #: data/ui/window.blp:159 data/ui/orphans.blp:118
@@ -626,7 +648,20 @@ msgstr "Удалить {}?"
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/remotes_window.py:93
+#: src/remotes_window.py:119
+#, fuzzy
+msgid "Disabled"
+msgstr "Отключить обновления"
+
+#: src/remotes_window.py:121 src/orphans_window.py:120
+msgid "{} wide"
+msgstr "Тип {}"
+
+#: src/remotes_window.py:125
+msgid "View apps from this remote"
+msgstr ""
+
+#: src/remotes_window.py:128
 msgid "Copy remote name"
 msgstr "Скопировать имя репозитория"
 
@@ -673,9 +708,10 @@ msgstr ""
 "Магазин приложений с открытым исходным кодом и оплатой по желанию от "
 "elementary"
 
-#: src/remotes_window.py:326
-msgid "Central repository of Flatpak applications"
-msgstr "Центральный репозиторий приложений Flatpak"
+#: data/ui/remotes.blp:22
+#, fuzzy
+msgid "Installed Remotes"
+msgstr "Установленный размер"
 
 #: src/remotes_window.py:327
 msgid "Beta builds of Flatpak applications"
@@ -689,16 +725,14 @@ msgstr "Flatpak, упакованные Fedora Linux"
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "Последняя бета-версия приложений и сред выполнения GNOME"
 
-#: src/remotes_window.py:330
-msgid "Beta KDE Apps and Runtimes"
-msgstr "Бета-приложения и среды выполнения KDE"
+#: data/ui/remotes.blp:44
+#, fuzzy
+msgid "Add a Popular Remote"
+msgstr "Добавить репозиторий Flatpak"
 
-#: src/remotes_window.py:331
-msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr "Центральный репозиторий WebKit Developer and Runtime SDK"
-
-#: data/ui/remotes.blp:13 data/ui/popular_remotes.blp:18
-msgid "Add Remote"
+#: data/ui/remotes.blp:48
+#, fuzzy
+msgid "Add Other Remotes"
 msgstr "Добавить репозиторий"
 
 #: data/ui/remotes.blp:56
@@ -726,7 +760,12 @@ msgstr "Добавить файл репозитория"
 msgid "Add a Custom Remote"
 msgstr "Добавить пользовательский репозиторий"
 
-#: src/orphans_window.py:73
+#: data/ui/remotes.blp:78
+#, fuzzy
+msgid "Adding Remote…"
+msgstr "Добавить репозиторий"
+
+#: src/orphans_window.py:75
 msgid "Could not install some apps"
 msgstr "Не удалось установить некоторые приложения"
 
@@ -832,6 +871,97 @@ msgstr ""
 "Это приведет к удалению текущей версии и вместо нее установится выбранная. "
 "Обратите внимание, что понижение версии может вызвать проблемы."
 
+#~ msgid "Install From The Web…"
+#~ msgstr "Установить из сети…"
+
+#~ msgid "Add Remote"
+#~ msgstr "Добавить репозиторий"
+
+#~ msgid "No Remotes"
+#~ msgstr "Нет репозиториев"
+
+#~ msgid ""
+#~ "Warehouse cannot see the list of remotes or the system has no remotes "
+#~ "added"
+#~ msgstr ""
+#~ "Warehouse не видит список репозиториев или они не добавлены в системе"
+
+#~ msgid "Choose from a list of popular remotes or add a new one."
+#~ msgstr "Выберите из списка популярные репозитории или добавьте новый."
+
+#~ msgid ""
+#~ "This will mask {} ensuring it will never recieve any feature or security "
+#~ "updates."
+#~ msgstr ""
+#~ "Это скроет {}, гарантируя, что он никогда не получит никаких обновлений "
+#~ "функций и безопасности."
+
+#~ msgid "App EOL"
+#~ msgstr "Cрок поддержки приложения"
+
+#~ msgid "Runtime EOL"
+#~ msgstr "Cрок поддержки среды выполнения"
+
+#~ msgid "Updates Disabled"
+#~ msgstr "Обновления отключены"
+
+#~ msgid "View Properties"
+#~ msgstr "Просмотр свойств"
+
+#~ msgid "Copied name"
+#~ msgstr "Имя скопировано"
+
+#~ msgid "Copy Name"
+#~ msgstr "Копировать имя"
+
+#~ msgid "Copied ID"
+#~ msgstr "ИД скопирован"
+
+#~ msgid "Copy ID"
+#~ msgstr "Копировать ИД"
+
+#~ msgid "Copied ref"
+#~ msgstr "Ссылка скопирована"
+
+#~ msgid "Copy Ref"
+#~ msgstr "Копировать ссылку"
+
+#~ msgid "Copied launch command"
+#~ msgstr "Команда запуска скопирована"
+
+#~ msgid "Copy Launch Command"
+#~ msgstr "Копировать команду запуска"
+
+#~ msgid "Opened {}"
+#~ msgstr "Открыто {}"
+
+#~ msgid "Open"
+#~ msgstr "Открыть"
+
+#~ msgid "Enable Updates"
+#~ msgstr "Включить обновления"
+
+#~ msgid "Trash User Data"
+#~ msgstr "Очистить данные приложения"
+
+#~ msgid "Manage Snapshots"
+#~ msgstr "Управление снимками"
+
+#~ msgid "Could disable updates for {}"
+#~ msgstr "Можно отключить обновления для {}"
+
+#~ msgid "No user data for {}"
+#~ msgstr "Нет данных для {}"
+
+#~ msgid ""
+#~ "There are either no Flatpaks that match the current filter, Warehouse "
+#~ "cannot see the list of installed Flatpaks, or the system has no Flatpaks "
+#~ "installed."
+#~ msgstr ""
+#~ "Либо нет пакетов Flatpak, соответствующих текущему фильтру, либо "
+#~ "Warehouse не видит список установленных пакетов Flatpak, либо в системе "
+#~ "не установлены пакеты Flatpak."
+
 #~ msgid "Show Apps Using this Runtime"
 #~ msgstr "Показать приложения, использующие эту среду выполнения"
 
@@ -840,3 +970,6 @@ msgstr ""
 
 #~ msgid "Copy {}"
 #~ msgstr "Копировать {}"
+
+#~ msgid "Try a different search term"
+#~ msgstr "Попробуйте другой поисковый запрос"

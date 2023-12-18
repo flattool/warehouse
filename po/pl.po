@@ -620,6 +620,19 @@ msgstr ""
 
 #: src/remotes_window.py:60
 msgid "Remove"
+msgstr "Usuń"
+
+#: src/remotes_window.py:119
+#, fuzzy
+msgid "Disabled"
+msgstr "Wyłącz aktualizacje"
+
+#: src/remotes_window.py:121 src/orphans_window.py:120
+msgid "{} wide"
+msgstr "{} szerokość"
+
+#: src/remotes_window.py:125
+msgid "View apps from this remote"
 msgstr ""
 
 #: src/remotes_window.py:93

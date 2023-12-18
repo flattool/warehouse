@@ -284,8 +284,9 @@ msgstr "ไฟล์ของคุณและข้อมูลสำหรั
 msgid "Trash Data"
 msgstr "ทิ้งข้อมูล"
 
-#: src/window.py:457
-msgid "Could disable updates for {}"
+#: src/window.py:349 src/downgrade_window.py:106
+#, fuzzy
+msgid "Could not disable updates for {}"
 msgstr "ปิดการอัพเดทของ {}"
 
 #: src/window.py:472
@@ -306,13 +307,15 @@ msgstr "ไม่สามารถเปิดแอปได้"
 msgid "OK"
 msgstr "โอเค"
 
-#: src/window.py:514
-msgid "List refreshed"
-msgstr "รีเฟรชรายการแล้ว"
+#: src/window.py:434
+#, fuzzy
+msgid "{} has no data to trash"
+msgstr "ลบข้อมูลผู้ใช้ของ {} ไปในถังขยะหรือไม่?"
 
-#: src/window.py:557
-msgid "No user data for {}"
-msgstr "ไม่มีข้อมูลของ {}"
+#: src/window.py:437
+#, fuzzy
+msgid "Could not trash {}'s data"
+msgstr "ไม่สามารถทิ้งข้อมูลผู้ใช้ได้"
 
 #: src/window.py:566
 msgid "Trash Selected Apps' User Data?"
@@ -390,21 +393,27 @@ msgstr "เมนูหลัก"
 msgid "Toggle Selection Mode"
 msgstr "สลับโหมดการเลือก"
 
-#: data/ui/window.blp:97 data/ui/orphans.blp:81
+#: data/ui/window.blp:59
+msgid "Loading Flatpaks…"
+msgstr ""
+
+#: data/ui/window.blp:60 data/ui/remotes.blp:87
 #, fuzzy
-#| msgid "Installation"
+msgid "This should only take a moment."
+msgstr "กำลังติดตั้ง... อาจจะใช้เวลาระยะหนึ่ง"
+
+#: data/ui/window.blp:104 data/ui/orphans.blp:81
+#, fuzzy
 msgid "Installing…"
 msgstr "การติดตั้ง"
 
 #: data/ui/window.blp:106 data/ui/window.blp:133 data/ui/orphans.blp:90
 #, fuzzy
-#| msgid "Installing… This could take a while"
 msgid "This could take a while."
 msgstr "กำลังติดตั้ง... อาจจะใช้เวลาระยะหนึ่ง"
 
 #: data/ui/window.blp:128
 #, fuzzy
-#| msgid "Uninstall"
 msgid "Uninstalling…"
 msgstr "ถอนการติดตั้ง"
 
@@ -412,17 +421,26 @@ msgstr "ถอนการติดตั้ง"
 msgid "No Flatpaks Found"
 msgstr "ไม่เจอแอป"
 
-#: data/ui/window.blp:141
+#: data/ui/window.blp:148
+#, fuzzy
 msgid ""
-"There are either no Flatpaks that match the current filter, Warehouse cannot "
-"see the list of installed Flatpaks, or the system has no Flatpaks installed."
+"Warehouse cannot see the list of installed Flatpaks or the system has no "
+"Flatpaks installed."
+msgstr "แวร์เฮาส์ไม่สามารถค้นหารายการของรีโมตได้ หรือ ระบบไม่มีรีโมตใดๆที่ได้ติดตั้งไว้"
+
+#: data/ui/window.blp:153
+#, fuzzy
+msgid "No Flatpaks Match Filters"
+msgstr "ไม่เจอแอป"
+
+#: data/ui/window.blp:154
+msgid "No installed Flatpak matches any of the currently applied filters."
 msgstr ""
 "ไม่มีแอปที่ตรงกับฟิลเตอร์ของคุณ หรือ แวร์เฮาส์ ไม่สามารถดูรายการแอปที่ติดตั้งไว้ "
 "หรือระบบไม่ได้ติดตั้งแอปใดๆ"
 
 #: data/ui/window.blp:146 data/ui/orphans.blp:107
 #, fuzzy
-#| msgid "No Flatpaks Found"
 msgid "No Results Found"
 msgstr "ไม่เจอแอป"
 
@@ -448,25 +466,21 @@ msgstr "เปิดเมนูคัดลอก"
 
 #: data/ui/window.blp:184
 #, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Snapshot Selected Apps' Data"
 msgstr "ทิ้งข้อมูลของแอปที่เลือก?"
 
 #: data/ui/window.blp:194
 #, fuzzy
-#| msgid "Install From File"
 msgid "Install From File…"
 msgstr "ติดตั้งแอปจากไฟล์"
 
 #: data/ui/window.blp:199
 #, fuzzy
-#| msgid "Manage Leftover Data"
 msgid "Manage Leftover Data…"
 msgstr "จัดการข้อมูลหลงเหลือ"
 
 #: data/ui/window.blp:208
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Manage Remotes…"
 msgstr "จัดการรีโมต"
 
@@ -554,19 +568,16 @@ msgstr "คัดลอก {} แล้ว"
 
 #: src/properties_window.py:48
 #, fuzzy
-#| msgid "Could not trash data"
 msgid "Could not show details"
 msgstr "ไม่สามารถทิ้งข้อมูลได้"
 
 #: src/properties_window.py:54
 #, fuzzy
-#| msgid "Trash User Data"
 msgid "User Data"
 msgstr "ทิ้งข้อมูลขอผู้ใช้"
 
 #: src/properties_window.py:73 src/properties_window.py:118
 #, fuzzy
-#| msgid "Trash User Data"
 msgid "No User Data"
 msgstr "ทิ้งข้อมูลขอผู้ใช้"
 
@@ -643,7 +654,20 @@ msgstr "นำ {} ออก?"
 msgid "Remove"
 msgstr "นำออก"
 
-#: src/remotes_window.py:93
+#: src/remotes_window.py:119
+#, fuzzy
+msgid "Disabled"
+msgstr "ระงับการอัพเดท"
+
+#: src/remotes_window.py:121 src/orphans_window.py:120
+msgid "{} wide"
+msgstr "{} กว้าง"
+
+#: src/remotes_window.py:125
+msgid "View apps from this remote"
+msgstr ""
+
+#: src/remotes_window.py:128
 msgid "Copy remote name"
 msgstr "คัดลอกชื่อรีโมต"
 
@@ -688,9 +712,10 @@ msgstr "เพิ่ม {}?"
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr "แอปสโตร์ที่ open source และเลือกลงแอปได้"
 
-#: src/remotes_window.py:326
-msgid "Central repository of Flatpak applications"
-msgstr "พื้นที่จัดเก็บ Repository ส่วนกลางของแอป Flatpak"
+#: data/ui/remotes.blp:22
+#, fuzzy
+msgid "Installed Remotes"
+msgstr "ขนาดแอป"
 
 #: src/remotes_window.py:327
 msgid "Beta builds of Flatpak applications"
@@ -704,16 +729,14 @@ msgstr "แอปโดย Fedora Linux"
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "แอปและรันไทม์เบต้าล่าสุดของ GNOME"
 
-#: src/remotes_window.py:330
-msgid "Beta KDE Apps and Runtimes"
-msgstr "แอปและรันไทม์เบต้าของ KDE"
+#: data/ui/remotes.blp:44
+#, fuzzy
+msgid "Add a Popular Remote"
+msgstr "เพิ่มรีโมต"
 
-#: src/remotes_window.py:331
-msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr "พื้นที่จัดเก็บข้อมูลกลางของ WebKit Developer และ Runtime SDK"
-
-#: data/ui/remotes.blp:13 data/ui/popular_remotes.blp:18
-msgid "Add Remote"
+#: data/ui/remotes.blp:48
+#, fuzzy
+msgid "Add Other Remotes"
 msgstr "เพิ่มรีโมต"
 
 #: data/ui/remotes.blp:56
@@ -741,7 +764,12 @@ msgstr "เพิ่มไฟล์ Repo"
 msgid "Add a Custom Remote"
 msgstr "เพิ่มรีโมต"
 
-#: src/orphans_window.py:73
+#: data/ui/remotes.blp:78
+#, fuzzy
+msgid "Adding Remote…"
+msgstr "เพิ่มรีโมต"
+
+#: src/orphans_window.py:75
 msgid "Could not install some apps"
 msgstr "ไม่สามารถติดตั้งได้บางแอป"
 
@@ -847,6 +875,95 @@ msgid ""
 msgstr ""
 "การดำเนินการนี้จะถอนการติดตั้งเวอร์ชันปัจจุบันและติดตั้งเวอร์ชันที่เลือกแทน "
 "โปรดทราบว่าการดาวน์เกรดอาจทำให้เกิดปัญหาได้"
+
+#, fuzzy
+#~ msgid "Install From The Web…"
+#~ msgstr "ติดตั้งแอปจากไฟล์"
+
+#~ msgid "Add Remote"
+#~ msgstr "เพิ่มรีโมต"
+
+#~ msgid "No Remotes"
+#~ msgstr "ไม่มีรีโมต"
+
+#~ msgid ""
+#~ "Warehouse cannot see the list of remotes or the system has no remotes "
+#~ "added"
+#~ msgstr "แวร์เฮาส์ไม่สามารถค้นหารายการของรีโมตได้ หรือ ระบบไม่มีรีโมตใดๆที่ได้ติดตั้งไว้"
+
+#~ msgid "Choose from a list of popular remotes or add a new one."
+#~ msgstr "เพิ่มรีโมตจากรายการหรือเพิ่มรีโมตของตนเอง"
+
+#~ msgid ""
+#~ "This will mask {} ensuring it will never recieve any feature or security "
+#~ "updates."
+#~ msgstr "แอปนี้จะไม่ได้รับการอัปเดตใดๆ"
+
+#~ msgid "App EOL"
+#~ msgstr "การสิ้นสุดอายุใช้งานของแอป"
+
+#~ msgid "Runtime EOL"
+#~ msgstr "การสิ้นอายุการใช้งานของรันไทม์"
+
+#~ msgid "Updates Disabled"
+#~ msgstr "ปิดการอัพเดต"
+
+#~ msgid "View Properties"
+#~ msgstr "ดูคุณสมบัติ"
+
+#~ msgid "Copied name"
+#~ msgstr "คัดลอกชื่อแล้ว"
+
+#~ msgid "Copy Name"
+#~ msgstr "คัดลอกชื่อ"
+
+#~ msgid "Copied ID"
+#~ msgstr "คัดลอก ID แล้ว"
+
+#~ msgid "Copy ID"
+#~ msgstr "คัดลอก ID"
+
+#~ msgid "Copied ref"
+#~ msgstr "คัดลอก ref แล้ว"
+
+#~ msgid "Copy Ref"
+#~ msgstr "คัดลอก Ref"
+
+#~ msgid "Copied launch command"
+#~ msgstr "คัดลอกคำสั่งเปิดแล้ว"
+
+#~ msgid "Copy Launch Command"
+#~ msgstr "คัดลอกคำสั่งเปิด"
+
+#~ msgid "Opened {}"
+#~ msgstr "เปิด {} แล้ว"
+
+#~ msgid "Open"
+#~ msgstr "เปิด"
+
+#~ msgid "Enable Updates"
+#~ msgstr "เปิดการอัพเดท"
+
+#~ msgid "Trash User Data"
+#~ msgstr "ทิ้งข้อมูลขอผู้ใช้"
+
+#, fuzzy
+#~ msgid "Manage Snapshots"
+#~ msgstr "จัดการรีโมต"
+
+#~ msgid "Could disable updates for {}"
+#~ msgstr "ปิดการอัพเดทของ {}"
+
+#~ msgid "No user data for {}"
+#~ msgstr "ไม่มีข้อมูลของ {}"
+
+#~ msgid ""
+#~ "There are either no Flatpaks that match the current filter, Warehouse "
+#~ "cannot see the list of installed Flatpaks, or the system has no Flatpaks "
+#~ "installed."
+#~ msgstr ""
+#~ "ไม่มีแอปที่ตรงกับฟิลเตอร์ของคุณ หรือ แวร์เฮาส์ ไม่สามารถดูรายการแอปที่ติดตั้งไว้ "
+#~ "หรือระบบไม่ได้ติดตั้งแอปใดๆ"
 
 #~ msgid "Show Apps Using this Runtime"
 #~ msgstr "แสดงแอปที่ใช้รันไทม์นี้"
@@ -959,3 +1076,11 @@ msgstr ""
 #~ msgid ""
 #~ "Flatpak remotes can be added with a drag and drop or from a file selection"
 #~ msgstr "แหล่ง Flatpak สามารถเพิ่มได้ด้วยการลากและวางหรือจากการเลือกไฟล์"
+
+#~ msgid "Add a Remote"
+#~ msgstr "เพิ่มรีโมต"
+
+#, fuzzy
+#~| msgid "Send {}'s User Data to the Trash?"
+#~ msgid "Send {}'s User Data to the trash?"
+#~ msgstr "ลบข้อมูลผู้ใช้ของ {} ไปในถังขยะหรือไม่?"

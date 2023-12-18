@@ -320,13 +320,15 @@ msgstr "Impossible de lancer l’application"
 msgid "OK"
 msgstr "OK"
 
-#: src/window.py:514
-msgid "List refreshed"
-msgstr "Liste actualisée"
+#: src/window.py:434
+#, fuzzy
+msgid "{} has no data to trash"
+msgstr "Envoyer les données des applications sélectionnées à la corbeille"
 
-#: src/window.py:557
-msgid "No user data for {}"
-msgstr "Aucune donnée utilisateur pour {}"
+#: src/window.py:437
+#, fuzzy
+msgid "Could not trash {}'s data"
+msgstr "Échec de la mise à la corbeille des données utilisateur"
 
 #: src/window.py:566
 msgid "Trash Selected Apps' User Data?"
@@ -410,7 +412,10 @@ msgstr "Basculer en mode sélection"
 
 #: data/ui/window.blp:97 data/ui/orphans.blp:81
 #, fuzzy
-#| msgid "Installation"
+msgid "This should only take a moment."
+msgstr "Cela peut prendre du temps."
+
+#: data/ui/window.blp:104 data/ui/orphans.blp:81
 msgid "Installing…"
 msgstr "Installation"
 
@@ -430,7 +435,8 @@ msgstr "Désinstaller"
 msgid "No Flatpaks Found"
 msgstr "Aucun Flatpak trouvé"
 
-#: data/ui/window.blp:141
+#: data/ui/window.blp:148
+#, fuzzy
 msgid ""
 "There are either no Flatpaks that match the current filter, Warehouse cannot "
 "see the list of installed Flatpaks, or the system has no Flatpaks installed."
@@ -441,15 +447,23 @@ msgstr ""
 
 #: data/ui/window.blp:146 data/ui/orphans.blp:107
 #, fuzzy
-#| msgid "No Flatpaks Found"
-msgid "No Results Found"
+msgid "No Flatpaks Match Filters"
 msgstr "Aucun Flatpak trouvé"
 
 #: data/ui/window.blp:147 data/ui/orphans.blp:108
 msgid "Try a different search term"
 msgstr ""
 
-#: data/ui/window.blp:159 data/ui/orphans.blp:118
+#: data/ui/window.blp:159 data/ui/orphans.blp:107
+msgid "No Results Found"
+msgstr "Aucun résultat"
+
+#: data/ui/window.blp:160 data/ui/orphans.blp:108
+#, fuzzy
+msgid "Try a different search term."
+msgstr "Essayez une recherche différente"
+
+#: data/ui/window.blp:172 data/ui/orphans.blp:118
 msgid "Select All"
 msgstr "Tout sélectionner"
 
@@ -666,7 +680,20 @@ msgstr "Supprimer {} ?"
 msgid "Remove"
 msgstr "Supprimer"
 
-#: src/remotes_window.py:93
+#: src/remotes_window.py:119
+#, fuzzy
+msgid "Disabled"
+msgstr "Désactiver les mises à jour"
+
+#: src/remotes_window.py:121 src/orphans_window.py:120
+msgid "{} wide"
+msgstr "{} wide"
+
+#: src/remotes_window.py:125
+msgid "View apps from this remote"
+msgstr ""
+
+#: src/remotes_window.py:128
 msgid "Copy remote name"
 msgstr "Copier le nom du dépôt"
 
@@ -711,13 +738,10 @@ msgstr "Ajouter {} ?"
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr "Le magasin d’applications open-source et à prix libre de elementary"
 
-#: src/remotes_window.py:326
-msgid "Central repository of Flatpak applications"
-msgstr "Répertoire central des applications Flatpak"
-
-#: src/remotes_window.py:327
-msgid "Beta builds of Flatpak applications"
-msgstr "Versions bêta des applications Flatpak"
+#: data/ui/remotes.blp:22
+#, fuzzy
+msgid "Installed Remotes"
+msgstr "Taille installée"
 
 #: src/remotes_window.py:328
 msgid "Flatpaks packaged by Fedora Linux"
@@ -727,16 +751,14 @@ msgstr "Flatpaks empaquetés par Fedora Linux"
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "Les dernières applis et environnements d’exécution bêta de GNOME"
 
-#: src/remotes_window.py:330
-msgid "Beta KDE Apps and Runtimes"
-msgstr "Applis et environnements d’exécution bêta de KDE"
+#: data/ui/remotes.blp:44
+#, fuzzy
+msgid "Add a Popular Remote"
+msgstr "Ajouter un dépôt de logiciels Flatpak"
 
-#: src/remotes_window.py:331
-msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr "Répertoire central des développeurs WebKit et Runtime SDK"
-
-#: data/ui/remotes.blp:13 data/ui/popular_remotes.blp:18
-msgid "Add Remote"
+#: data/ui/remotes.blp:48
+#, fuzzy
+msgid "Add Other Remotes"
 msgstr "Ajouter un dépôt de logiciels"
 
 #: data/ui/remotes.blp:56
@@ -768,7 +790,12 @@ msgstr "Ajouter un fichier de répertoire"
 msgid "Add a Custom Remote"
 msgstr "Ajouter un dépôt personnalisé"
 
-#: src/orphans_window.py:73
+#: data/ui/remotes.blp:78
+#, fuzzy
+msgid "Adding Remote…"
+msgstr "Ajouter un dépôt de logiciels"
+
+#: src/orphans_window.py:75
 msgid "Could not install some apps"
 msgstr "Certaines applications n’ont pu être installées"
 
@@ -878,6 +905,100 @@ msgstr ""
 "Ceci désinstallera la version actuelle et installera celle choisie à la "
 "place. Noter que le rétrogradage peut causer des problèmes."
 
+#~ msgid "Install From The Web…"
+#~ msgstr "Installer à partir du web…"
+
+#~ msgid "Add Remote"
+#~ msgstr "Ajouter un dépôt de logiciels"
+
+#~ msgid "No Remotes"
+#~ msgstr "Aucun dépôt de logiciels"
+
+#~ msgid ""
+#~ "Warehouse cannot see the list of remotes or the system has no remotes "
+#~ "added"
+#~ msgstr ""
+#~ "Soit Entrepôt ne peut voir la liste des dépôts soit aucun dépôt n’a été "
+#~ "ajouté sur ce système"
+
+#~ msgid "Choose from a list of popular remotes or add a new one."
+#~ msgstr ""
+#~ "Choisissez depuis la liste des dépôts logiciels populaires ou ajoutez-en "
+#~ "un nouveau."
+
+#~ msgid ""
+#~ "This will mask {} ensuring it will never recieve any feature or security "
+#~ "updates."
+#~ msgstr ""
+#~ "Ceci masquera {} pour que cette application ne reçoive plus de mises à "
+#~ "jour de sécurité ou de fonctionnalités."
+
+#~ msgid "App EOL"
+#~ msgstr "Appli EFV"
+
+#~ msgid "Runtime EOL"
+#~ msgstr "Environnement d’exécution EFV"
+
+#~ msgid "Updates Disabled"
+#~ msgstr "Mises à jour désactivées"
+
+#~ msgid "View Properties"
+#~ msgstr "Voir les propriétés"
+
+#~ msgid "Copied name"
+#~ msgstr "Nom copié"
+
+#~ msgid "Copy Name"
+#~ msgstr "Copier le nom"
+
+#~ msgid "Copied ID"
+#~ msgstr "Identifiant copié"
+
+#~ msgid "Copy ID"
+#~ msgstr "Copier l’identifiant"
+
+#~ msgid "Copied ref"
+#~ msgstr "Référentiel copié"
+
+#~ msgid "Copy Ref"
+#~ msgstr "Copier le référentiel"
+
+#~ msgid "Copied launch command"
+#~ msgstr "Commande de lancement copiée"
+
+#~ msgid "Copy Launch Command"
+#~ msgstr "Copier la commande de lancement"
+
+#~ msgid "Opened {}"
+#~ msgstr "{} ouverte"
+
+#~ msgid "Open"
+#~ msgstr "Ouvrir"
+
+#~ msgid "Enable Updates"
+#~ msgstr "Activer les mises à jour"
+
+#~ msgid "Trash User Data"
+#~ msgstr "Mettre les données utilisateur à la corbeille"
+
+#~ msgid "Manage Snapshots"
+#~ msgstr "Gérer les sauvegardes"
+
+#~ msgid "Could disable updates for {}"
+#~ msgstr "Mises à jour désactivables pour {}"
+
+#~ msgid "No user data for {}"
+#~ msgstr "Aucune donnée utilisateur pour {}"
+
+#~ msgid ""
+#~ "There are either no Flatpaks that match the current filter, Warehouse "
+#~ "cannot see the list of installed Flatpaks, or the system has no Flatpaks "
+#~ "installed."
+#~ msgstr ""
+#~ "Soit il n’y a aucun Flatpak correspondant au filtre actuel, soit Entrepôt "
+#~ "ne peut voir la liste des Flatpaks installés, soit aucun Flatpak n’a été "
+#~ "installé sur ce système."
+
 #~ msgid "Show Apps Using this Runtime"
 #~ msgstr "Afficher les applications utilisant cet environnement d’exécution"
 
@@ -936,3 +1057,11 @@ msgstr ""
 #~ msgctxt "shortcut window"
 #~ msgid "Install From File"
 #~ msgstr "Installer à partir d'un fichier"
+
+#~ msgid "Try a different search term"
+#~ msgstr "Essayez une recherche différente"
+
+#, fuzzy
+#~| msgid "Send Selected Apps' Data to the Trash"
+#~ msgid "Send {}'s User Data to the trash?"
+#~ msgstr "Envoyer les données des applications sélectionnées à la corbeille"

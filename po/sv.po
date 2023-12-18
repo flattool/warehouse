@@ -76,7 +76,12 @@ msgstr "Flatpak"
 msgid "Donate"
 msgstr ""
 
-#: src/window.py:106
+#: src/main.py:144
+#, fuzzy
+msgid "Contributors"
+msgstr "Fortsätt"
+
+#: src/window.py:112
 msgid "Uninstalled successfully"
 msgstr "Avinstallation lycakdes"
 
@@ -280,8 +285,9 @@ msgstr ""
 msgid "Trash Data"
 msgstr "Trasha"
 
-#: src/window.py:457
-msgid "Could disable updates for {}"
+#: src/window.py:349 src/downgrade_window.py:106
+#, fuzzy
+msgid "Could not disable updates for {}"
 msgstr "Kunde inaktivera uppdateringar för {}"
 
 #: src/window.py:472
@@ -304,13 +310,15 @@ msgstr "Kunde inte köra appen"
 msgid "OK"
 msgstr "Okej"
 
-#: src/window.py:514
-msgid "List refreshed"
-msgstr "Listan laddades om"
+#: src/window.py:434
+#, fuzzy
+msgid "{} has no data to trash"
+msgstr "Skicka {}s användardata till papperskorgen?"
 
-#: src/window.py:557
-msgid "No user data for {}"
-msgstr "Ingen anvandärdata för {}"
+#: src/window.py:437
+#, fuzzy
+msgid "Could not trash {}'s data"
+msgstr "Kunde inte trasha användardata"
 
 #: src/window.py:566
 msgid "Trash Selected Apps' User Data?"
@@ -390,21 +398,27 @@ msgstr "Huvudmeny"
 msgid "Toggle Selection Mode"
 msgstr "Växla urvalsläge"
 
-#: data/ui/window.blp:97 data/ui/orphans.blp:81
+#: data/ui/window.blp:59
+msgid "Loading Flatpaks…"
+msgstr ""
+
+#: data/ui/window.blp:60 data/ui/remotes.blp:87
 #, fuzzy
-#| msgid "Installation"
+msgid "This should only take a moment."
+msgstr "Installerar… Detta kan ta ett tag"
+
+#: data/ui/window.blp:104 data/ui/orphans.blp:81
+#, fuzzy
 msgid "Installing…"
 msgstr "Installation"
 
 #: data/ui/window.blp:106 data/ui/window.blp:133 data/ui/orphans.blp:90
 #, fuzzy
-#| msgid "Installing… This could take a while"
 msgid "This could take a while."
 msgstr "Installerar… Detta kan ta ett tag"
 
 #: data/ui/window.blp:128
 #, fuzzy
-#| msgid "Uninstall"
 msgid "Uninstalling…"
 msgstr "Avinstallera"
 
@@ -412,18 +426,26 @@ msgstr "Avinstallera"
 msgid "No Flatpaks Found"
 msgstr "Inga Flatpak Hittades"
 
-#: data/ui/window.blp:141
+#: data/ui/window.blp:148
+#, fuzzy
 msgid ""
 "There are either no Flatpaks that match the current filter, Warehouse cannot "
 "see the list of installed Flatpaks, or the system has no Flatpaks installed."
 msgstr ""
-"Det finns antigen inga Flatpak som matcherar det aktuella filtret, Lagerhus "
-"kan inte se listan av installerade Flatpak, eller systemet har inga Flatpak "
-"installerade."
+"Lagerhus kan inte se listan över fjärrkontroller eller systemet har inga "
+"fjärrkontroller installerad"
+
+#: data/ui/window.blp:153
+#, fuzzy
+msgid "No Flatpaks Match Filters"
+msgstr "Inga Flatpak Hittades"
+
+#: data/ui/window.blp:154
+msgid "No installed Flatpak matches any of the currently applied filters."
+msgstr ""
 
 #: data/ui/window.blp:146 data/ui/orphans.blp:107
 #, fuzzy
-#| msgid "No Flatpaks Found"
 msgid "No Results Found"
 msgstr "Inga Flatpak Hittades"
 
@@ -449,25 +471,21 @@ msgstr "Öppna Kopieringsmeny"
 
 #: data/ui/window.blp:184
 #, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Snapshot Selected Apps' Data"
 msgstr "Trasha Utvalda Appars Användardata?"
 
 #: data/ui/window.blp:194
 #, fuzzy
-#| msgid "Install From File"
 msgid "Install From File…"
 msgstr "Installera från fil"
 
 #: data/ui/window.blp:199
 #, fuzzy
-#| msgid "Manage Leftover Data"
 msgid "Manage Leftover Data…"
 msgstr "Hantera överblivna data"
 
 #: data/ui/window.blp:208
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Manage Remotes…"
 msgstr "Hantera fjärrkontroller"
 
@@ -555,19 +573,16 @@ msgstr "Kopierade {}"
 
 #: src/properties_window.py:48
 #, fuzzy
-#| msgid "Could not trash user data"
 msgid "Could not show details"
 msgstr "Kunde inte trasha användardata"
 
 #: src/properties_window.py:54
 #, fuzzy
-#| msgid "Trash User Data"
 msgid "User Data"
 msgstr "Trasha användardata"
 
 #: src/properties_window.py:73 src/properties_window.py:118
 #, fuzzy
-#| msgid "Trash User Data"
 msgid "No User Data"
 msgstr "Trasha användardata"
 
@@ -644,7 +659,20 @@ msgstr "Radera {}?"
 msgid "Remove"
 msgstr "Radera"
 
-#: src/remotes_window.py:93
+#: src/remotes_window.py:119
+#, fuzzy
+msgid "Disabled"
+msgstr "Inaktivera uppdateringar"
+
+#: src/remotes_window.py:121 src/orphans_window.py:120
+msgid "{} wide"
+msgstr "{} bred"
+
+#: src/remotes_window.py:125
+msgid "View apps from this remote"
+msgstr ""
+
+#: src/remotes_window.py:128
 msgid "Copy remote name"
 msgstr "Kopiera fjärrkontrollnamn"
 
@@ -694,21 +722,10 @@ msgstr "Den öppenkällkod, betala-vad-du-vill appbutik från elementary"
 msgid "Central repository of Flatpak applications"
 msgstr "Standardfjärrkontrol för Flatpak"
 
-#: src/remotes_window.py:327
-msgid "Beta builds of Flatpak applications"
-msgstr "Beta-versioner av Flatpak appar"
-
-#: src/remotes_window.py:328
-msgid "Flatpaks packaged by Fedora Linux"
-msgstr "Flatpak från Fedora Linux"
-
-#: src/remotes_window.py:329
-msgid "The latest beta GNOME Apps and Runtimes"
-msgstr "De senaste GNOME beta-appar och -exekveringsmiljö"
-
-#: src/remotes_window.py:330
-msgid "Beta KDE Apps and Runtimes"
-msgstr "KDE beta-appar och -exekveringsmiljö"
+#: data/ui/remotes.blp:22
+#, fuzzy
+msgid "Installed Remotes"
+msgstr "Installerad storlek"
 
 #: src/remotes_window.py:331
 msgid "Central repository of the WebKit Developer and Runtime SDK"
@@ -727,18 +744,16 @@ msgstr "Inga fjärrkontroller"
 msgid ""
 "Warehouse cannot see the list of remotes or the system has no remotes added"
 msgstr ""
-"Lagerhus kan inte se listan över fjärrkontroller eller systemet har inga "
-"fjärrkontroller installerad"
 
-#: src/popular_remotes_window.py:31
-msgid "Flatpak Repos"
-msgstr "Flatpak Fjärrkontroller"
+#: data/ui/remotes.blp:44
+#, fuzzy
+msgid "Add a Popular Remote"
+msgstr "Lägg till Flatpak fjärrkontroll"
 
-#: data/ui/popular_remotes.blp:19
-msgid "Choose from a list of popular remotes or add a new one."
-msgstr ""
-"Välja från en lista över de mest popuära fjärrkontrollerna eller lägg till "
-"en ny fjärrkontroll."
+#: data/ui/remotes.blp:48
+#, fuzzy
+msgid "Add Other Remotes"
+msgstr "Lägg till fjärrkontroll"
 
 #: data/ui/popular_remotes.blp:45
 msgid "Add a Repo File"
@@ -748,7 +763,12 @@ msgstr "Lägg till en fjärrkontrollfil"
 msgid "Add a Custom Remote"
 msgstr "Lägg till en anpassat fjärrkontroll"
 
-#: src/orphans_window.py:73
+#: data/ui/remotes.blp:78
+#, fuzzy
+msgid "Adding Remote…"
+msgstr "Lägg till fjärrkontroll"
+
+#: src/orphans_window.py:75
 msgid "Could not install some apps"
 msgstr "Kunde inte installera vissa appar"
 
@@ -854,6 +874,102 @@ msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Install From The Web…"
+#~ msgstr "Installera från fil"
+
+#~ msgid "Add Remote"
+#~ msgstr "Lägg till fjärrkontroll"
+
+#~ msgid "No Remotes"
+#~ msgstr "Inga fjärrkontroller"
+
+#~ msgid ""
+#~ "Warehouse cannot see the list of remotes or the system has no remotes "
+#~ "added"
+#~ msgstr ""
+#~ "Lagerhus kan inte se listan över fjärrkontroller eller systemet har inga "
+#~ "fjärrkontroller installerad"
+
+#~ msgid "Choose from a list of popular remotes or add a new one."
+#~ msgstr ""
+#~ "Välja från en lista över de mest popuära fjärrkontrollerna eller lägg "
+#~ "till en ny fjärrkontroll."
+
+#~ msgid ""
+#~ "This will mask {} ensuring it will never recieve any feature or security "
+#~ "updates."
+#~ msgstr ""
+#~ "Detta kommer att maska {} och säkerställar att det kommer att aldrig få "
+#~ "funktions- eller säkerhetsuppdateringar."
+
+#~ msgid "App EOL"
+#~ msgstr "Uttjänt"
+
+#~ msgid "Runtime EOL"
+#~ msgstr "Exekveringsmiljö uttjänt"
+
+#~ msgid "Updates Disabled"
+#~ msgstr "Uppdateringar inaktiverad"
+
+#~ msgid "View Properties"
+#~ msgstr "Visa egenskaper"
+
+#~ msgid "Copied name"
+#~ msgstr "Koperiade namn"
+
+#~ msgid "Copy Name"
+#~ msgstr "Kopiera namn"
+
+#~ msgid "Copied ID"
+#~ msgstr "Kopierade ID"
+
+#~ msgid "Copy ID"
+#~ msgstr "Kopiera ID"
+
+#~ msgid "Copied ref"
+#~ msgstr "Kopierade ref"
+
+#~ msgid "Copy Ref"
+#~ msgstr "Kopiera Ref"
+
+#~ msgid "Copied launch command"
+#~ msgstr "Kopierade körningskommando"
+
+#~ msgid "Copy Launch Command"
+#~ msgstr "Kopiera körningskommando"
+
+#~ msgid "Opened {}"
+#~ msgstr "Öppnade {}"
+
+#~ msgid "Open"
+#~ msgstr "Öppna"
+
+#~ msgid "Enable Updates"
+#~ msgstr "Aktivera uppdateringar"
+
+#~ msgid "Trash User Data"
+#~ msgstr "Trasha användardata"
+
+#, fuzzy
+#~ msgid "Manage Snapshots"
+#~ msgstr "Hantera fjärrkontroller"
+
+#~ msgid "Could disable updates for {}"
+#~ msgstr "Kunde inaktivera uppdateringar för {}"
+
+#~ msgid "No user data for {}"
+#~ msgstr "Ingen anvandärdata för {}"
+
+#~ msgid ""
+#~ "There are either no Flatpaks that match the current filter, Warehouse "
+#~ "cannot see the list of installed Flatpaks, or the system has no Flatpaks "
+#~ "installed."
+#~ msgstr ""
+#~ "Det finns antigen inga Flatpak som matcherar det aktuella filtret, "
+#~ "Lagerhus kan inte se listan av installerade Flatpak, eller systemet har "
+#~ "inga Flatpak installerade."
 
 #~ msgid "Show Apps Using this Runtime"
 #~ msgstr "Visa appar som använder detta exekveringsmiljö"
