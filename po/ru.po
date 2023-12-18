@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-17 20:33-0500\n"
 "PO-Revision-Date: 2023-12-20 03:14+0000\n"
-"Last-Translator: \"Sergej A.\" <asvmail.as@gmail.com>\n"
+"Last-Translator: Сергей Ворон <voron.s.a@gmail.com>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ru/>\n"
 "Language: ru\n"
@@ -370,7 +370,7 @@ msgstr "Переключение режима выбора"
 
 #: data/ui/window.blp:59
 msgid "Loading Flatpaks…"
-msgstr ""
+msgstr "Загрузка пакетов Flatpak…"
 
 #: data/ui/window.blp:60 data/ui/remotes.blp:88
 msgid "This should only take a moment."
@@ -394,20 +394,17 @@ msgstr "Создание снимков…"
 msgid "No Flatpaks Found"
 msgstr "Пакеты Flatpak не найдены"
 
-#: data/ui/window.blp:170
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed."
+#: data/ui/window.blp:175
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
-"Flatpaks installed"
+"Flatpaks installed."
 msgstr ""
 "Warehouse не видит список установленных пакетов Flatpak, или в системе не "
 "установлены пакеты Flatpak."
 
-#: data/ui/window.blp:175
+#: data/ui/window.blp:180
 msgid "No Flatpaks Match Filters"
+msgstr "Нет фильтров совпадений Flatpak"
 msgstr "Нет фильтров совпадений Flatpak"
 
 #: data/ui/window.blp:176
@@ -829,33 +826,17 @@ msgstr "Удалить {}?"
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/remotes_window.py:121
-msgid "Could not enable {}"
-msgstr "Не удалось включить {}"
-
-#: src/remotes_window.py:149
-msgid "Could not disable {}"
-msgstr "Не удалось отключить {}"
-
-#: src/remotes_window.py:172
-msgid "Disable {}?"
-msgstr "Отключить {}?"
+#: src/remotes_window.py:119
+msgid "Disabled"
+msgstr "Отключено"
 
 #: src/remotes_window.py:175 src/remotes_window.py:267
 msgid "Disable"
 msgstr "Отключить"
 
-#: src/remotes_window.py:186
-msgid "Could not view apps"
-msgstr "Не удалось просмотреть приложения"
-
-#: src/remotes_window.py:244
-msgid "Set Filter"
-msgstr "Установить фильтр"
-
-#: src/remotes_window.py:258
-msgid "Enable"
-msgstr "Включить"
+#: src/remotes_window.py:125
+msgid "View apps from this remote"
+msgstr "Просмотр приложений с этого репозитория"
 
 #: src/remotes_window.py:292
 msgid "Copy remote name"
@@ -872,8 +853,8 @@ msgstr ""
 "elementary"
 
 #: src/remotes_window.py:151
-#, fuzzy
 msgid "Central repository of Flatpak applications"
+msgstr "Центральный репозиторий приложений Flatpak"
 msgstr "Центральный репозиторий приложений Flatpak"
 
 #: src/remotes_window.py:355
@@ -889,14 +870,13 @@ msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "Последняя бета-версия приложений и сред выполнения GNOME"
 
 #: src/remotes_window.py:155
-#, fuzzy
 msgid "Beta KDE Apps and Runtimes"
+msgstr "Бета-приложения KDE и среды выполнения"
 msgstr "Бета-приложения KDE и среды выполнения"
 
 #: src/remotes_window.py:379
 msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr ""
-"Центральный репозиторий WebKit для разработчиков и SDK среды выполнения"
+msgstr "Центральный репозиторий WebKit для разработчиков и SDK среды выполнения"
 
 #: src/remotes_window.py:415 src/remotes_window.py:578
 msgid "Could not add {}"
@@ -942,29 +922,25 @@ msgstr "Добавить {}?"
 msgid "Flatpak Repos"
 msgstr "Репозитории Flatpak"
 
-#: src/snapshots_window.py:54
-msgid "There is no User Data to Snapshot"
-msgstr "Нет пользовательских данных для снимка"
+#: data/ui/remotes.blp:23
+msgid "Installed Remotes"
+msgstr "Установленные репозитории"
 
-#: src/snapshots_window.py:93
-msgid "Version {}"
-msgstr "Версия {}"
+#: data/ui/remotes.blp:27
+msgid "Show disabled"
+msgstr "Показать отключенные"
 
-#: src/snapshots_window.py:101 src/snapshots_window.py:246
-msgid "Apply Snapshot"
-msgstr "Применить снимок"
+#: data/ui/remotes.blp:41
+msgid "No remotes on the system, add some from below"
+msgstr "В системе нет репозиториев, добавьте несколько снизу"
 
-#: src/snapshots_window.py:107 src/snapshots_window.py:137
-msgid "Trash Snapshot"
-msgstr "Удалить снимок"
+#: data/ui/remotes.blp:45
+msgid "Add a Popular Remote"
+msgstr "Добавить популярные репозитории"
 
-#: src/snapshots_window.py:127
-msgid "Could not trash snapshot"
-msgstr "Не удалось удалить снимок"
-
-#: src/snapshots_window.py:132
-msgid "Trash Snapshot?"
-msgstr "Удалить снимок?"
+#: data/ui/remotes.blp:49
+msgid "Add Other Remotes"
+msgstr "Добавить другие репозитории"
 
 #: src/snapshots_window.py:133
 msgid "This snapshot and its contents will be sent to the trash."
