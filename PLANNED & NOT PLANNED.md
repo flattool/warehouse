@@ -2,9 +2,25 @@
 
 # Features Currently Being Worked On
 
-### Features that are actively in development and will most likely ship in a coming update
+### Features releasing in this upcoming update
 
 - Snapshots (backing up app data)
+    - Snapshots window and batch applying snapshots
+- Properties window upgrade
+    - Show app details in store
+- Manage Remotes window upgrade
+    - View disabled remotes
+    - Enable and disable remotes
+    - Set a filter for a remote
+    - Combined Popular Remotes window into this window
+- Reduce app launch time
+- Remove warning labels from the main list, placing them in a popover button now
+- View troubleshooting information
+- Donation link
+- 
+
+### Features that will release in future updates
+
 - Installing flatpaks from a search
 
 # Features Being Considered
