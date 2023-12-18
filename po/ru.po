@@ -237,13 +237,11 @@ msgstr "Ваши файлы и данные этих приложений буд
 
 #: src/window.py:486
 #, fuzzy
-#| msgid "Could not install some apps"
 msgid "Could not snapshot some apps"
 msgstr "Не удалось установить некоторые приложения"
 
 #: src/window.py:506
 #, fuzzy
-#| msgid "Manage Snapshots"
 msgid "Create Snapshots?"
 msgstr "Управление снимками"
 
@@ -255,7 +253,6 @@ msgstr ""
 
 #: src/window.py:509
 #, fuzzy
-#| msgid "Manage Snapshots"
 msgid "Create Snapshots"
 msgstr "Управление снимками"
 
@@ -351,7 +348,6 @@ msgstr "Удаление…"
 
 #: data/ui/window.blp:162
 #, fuzzy
-#| msgid "Manage Snapshots"
 msgid "Creating Snapshots…"
 msgstr "Управление снимками"
 
@@ -629,7 +625,6 @@ msgstr ""
 
 #: src/remotes_window.py:151
 #, fuzzy
-#| msgid "Beta builds of Flatpak applications"
 msgid "Central repository of Flatpak applications"
 msgstr "Бета-версии приложений Flatpak"
 
@@ -647,7 +642,6 @@ msgstr "Последняя бета-версия приложений и сре�
 
 #: src/remotes_window.py:155
 #, fuzzy
-#| msgid "The latest beta GNOME Apps and Runtimes"
 msgid "Beta KDE Apps and Runtimes"
 msgstr "Последняя бета-версия приложений и сред выполнения GNOME"
 
@@ -926,3 +920,6 @@ msgstr ""
 
 #~ msgid "Try a different search term"
 #~ msgstr "Попробуйте другой поисковый запрос"
+
+#~ msgid "Manage Snapshots"
+#~ msgstr "Управление снимками"

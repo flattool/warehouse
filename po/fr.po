@@ -195,7 +195,6 @@ msgstr "Mettre les données à la corbeille"
 
 #: src/window.py:352 src/downgrade_window.py:106
 #, fuzzy
-#| msgid "Could disable updates for {}"
 msgid "Could not disable updates for {}"
 msgstr "Mises à jour désactivables pour {}"
 
@@ -251,13 +250,11 @@ msgstr ""
 
 #: src/window.py:486
 #, fuzzy
-#| msgid "Could not install some apps"
 msgid "Could not snapshot some apps"
 msgstr "Certaines applications n’ont pu être installées"
 
 #: src/window.py:506
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Create Snapshots?"
 msgstr "Gérer les dépôts de logiciels"
 
@@ -269,7 +266,6 @@ msgstr ""
 
 #: src/window.py:509
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Create Snapshots"
 msgstr "Gérer les dépôts de logiciels"
 
@@ -357,19 +353,16 @@ msgstr "Installation"
 #: data/ui/window.blp:113 data/ui/window.blp:140 data/ui/window.blp:167
 #: data/ui/orphans.blp:90
 #, fuzzy
-#| msgid "Installing… This could take a while"
 msgid "This could take a while."
 msgstr "Installations en cours… Cela peut prendre du temps"
 
 #: data/ui/window.blp:135
 #, fuzzy
-#| msgid "Uninstall"
 msgid "Uninstalling…"
 msgstr "Désinstaller"
 
 #: data/ui/window.blp:162
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Creating Snapshots…"
 msgstr "Gérer les dépôts de logiciels"
 
@@ -379,9 +372,6 @@ msgstr "Aucun Flatpak trouvé"
 
 #: data/ui/window.blp:175
 #, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of remotes or the system has no remotes "
-#| "added"
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed."
@@ -425,7 +415,6 @@ msgstr "Ouvrir le menu de copie"
 
 #: data/ui/window.blp:224
 #, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Snapshot Selected Apps' Data"
 msgstr ""
 "Mettre les données utilisateur des applications sélectionnées à la "
@@ -433,19 +422,16 @@ msgstr ""
 
 #: data/ui/window.blp:234
 #, fuzzy
-#| msgid "Install From File"
 msgid "Install From File…"
 msgstr "Installer à partir d’un fichier"
 
 #: data/ui/window.blp:239
 #, fuzzy
-#| msgid "Manage Leftover Data"
 msgid "Manage Leftover Data…"
 msgstr "Gérer les données résiduelles"
 
 #: data/ui/window.blp:248
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Manage Remotes…"
 msgstr "Gérer les dépôts de logiciels"
 
@@ -527,19 +513,16 @@ msgstr "{} copié"
 
 #: src/properties_window.py:48
 #, fuzzy
-#| msgid "Could not install app"
 msgid "Could not show details"
 msgstr "L'application n'a pas pu être installée"
 
 #: src/properties_window.py:54
 #, fuzzy
-#| msgid "Trash User Data"
 msgid "User Data"
 msgstr "Mettre les données utilisateur à la corbeille"
 
 #: src/properties_window.py:73 src/properties_window.py:119
 #, fuzzy
-#| msgid "Trash User Data"
 msgid "No User Data"
 msgstr "Mettre les données utilisateur à la corbeille"
 
@@ -679,7 +662,6 @@ msgstr "Les dernières applis et environnements d’exécution bêta de GNOME"
 
 #: src/remotes_window.py:155
 #, fuzzy
-#| msgid "The latest beta GNOME Apps and Runtimes"
 msgid "Beta KDE Apps and Runtimes"
 msgstr "Les dernières applis et environnements d’exécution bêta de GNOME"
 
@@ -930,7 +912,6 @@ msgstr ""
 #~ "installé sur ce système."
 
 #, fuzzy
-#~| msgid "Install From File"
 #~ msgid "Install From The Web…"
 #~ msgstr "Installer à partir d’un fichier"
 
@@ -958,7 +939,6 @@ msgstr ""
 #~ msgstr "Copier {}"
 
 #, fuzzy
-#~| msgid "Send Selected Apps' Data to the Trash"
 #~ msgid "Send {}'s User Data to the trash?"
 #~ msgstr "Envoyer les données des applications sélectionnées à la corbeille"
 
@@ -1006,3 +986,15 @@ msgstr ""
 #~ msgctxt "shortcut window"
 #~ msgid "Install From File"
 #~ msgstr "Installer à partir d'un fichier"
+
+#, fuzzy
+#~| msgid "Manage Remotes"
+#~ msgid "Manage Snapshots"
+#~ msgstr "Gérer les dépôts de logiciels"
+
+#~ msgid ""
+#~ "Warehouse cannot see the list of remotes or the system has no remotes "
+#~ "added"
+#~ msgstr ""
+#~ "Soit Entrepôt ne peut voir la liste des dépôts soit aucun dépôt n’a été "
+#~ "ajouté sur ce système"

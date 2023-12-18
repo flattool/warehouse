@@ -244,13 +244,11 @@ msgstr ""
 
 #: src/window.py:486
 #, fuzzy
-#| msgid "Could not install some apps"
 msgid "Could not snapshot some apps"
 msgstr "Kon sommige applicaties niet installeren"
 
 #: src/window.py:506
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Create Snapshots?"
 msgstr "Bronnen beheren"
 
@@ -262,7 +260,6 @@ msgstr ""
 
 #: src/window.py:509
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Create Snapshots"
 msgstr "Bronnen beheren"
 
@@ -361,7 +358,6 @@ msgstr "Deïnstalleren"
 
 #: data/ui/window.blp:162
 #, fuzzy
-#| msgid "Manage Remotes"
 msgid "Creating Snapshots…"
 msgstr "Bronnen beheren"
 
@@ -659,7 +655,6 @@ msgstr "De laatste bèta-versies van GNOME-applicaties en -runtimes"
 
 #: src/remotes_window.py:155
 #, fuzzy
-#| msgid "The latest beta GNOME Apps and Runtimes"
 msgid "Beta KDE Apps and Runtimes"
 msgstr "De laatste bèta-versies van GNOME-applicaties en -runtimes"
 
@@ -896,7 +891,6 @@ msgstr ""
 #~ msgstr "Gebruikersdata in prullenbak gooien"
 
 #, fuzzy
-#~| msgid "Install From File"
 #~ msgid "Install From The Web…"
 #~ msgstr "Uit bestand installeren"
 
@@ -937,3 +931,8 @@ msgstr ""
 
 #~ msgid "Copy {}"
 #~ msgstr "{} kopiëren"
+
+#, fuzzy
+#~| msgid "Manage Remotes"
+#~ msgid "Manage Snapshots"
+#~ msgstr "Bronnen beheren"
