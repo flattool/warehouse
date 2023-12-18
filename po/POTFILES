@@ -9,8 +9,6 @@ src/gtk/help-overlay.blp
 src/properties_window.py
 src/remotes_window.py
 data/ui/remotes.blp
-src/popular_remotes_window.py
-data/ui/popular_remotes.blp
 src/orphans_window.py
 data/ui/orphans.blp
 src/filter_window.py
