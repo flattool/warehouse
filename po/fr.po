@@ -214,7 +214,7 @@ msgstr "Ajouter un dépôt personnalisé"
 #: data/ui/properties.blp:45
 #, fuzzy
 msgid "Could not disable updates for {}"
-msgstr "Mises à jour désactivables pour {}"
+msgstr "Impossible de désactiver les mises à jour pour {}"
 
 #: src/window.py:367
 msgid "Disable Updates for {}?"
@@ -264,12 +264,12 @@ msgstr "Dépôts logiciels installés"
 #: data/ui/remotes.blp:27
 #, fuzzy
 msgid "Could not snapshot some apps"
-msgstr "Certaines applications n’ont pu être installées"
+msgstr "Impossible de créer des instantanés de certaines applications"
 
 #: data/ui/remotes.blp:41
 #, fuzzy
 msgid "Create Snapshots?"
-msgstr "Gérer les dépôts de logiciels"
+msgstr "Créer des instantanés ?"
 
 #: data/ui/remotes.blp:45
 msgid "Add a Popular Remote"
@@ -282,7 +282,7 @@ msgstr "Ajouter d’autres dépôts"
 #: data/ui/remotes.blp:79
 #, fuzzy
 msgid "Create Snapshots"
-msgstr "Gérer les dépôts de logiciels"
+msgstr "Créer des instantanés"
 
 #: src/window.py:562
 msgid "Copied selected app names"
@@ -390,17 +390,16 @@ msgstr "Chargement des Flatpaks…"
 #: data/ui/window.blp:129
 #, fuzzy
 msgid "This could take a while."
-msgstr "Installations en cours… Cela peut prendre du temps"
+msgstr "Cela peut prendre du temps."
 
 #: data/ui/window.blp:157
 #, fuzzy
 msgid "Uninstalling…"
-msgstr "Désinstaller"
+msgstr "Désinstallation…"
 
 #: data/ui/window.blp:162
-#, fuzzy
 msgid "Creating Snapshots…"
-msgstr "Gérer les dépôts de logiciels"
+msgstr "Création d’instantanés…"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
@@ -439,24 +438,21 @@ msgid "Open Copy Menu"
 msgstr "Ouvrir le menu de copie"
 
 #: data/ui/window.blp:224
-#, fuzzy
 msgid "Snapshot Selected Apps' Data"
 msgstr "Créer un instantané des données des applications sélectionnées"
 
 #: data/ui/window.blp:234
-#, fuzzy
 msgid "Install From File…"
 msgstr "Installer à partir d’un fichier…"
 
 #: data/ui/window.blp:255
 #, fuzzy
 msgid "Manage Leftover Data…"
-msgstr "Gérer les données résiduelles"
+msgstr "Gérer les données résiduelles…"
 
 #: data/ui/window.blp:248
-#, fuzzy
 msgid "Manage Remotes…"
-msgstr "Gérer les dépôts de logiciels"
+msgstr "Gérer les dépôts de logiciels…"
 
 #: data/ui/window.blp:265
 msgid "_Keyboard Shortcuts"
@@ -727,17 +723,14 @@ msgid "Copied {}"
 msgstr "{} copié"
 
 #: src/properties_window.py:48
-#, fuzzy
 msgid "Could not show details"
 msgstr "Impossible d’afficher les détails"
 
 #: src/properties_window.py:54
-#, fuzzy
 msgid "User Data"
 msgstr "Données utilisateur"
 
 #: src/properties_window.py:73 src/properties_window.py:119
-#, fuzzy
 msgid "No User Data"
 msgstr "Aucune donnée utilisateur"
 
@@ -903,7 +896,6 @@ msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "Les dernières applis et environnements d’exécution bêta de GNOME"
 
 #: src/remotes_window.py:155
-#, fuzzy
 msgid "Beta KDE Apps and Runtimes"
 msgstr "Applications et environnements d’exécution bêta de KDE"
 
