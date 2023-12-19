@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-17 20:33-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-12-20 03:14+0000\n"
+"Last-Translator: Matheus Bastos <matheusmcy1@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://weblate.fyralabs.com/projects/"
+"flattool/warehouse/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.0\n"
 
 #: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
@@ -78,24 +81,24 @@ msgstr ""
 
 #: src/main.py:144
 msgid "Contributors"
-msgstr ""
+msgstr "Contribuidores"
 
 #: src/window.py:115 src/window.py:112
 msgid "Uninstalled successfully"
-msgstr ""
+msgstr "Desinstalado com sucesso"
 
 #: src/window.py:117 src/window.py:114
 msgid "Could not uninstall some apps"
-msgstr ""
+msgstr "Não é possível desinstalar alguns aplicativos"
 
 #. Create Widgets
 #: src/window.py:159 src/window.py:156
 msgid "Uninstall Selected Apps?"
-msgstr ""
+msgstr "Desinstalar os apps selecionados?"
 
 #: src/window.py:159 src/window.py:156
 msgid "It will not be possible to use these apps after removal."
-msgstr ""
+msgstr "Não será possível usar esses aplicativos depois da remoção."
 
 #: src/window.py:175 src/window.py:242 src/window.py:172 src/window.py:239
 msgid "App Settings & Data"
@@ -127,24 +130,24 @@ msgstr ""
 #: src/window.py:336 src/window.py:366 src/window.py:445 src/window.py:616
 #: src/remotes_window.py:62 src/remotes_window.py:135 src/remotes_window.py:279
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: src/window.py:206 src/window.py:264 src/window.py:203 src/window.py:261
 msgid "Uninstall"
-msgstr ""
+msgstr "Desinstalar"
 
 #: src/window.py:212 src/window.py:209
 msgid "Cannot uninstall while already uninstalling"
-msgstr ""
+msgstr "Não é possível desinstalar enquanto já estiver sendo desinstalado"
 
 #. Create Widgets
 #: src/window.py:237 src/window.py:234
 msgid "Uninstall {}?"
-msgstr ""
+msgstr "Desinstalar {}?"
 
 #: src/window.py:237 src/window.py:234
 msgid "It will not be possible to use {} after removal."
-msgstr ""
+msgstr "Não será possível usar {} depois da remoção."
 
 #: src/window.py:244 src/window.py:241
 msgid "Allow restoring this app's settings and content"
@@ -190,7 +193,7 @@ msgstr ""
 
 #: src/window.py:367 src/window.py:364
 msgid "Disable Updates for {}?"
-msgstr ""
+msgstr "Desabilitar Updates para {}?"
 
 #: src/window.py:368 src/window.py:365
 msgid ""
@@ -208,7 +211,7 @@ msgstr ""
 
 #: src/window.py:386 src/window.py:383
 msgid "Copy"
-msgstr ""
+msgstr "Copiar"
 
 #: src/window.py:391 src/window.py:388
 msgid "OK"
@@ -229,24 +232,30 @@ msgstr ""
 #: src/window.py:449 src/window.py:443
 msgid "Your files and data for these apps will be sent to the trash."
 msgstr ""
+"Seus arquivos e dados para estes aplicativos serão enviados para a lixeira."
 
 #: src/window.py:486
 msgid "Could not snapshot some apps"
 msgstr ""
 
 #: src/window.py:506
+#, fuzzy
 msgid "Create Snapshots?"
-msgstr ""
+msgstr "Criar Snapshots?"
 
 #: src/window.py:506
+#, fuzzy
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
 msgstr ""
+"Snapshots  são backups dos dados do usuário do aplicativo. Eles podem ser "
+"reaplicados a qualquer momento. Isso vai demorar um pouco."
 
 #: src/window.py:509
+#, fuzzy
 msgid "Create Snapshots"
-msgstr ""
+msgstr "Criar Snapshots"
 
 #: src/window.py:562 src/window.py:502
 msgid "Copied selected app names"
@@ -270,26 +279,26 @@ msgstr ""
 
 #: src/window.py:681 src/window.py:614
 msgid "Install {}?"
-msgstr ""
+msgstr "Instalar {}?"
 
 #: src/window.py:684 src/orphans_window.py:106 data/ui/orphans.blp:129
 #: src/window.py:617
 msgid "Install"
-msgstr ""
+msgstr "Instalar"
 
 #: src/window.py:691 src/remotes_window.py:283 src/remotes_window.py:365
 #: src/window.py:624 src/remotes_window.py:206 src/remotes_window.py:290
 msgid "User"
-msgstr ""
+msgstr "Usuário"
 
 #: src/window.py:691 src/window.py:624
 msgid "The app will be available to only you"
-msgstr ""
+msgstr "O aplicativo estará disponível apenas para você"
 
 #: src/window.py:692 src/remotes_window.py:289 src/remotes_window.py:366
 #: src/window.py:625 src/remotes_window.py:212 src/remotes_window.py:291
 msgid "System"
-msgstr ""
+msgstr "Sistema"
 
 #: src/window.py:692 src/window.py:625
 msgid "The app will be available to every user on the system"
