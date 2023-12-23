@@ -33,6 +33,7 @@ from .const import Config
 
 from .app_row_widget import AppRow
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):
     __gtype_name__ = "WarehouseWindow"
@@ -86,7 +87,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
     total_selected = 0
 
     def filter_func(self, row):
-        if (self.search_entry.get_text().lower() in row.get_title().lower()) or (self.search_entry.get_text().lower() in row.get_subtitle().lower()):
+        if (self.search_entry.get_text().lower() in row.get_title().lower()) or (
+            self.search_entry.get_text().lower() in row.get_subtitle().lower()
+        ):
             self.is_result = True
             return True
 
@@ -114,10 +117,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.refresh_list_of_flatpaks(self, False)
             self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled successfully")))
         else:
-            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not uninstall some apps")))
+            self.toast_overlay.add_toast(
+                Adw.Toast.new(_("Could not uninstall some apps"))
+            )
 
     def uninstallFlatpakThread(self, ref_arr, id_arr, type_arr, should_trash):
-        self.my_utils.uninstallFlatpak(ref_arr, type_arr, should_trash, self.main_progress_bar)
+        self.my_utils.uninstallFlatpak(
+            ref_arr, type_arr, should_trash, self.main_progress_bar
+        )
 
     def uninstallFlatpak(self, should_trash):
         ref_arr = []
@@ -125,7 +132,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         type_arr = []
         self.currently_uninstalling = True
         i = 0
-        while(self.flatpaks_list_box.get_row_at_index(i) != None):
+        while self.flatpaks_list_box.get_row_at_index(i) != None:
             current = self.flatpaks_list_box.get_row_at_index(i)
             if current.tickbox.get_active() == True:
                 ref_arr.append(current.app_ref)
@@ -134,14 +141,18 @@ class WarehouseWindow(Adw.ApplicationWindow):
             i += 1
         self.set_title(self.main_window_title)
         task = Gio.Task.new(None, None, self.uninstallFlatpakCallback)
-        task.run_in_thread(lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, type_arr=type_arr, should_trash=should_trash: self.uninstallFlatpakThread(ref_arr, id_arr, type_arr, should_trash))
+        task.run_in_thread(
+            lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, type_arr=type_arr, should_trash=should_trash: self.uninstallFlatpakThread(
+                ref_arr, id_arr, type_arr, should_trash
+            )
+        )
 
     def batchUninstallButtonHandler(self, _widget):
         has_user_data = False
 
         def batchUninstallResponse(_idk, response_id, _widget):
             if response_id == "cancel":
-                return 1                    
+                return 1
 
             try:
                 should_trash = trash_check.get_active()
@@ -150,32 +161,48 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             self.uninstallButtonsEnable(False)
 
-            self.no_close = self.connect("close-request", lambda event: True)  # Make window unable to close
+            self.no_close = self.connect(
+                "close-request", lambda event: True
+            )  # Make window unable to close
             self.main_stack.set_visible_child(self.uninstalling)
             self.search_button.set_sensitive(False)
             self.uninstallFlatpak(should_trash)
 
         # Create Widgets
-        dialog = Adw.MessageDialog.new(self, _("Uninstall Selected Apps?"), _("It will not be possible to use these apps after removal."))
+        dialog = Adw.MessageDialog.new(
+            self,
+            _("Uninstall Selected Apps?"),
+            _("It will not be possible to use these apps after removal."),
+        )
 
         # Check to see if at least one app in the list has user data
         i = 0
-        while(True):
+        while True:
             current = self.flatpaks_list_box.get_row_at_index(i)
             i += 1
-            if(current == None):
+            if current == None:
                 break
-            if current.tickbox.get_active() and os.path.exists(f"{self.user_data_path}{current.app_id}"):
+            if current.tickbox.get_active() and os.path.exists(
+                f"{self.user_data_path}{current.app_id}"
+            ):
                 has_user_data = True
                 break
 
         if has_user_data:
             # Create Widgets
             options_box = Gtk.Box(orientation="vertical")
-            header = Gtk.Label(label=_("App Settings & Data"), halign="start", margin_top=10)
+            header = Gtk.Label(
+                label=_("App Settings & Data"), halign="start", margin_top=10
+            )
             options_list = Gtk.ListBox(selection_mode="none", margin_top=15)
-            keep_data = Adw.ActionRow(title=_("Keep"), subtitle=_("Allow restoring these apps' settings and content"))
-            trash_data = Adw.ActionRow(title=_("Trash"), subtitle=_("Send these apps' settings and content to the trash"))
+            keep_data = Adw.ActionRow(
+                title=_("Keep"),
+                subtitle=_("Allow restoring these apps' settings and content"),
+            )
+            trash_data = Adw.ActionRow(
+                title=_("Trash"),
+                subtitle=_("Send these apps' settings and content to the trash"),
+            )
             keep_check = Gtk.CheckButton()
             trash_check = Gtk.CheckButton()
 
@@ -209,7 +236,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def uninstallButtonHandler(self, row, name, ref, id):
         if self.currently_uninstalling:
-            self.toast_overlay.add_toast(Adw.Toast.new(_("Cannot uninstall while already uninstalling")))
+            self.toast_overlay.add_toast(
+                Adw.Toast.new(_("Cannot uninstall while already uninstalling"))
+            )
             return
 
         def uninstallResponse(_idk, response_id, _widget):
@@ -226,7 +255,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
             self.uninstallButtonsEnable(False)
 
-            self.no_close = self.connect("close-request", lambda event: True)  # Make window unable to close
+            self.no_close = self.connect(
+                "close-request", lambda event: True
+            )  # Make window unable to close
             self.main_stack.set_visible_child(self.uninstalling)
             self.search_button.set_sensitive(False)
             self.uninstallFlatpak(should_trash)
@@ -234,15 +265,27 @@ class WarehouseWindow(Adw.ApplicationWindow):
         row.tickbox.set_active(True)
 
         # Create Widgets
-        dialog = Adw.MessageDialog.new(self, _("Uninstall {}?").format(name), _("It will not be possible to use {} after removal.").format(name))
+        dialog = Adw.MessageDialog.new(
+            self,
+            _("Uninstall {}?").format(name),
+            _("It will not be possible to use {} after removal.").format(name),
+        )
 
         if os.path.exists(f"{self.user_data_path}{id}"):
             # Create Widgets for Trash
             options_box = Gtk.Box(orientation="vertical")
-            header = Gtk.Label(label=_("App Settings & Data"), halign="start", margin_top=10)
+            header = Gtk.Label(
+                label=_("App Settings & Data"), halign="start", margin_top=10
+            )
             options_list = Gtk.ListBox(selection_mode="none", margin_top=15)
-            keep_data = Adw.ActionRow(title=_("Keep"), subtitle=_("Allow restoring this app's settings and content"))
-            trash_data = Adw.ActionRow(title=_("Trash"), subtitle=_("Send this app's settings and content to the trash"))
+            keep_data = Adw.ActionRow(
+                title=_("Keep"),
+                subtitle=_("Allow restoring this app's settings and content"),
+            )
+            trash_data = Adw.ActionRow(
+                title=_("Trash"),
+                subtitle=_("Send this app's settings and content to the trash"),
+            )
             keep_check = Gtk.CheckButton(active=True)
             trash_check = Gtk.CheckButton()
 
@@ -283,7 +326,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def create_row(self, index):
         row = AppRow(self, self.host_flatpaks, index)
         self.flatpaks_list_box.insert(row, index)
-    
+
     def generate_list_of_flatpaks(self):
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
         self.dependent_runtimes = self.my_utils.getDependentRuntimes()
@@ -328,14 +371,20 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 return
             result = self.my_utils.trashFolder(f"{self.user_data_path}{id}")
             if result != 0:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not trash user data")))
+                self.toast_overlay.add_toast(
+                    Adw.Toast.new(_("Could not trash user data"))
+                )
                 return
             self.lookup_action(f"open-data{index}").set_enabled(False)
             self.lookup_action(f"trash{index}").set_enabled(False)
             self.toast_overlay.add_toast(Adw.Toast.new(_("Trashed user data")))
 
-        dialog = Adw.MessageDialog.new(self,_("Send {}'s User Data to the Trash?").format(name))
-        dialog.set_body(_("Your files and data for this app will be sent to the trash."))
+        dialog = Adw.MessageDialog.new(
+            self, _("Send {}'s User Data to the Trash?").format(name)
+        )
+        dialog.set_body(
+            _("Your files and data for this app will be sent to the trash.")
+        )
         dialog.add_response("cancel", _("Cancel"))
         dialog.set_close_response("cancel")
         dialog.add_response("continue", _("Trash Data"))
@@ -344,12 +393,18 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.present()
 
     def maskFlatpak(self, row):
-        is_masked = row.mask_label.get_visible() # Check the visibility of the mask label to see if the flatpak is masked
+        is_masked = (
+            row.mask_label.get_visible()
+        )  # Check the visibility of the mask label to see if the flatpak is masked
         result = []
 
         def callback():
             if result[0] == 1:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not disable updates for {}").format(row.app_name)))
+                self.toast_overlay.add_toast(
+                    Adw.Toast.new(
+                        _("Could not disable updates for {}").format(row.app_name)
+                    )
+                )
                 return
             row.set_masked(not is_masked)
             self.lookup_action(f"mask{row.index}").set_enabled(is_masked)
@@ -359,13 +414,23 @@ class WarehouseWindow(Adw.ApplicationWindow):
             if response == "cancel":
                 return
             task = Gio.Task.new(None, None, lambda *_: callback())
-            task.run_in_thread(lambda *_: result.append(self.my_utils.maskFlatpak(row.app_id, row.install_type, is_masked)))
+            task.run_in_thread(
+                lambda *_: result.append(
+                    self.my_utils.maskFlatpak(row.app_id, row.install_type, is_masked)
+                )
+            )
 
         if is_masked:
             onContinue(self, None)
         else:
-            dialog = Adw.MessageDialog.new(self, _("Disable Updates for {}?").format(row.app_name))
-            dialog.set_body(_("This will mask {} ensuring it will never recieve any feature or security updates.").format(row.app_name))
+            dialog = Adw.MessageDialog.new(
+                self, _("Disable Updates for {}?").format(row.app_name)
+            )
+            dialog.set_body(
+                _(
+                    "This will mask {} ensuring it will never recieve any feature or security updates."
+                ).format(row.app_name)
+            )
             dialog.add_response("cancel", _("Cancel"))
             dialog.set_close_response("cancel")
             dialog.add_response("continue", _("Disable Updates"))
@@ -380,10 +445,12 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def runCallback(self, _a, _b):
         if not self.my_utils.run_app_error:
             return
-        
+
         error = self.my_utils.run_app_error_message
         dialog = Adw.MessageDialog.new(self, _("Could not Run App"), error)
-        copy_button = Gtk.Button(label=_("Copy"), halign=Gtk.Align.CENTER, margin_top=12)
+        copy_button = Gtk.Button(
+            label=_("Copy"), halign=Gtk.Align.CENTER, margin_top=12
+        )
         copy_button.add_css_class("pill")
         copy_button.add_css_class("suggested-action")
         copy_button.connect("clicked", lambda *_: self.clipboard.set(error))
@@ -402,7 +469,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def batch_mode_handler(self, widget):
         batch_mode = widget.get_active()
         i = 0
-        while(self.flatpaks_list_box.get_row_at_index(i) != None):
+        while self.flatpaks_list_box.get_row_at_index(i) != None:
             current = self.flatpaks_list_box.get_row_at_index(i)
             current.set_selectable(batch_mode)
             i += 1
@@ -428,7 +495,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             return
         i = 0
         trashReturnCodes = 0
-        while(True):
+        while True:
             current = self.flatpaks_list_box.get_row_at_index(i)
             i += 1
             if current == None:
@@ -437,16 +504,30 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 continue
             trash = self.my_utils.trashFolder(f"{self.user_data_path}{current.app_id}")
             if trash == 1:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("{} has no data to trash").format(current.app_name)))
+                self.toast_overlay.add_toast(
+                    Adw.Toast.new(_("{} has no data to trash").format(current.app_name))
+                )
                 continue
             if trash == 2:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not trash {}'s data").format(current.app_name)))
+                self.toast_overlay.add_toast(
+                    Adw.Toast.new(
+                        _("Could not trash {}'s data").format(current.app_name)
+                    )
+                )
                 continue
-            self.lookup_action(f"open-data{current.index}").set_enabled(False) # Disable the Open User Data dropdown option when the data was deleted
-            self.lookup_action(f"trash{current.index}").set_enabled(False) # Disable the Trash User Data dropdown option when the data was deleted
+            self.lookup_action(f"open-data{current.index}").set_enabled(
+                False
+            )  # Disable the Open User Data dropdown option when the data was deleted
+            self.lookup_action(f"trash{current.index}").set_enabled(
+                False
+            )  # Disable the Trash User Data dropdown option when the data was deleted
 
     def batchCleanHandler(self, widget):
-        dialog = Adw.MessageDialog.new(self, _("Trash Selected Apps' User Data?"), _("Your files and data for these apps will be sent to the trash."))
+        dialog = Adw.MessageDialog.new(
+            self,
+            _("Trash Selected Apps' User Data?"),
+            _("Your files and data for these apps will be sent to the trash."),
+        )
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Trash Data"))
@@ -458,18 +539,22 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.set_select_all(widget.get_active())
 
     def batchSnapshotHandler(self, widget):
-
         def batchSnapshotResponse(dialog, response, _a):
             if response == "cancel":
                 return
             i = 0
-            snapshots_path = self.host_home + "/.var/app/io.github.flattool.Warehouse/data/Snapshots/"
+            snapshots_path = (
+                self.host_home
+                + "/.var/app/io.github.flattool.Warehouse/data/Snapshots/"
+            )
             snapshot_arr = []
             app_ver_arr = []
             app_data_arr = []
             epoch = int(time.time())
-            self.no_close = self.connect("close-request", lambda event: True)  # Make window unable to close
-            while(self.flatpaks_list_box.get_row_at_index(i) != None):
+            self.no_close = self.connect(
+                "close-request", lambda event: True
+            )  # Make window unable to close
+            while self.flatpaks_list_box.get_row_at_index(i) != None:
                 current = self.flatpaks_list_box.get_row_at_index(i)
                 i += 1
                 if current.tickbox.get_active() == False:
@@ -479,11 +564,21 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 snapshot_arr.append(snapshots_path + current.app_id + "/")
                 app_ver_arr.append(current.app_version)
                 app_data_arr.append(f"{self.user_data_path}{current.app_id}")
-            
+
             def thread():
-                capture = self.my_utils.snapshotApps(epoch, snapshot_arr, app_ver_arr, app_data_arr, self.main_progress_bar)
+                capture = self.my_utils.snapshotApps(
+                    epoch,
+                    snapshot_arr,
+                    app_ver_arr,
+                    app_data_arr,
+                    self.main_progress_bar,
+                )
                 if capture != 0:
-                    GLib.idle_add(lambda *_: self.toast_overlay.add_toast(Adw.Toast.new(_("Could not snapshot some apps"))))
+                    GLib.idle_add(
+                        lambda *_: self.toast_overlay.add_toast(
+                            Adw.Toast.new(_("Could not snapshot some apps"))
+                        )
+                    )
 
             def callback(*args):
                 self.main_stack.set_visible_child(self.main_box)
@@ -503,17 +598,22 @@ class WarehouseWindow(Adw.ApplicationWindow):
             task = Gio.Task.new(None, None, callback)
             task.run_in_thread(lambda *_: thread())
 
-        dialog = Adw.MessageDialog.new(self, _("Create Snapshots?"), _("Snapshots are backups of the app's user data. They can be reapplied at any time. This could take a while."))
+        dialog = Adw.MessageDialog.new(
+            self,
+            _("Create Snapshots?"),
+            _(
+                "Snapshots are backups of the app's user data. They can be reapplied at any time. This could take a while."
+            ),
+        )
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Create Snapshots"))
         dialog.connect("response", batchSnapshotResponse, dialog.choose_finish)
         Gtk.Window.present(dialog)
 
-                
     def set_select_all(self, should_select_all):
         i = 0
-        while(self.flatpaks_list_box.get_row_at_index(i) != None):
+        while self.flatpaks_list_box.get_row_at_index(i) != None:
             current = self.flatpaks_list_box.get_row_at_index(i)
             if current.get_visible() == True:
                 current.tickbox.set_active(should_select_all)
@@ -551,10 +651,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def copyNames(self, widget, _a):
         to_copy = ""
         i = 0
-        while(True):
+        while True:
             current = self.flatpaks_list_box.get_row_at_index(i)
             i += 1
-            if(current == None):
+            if current == None:
                 break
             if current.tickbox.get_active():
                 to_copy += f"{current.app_name}\n"
@@ -564,10 +664,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def copyIDs(self, widget, _a):
         to_copy = ""
         i = 0
-        while(True):
+        while True:
             current = self.flatpaks_list_box.get_row_at_index(i)
             i += 1
-            if(current == None):
+            if current == None:
                 break
             if current.tickbox.get_active():
                 to_copy += f"{current.app_id}\n"
@@ -577,10 +677,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def copyRefs(self, widget, _a):
         to_copy = ""
         i = 0
-        while(True):
+        while True:
             current = self.flatpaks_list_box.get_row_at_index(i)
             i += 1
-            if(current == None):
+            if current == None:
                 break
             if current.tickbox.get_active():
                 to_copy += f"{current.app_ref}\n"
@@ -614,34 +714,34 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.set_select_all(False)
 
         index = 0
-        while(self.flatpaks_list_box.get_row_at_index(index) != None):
+        while self.flatpaks_list_box.get_row_at_index(index) != None:
             current = self.flatpaks_list_box.get_row_at_index(index)
             visible = True
 
             if show_apps == False and current.is_runtime == False:
                 visible = False
-            
+
             if show_runtimes == False and current.is_runtime == True:
                 visible = False
 
-            if (not 'all' in filter_install_type):
+            if not "all" in filter_install_type:
                 if not current.install_type in filter_install_type:
                     visible = False
 
-            if (not 'all' in filter_remotes_list):
+            if not "all" in filter_remotes_list:
                 if not current.origin_remote in filter_remotes_list:
                     visible = False
 
-            if (not 'all' in filter_runtimes_list):
+            if not "all" in filter_runtimes_list:
                 if not current.dependent_runtime in filter_runtimes_list:
                     visible = False
-            
+
             if visible == True:
                 total_visible += 1
-            
+
             current.set_visible(visible)
             index += 1
-        
+
         if total_visible == 0:
             self.main_stack.set_visible_child(self.no_matches)
             self.search_button.set_sensitive(False)
@@ -659,7 +759,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not install app")))
 
     def installThread(self, filepath, user_or_system):
-        self.my_utils.installFlatpak([filepath], None, user_or_system, self.main_progress_bar)
+        self.my_utils.installFlatpak(
+            [filepath], None, user_or_system, self.main_progress_bar
+        )
 
     def install_file(self, filepath):
         def response(dialog, response, _a):
@@ -675,7 +777,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             task = Gio.Task.new(None, None, self.installCallback)
             task.run_in_thread(lambda *_: self.installThread(filepath, user_or_system))
 
-        name = filepath.split('/')
+        name = filepath.split("/")
         name = name[len(name) - 1]
 
         dialog = Adw.MessageDialog.new(self, _("Install {}?").format(name))
@@ -688,8 +790,13 @@ class WarehouseWindow(Adw.ApplicationWindow):
         # Create Widgets
         options_box = Gtk.Box(orientation="vertical")
         options_list = Gtk.ListBox(selection_mode="none", margin_top=15)
-        user_row = Adw.ActionRow(title=_("User"), subtitle=_("The app will be available to only you"))
-        system_row = Adw.ActionRow(title=_("System"), subtitle=_("The app will be available to every user on the system"))
+        user_row = Adw.ActionRow(
+            title=_("User"), subtitle=_("The app will be available to only you")
+        )
+        system_row = Adw.ActionRow(
+            title=_("System"),
+            subtitle=_("The app will be available to every user on the system"),
+        )
         user_check = Gtk.CheckButton()
         system_check = Gtk.CheckButton()
 
@@ -751,23 +858,33 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.filter_list = [True, False, ["all"], ["all"], ["all"]]
         self.set_size_request(0, 230)
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse")
-        self.settings.bind("window-width", self, "default-width", Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind("window-height", self, "default-height", Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind("is-maximized", self, "maximized", Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind("is-fullscreen", self, "fullscreened", Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind(
+            "window-width", self, "default-width", Gio.SettingsBindFlags.DEFAULT
+        )
+        self.settings.bind(
+            "window-height", self, "default-height", Gio.SettingsBindFlags.DEFAULT
+        )
+        self.settings.bind(
+            "is-maximized", self, "maximized", Gio.SettingsBindFlags.DEFAULT
+        )
+        self.settings.bind(
+            "is-fullscreen", self, "fullscreened", Gio.SettingsBindFlags.DEFAULT
+        )
 
-        self.new_env = dict( os.environ )
-        self.new_env['LC_ALL'] = 'C'
+        self.new_env = dict(os.environ)
+        self.new_env["LC_ALL"] = "C"
 
-        if self.host_flatpaks == [['', '']]:
+        if self.host_flatpaks == [["", ""]]:
             self.windowSetEmpty(True)
             return
 
         self.flatpaks_list_box.set_filter_func(self.filter_func)
-        
+
         task = Gio.Task()
-        task.run_in_thread(lambda *_: GLib.idle_add(lambda *_: self.generate_list_of_flatpaks()))
-        
+        task.run_in_thread(
+            lambda *_: GLib.idle_add(lambda *_: self.generate_list_of_flatpaks())
+        )
+
         self.search_entry.connect("search-changed", self.on_invalidate)
         self.search_bar.connect_entry(self.search_entry)
         self.search_bar.connect("notify", self.on_change)
@@ -775,7 +892,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.batch_mode_button.connect("toggled", self.batch_mode_handler)
         self.batch_clean_button.connect("clicked", self.batchCleanHandler)
         self.batch_uninstall_button.connect("clicked", self.batchUninstallButtonHandler)
-        self.batch_select_all_button.connect("clicked", self.batchSelectAllButtonHandler)
+        self.batch_select_all_button.connect(
+            "clicked", self.batchSelectAllButtonHandler
+        )
         self.batch_snapshot_button.connect("clicked", self.batchSnapshotHandler)
         self.batchActionsEnable(False)
         event_controller = Gtk.EventControllerKey()
@@ -796,4 +915,3 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
         if Config.DEVEL:
             self.add_css_class("devel")
-

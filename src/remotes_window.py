@@ -4,6 +4,7 @@ import subprocess
 import os
 import re
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/remotes.ui")
 class RemotesWindow(Adw.Window):
     __gtype_name__ = "RemotesWindow"
@@ -34,7 +35,12 @@ class RemotesWindow(Adw.Window):
         self.toast_overlay.add_toast(Adw.Toast.new(text))
 
     def get_host_flatpaks(self):
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"], capture_output=True, text=True, env=self.new_env).stdout
+        output = subprocess.run(
+            ["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"],
+            capture_output=True,
+            text=True,
+            env=self.new_env,
+        ).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
         data = [columns]
@@ -50,7 +56,15 @@ class RemotesWindow(Adw.Window):
         name = self.host_remotes[index][0]
         title = self.host_remotes[index][1]
         install_type = self.host_remotes[index][7]
-        command = ['flatpak-spawn', '--host', 'flatpak', 'remote-delete', '--force', name, f'--{install_type}']
+        command = [
+            "flatpak-spawn",
+            "--host",
+            "flatpak",
+            "remote-delete",
+            "--force",
+            name,
+            f"--{install_type}",
+        ]
         try:
             subprocess.run(command, capture_output=True, check=True, env=self.new_env)
         except subprocess.CalledProcessError as e:
@@ -63,7 +77,9 @@ class RemotesWindow(Adw.Window):
         title = self.host_remotes[index][1]
         install_type = self.host_remotes[index][7]
 
-        body_text = _("Any installed apps from {} will stop receiving updates").format(name)
+        body_text = _("Any installed apps from {} will stop receiving updates").format(
+            name
+        )
         dialog = Adw.MessageDialog.new(self, _("Remove {}?").format(title), body_text)
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
@@ -82,11 +98,24 @@ class RemotesWindow(Adw.Window):
             type = "user"
 
         try:
-            command = ['flatpak-spawn', '--host', 'flatpak', 'remote-modify', name, f"--{type}", "--enable"]
+            command = [
+                "flatpak-spawn",
+                "--host",
+                "flatpak",
+                "remote-modify",
+                name,
+                f"--{type}",
+                "--enable",
+            ]
             subprocess.run(command, capture_output=False, check=True, env=self.new_env)
         except subprocess.CalledProcessError as e:
-            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not enable {}").format(name)))
-            print(f"error in remotes_window.enable_handler: could not enable remote {name}:", e)
+            self.toast_overlay.add_toast(
+                Adw.Toast.new(_("Could not enable {}").format(name))
+            )
+            print(
+                f"error in remotes_window.enable_handler: could not enable remote {name}:",
+                e,
+            )
 
         self.generate_list()
 
@@ -95,11 +124,26 @@ class RemotesWindow(Adw.Window):
             if response == "cancel":
                 return
             try:
-                command = ['flatpak-spawn', '--host', 'flatpak', 'remote-modify', name, f"--{type}", "--disable"]
-                subprocess.run(command, capture_output=False, check=True, env=self.new_env)
+                command = [
+                    "flatpak-spawn",
+                    "--host",
+                    "flatpak",
+                    "remote-modify",
+                    name,
+                    f"--{type}",
+                    "--disable",
+                ]
+                subprocess.run(
+                    command, capture_output=False, check=True, env=self.new_env
+                )
             except subprocess.CalledProcessError as e:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not disable {}").format(name)))
-                print(f"error in remotes_window.enable_handler: could not disable remote {name}:", e)
+                self.toast_overlay.add_toast(
+                    Adw.Toast.new(_("Could not disable {}").format(name))
+                )
+                print(
+                    f"error in remotes_window.enable_handler: could not disable remote {name}:",
+                    e,
+                )
 
             self.generate_list()
 
@@ -114,7 +158,9 @@ class RemotesWindow(Adw.Window):
 
         popoever.popdown()
 
-        body_text = _("Any installed apps from {} will stop receiving updates").format(name)
+        body_text = _("Any installed apps from {} will stop receiving updates").format(
+            name
+        )
         dialog = Adw.MessageDialog.new(self, _("Disable {}?").format(title), body_text)
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
@@ -130,7 +176,10 @@ class RemotesWindow(Adw.Window):
             type = "system"
         else:
             self.make_toast(_("Could not view apps").format(to_copy))
-            print("error in remotes_window.view_apps(): remote installation type is not either system or user. type is:", type)
+            print(
+                "error in remotes_window.view_apps(): remote installation type is not either system or user. type is:",
+                type,
+            )
             return
         self.app_window.should_open_filter_window = False
         self.app_window.filter_button.set_active(True)
@@ -140,9 +189,13 @@ class RemotesWindow(Adw.Window):
 
     def generate_list(self):
         if self.show_disabled_button.get_active():
-            self.show_disabled_button_button_content.set_icon_name("eye-open-negative-filled-symbolic")
+            self.show_disabled_button_button_content.set_icon_name(
+                "eye-open-negative-filled-symbolic"
+            )
         else:
-            self.show_disabled_button_button_content.set_icon_name("eye-not-looking-symbolic")
+            self.show_disabled_button_button_content.set_icon_name(
+                "eye-not-looking-symbolic"
+            )
 
         self.host_remotes = self.my_utils.getHostRemotes()
         self.host_flatpaks = self.get_host_flatpaks()
@@ -164,28 +217,55 @@ class RemotesWindow(Adw.Window):
                 install_type = self.host_remotes[i][7]
                 remote_row = Adw.ActionRow(title=title)
 
-                more = Gtk.MenuButton(icon_name="view-more-symbolic",  valign=Gtk.Align.CENTER)
+                more = Gtk.MenuButton(
+                    icon_name="view-more-symbolic", valign=Gtk.Align.CENTER
+                )
                 more.add_css_class("flat")
                 options = Gtk.Popover()
-                options_box = Gtk.Box(halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER, orientation=Gtk.Orientation.VERTICAL)
-                
+                options_box = Gtk.Box(
+                    halign=Gtk.Align.CENTER,
+                    valign=Gtk.Align.CENTER,
+                    orientation=Gtk.Orientation.VERTICAL,
+                )
+
                 filter_button = Gtk.Button()
-                filter_button.set_child(Adw.ButtonContent(icon_name="funnel-symbolic", label=_("Set Filter")))
+                filter_button.set_child(
+                    Adw.ButtonContent(
+                        icon_name="funnel-symbolic", label=_("Set Filter")
+                    )
+                )
                 filter_button.add_css_class("flat")
-                filter_button.connect("clicked", lambda *_, i=i: self.view_paks(self.host_remotes[i][7], self.host_remotes[i][0]))
+                filter_button.connect(
+                    "clicked",
+                    lambda *_, i=i: self.view_paks(
+                        self.host_remotes[i][7], self.host_remotes[i][0]
+                    ),
+                )
 
                 enable_button = Gtk.Button(visible=False)
-                enable_button.set_child(Adw.ButtonContent(icon_name="eye-open-negative-filled-symbolic", label=_("Enable")))
+                enable_button.set_child(
+                    Adw.ButtonContent(
+                        icon_name="eye-open-negative-filled-symbolic", label=_("Enable")
+                    )
+                )
                 enable_button.add_css_class("flat")
                 enable_button.connect("clicked", self.enable_handler, i)
 
                 disable_button = Gtk.Button()
-                disable_button.set_child(Adw.ButtonContent(icon_name="eye-not-looking-symbolic", label=_("Disable")))
+                disable_button.set_child(
+                    Adw.ButtonContent(
+                        icon_name="eye-not-looking-symbolic", label=_("Disable")
+                    )
+                )
                 disable_button.add_css_class("flat")
                 disable_button.connect("clicked", self.disable_handler, i, options)
 
                 remove_button = Gtk.Button()
-                remove_button.set_child(Adw.ButtonContent(icon_name="user-trash-symbolic", label=_("Remove")))
+                remove_button.set_child(
+                    Adw.ButtonContent(
+                        icon_name="user-trash-symbolic", label=_("Remove")
+                    )
+                )
                 remove_button.add_css_class("flat")
                 remove_button.connect("clicked", self.remove_handler, i, options)
 
@@ -196,7 +276,11 @@ class RemotesWindow(Adw.Window):
                 options.set_child(options_box)
                 more.set_popover(options)
 
-                copy_button = Gtk.Button(icon_name="edit-copy-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Copy remote name"))
+                copy_button = Gtk.Button(
+                    icon_name="edit-copy-symbolic",
+                    valign=Gtk.Align.CENTER,
+                    tooltip_text=_("Copy remote name"),
+                )
                 copy_button.add_css_class("flat")
                 copy_button.connect("clicked", rowCopyHandler, name)
 
@@ -207,7 +291,7 @@ class RemotesWindow(Adw.Window):
                 if install_type == "disabled":
                     if not self.show_disabled_button.get_active():
                         continue
-                    
+
                     remote_row.set_subtitle(_("Disabled"))
                     enable_button.set_visible(True)
                     disable_button.set_visible(False)
@@ -227,23 +311,61 @@ class RemotesWindow(Adw.Window):
                 self.rows_in_list.append(remote_row)
                 self.no_remotes.set_visible(False)
             except Exception as e:
-                print("error in remotes_window.generate_list: could not add remote. error:", e)
+                print(
+                    "error in remotes_window.generate_list: could not add remote. error:",
+                    e,
+                )
 
         # Popular remotes
         for i in range(len(self.rows_in_popular_list)):
             self.popular_remotes_list.remove(self.rows_in_popular_list[i])
-        
+
         self.rows_in_popular_list = []
 
         remotes = [
-          # [Name to show in GUI, Name of remote for system, Link to repo to add, Description of remote]
-            ["AppCenter", "appcenter", "https://flatpak.elementary.io/repo.flatpakrepo", _("The open source, pay-what-you-want app store from elementary")],
-            ["Flathub", "flathub", "https://dl.flathub.org/repo/flathub.flatpakrepo", _("Central repository of Flatpak applications")],
-            ["Flathub beta", "flathub-beta", "https://flathub.org/beta-repo/flathub-beta.flatpakrepo", _("Beta builds of Flatpak applications")],
-            ["Fedora", "fedora", "oci+https://registry.fedoraproject.org", _("Flatpaks packaged by Fedora Linux")],
-            ["GNOME Nightly", "gnome-nightly", "https://nightly.gnome.org/gnome-nightly.flatpakrepo", _("The latest beta GNOME Apps and Runtimes")],
-            ["KDE Testing Applications", "kdeapps", "https://distribute.kde.org/kdeapps.flatpakrepo", _("Beta KDE Apps and Runtimes")],
-            ["WebKit Developer SDK", "webkit-sdk", "https://software.igalia.com/flatpak-refs/webkit-sdk.flatpakrepo", _("Central repository of the WebKit Developer and Runtime SDK")],
+            # [Name to show in GUI, Name of remote for system, Link to repo to add, Description of remote]
+            [
+                "AppCenter",
+                "appcenter",
+                "https://flatpak.elementary.io/repo.flatpakrepo",
+                _("The open source, pay-what-you-want app store from elementary"),
+            ],
+            [
+                "Flathub",
+                "flathub",
+                "https://dl.flathub.org/repo/flathub.flatpakrepo",
+                _("Central repository of Flatpak applications"),
+            ],
+            [
+                "Flathub beta",
+                "flathub-beta",
+                "https://flathub.org/beta-repo/flathub-beta.flatpakrepo",
+                _("Beta builds of Flatpak applications"),
+            ],
+            [
+                "Fedora",
+                "fedora",
+                "oci+https://registry.fedoraproject.org",
+                _("Flatpaks packaged by Fedora Linux"),
+            ],
+            [
+                "GNOME Nightly",
+                "gnome-nightly",
+                "https://nightly.gnome.org/gnome-nightly.flatpakrepo",
+                _("The latest beta GNOME Apps and Runtimes"),
+            ],
+            [
+                "KDE Testing Applications",
+                "kdeapps",
+                "https://distribute.kde.org/kdeapps.flatpakrepo",
+                _("Beta KDE Apps and Runtimes"),
+            ],
+            [
+                "WebKit Developer SDK",
+                "webkit-sdk",
+                "https://software.igalia.com/flatpak-refs/webkit-sdk.flatpakrepo",
+                _("Central repository of the WebKit Developer and Runtime SDK"),
+            ],
         ]
 
         host_remotes = self.my_utils.getHostRemotes()
@@ -257,9 +379,11 @@ class RemotesWindow(Adw.Window):
         for i in range(len(remotes)):
             if remotes[i][1] in host_remotes_names:
                 continue
-            
+
             total_added += 1
-            row = Adw.ActionRow(title=remotes[i][0], subtitle=(remotes[i][2]), activatable=True)
+            row = Adw.ActionRow(
+                title=remotes[i][0], subtitle=(remotes[i][2]), activatable=True
+            )
             row.connect("activated", self.add_handler, remotes[i][1], remotes[i][2])
             row.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
             self.rows_in_popular_list.append(row)
@@ -275,8 +399,13 @@ class RemotesWindow(Adw.Window):
         try:
             subprocess.run(command, capture_output=True, check=True, env=self.new_env)
         except subprocess.CalledProcessError as e:
-            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not add {}").format(self.name_to_add)))
-            print("error in remotes_window.addRemoteThread: could not add remote. error:", e)
+            self.toast_overlay.add_toast(
+                Adw.Toast.new(_("Could not add {}").format(self.name_to_add))
+            )
+            print(
+                "error in remotes_window.addRemoteThread: could not add remote. error:",
+                e,
+            )
 
     def on_add_response(self, _dialog, response_id, _function, row):
         if response_id == "cancel":
@@ -292,9 +421,20 @@ class RemotesWindow(Adw.Window):
         self.name_to_add = self.name_to_add.strip()
         self.url_to_add = self.url_to_add.strip()
 
-        command = ['flatpak-spawn', '--host', 'flatpak', 'remote-add', '--if-not-exists', self.name_to_add, self.url_to_add, install_type]
+        command = [
+            "flatpak-spawn",
+            "--host",
+            "flatpak",
+            "remote-add",
+            "--if-not-exists",
+            self.name_to_add,
+            self.url_to_add,
+            install_type,
+        ]
         task = Gio.Task.new(None, None, self.addRemoteCallback)
-        task.run_in_thread(lambda _task, _obj, _data, _cancellable: self.addRemoteThread(command))
+        task.run_in_thread(
+            lambda _task, _obj, _data, _cancellable: self.addRemoteThread(command)
+        )
 
     def add_handler(self, row, name="", link=""):
         dialog = Adw.MessageDialog.new(self, _("Add Flatpak Remote"))
@@ -308,7 +448,7 @@ class RemotesWindow(Adw.Window):
         def name_update(widget):
             is_enabled = True
             self.name_to_add = widget.get_text()
-            name_pattern = re.compile(r'^[a-zA-Z\-]+$')
+            name_pattern = re.compile(r"^[a-zA-Z\-]+$")
             if not name_pattern.match(self.name_to_add):
                 is_enabled = False
 
@@ -325,7 +465,7 @@ class RemotesWindow(Adw.Window):
         def url_update(widget):
             is_enabled = True
             self.url_to_add = widget.get_text()
-            url_pattern = re.compile(r'^[a-zA-Z0-9\-._~:/?#[\]@!$&\'()*+,;=]+$')
+            url_pattern = re.compile(r"^[a-zA-Z0-9\-._~:/?#[\]@!$&\'()*+,;=]+$")
             if not url_pattern.match(self.url_to_add):
                 is_enabled = False
 
@@ -354,7 +494,7 @@ class RemotesWindow(Adw.Window):
         info_box = Gtk.Box(orientation="vertical")
         entry_list = Gtk.ListBox(selection_mode="none", margin_bottom=12)
         entry_list.add_css_class("boxed-list")
-        
+
         name_entry = Adw.EntryRow(title=_("Name"))
         name_entry.set_text(name)
         name_entry.connect("changed", name_update)
@@ -370,13 +510,18 @@ class RemotesWindow(Adw.Window):
         install_type_list = Gtk.ListBox(selection_mode="none")
         install_type_list.add_css_class("boxed-list")
 
-        user_row = Adw.ActionRow(title=_("User"), subtitle=_("Remote will be available to only you"))
+        user_row = Adw.ActionRow(
+            title=_("User"), subtitle=_("Remote will be available to only you")
+        )
         user_check = Gtk.CheckButton(active=True)
         user_check.connect("toggled", set_user)
         user_row.add_prefix(user_check)
         user_row.set_activatable_widget(user_check)
 
-        system_row = Adw.ActionRow(title=_("System"), subtitle=_("Remote will be available to every user on the system"))
+        system_row = Adw.ActionRow(
+            title=_("System"),
+            subtitle=_("Remote will be available to every user on the system"),
+        )
         system_check = Gtk.CheckButton()
         system_row.add_prefix(system_check)
         system_check.set_group(user_check)
@@ -398,11 +543,32 @@ class RemotesWindow(Adw.Window):
 
     def addRemoteFromFileThread(self, filepath, system_or_user, name):
         try:
-            subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'remote-add', '--if-not-exists', name, filepath, f"--{system_or_user}"], capture_output=True, check=True, env=self.new_env)
-            self.toast_overlay.add_toast(Adw.Toast.new(_("{} successfully added").format(name)))
+            subprocess.run(
+                [
+                    "flatpak-spawn",
+                    "--host",
+                    "flatpak",
+                    "remote-add",
+                    "--if-not-exists",
+                    name,
+                    filepath,
+                    f"--{system_or_user}",
+                ],
+                capture_output=True,
+                check=True,
+                env=self.new_env,
+            )
+            self.toast_overlay.add_toast(
+                Adw.Toast.new(_("{} successfully added").format(name))
+            )
         except subprocess.CalledProcessError as e:
-            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not add {}").format(self.name_to_add)))
-            print("error in remotes_window.addRemoteFromFileThread: could not add remote. error:", e)
+            self.toast_overlay.add_toast(
+                Adw.Toast.new(_("Could not add {}").format(self.name_to_add))
+            )
+            print(
+                "error in remotes_window.addRemoteFromFileThread: could not add remote. error:",
+                e,
+            )
 
     def addRemoteFromFile(self, filepath):
         def response(dialog, response, _a):
@@ -415,12 +581,16 @@ class RemotesWindow(Adw.Window):
                 user_or_system = "system"
 
             task = Gio.Task.new(None, None, self.addRemoteCallback)
-            task.run_in_thread(lambda *_: self.addRemoteFromFileThread(filepath, user_or_system, name_row.get_text()))
+            task.run_in_thread(
+                lambda *_: self.addRemoteFromFileThread(
+                    filepath, user_or_system, name_row.get_text()
+                )
+            )
 
         def name_update(widget):
             is_enabled = True
             self.name_to_add = widget.get_text()
-            name_pattern = re.compile(r'^[a-zA-Z\-]+$')
+            name_pattern = re.compile(r"^[a-zA-Z\-]+$")
             if not name_pattern.match(self.name_to_add):
                 is_enabled = False
 
@@ -436,7 +606,7 @@ class RemotesWindow(Adw.Window):
 
         self.should_pulse = True
 
-        name = filepath.split('/')
+        name = filepath.split("/")
         name = name[len(name) - 1]
 
         dialog = Adw.MessageDialog.new(self, _("Add {}?").format(name))
@@ -452,8 +622,13 @@ class RemotesWindow(Adw.Window):
         options_list = Gtk.ListBox(selection_mode="none", margin_top=15)
         name_row = Adw.EntryRow(title=_("Name"))
         name_row.connect("changed", name_update)
-        user_row = Adw.ActionRow(title=_("User"), subtitle=_("Remote will be available to only you"))
-        system_row = Adw.ActionRow(title=_("System"), subtitle=_("Remote will be available to every user on the system"))
+        user_row = Adw.ActionRow(
+            title=_("User"), subtitle=_("Remote will be available to only you")
+        )
+        system_row = Adw.ActionRow(
+            title=_("System"),
+            subtitle=_("Remote will be available to every user on the system"),
+        )
         user_check = Gtk.CheckButton()
         system_check = Gtk.CheckButton()
 
@@ -473,7 +648,7 @@ class RemotesWindow(Adw.Window):
         user_check.set_active(True)
         options_list.add_css_class("boxed-list")
         Gtk.Window.present(dialog)
-    
+
     def file_callback(self, object, result):
         try:
             file = object.open_finish(result)
@@ -499,8 +674,8 @@ class RemotesWindow(Adw.Window):
         self.host_remotes = []
         self.host_flatpaks = []
         self.app_window = main_window
-        self.new_env = dict( os.environ )
-        self.new_env['LC_ALL'] = 'C'
+        self.new_env = dict(os.environ)
+        self.new_env["LC_ALL"] = "C"
         self.should_pulse = False
 
         # Window Stuffs
@@ -514,9 +689,13 @@ class RemotesWindow(Adw.Window):
         self.refresh.connect("clicked", lambda *_: self.generate_list())
         self.set_transient_for(main_window)
 
-        self.add_from_file.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
+        self.add_from_file.add_suffix(
+            Gtk.Image.new_from_icon_name("right-large-symbolic")
+        )
         self.add_from_file.connect("activated", self.addFromFileHandler)
-        self.custom_remote.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
+        self.custom_remote.add_suffix(
+            Gtk.Image.new_from_icon_name("right-large-symbolic")
+        )
         self.custom_remote.connect("activated", self.add_handler)
         self.show_disabled_button.connect("clicked", lambda *_: self.generate_list())
 

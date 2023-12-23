@@ -4,6 +4,7 @@ import subprocess
 import os
 import pathlib
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/orphans.ui")
 class OrphansWindow(Adw.Window):
     __gtype_name__ = "OrphansWindow"
@@ -37,7 +38,7 @@ class OrphansWindow(Adw.Window):
     def key_handler(self, _a, event, _c, _d):
         if event == Gdk.KEY_Escape:
             self.close()
-    
+
     def selectionHandler(self, widget, dir_name):
         if widget.get_active():
             self.selected_dirs.append(dir_name)
@@ -45,9 +46,13 @@ class OrphansWindow(Adw.Window):
             self.selected_dirs.remove(dir_name)
 
         if len(self.selected_dirs) == 0:
-            self.set_title(self.window_title) # Set the window title back to what it was when there are no selected dirs
+            self.set_title(
+                self.window_title
+            )  # Set the window title back to what it was when there are no selected dirs
         else:
-            self.set_title(("{} selected").format(str(len(self.selected_dirs)))) # Set the window title to the amount of selected dirs
+            self.set_title(
+                ("{} selected").format(str(len(self.selected_dirs)))
+            )  # Set the window title to the amount of selected dirs
 
         if len(self.selected_dirs) == 0:
             self.install_button.set_sensitive(False)
@@ -67,12 +72,14 @@ class OrphansWindow(Adw.Window):
         self.generateList()
         self.progress_bar.set_visible(False)
         self.app_window.refresh_list_of_flatpaks(self, False)
-        self.disconnect(self.no_close_id) # Make window able to close
+        self.disconnect(self.no_close_id)  # Make window able to close
         self.search_button.set_sensitive(True)
         if self.my_utils.install_success:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Installed successfully")))
         else:
-            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not install some apps")))
+            self.toast_overlay.add_toast(
+                Adw.Toast.new(_("Could not install some apps"))
+            )
 
     def installHandler(self):
         self.main_stack.set_visible_child(self.installing)
@@ -80,15 +87,20 @@ class OrphansWindow(Adw.Window):
         self.set_title(self.window_title)
         self.keep_checking = True
         task = Gio.Task.new(None, None, self.installCallback)
-        task.run_in_thread(lambda _task, _obj, _data, _cancellable, id_list=self.selected_dirs, remote=self.selected_remote, app_type=self.selected_remote_type, progress_bar=self.progress_bar: self.my_utils.installFlatpak(id_list, remote, app_type, progress_bar))
-    
-    def installButtonHandler(self, button):
+        task.run_in_thread(
+            lambda _task, _obj, _data, _cancellable, id_list=self.selected_dirs, remote=self.selected_remote, app_type=self.selected_remote_type, progress_bar=self.progress_bar: self.my_utils.installFlatpak(
+                id_list, remote, app_type, progress_bar
+            )
+        )
 
+    def installButtonHandler(self, button):
         def remote_select_handler(button, index):
             if not button.get_active():
                 return
             self.selected_remote = self.host_remotes[index][0]
-            self.selected_remote_type = self.my_utils.getInstallType(self.host_remotes[index][7])
+            self.selected_remote_type = self.my_utils.getInstallType(
+                self.host_remotes[index][7]
+            )
 
         def onResponse(dialog, response_id, _function):
             if response_id == "cancel":
@@ -96,9 +108,15 @@ class OrphansWindow(Adw.Window):
             self.installHandler()
             self.progress_bar.set_visible(True)
             self.action_bar.set_visible(False)
-            self.no_close_id = self.connect("close-request", lambda event: True)  # Make window unable to close
-            
-        dialog = Adw.MessageDialog.new(self, _("Attempt to Install?"), _("Warehouse will attempt to install apps matching the selected data."))
+            self.no_close_id = self.connect(
+                "close-request", lambda event: True
+            )  # Make window unable to close
+
+        dialog = Adw.MessageDialog.new(
+            self,
+            _("Attempt to Install?"),
+            _("Warehouse will attempt to install apps matching the selected data."),
+        )
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Install"))
@@ -135,7 +153,7 @@ class OrphansWindow(Adw.Window):
             else:
                 remote_row.set_subtitle(_("Unknown install type"))
 
-            if remote_row.get_title() == '-':
+            if remote_row.get_title() == "-":
                 remote_row.set_title(self.host_remotes[i][0])
 
             if total_added > 0:
@@ -146,7 +164,7 @@ class OrphansWindow(Adw.Window):
             total_added += 1
 
         remote_select_buttons[0].set_active(True)
-            
+
         if total_added > 1:
             dialog.set_extra_child(remotes_scroll)
 
@@ -154,7 +172,6 @@ class OrphansWindow(Adw.Window):
         dialog.present()
 
     def trashHandler(self, button):
-
         def onResponse(dialog, response_id, _function):
             if response_id == "cancel":
                 return
@@ -163,8 +180,10 @@ class OrphansWindow(Adw.Window):
                 self.my_utils.trashFolder(path)
             self.select_all_button.set_active(False)
             self.generateList()
-            
-        dialog = Adw.MessageDialog.new(self, _("Trash folders?"), _("These folders will be sent to the trash."))
+
+        dialog = Adw.MessageDialog.new(
+            self, _("Trash folders?"), _("These folders will be sent to the trash.")
+        )
         dialog.connect("response", onResponse, dialog.choose_finish)
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
@@ -176,7 +195,9 @@ class OrphansWindow(Adw.Window):
         try:
             Gio.AppInfo.launch_default_for_uri(f"file://{path}", None)
         except GLib.GError:
-            properties_toast_overlay.add_toast(Adw.Toast.new(_("Could not open folder")))
+            properties_toast_overlay.add_toast(
+                Adw.Toast.new(_("Could not open folder"))
+            )
 
     def sizeCallBack(self, row_index):
         row = self.list_of_data.get_row_at_index(row_index)
@@ -191,8 +212,10 @@ class OrphansWindow(Adw.Window):
         self.data_rows = []
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
 
-        if self.host_flatpaks == [['', '']]:
-            self.app_window.toast_overlay.add_toast(Adw.Toast.new(_("Could not manage data")))
+        if self.host_flatpaks == [["", ""]]:
+            self.app_window.toast_overlay.add_toast(
+                Adw.Toast.new(_("Could not manage data"))
+            )
             self.this_just_crashes_the_window_so_it_doesnt_open()
             return
 
@@ -221,12 +244,24 @@ class OrphansWindow(Adw.Window):
             self.data_rows.append([dir_row])
             path = self.user_data_path + dir_name
             index = len(self.data_rows) - 1
-            task = Gio.Task.new(None, None, lambda *_, index=index: self.sizeCallBack(index))
-            task.run_in_thread(lambda _task, _obj, _data, _cancellable, *_, index=index: self.sizeThread(index, path))
+            task = Gio.Task.new(
+                None, None, lambda *_, index=index: self.sizeCallBack(index)
+            )
+            task.run_in_thread(
+                lambda _task, _obj, _data, _cancellable, *_, index=index: self.sizeThread(
+                    index, path
+                )
+            )
 
-            open_row_button = Gtk.Button(icon_name="document-open-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("Open User Data Folder"))
+            open_row_button = Gtk.Button(
+                icon_name="document-open-symbolic",
+                valign=Gtk.Align.CENTER,
+                tooltip_text=_("Open User Data Folder"),
+            )
             open_row_button.add_css_class("flat")
-            open_row_button.connect("clicked", self.open_button_handler, (self.user_data_path + dir_name))
+            open_row_button.connect(
+                "clicked", self.open_button_handler, (self.user_data_path + dir_name)
+            )
             dir_row.add_suffix(open_row_button)
 
             select_button = Gtk.CheckButton()
@@ -247,7 +282,7 @@ class OrphansWindow(Adw.Window):
             self.action_bar.set_visible(True)
 
     def filter_func(self, row):
-        if (self.search_entry.get_text().lower() in row.get_title().lower()):
+        if self.search_entry.get_text().lower() in row.get_title().lower():
             self.is_result = True
             return True
 
@@ -276,7 +311,9 @@ class OrphansWindow(Adw.Window):
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
-        self.my_utils = myUtils(self) # Access common utils and set the window to this window
+        self.my_utils = myUtils(
+            self
+        )  # Access common utils and set the window to this window
         self.host_remotes = self.my_utils.getHostRemotes()
         self.host_flatpaks = self.my_utils.getHostFlatpaks()
 
@@ -294,7 +331,7 @@ class OrphansWindow(Adw.Window):
         self.add_controller(event_controller)
 
         self.install_button.connect("clicked", self.installButtonHandler)
-        if self.host_remotes[0][0] == '':
+        if self.host_remotes[0][0] == "":
             self.install_button.set_visible(False)
         self.trash_button.connect("clicked", self.trashHandler)
         self.select_all_button.connect("toggled", self.selectAllHandler)

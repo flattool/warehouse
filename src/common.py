@@ -1,8 +1,9 @@
-from gi.repository import GLib, Gtk, Adw, Gio #, Gdk
+from gi.repository import GLib, Gtk, Adw, Gio  # , Gdk
 import os
 import subprocess
 import pathlib
 import time
+
 
 class myUtils:
     def __init__(self, window, **kwargs):
@@ -11,15 +12,20 @@ class myUtils:
         self.user_data_path = self.host_home + "/.var/app/"
         self.install_success = True
         self.uninstall_success = True
-        self.new_env = dict( os.environ )
-        self.new_env['LC_ALL'] = 'C'
-        
+        self.new_env = dict(os.environ)
+        self.new_env["LC_ALL"] = "C"
+
     def trashFolder(self, path):
         if not os.path.exists(path):
             print("error in common.trashFolder: path does not exists. path =", path)
             return 1
         try:
-            subprocess.run(["gio", "trash", path], capture_output=False, check=True, env=self.new_env)
+            subprocess.run(
+                ["gio", "trash", path],
+                capture_output=False,
+                check=True,
+                env=self.new_env,
+            )
             return 0
         except subprocess.CalledProcessError as e:
             print("error in common.trashFolder: CalledProcessError:", e)
@@ -68,10 +74,18 @@ class myUtils:
     def findAppIcon(self, app_id):
         icon_theme = Gtk.IconTheme.new()
         icon_theme.add_search_path("/var/lib/flatpak/exports/share/icons/")
-        icon_theme.add_search_path(self.host_home + "/.local/share/flatpak/exports/share/icons")
-        
+        icon_theme.add_search_path(
+            self.host_home + "/.local/share/flatpak/exports/share/icons"
+        )
+
         try:
-            icon_path = (icon_theme.lookup_icon(app_id, None, 512, 1, self.parent_window.get_direction(), 0).get_file().get_path())
+            icon_path = (
+                icon_theme.lookup_icon(
+                    app_id, None, 512, 1, self.parent_window.get_direction(), 0
+                )
+                .get_file()
+                .get_path()
+            )
         except GLib.GError:
             icon_path = None
         if icon_path:
@@ -85,7 +99,12 @@ class myUtils:
 
     def getHostUpdates(self):
         list = []
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "update"], capture_output=True, text=True, env=self.new_env).stdout
+        output = subprocess.run(
+            ["flatpak-spawn", "--host", "flatpak", "update"],
+            capture_output=True,
+            text=True,
+            env=self.new_env,
+        ).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
         data = [columns]
@@ -94,20 +113,37 @@ class myUtils:
             data.append(row)
 
         for i in range(len(data)):
-            if data[i][0].find('.') == 2:
+            if data[i][0].find(".") == 2:
                 list.append(data[i][2])
-        
-        return(list)
+
+        return list
 
     def getHostPins(self):
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "pin"], capture_output=True, text=True, env=self.new_env).stdout
+        output = subprocess.run(
+            ["flatpak-spawn", "--host", "flatpak", "pin"],
+            capture_output=True,
+            text=True,
+            env=self.new_env,
+        ).stdout
         data = output.strip().split("\n")
         for i in range(len(data)):
             data[i] = data[i].strip()
         return data
 
     def getHostRemotes(self):
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remotes", "--columns=all", "--show-disabled"], capture_output=True, text=True, env=self.new_env).stdout
+        output = subprocess.run(
+            [
+                "flatpak-spawn",
+                "--host",
+                "flatpak",
+                "remotes",
+                "--columns=all",
+                "--show-disabled",
+            ],
+            capture_output=True,
+            text=True,
+            env=self.new_env,
+        ).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
         data = [columns]
@@ -117,7 +153,12 @@ class myUtils:
         return data
 
     def getHostFlatpaks(self):
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"], capture_output=True, text=True, env=self.new_env).stdout
+        output = subprocess.run(
+            ["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"],
+            capture_output=True,
+            text=True,
+            env=self.new_env,
+        ).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
         data = [columns]
@@ -125,7 +166,12 @@ class myUtils:
             row = line.split("\t")
             data.append(row)
 
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "list", "--columns=runtime"], capture_output=True, text=True, env=self.new_env).stdout
+        output = subprocess.run(
+            ["flatpak-spawn", "--host", "flatpak", "list", "--columns=runtime"],
+            capture_output=True,
+            text=True,
+            env=self.new_env,
+        ).stdout
         lines = output.split("\n")
         for i in range(len(data)):
             data[i].append(lines[i])
@@ -142,39 +188,65 @@ class myUtils:
                     dependent_runtimes.append(current[13])
             except:
                 print("Could not get dependent runtime")
-        return(dependent_runtimes)
+        return dependent_runtimes
 
     def getHostMasks(self, user_or_system):
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "mask", f"--{user_or_system}"], capture_output=True, text=True, env=self.new_env).stdout
+        output = subprocess.run(
+            ["flatpak-spawn", "--host", "flatpak", "mask", f"--{user_or_system}"],
+            capture_output=True,
+            text=True,
+            env=self.new_env,
+        ).stdout
         lines = output.strip().split("\n")
         for i in range(len(lines)):
             lines[i] = lines[i].strip()
-        return(lines)
+        return lines
 
     def maskFlatpak(self, app_id, user_or_system, remove=False):
-        command = ["flatpak-spawn", "--host", "flatpak", "mask", f"--{user_or_system}", app_id]
+        command = [
+            "flatpak-spawn",
+            "--host",
+            "flatpak",
+            "mask",
+            f"--{user_or_system}",
+            app_id,
+        ]
         if remove:
             command.append("--remove")
         response = ""
         try:
-            response = subprocess.run(command, capture_output=True, text=True, env=self.new_env)
+            response = subprocess.run(
+                command, capture_output=True, text=True, env=self.new_env
+            )
         except subprocess.CalledProcessError as e:
             print(f"Error setting mask for {app_id}:\n", e)
-            return(1)
+            return 1
         if len(response.stderr) > 0:
-            return(1)
-        return(0)
+            return 1
+        return 0
 
     def downgradeFlatpak(self, ref, commit, install_type="system"):
-        command = ['flatpak-spawn', '--host', 'pkexec', 'flatpak', 'update', ref, f"--commit={commit}", f"--{install_type}", '-y']
+        command = [
+            "flatpak-spawn",
+            "--host",
+            "pkexec",
+            "flatpak",
+            "update",
+            ref,
+            f"--commit={commit}",
+            f"--{install_type}",
+            "-y",
+        ]
         try:
-            response = subprocess.run(command, capture_output=True, text=True, env=self.new_env).stderr
+            response = subprocess.run(
+                command, capture_output=True, text=True, env=self.new_env
+            ).stderr
         except subprocess.CalledProcessError as e:
             if "note that" in response.lower():
-                return(0)
+                return 0
             print(f"Error setting mask for {app_id}:\n", e)
-            return(1)
-        return(0)
+            return 1
+        return 0
 
     def uninstallFlatpak(self, ref_arr, type_arr, should_trash, progress_bar=None):
         self.uninstall_success = True
@@ -193,23 +265,40 @@ class myUtils:
         # apps array guide: [app_ref, app_id, user_or_system_install]
 
         for i in range(len(apps)):
-            command = ['flatpak-spawn', '--host', 'flatpak', 'remove', '-y', f"--{apps[i][2]}", apps[i][0]]
+            command = [
+                "flatpak-spawn",
+                "--host",
+                "flatpak",
+                "remove",
+                "-y",
+                f"--{apps[i][2]}",
+                apps[i][0],
+            ]
             try:
-                subprocess.run(command, capture_output=False, check=True, env=self.new_env)
+                subprocess.run(
+                    command, capture_output=False, check=True, env=self.new_env
+                )
                 if progress_bar:
                     GLib.idle_add(progress_bar.set_visible, True)
                     GLib.idle_add(progress_bar.set_fraction, (i + 1.0) / len(ref_arr))
             except subprocess.CalledProcessError:
                 fails.append(apps[i])
 
-        if len(fails) > 0: # Run this only if there is 1 or more non uninstalled apps
-            pk_command = ['flatpak-spawn', '--host', 'pkexec', 'flatpak', 'remove', '-y', '--system']
+        if len(fails) > 0:  # Run this only if there is 1 or more non uninstalled apps
+            pk_command = [
+                "flatpak-spawn",
+                "--host",
+                "pkexec",
+                "flatpak",
+                "remove",
+                "-y",
+                "--system",
+            ]
             print("second uninstall process")
             for i in range(len(fails)):
-
                 if fails[i][2] == "user":
                     self.uninstall_success = False
-                    continue # Skip if app is a user install app
+                    continue  # Skip if app is a user install app
 
                 pk_command.append(fails[i][0])
             try:
@@ -217,7 +306,9 @@ class myUtils:
                 if progress_bar:
                     GLib.idle_add(progress_bar.set_visible, True)
                     GLib.idle_add(progress_bar.set_fraction, 0.9)
-                subprocess.run(pk_command, capture_output=False, check=True, env=self.new_env)
+                subprocess.run(
+                    pk_command, capture_output=False, check=True, env=self.new_env
+                )
             except subprocess.CalledProcessError:
                 self.uninstall_success = False
 
@@ -242,29 +333,42 @@ class myUtils:
         fails = []
 
         for i in range(len(app_arr)):
-            command = ['flatpak-spawn', '--host', 'flatpak', 'install']
+            command = ["flatpak-spawn", "--host", "flatpak", "install"]
             if remote != None:
                 command.append(remote)
             command.append(f"--{user_or_system}")
-            command.append('-y')
+            command.append("-y")
             command.append(app_arr[i])
             try:
-                subprocess.run(command, capture_output=False, check=True, env=self.new_env)
+                subprocess.run(
+                    command, capture_output=False, check=True, env=self.new_env
+                )
                 if progress_bar:
                     GLib.idle_add(progress_bar.set_visible, True)
                     GLib.idle_add(progress_bar.set_fraction, (i + 1.0) / len(app_arr))
             except subprocess.CalledProcessError:
                 fails.append(app_arr[i])
-        
+
         if (len(fails) > 0) and (user_or_system == "system"):
-            pk_command = ['flatpak-spawn', '--host', 'pkexec', 'flatpak', 'install', remote, f"--{user_or_system}", '-y']
+            pk_command = [
+                "flatpak-spawn",
+                "--host",
+                "pkexec",
+                "flatpak",
+                "install",
+                remote,
+                f"--{user_or_system}",
+                "-y",
+            ]
             for i in range(len(fails)):
                 pk_command.append(fails[i])
             try:
                 if progress_bar:
                     GLib.idle_add(progress_bar.set_visible, True)
                     GLib.idle_add(progress_bar.set_fraction, 0.9)
-                subprocess.run(pk_command, capture_output=False, check=True, env=self.new_env)
+                subprocess.run(
+                    pk_command, capture_output=False, check=True, env=self.new_env
+                )
             except subprocess.CalledProcessError:
                 self.install_success = False
 
@@ -279,7 +383,12 @@ class myUtils:
         self.run_app_error = False
         self.run_app_error_message = ""
         try:
-            subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'run', ref], check=True, env=self.new_env, start_new_session=True)
+            subprocess.run(
+                ["flatpak-spawn", "--host", "flatpak", "run", ref],
+                check=True,
+                env=self.new_env,
+                start_new_session=True,
+            )
         except subprocess.CalledProcessError as e:
             self.run_app_error_message = str(e)
             self.run_app_error = True
@@ -292,9 +401,20 @@ class myUtils:
         if "system" in type_arr:
             return "system"
 
-    def snapshotApps(self, epoch, app_snapshot_path_arr, app_version_arr, app_user_data_arr, progress_bar=None):
-        if not (len(app_snapshot_path_arr) == len(app_version_arr) == len(app_user_data_arr)):
-            print("error in common.snapshotApp: the lengths of app_snapshot_path_arr, app_version_arr, and app_user_data_arr do not match.")
+    def snapshotApps(
+        self,
+        epoch,
+        app_snapshot_path_arr,
+        app_version_arr,
+        app_user_data_arr,
+        progress_bar=None,
+    ):
+        if not (
+            len(app_snapshot_path_arr) == len(app_version_arr) == len(app_user_data_arr)
+        ):
+            print(
+                "error in common.snapshotApp: the lengths of app_snapshot_path_arr, app_version_arr, and app_user_data_arr do not match."
+            )
             return 1
 
         fails = []
@@ -303,7 +423,14 @@ class myUtils:
             snapshot_path = app_snapshot_path_arr[i]
             version = app_version_arr[i]
             user_data = app_user_data_arr[i]
-            command = ['tar', 'cafv', f"{snapshot_path}{epoch}_{version}.tar.zst", "-C", f"{user_data}", "."]
+            command = [
+                "tar",
+                "cafv",
+                f"{snapshot_path}{epoch}_{version}.tar.zst",
+                "-C",
+                f"{user_data}",
+                ".",
+            ]
 
             try:
                 if not os.path.exists(snapshot_path):
@@ -312,13 +439,18 @@ class myUtils:
                 subprocess.run(command, check=True, env=self.new_env)
                 if progress_bar:
                     GLib.idle_add(progress_bar.set_visible, True)
-                    GLib.idle_add(progress_bar.set_fraction, (i + 1.0) / len(app_snapshot_path_arr))
+                    GLib.idle_add(
+                        progress_bar.set_fraction,
+                        (i + 1.0) / len(app_snapshot_path_arr),
+                    )
             except subprocess.CalledProcessError as e:
                 print("error in common.snapshotApp:", e)
                 fails.append(user_data)
 
-            if(int(time.time()) == epoch): # Wait 1s if the snapshot is made too quickly, to prevent overriding a snapshot file
-                subprocess.run(['sleep', '1s'])
+            if (
+                int(time.time()) == epoch
+            ):  # Wait 1s if the snapshot is made too quickly, to prevent overriding a snapshot file
+                subprocess.run(["sleep", "1s"])
 
         if progress_bar:
             GLib.idle_add(progress_bar.set_visible, False)

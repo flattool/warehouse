@@ -32,6 +32,7 @@ from .orphans_window import OrphansWindow
 from .search_install_window import SearchInstallWindow
 from .const import Config
 
+
 class WarehouseApplication(Adw.Application):
     """The main application singleton class."""
 
@@ -48,22 +49,54 @@ class WarehouseApplication(Adw.Application):
         self.create_action("preferences", self.on_preferences_action)
         self.create_action("search", self.on_search_action, ["<primary>f"])
         self.create_action("manage-data-folders", self.manage_data_shortcut)
-        self.create_action("toggle-batch-mode", self.batch_mode_shortcut, ["<primary>b", "<primary>Return"])
-        self.create_action("toggle-batch-mode-keypad", self.batch_mode_shortcut, ["<primary>KP_Enter"]) # This action is not added to the shortcuts window
-        self.create_action("manage-data-folders", self.manage_data_shortcut, ["<primary>d"])
-        self.create_action("refresh-list", self.refresh_list_shortcut, ["<primary>r", "F5"])
-        self.create_action("show-remotes-window", self.show_remotes_shortcut, ["<primary>m"])
+        self.create_action(
+            "toggle-batch-mode",
+            self.batch_mode_shortcut,
+            ["<primary>b", "<primary>Return"],
+        )
+        self.create_action(
+            "toggle-batch-mode-keypad", self.batch_mode_shortcut, ["<primary>KP_Enter"]
+        )  # This action is not added to the shortcuts window
+        self.create_action(
+            "manage-data-folders", self.manage_data_shortcut, ["<primary>d"]
+        )
+        self.create_action(
+            "refresh-list", self.refresh_list_shortcut, ["<primary>r", "F5"]
+        )
+        self.create_action(
+            "show-remotes-window", self.show_remotes_shortcut, ["<primary>m"]
+        )
         self.create_action("set-filter", self.filters_shortcut, ["<primary>t"])
         self.create_action("install-from-file", self.install_from_file, ["<primary>o"])
         self.create_action("open-menu", self.main_menu_shortcut, ["F10"])
         # self.create_action("open-search-install", self.open_search_install, ["<primary>i"])
 
-        gtk_version = str(Gtk.MAJOR_VERSION) + "." + str(Gtk.MINOR_VERSION) + "." + str(Gtk.MICRO_VERSION)
-        adw_version = str(Adw.MAJOR_VERSION) + "." + str(Adw.MINOR_VERSION) + "." + str(Adw.MICRO_VERSION)
+        gtk_version = (
+            str(Gtk.MAJOR_VERSION)
+            + "."
+            + str(Gtk.MINOR_VERSION)
+            + "."
+            + str(Gtk.MICRO_VERSION)
+        )
+        adw_version = (
+            str(Adw.MAJOR_VERSION)
+            + "."
+            + str(Adw.MINOR_VERSION)
+            + "."
+            + str(Adw.MICRO_VERSION)
+        )
         os_string = GLib.get_os_info("NAME") + " " + GLib.get_os_info("VERSION")
         lang = GLib.environ_getenv(GLib.get_environ(), "LANG")
 
-        self.troubleshooting = self.troubleshooting.format( os = os_string, wv = self.version, gtk = gtk_version, adw = adw_version, profile = Config.PROFILE, app_id = self.get_application_id(), lang = lang )
+        self.troubleshooting = self.troubleshooting.format(
+            os=os_string,
+            wv=self.version,
+            gtk=gtk_version,
+            adw=adw_version,
+            profile=Config.PROFILE,
+            app_id=self.get_application_id(),
+            lang=lang,
+        )
 
     def open_search_install(self, widget, _):
         SearchInstallWindow(self.props.active_window).present()
@@ -129,25 +162,37 @@ class WarehouseApplication(Adw.Application):
             application_icon="io.github.flattool.Warehouse",
             developer_name="Heliguy",
             version=self.version,
-            developers=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu"],
-            artists=["Heliguy https://github.com/heliguy4599", "kramo https://kramo.hu", "Amy https://github.com/AtiusAmy", "eryn https://github.com/hericiumvevo"],
-            copyright='© 2023 Heliguy',
+            developers=[
+                "Heliguy https://github.com/heliguy4599",
+                "kramo https://kramo.hu",
+            ],
+            artists=[
+                "Heliguy https://github.com/heliguy4599",
+                "kramo https://kramo.hu",
+                "Amy https://github.com/AtiusAmy",
+                "eryn https://github.com/hericiumvevo",
+            ],
+            copyright="© 2023 Heliguy",
             license_type=Gtk.License.GPL_3_0_ONLY,
             debug_info=self.troubleshooting,
             # Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
             translator_credits=_("translator-credits"),
             debug_info_filename="{}.txt".format(self.get_application_id()),
-            website='https://github.com/flattool/warehouse',
-            support_url='https://matrix.to/#/#warehouse-development:matrix.org',
-            issue_url='https://github.com/flattool/warehouse/issues')
+            website="https://github.com/flattool/warehouse",
+            support_url="https://matrix.to/#/#warehouse-development:matrix.org",
+            issue_url="https://github.com/flattool/warehouse/issues",
+        )
         about.add_link(_("Donate"), "https://github.com/flattool/warehouse/issues")
-        about.add_credit_section(_("Contributors"), [
-            # Contributors: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
-            "Win <winsdominoes2018@gmail.com>",
-            "Óscar Fernández Díaz",
-            "Runar https://github.com/runarcn",
-            "skøldis <warehouse@turtle.garden>"
-        ])
+        about.add_credit_section(
+            _("Contributors"),
+            [
+                # Contributors: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
+                "Win <winsdominoes2018@gmail.com>",
+                "Óscar Fernández Díaz",
+                "Runar https://github.com/runarcn",
+                "skøldis <warehouse@turtle.garden>",
+            ],
+        )
         about.present()
 
     def on_preferences_action(self, widget, _):
@@ -155,7 +200,9 @@ class WarehouseApplication(Adw.Application):
         print("app.preferences action activated")
 
     def on_search_action(self, widget, _):
-        self.props.active_window.search_bar.set_search_mode(not self.props.active_window.search_bar.get_search_mode())
+        self.props.active_window.search_bar.set_search_mode(
+            not self.props.active_window.search_bar.get_search_mode()
+        )
 
     def create_action(self, name, callback, shortcuts=None):
         """Add an application action.

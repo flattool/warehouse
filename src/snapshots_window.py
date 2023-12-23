@@ -5,15 +5,18 @@ import os
 import pathlib
 import time
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/snapshots.ui")
 class SnapshotsWindow(Adw.Window):
     __gtype_name__ = "SnapshotsWindow"
-    
-    new_env = dict( os.environ )
-    new_env['LC_ALL'] = 'C'
+
+    new_env = dict(os.environ)
+    new_env["LC_ALL"] = "C"
     host_home = str(pathlib.Path.home())
     user_data_path = host_home + "/.var/app/"
-    snapshots_path = host_home + "/.var/app/io.github.flattool.Warehouse/data/Snapshots/"
+    snapshots_path = (
+        host_home + "/.var/app/io.github.flattool.Warehouse/data/Snapshots/"
+    )
 
     snapshots_group = Gtk.Template.Child()
     main_stack = Gtk.Template.Child()
@@ -28,7 +31,7 @@ class SnapshotsWindow(Adw.Window):
 
     def showListOrEmpty(self):
         try:
-            self.disconnect(self.no_close_id) # Make window able to close
+            self.disconnect(self.no_close_id)  # Make window able to close
         except:
             pass
 
@@ -51,7 +54,7 @@ class SnapshotsWindow(Adw.Window):
 
         snapshot_files = os.listdir(self.snapshots_of_app_path)
         to_trash = []
-        
+
         for i in range(len(snapshot_files)):
             if not snapshot_files[i].endswith(".tar.zst"):
                 # Find all files that aren't snapshots
@@ -81,8 +84,13 @@ class SnapshotsWindow(Adw.Window):
 
         task = Gio.Task()
         task.run_in_thread(sizeThread)
-        
-        label = Gtk.Label(label=_("Version {}").format(split_file[1]), hexpand=True, wrap=True, justify=Gtk.Justification.RIGHT)
+
+        label = Gtk.Label(
+            label=_("Version {}").format(split_file[1]),
+            hexpand=True,
+            wrap=True,
+            justify=Gtk.Justification.RIGHT,
+        )
         row.add_suffix(label)
 
         apply = Gtk.Button(icon_name="check-plain-symbolic", valign=Gtk.Align.CENTER)
@@ -97,7 +105,7 @@ class SnapshotsWindow(Adw.Window):
         self.snapshots_group.insert(row, 0)
         self.main_stack.set_visible_child(self.outerbox)
         self.open_folder_button.set_sensitive(True)
-        
+
     def trash_snapshot(self, button, file, row):
         def on_response(dialog, response, func):
             if response == "cancel":
@@ -109,9 +117,15 @@ class SnapshotsWindow(Adw.Window):
                     self.my_utils.trashFolder(self.snapshots_of_app_path)
                     self.showListOrEmpty()
             else:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not trash snapshot")))
+                self.toast_overlay.add_toast(
+                    Adw.Toast.new(_("Could not trash snapshot"))
+                )
 
-        dialog = Adw.MessageDialog.new(self, _("Trash Snapshot?"), _("This snapshot and its contents will be sent to the trash."))
+        dialog = Adw.MessageDialog.new(
+            self,
+            _("Trash Snapshot?"),
+            _("This snapshot and its contents will be sent to the trash."),
+        )
         dialog.add_response("cancel", _("Cancel"))
         dialog.set_close_response("cancel")
         dialog.add_response("continue", _("Trash Snapshot"))
@@ -123,14 +137,25 @@ class SnapshotsWindow(Adw.Window):
         epoch = int(time.time())
 
         def thread():
-            response = self.my_utils.snapshotApps(epoch, [self.snapshots_of_app_path], [self.app_version], [self.app_user_data])
+            response = self.my_utils.snapshotApps(
+                epoch,
+                [self.snapshots_of_app_path],
+                [self.app_version],
+                [self.app_user_data],
+            )
             if response != 0:
-                GLib.idle_add(self.toast_overlay.add_toast(Adw.Toast.new(_("Could not create snapshot"))))
+                GLib.idle_add(
+                    self.toast_overlay.add_toast(
+                        Adw.Toast.new(_("Could not create snapshot"))
+                    )
+                )
                 return
             if self.showListOrEmpty() == "list":
                 self.create_row(f"{epoch}_{self.app_version}.tar.zst")
 
-        self.no_close_id = self.connect("close-request", lambda event: True)  # Make window unable to close
+        self.no_close_id = self.connect(
+            "close-request", lambda event: True
+        )  # Make window unable to close
         self.loading_label.set_label(_("Creating Snapshot…"))
         self.action_bar.set_revealed(False)
         self.main_stack.set_visible_child(self.loading)
@@ -140,19 +165,33 @@ class SnapshotsWindow(Adw.Window):
 
     def apply_snapshot(self, button, file, row):
         self.applied = False
+
         def thread():
             try:
                 subprocess.run(
-                    ['tar', '--zstd', '-xvf', f"{self.snapshots_of_app_path}{file}", "-C", f"{self.app_user_data}"],
-                    check=True, env=self.new_env
+                    [
+                        "tar",
+                        "--zstd",
+                        "-xvf",
+                        f"{self.snapshots_of_app_path}{file}",
+                        "-C",
+                        f"{self.app_user_data}",
+                    ],
+                    check=True,
+                    env=self.new_env,
                 )
                 self.applied = True
             except subprocess.CalledProcessError as e:
-                print("error in snapshots_window.apply_snapshot.thread: CalledProcessError:", e)
+                print(
+                    "error in snapshots_window.apply_snapshot.thread: CalledProcessError:",
+                    e,
+                )
 
         def callback():
             if not self.applied:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not apply snapshot")))
+                self.toast_overlay.add_toast(
+                    Adw.Toast.new(_("Could not apply snapshot"))
+                )
             else:
                 self.toast_overlay.add_toast(Adw.Toast.new(_("Snapshot applied")))
                 self.parent_window.refresh_list_of_flatpaks(self, False)
@@ -168,23 +207,35 @@ class SnapshotsWindow(Adw.Window):
             if os.path.exists(to_trash):
                 a = self.my_utils.trashFolder(to_trash)
                 if a != 0:
-                    self.toast_overlay.add_toast(Adw.Toast.new(_("Could not apply snapshot")))
+                    self.toast_overlay.add_toast(
+                        Adw.Toast.new(_("Could not apply snapshot"))
+                    )
                     return
             data = Gio.File.new_for_path(self.app_user_data)
             data.make_directory()
             if not os.path.exists(data.get_path()):
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not apply snapshot")))
+                self.toast_overlay.add_toast(
+                    Adw.Toast.new(_("Could not apply snapshot"))
+                )
                 return
 
-            self.no_close_id = self.connect("close-request", lambda event: True)  # Make window unable to close
+            self.no_close_id = self.connect(
+                "close-request", lambda event: True
+            )  # Make window unable to close
             self.loading_label.set_label(_("Applying Snapshot…"))
             self.action_bar.set_revealed(False)
             self.main_stack.set_visible_child(self.loading)
 
             task = Gio.Task.new(None, None, lambda *_: callback())
             task.run_in_thread(lambda *_: thread())
-        
-        dialog = Adw.MessageDialog.new(self, _("Apply Snapshot?"), _("Applying this snapshot will trash any current user data for {}.").format(self.app_name))
+
+        dialog = Adw.MessageDialog.new(
+            self,
+            _("Apply Snapshot?"),
+            _("Applying this snapshot will trash any current user data for {}.").format(
+                self.app_name
+            ),
+        )
         dialog.add_response("cancel", _("Cancel"))
         dialog.set_close_response("cancel")
         dialog.add_response("continue", _("Apply Snapshot"))
@@ -215,7 +266,11 @@ class SnapshotsWindow(Adw.Window):
         self.app_user_data = self.user_data_path + self.app_id + "/"
         self.parent_window = parent_window
 
-        if self.app_version == "" or self.app_version == "-" or self.app_version == None:
+        if (
+            self.app_version == ""
+            or self.app_version == "-"
+            or self.app_version == None
+        ):
             self.app_version = 0.0
 
         if not os.path.exists(self.snapshots_path):
@@ -225,9 +280,11 @@ class SnapshotsWindow(Adw.Window):
 
         # Calls
         self.generateList()
-        self.open_folder_button.connect("clicked", self.open_button_handler, self.snapshots_of_app_path)
+        self.open_folder_button.connect(
+            "clicked", self.open_button_handler, self.snapshots_of_app_path
+        )
         self.new_snapshot.connect("clicked", lambda *_: self.createSnapshot())
-        
+
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.key_handler)
         self.add_controller(event_controller)

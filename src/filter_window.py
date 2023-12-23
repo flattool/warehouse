@@ -4,6 +4,7 @@ import subprocess
 import os
 import pathlib
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/filter.ui")
 class FilterWindow(Adw.Window):
     __gtype_name__ = "FilterWindow"
@@ -14,7 +15,6 @@ class FilterWindow(Adw.Window):
     runtimes_switch = Gtk.Template.Child()
     remotes_expander = Gtk.Template.Child()
     runtimes_expander = Gtk.Template.Child()
-
 
     def key_handler(self, _a, event, _c, _d):
         if event == Gdk.KEY_Escape:
@@ -35,10 +35,12 @@ class FilterWindow(Adw.Window):
             self.apply_button.set_sensitive(False)
             return
 
-        if self.apps_switch.get_active() and\
-          (not self.runtimes_switch.get_active()) and\
-          (not self.remotes_expander_switch.get_active()) and\
-          (not self.runtimes_expander_switch.get_active()):
+        if (
+            self.apps_switch.get_active()
+            and (not self.runtimes_switch.get_active())
+            and (not self.remotes_expander_switch.get_active())
+            and (not self.runtimes_expander_switch.get_active())
+        ):
             self.apply_button.set_sensitive(False)
             return
 
@@ -69,7 +71,7 @@ class FilterWindow(Adw.Window):
 
     def runtimesEnableHandler(self, switch, is_enabled):
         self.runtimes_expander.set_enable_expansion(is_enabled)
-        
+
         for i in range(len(self.runtime_checkboxes)):
             self.runtime_checkboxes[i].set_active(not is_enabled)
 
@@ -82,21 +84,25 @@ class FilterWindow(Adw.Window):
             self.filter_list[4].append(runtime)
         else:
             self.filter_list[4].remove(runtime)
-        
+
         self.isListApplicable()
 
     def generateList(self):
         self.remotes_expander_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
         self.runtimes_expander_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
-        
+
         dependent_runtimes = self.my_utils.getDependentRuntimes()
 
-        if len(self.host_remotes) < 2: # Don't give the ability to filter by remotes if there is only 1
+        if (
+            len(self.host_remotes) < 2
+        ):  # Don't give the ability to filter by remotes if there is only 1
             self.remotes_expander.set_visible(False)
 
-        if len(dependent_runtimes) < 2: # Don't give the ability to filter by runtimes if there is only 1
+        if (
+            len(dependent_runtimes) < 2
+        ):  # Don't give the ability to filter by runtimes if there is only 1
             self.runtimes_expander.set_visible(False)
-            
+
         self.remote_checkboxes = []
         total = 0
         for i in range(len(self.host_remotes)):
@@ -125,7 +131,9 @@ class FilterWindow(Adw.Window):
 
                 remote_row.add_suffix(remote_check)
                 remote_row.set_activatable_widget(remote_check)
-                remote_check.connect("toggled", self.remoteCheckHandler, install_type, name)
+                remote_check.connect(
+                    "toggled", self.remoteCheckHandler, install_type, name
+                )
                 self.remote_checkboxes.append(remote_check)
                 remote_check.set_active(True)
             except:
@@ -154,7 +162,7 @@ class FilterWindow(Adw.Window):
         if not self.remotes_expander_switch.get_active():
             self.filter_list[3] = "all"
         if not self.runtimes_expander_switch.get_active():
-            self.filter_list[4] = "all" 
+            self.filter_list[4] = "all"
 
     def disableFilterToggle(self, _widget):
         self.app_window.filter_button.set_active(self.has_apply_button_been_clicked)
@@ -176,8 +184,12 @@ class FilterWindow(Adw.Window):
         self.add_controller(event_controller)
 
         # Connections
-        self.apply_button.connect("clicked", lambda *_: self.setHas_apply_button_been_clicked(True))
-        self.apply_button.connect("clicked", lambda *_: main_window.applyFilter(self.filter_list))
+        self.apply_button.connect(
+            "clicked", lambda *_: self.setHas_apply_button_been_clicked(True)
+        )
+        self.apply_button.connect(
+            "clicked", lambda *_: main_window.applyFilter(self.filter_list)
+        )
         self.apply_button.connect("clicked", lambda *_: self.close())
 
         self.cancel_button.connect("clicked", lambda *_: self.close())
@@ -191,7 +203,7 @@ class FilterWindow(Adw.Window):
         # Calls
         self.apps_switch.set_active(True)
         self.set_size_request(260, 230)
-        if not self.host_remotes[0][0] == '':
+        if not self.host_remotes[0][0] == "":
             self.generateList()
         else:
             self.remotes_expander.set_visible(False)
@@ -199,5 +211,3 @@ class FilterWindow(Adw.Window):
             self.filter_list[2] = "all"
             self.filter_list[3] = "all"
             self.filter_list[4] = "all"
-
-

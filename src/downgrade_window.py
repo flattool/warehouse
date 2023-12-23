@@ -4,12 +4,13 @@ import subprocess
 import os
 import pathlib
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/downgrade.ui")
 class DowngradeWindow(Adw.Window):
     __gtype_name__ = "DowngradeWindow"
-    
-    new_env = dict( os.environ )
-    new_env['LC_ALL'] = 'C'
+
+    new_env = dict(os.environ)
+    new_env["LC_ALL"] = "C"
 
     cancel_button = Gtk.Template.Child()
     apply_button = Gtk.Template.Child()
@@ -34,14 +35,28 @@ class DowngradeWindow(Adw.Window):
             self.commit_to_use = self.versions[index][0]
 
     def getCommits(self):
-        output = subprocess.run(["flatpak-spawn", "--host", "flatpak", "remote-info", "--log", self.remote, self.app_ref, f"--{self.install_type}"], capture_output=True, text=True, env=self.new_env).stdout
+        output = subprocess.run(
+            [
+                "flatpak-spawn",
+                "--host",
+                "flatpak",
+                "remote-info",
+                "--log",
+                self.remote,
+                self.app_ref,
+                f"--{self.install_type}",
+            ],
+            capture_output=True,
+            text=True,
+            env=self.new_env,
+        ).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
         data = [columns]
         for line in lines[1:]:
             row = line.split("\t")
             data.append(row[0].strip())
-        
+
         commits = []
         changes = []
         dates = []
@@ -67,14 +82,24 @@ class DowngradeWindow(Adw.Window):
         self.versions_group.add(group_button)
         for i in range(len(self.versions)):
             version = self.versions[i]
-            date_time = version[2].split(' ')
-            date = date_time[0].split('-')
+            date_time = version[2].split(" ")
+            date = date_time[0].split("-")
             offset = date_time[2][:3] + ":" + date_time[2][3:]
-            time = date_time[1].split(':')
-            display_time = GLib.DateTime.new(GLib.TimeZone.new(offset), int(date[0]), int(date[1]), int(date[2]), int(time[0]), int(time[1]), int(time[2]))
+            time = date_time[1].split(":")
+            display_time = GLib.DateTime.new(
+                GLib.TimeZone.new(offset),
+                int(date[0]),
+                int(date[1]),
+                int(date[2]),
+                int(time[0]),
+                int(time[1]),
+                int(time[2]),
+            )
             display_time = display_time.format("%x %X")
-            change = version[1].split('(')
-            row = Adw.ActionRow(title=GLib.markup_escape_text(change[0]), subtitle=str(display_time))
+            change = version[1].split("(")
+            row = Adw.ActionRow(
+                title=GLib.markup_escape_text(change[0]), subtitle=str(display_time)
+            )
             row.set_tooltip_text(_("Commit Hash: {}").format(version[0]))
             select = Gtk.CheckButton()
             select.connect("toggled", self.selectionHandler, i)
@@ -98,18 +123,26 @@ class DowngradeWindow(Adw.Window):
         self.progress_bar.set_visible = False
 
         if self.response != 0:
-            self.toast_overlay.add_toast(Adw.Toast.new(_("Could not downgrade {}").format(self.app_name)))
+            self.toast_overlay.add_toast(
+                Adw.Toast.new(_("Could not downgrade {}").format(self.app_name))
+            )
             return
-        
+
         if self.mask_row.get_active():
             if self.my_utils.maskFlatpak(self.app_id, self.install_type) != 0:
-                self.parent_window.toast_overlay.add_toast(Adw.Toast.new(_("Could not disable updates for {}").format(self.app_name)))
+                self.parent_window.toast_overlay.add_toast(
+                    Adw.Toast.new(
+                        _("Could not disable updates for {}").format(self.app_name)
+                    )
+                )
 
         self.parent_window.refresh_list_of_flatpaks(self, False)
         self.close()
 
     def downgradeThread(self):
-        self.response = self.my_utils.downgradeFlatpak(self.app_ref, self.commit_to_use, self.install_type)
+        self.response = self.my_utils.downgradeFlatpak(
+            self.app_ref, self.commit_to_use, self.install_type
+        )
 
     def onApply(self):
         self.set_title(_("Downgrading…"))
@@ -118,7 +151,7 @@ class DowngradeWindow(Adw.Window):
         self.should_pulse = True
         self.progress_bar.set_visible(True)
         self.pulser()
-        
+
         task = Gio.Task.new(None, None, lambda *_: self.downgradeCallack())
         task.run_in_thread(lambda *_: self.downgradeThread())
 
@@ -152,7 +185,11 @@ class DowngradeWindow(Adw.Window):
         self.add_controller(event_controller)
         self.set_title(_("Fetching Releases…"))
         self.set_transient_for(parent_window)
-        self.mask_row.set_subtitle(_("Ensure that {} will never be updated to a newer version").format(self.app_name))
+        self.mask_row.set_subtitle(
+            _("Ensure that {} will never be updated to a newer version").format(
+                self.app_name
+            )
+        )
 
         self.generateList()
 

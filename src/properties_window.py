@@ -4,12 +4,13 @@ import subprocess
 import os
 import pathlib
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/properties.ui")
 class PropertiesWindow(Adw.Window):
     __gtype_name__ = "PropertiesWindow"
-    
-    new_env = dict( os.environ )
-    new_env['LC_ALL'] = 'C'
+
+    new_env = dict(os.environ)
+    new_env["LC_ALL"] = "C"
     host_home = str(pathlib.Path.home())
     user_data_path = host_home + "/.var/app/"
 
@@ -81,9 +82,19 @@ class PropertiesWindow(Adw.Window):
 
     def generateLower(self):
         column_headers = [
-            _('Name'), _('Description'), _('App ID'), _('Version'), _('Branch'),
-            _('Arch'), _('Origin'), _('Installation'), _('Ref'), _('Active Commit'),
-            _('Latest Commit'), _('Installed Size'), _('Options')
+            _("Name"),
+            _("Description"),
+            _("App ID"),
+            _("Version"),
+            _("Branch"),
+            _("Arch"),
+            _("Origin"),
+            _("Installation"),
+            _("Ref"),
+            _("Active Commit"),
+            _("Latest Commit"),
+            _("Installed Size"),
+            _("Options"),
         ]
 
         for i in range(len(column_headers)):
@@ -93,7 +104,10 @@ class PropertiesWindow(Adw.Window):
             row = Adw.ActionRow(title=column_headers[i], activatable=True)
             row.add_suffix(Gtk.Image.new_from_icon_name("edit-copy-symbolic"))
             row.set_subtitle(GLib.markup_escape_text(self.current_flatpak[i]))
-            row.connect("activated", lambda *_a, row=row: self.copyItem(row.get_subtitle(), row.get_title()))
+            row.connect(
+                "activated",
+                lambda *_a, row=row: self.copyItem(row.get_subtitle(), row.get_title()),
+            )
             self.lower.add(row)
 
     def viewAppsHandler(self, widget):
@@ -121,16 +135,20 @@ class PropertiesWindow(Adw.Window):
                 self.open_data.set_visible(False)
                 self.trash_data.set_visible(False)
             else:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Could not trash user data")))
+                self.toast_overlay.add_toast(
+                    Adw.Toast.new(_("Could not trash user data"))
+                )
 
-        dialog = Adw.MessageDialog.new(self, _("Send {}'s User Data to the Trash?").format(self.app_name))
+        dialog = Adw.MessageDialog.new(
+            self, _("Send {}'s User Data to the Trash?").format(self.app_name)
+        )
         dialog.add_response("cancel", _("Cancel"))
         dialog.set_close_response("cancel")
         dialog.add_response("continue", _("Trash Data"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", onResponse, dialog.choose_finish)
         dialog.present()
-    
+
     def __init__(self, flatpak_index, host_flatpaks, parent_window, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
@@ -147,27 +165,47 @@ class PropertiesWindow(Adw.Window):
         self.user_data_path += self.app_id
 
         self.details.connect("activated", self.show_details)
-        self.runtime_copy.connect("clicked", lambda *_: self.copyItem(self.runtime.get_subtitle(), self.runtime.get_title()))
+        self.runtime_copy.connect(
+            "clicked",
+            lambda *_: self.copyItem(
+                self.runtime.get_subtitle(), self.runtime.get_title()
+            ),
+        )
         self.runtime_properties.connect("clicked", lambda *_: self.close())
-        self.runtime_properties.connect("clicked", lambda *_: self.showPropertiesHandler())
+        self.runtime_properties.connect(
+            "clicked", lambda *_: self.showPropertiesHandler()
+        )
         self.view_apps.connect("activated", self.viewAppsHandler)
         self.trash_data.connect("clicked", lambda *_: self.trashDataHandler())
-        
+
         if "eol" in self.current_flatpak[12]:
             self.eol_app_banner.set_revealed(True)
-            self.eol_app_banner.set_title(_("{} has reached its End of Life and will not receive any security updates").format(self.app_name))
+            self.eol_app_banner.set_title(
+                _(
+                    "{} has reached its End of Life and will not receive any security updates"
+                ).format(self.app_name)
+            )
 
         if self.current_flatpak[13] in parent_window.eol_list:
             self.eol_runtime_banner.set_revealed(True)
-            self.eol_runtime_banner.set_title(_("{}'s runtime has reached its End of Life and will not receive any security updates").format(self.app_name))
+            self.eol_runtime_banner.set_title(
+                _(
+                    "{}'s runtime has reached its End of Life and will not receive any security updates"
+                ).format(self.app_name)
+            )
 
-        if self.app_id in self.my_utils.getHostMasks("system") or self.app_id in self.my_utils.getHostMasks("user"):
+        if self.app_id in self.my_utils.getHostMasks(
+            "system"
+        ) or self.app_id in self.my_utils.getHostMasks("user"):
             self.mask_banner.set_revealed(True)
-            self.mask_banner.set_title(_("{} is masked and will not be updated").format(self.app_name))
+            self.mask_banner.set_title(
+                _("{} is masked and will not be updated").format(self.app_name)
+            )
 
         def key_handler(_a, event, _c, _d):
             if event == Gdk.KEY_Escape:
                 self.close()
+
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", key_handler)
         self.add_controller(event_controller)

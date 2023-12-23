@@ -4,8 +4,13 @@ import subprocess
 import os
 import pathlib
 
-@Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/search_install.ui")
-class SearchInstallWindow (Adw.Window): # TODO: stop execution of thread when search is changed
+
+@Gtk.Template(
+    resource_path="/io/github/flattool/Warehouse/../data/ui/search_install.ui"
+)
+class SearchInstallWindow(
+    Adw.Window
+):  # TODO: stop execution of thread when search is changed
     __gtype_name__ = "SearchInstallWindow"
 
     results_list_box = Gtk.Template.Child()
@@ -25,7 +30,9 @@ class SearchInstallWindow (Adw.Window): # TODO: stop execution of thread when se
     def searchResponse(self, a, b):
         self.results_list_box.remove_all()
         print(self.search_results)
-        if (self.is_debug and len(self.search_results) == 5) or (len(self.search_results) == 1 and len(self.search_results[0]) == 1): #This is unreliable with G_DEBUG
+        if (self.is_debug and len(self.search_results) == 5) or (
+            len(self.search_results) == 1 and len(self.search_results[0]) == 1
+        ):  # This is unreliable with G_DEBUG
             self.main_stack.set_visible_child(self.no_results)
             return
         if len(self.search_results) > 50:
@@ -35,12 +42,20 @@ class SearchInstallWindow (Adw.Window): # TODO: stop execution of thread when se
         for i in range(len(self.search_results)):
             try:
                 print("creating row {}".format(str(i)))
-                row = Adw.ActionRow(title=GLib.markup_escape_text(self.search_results[i][0]), subtitle=self.search_results[i][2])
+                row = Adw.ActionRow(
+                    title=GLib.markup_escape_text(self.search_results[i][0]),
+                    subtitle=self.search_results[i][2],
+                )
                 print("row {} is {}".format(str(i), self.search_results[i][0]))
                 check = Gtk.CheckButton()
                 check.add_css_class("selection-mode")
                 check.connect("toggled", self.on_check)
-                label = Gtk.Label(label=self.search_results[i][3], justify=Gtk.Justification.RIGHT, wrap=True, hexpand=True)
+                label = Gtk.Label(
+                    label=self.search_results[i][3],
+                    justify=Gtk.Justification.RIGHT,
+                    wrap=True,
+                    hexpand=True,
+                )
                 row.add_suffix(label)
                 row.add_suffix(check)
                 row.set_activatable_widget(check)
@@ -52,11 +67,20 @@ class SearchInstallWindow (Adw.Window): # TODO: stop execution of thread when se
         print(button.get_active())
 
     def searchThread(self):
-        command = ["flatpak-spawn", "--host", "flatpak", "search", "--columns=all", self.to_search]
+        command = [
+            "flatpak-spawn",
+            "--host",
+            "flatpak",
+            "search",
+            "--columns=all",
+            self.to_search,
+        ]
         if self.remote_to_search:
             command += self.remote_to_search
 
-        output = subprocess.run(command, capture_output=True, text=True, env=self.new_env).stdout
+        output = subprocess.run(
+            command, capture_output=True, text=True, env=self.new_env
+        ).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
         data = [columns]
@@ -83,7 +107,7 @@ class SearchInstallWindow (Adw.Window): # TODO: stop execution of thread when se
         remotes_pop = Gtk.Popover()
         remotes_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         # remotes_pop.set_size_request(400, 1) # why?
-        remotes_pop.set_child(remotes_box) # don't use ScrolledWindows in popovers!
+        remotes_pop.set_child(remotes_box)  # don't use ScrolledWindows in popovers!
 
         # why not just comment this code out and leave it unimplemented— it does nothing of use
         for i in range(1, 3):
@@ -107,8 +131,8 @@ class SearchInstallWindow (Adw.Window): # TODO: stop execution of thread when se
         self.my_utils = myUtils(self)
         self.search_results = []
         self.to_search = ""
-        self.new_env = dict( os.environ )
-        self.new_env['LC_ALL'] = 'C'
+        self.new_env = dict(os.environ)
+        self.new_env["LC_ALL"] = "C"
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.key_handler)
         self.cancel_button.connect("clicked", lambda *_: self.close())
@@ -130,6 +154,3 @@ class SearchInstallWindow (Adw.Window): # TODO: stop execution of thread when se
 
         self.remote_to_search = []
         self.main_stack.set_visible_child(self.blank_page)
-
-        
-        
