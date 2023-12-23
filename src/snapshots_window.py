@@ -29,7 +29,7 @@ class SnapshotsWindow(Adw.Window):
     loading_label = Gtk.Template.Child()
     action_bar = Gtk.Template.Child()
 
-    def showListOrEmpty(self):
+    def show_list_or_empty(self):
         try:
             self.disconnect(self.no_close_id)  # Make window able to close
         except:
@@ -44,12 +44,12 @@ class SnapshotsWindow(Adw.Window):
         self.main_stack.set_visible_child(self.no_snapshots)
         return "empty"
 
-    def generateList(self):
+    def generate_list(self):
         if not os.path.exists(self.app_user_data):
             self.new_snapshot.set_sensitive(False)
             self.new_snapshot.set_tooltip_text(_("There is no User Data to Snapshot"))
 
-        if self.showListOrEmpty() == "empty":
+        if self.show_list_or_empty() == "empty":
             return
 
         snapshot_files = os.listdir(self.snapshots_of_app_path)
@@ -62,7 +62,7 @@ class SnapshotsWindow(Adw.Window):
 
         for i in range(len(to_trash)):
             # Trash all files that aren't snapshots
-            a = self.my_utils.trashFolder(f"{self.snapshots_of_app_path}{to_trash[i]}")
+            a = self.my_utils.trash_folder(f"{self.snapshots_of_app_path}{to_trash[i]}")
             if a == 0:
                 snapshot_files.remove(to_trash[i])
 
@@ -74,8 +74,8 @@ class SnapshotsWindow(Adw.Window):
             self.create_row(snapshot_files[i])
 
     def create_row(self, file):
-        def sizeThread(*args):
-            size = self.my_utils.getSizeWithFormat(self.snapshots_of_app_path + file)
+        def size_thread(*args):
+            size = self.my_utils.get_size_with_format(self.snapshots_of_app_path + file)
             GLib.idle_add(lambda *_a: row.set_subtitle(f"~{size}"))
 
         split_file = file.removesuffix(".tar.zst").split("_")
@@ -83,7 +83,7 @@ class SnapshotsWindow(Adw.Window):
         row = Adw.ActionRow(title=time)
 
         task = Gio.Task()
-        task.run_in_thread(sizeThread)
+        task.run_in_thread(size_thread)
 
         label = Gtk.Label(
             label=_("Version {}").format(split_file[1]),
@@ -110,12 +110,12 @@ class SnapshotsWindow(Adw.Window):
         def on_response(dialog, response, func):
             if response == "cancel":
                 return
-            a = self.my_utils.trashFolder(self.snapshots_of_app_path + file)
+            a = self.my_utils.trash_folder(self.snapshots_of_app_path + file)
             if a == 0:
                 self.snapshots_group.remove(row)
                 if not self.snapshots_group.get_row_at_index(0):
-                    self.my_utils.trashFolder(self.snapshots_of_app_path)
-                    self.showListOrEmpty()
+                    self.my_utils.trash_folder(self.snapshots_of_app_path)
+                    self.show_list_or_empty()
             else:
                 self.toast_overlay.add_toast(
                     Adw.Toast.new(_("Could not trash snapshot"))
@@ -133,11 +133,11 @@ class SnapshotsWindow(Adw.Window):
         dialog.connect("response", on_response, dialog.choose_finish)
         dialog.present()
 
-    def createSnapshot(self):
+    def create_snapshot(self):
         epoch = int(time.time())
 
         def thread():
-            response = self.my_utils.snapshotApps(
+            response = self.my_utils.snapshot_apps(
                 epoch,
                 [self.snapshots_of_app_path],
                 [self.app_version],
@@ -150,7 +150,7 @@ class SnapshotsWindow(Adw.Window):
                     )
                 )
                 return
-            if self.showListOrEmpty() == "list":
+            if self.show_list_or_empty() == "list":
                 self.create_row(f"{epoch}_{self.app_version}.tar.zst")
 
         self.no_close_id = self.connect(
@@ -197,7 +197,7 @@ class SnapshotsWindow(Adw.Window):
                 self.parent_window.refresh_list_of_flatpaks(self, False)
 
             self.new_snapshot.set_tooltip_text("")
-            self.showListOrEmpty()
+            self.show_list_or_empty()
 
         def on_response(dialog, response, func):
             if response == "cancel":
@@ -205,7 +205,7 @@ class SnapshotsWindow(Adw.Window):
             to_apply = self.snapshots_of_app_path + file
             to_trash = self.app_user_data
             if os.path.exists(to_trash):
-                a = self.my_utils.trashFolder(to_trash)
+                a = self.my_utils.trash_folder(to_trash)
                 if a != 0:
                     self.toast_overlay.add_toast(
                         Adw.Toast.new(_("Could not apply snapshot"))
@@ -279,11 +279,11 @@ class SnapshotsWindow(Adw.Window):
             file.make_directory()
 
         # Calls
-        self.generateList()
+        self.generate_list()
         self.open_folder_button.connect(
             "clicked", self.open_button_handler, self.snapshots_of_app_path
         )
-        self.new_snapshot.connect("clicked", lambda *_: self.createSnapshot())
+        self.new_snapshot.connect("clicked", lambda *_: self.create_snapshot())
 
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.key_handler)

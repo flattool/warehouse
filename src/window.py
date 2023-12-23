@@ -93,24 +93,24 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.is_result = True
             return True
 
-    def removeRow(self, row):
+    def remove_row(self, row):
         row[5].set_active(False)
         row[0] = False
         row[2].set_visible(False)
 
-    def uninstallButtonsEnable(self, should_enable):
+    def uninstall_buttons_enable(self, should_enable):
         if self.currently_uninstalling:
             return
         self.refresh_button.set_sensitive(should_enable)
         if not should_enable:
             self.batch_uninstall_button.set_sensitive(False)
 
-    def uninstallFlatpakCallback(self, _a, _b):
+    def uninstall_flatpak_callback(self, _a, _b):
         self.currently_uninstalling = False
         self.refresh_list_of_flatpaks(_a, False)
         self.main_toolbar_view.set_sensitive(True)
         self.disconnect(self.no_close)
-        self.uninstallButtonsEnable(True)
+        self.uninstall_buttons_enable(True)
         self.main_stack.set_visible_child(self.main_box)
         self.search_button.set_sensitive(True)
         if self.my_utils.uninstall_success:
@@ -121,12 +121,12 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 Adw.Toast.new(_("Could not uninstall some apps"))
             )
 
-    def uninstallFlatpakThread(self, ref_arr, id_arr, type_arr, should_trash):
-        self.my_utils.uninstallFlatpak(
+    def uninstall_flatpak_thread(self, ref_arr, id_arr, type_arr, should_trash):
+        self.my_utils.uninstall_flatpak(
             ref_arr, type_arr, should_trash, self.main_progress_bar
         )
 
-    def uninstallFlatpak(self, should_trash):
+    def uninstall_flatpak(self, should_trash):
         ref_arr = []
         id_arr = []
         type_arr = []
@@ -140,17 +140,17 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 type_arr.append(current.install_type)
             i += 1
         self.set_title(self.main_window_title)
-        task = Gio.Task.new(None, None, self.uninstallFlatpakCallback)
+        task = Gio.Task.new(None, None, self.uninstall_flatpak_callback)
         task.run_in_thread(
-            lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, type_arr=type_arr, should_trash=should_trash: self.uninstallFlatpakThread(
+            lambda _task, _obj, _data, _cancellable, ref_arr=ref_arr, id_arr=id_arr, type_arr=type_arr, should_trash=should_trash: self.uninstall_flatpak_thread(
                 ref_arr, id_arr, type_arr, should_trash
             )
         )
 
-    def batchUninstallButtonHandler(self, _widget):
+    def batch_uninstall_button_handler(self, _widget):
         has_user_data = False
 
-        def batchUninstallResponse(_idk, response_id, _widget):
+        def batch_uninstall_response(_idk, response_id, _widget):
             if response_id == "cancel":
                 return 1
 
@@ -159,14 +159,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
             except:
                 should_trash = False
 
-            self.uninstallButtonsEnable(False)
+            self.uninstall_buttons_enable(False)
 
             self.no_close = self.connect(
                 "close-request", lambda event: True
             )  # Make window unable to close
             self.main_stack.set_visible_child(self.uninstalling)
             self.search_button.set_sensitive(False)
-            self.uninstallFlatpak(should_trash)
+            self.uninstall_flatpak(should_trash)
 
         # Create Widgets
         dialog = Adw.MessageDialog.new(
@@ -225,7 +225,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             header.add_css_class("h4")
 
         # Connections
-        dialog.connect("response", batchUninstallResponse, dialog.choose_finish)
+        dialog.connect("response", batch_uninstall_response, dialog.choose_finish)
 
         # Calls
         dialog.set_close_response("cancel")
@@ -234,14 +234,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         Gtk.Window.present(dialog)
 
-    def uninstallButtonHandler(self, row, name, ref, id):
+    def uninstall_button_handler(self, row, name, ref, id):
         if self.currently_uninstalling:
             self.toast_overlay.add_toast(
                 Adw.Toast.new(_("Cannot uninstall while already uninstalling"))
             )
             return
 
-        def uninstallResponse(_idk, response_id, _widget):
+        def uninstall_response(_idk, response_id, _widget):
             if response_id == "cancel":
                 return 1
 
@@ -253,14 +253,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
             if response_id == "purge":
                 should_trash = True
 
-            self.uninstallButtonsEnable(False)
+            self.uninstall_buttons_enable(False)
 
             self.no_close = self.connect(
                 "close-request", lambda event: True
             )  # Make window unable to close
             self.main_stack.set_visible_child(self.uninstalling)
             self.search_button.set_sensitive(False)
-            self.uninstallFlatpak(should_trash)
+            self.uninstall_flatpak(should_trash)
 
         row.tickbox.set_active(True)
 
@@ -306,10 +306,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Uninstall"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.connect("response", uninstallResponse, dialog.choose_finish)
+        dialog.connect("response", uninstall_response, dialog.choose_finish)
         Gtk.Window.present(dialog)
 
-    def windowSetEmpty(self, is_empty):
+    def window_set_empty(self, is_empty):
         self.batch_mode_button.set_sensitive(not is_empty)
         self.search_button.set_sensitive(not is_empty)
         self.filter_button.set_sensitive(not is_empty)
@@ -328,12 +328,12 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.flatpaks_list_box.insert(row, index)
 
     def generate_list_of_flatpaks(self):
-        self.host_flatpaks = self.my_utils.getHostFlatpaks()
-        self.dependent_runtimes = self.my_utils.getDependentRuntimes()
+        self.host_flatpaks = self.my_utils.get_host_flatpaks()
+        self.dependent_runtimes = self.my_utils.get_dependent_runtimes()
         self.set_title(self.main_window_title)
         self.eol_list = []
-        self.system_mask_list = self.my_utils.getHostMasks("system")
-        self.user_mask_list = self.my_utils.getHostMasks("user")
+        self.system_mask_list = self.my_utils.get_host_masks("system")
+        self.user_mask_list = self.my_utils.get_host_masks("user")
 
         for index in range(len(self.host_flatpaks)):
             try:
@@ -345,10 +345,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         for index in range(len(self.host_flatpaks)):
             self.create_row(index)
 
-        self.applyFilter()
+        self.apply_filter()
 
         # self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
-        self.batchActionsEnable(False)
+        self.batch_actions_enable(False)
 
     def refresh_list_of_flatpaks(self, widget, should_toast):
         if self.currently_uninstalling:
@@ -359,17 +359,17 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.generate_list_of_flatpaks()
         self.batch_mode_button.set_active(False)
 
-    def openDataFolder(self, path):
+    def open_data_folder(self, path):
         try:
             Gio.AppInfo.launch_default_for_uri(f"file://{path}", None)
         except GLib.GError:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not open folder")))
 
-    def trashData(self, name, id, index):
-        def onContinue(dialog, response):
+    def trash_data(self, name, id, index):
+        def on_continue(dialog, response):
             if response == "cancel":
                 return
-            result = self.my_utils.trashFolder(f"{self.user_data_path}{id}")
+            result = self.my_utils.trash_folder(f"{self.user_data_path}{id}")
             if result != 0:
                 self.toast_overlay.add_toast(
                     Adw.Toast.new(_("Could not trash user data"))
@@ -389,10 +389,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.set_close_response("cancel")
         dialog.add_response("continue", _("Trash Data"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.connect("response", onContinue)
+        dialog.connect("response", on_continue)
         dialog.present()
 
-    def maskFlatpak(self, row):
+    def mask_flatpak(self, row):
         is_masked = (
             row.mask_label.get_visible()
         )  # Check the visibility of the mask label to see if the flatpak is masked
@@ -410,18 +410,18 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.lookup_action(f"mask{row.index}").set_enabled(is_masked)
             self.lookup_action(f"unmask{row.index}").set_enabled(not is_masked)
 
-        def onContinue(dialog, response):
+        def on_continue(dialog, response):
             if response == "cancel":
                 return
             task = Gio.Task.new(None, None, lambda *_: callback())
             task.run_in_thread(
                 lambda *_: result.append(
-                    self.my_utils.maskFlatpak(row.app_id, row.install_type, is_masked)
+                    self.my_utils.mask_flatpak(row.app_id, row.install_type, is_masked)
                 )
             )
 
         if is_masked:
-            onContinue(self, None)
+            on_continue(self, None)
         else:
             dialog = Adw.MessageDialog.new(
                 self, _("Disable Updates for {}?").format(row.app_name)
@@ -434,15 +434,15 @@ class WarehouseWindow(Adw.ApplicationWindow):
             dialog.add_response("cancel", _("Cancel"))
             dialog.set_close_response("cancel")
             dialog.add_response("continue", _("Disable Updates"))
-            dialog.connect("response", onContinue)
+            dialog.connect("response", on_continue)
             dialog.present()
 
-    def copyItem(self, to_copy, to_toast=None):
+    def copy_item(self, to_copy, to_toast=None):
         self.clipboard.set(to_copy)
         if to_toast:
             self.toast_overlay.add_toast(Adw.Toast.new(to_toast))
 
-    def runCallback(self, _a, _b):
+    def run_callback(self, _a, _b):
         if not self.my_utils.run_app_error:
             return
 
@@ -459,10 +459,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.set_close_response("ok")
         dialog.present()
 
-    def runAppThread(self, ref, to_toast=None):
+    def run_app_thread(self, ref, to_toast=None):
         self.run_app_error = False
-        task = Gio.Task.new(None, None, self.runCallback)
-        task.run_in_thread(lambda *_: self.my_utils.runApp(ref))
+        task = Gio.Task.new(None, None, self.run_callback)
+        task.run_in_thread(lambda *_: self.my_utils.run_app(ref))
         if to_toast:
             self.toast_overlay.add_toast(Adw.Toast.new(to_toast))
 
@@ -479,18 +479,18 @@ class WarehouseWindow(Adw.ApplicationWindow):
         if not widget.get_active():
             self.batch_select_all_button.set_active(False)
 
-    def batchKeyHandler(self, _b, event, _c, _d):
+    def batch_key_handler(self, _b, event, _c, _d):
         if event == Gdk.KEY_Escape:
             self.batch_mode_button.set_active(False)
 
-    def batchActionsEnable(self, should_enable):
+    def batch_actions_enable(self, should_enable):
         self.batch_copy_button.set_sensitive(should_enable)
         self.batch_clean_button.set_sensitive(should_enable)
         self.batch_snapshot_button.set_sensitive(should_enable)
         if not self.currently_uninstalling:
             self.batch_uninstall_button.set_sensitive(should_enable)
 
-    def onBatchCleanResponse(self, dialog, response, _a):
+    def on_batch_clean_response(self, dialog, response, _a):
         if response == "cancel":
             return
         i = 0
@@ -502,7 +502,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 break
             if current.tickbox.get_active() == False:
                 continue
-            trash = self.my_utils.trashFolder(f"{self.user_data_path}{current.app_id}")
+            trash = self.my_utils.trash_folder(f"{self.user_data_path}{current.app_id}")
             if trash == 1:
                 self.toast_overlay.add_toast(
                     Adw.Toast.new(_("{} has no data to trash").format(current.app_name))
@@ -522,7 +522,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 False
             )  # Disable the Trash User Data dropdown option when the data was deleted
 
-    def batchCleanHandler(self, widget):
+    def batch_clean_handler(self, widget):
         dialog = Adw.MessageDialog.new(
             self,
             _("Trash Selected Apps' User Data?"),
@@ -532,14 +532,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Trash Data"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.connect("response", self.onBatchCleanResponse, dialog.choose_finish)
+        dialog.connect("response", self.on_batch_clean_response, dialog.choose_finish)
         Gtk.Window.present(dialog)
 
-    def batchSelectAllButtonHandler(self, widget):
+    def select_all_handler(self, widget):
         self.set_select_all(widget.get_active())
 
-    def batchSnapshotHandler(self, widget):
-        def batchSnapshotResponse(dialog, response, _a):
+    def batch_snapshot_handler(self, widget):
+        def batch_snapshot_response(dialog, response, _a):
             if response == "cancel":
                 return
             i = 0
@@ -566,7 +566,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 app_data_arr.append(f"{self.user_data_path}{current.app_id}")
 
             def thread():
-                capture = self.my_utils.snapshotApps(
+                capture = self.my_utils.snapshot_apps(
                     epoch,
                     snapshot_arr,
                     app_ver_arr,
@@ -608,7 +608,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Create Snapshots"))
-        dialog.connect("response", batchSnapshotResponse, dialog.choose_finish)
+        dialog.connect("response", batch_snapshot_response, dialog.choose_finish)
         Gtk.Window.present(dialog)
 
     def set_select_all(self, should_select_all):
@@ -619,7 +619,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 current.tickbox.set_active(should_select_all)
             i += 1
 
-    def rowSelectHandler(self, tickbox):
+    def row_select_handler(self, tickbox):
         if tickbox.get_active() == True:
             self.total_selected += 1
         else:
@@ -628,10 +628,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         if self.total_selected == 0:
             buttons_enable = False
             self.set_title(self.main_window_title)
-            self.batchActionsEnable(False)
+            self.batch_actions_enable(False)
         else:
             self.set_title(f"{self.total_selected} Selected")
-            self.batchActionsEnable(True)
+            self.batch_actions_enable(True)
 
     def create_action(self, name, callback, shortcuts=None):
         """Add a window action.
@@ -648,7 +648,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         if shortcuts:
             self.set_accels_for_action(f"app.{name}", shortcuts)
 
-    def copyNames(self, widget, _a):
+    def copy_names(self, widget, _a):
         to_copy = ""
         i = 0
         while True:
@@ -661,7 +661,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.clipboard.set(to_copy)
         self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app names")))
 
-    def copyIDs(self, widget, _a):
+    def copy_IDs(self, widget, _a):
         to_copy = ""
         i = 0
         while True:
@@ -674,7 +674,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.clipboard.set(to_copy)
         self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app IDs")))
 
-    def copyRefs(self, widget, _a):
+    def copy_refs(self, widget, _a):
         to_copy = ""
         i = 0
         while True:
@@ -687,17 +687,17 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.clipboard.set(to_copy)
         self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app refs")))
 
-    def filterWindowHandler(self, widget):
+    def filter_window_handler(self, widget):
         if widget.get_active() and self.should_open_filter_window:
             filtwin = FilterWindow(self)
             filtwin.present()
         else:
-            self.applyFilter()
+            self.apply_filter()
 
-    def filterWindowKeyboardHandler(self, widget):
+    def filter_window_keyboard_handler(self, widget):
         self.filter_button.set_active(not self.filter_button.get_active())
 
-    def applyFilter(self, filter=default_filter):
+    def apply_filter(self, filter=default_filter):
         for i in range(len(self.filter_list)):
             current = self.filter_list[i]
             if "user" == current:
@@ -749,7 +749,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.main_stack.set_visible_child(self.main_box)
             self.search_button.set_sensitive(True)
 
-    def installCallback(self, _a, _b):
+    def install_callback(self, _a, _b):
         self.main_stack.set_visible_child(self.main_box)
         self.search_button.set_sensitive(True)
         if self.my_utils.install_success:
@@ -758,8 +758,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         else:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not install app")))
 
-    def installThread(self, filepath, user_or_system):
-        self.my_utils.installFlatpak(
+    def install_thread(self, filepath, user_or_system):
+        self.my_utils.install_flatpak(
             [filepath], None, user_or_system, self.main_progress_bar
         )
 
@@ -774,8 +774,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
             if system_check.get_active():
                 user_or_system = "system"
 
-            task = Gio.Task.new(None, None, self.installCallback)
-            task.run_in_thread(lambda *_: self.installThread(filepath, user_or_system))
+            task = Gio.Task.new(None, None, self.install_callback)
+            task.run_in_thread(lambda *_: self.install_thread(filepath, user_or_system))
 
         name = filepath.split("/")
         name = name[len(name) - 1]
@@ -823,7 +823,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         elif filepath.endswith(".flatpakrepo"):
             remotes_window = RemotesWindow(self)
             remotes_window.present()
-            remotes_window.addRemoteFromFile(filepath)
+            remotes_window.add_remote_file(filepath)
         else:
             self.toast_overlay.add_toast(Adw.Toast.new(_("File type not supported")))
 
@@ -875,7 +875,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.new_env["LC_ALL"] = "C"
 
         if self.host_flatpaks == [["", ""]]:
-            self.windowSetEmpty(True)
+            self.window_set_empty(True)
             return
 
         self.flatpaks_list_box.set_filter_func(self.filter_func)
@@ -890,24 +890,24 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.search_bar.connect("notify", self.on_change)
         self.refresh_button.connect("clicked", self.refresh_list_of_flatpaks, True)
         self.batch_mode_button.connect("toggled", self.batch_mode_handler)
-        self.batch_clean_button.connect("clicked", self.batchCleanHandler)
-        self.batch_uninstall_button.connect("clicked", self.batchUninstallButtonHandler)
-        self.batch_select_all_button.connect(
-            "clicked", self.batchSelectAllButtonHandler
+        self.batch_clean_button.connect("clicked", self.batch_clean_handler)
+        self.batch_uninstall_button.connect(
+            "clicked", self.batch_uninstall_button_handler
         )
-        self.batch_snapshot_button.connect("clicked", self.batchSnapshotHandler)
-        self.batchActionsEnable(False)
+        self.batch_select_all_button.connect("clicked", self.select_all_handler)
+        self.batch_snapshot_button.connect("clicked", self.batch_snapshot_handler)
+        self.batch_actions_enable(False)
         event_controller = Gtk.EventControllerKey()
-        event_controller.connect("key-pressed", self.batchKeyHandler)
+        event_controller.connect("key-pressed", self.batch_key_handler)
         self.add_controller(event_controller)
         self.main_overlay.add_overlay(self.main_progress_bar)
         self.should_open_filter_window = True
 
-        self.create_action("copy-names", self.copyNames)
-        self.create_action("copy-ids", self.copyIDs)
-        self.create_action("copy-refs", self.copyRefs)
+        self.create_action("copy-names", self.copy_names)
+        self.create_action("copy-ids", self.copy_IDs)
+        self.create_action("copy-refs", self.copy_refs)
 
-        self.filter_button.connect("toggled", self.filterWindowHandler)
+        self.filter_button.connect("toggled", self.filter_window_handler)
 
         file_drop = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
         file_drop.connect("drop", self.drop_callback)

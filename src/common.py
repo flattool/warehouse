@@ -15,7 +15,7 @@ class myUtils:
         self.new_env = dict(os.environ)
         self.new_env["LC_ALL"] = "C"
 
-    def trashFolder(self, path):
+    def trash_folder(self, path):
         if not os.path.exists(path):
             print("error in common.trashFolder: path does not exists. path =", path)
             return 1
@@ -31,10 +31,10 @@ class myUtils:
             print("error in common.trashFolder: CalledProcessError:", e)
             return 2
 
-    def getSizeWithFormat(self, path):
-        return self.getSizeFormat(self.getDirectorySize(path))
+    def get_size_with_format(self, path):
+        return self.get_size_format(self.get_dir_size(path))
 
-    def getSizeFormat(self, b):
+    def get_size_format(self, b):
         factor = 1000
         suffix = "B"
         for unit in ["", "K", "M", "G", "T", "P", "E", "Z"]:
@@ -43,7 +43,7 @@ class myUtils:
             b /= factor
         return f"{b:.1f}{suffix}"
 
-    def getDirectorySize(self, directory):
+    def get_dir_size(self, directory):
         """Returns the `directory` size in bytes."""
         total = 0
         try:
@@ -57,7 +57,7 @@ class myUtils:
                 elif entry.is_dir():
                     # if it's a directory, recursively call this function
                     try:
-                        total += self.getDirectorySize(entry.path)
+                        total += self.get_dir_size(entry.path)
                     except FileNotFoundError:
                         pass
         except NotADirectoryError:
@@ -71,7 +71,7 @@ class myUtils:
         # Adding 4000 seems to make it more accurate to whatever data we can't scan from within the sandbox
         return total + 4000
 
-    def findAppIcon(self, app_id):
+    def find_app_icon(self, app_id):
         icon_theme = Gtk.IconTheme.new()
         icon_theme.add_search_path("/var/lib/flatpak/exports/share/icons/")
         icon_theme.add_search_path(
@@ -97,7 +97,7 @@ class myUtils:
             image.set_icon_size(Gtk.IconSize.LARGE)
         return image
 
-    def getHostUpdates(self):
+    def get_host_updates(self):
         list = []
         output = subprocess.run(
             ["flatpak-spawn", "--host", "flatpak", "update"],
@@ -118,7 +118,7 @@ class myUtils:
 
         return list
 
-    def getHostPins(self):
+    def get_host_pins(self):
         output = subprocess.run(
             ["flatpak-spawn", "--host", "flatpak", "pin"],
             capture_output=True,
@@ -130,7 +130,7 @@ class myUtils:
             data[i] = data[i].strip()
         return data
 
-    def getHostRemotes(self):
+    def get_host_remotes(self):
         output = subprocess.run(
             [
                 "flatpak-spawn",
@@ -152,7 +152,7 @@ class myUtils:
             data.append(row)
         return data
 
-    def getHostFlatpaks(self):
+    def get_host_flatpaks(self):
         output = subprocess.run(
             ["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"],
             capture_output=True,
@@ -178,8 +178,8 @@ class myUtils:
         sorted_array = sorted(data, key=lambda item: item[0].lower())
         return sorted_array
 
-    def getDependentRuntimes(self):
-        paks = self.getHostFlatpaks()
+    def get_dependent_runtimes(self):
+        paks = self.get_host_flatpaks()
         dependent_runtimes = []
         for i in range(len(paks)):
             current = paks[i]
@@ -190,7 +190,7 @@ class myUtils:
                 print("Could not get dependent runtime")
         return dependent_runtimes
 
-    def getHostMasks(self, user_or_system):
+    def get_host_masks(self, user_or_system):
         output = subprocess.run(
             ["flatpak-spawn", "--host", "flatpak", "mask", f"--{user_or_system}"],
             capture_output=True,
@@ -202,7 +202,7 @@ class myUtils:
             lines[i] = lines[i].strip()
         return lines
 
-    def maskFlatpak(self, app_id, user_or_system, remove=False):
+    def mask_flatpak(self, app_id, user_or_system, remove=False):
         command = [
             "flatpak-spawn",
             "--host",
@@ -225,7 +225,7 @@ class myUtils:
             return 1
         return 0
 
-    def downgradeFlatpak(self, ref, commit, install_type="system"):
+    def downgrade_flatpak(self, ref, commit, install_type="system"):
         command = [
             "flatpak-spawn",
             "--host",
@@ -248,7 +248,7 @@ class myUtils:
             return 1
         return 0
 
-    def uninstallFlatpak(self, ref_arr, type_arr, should_trash, progress_bar=None):
+    def uninstall_flatpak(self, ref_arr, type_arr, should_trash, progress_bar=None):
         self.uninstall_success = True
         print(ref_arr)
         to_uninstall = []
@@ -313,7 +313,7 @@ class myUtils:
                 self.uninstall_success = False
 
         if should_trash:
-            host_paks = self.getHostFlatpaks()
+            host_paks = self.get_host_flatpaks()
             host_refs = []
             for i in range(len(host_paks)):
                 host_refs.append(host_paks[i][8])
@@ -322,13 +322,13 @@ class myUtils:
                 if apps[i][0] in host_refs:
                     print(f"{apps[i][1]} is still installed")
                 else:
-                    self.trashFolder(f"{self.user_data_path}{apps[i][1]}")
+                    self.trash_folder(f"{self.user_data_path}{apps[i][1]}")
 
         if progress_bar:
             GLib.idle_add(progress_bar.set_visible, False)
             GLib.idle_add(progress_bar.set_fraction, 0.0)
 
-    def installFlatpak(self, app_arr, remote, user_or_system, progress_bar=None):
+    def install_flatpak(self, app_arr, remote, user_or_system, progress_bar=None):
         self.install_success = True
         fails = []
 
@@ -379,7 +379,7 @@ class myUtils:
             GLib.idle_add(progress_bar.set_visible, False)
             GLib.idle_add(progress_bar.set_fraction, 0.0)
 
-    def runApp(self, ref):
+    def run_app(self, ref):
         self.run_app_error = False
         self.run_app_error_message = ""
         try:
@@ -393,7 +393,7 @@ class myUtils:
             self.run_app_error_message = str(e)
             self.run_app_error = True
 
-    def getInstallType(self, type_arr):
+    def get_install_type(self, type_arr):
         if "disabled" in type_arr:
             return "disabled"
         if "user" in type_arr:
@@ -401,7 +401,7 @@ class myUtils:
         if "system" in type_arr:
             return "system"
 
-    def snapshotApps(
+    def snapshot_apps(
         self,
         epoch,
         app_snapshot_path_arr,

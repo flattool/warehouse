@@ -55,7 +55,7 @@ class AppRow(Adw.ActionRow):
 
         self.set_title(self.app_name)
         self.set_subtitle(self.app_id)
-        self.add_prefix(self.my_utils.findAppIcon(self.app_id))
+        self.add_prefix(self.my_utils.find_app_icon(self.app_id))
 
         self.is_runtime = False
         if len(current_flatpak[13]) == 0:
@@ -143,7 +143,7 @@ class AppRow(Adw.ActionRow):
 
         self.tickbox = Gtk.CheckButton(visible=False)  # visible=self.in_batch_mode
         self.tickbox.add_css_class("selection-mode")
-        self.tickbox.connect("toggled", parent_window.rowSelectHandler)
+        self.tickbox.connect("toggled", parent_window.row_select_handler)
         self.add_suffix(self.tickbox)
         self.set_activatable_widget(self.tickbox)
         self.set_activatable(False)
@@ -161,7 +161,7 @@ class AppRow(Adw.ActionRow):
             ("copy-name" + str(index)),
             lambda *_, name=self.app_name, toast=_(
                 "Copied name"
-            ): parent_window.copyItem(name, toast),
+            ): parent_window.copy_item(name, toast),
         )
         copy_menu_model.append_item(
             Gio.MenuItem.new(_("Copy Name"), f"win.copy-name{index}")
@@ -169,7 +169,7 @@ class AppRow(Adw.ActionRow):
 
         parent_window.create_action(
             ("copy-id" + str(index)),
-            lambda *_, id=self.app_id, toast=_("Copied ID"): parent_window.copyItem(
+            lambda *_, id=self.app_id, toast=_("Copied ID"): parent_window.copy_item(
                 id, toast
             ),
         )
@@ -179,7 +179,7 @@ class AppRow(Adw.ActionRow):
 
         parent_window.create_action(
             ("copy-ref" + str(index)),
-            lambda *_, ref=self.app_ref, toast=_("Copied ref"): parent_window.copyItem(
+            lambda *_, ref=self.app_ref, toast=_("Copied ref"): parent_window.copy_item(
                 ref, toast
             ),
         )
@@ -191,7 +191,7 @@ class AppRow(Adw.ActionRow):
             ("copy-command" + str(index)),
             lambda *_, ref=self.app_ref, toast=_(
                 "Copied launch command"
-            ): parent_window.copyItem(f"flatpak run {ref}", toast),
+            ): parent_window.copy_item(f"flatpak run {ref}", toast),
         )
         copy_menu_model.append_item(
             Gio.MenuItem.new(_("Copy Launch Command"), f"win.copy-command{index}")
@@ -202,7 +202,7 @@ class AppRow(Adw.ActionRow):
         if "runtime" not in parent_window.host_flatpaks[index][12]:
             parent_window.create_action(
                 ("run" + str(index)),
-                lambda *_a, ref=self.app_ref, name=self.app_name: parent_window.runAppThread(
+                lambda *_a, ref=self.app_ref, name=self.app_name: parent_window.run_app_thread(
                     ref, _("Opened {}").format(name)
                 ),
             )
@@ -211,7 +211,7 @@ class AppRow(Adw.ActionRow):
 
         parent_window.create_action(
             ("uninstall" + str(index)),
-            lambda *_: parent_window.uninstallButtonHandler(
+            lambda *_: parent_window.uninstall_button_handler(
                 self, self.app_name, self.app_ref, self.app_id
             ),
         )
@@ -224,7 +224,7 @@ class AppRow(Adw.ActionRow):
             ("open-data" + str(index)),
             lambda *_, path=(
                 parent_window.user_data_path + self.app_id
-            ): parent_window.openDataFolder(path),
+            ): parent_window.open_data_folder(path),
         )
         open_data_item = Gio.MenuItem.new(
             _("Open User Data Folder"), f"win.open-data{index}"
@@ -236,7 +236,7 @@ class AppRow(Adw.ActionRow):
 
         parent_window.create_action(
             ("trash" + str(index)),
-            lambda *_, name=self.app_name, id=self.app_id, index=index: parent_window.trashData(
+            lambda *_, name=self.app_name, id=self.app_id, index=index: parent_window.trash_data(
                 name, id, index
             ),
         )
@@ -254,7 +254,7 @@ class AppRow(Adw.ActionRow):
 
         parent_window.create_action(
             ("mask" + str(index)),
-            lambda *_, id=self.app_id, type=self.install_type, index=index: parent_window.maskFlatpak(
+            lambda *_, id=self.app_id, type=self.install_type, index=index: parent_window.mask_flatpak(
                 self
             ),
         )
@@ -266,7 +266,7 @@ class AppRow(Adw.ActionRow):
 
         parent_window.create_action(
             ("unmask" + str(index)),
-            lambda *_, id=self.app_id, type=self.install_type, index=index: parent_window.maskFlatpak(
+            lambda *_, id=self.app_id, type=self.install_type, index=index: parent_window.mask_flatpak(
                 self
             ),
         )

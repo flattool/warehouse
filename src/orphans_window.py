@@ -39,7 +39,7 @@ class OrphansWindow(Adw.Window):
         if event == Gdk.KEY_Escape:
             self.close()
 
-    def selectionHandler(self, widget, dir_name):
+    def selection_handler(self, widget, dir_name):
         if widget.get_active():
             self.selected_dirs.append(dir_name)
         else:
@@ -61,15 +61,15 @@ class OrphansWindow(Adw.Window):
             self.install_button.set_sensitive(True)
             self.trash_button.set_sensitive(True)
 
-    def selectAllHandler(self, button):
+    def select_all_handler(self, button):
         self.should_select_all = button.get_active()
         if not button.get_active():
             self.install_button.set_sensitive(False)
             self.trash_button.set_sensitive(False)
-        self.generateList()
+        self.generate_list()
 
-    def installCallback(self, *_args):
-        self.generateList()
+    def install_callback(self, *_args):
+        self.generate_list()
         self.progress_bar.set_visible(False)
         self.app_window.refresh_list_of_flatpaks(self, False)
         self.disconnect(self.no_close_id)  # Make window able to close
@@ -81,31 +81,31 @@ class OrphansWindow(Adw.Window):
                 Adw.Toast.new(_("Could not install some apps"))
             )
 
-    def installHandler(self):
+    def install_handler(self):
         self.main_stack.set_visible_child(self.installing)
         self.search_button.set_sensitive(False)
         self.set_title(self.window_title)
         self.keep_checking = True
-        task = Gio.Task.new(None, None, self.installCallback)
+        task = Gio.Task.new(None, None, self.install_callback)
         task.run_in_thread(
-            lambda _task, _obj, _data, _cancellable, id_list=self.selected_dirs, remote=self.selected_remote, app_type=self.selected_remote_type, progress_bar=self.progress_bar: self.my_utils.installFlatpak(
+            lambda _task, _obj, _data, _cancellable, id_list=self.selected_dirs, remote=self.selected_remote, app_type=self.selected_remote_type, progress_bar=self.progress_bar: self.my_utils.install_flatpak(
                 id_list, remote, app_type, progress_bar
             )
         )
 
-    def installButtonHandler(self, button):
+    def install_button_handler(self, button):
         def remote_select_handler(button, index):
             if not button.get_active():
                 return
             self.selected_remote = self.host_remotes[index][0]
-            self.selected_remote_type = self.my_utils.getInstallType(
+            self.selected_remote_type = self.my_utils.get_install_type(
                 self.host_remotes[index][7]
             )
 
-        def onResponse(dialog, response_id, _function):
+        def on_response(dialog, response_id, _function):
             if response_id == "cancel":
                 return
-            self.installHandler()
+            self.install_handler()
             self.progress_bar.set_visible(True)
             self.action_bar.set_visible(False)
             self.no_close_id = self.connect(
@@ -145,7 +145,7 @@ class OrphansWindow(Adw.Window):
             remote_select.connect("toggled", remote_select_handler, i)
             remote_row.set_activatable_widget(remote_select)
 
-            type = self.my_utils.getInstallType(type_arr)
+            type = self.my_utils.get_install_type(type_arr)
             if type == "user":
                 remote_row.set_subtitle(_("User wide"))
             elif type == "system":
@@ -168,23 +168,23 @@ class OrphansWindow(Adw.Window):
         if total_added > 1:
             dialog.set_extra_child(remotes_scroll)
 
-        dialog.connect("response", onResponse, dialog.choose_finish)
+        dialog.connect("response", on_response, dialog.choose_finish)
         dialog.present()
 
-    def trashHandler(self, button):
-        def onResponse(dialog, response_id, _function):
+    def trash_handler(self, button):
+        def on_response(dialog, response_id, _function):
             if response_id == "cancel":
                 return
             for i in range(len(self.selected_dirs)):
                 path = self.user_data_path + self.selected_dirs[i]
-                self.my_utils.trashFolder(path)
+                self.my_utils.trash_folder(path)
             self.select_all_button.set_active(False)
-            self.generateList()
+            self.generate_list()
 
         dialog = Adw.MessageDialog.new(
             self, _("Trash folders?"), _("These folders will be sent to the trash.")
         )
-        dialog.connect("response", onResponse, dialog.choose_finish)
+        dialog.connect("response", on_response, dialog.choose_finish)
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Continue"))
@@ -199,18 +199,18 @@ class OrphansWindow(Adw.Window):
                 Adw.Toast.new(_("Could not open folder"))
             )
 
-    def sizeCallBack(self, row_index):
+    def size_callback(self, row_index):
         row = self.list_of_data.get_row_at_index(row_index)
         row.set_subtitle(f"~{self.data_rows[row_index][1]}")
 
-    def sizeThread(self, index, path):
-        size = self.my_utils.getSizeWithFormat(path)
+    def size_thread(self, index, path):
+        size = self.my_utils.get_size_with_format(path)
         self.data_rows[index].append(size)
 
     # Create the list of folders in the window
-    def generateList(self):
+    def generate_list(self):
         self.data_rows = []
-        self.host_flatpaks = self.my_utils.getHostFlatpaks()
+        self.host_flatpaks = self.my_utils.get_host_flatpaks()
 
         if self.host_flatpaks == [["", ""]]:
             self.app_window.toast_overlay.add_toast(
@@ -245,10 +245,10 @@ class OrphansWindow(Adw.Window):
             path = self.user_data_path + dir_name
             index = len(self.data_rows) - 1
             task = Gio.Task.new(
-                None, None, lambda *_, index=index: self.sizeCallBack(index)
+                None, None, lambda *_, index=index: self.size_callback(index)
             )
             task.run_in_thread(
-                lambda _task, _obj, _data, _cancellable, *_, index=index: self.sizeThread(
+                lambda _task, _obj, _data, _cancellable, *_, index=index: self.size_thread(
                     index, path
                 )
             )
@@ -266,7 +266,7 @@ class OrphansWindow(Adw.Window):
 
             select_button = Gtk.CheckButton()
             select_button.add_css_class("selection-mode")
-            select_button.connect("toggled", self.selectionHandler, dir_name)
+            select_button.connect("toggled", self.selection_handler, dir_name)
             select_button.set_active(self.should_select_all)
             dir_row.add_suffix(select_button)
             dir_row.set_activatable_widget(select_button)
@@ -314,8 +314,8 @@ class OrphansWindow(Adw.Window):
         self.my_utils = myUtils(
             self
         )  # Access common utils and set the window to this window
-        self.host_remotes = self.my_utils.getHostRemotes()
-        self.host_flatpaks = self.my_utils.getHostFlatpaks()
+        self.host_remotes = self.my_utils.get_host_remotes()
+        self.host_flatpaks = self.my_utils.get_host_flatpaks()
 
         self.progress_bar = Gtk.ProgressBar(visible=False)
         self.progress_bar.add_css_class("osd")
@@ -324,17 +324,17 @@ class OrphansWindow(Adw.Window):
         self.set_modal(True)
         self.set_transient_for(main_window)
         self.set_size_request(260, 230)
-        self.generateList()
+        self.generate_list()
 
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.key_handler)
         self.add_controller(event_controller)
 
-        self.install_button.connect("clicked", self.installButtonHandler)
+        self.install_button.connect("clicked", self.install_button_handler)
         if self.host_remotes[0][0] == "":
             self.install_button.set_visible(False)
-        self.trash_button.connect("clicked", self.trashHandler)
-        self.select_all_button.connect("toggled", self.selectAllHandler)
+        self.trash_button.connect("clicked", self.trash_handler)
+        self.select_all_button.connect("toggled", self.select_all_handler)
         self.main_overlay.add_overlay(self.progress_bar)
 
         self.list_of_data.set_filter_func(self.filter_func)

@@ -27,7 +27,7 @@ class SearchInstallWindow(
 
     is_debug = GLib.environ_getenv(GLib.get_environ(), "G_MESSAGES_DEBUG") == "all"
 
-    def searchResponse(self, a, b):
+    def search_response(self, a, b):
         self.results_list_box.remove_all()
         print(self.search_results)
         if (self.is_debug and len(self.search_results) == 5) or (
@@ -66,7 +66,7 @@ class SearchInstallWindow(
     def on_check(self, button):
         print(button.get_active())
 
-    def searchThread(self):
+    def search_thread(self):
         command = [
             "flatpak-spawn",
             "--host",
@@ -90,20 +90,20 @@ class SearchInstallWindow(
         data = sorted(data, key=lambda item: item[0].lower())
         self.search_results = data
 
-    def onSearch(self, widget):
+    def on_search(self, widget):
         self.main_stack.set_visible_child(self.loading_page)
         self.to_search = self.search_entry.get_text()
         if len(self.to_search) < 1 or " " in self.to_search:
             self.results_list_box.remove_all()
             self.main_stack.set_visible_child(self.blank_page)
             return
-        task = Gio.Task.new(None, None, self.searchResponse)
-        task.run_in_thread(lambda *_: self.searchThread())
+        task = Gio.Task.new(None, None, self.search_response)
+        task.run_in_thread(lambda *_: self.search_thread())
 
     def set_choice(self, index):
         print(index)
 
-    def remotesChooserCreator(self):
+    def remotes_chooser_creator(self):
         remotes_pop = Gtk.Popover()
         remotes_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         # remotes_pop.set_size_request(400, 1) # why?
@@ -142,15 +142,15 @@ class SearchInstallWindow(
         self.add_controller(event_controller)
         self.set_transient_for(parent_window)
         # self.search_bar.connect_entry(self.search_entry)
-        self.search_entry.connect("activate", self.onSearch)
-        self.search_button.connect("clicked", self.onSearch)
+        self.search_entry.connect("activate", self.on_search)
+        self.search_button.connect("clicked", self.on_search)
         self.search_entry.connect("changed", lambda *_: self.search_entry.grab_focus())
         # self.search_entry.set_key_capture_widget(self.results_list_box)
         self.search_entry.grab_focus()
 
-        self.host_remotes = self.my_utils.getHostRemotes()
+        self.host_remotes = self.my_utils.get_host_remotes()
         if len(self.host_remotes) > 1:
-            self.remotesChooserCreator()
+            self.remotes_chooser_creator()
 
         self.remote_to_search = []
         self.main_stack.set_visible_child(self.blank_page)

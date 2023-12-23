@@ -197,7 +197,7 @@ class RemotesWindow(Adw.Window):
                 "eye-not-looking-symbolic"
             )
 
-        self.host_remotes = self.my_utils.getHostRemotes()
+        self.host_remotes = self.my_utils.get_host_remotes()
         self.host_flatpaks = self.get_host_flatpaks()
         for i in range(len(self.rows_in_list)):
             self.remotes_list.remove(self.rows_in_list[i])
@@ -287,7 +287,7 @@ class RemotesWindow(Adw.Window):
                 remote_row.add_suffix(copy_button)
                 remote_row.add_suffix(more)
 
-                install_type = self.my_utils.getInstallType(install_type)
+                install_type = self.my_utils.get_install_type(install_type)
                 if install_type == "disabled":
                     if not self.show_disabled_button.get_active():
                         continue
@@ -368,7 +368,7 @@ class RemotesWindow(Adw.Window):
             ],
         ]
 
-        host_remotes = self.my_utils.getHostRemotes()
+        host_remotes = self.my_utils.get_host_remotes()
         host_remotes_names = []
 
         total_added = 0
@@ -541,7 +541,7 @@ class RemotesWindow(Adw.Window):
         if link != "":
             url_update(url_entry)
 
-    def addRemoteFromFileThread(self, filepath, system_or_user, name):
+    def add_remote_file_thread(self, filepath, system_or_user, name):
         try:
             subprocess.run(
                 [
@@ -570,7 +570,7 @@ class RemotesWindow(Adw.Window):
                 e,
             )
 
-    def addRemoteFromFile(self, filepath):
+    def add_remote_file(self, filepath):
         def response(dialog, response, _a):
             if response == "cancel":
                 self.should_pulse = False
@@ -582,7 +582,7 @@ class RemotesWindow(Adw.Window):
 
             task = Gio.Task.new(None, None, self.addRemoteCallback)
             task.run_in_thread(
-                lambda *_: self.addRemoteFromFileThread(
+                lambda *_: self.add_remote_file_thread(
                     filepath, user_or_system, name_row.get_text()
                 )
             )
@@ -652,11 +652,11 @@ class RemotesWindow(Adw.Window):
     def file_callback(self, object, result):
         try:
             file = object.open_finish(result)
-            self.addRemoteFromFile(file.get_path())
+            self.add_remote_file(file.get_path())
         except GLib.GError:
             pass
 
-    def addFromFileHandler(self, widet):
+    def add_file_handler(self, widet):
         filter = Gtk.FileFilter(name=_("Flatpak Repos"))
         filter.add_suffix("flatpakrepo")
         filters = Gio.ListStore.new(Gtk.FileFilter)
@@ -692,7 +692,7 @@ class RemotesWindow(Adw.Window):
         self.add_from_file.add_suffix(
             Gtk.Image.new_from_icon_name("right-large-symbolic")
         )
-        self.add_from_file.connect("activated", self.addFromFileHandler)
+        self.add_from_file.connect("activated", self.add_file_handler)
         self.custom_remote.add_suffix(
             Gtk.Image.new_from_icon_name("right-large-symbolic")
         )

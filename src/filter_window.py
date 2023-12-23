@@ -20,7 +20,7 @@ class FilterWindow(Adw.Window):
         if event == Gdk.KEY_Escape:
             self.close()
 
-    def isListApplicable(self):
+    def is_list_applicable(self):
         self.apply_button.set_sensitive(True)
 
         if not self.filter_list[0] == True and not self.filter_list[1] == True:
@@ -44,22 +44,22 @@ class FilterWindow(Adw.Window):
             self.apply_button.set_sensitive(False)
             return
 
-    def appsHandler(self, switch, _a):
+    def apps_handler(self, switch, _a):
         self.filter_list[0] = switch.get_active()
-        self.isListApplicable()
+        self.is_list_applicable()
 
-    def runtimesHandler(self, switch, _a):
+    def runtimes_handler(self, switch, _a):
         self.filter_list[1] = switch.get_active()
-        self.isListApplicable()
+        self.is_list_applicable()
 
-    def remotesEnableHandler(self, switch, is_enabled):
+    def remotes_enable_handler(self, switch, is_enabled):
         self.remotes_expander.set_enable_expansion(is_enabled)
 
         for i in range(len(self.remote_checkboxes)):
             self.remote_checkboxes[i].set_active(not is_enabled)
 
-    def remoteCheckHandler(self, checkbox, install_type, remote):
-        install_type = self.my_utils.getInstallType(install_type)
+    def remotes_check_handler(self, checkbox, install_type, remote):
+        install_type = self.my_utils.get_install_type(install_type)
         if checkbox.get_active():
             self.filter_list[2].append(install_type)
             self.filter_list[3].append(remote)
@@ -67,17 +67,17 @@ class FilterWindow(Adw.Window):
             self.filter_list[2].remove(install_type)
             self.filter_list[3].remove(remote)
 
-        self.isListApplicable()
+        self.is_list_applicable()
 
-    def runtimesEnableHandler(self, switch, is_enabled):
+    def runtimes_enable_handler(self, switch, is_enabled):
         self.runtimes_expander.set_enable_expansion(is_enabled)
 
         for i in range(len(self.runtime_checkboxes)):
             self.runtime_checkboxes[i].set_active(not is_enabled)
 
-        self.isListApplicable()
+        self.is_list_applicable()
 
-    def runtimeCheckHandler(self, checkbox, runtime):
+    def runtimes_check_handler(self, checkbox, runtime):
         if checkbox.get_active():
             if self.filter_list[4] == "all":
                 self.filter_list[4] = []
@@ -85,13 +85,13 @@ class FilterWindow(Adw.Window):
         else:
             self.filter_list[4].remove(runtime)
 
-        self.isListApplicable()
+        self.is_list_applicable()
 
-    def generateList(self):
+    def generate_list(self):
         self.remotes_expander_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
         self.runtimes_expander_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
 
-        dependent_runtimes = self.my_utils.getDependentRuntimes()
+        dependent_runtimes = self.my_utils.get_dependent_runtimes()
 
         if (
             len(self.host_remotes) < 2
@@ -132,7 +132,7 @@ class FilterWindow(Adw.Window):
                 remote_row.add_suffix(remote_check)
                 remote_row.set_activatable_widget(remote_check)
                 remote_check.connect(
-                    "toggled", self.remoteCheckHandler, install_type, name
+                    "toggled", self.remotes_check_handler, install_type, name
                 )
                 self.remote_checkboxes.append(remote_check)
                 remote_check.set_active(True)
@@ -140,7 +140,7 @@ class FilterWindow(Adw.Window):
                 print("Could not make remote row")
         if total < 2:
             self.remotes_expander.set_visible(False)
-        self.remotes_expander_switch.connect("state-set", self.remotesEnableHandler)
+        self.remotes_expander_switch.connect("state-set", self.remotes_enable_handler)
         self.remotes_expander.add_suffix(self.remotes_expander_switch)
 
         self.runtime_checkboxes = []
@@ -148,23 +148,23 @@ class FilterWindow(Adw.Window):
             current = dependent_runtimes[i]
             runtime_row = Adw.ActionRow(title=current)
             runtime_check = Gtk.CheckButton()
-            runtime_check.connect("toggled", self.runtimeCheckHandler, current)
+            runtime_check.connect("toggled", self.runtimes_check_handler, current)
             runtime_check.set_active(True)
             self.runtime_checkboxes.append(runtime_check)
             runtime_row.add_suffix(runtime_check)
             runtime_row.set_activatable_widget(runtime_check)
             self.runtimes_expander.add_row(runtime_row)
-        self.runtimes_expander_switch.connect("state-set", self.runtimesEnableHandler)
+        self.runtimes_expander_switch.connect("state-set", self.runtimes_enable_handler)
         self.runtimes_expander.add_suffix(self.runtimes_expander_switch)
 
-    def setHas_apply_button_been_clicked(self, is_clicked):
+    def set_has_apply_button_been_clicked(self, is_clicked):
         self.has_apply_button_been_clicked = is_clicked
         if not self.remotes_expander_switch.get_active():
             self.filter_list[3] = "all"
         if not self.runtimes_expander_switch.get_active():
             self.filter_list[4] = "all"
 
-    def disableFilterToggle(self, _widget):
+    def disable_filter_toggle(self, _widget):
         self.app_window.filter_button.set_active(self.has_apply_button_been_clicked)
 
     def __init__(self, main_window, **kwargs):
@@ -172,7 +172,7 @@ class FilterWindow(Adw.Window):
 
         # Create Variables
         self.my_utils = myUtils(self)
-        self.host_remotes = self.my_utils.getHostRemotes()
+        self.host_remotes = self.my_utils.get_host_remotes()
         self.host_flatpaks = main_window.host_flatpaks
         self.filter_list = [False, False, [], [], []]
         event_controller = Gtk.EventControllerKey()
@@ -185,26 +185,26 @@ class FilterWindow(Adw.Window):
 
         # Connections
         self.apply_button.connect(
-            "clicked", lambda *_: self.setHas_apply_button_been_clicked(True)
+            "clicked", lambda *_: self.set_has_apply_button_been_clicked(True)
         )
         self.apply_button.connect(
-            "clicked", lambda *_: main_window.applyFilter(self.filter_list)
+            "clicked", lambda *_: main_window.apply_filter(self.filter_list)
         )
         self.apply_button.connect("clicked", lambda *_: self.close())
 
         self.cancel_button.connect("clicked", lambda *_: self.close())
 
-        self.connect("close-request", self.disableFilterToggle)
+        self.connect("close-request", self.disable_filter_toggle)
 
-        self.apps_switch.connect("state-set", self.appsHandler)
-        self.runtimes_switch.connect("state-set", self.runtimesHandler)
+        self.apps_switch.connect("state-set", self.apps_handler)
+        self.runtimes_switch.connect("state-set", self.runtimes_handler)
         event_controller.connect("key-pressed", self.key_handler)
 
         # Calls
         self.apps_switch.set_active(True)
         self.set_size_request(260, 230)
         if not self.host_remotes[0][0] == "":
-            self.generateList()
+            self.generate_list()
         else:
             self.remotes_expander.set_visible(False)
             self.runtimes_expander.set_visible(False)
