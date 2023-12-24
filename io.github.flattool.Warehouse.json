@@ -44,7 +44,7 @@
             "name" : "warehouse",
             "builddir" : true,
             "buildsystem" : "meson",
-            "config-opts": [ "-Dprofile=default" ],
+            "config-opts": [ "-Dprofile=development" ],
             "sources" : [
                 {
                     "type" : "dir",
