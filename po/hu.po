@@ -7,7 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2024-03-05 11:31-0500\n"
+=======
+"POT-Creation-Date: 2024-01-05 01:05-0500\n"
+>>>>>>> 6984e45 (Update translation files)
 "PO-Revision-Date: 2023-10-23 10:42+0000\n"
 "Last-Translator: kramo <login@kramo.hu>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
@@ -73,6 +77,7 @@ msgstr "Maradék felhasználói adatok törlése"
 msgid "Reinstall apps that have leftover data"
 msgstr "Applikációk újratelepítése, amelyeknek van maradék adatuk"
 
+<<<<<<< HEAD
 #: data/ui/downgrade.blp:16 src/orphans_window.py:119 src/orphans_window.py:187
 #: src/properties_window.py:154 src/remotes_window.py:93
 #: src/remotes_window.py:174 src/remotes_window.py:454
@@ -110,10 +115,102 @@ msgstr "Kiadás kiválasztása"
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
+=======
+#: data/ui/downgrade.blp:16 data/ui/filter.blp:17 data/ui/search_install.blp:17
+#: src/orphans_window.py:121 src/orphans_window.py:189
+#: src/properties_window.py:147 src/remotes_window.py:85
+#: src/remotes_window.py:166 src/remotes_window.py:442
+#: src/remotes_window.py:614 src/snapshots_window.py:129
+#: src/snapshots_window.py:239 src/window.py:232 src/window.py:306
+#: src/window.py:388 src/window.py:434 src/window.py:532 src/window.py:609
+#: src/window.py:785
+msgid "Cancel"
+msgstr "Mégse"
+
+#: data/ui/downgrade.blp:22 src/app_row_widget.py:297
+msgid "Downgrade"
+msgstr "Visszafejlesztés"
+
+#: data/ui/downgrade.blp:46 src/app_row_widget.py:261 src/window.py:436
+msgid "Disable Updates"
+msgstr "Frissítések kikapcsolása"
+
+#: data/ui/downgrade.blp:52
+msgid "Select a Release"
+msgstr "Kiadás kiválasztása"
+
+#: data/ui/downgrade.blp:53
+msgid ""
+"This will uninstall the current release and install the chosen one instead. "
+"Note that downgrading can cause issues."
 msgstr ""
 "Eltávolítja a jelenlegi kiadást és telepíti a kiválasztottat. A "
 "visszafejlesztés problémákkal járhat."
 
+#: data/ui/filter.blp:7 src/gtk/help-overlay.blp:19
+msgid "Set Filters"
+msgstr "Szűrők beállítása"
+
+#: data/ui/filter.blp:22
+msgid "Apply"
+msgstr "Alkalmaz"
+
+#: data/ui/filter.blp:54
+msgid "Show Apps"
+msgstr "Applikációk megjelenítése"
+
+#: data/ui/filter.blp:64
+msgid "Show Runtimes"
+msgstr "Futtatókörnyezetek megjelenítése"
+
+#: data/ui/filter.blp:75
+msgid "Filter Apps by Remotes"
+msgstr "Applikációk szűrése tároló alapján"
+
+#: data/ui/filter.blp:80
+msgid "Filter Apps by Runtime"
+msgstr "Applikációk szűrése futtatókörnyezet alapján"
+
+#: data/ui/orphans.blp:14 data/ui/window.blp:18
+msgid "Search List"
+msgstr "Keresés a listában"
+
+#: data/ui/orphans.blp:20
+msgid "Open Data Folder"
+msgstr "Adatmappa megnyitása"
+
+#: data/ui/orphans.blp:81 data/ui/window.blp:104
+#, fuzzy
+msgid "Installing…"
+msgstr "Telepítés"
+
+#: data/ui/orphans.blp:90 data/ui/window.blp:113 data/ui/window.blp:140
+#: data/ui/window.blp:167
+#, fuzzy
+msgid "This could take a while."
+msgstr "Telepítés… Ez eltarthat egy ideig"
+
+#: data/ui/orphans.blp:101
+msgid "No Leftover Data"
+msgstr "Nincsenek maradék adatok"
+
+#: data/ui/orphans.blp:102
+msgid "There is no leftover user data"
+msgstr "Nincsenek maradék adatok"
+
+#: data/ui/orphans.blp:107 data/ui/search_install.blp:94 data/ui/window.blp:186
+#, fuzzy
+msgid "No Results Found"
+msgstr "Nem találhatóak Flatpak-ek"
+
+#: data/ui/orphans.blp:108 data/ui/search_install.blp:95 data/ui/window.blp:187
+msgid "Try a different search term."
+>>>>>>> 6984e45 (Update translation files)
+msgstr ""
+"Eltávolítja a jelenlegi kiadást és telepíti a kiválasztottat. A "
+"visszafejlesztés problémákkal járhat."
+
+<<<<<<< HEAD
 #: data/ui/filter.blp:7 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
 msgstr "Szűrők beállítása"
@@ -382,10 +479,204 @@ msgid "Uninstalling"
 msgstr "Eltávolítás"
 
 #: data/ui/window.blp:157
+=======
+#: data/ui/orphans.blp:118 data/ui/window.blp:199
+msgid "Select All"
+msgstr "Összes kiválasztása"
+
+#: data/ui/orphans.blp:123 src/window.py:203 src/window.py:286
+msgid "Trash"
+msgstr "Kuka"
+
+#: data/ui/orphans.blp:129 data/ui/search_install.blp:22
+#: src/orphans_window.py:122 src/window.py:786
+msgid "Install"
+msgstr "Telepítés"
+
+#: data/ui/popular_remotes.blp:18
+msgid "Add Remote"
+msgstr "Tároló hozzáadása"
+
+#: data/ui/popular_remotes.blp:19
+msgid "Choose from a list of popular remotes or add a new one."
+msgstr "Válasszon a népszerű tárolók listájából, vagy adjon hozzá egy újat."
+
+#: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
+msgid "Add a Repo File"
+msgstr "Tároló fájl hozzáadása"
+
+#: data/ui/popular_remotes.blp:50 data/ui/remotes.blp:56
+msgid "Add a Custom Remote"
+msgstr "Egyedi tároló hozzáadása"
+
+#: data/ui/properties.blp:45
+#, fuzzy
+msgid "Loading User Data…"
+msgstr "Felhasználói adatok kukázása"
+
+#: data/ui/properties.blp:50 src/app_row_widget.py:230
+#: src/orphans_window.py:259
+msgid "Open User Data Folder"
+msgstr "Adatmappa megnyitása"
+
+#: data/ui/properties.blp:62 src/app_row_widget.py:243
+msgid "Trash User Data"
+msgstr "Felhasználói adatok kukázása"
+
+#: data/ui/properties.blp:78
+msgid "Show Apps Using this Runtime"
+msgstr "Applikációk megjelenítése, amelyek ezt a futtatókörnyezetet használják"
+
+#: data/ui/properties.blp:89
+msgid "Runtime"
+msgstr "Futtatókörnyezet"
+
+#: data/ui/properties.blp:113
+msgid "Show Details in Store"
+msgstr ""
+
+#: data/ui/remotes.blp:5 src/gtk/help-overlay.blp:42
+msgid "Manage Remotes"
+msgstr "Tárolók kezelése"
+
+#: data/ui/remotes.blp:14
+#, fuzzy
+#| msgid "Refresh List"
+msgid "Refresh list of remotes"
+msgstr "Lista frissítése"
+
+#: data/ui/remotes.blp:23
+#, fuzzy
+msgid "Installed Remotes"
+msgstr "Telepítés mérete"
+
+#: data/ui/remotes.blp:27
+#, fuzzy
+msgid "Show disabled"
+msgstr "Frissítések kikapcsolása"
+
+#: data/ui/remotes.blp:41
+msgid "No remotes on the system, add some from below"
+msgstr ""
+
+#: data/ui/remotes.blp:45
+#, fuzzy
+msgid "Add a Popular Remote"
+msgstr "Tároló hozzáadása"
+
+#: data/ui/remotes.blp:49
+#, fuzzy
+msgid "Add Other Remotes"
+msgstr "Tároló hozzáadása"
+
+#: data/ui/remotes.blp:79
+#, fuzzy
+msgid "Adding Remote…"
+msgstr "Tároló hozzáadása"
+
+#: data/ui/remotes.blp:88 data/ui/window.blp:60
+#, fuzzy
+msgid "This should only take a moment."
+msgstr "Telepítés… Ez eltarthat egy ideig"
+
+#: data/ui/search_install.blp:7
+#, fuzzy
+msgid "Install From The Web…"
+msgstr "Fájlból való telepítés"
+
+#: data/ui/search_install.blp:44
+msgid "Search for Flatpaks…"
+msgstr ""
+
+#: data/ui/search_install.blp:49
+#, fuzzy
+#| msgid "No Remotes"
+msgid "All Remotes"
+msgstr "Nincsenek tárolók"
+
+#: data/ui/search_install.blp:54 src/gtk/help-overlay.blp:14
+msgid "Search"
+msgstr "Keresés"
+
+#: data/ui/search_install.blp:99
+#, fuzzy
+#| msgid "Search for an Installed App"
+msgid "Search for Flatpaks"
+msgstr "Telepített app keresése"
+
+#: data/ui/search_install.blp:101
+msgid "Search for Flatpaks that you want to install"
+msgstr ""
+
+#: data/ui/search_install.blp:105
+#, fuzzy
+#| msgid "Search"
+msgctxt "Shown with a spinner while search operation is pending"
+msgid "Searching…"
+msgstr "Keresés"
+
+#: data/ui/search_install.blp:119
+msgid "Too many results"
+msgstr ""
+
+#: data/ui/search_install.blp:120
+msgid "Try being more specific with your search"
+msgstr ""
+
+#: data/ui/snapshots.blp:15
+#, fuzzy
+#| msgid "Open Data Folder"
+msgid "Open Snapshots Folder"
+msgstr "Adatmappa megnyitása"
+
+#: data/ui/snapshots.blp:34
+#, fuzzy
+msgid "New Snapshot"
+msgstr "Tárolók kezelése"
+
+#: data/ui/snapshots.blp:86
+#, fuzzy
+msgid "No Snapshots"
+msgstr "Tárolók kezelése"
+
+#: data/ui/snapshots.blp:87
+msgid ""
+"Snapshots are backups of the app's user data. They can be reapplied at any "
+"time."
+msgstr ""
+
+#: data/ui/window.blp:12
+msgid "Refresh List"
+msgstr "Lista frissítése"
+
+#: data/ui/window.blp:24
+msgid "Filter List"
+msgstr "Lista szűrése"
+
+#: data/ui/window.blp:30
+msgid "Main Menu"
+msgstr "Főmenü"
+
+#: data/ui/window.blp:37 src/gtk/help-overlay.blp:29
+msgid "Toggle Selection Mode"
+msgstr "Kiválasztási mód váltása"
+
+#: data/ui/window.blp:59
+msgid "Loading Flatpaks…"
+msgstr ""
+
+#: data/ui/window.blp:135
+#, fuzzy
+msgid "Uninstalling…"
+msgstr "Eltávolítás"
+
+#: data/ui/window.blp:162
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Creating Snapshots…"
 msgstr "Tárolók kezelése"
 
+<<<<<<< HEAD
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr "Nem találhatóak Flatpak-ek"
@@ -399,15 +690,38 @@ msgstr ""
 "A Raktár nem látja a tárolók listáját, vagy nincs egy tároló se a rendszeren"
 
 #: data/ui/window.blp:175
+=======
+#: data/ui/window.blp:174
+msgid "No Flatpaks Found"
+msgstr "Nem találhatóak Flatpak-ek"
+
+#: data/ui/window.blp:175
+#, fuzzy
+msgid ""
+"Warehouse cannot see the list of installed Flatpaks or the system has no "
+"Flatpaks installed."
+msgstr ""
+"A Raktár nem látja a tárolók listáját, vagy nincs egy tároló se a rendszeren"
+
+#: data/ui/window.blp:180
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "No Flatpaks Match Filters"
 msgstr "Nem találhatóak Flatpak-ek"
 
+<<<<<<< HEAD
 #: data/ui/window.blp:176
 msgid "No installed Flatpak matches all of the currently applied filters"
 msgstr ""
 
 #: data/ui/window.blp:206
+=======
+#: data/ui/window.blp:181
+msgid "No installed Flatpak matches any of the currently applied filters."
+msgstr ""
+
+#: data/ui/window.blp:205
+>>>>>>> 6984e45 (Update translation files)
 msgid "Uninstall Selected Apps"
 msgstr "Kiválasztott applikációk eltávolítása"
 
@@ -616,14 +930,155 @@ msgstr "Rendszer"
 msgid "Unknown install type"
 msgstr "{} eltávolítása"
 
+#: src/app_row_widget.py:75
+msgid "Updates Disabled"
+msgstr "Frissítések kikapcsolva"
+
+#: src/app_row_widget.py:80 src/properties_window.py:204
+msgid "{} is masked and will not be updated"
+msgstr "A(z) {} maszkolva van és nem lesz frissítve"
+
+#: src/app_row_widget.py:87
+msgid "App EOL"
+msgstr "Az applikáció elavult"
+
+#: src/app_row_widget.py:93 src/properties_window.py:187
+msgid ""
+"{} has reached its End of Life and will not receive any security updates"
+msgstr "A(z) {} elavult és nem fog többé biztonsági frissítéseket kapni"
+
+#: src/app_row_widget.py:104
+msgid "Runtime EOL"
+msgstr "Futtatókörnyezet elavult"
+
+#: src/app_row_widget.py:110 src/properties_window.py:195
+msgid ""
+"{}'s runtime has reached its End of Life and will not receive any security "
+"updates"
+msgstr ""
+"A(z) {} futtatókörnyezete elavult és nem fog többé biztonsági frissítéseket "
+"kapni"
+
+#: src/app_row_widget.py:136
+msgid "View Properties"
+msgstr "Tulajdonságok"
+
+#: src/app_row_widget.py:163
+msgid "Copied name"
+msgstr "Név másolva"
+
+#: src/app_row_widget.py:167
+msgid "Copy Name"
+msgstr "Név másolása"
+
+#: src/app_row_widget.py:172
+msgid "Copied ID"
+msgstr "Azonosító másolva"
+
+#: src/app_row_widget.py:177
+msgid "Copy ID"
+msgstr "Azonosító másolása"
+
+#: src/app_row_widget.py:182
+msgid "Copied ref"
+msgstr "Hivatkozás másolva"
+
+#: src/app_row_widget.py:187
+msgid "Copy Ref"
+msgstr "Hivatkozás másolása"
+
+#: src/app_row_widget.py:193
+msgid "Copied launch command"
+msgstr "Indítási parancs másolva"
+
+#: src/app_row_widget.py:197
+msgid "Copy Launch Command"
+msgstr "Indítási parancs másolása"
+
+#: src/app_row_widget.py:200 src/window.py:452
+msgid "Copy"
+msgstr "Másol"
+
+#: src/app_row_widget.py:206
+msgid "Opened {}"
+msgstr "{} megnyitva"
+
+#: src/app_row_widget.py:209
+msgid "Open"
+msgstr "Megnyitás"
+
+#: src/app_row_widget.py:218 src/window.py:233 src/window.py:307
+msgid "Uninstall"
+msgstr "Eltávolítás"
+
+#: src/app_row_widget.py:273
+msgid "Enable Updates"
+msgstr "Frissítések engedélyezése"
+
+#: src/app_row_widget.py:287
+#, fuzzy
+#| msgid "Manage Remotes"
+msgid "Manage Snapshots"
+msgstr "Tárolók kezelése"
+
+#: src/downgrade_window.py:103
+msgid "Commit Hash: {}"
+msgstr "Véglegesítő hash: {}"
+
+#: src/downgrade_window.py:127
+msgid "Could not downgrade {}"
+msgstr "A(z) {} visszafejlesztése sikertelen"
+
+#: src/downgrade_window.py:135 src/window.py:405
+#, fuzzy
+msgid "Could not disable updates for {}"
+msgstr "A(z) {} frissítéseinek kikapcsolása sikertelen"
+
+#: src/downgrade_window.py:148
+msgid "Downgrading…"
+msgstr "Visszafejlesztés…"
+
+#: src/downgrade_window.py:174
+msgid "Downgrade {}"
+msgstr "{} visszafejlesztése"
+
+#: src/downgrade_window.py:186
+msgid "Fetching Releases…"
+msgstr "Kiadások lekérése…"
+
+#: src/downgrade_window.py:189
+msgid "Ensure that {} will never be updated to a newer version"
+msgstr "Biztosátja, hogy a(z) {} sose lesz frissítve"
+
+#: src/filter_window.py:126 src/orphans_window.py:150 src/remotes_window.py:300
+#, fuzzy
+#| msgid "{} wide"
+msgid "User wide"
+msgstr "Erre kihat: {}"
+
+#: src/filter_window.py:128 src/orphans_window.py:152 src/remotes_window.py:302
+#, fuzzy
+#| msgid "System"
+msgid "System wide"
+msgstr "Rendszer"
+
+#: src/filter_window.py:130 src/orphans_window.py:154 src/remotes_window.py:304
+#, fuzzy
+#| msgid "Uninstall {}"
+msgid "Unknown install type"
+msgstr "{} eltávolítása"
+
 #: src/gtk/help-overlay.blp:11
 msgid "App Management"
 msgstr "Applikációkezelés"
 
+<<<<<<< HEAD
 #: src/gtk/help-overlay.blp:14
 msgid "Search"
 msgstr "Keresés"
 
+=======
+>>>>>>> 6984e45 (Update translation files)
 #: src/gtk/help-overlay.blp:24
 msgid "Refresh"
 msgstr "Frissítés"
@@ -632,7 +1087,11 @@ msgstr "Frissítés"
 msgid "More Functions"
 msgstr "Több funkció"
 
+<<<<<<< HEAD
 #: src/gtk/help-overlay.blp:37 src/orphans_window.py:30
+=======
+#: src/gtk/help-overlay.blp:37 src/orphans_window.py:29
+>>>>>>> 6984e45 (Update translation files)
 msgid "Manage Leftover Data"
 msgstr "Maradék adatok kezelése"
 
@@ -656,11 +1115,16 @@ msgstr "Billentyűparancsok megjelenítése"
 msgid "Quit"
 msgstr "Kilépés"
 
+<<<<<<< HEAD
 #: src/main.py:145
+=======
+#: src/main.py:136
+>>>>>>> 6984e45 (Update translation files)
 msgid "Flatpaks"
 msgstr "Flatpak-ek"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
+<<<<<<< HEAD
 #: src/main.py:188
 msgid "translator-credits"
 msgstr "kramo <login@kramo.hu>"
@@ -670,10 +1134,22 @@ msgid "Donate"
 msgstr ""
 
 #: src/main.py:196
+=======
+#: src/main.py:179
+msgid "translator-credits"
+msgstr "kramo <login@kramo.hu>"
+
+#: src/main.py:185
+msgid "Donate"
+msgstr ""
+
+#: src/main.py:187
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Contributors"
 msgstr "Folytatás"
 
+<<<<<<< HEAD
 #: src/orphans_window.py:76 src/window.py:740
 msgid "Installed successfully"
 msgstr "Sikeresen telepítve"
@@ -687,11 +1163,27 @@ msgid "Attempt to Install?"
 msgstr "Megpróbálja a telepítést?"
 
 #: src/orphans_window.py:116
+=======
+#: src/orphans_window.py:78 src/window.py:757
+msgid "Installed successfully"
+msgstr "Sikeresen telepítve"
+
+#: src/orphans_window.py:81
+msgid "Could not install some apps"
+msgstr "Pár applikációt nem lehetett telepíteni"
+
+#: src/orphans_window.py:117
+msgid "Attempt to Install?"
+msgstr "Megpróbálja a telepítést?"
+
+#: src/orphans_window.py:118
+>>>>>>> 6984e45 (Update translation files)
 msgid "Warehouse will attempt to install apps matching the selected data."
 msgstr ""
 "A Raktár megpróbálja telepíteni az applikációkat, amik egyeznek a "
 "kiválasztott adatokkal."
 
+<<<<<<< HEAD
 #: src/orphans_window.py:183
 msgid "Trash folders?"
 msgstr "Kukázza a mappákat?"
@@ -718,20 +1210,57 @@ msgid "Copied {}"
 msgstr "{} másolva"
 
 #: src/properties_window.py:53
+=======
+#: src/orphans_window.py:185
+msgid "Trash folders?"
+msgstr "Kukázza a mappákat?"
+
+#: src/orphans_window.py:185
+msgid "These folders will be sent to the trash."
+msgstr "A mappák a kukába kerülnek."
+
+#: src/orphans_window.py:190
+msgid "Continue"
+msgstr "Folytatás"
+
+#: src/orphans_window.py:199 src/properties_window.py:43
+#: src/snapshots_window.py:250 src/window.py:366
+msgid "Could not open folder"
+msgstr "Nem lehet megnyitni a mappát"
+
+#: src/orphans_window.py:217
+msgid "Could not manage data"
+msgstr "Az adatok kezelése sikertelen"
+
+#: src/properties_window.py:37 src/remotes_window.py:209
+msgid "Copied {}"
+msgstr "{} másolva"
+
+#: src/properties_window.py:49
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Could not show details"
 msgstr "Az adatok kukázása sikertelen"
 
+<<<<<<< HEAD
 #: src/properties_window.py:59
+=======
+#: src/properties_window.py:55
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "User Data"
 msgstr "Felhasználói adatok kukázása"
 
+<<<<<<< HEAD
 #: src/properties_window.py:79 src/properties_window.py:142
+=======
+#: src/properties_window.py:74 src/properties_window.py:135
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "No User Data"
 msgstr "Felhasználói adatok kukázása"
 
+<<<<<<< HEAD
 #: src/properties_window.py:90 src/remotes_window.py:510
 #: src/remotes_window.py:635
 msgid "Name"
@@ -810,10 +1339,91 @@ msgid "Could not remove {}"
 msgstr "Nem lehet eltávolítani a következőt: {}"
 
 #: src/remotes_window.py:88 src/remotes_window.py:169
+=======
+#: src/properties_window.py:85 src/remotes_window.py:498
+#: src/remotes_window.py:623
+msgid "Name"
+msgstr "Név"
+
+#: src/properties_window.py:86
+msgid "Description"
+msgstr "Leírás"
+
+#: src/properties_window.py:87
+msgid "App ID"
+msgstr "Azonosító"
+
+#: src/properties_window.py:88
+msgid "Version"
+msgstr "Verzió"
+
+#: src/properties_window.py:89
+msgid "Branch"
+msgstr "Ág"
+
+#: src/properties_window.py:90
+msgid "Arch"
+msgstr "Architektúra"
+
+#: src/properties_window.py:91
+msgid "Origin"
+msgstr "Eredet"
+
+#: src/properties_window.py:92
+msgid "Installation"
+msgstr "Telepítés"
+
+#: src/properties_window.py:93
+msgid "Ref"
+msgstr "Hivatkozás"
+
+#: src/properties_window.py:94
+msgid "Active Commit"
+msgstr "Aktív véglegesítő"
+
+#: src/properties_window.py:95
+msgid "Latest Commit"
+msgstr "Legutóbbi véglegesítő"
+
+#: src/properties_window.py:96
+msgid "Installed Size"
+msgstr "Telepítés mérete"
+
+#: src/properties_window.py:97
+msgid "Options"
+msgstr "Beállítások"
+
+#: src/properties_window.py:134 src/window.py:380
+msgid "Trashed user data"
+msgstr "Felhasználói adatok kukázva"
+
+#: src/properties_window.py:141 src/window.py:375
+msgid "Could not trash user data"
+msgstr "Az adatok kukázása sikertelen"
+
+#: src/properties_window.py:145 src/window.py:383
+msgid "Send {}'s User Data to the Trash?"
+msgstr "Kukázza a(z) {} adatait?"
+
+#: src/properties_window.py:149 src/window.py:390 src/window.py:533
+msgid "Trash Data"
+msgstr "Adatok kukázása"
+
+#: src/properties_window.py:218
+msgid "{} Properties"
+msgstr "{} tulajdonságai"
+
+#: src/remotes_window.py:71
+msgid "Could not remove {}"
+msgstr "Nem lehet eltávolítani a következőt: {}"
+
+#: src/remotes_window.py:80 src/remotes_window.py:161
+>>>>>>> 6984e45 (Update translation files)
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr ""
 "A(z) {} helyről telepített applikációk nem fognak további frissítéseket kapni"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:91
 msgid "Remove {}?"
 msgstr "{} eltávolítása?"
@@ -823,59 +1433,107 @@ msgid "Remove"
 msgstr "Eltávolítás"
 
 #: src/remotes_window.py:121
+=======
+#: src/remotes_window.py:83
+msgid "Remove {}?"
+msgstr "{} eltávolítása?"
+
+#: src/remotes_window.py:86 src/remotes_window.py:266
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: src/remotes_window.py:113
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "Could not add {}"
 msgid "Could not enable {}"
 msgstr "A(z) {} tárolót nem lehetett hozzáadni"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:149
+=======
+#: src/remotes_window.py:141
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "Could not add {}"
 msgid "Could not disable {}"
 msgstr "A(z) {} tárolót nem lehetett hozzáadni"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:172
+=======
+#: src/remotes_window.py:164
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Disable {}?"
 msgstr "Frissítések kikapcsolása"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:175 src/remotes_window.py:267
+=======
+#: src/remotes_window.py:167 src/remotes_window.py:257
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Disable"
 msgstr "Frissítések kikapcsolása"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:186
+=======
+#: src/remotes_window.py:178
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "Could not install app"
 msgid "Could not view apps"
 msgstr "Az applikáció telepítése sikertelen"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:244
+=======
+#: src/remotes_window.py:234
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "Set Filters"
 msgid "Set Filter"
 msgstr "Szűrők beállítása"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:258
+=======
+#: src/remotes_window.py:248
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "Enable Updates"
 msgid "Enable"
 msgstr "Frissítések engedélyezése"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:292
 msgid "Copy remote name"
 msgstr "Tároló nevének másolása"
 
 #: src/remotes_window.py:306
+=======
+#: src/remotes_window.py:282
+msgid "Copy remote name"
+msgstr "Tároló nevének másolása"
+
+#: src/remotes_window.py:295
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Disabled"
 msgstr "Frissítések kikapcsolása"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:343
+=======
+#: src/remotes_window.py:331
+>>>>>>> 6984e45 (Update translation files)
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr ""
 "Az elementary nyílt forráskódú, fizessen-amennyit-akar alkalmazásüzlete"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:349
 msgid "Central repository of Flatpak applications"
 msgstr ""
@@ -893,10 +1551,30 @@ msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "A legutóbbi GNOME alkalmazások és futtatókörnyezetek bétái"
 
 #: src/remotes_window.py:373
+=======
+#: src/remotes_window.py:337
+msgid "Central repository of Flatpak applications"
+msgstr ""
+
+#: src/remotes_window.py:343
+msgid "Beta builds of Flatpak applications"
+msgstr ""
+
+#: src/remotes_window.py:349
+msgid "Flatpaks packaged by Fedora Linux"
+msgstr "Flatpak-ek a Fedora Linux által csomagolva"
+
+#: src/remotes_window.py:355
+msgid "The latest beta GNOME Apps and Runtimes"
+msgstr "A legutóbbi GNOME alkalmazások és futtatókörnyezetek bétái"
+
+#: src/remotes_window.py:361
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Beta KDE Apps and Runtimes"
 msgstr "A legutóbbi GNOME alkalmazások és futtatókörnyezetek bétái"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:379
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr ""
@@ -946,17 +1624,73 @@ msgid "Flatpak Repos"
 msgstr "Flatpak tárolók"
 
 #: src/snapshots_window.py:54
+=======
+#: src/remotes_window.py:367
+msgid "Central repository of the WebKit Developer and Runtime SDK"
+msgstr ""
+
+#: src/remotes_window.py:403 src/remotes_window.py:566
+msgid "Could not add {}"
+msgstr "A(z) {} tárolót nem lehetett hozzáadni"
+
+#: src/remotes_window.py:440
+msgid "Add Flatpak Remote"
+msgstr "Flatpak tároló hozzáadása"
+
+#: src/remotes_window.py:443 src/remotes_window.py:615
+msgid "Add"
+msgstr "Hozzáad"
+
+#: src/remotes_window.py:502
+msgid "URL"
+msgstr "URL"
+
+#: src/remotes_window.py:514 src/remotes_window.py:626 src/window.py:794
+msgid "User"
+msgstr "Felhasználó"
+
+#: src/remotes_window.py:514 src/remotes_window.py:626
+msgid "Remote will be available to only you"
+msgstr "Csak önnek lesz elérhető a tároló"
+
+#: src/remotes_window.py:522 src/remotes_window.py:629 src/window.py:797
+msgid "System"
+msgstr "Rendszer"
+
+#: src/remotes_window.py:523 src/remotes_window.py:630
+msgid "Remote will be available to every user on the system"
+msgstr "Minden felhasználó számára elérhető lesz a tároló"
+
+#: src/remotes_window.py:562
+msgid "{} successfully added"
+msgstr "{} sikeresen hozzáadva"
+
+#: src/remotes_window.py:612
+msgid "Add {}?"
+msgstr "Hozzáadja a {} tárolót?"
+
+#: src/remotes_window.py:660
+msgid "Flatpak Repos"
+msgstr "Flatpak tárolók"
+
+#: src/snapshots_window.py:50
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "Send User Data to the Trash"
 msgid "There is no User Data to Snapshot"
 msgstr "Felhasználói adatok kukázása"
 
+<<<<<<< HEAD
 #: src/snapshots_window.py:93
+=======
+#: src/snapshots_window.py:89
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "Version"
 msgid "Version {}"
 msgstr "Verzió"
 
+<<<<<<< HEAD
 #: src/snapshots_window.py:101 src/snapshots_window.py:246
 #, fuzzy
 msgid "Apply Snapshot"
@@ -968,64 +1702,120 @@ msgid "Trash Snapshot"
 msgstr "Tárolók kezelése"
 
 #: src/snapshots_window.py:127
+=======
+#: src/snapshots_window.py:121
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "Could not trash user data"
 msgid "Could not trash snapshot"
 msgstr "Az adatok kukázása sikertelen"
 
+<<<<<<< HEAD
 #: src/snapshots_window.py:132
+=======
+#: src/snapshots_window.py:126
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Trash Snapshot?"
 msgstr "Tárolók kezelése"
 
+<<<<<<< HEAD
 #: src/snapshots_window.py:133
+=======
+#: src/snapshots_window.py:127
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "These folders will be sent to the trash."
 msgid "This snapshot and its contents will be sent to the trash."
 msgstr "A mappák a kukába kerülnek."
 
+<<<<<<< HEAD
 #: src/snapshots_window.py:155
+=======
+#: src/snapshots_window.py:131
+#, fuzzy
+msgid "Trash Snapshot"
+msgstr "Tárolók kezelése"
+
+#: src/snapshots_window.py:149
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Could not create snapshot"
 msgstr "Tárolók kezelése"
 
 #. Make window unable to close
+<<<<<<< HEAD
 #: src/snapshots_window.py:165
+=======
+#: src/snapshots_window.py:159
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Creating Snapshot…"
 msgstr "Tárolók kezelése"
 
+<<<<<<< HEAD
 #: src/snapshots_window.py:199 src/snapshots_window.py:216
 #: src/snapshots_window.py:223
+=======
+#: src/snapshots_window.py:193 src/snapshots_window.py:211
+#: src/snapshots_window.py:218
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Could not apply snapshot"
 msgstr "Pár applikációt nem lehetett telepíteni"
 
+<<<<<<< HEAD
 #: src/snapshots_window.py:202
+=======
+#: src/snapshots_window.py:196
+>>>>>>> 6984e45 (Update translation files)
 msgid "Snapshot applied"
 msgstr ""
 
 #. Make window unable to close
+<<<<<<< HEAD
 #: src/snapshots_window.py:230
+=======
+#: src/snapshots_window.py:225
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Applying Snapshot…"
 msgstr "Tárolók kezelése"
 
+<<<<<<< HEAD
 #: src/snapshots_window.py:239
+=======
+#: src/snapshots_window.py:234
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Apply Snapshot?"
 msgstr "Tárolók kezelése"
 
+<<<<<<< HEAD
 #: src/snapshots_window.py:240
 msgid "Applying this snapshot will trash any current user data for {}."
 msgstr ""
 
 #. Window stuffs
 #: src/snapshots_window.py:294
+=======
+#: src/snapshots_window.py:235
+msgid "Applying this snapshot will trash any current user data for {}."
+msgstr ""
+
+#: src/snapshots_window.py:241
+#, fuzzy
+msgid "Apply Snapshot"
+msgstr "Tárolók kezelése"
+
+#. Window stuffs
+#: src/snapshots_window.py:293
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "{} Snapshots"
 msgstr "Tárolók kezelése"
 
+<<<<<<< HEAD
 #: src/window.py:110
 msgid "Uninstalled successfully"
 msgstr "Sikeresen eltávolítva"
@@ -1051,10 +1841,38 @@ msgid "Keep"
 msgstr "Megtart"
 
 #: src/window.py:192
+=======
+#: src/window.py:118
+msgid "Uninstalled successfully"
+msgstr "Sikeresen eltávolítva"
+
+#: src/window.py:121
+msgid "Could not uninstall some apps"
+msgstr "Pár applikációt nem lehetett eltávolítani"
+
+#: src/window.py:174
+msgid "Uninstall Selected Apps?"
+msgstr "Eltávolítja a kiválasztott appokat?"
+
+#: src/window.py:175
+msgid "It will not be possible to use these apps after removal."
+msgstr "Eltávolítás után nem lehet őket használni."
+
+#: src/window.py:195 src/window.py:278
+msgid "App Settings & Data"
+msgstr "App beállítások & adatok"
+
+#: src/window.py:199 src/window.py:282
+msgid "Keep"
+msgstr "Megtart"
+
+#: src/window.py:200
+>>>>>>> 6984e45 (Update translation files)
 msgid "Allow restoring these apps' settings and content"
 msgstr ""
 "Engedélyezi az applikációk beállításainak és tartalmának helyreállítását"
 
+<<<<<<< HEAD
 #: src/window.py:196
 msgid "Send these apps' settings and content to the trash"
 msgstr "Az applikációk beállításainak és tartalmának kukázása"
@@ -1072,10 +1890,30 @@ msgid "It will not be possible to use {} after removal."
 msgstr "Nem lesz lehetséges a(z) {} használata az eltávolítás után."
 
 #: src/window.py:275
+=======
+#: src/window.py:204
+msgid "Send these apps' settings and content to the trash"
+msgstr "Az applikációk beállításainak és tartalmának kukázása"
+
+#: src/window.py:240
+msgid "Cannot uninstall while already uninstalling"
+msgstr "Nem lehet eltávolítani, ha az eltávolítás már folyamatban van"
+
+#: src/window.py:270
+msgid "Uninstall {}?"
+msgstr "Eltávolítja a következőt: {}?"
+
+#: src/window.py:271
+msgid "It will not be possible to use {} after removal."
+msgstr "Nem lesz lehetséges a(z) {} használata az eltávolítás után."
+
+#: src/window.py:283
+>>>>>>> 6984e45 (Update translation files)
 msgid "Allow restoring this app's settings and content"
 msgstr ""
 "Engedélyezi az applikáció beállításainak és tartalmának helyreállítását"
 
+<<<<<<< HEAD
 #: src/window.py:279
 msgid "Send this app's settings and content to the trash"
 msgstr "Az applikáció beállításainak és tartalmának kukázása"
@@ -1093,6 +1931,25 @@ msgid "Disable Updates for {}?"
 msgstr "Kikapcsolja a(z) {} frissítését?"
 
 #: src/window.py:472
+=======
+#: src/window.py:287
+msgid "Send this app's settings and content to the trash"
+msgstr "Az applikáció beállításainak és tartalmának kukázása"
+
+#: src/window.py:357
+msgid "List refreshed"
+msgstr ""
+
+#: src/window.py:386
+msgid "Your files and data for this app will be sent to the trash."
+msgstr "Az adatai a kukába lesznek helyezve."
+
+#: src/window.py:427
+msgid "Disable Updates for {}?"
+msgstr "Kikapcsolja a(z) {} frissítését?"
+
+#: src/window.py:431
+>>>>>>> 6984e45 (Update translation files)
 msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
@@ -1100,6 +1957,7 @@ msgstr ""
 "Ez maszkolja a(z) {} Flatpak-et, biztosítva, hogy nem fog többé biztonsági "
 "vagy funkciófrissítéseket kapni."
 
+<<<<<<< HEAD
 #: src/window.py:491
 msgid "Could not Run App"
 msgstr "Az applikációt nem lehetett futtatni"
@@ -1109,15 +1967,31 @@ msgid "OK"
 msgstr "Rendben"
 
 #: src/window.py:551
+=======
+#: src/window.py:450
+msgid "Could not Run App"
+msgstr "Az applikációt nem lehetett futtatni"
+
+#: src/window.py:458
+msgid "OK"
+msgstr "Rendben"
+
+#: src/window.py:508
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "{} has no data to trash"
 msgstr "Kukázza a(z) {} adatait?"
 
+<<<<<<< HEAD
 #: src/window.py:557
+=======
+#: src/window.py:514
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Could not trash {}'s data"
 msgstr "Az adatok kukázása sikertelen"
 
+<<<<<<< HEAD
 #: src/window.py:573
 msgid "Trash Selected Apps' User Data?"
 msgstr "Kukázza a kijelölt applikációk adatait?"
@@ -1127,26 +2001,50 @@ msgid "Your files and data for these apps will be sent to the trash."
 msgstr "Az adatai a kukába lesznek helyezve."
 
 #: src/window.py:624
+=======
+#: src/window.py:528
+msgid "Trash Selected Apps' User Data?"
+msgstr "Kukázza a kijelölt applikációk adatait?"
+
+#: src/window.py:529
+msgid "Your files and data for these apps will be sent to the trash."
+msgstr "Az adatai a kukába lesznek helyezve."
+
+#: src/window.py:579
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Could not snapshot some apps"
 msgstr "Pár applikációt nem lehetett telepíteni"
 
+<<<<<<< HEAD
 #: src/window.py:642
+=======
+#: src/window.py:603
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Create Snapshots?"
 msgstr "Tárolók kezelése"
 
+<<<<<<< HEAD
 #: src/window.py:644
+=======
+#: src/window.py:605
+>>>>>>> 6984e45 (Update translation files)
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
 msgstr ""
 
+<<<<<<< HEAD
 #: src/window.py:649
+=======
+#: src/window.py:610
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Create Snapshots"
 msgstr "Tárolók kezelése"
 
+<<<<<<< HEAD
 #: src/window.py:701
 msgid "Copied selected app names"
 msgstr "A kiválasztott applikációk neve másolva"
@@ -1192,6 +2090,40 @@ msgstr "A fájl típus nem támogatott"
 #~ msgid "Apply"
 #~ msgstr "Alkalmaz"
 
+=======
+#: src/window.py:662
+msgid "Copied selected app names"
+msgstr "A kiválasztott applikációk neve másolva"
+
+#: src/window.py:675
+msgid "Copied selected app IDs"
+msgstr "A kiválasztott applikációk azonosítója másolva"
+
+#: src/window.py:688
+msgid "Copied selected app refs"
+msgstr "A kiválasztott applikációk hivatkozása másolva"
+
+#: src/window.py:759
+msgid "Could not install app"
+msgstr "Az applikáció telepítése sikertelen"
+
+#: src/window.py:783
+msgid "Install {}?"
+msgstr "{} telepítése?"
+
+#: src/window.py:794
+msgid "The app will be available to only you"
+msgstr "Az applikáció csak önnek lesz elérhető"
+
+#: src/window.py:798
+msgid "The app will be available to every user on the system"
+msgstr "Az applikáció minden felhasználó számára elérhető lesz"
+
+#: src/window.py:828
+msgid "File type not supported"
+msgstr "A fájl típus nem támogatott"
+
+>>>>>>> 6984e45 (Update translation files)
 #~ msgid "Remove {}"
 #~ msgstr "{} eltávolítása"
 
@@ -1203,19 +2135,6 @@ msgstr "A fájl típus nem támogatott"
 #~ msgstr ""
 #~ "A Raktár nem látja a tárolók listáját, vagy nincs egy tároló se a "
 #~ "rendszeren"
-
-#, fuzzy
-#~ msgid "Install From The Web…"
-#~ msgstr "Fájlból való telepítés"
-
-#~ msgid "No Remotes"
-#~ msgstr "Nincsenek tárolók"
-
-#~ msgid "Choose from a list of popular remotes or add a new one."
-#~ msgstr "Válasszon a népszerű tárolók listájából, vagy adjon hozzá egy újat."
-
-#~ msgid "Add Remote"
-#~ msgstr "Tároló hozzáadása"
 
 #~ msgid "Could disable updates for {}"
 #~ msgstr "A(z) {} frissítéseinek kikapcsolása sikertelen"
@@ -1297,11 +2216,6 @@ msgstr "A fájl típus nem támogatott"
 
 #~ msgid "Mask this Flatpak"
 #~ msgstr "Flatpak maszkolása"
-
-#, fuzzy
-#~| msgid "Manage Remotes"
-#~ msgid "Manage Snapshots"
-#~ msgstr "Tárolók kezelése"
 
 #~ msgid ""
 #~ "Warehouse cannot see the list of remotes or the system has no remotes "

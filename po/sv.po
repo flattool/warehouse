@@ -7,9 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2024-03-05 11:31-0500\n"
 "PO-Revision-Date: 2024-02-01 18:15+0000\n"
 "Last-Translator: Newbyte <newbie13xd@gmail.com>\n"
+=======
+"POT-Creation-Date: 2024-01-05 01:05-0500\n"
+"PO-Revision-Date: 2023-11-07 04:13+0000\n"
+"Last-Translator: skøldis <frejaland.47@gmail.com>\n"
+>>>>>>> 6984e45 (Update translation files)
 "Language-Team: Swedish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/sv/>\n"
 "Language: sv\n"
@@ -74,6 +80,7 @@ msgstr "Hitta och förkasta överblivna anvandärdata"
 msgid "Reinstall apps that have leftover data"
 msgstr "Installera om appar som har överbliven data"
 
+<<<<<<< HEAD
 #: data/ui/downgrade.blp:16 src/orphans_window.py:119 src/orphans_window.py:187
 #: src/properties_window.py:154 src/remotes_window.py:93
 #: src/remotes_window.py:174 src/remotes_window.py:454
@@ -109,10 +116,37 @@ msgid "Select a Release"
 msgstr "Välj en utgåva"
 
 #: data/ui/downgrade.blp:72
+=======
+#: data/ui/downgrade.blp:16 data/ui/filter.blp:17 data/ui/search_install.blp:17
+#: src/orphans_window.py:121 src/orphans_window.py:189
+#: src/properties_window.py:147 src/remotes_window.py:85
+#: src/remotes_window.py:166 src/remotes_window.py:442
+#: src/remotes_window.py:614 src/snapshots_window.py:129
+#: src/snapshots_window.py:239 src/window.py:232 src/window.py:306
+#: src/window.py:388 src/window.py:434 src/window.py:532 src/window.py:609
+#: src/window.py:785
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: data/ui/downgrade.blp:22 src/app_row_widget.py:297
+msgid "Downgrade"
+msgstr "Nedgradera"
+
+#: data/ui/downgrade.blp:46 src/app_row_widget.py:261 src/window.py:436
+msgid "Disable Updates"
+msgstr "Inaktivera uppdateringar"
+
+#: data/ui/downgrade.blp:52
+msgid "Select a Release"
+msgstr ""
+
+#: data/ui/downgrade.blp:53
+>>>>>>> 6984e45 (Update translation files)
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
+<<<<<<< HEAD
 "Detta kommer avinstallera den nuvarande utgåvan och installerade den valde "
 "istället. Tänk på att nedgraderingar kan orsaka problem."
 
@@ -282,10 +316,47 @@ msgid "Add Other Remotes"
 msgstr "Lägg till andra fjärrar"
 
 #: data/ui/remotes.blp:79
-#, fuzzy
-msgid "Create Snapshots"
-msgstr "Hantera fjärrkontroller"
+=======
 
+#: data/ui/filter.blp:7 src/gtk/help-overlay.blp:19
+msgid "Set Filters"
+msgstr "Ställ in filtrar"
+
+#: data/ui/filter.blp:22
+msgid "Apply"
+msgstr "Tillämpa"
+
+#: data/ui/filter.blp:54
+msgid "Show Apps"
+msgstr "Visa appar"
+
+#: data/ui/filter.blp:64
+msgid "Show Runtimes"
+msgstr "Visa exekveringsmiljön"
+
+#: data/ui/filter.blp:75
+msgid "Filter Apps by Remotes"
+msgstr "Filtrera appar med fjärrkontroller"
+
+#: data/ui/filter.blp:80
+msgid "Filter Apps by Runtime"
+msgstr "Filtrera appar med exekveringsmiljö"
+
+#: data/ui/orphans.blp:14 data/ui/window.blp:18
+msgid "Search List"
+msgstr "Söka Genom Listan"
+
+#: data/ui/orphans.blp:20
+msgid "Open Data Folder"
+msgstr "Öppna datamapp"
+
+#: data/ui/orphans.blp:81 data/ui/window.blp:104
+>>>>>>> 6984e45 (Update translation files)
+#, fuzzy
+msgid "Installing…"
+msgstr "Installation"
+
+<<<<<<< HEAD
 #: data/ui/remotes.blp:88 data/ui/window.blp:54
 #, fuzzy
 #| msgid "This should only take a moment."
@@ -356,14 +427,208 @@ msgid "No Snapshots"
 msgstr "Inga ögonblicksbilder"
 
 #: data/ui/snapshots.blp:85
+=======
+#: data/ui/orphans.blp:90 data/ui/window.blp:113 data/ui/window.blp:140
+#: data/ui/window.blp:167
+#, fuzzy
+msgid "This could take a while."
+msgstr "Installerar… Detta kan ta ett tag"
+
+#: data/ui/orphans.blp:101
+msgid "No Leftover Data"
+msgstr "Ingen överbliven data"
+
+#: data/ui/orphans.blp:102
+msgid "There is no leftover user data"
+msgstr "Det finns ingen överbliven data"
+
+#: data/ui/orphans.blp:107 data/ui/search_install.blp:94 data/ui/window.blp:186
+#, fuzzy
+msgid "No Results Found"
+msgstr "Inga Flatpak Hittades"
+
+#: data/ui/orphans.blp:108 data/ui/search_install.blp:95 data/ui/window.blp:187
+msgid "Try a different search term."
+msgstr ""
+
+#: data/ui/orphans.blp:118 data/ui/window.blp:199
+msgid "Select All"
+msgstr "Välj alla"
+
+#: data/ui/orphans.blp:123 src/window.py:203 src/window.py:286
+msgid "Trash"
+msgstr "Trasha"
+
+#: data/ui/orphans.blp:129 data/ui/search_install.blp:22
+#: src/orphans_window.py:122 src/window.py:786
+msgid "Install"
+msgstr "Installera"
+
+#: data/ui/popular_remotes.blp:18
+msgid "Add Remote"
+msgstr "Lägg till fjärrkontroll"
+
+#: data/ui/popular_remotes.blp:19
+msgid "Choose from a list of popular remotes or add a new one."
+msgstr ""
+"Välja från en lista över de mest popuära fjärrkontrollerna eller lägg till "
+"en ny fjärrkontroll."
+
+#: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
+msgid "Add a Repo File"
+msgstr "Lägg till en fjärrkontrollfil"
+
+#: data/ui/popular_remotes.blp:50 data/ui/remotes.blp:56
+msgid "Add a Custom Remote"
+msgstr "Lägg till en anpassat fjärrkontroll"
+
+#: data/ui/properties.blp:45
+#, fuzzy
+msgid "Loading User Data…"
+msgstr "Trasha användardata"
+
+#: data/ui/properties.blp:50 src/app_row_widget.py:230
+#: src/orphans_window.py:259
+msgid "Open User Data Folder"
+msgstr "Öppna mappen för användardata"
+
+#: data/ui/properties.blp:62 src/app_row_widget.py:243
+msgid "Trash User Data"
+msgstr "Trasha användardata"
+
+#: data/ui/properties.blp:78
+msgid "Show Apps Using this Runtime"
+msgstr "Visa appar som använder detta exekveringsmiljö"
+
+#: data/ui/properties.blp:89
+msgid "Runtime"
+msgstr "Exekveringsmiljö"
+
+#: data/ui/properties.blp:113
+msgid "Show Details in Store"
+msgstr ""
+
+#: data/ui/remotes.blp:5 src/gtk/help-overlay.blp:42
+msgid "Manage Remotes"
+msgstr "Hantera fjärrkontroller"
+
+#: data/ui/remotes.blp:14
+#, fuzzy
+#| msgid "Refresh List"
+msgid "Refresh list of remotes"
+msgstr "Ladda Om Listan"
+
+#: data/ui/remotes.blp:23
+#, fuzzy
+msgid "Installed Remotes"
+msgstr "Installerad storlek"
+
+#: data/ui/remotes.blp:27
+#, fuzzy
+msgid "Show disabled"
+msgstr "Inaktivera uppdateringar"
+
+#: data/ui/remotes.blp:41
+msgid "No remotes on the system, add some from below"
+msgstr ""
+
+#: data/ui/remotes.blp:45
+#, fuzzy
+msgid "Add a Popular Remote"
+msgstr "Lägg till Flatpak fjärrkontroll"
+
+#: data/ui/remotes.blp:49
+#, fuzzy
+msgid "Add Other Remotes"
+msgstr "Lägg till fjärrkontroll"
+
+#: data/ui/remotes.blp:79
+#, fuzzy
+msgid "Adding Remote…"
+msgstr "Lägg till fjärrkontroll"
+
+#: data/ui/remotes.blp:88 data/ui/window.blp:60
+#, fuzzy
+msgid "This should only take a moment."
+msgstr "Installerar… Detta kan ta ett tag"
+
+#: data/ui/search_install.blp:7
+#, fuzzy
+msgid "Install From The Web…"
+msgstr "Installera från fil"
+
+#: data/ui/search_install.blp:44
+msgid "Search for Flatpaks…"
+msgstr ""
+
+#: data/ui/search_install.blp:49
+#, fuzzy
+#| msgid "No Remotes"
+msgid "All Remotes"
+msgstr "Inga fjärrkontroller"
+
+#: data/ui/search_install.blp:54 src/gtk/help-overlay.blp:14
+msgid "Search"
+msgstr "Sök"
+
+#: data/ui/search_install.blp:99
+msgid "Search for Flatpaks"
+msgstr ""
+
+#: data/ui/search_install.blp:101
+msgid "Search for Flatpaks that you want to install"
+msgstr ""
+
+#: data/ui/search_install.blp:105
+#, fuzzy
+#| msgid "Search"
+msgctxt "Shown with a spinner while search operation is pending"
+msgid "Searching…"
+msgstr "Sök"
+
+#: data/ui/search_install.blp:119
+msgid "Too many results"
+msgstr ""
+
+#: data/ui/search_install.blp:120
+msgid "Try being more specific with your search"
+msgstr ""
+
+#: data/ui/snapshots.blp:15
+#, fuzzy
+#| msgid "Open Data Folder"
+msgid "Open Snapshots Folder"
+msgstr "Öppna datamapp"
+
+#: data/ui/snapshots.blp:34
+#, fuzzy
+msgid "New Snapshot"
+msgstr "Hantera fjärrkontroller"
+
+#: data/ui/snapshots.blp:86
+#, fuzzy
+msgid "No Snapshots"
+msgstr "Hantera fjärrkontroller"
+
+#: data/ui/snapshots.blp:87
+>>>>>>> 6984e45 (Update translation files)
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time."
 msgstr ""
+<<<<<<< HEAD
 "Ögonblicksbilder är säkerhetskopior av appens användardata. De kan "
 "återställas när som helst."
 
 #: data/ui/window.blp:18
+=======
+
+#: data/ui/window.blp:12
+msgid "Refresh List"
+msgstr "Ladda Om Listan"
+
+#: data/ui/window.blp:24
+>>>>>>> 6984e45 (Update translation files)
 msgid "Filter List"
 msgstr "Filtrera Listan"
 
@@ -375,6 +640,7 @@ msgstr "Huvudmeny"
 msgid "Toggle Selection Mode"
 msgstr "Växla urvalsläge"
 
+<<<<<<< HEAD
 #: data/ui/window.blp:53
 #, fuzzy
 #| msgid "Loading Flatpaks…"
@@ -391,6 +657,11 @@ msgstr "Avinstallerar…"
 #, fuzzy
 msgid "This could take a while."
 msgstr "Installerar… Detta kan ta ett tag"
+=======
+#: data/ui/window.blp:59
+msgid "Loading Flatpaks…"
+msgstr ""
+>>>>>>> 6984e45 (Update translation files)
 
 #: data/ui/window.blp:135
 #, fuzzy
@@ -422,6 +693,7 @@ msgstr ""
 msgid "No Flatpaks Match Filters"
 msgstr "Inga Flatpakpaket matchar de valda filtren"
 
+<<<<<<< HEAD
 #: data/ui/window.blp:176
 #, fuzzy
 #| msgid "No installed Flatpak matches any of the currently applied filters."
@@ -429,6 +701,13 @@ msgid "No installed Flatpak matches all of the currently applied filters"
 msgstr "Inga installerade Flatpak matchar någon av de valda filtren."
 
 #: data/ui/window.blp:206
+=======
+#: data/ui/window.blp:181
+msgid "No installed Flatpak matches any of the currently applied filters."
+msgstr ""
+
+#: data/ui/window.blp:205
+>>>>>>> 6984e45 (Update translation files)
 msgid "Uninstall Selected Apps"
 msgstr "Avinstallera utvalda appar"
 
@@ -628,14 +907,154 @@ msgstr "System"
 msgid "Unknown install type"
 msgstr "Avinstallera"
 
+#: src/app_row_widget.py:75
+msgid "Updates Disabled"
+msgstr "Uppdateringar inaktiverad"
+
+#: src/app_row_widget.py:80 src/properties_window.py:204
+msgid "{} is masked and will not be updated"
+msgstr "{} är maskad och kommer inte att uppdateras"
+
+#: src/app_row_widget.py:87
+msgid "App EOL"
+msgstr "Uttjänt"
+
+#: src/app_row_widget.py:93 src/properties_window.py:187
+msgid ""
+"{} has reached its End of Life and will not receive any security updates"
+msgstr "{} är uttjänt och kommer inte att få säkerhetsuppdateringar"
+
+#: src/app_row_widget.py:104
+msgid "Runtime EOL"
+msgstr "Exekveringsmiljö uttjänt"
+
+#: src/app_row_widget.py:110 src/properties_window.py:195
+msgid ""
+"{}'s runtime has reached its End of Life and will not receive any security "
+"updates"
+msgstr ""
+"{}s exekveringsmiljö är uttjänt och kommer inte att få säkerhetsuppdateringar"
+
+#: src/app_row_widget.py:136
+msgid "View Properties"
+msgstr "Visa egenskaper"
+
+#: src/app_row_widget.py:163
+msgid "Copied name"
+msgstr "Koperiade namn"
+
+#: src/app_row_widget.py:167
+msgid "Copy Name"
+msgstr "Kopiera namn"
+
+#: src/app_row_widget.py:172
+msgid "Copied ID"
+msgstr "Kopierade ID"
+
+#: src/app_row_widget.py:177
+msgid "Copy ID"
+msgstr "Kopiera ID"
+
+#: src/app_row_widget.py:182
+msgid "Copied ref"
+msgstr "Kopierade ref"
+
+#: src/app_row_widget.py:187
+msgid "Copy Ref"
+msgstr "Kopiera Ref"
+
+#: src/app_row_widget.py:193
+msgid "Copied launch command"
+msgstr "Kopierade körningskommando"
+
+#: src/app_row_widget.py:197
+msgid "Copy Launch Command"
+msgstr "Kopiera körningskommando"
+
+#: src/app_row_widget.py:200 src/window.py:452
+msgid "Copy"
+msgstr "Kopiera"
+
+#: src/app_row_widget.py:206
+msgid "Opened {}"
+msgstr "Öppnade {}"
+
+#: src/app_row_widget.py:209
+msgid "Open"
+msgstr "Öppna"
+
+#: src/app_row_widget.py:218 src/window.py:233 src/window.py:307
+msgid "Uninstall"
+msgstr "Avinstallera"
+
+#: src/app_row_widget.py:273
+msgid "Enable Updates"
+msgstr "Aktivera uppdateringar"
+
+#: src/app_row_widget.py:287
+#, fuzzy
+#| msgid "Manage Remotes"
+msgid "Manage Snapshots"
+msgstr "Hantera fjärrkontroller"
+
+#: src/downgrade_window.py:103
+msgid "Commit Hash: {}"
+msgstr "Commit Hash: {}"
+
+#: src/downgrade_window.py:127
+msgid "Could not downgrade {}"
+msgstr "Kunde inte nedgradera {}"
+
+#: src/downgrade_window.py:135 src/window.py:405
+#, fuzzy
+msgid "Could not disable updates for {}"
+msgstr "Kunde inaktivera uppdateringar för {}"
+
+#: src/downgrade_window.py:148
+msgid "Downgrading…"
+msgstr "Nedgraderar…"
+
+#: src/downgrade_window.py:174
+msgid "Downgrade {}"
+msgstr "Nedgradera {}"
+
+#: src/downgrade_window.py:186
+msgid "Fetching Releases…"
+msgstr "Hämtar släpp…"
+
+#: src/downgrade_window.py:189
+msgid "Ensure that {} will never be updated to a newer version"
+msgstr ""
+
+#: src/filter_window.py:126 src/orphans_window.py:150 src/remotes_window.py:300
+#, fuzzy
+#| msgid "{} wide"
+msgid "User wide"
+msgstr "{} bred"
+
+#: src/filter_window.py:128 src/orphans_window.py:152 src/remotes_window.py:302
+#, fuzzy
+#| msgid "System"
+msgid "System wide"
+msgstr "System"
+
+#: src/filter_window.py:130 src/orphans_window.py:154 src/remotes_window.py:304
+#, fuzzy
+#| msgid "Uninstall"
+msgid "Unknown install type"
+msgstr "Avinstallera"
+
 #: src/gtk/help-overlay.blp:11
 msgid "App Management"
 msgstr "Apphantering"
 
+<<<<<<< HEAD
 #: src/gtk/help-overlay.blp:14
 msgid "Search"
 msgstr "Sök"
 
+=======
+>>>>>>> 6984e45 (Update translation files)
 #: src/gtk/help-overlay.blp:24
 msgid "Refresh"
 msgstr "Ladda om"
@@ -644,7 +1063,11 @@ msgstr "Ladda om"
 msgid "More Functions"
 msgstr "Mera funktioner"
 
+<<<<<<< HEAD
 #: src/gtk/help-overlay.blp:37 src/orphans_window.py:30
+=======
+#: src/gtk/help-overlay.blp:37 src/orphans_window.py:29
+>>>>>>> 6984e45 (Update translation files)
 msgid "Manage Leftover Data"
 msgstr "Hantera överblivna data"
 
@@ -668,11 +1091,16 @@ msgstr "Visa tangentbordsgenvägar"
 msgid "Quit"
 msgstr "Avsluta"
 
+<<<<<<< HEAD
 #: src/main.py:145
+=======
+#: src/main.py:136
+>>>>>>> 6984e45 (Update translation files)
 msgid "Flatpaks"
 msgstr "Flatpak"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
+<<<<<<< HEAD
 #: src/main.py:188
 msgid "translator-credits"
 msgstr ""
@@ -682,10 +1110,22 @@ msgid "Donate"
 msgstr ""
 
 #: src/main.py:196
+=======
+#: src/main.py:179
+msgid "translator-credits"
+msgstr ""
+
+#: src/main.py:185
+msgid "Donate"
+msgstr ""
+
+#: src/main.py:187
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Contributors"
 msgstr "Fortsätt"
 
+<<<<<<< HEAD
 #: src/orphans_window.py:76 src/window.py:740
 msgid "Installed successfully"
 msgstr "Installation lyckades"
@@ -699,11 +1139,27 @@ msgid "Attempt to Install?"
 msgstr "Försök att installera?"
 
 #: src/orphans_window.py:116
+=======
+#: src/orphans_window.py:78 src/window.py:757
+msgid "Installed successfully"
+msgstr "Installation lyckades"
+
+#: src/orphans_window.py:81
+msgid "Could not install some apps"
+msgstr "Kunde inte installera vissa appar"
+
+#: src/orphans_window.py:117
+msgid "Attempt to Install?"
+msgstr "Försök att installera?"
+
+#: src/orphans_window.py:118
+>>>>>>> 6984e45 (Update translation files)
 msgid "Warehouse will attempt to install apps matching the selected data."
 msgstr ""
 "Lagerhus kommer att försöka att installera appar som matcherar de utvalda "
 "datorna."
 
+<<<<<<< HEAD
 #: src/orphans_window.py:183
 msgid "Trash folders?"
 msgstr "Trasha mappar?"
@@ -730,20 +1186,57 @@ msgid "Copied {}"
 msgstr "Kopierade {}"
 
 #: src/properties_window.py:53
+=======
+#: src/orphans_window.py:185
+msgid "Trash folders?"
+msgstr "Trasha mappar?"
+
+#: src/orphans_window.py:185
+msgid "These folders will be sent to the trash."
+msgstr "Dessa mappar kommer att skickas till papperskorgen."
+
+#: src/orphans_window.py:190
+msgid "Continue"
+msgstr "Fortsätt"
+
+#: src/orphans_window.py:199 src/properties_window.py:43
+#: src/snapshots_window.py:250 src/window.py:366
+msgid "Could not open folder"
+msgstr "Kunde inte öppna mappen"
+
+#: src/orphans_window.py:217
+msgid "Could not manage data"
+msgstr "Kunde inte hantera data"
+
+#: src/properties_window.py:37 src/remotes_window.py:209
+msgid "Copied {}"
+msgstr "Kopierade {}"
+
+#: src/properties_window.py:49
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Could not show details"
 msgstr "Kunde inte trasha användardata"
 
+<<<<<<< HEAD
 #: src/properties_window.py:59
+=======
+#: src/properties_window.py:55
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "User Data"
 msgstr "Trasha användardata"
 
+<<<<<<< HEAD
 #: src/properties_window.py:79 src/properties_window.py:142
+=======
+#: src/properties_window.py:74 src/properties_window.py:135
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "No User Data"
 msgstr "Trasha användardata"
 
+<<<<<<< HEAD
 #: src/properties_window.py:90 src/remotes_window.py:510
 #: src/remotes_window.py:635
 msgid "Name"
@@ -834,54 +1327,179 @@ msgid "Remove"
 msgstr "Radera"
 
 #: src/remotes_window.py:121
+=======
+#: src/properties_window.py:85 src/remotes_window.py:498
+#: src/remotes_window.py:623
+msgid "Name"
+msgstr "Namn"
+
+#: src/properties_window.py:86
+msgid "Description"
+msgstr "Beskrivning"
+
+#: src/properties_window.py:87
+msgid "App ID"
+msgstr "App ID"
+
+#: src/properties_window.py:88
+msgid "Version"
+msgstr "Version"
+
+#: src/properties_window.py:89
+msgid "Branch"
+msgstr "Gren"
+
+#: src/properties_window.py:90
+msgid "Arch"
+msgstr "Ark"
+
+#: src/properties_window.py:91
+msgid "Origin"
+msgstr "Fjärrkontroll"
+
+#: src/properties_window.py:92
+msgid "Installation"
+msgstr "Installation"
+
+#: src/properties_window.py:93
+msgid "Ref"
+msgstr "Ref"
+
+#: src/properties_window.py:94
+msgid "Active Commit"
+msgstr "Aktiv kommit"
+
+#: src/properties_window.py:95
+msgid "Latest Commit"
+msgstr "Senaste kommit"
+
+#: src/properties_window.py:96
+msgid "Installed Size"
+msgstr "Installerad storlek"
+
+#: src/properties_window.py:97
+msgid "Options"
+msgstr "Inställningar"
+
+#: src/properties_window.py:134 src/window.py:380
+msgid "Trashed user data"
+msgstr "Trashade användardata"
+
+#: src/properties_window.py:141 src/window.py:375
+msgid "Could not trash user data"
+msgstr "Kunde inte trasha användardata"
+
+#: src/properties_window.py:145 src/window.py:383
+msgid "Send {}'s User Data to the Trash?"
+msgstr "Skicka {}s användardata till papperskorgen?"
+
+#: src/properties_window.py:149 src/window.py:390 src/window.py:533
+msgid "Trash Data"
+msgstr "Trasha"
+
+#: src/properties_window.py:218
+msgid "{} Properties"
+msgstr "{} Egenskaper"
+
+#: src/remotes_window.py:71
+msgid "Could not remove {}"
+msgstr "Kunde inte radera {}"
+
+#: src/remotes_window.py:80 src/remotes_window.py:161
+msgid "Any installed apps from {} will stop receiving updates"
+msgstr "Varje app som installerades från {} kommer att sluta få uppdateringar"
+
+#: src/remotes_window.py:83
+msgid "Remove {}?"
+msgstr "Radera {}?"
+
+#: src/remotes_window.py:86 src/remotes_window.py:266
+msgid "Remove"
+msgstr "Radera"
+
+#: src/remotes_window.py:113
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "Could not add {}"
 msgid "Could not enable {}"
 msgstr "Kunde inte lägga till {}"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:149
+=======
+#: src/remotes_window.py:141
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "Could not add {}"
 msgid "Could not disable {}"
 msgstr "Kunde inte lägga till {}"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:172
+=======
+#: src/remotes_window.py:164
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Disable {}?"
 msgstr "Inaktivera uppdateringar"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:175 src/remotes_window.py:267
+=======
+#: src/remotes_window.py:167 src/remotes_window.py:257
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Disable"
 msgstr "Inaktivera uppdateringar"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:186
+=======
+#: src/remotes_window.py:178
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "Could not install app"
 msgid "Could not view apps"
 msgstr "Kunde inte installera app"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:244
+=======
+#: src/remotes_window.py:234
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "Set Filters"
 msgid "Set Filter"
 msgstr "Ställ in filtrar"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:258
+=======
+#: src/remotes_window.py:248
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "Enable Updates"
 msgid "Enable"
 msgstr "Aktivera uppdateringar"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:292
 msgid "Copy remote name"
 msgstr "Kopiera fjärrkontrollnamn"
 
 #: src/remotes_window.py:306
+=======
+#: src/remotes_window.py:282
+msgid "Copy remote name"
+msgstr "Kopiera fjärrkontrollnamn"
+
+#: src/remotes_window.py:295
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Disabled"
 msgstr "Inaktivera uppdateringar"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:343
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr "Den öppenkällkod, betala-vad-du-vill appbutik från elementary"
@@ -891,10 +1509,22 @@ msgid "Central repository of Flatpak applications"
 msgstr "Standardfjärrkontrol för Flatpak"
 
 #: src/remotes_window.py:355
+=======
+#: src/remotes_window.py:331
+msgid "The open source, pay-what-you-want app store from elementary"
+msgstr "Den öppenkällkod, betala-vad-du-vill appbutik från elementary"
+
+#: src/remotes_window.py:337
+msgid "Central repository of Flatpak applications"
+msgstr "Standardfjärrkontrol för Flatpak"
+
+#: src/remotes_window.py:343
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Beta builds of Flatpak applications"
 msgstr "Standardfjärrkontrol för Flatpak"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:361
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr ""
@@ -904,10 +1534,22 @@ msgid "The latest beta GNOME Apps and Runtimes"
 msgstr ""
 
 #: src/remotes_window.py:373
+=======
+#: src/remotes_window.py:349
+msgid "Flatpaks packaged by Fedora Linux"
+msgstr ""
+
+#: src/remotes_window.py:355
+msgid "The latest beta GNOME Apps and Runtimes"
+msgstr ""
+
+#: src/remotes_window.py:361
+>>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 msgid "Beta KDE Apps and Runtimes"
 msgstr "Filtrera appar med exekveringsmiljö"
 
+<<<<<<< HEAD
 #: src/remotes_window.py:379
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr ""
@@ -1016,8 +1658,14 @@ msgstr "Kunde inte installera vissa appar"
 
 #: src/snapshots_window.py:202
 msgid "Snapshot applied"
+=======
+#: src/remotes_window.py:367
+msgid "Central repository of the WebKit Developer and Runtime SDK"
+>>>>>>> 6984e45 (Update translation files)
 msgstr ""
+"Fjärrkontrollen för de WebKit Developer- och Runtime-exekveringsmiljöna"
 
+<<<<<<< HEAD
 #. Make window unable to close
 #: src/snapshots_window.py:230
 #, fuzzy
@@ -1031,8 +1679,42 @@ msgstr "Hantera fjärrkontroller"
 
 #: src/snapshots_window.py:240
 msgid "Applying this snapshot will trash any current user data for {}."
-msgstr ""
+=======
+#: src/remotes_window.py:403 src/remotes_window.py:566
+msgid "Could not add {}"
+msgstr "Kunde inte lägga till {}"
 
+#: src/remotes_window.py:440
+msgid "Add Flatpak Remote"
+msgstr "Lägg till Flatpak fjärrkontroll"
+
+#: src/remotes_window.py:443 src/remotes_window.py:615
+msgid "Add"
+msgstr "Lägg till"
+
+#: src/remotes_window.py:502
+msgid "URL"
+msgstr "URL"
+
+#: src/remotes_window.py:514 src/remotes_window.py:626 src/window.py:794
+msgid "User"
+msgstr "Användare"
+
+#: src/remotes_window.py:514 src/remotes_window.py:626
+msgid "Remote will be available to only you"
+msgstr "Fjärrkontroll kommer att vara tillgänglig till dig"
+
+#: src/remotes_window.py:522 src/remotes_window.py:629 src/window.py:797
+msgid "System"
+msgstr "System"
+
+#: src/remotes_window.py:523 src/remotes_window.py:630
+msgid "Remote will be available to every user on the system"
+>>>>>>> 6984e45 (Update translation files)
+msgstr ""
+"Fjärrkontroll kommer att vara tillgänglig till varje användare på systemet"
+
+<<<<<<< HEAD
 #. Window stuffs
 #: src/snapshots_window.py:294
 #, fuzzy
@@ -1190,20 +1872,263 @@ msgstr "Appen kommer att vara tillgänglig till bara dig"
 #: src/window.py:781
 msgid "The app will be available to every user on the system"
 msgstr "Appen kommer att vara tillgänglig till varje användare på systemet"
+=======
+#: src/remotes_window.py:562
+msgid "{} successfully added"
+msgstr "{} lades till"
 
+#: src/remotes_window.py:612
+msgid "Add {}?"
+msgstr "Lägg till {}?"
+>>>>>>> 6984e45 (Update translation files)
+
+#: src/remotes_window.py:660
 #, fuzzy
-#~ msgid "Install From The Web…"
-#~ msgstr "Installera från fil"
+msgid "Flatpak Repos"
+msgstr "Flatpak"
 
-#~ msgid "Add Remote"
-#~ msgstr "Lägg till fjärrkontroll"
+#: src/snapshots_window.py:50
+#, fuzzy
+#| msgid "Send {}'s User Data to the Trash?"
+msgid "There is no User Data to Snapshot"
+msgstr "Skicka {}s användardata till papperskorgen?"
 
-#~ msgid "No Remotes"
-#~ msgstr "Inga fjärrkontroller"
+#: src/snapshots_window.py:89
+#, fuzzy
+#| msgid "Version"
+msgid "Version {}"
+msgstr "Version"
 
+<<<<<<< HEAD
 #~ msgid "Choose from a list of popular remotes or add a new one."
 #~ msgstr ""
 #~ "Inga fjärrar installerade på systemet, lägg till några från listan nedan"
+=======
+#: src/snapshots_window.py:121
+#, fuzzy
+#| msgid "Could not trash user data"
+msgid "Could not trash snapshot"
+msgstr "Kunde inte trasha användardata"
+
+#: src/snapshots_window.py:126
+#, fuzzy
+msgid "Trash Snapshot?"
+msgstr "Hantera fjärrkontroller"
+
+#: src/snapshots_window.py:127
+#, fuzzy
+#| msgid "These folders will be sent to the trash."
+msgid "This snapshot and its contents will be sent to the trash."
+msgstr "Dessa mappar kommer att skickas till papperskorgen."
+
+#: src/snapshots_window.py:131
+#, fuzzy
+msgid "Trash Snapshot"
+msgstr "Hantera fjärrkontroller"
+
+#: src/snapshots_window.py:149
+#, fuzzy
+msgid "Could not create snapshot"
+msgstr "Hantera fjärrkontroller"
+
+#. Make window unable to close
+#: src/snapshots_window.py:159
+#, fuzzy
+msgid "Creating Snapshot…"
+msgstr "Hantera fjärrkontroller"
+
+#: src/snapshots_window.py:193 src/snapshots_window.py:211
+#: src/snapshots_window.py:218
+#, fuzzy
+msgid "Could not apply snapshot"
+msgstr "Kunde inte installera vissa appar"
+
+#: src/snapshots_window.py:196
+msgid "Snapshot applied"
+msgstr ""
+
+#. Make window unable to close
+#: src/snapshots_window.py:225
+#, fuzzy
+msgid "Applying Snapshot…"
+msgstr "Hantera fjärrkontroller"
+
+#: src/snapshots_window.py:234
+#, fuzzy
+msgid "Apply Snapshot?"
+msgstr "Hantera fjärrkontroller"
+
+#: src/snapshots_window.py:235
+msgid "Applying this snapshot will trash any current user data for {}."
+msgstr ""
+
+#: src/snapshots_window.py:241
+#, fuzzy
+msgid "Apply Snapshot"
+msgstr "Hantera fjärrkontroller"
+
+#. Window stuffs
+#: src/snapshots_window.py:293
+#, fuzzy
+msgid "{} Snapshots"
+msgstr "Hantera fjärrkontroller"
+
+#: src/window.py:118
+msgid "Uninstalled successfully"
+msgstr "Avinstallation lycakdes"
+
+#: src/window.py:121
+msgid "Could not uninstall some apps"
+msgstr "Kunde inte avinstallera vissa appar"
+
+#: src/window.py:174
+msgid "Uninstall Selected Apps?"
+msgstr "Avinstallera Utvalda Appar?"
+
+#: src/window.py:175
+msgid "It will not be possible to use these apps after removal."
+msgstr ""
+"Efter borttagning kommer det inte att vara möjligt att använda dessa appar."
+
+#: src/window.py:195 src/window.py:278
+msgid "App Settings & Data"
+msgstr "Appinställningar och Data"
+
+#: src/window.py:199 src/window.py:282
+msgid "Keep"
+msgstr "Behåll"
+
+#: src/window.py:200
+msgid "Allow restoring these apps' settings and content"
+msgstr "Tillåt återställning av dessa appars inställningar och innehåll"
+
+#: src/window.py:204
+msgid "Send these apps' settings and content to the trash"
+msgstr "Skicka dessa appars inställningar och innehåll till papperskorgen"
+
+#: src/window.py:240
+msgid "Cannot uninstall while already uninstalling"
+msgstr "Kan inte avinstallera medan andra appar avinstalleras"
+
+#: src/window.py:270
+msgid "Uninstall {}?"
+msgstr "Avinstallera {}?"
+
+#: src/window.py:271
+msgid "It will not be possible to use {} after removal."
+msgstr "Efter borttagning kommer det inte att vara möjligt att använda {}."
+
+#: src/window.py:283
+msgid "Allow restoring this app's settings and content"
+msgstr "Tillåt återställning av denna apps inställningar och innehåll"
+
+#: src/window.py:287
+msgid "Send this app's settings and content to the trash"
+msgstr "Skicka denna apps inställningar och innehåll till papperskorgen"
+
+#: src/window.py:357
+msgid "List refreshed"
+msgstr ""
+
+#: src/window.py:386
+msgid "Your files and data for this app will be sent to the trash."
+msgstr ""
+"Dina filer och användardata för denna app kommer att skickas till "
+"papperskorgen."
+
+#: src/window.py:427
+msgid "Disable Updates for {}?"
+msgstr "Inaktivera Uppdateringar för {}?"
+
+#: src/window.py:431
+msgid ""
+"This will mask {} ensuring it will never recieve any feature or security "
+"updates."
+msgstr ""
+"Detta kommer att maska {} och säkerställar att det kommer att aldrig få "
+"funktions- eller säkerhetsuppdateringar."
+
+#: src/window.py:450
+msgid "Could not Run App"
+msgstr "Kunde inte köra appen"
+
+#: src/window.py:458
+msgid "OK"
+msgstr "Okej"
+
+#: src/window.py:508
+#, fuzzy
+msgid "{} has no data to trash"
+msgstr "Skicka {}s användardata till papperskorgen?"
+
+#: src/window.py:514
+#, fuzzy
+msgid "Could not trash {}'s data"
+msgstr "Kunde inte trasha användardata"
+
+#: src/window.py:528
+msgid "Trash Selected Apps' User Data?"
+msgstr "Trasha Utvalda Appars Användardata?"
+
+#: src/window.py:529
+msgid "Your files and data for these apps will be sent to the trash."
+msgstr ""
+"Dina filer och användardata för dessa appar kommer att skickas till "
+"papperskorgen."
+
+#: src/window.py:579
+#, fuzzy
+msgid "Could not snapshot some apps"
+msgstr "Kunde inte installera vissa appar"
+
+#: src/window.py:603
+#, fuzzy
+msgid "Create Snapshots?"
+msgstr "Hantera fjärrkontroller"
+
+#: src/window.py:605
+msgid ""
+"Snapshots are backups of the app's user data. They can be reapplied at any "
+"time. This could take a while."
+msgstr ""
+
+#: src/window.py:610
+#, fuzzy
+msgid "Create Snapshots"
+msgstr "Hantera fjärrkontroller"
+
+#: src/window.py:662
+msgid "Copied selected app names"
+msgstr "Kopierade utvalda appars namn"
+
+#: src/window.py:675
+msgid "Copied selected app IDs"
+msgstr "Kopierade utvalda appars ID:er"
+
+#: src/window.py:688
+msgid "Copied selected app refs"
+msgstr "Kopierade utvalda appars ref:ar"
+
+#: src/window.py:759
+msgid "Could not install app"
+msgstr "Kunde inte installera app"
+
+#: src/window.py:783
+msgid "Install {}?"
+msgstr "Installera {}?"
+
+#: src/window.py:794
+msgid "The app will be available to only you"
+msgstr "Appen kommer att vara tillgänglig till bara dig"
+
+#: src/window.py:798
+msgid "The app will be available to every user on the system"
+msgstr "Appen kommer att vara tillgänglig till varje användare på systemet"
+
+#: src/window.py:828
+msgid "File type not supported"
+msgstr "Filtyp stöds inte"
+>>>>>>> 6984e45 (Update translation files)
 
 #~ msgid "Remove {}"
 #~ msgstr "Radera {}"
@@ -1216,11 +2141,6 @@ msgstr "Appen kommer att vara tillgänglig till varje användare på systemet"
 
 #~ msgid "Copy {}"
 #~ msgstr "Kopiera {}"
-
-#, fuzzy
-#~| msgid "Manage Remotes"
-#~ msgid "Manage Snapshots"
-#~ msgstr "Hantera fjärrkontroller"
 
 #, fuzzy
 #~ msgid ""
