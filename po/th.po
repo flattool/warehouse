@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-17 20:33-0500\n"
+"POT-Creation-Date: 2024-01-05 01:05-0500\n"
 "PO-Revision-Date: 2023-10-23 10:42+0000\n"
 "Last-Translator: Win <winsdominoes2018@gmail.com>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
@@ -19,18 +19,24 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.0\n"
 
-#: data/io.github.flattool.Warehouse.desktop.in:3
+#. Translators: Do not translate the applicaion name
+#: data/io.github.flattool.Warehouse.desktop.in:4
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:5
 msgid "Warehouse"
 msgstr "Warehouse"
 
-#: data/io.github.flattool.Warehouse.desktop.in:10
+#: data/io.github.flattool.Warehouse.desktop.in:11
 msgid "flatpak"
 msgstr "flatpak"
 
-#: data/io.github.flattool.Warehouse.desktop.in:11
+#: data/io.github.flattool.Warehouse.desktop.in:12
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
 msgstr "จัดการทุกอย่าง Flatpak"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:6
+msgid "Heliguy"
+msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
@@ -66,248 +72,265 @@ msgstr "หาและทิ้งข้อมูลที่เหลือ"
 msgid "Reinstall apps that have leftover data"
 msgstr "ติดตั้งแอปที่ยังมีข้อมูลเหลือ"
 
-#: src/main.py:103
-msgid "Flatpaks"
-msgstr "Flatpaks"
-
-#. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
-#: src/main.py:138
-msgid "translator-credits"
-msgstr "Win <winsdominoes2018@gmail.com>"
-
-#: src/main.py:143
-msgid "Donate"
-msgstr ""
-
-#: src/main.py:144
-#, fuzzy
-msgid "Contributors"
-msgstr "ดำเนินการต่อ"
-
-#: src/window.py:115
-msgid "Uninstalled successfully"
-msgstr "การถอนการติดตั้งสำเหร็จแล้ว"
-
-#: src/window.py:117
-msgid "Could not uninstall some apps"
-msgstr "ไม่สามารถถอนการติดตั้งได้บางแอป"
-
-#. Create Widgets
-#: src/window.py:159
-msgid "Uninstall Selected Apps?"
-msgstr "จะถอนการติดตั้งแอปที่เลือกมั้ย?"
-
-#: src/window.py:159
-msgid "It will not be possible to use these apps after removal."
-msgstr "ไม่สามารถใช้แอปเหล่านี้ได้หลังจากการลบออก"
-
-#: src/window.py:175 src/window.py:242
-msgid "App Settings & Data"
-msgstr "การตั้งค่าแอปและข้อมูล"
-
-#: src/window.py:177 src/window.py:244
-msgid "Keep"
-msgstr "เก็บไว้"
-
-#: src/window.py:177
-msgid "Allow restoring these apps' settings and content"
-msgstr "อนุญาตให้กู้คืนการตั้งค่าแอปและเนื้อหาเหล่านี้"
-
-#: src/window.py:178 src/window.py:245 data/ui/orphans.blp:123
-msgid "Trash"
-msgstr "ทิ้ง"
-
-#: src/window.py:178
-msgid "Send these apps' settings and content to the trash"
-msgstr "ส่งการตั้งค่าแอปและเนื้อหาเหล่านี้ไปที่ถังขยะ"
-
-#: src/window.py:205 src/window.py:263 src/window.py:339 src/window.py:369
-#: src/window.py:451 src/window.py:508 src/window.py:683
-#: src/properties_window.py:127 src/remotes_window.py:68
-#: src/remotes_window.py:212 src/remotes_window.py:354
-#: src/orphans_window.py:105 src/orphans_window.py:159 data/ui/filter.blp:17
-#: data/ui/downgrade.blp:16
+#: data/ui/downgrade.blp:16 data/ui/filter.blp:17 data/ui/search_install.blp:17
+#: src/orphans_window.py:121 src/orphans_window.py:189
+#: src/properties_window.py:147 src/remotes_window.py:85
+#: src/remotes_window.py:166 src/remotes_window.py:442
+#: src/remotes_window.py:614 src/snapshots_window.py:129
+#: src/snapshots_window.py:239 src/window.py:232 src/window.py:306
+#: src/window.py:388 src/window.py:434 src/window.py:532 src/window.py:609
+#: src/window.py:785
 msgid "Cancel"
 msgstr "ยกเลิก"
 
-#: src/window.py:206 src/window.py:264
-msgid "Uninstall"
-msgstr "ถอนการติดตั้ง"
+#: data/ui/downgrade.blp:22 src/app_row_widget.py:297
+msgid "Downgrade"
+msgstr "ดาวน์เกรด"
 
-#: src/window.py:212
-msgid "Cannot uninstall while already uninstalling"
-msgstr "ไม่สามารถถอนการติดตั้งในขณะที่ถอนการติดตั้งแล้ว"
-
-#. Create Widgets
-#: src/window.py:237
-msgid "Uninstall {}?"
-msgstr "ถอนการติดตั้ง {}?"
-
-#: src/window.py:237
-msgid "It will not be possible to use {} after removal."
-msgstr "คุณจะไม่สามารถใช้ {} ได้หลังจากถอนการติดตั้ง"
-
-#: src/window.py:244
-msgid "Allow restoring this app's settings and content"
-msgstr "อนุญาตให้กู้คืนการตั้งค่าชองแอปและเนื้อหานี้"
-
-#: src/window.py:245
-msgid "Send this app's settings and content to the trash"
-msgstr "ส่งการตั้งค่าแอปและเนื้อหาของแอปนี้ไปที่ถังขยะ"
-
-#: src/window.py:314
-msgid "List refreshed"
-msgstr ""
-
-#: src/window.py:323 src/properties_window.py:42 src/orphans_window.py:168
-msgid "Could not open folder"
-msgstr "ไม่สามารถเปิดโฟลเดอร์ได้"
-
-#: src/window.py:331 src/properties_window.py:124
-msgid "Could not trash user data"
-msgstr "ไม่สามารถทิ้งข้อมูลผู้ใช้ได้"
-
-#: src/window.py:335 src/properties_window.py:118
-msgid "Trashed user data"
-msgstr "ทิ้งข้อมูลแล้ว"
-
-#: src/window.py:337 src/properties_window.py:126
-msgid "Send {}'s User Data to the Trash?"
-msgstr "ลบข้อมูลผู้ใช้ของ {} ไปในถังขยะหรือไม่?"
-
-#: src/window.py:338
-msgid "Your files and data for this app will be sent to the trash."
-msgstr "ไฟล์ของคุณและข้อมูลสำหรับแอปนี้จะถูกในไปไว้ในถังขยะ"
-
-#: src/window.py:341 src/window.py:452 src/properties_window.py:129
-msgid "Trash Data"
-msgstr "ทิ้งข้อมูล"
-
-#: src/window.py:352 src/downgrade_window.py:106
-#, fuzzy
-msgid "Could not disable updates for {}"
-msgstr "ปิดการอัพเดทของ {}"
-
-#: src/window.py:367
-msgid "Disable Updates for {}?"
-msgstr "ปิดการอัพเดทของ {} หรือไม่?"
-
-#: src/window.py:368
-msgid ""
-"This will mask {} ensuring it will never recieve any feature or security "
-"updates."
-msgstr "แอปนี้จะไม่ได้รับการอัปเดตใดๆ"
-
-#: src/window.py:371 data/ui/downgrade.blp:46
+#: data/ui/downgrade.blp:46 src/app_row_widget.py:261 src/window.py:436
 msgid "Disable Updates"
 msgstr "ระงับการอัพเดท"
 
-#: src/window.py:385
-msgid "Could not Run App"
-msgstr "ไม่สามารถเปิดแอปได้"
+#: data/ui/downgrade.blp:52
+msgid "Select a Release"
+msgstr "เลือกรุ่นที่ต้องการ"
 
-#: src/window.py:386
-msgid "Copy"
-msgstr "คัดลอก"
-
-#: src/window.py:391
-msgid "OK"
-msgstr "โอเค"
-
-#: src/window.py:440
-#, fuzzy
-msgid "{} has no data to trash"
-msgstr "ลบข้อมูลผู้ใช้ของ {} ไปในถังขยะหรือไม่?"
-
-#: src/window.py:443
-#, fuzzy
-msgid "Could not trash {}'s data"
-msgstr "ไม่สามารถทิ้งข้อมูลผู้ใช้ได้"
-
-#: src/window.py:449
-msgid "Trash Selected Apps' User Data?"
-msgstr "ทิ้งข้อมูลของแอปที่เลือก?"
-
-#: src/window.py:449
-msgid "Your files and data for these apps will be sent to the trash."
-msgstr "โฟลเดอร์ของคุณจะถูกในไปไว้ในถังขยะ"
-
-#: src/window.py:486
-#, fuzzy
-msgid "Could not snapshot some apps"
-msgstr "ไม่สามารถติดตั้งได้บางแอป"
-
-#: src/window.py:506
-#, fuzzy
-msgid "Create Snapshots?"
-msgstr "จัดการรีโมต"
-
-#: src/window.py:506
+#: data/ui/downgrade.blp:53
 msgid ""
-"Snapshots are backups of the app's user data. They can be reapplied at any "
-"time. This could take a while."
+"This will uninstall the current release and install the chosen one instead. "
+"Note that downgrading can cause issues."
+msgstr ""
+"การดำเนินการนี้จะถอนการติดตั้งเวอร์ชันปัจจุบันและติดตั้งเวอร์ชันที่เลือกแทน "
+"โปรดทราบว่าการดาวน์เกรดอาจทำให้เกิดปัญหาได้"
+
+#: data/ui/filter.blp:7 src/gtk/help-overlay.blp:19
+msgid "Set Filters"
+msgstr "เพิ่มตัวกรอง"
+
+#: data/ui/filter.blp:22
+msgid "Apply"
+msgstr "เซ็ตการตั้งค่า"
+
+#: data/ui/filter.blp:54
+msgid "Show Apps"
+msgstr "แสดงแอป"
+
+#: data/ui/filter.blp:64
+msgid "Show Runtimes"
+msgstr "แสดงเวลาการทำงานของแอป"
+
+#: data/ui/filter.blp:75
+msgid "Filter Apps by Remotes"
+msgstr "กรองแอปตามรีโมต"
+
+#: data/ui/filter.blp:80
+msgid "Filter Apps by Runtime"
+msgstr "กรองแอปตามสถานะการทำงาน"
+
+#: data/ui/orphans.blp:14 data/ui/window.blp:18
+msgid "Search List"
+msgstr "ค้นหารายการ"
+
+#: data/ui/orphans.blp:20
+msgid "Open Data Folder"
+msgstr "เปิดโฟลเดอร์ข้อมูล"
+
+#: data/ui/orphans.blp:81 data/ui/window.blp:104
+#, fuzzy
+msgid "Installing…"
+msgstr "การติดตั้ง"
+
+#: data/ui/orphans.blp:90 data/ui/window.blp:113 data/ui/window.blp:140
+#: data/ui/window.blp:167
+#, fuzzy
+msgid "This could take a while."
+msgstr "กำลังติดตั้ง... อาจจะใช้เวลาระยะหนึ่ง"
+
+#: data/ui/orphans.blp:101
+msgid "No Leftover Data"
+msgstr "ไม่มีข้อมูลเหลืออยู่"
+
+#: data/ui/orphans.blp:102
+msgid "There is no leftover user data"
+msgstr "ไม่มีข้อมูลผู้ใช้เหลืออยู่"
+
+#: data/ui/orphans.blp:107 data/ui/search_install.blp:94 data/ui/window.blp:186
+#, fuzzy
+msgid "No Results Found"
+msgstr "ไม่เจอแอป"
+
+#: data/ui/orphans.blp:108 data/ui/search_install.blp:95 data/ui/window.blp:187
+msgid "Try a different search term."
 msgstr ""
 
-#: src/window.py:509
-#, fuzzy
-msgid "Create Snapshots"
-msgstr "จัดการรีโมต"
+#: data/ui/orphans.blp:118 data/ui/window.blp:199
+msgid "Select All"
+msgstr "เลือกทั้งหมด"
 
-#: src/window.py:562
-msgid "Copied selected app names"
-msgstr "คัดลอกชื่อแอปที่เลือกแล้ว"
+#: data/ui/orphans.blp:123 src/window.py:203 src/window.py:286
+msgid "Trash"
+msgstr "ทิ้ง"
 
-#: src/window.py:575
-msgid "Copied selected app IDs"
-msgstr "คัดลอก ID แอปที่เลือกแล้ว"
-
-#: src/window.py:588
-msgid "Copied selected app refs"
-msgstr "คัดลอก refs แอปที่เลือกแล้ว"
-
-#: src/window.py:657 src/orphans_window.py:73
-msgid "Installed successfully"
-msgstr "ติดตั้งสำเหร็จ"
-
-#: src/window.py:659
-msgid "Could not install app"
-msgstr "ไม่สามารถติดตั้งแอป"
-
-#: src/window.py:681
-msgid "Install {}?"
-msgstr "ติดตั้ง {}?"
-
-#: src/window.py:684 src/orphans_window.py:106 data/ui/orphans.blp:129
+#: data/ui/orphans.blp:129 data/ui/search_install.blp:22
+#: src/orphans_window.py:122 src/window.py:786
 msgid "Install"
 msgstr "ติดตั้ง"
 
-#: src/window.py:691 src/remotes_window.py:283 src/remotes_window.py:365
-msgid "User"
-msgstr "ผู้ใช้"
+#: data/ui/popular_remotes.blp:18
+msgid "Add Remote"
+msgstr "เพิ่มรีโมต"
 
-#: src/window.py:691
-msgid "The app will be available to only you"
-msgstr "แอปนี้จะใช้ได้สำหรับคุณเท่านั้น"
+#: data/ui/popular_remotes.blp:19
+msgid "Choose from a list of popular remotes or add a new one."
+msgstr "เพิ่มรีโมตจากรายการหรือเพิ่มรีโมตของตนเอง"
 
-#: src/window.py:692 src/remotes_window.py:289 src/remotes_window.py:366
-msgid "System"
-msgstr "ระบบ"
+#: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
+msgid "Add a Repo File"
+msgstr "เพิ่มไฟล์ Repo"
 
-#: src/window.py:692
-msgid "The app will be available to every user on the system"
-msgstr "แอปจะพร้อมใช้งานสำหรับผู้ใช้ทุกคนในระบบ"
+#: data/ui/popular_remotes.blp:50 data/ui/remotes.blp:56
+msgid "Add a Custom Remote"
+msgstr "เพิ่มรีโมต"
 
-#: src/window.py:721
-msgid "File type not supported"
-msgstr "ไม่รองรับประเภทไฟล์"
+#: data/ui/properties.blp:45
+#, fuzzy
+msgid "Loading User Data…"
+msgstr "ทิ้งข้อมูลขอผู้ใช้"
+
+#: data/ui/properties.blp:50 src/app_row_widget.py:230
+#: src/orphans_window.py:259
+msgid "Open User Data Folder"
+msgstr "เปิดโฟลเดอร์ข้อมูลผู้ใช้"
+
+#: data/ui/properties.blp:62 src/app_row_widget.py:243
+msgid "Trash User Data"
+msgstr "ทิ้งข้อมูลขอผู้ใช้"
+
+#: data/ui/properties.blp:78
+msgid "Show Apps Using this Runtime"
+msgstr "แสดงแอปที่ใช้รันไทม์นี้"
+
+#: data/ui/properties.blp:89
+msgid "Runtime"
+msgstr "รันไทม์"
+
+#: data/ui/properties.blp:113
+msgid "Show Details in Store"
+msgstr ""
+
+#: data/ui/remotes.blp:5 src/gtk/help-overlay.blp:42
+msgid "Manage Remotes"
+msgstr "จัดการรีโมต"
+
+#: data/ui/remotes.blp:14
+#, fuzzy
+#| msgid "Refresh List"
+msgid "Refresh list of remotes"
+msgstr "รีเฟรชรายการแอป"
+
+#: data/ui/remotes.blp:23
+#, fuzzy
+msgid "Installed Remotes"
+msgstr "ขนาดแอป"
+
+#: data/ui/remotes.blp:27
+#, fuzzy
+msgid "Show disabled"
+msgstr "ระงับการอัพเดท"
+
+#: data/ui/remotes.blp:41
+msgid "No remotes on the system, add some from below"
+msgstr ""
+
+#: data/ui/remotes.blp:45
+#, fuzzy
+msgid "Add a Popular Remote"
+msgstr "เพิ่มรีโมต"
+
+#: data/ui/remotes.blp:49
+#, fuzzy
+msgid "Add Other Remotes"
+msgstr "เพิ่มรีโมต"
+
+#: data/ui/remotes.blp:79
+#, fuzzy
+msgid "Adding Remote…"
+msgstr "เพิ่มรีโมต"
+
+#: data/ui/remotes.blp:88 data/ui/window.blp:60
+#, fuzzy
+msgid "This should only take a moment."
+msgstr "กำลังติดตั้ง... อาจจะใช้เวลาระยะหนึ่ง"
+
+#: data/ui/search_install.blp:7
+#, fuzzy
+msgid "Install From The Web…"
+msgstr "ติดตั้งแอปจากไฟล์"
+
+#: data/ui/search_install.blp:44
+msgid "Search for Flatpaks…"
+msgstr ""
+
+#: data/ui/search_install.blp:49
+#, fuzzy
+#| msgid "No Remotes"
+msgid "All Remotes"
+msgstr "ไม่มีรีโมต"
+
+#: data/ui/search_install.blp:54 src/gtk/help-overlay.blp:14
+msgid "Search"
+msgstr "ค้นหา"
+
+#: data/ui/search_install.blp:99
+#, fuzzy
+#| msgid "Search for an Installed App"
+msgid "Search for Flatpaks"
+msgstr "ค้นหาแอปที่ติดตั้ง"
+
+#: data/ui/search_install.blp:101
+msgid "Search for Flatpaks that you want to install"
+msgstr ""
+
+#: data/ui/search_install.blp:105
+#, fuzzy
+#| msgid "Search"
+msgctxt "Shown with a spinner while search operation is pending"
+msgid "Searching…"
+msgstr "ค้นหา"
+
+#: data/ui/search_install.blp:119
+msgid "Too many results"
+msgstr ""
+
+#: data/ui/search_install.blp:120
+msgid "Try being more specific with your search"
+msgstr ""
+
+#: data/ui/snapshots.blp:15
+#, fuzzy
+#| msgid "Open Data Folder"
+msgid "Open Snapshots Folder"
+msgstr "เปิดโฟลเดอร์ข้อมูล"
+
+#: data/ui/snapshots.blp:34
+#, fuzzy
+msgid "New Snapshot"
+msgstr "จัดการรีโมต"
+
+#: data/ui/snapshots.blp:86
+#, fuzzy
+msgid "No Snapshots"
+msgstr "จัดการรีโมต"
+
+#: data/ui/snapshots.blp:87
+msgid ""
+"Snapshots are backups of the app's user data. They can be reapplied at any "
+"time."
+msgstr ""
 
 #: data/ui/window.blp:12
 msgid "Refresh List"
 msgstr "รีเฟรชรายการแอป"
-
-#: data/ui/window.blp:18 data/ui/orphans.blp:14
-msgid "Search List"
-msgstr "ค้นหารายการ"
 
 #: data/ui/window.blp:24
 msgid "Filter List"
@@ -324,22 +347,6 @@ msgstr "สลับโหมดการเลือก"
 #: data/ui/window.blp:59
 msgid "Loading Flatpaks…"
 msgstr ""
-
-#: data/ui/window.blp:60 data/ui/remotes.blp:88
-#, fuzzy
-msgid "This should only take a moment."
-msgstr "กำลังติดตั้ง... อาจจะใช้เวลาระยะหนึ่ง"
-
-#: data/ui/window.blp:104 data/ui/orphans.blp:81
-#, fuzzy
-msgid "Installing…"
-msgstr "การติดตั้ง"
-
-#: data/ui/window.blp:113 data/ui/window.blp:140 data/ui/window.blp:167
-#: data/ui/orphans.blp:90
-#, fuzzy
-msgid "This could take a while."
-msgstr "กำลังติดตั้ง... อาจจะใช้เวลาระยะหนึ่ง"
 
 #: data/ui/window.blp:135
 #, fuzzy
@@ -372,19 +379,6 @@ msgid "No installed Flatpak matches any of the currently applied filters."
 msgstr ""
 "ไม่มีแอปที่ตรงกับฟิลเตอร์ของคุณ หรือ แวร์เฮาส์ ไม่สามารถดูรายการแอปที่ติดตั้งไว้ "
 "หรือระบบไม่ได้ติดตั้งแอปใดๆ"
-
-#: data/ui/window.blp:186 data/ui/orphans.blp:107
-#, fuzzy
-msgid "No Results Found"
-msgstr "ไม่เจอแอป"
-
-#: data/ui/window.blp:187 data/ui/orphans.blp:108
-msgid "Try a different search term."
-msgstr ""
-
-#: data/ui/window.blp:199 data/ui/orphans.blp:118
-msgid "Select All"
-msgstr "เลือกทั้งหมด"
 
 #: data/ui/window.blp:205
 msgid "Uninstall Selected Apps"
@@ -442,17 +436,145 @@ msgstr "คัดลอก Refs"
 msgid "Open app"
 msgstr "เปิดแอป"
 
+#: src/app_row_widget.py:75
+msgid "Updates Disabled"
+msgstr "ปิดการอัพเดต"
+
+#: src/app_row_widget.py:80 src/properties_window.py:204
+msgid "{} is masked and will not be updated"
+msgstr "{} ได้ถูกระยับยั้งอัปเดต"
+
+#: src/app_row_widget.py:87
+msgid "App EOL"
+msgstr "การสิ้นสุดอายุใช้งานของแอป"
+
+#: src/app_row_widget.py:93 src/properties_window.py:187
+msgid ""
+"{} has reached its End of Life and will not receive any security updates"
+msgstr "{} ได้ถึงการจบอัปเดตและจะไม่ได้รับอัปเดต"
+
+#: src/app_row_widget.py:104
+msgid "Runtime EOL"
+msgstr "การสิ้นอายุการใช้งานของรันไทม์"
+
+#: src/app_row_widget.py:110 src/properties_window.py:195
+msgid ""
+"{}'s runtime has reached its End of Life and will not receive any security "
+"updates"
+msgstr "{} นี้ได้ถึงการสิ้นอายุการใช้งานและจะไม่ได้รับอัปเดตในด้านความปลอดภัยอีกต่อไป"
+
+#: src/app_row_widget.py:136
+msgid "View Properties"
+msgstr "ดูคุณสมบัติ"
+
+#: src/app_row_widget.py:163
+msgid "Copied name"
+msgstr "คัดลอกชื่อแล้ว"
+
+#: src/app_row_widget.py:167
+msgid "Copy Name"
+msgstr "คัดลอกชื่อ"
+
+#: src/app_row_widget.py:172
+msgid "Copied ID"
+msgstr "คัดลอก ID แล้ว"
+
+#: src/app_row_widget.py:177
+msgid "Copy ID"
+msgstr "คัดลอก ID"
+
+#: src/app_row_widget.py:182
+msgid "Copied ref"
+msgstr "คัดลอก ref แล้ว"
+
+#: src/app_row_widget.py:187
+msgid "Copy Ref"
+msgstr "คัดลอก Ref"
+
+#: src/app_row_widget.py:193
+msgid "Copied launch command"
+msgstr "คัดลอกคำสั่งเปิดแล้ว"
+
+#: src/app_row_widget.py:197
+msgid "Copy Launch Command"
+msgstr "คัดลอกคำสั่งเปิด"
+
+#: src/app_row_widget.py:200 src/window.py:452
+msgid "Copy"
+msgstr "คัดลอก"
+
+#: src/app_row_widget.py:206
+msgid "Opened {}"
+msgstr "เปิด {} แล้ว"
+
+#: src/app_row_widget.py:209
+msgid "Open"
+msgstr "เปิด"
+
+#: src/app_row_widget.py:218 src/window.py:233 src/window.py:307
+msgid "Uninstall"
+msgstr "ถอนการติดตั้ง"
+
+#: src/app_row_widget.py:273
+msgid "Enable Updates"
+msgstr "เปิดการอัพเดท"
+
+#: src/app_row_widget.py:287
+#, fuzzy
+#| msgid "Manage Remotes"
+msgid "Manage Snapshots"
+msgstr "จัดการรีโมต"
+
+#: src/downgrade_window.py:103
+msgid "Commit Hash: {}"
+msgstr "เพิ่มแฮช {}"
+
+#: src/downgrade_window.py:127
+msgid "Could not downgrade {}"
+msgstr "ไม่สามารถดาวน์เกรด {}"
+
+#: src/downgrade_window.py:135 src/window.py:405
+#, fuzzy
+msgid "Could not disable updates for {}"
+msgstr "ปิดการอัพเดทของ {}"
+
+#: src/downgrade_window.py:148
+msgid "Downgrading…"
+msgstr "กำลังดาวน์เกรด…"
+
+#: src/downgrade_window.py:174
+msgid "Downgrade {}"
+msgstr "ย้อนหลัง {}"
+
+#: src/downgrade_window.py:186
+msgid "Fetching Releases…"
+msgstr "กำลังค้นหารุ่น…"
+
+#: src/downgrade_window.py:189
+msgid "Ensure that {} will never be updated to a newer version"
+msgstr "{} จะไม่ได้รับการอัพเดตเป็นเวอร์ชันที่ใหม่กว่า"
+
+#: src/filter_window.py:126 src/orphans_window.py:150 src/remotes_window.py:300
+#, fuzzy
+#| msgid "{} wide"
+msgid "User wide"
+msgstr "{} กว้าง"
+
+#: src/filter_window.py:128 src/orphans_window.py:152 src/remotes_window.py:302
+#, fuzzy
+#| msgid "System"
+msgid "System wide"
+msgstr "ระบบ"
+
+#: src/filter_window.py:130 src/orphans_window.py:154 src/remotes_window.py:304
+#, fuzzy
+#| msgid "Uninstall {}"
+msgid "Unknown install type"
+msgstr "ถอนการติดตั้ง {}"
+
 #: src/gtk/help-overlay.blp:11
 msgid "App Management"
 msgstr "จัดการแอป"
-
-#: src/gtk/help-overlay.blp:14
-msgid "Search"
-msgstr "ค้นหา"
-
-#: src/gtk/help-overlay.blp:19 data/ui/filter.blp:7
-msgid "Set Filters"
-msgstr "เพิ่มตัวกรอง"
 
 #: src/gtk/help-overlay.blp:24
 msgid "Refresh"
@@ -462,13 +584,9 @@ msgstr "รีเฟรช"
 msgid "More Functions"
 msgstr "ฟังค์ชั่นเพิ่มเติม"
 
-#: src/gtk/help-overlay.blp:37 src/orphans_window.py:28
+#: src/gtk/help-overlay.blp:37 src/orphans_window.py:29
 msgid "Manage Leftover Data"
 msgstr "จัดการข้อมูลหลงเหลือ"
-
-#: src/gtk/help-overlay.blp:42 data/ui/remotes.blp:5
-msgid "Manage Remotes"
-msgstr "จัดการรีโมต"
 
 #: src/gtk/help-overlay.blp:47
 msgid "Install From File"
@@ -490,408 +608,529 @@ msgstr "แสดงชอร์ตคัท"
 msgid "Quit"
 msgstr "ออก"
 
-#: src/properties_window.py:36 src/remotes_window.py:96
+#: src/main.py:136
+msgid "Flatpaks"
+msgstr "Flatpaks"
+
+#. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
+#: src/main.py:179
+msgid "translator-credits"
+msgstr "Win <winsdominoes2018@gmail.com>"
+
+#: src/main.py:185
+msgid "Donate"
+msgstr ""
+
+#: src/main.py:187
+#, fuzzy
+msgid "Contributors"
+msgstr "ดำเนินการต่อ"
+
+#: src/orphans_window.py:78 src/window.py:757
+msgid "Installed successfully"
+msgstr "ติดตั้งสำเหร็จ"
+
+#: src/orphans_window.py:81
+msgid "Could not install some apps"
+msgstr "ไม่สามารถติดตั้งได้บางแอป"
+
+#: src/orphans_window.py:117
+msgid "Attempt to Install?"
+msgstr "ลงแอปหรือไม่?"
+
+#: src/orphans_window.py:118
+msgid "Warehouse will attempt to install apps matching the selected data."
+msgstr "แวร์เฮาส์จะทำการลงแอปตามข้อมูลที่ได้เลือกไว้"
+
+#: src/orphans_window.py:185
+msgid "Trash folders?"
+msgstr "โฟลเดอร์ขยะ?"
+
+#: src/orphans_window.py:185
+msgid "These folders will be sent to the trash."
+msgstr "โฟลเดอร์เหล่านี้จะถูกในไปไว้ในถังขยะ"
+
+#: src/orphans_window.py:190
+msgid "Continue"
+msgstr "ดำเนินการต่อ"
+
+#: src/orphans_window.py:199 src/properties_window.py:43
+#: src/snapshots_window.py:250 src/window.py:366
+msgid "Could not open folder"
+msgstr "ไม่สามารถเปิดโฟลเดอร์ได้"
+
+#: src/orphans_window.py:217
+msgid "Could not manage data"
+msgstr "ไม่สามารถจัดการข้อมูลได้"
+
+#: src/properties_window.py:37 src/remotes_window.py:209
 msgid "Copied {}"
 msgstr "คัดลอก {} แล้ว"
 
-#: src/properties_window.py:48
+#: src/properties_window.py:49
 #, fuzzy
 msgid "Could not show details"
 msgstr "ไม่สามารถทิ้งข้อมูลได้"
 
-#: src/properties_window.py:54
+#: src/properties_window.py:55
 #, fuzzy
 msgid "User Data"
 msgstr "ทิ้งข้อมูลขอผู้ใช้"
 
-#: src/properties_window.py:73 src/properties_window.py:119
+#: src/properties_window.py:74 src/properties_window.py:135
 #, fuzzy
 msgid "No User Data"
 msgstr "ทิ้งข้อมูลขอผู้ใช้"
 
-#: src/properties_window.py:84 src/remotes_window.py:268
-#: src/remotes_window.py:363
+#: src/properties_window.py:85 src/remotes_window.py:498
+#: src/remotes_window.py:623
 msgid "Name"
 msgstr "ชื่อ"
 
-#: src/properties_window.py:84
+#: src/properties_window.py:86
 msgid "Description"
 msgstr "คำอธิบาย"
 
-#: src/properties_window.py:84
+#: src/properties_window.py:87
 msgid "App ID"
 msgstr "ไอดีชองแอป"
 
-#: src/properties_window.py:84
+#: src/properties_window.py:88
 msgid "Version"
 msgstr "เวอร์ชั่น"
 
-#: src/properties_window.py:84
+#: src/properties_window.py:89
 msgid "Branch"
 msgstr "บรานช์"
 
-#: src/properties_window.py:85
+#: src/properties_window.py:90
 msgid "Arch"
 msgstr "Arch"
 
-#: src/properties_window.py:85
+#: src/properties_window.py:91
 msgid "Origin"
 msgstr "ที่มา"
 
-#: src/properties_window.py:85
+#: src/properties_window.py:92
 msgid "Installation"
 msgstr "การติดตั้ง"
 
-#: src/properties_window.py:85
+#: src/properties_window.py:93
 msgid "Ref"
 msgstr "Ref"
 
-#: src/properties_window.py:85
+#: src/properties_window.py:94
 msgid "Active Commit"
 msgstr "Commit ที่แอ็กทิฟ"
 
-#: src/properties_window.py:86
+#: src/properties_window.py:95
 msgid "Latest Commit"
 msgstr "Commit ล่าสุด"
 
-#: src/properties_window.py:86
+#: src/properties_window.py:96
 msgid "Installed Size"
 msgstr "ขนาดแอป"
 
-#: src/properties_window.py:86
+#: src/properties_window.py:97
 msgid "Options"
 msgstr "ตัวเลือก"
 
-#: src/properties_window.py:158
-msgid ""
-"{} has reached its End of Life and will not receive any security updates"
-msgstr "{} ได้ถึงการจบอัปเดตและจะไม่ได้รับอัปเดต"
+#: src/properties_window.py:134 src/window.py:380
+msgid "Trashed user data"
+msgstr "ทิ้งข้อมูลแล้ว"
 
-#: src/properties_window.py:162
-msgid ""
-"{}'s runtime has reached its End of Life and will not receive any security "
-"updates"
-msgstr "{} นี้ได้ถึงการสิ้นอายุการใช้งานและจะไม่ได้รับอัปเดตในด้านความปลอดภัยอีกต่อไป"
+#: src/properties_window.py:141 src/window.py:375
+msgid "Could not trash user data"
+msgstr "ไม่สามารถทิ้งข้อมูลผู้ใช้ได้"
 
-#: src/properties_window.py:166
-msgid "{} is masked and will not be updated"
-msgstr "{} ได้ถูกระยับยั้งอัปเดต"
+#: src/properties_window.py:145 src/window.py:383
+msgid "Send {}'s User Data to the Trash?"
+msgstr "ลบข้อมูลผู้ใช้ของ {} ไปในถังขยะหรือไม่?"
 
-#: src/properties_window.py:178
+#: src/properties_window.py:149 src/window.py:390 src/window.py:533
+msgid "Trash Data"
+msgstr "ทิ้งข้อมูล"
+
+#: src/properties_window.py:218
 msgid "{} Properties"
 msgstr "เกี่ยวกับ {}"
 
-#: src/remotes_window.py:57
+#: src/remotes_window.py:71
 msgid "Could not remove {}"
 msgstr "ไม่สามารถถอนการติดตั้ง {}"
 
-#: src/remotes_window.py:65
+#: src/remotes_window.py:80 src/remotes_window.py:161
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr "แอปที่ได้ถูกติดตั้งจาก {} จะไม่ได้รับการอัพเดท"
 
-#: src/remotes_window.py:66
+#: src/remotes_window.py:83
 msgid "Remove {}?"
 msgstr "นำ {} ออก?"
 
-#: src/remotes_window.py:69
+#: src/remotes_window.py:86 src/remotes_window.py:266
 msgid "Remove"
 msgstr "นำออก"
 
-#: src/remotes_window.py:119
+#: src/remotes_window.py:113
+#, fuzzy
+#| msgid "Could not add {}"
+msgid "Could not enable {}"
+msgstr "ไม่สามารถเพิ่ม {}"
+
+#: src/remotes_window.py:141
+#, fuzzy
+#| msgid "Could not add {}"
+msgid "Could not disable {}"
+msgstr "ไม่สามารถเพิ่ม {}"
+
+#: src/remotes_window.py:164
+#, fuzzy
+msgid "Disable {}?"
+msgstr "ระงับการอัพเดท"
+
+#: src/remotes_window.py:167 src/remotes_window.py:257
+#, fuzzy
+msgid "Disable"
+msgstr "ระงับการอัพเดท"
+
+#: src/remotes_window.py:178
+#, fuzzy
+#| msgid "Could not install app"
+msgid "Could not view apps"
+msgstr "ไม่สามารถติดตั้งแอป"
+
+#: src/remotes_window.py:234
+#, fuzzy
+#| msgid "Set Filters"
+msgid "Set Filter"
+msgstr "เพิ่มตัวกรอง"
+
+#: src/remotes_window.py:248
+#, fuzzy
+#| msgid "Enable Updates"
+msgid "Enable"
+msgstr "เปิดการอัพเดท"
+
+#: src/remotes_window.py:282
+msgid "Copy remote name"
+msgstr "คัดลอกชื่อรีโมต"
+
+#: src/remotes_window.py:295
 #, fuzzy
 msgid "Disabled"
 msgstr "ระงับการอัพเดท"
 
-#: src/remotes_window.py:121 src/orphans_window.py:120
-msgid "{} wide"
-msgstr "{} กว้าง"
-
-#: src/remotes_window.py:125
-msgid "View apps from this remote"
-msgstr ""
-
-#: src/remotes_window.py:128
-msgid "Copy remote name"
-msgstr "คัดลอกชื่อรีโมต"
-
-#: src/remotes_window.py:131
-msgid "Remove {}"
-msgstr "นำ {} ออก"
-
-#. [Name to show in GUI, Name of remote for system, Link to repo to add, Description of remote]
-#: src/remotes_window.py:150
+#: src/remotes_window.py:331
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr "แอปสโตร์ที่ open source และเลือกลงแอปได้"
 
-#: src/remotes_window.py:151
+#: src/remotes_window.py:337
 #, fuzzy
 msgid "Central repository of Flatpak applications"
 msgstr "แอป Flatpak รุ่นเบต้า"
 
-#: src/remotes_window.py:152
+#: src/remotes_window.py:343
 msgid "Beta builds of Flatpak applications"
 msgstr "แอป Flatpak รุ่นเบต้า"
 
-#: src/remotes_window.py:153
+#: src/remotes_window.py:349
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "แอปโดย Fedora Linux"
 
-#: src/remotes_window.py:154
+#: src/remotes_window.py:355
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "แอปและรันไทม์เบต้าล่าสุดของ GNOME"
 
-#: src/remotes_window.py:155
+#: src/remotes_window.py:361
 #, fuzzy
 msgid "Beta KDE Apps and Runtimes"
 msgstr "แอปและรันไทม์เบต้าล่าสุดของ GNOME"
 
-#: src/remotes_window.py:156
+#: src/remotes_window.py:367
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr ""
 
-#: src/remotes_window.py:188 src/remotes_window.py:314
+#: src/remotes_window.py:403 src/remotes_window.py:566
 msgid "Could not add {}"
 msgstr "ไม่สามารถเพิ่ม {}"
 
-#: src/remotes_window.py:210
+#: src/remotes_window.py:440
 msgid "Add Flatpak Remote"
 msgstr "เพิ่มรีโมต Flatpak"
 
-#: src/remotes_window.py:213 src/remotes_window.py:355
+#: src/remotes_window.py:443 src/remotes_window.py:615
 msgid "Add"
 msgstr "เพิ่ม"
 
-#: src/remotes_window.py:272
+#: src/remotes_window.py:502
 msgid "URL"
 msgstr "URL"
 
-#: src/remotes_window.py:283 src/remotes_window.py:365
+#: src/remotes_window.py:514 src/remotes_window.py:626 src/window.py:794
+msgid "User"
+msgstr "ผู้ใช้"
+
+#: src/remotes_window.py:514 src/remotes_window.py:626
 msgid "Remote will be available to only you"
 msgstr "คุณจะสามารถใช้รีโมตได้เท่านั้น"
 
-#: src/remotes_window.py:289 src/remotes_window.py:366
+#: src/remotes_window.py:522 src/remotes_window.py:629 src/window.py:797
+msgid "System"
+msgstr "ระบบ"
+
+#: src/remotes_window.py:523 src/remotes_window.py:630
 msgid "Remote will be available to every user on the system"
 msgstr "ผู้ใช้ทุกคนสามารถมองเห็นรีโมตนี้ได้"
 
-#: src/remotes_window.py:312
+#: src/remotes_window.py:562
 msgid "{} successfully added"
 msgstr "{} ได้ถูกเพิ่มแล้ว"
 
-#: src/remotes_window.py:352
+#: src/remotes_window.py:612
 msgid "Add {}?"
 msgstr "เพิ่ม {}?"
 
-#: src/remotes_window.py:395
+#: src/remotes_window.py:660
 msgid "Flatpak Repos"
 msgstr "Repo ของแอป"
 
-#: data/ui/remotes.blp:23
+#: src/snapshots_window.py:50
 #, fuzzy
-msgid "Installed Remotes"
-msgstr "ขนาดแอป"
+#| msgid "Send User Data to the Trash"
+msgid "There is no User Data to Snapshot"
+msgstr "ลบข้อมูลไปถังขยะ"
 
-#: data/ui/remotes.blp:27
+#: src/snapshots_window.py:89
 #, fuzzy
-msgid "Show disabled"
-msgstr "ระงับการอัพเดท"
+#| msgid "Version"
+msgid "Version {}"
+msgstr "เวอร์ชั่น"
 
-#: data/ui/remotes.blp:41
-msgid "No remotes on the system, add some from below"
-msgstr ""
-
-#: data/ui/remotes.blp:45
+#: src/snapshots_window.py:121
 #, fuzzy
-msgid "Add a Popular Remote"
-msgstr "เพิ่มรีโมต"
+#| msgid "Could not trash user data"
+msgid "Could not trash snapshot"
+msgstr "ไม่สามารถทิ้งข้อมูลผู้ใช้ได้"
 
-#: data/ui/remotes.blp:49
+#: src/snapshots_window.py:126
 #, fuzzy
-msgid "Add Other Remotes"
-msgstr "เพิ่มรีโมต"
+msgid "Trash Snapshot?"
+msgstr "จัดการรีโมต"
 
-#: data/ui/remotes.blp:51
-msgid "Add a Repo File"
-msgstr "เพิ่มไฟล์ Repo"
-
-#: data/ui/remotes.blp:56
-msgid "Add a Custom Remote"
-msgstr "เพิ่มรีโมต"
-
-#: data/ui/remotes.blp:79
+#: src/snapshots_window.py:127
 #, fuzzy
-msgid "Adding Remote…"
-msgstr "เพิ่มรีโมต"
-
-#: src/orphans_window.py:75
-msgid "Could not install some apps"
-msgstr "ไม่สามารถติดตั้งได้บางแอป"
-
-#. Make window unable to close
-#: src/orphans_window.py:103
-msgid "Attempt to Install?"
-msgstr "ลงแอปหรือไม่?"
-
-#: src/orphans_window.py:103
-msgid "Warehouse will attempt to install apps matching the selected data."
-msgstr "แวร์เฮาส์จะทำการลงแอปตามข้อมูลที่ได้เลือกไว้"
-
-#: src/orphans_window.py:156
-msgid "Trash folders?"
-msgstr "โฟลเดอร์ขยะ?"
-
-#: src/orphans_window.py:156
-msgid "These folders will be sent to the trash."
+#| msgid "These folders will be sent to the trash."
+msgid "This snapshot and its contents will be sent to the trash."
 msgstr "โฟลเดอร์เหล่านี้จะถูกในไปไว้ในถังขยะ"
 
-#: src/orphans_window.py:160
-msgid "Continue"
-msgstr "ดำเนินการต่อ"
-
-#: src/orphans_window.py:184
-msgid "Could not manage data"
-msgstr "ไม่สามารถจัดการข้อมูลได้"
-
-#: src/orphans_window.py:216
-msgid "Open User Data Folder"
-msgstr "เปิดโฟลเดอร์ข้อมูลผู้ใช้"
-
-#: data/ui/orphans.blp:20
-msgid "Open Data Folder"
-msgstr "เปิดโฟลเดอร์ข้อมูล"
-
-#: data/ui/orphans.blp:101
-msgid "No Leftover Data"
-msgstr "ไม่มีข้อมูลเหลืออยู่"
-
-#: data/ui/orphans.blp:102
-msgid "There is no leftover user data"
-msgstr "ไม่มีข้อมูลผู้ใช้เหลืออยู่"
-
-#: data/ui/filter.blp:22
-msgid "Apply"
-msgstr "เซ็ตการตั้งค่า"
-
-#: data/ui/filter.blp:54
-msgid "Show Apps"
-msgstr "แสดงแอป"
-
-#: data/ui/filter.blp:64
-msgid "Show Runtimes"
-msgstr "แสดงเวลาการทำงานของแอป"
-
-#: data/ui/filter.blp:75
-msgid "Filter Apps by Remotes"
-msgstr "กรองแอปตามรีโมต"
-
-#: data/ui/filter.blp:80
-msgid "Filter Apps by Runtime"
-msgstr "กรองแอปตามสถานะการทำงาน"
-
-#: src/downgrade_window.py:78
-msgid "Commit Hash: {}"
-msgstr "เพิ่มแฮช {}"
-
-#: src/downgrade_window.py:101
-msgid "Could not downgrade {}"
-msgstr "ไม่สามารถดาวน์เกรด {}"
-
-#: src/downgrade_window.py:115
-msgid "Downgrading…"
-msgstr "กำลังดาวน์เกรด…"
-
-#: src/downgrade_window.py:141
-msgid "Downgrade {}"
-msgstr "ย้อนหลัง {}"
-
-#: src/downgrade_window.py:153
-msgid "Fetching Releases…"
-msgstr "กำลังค้นหารุ่น…"
-
-#: src/downgrade_window.py:155
-msgid "Ensure that {} will never be updated to a newer version"
-msgstr "{} จะไม่ได้รับการอัพเดตเป็นเวอร์ชันที่ใหม่กว่า"
-
-#: data/ui/downgrade.blp:22
-msgid "Downgrade"
-msgstr "ดาวน์เกรด"
-
-#: data/ui/downgrade.blp:52
-msgid "Select a Release"
-msgstr "เลือกรุ่นที่ต้องการ"
-
-#: data/ui/downgrade.blp:53
-msgid ""
-"This will uninstall the current release and install the chosen one instead. "
-"Note that downgrading can cause issues."
-msgstr ""
-"การดำเนินการนี้จะถอนการติดตั้งเวอร์ชันปัจจุบันและติดตั้งเวอร์ชันที่เลือกแทน "
-"โปรดทราบว่าการดาวน์เกรดอาจทำให้เกิดปัญหาได้"
-
-#~ msgid "App EOL"
-#~ msgstr "การสิ้นสุดอายุใช้งานของแอป"
-
-#~ msgid "Runtime EOL"
-#~ msgstr "การสิ้นอายุการใช้งานของรันไทม์"
-
-#~ msgid "Updates Disabled"
-#~ msgstr "ปิดการอัพเดต"
-
-#~ msgid "View Properties"
-#~ msgstr "ดูคุณสมบัติ"
-
-#~ msgid "Copied name"
-#~ msgstr "คัดลอกชื่อแล้ว"
-
-#~ msgid "Copy Name"
-#~ msgstr "คัดลอกชื่อ"
-
-#~ msgid "Copied ID"
-#~ msgstr "คัดลอก ID แล้ว"
-
-#~ msgid "Copy ID"
-#~ msgstr "คัดลอก ID"
-
-#~ msgid "Copied ref"
-#~ msgstr "คัดลอก ref แล้ว"
-
-#~ msgid "Copy Ref"
-#~ msgstr "คัดลอก Ref"
-
-#~ msgid "Copied launch command"
-#~ msgstr "คัดลอกคำสั่งเปิดแล้ว"
-
-#~ msgid "Copy Launch Command"
-#~ msgstr "คัดลอกคำสั่งเปิด"
-
-#~ msgid "Opened {}"
-#~ msgstr "เปิด {} แล้ว"
-
-#~ msgid "Open"
-#~ msgstr "เปิด"
-
-#~ msgid "Enable Updates"
-#~ msgstr "เปิดการอัพเดท"
-
-#~ msgid "Trash User Data"
-#~ msgstr "ทิ้งข้อมูลขอผู้ใช้"
-
+#: src/snapshots_window.py:131
 #, fuzzy
-#~ msgid "Install From The Web…"
-#~ msgstr "ติดตั้งแอปจากไฟล์"
+msgid "Trash Snapshot"
+msgstr "จัดการรีโมต"
 
-#~ msgid "No Remotes"
-#~ msgstr "ไม่มีรีโมต"
+#: src/snapshots_window.py:149
+#, fuzzy
+msgid "Could not create snapshot"
+msgstr "จัดการรีโมต"
+
+#. Make window unable to close
+#: src/snapshots_window.py:159
+#, fuzzy
+msgid "Creating Snapshot…"
+msgstr "จัดการรีโมต"
+
+#: src/snapshots_window.py:193 src/snapshots_window.py:211
+#: src/snapshots_window.py:218
+#, fuzzy
+msgid "Could not apply snapshot"
+msgstr "ไม่สามารถติดตั้งได้บางแอป"
+
+#: src/snapshots_window.py:196
+msgid "Snapshot applied"
+msgstr ""
+
+#. Make window unable to close
+#: src/snapshots_window.py:225
+#, fuzzy
+msgid "Applying Snapshot…"
+msgstr "จัดการรีโมต"
+
+#: src/snapshots_window.py:234
+#, fuzzy
+msgid "Apply Snapshot?"
+msgstr "จัดการรีโมต"
+
+#: src/snapshots_window.py:235
+msgid "Applying this snapshot will trash any current user data for {}."
+msgstr ""
+
+#: src/snapshots_window.py:241
+#, fuzzy
+msgid "Apply Snapshot"
+msgstr "จัดการรีโมต"
+
+#. Window stuffs
+#: src/snapshots_window.py:293
+#, fuzzy
+msgid "{} Snapshots"
+msgstr "จัดการรีโมต"
+
+#: src/window.py:118
+msgid "Uninstalled successfully"
+msgstr "การถอนการติดตั้งสำเหร็จแล้ว"
+
+#: src/window.py:121
+msgid "Could not uninstall some apps"
+msgstr "ไม่สามารถถอนการติดตั้งได้บางแอป"
+
+#: src/window.py:174
+msgid "Uninstall Selected Apps?"
+msgstr "จะถอนการติดตั้งแอปที่เลือกมั้ย?"
+
+#: src/window.py:175
+msgid "It will not be possible to use these apps after removal."
+msgstr "ไม่สามารถใช้แอปเหล่านี้ได้หลังจากการลบออก"
+
+#: src/window.py:195 src/window.py:278
+msgid "App Settings & Data"
+msgstr "การตั้งค่าแอปและข้อมูล"
+
+#: src/window.py:199 src/window.py:282
+msgid "Keep"
+msgstr "เก็บไว้"
+
+#: src/window.py:200
+msgid "Allow restoring these apps' settings and content"
+msgstr "อนุญาตให้กู้คืนการตั้งค่าแอปและเนื้อหาเหล่านี้"
+
+#: src/window.py:204
+msgid "Send these apps' settings and content to the trash"
+msgstr "ส่งการตั้งค่าแอปและเนื้อหาเหล่านี้ไปที่ถังขยะ"
+
+#: src/window.py:240
+msgid "Cannot uninstall while already uninstalling"
+msgstr "ไม่สามารถถอนการติดตั้งในขณะที่ถอนการติดตั้งแล้ว"
+
+#: src/window.py:270
+msgid "Uninstall {}?"
+msgstr "ถอนการติดตั้ง {}?"
+
+#: src/window.py:271
+msgid "It will not be possible to use {} after removal."
+msgstr "คุณจะไม่สามารถใช้ {} ได้หลังจากถอนการติดตั้ง"
+
+#: src/window.py:283
+msgid "Allow restoring this app's settings and content"
+msgstr "อนุญาตให้กู้คืนการตั้งค่าชองแอปและเนื้อหานี้"
+
+#: src/window.py:287
+msgid "Send this app's settings and content to the trash"
+msgstr "ส่งการตั้งค่าแอปและเนื้อหาของแอปนี้ไปที่ถังขยะ"
+
+#: src/window.py:357
+msgid "List refreshed"
+msgstr ""
+
+#: src/window.py:386
+msgid "Your files and data for this app will be sent to the trash."
+msgstr "ไฟล์ของคุณและข้อมูลสำหรับแอปนี้จะถูกในไปไว้ในถังขยะ"
+
+#: src/window.py:427
+msgid "Disable Updates for {}?"
+msgstr "ปิดการอัพเดทของ {} หรือไม่?"
+
+#: src/window.py:431
+msgid ""
+"This will mask {} ensuring it will never recieve any feature or security "
+"updates."
+msgstr "แอปนี้จะไม่ได้รับการอัปเดตใดๆ"
+
+#: src/window.py:450
+msgid "Could not Run App"
+msgstr "ไม่สามารถเปิดแอปได้"
+
+#: src/window.py:458
+msgid "OK"
+msgstr "โอเค"
+
+#: src/window.py:508
+#, fuzzy
+msgid "{} has no data to trash"
+msgstr "ลบข้อมูลผู้ใช้ของ {} ไปในถังขยะหรือไม่?"
+
+#: src/window.py:514
+#, fuzzy
+msgid "Could not trash {}'s data"
+msgstr "ไม่สามารถทิ้งข้อมูลผู้ใช้ได้"
+
+#: src/window.py:528
+msgid "Trash Selected Apps' User Data?"
+msgstr "ทิ้งข้อมูลของแอปที่เลือก?"
+
+#: src/window.py:529
+msgid "Your files and data for these apps will be sent to the trash."
+msgstr "โฟลเดอร์ของคุณจะถูกในไปไว้ในถังขยะ"
+
+#: src/window.py:579
+#, fuzzy
+msgid "Could not snapshot some apps"
+msgstr "ไม่สามารถติดตั้งได้บางแอป"
+
+#: src/window.py:603
+#, fuzzy
+msgid "Create Snapshots?"
+msgstr "จัดการรีโมต"
+
+#: src/window.py:605
+msgid ""
+"Snapshots are backups of the app's user data. They can be reapplied at any "
+"time. This could take a while."
+msgstr ""
+
+#: src/window.py:610
+#, fuzzy
+msgid "Create Snapshots"
+msgstr "จัดการรีโมต"
+
+#: src/window.py:662
+msgid "Copied selected app names"
+msgstr "คัดลอกชื่อแอปที่เลือกแล้ว"
+
+#: src/window.py:675
+msgid "Copied selected app IDs"
+msgstr "คัดลอก ID แอปที่เลือกแล้ว"
+
+#: src/window.py:688
+msgid "Copied selected app refs"
+msgstr "คัดลอก refs แอปที่เลือกแล้ว"
+
+#: src/window.py:759
+msgid "Could not install app"
+msgstr "ไม่สามารถติดตั้งแอป"
+
+#: src/window.py:783
+msgid "Install {}?"
+msgstr "ติดตั้ง {}?"
+
+#: src/window.py:794
+msgid "The app will be available to only you"
+msgstr "แอปนี้จะใช้ได้สำหรับคุณเท่านั้น"
+
+#: src/window.py:798
+msgid "The app will be available to every user on the system"
+msgstr "แอปจะพร้อมใช้งานสำหรับผู้ใช้ทุกคนในระบบ"
+
+#: src/window.py:828
+msgid "File type not supported"
+msgstr "ไม่รองรับประเภทไฟล์"
+
+#~ msgid "Remove {}"
+#~ msgstr "นำ {} ออก"
 
 #~ msgid ""
 #~ "Warehouse cannot see the list of remotes or the system has no remotes "
 #~ "added"
 #~ msgstr "แวร์เฮาส์ไม่สามารถค้นหารายการของรีโมตได้ หรือ ระบบไม่มีรีโมตใดๆที่ได้ติดตั้งไว้"
-
-#~ msgid "Choose from a list of popular remotes or add a new one."
-#~ msgstr "เพิ่มรีโมตจากรายการหรือเพิ่มรีโมตของตนเอง"
-
-#~ msgid "Add Remote"
-#~ msgstr "เพิ่มรีโมต"
 
 #~ msgid "Could disable updates for {}"
 #~ msgstr "ปิดการอัพเดทของ {}"
@@ -906,12 +1145,6 @@ msgstr ""
 #~ msgstr ""
 #~ "ไม่มีแอปที่ตรงกับฟิลเตอร์ของคุณ หรือ แวร์เฮาส์ ไม่สามารถดูรายการแอปที่ติดตั้งไว้ "
 #~ "หรือระบบไม่ได้ติดตั้งแอปใดๆ"
-
-#~ msgid "Show Apps Using this Runtime"
-#~ msgstr "แสดงแอปที่ใช้รันไทม์นี้"
-
-#~ msgid "Runtime"
-#~ msgstr "รันไทม์"
 
 #~ msgid "Copy {}"
 #~ msgstr "คัดลอก {}"
@@ -940,17 +1173,11 @@ msgstr ""
 #~ msgid "Toggle Mask"
 #~ msgstr "สลับมาสก์"
 
-#~ msgid "Uninstall {}"
-#~ msgstr "ถอนการติดตั้ง {}"
-
 #~ msgid "Could not toggle {}'s mask"
 #~ msgstr "ไม่สามารถสลับ {} มาสก์ได้"
 
 #~ msgid "Can't trash user data for {}"
 #~ msgstr "ไม่สามารถทิ้งข้อมูลของ {} ได้"
-
-#~ msgid "Search for an Installed App"
-#~ msgstr "ค้นหาแอปที่ติดตั้ง"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Set a Filter"
@@ -977,9 +1204,6 @@ msgstr ""
 
 #~ msgid "Can't trash data"
 #~ msgstr "ไม่สามารถลบข้อมูลไปที่ถังขยะได้"
-
-#~ msgid "Send User Data to the Trash"
-#~ msgstr "ลบข้อมูลไปถังขยะ"
 
 #~ msgid "Unmask"
 #~ msgstr "ยกเลิกการมาสก์"
@@ -1017,8 +1241,3 @@ msgstr ""
 #~ msgid ""
 #~ "Flatpak remotes can be added with a drag and drop or from a file selection"
 #~ msgstr "แหล่ง Flatpak สามารถเพิ่มได้ด้วยการลากและวางหรือจากการเลือกไฟล์"
-
-#, fuzzy
-#~| msgid "Manage Remotes"
-#~ msgid "Manage Snapshots"
-#~ msgstr "จัดการรีโมต"
