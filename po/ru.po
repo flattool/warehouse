@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-05 01:05-0500\n"
-"PO-Revision-Date: 2023-12-20 03:14+0000\n"
+"PO-Revision-Date: 2024-01-06 09:15+0000\n"
 "Last-Translator: Сергей Ворон <voron.s.a@gmail.com>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ru/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.0\n"
 
 #. Translators: Do not translate the applicaion name
@@ -37,7 +37,7 @@ msgstr "Управляйте всем, что касается Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:6
 msgid "Heliguy"
-msgstr ""
+msgstr "Хелиги"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
@@ -193,10 +193,8 @@ msgid "Add a Custom Remote"
 msgstr "Добавить пользовательский репозиторий"
 
 #: data/ui/properties.blp:45
-#, fuzzy
-#| msgid "Loading Flatpaks…"
 msgid "Loading User Data…"
-msgstr "Загрузка пакетов Flatpak…"
+msgstr "Загрузка пользовательских данных…"
 
 #: data/ui/properties.blp:50 src/app_row_widget.py:230
 #: src/orphans_window.py:259
@@ -217,17 +215,15 @@ msgstr "Среда выполнения"
 
 #: data/ui/properties.blp:113
 msgid "Show Details in Store"
-msgstr ""
+msgstr "Показать подробности в магазине"
 
 #: data/ui/remotes.blp:5 src/gtk/help-overlay.blp:42
 msgid "Manage Remotes"
 msgstr "Управление репозиториями"
 
 #: data/ui/remotes.blp:14
-#, fuzzy
-#| msgid "Refresh List"
 msgid "Refresh list of remotes"
-msgstr "Обновить список"
+msgstr "Обновить список репозиториев"
 
 #: data/ui/remotes.blp:23
 msgid "Installed Remotes"
@@ -262,16 +258,12 @@ msgid "Install From The Web…"
 msgstr "Установить из сети…"
 
 #: data/ui/search_install.blp:44
-#, fuzzy
-#| msgid "Loading Flatpaks…"
 msgid "Search for Flatpaks…"
-msgstr "Загрузка пакетов Flatpak…"
+msgstr "Поиск пакетов Flatpak…"
 
 #: data/ui/search_install.blp:49
-#, fuzzy
-#| msgid "No Remotes"
 msgid "All Remotes"
-msgstr "Нет репозиториев"
+msgstr "Все репозитории"
 
 #: data/ui/search_install.blp:54 src/gtk/help-overlay.blp:14
 msgid "Search"
@@ -279,56 +271,44 @@ msgstr "Поиск"
 
 #: data/ui/search_install.blp:99
 msgid "Search for Flatpaks"
-msgstr ""
+msgstr "Поиск пакетов Flatpak"
 
 #: data/ui/search_install.blp:101
 msgid "Search for Flatpaks that you want to install"
-msgstr ""
+msgstr "Найдите пакеты Flatpak, которые вы хотите установить"
 
 #: data/ui/search_install.blp:105
-#, fuzzy
-#| msgid "Search"
 msgctxt "Shown with a spinner while search operation is pending"
 msgid "Searching…"
-msgstr "Поиск"
+msgstr "Идет поиск…"
 
 #: data/ui/search_install.blp:119
 msgid "Too many results"
-msgstr ""
+msgstr "Слишком много результатов"
 
 #: data/ui/search_install.blp:120
 msgid "Try being more specific with your search"
-msgstr ""
+msgstr "Попробуйте уточнить запрос"
 
 #: data/ui/snapshots.blp:15
-#, fuzzy
-#| msgid "Open Data Folder"
 msgid "Open Snapshots Folder"
-msgstr "Открыть папку данных"
+msgstr "Открыть папку снимков"
 
 #: data/ui/snapshots.blp:34
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "New Snapshot"
-msgstr "Создать снимки"
+msgstr "Новый снимок"
 
 #: data/ui/snapshots.blp:86
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "No Snapshots"
-msgstr "Создать снимки"
+msgstr "Нет снимков"
 
 #: data/ui/snapshots.blp:87
-#, fuzzy
-#| msgid ""
-#| "Snapshots are backups of the app's user data. They can be reapplied at "
-#| "any time. This could take a while."
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time."
 msgstr ""
-"Мгновенные снимки - это резервные копии данных приложений пользователя. Их "
-"можно применить в любое время. Это действие может занять некоторое время."
+"Снимки — это резервные копии пользовательских данных приложения. Их можно "
+"повторно применить в любое время."
 
 #: data/ui/window.blp:12
 msgid "Refresh List"
@@ -553,22 +533,16 @@ msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Гарантируется, что {} никогда не будет обновлен до более новой версии"
 
 #: src/filter_window.py:126 src/orphans_window.py:150 src/remotes_window.py:300
-#, fuzzy
-#| msgid "{} wide"
 msgid "User wide"
-msgstr "Тип {}"
+msgstr "Пользовательская"
 
 #: src/filter_window.py:128 src/orphans_window.py:152 src/remotes_window.py:302
-#, fuzzy
-#| msgid "System"
 msgid "System wide"
-msgstr "Система"
+msgstr "Системная"
 
 #: src/filter_window.py:130 src/orphans_window.py:154 src/remotes_window.py:304
-#, fuzzy
-#| msgid "Uninstall"
 msgid "Unknown install type"
-msgstr "Удалить"
+msgstr "Неизвестный тип установки"
 
 #: src/gtk/help-overlay.blp:11
 msgid "App Management"
@@ -767,46 +741,32 @@ msgid "Remove"
 msgstr "Удалить"
 
 #: src/remotes_window.py:113
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not enable {}"
-msgstr "Не удалось добавить {}"
+msgstr "Не удалось включить {}"
 
 #: src/remotes_window.py:141
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not disable {}"
-msgstr "Не удалось добавить {}"
+msgstr "Не удалось отключить {}"
 
 #: src/remotes_window.py:164
-#, fuzzy
-#| msgid "Disabled"
 msgid "Disable {}?"
-msgstr "Отключено"
+msgstr "Отключить {}?"
 
 #: src/remotes_window.py:167 src/remotes_window.py:257
-#, fuzzy
-#| msgid "Disabled"
 msgid "Disable"
-msgstr "Отключено"
+msgstr "Отключить"
 
 #: src/remotes_window.py:178
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not view apps"
-msgstr "Не удалось установить приложение"
+msgstr "Не удалось просмотреть приложения"
 
 #: src/remotes_window.py:234
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Set Filter"
-msgstr "Установить фильтры"
+msgstr "Установить фильтр"
 
 #: src/remotes_window.py:248
-#, fuzzy
-#| msgid "Enable Updates"
 msgid "Enable"
-msgstr "Включить обновления"
+msgstr "Включить"
 
 #: src/remotes_window.py:282
 msgid "Copy remote name"
@@ -892,94 +852,70 @@ msgid "Flatpak Repos"
 msgstr "Репозитории Flatpak"
 
 #: src/snapshots_window.py:50
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
 msgid "There is no User Data to Snapshot"
-msgstr "Очистить данные приложения {}?"
+msgstr "Нет пользовательских данных для снимка"
 
 #: src/snapshots_window.py:89
-#, fuzzy
-#| msgid "Version"
 msgid "Version {}"
-msgstr "Версия"
+msgstr "Версия {}"
 
 #: src/snapshots_window.py:121
-#, fuzzy
-#| msgid "Could not trash user data"
 msgid "Could not trash snapshot"
-msgstr "Не удалось очистить данные приложения"
+msgstr "Не удалось удалить снимок"
 
 #: src/snapshots_window.py:126
-#, fuzzy
-#| msgid "Create Snapshots?"
 msgid "Trash Snapshot?"
-msgstr "Создать мгновенные снимки?"
+msgstr "Удалить снимок?"
 
 #: src/snapshots_window.py:127
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "This snapshot and its contents will be sent to the trash."
-msgstr "Эти папки будут очищены."
+msgstr "Этот снимок и его содержимое будут удалены."
 
 #: src/snapshots_window.py:131
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Trash Snapshot"
-msgstr "Создать снимки"
+msgstr "Удалить снимок"
 
 #: src/snapshots_window.py:149
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Could not create snapshot"
-msgstr "Создать снимки"
+msgstr "Не удалось создать снимок"
 
 #. Make window unable to close
 #: src/snapshots_window.py:159
-#, fuzzy
-#| msgid "Creating Snapshots…"
 msgid "Creating Snapshot…"
-msgstr "Создание снимков…"
+msgstr "Создание снимка…"
 
 #: src/snapshots_window.py:193 src/snapshots_window.py:211
 #: src/snapshots_window.py:218
-#, fuzzy
-#| msgid "Could not snapshot some apps"
 msgid "Could not apply snapshot"
-msgstr "Не удалось сделать мгновенный снимок некоторых приложений"
+msgstr "Не удалось применить снимок"
 
 #: src/snapshots_window.py:196
 msgid "Snapshot applied"
-msgstr ""
+msgstr "Снимок применен"
 
 #. Make window unable to close
 #: src/snapshots_window.py:225
-#, fuzzy
-#| msgid "Creating Snapshots…"
 msgid "Applying Snapshot…"
-msgstr "Создание снимков…"
+msgstr "Применение снимка…"
 
 #: src/snapshots_window.py:234
-#, fuzzy
-#| msgid "Create Snapshots?"
 msgid "Apply Snapshot?"
-msgstr "Создать мгновенные снимки?"
+msgstr "Применить снимок?"
 
 #: src/snapshots_window.py:235
 msgid "Applying this snapshot will trash any current user data for {}."
 msgstr ""
+"Применение этого снимка приведет к удалению всех текущих пользовательских "
+"данных для {}."
 
 #: src/snapshots_window.py:241
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Apply Snapshot"
-msgstr "Создать снимки"
+msgstr "Применить снимок"
 
 #. Window stuffs
 #: src/snapshots_window.py:293
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "{} Snapshots"
-msgstr "Создать снимки"
+msgstr "{} Снимки"
 
 #: src/window.py:118
 msgid "Uninstalled successfully"
