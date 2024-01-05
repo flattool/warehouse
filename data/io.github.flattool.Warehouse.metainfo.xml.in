@@ -30,6 +30,7 @@
   <content_rating type="oars-1.1"/>
   <url type="homepage">https://github.com/flattool/warehouse</url>
   <url type="bugtracker">https://github.com/flattool/warehouse/issues</url>
+  <url type="vcs-browser">https://github.com/flattool/warehouse</url>
   <url type="translate">https://weblate.fyralabs.com/projects/flattool/warehouse/</url>
   <url type="donation">https://ko-fi.com/heliguy</url>
   <screenshots>
