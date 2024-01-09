@@ -188,7 +188,7 @@ class myUtils:
                     dependent_runtimes.append(current[13])
             except:
                 print("Could not get dependent runtime")
-        return dependent_runtimes
+        return sorted(dependent_runtimes)
 
     def get_host_masks(self, user_or_system):
         output = subprocess.run(
