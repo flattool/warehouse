@@ -15,15 +15,13 @@ class DowngradeWindow(Adw.Window):
     cancel_button = Gtk.Template.Child()
     apply_button = Gtk.Template.Child()
     versions_group = Gtk.Template.Child()
-    progress_bar = Gtk.Template.Child()
     toast_overlay = Gtk.Template.Child()
     mask_row = Gtk.Template.Child()
     main_toolbar_view = Gtk.Template.Child()
-
-    def pulser(self):
-        if self.should_pulse:
-            self.progress_bar.pulse()
-            GLib.timeout_add(500, self.pulser)
+    loading = Gtk.Template.Child()
+    loading_label = Gtk.Template.Child()
+    main_stack = Gtk.Template.Child()
+    outerbox = Gtk.Template.Child()
 
     def key_handler(self, _a, event, _c, _d):
         if event == Gdk.KEY_Escape:
@@ -76,8 +74,6 @@ class DowngradeWindow(Adw.Window):
             self.versions.append([commits[i], changes[i], dates[i]])
 
     def commits_callback(self):
-        self.progress_bar.set_visible(False)
-        self.should_pulse = False
         group_button = Gtk.CheckButton(visible=False)
         self.versions_group.add(group_button)
         for i in range(len(self.versions)):
@@ -109,23 +105,21 @@ class DowngradeWindow(Adw.Window):
             row.set_activatable_widget(select)
             row.add_prefix(select)
             self.versions_group.add(row)
-        self.set_title(self.window_title)
+        self.main_stack.set_visible_child(self.outerbox)
 
     def generate_list(self):
         task = Gio.Task.new(None, None, lambda *_: self.commits_callback())
         task.run_in_thread(lambda *_: self.get_commits())
 
     def downgrade_callack(self):
-        self.progress_bar.set_visible(False)
-        self.should_pulse = False
         self.disconnect(self.no_close)
-        self.main_toolbar_view.set_sensitive(True)
-        self.progress_bar.set_visible = False
 
         if self.response != 0:
             self.toast_overlay.add_toast(
-                Adw.Toast.new(_("Could not downgrade {}").format(self.app_name))
+                Adw.TThis is toast.new(_("Could not downgrade {}").format(self.app_name))
             )
+            self.apply_button.set_sensitive(True)
+            self.cancel_button.set_sensitive(True)
             return
 
         if self.mask_row.get_active():
@@ -145,12 +139,11 @@ class DowngradeWindow(Adw.Window):
         )
 
     def on_apply(self):
-        self.set_title(_("Downgrading…"))
+        self.loading_label.set_label(_("Downgrading…"))
         self.no_close = self.connect("close-request", lambda event: True)
-        self.main_toolbar_view.set_sensitive(False)
-        self.should_pulse = True
-        self.progress_bar.set_visible(True)
-        self.pulser()
+        self.main_stack.set_visible_child(self.loading)
+        self.apply_button.set_sensitive(False)
+        self.cancel_button.set_sensitive(False)
 
         task = Gio.Task.new(None, None, lambda *_: self.downgrade_callack())
         task.run_in_thread(lambda *_: self.downgrade_thread())
@@ -166,7 +159,6 @@ class DowngradeWindow(Adw.Window):
         self.install_type = flatpak_row[7]
         self.app_ref = flatpak_row[8]
         self.versions = []
-        self.should_pulse = True
         self.commit_to_use = ""
         self.parent_window = parent_window
         self.flatpak_row = flatpak_row
@@ -181,15 +173,15 @@ class DowngradeWindow(Adw.Window):
         self.apply_button.connect("clicked", lambda *_: self.on_apply())
 
         # Apply
-        self.pulser()
         self.add_controller(event_controller)
-        self.set_title(_("Fetching Releases…"))
         self.set_transient_for(parent_window)
         self.mask_row.set_subtitle(
             _("Ensure that {} will never be updated to a newer version").format(
                 self.app_name
             )
         )
+
+        self.set_title(self.window_title)
 
         self.generate_list()
 

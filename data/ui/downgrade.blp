@@ -29,29 +29,47 @@ template $DowngradeWindow: Adw.Window {
 
     content: Adw.ToastOverlay toast_overlay {
       Stack main_stack {
-        Overlay main_overlay {
-          [overlay]
-          ProgressBar progress_bar {
-            pulse-step: 0.7;
-            can-target: false;
+        Box loading {
+          orientation: vertical;
+          spacing: 10;
+          margin-top: 40;
+          margin-bottom: 20;
+          halign: center;
+          valign: center;
 
+          Spinner {
+            margin-bottom: 35;
+            width-request: 30;
+            height-request: 30;
+            opacity: 0.5;
+            spinning: true;
+          }
+
+          Label loading_label {
+            label: _("Fetching Releases…");
             styles [
-              "osd"
+              "title-1",
+              "title"
             ]
           }
 
-          Adw.PreferencesPage outerbox {
-            Adw.PreferencesGroup {
-              Adw.SwitchRow mask_row {
-                title: _("Disable Updates");
-                active: true;
-              }
-            }
+          Label {
+            label: _("This could take a while.");
+            styles ["description", "body"]
+          }
+        }
 
-            Adw.PreferencesGroup versions_group {
-              title: _("Select a Release");
-              description: _("This will uninstall the current release and install the chosen one instead. Note that downgrading can cause issues.");
+        Adw.PreferencesPage outerbox {
+          Adw.PreferencesGroup {
+            Adw.SwitchRow mask_row {
+              title: _("Disable Updates");
+              active: true;
             }
+          }
+
+          Adw.PreferencesGroup versions_group {
+            title: _("Select a Release");
+            description: _("This will uninstall the current release and install the chosen one instead. Note that downgrading can cause issues.");
           }
         }
       }
