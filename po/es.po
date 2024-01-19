@@ -12,9 +12,14 @@ msgstr ""
 "PO-Revision-Date: 2024-02-16 23:15+0000\n"
 =======
 "POT-Creation-Date: 2024-01-05 01:05-0500\n"
+<<<<<<< HEAD
 "PO-Revision-Date: 2023-10-23 12:28+0000\n"
 >>>>>>> 6984e45 (Update translation files)
 "Last-Translator: Racsu <me@racsu.com>\n"
+=======
+"PO-Revision-Date: 2024-01-20 03:31+0000\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
+>>>>>>> fa5ee1f (Translated using Weblate (Spanish))
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
 "Language: es\n"
@@ -42,10 +47,14 @@ msgstr "Gestione todo lo relacionado con Flatpak"
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:6
 msgid "Heliguy"
 <<<<<<< HEAD
+<<<<<<< HEAD
 msgstr "Heliguy"
 =======
 msgstr ""
 >>>>>>> 6984e45 (Update translation files)
+=======
+msgstr "Heliguy"
+>>>>>>> fa5ee1f (Translated using Weblate (Spanish))
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
@@ -363,10 +372,13 @@ msgstr "Instalación"
 
 #: data/ui/orphans.blp:90 data/ui/window.blp:113 data/ui/window.blp:140
 #: data/ui/window.blp:167
+<<<<<<< HEAD
 >>>>>>> 6984e45 (Update translation files)
 #, fuzzy
+=======
+>>>>>>> fa5ee1f (Translated using Weblate (Spanish))
 msgid "This could take a while."
-msgstr "Instalando… Esto podría tardar un poco"
+msgstr "Esto podría tardar un poco."
 
 <<<<<<< HEAD
 #: data/ui/search_install.blp:43
@@ -439,9 +451,8 @@ msgid "No Results Found"
 msgstr "No se han encontrado resultados"
 
 #: data/ui/orphans.blp:108 data/ui/search_install.blp:95 data/ui/window.blp:187
-#, fuzzy
 msgid "Try a different search term."
-msgstr "Intentar un término de búsqueda diferente"
+msgstr "Pruebe con un término de búsqueda diferente."
 
 #: data/ui/orphans.blp:118 data/ui/window.blp:199
 msgid "Select All"
@@ -473,9 +484,8 @@ msgid "Add a Custom Remote"
 msgstr "Añadir un repositorio personalizado"
 
 #: data/ui/properties.blp:45
-#, fuzzy
 msgid "Loading User Data…"
-msgstr "Eliminar datos de usuario"
+msgstr "Cargando datos del usuario…"
 
 #: data/ui/properties.blp:50 src/app_row_widget.py:230
 #: src/orphans_window.py:259
@@ -496,116 +506,100 @@ msgstr "Tiempo de ejecución"
 
 #: data/ui/properties.blp:113
 msgid "Show Details in Store"
-msgstr ""
+msgstr "Mostrar detalles en la tienda"
 
 #: data/ui/remotes.blp:5 src/gtk/help-overlay.blp:42
 msgid "Manage Remotes"
 msgstr "Gestionar los repositorios remotos"
 
 #: data/ui/remotes.blp:14
-#, fuzzy
-#| msgid "Refresh List"
 msgid "Refresh list of remotes"
-msgstr "Actualizar lista"
+msgstr "Actualizar la lista de remotos"
 
 #: data/ui/remotes.blp:23
-#, fuzzy
 msgid "Installed Remotes"
-msgstr "Tamaño de instalación"
+msgstr "Remotos instalados"
 
 #: data/ui/remotes.blp:27
 msgid "Show disabled"
-msgstr ""
+msgstr "Mostrar desactivados"
 
 #: data/ui/remotes.blp:41
 msgid "No remotes on the system, add some from below"
-msgstr ""
+msgstr "No hay remotos en el sistema, añada algunos de abajo"
 
 #: data/ui/remotes.blp:45
-#, fuzzy
 msgid "Add a Popular Remote"
-msgstr "Añadir un remoto"
+msgstr "Añadir un remoto popular"
 
 #: data/ui/remotes.blp:49
-#, fuzzy
 msgid "Add Other Remotes"
-msgstr "Añadir un remoto"
+msgstr "Añadir otros remotos"
 
 #: data/ui/remotes.blp:79
-#, fuzzy
 msgid "Adding Remote…"
-msgstr "Agregar repositorio"
+msgstr "Añadiendo remoto…"
 
 #: data/ui/remotes.blp:88 data/ui/window.blp:60
-#, fuzzy
 msgid "This should only take a moment."
-msgstr "Esto podría tardar un poco."
+msgstr "Esto solo debería llevar un momento."
 
 #: data/ui/search_install.blp:7
-#, fuzzy
 msgid "Install From The Web…"
-msgstr "Instalar desde archivo"
+msgstr "Instalar desde la web…"
 
 #: data/ui/search_install.blp:44
 msgid "Search for Flatpaks…"
-msgstr ""
+msgstr "Buscar Flatpaks…"
 
 #: data/ui/search_install.blp:49
-#, fuzzy
-#| msgid "No Remotes"
 msgid "All Remotes"
-msgstr "No hay repositorios"
+msgstr "Todos los remotos"
 
 #: data/ui/search_install.blp:54 src/gtk/help-overlay.blp:14
 msgid "Search"
 msgstr "Buscar"
 
 #: data/ui/search_install.blp:99
-#, fuzzy
-#| msgid "Search for an Installed App"
 msgid "Search for Flatpaks"
-msgstr "Buscar una aplicación instalada"
+msgstr "Buscar Flatpaks"
 
 #: data/ui/search_install.blp:101
 msgid "Search for Flatpaks that you want to install"
-msgstr ""
+msgstr "Busque los Flatpaks que desee instalar"
 
 #: data/ui/search_install.blp:105
-#, fuzzy
-#| msgid "Search"
 msgctxt "Shown with a spinner while search operation is pending"
 msgid "Searching…"
-msgstr "Buscar"
+msgstr "Buscando…"
 
 #: data/ui/search_install.blp:119
 msgid "Too many results"
-msgstr ""
+msgstr "Demasiados resultados"
 
 #: data/ui/search_install.blp:120
 msgid "Try being more specific with your search"
-msgstr ""
+msgstr "Intente ser más específico en su búsqueda"
 
 #: data/ui/snapshots.blp:15
-#, fuzzy
-#| msgid "Open Data Folder"
 msgid "Open Snapshots Folder"
-msgstr "Abrir carpeta de datos"
+msgstr "Abrir carpeta de instantáneas"
 
 #: data/ui/snapshots.blp:34
-#, fuzzy
 msgid "New Snapshot"
-msgstr "Gestionar los repositorios remotos"
+msgstr "Instantánea nueva"
 
 #: data/ui/snapshots.blp:86
-#, fuzzy
 msgid "No Snapshots"
-msgstr "Gestionar los repositorios remotos"
+msgstr "No hay instantáneas"
 
 #: data/ui/snapshots.blp:87
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time."
 msgstr ""
+"Las instantáneas son copias de seguridad de los datos de usuario de la "
+"aplicación. Se pueden volver a aplicar en cualquier momento."
 
 #: data/ui/window.blp:12
 msgid "Refresh List"
@@ -637,33 +631,40 @@ msgstr "Instalando… Esto podría tardar un poco"
 =======
 #: data/ui/window.blp:59
 msgid "Loading Flatpaks…"
+<<<<<<< HEAD
 msgstr ""
 >>>>>>> 6984e45 (Update translation files)
+=======
+msgstr "Cargando Flatpaks…"
+>>>>>>> fa5ee1f (Translated using Weblate (Spanish))
 
 #: data/ui/window.blp:135
-#, fuzzy
 msgid "Uninstalling…"
-msgstr "Desinstalar"
+msgstr "Desinstalando…"
 
 #: data/ui/window.blp:162
-#, fuzzy
 msgid "Creating Snapshots…"
-msgstr "Gestionar los repositorios remotos"
+msgstr "Creando instantáneas…"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr "No se han encontrado Flatpaks"
 
 #: data/ui/window.blp:175
-#, fuzzy
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
 msgstr ""
 "Warehouse no puede ver la lista de Flatpaks instalados o el sistema no tiene "
+<<<<<<< HEAD
 "Flatpaks instalados"
 
 #: data/ui/window.blp:175
+=======
+"Flatpaks instalados."
+
+#: data/ui/window.blp:180
+>>>>>>> fa5ee1f (Translated using Weblate (Spanish))
 msgid "No Flatpaks Match Filters"
 msgstr "No hay Flatpaks que coincidan con los filtros"
 
@@ -671,7 +672,11 @@ msgstr "No hay Flatpaks que coincidan con los filtros"
 msgid "No installed Flatpak matches all of the currently applied filters"
 msgstr ""
 "No hay ningún Flatpak instalado que coincida con ninguno de los filtros "
+<<<<<<< HEAD
 "aplicados actualmente"
+=======
+"aplicados actualmente."
+>>>>>>> fa5ee1f (Translated using Weblate (Spanish))
 
 <<<<<<< HEAD
 #: data/ui/window.blp:206
@@ -689,22 +694,23 @@ msgstr "Enviar a la papelera los datos de las aplicaciones seleccionadas"
 msgid "Open Copy Menu"
 msgstr "Abrir el menú para copiar datos"
 
+<<<<<<< HEAD
 #: data/ui/window.blp:225
+=======
+#: data/ui/window.blp:224
+>>>>>>> fa5ee1f (Translated using Weblate (Spanish))
 msgid "Snapshot Selected Apps' Data"
 msgstr "Instantánea de los datos de las aplicaciones seleccionadas"
 
 #: data/ui/window.blp:234
-#, fuzzy
 msgid "Install From File…"
-msgstr "Instalar desde archivo"
+msgstr "Instalar desde archivo…"
 
 #: data/ui/window.blp:239
-#, fuzzy
 msgid "Manage Leftover Data…"
 msgstr "Gestionar los datos sobrantes…"
 
 #: data/ui/window.blp:248
-#, fuzzy
 msgid "Manage Remotes…"
 msgstr "Gestionar los remotos…"
 
@@ -967,10 +973,8 @@ msgid "Enable Updates"
 msgstr "Activar actualizaciones"
 
 #: src/app_row_widget.py:287
-#, fuzzy
-#| msgid "Manage Remotes"
 msgid "Manage Snapshots"
-msgstr "Gestionar los repositorios remotos"
+msgstr "Gestionar instantáneas"
 
 #: src/downgrade_window.py:103
 msgid "Commit Hash: {}"
@@ -981,9 +985,8 @@ msgid "Could not downgrade {}"
 msgstr "No se pudo revertir {}"
 
 #: src/downgrade_window.py:135 src/window.py:405
-#, fuzzy
 msgid "Could not disable updates for {}"
-msgstr "Puede desactivar las actualizaciones para {}"
+msgstr "No se han podido desactivar las actualizaciones para {}"
 
 #: src/downgrade_window.py:148
 msgid "Downgrading…"
@@ -1002,22 +1005,16 @@ msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Garantizar que nunca se actualizará a una versión más reciente"
 
 #: src/filter_window.py:126 src/orphans_window.py:150 src/remotes_window.py:300
-#, fuzzy
-#| msgid "{} wide"
 msgid "User wide"
-msgstr "{} ancho"
+msgstr "Usuario"
 
 #: src/filter_window.py:128 src/orphans_window.py:152 src/remotes_window.py:302
-#, fuzzy
-#| msgid "System"
 msgid "System wide"
 msgstr "Sistema"
 
 #: src/filter_window.py:130 src/orphans_window.py:154 src/remotes_window.py:304
-#, fuzzy
-#| msgid "Uninstall {}"
 msgid "Unknown install type"
-msgstr "Desinstalar {}"
+msgstr "Tipo de instalación desconocido"
 
 #: src/gtk/help-overlay.blp:11
 msgid "App Management"
@@ -1108,12 +1105,11 @@ msgstr "Racsu <me@racsu.com>"
 
 #: src/main.py:185
 msgid "Donate"
-msgstr ""
+msgstr "Donar"
 
 #: src/main.py:187
-#, fuzzy
 msgid "Contributors"
-msgstr "Continuar"
+msgstr "Contribuidores"
 
 #: src/orphans_window.py:78 src/window.py:757
 msgid "Installed successfully"
@@ -1325,19 +1321,16 @@ msgid "Copied {}"
 msgstr "Copiado {}"
 
 #: src/properties_window.py:49
-#, fuzzy
 msgid "Could not show details"
-msgstr "No se pueden gestionar los datos"
+msgstr "No se pueden mostrar los detalles"
 
 #: src/properties_window.py:55
-#, fuzzy
 msgid "User Data"
-msgstr "Eliminar datos de usuario"
+msgstr "Datos del usuario"
 
 #: src/properties_window.py:74 src/properties_window.py:135
-#, fuzzy
 msgid "No User Data"
-msgstr "Eliminar datos de usuario"
+msgstr "No hay datos del usuario"
 
 #: src/properties_window.py:85 src/remotes_window.py:498
 #: src/remotes_window.py:623
@@ -1429,53 +1422,40 @@ msgid "Remove"
 msgstr "Eliminar"
 
 #: src/remotes_window.py:113
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not enable {}"
-msgstr "No se ha podido añadir {}"
+msgstr "No se ha podido activar {}"
 
 #: src/remotes_window.py:141
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not disable {}"
-msgstr "No se ha podido añadir {}"
+msgstr "No se ha podido desactivar {}"
 
 #: src/remotes_window.py:164
-#, fuzzy
 msgid "Disable {}?"
-msgstr "Desactivar actualizaciones"
+msgstr "¿Desactivar {}?"
 
 #: src/remotes_window.py:167 src/remotes_window.py:257
-#, fuzzy
 msgid "Disable"
-msgstr "Desactivar actualizaciones"
+msgstr "Desactivar"
 
 #: src/remotes_window.py:178
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not view apps"
-msgstr "No se ha podido instalar la aplicación"
+msgstr "No se pueden ver las aplicaciones"
 
 #: src/remotes_window.py:234
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Set Filter"
-msgstr "Establecer filtros"
+msgstr "Establecer filtro"
 
 #: src/remotes_window.py:248
-#, fuzzy
-#| msgid "Enable Updates"
 msgid "Enable"
-msgstr "Activar actualizaciones"
+msgstr "Activar"
 
 #: src/remotes_window.py:282
 msgid "Copy remote name"
 msgstr "Copiar nombre del repositorio"
 
 #: src/remotes_window.py:295
-#, fuzzy
 msgid "Disabled"
-msgstr "Desactivar actualizaciones"
+msgstr "Desactivado"
 
 #: src/remotes_window.py:331
 >>>>>>> 6984e45 (Update translation files)
@@ -1716,85 +1696,70 @@ msgid "Flatpak Repos"
 msgstr "Repositorios Flatpak"
 
 #: src/snapshots_window.py:50
-#, fuzzy
-#| msgid "Send User Data to the Trash"
 msgid "There is no User Data to Snapshot"
-msgstr "Enviar datos de usuario a la papelera"
+msgstr "No hay datos de usuario para la instantánea"
 
 #: src/snapshots_window.py:89
-#, fuzzy
-#| msgid "Version"
 msgid "Version {}"
-msgstr "Versión"
+msgstr "Versión {}"
 
 #: src/snapshots_window.py:121
-#, fuzzy
-#| msgid "Could not trash user data"
 msgid "Could not trash snapshot"
-msgstr "No se han podido borrar los datos del usuario"
+msgstr "No se ha podido eliminar la instantánea"
 
 #: src/snapshots_window.py:126
-#, fuzzy
 msgid "Trash Snapshot?"
-msgstr "Gestionar los repositorios remotos"
+msgstr "¿Eliminar la instantánea?"
 
 #: src/snapshots_window.py:127
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "This snapshot and its contents will be sent to the trash."
-msgstr "Estas carpetas se enviarán a la papelera."
+msgstr "Esta instantánea y su contenido se enviarán a la papelera."
 
 #: src/snapshots_window.py:131
-#, fuzzy
 msgid "Trash Snapshot"
-msgstr "Gestionar los repositorios remotos"
+msgstr "Eliminar la instantánea"
 
 #: src/snapshots_window.py:149
-#, fuzzy
 msgid "Could not create snapshot"
-msgstr "Gestionar los repositorios remotos"
+msgstr "No se ha podido crear la instantánea"
 
 #. Make window unable to close
 #: src/snapshots_window.py:159
-#, fuzzy
 msgid "Creating Snapshot…"
-msgstr "Gestionar los repositorios remotos"
+msgstr "Creando instantánea…"
 
 #: src/snapshots_window.py:193 src/snapshots_window.py:211
 #: src/snapshots_window.py:218
-#, fuzzy
 msgid "Could not apply snapshot"
-msgstr "No se pueden instalar algunas aplicaciones"
+msgstr "No se ha podido aplicar la instantánea"
 
 #: src/snapshots_window.py:196
 msgid "Snapshot applied"
-msgstr ""
+msgstr "Instantánea aplicada"
 
 #. Make window unable to close
 #: src/snapshots_window.py:225
-#, fuzzy
 msgid "Applying Snapshot…"
-msgstr "Gestionar los repositorios remotos"
+msgstr "Aplicando instantánea…"
 
 #: src/snapshots_window.py:234
-#, fuzzy
 msgid "Apply Snapshot?"
-msgstr "Gestionar los repositorios remotos"
+msgstr "¿Aplicar instantánea?"
 
 #: src/snapshots_window.py:235
 msgid "Applying this snapshot will trash any current user data for {}."
 msgstr ""
+"La aplicación de esta instantánea eliminará cualquier dato actual del "
+"usuario para {}."
 
 #: src/snapshots_window.py:241
-#, fuzzy
 msgid "Apply Snapshot"
-msgstr "Gestionar los repositorios remotos"
+msgstr "Aplicar instantánea"
 
 #. Window stuffs
 #: src/snapshots_window.py:293
-#, fuzzy
 msgid "{} Snapshots"
-msgstr "Gestionar los repositorios remotos"
+msgstr "{} instantáneas"
 
 #: src/window.py:118
 msgid "Uninstalled successfully"
@@ -1893,7 +1858,7 @@ msgstr "¿Desactivar actualizaciones para {}?"
 =======
 #: src/window.py:357
 msgid "List refreshed"
-msgstr ""
+msgstr "Lista actualizada"
 
 #: src/window.py:386
 msgid "Your files and data for this app will be sent to the trash."
@@ -1956,14 +1921,12 @@ msgid "OK"
 msgstr "De acuerdo"
 
 #: src/window.py:508
-#, fuzzy
 msgid "{} has no data to trash"
-msgstr "¿Enviar los datos de usuario de {} a la papelera?"
+msgstr "{} no tiene datos que eliminar"
 
 #: src/window.py:514
-#, fuzzy
 msgid "Could not trash {}'s data"
-msgstr "No se han podido borrar los datos del usuario"
+msgstr "No se han podido eliminar los datos de {}"
 
 #: src/window.py:528
 msgid "Trash Selected Apps' User Data?"
@@ -1974,14 +1937,12 @@ msgid "Your files and data for these apps will be sent to the trash."
 msgstr "Sus archivos y datos de estas aplicaciones se enviarán a la papelera."
 
 #: src/window.py:579
-#, fuzzy
 msgid "Could not snapshot some apps"
-msgstr "No se pueden instalar algunas aplicaciones"
+msgstr "Algunas aplicaciones no se pueden instantanear"
 
 #: src/window.py:603
-#, fuzzy
 msgid "Create Snapshots?"
-msgstr "Gestionar los repositorios remotos"
+msgstr "¿Crear instantáneas?"
 
 #: src/window.py:605
 >>>>>>> 6984e45 (Update translation files)
@@ -1989,6 +1950,7 @@ msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
 msgstr ""
+<<<<<<< HEAD
 <<<<<<< HEAD
 "Las instantáneas son copias de seguridad de los datos de usuario de la "
 "aplicación. Pueden volver a aplicarse en cualquier momento. Esto puede "
@@ -2046,11 +2008,15 @@ msgstr "Tipo de archivo no compatible"
 #~ msgstr "No hay remotos en el sistema, añada algunos de abajo"
 
 =======
+=======
+"Las instantáneas son copias de seguridad de los datos de usuario de la "
+"aplicación. Pueden volver a aplicarse en cualquier momento. Esto puede "
+"llevar un tiempo."
+>>>>>>> fa5ee1f (Translated using Weblate (Spanish))
 
 #: src/window.py:610
-#, fuzzy
 msgid "Create Snapshots"
-msgstr "Gestionar los repositorios remotos"
+msgstr "Crear instantáneas"
 
 #: src/window.py:662
 msgid "Copied selected app names"
