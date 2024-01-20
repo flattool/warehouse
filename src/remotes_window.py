@@ -215,6 +215,7 @@ class RemotesWindow(Adw.Window):
 
         self.no_remotes.set_visible(True)
 
+        has_disabled = False
         for i in range(len(self.host_remotes)):
             try:
                 name = self.host_remotes[i][0]
@@ -294,6 +295,7 @@ class RemotesWindow(Adw.Window):
 
                 install_type = self.my_utils.get_install_type(install_type)
                 if install_type == "disabled":
+                    has_disabled = True
                     if not self.show_disabled_button.get_active():
                         continue
 
@@ -320,6 +322,7 @@ class RemotesWindow(Adw.Window):
                     "error in remotes_window.generate_list: could not add remote. error:",
                     e,
                 )
+        self.show_disabled_button.set_visible(has_disabled)
 
         # Popular remotes
         for i in range(len(self.rows_in_popular_list)):
