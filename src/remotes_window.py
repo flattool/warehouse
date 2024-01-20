@@ -56,6 +56,10 @@ class RemotesWindow(Adw.Window):
         name = self.host_remotes[index][0]
         title = self.host_remotes[index][1]
         install_type = self.host_remotes[index][7]
+        if "user" in install_type:
+            install_type = "user"
+        if "system" in install_type:
+            install_type = "system"
         command = [
             "flatpak-spawn",
             "--host",
@@ -69,6 +73,7 @@ class RemotesWindow(Adw.Window):
             subprocess.run(command, capture_output=True, check=True, env=self.new_env)
         except subprocess.CalledProcessError as e:
             self.make_toast(_("Could not remove {}").format(title))
+            print("error in remotes_window.remove_on_response: CalledProcessError:", e)
         self.generate_list()
 
     def remove_handler(self, _widget, index, popoever):
@@ -183,7 +188,7 @@ class RemotesWindow(Adw.Window):
             return
         self.app_window.should_open_filter_window = False
         self.app_window.filter_button.set_active(True)
-        self.app_window.applyFilter([True, True, [type], [id], ["all"]])
+        self.app_window.apply_filter([True, True, [type], [id], ["all"]])
         self.app_window.should_open_filter_window = True
         self.close()
 
