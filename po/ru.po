@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-05 01:05-0500\n"
+"POT-Creation-Date: 2024-01-20 00:48-0500\n"
 "PO-Revision-Date: 2024-01-06 09:15+0000\n"
 "Last-Translator: Сергей Ворон <voron.s.a@gmail.com>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
@@ -22,7 +22,6 @@ msgstr ""
 
 #. Translators: Do not translate the applicaion name
 #: data/io.github.flattool.Warehouse.desktop.in:4
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:5
 msgid "Warehouse"
 msgstr "Warehouse"
 
@@ -34,10 +33,6 @@ msgstr "flatpak"
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
 msgstr "Управляйте всем, что касается Flatpak"
-
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:6
-msgid "Heliguy"
-msgstr "Хелиги"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
@@ -77,9 +72,9 @@ msgstr "Переустановка приложений, в которых ос�
 
 #: data/ui/downgrade.blp:16 data/ui/filter.blp:17 data/ui/search_install.blp:17
 #: src/orphans_window.py:121 src/orphans_window.py:189
-#: src/properties_window.py:147 src/remotes_window.py:85
-#: src/remotes_window.py:166 src/remotes_window.py:442
-#: src/remotes_window.py:614 src/snapshots_window.py:129
+#: src/properties_window.py:147 src/remotes_window.py:90
+#: src/remotes_window.py:171 src/remotes_window.py:450
+#: src/remotes_window.py:622 src/snapshots_window.py:129
 #: src/snapshots_window.py:239 src/window.py:232 src/window.py:306
 #: src/window.py:388 src/window.py:434 src/window.py:532 src/window.py:609
 #: src/window.py:785
@@ -90,15 +85,24 @@ msgstr "Отмена"
 msgid "Downgrade"
 msgstr "Понизить версию"
 
-#: data/ui/downgrade.blp:46 src/app_row_widget.py:261 src/window.py:436
+#: data/ui/downgrade.blp:49
+msgid "Fetching Releases…"
+msgstr "Получение релизов…"
+
+#: data/ui/downgrade.blp:57 data/ui/orphans.blp:90 data/ui/window.blp:113
+#: data/ui/window.blp:140 data/ui/window.blp:167
+msgid "This could take a while."
+msgstr "Это займет некоторое время."
+
+#: data/ui/downgrade.blp:65 src/app_row_widget.py:261 src/window.py:436
 msgid "Disable Updates"
 msgstr "Отключить обновления"
 
-#: data/ui/downgrade.blp:52
+#: data/ui/downgrade.blp:71
 msgid "Select a Release"
 msgstr "Выбрать релиз"
 
-#: data/ui/downgrade.blp:53
+#: data/ui/downgrade.blp:72
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
@@ -141,11 +145,6 @@ msgstr "Открыть папку данных"
 #: data/ui/orphans.blp:81 data/ui/window.blp:104
 msgid "Installing…"
 msgstr "Установка…"
-
-#: data/ui/orphans.blp:90 data/ui/window.blp:113 data/ui/window.blp:140
-#: data/ui/window.blp:167
-msgid "This could take a while."
-msgstr "Это займет некоторое время."
 
 #: data/ui/orphans.blp:101
 msgid "No Leftover Data"
@@ -230,7 +229,9 @@ msgid "Installed Remotes"
 msgstr "Установленные репозитории"
 
 #: data/ui/remotes.blp:27
-msgid "Show disabled"
+#, fuzzy
+#| msgid "Show disabled"
+msgid "Show Disabled"
 msgstr "Показать отключенные"
 
 #: data/ui/remotes.blp:41
@@ -504,43 +505,39 @@ msgstr "Включить обновления"
 msgid "Manage Snapshots"
 msgstr "Управление снимками"
 
-#: src/downgrade_window.py:103
+#: src/downgrade_window.py:99
 msgid "Commit Hash: {}"
 msgstr "Хеш коммита: {}"
 
-#: src/downgrade_window.py:127
+#: src/downgrade_window.py:119
 msgid "Could not downgrade {}"
 msgstr "Не удалось понизить версию {}"
 
-#: src/downgrade_window.py:135 src/window.py:405
+#: src/downgrade_window.py:129 src/window.py:405
 msgid "Could not disable updates for {}"
 msgstr "Не удалось отключить обновления для {}"
 
-#: src/downgrade_window.py:148
+#: src/downgrade_window.py:142
 msgid "Downgrading…"
 msgstr "Понижение версии…"
 
-#: src/downgrade_window.py:174
+#: src/downgrade_window.py:166
 msgid "Downgrade {}"
 msgstr "Понизить версию {}"
 
-#: src/downgrade_window.py:186
-msgid "Fetching Releases…"
-msgstr "Получение релизов…"
-
-#: src/downgrade_window.py:189
+#: src/downgrade_window.py:179
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Гарантируется, что {} никогда не будет обновлен до более новой версии"
 
-#: src/filter_window.py:126 src/orphans_window.py:150 src/remotes_window.py:300
+#: src/filter_window.py:126 src/orphans_window.py:150 src/remotes_window.py:307
 msgid "User wide"
 msgstr "Пользовательская"
 
-#: src/filter_window.py:128 src/orphans_window.py:152 src/remotes_window.py:302
+#: src/filter_window.py:128 src/orphans_window.py:152 src/remotes_window.py:309
 msgid "System wide"
 msgstr "Системная"
 
-#: src/filter_window.py:130 src/orphans_window.py:154 src/remotes_window.py:304
+#: src/filter_window.py:130 src/orphans_window.py:154 src/remotes_window.py:311
 msgid "Unknown install type"
 msgstr "Неизвестный тип установки"
 
@@ -635,7 +632,7 @@ msgstr "Не удалось открыть папку"
 msgid "Could not manage data"
 msgstr "Не удалось управление данными"
 
-#: src/properties_window.py:37 src/remotes_window.py:209
+#: src/properties_window.py:37 src/remotes_window.py:214
 msgid "Copied {}"
 msgstr "Скопировано {}"
 
@@ -651,8 +648,8 @@ msgstr "Пользовательские данные"
 msgid "No User Data"
 msgstr "Нет пользовательских данных"
 
-#: src/properties_window.py:85 src/remotes_window.py:498
-#: src/remotes_window.py:623
+#: src/properties_window.py:85 src/remotes_window.py:506
+#: src/remotes_window.py:631
 msgid "Name"
 msgstr "Имя"
 
@@ -724,130 +721,130 @@ msgstr "Очистить данные"
 msgid "{} Properties"
 msgstr "Свойства {}"
 
-#: src/remotes_window.py:71
+#: src/remotes_window.py:75
 msgid "Could not remove {}"
 msgstr "Не удалось удалить {}"
 
-#: src/remotes_window.py:80 src/remotes_window.py:161
+#: src/remotes_window.py:85 src/remotes_window.py:166
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr "Все установленные приложения из {} перестанут получать обновления"
 
-#: src/remotes_window.py:83
+#: src/remotes_window.py:88
 msgid "Remove {}?"
 msgstr "Удалить {}?"
 
-#: src/remotes_window.py:86 src/remotes_window.py:266
+#: src/remotes_window.py:91 src/remotes_window.py:272
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/remotes_window.py:113
+#: src/remotes_window.py:118
 msgid "Could not enable {}"
 msgstr "Не удалось включить {}"
 
-#: src/remotes_window.py:141
+#: src/remotes_window.py:146
 msgid "Could not disable {}"
 msgstr "Не удалось отключить {}"
 
-#: src/remotes_window.py:164
+#: src/remotes_window.py:169
 msgid "Disable {}?"
 msgstr "Отключить {}?"
 
-#: src/remotes_window.py:167 src/remotes_window.py:257
+#: src/remotes_window.py:172 src/remotes_window.py:263
 msgid "Disable"
 msgstr "Отключить"
 
-#: src/remotes_window.py:178
+#: src/remotes_window.py:183
 msgid "Could not view apps"
 msgstr "Не удалось просмотреть приложения"
 
-#: src/remotes_window.py:234
+#: src/remotes_window.py:240
 msgid "Set Filter"
 msgstr "Установить фильтр"
 
-#: src/remotes_window.py:248
+#: src/remotes_window.py:254
 msgid "Enable"
 msgstr "Включить"
 
-#: src/remotes_window.py:282
+#: src/remotes_window.py:288
 msgid "Copy remote name"
 msgstr "Скопировать имя репозитория"
 
-#: src/remotes_window.py:295
+#: src/remotes_window.py:302
 msgid "Disabled"
 msgstr "Отключено"
 
-#: src/remotes_window.py:331
+#: src/remotes_window.py:339
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr ""
 "Магазин приложений с открытым исходным кодом и оплатой по желанию от "
 "elementary"
 
-#: src/remotes_window.py:337
+#: src/remotes_window.py:345
 msgid "Central repository of Flatpak applications"
 msgstr "Центральный репозиторий приложений Flatpak"
 
-#: src/remotes_window.py:343
+#: src/remotes_window.py:351
 msgid "Beta builds of Flatpak applications"
 msgstr "Бета-версии приложений Flatpak"
 
-#: src/remotes_window.py:349
+#: src/remotes_window.py:357
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "Flatpak, упакованные Fedora Linux"
 
-#: src/remotes_window.py:355
+#: src/remotes_window.py:363
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "Последняя бета-версия приложений и сред выполнения GNOME"
 
-#: src/remotes_window.py:361
+#: src/remotes_window.py:369
 msgid "Beta KDE Apps and Runtimes"
 msgstr "Бета-приложения KDE и среды выполнения"
 
-#: src/remotes_window.py:367
+#: src/remotes_window.py:375
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr ""
 "Центральный репозиторий WebKit для разработчиков и SDK среды выполнения"
 
-#: src/remotes_window.py:403 src/remotes_window.py:566
+#: src/remotes_window.py:411 src/remotes_window.py:574
 msgid "Could not add {}"
 msgstr "Не удалось добавить {}"
 
-#: src/remotes_window.py:440
+#: src/remotes_window.py:448
 msgid "Add Flatpak Remote"
 msgstr "Добавить репозиторий Flatpak"
 
-#: src/remotes_window.py:443 src/remotes_window.py:615
+#: src/remotes_window.py:451 src/remotes_window.py:623
 msgid "Add"
 msgstr "Добавить"
 
-#: src/remotes_window.py:502
+#: src/remotes_window.py:510
 msgid "URL"
 msgstr "URL"
 
-#: src/remotes_window.py:514 src/remotes_window.py:626 src/window.py:794
+#: src/remotes_window.py:522 src/remotes_window.py:634 src/window.py:794
 msgid "User"
 msgstr "Пользователь"
 
-#: src/remotes_window.py:514 src/remotes_window.py:626
+#: src/remotes_window.py:522 src/remotes_window.py:634
 msgid "Remote will be available to only you"
 msgstr "Репозиторий будет доступен только вам"
 
-#: src/remotes_window.py:522 src/remotes_window.py:629 src/window.py:797
+#: src/remotes_window.py:530 src/remotes_window.py:637 src/window.py:797
 msgid "System"
 msgstr "Система"
 
-#: src/remotes_window.py:523 src/remotes_window.py:630
+#: src/remotes_window.py:531 src/remotes_window.py:638
 msgid "Remote will be available to every user on the system"
 msgstr "Репозиторий будет доступен всем пользователям системы"
 
-#: src/remotes_window.py:562
+#: src/remotes_window.py:570
 msgid "{} successfully added"
 msgstr "{} успешно добавлен"
 
-#: src/remotes_window.py:612
+#: src/remotes_window.py:620
 msgid "Add {}?"
 msgstr "Добавить {}?"
 
-#: src/remotes_window.py:660
+#: src/remotes_window.py:668
 msgid "Flatpak Repos"
 msgstr "Репозитории Flatpak"
 
@@ -1064,6 +1061,9 @@ msgstr "Приложение будет доступно всем пользов
 #: src/window.py:828
 msgid "File type not supported"
 msgstr "Тип файла не поддерживается"
+
+#~ msgid "Heliguy"
+#~ msgstr "Хелиги"
 
 #~ msgid "View apps from this remote"
 #~ msgstr "Просмотр приложений с этого репозитория"
