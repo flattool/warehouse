@@ -16,10 +16,15 @@ msgstr ""
 "POT-Creation-Date: 2024-01-05 01:05-0500\n"
 =======
 "POT-Creation-Date: 2024-01-20 00:48-0500\n"
+<<<<<<< HEAD
 >>>>>>> b470a0a (Update translation files)
 "PO-Revision-Date: 2023-11-07 04:13+0000\n"
 "Last-Translator: skøldis <frejaland.47@gmail.com>\n"
 >>>>>>> 6984e45 (Update translation files)
+=======
+"PO-Revision-Date: 2024-02-01 18:15+0000\n"
+"Last-Translator: Newbyte <newbie13xd@gmail.com>\n"
+>>>>>>> 534af28 (Translated using Weblate (Swedish))
 "Language-Team: Swedish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/sv/>\n"
 "Language: sv\n"
@@ -137,9 +142,8 @@ msgstr "Hämtar släpp…"
 
 #: data/ui/downgrade.blp:57 data/ui/orphans.blp:90 data/ui/window.blp:113
 #: data/ui/window.blp:140 data/ui/window.blp:167
-#, fuzzy
 msgid "This could take a while."
-msgstr "Installerar… Detta kan ta ett tag"
+msgstr "Detta kan ta en stund."
 
 #: data/ui/downgrade.blp:65 src/app_row_widget.py:261 src/window.py:436
 msgid "Disable Updates"
@@ -147,7 +151,7 @@ msgstr "Inaktivera uppdateringar"
 
 #: data/ui/downgrade.blp:71
 msgid "Select a Release"
-msgstr ""
+msgstr "Välj en utgåva"
 
 <<<<<<< HEAD
 #: data/ui/downgrade.blp:53
@@ -159,6 +163,7 @@ msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
+<<<<<<< HEAD
 <<<<<<< HEAD
 "Detta kommer avinstallera den nuvarande utgåvan och installerade den valde "
 "istället. Tänk på att nedgraderingar kan orsaka problem."
@@ -330,6 +335,10 @@ msgstr "Lägg till andra fjärrar"
 
 #: data/ui/remotes.blp:79
 =======
+=======
+"Detta kommer avinstallera den nuvarande utgåvan och installerade den valde "
+"istället. Tänk på att nedgraderingar kan orsaka problem."
+>>>>>>> 534af28 (Translated using Weblate (Swedish))
 
 #: data/ui/filter.blp:7 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
@@ -364,10 +373,13 @@ msgid "Open Data Folder"
 msgstr "Öppna datamapp"
 
 #: data/ui/orphans.blp:81 data/ui/window.blp:104
+<<<<<<< HEAD
 >>>>>>> 6984e45 (Update translation files)
 #, fuzzy
+=======
+>>>>>>> 534af28 (Translated using Weblate (Swedish))
 msgid "Installing…"
-msgstr "Installation"
+msgstr "Installerar…"
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -459,13 +471,12 @@ msgid "There is no leftover user data"
 msgstr "Det finns ingen överbliven data"
 
 #: data/ui/orphans.blp:107 data/ui/search_install.blp:94 data/ui/window.blp:186
-#, fuzzy
 msgid "No Results Found"
-msgstr "Inga Flatpak Hittades"
+msgstr "Inga resultat hittades"
 
 #: data/ui/orphans.blp:108 data/ui/search_install.blp:95 data/ui/window.blp:187
 msgid "Try a different search term."
-msgstr ""
+msgstr "Försök med en annan sökterm."
 
 #: data/ui/orphans.blp:118 data/ui/window.blp:199
 msgid "Select All"
@@ -499,9 +510,8 @@ msgid "Add a Custom Remote"
 msgstr "Lägg till en anpassat fjärrkontroll"
 
 #: data/ui/properties.blp:45
-#, fuzzy
 msgid "Loading User Data…"
-msgstr "Trasha användardata"
+msgstr "Hämtar användardata"
 
 #: data/ui/properties.blp:50 src/app_row_widget.py:230
 #: src/orphans_window.py:259
@@ -522,66 +532,56 @@ msgstr "Exekveringsmiljö"
 
 #: data/ui/properties.blp:113
 msgid "Show Details in Store"
-msgstr ""
+msgstr "Visa detaljer i butik"
 
 #: data/ui/remotes.blp:5 src/gtk/help-overlay.blp:42
 msgid "Manage Remotes"
 msgstr "Hantera fjärrkontroller"
 
 #: data/ui/remotes.blp:14
-#, fuzzy
-#| msgid "Refresh List"
 msgid "Refresh list of remotes"
-msgstr "Ladda Om Listan"
+msgstr "Uppdatera listan av fjärrar"
 
 #: data/ui/remotes.blp:23
-#, fuzzy
 msgid "Installed Remotes"
-msgstr "Installerad storlek"
+msgstr "Installerade fjärrar"
 
 #: data/ui/remotes.blp:27
-#, fuzzy
 msgid "Show Disabled"
-msgstr "Inaktivera uppdateringar"
+msgstr "Visa avaktiverade"
 
 #: data/ui/remotes.blp:41
 msgid "No remotes on the system, add some from below"
 msgstr ""
+"Inga fjärrar installerade på systemet, lägg till några från listan nedan"
 
 #: data/ui/remotes.blp:45
-#, fuzzy
 msgid "Add a Popular Remote"
-msgstr "Lägg till Flatpak fjärrkontroll"
+msgstr "Lägg till en populär fjärr"
 
 #: data/ui/remotes.blp:49
-#, fuzzy
 msgid "Add Other Remotes"
-msgstr "Lägg till fjärrkontroll"
+msgstr "Lägg till andra fjärrar"
 
 #: data/ui/remotes.blp:79
-#, fuzzy
 msgid "Adding Remote…"
-msgstr "Lägg till fjärrkontroll"
+msgstr "Lägger till fjärren…"
 
 #: data/ui/remotes.blp:88 data/ui/window.blp:60
-#, fuzzy
 msgid "This should only take a moment."
-msgstr "Installerar… Detta kan ta ett tag"
+msgstr "Detta bör bara ta en listen stund."
 
 #: data/ui/search_install.blp:7
-#, fuzzy
 msgid "Install From The Web…"
-msgstr "Installera från fil"
+msgstr "Installera från webben…"
 
 #: data/ui/search_install.blp:44
 msgid "Search for Flatpaks…"
-msgstr ""
+msgstr "Sök efter Flatpakpaket…"
 
 #: data/ui/search_install.blp:49
-#, fuzzy
-#| msgid "No Remotes"
 msgid "All Remotes"
-msgstr "Inga fjärrkontroller"
+msgstr "Alla fjärrar"
 
 #: data/ui/search_install.blp:54 src/gtk/help-overlay.blp:14
 msgid "Search"
@@ -589,42 +589,36 @@ msgstr "Sök"
 
 #: data/ui/search_install.blp:99
 msgid "Search for Flatpaks"
-msgstr ""
+msgstr "Sök efter Flatpakpaket"
 
 #: data/ui/search_install.blp:101
 msgid "Search for Flatpaks that you want to install"
-msgstr ""
+msgstr "Sök efter Flatpakpaket som du vill installera"
 
 #: data/ui/search_install.blp:105
-#, fuzzy
-#| msgid "Search"
 msgctxt "Shown with a spinner while search operation is pending"
 msgid "Searching…"
-msgstr "Sök"
+msgstr "Söker…"
 
 #: data/ui/search_install.blp:119
 msgid "Too many results"
-msgstr ""
+msgstr "För många resultat"
 
 #: data/ui/search_install.blp:120
 msgid "Try being more specific with your search"
-msgstr ""
+msgstr "Försök att vara mer specifik med din sökning"
 
 #: data/ui/snapshots.blp:15
-#, fuzzy
-#| msgid "Open Data Folder"
 msgid "Open Snapshots Folder"
-msgstr "Öppna datamapp"
+msgstr "Öppna snapshotmapp"
 
 #: data/ui/snapshots.blp:34
-#, fuzzy
 msgid "New Snapshot"
-msgstr "Hantera fjärrkontroller"
+msgstr "Ny snapshot"
 
 #: data/ui/snapshots.blp:86
-#, fuzzy
 msgid "No Snapshots"
-msgstr "Hantera fjärrkontroller"
+msgstr "Inga ögonblicksbilder"
 
 #: data/ui/snapshots.blp:87
 >>>>>>> 6984e45 (Update translation files)
@@ -633,11 +627,16 @@ msgid ""
 "time."
 msgstr ""
 <<<<<<< HEAD
+<<<<<<< HEAD
 "Ögonblicksbilder är säkerhetskopior av appens användardata. De kan "
 "återställas när som helst."
 
 #: data/ui/window.blp:18
 =======
+=======
+"Ögonblicksbilder är säkerhetskopior av appens användardata. De kan "
+"återställas när som helst."
+>>>>>>> 534af28 (Translated using Weblate (Swedish))
 
 #: data/ui/window.blp:12
 msgid "Refresh List"
@@ -676,28 +675,34 @@ msgstr "Installerar… Detta kan ta ett tag"
 =======
 #: data/ui/window.blp:59
 msgid "Loading Flatpaks…"
+<<<<<<< HEAD
 msgstr ""
 >>>>>>> 6984e45 (Update translation files)
+=======
+msgstr "Laddar Flatpakpaket…"
+>>>>>>> 534af28 (Translated using Weblate (Swedish))
 
 #: data/ui/window.blp:135
-#, fuzzy
 msgid "Uninstalling…"
-msgstr "Avinstallera"
+msgstr "Avinstallerar…"
 
 #: data/ui/window.blp:162
-#, fuzzy
 msgid "Creating Snapshots…"
-msgstr "Hantera fjärrkontroller"
+msgstr "Skapar ögonblicksbilder…"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr "Inga Flatpak Hittades"
 
+<<<<<<< HEAD
 #: data/ui/window.blp:170
 #, fuzzy
 #| msgid ""
 #| "Warehouse cannot see the list of installed Flatpaks or the system has no "
 #| "Flatpaks installed."
+=======
+#: data/ui/window.blp:175
+>>>>>>> 534af28 (Translated using Weblate (Swedish))
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
@@ -705,7 +710,11 @@ msgstr ""
 "Lagerhus har inte tillgång till listan över installerade Flatpakpaket eller "
 "så har systemet inga Flatpakpaket installerade"
 
+<<<<<<< HEAD
 #: data/ui/window.blp:175
+=======
+#: data/ui/window.blp:180
+>>>>>>> 534af28 (Translated using Weblate (Swedish))
 msgid "No Flatpaks Match Filters"
 msgstr "Inga Flatpakpaket matchar de valda filtren"
 
@@ -720,7 +729,7 @@ msgstr "Inga installerade Flatpak matchar någon av de valda filtren."
 =======
 #: data/ui/window.blp:181
 msgid "No installed Flatpak matches any of the currently applied filters."
-msgstr ""
+msgstr "Inga installerade Flatpak matchar någon av de valda filtren."
 
 #: data/ui/window.blp:205
 >>>>>>> 6984e45 (Update translation files)
@@ -735,6 +744,7 @@ msgstr "Skicka utvalda appars användardata till papperskorgen"
 msgid "Open Copy Menu"
 msgstr "Öppna Kopieringsmeny"
 
+<<<<<<< HEAD
 #: data/ui/window.blp:225
 msgid "Snapshot Selected Apps' Data"
 msgstr "Skapa ögonblicksbild av den valda appens data"
@@ -744,6 +754,21 @@ msgid "Manage Leftover Data…"
 msgstr "Hantera överbliven data…"
 
 #: data/ui/window.blp:244
+=======
+#: data/ui/window.blp:224
+msgid "Snapshot Selected Apps' Data"
+msgstr "Skapa ögonblicksbild av den valda appens data"
+
+#: data/ui/window.blp:234
+msgid "Install From File…"
+msgstr "Installera från fil…"
+
+#: data/ui/window.blp:239
+msgid "Manage Leftover Data…"
+msgstr "Hantera överbliven data…"
+
+#: data/ui/window.blp:248
+>>>>>>> 534af28 (Translated using Weblate (Swedish))
 msgid "Manage Remotes…"
 msgstr "Hantera fjärrar…"
 
@@ -1008,10 +1033,8 @@ msgid "Enable Updates"
 msgstr "Aktivera uppdateringar"
 
 #: src/app_row_widget.py:287
-#, fuzzy
-#| msgid "Manage Remotes"
 msgid "Manage Snapshots"
-msgstr "Hantera fjärrkontroller"
+msgstr "Hantera ögonblicksbilder"
 
 #: src/downgrade_window.py:99
 msgid "Commit Hash: {}"
@@ -1022,9 +1045,8 @@ msgid "Could not downgrade {}"
 msgstr "Kunde inte nedgradera {}"
 
 #: src/downgrade_window.py:129 src/window.py:405
-#, fuzzy
 msgid "Could not disable updates for {}"
-msgstr "Kunde inaktivera uppdateringar för {}"
+msgstr "Kunde inte inaktivera uppdateringar för {}"
 
 #: src/downgrade_window.py:142
 msgid "Downgrading…"
@@ -1036,7 +1058,7 @@ msgstr "Nedgradera {}"
 
 #: src/downgrade_window.py:179
 msgid "Ensure that {} will never be updated to a newer version"
-msgstr ""
+msgstr "Säkerställ att {} aldrig kommer uppdateras till en nyare version"
 
 #: src/filter_window.py:126 src/orphans_window.py:150 src/remotes_window.py:307
 #, fuzzy
@@ -2008,9 +2030,8 @@ msgid "Trash Snapshot"
 msgstr "Hantera fjärrkontroller"
 
 #: src/snapshots_window.py:149
-#, fuzzy
 msgid "Could not create snapshot"
-msgstr "Hantera fjärrkontroller"
+msgstr "Kunde inte skapa ögonblicksbild"
 
 #. Make window unable to close
 #: src/snapshots_window.py:159
