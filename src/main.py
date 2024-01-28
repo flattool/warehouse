@@ -164,11 +164,11 @@ class WarehouseApplication(Adw.Application):
             version=self.version,
             developers=[
                 "Heliguy https://github.com/heliguy4599",
-                "kramo https://kramo.hu",
+                "kramo https://kramo.page",
             ],
             artists=[
                 "Heliguy https://github.com/heliguy4599",
-                "kramo https://kramo.hu",
+                "kramo https://kramo.page",
                 "Amy https://github.com/AtiusAmy",
                 "eryn https://github.com/hericiumvevo",
             ],
