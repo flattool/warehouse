@@ -92,7 +92,7 @@ template $SearchInstallWindow: Adw.Window {
         Adw.StatusPage no_results {
           icon-name: "system-search-symbolic";
           title: _("No Results Found");
-          description: _("Try a different search term.");
+          description: _("Try a different search term");
         }
 
         Adw.StatusPage blank_page {
@@ -102,7 +102,7 @@ template $SearchInstallWindow: Adw.Window {
         }
 
         Adw.StatusPage loading_page {
-          title: C_("Shown with a spinner while search operation is pending", "Searching…");
+          title: C_("Shown with a spinner while search operation is pending", "Searching");
 
           Spinner {
             spinning: true;
@@ -116,7 +116,7 @@ template $SearchInstallWindow: Adw.Window {
 
         Adw.StatusPage too_many {
           icon-name: "error-symbolic";
-          title: _("Too many results");
+          title: _("Too Many Results");
           description: _("Try being more specific with your search");
         }
       }

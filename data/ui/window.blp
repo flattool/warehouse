@@ -56,8 +56,8 @@ template $WarehouseWindow: Adw.ApplicationWindow {
         Stack main_stack {
           Adw.StatusPage loading_flatpaks {
             icon-name: "clock-alt-symbolic";
-            title: _("Loading Flatpaks…");
-            description: _("This should only take a moment.");
+            title: _("Loading Flatpaks");
+            description: _("This should only take a moment");
           }
 
           Box main_box {
@@ -101,7 +101,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
             }
 
             Label {
-              label: _("Installing…");
+              label: _("Installing");
 
               styles [
                 "title-1",
@@ -110,7 +110,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
             }
 
             Label {
-              label: _("This could take a while.");
+              label: _("This could take a while");
               styles ["description", "body"]
             }
           }
@@ -132,12 +132,12 @@ template $WarehouseWindow: Adw.ApplicationWindow {
             }
 
             Label {
-              label: _("Uninstalling…");
+              label: _("Uninstalling");
               styles ["title-1", "title"]
             }
 
             Label {
-              label: _("This could take a while.");
+              label: _("This could take a while");
               styles ["description", "body"]
             }
           }
@@ -159,12 +159,12 @@ template $WarehouseWindow: Adw.ApplicationWindow {
             }
 
             Label {
-              label: _("Creating Snapshots…");
+              label: _("Creating Snapshots");
               styles ["title-1", "title"]
             }
 
             Label {
-              label: _("This could take a while.");
+              label: _("This could take a while");
               styles ["description", "body"]
             }
           }
@@ -172,19 +172,19 @@ template $WarehouseWindow: Adw.ApplicationWindow {
           Adw.StatusPage no_flatpaks {
             icon-name: "error-symbolic";
             title: _("No Flatpaks Found");
-            description: _("Warehouse cannot see the list of installed Flatpaks or the system has no Flatpaks installed.");
+            description: _("Warehouse cannot see the list of installed Flatpaks or the system has no Flatpaks installed");
           }
 
           Adw.StatusPage no_matches {
             icon-name: "funnel-symbolic";
             title: _("No Flatpaks Match Filters");
-            description: _("No installed Flatpak matches any of the currently applied filters.");
+            description: _("No installed Flatpak matches any of the currently applied filters");
           }
 
           Adw.StatusPage no_results {
             icon-name: "system-search-symbolic";
             title: _("No Results Found");
-            description: _("Try a different search term.");
+            description: _("Try a different search term");
           }
         }
       }
@@ -288,7 +288,7 @@ menu copy_menu {
 menu row_menu {
   section {
     item {
-      label: _("Open app");
+      label: _("Open App");
       //action: "win.open-app";
     }
   }
