@@ -11,7 +11,7 @@ template $RemotesWindow: Adw.Window {
     HeaderBar header_bar {
       Button refresh {
         icon-name: "view-refresh-symbolic";
-        tooltip-text: _("Refresh list of remotes");
+        tooltip-text: _("Refresh List of Remotes");
       }
     }
 
@@ -38,7 +38,7 @@ template $RemotesWindow: Adw.Window {
               // }
             };
             Adw.ActionRow no_remotes {
-              title: _("No remotes on the system, add some from below");
+              title: _("No Remotes Found");
             }
           }
           Adw.PreferencesGroup popular_remotes_list {
@@ -76,7 +76,7 @@ template $RemotesWindow: Adw.Window {
           }
 
           Label {
-            label: _("Adding Remote…");
+            label: _("Adding Remote");
 
             styles [
               "title-1",
@@ -85,7 +85,7 @@ template $RemotesWindow: Adw.Window {
           }
 
           Label {
-            label: _("This should only take a moment.");
+            label: _("This should only take a moment");
             styles ["description", "body"]
           }
         }
