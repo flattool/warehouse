@@ -46,49 +46,14 @@ class FilterWindow(Adw.Window):
         #     return
         pass
 
-    def apps_handler(self, switch, _a):
-        self.filter_list[0] = switch.get_active()
+    def gschema_bool_setter(key, state):
+        self.settings.set_boolean(key, state)
         self.is_list_applicable()
 
-    def runtimes_handler(self, switch, _a):
-        self.filter_list[1] = switch.get_active()
+    def gschema_string_setter(key, state):
+        self.settings.set_string(key, state)
         self.is_list_applicable()
-
-    def remotes_enable_handler(self, switch, is_enabled):
-        self.remotes_expander.set_enable_expansion(is_enabled)
-
-        for i in range(len(self.remote_checkboxes)):
-            self.remote_checkboxes[i].set_active(not is_enabled)
-
-    def remotes_check_handler(self, checkbox, install_type, remote):
-        install_type = self.my_utils.get_install_type(install_type)
-        if checkbox.get_active():
-            self.filter_list[2].append(install_type)
-            self.filter_list[3].append(remote)
-        else:
-            self.filter_list[2].remove(install_type)
-            self.filter_list[3].remove(remote)
-
-        self.is_list_applicable()
-
-    def runtimes_enable_handler(self, switch, is_enabled):
-        self.runtimes_expander.set_enable_expansion(is_enabled)
-
-        for i in range(len(self.runtime_checkboxes)):
-            self.runtime_checkboxes[i].set_active(not is_enabled)
-
-        self.is_list_applicable()
-
-    def runtimes_check_handler(self, checkbox, runtime):
-        if checkbox.get_active():
-            if self.filter_list[4] == "all":
-                self.filter_list[4] = []
-            self.filter_list[4].append(runtime)
-        else:
-            self.filter_list[4].remove(runtime)
-
-        self.is_list_applicable()
-
+    
     def generate_list(self):
         self.remotes_expander_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
         self.runtimes_expander_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
@@ -133,16 +98,16 @@ class FilterWindow(Adw.Window):
 
                 remote_row.add_suffix(remote_check)
                 remote_row.set_activatable_widget(remote_check)
-                remote_check.connect(
-                    "toggled", self.remotes_check_handler, install_type, name
-                )
+                # remote_check.connect(
+                #     "toggled", self.remotes_check_handler, install_type, name
+                # )
                 self.remote_checkboxes.append(remote_check)
-                remote_check.set_active(True)
-            except:
-                print("Could not make remote row")
+            except Exception as e:
+                print("error at filter_window.generate_list: Could not make remote row. error", e)
+
         if total < 2:
             self.remotes_expander.set_visible(False)
-        self.remotes_expander_switch.connect("state-set", self.remotes_enable_handler)
+
         self.remotes_expander.add_suffix(self.remotes_expander_switch)
 
         self.runtime_checkboxes = []
@@ -150,21 +115,16 @@ class FilterWindow(Adw.Window):
             current = dependent_runtimes[i]
             runtime_row = Adw.ActionRow(title=current)
             runtime_check = Gtk.CheckButton()
-            runtime_check.connect("toggled", self.runtimes_check_handler, current)
+            # runtime_check.connect(
+            #     "toggled", self.runtimes_check_handler, current
+            # )
             runtime_check.set_active(True)
             self.runtime_checkboxes.append(runtime_check)
             runtime_row.add_suffix(runtime_check)
             runtime_row.set_activatable_widget(runtime_check)
             self.runtimes_expander.add_row(runtime_row)
-        self.runtimes_expander_switch.connect("state-set", self.runtimes_enable_handler)
+        
         self.runtimes_expander.add_suffix(self.runtimes_expander_switch)
-
-    def set_has_apply_button_been_clicked(self, is_clicked):
-        self.has_apply_button_been_clicked = is_clicked
-        if not self.remotes_expander_switch.get_active():
-            self.filter_list[3] = "all"
-        if not self.runtimes_expander_switch.get_active():
-            self.filter_list[4] = "all"
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -172,8 +132,7 @@ class FilterWindow(Adw.Window):
 
 
 
-        def gschema_bool_setter(key, state):
-            self.settings.set_boolean(key, state)
+        
 
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
 
