@@ -80,11 +80,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
     currently_uninstalling = False
     is_result = False
     is_empty = False
-    selected_rows = []
-    flatpak_rows = []
-    # ^ {Row visibility, Row selected, the row itself, properties, row menu, select, the flatpak row from `flatpak list`, mask label}
-    default_filter = [True, False, ["all"], ["all"], ["all"]]
-    total_selected = 0
 
     def filter_func(self, row):
         if (self.search_entry.get_text().lower() in row.get_title().lower()) or (
@@ -92,11 +87,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         ):
             self.is_result = True
             return True
-
-    def remove_row(self, row):
-        row[5].set_active(False)
-        row[0] = False
-        row[2].set_visible(False)
 
     def uninstall_buttons_enable(self, should_enable):
         if self.currently_uninstalling:
@@ -345,10 +335,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
         for index in range(len(self.host_flatpaks)):
             self.create_row(index)
 
-        self.apply_filter()
-
         # self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
         self.batch_actions_enable(False)
+        self.main_stack.set_visible_child(self.main_box)
 
     def refresh_list_of_flatpaks(self, widget, should_toast):
         if self.currently_uninstalling:
@@ -687,68 +676,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.clipboard.set(to_copy)
         self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app refs")))
 
-    def filter_window_handler(self, widget):
-        if widget.get_active() and self.should_open_filter_window:
-            filtwin = FilterWindow(self)
-            filtwin.present()
-        else:
-            self.apply_filter()
-
-    def filter_window_keyboard_handler(self, widget):
-        self.filter_button.set_active(not self.filter_button.get_active())
-
-    def apply_filter(self, filter=default_filter):
-        for i in range(len(self.filter_list)):
-            current = self.filter_list[i]
-            if "user" == current:
-                self.filter_list[i] = "user"
-            else:
-                self.filter_list[i] = "system"
-        show_apps = filter[0]
-        show_runtimes = filter[1]
-        filter_install_type = filter[2]
-        filter_remotes_list = filter[3]
-        filter_runtimes_list = filter[4]
-        total_visible = 0
-        self.batch_select_all_button.set_active(False)
-        self.set_select_all(False)
-
-        index = 0
-        while self.flatpaks_list_box.get_row_at_index(index) != None:
-            current = self.flatpaks_list_box.get_row_at_index(index)
-            visible = True
-
-            if show_apps == False and current.is_runtime == False:
-                visible = False
-
-            if show_runtimes == False and current.is_runtime == True:
-                visible = False
-
-            if not "all" in filter_install_type:
-                if not current.install_type in filter_install_type:
-                    visible = False
-
-            if not "all" in filter_remotes_list:
-                if not current.origin_remote in filter_remotes_list:
-                    visible = False
-
-            if not "all" in filter_runtimes_list:
-                if not current.dependent_runtime in filter_runtimes_list:
-                    visible = False
-
-            if visible == True:
-                total_visible += 1
-
-            current.set_visible(visible)
-            index += 1
-
-        if total_visible == 0:
-            self.main_stack.set_visible_child(self.no_matches)
-            self.search_button.set_sensitive(False)
-        else:
-            self.main_stack.set_visible_child(self.main_box)
-            self.search_button.set_sensitive(True)
-
     def install_callback(self, _a, _b):
         self.main_stack.set_visible_child(self.main_box)
         self.search_button.set_sensitive(True)
@@ -855,7 +782,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
-        self.filter_list = [True, False, ["all"], ["all"], ["all"]]
         self.set_size_request(0, 230)
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse")
         self.settings.bind(
@@ -870,6 +796,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.settings.bind(
             "is-fullscreen", self, "fullscreened", Gio.SettingsBindFlags.DEFAULT
         )
+        other = Gio.Settings.new("io.github.flattool.Warehouse.filter")
+        print(other.get_boolean("show-apps"))
 
         self.new_env = dict(os.environ)
         self.new_env["LC_ALL"] = "C"
@@ -889,6 +817,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.search_bar.connect_entry(self.search_entry)
         self.search_bar.connect("notify", self.on_change)
         self.refresh_button.connect("clicked", self.refresh_list_of_flatpaks, True)
+        self.filter_button.connect("clicked", lambda *_: FilterWindow(self))
         self.batch_mode_button.connect("toggled", self.batch_mode_handler)
         self.batch_clean_button.connect("clicked", self.batch_clean_handler)
         self.batch_uninstall_button.connect(
@@ -901,13 +830,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         event_controller.connect("key-pressed", self.batch_key_handler)
         self.add_controller(event_controller)
         self.main_overlay.add_overlay(self.main_progress_bar)
-        self.should_open_filter_window = True
 
         self.create_action("copy-names", self.copy_names)
         self.create_action("copy-ids", self.copy_IDs)
         self.create_action("copy-refs", self.copy_refs)
-
-        self.filter_button.connect("toggled", self.filter_window_handler)
 
         file_drop = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
         file_drop.connect("drop", self.drop_callback)

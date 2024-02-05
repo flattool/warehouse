@@ -14,4 +14,18 @@
 			<default>false</default>
 		</key>
 	</schema>
+	<schema id="io.github.flattool.Warehouse.filter" path="/io/github/flattool/Warehouse/filter/">
+		<key name="show-apps" type="b">
+			<default>true</default>
+		</key>
+		<key name="show-runtimes" type="b">
+			<default>false</default>
+		</key>
+		<key name="ids-list" type="s">
+			<default>""</default>
+		</key>
+		<key name="remotes-list" type="s">
+			<default>""</default>
+		</key>
+	</schema>
 </schemalist>

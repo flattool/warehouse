@@ -20,29 +20,31 @@ class FilterWindow(Adw.Window):
         if event == Gdk.KEY_Escape:
             self.close()
 
+    # Unused for now. !!!! Don't forget!
     def is_list_applicable(self):
-        self.apply_button.set_sensitive(True)
+        # self.apply_button.set_sensitive(True)
 
-        if not self.filter_list[0] == True and not self.filter_list[1] == True:
-            self.apply_button.set_sensitive(False)
-            return
+        # if not self.filter_list[0] == True and not self.filter_list[1] == True:
+        #     self.apply_button.set_sensitive(False)
+        #     return
 
-        if self.filter_list[3] == []:
-            self.apply_button.set_sensitive(False)
-            return
+        # if self.filter_list[3] == []:
+        #     self.apply_button.set_sensitive(False)
+        #     return
 
-        if self.filter_list[4] == []:
-            self.apply_button.set_sensitive(False)
-            return
+        # if self.filter_list[4] == []:
+        #     self.apply_button.set_sensitive(False)
+        #     return
 
-        if (
-            self.apps_switch.get_active()
-            and (not self.runtimes_switch.get_active())
-            and (not self.remotes_expander_switch.get_active())
-            and (not self.runtimes_expander_switch.get_active())
-        ):
-            self.apply_button.set_sensitive(False)
-            return
+        # if (
+        #     self.apps_switch.get_active()
+        #     and (not self.runtimes_switch.get_active())
+        #     and (not self.remotes_expander_switch.get_active())
+        #     and (not self.runtimes_expander_switch.get_active())
+        # ):
+        #     self.apply_button.set_sensitive(False)
+        #     return
+        pass
 
     def apps_handler(self, switch, _a):
         self.filter_list[0] = switch.get_active()
@@ -164,18 +166,30 @@ class FilterWindow(Adw.Window):
         if not self.runtimes_expander_switch.get_active():
             self.filter_list[4] = "all"
 
-    def disable_filter_toggle(self, _widget):
-        self.app_window.filter_button.set_active(self.has_apply_button_been_clicked)
-
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
+        self.present()
+
+
+
+        def gschema_bool_setter(key, state):
+            self.settings.set_boolean(key, state)
+
+        self.settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
+
+        self.apps_switch.set_active(self.settings.get_boolean("show-apps"))
+        self.apps_switch.connect("state-set", lambda switch, state: gschema_bool_setter("show-apps", state))
+        self.runtimes_switch.set_active(self.settings.get_boolean("show-runtimes"))
+        self.runtimes_switch.connect("state-set", lambda switch, state: gschema_bool_setter("show-runtimes", state))
+
+
 
         # Create Variables
+        event_controller = Gtk.EventControllerKey()
         self.my_utils = myUtils(self)
         self.host_remotes = self.my_utils.get_host_remotes()
         self.host_flatpaks = main_window.host_flatpaks
         self.filter_list = [False, False, [], [], []]
-        event_controller = Gtk.EventControllerKey()
         self.app_window = main_window
         self.has_apply_button_been_clicked = False
 
@@ -187,21 +201,18 @@ class FilterWindow(Adw.Window):
         self.apply_button.connect(
             "clicked", lambda *_: self.set_has_apply_button_been_clicked(True)
         )
-        self.apply_button.connect(
-            "clicked", lambda *_: main_window.apply_filter(self.filter_list)
-        )
-        self.apply_button.connect("clicked", lambda *_: self.close())
+        # self.apply_button.connect(
+        #     "clicked", lambda *_: main_window.apply_filter(self.filter_list)
+        # )
+        # self.apply_button.connect("clicked", lambda *_: self.close())
 
         self.cancel_button.connect("clicked", lambda *_: self.close())
 
-        self.connect("close-request", self.disable_filter_toggle)
-
-        self.apps_switch.connect("state-set", self.apps_handler)
-        self.runtimes_switch.connect("state-set", self.runtimes_handler)
+        # self.apps_switch.connect("state-set", self.apps_handler)
+        # self.runtimes_switch.connect("state-set", self.runtimes_handler)
         event_controller.connect("key-pressed", self.key_handler)
 
         # Calls
-        self.apps_switch.set_active(True)
         self.set_size_request(260, 230)
         if not self.host_remotes[0][0] == "":
             self.generate_list()
