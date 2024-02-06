@@ -71,7 +71,8 @@ class PropertiesWindow(Adw.Window):
             task = Gio.Task.new(None, None, self.get_size_callback)
             task.run_in_thread(self.get_size_thread)
         else:
-            self.data_row.set_title(_("No User Data"))
+            self.data_row.set_title("")
+            self.data_row.set_subtitle(_("No User Data"))
             self.spinner.set_visible(False)
 
         if "runtime" in self.current_flatpak[12]:
@@ -104,6 +105,7 @@ class PropertiesWindow(Adw.Window):
             row = Adw.ActionRow(title=column_headers[i], activatable=True)
             row.add_suffix(Gtk.Image.new_from_icon_name("edit-copy-symbolic"))
             row.set_subtitle(GLib.markup_escape_text(self.current_flatpak[i]))
+            row.add_css_class("property")
             row.connect(
                 "activated",
                 lambda *_a, row=row: self.copy_item(

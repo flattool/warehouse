@@ -72,6 +72,8 @@ template $PropertiesWindow: Adw.Window {
                   Spinner spinner {
                     spinning: true;
                   }
+
+                  styles["property"]
                 }
 
                 Adw.ActionRow view_apps {
@@ -107,6 +109,8 @@ template $PropertiesWindow: Adw.Window {
                       "flat"
                     ]
                   }
+
+                  styles["property"]
                 }
 
                 Adw.ActionRow details {
@@ -115,7 +119,7 @@ template $PropertiesWindow: Adw.Window {
 
                   [suffix]
                   Image {
-                    icon-name: "arrow2-top-right-symbolic";
+                    icon-name: "adw-external-link-symbolic";
                   }
                 }
               }
