@@ -16,7 +16,7 @@ template $FilterWindow: Adw.Window {
       Button cancel_button {
         label: _("Cancel");
       }
-
+      
       [end]
       Button apply_button {
         label: _("Apply");
@@ -53,31 +53,31 @@ template $FilterWindow: Adw.Window {
                   Adw.ActionRow apps_row {
                     title: _("Show Apps");
 
-                    Switch apps_switch {
+                    Switch show_apps_switch {
                       valign: center;
                     }
 
-                    activatable-widget: apps_switch;
+                    activatable-widget: show_apps_switch;
                   }
 
-                  Adw.ActionRow runtimes_row {
+                  Adw.ActionRow show_runtimes_row {
                     title: _("Show Runtimes");
 
-                    Switch runtimes_switch {
+                    Switch show_runtimes_switch {
                       valign: center;
                     }
 
-                    activatable-widget: runtimes_switch;
+                    activatable-widget: show_runtimes_switch;
                   }
 
                   Adw.ExpanderRow remotes_expander {
                     enable-expansion: false;
-                    title: _("Filter Apps by Remotes");
+                    title: _("Filter by Remotes");
                   }
 
                   Adw.ExpanderRow runtimes_expander {
                     enable-expansion: false;
-                    title: _("Filter Apps by Runtime");
+                    title: _("Filter by Runtimes");
                   }
                 }
 

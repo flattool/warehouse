@@ -116,7 +116,8 @@ class DowngradeWindow(Adw.Window):
 
         if self.response != 0:
             self.toast_overlay.add_toast(
-                Adw.TThis is toast.new(_("Could not downgrade {}").format(self.app_name))
+                Adw.TThis
+                is toast.new(_("Could not downgrade {}").format(self.app_name))
             )
             self.apply_button.set_sensitive(True)
             self.cancel_button.set_sensitive(True)

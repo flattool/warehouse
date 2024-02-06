@@ -80,6 +80,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     currently_uninstalling = False
     is_result = False
     is_empty = False
+    total_selected = 0
 
     def filter_func(self, row):
         if (self.search_entry.get_text().lower() in row.get_title().lower()) or (
@@ -336,6 +337,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.create_row(index)
 
         # self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
+        self.apply_filter()
         self.batch_actions_enable(False)
         self.main_stack.set_visible_child(self.main_box)
 
@@ -347,6 +349,36 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.flatpaks_list_box.remove_all()
         self.generate_list_of_flatpaks()
         self.batch_mode_button.set_active(False)
+
+    def apply_filter(self):
+        settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
+        show_apps = settings.get_boolean("show-apps")
+        show_runtimes = settings.get_boolean("show-runtimes")
+        remotes_list = settings.get_string("remotes-list").split(",")
+        runtimes_list = settings.get_string("runtimes-list").split(",")
+        i = 0
+        while self.flatpaks_list_box.get_row_at_index(i) != None:
+            current = self.flatpaks_list_box.get_row_at_index(i)
+            id = current.app_id
+            dependant = current.dependent_runtime
+            remote = current.origin_remote
+            is_runtime = current.is_runtime
+
+            visible = True
+            if (not show_apps) and (not is_runtime):
+                visible = False
+
+            if (not show_runtimes) and is_runtime:
+                visible = False
+
+            if (not "all" in remotes_list) and (not remote in remotes_list):
+                visible = False
+
+            if (not "all" in runtimes_list) and (not dependant in runtimes_list):
+                visible = False
+
+            current.set_is_visible(visible)
+            i += 1
 
     def open_data_folder(self, path):
         try:

@@ -29,6 +29,7 @@ from gi.repository import Gtk, Gio, Adw, GLib
 from .window import WarehouseWindow
 from .remotes_window import RemotesWindow
 from .orphans_window import OrphansWindow
+from .filter_window import FilterWindow
 from .search_install_window import SearchInstallWindow
 from .const import Config
 
@@ -115,8 +116,7 @@ class WarehouseApplication(Adw.Application):
         RemotesWindow(self.props.active_window).present()
 
     def filters_shortcut(self, widget, _):
-        window = self.props.active_window
-        window.filterWindowKeyboardHandler(window)
+        FilterWindow(self.props.active_window)
 
     def main_menu_shortcut(self, widget, _):
         window = self.props.active_window

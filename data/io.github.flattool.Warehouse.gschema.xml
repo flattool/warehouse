@@ -21,11 +21,11 @@
 		<key name="show-runtimes" type="b">
 			<default>false</default>
 		</key>
-		<key name="ids-list" type="s">
-			<default>""</default>
-		</key>
 		<key name="remotes-list" type="s">
-			<default>""</default>
+			<default>"all"</default>
+		</key>
+		<key name="runtimes-list" type="s">
+			<default>"all"</default>
 		</key>
 	</schema>
 </schemalist>
