@@ -45,7 +45,7 @@ class FilterWindow(Adw.Window):
             self.apply_button.set_sensitive(False)
             return
 
-        if(show_apps == self.settings.get_boolean("show-apps")) and (show_runtimes == self.settings.get_boolean("show-runtimes")) and (self.remotes_string_staging == self.settings.get_string("remotes-list").split(',')) and (self.runtimes_string_staging == self.settings.get_string("runtimes-string").split(',')):
+        if(show_apps == self.settings.get_boolean("show-apps")) and (show_runtimes == self.settings.get_boolean("show-runtimes")) and (self.remotes_string_staging == self.settings.get_string("remotes-list").split(',')) and (self.runtimes_string_staging == self.settings.get_string("runtimes-list").split(',')):
             self.apply_button.set_sensitive(False)
             return
 
