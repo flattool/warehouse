@@ -194,7 +194,6 @@ class SnapshotsWindow(Adw.Window):
                 )
             else:
                 self.toast_overlay.add_toast(Adw.Toast.new(_("Snapshot applied")))
-                self.parent_window.refresh_list_of_flatpaks(self, False)
 
             self.new_snapshot.set_tooltip_text("")
             self.show_list_or_empty()
