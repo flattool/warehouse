@@ -617,14 +617,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
             def callback(*args):
                 self.main_stack.set_visible_child(self.main_box)
                 self.disconnect(self.no_close)
-                self.batch_select_all_button.set_active(True)
-                self.set_select_all(True)
                 self.search_button.set_sensitive(True)
                 self.batch_mode_button.set_sensitive(True)
                 self.batch_mode_bar.set_revealed(True)
 
-            self.batch_select_all_button.set_active(False)
-            self.set_select_all(False)
             self.search_button.set_sensitive(False)
             self.batch_mode_button.set_sensitive(False)
             self.batch_mode_bar.set_revealed(False)
