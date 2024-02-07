@@ -182,7 +182,7 @@ class WarehouseApplication(Adw.Application):
             support_url="https://matrix.to/#/#warehouse-development:matrix.org",
             issue_url="https://github.com/flattool/warehouse/issues",
         )
-        about.add_link(_("Donate"), "https://github.com/flattool/warehouse/issues")
+        about.add_link(_("Donate"), "https://ko-fi.com/heliguy")
         about.add_credit_section(
             _("Contributors"),
             [
