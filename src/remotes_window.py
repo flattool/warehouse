@@ -174,7 +174,7 @@ class RemotesWindow(Adw.Window):
         dialog.connect("response", disable_response, dialog.choose_finish)
         dialog.present()
 
-    def view_paks(self, type, id):
+    def view_paks(self, type, remote):
         if "user" in type:
             type = "user"
         elif "system" in type:
@@ -186,10 +186,11 @@ class RemotesWindow(Adw.Window):
                 type,
             )
             return
-        self.app_window.should_open_filter_window = False
-        self.app_window.filter_button.set_active(True)
-        self.app_window.apply_filter([True, True, [type], [id], ["all"]])
-        self.app_window.should_open_filter_window = True
+        settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
+        for key in settings.list_keys():
+            settings.reset(key)
+        settings.set_string("remotes-list", remote)
+        self.main_window.apply_filter()
         self.close()
 
     def generate_list(self):
@@ -210,7 +211,7 @@ class RemotesWindow(Adw.Window):
         self.rows_in_list = []
 
         def rowCopyHandler(widget, to_copy):
-            self.app_window.clipboard.set(to_copy)
+            self.main_window.clipboard.set(to_copy)
             self.make_toast(_("Copied {}").format(to_copy))
 
         self.no_remotes.set_visible(True)
@@ -681,7 +682,7 @@ class RemotesWindow(Adw.Window):
         self.my_utils = myUtils(self)
         self.host_remotes = []
         self.host_flatpaks = []
-        self.app_window = main_window
+        self.main_window = main_window
         self.new_env = dict(os.environ)
         self.new_env["LC_ALL"] = "C"
         self.should_pulse = False
