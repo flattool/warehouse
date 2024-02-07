@@ -18,22 +18,20 @@ template $SnapshotsWindow: Adw.Window {
 
     [bottom]
     ActionBar action_bar {
-      Box {
+      [center]
+      Button new_snapshot {
         halign: center;
-        hexpand: true;
-        Button new_snapshot {
-          sensitive: bind action_bar.revealed;
-          margin-top: 6;
-          margin-bottom: 6;
-          styles[
-            "pill",
-            "suggested-action"
-          ]
+        sensitive: bind action_bar.revealed;
+        margin-top: 6;
+        margin-bottom: 6;
+        styles[
+          "pill",
+          "suggested-action"
+        ]
 
-          Adw.ButtonContent {
-            label: _("New Snapshot");
-            icon-name: "plus-large-symbolic";
-          }
+        Adw.ButtonContent {
+          label: _("New Snapshot");
+          icon-name: "plus-large-symbolic";
         }
       }
     }
