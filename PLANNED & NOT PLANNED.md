@@ -1,38 +1,26 @@
 > This document exists to inform feature requesters, contributors, and anyone else who is curios on the state of Warehouse. Make sure to give this a read before requesting any new features.
 
-# Features Currently Being Worked On
+# Features Being Worked On
 
-### Features releasing in this upcoming update
+### Features that have all work done and will release in the next update (ready to ship)
 
-- Snapshots (backing up app data)
-    - Snapshots window and batch applying snapshots
-- Properties window upgrade
-    - Show app details in store
-- Manage Remotes window upgrade
-    - View disabled remotes
-    - Enable and disable remotes
-    - Set a filter for a remote
-    - Combined Popular Remotes window into this window
-- Reduce app launch time
-- Remove warning labels from the main list, placing them in a popover button now
-- View troubleshooting information
-- Donation link
-- 
+- Remembering filters on app close
 
-### Features that will release in future updates
+### Features that might release in the next update, but will release in some update
 
 - Installing flatpaks from a search
+- Edit flatpak pins
+- Uninstall unused packages
 
 # Features Being Considered
 
-### Features that might be added in the future but have no work done on them at all
+### Features that might be worked on in the future
 
 - Supporting host icon themes
 - Updating flatpaks
-- Edit flatpak pins
-- Remember filter settings
-    - Set a custom default filter
-- Uninstall unused packages
+- Open flatpak ref and remote files with Warehouse from the file manager
+- Choose a custom install location for a remote
+- Move remotes between install locations
 
 # Features not Planned to be Added
 
