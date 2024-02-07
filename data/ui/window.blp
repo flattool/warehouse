@@ -178,7 +178,13 @@ template $WarehouseWindow: Adw.ApplicationWindow {
           Adw.StatusPage no_matches {
             icon-name: "funnel-symbolic";
             title: _("No Flatpaks Match Filters");
-            description: _("No installed Flatpak matches any of the currently applied filters");
+            description: _("No installed Flatpak matches all of the currently applied filters");
+            [child]
+            Button reset_filters_button {
+              label: _("Reset Filters");
+              halign: center;
+              styles["pill"]
+            }
           }
 
           Adw.StatusPage no_results {

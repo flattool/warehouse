@@ -10,21 +10,7 @@ template $FilterWindow: Adw.Window {
   Adw.ToolbarView main_toolbar_view {
     [top]
     HeaderBar header_bar {
-      show-title-buttons: false;
-
-      [start]
-      Button cancel_button {
-        label: _("Cancel");
-      }
-      
-      [end]
-      Button apply_button {
-        label: _("Apply");
-
-        styles [
-          "suggested-action"
-        ]
-      }
+      show-title-buttons: true;
     }
 
     content: Adw.ToastOverlay toast_overlay {
@@ -71,12 +57,12 @@ template $FilterWindow: Adw.Window {
                   }
 
                   Adw.ExpanderRow remotes_expander {
-                    enable-expansion: false;
+                    enable-expansion: true;
                     title: _("Filter by Remotes");
                   }
 
                   Adw.ExpanderRow runtimes_expander {
-                    enable-expansion: false;
+                    enable-expansion: true;
                     title: _("Filter by Runtimes");
                   }
                 }

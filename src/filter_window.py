@@ -5,12 +5,16 @@ import os
 import pathlib
 
 
+
+
+
+
+import random
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/filter.ui")
 class FilterWindow(Adw.Window):
     __gtype_name__ = "FilterWindow"
 
-    cancel_button = Gtk.Template.Child()
-    apply_button = Gtk.Template.Child()
     show_apps_switch = Gtk.Template.Child()
     show_runtimes_switch = Gtk.Template.Child()
     remotes_expander = Gtk.Template.Child()
@@ -21,122 +25,87 @@ class FilterWindow(Adw.Window):
         if event == Gdk.KEY_Escape:
             self.close()
 
-    def is_list_applicable(self):
-        self.apply_button.set_sensitive(True)
+    def gsettings_bool_set(self, key, value):
+        self.settings.set_boolean(key, value)
+        self.check_is_resetable()
+        self.main_window.apply_filter()
 
-        show_apps = self.show_apps_switch.get_active()
-        show_runtimes = self.show_runtimes_switch.get_active()
-        filter_by_remotes = self.remotes_switch.get_active()
-        filter_by_runtimes = self.runtimes_switch.get_active()
-
-        if (not show_apps) and (not show_runtimes):
-            self.apply_button.set_sensitive(False)
+    def check_is_resetable(self):
+        if not self.show_apps_switch.get_active():
+            self.reset_button.set_sensitive(True)
             return
-
-        if show_runtimes and filter_by_runtimes:
-            self.apply_button.set_sensitive(False)
+        if self.show_runtimes_switch.get_active():
+            self.reset_button.set_sensitive(True)
             return
-
-        if filter_by_remotes and self.remotes_string_staging == ["all"]:
-            self.apply_button.set_sensitive(False)
+        if self.total_remotes_selected != 0:
+            self.reset_button.set_sensitive(True)
             return
-
-        if filter_by_runtimes and self.runtimes_string_staging == ["all"]:
-            self.apply_button.set_sensitive(False)
+        if self.total_runtimes_selected != 0:
+            self.reset_button.set_sensitive(True)
             return
+        self.reset_button.set_sensitive(False)
 
-        if(show_apps == self.settings.get_boolean("show-apps")) and (show_runtimes == self.settings.get_boolean("show-runtimes")) and (self.remotes_string_staging == self.settings.get_string("remotes-list").split(',')) and (self.runtimes_string_staging == self.settings.get_string("runtimes-list").split(',')):
-            self.apply_button.set_sensitive(False)
-            return
-
-    def show_apps_handler(self, switch, state):
-        self.is_list_applicable()
-        self.show_apps_staging = state
-
-    def show_runtimes_handler(self, switch, state):
-        self.is_list_applicable()
-        self.show_runtimes_staging = state
-
-    def remote_handler(self, remote, should_add):
-        the_list = self.remotes_string_staging
-        if should_add:
-            the_list.append(remote)
-            if "all" in the_list and len(the_list) > 1:
-                the_list.remove("all")
+    def row_subtitle_updater(self):
+        if self.total_runtimes_selected > 0:
+            self.runtimes_expander.set_subtitle(_("{} selected").format(self.total_runtimes_selected))
         else:
-            the_list.remove(remote)
-            if len(the_list) < 1:
-                the_list.append("all")
-
-        self.is_list_applicable()
-
-    def runtime_handler(self, runtime, should_add):
-        the_list = self.runtimes_string_staging
-        if should_add:
-            the_list.append(runtime)
-            if "all" in the_list and len(the_list) > 1:
-                the_list.remove("all")
+            self.runtimes_expander.set_subtitle("")
+        if self.total_remotes_selected > 0:
+            self.remotes_expander.set_subtitle(_("{} selected").format(self.total_remotes_selected))
         else:
-            the_list.remove(runtime)
-            if len(the_list) < 1:
-                the_list.append("all")
-
-        self.is_list_applicable()
-
-    def remotes_switch_handler(self, switch, state):
-        self.is_list_applicable()
-        for box in self.remote_checkboxes:
-            box.set_sensitive(state)
-            box.set_active(False)
-        self.remotes_expander.set_enable_expansion(state)
-        if not state:
-            self.remotes_string_staging = ["all"]
-
-    def runtimes_switch_handler(self, switch, state):
-        self.is_list_applicable()
-        for box in self.runtime_checkboxes:
-            box.set_sensitive(state)
-            box.set_active(False)
-        self.runtimes_expander.set_enable_expansion(state)
-        if not state:
-            self.runtimes_string_staging = ["all"]
+            self.remotes_expander.set_subtitle("")
 
     def reset_filter_gsettings(self):
         self.show_apps_switch.set_active(True)
         self.show_runtimes_switch.set_active(False)
-        self.remotes_switch.set_active(False)
-        self.runtimes_switch.set_active(False)
+        for button in self.remote_checkboxes:
+            button.set_active(False)
+        for button in self.runtime_checkboxes:
+            button.set_active(False)
+        for key in self.settings.list_keys():
+            self.settings.reset(key)
+        self.total_remotes_selected = 0
+        self.total_runtimes_selected = 0
+        self.row_subtitle_updater()
+        self.reset_button.set_sensitive(False)
 
-    def on_apply(self):
-        self.settings.set_boolean("show-apps", self.show_apps_staging)
-        self.settings.set_boolean("show-runtimes", self.show_runtimes_staging)
-        self.settings.set_string("remotes-list", ",".join(self.remotes_string_staging))
-        self.settings.set_string(
-            "runtimes-list", ",".join(self.runtimes_string_staging)
-        )
+    def runtime_handler(self, button, runtime):
+        if button.get_active():
+            self.total_runtimes_selected += 1
+            self.runtimes_string = self.runtimes_string.replace("all", "")
+            self.runtimes_string += f"{runtime},"
+        else:
+            self.total_runtimes_selected -= 1
+            self.runtimes_string = self.runtimes_string.replace(f"{runtime},", "")
+            if len(self.runtimes_string) < 1:
+                self.runtimes_string += "all"
+        self.settings.set_string("runtimes-list", self.runtimes_string)
+        self.check_is_resetable()
+        self.row_subtitle_updater()
         self.main_window.apply_filter()
-        self.close()
 
-    def generate_list(self):
+    def remote_handler(self, button, remote):
+        if button.get_active():
+            self.total_remotes_selected += 1
+            self.remotes_string = self.remotes_string.replace("all", "")
+            self.remotes_string += f"{remote},"
+        else:
+            self.total_remotes_selected -= 1
+            self.remotes_string = self.remotes_string.replace(f"{remote},", "")
+            if len(self.remotes_string) < 1:
+                self.remotes_string += "all"
+        self.settings.set_string("remotes-list", self.remotes_string)
+        self.check_is_resetable()
+        self.row_subtitle_updater()
+        self.main_window.apply_filter()
 
-        dependent_runtimes = self.my_utils.get_dependent_runtimes()
-
+    def generate_remotes(self):
         if (
             len(self.host_remotes) < 2
         ):  # Don't give the ability to filter by remotes if there is only 1
             self.remotes_expander.set_visible(False)
 
-        if (
-            len(dependent_runtimes) < 2
-        ):  # Don't give the ability to filter by runtimes if there is only 1
-            self.runtimes_expander.set_visible(False)
-
-        self.remote_checkboxes = []
-        remotes_list = self.remotes_string_staging
         total = 0
-        self.remotes_switch.connect("state-set", self.remotes_switch_handler)
-        self.remotes_expander.add_suffix(self.remotes_switch)
-        self.remotes_switch.set_active(remotes_list[0] != "all")
         for i in range(len(self.host_remotes)):
             try:
                 name = self.host_remotes[i][0]
@@ -153,13 +122,16 @@ class FilterWindow(Adw.Window):
                 label = Gtk.Label(label=("{} wide").format(install_type))
                 label.add_css_class("subtitle")
                 remote_check = Gtk.CheckButton()
-                remote_check.set_active(name in remotes_list)
+                if name in self.remotes_string:
+                    remote_check.set_active(True)
+                    self.total_remotes_selected += 1
                 remote_check.connect(
                     "toggled",
                     lambda button=remote_check, remote=name: self.remote_handler(
-                        remote, button.get_active()
+                        button, remote
                     ),
                 )
+                self.remote_checkboxes.append(remote_check)
 
                 if "user" in install_type:
                     remote_row.set_subtitle(_("User wide"))
@@ -170,55 +142,56 @@ class FilterWindow(Adw.Window):
 
                 remote_row.add_suffix(remote_check)
                 remote_row.set_activatable_widget(remote_check)
-                self.remote_checkboxes.append(remote_check)
             except Exception as e:
                 print(
-                    "error at filter_window.generate_list: Could not make remote row. error",
+                    "error at filter_window.generate_remotes: Could not make remote row. error",
                     e,
                 )
 
+        self.row_subtitle_updater()
         if total < 2:
             self.remotes_expander.set_visible(False)
 
-        self.runtime_checkboxes = []
-        runtimes_list = self.runtimes_string_staging
-        self.runtimes_switch.connect("state-set", self.runtimes_switch_handler)
-        self.runtimes_expander.add_suffix(self.runtimes_switch)
-        self.runtimes_switch.set_active(runtimes_list[0] != "all")
-        for current in dependent_runtimes:
+    def generate_runtimes(self):
+        if (
+            len(self.dependent_runtimes) < 2
+        ):  # Don't give the ability to filter by runtimes if there is only 1
+            self.runtimes_expander.set_visible(False)
+
+        for current in self.dependent_runtimes:
             runtime_row = Adw.ActionRow(title=current)
             runtime_check = Gtk.CheckButton()
-            runtime_check.set_active(current in runtimes_list)
+            if current in self.runtimes_string:
+                runtime_check.set_active(True)
+                self.total_runtimes_selected += 1
             runtime_check.connect(
                 "toggled",
                 lambda button=runtime_check, runtime=current: self.runtime_handler(
-                    runtime, button.get_active()
+                    button, runtime
                 ),
             )
             self.runtime_checkboxes.append(runtime_check)
             runtime_row.add_suffix(runtime_check)
             runtime_row.set_activatable_widget(runtime_check)
             self.runtimes_expander.add_row(runtime_row)
+        self.row_subtitle_updater()
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
         # Create Variables
         event_controller = Gtk.EventControllerKey()
-        self.remotes_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
-        self.runtimes_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
         self.main_window = main_window
-        self.settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
         self.my_utils = myUtils(self)
         self.host_remotes = self.my_utils.get_host_remotes()
-        self.show_apps_staging = self.settings.get_boolean("show-apps")
-        self.show_runtimes_staging = self.settings.get_boolean("show-runtimes")
-        self.remotes_string_staging = self.settings.get_string("remotes-list").split(
-            ","
-        )
-        self.runtimes_string_staging = self.settings.get_string("runtimes-list").split(
-            ","
-        )
+        self.dependent_runtimes = self.my_utils.get_dependent_runtimes()
+        self.settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
+        self.remotes_string = self.settings.get_string("remotes-list")
+        self.runtimes_string = self.settings.get_string("runtimes-list")
+        self.remote_checkboxes = []
+        self.runtime_checkboxes = []
+        self.total_remotes_selected = 0
+        self.total_runtimes_selected = 0
 
         # Window Things
         self.set_transient_for(main_window)
@@ -227,19 +200,21 @@ class FilterWindow(Adw.Window):
 
         # Connections
         event_controller.connect("key-pressed", self.key_handler)
-        self.show_runtimes_switch.connect("state-set", self.show_runtimes_handler)
-        self.show_apps_switch.connect("state-set", self.show_apps_handler)
-        self.apply_button.connect("clicked", lambda *_: self.on_apply())
-        self.cancel_button.connect("clicked", lambda *_: self.close())
+        self.show_apps_switch.connect("state-set", lambda button, state: self.gsettings_bool_set("show-apps", state))
+        self.show_runtimes_switch.connect("state-set", lambda button, state: self.gsettings_bool_set("show-runtimes", state))
         self.reset_button.connect("clicked", lambda *_: self.reset_filter_gsettings())
 
         # Calls
-        if not self.host_remotes[0][0] == "":
-            self.generate_list()
-        else:
+        if self.host_remotes[0][0] == "":
             self.remotes_expander.set_visible(False)
-            self.runtimes_expander.set_visible(False)
+        else:
+            self.generate_remotes()
 
-        self.show_apps_switch.set_active(self.show_apps_staging)
-        self.show_runtimes_switch.set_active(self.show_runtimes_staging)
+        if self.dependent_runtimes == []:
+            self.runtimes_expander.set_visible(False)
+        else:
+            self.generate_runtimes()
+
+        self.show_apps_switch.set_active(self.settings.get_boolean("show-apps"))
+        self.show_runtimes_switch.set_active(self.settings.get_boolean("show-runtimes"))
         self.present()

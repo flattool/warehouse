@@ -65,6 +65,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     snapshotting = Gtk.Template.Child()
     loading_flatpaks = Gtk.Template.Child()
     no_matches = Gtk.Template.Child()
+    reset_filters_button = Gtk.Template.Child()
 
     main_progress_bar = Gtk.ProgressBar(visible=False, can_target=False)
     main_progress_bar.add_css_class("osd")
@@ -337,9 +338,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.create_row(index)
 
         # self.windowSetEmpty(not self.flatpaks_list_box.get_row_at_index(0))
-        self.apply_filter()
         self.batch_actions_enable(False)
         self.main_stack.set_visible_child(self.main_box)
+        self.apply_filter()
 
     def refresh_list_of_flatpaks(self, widget, should_toast):
         if self.currently_uninstalling:
@@ -350,12 +351,19 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.generate_list_of_flatpaks()
         self.batch_mode_button.set_active(False)
 
+    def reset_filters(self):
+        settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
+        for key in settings.list_keys():
+            settings.reset(key)
+        self.apply_filter()
+
     def apply_filter(self):
         settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
         show_apps = settings.get_boolean("show-apps")
         show_runtimes = settings.get_boolean("show-runtimes")
         remotes_list = settings.get_string("remotes-list").split(",")
         runtimes_list = settings.get_string("runtimes-list").split(",")
+        total_visible = 0
         i = 0
         while self.flatpaks_list_box.get_row_at_index(i) != None:
             current = self.flatpaks_list_box.get_row_at_index(i)
@@ -378,7 +386,12 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 visible = False
 
             current.set_is_visible(visible)
+            total_visible += visible
             i += 1
+        if(total_visible == 0) or (runtimes_list != ['all'] and show_runtimes):
+            self.main_stack.set_visible_child(self.no_matches)
+        else:
+            self.main_stack.set_visible_child(self.main_box)
 
     def open_data_folder(self, path):
         try:
@@ -828,8 +841,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.settings.bind(
             "is-fullscreen", self, "fullscreened", Gio.SettingsBindFlags.DEFAULT
         )
-        other = Gio.Settings.new("io.github.flattool.Warehouse.filter")
-        print(other.get_boolean("show-apps"))
 
         self.new_env = dict(os.environ)
         self.new_env["LC_ALL"] = "C"
@@ -857,6 +868,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         )
         self.batch_select_all_button.connect("clicked", self.select_all_handler)
         self.batch_snapshot_button.connect("clicked", self.batch_snapshot_handler)
+        self.reset_filters_button.connect("clicked", lambda *_: self.reset_filters())
         self.batch_actions_enable(False)
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.batch_key_handler)
