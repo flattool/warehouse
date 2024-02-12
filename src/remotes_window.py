@@ -457,7 +457,7 @@ class RemotesWindow(Adw.Window):
         def name_update(widget):
             is_enabled = True
             self.name_to_add = widget.get_text()
-            name_pattern = re.compile(r"^[a-zA-Z\-]+$")
+            name_pattern = re.compile(r"^[a-zA-Z0-9\-._]+$")
             if not name_pattern.match(self.name_to_add):
                 is_enabled = False
 
