@@ -369,7 +369,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             current = self.flatpaks_list_box.get_row_at_index(i)
             id = current.app_id
             dependant = current.dependent_runtime
-            remote = current.origin_remote
+            remote = f"{current.origin_remote}<>{current.install_type}"
             is_runtime = current.is_runtime
 
             visible = True
@@ -389,8 +389,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
             total_visible += visible
             i += 1
         if(total_visible == 0) or (runtimes_list != ['all'] and show_runtimes):
+            self.window_set_empty(True)
             self.main_stack.set_visible_child(self.no_matches)
         else:
+            self.window_set_empty(False)
             self.main_stack.set_visible_child(self.main_box)
 
     def open_data_folder(self, path):

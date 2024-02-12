@@ -84,14 +84,14 @@ class FilterWindow(Adw.Window):
         self.row_subtitle_updater()
         self.main_window.apply_filter()
 
-    def remote_handler(self, button, remote):
+    def remote_handler(self, button, remote, install_type):
         if button.get_active():
             self.total_remotes_selected += 1
             self.remotes_string = self.remotes_string.replace("all", "")
-            self.remotes_string += f"{remote},"
+            self.remotes_string += f"{remote}<>{install_type},"
         else:
             self.total_remotes_selected -= 1
-            self.remotes_string = self.remotes_string.replace(f"{remote},", "")
+            self.remotes_string = self.remotes_string.replace(f"{remote}<>{install_type},", "")
             if len(self.remotes_string) < 1:
                 self.remotes_string += "all"
         self.settings.set_string("remotes-list", self.remotes_string)
@@ -111,7 +111,7 @@ class FilterWindow(Adw.Window):
                 name = self.host_remotes[i][0]
                 title = self.host_remotes[i][1]
                 url = self.host_remotes[i][2]
-                install_type = self.host_remotes[i][7]
+                install_type = self.my_utils.get_install_type(self.host_remotes[i][7])
                 remote_row = Adw.ActionRow(title=title)
                 if "disabled" in install_type:
                     continue
@@ -127,8 +127,8 @@ class FilterWindow(Adw.Window):
                     self.total_remotes_selected += 1
                 remote_check.connect(
                     "toggled",
-                    lambda button=remote_check, remote=name: self.remote_handler(
-                        button, remote
+                    lambda button=remote_check, remote=name, install_type=install_type: self.remote_handler(
+                        button, remote, install_type
                     ),
                 )
                 self.remote_checkboxes.append(remote_check)
