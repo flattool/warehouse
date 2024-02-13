@@ -350,6 +350,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.flatpaks_list_box.remove_all()
         self.generate_list_of_flatpaks()
         self.batch_mode_button.set_active(False)
+        self.total_selected = 0
 
     def reset_filters(self):
         settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
