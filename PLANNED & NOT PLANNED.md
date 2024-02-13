@@ -11,6 +11,7 @@
 - Installing flatpaks from a search
 - Edit flatpak pins
 - Uninstall unused packages
+- Loading pages display the current working task, and how much is left
 
 # Features Being Considered
 
