@@ -264,7 +264,7 @@ class OrphansWindow(Adw.Window):
             )
             dir_row.add_suffix(open_row_button)
 
-            select_button = Gtk.CheckButton()
+            select_button = Gtk.CheckButton(tooltip_text=_("Select"))
             select_button.add_css_class("selection-mode")
             select_button.connect("toggled", self.selection_handler, dir_name)
             select_button.set_active(self.should_select_all)

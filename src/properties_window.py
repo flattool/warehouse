@@ -102,7 +102,7 @@ class PropertiesWindow(Adw.Window):
             if self.current_flatpak[i] == "":
                 continue
 
-            row = Adw.ActionRow(title=column_headers[i], activatable=True)
+            row = Adw.ActionRow(title=column_headers[i], tooltip_text=_("Copy"), activatable=True)
             row.add_suffix(Gtk.Image.new_from_icon_name("edit-copy-symbolic"))
             row.set_subtitle(GLib.markup_escape_text(self.current_flatpak[i]))
             row.add_css_class("property")

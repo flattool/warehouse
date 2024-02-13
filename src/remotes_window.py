@@ -225,7 +225,7 @@ class RemotesWindow(Adw.Window):
                 remote_row = Adw.ActionRow(title=title)
 
                 more = Gtk.MenuButton(
-                    icon_name="view-more-symbolic", valign=Gtk.Align.CENTER
+                    icon_name="view-more-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View More")
                 )
                 more.add_css_class("flat")
                 options = Gtk.Popover()

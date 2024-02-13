@@ -141,7 +141,7 @@ class AppRow(Adw.ActionRow):
         )
         self.add_suffix(properties_button)
 
-        self.tickbox = Gtk.CheckButton(visible=False)  # visible=self.in_batch_mode
+        self.tickbox = Gtk.CheckButton(visible=False, tooltip_text=_("Select"))  # visible=self.in_batch_mode
         self.tickbox.add_css_class("selection-mode")
         self.tickbox.connect("toggled", parent_window.row_select_handler)
         self.add_suffix(self.tickbox)
@@ -149,8 +149,8 @@ class AppRow(Adw.ActionRow):
         self.set_activatable(False)
 
         self.row_menu = Gtk.MenuButton(
-            icon_name="view-more-symbolic", valign=Gtk.Align.CENTER
-        )  # visible=not self.in_batch_mode
+            icon_name="view-more-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View More")
+        )
         self.row_menu.add_css_class("flat")
         row_menu_model = Gio.Menu()
         copy_menu_model = Gio.Menu()
