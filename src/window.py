@@ -359,6 +359,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.apply_filter()
 
     def apply_filter(self):
+        self.batch_mode_button.set_active(False)
         settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
         show_apps = settings.get_boolean("show-apps")
         show_runtimes = settings.get_boolean("show-runtimes")

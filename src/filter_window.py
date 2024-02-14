@@ -198,6 +198,9 @@ class FilterWindow(Adw.Window):
         self.add_controller(event_controller)
         self.set_size_request(260, 230)
 
+        self.show_apps_switch.set_active(self.settings.get_boolean("show-apps"))
+        self.show_runtimes_switch.set_active(self.settings.get_boolean("show-runtimes"))
+
         # Connections
         event_controller.connect("key-pressed", self.key_handler)
         self.show_apps_switch.connect("state-set", lambda button, state: self.gsettings_bool_set("show-apps", state))
@@ -215,6 +218,4 @@ class FilterWindow(Adw.Window):
         else:
             self.generate_runtimes()
 
-        self.show_apps_switch.set_active(self.settings.get_boolean("show-apps"))
-        self.show_runtimes_switch.set_active(self.settings.get_boolean("show-runtimes"))
         self.present()
