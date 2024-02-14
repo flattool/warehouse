@@ -86,9 +86,10 @@ template $OrphansWindow: Adw.Window {
               ]
             }
 
-            Label {
-              label: _("This could take a while");
-
+            Label installing_status {
+              label: _("");
+              justify: center;
+              
               styles [
                 "description",
                 "body"

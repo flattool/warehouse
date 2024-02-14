@@ -25,6 +25,7 @@ class OrphansWindow(Adw.Window):
     oepn_folder_button = Gtk.Template.Child()
     installing = Gtk.Template.Child()
     main_box = Gtk.Template.Child()
+    installing_status = Gtk.Template.Child()
 
     window_title = _("Manage Leftover Data")
     host_home = str(pathlib.Path.home())
@@ -88,8 +89,8 @@ class OrphansWindow(Adw.Window):
         self.keep_checking = True
         task = Gio.Task.new(None, None, self.install_callback)
         task.run_in_thread(
-            lambda _task, _obj, _data, _cancellable, id_list=self.selected_dirs, remote=self.selected_remote, app_type=self.selected_remote_type, progress_bar=self.progress_bar: self.my_utils.install_flatpak(
-                id_list, remote, app_type, progress_bar
+            lambda _task, _obj, _data, _cancellable, id_list=self.selected_dirs, remote=self.selected_remote, app_type=self.selected_remote_type, progress_bar=self.progress_bar, status_label=self.installing_status: self.my_utils.install_flatpak(
+                id_list, remote, app_type, progress_bar, status_label
             )
         )
 

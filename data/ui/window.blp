@@ -136,8 +136,9 @@ template $WarehouseWindow: Adw.ApplicationWindow {
               styles ["title-1", "title"]
             }
 
-            Label {
-              label: _("This could take a while");
+            Label uninstalling_status {
+              label: _("");
+              justify: center;
               styles ["description", "body"]
             }
           }

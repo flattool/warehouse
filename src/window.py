@@ -66,6 +66,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     loading_flatpaks = Gtk.Template.Child()
     no_matches = Gtk.Template.Child()
     reset_filters_button = Gtk.Template.Child()
+    uninstalling_status = Gtk.Template.Child()
 
     main_progress_bar = Gtk.ProgressBar(visible=False, can_target=False)
     main_progress_bar.add_css_class("osd")
@@ -115,7 +116,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def uninstall_flatpak_thread(self, ref_arr, id_arr, type_arr, should_trash):
         self.my_utils.uninstall_flatpak(
-            ref_arr, type_arr, should_trash, self.main_progress_bar
+            ref_arr, type_arr, should_trash, self.main_progress_bar, self.uninstalling_status
         )
 
     def uninstall_flatpak(self, should_trash):
