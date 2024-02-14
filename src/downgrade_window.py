@@ -23,8 +23,8 @@ class DowngradeWindow(Adw.Window):
     main_stack = Gtk.Template.Child()
     outerbox = Gtk.Template.Child()
 
-    def key_handler(self, _a, event, _c, _d):
-        if event == Gdk.KEY_Escape:
+    def key_handler(self, controller, keyval, keycode, state):
+        if keyval == Gdk.KEY_Escape or (keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK):
             self.close()
 
     def selection_handler(self, button, index):

@@ -27,6 +27,10 @@ class SearchInstallWindow(
 
     is_debug = GLib.environ_getenv(GLib.get_environ(), "G_MESSAGES_DEBUG") == "all"
 
+    def key_handler(self, controller, keyval, keycode, state):
+        if keyval == Gdk.KEY_Escape or (keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK):
+            self.close()
+
     def search_response(self, a, b):
         self.results_list_box.remove_all()
         print(self.search_results)
@@ -119,10 +123,6 @@ class SearchInstallWindow(
         print(x)
 
         self.remotes_dropdown.set_popover(remotes_pop)
-
-    def key_handler(self, _a, event, _c, _d):
-        if event == Gdk.KEY_Escape:
-            self.close()
 
     def __init__(self, parent_window, **kwargs):
         super().__init__(**kwargs)

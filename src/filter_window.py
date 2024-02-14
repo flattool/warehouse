@@ -21,8 +21,8 @@ class FilterWindow(Adw.Window):
     runtimes_expander = Gtk.Template.Child()
     reset_button = Gtk.Template.Child()
 
-    def key_handler(self, _a, event, _c, _d):
-        if event == Gdk.KEY_Escape:
+    def key_handler(self, controller, keyval, keycode, state):
+        if keyval == Gdk.KEY_Escape or (keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK):
             self.close()
 
     def gsettings_bool_set(self, key, value):

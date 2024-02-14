@@ -27,9 +27,13 @@ class RemotesWindow(Adw.Window):
     rows_in_list = []
     rows_in_popular_list = []
 
-    def key_handler(self, _a, event, _c, _d):
-        if event == Gdk.KEY_Escape:
+    def key_handler(self, controller, keyval, keycode, state):
+        if keyval == Gdk.KEY_Escape or (keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK):
             self.close()
+        if keyval == Gdk.KEY_o and state == Gdk.ModifierType.CONTROL_MASK:
+            self.add_file_handler()
+        if keyval == Gdk.KEY_n and state == Gdk.ModifierType.CONTROL_MASK:
+            self.add_handler(None)
 
     def make_toast(self, text):
         self.toast_overlay.add_toast(Adw.Toast.new(text))
@@ -665,7 +669,7 @@ class RemotesWindow(Adw.Window):
         except GLib.GError:
             pass
 
-    def add_file_handler(self, widet):
+    def add_file_handler(self):
         filter = Gtk.FileFilter(name=_("Flatpak Repos"))
         filter.add_suffix("flatpakrepo")
         filters = Gio.ListStore.new(Gtk.FileFilter)
@@ -701,7 +705,7 @@ class RemotesWindow(Adw.Window):
         self.add_from_file.add_suffix(
             Gtk.Image.new_from_icon_name("right-large-symbolic")
         )
-        self.add_from_file.connect("activated", self.add_file_handler)
+        self.add_from_file.connect("activated", lambda *_: self.add_file_handler())
         self.custom_remote.add_suffix(
             Gtk.Image.new_from_icon_name("right-large-symbolic")
         )

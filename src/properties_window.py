@@ -31,6 +31,10 @@ class PropertiesWindow(Adw.Window):
     eol_runtime_banner = Gtk.Template.Child()
     mask_banner = Gtk.Template.Child()
 
+    def key_handler(self, controller, keyval, keycode, state):
+        if keyval == Gdk.KEY_Escape or (keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK):
+            self.close()
+
     def copy_item(self, to_copy, to_toast=None):
         self.get_clipboard().set(to_copy)
         if to_toast:
@@ -206,12 +210,8 @@ class PropertiesWindow(Adw.Window):
                 _("{} is masked and will not be updated").format(self.app_name)
             )
 
-        def key_handler(_a, event, _c, _d):
-            if event == Gdk.KEY_Escape:
-                self.close()
-
         event_controller = Gtk.EventControllerKey()
-        event_controller.connect("key-pressed", key_handler)
+        event_controller.connect("key-pressed", self.key_handler)
         self.add_controller(event_controller)
 
         self.generate_upper()

@@ -516,8 +516,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         if not widget.get_active():
             self.batch_select_all_button.set_active(False)
 
-    def batch_key_handler(self, _b, event, _c, _d):
-        if event == Gdk.KEY_Escape:
+    def key_handler(self, controller, keyval, keycode, state):
+        if keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK:
+            self.close()
+        if keyval == Gdk.KEY_Escape:
             self.batch_mode_button.set_active(False)
 
     def batch_actions_enable(self, should_enable):
@@ -870,7 +872,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.reset_filters_button.connect("clicked", lambda *_: self.reset_filters())
         self.batch_actions_enable(False)
         event_controller = Gtk.EventControllerKey()
-        event_controller.connect("key-pressed", self.batch_key_handler)
+        event_controller.connect("key-pressed", self.key_handler)
         self.add_controller(event_controller)
         self.main_overlay.add_overlay(self.main_progress_bar)
 
