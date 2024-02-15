@@ -67,6 +67,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     no_matches = Gtk.Template.Child()
     reset_filters_button = Gtk.Template.Child()
     uninstalling_status = Gtk.Template.Child()
+    install_button = Gtk.Template.Child()
 
     main_progress_bar = Gtk.ProgressBar(visible=False, can_target=False)
     main_progress_bar.add_css_class("osd")

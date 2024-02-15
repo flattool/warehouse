@@ -36,6 +36,13 @@ template $WarehouseWindow: Adw.ApplicationWindow {
         icon-name: "selection-mode-symbolic";
         tooltip-text: _("Toggle Selection Mode");
       }
+
+      [end]
+      MenuButton install_button {
+        icon-name: "plus-large-symbolic";
+        tooltip-text: _("Install New Flatpak");
+        menu-model: install_menu;
+      }
     }
 
     [top]
@@ -137,7 +144,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
             }
 
             Label uninstalling_status {
-              label: _("");
+              label: "";
               justify: center;
               styles ["description", "body"]
             }
@@ -238,11 +245,6 @@ template $WarehouseWindow: Adw.ApplicationWindow {
 menu primary_menu {
   section {
     item {
-      label: _("Install From File…");
-      action: "app.install-from-file";
-    }
-
-    item {
       label: _("Manage Leftover Data…");
       action: "app.manage-data-folders";
     }
@@ -255,11 +257,6 @@ menu primary_menu {
       label: _("Manage Remotes…");
       action: "app.show-remotes-window";
     }
-
-    // item {
-    //   label: _("Install From The Web…");
-    //   action: "app.open-search-install";
-    // }
 
     item {
       label: _("_Keyboard Shortcuts");
@@ -292,11 +289,16 @@ menu copy_menu {
   }
 }
 
-menu row_menu {
+menu install_menu {
   section {
     item {
-      label: _("Open App");
-      //action: "win.open-app";
+      label: _("Install From File…");
+      action: "app.install-from-file";
+    }
+
+    item {
+      label: _("Install From The Web…");
+      action: "app.open-search-install";
     }
   }
 }

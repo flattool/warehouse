@@ -34,5 +34,6 @@
     <file preprocess="xml-stripblanks" alias="important-small-symbolic.svg">../data/icons/important-small-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="eye-not-looking-symbolic.svg">../data/icons/eye-not-looking-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="eye-open-negative-filled-symbolic.svg">../data/icons/eye-open-negative-filled-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="left-large-symbolic.svg">../data/icons/left-large-symbolic.svg</file>
   </gresource>
 </gresources>

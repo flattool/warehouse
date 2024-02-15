@@ -4,6 +4,34 @@ import subprocess
 import os
 import pathlib
 
+class RemoteRow(Adw.ActionRow):
+    def __init__(self, remote, **kwargs):
+        super().__init__(**kwargs)
+        my_utils = myUtils(self)
+        self.install_type = my_utils.get_install_type(remote[7])
+        if self.install_type == "disabled":
+            self.set_visible(False)
+            return
+        self.set_activatable(True)
+        self.remote = remote
+        if remote[1] == "-":
+            self.set_title(remote[0])
+        else:
+            self.set_title(remote[1])
+        self.set_subtitle(_("{} wide").format(self.install_type))
+        self.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
+
+class ResultRow(Adw.ActionRow):
+    def __init__(self, flatpak, **kwargs):
+        super().__init__(**kwargs)
+        my_utils = myUtils(self)
+        self.flatpak = flatpak
+        self.set_title(GLib.markup_escape_text(flatpak[0]))
+        self.set_subtitle(GLib.markup_escape_text(flatpak[1]))
+        self.check = Gtk.CheckButton()
+        self.check.add_css_class("selection-mode")
+        self.add_suffix(self.check)
+        self.set_activatable_widget(self.check)
 
 @Gtk.Template(
     resource_path="/io/github/flattool/Warehouse/../data/ui/search_install.ui"
@@ -13,144 +41,179 @@ class SearchInstallWindow(
 ):  # TODO: stop execution of thread when search is changed
     __gtype_name__ = "SearchInstallWindow"
 
-    results_list_box = Gtk.Template.Child()
-    main_stack = Gtk.Template.Child()
-    main_overlay = Gtk.Template.Child()
-    no_results = Gtk.Template.Child()
-    too_many = Gtk.Template.Child()
-    cancel_button = Gtk.Template.Child()
-    blank_page = Gtk.Template.Child()
-    loading_page = Gtk.Template.Child()
-    search_button = Gtk.Template.Child()
+    back_button = Gtk.Template.Child()
+    nav_view = Gtk.Template.Child()
+    search_page = Gtk.Template.Child()
+    results_page = Gtk.Template.Child()
+    remotes_list = Gtk.Template.Child()
     search_entry = Gtk.Template.Child()
-    remotes_dropdown = Gtk.Template.Child()
-
-    is_debug = GLib.environ_getenv(GLib.get_environ(), "G_MESSAGES_DEBUG") == "all"
+    blank_page = Gtk.Template.Child()
+    inner_stack = Gtk.Template.Child()
+    outer_stack = Gtk.Template.Child()
+    loading_page = Gtk.Template.Child()
+    results_scroll = Gtk.Template.Child()
+    results_list = Gtk.Template.Child()
+    too_many = Gtk.Template.Child()
+    action_bar = Gtk.Template.Child()
+    search_button = Gtk.Template.Child()
+    no_results = Gtk.Template.Child()
+    install_button = Gtk.Template.Child()
+    installing = Gtk.Template.Child()
+    installing_status = Gtk.Template.Child()
+    search_box = Gtk.Template.Child()
+    toast_overlay = Gtk.Template.Child()
+    progress_bar = Gtk.Template.Child()
 
     def key_handler(self, controller, keyval, keycode, state):
         if keyval == Gdk.KEY_Escape or (keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK):
             self.close()
 
-    def search_response(self, a, b):
-        self.results_list_box.remove_all()
-        print(self.search_results)
-        if (self.is_debug and len(self.search_results) == 5) or (
-            len(self.search_results) == 1 and len(self.search_results[0]) == 1
-        ):  # This is unreliable with G_DEBUG
-            self.main_stack.set_visible_child(self.no_results)
+    def reset(self):
+        self.results = []
+        self.results_list.remove_all()
+        self.inner_stack.set_visible_child(self.blank_page)
+        
+    def check_handler(self, button, row):
+        if button.get_active():
+            self.selected.append(row.flatpak)
+        else:
+            self.selected.remove(row.flatpak)
+        if len(self.selected) == 0:
+            self.set_title(self.title)
+            self.action_bar.set_revealed(False)
+        else:
+            self.set_title(_("{} Selected").format(len(self.selected)))
+            self.action_bar.set_revealed(True)
+
+    def generate_remotes_list(self):
+        total = 0
+        for rem in self.host_remotes:
+            if self.my_utils.get_install_type(rem[7]) != "disabled":
+                total += 1
+        if total < 2:
+            self.nav_view.push(self.results_page)
+            self.back_button.set_visible(False)
+            self.back_button.set_sensitive(False)
+            self.search_remote = self.host_remotes[0][0]
+            self.install_type = self.host_remotes[0][7]
+            self.nav_view.connect("popped", lambda *_: self.nav_view.push(self.results_page))
+            self.nav_view.set_animate_transitions(False)
+            self.title = _("Search {}").format(self.search_remote)
+            self.set_title(self.title)
+            self.search_entry.set_placeholder_text(_("Search {}").format(self.search_remote))
+            self.search_entry.grab_focus()
             return
-        if len(self.search_results) > 50:
-            self.main_stack.set_visible_child(self.too_many)
+        self.nav_view.connect("popped", lambda *_: self.set_title(""))
+        for remote in self.host_remotes:
+            row = RemoteRow(remote)
+            row.connect("activated", self.remote_choice)
+            self.remotes_list.append(row)
+
+    def generate_results_list(self):
+        for pak in self.results:
+            row = ResultRow(pak)
+            row.check.set_active(row.flatpak in self.selected)
+            row.check.connect("toggled", self.check_handler, row)
+            if self.search_remote in row.flatpak[5]:
+                self.results_list.append(row)
+        if self.results_list.get_row_at_index(0):
+            self.inner_stack.set_visible_child(self.results_scroll)
+        else:
+            self.inner_stack.set_visible_child(self.no_results)
+
+    def remote_choice(self, row):
+        self.reset()
+        self.selected = []
+        self.install_type = row.install_type
+        self.search_remote = row.remote[0]
+        self.search_entry.set_placeholder_text(_("Search {}").format(self.search_remote))
+        self.title = _("Search {}").format(self.search_remote)
+        self.set_title(self.title)
+        self.nav_view.push(self.results_page)
+        self.search_entry.grab_focus()
+        self.action_bar.set_revealed(len(self.selected) > 0)
+
+    def search_handler(self, *args):
+        self.reset()
+        self.inner_stack.set_visible_child(self.loading_page)
+        query = self.search_entry.get_text().strip()
+        if query == "":
+            self.inner_stack.set_visible_child(self.blank_page)
             return
-        self.main_stack.set_visible_child(self.main_overlay)
-        for i in range(len(self.search_results)):
-            try:
-                print("creating row {}".format(str(i)))
-                row = Adw.ActionRow(
-                    title=GLib.markup_escape_text(self.search_results[i][0]),
-                    subtitle=self.search_results[i][2],
-                )
-                print("row {} is {}".format(str(i), self.search_results[i][0]))
-                check = Gtk.CheckButton()
-                check.add_css_class("selection-mode")
-                check.connect("toggled", self.on_check)
-                label = Gtk.Label(
-                    label=self.search_results[i][3],
-                    justify=Gtk.Justification.RIGHT,
-                    wrap=True,
-                    hexpand=True,
-                )
-                row.add_suffix(label)
-                row.add_suffix(check)
-                row.set_activatable_widget(check)
-                self.results_list_box.append(row)
-            except:
-                print("Could not create row")
+        def search_thread(*args):
+            command = ['flatpak-spawn', '--host', 'flatpak', 'search', '--columns=all', query]
+            output = subprocess.run(
+                command, capture_output=True, text=True, env=self.new_env
+            ).stdout.strip().split('\n')
+            for elm in output:
+                self.results.append(elm.split("\t"))
 
-    def on_check(self, button):
-        print(button.get_active())
+        def done(*args):
+            if len(self.results) > 50:
+                self.inner_stack.set_visible_child(self.too_many)
+                return
+            if ['No matches found'] in self.results:
+                self.inner_stack.set_visible_child(self.no_results)
+                return
+            self.generate_results_list()
 
-    def search_thread(self):
-        command = [
-            "flatpak-spawn",
-            "--host",
-            "flatpak",
-            "search",
-            "--columns=all",
-            self.to_search,
-        ]
-        if self.remote_to_search:
-            command += self.remote_to_search
+        task = Gio.Task.new(None, None, done)
+        task.run_in_thread(search_thread)
 
-        output = subprocess.run(
-            command, capture_output=True, text=True, env=self.new_env
-        ).stdout
-        lines = output.strip().split("\n")
-        columns = lines[0].split("\t")
-        data = [columns]
-        for line in lines[1:]:
-            row = line.split("\t")
-            data.append(row)
-        data = sorted(data, key=lambda item: item[0].lower())
-        self.search_results = data
+    def install_handler(self, *args):
+        paks = []
+        for pak in self.selected:
+            paks.append(pak[2])
+        self.outer_stack.set_visible_child(self.installing)
+        self.set_title(_("Install From The Web"))
 
-    def on_search(self, widget):
-        self.main_stack.set_visible_child(self.loading_page)
-        self.to_search = self.search_entry.get_text()
-        if len(self.to_search) < 1 or " " in self.to_search:
-            self.results_list_box.remove_all()
-            self.main_stack.set_visible_child(self.blank_page)
-            return
-        task = Gio.Task.new(None, None, self.search_response)
-        task.run_in_thread(lambda *_: self.search_thread())
+        def thread(*args):
+            self.my_utils.install_flatpak(paks, self.search_remote, self.install_type, self.progress_bar, self.installing_status)
 
-    def set_choice(self, index):
-        print(index)
-
-    def remotes_chooser_creator(self):
-        remotes_pop = Gtk.Popover()
-        remotes_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        # remotes_pop.set_size_request(400, 1) # why?
-        remotes_pop.set_child(remotes_box)  # don't use ScrolledWindows in popovers!
-
-        # why not just comment this code out and leave it unimplemented— it does nothing of use
-        for i in range(1, 3):
-            x = 0
-            height = remotes_pop.get_size(x)
-            all = Gtk.Button(label="all")
-            all.add_css_class("flat")
-            remotes_box.append(all)
-        print(x)
-
-        self.remotes_dropdown.set_popover(remotes_pop)
+        def done(*args):
+            self.parent_window.refresh_list_of_flatpaks(None, False)
+            self.disconnect(self.no_close_id)  # Make window able to close
+            if self.my_utils.install_success:
+                self.close()
+                self.parent_window.toast_overlay.add_toast(Adw.Toast.new(_("Installed successfully")))
+            else:
+                self.progress_bar.set_visible(False)
+                self.nav_view.pop()
+                self.outer_stack.set_visible_child(self.nav_view)
+                self.toast_overlay.add_toast(Adw.Toast.new(_("Some apps didn't install")))
+        
+        self.no_close_id = self.connect(
+                "close-request", lambda event: True
+        )  # Make window unable to close
+        task = Gio.Task.new(None, None, done)
+        task.run_in_thread(thread)
 
     def __init__(self, parent_window, **kwargs):
         super().__init__(**kwargs)
 
         # Create Variables
         self.my_utils = myUtils(self)
-        self.search_results = []
-        self.to_search = ""
         self.new_env = dict(os.environ)
         self.new_env["LC_ALL"] = "C"
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.key_handler)
-        self.cancel_button.connect("clicked", lambda *_: self.close())
+        self.host_remotes = self.my_utils.get_host_remotes()
         self.parent_window = parent_window
+        self.results = []
+        self.selected = []
+        self.search_remote = ""
+        self.install_type = ""
+        self.title = _("Install From The Web")
+
+        self.back_button.connect("clicked", lambda *_: self.nav_view.pop())
+        self.search_entry.connect("activate", self.search_handler)
+        self.search_button.connect("clicked", self.search_handler)
+        self.install_button.connect("clicked", self.install_handler)
 
         # Apply Widgets
         self.add_controller(event_controller)
         self.set_transient_for(parent_window)
-        # self.search_bar.connect_entry(self.search_entry)
-        self.search_entry.connect("activate", self.on_search)
-        self.search_button.connect("clicked", self.on_search)
-        self.search_entry.connect("changed", lambda *_: self.search_entry.grab_focus())
-        # self.search_entry.set_key_capture_widget(self.results_list_box)
-        self.search_entry.grab_focus()
-
-        self.host_remotes = self.my_utils.get_host_remotes()
-        if len(self.host_remotes) > 1:
-            self.remotes_chooser_creator()
-
-        self.remote_to_search = []
-        self.main_stack.set_visible_child(self.blank_page)
+        self.generate_remotes_list()
+        self.set_size_request(260, 230)
+        self.set_modal(True)
+        self.set_resizable(True)

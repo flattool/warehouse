@@ -5,13 +5,13 @@
 ### Features that have all work done and will release in the next update (ready to ship)
 
 - Remembering filters on app close
+- Loading pages display the current working task, and how much is left
 
 ### Features that might release in the next update, but will release in some update
 
 - Installing flatpaks from a search
 - Edit flatpak pins
 - Uninstall unused packages
-- Loading pages display the current working task, and how much is left
 
 # Features Being Considered
 

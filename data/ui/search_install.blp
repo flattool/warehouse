@@ -4,121 +4,195 @@ using Adw 1;
 template $SearchInstallWindow: Adw.Window {
   default-width: 500;
   default-height: 450;
-  title: _("Install From The Web…");
+  title: "";
   modal: true;
 
   Adw.ToolbarView main_toolbar_view {
-    [top]
-    HeaderBar header_bar {
-      show-title-buttons: false;
-
-      [start]
-      Button cancel_button {
-        label: _("Cancel");
-      }
-
-      [end]
-      Button install_button {
-        label: _("Install");
-
-        styles [
-          "suggested-action"
-        ]
-      }
-    }
-
-    [top]
-    Adw.Clamp {
-      Box {
-        margin-top: 6;
-        margin-start: 6;
-        margin-end: 6;
-
-        styles [
-          "linked"
-        ]
-
-        [start]
-        SearchEntry search_entry {
-          hexpand: true;
-          placeholder-text: _("Search for Flatpaks…");
-        }
-
-        [start]
-        MenuButton remotes_dropdown {
-          label: _("All Remotes");
-        }
-
-        [start]
-        Button search_button {
-          tooltip-text: _("Search");
-          icon-name: "system-search-symbolic";
-        }
-      }
-    }
-
-    content: Adw.ToastOverlay toast_overlay {
-      Stack main_stack {
-        Overlay main_overlay {
-          [overlay]
-          ProgressBar progress_bar {
-            pulse-step: 0.7;
-            can-target: false;
-
-            styles [
-              "osd"
-            ]
-          }
-
-          ScrolledWindow {
-            Adw.Clamp {
-              ListBox results_list_box {
-                margin-top: 12;
-                margin-bottom: 12;
-                margin-start: 12;
-                margin-end: 12;
-                hexpand: true;
-                valign: start;
-                selection-mode: none;
-
-                styles [
-                  "boxed-list"
-                ]
+    content:
+    Stack outer_stack {
+      Adw.NavigationView nav_view {
+        Adw.NavigationPage search_page {
+          title: _("Search Criteria");
+          Adw.ToastOverlay toast_overlay {
+            Adw.ToolbarView {
+              [top]
+              HeaderBar {
               }
+              content:
+              Adw.StatusPage {
+                title: _("Choose a Remote to Search");
+                valign: start;
+                child:
+                Adw.Clamp {
+                  ListBox remotes_list {
+                    selection-mode: none;
+                    styles ["boxed-list"]
+                  }
+                };
+              };
             }
           }
         }
+        Adw.NavigationPage results_page {
+          title: _("Results");
+          Adw.ToolbarView {
+            [top]
+            HeaderBar {
+              [start]
+              Button back_button {
+                tooltip-text: _("Back");
+                icon-name: "left-large-symbolic";
+              }
+            }
+            [bottom]
+            ActionBar action_bar {
+              revealed: false;
+              [center]
+              Button install_button {
+                margin-top: 6;
+                margin-bottom: 6;
+                styles[
+                  "pill",
+                  "suggested-action"
+                ]
 
-        Adw.StatusPage no_results {
-          icon-name: "system-search-symbolic";
-          title: _("No Results Found");
-          description: _("Try a different search term");
-        }
+                Adw.ButtonContent {
+                  label: _("Install");
+                  icon-name: "plus-large-symbolic";
+                }
+              }
+            }
+            [top]
+            Adw.Clamp {            
+              Box search_box {
+                margin-top: 4;
+                margin-start: 12;
+                margin-end: 12;
+                margin-bottom: 6;
+                SearchEntry search_entry {
+                  hexpand: true;
+                }
+                Button search_button {
+                  icon-name: "right-large-symbolic";
+                  tooltip-text: _("Start Search");
+                }
+                styles ["linked"]
+              }
+            }
+            content:
+            Stack inner_stack {
 
-        Adw.StatusPage blank_page {
-          title: _("Search for Flatpaks");
-          icon-name: "flatpak-symbolic";
-          description: _("Search for Flatpaks that you want to install");
-        }
+              Adw.StatusPage blank_page {
+                title: _("Search for Flatpaks");
+                icon-name: "flatpak-symbolic";
+                description: _("Search for Flatpaks that you want to install");
+              }
 
-        Adw.StatusPage loading_page {
-          title: C_("Shown with a spinner while search operation is pending", "Searching");
+              Adw.StatusPage no_results {
+                icon-name: "system-search-symbolic";
+                title: _("No Results Found");
+                description: _("Try a different search term");
+              }
 
-          Spinner {
-            spinning: true;
-            height-request: 32;
-            width-request: 32;
-            margin-top: 0;
-            halign: center;
-            valign: center;
+              Box loading_page {
+                orientation: vertical;
+                spacing: 10;
+                margin-top: 40;
+                margin-bottom: 20;
+                halign: center;
+                valign: center;
+
+                Spinner {
+                  margin-bottom: 35;
+                  width-request: 30;
+                  height-request: 30;
+                  opacity: 0.5;
+                  spinning: true;
+                }
+
+                Label {
+                  label: _("Searching");
+
+                  styles [
+                    "title-1",
+                    "title"
+                  ]
+                }
+              } 
+
+              Adw.StatusPage too_many {
+                icon-name: "error-symbolic";
+                title: _("Too Many Results");
+                description: _("Try being more specific with your search");
+              }
+
+              ScrolledWindow results_scroll {
+                vexpand: true;
+                Adw.Clamp {
+                  ListBox results_list {
+                    margin-top: 6;
+                    margin-bottom: 12;
+                    margin-start: 12;
+                    margin-end: 12;
+                    hexpand: true;
+                    valign: start;
+                    selection-mode: none;
+                    styles ["boxed-list"]
+                  }
+                }
+              }
+            };
           }
         }
-
-        Adw.StatusPage too_many {
-          icon-name: "error-symbolic";
-          title: _("Too Many Results");
-          description: _("Try being more specific with your search");
+      }
+      Adw.ToolbarView installing {
+        [top]
+        HeaderBar {
         }
+        content:
+        Overlay overlay {
+          [overlay]
+          ProgressBar progress_bar {
+            visible: false;
+            can-target: false;
+            styles ["osd"]
+          }
+          Box {
+            orientation: vertical;
+            spacing: 10;
+            margin-top: 40;
+            margin-bottom: 20;
+            halign: center;
+            valign: center;
+
+            Spinner {
+              margin-bottom: 35;
+              width-request: 30;
+              height-request: 30;
+              opacity: 0.5;
+              spinning: true;
+            }
+
+            Label {
+              label: _("Installing");
+
+              styles [
+                "title-1",
+                "title"
+              ]
+            }
+
+            Label installing_status {
+              label: "";
+              justify: center;
+              
+              styles [
+                "description",
+                "body"
+              ]
+            }
+          }
+        };
       }
     };
   }

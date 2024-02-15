@@ -32,6 +32,7 @@ from .orphans_window import OrphansWindow
 from .filter_window import FilterWindow
 from .search_install_window import SearchInstallWindow
 from .const import Config
+from .common import myUtils
 
 
 class WarehouseApplication(Adw.Application):
@@ -70,7 +71,7 @@ class WarehouseApplication(Adw.Application):
         self.create_action("set-filter", self.filters_shortcut, ["<primary>t"])
         self.create_action("install-from-file", self.install_from_file, ["<primary>o"])
         self.create_action("open-menu", self.main_menu_shortcut, ["F10"])
-        # self.create_action("open-search-install", self.open_search_install, ["<primary>i"])
+        self.create_action("open-search-install", self.open_search_install, ["<primary>i"])
 
         gtk_version = (
             str(Gtk.MAJOR_VERSION)
@@ -98,6 +99,14 @@ class WarehouseApplication(Adw.Application):
             app_id=self.get_application_id(),
             lang=lang,
         )
+
+        my_utils = myUtils(self)
+        total = 0
+        for rem in my_utils.get_host_remotes():
+            if my_utils.get_install_type(rem[7]) != "disabled":
+                total += 1
+        if total < 2:
+            self.lookup_action(f"open-search-install").set_enabled(False)
 
     def open_search_install(self, widget, _):
         SearchInstallWindow(self.props.active_window).present()
