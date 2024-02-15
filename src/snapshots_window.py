@@ -98,11 +98,13 @@ class SnapshotsWindow(Adw.Window):
         row.add_suffix(label)
 
         apply = Gtk.Button(icon_name="check-plain-symbolic", valign=Gtk.Align.CENTER)
+        apply.set_tooltip_text(_("Apply Snapshot"))
         apply.connect("clicked", self.apply_snapshot, file, row)
         apply.add_css_class("flat")
         row.add_suffix(apply)
 
         trash = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.CENTER)
+        trash.set_tooltip_text(_("Trash Snapshot"))
         trash.connect("clicked", self.trash_snapshot, file, row)
         trash.add_css_class("flat")
         row.add_suffix(trash)
