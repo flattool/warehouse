@@ -107,6 +107,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.uninstall_buttons_enable(True)
         self.main_stack.set_visible_child(self.main_box)
         self.search_button.set_sensitive(True)
+        self.batch_actions_enable(False)
         if self.my_utils.uninstall_success:
             self.refresh_list_of_flatpaks(self, False)
             self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled successfully")))
@@ -563,6 +564,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.lookup_action(f"trash{current.index}").set_enabled(
                 False
             )  # Disable the Trash User Data dropdown option when the data was deleted
+        self.batch_actions_enable(False)
+        self.batch_mode_button.set_active(False)
 
     def batch_clean_handler(self, widget):
         dialog = Adw.MessageDialog.new(
@@ -626,12 +629,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 self.main_stack.set_visible_child(self.main_box)
                 self.disconnect(self.no_close)
                 self.search_button.set_sensitive(True)
-                self.batch_mode_button.set_sensitive(True)
-                self.batch_mode_bar.set_revealed(True)
 
             self.search_button.set_sensitive(False)
-            self.batch_mode_button.set_sensitive(False)
-            self.batch_mode_bar.set_revealed(False)
+            self.batch_actions_enable(False)
+            self.batch_mode_button.set_active(False)
             self.main_stack.set_visible_child(self.snapshotting)
             task = Gio.Task.new(None, None, callback)
             task.run_in_thread(lambda *_: thread())
@@ -698,6 +699,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 to_copy += f"{current.app_name}\n"
         self.clipboard.set(to_copy)
         self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app names")))
+        self.batch_actions_enable(False)
+        self.batch_mode_button.set_active(False)
 
     def copy_IDs(self, widget, _a):
         to_copy = ""
@@ -711,6 +714,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 to_copy += f"{current.app_id}\n"
         self.clipboard.set(to_copy)
         self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app IDs")))
+        self.batch_actions_enable(False)
+        self.batch_mode_button.set_active(False)
 
     def copy_refs(self, widget, _a):
         to_copy = ""
@@ -724,6 +729,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 to_copy += f"{current.app_ref}\n"
         self.clipboard.set(to_copy)
         self.toast_overlay.add_toast(Adw.Toast.new(_("Copied selected app refs")))
+        self.batch_actions_enable(False)
+        self.batch_mode_button.set_active(False)
 
     def install_callback(self, _a, _b):
         self.main_stack.set_visible_child(self.main_box)
