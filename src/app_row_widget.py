@@ -199,7 +199,7 @@ class AppRow(Adw.ActionRow):
 
         row_menu_model.append_submenu(_("Copy"), copy_menu_model)
 
-        if "runtime" not in parent_window.host_flatpaks[index][12]:
+        if "runtime" not in parent_window.host_flatpaks[index][12] and self.app_id != "io.github.flattool.Warehouse":
             parent_window.create_action(
                 ("run" + str(index)),
                 lambda *_a, ref=self.app_ref, name=self.app_name: parent_window.run_app_thread(
@@ -209,14 +209,15 @@ class AppRow(Adw.ActionRow):
             run_item = Gio.MenuItem.new(_("Open"), f"win.run{index}")
             row_menu_model.append_item(run_item)
 
-        parent_window.create_action(
-            ("uninstall" + str(index)),
-            lambda *_: parent_window.uninstall_button_handler(
-                self, self.app_name, self.app_ref, self.app_id
-            ),
-        )
-        uninstall_item = Gio.MenuItem.new(_("Uninstall"), f"win.uninstall{index}")
-        row_menu_model.append_item(uninstall_item)
+        if self.app_id != "io.github.flattool.Warehouse":
+            parent_window.create_action(
+                ("uninstall" + str(index)),
+                lambda *_: parent_window.uninstall_button_handler(
+                    self, self.app_name, self.app_ref, self.app_id
+                ),
+            )
+            uninstall_item = Gio.MenuItem.new(_("Uninstall"), f"win.uninstall{index}")
+            row_menu_model.append_item(uninstall_item)
 
         data_menu_model = Gio.Menu()
 

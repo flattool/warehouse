@@ -1,5 +1,9 @@
-  - [ ] Uses standard keyboard shortcuts ([more info](https://developer.gnome.org/hig/reference/keyboard.html))
+## Changes needed before acceptance into GNOME Circle
+### This list may be extended in the future
 
-#### Metadata
-
-  - [ ] .doap-file in repository exists and is up-to-date ([more info](https://gitlab.gnome.org/World/apps-for-gnome/-/blob/main/METADATA.md#doap))
+- [x] Close selection mode after batch action
+- [ ] Change app summary
+- [ ] Fix the reload lag
+- [x] Do not allow uninstallation of Warehouse
+- [x] Add tooltip text to Snapshot Window's row buttons
+- [ ] Fix subtitle issue in Leftover Data Window

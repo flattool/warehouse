@@ -320,6 +320,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def create_row(self, index):
         row = AppRow(self, self.host_flatpaks, index)
+        if row.app_id == "io.github.flattool.Warehouse":
+            row.tickbox.set_sensitive(False)
         self.flatpaks_list_box.insert(row, index)
 
     def generate_list_of_flatpaks(self):
@@ -654,7 +656,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         i = 0
         while self.flatpaks_list_box.get_row_at_index(i) != None:
             current = self.flatpaks_list_box.get_row_at_index(i)
-            if current.get_visible() == True:
+            if (current.get_visible() == True) and (current.app_id != "io.github.flattool.Warehouse"):
                 current.tickbox.set_active(should_select_all)
             i += 1
 
