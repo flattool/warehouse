@@ -24,10 +24,8 @@ msgstr ""
 >>>>>>> b470a0a (Update translation files)
 =======
 "POT-Creation-Date: 2024-02-07 05:54-0500\n"
->>>>>>> 20f1f1c (Update translation files)
-"PO-Revision-Date: 2024-01-20 03:31+0000\n"
-"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
->>>>>>> fa5ee1f (Translated using Weblate (Spanish))
+"PO-Revision-Date: 2024-02-16 23:15+0000\n"
+"Last-Translator: Racsu <me@racsu.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
 "Language: es\n"
@@ -337,17 +335,13 @@ msgid "Downgrade"
 msgstr "Revertir"
 
 #: data/ui/downgrade.blp:49
-#, fuzzy
-#| msgid "Fetching Releases…"
 msgid "Fetching Releases"
-msgstr "Obteniendo versiones…"
+msgstr "Obteniendo versiones"
 
 #: data/ui/downgrade.blp:57 data/ui/orphans.blp:90 data/ui/window.blp:113
 #: data/ui/window.blp:140 data/ui/window.blp:167
-#, fuzzy
-#| msgid "This could take a while."
 msgid "This could take a while"
-msgstr "Esto podría tardar un poco."
+msgstr "Esto podría tardar un poco"
 
 #: data/ui/downgrade.blp:65 src/app_row_widget.py:261 src/window.py:470
 msgid "Disable Updates"
@@ -382,16 +376,12 @@ msgid "Show Runtimes"
 msgstr "Mostrar tiempos de ejecución"
 
 #: data/ui/filter.blp:61
-#, fuzzy
-#| msgid "Filter Apps by Remotes"
 msgid "Filter by Remotes"
-msgstr "Filtrar apps por repositorios"
+msgstr "Filtrar por repositorios"
 
 #: data/ui/filter.blp:66
-#, fuzzy
-#| msgid "Filter Apps by Runtime"
 msgid "Filter by Runtimes"
-msgstr "Filtrar apps por tiempos de ejecución"
+msgstr "Filtrar por tiempos de ejecución"
 
 #: data/ui/filter.blp:74 data/ui/window.blp:184
 #, fuzzy
@@ -408,8 +398,6 @@ msgid "Open Data Folder"
 msgstr "Abrir carpeta de datos"
 
 #: data/ui/orphans.blp:81 data/ui/window.blp:104
-#, fuzzy
-#| msgid "Installing…"
 msgid "Installing"
 msgstr "Instalación"
 
@@ -497,10 +485,8 @@ msgid "No Results Found"
 msgstr "No se han encontrado resultados"
 
 #: data/ui/orphans.blp:108 data/ui/search_install.blp:95 data/ui/window.blp:193
-#, fuzzy
-#| msgid "Try a different search term."
 msgid "Try a different search term"
-msgstr "Pruebe con un término de búsqueda diferente."
+msgstr "Pruebe con un término de búsqueda diferente"
 
 #: data/ui/orphans.blp:118 data/ui/window.blp:205
 msgid "Select All"
@@ -520,10 +506,8 @@ msgid "Add Remote"
 msgstr "Agregar repositorio"
 
 #: data/ui/popular_remotes.blp:19
-#, fuzzy
-#| msgid "Choose from a list of popular remotes or add a new one."
 msgid "Choose from a list of popular remotes or add a new one"
-msgstr "Elija entre una lista de repositorios populares o añada uno nuevo."
+msgstr "Elija entre una lista de repositorios populares o añada uno nuevo"
 
 #: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
 msgid "Add a Repo File"
@@ -534,10 +518,8 @@ msgid "Add a Custom Remote"
 msgstr "Añadir un repositorio personalizado"
 
 #: data/ui/properties.blp:45
-#, fuzzy
-#| msgid "Loading User Data…"
 msgid "Loading User Data"
-msgstr "Cargando datos del usuario…"
+msgstr "Cargando datos del usuario"
 
 #: data/ui/properties.blp:50 src/app_row_widget.py:230
 #: src/orphans_window.py:259
@@ -583,10 +565,8 @@ msgid "Show Disabled"
 msgstr "Mostrar desactivados"
 
 #: data/ui/remotes.blp:41
-#, fuzzy
-#| msgid "No Results Found"
 msgid "No Remotes Found"
-msgstr "No se han encontrado resultados"
+msgstr "No se han encontrado remotos"
 
 #: data/ui/remotes.blp:45
 msgid "Add a Popular Remote"
@@ -597,16 +577,12 @@ msgid "Add Other Remotes"
 msgstr "Añadir otros remotos"
 
 #: data/ui/remotes.blp:79
-#, fuzzy
-#| msgid "Adding Remote…"
 msgid "Adding Remote"
-msgstr "Añadiendo remoto…"
+msgstr "Añadiendo remoto"
 
 #: data/ui/remotes.blp:88 data/ui/window.blp:60
-#, fuzzy
-#| msgid "This should only take a moment."
 msgid "This should only take a moment"
-msgstr "Esto solo debería llevar un momento."
+msgstr "Esto solo debería llevar un momento"
 
 #: data/ui/search_install.blp:7
 msgid "Install From The Web…"
@@ -633,12 +609,9 @@ msgid "Search for Flatpaks that you want to install"
 msgstr "Busque los Flatpaks que desee instalar"
 
 #: data/ui/search_install.blp:105
-#, fuzzy
-#| msgctxt "Shown with a spinner while search operation is pending"
-#| msgid "Searching…"
 msgctxt "Shown with a spinner while search operation is pending"
 msgid "Searching"
-msgstr "Buscando…"
+msgstr "Buscando"
 
 #: data/ui/search_install.blp:119
 #, fuzzy
@@ -699,52 +672,28 @@ msgid "This could take a while."
 msgstr "Instalando… Esto podría tardar un poco"
 =======
 #: data/ui/window.blp:59
-<<<<<<< HEAD
-msgid "Loading Flatpaks…"
-<<<<<<< HEAD
-msgstr ""
->>>>>>> 6984e45 (Update translation files)
-=======
-=======
-#, fuzzy
-#| msgid "Loading Flatpaks…"
 msgid "Loading Flatpaks"
->>>>>>> 20f1f1c (Update translation files)
-msgstr "Cargando Flatpaks…"
->>>>>>> fa5ee1f (Translated using Weblate (Spanish))
+msgstr "Cargando Flatpaks"
 
 #: data/ui/window.blp:135
-#, fuzzy
-#| msgid "Uninstalling…"
 msgid "Uninstalling"
-msgstr "Desinstalando…"
+msgstr "Desinstalando"
 
 #: data/ui/window.blp:162
-#, fuzzy
-#| msgid "Creating Snapshots…"
 msgid "Creating Snapshots"
-msgstr "Creando instantáneas…"
+msgstr "Creando instantáneas"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr "No se han encontrado Flatpaks"
 
 #: data/ui/window.blp:175
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed."
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
 msgstr ""
 "Warehouse no puede ver la lista de Flatpaks instalados o el sistema no tiene "
-<<<<<<< HEAD
 "Flatpaks instalados"
-
-#: data/ui/window.blp:175
-=======
-"Flatpaks instalados."
 
 #: data/ui/window.blp:180
 >>>>>>> fa5ee1f (Translated using Weblate (Spanish))
@@ -755,41 +704,11 @@ msgstr "No hay Flatpaks que coincidan con los filtros"
 #: data/ui/window.blp:176
 =======
 #: data/ui/window.blp:181
-#, fuzzy
-#| msgid "No installed Flatpak matches any of the currently applied filters."
->>>>>>> 20f1f1c (Update translation files)
 msgid "No installed Flatpak matches all of the currently applied filters"
 msgstr ""
 "No hay ningún Flatpak instalado que coincida con ninguno de los filtros "
-<<<<<<< HEAD
 "aplicados actualmente"
-=======
-"aplicados actualmente."
->>>>>>> fa5ee1f (Translated using Weblate (Spanish))
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: data/ui/window.blp:206
-=======
-#: data/ui/window.blp:205
->>>>>>> 6984e45 (Update translation files)
-msgid "Uninstall Selected Apps"
-msgstr "Desinstalar aplicaciones seleccionadas"
-
-#: data/ui/window.blp:212
-msgid "Send Selected Apps' Data to the Trash"
-msgstr "Enviar a la papelera los datos de las aplicaciones seleccionadas"
-
-#: data/ui/window.blp:218
-msgid "Open Copy Menu"
-msgstr "Abrir el menú para copiar datos"
-
-<<<<<<< HEAD
-#: data/ui/window.blp:225
-=======
-#: data/ui/window.blp:224
->>>>>>> fa5ee1f (Translated using Weblate (Spanish))
-=======
 #: data/ui/window.blp:211
 msgid "Uninstall Selected Apps"
 msgstr "Desinstalar aplicaciones seleccionadas"
@@ -1013,11 +932,8 @@ msgid "Copy Refs"
 msgstr "Copiar refs"
 
 #: data/ui/window.blp:297
-#, fuzzy
-#| msgid "Open app"
 msgid "Open App"
-msgstr "Abrir app"
->>>>>>> 20f1f1c (Update translation files)
+msgstr "Abrir App"
 
 #: src/app_row_widget.py:75
 msgid "Updates Disabled"
@@ -1135,7 +1051,7 @@ msgstr "Garantizar que nunca se actualizará a una versión más reciente"
 
 #: src/filter_window.py:50 src/filter_window.py:54
 msgid "{} selected"
-msgstr ""
+msgstr "{} seleccionado"
 
 #: src/filter_window.py:137 src/orphans_window.py:150 src/remotes_window.py:307
 msgid "User wide"
