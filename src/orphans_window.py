@@ -63,11 +63,8 @@ class OrphansWindow(Adw.Window):
             self.trash_button.set_sensitive(True)
 
     def select_all_handler(self, button):
-        self.should_select_all = button.get_active()
-        if not button.get_active():
-            self.install_button.set_sensitive(False)
-            self.trash_button.set_sensitive(False)
-        self.generate_list()
+        for check in self.check_buttons:
+            check.set_active(button.get_active())
 
     def install_callback(self, *_args):
         self.generate_list()
@@ -211,6 +208,7 @@ class OrphansWindow(Adw.Window):
     # Create the list of folders in the window
     def generate_list(self):
         self.data_rows = []
+        self.check_buttons = []
         self.host_flatpaks = self.my_utils.get_host_flatpaks()
 
         if self.host_flatpaks == [["", ""]]:
@@ -266,9 +264,9 @@ class OrphansWindow(Adw.Window):
             dir_row.add_suffix(open_row_button)
 
             select_button = Gtk.CheckButton(tooltip_text=_("Select"))
+            self.check_buttons.append(select_button)
             select_button.add_css_class("selection-mode")
             select_button.connect("toggled", self.selection_handler, dir_name)
-            select_button.set_active(self.should_select_all)
             dir_row.add_suffix(select_button)
             dir_row.set_activatable_widget(select_button)
 
