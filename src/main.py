@@ -105,7 +105,7 @@ class WarehouseApplication(Adw.Application):
         for rem in my_utils.get_host_remotes():
             if my_utils.get_install_type(rem[7]) != "disabled":
                 total += 1
-        if total < 2:
+        if total < 1:
             self.lookup_action(f"open-search-install").set_enabled(False)
 
     def open_search_install(self, widget, _):

@@ -7,12 +7,6 @@ template $WarehouseWindow: Adw.ApplicationWindow {
     [top]
     HeaderBar header_bar {
       [start]
-      Button refresh_button {
-        icon-name: "view-refresh-symbolic";
-        tooltip-text: _("Refresh List");
-      }
-
-      [start]
       ToggleButton search_button {
         icon-name: "system-search-symbolic";
         tooltip-text: _("Search List");
@@ -35,13 +29,6 @@ template $WarehouseWindow: Adw.ApplicationWindow {
       ToggleButton batch_mode_button {
         icon-name: "selection-mode-symbolic";
         tooltip-text: _("Toggle Selection Mode");
-      }
-
-      [end]
-      MenuButton install_button {
-        icon-name: "plus-large-symbolic";
-        tooltip-text: _("Install New Flatpak");
-        menu-model: install_menu;
       }
     }
 
@@ -257,7 +244,23 @@ menu primary_menu {
       label: _("Manage Remotes…");
       action: "app.show-remotes-window";
     }
+  }
+  section {
+    item {
+      label: _("Install From File…");
+      action: "app.install-from-file";
+    }
 
+    item {
+      label: _("Install From The Web…");
+      action: "app.open-search-install";
+    }
+  }
+  section {
+    item {
+      label: _("Refresh List");
+      action: "app.refresh-list";
+    }
     item {
       label: _("_Keyboard Shortcuts");
       action: "win.show-help-overlay";
@@ -285,20 +288,6 @@ menu copy_menu {
     item {
       label: _("Copy Refs");
       action: "win.copy-refs";
-    }
-  }
-}
-
-menu install_menu {
-  section {
-    item {
-      label: _("Install From File…");
-      action: "app.install-from-file";
-    }
-
-    item {
-      label: _("Install From The Web…");
-      action: "app.open-search-install";
     }
   }
 }

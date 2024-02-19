@@ -43,7 +43,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
     search_button = Gtk.Template.Child()
     search_bar = Gtk.Template.Child()
     toast_overlay = Gtk.Template.Child()
-    refresh_button = Gtk.Template.Child()
     no_flatpaks = Gtk.Template.Child()
     no_results = Gtk.Template.Child()
     main_stack = Gtk.Template.Child()
@@ -67,7 +66,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
     no_matches = Gtk.Template.Child()
     reset_filters_button = Gtk.Template.Child()
     uninstalling_status = Gtk.Template.Child()
-    install_button = Gtk.Template.Child()
 
     main_progress_bar = Gtk.ProgressBar(visible=False, can_target=False)
     main_progress_bar.add_css_class("osd")
@@ -95,7 +93,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def uninstall_buttons_enable(self, should_enable):
         if self.currently_uninstalling:
             return
-        self.refresh_button.set_sensitive(should_enable)
         if not should_enable:
             self.batch_uninstall_button.set_sensitive(False)
 
@@ -872,7 +869,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.search_entry.connect("search-changed", self.on_invalidate)
         self.search_bar.connect_entry(self.search_entry)
         self.search_bar.connect("notify", self.on_change)
-        self.refresh_button.connect("clicked", self.refresh_list_of_flatpaks, True)
         self.filter_button.connect("clicked", lambda *_: FilterWindow(self))
         self.batch_mode_button.connect("toggled", self.batch_mode_handler)
         self.batch_clean_button.connect("clicked", self.batch_clean_handler)
