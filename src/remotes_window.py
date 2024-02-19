@@ -22,7 +22,6 @@ class RemotesWindow(Adw.Window):
     show_disabled_button = Gtk.Template.Child()
     show_disabled_button_button_content = Gtk.Template.Child()
     show_disabled = False
-    # progress_bar = Gtk.Template.Child()
 
     rows_in_list = []
     rows_in_popular_list = []
@@ -193,7 +192,7 @@ class RemotesWindow(Adw.Window):
         settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
         for key in settings.list_keys():
             settings.reset(key)
-        settings.set_string("remotes-list", remote)
+        settings.set_string("remotes-list", f"{remote}<>{type}")
         self.main_window.apply_filter()
         self.close()
 

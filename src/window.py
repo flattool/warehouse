@@ -368,6 +368,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         remotes_list = settings.get_string("remotes-list").split(",")
         runtimes_list = settings.get_string("runtimes-list").split(",")
         total_visible = 0
+        print(settings.get_string("remotes-list"))
         i = 0
         while self.flatpaks_list_box.get_row_at_index(i) != None:
             current = self.flatpaks_list_box.get_row_at_index(i)
