@@ -7,19 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-"POT-Creation-Date: 2024-03-05 11:31-0500\n"
-=======
-"POT-Creation-Date: 2024-01-05 01:05-0500\n"
->>>>>>> 6984e45 (Update translation files)
-=======
-"POT-Creation-Date: 2024-01-20 00:48-0500\n"
->>>>>>> b470a0a (Update translation files)
-=======
-"POT-Creation-Date: 2024-02-07 05:54-0500\n"
->>>>>>> 20f1f1c (Update translation files)
+"POT-Creation-Date: 2024-03-04 06:52+0000\n"
 "PO-Revision-Date: 2023-12-20 03:14+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://weblate.fyralabs.com/projects/flattool/"
@@ -33,7 +21,6 @@ msgstr ""
 
 #. Translators: Do not translate the applicaion name
 #: data/io.github.flattool.Warehouse.desktop.in:4
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:5
 msgid "Warehouse"
 msgstr "Warehouse"
 
@@ -45,10 +32,6 @@ msgstr "flatpak"
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
 msgstr "Gérez tout ce qui concerne Flatpak"
-
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:6
-msgid "Heliguy"
-msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
@@ -86,10 +69,8 @@ msgstr "Chercher et supprimer les données utilisateur résiduelles"
 msgid "Reinstall apps that have leftover data"
 msgstr "Réinstaller les applications dont des données ont été conservées"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: data/ui/downgrade.blp:16 src/orphans_window.py:119 src/orphans_window.py:187
-#: src/properties_window.py:154 src/remotes_window.py:93
+#: src/properties_window.py:153 src/remotes_window.py:93
 #: src/remotes_window.py:174 src/remotes_window.py:454
 #: src/remotes_window.py:626 src/snapshots_window.py:135
 #: src/snapshots_window.py:244 src/window.py:224 src/window.py:298
@@ -133,8 +114,46 @@ msgstr ""
 #: data/ui/filter.blp:7 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
 msgstr "Utiliser des filtres"
+>>>>>>> 6984e45 (Update translation files)
 
+<<<<<<< HEAD
+#: data/ui/filter.blp:22
+msgid "Apply"
+msgstr "Appliquer"
+
+<<<<<<< HEAD
+#: data/ui/search_install.blp:15
+#, fuzzy
+#| msgid "Search List"
+msgid "Search Criteria"
+msgstr "Rechercher dans la liste"
+
+#: data/ui/search_install.blp:23
+msgid "Choose a Remote to Search"
+msgstr ""
+
+#: data/ui/search_install.blp:37
+#, fuzzy
+#| msgid "No Results Found"
+msgid "Results"
+msgstr "Aucun résultat"
+
+#: data/ui/search_install.blp:43
+msgid "Back"
+msgstr ""
+
+#: data/ui/search_install.blp:77
+#, fuzzy
+#| msgid "Search"
+msgid "Start Search"
+msgstr "Rechercher"
+
+#: data/ui/search_install.blp:86
+=======
+#: data/ui/filter.blp:54
+=======
 #: data/ui/filter.blp:40
+>>>>>>> 20f1f1c (Update translation files)
 msgid "Show Apps"
 msgstr "Afficher les applications"
 
@@ -227,12 +246,14 @@ msgstr "Ajouter un dépôt personnalisé"
 
 #: data/ui/properties.blp:45
 #, fuzzy
-msgid "Could not disable updates for {}"
-msgstr "Impossible de désactiver les mises à jour pour {}"
+#| msgid "Loading Flatpaks…"
+msgid "Loading User Data"
+msgstr "Chargement des Flatpaks…"
 
-#: src/window.py:367
-msgid "Disable Updates for {}?"
-msgstr "Désactiver les mises à jour pour {} ?"
+#: data/ui/properties.blp:50 src/app_row_widget.py:231
+#: src/orphans_window.py:258
+msgid "Open User Data Folder"
+msgstr "Ouvrir le dossier des données utilisateur"
 
 #: data/ui/properties.blp:62 src/app_row_widget.py:244
 msgid "Trash User Data"
@@ -277,13 +298,15 @@ msgstr "Dépôts logiciels installés"
 
 #: data/ui/remotes.blp:27
 #, fuzzy
-msgid "Could not snapshot some apps"
-msgstr "Impossible de créer des instantanés de certaines applications"
+#| msgid "Show disabled"
+msgid "Show Disabled"
+msgstr "Afficher les désactivés"
 
 #: data/ui/remotes.blp:41
 #, fuzzy
-msgid "Create Snapshots?"
-msgstr "Créer des instantanés ?"
+#| msgid "No Results Found"
+msgid "No Remotes Found"
+msgstr "Aucun résultat"
 
 #: data/ui/remotes.blp:45
 msgid "Add a Popular Remote"
@@ -295,67 +318,16 @@ msgstr "Ajouter d’autres dépôts"
 
 #: data/ui/remotes.blp:79
 #, fuzzy
-msgid "Create Snapshots"
-msgstr "Créer des instantanés"
-=======
-#: data/ui/downgrade.blp:16 data/ui/filter.blp:17 data/ui/search_install.blp:17
-=======
-#: data/ui/downgrade.blp:16 data/ui/search_install.blp:17
->>>>>>> 20f1f1c (Update translation files)
-#: src/orphans_window.py:121 src/orphans_window.py:189
-#: src/properties_window.py:149 src/remotes_window.py:90
-#: src/remotes_window.py:171 src/remotes_window.py:450
-#: src/remotes_window.py:622 src/snapshots_window.py:129
-#: src/snapshots_window.py:238 src/window.py:224 src/window.py:298
-#: src/window.py:422 src/window.py:468 src/window.py:566 src/window.py:639
-#: src/window.py:753
-msgid "Cancel"
-msgstr "Annuler"
+#| msgid "Adding Remote…"
+msgid "Adding Remote"
+msgstr "Ajout d’un dépôt…"
 
-#: data/ui/downgrade.blp:22 src/app_row_widget.py:297
-msgid "Downgrade"
-msgstr "Rétrograder"
-
-#: data/ui/downgrade.blp:49
+#: data/ui/remotes.blp:88 data/ui/window.blp:54
 #, fuzzy
-#| msgid "Fetching Releases…"
-msgid "Fetching Releases"
-msgstr "Récupération des versions…"
+#| msgid "This should only take a moment."
+msgid "This should only take a moment"
+msgstr "Cela ne devrait prendre qu’un instant."
 
-#: data/ui/downgrade.blp:57 data/ui/orphans.blp:90 data/ui/window.blp:113
-#: data/ui/window.blp:140 data/ui/window.blp:167
-#, fuzzy
-#| msgid "This could take a while."
-msgid "This could take a while"
-msgstr "Cela peut prendre du temps."
-
-#: data/ui/downgrade.blp:65 src/app_row_widget.py:261 src/window.py:470
-msgid "Disable Updates"
-msgstr "Désactiver les mises à jour"
-
-#: data/ui/downgrade.blp:71
-msgid "Select a Release"
-msgstr "Sélectionnez une version"
-
-#: data/ui/downgrade.blp:72
-msgid ""
-"This will uninstall the current release and install the chosen one instead. "
-"Note that downgrading can cause issues."
-msgstr ""
-"Ceci désinstallera la version actuelle et installera celle choisie à la "
-"place. Noter que le rétrogradage peut causer des problèmes."
-
-#: data/ui/filter.blp:7 src/gtk/help-overlay.blp:19
-msgid "Set Filters"
-msgstr "Utiliser des filtres"
->>>>>>> 6984e45 (Update translation files)
-
-<<<<<<< HEAD
-#: data/ui/filter.blp:22
-msgid "Apply"
-msgstr "Appliquer"
-
-<<<<<<< HEAD
 #: data/ui/search_install.blp:15
 #, fuzzy
 #| msgid "Search List"
@@ -383,205 +355,11 @@ msgid "Start Search"
 msgstr "Rechercher"
 
 #: data/ui/search_install.blp:86
-=======
-#: data/ui/filter.blp:54
-=======
-#: data/ui/filter.blp:40
->>>>>>> 20f1f1c (Update translation files)
-msgid "Show Apps"
-msgstr "Afficher les applications"
-
-#: data/ui/filter.blp:50
-msgid "Show Runtimes"
-msgstr "Afficher les environnements d’exécution"
-
-#: data/ui/filter.blp:61
-#, fuzzy
-#| msgid "Filter Apps by Remotes"
-msgid "Filter by Remotes"
-msgstr "Filtrer les applications par dépôt"
-
-#: data/ui/filter.blp:66
-#, fuzzy
-#| msgid "Filter Apps by Runtime"
-msgid "Filter by Runtimes"
-msgstr "Filtrer les applications par environnement d’exécution"
-
-#: data/ui/filter.blp:74 data/ui/window.blp:184
-#, fuzzy
-#| msgid "Set Filters"
-msgid "Reset Filters"
-msgstr "Utiliser des filtres"
-
-#: data/ui/orphans.blp:14 data/ui/window.blp:18
-msgid "Search List"
-msgstr "Rechercher dans la liste"
-
-#: data/ui/orphans.blp:20
-msgid "Open Data Folder"
-msgstr "Ouvrir le dossier des données"
-
-#: data/ui/orphans.blp:81 data/ui/window.blp:104
-#, fuzzy
-#| msgid "Installing…"
-msgid "Installing"
-msgstr "Installation…"
-
-#: data/ui/orphans.blp:101
-msgid "No Leftover Data"
-msgstr "Aucune donnée résiduelle"
-
-#: data/ui/orphans.blp:102
-msgid "There is no leftover user data"
-msgstr "Plus aucune donnée utilisateur résiduelle"
-
-#: data/ui/orphans.blp:107 data/ui/search_install.blp:94 data/ui/window.blp:192
-msgid "No Results Found"
-msgstr "Aucun résultat"
-
-#: data/ui/orphans.blp:108 data/ui/search_install.blp:95 data/ui/window.blp:193
-#, fuzzy
-#| msgid "Try a different search term."
-msgid "Try a different search term"
-msgstr "Essayez une recherche différente."
-
-#: data/ui/orphans.blp:118 data/ui/window.blp:205
-msgid "Select All"
-msgstr "Tout sélectionner"
-
-#: data/ui/orphans.blp:123 src/window.py:195 src/window.py:278
-msgid "Trash"
-msgstr "Mettre à la corbeille"
-
-#: data/ui/orphans.blp:129 data/ui/search_install.blp:22
-#: src/orphans_window.py:122 src/window.py:754
-msgid "Install"
-msgstr "Installer"
-
-#: data/ui/popular_remotes.blp:18
-msgid "Add Remote"
-msgstr "Ajouter un dépôt de logiciels"
-
-#: data/ui/popular_remotes.blp:19
-#, fuzzy
-#| msgid "Choose from a list of popular remotes or add a new one."
-msgid "Choose from a list of popular remotes or add a new one"
-msgstr ""
-"Choisissez depuis la liste des dépôts logiciels populaires ou ajoutez-en un "
-"nouveau."
-
-#: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
-msgid "Add a Repo File"
-msgstr "Ajouter un fichier de répertoire"
-
-#: data/ui/popular_remotes.blp:50 data/ui/remotes.blp:56
-msgid "Add a Custom Remote"
-msgstr "Ajouter un dépôt personnalisé"
-
-#: data/ui/properties.blp:45
-#, fuzzy
-#| msgid "Loading Flatpaks…"
-msgid "Loading User Data"
-msgstr "Chargement des Flatpaks…"
-
-#: data/ui/properties.blp:50 src/app_row_widget.py:230
-#: src/orphans_window.py:259
-msgid "Open User Data Folder"
-msgstr "Ouvrir le dossier des données utilisateur"
-
-#: data/ui/properties.blp:62 src/app_row_widget.py:243
-msgid "Trash User Data"
-msgstr "Mettre les données utilisateur à la corbeille"
-
-#: data/ui/properties.blp:80
-#, fuzzy
-#| msgid "Show Apps Using this Runtime"
-msgid "Show Apps Using This Runtime"
-msgstr "Afficher les applications utilisant cet environnement d’exécution"
-
-#: data/ui/properties.blp:91
-msgid "Runtime"
-msgstr "Environnement d’exécution"
-
-#: data/ui/properties.blp:117
-msgid "Show Details in Store"
-msgstr ""
-
-#: data/ui/remotes.blp:5 src/gtk/help-overlay.blp:42
-msgid "Manage Remotes"
-msgstr "Gérer les dépôts de logiciels"
-
-#: data/ui/remotes.blp:14
-#, fuzzy
-#| msgid "Refresh List"
-msgid "Refresh List of Remotes"
-msgstr "Actualiser la liste"
-
-#: data/ui/remotes.blp:23
-msgid "Installed Remotes"
-msgstr "Dépôts logiciels installés"
-
-#: data/ui/remotes.blp:27
-#, fuzzy
-#| msgid "Show disabled"
-msgid "Show Disabled"
-msgstr "Afficher les désactivés"
-
-#: data/ui/remotes.blp:41
-#, fuzzy
-#| msgid "No Results Found"
-msgid "No Remotes Found"
-msgstr "Aucun résultat"
-
-#: data/ui/remotes.blp:45
-msgid "Add a Popular Remote"
-msgstr "Ajouter un dépôt de logiciels populaire"
-
-#: data/ui/remotes.blp:49
-msgid "Add Other Remotes"
-msgstr "Ajouter d’autres dépôts"
-
-#: data/ui/remotes.blp:79
-#, fuzzy
-#| msgid "Adding Remote…"
-msgid "Adding Remote"
-msgstr "Ajout d’un dépôt…"
-
-#: data/ui/remotes.blp:88 data/ui/window.blp:60
-#, fuzzy
-#| msgid "This should only take a moment."
-msgid "This should only take a moment"
-msgstr "Cela ne devrait prendre qu’un instant."
-
-#: data/ui/search_install.blp:7
-#, fuzzy
-msgid "Install From The Web…"
-msgstr "Installer à partir d’un fichier"
-
-#: data/ui/search_install.blp:44
-#, fuzzy
-#| msgid "Loading Flatpaks…"
-msgid "Search for Flatpaks…"
-msgstr "Chargement des Flatpaks…"
-
-#: data/ui/search_install.blp:49
-#, fuzzy
-#| msgid "No Remotes"
-msgid "All Remotes"
-msgstr "Aucun dépôt de logiciels"
-
-#: data/ui/search_install.blp:54 src/gtk/help-overlay.blp:14
-msgid "Search"
-msgstr "Rechercher"
-
-#: data/ui/search_install.blp:99
->>>>>>> 6984e45 (Update translation files)
 #, fuzzy
 #| msgid "Search for an Installed App"
 msgid "Search for Flatpaks"
 msgstr "Chercher pour une application installée"
 
-<<<<<<< HEAD
 #: data/ui/search_install.blp:88
 msgid "Search for Flatpaks that you want to install"
 msgstr ""
@@ -597,24 +375,6 @@ msgid "Too Many Results"
 msgstr ""
 
 #: data/ui/search_install.blp:126
-=======
-#: data/ui/search_install.blp:101
-msgid "Search for Flatpaks that you want to install"
-msgstr ""
-
-#: data/ui/search_install.blp:105
-#, fuzzy
-#| msgid "Search"
-msgctxt "Shown with a spinner while search operation is pending"
-msgid "Searching"
-msgstr "Rechercher"
-
-#: data/ui/search_install.blp:119
-msgid "Too Many Results"
-msgstr ""
-
-#: data/ui/search_install.blp:120
->>>>>>> 6984e45 (Update translation files)
 msgid "Try being more specific with your search"
 msgstr ""
 
@@ -673,71 +433,45 @@ msgstr ""
 "l’application. Elles peuvent être restaurées à n’importe quel moment. Cela "
 "peut prendre du temps."
 
-<<<<<<< HEAD
 #: data/ui/window.blp:18
-=======
-#: data/ui/window.blp:12
-msgid "Refresh List"
-msgstr "Actualiser la liste"
-
-#: data/ui/window.blp:24
->>>>>>> 6984e45 (Update translation files)
 msgid "Filter List"
 msgstr "Filtrer la liste"
 
+#: data/ui/window.blp:24
 #: data/ui/window.blp:24
 msgid "Main Menu"
 msgstr "Menu principal"
 
 #: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
+#: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 msgid "Toggle Selection Mode"
 msgstr "Basculer en mode sélection"
 
-<<<<<<< HEAD
 #: data/ui/window.blp:53
-=======
-#: data/ui/window.blp:59
->>>>>>> 20f1f1c (Update translation files)
 #, fuzzy
 #| msgid "Loading Flatpaks…"
 msgid "Loading Flatpaks"
 msgstr "Chargement des Flatpaks…"
 
-<<<<<<< HEAD
 #: data/ui/window.blp:129
-#, fuzzy
-msgid "This could take a while."
-msgstr "Cela peut prendre du temps."
-
-#: data/ui/window.blp:157
-#, fuzzy
-=======
-#: data/ui/window.blp:135
-<<<<<<< HEAD
->>>>>>> 6984e45 (Update translation files)
-msgid "Uninstalling…"
-=======
 #, fuzzy
 #| msgid "Uninstalling…"
 msgid "Uninstalling"
 >>>>>>> 20f1f1c (Update translation files)
 msgstr "Désinstallation…"
 
-#: data/ui/window.blp:162
+#: data/ui/window.blp:157
 #, fuzzy
 #| msgid "Creating Snapshots…"
 msgid "Creating Snapshots"
 msgstr "Création d’instantanés…"
 
 #: data/ui/window.blp:169
+#: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr "Aucun Flatpak trouvé"
 
-<<<<<<< HEAD
 #: data/ui/window.blp:170
-#, fuzzy
-=======
-#: data/ui/window.blp:175
 #, fuzzy
 #| msgid ""
 #| "Warehouse cannot see the list of installed Flatpaks or the system has no "
@@ -751,26 +485,18 @@ msgstr ""
 "Flatpak n’a été installé sur ce système."
 
 #: data/ui/window.blp:175
+#: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
 msgstr "Aucun Flatpak correspondant aux filtres"
 
-<<<<<<< HEAD
 #: data/ui/window.blp:176
-=======
-#: data/ui/window.blp:181
->>>>>>> 20f1f1c (Update translation files)
 #, fuzzy
 #| msgid "No installed Flatpak matches any of the currently applied filters."
 msgid "No installed Flatpak matches all of the currently applied filters"
 msgstr ""
 "Aucun Flatpak installé ne correspond aux filtres actuellement appliqués."
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: data/ui/window.blp:206
-=======
-#: data/ui/window.blp:205
->>>>>>> 6984e45 (Update translation files)
 msgid "Uninstall Selected Apps"
 msgstr "Désinstaller les applications sélectionnées"
 
@@ -779,42 +505,34 @@ msgid "Send Selected Apps' Data to the Trash"
 msgstr "Mettre les données des applications sélectionnées à la corbeille"
 
 #: data/ui/window.blp:218
-=======
-#: data/ui/window.blp:211
-msgid "Uninstall Selected Apps"
-msgstr "Désinstaller les applications sélectionnées"
-
-#: data/ui/window.blp:217
-msgid "Send Selected Apps' Data to the Trash"
-msgstr "Mettre les données des applications sélectionnées à la corbeille"
-
-#: data/ui/window.blp:223
->>>>>>> 20f1f1c (Update translation files)
 msgid "Open Copy Menu"
 msgstr "Ouvrir le menu de copie"
 
-#: data/ui/window.blp:230
+#: data/ui/window.blp:225
 msgid "Snapshot Selected Apps' Data"
 msgstr "Créer un instantané des données des applications sélectionnées"
 
-#: data/ui/window.blp:240
-msgid "Install From File…"
-msgstr "Installer à partir d’un fichier…"
-
-<<<<<<< HEAD
-#: data/ui/window.blp:255
-#, fuzzy
-=======
-#: data/ui/window.blp:245
->>>>>>> 20f1f1c (Update translation files)
+#: data/ui/window.blp:235
 msgid "Manage Leftover Data…"
 msgstr "Gérer les données résiduelles…"
 
-#: data/ui/window.blp:254
+#: data/ui/window.blp:244
 msgid "Manage Remotes…"
 msgstr "Gérer les dépôts de logiciels…"
 
-<<<<<<< HEAD
+#: data/ui/window.blp:250
+msgid "Install From File…"
+msgstr "Installer à partir d’un fichier…"
+
+#: data/ui/window.blp:255
+#, fuzzy
+msgid "Install From The Web…"
+msgstr "Installer à partir d’un fichier"
+
+#: data/ui/window.blp:261
+msgid "Refresh List"
+msgstr "Actualiser la liste"
+
 #: data/ui/window.blp:265
 msgid "_Keyboard Shortcuts"
 msgstr "Raccourcis _clavier"
@@ -839,7 +557,7 @@ msgstr "Copier les référentiels"
 msgid "Updates Disabled"
 msgstr "Mises à jour désactivées"
 
-#: src/app_row_widget.py:80 src/properties_window.py:211
+#: src/app_row_widget.py:80 src/properties_window.py:210
 msgid "{} is masked and will not be updated"
 msgstr "{} est masquée et ne sera plus mise à jour"
 
@@ -847,7 +565,7 @@ msgstr "{} est masquée et ne sera plus mise à jour"
 msgid "App EOL"
 msgstr "Appli EFV"
 
-#: src/app_row_widget.py:93 src/properties_window.py:194
+#: src/app_row_widget.py:93 src/properties_window.py:193
 msgid ""
 "{} has reached its End of Life and will not receive any security updates"
 msgstr "{} est En Fin de Vie et ne recevra plus de mises à jour de sécurité"
@@ -856,7 +574,7 @@ msgstr "{} est En Fin de Vie et ne recevra plus de mises à jour de sécurité"
 msgid "Runtime EOL"
 msgstr "Environnement d’exécution EFV"
 
-#: src/app_row_widget.py:110 src/properties_window.py:202
+#: src/app_row_widget.py:110 src/properties_window.py:201
 msgid ""
 "{}'s runtime has reached its End of Life and will not receive any security "
 "updates"
@@ -961,188 +679,23 @@ msgid "Ensure that {} will never be updated to a newer version"
 msgstr ""
 "Assurez vous que {} ne sera jamais mise à jour vers une nouvelle version"
 
-#: src/filter_window.py:43 src/filter_window.py:47
-msgid "{} selected"
-msgstr ""
-
-#: src/filter_window.py:130 src/orphans_window.py:148 src/remotes_window.py:311
-#, fuzzy
-#| msgid "{} wide"
-msgid "User wide"
-msgstr "{} wide"
-
-#: src/filter_window.py:132 src/orphans_window.py:150 src/remotes_window.py:313
-#, fuzzy
-#| msgid "System"
-msgid "System wide"
-msgstr "Système"
-
-#: src/filter_window.py:134 src/orphans_window.py:152 src/remotes_window.py:315
-#, fuzzy
-#| msgid "Uninstall {}"
-msgid "Unknown install type"
-msgstr "Désinstaller {}"
-=======
-#: data/ui/window.blp:264
-msgid "_Keyboard Shortcuts"
-msgstr "Raccourcis _clavier"
-
-#: data/ui/window.blp:269
-msgid "_About Warehouse"
-msgstr "À _propos de Warehouse"
-
-#: data/ui/window.blp:278
-msgid "Copy Names"
-msgstr "Copier les noms"
-
-#: data/ui/window.blp:283
-msgid "Copy IDs"
-msgstr "Copier les identifiants"
-
-#: data/ui/window.blp:288
-msgid "Copy Refs"
-msgstr "Copier les référentiels"
-
-#: data/ui/window.blp:297
-#, fuzzy
-#| msgid "Open app"
-msgid "Open App"
-msgstr "Ouvrir l’application"
->>>>>>> 20f1f1c (Update translation files)
-
-#: src/app_row_widget.py:75
-msgid "Updates Disabled"
-msgstr "Mises à jour désactivées"
-
-#: src/app_row_widget.py:80 src/properties_window.py:206
-msgid "{} is masked and will not be updated"
-msgstr "{} est masquée et ne sera plus mise à jour"
-
-#: src/app_row_widget.py:87
-msgid "App EOL"
-msgstr "Appli EFV"
-
-#: src/app_row_widget.py:93 src/properties_window.py:189
-msgid ""
-"{} has reached its End of Life and will not receive any security updates"
-msgstr "{} est En Fin de Vie et ne recevra plus de mises à jour de sécurité"
-
-#: src/app_row_widget.py:104
-msgid "Runtime EOL"
-msgstr "Environnement d’exécution EFV"
-
-#: src/app_row_widget.py:110 src/properties_window.py:197
-msgid ""
-"{}'s runtime has reached its End of Life and will not receive any security "
-"updates"
-msgstr ""
-"L’environnement d’exécution de {} est en fin de vie et ne recevra plus de "
-"mises à jour de sécurité"
-
-#: src/app_row_widget.py:136
-msgid "View Properties"
-msgstr "Voir les propriétés"
-
-#: src/app_row_widget.py:163
-msgid "Copied name"
-msgstr "Nom copié"
-
-#: src/app_row_widget.py:167
-msgid "Copy Name"
-msgstr "Copier le nom"
-
-#: src/app_row_widget.py:172
-msgid "Copied ID"
-msgstr "Identifiant copié"
-
-#: src/app_row_widget.py:177
-msgid "Copy ID"
-msgstr "Copier l’identifiant"
-
-#: src/app_row_widget.py:182
-msgid "Copied ref"
-msgstr "Référentiel copié"
-
-#: src/app_row_widget.py:187
-msgid "Copy Ref"
-msgstr "Copier le référentiel"
-
-#: src/app_row_widget.py:193
-msgid "Copied launch command"
-msgstr "Commande de lancement copiée"
-
-#: src/app_row_widget.py:197
-msgid "Copy Launch Command"
-msgstr "Copier la commande de lancement"
-
-#: src/app_row_widget.py:200 src/window.py:486
-msgid "Copy"
-msgstr "Copier"
-
-#: src/app_row_widget.py:206
-msgid "Opened {}"
-msgstr "{} ouverte"
-
-#: src/app_row_widget.py:209
-msgid "Open"
-msgstr "Ouvrir"
-
-#: src/app_row_widget.py:218 src/window.py:225 src/window.py:299
-msgid "Uninstall"
-msgstr "Désinstaller"
-
-#: src/app_row_widget.py:273
-msgid "Enable Updates"
-msgstr "Activer les mises à jour"
-
-#: src/app_row_widget.py:287
-#, fuzzy
-#| msgid "Manage Remotes"
-msgid "Manage Snapshots"
-msgstr "Gérer les dépôts de logiciels"
-
-#: src/downgrade_window.py:99
-msgid "Commit Hash: {}"
-msgstr "Hachage du commit : {}"
-
-#: src/downgrade_window.py:120
-msgid "Could not downgrade {}"
-msgstr "Impossible de rétrograder {}"
-
-#: src/downgrade_window.py:130 src/window.py:439
-msgid "Could not disable updates for {}"
-msgstr "Impossible de désactiver les mises à jour pour {}"
-
-#: src/downgrade_window.py:143
-msgid "Downgrading…"
-msgstr "Rétrogradage…"
-
-#: src/downgrade_window.py:167
-msgid "Downgrade {}"
-msgstr "Rétrograder {}"
-
-#: src/downgrade_window.py:180
-msgid "Ensure that {} will never be updated to a newer version"
-msgstr ""
-"Assurez vous que {} ne sera jamais mise à jour vers une nouvelle version"
-
 #: src/filter_window.py:50 src/filter_window.py:54
 msgid "{} selected"
 msgstr ""
 
-#: src/filter_window.py:137 src/orphans_window.py:150 src/remotes_window.py:307
+#: src/filter_window.py:137 src/orphans_window.py:148 src/remotes_window.py:311
 #, fuzzy
 #| msgid "{} wide"
 msgid "User wide"
 msgstr "{} wide"
 
-#: src/filter_window.py:139 src/orphans_window.py:152 src/remotes_window.py:309
+#: src/filter_window.py:139 src/orphans_window.py:150 src/remotes_window.py:313
 #, fuzzy
 #| msgid "System"
 msgid "System wide"
 msgstr "Système"
 
-#: src/filter_window.py:141 src/orphans_window.py:154 src/remotes_window.py:311
+#: src/filter_window.py:141 src/orphans_window.py:152 src/remotes_window.py:315
 #, fuzzy
 #| msgid "Uninstall {}"
 msgid "Unknown install type"
@@ -1152,13 +705,10 @@ msgstr "Désinstaller {}"
 msgid "App Management"
 msgstr "Gestion des applications"
 
-<<<<<<< HEAD
 #: src/gtk/help-overlay.blp:14
 msgid "Search"
 msgstr "Rechercher"
 
-=======
->>>>>>> 6984e45 (Update translation files)
 #: src/gtk/help-overlay.blp:24
 msgid "Refresh"
 msgstr "Actualiser"
@@ -1167,11 +717,7 @@ msgstr "Actualiser"
 msgid "More Functions"
 msgstr "Plus de fonctionnalités"
 
-<<<<<<< HEAD
 #: src/gtk/help-overlay.blp:37 src/orphans_window.py:30
-=======
-#: src/gtk/help-overlay.blp:37 src/orphans_window.py:29
->>>>>>> 6984e45 (Update translation files)
 msgid "Manage Leftover Data"
 msgstr "Gérer les données résiduelles"
 
@@ -1195,10 +741,10 @@ msgstr "Afficher les raccourcis"
 msgid "Quit"
 msgstr "Quitter"
 
-<<<<<<< HEAD
 #: src/main.py:145
 msgid "Flatpaks"
 msgstr "Flatpaks"
+>>>>>>> 6984e45 (Update translation files)
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
 #: src/main.py:188
@@ -1255,27 +801,19 @@ msgstr "Impossible de gérer les données"
 #: src/properties_window.py:41 src/remotes_window.py:218
 msgid "Copied {}"
 msgstr "{} copié"
-=======
-#: src/main.py:136
-msgid "Flatpaks"
-msgstr "Flatpaks"
->>>>>>> 6984e45 (Update translation files)
 
-#. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
-#: src/main.py:179
-msgid "translator-credits"
-msgstr "Maxim Therrien <maxim@acerspyro.ca>"
+#: src/properties_window.py:53
+msgid "Could not show details"
+msgstr "Impossible d’afficher les détails"
 
-#: src/main.py:185
-msgid "Donate"
-msgstr "Faire un don"
+#: src/properties_window.py:59
+msgid "User Data"
+msgstr "Données utilisateur"
 
-#: src/main.py:187
-msgid "Contributors"
-msgstr "Contributeurs"
+#: src/properties_window.py:79 src/properties_window.py:141
+msgid "No User Data"
+msgstr "Aucune donnée utilisateur"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/properties_window.py:90 src/remotes_window.py:510
 #: src/remotes_window.py:635
 msgid "Name"
@@ -1329,23 +867,23 @@ msgstr "Taille installée"
 msgid "Options"
 msgstr "Options"
 
-#: src/properties_window.py:141 src/window.py:421
+#: src/properties_window.py:140 src/window.py:421
 msgid "Trashed user data"
 msgstr "Données utilisateur mises à la corbeille"
 
-#: src/properties_window.py:148 src/window.py:416
+#: src/properties_window.py:147 src/window.py:416
 msgid "Could not trash user data"
 msgstr "Échec de la mise à la corbeille des données utilisateur"
 
-#: src/properties_window.py:152 src/window.py:424
+#: src/properties_window.py:151 src/window.py:424
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Mettre les données utilisateur de {} à la corbeille ?"
 
-#: src/properties_window.py:156 src/window.py:431 src/window.py:578
+#: src/properties_window.py:155 src/window.py:431 src/window.py:578
 msgid "Trash Data"
 msgstr "Mettre les données à la corbeille"
 
-#: src/properties_window.py:221
+#: src/properties_window.py:220
 msgid "{} Properties"
 msgstr "Propriétés de {}"
 
@@ -1437,7 +975,7 @@ msgstr "Flatpaks empaquetés par Fedora Linux"
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "Les dernières applis et environnements d’exécution bêta de GNOME"
 
-#: src/remotes_window.py:155
+#: src/remotes_window.py:373
 msgid "Beta KDE Apps and Runtimes"
 msgstr "Applications et environnements d’exécution bêta de KDE"
 
@@ -1574,368 +1112,6 @@ msgstr ""
 
 #. Window stuffs
 #: src/snapshots_window.py:294
-=======
-#: src/orphans_window.py:78 src/window.py:757
-=======
-#: src/orphans_window.py:78 src/window.py:725
->>>>>>> 20f1f1c (Update translation files)
-msgid "Installed successfully"
-msgstr "Installation réussie"
-
-#: src/orphans_window.py:81
-msgid "Could not install some apps"
-msgstr "Certaines applications n’ont pu être installées"
-
-#: src/orphans_window.py:117
-msgid "Attempt to Install?"
-msgstr "Essayer d’installer ?"
-
-#: src/orphans_window.py:118
-msgid "Warehouse will attempt to install apps matching the selected data."
-msgstr ""
-"Warehouse essayera d’installer les applications correspondant aux données "
-"sélectionnées."
-
-#: src/orphans_window.py:185
-msgid "Trash folders?"
-msgstr "Mettre les dossiers à la corbeille ?"
-
-#: src/orphans_window.py:185
-msgid "These folders will be sent to the trash."
-msgstr "Ces dossiers seront mis à la corbeille."
-
-#: src/orphans_window.py:190
-msgid "Continue"
-msgstr "Continuer"
-
-#: src/orphans_window.py:199 src/properties_window.py:43
-#: src/snapshots_window.py:249 src/window.py:400
-msgid "Could not open folder"
-msgstr "Échec de l’ouverture du dossier"
-
-#: src/orphans_window.py:217
-msgid "Could not manage data"
-msgstr "Impossible de gérer les données"
-
-#: src/properties_window.py:37 src/remotes_window.py:214
-msgid "Copied {}"
-msgstr "{} copié"
-
-#: src/properties_window.py:49
-msgid "Could not show details"
-msgstr "Impossible d’afficher les détails"
-
-#: src/properties_window.py:55
-msgid "User Data"
-msgstr "Données utilisateur"
-
-#: src/properties_window.py:75 src/properties_window.py:137
-msgid "No User Data"
-msgstr "Aucune donnée utilisateur"
-
-#: src/properties_window.py:86 src/remotes_window.py:506
-#: src/remotes_window.py:631
-msgid "Name"
-msgstr "Nom"
-
-#: src/properties_window.py:87
-msgid "Description"
-msgstr "Description"
-
-#: src/properties_window.py:88
-msgid "App ID"
-msgstr "Identifiant de l’application"
-
-#: src/properties_window.py:89
-msgid "Version"
-msgstr "Version"
-
-#: src/properties_window.py:90
-msgid "Branch"
-msgstr "Branche"
-
-#: src/properties_window.py:91
-msgid "Arch"
-msgstr "Architecture"
-
-#: src/properties_window.py:92
-msgid "Origin"
-msgstr "Origine"
-
-#: src/properties_window.py:93
-msgid "Installation"
-msgstr "Installation"
-
-#: src/properties_window.py:94
-msgid "Ref"
-msgstr "Référentiel"
-
-#: src/properties_window.py:95
-msgid "Active Commit"
-msgstr "Commit actif"
-
-#: src/properties_window.py:96
-msgid "Latest Commit"
-msgstr "Dernier commit"
-
-#: src/properties_window.py:97
-msgid "Installed Size"
-msgstr "Taille installée"
-
-#: src/properties_window.py:98
-msgid "Options"
-msgstr "Options"
-
-#: src/properties_window.py:136 src/window.py:414
-msgid "Trashed user data"
-msgstr "Données utilisateur mises à la corbeille"
-
-#: src/properties_window.py:143 src/window.py:409
-msgid "Could not trash user data"
-msgstr "Échec de la mise à la corbeille des données utilisateur"
-
-#: src/properties_window.py:147 src/window.py:417
-msgid "Send {}'s User Data to the Trash?"
-msgstr "Mettre les données utilisateur de {} à la corbeille ?"
-
-#: src/properties_window.py:151 src/window.py:424 src/window.py:567
-msgid "Trash Data"
-msgstr "Mettre les données à la corbeille"
-
-#: src/properties_window.py:220
-msgid "{} Properties"
-msgstr "Propriétés de {}"
-
-#: src/remotes_window.py:75
-msgid "Could not remove {}"
-msgstr "Impossible de supprimer {}"
-
-#: src/remotes_window.py:85 src/remotes_window.py:166
-msgid "Any installed apps from {} will stop receiving updates"
-msgstr ""
-"Toutes les applications installées depuis {} cesseront de recevoir des mises "
-"à jour"
-
-#: src/remotes_window.py:88
-msgid "Remove {}?"
-msgstr "Supprimer {} ?"
-
-#: src/remotes_window.py:91 src/remotes_window.py:272
-msgid "Remove"
-msgstr "Supprimer"
-
-#: src/remotes_window.py:118
-#, fuzzy
-#| msgid "Could not add {}"
-msgid "Could not enable {}"
-msgstr "Impossible d’ajouter {}"
-
-#: src/remotes_window.py:146
-#, fuzzy
-#| msgid "Could not add {}"
-msgid "Could not disable {}"
-msgstr "Impossible d’ajouter {}"
-
-#: src/remotes_window.py:169
-#, fuzzy
-#| msgid "Disabled"
-msgid "Disable {}?"
-msgstr "Désactivé"
-
-#: src/remotes_window.py:172 src/remotes_window.py:263
-#, fuzzy
-#| msgid "Disabled"
-msgid "Disable"
-msgstr "Désactivé"
-
-#: src/remotes_window.py:183
-#, fuzzy
-#| msgid "Could not install app"
-msgid "Could not view apps"
-msgstr "Impossible d’installer l’application"
-
-#: src/remotes_window.py:240
-#, fuzzy
-#| msgid "Set Filters"
-msgid "Set Filter"
-msgstr "Utiliser des filtres"
-
-#: src/remotes_window.py:254
-#, fuzzy
-#| msgid "Enable Updates"
-msgid "Enable"
-msgstr "Activer les mises à jour"
-
-#: src/remotes_window.py:288
-msgid "Copy remote name"
-msgstr "Copier le nom du dépôt"
-
-#: src/remotes_window.py:302
-msgid "Disabled"
-msgstr "Désactivé"
-
-#: src/remotes_window.py:339
-msgid "The open source, pay-what-you-want app store from elementary"
-msgstr "Le magasin d’applications open-source et à prix libre de elementary"
-
-#: src/remotes_window.py:345
-msgid "Central repository of Flatpak applications"
-msgstr "Répertoire central des applications Flatpak"
-
-#: src/remotes_window.py:351
-msgid "Beta builds of Flatpak applications"
-msgstr "Versions Bêta des applications Flatpak"
-
-#: src/remotes_window.py:357
-msgid "Flatpaks packaged by Fedora Linux"
-msgstr "Flatpaks empaquetés par Fedora Linux"
-
-#: src/remotes_window.py:363
-msgid "The latest beta GNOME Apps and Runtimes"
-msgstr "Les dernières applis et environnements d’exécution bêta de GNOME"
-
-#: src/remotes_window.py:369
-msgid "Beta KDE Apps and Runtimes"
-msgstr "Applications et environnements d’exécution bêta de KDE"
-
-#: src/remotes_window.py:375
-msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr "Répertoire central des développeurs WebKit et Runtime SDK"
-
-#: src/remotes_window.py:411 src/remotes_window.py:574
-msgid "Could not add {}"
-msgstr "Impossible d’ajouter {}"
-
-#: src/remotes_window.py:448
-msgid "Add Flatpak Remote"
-msgstr "Ajouter un dépôt de logiciels Flatpak"
-
-#: src/remotes_window.py:451 src/remotes_window.py:623
-msgid "Add"
-msgstr "Ajouter"
-
-#: src/remotes_window.py:510
-msgid "URL"
-msgstr "URL"
-
-#: src/remotes_window.py:522 src/remotes_window.py:634 src/window.py:762
-msgid "User"
-msgstr "Utilisateur"
-
-#: src/remotes_window.py:522 src/remotes_window.py:634
-msgid "Remote will be available to only you"
-msgstr "Le dépôt ne sera accessible que sur votre session"
-
-#: src/remotes_window.py:530 src/remotes_window.py:637 src/window.py:765
-msgid "System"
-msgstr "Système"
-
-#: src/remotes_window.py:531 src/remotes_window.py:638
-msgid "Remote will be available to every user on the system"
-msgstr "Le dépôt sera accessible pour tous les utilisateurs de ce système"
-
-#: src/remotes_window.py:570
-msgid "{} successfully added"
-msgstr "{} a été ajouté avec succès"
-
-#: src/remotes_window.py:620
-msgid "Add {}?"
-msgstr "Ajouter {} ?"
-
-#: src/remotes_window.py:668
-msgid "Flatpak Repos"
-msgstr "Répertoires Flatpak"
-
-#: src/snapshots_window.py:50
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
-msgid "There is no User Data to Snapshot"
-msgstr "Mettre les données utilisateur de {} à la corbeille ?"
-
-#: src/snapshots_window.py:89
-#, fuzzy
-#| msgid "Version"
-msgid "Version {}"
-msgstr "Version"
-
-#: src/snapshots_window.py:121
-#, fuzzy
-#| msgid "Could not trash user data"
-msgid "Could not trash snapshot"
-msgstr "Échec de la mise à la corbeille des données utilisateur"
-
-#: src/snapshots_window.py:126
-#, fuzzy
-#| msgid "Create Snapshots?"
-msgid "Trash Snapshot?"
-msgstr "Créer des instantanés ?"
-
-#: src/snapshots_window.py:127
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
-msgid "This snapshot and its contents will be sent to the trash."
-msgstr "Ces dossiers seront mis à la corbeille."
-
-#: src/snapshots_window.py:131
-#, fuzzy
-#| msgid "Create Snapshots"
-msgid "Trash Snapshot"
-msgstr "Créer des instantanés"
-
-#: src/snapshots_window.py:149
-#, fuzzy
-#| msgid "Create Snapshots"
-msgid "Could not create snapshot"
-msgstr "Créer des instantanés"
-
-#. Make window unable to close
-#: src/snapshots_window.py:159
-#, fuzzy
-#| msgid "Creating Snapshots…"
-msgid "Creating Snapshot…"
-msgstr "Création d’instantanés…"
-
-#: src/snapshots_window.py:193 src/snapshots_window.py:210
-#: src/snapshots_window.py:217
-#, fuzzy
-#| msgid "Could not snapshot some apps"
-msgid "Could not apply snapshot"
-msgstr "Impossible de créer des instantanés de certaines applications"
-
-#: src/snapshots_window.py:196
-msgid "Snapshot applied"
-msgstr ""
-
-#. Make window unable to close
-#: src/snapshots_window.py:224
-#, fuzzy
-#| msgid "Creating Snapshots…"
-msgid "Applying Snapshot…"
-msgstr "Création d’instantanés…"
-
-#: src/snapshots_window.py:233
-#, fuzzy
-#| msgid "Create Snapshots?"
-msgid "Apply Snapshot?"
-msgstr "Créer des instantanés ?"
-
-#: src/snapshots_window.py:234
-msgid "Applying this snapshot will trash any current user data for {}."
-msgstr ""
-
-#: src/snapshots_window.py:240
-#, fuzzy
-#| msgid "Create Snapshots"
-msgid "Apply Snapshot"
-msgstr "Créer des instantanés"
-
-#. Window stuffs
-<<<<<<< HEAD
-#: src/snapshots_window.py:293
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/snapshots_window.py:292
->>>>>>> 20f1f1c (Update translation files)
 #, fuzzy
 #| msgid "Create Snapshots"
 msgid "{} Snapshots"
@@ -2088,53 +1264,21 @@ msgid "Send this app's settings and content to the trash"
 msgstr ""
 "Mettre les paramètres et le contenu de cette application à la corbeille"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:351
 msgid "List refreshed"
 msgstr "Liste actualisée"
 
 #: src/window.py:427
-=======
-#: src/window.py:357
-msgid "List refreshed"
-msgstr "Liste actualisée"
-
-#: src/window.py:386
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:349
-msgid "List refreshed"
-msgstr "Liste actualisée"
-
-#: src/window.py:420
->>>>>>> 20f1f1c (Update translation files)
 msgid "Your files and data for this app will be sent to the trash."
 msgstr ""
 "Vos fichiers et données utilisateur pour cette application seront mis à la "
 "corbeille."
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:468
 msgid "Disable Updates for {}?"
 msgstr "Désactiver les mises à jour pour {} ?"
 
 #: src/window.py:472
-=======
-#: src/window.py:427
-msgid "Disable Updates for {}?"
-msgstr "Désactiver les mises à jour pour {} ?"
-
-#: src/window.py:431
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:461
-msgid "Disable Updates for {}?"
-msgstr "Désactiver les mises à jour pour {} ?"
-
-#: src/window.py:465
->>>>>>> 20f1f1c (Update translation files)
 msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
@@ -2142,8 +1286,6 @@ msgstr ""
 "Ceci masquera {} pour que cette application ne reçoive plus de mises à jour "
 "de sécurité ou de fonctionnalités."
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:491
 msgid "Could not Run App"
 msgstr "Impossible de lancer l’application"
@@ -2161,53 +1303,17 @@ msgid "Could not trash {}'s data"
 msgstr "Échec de la mise à la corbeille des données de {}"
 
 #: src/window.py:573
-=======
-#: src/window.py:450
-=======
-#: src/window.py:484
->>>>>>> 20f1f1c (Update translation files)
-msgid "Could not Run App"
-msgstr "Impossible de lancer l’application"
-
-#: src/window.py:492
-msgid "OK"
-msgstr "OK"
-
-#: src/window.py:542
-msgid "{} has no data to trash"
-msgstr "{} n’a pas de données à mettre à la corbeille"
-
-#: src/window.py:548
-msgid "Could not trash {}'s data"
-msgstr "Échec de la mise à la corbeille des données de {}"
-
-<<<<<<< HEAD
-#: src/window.py:528
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:562
->>>>>>> 20f1f1c (Update translation files)
 msgid "Trash Selected Apps' User Data?"
 msgstr ""
 "Mettre les données utilisateur des applications sélectionnées à la "
 "corbeille ?"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:574
-=======
-#: src/window.py:529
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:563
->>>>>>> 20f1f1c (Update translation files)
 msgid "Your files and data for these apps will be sent to the trash."
 msgstr ""
 "Vos fichiers et données utilisateur pour ces applications seront mis à la "
 "corbeille."
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:624
 msgid "Could not snapshot some apps"
 msgstr "Impossible de créer des instantanés de certaines applications"
@@ -2217,24 +1323,6 @@ msgid "Create Snapshots?"
 msgstr "Créer des instantanés ?"
 
 #: src/window.py:644
-=======
-#: src/window.py:579
-=======
-#: src/window.py:613
->>>>>>> 20f1f1c (Update translation files)
-msgid "Could not snapshot some apps"
-msgstr "Impossible de créer des instantanés de certaines applications"
-
-#: src/window.py:633
-msgid "Create Snapshots?"
-msgstr "Créer des instantanés ?"
-
-<<<<<<< HEAD
-#: src/window.py:605
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:635
->>>>>>> 20f1f1c (Update translation files)
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
@@ -2243,8 +1331,6 @@ msgstr ""
 "l’application. Elles peuvent être restaurées à n’importe quel moment. Cela "
 "peut prendre du temps."
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:649
 msgid "Create Snapshots"
 msgstr "Créer des instantanés"
@@ -2296,55 +1382,6 @@ msgstr "Type de fichier non pris en charge"
 #~ msgid "Open App"
 #~ msgstr "Ouvrir l’application"
 
-#~ msgid "Apply"
-#~ msgstr "Appliquer"
-
-#~ msgid "No remotes on the system, add some from below"
-#~ msgstr "Aucun dépôt sur le système, vous pouvez en ajouter ci-dessous"
-
-=======
-#: src/window.py:610
-=======
-#: src/window.py:640
->>>>>>> 20f1f1c (Update translation files)
-msgid "Create Snapshots"
-msgstr "Créer des instantanés"
-
-#: src/window.py:692
-msgid "Copied selected app names"
-msgstr "Les noms des applications sélectionnées ont été copiés"
-
-#: src/window.py:705
-msgid "Copied selected app IDs"
-msgstr "Les identifiants des applications sélectionnées ont été copiés"
-
-#: src/window.py:718
-msgid "Copied selected app refs"
-msgstr "Référentiels des applications sélectionnées copiés"
-
-#: src/window.py:727
-msgid "Could not install app"
-msgstr "Impossible d’installer l’application"
-
-#: src/window.py:751
-msgid "Install {}?"
-msgstr "Installer {} ?"
-
-#: src/window.py:762
-msgid "The app will be available to only you"
-msgstr "L’application ne sera disponible que sur votre session"
-
-#: src/window.py:766
-msgid "The app will be available to every user on the system"
-msgstr "L’application sera disponible pour tous les utilisateurs de ce système"
-
-#: src/window.py:796
-msgid "File type not supported"
-msgstr "Type de fichier non pris en charge"
-
-<<<<<<< HEAD
->>>>>>> 6984e45 (Update translation files)
-=======
 #~ msgid "Apply"
 #~ msgstr "Appliquer"
 
