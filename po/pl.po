@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-04 06:52+0000\n"
+"POT-Creation-Date: 2024-03-04 02:03-0500\n"
 "PO-Revision-Date: 2023-10-21 09:35+0000\n"
 "Last-Translator: eryn <hericiumvevo@getcryst.al>\n"
 "Language-Team: Polish <https://weblate.fyralabs.com/projects/flattool/"
@@ -22,6 +22,7 @@ msgstr ""
 
 #. Translators: Do not translate the applicaion name
 #: data/io.github.flattool.Warehouse.desktop.in:4
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:5
 #, fuzzy
 msgid "Warehouse"
 msgstr "Warehouse"
@@ -35,6 +36,10 @@ msgstr "flatpak"
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
 msgstr "Zarządzaj wszystkim co Flatpakowe"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:6
+msgid "Heliguy"
+msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
