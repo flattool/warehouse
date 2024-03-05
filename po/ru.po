@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-17 20:33-0500\n"
-"PO-Revision-Date: 2023-11-14 01:28+0000\n"
+"POT-Creation-Date: 2024-03-05 11:31-0500\n"
+"PO-Revision-Date: 2024-01-06 09:15+0000\n"
 "Last-Translator: Сергей Ворон <voron.s.a@gmail.com>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ru/>\n"
@@ -16,22 +16,28 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.0\n"
 
-#: data/io.github.flattool.Warehouse.desktop.in:3
+#. Translators: Do not translate the applicaion name
+#: data/io.github.flattool.Warehouse.desktop.in:4
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:5
 msgid "Warehouse"
 msgstr "Warehouse"
 
-#: data/io.github.flattool.Warehouse.desktop.in:10
+#: data/io.github.flattool.Warehouse.desktop.in:11
 msgid "flatpak"
 msgstr "flatpak"
 
-#: data/io.github.flattool.Warehouse.desktop.in:11
+#: data/io.github.flattool.Warehouse.desktop.in:12
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
 msgstr "Управляйте всем, что касается Flatpak"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:6
+msgid "Heliguy"
+msgstr "Хелиги"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
@@ -69,379 +75,549 @@ msgstr "Поиск и очистка оставшихся пользовател
 msgid "Reinstall apps that have leftover data"
 msgstr "Переустановка приложений, в которых остались пользовательские данные"
 
-#: src/main.py:103
-msgid "Flatpaks"
-msgstr "Пакеты Flatpak"
-
-#. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
-#: src/main.py:138
-msgid "translator-credits"
-msgstr ""
-
-#: src/main.py:143
-msgid "Donate"
-msgstr "Пожертвовать"
-
-#: src/main.py:144
-msgid "Contributors"
-msgstr ""
-
-#: src/window.py:115
-msgid "Uninstalled successfully"
-msgstr "Успешно удалено"
-
-#: src/window.py:117
-msgid "Could not uninstall some apps"
-msgstr "Не удалось удалить некоторые приложения"
-
-#. Create Widgets
-#: src/window.py:159
-msgid "Uninstall Selected Apps?"
-msgstr "Удалить выбранные приложения?"
-
-#: src/window.py:159
-msgid "It will not be possible to use these apps after removal."
-msgstr "После удаления, использовать эти приложения будет невозможно."
-
-#: src/window.py:175 src/window.py:242
-msgid "App Settings & Data"
-msgstr "Настройки и данные приложения"
-
-#: src/window.py:177 src/window.py:244
-msgid "Keep"
-msgstr "Оставить"
-
-#: src/window.py:177
-msgid "Allow restoring these apps' settings and content"
-msgstr "Позволяет восстановить настройки и данные этих приложений"
-
-#: src/window.py:178 src/window.py:245 data/ui/orphans.blp:123
-msgid "Trash"
-msgstr "Очистить"
-
-#: src/window.py:178
-msgid "Send these apps' settings and content to the trash"
-msgstr "Очистить настройки и данные этих приложений"
-
-#: src/window.py:205 src/window.py:263 src/window.py:339 src/window.py:369
-#: src/window.py:451 src/window.py:508 src/window.py:683
-#: src/properties_window.py:127 src/remotes_window.py:68
-#: src/remotes_window.py:212 src/remotes_window.py:354
-#: src/orphans_window.py:105 src/orphans_window.py:159 data/ui/filter.blp:17
-#: data/ui/downgrade.blp:16
+#: data/ui/downgrade.blp:16 src/orphans_window.py:119 src/orphans_window.py:187
+#: src/properties_window.py:154 src/remotes_window.py:93
+#: src/remotes_window.py:174 src/remotes_window.py:454
+#: src/remotes_window.py:626 src/snapshots_window.py:135
+#: src/snapshots_window.py:244 src/window.py:224 src/window.py:298
+#: src/window.py:429 src/window.py:475 src/window.py:577 src/window.py:648
+#: src/window.py:768
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/window.py:206 src/window.py:264
-msgid "Uninstall"
-msgstr "Удалить"
+#: data/ui/downgrade.blp:22 src/app_row_widget.py:298
+msgid "Downgrade"
+msgstr "Понизить версию"
 
-#: src/window.py:212
-msgid "Cannot uninstall while already uninstalling"
-msgstr "Невозможно удалить, если уже идёт удаление"
+#: data/ui/downgrade.blp:49
+#, fuzzy
+#| msgid "Fetching Releases…"
+msgid "Fetching Releases"
+msgstr "Получение релизов…"
 
-#. Create Widgets
-#: src/window.py:237
-msgid "Uninstall {}?"
-msgstr "Удалить {}?"
+#: data/ui/downgrade.blp:57 data/ui/window.blp:107 data/ui/window.blp:162
+#, fuzzy
+#| msgid "This could take a while."
+msgid "This could take a while"
+msgstr "Это займет некоторое время."
 
-#: src/window.py:237
-msgid "It will not be possible to use {} after removal."
-msgstr "После удаления, использовать {} будет невозможно."
-
-#: src/window.py:244
-msgid "Allow restoring this app's settings and content"
-msgstr "Позволяет восстановить настройки и контент этого приложения"
-
-#: src/window.py:245
-msgid "Send this app's settings and content to the trash"
-msgstr "Очистить настройки и данные этого приложения"
-
-#: src/window.py:314
-msgid "List refreshed"
-msgstr ""
-
-#: src/window.py:323 src/properties_window.py:42 src/orphans_window.py:168
-msgid "Could not open folder"
-msgstr "Не удалось открыть папку"
-
-#: src/window.py:331 src/properties_window.py:124
-msgid "Could not trash user data"
-msgstr "Не удалось очистить данные приложения"
-
-#: src/window.py:335 src/properties_window.py:118
-msgid "Trashed user data"
-msgstr "Данные приложения очищены"
-
-#: src/window.py:337 src/properties_window.py:126
-msgid "Send {}'s User Data to the Trash?"
-msgstr "Очистить данные приложения {}?"
-
-#: src/window.py:338
-msgid "Your files and data for this app will be sent to the trash."
-msgstr "Ваши файлы и данные этого приложения будут очищены."
-
-#: src/window.py:341 src/window.py:452 src/properties_window.py:129
-msgid "Trash Data"
-msgstr "Очистить данные"
-
-#: src/window.py:352 src/downgrade_window.py:106
-msgid "Could not disable updates for {}"
-msgstr "Не удалось отключить обновления для {}"
-
-#: src/window.py:367
-msgid "Disable Updates for {}?"
-msgstr "Отключить обновления для {}?"
-
-#: src/window.py:368
-msgid ""
-"This will mask {} ensuring it will never recieve any feature or security "
-"updates."
-msgstr ""
-"Это скроет {}, гарантируя, что он никогда не получит никаких обновлений "
-"функций и безопасности."
-
-#: src/window.py:371 data/ui/downgrade.blp:46
+#: data/ui/downgrade.blp:65 src/app_row_widget.py:262 src/window.py:477
 msgid "Disable Updates"
 msgstr "Отключить обновления"
 
-#: src/window.py:385
-msgid "Could not Run App"
-msgstr "Не удалось запустить приложение"
+#: data/ui/downgrade.blp:71
+msgid "Select a Release"
+msgstr "Выбрать релиз"
 
-#: src/window.py:386
-msgid "Copy"
-msgstr "Копировать"
-
-#: src/window.py:391
-msgid "OK"
-msgstr "ОК"
-
-#: src/window.py:440
-#, fuzzy
-msgid "{} has no data to trash"
-msgstr "Очистить данные приложения {}?"
-
-#: src/window.py:443
-#, fuzzy
-msgid "Could not trash {}'s data"
-msgstr "Не удалось очистить данные приложения"
-
-#: src/window.py:449
-msgid "Trash Selected Apps' User Data?"
-msgstr "Очистить данные выбранных приложений?"
-
-#: src/window.py:449
-msgid "Your files and data for these apps will be sent to the trash."
-msgstr "Ваши файлы и данные этих приложений будут очищены."
-
-#: src/window.py:486
-#, fuzzy
-#| msgid "Could not install some apps"
-msgid "Could not snapshot some apps"
-msgstr "Не удалось установить некоторые приложения"
-
-#: src/window.py:506
-#, fuzzy
-#| msgid "Manage Snapshots"
-msgid "Create Snapshots?"
-msgstr "Управление снимками"
-
-#: src/window.py:506
+#: data/ui/downgrade.blp:72
 msgid ""
-"Snapshots are backups of the app's user data. They can be reapplied at any "
-"time. This could take a while."
+"This will uninstall the current release and install the chosen one instead. "
+"Note that downgrading can cause issues."
 msgstr ""
+"Это приведет к удалению текущей версии и вместо нее установится выбранная. "
+"Обратите внимание, что понижение версии может вызвать проблемы."
 
-#: src/window.py:509
+#: data/ui/filter.blp:7 src/gtk/help-overlay.blp:19
+msgid "Set Filters"
+msgstr "Установить фильтры"
+
+#: data/ui/filter.blp:40
+msgid "Show Apps"
+msgstr "Показать приложения"
+
+#: data/ui/filter.blp:50
+msgid "Show Runtimes"
+msgstr "Показать среды выполнения"
+
+#: data/ui/filter.blp:61
 #, fuzzy
-#| msgid "Manage Snapshots"
-msgid "Create Snapshots"
-msgstr "Управление снимками"
+#| msgid "Filter Apps by Remotes"
+msgid "Filter by Remotes"
+msgstr "Фильтровать приложения по репозиториям"
 
-#: src/window.py:562
-msgid "Copied selected app names"
-msgstr "Выбранное имя приложения скопировано"
+#: data/ui/filter.blp:66
+#, fuzzy
+#| msgid "Filter Apps by Runtime"
+msgid "Filter by Runtimes"
+msgstr "Фильтрация приложений по средам выполнения"
 
-#: src/window.py:575
-msgid "Copied selected app IDs"
-msgstr "Выбранный ИД приложения скопирован"
+#: data/ui/filter.blp:74 data/ui/window.blp:179
+#, fuzzy
+#| msgid "Set Filters"
+msgid "Reset Filters"
+msgstr "Установить фильтры"
 
-#: src/window.py:588
-msgid "Copied selected app refs"
-msgstr "Выбранная ссылка приложения скопирована"
+#: data/ui/orphans.blp:14 data/ui/window.blp:12
+msgid "Search List"
+msgstr "Поиск в списке"
 
-#: src/window.py:657 src/orphans_window.py:73
-msgid "Installed successfully"
-msgstr "Успешно установлено"
+#: data/ui/orphans.blp:20
+msgid "Open Data Folder"
+msgstr "Открыть папку данных"
 
-#: src/window.py:659
-msgid "Could not install app"
-msgstr "Не удалось установить приложение"
+#: data/ui/orphans.blp:81 data/ui/search_install.blp:177 data/ui/window.blp:98
+#, fuzzy
+#| msgid "Installing…"
+msgid "Installing"
+msgstr "Установка…"
 
-#: src/window.py:681
-msgid "Install {}?"
-msgstr "Установить {}?"
+#: data/ui/orphans.blp:102
+msgid "No Leftover Data"
+msgstr "Нет оставшихся данных"
 
-#: src/window.py:684 src/orphans_window.py:106 data/ui/orphans.blp:129
+#: data/ui/orphans.blp:103
+msgid "There is no leftover user data"
+msgstr "Нет оставшихся пользовательских данных"
+
+#: data/ui/orphans.blp:108 data/ui/search_install.blp:93 data/ui/window.blp:187
+msgid "No Results Found"
+msgstr "Результатов не найдено"
+
+#: data/ui/orphans.blp:109 data/ui/search_install.blp:94 data/ui/window.blp:188
+msgid "Try a different search term"
+msgstr "Попробуйте другой поисковый запрос"
+
+#: data/ui/orphans.blp:119 data/ui/window.blp:200
+msgid "Select All"
+msgstr "Выбрать все"
+
+#: data/ui/orphans.blp:124 src/window.py:195 src/window.py:278
+msgid "Trash"
+msgstr "Очистить"
+
+#: data/ui/orphans.blp:130 data/ui/search_install.blp:60
+#: src/orphans_window.py:120 src/window.py:769
 msgid "Install"
 msgstr "Установить"
 
-#: src/window.py:691 src/remotes_window.py:283 src/remotes_window.py:365
-msgid "User"
-msgstr "Пользователь"
+#: data/ui/popular_remotes.blp:18
+msgid "Add Remote"
+msgstr "Добавить репозиторий"
 
-#: src/window.py:691
-msgid "The app will be available to only you"
-msgstr "Приложение будет доступно только вам"
+#: data/ui/popular_remotes.blp:19
+#, fuzzy
+#| msgid "Choose from a list of popular remotes or add a new one."
+msgid "Choose from a list of popular remotes or add a new one"
+msgstr "Выберите из списка популярные репозитории или добавьте новый."
 
-#: src/window.py:692 src/remotes_window.py:289 src/remotes_window.py:366
-msgid "System"
-msgstr "Система"
+#: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
+msgid "Add a Repo File"
+msgstr "Добавить файл репозитория"
 
-#: src/window.py:692
-msgid "The app will be available to every user on the system"
-msgstr "Приложение будет доступно всем пользователям системы"
+#: data/ui/popular_remotes.blp:50 data/ui/remotes.blp:56
+msgid "Add a Custom Remote"
+msgstr "Добавить пользовательский репозиторий"
 
-#: src/window.py:721
-msgid "File type not supported"
-msgstr "Тип файла не поддерживается"
+#: data/ui/properties.blp:45
+#, fuzzy
+#| msgid "Loading User Data…"
+msgid "Loading User Data"
+msgstr "Загрузка пользовательских данных…"
 
-#: data/ui/window.blp:12
-msgid "Refresh List"
-msgstr "Обновить список"
+#: data/ui/properties.blp:50 src/app_row_widget.py:231
+#: src/orphans_window.py:258
+msgid "Open User Data Folder"
+msgstr "Открыть папку с данными приложения"
 
-#: data/ui/window.blp:18 data/ui/orphans.blp:14
-msgid "Search List"
-msgstr "Список поиска"
+#: data/ui/properties.blp:62 src/app_row_widget.py:244
+msgid "Trash User Data"
+msgstr "Очистить данные приложения"
 
-#: data/ui/window.blp:24
+#: data/ui/properties.blp:80
+#, fuzzy
+#| msgid "Show Apps Using this Runtime"
+msgid "Show Apps Using This Runtime"
+msgstr "Показать приложения, использующие эту среду выполнения"
+
+#: data/ui/properties.blp:91
+msgid "Runtime"
+msgstr "Среда выполнения"
+
+#: data/ui/properties.blp:96 src/app_row_widget.py:136
+msgid "View Properties"
+msgstr "Просмотр свойств"
+
+#: data/ui/properties.blp:107 src/app_row_widget.py:200
+#: src/properties_window.py:109 src/window.py:493
+msgid "Copy"
+msgstr "Копировать"
+
+#: data/ui/properties.blp:119
+msgid "Show Details in Store"
+msgstr "Показать подробности в магазине"
+
+#: data/ui/remotes.blp:5 src/gtk/help-overlay.blp:42
+msgid "Manage Remotes"
+msgstr "Управление репозиториями"
+
+#: data/ui/remotes.blp:14
+#, fuzzy
+#| msgid "Refresh list of remotes"
+msgid "Refresh List of Remotes"
+msgstr "Обновить список репозиториев"
+
+#: data/ui/remotes.blp:23
+msgid "Installed Remotes"
+msgstr "Установленные репозитории"
+
+#: data/ui/remotes.blp:27
+#, fuzzy
+#| msgid "Show disabled"
+msgid "Show Disabled"
+msgstr "Показать отключенные"
+
+#: data/ui/remotes.blp:41
+#, fuzzy
+#| msgid "No Results Found"
+msgid "No Remotes Found"
+msgstr "Результатов не найдено"
+
+#: data/ui/remotes.blp:45
+msgid "Add a Popular Remote"
+msgstr "Добавить популярные репозитории"
+
+#: data/ui/remotes.blp:49
+msgid "Add Other Remotes"
+msgstr "Добавить другие репозитории"
+
+#: data/ui/remotes.blp:79
+#, fuzzy
+#| msgid "Adding Remote…"
+msgid "Adding Remote"
+msgstr "Добавление репозитория…"
+
+#: data/ui/remotes.blp:88 data/ui/window.blp:54
+#, fuzzy
+#| msgid "This should only take a moment."
+msgid "This should only take a moment"
+msgstr "Это займет всего минуту."
+
+#: data/ui/search_install.blp:15
+#, fuzzy
+#| msgid "Search List"
+msgid "Search Criteria"
+msgstr "Поиск в списке"
+
+#: data/ui/search_install.blp:23
+msgid "Choose a Remote to Search"
+msgstr ""
+
+#: data/ui/search_install.blp:37
+#, fuzzy
+#| msgid "No Results Found"
+msgid "Results"
+msgstr "Результатов не найдено"
+
+#: data/ui/search_install.blp:43
+msgid "Back"
+msgstr ""
+
+#: data/ui/search_install.blp:77
+#, fuzzy
+#| msgid "Search"
+msgid "Start Search"
+msgstr "Поиск"
+
+#: data/ui/search_install.blp:86
+msgid "Search for Flatpaks"
+msgstr "Поиск пакетов Flatpak"
+
+#: data/ui/search_install.blp:88
+msgid "Search for Flatpaks that you want to install"
+msgstr "Найдите пакеты Flatpak, которые вы хотите установить"
+
+#: data/ui/search_install.blp:114
+#, fuzzy
+#| msgctxt "Shown with a spinner while search operation is pending"
+#| msgid "Searching…"
+msgid "Searching"
+msgstr "Идет поиск…"
+
+#: data/ui/search_install.blp:125
+#, fuzzy
+#| msgid "Too many results"
+msgid "Too Many Results"
+msgstr "Слишком много результатов"
+
+#: data/ui/search_install.blp:126
+msgid "Try being more specific with your search"
+msgstr "Попробуйте уточнить запрос"
+
+#: data/ui/snapshots.blp:15
+msgid "Open Snapshots Folder"
+msgstr "Открыть папку снимков"
+
+#: data/ui/snapshots.blp:33
+msgid "New Snapshot"
+msgstr "Новый снимок"
+
+#: data/ui/snapshots.blp:84
+msgid "No Snapshots"
+msgstr "Нет снимков"
+
+#: data/ui/snapshots.blp:85
+msgid ""
+"Snapshots are backups of the app's user data. They can be reapplied at any "
+"time."
+msgstr ""
+"Снимки — это резервные копии пользовательских данных приложения. Их можно "
+"повторно применить в любое время."
+
+#: data/ui/window.blp:18
 msgid "Filter List"
 msgstr "Список фильтров"
 
-#: data/ui/window.blp:30
+#: data/ui/window.blp:24
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: data/ui/window.blp:37 src/gtk/help-overlay.blp:29
+#: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 msgid "Toggle Selection Mode"
 msgstr "Переключение режима выбора"
 
-#: data/ui/window.blp:59
-msgid "Loading Flatpaks…"
-msgstr ""
-
-#: data/ui/window.blp:60 data/ui/remotes.blp:88
+#: data/ui/window.blp:53
 #, fuzzy
-msgid "This should only take a moment."
-msgstr "Это займет некоторое время."
+#| msgid "Loading Flatpaks…"
+msgid "Loading Flatpaks"
+msgstr "Загрузка пакетов Flatpak…"
 
-#: data/ui/window.blp:104 data/ui/orphans.blp:81
-msgid "Installing…"
-msgstr "Установка…"
-
-#: data/ui/window.blp:113 data/ui/window.blp:140 data/ui/window.blp:167
-#: data/ui/orphans.blp:90
-msgid "This could take a while."
-msgstr "Это займет некоторое время."
-
-#: data/ui/window.blp:135
-msgid "Uninstalling…"
+#: data/ui/window.blp:129
+#, fuzzy
+#| msgid "Uninstalling…"
+msgid "Uninstalling"
 msgstr "Удаление…"
 
-#: data/ui/window.blp:162
+#: data/ui/window.blp:157
 #, fuzzy
-#| msgid "Manage Snapshots"
-msgid "Creating Snapshots…"
-msgstr "Управление снимками"
+#| msgid "Creating Snapshots…"
+msgid "Creating Snapshots"
+msgstr "Создание снимков…"
 
-#: data/ui/window.blp:174
+#: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr "Пакеты Flatpak не найдены"
 
-#: data/ui/window.blp:175
+#: data/ui/window.blp:170
 #, fuzzy
+#| msgid ""
+#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
+#| "Flatpaks installed."
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
-"Flatpaks installed."
-msgstr "Warehouse не видит список репозиториев или они не добавлены в системе"
+"Flatpaks installed"
+msgstr ""
+"Warehouse не видит список установленных пакетов Flatpak, или в системе не "
+"установлены пакеты Flatpak."
 
-#: data/ui/window.blp:180
-#, fuzzy
+#: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
-msgstr "Пакеты Flatpak не найдены"
+msgstr "Нет фильтров совпадений Flatpak"
 
-#: data/ui/window.blp:181
-msgid "No installed Flatpak matches any of the currently applied filters."
+#: data/ui/window.blp:176
+#, fuzzy
+#| msgid "No installed Flatpak matches any of the currently applied filters."
+msgid "No installed Flatpak matches all of the currently applied filters"
 msgstr ""
 "Либо нет пакетов Flatpak, соответствующих текущему фильтру, либо Warehouse "
 "не видит список установленных пакетов Flatpak, либо в системе не установлены "
 "пакеты Flatpak."
 
-#: data/ui/window.blp:186 data/ui/orphans.blp:107
-msgid "No Results Found"
-msgstr "Результатов не найдено"
-
-#: data/ui/window.blp:187 data/ui/orphans.blp:108
-#, fuzzy
-msgid "Try a different search term."
-msgstr "Попробуйте другой поисковый запрос"
-
-#: data/ui/window.blp:199 data/ui/orphans.blp:118
-msgid "Select All"
-msgstr "Выбрать все"
-
-#: data/ui/window.blp:205
+#: data/ui/window.blp:206
 msgid "Uninstall Selected Apps"
 msgstr "Удалить выбранные приложения"
 
-#: data/ui/window.blp:211
+#: data/ui/window.blp:212
 msgid "Send Selected Apps' Data to the Trash"
 msgstr "Очистить данные выбранных приложений"
 
-#: data/ui/window.blp:217
+#: data/ui/window.blp:218
 msgid "Open Copy Menu"
 msgstr "Открыть меню копирования"
 
-#: data/ui/window.blp:224
+#: data/ui/window.blp:225
 msgid "Snapshot Selected Apps' Data"
-msgstr "Снимок выбранных данных приложений"
+msgstr "Снимок данных выбранных приложений"
 
-#: data/ui/window.blp:234
-msgid "Install From File…"
-msgstr "Установить из файла…"
-
-#: data/ui/window.blp:239
+#: data/ui/window.blp:235
 msgid "Manage Leftover Data…"
 msgstr "Управление остатками данных…"
 
-#: data/ui/window.blp:248
+#: data/ui/window.blp:244
 msgid "Manage Remotes…"
 msgstr "Управление репозиториями…"
 
-#: data/ui/window.blp:258
+#: data/ui/window.blp:250
+msgid "Install From File…"
+msgstr "Установить из файла…"
+
+#: data/ui/window.blp:255
+msgid "Install From The Web…"
+msgstr "Установить из сети…"
+
+#: data/ui/window.blp:261
+msgid "Refresh List"
+msgstr "Обновить список"
+
+#: data/ui/window.blp:265
 msgid "_Keyboard Shortcuts"
 msgstr "_Комбинации клавиш"
 
-#: data/ui/window.blp:263
+#: data/ui/window.blp:270
 msgid "_About Warehouse"
 msgstr "_О приложении"
 
-#: data/ui/window.blp:272
+#: data/ui/window.blp:279
 msgid "Copy Names"
 msgstr "Копировать имена"
 
-#: data/ui/window.blp:277
+#: data/ui/window.blp:284
 msgid "Copy IDs"
 msgstr "Копировать ИД"
 
-#: data/ui/window.blp:282
+#: data/ui/window.blp:289
 msgid "Copy Refs"
 msgstr "Копировать ссылки"
 
-#: data/ui/window.blp:291
-msgid "Open app"
-msgstr "Открыть приложение"
+#: src/app_row_widget.py:75
+msgid "Updates Disabled"
+msgstr "Обновления отключены"
+
+#: src/app_row_widget.py:80 src/properties_window.py:211
+msgid "{} is masked and will not be updated"
+msgstr "{} скрыт и не будет обновляться"
+
+#: src/app_row_widget.py:87
+msgid "App EOL"
+msgstr "Cрок поддержки приложения"
+
+#: src/app_row_widget.py:93 src/properties_window.py:194
+msgid ""
+"{} has reached its End of Life and will not receive any security updates"
+msgstr ""
+"Срок поддержки приложения {} закончился и оно больше не будет получать "
+"никаких обновлений безопасности"
+
+#: src/app_row_widget.py:104
+msgid "Runtime EOL"
+msgstr "Cрок поддержки среды выполнения"
+
+#: src/app_row_widget.py:110 src/properties_window.py:202
+msgid ""
+"{}'s runtime has reached its End of Life and will not receive any security "
+"updates"
+msgstr ""
+"Срок поддержки среды выполнения {} закончился и она больше не будет получать "
+"никаких обновлений безопасности"
+
+#: src/app_row_widget.py:144 src/orphans_window.py:266
+#, fuzzy
+#| msgid "Select All"
+msgid "Select"
+msgstr "Выбрать все"
+
+#: src/app_row_widget.py:152 src/remotes_window.py:231
+#, fuzzy
+#| msgid "View Properties"
+msgid "View More"
+msgstr "Просмотр свойств"
+
+#: src/app_row_widget.py:163
+msgid "Copied name"
+msgstr "Имя скопировано"
+
+#: src/app_row_widget.py:167
+msgid "Copy Name"
+msgstr "Копировать имя"
+
+#: src/app_row_widget.py:172
+msgid "Copied ID"
+msgstr "ИД скопирован"
+
+#: src/app_row_widget.py:177
+msgid "Copy ID"
+msgstr "Копировать ИД"
+
+#: src/app_row_widget.py:182
+msgid "Copied ref"
+msgstr "Ссылка скопирована"
+
+#: src/app_row_widget.py:187
+msgid "Copy Ref"
+msgstr "Копировать ссылку"
+
+#: src/app_row_widget.py:193
+msgid "Copied launch command"
+msgstr "Команда запуска скопирована"
+
+#: src/app_row_widget.py:197
+msgid "Copy Launch Command"
+msgstr "Копировать команду запуска"
+
+#: src/app_row_widget.py:206
+msgid "Opened {}"
+msgstr "Открыто {}"
+
+#: src/app_row_widget.py:209
+msgid "Open"
+msgstr "Открыть"
+
+#: src/app_row_widget.py:219 src/window.py:225 src/window.py:299
+msgid "Uninstall"
+msgstr "Удалить"
+
+#: src/app_row_widget.py:274
+msgid "Enable Updates"
+msgstr "Включить обновления"
+
+#: src/app_row_widget.py:288
+msgid "Manage Snapshots"
+msgstr "Управление снимками"
+
+#: src/common.py:280 src/common.py:347
+msgid ""
+"Working on {}\n"
+"{} out of {}"
+msgstr ""
+
+#: src/downgrade_window.py:99
+msgid "Commit Hash: {}"
+msgstr "Хеш коммита: {}"
+
+#: src/downgrade_window.py:120
+msgid "Could not downgrade {}"
+msgstr "Не удалось понизить версию {}"
+
+#: src/downgrade_window.py:130 src/window.py:446
+msgid "Could not disable updates for {}"
+msgstr "Не удалось отключить обновления для {}"
+
+#: src/downgrade_window.py:143
+msgid "Downgrading…"
+msgstr "Понижение версии…"
+
+#: src/downgrade_window.py:167
+msgid "Downgrade {}"
+msgstr "Понизить версию {}"
+
+#: src/downgrade_window.py:180
+msgid "Ensure that {} will never be updated to a newer version"
+msgstr "Гарантируется, что {} никогда не будет обновлен до более новой версии"
+
+#: src/filter_window.py:43 src/filter_window.py:47
+msgid "{} selected"
+msgstr ""
+
+#: src/filter_window.py:130 src/orphans_window.py:148 src/remotes_window.py:311
+msgid "User wide"
+msgstr "Пользовательская"
+
+#: src/filter_window.py:132 src/orphans_window.py:150 src/remotes_window.py:313
+msgid "System wide"
+msgstr "Системная"
+
+#: src/filter_window.py:134 src/orphans_window.py:152 src/remotes_window.py:315
+msgid "Unknown install type"
+msgstr "Неизвестный тип установки"
 
 #: src/gtk/help-overlay.blp:11
 msgid "App Management"
@@ -451,10 +627,6 @@ msgstr "Управление приложениями"
 msgid "Search"
 msgstr "Поиск"
 
-#: src/gtk/help-overlay.blp:19 data/ui/filter.blp:7
-msgid "Set Filters"
-msgstr "Установить фильтры"
-
 #: src/gtk/help-overlay.blp:24
 msgid "Refresh"
 msgstr "Обновить"
@@ -463,13 +635,9 @@ msgstr "Обновить"
 msgid "More Functions"
 msgstr "Дополнительные функции"
 
-#: src/gtk/help-overlay.blp:37 src/orphans_window.py:28
+#: src/gtk/help-overlay.blp:37 src/orphans_window.py:30
 msgid "Manage Leftover Data"
 msgstr "Управление данными"
-
-#: src/gtk/help-overlay.blp:42 data/ui/remotes.blp:5
-msgid "Manage Remotes"
-msgstr "Управление репозиториями"
 
 #: src/gtk/help-overlay.blp:47
 msgid "Install From File"
@@ -491,417 +659,525 @@ msgstr "Показать комбинации клавиш"
 msgid "Quit"
 msgstr "Выйти"
 
-#: src/properties_window.py:36 src/remotes_window.py:96
+#: src/main.py:145
+msgid "Flatpaks"
+msgstr "Пакеты Flatpak"
+
+#. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
+#: src/main.py:188
+msgid "translator-credits"
+msgstr "Сергей Ворон <voron@duck.com>"
+
+#: src/main.py:194
+msgid "Donate"
+msgstr "Пожертвовать"
+
+#: src/main.py:196
+msgid "Contributors"
+msgstr "Участники"
+
+#: src/orphans_window.py:76 src/window.py:740
+msgid "Installed successfully"
+msgstr "Успешно установлено"
+
+#: src/orphans_window.py:79
+msgid "Could not install some apps"
+msgstr "Не удалось установить некоторые приложения"
+
+#: src/orphans_window.py:115
+msgid "Attempt to Install?"
+msgstr "Попытаться установить?"
+
+#: src/orphans_window.py:116
+msgid "Warehouse will attempt to install apps matching the selected data."
+msgstr ""
+"Warehouse попытается установить приложения, соответствующие выбранным данным."
+
+#: src/orphans_window.py:183
+msgid "Trash folders?"
+msgstr "Очистить папки?"
+
+#: src/orphans_window.py:183
+msgid "These folders will be sent to the trash."
+msgstr "Эти папки будут очищены."
+
+#: src/orphans_window.py:188
+msgid "Continue"
+msgstr "Продолжить"
+
+#: src/orphans_window.py:197 src/properties_window.py:47
+#: src/snapshots_window.py:255 src/window.py:407
+msgid "Could not open folder"
+msgstr "Не удалось открыть папку"
+
+#: src/orphans_window.py:216
+msgid "Could not manage data"
+msgstr "Не удалось управление данными"
+
+#: src/properties_window.py:41 src/remotes_window.py:218
 msgid "Copied {}"
 msgstr "Скопировано {}"
 
-#: src/properties_window.py:48
+#: src/properties_window.py:53
 msgid "Could not show details"
 msgstr "Не удалось показать детали"
 
-#: src/properties_window.py:54
+#: src/properties_window.py:59
 msgid "User Data"
 msgstr "Пользовательские данные"
 
-#: src/properties_window.py:73 src/properties_window.py:119
+#: src/properties_window.py:79 src/properties_window.py:142
 msgid "No User Data"
 msgstr "Нет пользовательских данных"
 
-#: src/properties_window.py:84 src/remotes_window.py:268
-#: src/remotes_window.py:363
+#: src/properties_window.py:90 src/remotes_window.py:510
+#: src/remotes_window.py:635
 msgid "Name"
 msgstr "Имя"
 
-#: src/properties_window.py:84
+#: src/properties_window.py:91
 msgid "Description"
 msgstr "Описание"
 
-#: src/properties_window.py:84
+#: src/properties_window.py:92
 msgid "App ID"
 msgstr "ИД приложения"
 
-#: src/properties_window.py:84
+#: src/properties_window.py:93
 msgid "Version"
 msgstr "Версия"
 
-#: src/properties_window.py:84
+#: src/properties_window.py:94
 msgid "Branch"
 msgstr "Ветка"
 
-#: src/properties_window.py:85
+#: src/properties_window.py:95
 msgid "Arch"
 msgstr "Архитектура"
 
-#: src/properties_window.py:85
+#: src/properties_window.py:96
 msgid "Origin"
 msgstr "Источник"
 
-#: src/properties_window.py:85
+#: src/properties_window.py:97
 msgid "Installation"
 msgstr "Установка"
 
-#: src/properties_window.py:85
+#: src/properties_window.py:98
 msgid "Ref"
 msgstr "Ссылка"
 
-#: src/properties_window.py:85
+#: src/properties_window.py:99
 msgid "Active Commit"
 msgstr "Текущий коммит"
 
-#: src/properties_window.py:86
+#: src/properties_window.py:100
 msgid "Latest Commit"
 msgstr "Последний коммит"
 
-#: src/properties_window.py:86
+#: src/properties_window.py:101
 msgid "Installed Size"
 msgstr "Установленный размер"
 
-#: src/properties_window.py:86
+#: src/properties_window.py:102
 msgid "Options"
 msgstr "Опции"
 
-#: src/properties_window.py:158
-msgid ""
-"{} has reached its End of Life and will not receive any security updates"
-msgstr ""
-"Срок поддержки приложения {} закончился и оно больше не будет получать "
-"никаких обновлений безопасности"
+#: src/properties_window.py:141 src/window.py:421
+msgid "Trashed user data"
+msgstr "Данные приложения очищены"
 
-#: src/properties_window.py:162
-msgid ""
-"{}'s runtime has reached its End of Life and will not receive any security "
-"updates"
-msgstr ""
-"Срок поддержки среды выполнения {} закончился и она больше не будет получать "
-"никаких обновлений безопасности"
+#: src/properties_window.py:148 src/window.py:416
+msgid "Could not trash user data"
+msgstr "Не удалось очистить данные приложения"
 
-#: src/properties_window.py:166
-msgid "{} is masked and will not be updated"
-msgstr "{} скрыт и не будет обновляться"
+#: src/properties_window.py:152 src/window.py:424
+msgid "Send {}'s User Data to the Trash?"
+msgstr "Очистить данные приложения {}?"
 
-#: src/properties_window.py:178
+#: src/properties_window.py:156 src/window.py:431 src/window.py:578
+msgid "Trash Data"
+msgstr "Очистить данные"
+
+#: src/properties_window.py:221
 msgid "{} Properties"
 msgstr "Свойства {}"
 
-#: src/remotes_window.py:57
+#: src/remotes_window.py:78
 msgid "Could not remove {}"
 msgstr "Не удалось удалить {}"
 
-#: src/remotes_window.py:65
+#: src/remotes_window.py:88 src/remotes_window.py:169
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr "Все установленные приложения из {} перестанут получать обновления"
 
-#: src/remotes_window.py:66
+#: src/remotes_window.py:91
 msgid "Remove {}?"
 msgstr "Удалить {}?"
 
-#: src/remotes_window.py:69
+#: src/remotes_window.py:94 src/remotes_window.py:276
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/remotes_window.py:119
-#, fuzzy
-msgid "Disabled"
-msgstr "Отключить обновления"
+#: src/remotes_window.py:121
+msgid "Could not enable {}"
+msgstr "Не удалось включить {}"
 
-#: src/remotes_window.py:121 src/orphans_window.py:120
-msgid "{} wide"
-msgstr "Тип {}"
+#: src/remotes_window.py:149
+msgid "Could not disable {}"
+msgstr "Не удалось отключить {}"
 
-#: src/remotes_window.py:125
-msgid "View apps from this remote"
-msgstr ""
+#: src/remotes_window.py:172
+msgid "Disable {}?"
+msgstr "Отключить {}?"
 
-#: src/remotes_window.py:128
+#: src/remotes_window.py:175 src/remotes_window.py:267
+msgid "Disable"
+msgstr "Отключить"
+
+#: src/remotes_window.py:186
+msgid "Could not view apps"
+msgstr "Не удалось просмотреть приложения"
+
+#: src/remotes_window.py:244
+msgid "Set Filter"
+msgstr "Установить фильтр"
+
+#: src/remotes_window.py:258
+msgid "Enable"
+msgstr "Включить"
+
+#: src/remotes_window.py:292
 msgid "Copy remote name"
 msgstr "Скопировать имя репозитория"
 
-#: src/remotes_window.py:131
-msgid "Remove {}"
-msgstr "Удалить {}"
+#: src/remotes_window.py:306
+msgid "Disabled"
+msgstr "Отключено"
 
-#. [Name to show in GUI, Name of remote for system, Link to repo to add, Description of remote]
-#: src/remotes_window.py:150
+#: src/remotes_window.py:343
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr ""
 "Магазин приложений с открытым исходным кодом и оплатой по желанию от "
 "elementary"
 
-#: src/remotes_window.py:151
-#, fuzzy
-#| msgid "Beta builds of Flatpak applications"
+#: src/remotes_window.py:349
 msgid "Central repository of Flatpak applications"
-msgstr "Бета-версии приложений Flatpak"
+msgstr "Центральный репозиторий приложений Flatpak"
 
-#: src/remotes_window.py:152
+#: src/remotes_window.py:355
 msgid "Beta builds of Flatpak applications"
 msgstr "Бета-версии приложений Flatpak"
 
-#: src/remotes_window.py:153
+#: src/remotes_window.py:361
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "Flatpak, упакованные Fedora Linux"
 
-#: src/remotes_window.py:154
+#: src/remotes_window.py:367
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "Последняя бета-версия приложений и сред выполнения GNOME"
 
-#: src/remotes_window.py:155
-#, fuzzy
-#| msgid "The latest beta GNOME Apps and Runtimes"
+#: src/remotes_window.py:373
 msgid "Beta KDE Apps and Runtimes"
-msgstr "Последняя бета-версия приложений и сред выполнения GNOME"
+msgstr "Бета-приложения KDE и среды выполнения"
 
-#: src/remotes_window.py:156
+#: src/remotes_window.py:379
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr ""
+"Центральный репозиторий WebKit для разработчиков и SDK среды выполнения"
 
-#: src/remotes_window.py:188 src/remotes_window.py:314
+#: src/remotes_window.py:415 src/remotes_window.py:578
 msgid "Could not add {}"
 msgstr "Не удалось добавить {}"
 
-#: src/remotes_window.py:210
+#: src/remotes_window.py:452
 msgid "Add Flatpak Remote"
 msgstr "Добавить репозиторий Flatpak"
 
-#: src/remotes_window.py:213 src/remotes_window.py:355
+#: src/remotes_window.py:455 src/remotes_window.py:627
 msgid "Add"
 msgstr "Добавить"
 
-#: src/remotes_window.py:272
+#: src/remotes_window.py:514
 msgid "URL"
 msgstr "URL"
 
-#: src/remotes_window.py:283 src/remotes_window.py:365
+#: src/remotes_window.py:526 src/remotes_window.py:638 src/window.py:777
+msgid "User"
+msgstr "Пользователь"
+
+#: src/remotes_window.py:526 src/remotes_window.py:638
 msgid "Remote will be available to only you"
 msgstr "Репозиторий будет доступен только вам"
 
-#: src/remotes_window.py:289 src/remotes_window.py:366
+#: src/remotes_window.py:534 src/remotes_window.py:641 src/window.py:780
+msgid "System"
+msgstr "Система"
+
+#: src/remotes_window.py:535 src/remotes_window.py:642
 msgid "Remote will be available to every user on the system"
 msgstr "Репозиторий будет доступен всем пользователям системы"
 
-#: src/remotes_window.py:312
+#: src/remotes_window.py:574
 msgid "{} successfully added"
 msgstr "{} успешно добавлен"
 
-#: src/remotes_window.py:352
+#: src/remotes_window.py:624
 msgid "Add {}?"
 msgstr "Добавить {}?"
 
-#: src/remotes_window.py:395
+#: src/remotes_window.py:672
 msgid "Flatpak Repos"
 msgstr "Репозитории Flatpak"
 
-#: data/ui/remotes.blp:23
-#, fuzzy
-msgid "Installed Remotes"
-msgstr "Установленный размер"
+#: src/snapshots_window.py:54
+msgid "There is no User Data to Snapshot"
+msgstr "Нет пользовательских данных для снимка"
 
-#: data/ui/remotes.blp:27
-#, fuzzy
-msgid "Show disabled"
-msgstr "Отключить обновления"
+#: src/snapshots_window.py:93
+msgid "Version {}"
+msgstr "Версия {}"
 
-#: data/ui/remotes.blp:41
-msgid "No remotes on the system, add some from below"
-msgstr ""
+#: src/snapshots_window.py:101 src/snapshots_window.py:246
+msgid "Apply Snapshot"
+msgstr "Применить снимок"
 
-#: data/ui/remotes.blp:45
-#, fuzzy
-msgid "Add a Popular Remote"
-msgstr "Добавить репозиторий Flatpak"
+#: src/snapshots_window.py:107 src/snapshots_window.py:137
+msgid "Trash Snapshot"
+msgstr "Удалить снимок"
 
-#: data/ui/remotes.blp:49
-#, fuzzy
-msgid "Add Other Remotes"
-msgstr "Добавить репозиторий"
+#: src/snapshots_window.py:127
+msgid "Could not trash snapshot"
+msgstr "Не удалось удалить снимок"
 
-#: data/ui/remotes.blp:51
-msgid "Add a Repo File"
-msgstr "Добавить файл репозитория"
+#: src/snapshots_window.py:132
+msgid "Trash Snapshot?"
+msgstr "Удалить снимок?"
 
-#: data/ui/remotes.blp:56
-msgid "Add a Custom Remote"
-msgstr "Добавить пользовательский репозиторий"
+#: src/snapshots_window.py:133
+msgid "This snapshot and its contents will be sent to the trash."
+msgstr "Этот снимок и его содержимое будут удалены."
 
-#: data/ui/remotes.blp:79
-#, fuzzy
-msgid "Adding Remote…"
-msgstr "Добавить репозиторий"
-
-#: src/orphans_window.py:75
-msgid "Could not install some apps"
-msgstr "Не удалось установить некоторые приложения"
+#: src/snapshots_window.py:155
+msgid "Could not create snapshot"
+msgstr "Не удалось создать снимок"
 
 #. Make window unable to close
-#: src/orphans_window.py:103
-msgid "Attempt to Install?"
-msgstr "Попытаться установить?"
+#: src/snapshots_window.py:165
+msgid "Creating Snapshot…"
+msgstr "Создание снимка…"
 
-#: src/orphans_window.py:103
-msgid "Warehouse will attempt to install apps matching the selected data."
+#: src/snapshots_window.py:199 src/snapshots_window.py:216
+#: src/snapshots_window.py:223
+msgid "Could not apply snapshot"
+msgstr "Не удалось применить снимок"
+
+#: src/snapshots_window.py:202
+msgid "Snapshot applied"
+msgstr "Снимок применен"
+
+#. Make window unable to close
+#: src/snapshots_window.py:230
+msgid "Applying Snapshot…"
+msgstr "Применение снимка…"
+
+#: src/snapshots_window.py:239
+msgid "Apply Snapshot?"
+msgstr "Применить снимок?"
+
+#: src/snapshots_window.py:240
+msgid "Applying this snapshot will trash any current user data for {}."
 msgstr ""
-"Warehouse попытается установить приложения, соответствующие выбранным данным."
+"Применение этого снимка приведет к удалению всех текущих пользовательских "
+"данных для {}."
 
-#: src/orphans_window.py:156
-msgid "Trash folders?"
-msgstr "Очистить папки?"
+#. Window stuffs
+#: src/snapshots_window.py:294
+msgid "{} Snapshots"
+msgstr "{} Снимки"
 
-#: src/orphans_window.py:156
-msgid "These folders will be sent to the trash."
-msgstr "Эти папки будут очищены."
+#: src/window.py:110
+msgid "Uninstalled successfully"
+msgstr "Успешно удалено"
 
-#: src/orphans_window.py:160
-msgid "Continue"
-msgstr "Продолжить"
+#: src/window.py:113
+msgid "Could not uninstall some apps"
+msgstr "Не удалось удалить некоторые приложения"
 
-#: src/orphans_window.py:184
-msgid "Could not manage data"
-msgstr "Не удалось управление данными"
+#: src/window.py:166
+msgid "Uninstall Selected Apps?"
+msgstr "Удалить выбранные приложения?"
 
-#: src/orphans_window.py:216
-msgid "Open User Data Folder"
-msgstr "Открыть папку с данными приложения"
+#: src/window.py:167
+msgid "It will not be possible to use these apps after removal."
+msgstr "После удаления, использовать эти приложения будет невозможно."
 
-#: data/ui/orphans.blp:20
-msgid "Open Data Folder"
-msgstr "Открыть папку данных"
+#: src/window.py:187 src/window.py:270
+msgid "App Settings & Data"
+msgstr "Настройки и данные приложения"
 
-#: data/ui/orphans.blp:101
-msgid "No Leftover Data"
-msgstr "Нет оставшихся данных"
+#: src/window.py:191 src/window.py:274
+msgid "Keep"
+msgstr "Оставить"
 
-#: data/ui/orphans.blp:102
-msgid "There is no leftover user data"
-msgstr "Нет оставшихся пользовательских данных"
+#: src/window.py:192
+msgid "Allow restoring these apps' settings and content"
+msgstr "Позволяет восстановить настройки и данные этих приложений"
 
-#: data/ui/filter.blp:22
-msgid "Apply"
-msgstr "Применить"
+#: src/window.py:196
+msgid "Send these apps' settings and content to the trash"
+msgstr "Очистить настройки и данные этих приложений"
 
-#: data/ui/filter.blp:54
-msgid "Show Apps"
-msgstr "Показать приложения"
+#: src/window.py:232
+msgid "Cannot uninstall while already uninstalling"
+msgstr "Невозможно удалить, если уже идёт удаление"
 
-#: data/ui/filter.blp:64
-msgid "Show Runtimes"
-msgstr "Показать среды выполнения"
+#: src/window.py:262
+msgid "Uninstall {}?"
+msgstr "Удалить {}?"
 
-#: data/ui/filter.blp:75
-msgid "Filter Apps by Remotes"
-msgstr "Фильтровать приложения по репозиториям"
+#: src/window.py:263
+msgid "It will not be possible to use {} after removal."
+msgstr "После удаления, использовать {} будет невозможно."
 
-#: data/ui/filter.blp:80
-msgid "Filter Apps by Runtime"
-msgstr "Фильтрация приложений по средам выполнения"
+#: src/window.py:275
+msgid "Allow restoring this app's settings and content"
+msgstr "Позволяет восстановить настройки и контент этого приложения"
 
-#: src/downgrade_window.py:78
-msgid "Commit Hash: {}"
-msgstr "Хеш коммита: {}"
+#: src/window.py:279
+msgid "Send this app's settings and content to the trash"
+msgstr "Очистить настройки и данные этого приложения"
 
-#: src/downgrade_window.py:101
-msgid "Could not downgrade {}"
-msgstr "Не удалось понизить версию {}"
+#: src/window.py:351
+msgid "List refreshed"
+msgstr "Список обновлён"
 
-#: src/downgrade_window.py:115
-msgid "Downgrading…"
-msgstr "Понижение версии…"
+#: src/window.py:427
+msgid "Your files and data for this app will be sent to the trash."
+msgstr "Ваши файлы и данные этого приложения будут очищены."
 
-#: src/downgrade_window.py:141
-msgid "Downgrade {}"
-msgstr "Понизить версию {}"
+#: src/window.py:468
+msgid "Disable Updates for {}?"
+msgstr "Отключить обновления для {}?"
 
-#: src/downgrade_window.py:153
-msgid "Fetching Releases…"
-msgstr "Получение релизов…"
-
-#: src/downgrade_window.py:155
-msgid "Ensure that {} will never be updated to a newer version"
-msgstr "Гарантируется, что {} никогда не будет обновлен до более новой версии"
-
-#: data/ui/downgrade.blp:22
-msgid "Downgrade"
-msgstr "Понизить версию"
-
-#: data/ui/downgrade.blp:52
-msgid "Select a Release"
-msgstr "Выбрать релиз"
-
-#: data/ui/downgrade.blp:53
+#: src/window.py:472
 msgid ""
-"This will uninstall the current release and install the chosen one instead. "
-"Note that downgrading can cause issues."
+"This will mask {} ensuring it will never recieve any feature or security "
+"updates."
 msgstr ""
-"Это приведет к удалению текущей версии и вместо нее установится выбранная. "
-"Обратите внимание, что понижение версии может вызвать проблемы."
+"Это скроет {}, гарантируя, что он никогда не получит никаких обновлений "
+"функций и безопасности."
 
-#~ msgid "App EOL"
-#~ msgstr "Cрок поддержки приложения"
+#: src/window.py:491
+msgid "Could not Run App"
+msgstr "Не удалось запустить приложение"
 
-#~ msgid "Runtime EOL"
-#~ msgstr "Cрок поддержки среды выполнения"
+#: src/window.py:499
+msgid "OK"
+msgstr "ОК"
 
-#~ msgid "Updates Disabled"
-#~ msgstr "Обновления отключены"
+#: src/window.py:551
+msgid "{} has no data to trash"
+msgstr "{} не имеет данных для удаления"
 
-#~ msgid "View Properties"
-#~ msgstr "Просмотр свойств"
+#: src/window.py:557
+msgid "Could not trash {}'s data"
+msgstr "Не удалось очистить данные {}"
 
-#~ msgid "Copied name"
-#~ msgstr "Имя скопировано"
+#: src/window.py:573
+msgid "Trash Selected Apps' User Data?"
+msgstr "Очистить данные выбранных приложений?"
 
-#~ msgid "Copy Name"
-#~ msgstr "Копировать имя"
+#: src/window.py:574
+msgid "Your files and data for these apps will be sent to the trash."
+msgstr "Ваши файлы и данные этих приложений будут очищены."
 
-#~ msgid "Copied ID"
-#~ msgstr "ИД скопирован"
+#: src/window.py:624
+msgid "Could not snapshot some apps"
+msgstr "Не удалось сделать мгновенный снимок некоторых приложений"
 
-#~ msgid "Copy ID"
-#~ msgstr "Копировать ИД"
+#: src/window.py:642
+msgid "Create Snapshots?"
+msgstr "Создать мгновенные снимки?"
 
-#~ msgid "Copied ref"
-#~ msgstr "Ссылка скопирована"
+#: src/window.py:644
+msgid ""
+"Snapshots are backups of the app's user data. They can be reapplied at any "
+"time. This could take a while."
+msgstr ""
+"Мгновенные снимки - это резервные копии данных приложений пользователя. Их "
+"можно применить в любое время. Это действие может занять некоторое время."
 
-#~ msgid "Copy Ref"
-#~ msgstr "Копировать ссылку"
+#: src/window.py:649
+msgid "Create Snapshots"
+msgstr "Создать снимки"
 
-#~ msgid "Copied launch command"
-#~ msgstr "Команда запуска скопирована"
+#: src/window.py:701
+msgid "Copied selected app names"
+msgstr "Выбранное имя приложения скопировано"
 
-#~ msgid "Copy Launch Command"
-#~ msgstr "Копировать команду запуска"
+#: src/window.py:716
+msgid "Copied selected app IDs"
+msgstr "Выбранный ИД приложения скопирован"
 
-#~ msgid "Opened {}"
-#~ msgstr "Открыто {}"
+#: src/window.py:731
+msgid "Copied selected app refs"
+msgstr "Выбранная ссылка приложения скопирована"
 
-#~ msgid "Open"
-#~ msgstr "Открыть"
+#: src/window.py:742
+msgid "Could not install app"
+msgstr "Не удалось установить приложение"
 
-#~ msgid "Enable Updates"
-#~ msgstr "Включить обновления"
+#: src/window.py:766
+msgid "Install {}?"
+msgstr "Установить {}?"
 
-#~ msgid "Trash User Data"
-#~ msgstr "Очистить данные приложения"
+#: src/window.py:777
+msgid "The app will be available to only you"
+msgstr "Приложение будет доступно только вам"
+
+#: src/window.py:781
+msgid "The app will be available to every user on the system"
+msgstr "Приложение будет доступно всем пользователям системы"
+
+#: src/window.py:811
+msgid "File type not supported"
+msgstr "Тип файла не поддерживается"
+
+#~ msgid "Search for Flatpaks…"
+#~ msgstr "Поиск пакетов Flatpak…"
+
+#~ msgid "All Remotes"
+#~ msgstr "Все репозитории"
+
+#, fuzzy
+#~| msgid "Open app"
+#~ msgid "Open App"
+#~ msgstr "Открыть приложение"
+
+#~ msgid "Apply"
+#~ msgstr "Применить"
+
+#~ msgid "Try a different search term."
+#~ msgstr "Попробуйте другой поисковый запрос."
+
+#~ msgid "No remotes on the system, add some from below"
+#~ msgstr "В системе нет репозиториев, добавьте несколько снизу"
+
+#~ msgid "View apps from this remote"
+#~ msgstr "Просмотр приложений с этого репозитория"
+
+#~ msgid "Remove {}"
+#~ msgstr "Удалить {}"
 
 #~ msgid "Could disable updates for {}"
 #~ msgstr "Можно отключить обновления для {}"
-
-#~ msgid "Install From The Web…"
-#~ msgstr "Установить из сети…"
-
-#~ msgid "No Remotes"
-#~ msgstr "Нет репозиториев"
 
 #~ msgid ""
 #~ "Warehouse cannot see the list of remotes or the system has no remotes "
 #~ "added"
 #~ msgstr ""
 #~ "Warehouse не видит список репозиториев или они не добавлены в системе"
-
-#~ msgid "Choose from a list of popular remotes or add a new one."
-#~ msgstr "Выберите из списка популярные репозитории или добавьте новый."
-
-#~ msgid "Add Remote"
-#~ msgstr "Добавить репозиторий"
 
 #~ msgid "No user data for {}"
 #~ msgstr "Нет данных для {}"
@@ -915,14 +1191,5 @@ msgstr ""
 #~ "Warehouse не видит список установленных пакетов Flatpak, либо в системе "
 #~ "не установлены пакеты Flatpak."
 
-#~ msgid "Show Apps Using this Runtime"
-#~ msgstr "Показать приложения, использующие эту среду выполнения"
-
-#~ msgid "Runtime"
-#~ msgstr "Среда выполнения"
-
 #~ msgid "Copy {}"
 #~ msgstr "Копировать {}"
-
-#~ msgid "Try a different search term"
-#~ msgstr "Попробуйте другой поисковый запрос"
