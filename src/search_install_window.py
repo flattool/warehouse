@@ -130,7 +130,7 @@ class SearchInstallWindow(
             row.check.set_active(row.flatpak in self.selected)
             row.check.connect("toggled", self.check_handler, row)
             row.set_tooltip_text(row.flatpak[2])
-            if self.search_remote in row.flatpak[5]:
+            if self.search_remote in row.flatpak[5].split(','):
                 self.results_list.append(row)
         if self.results_list.get_row_at_index(0):
             self.inner_stack.set_visible_child(self.results_scroll)
