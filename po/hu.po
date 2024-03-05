@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-04 02:03-0500\n"
+"POT-Creation-Date: 2024-03-05 11:31-0500\n"
 "PO-Revision-Date: 2023-10-23 10:42+0000\n"
 "Last-Translator: kramo <login@kramo.hu>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
@@ -74,7 +74,7 @@ msgid "Reinstall apps that have leftover data"
 msgstr "Applikációk újratelepítése, amelyeknek van maradék adatuk"
 
 #: data/ui/downgrade.blp:16 src/orphans_window.py:119 src/orphans_window.py:187
-#: src/properties_window.py:153 src/remotes_window.py:93
+#: src/properties_window.py:154 src/remotes_window.py:93
 #: src/remotes_window.py:174 src/remotes_window.py:454
 #: src/remotes_window.py:626 src/snapshots_window.py:135
 #: src/snapshots_window.py:244 src/window.py:224 src/window.py:298
@@ -472,7 +472,7 @@ msgstr "Hivatkozások másolása"
 msgid "Updates Disabled"
 msgstr "Frissítések kikapcsolva"
 
-#: src/app_row_widget.py:80 src/properties_window.py:210
+#: src/app_row_widget.py:80 src/properties_window.py:211
 msgid "{} is masked and will not be updated"
 msgstr "A(z) {} maszkolva van és nem lesz frissítve"
 
@@ -480,7 +480,7 @@ msgstr "A(z) {} maszkolva van és nem lesz frissítve"
 msgid "App EOL"
 msgstr "Az applikáció elavult"
 
-#: src/app_row_widget.py:93 src/properties_window.py:193
+#: src/app_row_widget.py:93 src/properties_window.py:194
 msgid ""
 "{} has reached its End of Life and will not receive any security updates"
 msgstr "A(z) {} elavult és nem fog többé biztonsági frissítéseket kapni"
@@ -489,7 +489,7 @@ msgstr "A(z) {} elavult és nem fog többé biztonsági frissítéseket kapni"
 msgid "Runtime EOL"
 msgstr "Futtatókörnyezet elavult"
 
-#: src/app_row_widget.py:110 src/properties_window.py:201
+#: src/app_row_widget.py:110 src/properties_window.py:202
 msgid ""
 "{}'s runtime has reached its End of Life and will not receive any security "
 "updates"
@@ -594,23 +594,23 @@ msgstr "{} visszafejlesztése"
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Biztosátja, hogy a(z) {} sose lesz frissítve"
 
-#: src/filter_window.py:50 src/filter_window.py:54
+#: src/filter_window.py:43 src/filter_window.py:47
 msgid "{} selected"
 msgstr ""
 
-#: src/filter_window.py:137 src/orphans_window.py:148 src/remotes_window.py:311
+#: src/filter_window.py:130 src/orphans_window.py:148 src/remotes_window.py:311
 #, fuzzy
 #| msgid "{} wide"
 msgid "User wide"
 msgstr "Erre kihat: {}"
 
-#: src/filter_window.py:139 src/orphans_window.py:150 src/remotes_window.py:313
+#: src/filter_window.py:132 src/orphans_window.py:150 src/remotes_window.py:313
 #, fuzzy
 #| msgid "System"
 msgid "System wide"
 msgstr "Rendszer"
 
-#: src/filter_window.py:141 src/orphans_window.py:152 src/remotes_window.py:315
+#: src/filter_window.py:134 src/orphans_window.py:152 src/remotes_window.py:315
 #, fuzzy
 #| msgid "Uninstall {}"
 msgid "Unknown install type"
@@ -727,7 +727,7 @@ msgstr "Az adatok kukázása sikertelen"
 msgid "User Data"
 msgstr "Felhasználói adatok kukázása"
 
-#: src/properties_window.py:79 src/properties_window.py:141
+#: src/properties_window.py:79 src/properties_window.py:142
 #, fuzzy
 msgid "No User Data"
 msgstr "Felhasználói adatok kukázása"
@@ -785,23 +785,23 @@ msgstr "Telepítés mérete"
 msgid "Options"
 msgstr "Beállítások"
 
-#: src/properties_window.py:140 src/window.py:421
+#: src/properties_window.py:141 src/window.py:421
 msgid "Trashed user data"
 msgstr "Felhasználói adatok kukázva"
 
-#: src/properties_window.py:147 src/window.py:416
+#: src/properties_window.py:148 src/window.py:416
 msgid "Could not trash user data"
 msgstr "Az adatok kukázása sikertelen"
 
-#: src/properties_window.py:151 src/window.py:424
+#: src/properties_window.py:152 src/window.py:424
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Kukázza a(z) {} adatait?"
 
-#: src/properties_window.py:155 src/window.py:431 src/window.py:578
+#: src/properties_window.py:156 src/window.py:431 src/window.py:578
 msgid "Trash Data"
 msgstr "Adatok kukázása"
 
-#: src/properties_window.py:220
+#: src/properties_window.py:221
 msgid "{} Properties"
 msgstr "{} tulajdonságai"
 

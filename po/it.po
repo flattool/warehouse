@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-04 02:03-0500\n"
+"POT-Creation-Date: 2024-03-05 11:31-0500\n"
 "PO-Revision-Date: 2023-10-28 06:14+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://weblate.fyralabs.com/projects/flattool/"
@@ -73,7 +73,7 @@ msgid "Reinstall apps that have leftover data"
 msgstr ""
 
 #: data/ui/downgrade.blp:16 src/orphans_window.py:119 src/orphans_window.py:187
-#: src/properties_window.py:153 src/remotes_window.py:93
+#: src/properties_window.py:154 src/remotes_window.py:93
 #: src/remotes_window.py:174 src/remotes_window.py:454
 #: src/remotes_window.py:626 src/snapshots_window.py:135
 #: src/snapshots_window.py:244 src/window.py:224 src/window.py:298
@@ -436,7 +436,7 @@ msgstr ""
 msgid "Updates Disabled"
 msgstr ""
 
-#: src/app_row_widget.py:80 src/properties_window.py:210
+#: src/app_row_widget.py:80 src/properties_window.py:211
 msgid "{} is masked and will not be updated"
 msgstr ""
 
@@ -444,7 +444,7 @@ msgstr ""
 msgid "App EOL"
 msgstr ""
 
-#: src/app_row_widget.py:93 src/properties_window.py:193
+#: src/app_row_widget.py:93 src/properties_window.py:194
 msgid ""
 "{} has reached its End of Life and will not receive any security updates"
 msgstr ""
@@ -453,7 +453,7 @@ msgstr ""
 msgid "Runtime EOL"
 msgstr ""
 
-#: src/app_row_widget.py:110 src/properties_window.py:201
+#: src/app_row_widget.py:110 src/properties_window.py:202
 msgid ""
 "{}'s runtime has reached its End of Life and will not receive any security "
 "updates"
@@ -549,19 +549,19 @@ msgstr ""
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr ""
 
-#: src/filter_window.py:50 src/filter_window.py:54
+#: src/filter_window.py:43 src/filter_window.py:47
 msgid "{} selected"
 msgstr ""
 
-#: src/filter_window.py:137 src/orphans_window.py:148 src/remotes_window.py:311
+#: src/filter_window.py:130 src/orphans_window.py:148 src/remotes_window.py:311
 msgid "User wide"
 msgstr ""
 
-#: src/filter_window.py:139 src/orphans_window.py:150 src/remotes_window.py:313
+#: src/filter_window.py:132 src/orphans_window.py:150 src/remotes_window.py:313
 msgid "System wide"
 msgstr ""
 
-#: src/filter_window.py:141 src/orphans_window.py:152 src/remotes_window.py:315
+#: src/filter_window.py:134 src/orphans_window.py:152 src/remotes_window.py:315
 msgid "Unknown install type"
 msgstr ""
 
@@ -671,7 +671,7 @@ msgstr ""
 msgid "User Data"
 msgstr ""
 
-#: src/properties_window.py:79 src/properties_window.py:141
+#: src/properties_window.py:79 src/properties_window.py:142
 msgid "No User Data"
 msgstr ""
 
@@ -728,23 +728,23 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: src/properties_window.py:140 src/window.py:421
+#: src/properties_window.py:141 src/window.py:421
 msgid "Trashed user data"
 msgstr ""
 
-#: src/properties_window.py:147 src/window.py:416
+#: src/properties_window.py:148 src/window.py:416
 msgid "Could not trash user data"
 msgstr ""
 
-#: src/properties_window.py:151 src/window.py:424
+#: src/properties_window.py:152 src/window.py:424
 msgid "Send {}'s User Data to the Trash?"
 msgstr ""
 
-#: src/properties_window.py:155 src/window.py:431 src/window.py:578
+#: src/properties_window.py:156 src/window.py:431 src/window.py:578
 msgid "Trash Data"
 msgstr ""
 
-#: src/properties_window.py:220
+#: src/properties_window.py:221
 msgid "{} Properties"
 msgstr ""
 
