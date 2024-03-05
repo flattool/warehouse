@@ -35,7 +35,10 @@ class ResultRow(Adw.ActionRow):
         self.check = Gtk.CheckButton()
         self.check.add_css_class("selection-mode")
         self.add_suffix(Gtk.Label(
-            label = GLib.markup_escape_text(version)
+            label = GLib.markup_escape_text(version),
+            wrap = True,
+            hexpand = True,
+            justify = Gtk.Justification.RIGHT,
         ))
         self.add_suffix(self.check)
         self.set_activatable_widget(self.check)
@@ -105,7 +108,12 @@ class SearchInstallWindow(
             self.install_type = self.host_remotes[0][7]
             self.nav_view.connect("popped", lambda *_: self.nav_view.push(self.results_page))
             self.nav_view.set_animate_transitions(False)
-            self.title = _("Search {}").format(self.search_remote)
+
+            if self.host_remotes[0][1] == "-":
+                self.title = _("Search {}").format(self.host_remotes[0][0])
+            else:
+                self.title = _("Search {}").format(self.host_remotes[0][1])
+
             self.set_title(self.title)
             self.search_entry.set_placeholder_text(_("Search {}").format(self.search_remote))
             self.search_entry.grab_focus()
@@ -135,13 +143,14 @@ class SearchInstallWindow(
         self.install_type = row.install_type
         self.search_remote = row.remote[0]
         self.search_entry.set_placeholder_text(_("Search {}").format(self.search_remote))
-        self.title = _("Search {}").format(self.search_remote)
+        self.title = _("Search {}").format(row.get_title())
         self.set_title(self.title)
         self.nav_view.push(self.results_page)
         self.search_entry.grab_focus()
         self.action_bar.set_revealed(len(self.selected) > 0)
 
     def search_handler(self, *args):
+        self.canel_search.cancel()
         self.reset()
         self.inner_stack.set_visible_child(self.loading_page)
         query = self.search_entry.get_text().strip()
@@ -165,7 +174,7 @@ class SearchInstallWindow(
                 return
             self.generate_results_list()
 
-        task = Gio.Task.new(None, None, done)
+        task = Gio.Task.new(None, self.canel_search, done)
         task.run_in_thread(search_thread)
 
     def install_handler(self, *args):
@@ -214,6 +223,7 @@ class SearchInstallWindow(
         self.title = _("Install From The Web")
 
         self.back_button.connect("clicked", lambda *_: self.nav_view.pop())
+        self.canel_search = Gio.Cancellable()
         self.search_entry.connect("activate", self.search_handler)
         self.search_button.connect("clicked", self.search_handler)
         self.install_button.connect("clicked", self.install_handler)
