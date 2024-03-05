@@ -81,10 +81,10 @@ class FilterWindow(Adw.Window):
         if button.get_active():
             self.total_remotes_selected += 1
             self.remotes_string = self.remotes_string.replace("all", "")
-            self.remotes_string += f"{remote}<>{install_type},"
+            self.remotes_string += f"{remote}<>{install_type};"
         else:
             self.total_remotes_selected -= 1
-            self.remotes_string = self.remotes_string.replace(f"{remote}<>{install_type},", "")
+            self.remotes_string = self.remotes_string.replace(f"{remote}<>{install_type};", "")
             if len(self.remotes_string) < 1:
                 self.remotes_string += "all"
         self.settings.set_string("remotes-list", self.remotes_string)

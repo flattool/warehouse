@@ -192,7 +192,8 @@ class RemotesWindow(Adw.Window):
         settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
         for key in settings.list_keys():
             settings.reset(key)
-        settings.set_string("remotes-list", f"{remote}<>{type}")
+        settings.set_string("remotes-list", f"{remote}<>{type};")
+        settings.set_boolean("show-runtimes", True)
         self.main_window.apply_filter()
         self.close()
 

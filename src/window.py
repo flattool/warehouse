@@ -373,7 +373,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             current = self.flatpaks_list_box.get_row_at_index(i)
             id = current.app_id
             dependant = current.dependent_runtime
-            remote = f"{current.origin_remote}<>{current.install_type}"
+            remote = f"{current.origin_remote}<>{current.install_type};"
             is_runtime = current.is_runtime
 
             visible = True
