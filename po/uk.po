@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-04 02:03-0500\n"
+"POT-Creation-Date: 2024-03-05 11:31-0500\n"
 "PO-Revision-Date: 2023-12-20 03:14+0000\n"
 "Last-Translator: Vovkiv <generalvolkov2@gmail.com>\n"
 "Language-Team: Ukrainian <https://weblate.fyralabs.com/projects/flattool/"
@@ -76,7 +76,7 @@ msgid "Reinstall apps that have leftover data"
 msgstr "Перевстановити додатки які мають залишки даних"
 
 #: data/ui/downgrade.blp:16 src/orphans_window.py:119 src/orphans_window.py:187
-#: src/properties_window.py:153 src/remotes_window.py:93
+#: src/properties_window.py:154 src/remotes_window.py:93
 #: src/remotes_window.py:174 src/remotes_window.py:454
 #: src/remotes_window.py:626 src/snapshots_window.py:135
 #: src/snapshots_window.py:244 src/window.py:224 src/window.py:298
@@ -487,7 +487,7 @@ msgstr "Скопіювати референси"
 msgid "Updates Disabled"
 msgstr "Оновлення вимкнені"
 
-#: src/app_row_widget.py:80 src/properties_window.py:210
+#: src/app_row_widget.py:80 src/properties_window.py:211
 msgid "{} is masked and will not be updated"
 msgstr "Додаток {} замасковано і він більше не буде оновлюватися"
 
@@ -495,7 +495,7 @@ msgstr "Додаток {} замасковано і він більше не б�
 msgid "App EOL"
 msgstr "Додаток більше не підтримується (EOL)"
 
-#: src/app_row_widget.py:93 src/properties_window.py:193
+#: src/app_row_widget.py:93 src/properties_window.py:194
 msgid ""
 "{} has reached its End of Life and will not receive any security updates"
 msgstr ""
@@ -506,7 +506,7 @@ msgstr ""
 msgid "Runtime EOL"
 msgstr "Рантайм більше не підтримується (EOL)"
 
-#: src/app_row_widget.py:110 src/properties_window.py:201
+#: src/app_row_widget.py:110 src/properties_window.py:202
 msgid ""
 "{}'s runtime has reached its End of Life and will not receive any security "
 "updates"
@@ -608,23 +608,23 @@ msgstr "Виконати даунгрейд {}"
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Впевнитися що {} ніколи не буде оновлюватися до новітніх версій"
 
-#: src/filter_window.py:50 src/filter_window.py:54
+#: src/filter_window.py:43 src/filter_window.py:47
 msgid "{} selected"
 msgstr ""
 
-#: src/filter_window.py:137 src/orphans_window.py:148 src/remotes_window.py:311
+#: src/filter_window.py:130 src/orphans_window.py:148 src/remotes_window.py:311
 #, fuzzy
 #| msgid "{} wide"
 msgid "User wide"
 msgstr "Тип {}"
 
-#: src/filter_window.py:139 src/orphans_window.py:150 src/remotes_window.py:313
+#: src/filter_window.py:132 src/orphans_window.py:150 src/remotes_window.py:313
 #, fuzzy
 #| msgid "System"
 msgid "System wide"
 msgstr "Система"
 
-#: src/filter_window.py:141 src/orphans_window.py:152 src/remotes_window.py:315
+#: src/filter_window.py:134 src/orphans_window.py:152 src/remotes_window.py:315
 #, fuzzy
 #| msgid "Uninstall"
 msgid "Unknown install type"
@@ -736,7 +736,7 @@ msgstr "Не вдалося показати подробиці"
 msgid "User Data"
 msgstr "Дані користувача"
 
-#: src/properties_window.py:79 src/properties_window.py:141
+#: src/properties_window.py:79 src/properties_window.py:142
 msgid "No User Data"
 msgstr "Немає даних користувача"
 
@@ -793,23 +793,23 @@ msgstr "Розмір встановлених файлів"
 msgid "Options"
 msgstr "Властивості"
 
-#: src/properties_window.py:140 src/window.py:421
+#: src/properties_window.py:141 src/window.py:421
 msgid "Trashed user data"
 msgstr "Дані користувача у Смітнику"
 
-#: src/properties_window.py:147 src/window.py:416
+#: src/properties_window.py:148 src/window.py:416
 msgid "Could not trash user data"
 msgstr "Не вдалося видалити дані користувача"
 
-#: src/properties_window.py:151 src/window.py:424
+#: src/properties_window.py:152 src/window.py:424
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Відправити дані користувача додатку {} у Смітник?"
 
-#: src/properties_window.py:155 src/window.py:431 src/window.py:578
+#: src/properties_window.py:156 src/window.py:431 src/window.py:578
 msgid "Trash Data"
 msgstr "В Смітник"
 
-#: src/properties_window.py:220
+#: src/properties_window.py:221
 msgid "{} Properties"
 msgstr "Властивості {}"
 

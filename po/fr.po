@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-04 02:03-0500\n"
+"POT-Creation-Date: 2024-03-05 11:31-0500\n"
 "PO-Revision-Date: 2023-12-20 03:14+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://weblate.fyralabs.com/projects/flattool/"
@@ -75,7 +75,7 @@ msgid "Reinstall apps that have leftover data"
 msgstr "Réinstaller les applications dont des données ont été conservées"
 
 #: data/ui/downgrade.blp:16 src/orphans_window.py:119 src/orphans_window.py:187
-#: src/properties_window.py:153 src/remotes_window.py:93
+#: src/properties_window.py:154 src/remotes_window.py:93
 #: src/remotes_window.py:174 src/remotes_window.py:454
 #: src/remotes_window.py:626 src/snapshots_window.py:135
 #: src/snapshots_window.py:244 src/window.py:224 src/window.py:298
@@ -494,7 +494,7 @@ msgstr "Copier les référentiels"
 msgid "Updates Disabled"
 msgstr "Mises à jour désactivées"
 
-#: src/app_row_widget.py:80 src/properties_window.py:210
+#: src/app_row_widget.py:80 src/properties_window.py:211
 msgid "{} is masked and will not be updated"
 msgstr "{} est masquée et ne sera plus mise à jour"
 
@@ -502,7 +502,7 @@ msgstr "{} est masquée et ne sera plus mise à jour"
 msgid "App EOL"
 msgstr "Appli EFV"
 
-#: src/app_row_widget.py:93 src/properties_window.py:193
+#: src/app_row_widget.py:93 src/properties_window.py:194
 msgid ""
 "{} has reached its End of Life and will not receive any security updates"
 msgstr "{} est En Fin de Vie et ne recevra plus de mises à jour de sécurité"
@@ -511,7 +511,7 @@ msgstr "{} est En Fin de Vie et ne recevra plus de mises à jour de sécurité"
 msgid "Runtime EOL"
 msgstr "Environnement d’exécution EFV"
 
-#: src/app_row_widget.py:110 src/properties_window.py:201
+#: src/app_row_widget.py:110 src/properties_window.py:202
 msgid ""
 "{}'s runtime has reached its End of Life and will not receive any security "
 "updates"
@@ -616,23 +616,23 @@ msgid "Ensure that {} will never be updated to a newer version"
 msgstr ""
 "Assurez vous que {} ne sera jamais mise à jour vers une nouvelle version"
 
-#: src/filter_window.py:50 src/filter_window.py:54
+#: src/filter_window.py:43 src/filter_window.py:47
 msgid "{} selected"
 msgstr ""
 
-#: src/filter_window.py:137 src/orphans_window.py:148 src/remotes_window.py:311
+#: src/filter_window.py:130 src/orphans_window.py:148 src/remotes_window.py:311
 #, fuzzy
 #| msgid "{} wide"
 msgid "User wide"
 msgstr "{} wide"
 
-#: src/filter_window.py:139 src/orphans_window.py:150 src/remotes_window.py:313
+#: src/filter_window.py:132 src/orphans_window.py:150 src/remotes_window.py:313
 #, fuzzy
 #| msgid "System"
 msgid "System wide"
 msgstr "Système"
 
-#: src/filter_window.py:141 src/orphans_window.py:152 src/remotes_window.py:315
+#: src/filter_window.py:134 src/orphans_window.py:152 src/remotes_window.py:315
 #, fuzzy
 #| msgid "Uninstall {}"
 msgid "Unknown install type"
@@ -746,7 +746,7 @@ msgstr "Impossible d’afficher les détails"
 msgid "User Data"
 msgstr "Données utilisateur"
 
-#: src/properties_window.py:79 src/properties_window.py:141
+#: src/properties_window.py:79 src/properties_window.py:142
 msgid "No User Data"
 msgstr "Aucune donnée utilisateur"
 
@@ -803,23 +803,23 @@ msgstr "Taille installée"
 msgid "Options"
 msgstr "Options"
 
-#: src/properties_window.py:140 src/window.py:421
+#: src/properties_window.py:141 src/window.py:421
 msgid "Trashed user data"
 msgstr "Données utilisateur mises à la corbeille"
 
-#: src/properties_window.py:147 src/window.py:416
+#: src/properties_window.py:148 src/window.py:416
 msgid "Could not trash user data"
 msgstr "Échec de la mise à la corbeille des données utilisateur"
 
-#: src/properties_window.py:151 src/window.py:424
+#: src/properties_window.py:152 src/window.py:424
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Mettre les données utilisateur de {} à la corbeille ?"
 
-#: src/properties_window.py:155 src/window.py:431 src/window.py:578
+#: src/properties_window.py:156 src/window.py:431 src/window.py:578
 msgid "Trash Data"
 msgstr "Mettre les données à la corbeille"
 
-#: src/properties_window.py:220
+#: src/properties_window.py:221
 msgid "{} Properties"
 msgstr "Propriétés de {}"
 
