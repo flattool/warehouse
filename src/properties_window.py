@@ -119,10 +119,55 @@ class PropertiesWindow(Adw.Window):
             self.lower.add(row)
 
     def view_apps_handler(self, widget):
-        self.parent_window.should_open_filter_window = False
-        self.parent_window.filter_button.set_active(True)
-        self.parent_window.applyFilter([True, False, ["all"], ["all"], [self.app_ref]])
-        self.parent_window.should_open_filter_window = True
+        settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
+        for key in settings.list_keys():
+            settings.reset(key)
+        settings.set_string("runtimes-list", f"{self.app_ref},")
+        self.parent_window.apply_filter()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         self.close()
 
     def show_properties_handler(self):
