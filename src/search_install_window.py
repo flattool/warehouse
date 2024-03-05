@@ -25,11 +25,18 @@ class ResultRow(Adw.ActionRow):
     def __init__(self, flatpak, **kwargs):
         super().__init__(**kwargs)
         my_utils = myUtils(self)
+        name = flatpak[0]
+        description = flatpak[1]
+        app_id = flatpak[2]
+        version = flatpak[3]
         self.flatpak = flatpak
-        self.set_title(GLib.markup_escape_text(flatpak[0]))
-        self.set_subtitle(GLib.markup_escape_text(flatpak[1]))
+        self.set_title(GLib.markup_escape_text(f"{name}"))
+        self.set_subtitle(GLib.markup_escape_text(f"{app_id}\n{description}"))
         self.check = Gtk.CheckButton()
         self.check.add_css_class("selection-mode")
+        self.add_suffix(Gtk.Label(
+            label = GLib.markup_escape_text(version)
+        ))
         self.add_suffix(self.check)
         self.set_activatable_widget(self.check)
 
@@ -114,6 +121,7 @@ class SearchInstallWindow(
             row = ResultRow(pak)
             row.check.set_active(row.flatpak in self.selected)
             row.check.connect("toggled", self.check_handler, row)
+            row.set_tooltip_text(row.flatpak[2])
             if self.search_remote in row.flatpak[5]:
                 self.results_list.append(row)
         if self.results_list.get_row_at_index(0):
