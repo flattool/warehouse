@@ -19,6 +19,10 @@
         <li>Reinstall apps that have leftover data</li>
       </ul>
 	</description>
+  <branding>
+    <color type="primary" scheme_preference="light">#AECEF4</color>
+    <color type="primary" scheme_preference="dark">#072F5E</color>
+  </branding>
   <recommends>
     <control>keyboard</control>
     <control>pointing</control>
@@ -35,31 +39,50 @@
   <url type="donation">https://ko-fi.com/heliguy</url>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Screenshot%20from%202023-12-17%2023-24-22.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/MainView.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Screenshot%20from%202023-12-17%2023-25-35.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/BatchMode.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Screenshot%20from%202023-12-17%2023-25-16.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Properties.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Screenshot%20from%202023-12-17%2023-26-23.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Remotes.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Screenshot%20from%202023-12-17%2023-27-55.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/SearchInstall.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Screenshot%20from%202023-12-17%2023-28-58.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Snapshots.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Screenshot%20from%202023-12-17%2023-30-07.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Orphans.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Screenshot%20from%202023-12-17%2023-30-34.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Downgrade.png</image>
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.5.0" date="2024-3-5" timestamp="1709694300">
+      <description translatable="no">
+        <p>New Features and Changes</p>
+        <ul>
+          <li>Flatpaks can now be installed from the web, from any added remote</li>
+          <li>Filters are now saved and restored between sessions</li>
+          <li>Filters now apply live</li>
+          <li>Move Refresh Button into Main Menu</li>
+          <li>Period, 0 to 9, and underscores are now allowed in new Custom Remote names</li>
+          <li>Updated translations</li>
+        </ul>
+        <p>Bug Fixes</p> 
+        <ul>
+          <li>Hide Show Disabled Remotes button when there aren't any</li>
+          <li>Fix Batch Snapshots accidentally triggering Select All</li>
+          <li>Misc UI element tooltips and alignments</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.0" date="2023-12-17" timestamp="1702875630">
       <description translatable="no">
         <p>New Features and Changes</p>
