@@ -225,5 +225,5 @@ class FilterWindow(Adw.Window):
             self.runtimes_expander.set_visible(False)
         else:
             self.generate_runtimes()
-
+        self.check_is_resetable()
         self.present()
