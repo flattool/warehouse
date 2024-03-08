@@ -333,15 +333,18 @@ msgid "Filter List"
 msgstr ""
 
 #: data/ui/window.blp:24
+#: data/ui/window.blp:24
 msgid "Main Menu"
 msgstr ""
 
+#: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 #: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 msgid "Toggle Selection Mode"
 msgstr ""
 
 #: data/ui/window.blp:53
 #, fuzzy
+#| msgid "Flatpaks"
 msgid "Loading Flatpaks"
 msgstr "Flatpaki"
 
@@ -359,6 +362,7 @@ msgid "No Flatpaks Found"
 msgstr ""
 
 #: data/ui/window.blp:170
+#: data/ui/window.blp:170
 #, fuzzy
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
@@ -367,6 +371,7 @@ msgstr ""
 "Warehouse, jest aplikacją która zarządza aplikacjami Flatpak, ich danymi, "
 "oraz źródłami."
 
+#: data/ui/window.blp:175
 #: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
 msgstr ""
@@ -555,6 +560,7 @@ msgstr ""
 
 #: src/filter_window.py:130 src/orphans_window.py:148 src/remotes_window.py:311
 #, fuzzy
+#| msgid "{} wide"
 msgid "User wide"
 msgstr "{} szerokość"
 
@@ -1094,21 +1100,3 @@ msgstr ""
 #: src/window.py:811
 msgid "File type not supported"
 msgstr ""
-
-#, fuzzy
-#~| msgid ""
-#~| "Warehouse is an app that manages installed Flatpaks, their user data, "
-#~| "and Flatpak remotes."
-#~ msgid ""
-#~ "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#~ "Flatpaks installed."
-#~ msgstr ""
-#~ "Warehouse, jest aplikacją która zarządza aplikacjami Flatpak, ich danymi, "
-#~ "oraz źródłami."
-
-#~ msgid "{} wide"
-#~ msgstr "{} szerokość"
-
-#, fuzzy
-#~ msgid "Show disabled"
-#~ msgstr "Wyłącz aktualizacje"
