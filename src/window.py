@@ -343,6 +343,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.batch_actions_enable(False)
         self.main_stack.set_visible_child(self.main_box)
         self.apply_filter()
+        for index in range(len(self.host_flatpaks)):
+            if self.flatpaks_list_box.get_row_at_index(index).is_visible():
+                self.flatpaks_list_box.get_row_at_index(index).grab_focus()
+                break
 
     def refresh_list_of_flatpaks(self, widget, should_toast):
         if self.currently_uninstalling:
