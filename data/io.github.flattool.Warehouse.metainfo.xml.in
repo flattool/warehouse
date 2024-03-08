@@ -64,6 +64,15 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.5.1" date="2024-3-8" timestamp="1709919650">
+      <description translatable="no">
+        <p>Bug Fixes</p> 
+        <ul>
+          <li>Fix issue causing Downgrage window to not be able to downgrade user installation Flatpaks</li>
+          <li>Fix the accidental removal of translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.5.0" date="2024-3-5" timestamp="1709694300">
       <description translatable="no">
         <p>New Features and Changes</p>
