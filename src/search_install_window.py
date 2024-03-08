@@ -4,6 +4,7 @@ import subprocess
 import os
 import pathlib
 
+
 class RemoteRow(Adw.ActionRow):
     def __init__(self, remote, **kwargs):
         super().__init__(**kwargs)
@@ -21,6 +22,7 @@ class RemoteRow(Adw.ActionRow):
         self.set_subtitle(_("{} wide").format(self.install_type))
         self.add_suffix(Gtk.Image.new_from_icon_name("right-large-symbolic"))
 
+
 class ResultRow(Adw.ActionRow):
     def __init__(self, flatpak, **kwargs):
         super().__init__(**kwargs)
@@ -34,14 +36,17 @@ class ResultRow(Adw.ActionRow):
         self.set_subtitle(GLib.markup_escape_text(f"{app_id}\n{description}"))
         self.check = Gtk.CheckButton()
         self.check.add_css_class("selection-mode")
-        self.add_suffix(Gtk.Label(
-            label = GLib.markup_escape_text(version),
-            wrap = True,
-            hexpand = True,
-            justify = Gtk.Justification.RIGHT,
-        ))
+        self.add_suffix(
+            Gtk.Label(
+                label=GLib.markup_escape_text(version),
+                wrap=True,
+                hexpand=True,
+                justify=Gtk.Justification.RIGHT,
+            )
+        )
         self.add_suffix(self.check)
         self.set_activatable_widget(self.check)
+
 
 @Gtk.Template(
     resource_path="/io/github/flattool/Warehouse/../data/ui/search_install.ui"
@@ -75,14 +80,16 @@ class SearchInstallWindow(
     progress_bar = Gtk.Template.Child()
 
     def key_handler(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape or (keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK):
+        if keyval == Gdk.KEY_Escape or (
+            keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK
+        ):
             self.close()
 
     def reset(self):
         self.results = []
         self.results_list.remove_all()
         self.inner_stack.set_visible_child(self.blank_page)
-        
+
     def check_handler(self, button, row):
         if button.get_active():
             self.selected.append(row.flatpak)
@@ -106,7 +113,9 @@ class SearchInstallWindow(
             self.back_button.set_sensitive(False)
             self.search_remote = self.host_remotes[0][0]
             self.install_type = self.host_remotes[0][7]
-            self.nav_view.connect("popped", lambda *_: self.nav_view.push(self.results_page))
+            self.nav_view.connect(
+                "popped", lambda *_: self.nav_view.push(self.results_page)
+            )
             self.nav_view.set_animate_transitions(False)
 
             if self.host_remotes[0][1] == "-":
@@ -115,7 +124,9 @@ class SearchInstallWindow(
                 self.title = _("Search {}").format(self.host_remotes[0][1])
 
             self.set_title(self.title)
-            self.search_entry.set_placeholder_text(_("Search {}").format(self.search_remote))
+            self.search_entry.set_placeholder_text(
+                _("Search {}").format(self.search_remote)
+            )
             self.search_entry.grab_focus()
             return
         self.nav_view.connect("popped", lambda *_: self.set_title(""))
@@ -130,7 +141,7 @@ class SearchInstallWindow(
             row.check.set_active(row.flatpak in self.selected)
             row.check.connect("toggled", self.check_handler, row)
             row.set_tooltip_text(row.flatpak[2])
-            if self.search_remote in row.flatpak[5].split(','):
+            if self.search_remote in row.flatpak[5].split(","):
                 self.results_list.append(row)
         if self.results_list.get_row_at_index(0):
             self.inner_stack.set_visible_child(self.results_scroll)
@@ -142,7 +153,9 @@ class SearchInstallWindow(
         self.selected = []
         self.install_type = row.install_type
         self.search_remote = row.remote[0]
-        self.search_entry.set_placeholder_text(_("Search {}").format(self.search_remote))
+        self.search_entry.set_placeholder_text(
+            _("Search {}").format(self.search_remote)
+        )
         self.title = _("Search {}").format(row.get_title())
         self.set_title(self.title)
         self.nav_view.push(self.results_page)
@@ -157,11 +170,23 @@ class SearchInstallWindow(
         if query == "":
             self.inner_stack.set_visible_child(self.blank_page)
             return
+
         def search_thread(*args):
-            command = ['flatpak-spawn', '--host', 'flatpak', 'search', '--columns=all', query]
-            output = subprocess.run(
-                command, capture_output=True, text=True, env=self.new_env
-            ).stdout.strip().split('\n')
+            command = [
+                "flatpak-spawn",
+                "--host",
+                "flatpak",
+                "search",
+                "--columns=all",
+                query,
+            ]
+            output = (
+                subprocess.run(
+                    command, capture_output=True, text=True, env=self.new_env
+                )
+                .stdout.strip()
+                .split("\n")
+            )
             for elm in output:
                 self.results.append(elm.split("\t"))
 
@@ -169,7 +194,7 @@ class SearchInstallWindow(
             if len(self.results) > 50:
                 self.inner_stack.set_visible_child(self.too_many)
                 return
-            if ['No matches found'] in self.results:
+            if ["No matches found"] in self.results:
                 self.inner_stack.set_visible_child(self.no_results)
                 return
             self.generate_results_list()
@@ -185,22 +210,32 @@ class SearchInstallWindow(
         self.set_title(_("Install From The Web"))
 
         def thread(*args):
-            self.my_utils.install_flatpak(paks, self.search_remote, self.install_type, self.progress_bar, self.installing_status)
+            self.my_utils.install_flatpak(
+                paks,
+                self.search_remote,
+                self.install_type,
+                self.progress_bar,
+                self.installing_status,
+            )
 
         def done(*args):
             self.parent_window.refresh_list_of_flatpaks(None, False)
             self.disconnect(self.no_close_id)  # Make window able to close
             if self.my_utils.install_success:
                 self.close()
-                self.parent_window.toast_overlay.add_toast(Adw.Toast.new(_("Installed successfully")))
+                self.parent_window.toast_overlay.add_toast(
+                    Adw.Toast.new(_("Installed successfully"))
+                )
             else:
                 self.progress_bar.set_visible(False)
                 self.nav_view.pop()
                 self.outer_stack.set_visible_child(self.nav_view)
-                self.toast_overlay.add_toast(Adw.Toast.new(_("Some apps didn't install")))
-        
+                self.toast_overlay.add_toast(
+                    Adw.Toast.new(_("Some apps didn't install"))
+                )
+
         self.no_close_id = self.connect(
-                "close-request", lambda event: True
+            "close-request", lambda event: True
         )  # Make window unable to close
         task = Gio.Task.new(None, None, done)
         task.run_in_thread(thread)

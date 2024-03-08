@@ -27,7 +27,9 @@ class RemotesWindow(Adw.Window):
     rows_in_popular_list = []
 
     def key_handler(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape or (keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK):
+        if keyval == Gdk.KEY_Escape or (
+            keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK
+        ):
             self.close()
         if keyval == Gdk.KEY_o and state == Gdk.ModifierType.CONTROL_MASK:
             self.add_file_handler()
@@ -229,7 +231,9 @@ class RemotesWindow(Adw.Window):
                 remote_row = Adw.ActionRow(title=title)
 
                 more = Gtk.MenuButton(
-                    icon_name="view-more-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View More")
+                    icon_name="view-more-symbolic",
+                    valign=Gtk.Align.CENTER,
+                    tooltip_text=_("View More"),
                 )
                 more.add_css_class("flat")
                 options = Gtk.Popover()

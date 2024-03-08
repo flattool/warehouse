@@ -30,7 +30,9 @@ class SnapshotsWindow(Adw.Window):
     action_bar = Gtk.Template.Child()
 
     def key_handler(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape or (keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK):
+        if keyval == Gdk.KEY_Escape or (
+            keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK
+        ):
             self.close()
 
     def show_list_or_empty(self):

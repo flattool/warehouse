@@ -115,7 +115,11 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def uninstall_flatpak_thread(self, ref_arr, id_arr, type_arr, should_trash):
         self.my_utils.uninstall_flatpak(
-            ref_arr, type_arr, should_trash, self.main_progress_bar, self.uninstalling_status
+            ref_arr,
+            type_arr,
+            should_trash,
+            self.main_progress_bar,
+            self.uninstalling_status,
         )
 
     def uninstall_flatpak(self, should_trash):
@@ -343,6 +347,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.batch_actions_enable(False)
         self.main_stack.set_visible_child(self.main_box)
         self.apply_filter()
+
+        # Stop list window from opening with the list at the bottom by focusing the first visible row item
         for index in range(len(self.host_flatpaks)):
             if self.flatpaks_list_box.get_row_at_index(index).is_visible():
                 self.flatpaks_list_box.get_row_at_index(index).grab_focus()
@@ -396,7 +402,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             current.set_is_visible(visible)
             total_visible += visible
             i += 1
-        if(total_visible == 0) or (runtimes_list != ['all'] and show_runtimes):
+        if (total_visible == 0) or (runtimes_list != ["all"] and show_runtimes):
             self.window_set_empty(True)
             self.main_stack.set_visible_child(self.no_matches)
         else:
@@ -657,7 +663,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
         i = 0
         while self.flatpaks_list_box.get_row_at_index(i) != None:
             current = self.flatpaks_list_box.get_row_at_index(i)
-            if (current.get_visible() == True) and (current.app_id != "io.github.flattool.Warehouse"):
+            if (current.get_visible() == True) and (
+                current.app_id != "io.github.flattool.Warehouse"
+            ):
                 current.tickbox.set_active(should_select_all)
             i += 1
 

@@ -252,7 +252,9 @@ class myUtils:
         print(response)
         return 0
 
-    def uninstall_flatpak(self, ref_arr, type_arr, should_trash, progress_bar=None, status_label=None):
+    def uninstall_flatpak(
+        self, ref_arr, type_arr, should_trash, progress_bar=None, status_label=None
+    ):
         self.uninstall_success = True
         print(ref_arr)
         to_uninstall = []
@@ -281,7 +283,12 @@ class myUtils:
             try:
                 print(apps)
                 if status_label:
-                    GLib.idle_add(status_label.set_label, _("Working on {}\n{} out of {}").format(apps[i][0], i + 1, len(apps)))
+                    GLib.idle_add(
+                        status_label.set_label,
+                        _("Working on {}\n{} out of {}").format(
+                            apps[i][0], i + 1, len(apps)
+                        ),
+                    )
                 subprocess.run(
                     command, capture_output=False, check=True, env=self.new_env
                 )
@@ -335,7 +342,9 @@ class myUtils:
             GLib.idle_add(progress_bar.set_visible, False)
             GLib.idle_add(progress_bar.set_fraction, 0.0)
 
-    def install_flatpak(self, app_arr, remote, user_or_system, progress_bar=None, status_label=None):
+    def install_flatpak(
+        self, app_arr, remote, user_or_system, progress_bar=None, status_label=None
+    ):
         self.install_success = True
         fails = []
 
@@ -348,7 +357,12 @@ class myUtils:
             command.append(app_arr[i])
             try:
                 if status_label:
-                    GLib.idle_add(status_label.set_label, _("Working on {}\n{} out of {}").format(app_arr[i], i + 1, len(app_arr)))
+                    GLib.idle_add(
+                        status_label.set_label,
+                        _("Working on {}\n{} out of {}").format(
+                            app_arr[i], i + 1, len(app_arr)
+                        ),
+                    )
                 subprocess.run(
                     command, capture_output=False, check=True, env=self.new_env
                 )

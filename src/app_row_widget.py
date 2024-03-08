@@ -141,7 +141,9 @@ class AppRow(Adw.ActionRow):
         )
         self.add_suffix(properties_button)
 
-        self.tickbox = Gtk.CheckButton(visible=False, tooltip_text=_("Select"))  # visible=self.in_batch_mode
+        self.tickbox = Gtk.CheckButton(
+            visible=False, tooltip_text=_("Select")
+        )  # visible=self.in_batch_mode
         self.tickbox.add_css_class("selection-mode")
         self.tickbox.connect("toggled", parent_window.row_select_handler)
         self.add_suffix(self.tickbox)
@@ -149,7 +151,9 @@ class AppRow(Adw.ActionRow):
         self.set_activatable(False)
 
         self.row_menu = Gtk.MenuButton(
-            icon_name="view-more-symbolic", valign=Gtk.Align.CENTER, tooltip_text=_("View More")
+            icon_name="view-more-symbolic",
+            valign=Gtk.Align.CENTER,
+            tooltip_text=_("View More"),
         )
         self.row_menu.add_css_class("flat")
         row_menu_model = Gio.Menu()
@@ -199,7 +203,10 @@ class AppRow(Adw.ActionRow):
 
         row_menu_model.append_submenu(_("Copy"), copy_menu_model)
 
-        if "runtime" not in parent_window.host_flatpaks[index][12] and self.app_id != "io.github.flattool.Warehouse":
+        if (
+            "runtime" not in parent_window.host_flatpaks[index][12]
+            and self.app_id != "io.github.flattool.Warehouse"
+        ):
             parent_window.create_action(
                 ("run" + str(index)),
                 lambda *_a, ref=self.app_ref, name=self.app_name: parent_window.run_app_thread(

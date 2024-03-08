@@ -32,7 +32,9 @@ class PropertiesWindow(Adw.Window):
     mask_banner = Gtk.Template.Child()
 
     def key_handler(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape or (keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK):
+        if keyval == Gdk.KEY_Escape or (
+            keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK
+        ):
             self.close()
 
     def copy_item(self, to_copy, to_toast=None):
@@ -106,7 +108,9 @@ class PropertiesWindow(Adw.Window):
             if self.current_flatpak[i] == "":
                 continue
 
-            row = Adw.ActionRow(title=column_headers[i], tooltip_text=_("Copy"), activatable=True)
+            row = Adw.ActionRow(
+                title=column_headers[i], tooltip_text=_("Copy"), activatable=True
+            )
             row.add_suffix(Gtk.Image.new_from_icon_name("edit-copy-symbolic"))
             row.set_subtitle(GLib.markup_escape_text(self.current_flatpak[i]))
             row.add_css_class("property")

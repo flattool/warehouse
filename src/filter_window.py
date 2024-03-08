@@ -4,6 +4,7 @@ import subprocess
 import os
 import pathlib
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/filter.ui")
 class FilterWindow(Adw.Window):
     __gtype_name__ = "FilterWindow"
@@ -15,7 +16,9 @@ class FilterWindow(Adw.Window):
     reset_button = Gtk.Template.Child()
 
     def key_handler(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape or (keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK):
+        if keyval == Gdk.KEY_Escape or (
+            keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK
+        ):
             self.close()
 
     def gsettings_bool_set(self, key, value):
@@ -40,11 +43,15 @@ class FilterWindow(Adw.Window):
 
     def row_subtitle_updater(self):
         if self.total_runtimes_selected > 0:
-            self.runtimes_expander.set_subtitle(_("{} selected").format(self.total_runtimes_selected))
+            self.runtimes_expander.set_subtitle(
+                _("{} selected").format(self.total_runtimes_selected)
+            )
         else:
             self.runtimes_expander.set_subtitle("")
         if self.total_remotes_selected > 0:
-            self.remotes_expander.set_subtitle(_("{} selected").format(self.total_remotes_selected))
+            self.remotes_expander.set_subtitle(
+                _("{} selected").format(self.total_remotes_selected)
+            )
         else:
             self.remotes_expander.set_subtitle("")
 
@@ -84,7 +91,9 @@ class FilterWindow(Adw.Window):
             self.remotes_string += f"{remote}<>{install_type};"
         else:
             self.total_remotes_selected -= 1
-            self.remotes_string = self.remotes_string.replace(f"{remote}<>{install_type};", "")
+            self.remotes_string = self.remotes_string.replace(
+                f"{remote}<>{install_type};", ""
+            )
             if len(self.remotes_string) < 1:
                 self.remotes_string += "all"
         self.settings.set_string("remotes-list", self.remotes_string)
@@ -196,8 +205,14 @@ class FilterWindow(Adw.Window):
 
         # Connections
         event_controller.connect("key-pressed", self.key_handler)
-        self.show_apps_switch.connect("state-set", lambda button, state: self.gsettings_bool_set("show-apps", state))
-        self.show_runtimes_switch.connect("state-set", lambda button, state: self.gsettings_bool_set("show-runtimes", state))
+        self.show_apps_switch.connect(
+            "state-set",
+            lambda button, state: self.gsettings_bool_set("show-apps", state),
+        )
+        self.show_runtimes_switch.connect(
+            "state-set",
+            lambda button, state: self.gsettings_bool_set("show-runtimes", state),
+        )
         self.reset_button.connect("clicked", lambda *_: self.reset_filter_gsettings())
 
         # Calls

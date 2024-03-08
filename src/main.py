@@ -71,7 +71,9 @@ class WarehouseApplication(Adw.Application):
         self.create_action("set-filter", self.filters_shortcut, ["<primary>t"])
         self.create_action("install-from-file", self.install_from_file, ["<primary>o"])
         self.create_action("open-menu", self.main_menu_shortcut, ["F10"])
-        self.create_action("open-search-install", self.open_search_install, ["<primary>i"])
+        self.create_action(
+            "open-search-install", self.open_search_install, ["<primary>i"]
+        )
 
         gtk_version = (
             str(Gtk.MAJOR_VERSION)
