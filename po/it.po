@@ -102,12 +102,7 @@ msgstr ""
 msgid "Select a Release"
 msgstr ""
 
-<<<<<<< HEAD
-#: data/ui/downgrade.blp:53
->>>>>>> 6984e45 (Update translation files)
-=======
 #: data/ui/downgrade.blp:72
->>>>>>> b470a0a (Update translation files)
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
@@ -117,10 +112,6 @@ msgstr ""
 msgid "Set Filters"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 20f1f1c (Update translation files)
 #: data/ui/filter.blp:40
 msgid "Show Apps"
 msgstr ""
@@ -135,13 +126,10 @@ msgstr ""
 
 #: data/ui/filter.blp:66
 msgid "Filter by Runtimes"
-<<<<<<< HEAD
-=======
 msgstr ""
 
 #: data/ui/filter.blp:74 data/ui/window.blp:179
 msgid "Reset Filters"
->>>>>>> 20f1f1c (Update translation files)
 msgstr ""
 
 #: data/ui/orphans.blp:14 data/ui/window.blp:12
@@ -190,12 +178,7 @@ msgid "Add Remote"
 msgstr ""
 
 #: data/ui/popular_remotes.blp:19
-<<<<<<< HEAD
-msgid "Choose from a list of popular remotes or add a new one."
->>>>>>> 6984e45 (Update translation files)
-=======
 msgid "Choose from a list of popular remotes or add a new one"
->>>>>>> 20f1f1c (Update translation files)
 msgstr ""
 
 #: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51

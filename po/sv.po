@@ -10,19 +10,6 @@ msgstr ""
 "POT-Creation-Date: 2024-03-05 11:31-0500\n"
 "PO-Revision-Date: 2024-02-01 18:15+0000\n"
 "Last-Translator: Newbyte <newbie13xd@gmail.com>\n"
-=======
-"POT-Creation-Date: 2024-01-05 01:05-0500\n"
-=======
-"POT-Creation-Date: 2024-01-20 00:48-0500\n"
-<<<<<<< HEAD
->>>>>>> b470a0a (Update translation files)
-"PO-Revision-Date: 2023-11-07 04:13+0000\n"
-"Last-Translator: skøldis <frejaland.47@gmail.com>\n"
->>>>>>> 6984e45 (Update translation files)
-=======
-"PO-Revision-Date: 2024-02-01 18:15+0000\n"
-"Last-Translator: Newbyte <newbie13xd@gmail.com>\n"
->>>>>>> 534af28 (Translated using Weblate (Swedish))
 "Language-Team: Swedish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/sv/>\n"
 "Language: sv\n"
@@ -121,18 +108,11 @@ msgstr "Inaktivera uppdateringar"
 msgid "Select a Release"
 msgstr "Välj en utgåva"
 
-<<<<<<< HEAD
-#: data/ui/downgrade.blp:53
->>>>>>> 6984e45 (Update translation files)
-=======
 #: data/ui/downgrade.blp:72
->>>>>>> b470a0a (Update translation files)
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
-<<<<<<< HEAD
-<<<<<<< HEAD
 "Detta kommer avinstallera den nuvarande utgåvan och installerade den valde "
 "istället. Tänk på att nedgraderingar kan orsaka problem."
 
@@ -178,7 +158,6 @@ msgstr "Öppna datamapp"
 #, fuzzy
 #| msgid "Installing…"
 msgid "Installing"
->>>>>>> 20f1f1c (Update translation files)
 msgstr "Installerar…"
 
 #: data/ui/orphans.blp:102
@@ -377,38 +356,22 @@ msgstr "Ny snapshot"
 msgid "No Snapshots"
 msgstr "Inga ögonblicksbilder"
 
-<<<<<<< HEAD
-#: data/ui/snapshots.blp:87
->>>>>>> 6984e45 (Update translation files)
-=======
 #: data/ui/snapshots.blp:85
->>>>>>> 20f1f1c (Update translation files)
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time."
 msgstr ""
-<<<<<<< HEAD
-<<<<<<< HEAD
 "Ögonblicksbilder är säkerhetskopior av appens användardata. De kan "
 "återställas när som helst."
-
-#: data/ui/window.blp:18
-=======
-=======
-"Ögonblicksbilder är säkerhetskopior av appens användardata. De kan "
-"återställas när som helst."
->>>>>>> 534af28 (Translated using Weblate (Swedish))
 
 #: data/ui/window.blp:18
 msgid "Filter List"
 msgstr "Filtrera Listan"
 
 #: data/ui/window.blp:24
-#: data/ui/window.blp:24
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-#: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 #: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 msgid "Toggle Selection Mode"
 msgstr "Växla urvalsläge"
@@ -417,9 +380,7 @@ msgstr "Växla urvalsläge"
 #, fuzzy
 #| msgid "Loading Flatpaks…"
 msgid "Loading Flatpaks"
->>>>>>> 20f1f1c (Update translation files)
 msgstr "Laddar Flatpakpaket…"
->>>>>>> 534af28 (Translated using Weblate (Swedish))
 
 #: data/ui/window.blp:129
 #, fuzzy
@@ -434,7 +395,6 @@ msgid "Creating Snapshots"
 msgstr "Skapar ögonblicksbilder…"
 
 #: data/ui/window.blp:169
-#: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr "Inga Flatpak Hittades"
 
@@ -443,7 +403,6 @@ msgstr "Inga Flatpak Hittades"
 #| msgid ""
 #| "Warehouse cannot see the list of installed Flatpaks or the system has no "
 #| "Flatpaks installed."
->>>>>>> 20f1f1c (Update translation files)
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
@@ -976,7 +935,6 @@ msgstr "System"
 
 #: src/remotes_window.py:535 src/remotes_window.py:642
 msgid "Remote will be available to every user on the system"
->>>>>>> 6984e45 (Update translation files)
 msgstr ""
 "Fjärrkontroll kommer att vara tillgänglig till varje användare på systemet"
 
@@ -987,7 +945,6 @@ msgstr "{} lades till"
 #: src/remotes_window.py:624
 msgid "Add {}?"
 msgstr "Lägg till {}?"
->>>>>>> 6984e45 (Update translation files)
 
 #: src/remotes_window.py:672
 #, fuzzy

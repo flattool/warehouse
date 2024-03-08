@@ -104,12 +104,7 @@ msgstr ""
 msgid "Select a Release"
 msgstr ""
 
-<<<<<<< HEAD
-#: data/ui/downgrade.blp:53
->>>>>>> 6984e45 (Update translation files)
-=======
 #: data/ui/downgrade.blp:72
->>>>>>> b470a0a (Update translation files)
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
@@ -119,8 +114,6 @@ msgstr ""
 msgid "Set Filters"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: data/ui/filter.blp:40
 msgid "Show Apps"
 msgstr "Afichar las aplicacions"

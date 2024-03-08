@@ -405,7 +405,6 @@ msgstr "ไม่เจอแอป"
 #, fuzzy
 #| msgid "No installed Flatpak matches any of the currently applied filters."
 msgid "No installed Flatpak matches all of the currently applied filters"
->>>>>>> 20f1f1c (Update translation files)
 msgstr ""
 "ไม่มีแอปที่ตรงกับฟิลเตอร์ของคุณ หรือ แวร์เฮาส์ ไม่สามารถดูรายการแอปที่ติดตั้งไว้ "
 "หรือระบบไม่ได้ติดตั้งแอปใดๆ"
@@ -974,25 +973,10 @@ msgstr "ไม่สามารถทิ้งข้อมูลผู้ใช
 #: src/snapshots_window.py:132
 #, fuzzy
 msgid "Trash Snapshot?"
->>>>>>> 6984e45 (Update translation files)
 msgstr "จัดการรีโมต"
 
 #: src/snapshots_window.py:133
 #, fuzzy
-<<<<<<< HEAD
-#| msgid "Could not trash user data"
-msgid "Could not trash snapshot"
-msgstr "ไม่สามารถทิ้งข้อมูลผู้ใช้ได้"
-
-#: src/snapshots_window.py:132
-#, fuzzy
-msgid "Trash Snapshot?"
-msgstr "จัดการรีโมต"
-
-#: src/snapshots_window.py:133
-#, fuzzy
-=======
->>>>>>> 6984e45 (Update translation files)
 #| msgid "These folders will be sent to the trash."
 msgid "This snapshot and its contents will be sent to the trash."
 msgstr "โฟลเดอร์เหล่านี้จะถูกในไปไว้ในถังขยะ"

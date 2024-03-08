@@ -333,11 +333,9 @@ msgid "Filter List"
 msgstr ""
 
 #: data/ui/window.blp:24
-#: data/ui/window.blp:24
 msgid "Main Menu"
 msgstr ""
 
-#: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 #: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 msgid "Toggle Selection Mode"
 msgstr ""
@@ -362,7 +360,6 @@ msgid "No Flatpaks Found"
 msgstr ""
 
 #: data/ui/window.blp:170
-#: data/ui/window.blp:170
 #, fuzzy
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
@@ -371,7 +368,6 @@ msgstr ""
 "Warehouse, jest aplikacją która zarządza aplikacjami Flatpak, ich danymi, "
 "oraz źródłami."
 
-#: data/ui/window.blp:175
 #: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
 msgstr ""

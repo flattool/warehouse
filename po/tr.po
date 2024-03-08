@@ -12,12 +12,6 @@ msgstr ""
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/tr/>\n"
-=======
-"POT-Creation-Date: 2024-01-05 01:05-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
->>>>>>> 6984e45 (Update translation files)
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,25 +23,20 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.desktop.in:4
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:5
 msgid "Warehouse"
-<<<<<<< HEAD
 msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 msgid "flatpak"
 msgstr "flatpak"
 
-=======
-msgstr ""
-
-#: data/io.github.flattool.Warehouse.desktop.in:11
-msgid "flatpak"
-msgstr "flatpak"
-
->>>>>>> 6984e45 (Update translation files)
 #: data/io.github.flattool.Warehouse.desktop.in:12
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
 msgstr "Flatpak ile ilgili her şeyi yönetin"
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:6
+msgid "Heliguy"
+msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
@@ -204,8 +193,7 @@ msgstr "Kur"
 
 #: data/ui/popular_remotes.blp:18
 msgid "Add Remote"
-msgstr ""
->>>>>>> 6984e45 (Update translation files)
+msgstr "Uzak Ekle"
 
 #: data/ui/popular_remotes.blp:19
 #, fuzzy
@@ -373,7 +361,6 @@ msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time."
 msgstr ""
-<<<<<<< HEAD
 "Anlık görüntüler, uygulamanın kullanıcı verilerinin yedekleridir. "
 "İstenildiği zaman yeniden uygulanabilirler."
 
@@ -515,7 +502,6 @@ msgid ""
 "{}'s runtime has reached its End of Life and will not receive any security "
 "updates"
 msgstr ""
-<<<<<<< HEAD
 "{} çalışma zamanı Kullanım Ömrü Sonuna ulaştı ve güvenlik güncellemesi "
 "almayacak"
 
@@ -1073,7 +1059,6 @@ msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
 msgstr ""
-<<<<<<< HEAD
 "Bu, {} uygulamasını maskeleyecek, özellik ya da güvenlik güncellemesi "
 "almasını önleyecektir."
 
@@ -1114,7 +1099,6 @@ msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
 msgstr ""
-<<<<<<< HEAD
 "Anlık görüntüler, uygulamanın kullanıcı verilerinin yedekleridir. "
 "İstenildiği zaman yeniden uygulanabilirler. Bu biraz zaman alabilir."
 
@@ -1152,10 +1136,6 @@ msgstr "Uygulama sistemdeki tüm kullanıcılar tarafından kullanılabilecek"
 
 #: src/window.py:811
 msgid "File type not supported"
-<<<<<<< HEAD
-msgstr ""
->>>>>>> 6984e45 (Update translation files)
-=======
 msgstr "Dosya türü desteklenmiyor"
 
 #~ msgid "Search for Flatpaks…"
@@ -1174,4 +1154,3 @@ msgstr "Dosya türü desteklenmiyor"
 
 #~ msgid "No remotes on the system, add some from below"
 #~ msgstr "Sistemde uzak yok, aşağıdan ekleyebilirsiniz"
->>>>>>> 20f1f1c (Update translation files)
