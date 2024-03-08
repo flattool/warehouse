@@ -237,15 +237,19 @@ class myUtils:
             f"--{install_type}",
             "-y",
         ]
+        if "--user" in command:
+            command.remove("pkexec")
         try:
             response = subprocess.run(
                 command, capture_output=True, text=True, env=self.new_env
             ).stderr
         except subprocess.CalledProcessError as e:
-            if "note that" in response.lower():
-                return 0
+            # if "note that" in response.lower():
+            #     return 0
             print(f"Error setting mask for {app_id}:\n", e)
             return 1
+        print(command)
+        print(response)
         return 0
 
     def uninstall_flatpak(self, ref_arr, type_arr, should_trash, progress_bar=None, status_label=None):

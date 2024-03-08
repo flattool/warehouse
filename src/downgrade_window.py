@@ -116,8 +116,7 @@ class DowngradeWindow(Adw.Window):
 
         if self.response != 0:
             self.toast_overlay.add_toast(
-                Adw.TThis
-                is toast.new(_("Could not downgrade {}").format(self.app_name))
+                Adw.Toast.new(_("Could not downgrade {}").format(self.app_name))
             )
             self.apply_button.set_sensitive(True)
             self.cancel_button.set_sensitive(True)
@@ -132,6 +131,7 @@ class DowngradeWindow(Adw.Window):
                 )
 
         self.parent_window.refresh_list_of_flatpaks(self, False)
+        print(self.response)
         self.close()
 
     def downgrade_thread(self):
