@@ -64,12 +64,15 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="1.5.1" date="2024-3-8" timestamp="1709919650">
+    <release version="1.5.1" date="2024-3-8" timestamp="1709921475">
       <description translatable="no">
         <p>Bug Fixes</p> 
         <ul>
+          <li>Main list is no longer scrolled to the bottom on launch</li>
+          <li>Leftover Data window no longer tries to use a different window for toast messages</li>
           <li>Fix issue causing Downgrage window to not be able to downgrade user installation Flatpaks</li>
           <li>Fix the accidental removal of translations</li>
+          <li>Fix issue causing Reset Filters button to be clickable upon Filter Window opening even when the filters are default</li>
         </ul>
       </description>
     </release>
