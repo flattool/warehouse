@@ -104,12 +104,7 @@ msgstr "禁用更新"
 msgid "Select a Release"
 msgstr ""
 
-<<<<<<< HEAD
-#: data/ui/downgrade.blp:53
->>>>>>> 6984e45 (Update translation files)
-=======
 #: data/ui/downgrade.blp:72
->>>>>>> b470a0a (Update translation files)
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
@@ -119,8 +114,6 @@ msgstr ""
 msgid "Set Filters"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: data/ui/filter.blp:40
 msgid "Show Apps"
 msgstr ""
@@ -189,15 +182,7 @@ msgid "Add Remote"
 msgstr "添加和删除 Flatpak 远程"
 
 #: data/ui/popular_remotes.blp:19
-<<<<<<< HEAD
-<<<<<<< HEAD
 msgid "Choose from a list of popular remotes or add a new one"
-=======
-msgid "Choose from a list of popular remotes or add a new one."
->>>>>>> 6984e45 (Update translation files)
-=======
-msgid "Choose from a list of popular remotes or add a new one"
->>>>>>> 20f1f1c (Update translation files)
 msgstr ""
 
 #: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
@@ -210,8 +195,6 @@ msgstr ""
 
 #: data/ui/properties.blp:45
 #, fuzzy
-<<<<<<< HEAD
-<<<<<<< HEAD
 msgid "Loading User Data"
 msgstr "回收用户数据"
 
@@ -252,15 +235,7 @@ msgid "Manage Remotes"
 msgstr ""
 
 #: data/ui/remotes.blp:14
-<<<<<<< HEAD
-<<<<<<< HEAD
 msgid "Refresh List of Remotes"
-=======
-msgid "Refresh list of remotes"
->>>>>>> 6984e45 (Update translation files)
-=======
-msgid "Refresh List of Remotes"
->>>>>>> 20f1f1c (Update translation files)
 msgstr ""
 
 #: data/ui/remotes.blp:23
@@ -268,29 +243,12 @@ msgid "Installed Remotes"
 msgstr ""
 
 #: data/ui/remotes.blp:27
-<<<<<<< HEAD
-<<<<<<< HEAD
 #, fuzzy
 msgid "Show Disabled"
 msgstr "禁用更新"
 
 #: data/ui/remotes.blp:41
 msgid "No Remotes Found"
-<<<<<<< HEAD
-=======
-msgid "Show disabled"
-msgstr ""
-=======
-#, fuzzy
-msgid "Show Disabled"
-msgstr "禁用更新"
->>>>>>> b470a0a (Update translation files)
-
-#: data/ui/remotes.blp:41
-msgid "No remotes on the system, add some from below"
->>>>>>> 6984e45 (Update translation files)
-=======
->>>>>>> 20f1f1c (Update translation files)
 msgstr ""
 
 #: data/ui/remotes.blp:45
@@ -303,8 +261,6 @@ msgid "Add Other Remotes"
 msgstr ""
 
 #: data/ui/remotes.blp:79
-<<<<<<< HEAD
-<<<<<<< HEAD
 #, fuzzy
 msgid "Adding Remote"
 msgstr "添加和删除 Flatpak 远程"
@@ -359,8 +315,6 @@ msgstr ""
 msgid "Open Snapshots Folder"
 msgstr "打开用户数据文件夹"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: data/ui/snapshots.blp:33
 msgid "New Snapshot"
 msgstr ""
@@ -370,24 +324,6 @@ msgid "No Snapshots"
 msgstr ""
 
 #: data/ui/snapshots.blp:85
-=======
-#: data/ui/snapshots.blp:34
-=======
-#: data/ui/snapshots.blp:33
->>>>>>> 20f1f1c (Update translation files)
-msgid "New Snapshot"
-msgstr ""
-
-#: data/ui/snapshots.blp:84
-msgid "No Snapshots"
-msgstr ""
-
-<<<<<<< HEAD
-#: data/ui/snapshots.blp:87
->>>>>>> 6984e45 (Update translation files)
-=======
-#: data/ui/snapshots.blp:85
->>>>>>> 20f1f1c (Update translation files)
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time."
@@ -398,11 +334,9 @@ msgid "Filter List"
 msgstr ""
 
 #: data/ui/window.blp:24
-#: data/ui/window.blp:24
 msgid "Main Menu"
 msgstr ""
 
-#: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 #: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 msgid "Toggle Selection Mode"
 msgstr ""
@@ -419,22 +353,15 @@ msgid "Uninstalling"
 msgstr "卸载"
 
 #: data/ui/window.blp:157
-=======
-msgid "Uninstalling"
-msgstr "卸载"
-
-#: data/ui/window.blp:157
 #, fuzzy
 #| msgid "Open User Data Folder"
 msgid "Creating Snapshots"
 msgstr "打开用户数据文件夹"
 
 #: data/ui/window.blp:169
-#: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr ""
 
-#: data/ui/window.blp:170
 #: data/ui/window.blp:170
 #, fuzzy
 msgid ""
@@ -444,7 +371,6 @@ msgstr ""
 "Warehouse 是一个应用程序，用于管理已安装的 Flatpak、他们的用户数据和 Flatpak "
 "远程。"
 
-#: data/ui/window.blp:175
 #: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
 msgstr ""
@@ -579,7 +505,6 @@ msgstr "已复制启动命令"
 msgid "Copy Launch Command"
 msgstr "复制启动命令"
 
->>>>>>> 6984e45 (Update translation files)
 #: src/app_row_widget.py:206
 msgid "Opened {}"
 msgstr "已打开 {}"
@@ -619,9 +544,6 @@ msgstr ""
 msgid "Could not disable updates for {}"
 msgstr "无法打开目录"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/downgrade_window.py:143
 msgid "Downgrading…"
 msgstr ""
@@ -646,7 +568,7 @@ msgstr ""
 msgid "System wide"
 msgstr ""
 
-#: src/filter_window.py:141 src/orphans_window.py:152 src/remotes_window.py:315
+#: src/filter_window.py:134 src/orphans_window.py:152 src/remotes_window.py:315
 #, fuzzy
 #| msgid "Uninstall"
 msgid "Unknown install type"

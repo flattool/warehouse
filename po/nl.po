@@ -405,7 +405,6 @@ msgstr "Geen Flatpaks teruggevonden"
 #, fuzzy
 #| msgid "No installed Flatpak matches any of the currently applied filters."
 msgid "No installed Flatpak matches all of the currently applied filters"
->>>>>>> 20f1f1c (Update translation files)
 msgstr ""
 "Er zijn ofwel geen Flatpaks die voldoen aan de huidige filter, ofwel kan "
 "Warehouse de lijst van geïnstalleerde Flatpaks niet opvragen."
@@ -721,7 +720,6 @@ msgstr "Kon data niet beheren"
 #: src/properties_window.py:41 src/remotes_window.py:218
 msgid "Copied {}"
 msgstr "{} gekopieerd"
->>>>>>> 6984e45 (Update translation files)
 
 #: src/properties_window.py:53
 #, fuzzy

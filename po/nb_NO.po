@@ -102,27 +102,11 @@ msgstr ""
 msgid "Disable Updates"
 msgstr "Ingen brukerdata funnet for {}"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: data/ui/downgrade.blp:71
 msgid "Select a Release"
 msgstr ""
 
 #: data/ui/downgrade.blp:72
-=======
-#: data/ui/downgrade.blp:52
-msgid "Select a Release"
-msgstr ""
-
-#: data/ui/downgrade.blp:53
->>>>>>> 6984e45 (Update translation files)
-=======
-#: data/ui/downgrade.blp:71
-msgid "Select a Release"
-msgstr ""
-
-#: data/ui/downgrade.blp:72
->>>>>>> b470a0a (Update translation files)
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
@@ -132,8 +116,6 @@ msgstr ""
 msgid "Set Filters"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: data/ui/filter.blp:40
 msgid "Show Apps"
 msgstr ""
@@ -203,15 +185,7 @@ msgid "Add Remote"
 msgstr "Legg til og fjern Flatpak-fjernservere"
 
 #: data/ui/popular_remotes.blp:19
-<<<<<<< HEAD
-<<<<<<< HEAD
 msgid "Choose from a list of popular remotes or add a new one"
-=======
-msgid "Choose from a list of popular remotes or add a new one."
->>>>>>> 6984e45 (Update translation files)
-=======
-msgid "Choose from a list of popular remotes or add a new one"
->>>>>>> 20f1f1c (Update translation files)
 msgstr ""
 
 #: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
@@ -224,18 +198,7 @@ msgstr ""
 
 #: data/ui/properties.blp:45
 #, fuzzy
-<<<<<<< HEAD
-<<<<<<< HEAD
 msgid "Loading User Data"
-msgstr "Slettet brukerdata"
-
-#: data/ui/properties.blp:50 src/app_row_widget.py:231
-#: src/orphans_window.py:258
-=======
-msgid "Loading User Data…"
-=======
-msgid "Loading User Data"
->>>>>>> 20f1f1c (Update translation files)
 msgstr "Slettet brukerdata"
 
 #: data/ui/properties.blp:50 src/app_row_widget.py:231
@@ -250,8 +213,6 @@ msgstr "Slettet brukerdata"
 msgid "Trash User Data"
 msgstr "Slettet brukerdata"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: data/ui/properties.blp:80
 msgid "Show Apps Using This Runtime"
 msgstr ""
@@ -278,15 +239,7 @@ msgid "Manage Remotes"
 msgstr ""
 
 #: data/ui/remotes.blp:14
-<<<<<<< HEAD
-<<<<<<< HEAD
 msgid "Refresh List of Remotes"
-=======
-msgid "Refresh list of remotes"
->>>>>>> 6984e45 (Update translation files)
-=======
-msgid "Refresh List of Remotes"
->>>>>>> 20f1f1c (Update translation files)
 msgstr ""
 
 #: data/ui/remotes.blp:23
@@ -294,29 +247,12 @@ msgid "Installed Remotes"
 msgstr ""
 
 #: data/ui/remotes.blp:27
-<<<<<<< HEAD
-<<<<<<< HEAD
 #, fuzzy
 msgid "Show Disabled"
 msgstr "Ingen brukerdata funnet for {}"
 
 #: data/ui/remotes.blp:41
 msgid "No Remotes Found"
-<<<<<<< HEAD
-=======
-msgid "Show disabled"
-msgstr ""
-=======
-#, fuzzy
-msgid "Show Disabled"
-msgstr "Ingen brukerdata funnet for {}"
->>>>>>> b470a0a (Update translation files)
-
-#: data/ui/remotes.blp:41
-msgid "No remotes on the system, add some from below"
->>>>>>> 6984e45 (Update translation files)
-=======
->>>>>>> 20f1f1c (Update translation files)
 msgstr ""
 
 #: data/ui/remotes.blp:45
@@ -329,8 +265,6 @@ msgid "Add Other Remotes"
 msgstr ""
 
 #: data/ui/remotes.blp:79
-<<<<<<< HEAD
-<<<<<<< HEAD
 #, fuzzy
 msgid "Adding Remote"
 msgstr "Legg til og fjern Flatpak-fjernservere"
@@ -384,8 +318,6 @@ msgstr ""
 msgid "Open Snapshots Folder"
 msgstr "Slettet brukerdata"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: data/ui/snapshots.blp:33
 msgid "New Snapshot"
 msgstr ""
@@ -395,24 +327,6 @@ msgid "No Snapshots"
 msgstr ""
 
 #: data/ui/snapshots.blp:85
-=======
-#: data/ui/snapshots.blp:34
-=======
-#: data/ui/snapshots.blp:33
->>>>>>> 20f1f1c (Update translation files)
-msgid "New Snapshot"
-msgstr ""
-
-#: data/ui/snapshots.blp:84
-msgid "No Snapshots"
-msgstr ""
-
-<<<<<<< HEAD
-#: data/ui/snapshots.blp:87
->>>>>>> 6984e45 (Update translation files)
-=======
-#: data/ui/snapshots.blp:85
->>>>>>> 20f1f1c (Update translation files)
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time."
@@ -423,11 +337,9 @@ msgid "Filter List"
 msgstr ""
 
 #: data/ui/window.blp:24
-#: data/ui/window.blp:24
 msgid "Main Menu"
 msgstr ""
 
-#: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 #: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 msgid "Toggle Selection Mode"
 msgstr ""
@@ -444,22 +356,15 @@ msgid "Uninstalling"
 msgstr "Avinstaller"
 
 #: data/ui/window.blp:157
-=======
-msgid "Uninstalling"
-msgstr "Avinstaller"
-
-#: data/ui/window.blp:157
 #, fuzzy
 #| msgid "Trash Data"
 msgid "Creating Snapshots"
 msgstr "Slett Data"
 
 #: data/ui/window.blp:169
-#: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr ""
 
-#: data/ui/window.blp:170
 #: data/ui/window.blp:170
 #, fuzzy
 msgid ""
@@ -469,7 +374,6 @@ msgstr ""
 "Warehouse er et program som behandler installerte Flatpak-er, brukerdataene "
 "deres, og Flatpak-fjernservere."
 
-#: data/ui/window.blp:175
 #: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
 msgstr ""
@@ -602,7 +506,6 @@ msgstr ""
 msgid "Copy Launch Command"
 msgstr ""
 
->>>>>>> 6984e45 (Update translation files)
 #: src/app_row_widget.py:206
 msgid "Opened {}"
 msgstr ""
@@ -644,26 +547,11 @@ msgstr ""
 msgid "Could not disable updates for {}"
 msgstr "Ingen brukerdata funnet for {}"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/downgrade_window.py:143
-=======
-#: src/downgrade_window.py:148
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/downgrade_window.py:142
->>>>>>> b470a0a (Update translation files)
-=======
-#: src/downgrade_window.py:143
->>>>>>> 20f1f1c (Update translation files)
 #, fuzzy
 msgid "Downgrading…"
 msgstr "Nedgrader {}"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/downgrade_window.py:167
 msgid "Downgrade {}"
 msgstr "Nedgrader {}"
@@ -685,34 +573,6 @@ msgid "System wide"
 msgstr ""
 
 #: src/filter_window.py:134 src/orphans_window.py:152 src/remotes_window.py:315
-=======
-#: src/downgrade_window.py:174
-=======
-#: src/downgrade_window.py:166
->>>>>>> b470a0a (Update translation files)
-=======
-#: src/downgrade_window.py:167
->>>>>>> 20f1f1c (Update translation files)
-msgid "Downgrade {}"
-msgstr "Nedgrader {}"
-
-#: src/downgrade_window.py:180
-msgid "Ensure that {} will never be updated to a newer version"
-msgstr ""
-
-#: src/filter_window.py:43 src/filter_window.py:47
-msgid "{} selected"
-msgstr ""
-
-#: src/filter_window.py:130 src/orphans_window.py:148 src/remotes_window.py:311
-msgid "User wide"
-msgstr ""
-
-#: src/filter_window.py:132 src/orphans_window.py:150 src/remotes_window.py:313
-msgid "System wide"
-msgstr ""
-
-#: src/filter_window.py:141 src/orphans_window.py:152 src/remotes_window.py:315
 #, fuzzy
 #| msgid "Uninstall {}"
 msgid "Unknown install type"
@@ -840,7 +700,6 @@ msgstr ""
 
 #: src/properties_window.py:91
 msgid "Description"
->>>>>>> 6984e45 (Update translation files)
 msgstr ""
 
 #: src/properties_window.py:92
@@ -1264,10 +1123,6 @@ msgstr ""
 #: src/window.py:811
 msgid "File type not supported"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Open App"
-#~ msgstr "Åpne {}"
 
 #, fuzzy
 #~ msgid "Open App"

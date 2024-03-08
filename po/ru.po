@@ -16,20 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-<<<<<<< HEAD
-<<<<<<< HEAD
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-=======
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
->>>>>>> 6984e45 (Update translation files)
-=======
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
->>>>>>> 6a52d6c (Translated using Weblate (Russian))
 "X-Generator: Weblate 5.0\n"
 
 #. Translators: Do not translate the applicaion name
@@ -132,7 +120,6 @@ msgstr ""
 #: data/ui/filter.blp:7 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
 msgstr "Установить фильтры"
->>>>>>> 6984e45 (Update translation files)
 
 #: data/ui/filter.blp:40
 msgid "Show Apps"
@@ -142,22 +129,11 @@ msgstr "Показать приложения"
 msgid "Show Runtimes"
 msgstr "Показать среды выполнения"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: data/ui/remotes.blp:23
-msgid "Installed Remotes"
-msgstr "Установленные репозитории"
-=======
-#: data/ui/filter.blp:75
-msgid "Filter Apps by Remotes"
-=======
 #: data/ui/filter.blp:61
 #, fuzzy
 #| msgid "Filter Apps by Remotes"
 msgid "Filter by Remotes"
->>>>>>> 20f1f1c (Update translation files)
 msgstr "Фильтровать приложения по репозиториям"
->>>>>>> 6984e45 (Update translation files)
 
 #: data/ui/filter.blp:66
 #, fuzzy
@@ -392,11 +368,9 @@ msgid "Filter List"
 msgstr "Список фильтров"
 
 #: data/ui/window.blp:24
-#: data/ui/window.blp:24
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 #: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 msgid "Toggle Selection Mode"
 msgstr "Переключение режима выбора"
@@ -411,7 +385,6 @@ msgstr "Загрузка пакетов Flatpak…"
 #, fuzzy
 #| msgid "Uninstalling…"
 msgid "Uninstalling"
->>>>>>> 20f1f1c (Update translation files)
 msgstr "Удаление…"
 
 #: data/ui/window.blp:157
@@ -420,7 +393,6 @@ msgstr "Удаление…"
 msgid "Creating Snapshots"
 msgstr "Создание снимков…"
 
-#: data/ui/window.blp:169
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr "Пакеты Flatpak не найдены"
@@ -439,7 +411,6 @@ msgstr ""
 
 #: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
-msgstr "Нет фильтров совпадений Flatpak"
 msgstr "Нет фильтров совпадений Flatpak"
 
 #: data/ui/window.blp:176
@@ -465,7 +436,6 @@ msgstr "Открыть меню копирования"
 
 #: data/ui/window.blp:225
 msgid "Snapshot Selected Apps' Data"
-msgstr "Снимок данных выбранных приложений"
 msgstr "Снимок данных выбранных приложений"
 
 #: data/ui/window.blp:235
@@ -864,15 +834,6 @@ msgstr "Отключить {}?"
 #: src/remotes_window.py:175 src/remotes_window.py:267
 msgid "Disable"
 msgstr "Отключить"
-=======
-#: src/remotes_window.py:167 src/remotes_window.py:257
-msgid "Disable"
-<<<<<<< HEAD
-msgstr "Отключено"
->>>>>>> 6984e45 (Update translation files)
-=======
-msgstr "Отключить"
->>>>>>> 6a52d6c (Translated using Weblate (Russian))
 
 #: src/remotes_window.py:186
 msgid "Could not view apps"
@@ -903,7 +864,6 @@ msgstr ""
 #: src/remotes_window.py:349
 msgid "Central repository of Flatpak applications"
 msgstr "Центральный репозиторий приложений Flatpak"
-msgstr "Центральный репозиторий приложений Flatpak"
 
 #: src/remotes_window.py:355
 msgid "Beta builds of Flatpak applications"
@@ -919,7 +879,6 @@ msgstr "Последняя бета-версия приложений и сре�
 
 #: src/remotes_window.py:373
 msgid "Beta KDE Apps and Runtimes"
-msgstr "Бета-приложения KDE и среды выполнения"
 msgstr "Бета-приложения KDE и среды выполнения"
 
 #: src/remotes_window.py:379
@@ -1204,9 +1163,7 @@ msgstr "Тип файла не поддерживается"
 
 #~ msgid "No remotes on the system, add some from below"
 #~ msgstr "В системе нет репозиториев, добавьте несколько снизу"
->>>>>>> 20f1f1c (Update translation files)
 
->>>>>>> b470a0a (Update translation files)
 #~ msgid "View apps from this remote"
 #~ msgstr "Просмотр приложений с этого репозитория"
 

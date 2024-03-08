@@ -108,14 +108,10 @@ msgstr "Seleccionar una versión"
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
->>>>>>> 6984e45 (Update translation files)
 msgstr ""
 "Esto desinstalará la versión actual e instalará la elegida en su lugar. "
 "Tenga en cuenta que la desinstalación puede causar problemas."
 
-<<<<<<< HEAD
-#: data/ui/search_install.blp:37
-=======
 #: data/ui/filter.blp:7 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
 msgstr "Establecer filtros"
@@ -351,11 +347,9 @@ msgid "Filter List"
 msgstr "Filtrar lista"
 
 #: data/ui/window.blp:24
-#: data/ui/window.blp:24
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 #: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 msgid "Toggle Selection Mode"
 msgstr "Conmutar modo de selección"
@@ -372,7 +366,6 @@ msgstr "Desinstalando"
 msgid "Creating Snapshots"
 msgstr "Creando instantáneas"
 
-#: data/ui/window.blp:169
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr "No se han encontrado Flatpaks"
@@ -994,31 +987,16 @@ msgstr "Configuración y datos de la aplicación"
 msgid "Keep"
 msgstr "Mantener"
 
-<<<<<<< HEAD
-#: src/window.py:200
->>>>>>> 6984e45 (Update translation files)
-=======
 #: src/window.py:192
->>>>>>> 20f1f1c (Update translation files)
 msgid "Allow restoring these apps' settings and content"
 msgstr ""
 "Permitir restaurar la configuración y el contenido de estas aplicaciones"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:196
-=======
-#: src/window.py:204
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:196
->>>>>>> 20f1f1c (Update translation files)
 msgid "Send these apps' settings and content to the trash"
 msgstr ""
 "Enviar la configuración y el contenido de estas aplicaciones a la papelera"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:232
 msgid "Cannot uninstall while already uninstalling"
 msgstr "No se puede desinstalar mientras ya se está desinstalando"
@@ -1036,32 +1014,6 @@ msgid "Allow restoring this app's settings and content"
 msgstr "Permitir restaurar la configuración y el contenido de esta aplicación"
 
 #: src/window.py:279
-=======
-#: src/window.py:240
-=======
-#: src/window.py:232
->>>>>>> 20f1f1c (Update translation files)
-msgid "Cannot uninstall while already uninstalling"
-msgstr "No se puede desinstalar mientras ya se está desinstalando"
-
-#: src/window.py:262
-msgid "Uninstall {}?"
-msgstr "¿Desinstalar {}?"
-
-#: src/window.py:263
-msgid "It will not be possible to use {} after removal."
-msgstr "No será posible usar {} después de la eliminación."
-
-#: src/window.py:275
-msgid "Allow restoring this app's settings and content"
-msgstr "Permitir restaurar la configuración y el contenido de esta aplicación"
-
-<<<<<<< HEAD
-#: src/window.py:287
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:279
->>>>>>> 20f1f1c (Update translation files)
 msgid "Send this app's settings and content to the trash"
 msgstr ""
 "Enviar la configuración y el contenido de esta aplicación a la papelera"
@@ -1123,8 +1075,6 @@ msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
 msgstr ""
-<<<<<<< HEAD
-<<<<<<< HEAD
 "Las instantáneas son copias de seguridad de los datos de usuario de la "
 "aplicación. Pueden volver a aplicarse en cualquier momento. Esto puede "
 "llevar un tiempo."
@@ -1179,9 +1129,7 @@ msgstr "Tipo de archivo no compatible"
 
 #~ msgid "No remotes on the system, add some from below"
 #~ msgstr "No hay remotos en el sistema, añada algunos de abajo"
->>>>>>> 20f1f1c (Update translation files)
 
->>>>>>> b470a0a (Update translation files)
 #~ msgid "Remove {}"
 #~ msgstr "Eliminar {}"
 

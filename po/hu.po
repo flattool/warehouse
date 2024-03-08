@@ -1026,8 +1026,6 @@ msgstr ""
 msgid "{} Snapshots"
 msgstr "Tárolók kezelése"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:110
 msgid "Uninstalled successfully"
 msgstr "Sikeresen eltávolítva"
@@ -1053,46 +1051,10 @@ msgid "Keep"
 msgstr "Megtart"
 
 #: src/window.py:192
-=======
-#: src/window.py:118
-=======
-#: src/window.py:110
->>>>>>> 20f1f1c (Update translation files)
-msgid "Uninstalled successfully"
-msgstr "Sikeresen eltávolítva"
-
-#: src/window.py:113
-msgid "Could not uninstall some apps"
-msgstr "Pár applikációt nem lehetett eltávolítani"
-
-#: src/window.py:166
-msgid "Uninstall Selected Apps?"
-msgstr "Eltávolítja a kiválasztott appokat?"
-
-#: src/window.py:167
-msgid "It will not be possible to use these apps after removal."
-msgstr "Eltávolítás után nem lehet őket használni."
-
-#: src/window.py:187 src/window.py:270
-msgid "App Settings & Data"
-msgstr "App beállítások & adatok"
-
-#: src/window.py:191 src/window.py:274
-msgid "Keep"
-msgstr "Megtart"
-
-<<<<<<< HEAD
-#: src/window.py:200
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:192
->>>>>>> 20f1f1c (Update translation files)
 msgid "Allow restoring these apps' settings and content"
 msgstr ""
 "Engedélyezi az applikációk beállításainak és tartalmának helyreállítását"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:196
 msgid "Send these apps' settings and content to the trash"
 msgstr "Az applikációk beállításainak és tartalmának kukázása"
@@ -1110,38 +1072,10 @@ msgid "It will not be possible to use {} after removal."
 msgstr "Nem lesz lehetséges a(z) {} használata az eltávolítás után."
 
 #: src/window.py:275
-=======
-#: src/window.py:204
-=======
-#: src/window.py:196
->>>>>>> 20f1f1c (Update translation files)
-msgid "Send these apps' settings and content to the trash"
-msgstr "Az applikációk beállításainak és tartalmának kukázása"
-
-#: src/window.py:232
-msgid "Cannot uninstall while already uninstalling"
-msgstr "Nem lehet eltávolítani, ha az eltávolítás már folyamatban van"
-
-#: src/window.py:262
-msgid "Uninstall {}?"
-msgstr "Eltávolítja a következőt: {}?"
-
-#: src/window.py:263
-msgid "It will not be possible to use {} after removal."
-msgstr "Nem lesz lehetséges a(z) {} használata az eltávolítás után."
-
-<<<<<<< HEAD
-#: src/window.py:283
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:275
->>>>>>> 20f1f1c (Update translation files)
 msgid "Allow restoring this app's settings and content"
 msgstr ""
 "Engedélyezi az applikáció beállításainak és tartalmának helyreállítását"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:279
 msgid "Send this app's settings and content to the trash"
 msgstr "Az applikáció beállításainak és tartalmának kukázása"
@@ -1258,7 +1192,6 @@ msgstr "A fájl típus nem támogatott"
 #~ msgid "Apply"
 #~ msgstr "Alkalmaz"
 
->>>>>>> 20f1f1c (Update translation files)
 #~ msgid "Remove {}"
 #~ msgstr "{} eltávolítása"
 

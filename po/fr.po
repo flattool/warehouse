@@ -119,46 +119,8 @@ msgstr ""
 #: data/ui/filter.blp:7 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
 msgstr "Utiliser des filtres"
->>>>>>> 6984e45 (Update translation files)
 
-<<<<<<< HEAD
-#: data/ui/filter.blp:22
-msgid "Apply"
-msgstr "Appliquer"
-
-<<<<<<< HEAD
-#: data/ui/search_install.blp:15
-#, fuzzy
-#| msgid "Search List"
-msgid "Search Criteria"
-msgstr "Rechercher dans la liste"
-
-#: data/ui/search_install.blp:23
-msgid "Choose a Remote to Search"
-msgstr ""
-
-#: data/ui/search_install.blp:37
-#, fuzzy
-#| msgid "No Results Found"
-msgid "Results"
-msgstr "Aucun résultat"
-
-#: data/ui/search_install.blp:43
-msgid "Back"
-msgstr ""
-
-#: data/ui/search_install.blp:77
-#, fuzzy
-#| msgid "Search"
-msgid "Start Search"
-msgstr "Rechercher"
-
-#: data/ui/search_install.blp:86
-=======
-#: data/ui/filter.blp:54
-=======
 #: data/ui/filter.blp:40
->>>>>>> 20f1f1c (Update translation files)
 msgid "Show Apps"
 msgstr "Afficher les applications"
 
@@ -389,43 +351,19 @@ msgstr ""
 msgid "Open Snapshots Folder"
 msgstr "Ouvrir le dossier des données"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: data/ui/snapshots.blp:33
-=======
-#: data/ui/snapshots.blp:34
->>>>>>> 6984e45 (Update translation files)
-=======
-#: data/ui/snapshots.blp:33
->>>>>>> 20f1f1c (Update translation files)
 #, fuzzy
 #| msgid "Create Snapshots"
 msgid "New Snapshot"
 msgstr "Créer des instantanés"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: data/ui/snapshots.blp:84
-=======
-#: data/ui/snapshots.blp:86
->>>>>>> 6984e45 (Update translation files)
-=======
-#: data/ui/snapshots.blp:84
->>>>>>> 20f1f1c (Update translation files)
 #, fuzzy
 #| msgid "Create Snapshots"
 msgid "No Snapshots"
 msgstr "Créer des instantanés"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: data/ui/snapshots.blp:85
-=======
-#: data/ui/snapshots.blp:87
->>>>>>> 6984e45 (Update translation files)
-=======
-#: data/ui/snapshots.blp:85
->>>>>>> 20f1f1c (Update translation files)
 #, fuzzy
 #| msgid ""
 #| "Snapshots are backups of the app's user data. They can be reapplied at "
@@ -443,11 +381,9 @@ msgid "Filter List"
 msgstr "Filtrer la liste"
 
 #: data/ui/window.blp:24
-#: data/ui/window.blp:24
 msgid "Main Menu"
 msgstr "Menu principal"
 
-#: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 #: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 msgid "Toggle Selection Mode"
 msgstr "Basculer en mode sélection"
@@ -462,7 +398,6 @@ msgstr "Chargement des Flatpaks…"
 #, fuzzy
 #| msgid "Uninstalling…"
 msgid "Uninstalling"
->>>>>>> 20f1f1c (Update translation files)
 msgstr "Désinstallation…"
 
 #: data/ui/window.blp:157
@@ -472,7 +407,6 @@ msgid "Creating Snapshots"
 msgstr "Création d’instantanés…"
 
 #: data/ui/window.blp:169
-#: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr "Aucun Flatpak trouvé"
 
@@ -481,7 +415,6 @@ msgstr "Aucun Flatpak trouvé"
 #| msgid ""
 #| "Warehouse cannot see the list of installed Flatpaks or the system has no "
 #| "Flatpaks installed."
->>>>>>> 20f1f1c (Update translation files)
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
@@ -489,7 +422,6 @@ msgstr ""
 "Soit Warehouse ne peut voir la liste des Flatpaks installés soit aucun "
 "Flatpak n’a été installé sur ce système."
 
-#: data/ui/window.blp:175
 #: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
 msgstr "Aucun Flatpak correspondant aux filtres"
@@ -749,7 +681,6 @@ msgstr "Quitter"
 #: src/main.py:145
 msgid "Flatpaks"
 msgstr "Flatpaks"
->>>>>>> 6984e45 (Update translation files)
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
 #: src/main.py:188
@@ -1122,8 +1053,6 @@ msgstr ""
 msgid "{} Snapshots"
 msgstr "Créer des instantanés"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:110
 msgid "Uninstalled successfully"
 msgstr "Désinstallation achevée"
@@ -1137,34 +1066,10 @@ msgid "Uninstall Selected Apps?"
 msgstr "Désinstaller les applications sélectionnées ?"
 
 #: src/window.py:167
-=======
-#: src/window.py:118
-=======
-#: src/window.py:110
->>>>>>> 20f1f1c (Update translation files)
-msgid "Uninstalled successfully"
-msgstr "Désinstallation achevée"
-
-#: src/window.py:113
-msgid "Could not uninstall some apps"
-msgstr "Certaines applications n’ont pu être désinstallées"
-
-#: src/window.py:166
-msgid "Uninstall Selected Apps?"
-msgstr "Désinstaller les applications sélectionnées ?"
-
-<<<<<<< HEAD
-#: src/window.py:175
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:167
->>>>>>> 20f1f1c (Update translation files)
 msgid "It will not be possible to use these apps after removal."
 msgstr ""
 "Il ne sera plus possible d’utiliser ces applications après leur suppression."
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:187 src/window.py:270
 msgid "App Settings & Data"
 msgstr "Paramètres et données de l’application"
@@ -1174,57 +1079,21 @@ msgid "Keep"
 msgstr "Conserver"
 
 #: src/window.py:192
-=======
-#: src/window.py:195 src/window.py:278
-=======
-#: src/window.py:187 src/window.py:270
->>>>>>> 20f1f1c (Update translation files)
-msgid "App Settings & Data"
-msgstr "Paramètres et données de l’application"
-
-#: src/window.py:191 src/window.py:274
-msgid "Keep"
-msgstr "Conserver"
-
-<<<<<<< HEAD
-#: src/window.py:200
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:192
->>>>>>> 20f1f1c (Update translation files)
 msgid "Allow restoring these apps' settings and content"
 msgstr ""
 "Permettre la restauration des paramètres et contenus de ces applications"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:196
-=======
-#: src/window.py:204
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:196
->>>>>>> 20f1f1c (Update translation files)
 msgid "Send these apps' settings and content to the trash"
 msgstr ""
 "Envoyer les paramètres et le contenu de ces applications à la corbeille"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:232
-=======
-#: src/window.py:240
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:232
->>>>>>> 20f1f1c (Update translation files)
 msgid "Cannot uninstall while already uninstalling"
 msgstr ""
 "Impossible de désinstaller l’application lorsqu’elle est en cours "
 "d’utilisation"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:262
 msgid "Uninstall {}?"
 msgstr "Désinstaller {} ?"
@@ -1234,37 +1103,11 @@ msgid "It will not be possible to use {} after removal."
 msgstr "Il ne sera plus possible d’utiliser {} après sa désinstallation."
 
 #: src/window.py:275
-=======
-#: src/window.py:270
-=======
-#: src/window.py:262
->>>>>>> 20f1f1c (Update translation files)
-msgid "Uninstall {}?"
-msgstr "Désinstaller {} ?"
-
-#: src/window.py:263
-msgid "It will not be possible to use {} after removal."
-msgstr "Il ne sera plus possible d’utiliser {} après sa désinstallation."
-
-<<<<<<< HEAD
-#: src/window.py:283
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:275
->>>>>>> 20f1f1c (Update translation files)
 msgid "Allow restoring this app's settings and content"
 msgstr ""
 "Permettre la restauration des paramètres et du contenu de cette application"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #: src/window.py:279
-=======
-#: src/window.py:287
->>>>>>> 6984e45 (Update translation files)
-=======
-#: src/window.py:279
->>>>>>> 20f1f1c (Update translation files)
 msgid "Send this app's settings and content to the trash"
 msgstr ""
 "Mettre les paramètres et le contenu de cette application à la corbeille"
@@ -1393,7 +1236,6 @@ msgstr "Type de fichier non pris en charge"
 #~ msgid "No remotes on the system, add some from below"
 #~ msgstr "Aucun dépôt sur le système, vous pouvez en ajouter ci-dessous"
 
->>>>>>> 20f1f1c (Update translation files)
 #~ msgid "View apps from this remote"
 #~ msgstr "Voir les applications provenant de ce dépôt"
 

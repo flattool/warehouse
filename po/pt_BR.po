@@ -18,8 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.0\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.0\n"
 
 #. Translators: Do not translate the applicaion name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -114,28 +112,6 @@ msgstr ""
 msgid "Set Filters"
 msgstr ""
 
-<<<<<<< HEAD
-#: data/ui/filter.blp:22
-msgid "Apply"
->>>>>>> 6984e45 (Update translation files)
-msgstr ""
-
-#: src/properties_window.py:90 src/remotes_window.py:510
-#: src/remotes_window.py:635
-msgid "Name"
-msgstr ""
-
-#: src/properties_window.py:91
-msgid "Description"
-msgstr ""
-
-#: src/properties_window.py:92
-msgid "App ID"
-msgstr ""
-
-#: src/properties_window.py:93
-msgid "Version"
-=======
 #: data/ui/filter.blp:40
 msgid "Show Apps"
 msgstr ""
@@ -154,7 +130,6 @@ msgstr ""
 
 #: data/ui/filter.blp:74 data/ui/window.blp:179
 msgid "Reset Filters"
->>>>>>> 20f1f1c (Update translation files)
 msgstr ""
 
 #: data/ui/orphans.blp:14 data/ui/window.blp:12
@@ -205,12 +180,7 @@ msgid "Add Remote"
 msgstr ""
 
 #: data/ui/popular_remotes.blp:19
-<<<<<<< HEAD
-msgid "Choose from a list of popular remotes or add a new one."
->>>>>>> 6984e45 (Update translation files)
-=======
 msgid "Choose from a list of popular remotes or add a new one"
->>>>>>> 20f1f1c (Update translation files)
 msgstr ""
 
 #: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
