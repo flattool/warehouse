@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-05 11:31-0500\n"
-"PO-Revision-Date: 2024-03-08 04:31+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-03-10 21:20+0000\n"
+"Last-Translator: Gert-dev <Gert-dev@users.noreply.weblate.fyralabs.com>\n"
 "Language-Team: Dutch <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/nl/>\n"
 "Language: nl\n"
@@ -36,7 +36,7 @@ msgstr "Beheer alles rond Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:6
 msgid "Heliguy"
-msgstr ""
+msgstr "Heliguy"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
@@ -89,15 +89,12 @@ msgid "Downgrade"
 msgstr "Downgraden"
 
 #: data/ui/downgrade.blp:49
-#, fuzzy
-#| msgid "Fetching Releases…"
 msgid "Fetching Releases"
-msgstr "Uitgaves ophalen…"
+msgstr "Versies ophalen…"
 
 #: data/ui/downgrade.blp:57 data/ui/window.blp:107 data/ui/window.blp:162
-#, fuzzy
 msgid "This could take a while"
-msgstr "Bezig met installeren... Dit kan even duren"
+msgstr "Dit kan even duren"
 
 #: data/ui/downgrade.blp:65 src/app_row_widget.py:262 src/window.py:477
 msgid "Disable Updates"
@@ -128,22 +125,16 @@ msgid "Show Runtimes"
 msgstr "Runtimes tonen"
 
 #: data/ui/filter.blp:61
-#, fuzzy
-#| msgid "Filter Apps by Remotes"
 msgid "Filter by Remotes"
-msgstr "Apps op bron filteren"
+msgstr "Op bron filteren"
 
 #: data/ui/filter.blp:66
-#, fuzzy
-#| msgid "Filter Apps by Runtime"
 msgid "Filter by Runtimes"
-msgstr "Apps op runtime filteren"
+msgstr "Op runtime filteren"
 
 #: data/ui/filter.blp:74 data/ui/window.blp:179
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Reset Filters"
-msgstr "Filters instellen"
+msgstr "Filters opnieuw instellen"
 
 #: data/ui/orphans.blp:14 data/ui/window.blp:12
 msgid "Search List"
@@ -154,9 +145,8 @@ msgid "Open Data Folder"
 msgstr "Datamap openen"
 
 #: data/ui/orphans.blp:81 data/ui/search_install.blp:177 data/ui/window.blp:98
-#, fuzzy
 msgid "Installing"
-msgstr "Installatie"
+msgstr "Aan het installeren"
 
 #: data/ui/orphans.blp:102
 msgid "No Leftover Data"
@@ -167,13 +157,12 @@ msgid "There is no leftover user data"
 msgstr "Er werd geen overgebleven gebruikersdata teruggevonden"
 
 #: data/ui/orphans.blp:108 data/ui/search_install.blp:93 data/ui/window.blp:187
-#, fuzzy
 msgid "No Results Found"
-msgstr "Geen Flatpaks teruggevonden"
+msgstr "Geen resultaten teruggevonden"
 
 #: data/ui/orphans.blp:109 data/ui/search_install.blp:94 data/ui/window.blp:188
 msgid "Try a different search term"
-msgstr ""
+msgstr "Probeer een andere zoekopdracht"
 
 #: data/ui/orphans.blp:119 data/ui/window.blp:200
 msgid "Select All"
@@ -193,10 +182,8 @@ msgid "Add Remote"
 msgstr "Bron toevoegen"
 
 #: data/ui/popular_remotes.blp:19
-#, fuzzy
-#| msgid "Choose from a list of popular remotes or add a new one."
 msgid "Choose from a list of popular remotes or add a new one"
-msgstr "Kies uit een lijst van populaire bronnen of voeg een nieuwe toe."
+msgstr "Kies uit een lijst van populaire bronnen of voeg een nieuwe toe"
 
 #: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
 msgid "Add a Repo File"
@@ -207,9 +194,8 @@ msgid "Add a Custom Remote"
 msgstr "Aangepaste bron toevoegen"
 
 #: data/ui/properties.blp:45
-#, fuzzy
 msgid "Loading User Data"
-msgstr "Gebruikersdata in prullenbak gooien"
+msgstr "Gebruikersdata laden"
 
 #: data/ui/properties.blp:50 src/app_row_widget.py:231
 #: src/orphans_window.py:258
@@ -221,10 +207,8 @@ msgid "Trash User Data"
 msgstr "Gebruikersdata in prullenbak gooien"
 
 #: data/ui/properties.blp:80
-#, fuzzy
-#| msgid "Show Apps Using this Runtime"
 msgid "Show Apps Using This Runtime"
-msgstr "Toon applicaties op deze runtime"
+msgstr "Applicaties met deze runtime tonen"
 
 #: data/ui/properties.blp:91
 msgid "Runtime"
@@ -241,121 +225,103 @@ msgstr "Kopiëren"
 
 #: data/ui/properties.blp:119
 msgid "Show Details in Store"
-msgstr ""
+msgstr "Details uit opslag tonen"
 
 #: data/ui/remotes.blp:5 src/gtk/help-overlay.blp:42
 msgid "Manage Remotes"
 msgstr "Bronnen beheren"
 
 #: data/ui/remotes.blp:14
-#, fuzzy
-#| msgid "Refresh List"
 msgid "Refresh List of Remotes"
-msgstr "Lijst vernieuwen"
+msgstr "Lijst met bronnen vernieuwen"
 
 #: data/ui/remotes.blp:23
-#, fuzzy
 msgid "Installed Remotes"
-msgstr "Geïnstalleerde grootte"
+msgstr "Geïnstalleerde bronnen"
 
 #: data/ui/remotes.blp:27
-#, fuzzy
 msgid "Show Disabled"
-msgstr "Updates uitschakelen"
+msgstr "Uitgeschakeld tonen"
 
 #: data/ui/remotes.blp:41
-#, fuzzy
 msgid "No Remotes Found"
-msgstr "Geen Flatpaks teruggevonden"
+msgstr "Geen bronnen teruggevonden"
 
 #: data/ui/remotes.blp:45
-#, fuzzy
 msgid "Add a Popular Remote"
-msgstr "Flatpak-bron toevoegen"
+msgstr "Een populaire bron toevoegen"
 
 #: data/ui/remotes.blp:49
-#, fuzzy
 msgid "Add Other Remotes"
-msgstr "Bron toevoegen"
+msgstr "Andere bronnen toevoegen"
 
 #: data/ui/remotes.blp:79
-#, fuzzy
 msgid "Adding Remote"
-msgstr "Bron toevoegen"
+msgstr "Bron aan het toevoegen"
 
 #: data/ui/remotes.blp:88 data/ui/window.blp:54
-#, fuzzy
 msgid "This should only take a moment"
-msgstr "Bezig met installeren... Dit kan even duren"
+msgstr "Dit zou maar even mogen duren"
 
 #: data/ui/search_install.blp:15
-#, fuzzy
-#| msgid "Search List"
 msgid "Search Criteria"
-msgstr "Lijst doorzoeken"
+msgstr "Zoekcriteria"
 
 #: data/ui/search_install.blp:23
 msgid "Choose a Remote to Search"
-msgstr ""
+msgstr "Kies een bron om te zoeken"
 
 #: data/ui/search_install.blp:37
-#, fuzzy
 msgid "Results"
-msgstr "Geen Flatpaks teruggevonden"
+msgstr "Resultaten"
 
 #: data/ui/search_install.blp:43
 msgid "Back"
-msgstr ""
+msgstr "Terug"
 
 #: data/ui/search_install.blp:77
-#, fuzzy
-#| msgid "Search"
 msgid "Start Search"
-msgstr "Zoeken"
+msgstr "Zoeken starten"
 
 #: data/ui/search_install.blp:86
 msgid "Search for Flatpaks"
-msgstr ""
+msgstr "Naar Flatpaks zoeken"
 
 #: data/ui/search_install.blp:88
 msgid "Search for Flatpaks that you want to install"
-msgstr ""
+msgstr "Zoek naar Flatpaks die je wil installeren"
 
 #: data/ui/search_install.blp:114
-#, fuzzy
-#| msgid "Search"
 msgid "Searching"
-msgstr "Zoeken"
+msgstr "Aan het zoeken"
 
 #: data/ui/search_install.blp:125
 msgid "Too Many Results"
-msgstr ""
+msgstr "Te veel resultaten"
 
 #: data/ui/search_install.blp:126
 msgid "Try being more specific with your search"
-msgstr ""
+msgstr "Probeer je zoekopdracht nauwkeuriger te maken"
 
 #: data/ui/snapshots.blp:15
-#, fuzzy
-#| msgid "Open Data Folder"
 msgid "Open Snapshots Folder"
-msgstr "Datamap openen"
+msgstr "Map met snapshots openen"
 
 #: data/ui/snapshots.blp:33
-#, fuzzy
 msgid "New Snapshot"
-msgstr "Bronnen beheren"
+msgstr "Nieuwe snapshot"
 
 #: data/ui/snapshots.blp:84
-#, fuzzy
 msgid "No Snapshots"
-msgstr "Bronnen beheren"
+msgstr "Geen snapshots"
 
 #: data/ui/snapshots.blp:85
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time."
 msgstr ""
+"Snapshots zijn back-ups van de gebruikersdata van een applicatie. Ze kunnen "
+"op elk moment teruggezet worden."
 
 #: data/ui/window.blp:18
 msgid "Filter List"
@@ -370,44 +336,36 @@ msgid "Toggle Selection Mode"
 msgstr "Selectiemodus omschakelen"
 
 #: data/ui/window.blp:53
-#, fuzzy
-#| msgid "Flatpaks"
 msgid "Loading Flatpaks"
-msgstr "Flatpaks"
+msgstr "Flatpaks aan het laden"
 
 #: data/ui/window.blp:129
-#, fuzzy
 msgid "Uninstalling"
-msgstr "Deïnstalleren"
+msgstr "Aan het deïnstalleren"
 
 #: data/ui/window.blp:157
-#, fuzzy
 msgid "Creating Snapshots"
-msgstr "Bronnen beheren"
+msgstr "Snapshots aan het maken"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr "Geen Flatpaks teruggevonden"
 
 #: data/ui/window.blp:170
-#, fuzzy
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
-msgstr "Warehouse kan de lijst van bronnen niet ophalen of er zijn er nog geen"
+msgstr ""
+"Warehouse kan de lijst van Flatpaks niet aanspreken of het systeem heeft nog "
+"geen geïnstalleerde Flatpaks"
 
 #: data/ui/window.blp:175
-#, fuzzy
 msgid "No Flatpaks Match Filters"
-msgstr "Geen Flatpaks teruggevonden"
+msgstr "Geen Flatpaks teruggevonden die voldoen aan zoekopdracht"
 
 #: data/ui/window.blp:176
-#, fuzzy
-#| msgid "No installed Flatpak matches any of the currently applied filters."
 msgid "No installed Flatpak matches all of the currently applied filters"
-msgstr ""
-"Er zijn ofwel geen Flatpaks die voldoen aan de huidige filter, ofwel kan "
-"Warehouse de lijst van geïnstalleerde Flatpaks niet opvragen."
+msgstr "Geen Flatpaks die aan alle zoekcriteria voldoen teruggevonden"
 
 #: data/ui/window.blp:206
 msgid "Uninstall Selected Apps"
@@ -422,29 +380,24 @@ msgid "Open Copy Menu"
 msgstr "Kopieermenu openen"
 
 #: data/ui/window.blp:225
-#, fuzzy
 msgid "Snapshot Selected Apps' Data"
-msgstr "Gebruikersdata van geselecteerde applicatie in prullenbak gooien?"
+msgstr "Snapshot maken van data van geselecteerde apps"
 
 #: data/ui/window.blp:235
-#, fuzzy
 msgid "Manage Leftover Data…"
-msgstr "Overgebleven data beheren"
+msgstr "Overgebleven data beheren…"
 
 #: data/ui/window.blp:244
-#, fuzzy
 msgid "Manage Remotes…"
-msgstr "Bronnen beheren"
+msgstr "Bronnen beheren…"
 
 #: data/ui/window.blp:250
-#, fuzzy
 msgid "Install From File…"
-msgstr "Uit bestand installeren"
+msgstr "Uit bestand installeren…"
 
 #: data/ui/window.blp:255
-#, fuzzy
 msgid "Install From The Web…"
-msgstr "Uit bestand installeren"
+msgstr "Uit internet installeren…"
 
 #: data/ui/window.blp:261
 msgid "Refresh List"
@@ -502,16 +455,12 @@ msgstr ""
 "worden of beveiligingsupdates zal krijgen"
 
 #: src/app_row_widget.py:144 src/orphans_window.py:266
-#, fuzzy
-#| msgid "Select All"
 msgid "Select"
-msgstr "Alles selecteren"
+msgstr "Selecteren"
 
 #: src/app_row_widget.py:152 src/remotes_window.py:231
-#, fuzzy
-#| msgid "View Properties"
 msgid "View More"
-msgstr "Eigenschappen weergeven"
+msgstr "Meer tonen"
 
 #: src/app_row_widget.py:163
 msgid "Copied name"
@@ -562,16 +511,16 @@ msgid "Enable Updates"
 msgstr "Updates inschakelen"
 
 #: src/app_row_widget.py:288
-#, fuzzy
-#| msgid "Manage Remotes"
 msgid "Manage Snapshots"
-msgstr "Bronnen beheren"
+msgstr "Snapshots beheren"
 
 #: src/common.py:280 src/common.py:347
 msgid ""
 "Working on {}\n"
 "{} out of {}"
 msgstr ""
+"Bezig met {}\n"
+"{} van de {}"
 
 #: src/downgrade_window.py:99
 msgid "Commit Hash: {}"
@@ -582,9 +531,8 @@ msgid "Could not downgrade {}"
 msgstr "Kon {} niet downgraden"
 
 #: src/downgrade_window.py:130 src/window.py:446
-#, fuzzy
 msgid "Could not disable updates for {}"
-msgstr "Updates voor {} uitgeschakeld"
+msgstr "Kon updates voor {} niet uitschakelen"
 
 #: src/downgrade_window.py:143
 msgid "Downgrading…"
@@ -600,25 +548,19 @@ msgstr "Voorkom dat {} ooit bijgewerkt wordt naar een nieuwere versie"
 
 #: src/filter_window.py:43 src/filter_window.py:47
 msgid "{} selected"
-msgstr ""
+msgstr "{} geselecteerd"
 
 #: src/filter_window.py:130 src/orphans_window.py:148 src/remotes_window.py:311
-#, fuzzy
-#| msgid "{} wide"
 msgid "User wide"
-msgstr "{} breed"
+msgstr "Gebruikersbreed"
 
 #: src/filter_window.py:132 src/orphans_window.py:150 src/remotes_window.py:313
-#, fuzzy
-#| msgid "System"
 msgid "System wide"
-msgstr "Systeem"
+msgstr "Systeembreed"
 
 #: src/filter_window.py:134 src/orphans_window.py:152 src/remotes_window.py:315
-#, fuzzy
-#| msgid "Uninstall"
 msgid "Unknown install type"
-msgstr "Deïnstalleren"
+msgstr "Onbekend installatietype"
 
 #: src/gtk/help-overlay.blp:11
 msgid "App Management"
@@ -667,16 +609,15 @@ msgstr "Flatpaks"
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
 #: src/main.py:188
 msgid "translator-credits"
-msgstr ""
+msgstr "Gert-dev"
 
 #: src/main.py:194
 msgid "Donate"
-msgstr ""
+msgstr "Doneren"
 
 #: src/main.py:196
-#, fuzzy
 msgid "Contributors"
-msgstr "Verdergaan"
+msgstr "Bijdragers"
 
 #: src/orphans_window.py:76 src/window.py:740
 msgid "Installed successfully"
@@ -722,19 +663,16 @@ msgid "Copied {}"
 msgstr "{} gekopieerd"
 
 #: src/properties_window.py:53
-#, fuzzy
 msgid "Could not show details"
-msgstr "Kon gebruikersdata niet in prullenbak gooien"
+msgstr "Kon details niet tonen"
 
 #: src/properties_window.py:59
-#, fuzzy
 msgid "User Data"
-msgstr "Gebruikersdata in prullenbak gooien"
+msgstr "Gebruikersdata"
 
 #: src/properties_window.py:79 src/properties_window.py:142
-#, fuzzy
 msgid "No User Data"
-msgstr "Gebruikersdata in prullenbak gooien"
+msgstr "Geen gebruikersdata"
 
 #: src/properties_window.py:90 src/remotes_window.py:510
 #: src/remotes_window.py:635
@@ -826,53 +764,40 @@ msgid "Remove"
 msgstr "Verwijderen"
 
 #: src/remotes_window.py:121
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not enable {}"
-msgstr "Kon {} niet toevoegen"
+msgstr "Kon {} niet inschakelen"
 
 #: src/remotes_window.py:149
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not disable {}"
-msgstr "Kon {} niet toevoegen"
+msgstr "Kon {} niet uitschakelen"
 
 #: src/remotes_window.py:172
-#, fuzzy
 msgid "Disable {}?"
-msgstr "Updates uitschakelen"
+msgstr "{} uitschakelen?"
 
 #: src/remotes_window.py:175 src/remotes_window.py:267
-#, fuzzy
 msgid "Disable"
-msgstr "Updates uitschakelen"
+msgstr "Uitschakelen"
 
 #: src/remotes_window.py:186
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not view apps"
-msgstr "Kon applicatie niet installeren"
+msgstr "Kon applicaties niet bekijken"
 
 #: src/remotes_window.py:244
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Set Filter"
-msgstr "Filters instellen"
+msgstr "Filter instellen"
 
 #: src/remotes_window.py:258
-#, fuzzy
-#| msgid "Enable Updates"
 msgid "Enable"
-msgstr "Updates inschakelen"
+msgstr "Inschakelen"
 
 #: src/remotes_window.py:292
 msgid "Copy remote name"
 msgstr "Naam bron kopiëren"
 
 #: src/remotes_window.py:306
-#, fuzzy
 msgid "Disabled"
-msgstr "Updates uitschakelen"
+msgstr "Uitgeschakeld"
 
 #: src/remotes_window.py:343
 msgid "The open source, pay-what-you-want app store from elementary"
@@ -880,11 +805,11 @@ msgstr "De open source, 'betaal wat je wil', applicatiewinkel van elementary"
 
 #: src/remotes_window.py:349
 msgid "Central repository of Flatpak applications"
-msgstr ""
+msgstr "Centrale bron van Flatpak-applicaties"
 
 #: src/remotes_window.py:355
 msgid "Beta builds of Flatpak applications"
-msgstr ""
+msgstr "Bèta-versies van Flatpak-applicaties"
 
 #: src/remotes_window.py:361
 msgid "Flatpaks packaged by Fedora Linux"
@@ -895,13 +820,12 @@ msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "De laatste bèta-versies van GNOME-applicaties en -runtimes"
 
 #: src/remotes_window.py:373
-#, fuzzy
 msgid "Beta KDE Apps and Runtimes"
-msgstr "De laatste bèta-versies van GNOME-applicaties en -runtimes"
+msgstr "Bèta-versies van KDE-applicaties en -runtimes"
 
 #: src/remotes_window.py:379
 msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr ""
+msgstr "Centrale bron van de WebKit ontwikkelaars- en runtime-SDK"
 
 #: src/remotes_window.py:415 src/remotes_window.py:578
 msgid "Could not add {}"
@@ -948,85 +872,70 @@ msgid "Flatpak Repos"
 msgstr "Flatpak-bronnen"
 
 #: src/snapshots_window.py:54
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
 msgid "There is no User Data to Snapshot"
-msgstr "Gebruikersdata van {} in de prullenbak gooien?"
+msgstr "Er is geen gebruikersdata om een snapshot van te maken"
 
 #: src/snapshots_window.py:93
-#, fuzzy
-#| msgid "Version"
 msgid "Version {}"
-msgstr "Versie"
+msgstr "Versie {}"
 
 #: src/snapshots_window.py:101 src/snapshots_window.py:246
-#, fuzzy
 msgid "Apply Snapshot"
-msgstr "Bronnen beheren"
+msgstr "Snapshot terugzetten"
 
 #: src/snapshots_window.py:107 src/snapshots_window.py:137
-#, fuzzy
 msgid "Trash Snapshot"
-msgstr "Bronnen beheren"
+msgstr "Snapshot verwijderen"
 
 #: src/snapshots_window.py:127
-#, fuzzy
-#| msgid "Could not trash user data"
 msgid "Could not trash snapshot"
-msgstr "Kon gebruikersdata niet in prullenbak gooien"
+msgstr "Kon snapshot niet in prullenbak gooien"
 
 #: src/snapshots_window.py:132
-#, fuzzy
 msgid "Trash Snapshot?"
-msgstr "Bronnen beheren"
+msgstr "Snapshot in prullenbak gooien?"
 
 #: src/snapshots_window.py:133
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "This snapshot and its contents will be sent to the trash."
-msgstr "Deze mappen zullen in de prullenbak gegooid worden."
+msgstr "Deze snapshot en de inhoud ervan zal in de prullenbak gegooid worden."
 
 #: src/snapshots_window.py:155
-#, fuzzy
 msgid "Could not create snapshot"
-msgstr "Bronnen beheren"
+msgstr "Kon snapshot niet aanmaken"
 
 #. Make window unable to close
 #: src/snapshots_window.py:165
-#, fuzzy
 msgid "Creating Snapshot…"
-msgstr "Bronnen beheren"
+msgstr "Snapshot aan het maken…"
 
 #: src/snapshots_window.py:199 src/snapshots_window.py:216
 #: src/snapshots_window.py:223
-#, fuzzy
 msgid "Could not apply snapshot"
-msgstr "Kon sommige applicaties niet installeren"
+msgstr "Kon snapshot niet terugzetten"
 
 #: src/snapshots_window.py:202
 msgid "Snapshot applied"
-msgstr ""
+msgstr "Snapshot teruggezet"
 
 #. Make window unable to close
 #: src/snapshots_window.py:230
-#, fuzzy
 msgid "Applying Snapshot…"
-msgstr "Bronnen beheren"
+msgstr "Snapshot aan het terugzetten…"
 
 #: src/snapshots_window.py:239
-#, fuzzy
 msgid "Apply Snapshot?"
-msgstr "Bronnen beheren"
+msgstr "Snapshot terugzetten?"
 
 #: src/snapshots_window.py:240
 msgid "Applying this snapshot will trash any current user data for {}."
 msgstr ""
+"Het terugzetten van deze snapshot zal de huidige gebruikersdata van {} doen "
+"verdwijnen."
 
 #. Window stuffs
 #: src/snapshots_window.py:294
-#, fuzzy
 msgid "{} Snapshots"
-msgstr "Bronnen beheren"
+msgstr "{} snapshots"
 
 #: src/window.py:110
 msgid "Uninstalled successfully"
@@ -1084,7 +993,7 @@ msgstr "Werp de instellingen en inhoud van deze applicatie in de prullenbak"
 
 #: src/window.py:351
 msgid "List refreshed"
-msgstr ""
+msgstr "Lijst vernieuwd"
 
 #: src/window.py:427
 msgid "Your files and data for this app will be sent to the trash."
@@ -1113,14 +1022,12 @@ msgid "OK"
 msgstr "OK"
 
 #: src/window.py:551
-#, fuzzy
 msgid "{} has no data to trash"
-msgstr "Gebruikersdata van {} in de prullenbak gooien?"
+msgstr "{} heeft geen data om in de prullenbak te gooien"
 
 #: src/window.py:557
-#, fuzzy
 msgid "Could not trash {}'s data"
-msgstr "Kon gebruikersdata niet in prullenbak gooien"
+msgstr "Kon data van {} niet in prullenbak gooien"
 
 #: src/window.py:573
 msgid "Trash Selected Apps' User Data?"
@@ -1133,25 +1040,24 @@ msgstr ""
 "worden."
 
 #: src/window.py:624
-#, fuzzy
 msgid "Could not snapshot some apps"
-msgstr "Kon sommige applicaties niet installeren"
+msgstr "Kon geen snapshots maken van sommige apps"
 
 #: src/window.py:642
-#, fuzzy
 msgid "Create Snapshots?"
-msgstr "Bronnen beheren"
+msgstr "Snapshots aanmaken?"
 
 #: src/window.py:644
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
 msgstr ""
+"Snapshots zijn back-ups van de gebruikersdata van een app. Ze kunnen op elk "
+"moment teruggezet worden. Dit kan even duren."
 
 #: src/window.py:649
-#, fuzzy
 msgid "Create Snapshots"
-msgstr "Bronnen beheren"
+msgstr "Snapshots aanmaken"
 
 #: src/window.py:701
 msgid "Copied selected app names"
