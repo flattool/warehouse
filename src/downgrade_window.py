@@ -6,13 +6,12 @@ import pathlib
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/downgrade.ui")
-class DowngradeWindow(Adw.Window):
+class DowngradeWindow(Adw.Dialog):
     __gtype_name__ = "DowngradeWindow"
 
     new_env = dict(os.environ)
     new_env["LC_ALL"] = "C"
 
-    cancel_button = Gtk.Template.Child()
     apply_button = Gtk.Template.Child()
     versions_group = Gtk.Template.Child()
     toast_overlay = Gtk.Template.Child()
@@ -114,14 +113,13 @@ class DowngradeWindow(Adw.Window):
         task.run_in_thread(lambda *_: self.get_commits())
 
     def downgrade_callack(self):
-        self.disconnect(self.no_close)
+        self.set_can_close(True)
 
         if self.response != 0:
             self.toast_overlay.add_toast(
                 Adw.Toast.new(_("Could not downgrade {}").format(self.app_name))
             )
             self.apply_button.set_sensitive(True)
-            self.cancel_button.set_sensitive(True)
             return
 
         if self.mask_row.get_active():
@@ -143,10 +141,9 @@ class DowngradeWindow(Adw.Window):
 
     def on_apply(self):
         self.loading_label.set_label(_("Downgrading…"))
-        self.no_close = self.connect("close-request", lambda event: True)
+        self.set_can_close(False)
         self.main_stack.set_visible_child(self.loading)
         self.apply_button.set_sensitive(False)
-        self.cancel_button.set_sensitive(False)
 
         task = Gio.Task.new(None, None, lambda *_: self.downgrade_callack())
         task.run_in_thread(lambda *_: self.downgrade_thread())
@@ -172,12 +169,10 @@ class DowngradeWindow(Adw.Window):
 
         # Connections
         event_controller.connect("key-pressed", self.key_handler)
-        self.cancel_button.connect("clicked", lambda *_: self.close())
         self.apply_button.connect("clicked", lambda *_: self.on_apply())
 
         # Apply
         self.add_controller(event_controller)
-        self.set_transient_for(parent_window)
         self.mask_row.set_subtitle(
             _("Ensure that {} will never be updated to a newer version").format(
                 self.app_name
@@ -188,4 +183,4 @@ class DowngradeWindow(Adw.Window):
 
         self.generate_list()
 
-        self.present()
+        self.present(parent_window)

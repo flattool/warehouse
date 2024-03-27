@@ -1,75 +1,78 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $DowngradeWindow: Adw.Window {
-  default-width: 500;
-  default-height: 450;
-  modal: true;
+template $DowngradeWindow: Adw.Dialog {
+  content-width: 500;
+  content-height: 450;
 
   Adw.ToolbarView main_toolbar_view {
     [top]
-    HeaderBar header_bar {
-      show-title-buttons: false;
-
-      [start]
-      Button cancel_button {
-        label: _("Cancel");
-      }
-
-      [end]
-      Button apply_button {
-        sensitive: false;
-        label: _("Downgrade");
-
-        styles [
-          "suggested-action"
-        ]
-      }
+    Adw.HeaderBar header_bar {
     }
 
     content: Adw.ToastOverlay toast_overlay {
-      Stack main_stack {
-        Box loading {
-          orientation: vertical;
-          spacing: 10;
-          margin-top: 40;
-          margin-bottom: 20;
+      Overlay {
+        [overlay]
+        Button apply_button {
+          valign: end;
           halign: center;
-          valign: center;
-
-          Spinner {
-            margin-bottom: 35;
-            width-request: 30;
-            height-request: 30;
-            opacity: 0.5;
-            spinning: true;
+          margin-bottom: 12;
+          sensitive: false;
+          Adw.ButtonContent {
+            label: _("Downgrade");
+            icon-name: "arrow-turn-left-down-symbolic";
           }
 
-          Label loading_label {
-            label: _("Fetching Releases");
-            styles [
-              "title-1",
-              "title"
-            ]
-          }
-
-          Label {
-            label: _("This could take a while");
-            styles ["description", "body"]
-          }
+          styles [
+            "suggested-action",
+            "pill"
+          ]
         }
 
-        Adw.PreferencesPage outerbox {
-          Adw.PreferencesGroup {
-            Adw.SwitchRow mask_row {
-              title: _("Disable Updates");
-              active: true;
+        Stack main_stack {
+          Box loading {
+            orientation: vertical;
+            spacing: 10;
+            margin-top: 40;
+            margin-bottom: 20;
+            halign: center;
+            valign: center;
+
+            Spinner {
+              margin-bottom: 35;
+              width-request: 30;
+              height-request: 30;
+              opacity: 0.5;
+              spinning: true;
+            }
+
+            Label loading_label {
+              label: _("Fetching Releases");
+              styles [
+                "title-1",
+                "title"
+              ]
+            }
+
+            Label {
+              label: _("This could take a while");
+              styles ["description", "body"]
             }
           }
 
-          Adw.PreferencesGroup versions_group {
-            title: _("Select a Release");
-            description: _("This will uninstall the current release and install the chosen one instead. Note that downgrading can cause issues.");
+          Adw.PreferencesPage outerbox {
+            Adw.PreferencesGroup {
+              Adw.SwitchRow mask_row {
+                title: _("Disable Updates");
+                active: true;
+              }
+            }
+
+            Adw.PreferencesGroup versions_group {
+              title: _("Select a Release");
+              description: _("This will uninstall the current release and install the chosen one instead. Note that downgrading can cause issues.");
+              margin-bottom: 42;
+            }
           }
         }
       }
