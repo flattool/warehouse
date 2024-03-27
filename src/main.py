@@ -167,8 +167,7 @@ class WarehouseApplication(Adw.Application):
 
     def on_about_action(self, widget, _a):
         """Callback for the app.about action."""
-        about = Adw.AboutWindow(
-            transient_for=self.props.active_window,
+        about = Adw.AboutDialog(
             application_name="Warehouse",
             application_icon="io.github.flattool.Warehouse",
             developer_name="Heliguy",
@@ -204,7 +203,7 @@ class WarehouseApplication(Adw.Application):
                 "skøldis <warehouse@turtle.garden>",
             ],
         )
-        about.present()
+        about.present(self.props.active_window)
 
     def on_preferences_action(self, widget, _):
         """Callback for the app.preferences action."""
