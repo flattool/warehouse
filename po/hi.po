@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-26 23:57-0400\n"
-"PO-Revision-Date: 2024-03-27 09:36+0000\n"
+"PO-Revision-Date: 2024-03-27 22:09+0000\n"
 "Last-Translator: Scrambled777 <nkkhalia@pm.me>\n"
 "Language-Team: Hindi <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hi/>\n"
@@ -52,7 +52,7 @@ msgstr "विशेषताएँ:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Show and filter the list of installed Flatpaks"
-msgstr "इंस्टॉल किए गए Flatpak की सूची दिखाएं और फ़िल्टर करें"
+msgstr "इंस्टॉल किए गए Flatpak की सूची दिखाएं और फिल्टर करें"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Display properties of installed Flatpaks"
@@ -114,7 +114,7 @@ msgstr ""
 
 #: data/ui/filter.blp:7 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
-msgstr "फ़िल्टर सेट करें"
+msgstr "फिल्टर सेट करें"
 
 #: data/ui/filter.blp:40
 msgid "Show Apps"
@@ -126,15 +126,15 @@ msgstr "रनटाइम दिखाएं"
 
 #: data/ui/filter.blp:61
 msgid "Filter by Remotes"
-msgstr "रिमोट द्वारा फ़िल्टर करें"
+msgstr "रिमोट द्वारा फिल्टर करें"
 
 #: data/ui/filter.blp:66
 msgid "Filter by Runtimes"
-msgstr "रनटाइम्स द्वारा फ़िल्टर करें"
+msgstr "रनटाइम्स द्वारा फिल्टर करें"
 
 #: data/ui/filter.blp:74 data/ui/window.blp:179
 msgid "Reset Filters"
-msgstr "फ़िल्टर रीसेट करें"
+msgstr "फिल्टर रीसेट करें"
 
 #: data/ui/orphans.blp:14 data/ui/window.blp:12
 msgid "Search List"
@@ -142,7 +142,7 @@ msgstr "सूची में खोजें"
 
 #: data/ui/orphans.blp:20
 msgid "Open Data Folder"
-msgstr "डेटा फ़ोल्डर खोलें"
+msgstr "डेटा फोल्डर खोलें"
 
 #: data/ui/orphans.blp:81 data/ui/search_install.blp:177 data/ui/window.blp:98
 msgid "Installing"
@@ -187,7 +187,7 @@ msgstr "लोकप्रिय रिमोट की सूची में �
 
 #: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
 msgid "Add a Repo File"
-msgstr "एक रेपो फ़ाइल जोड़ें"
+msgstr "एक रेपो फाइल जोड़ें"
 
 #: data/ui/popular_remotes.blp:50 data/ui/remotes.blp:56
 msgid "Add a Custom Remote"
@@ -200,7 +200,7 @@ msgstr "उपयोगकर्ता डेटा लोड हो रहा �
 #: data/ui/properties.blp:50 src/app_row_widget.py:238
 #: src/orphans_window.py:258
 msgid "Open User Data Folder"
-msgstr "उपयोगकर्ता डेटा फ़ोल्डर खोलें"
+msgstr "उपयोगकर्ता डेटा फोल्डर खोलें"
 
 #: data/ui/properties.blp:62 src/app_row_widget.py:251
 msgid "Trash User Data"
@@ -305,7 +305,7 @@ msgstr "अपनी खोज को और अधिक विशिष्ट 
 
 #: data/ui/snapshots.blp:15
 msgid "Open Snapshots Folder"
-msgstr "स्नैपशॉट फ़ोल्डर खोलें"
+msgstr "स्नैपशॉट फोल्डर खोलें"
 
 #: data/ui/snapshots.blp:33
 msgid "New Snapshot"
@@ -325,7 +325,7 @@ msgstr ""
 
 #: data/ui/window.blp:18
 msgid "Filter List"
-msgstr "फ़िल्टर सूची"
+msgstr "फिल्टर सूची"
 
 #: data/ui/window.blp:24
 msgid "Main Menu"
@@ -361,13 +361,13 @@ msgstr ""
 
 #: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
-msgstr "कोई Flatpak मिलान फ़िल्टर नहीं"
+msgstr "कोई Flatpak मिलान फिल्टर नहीं"
 
 #: data/ui/window.blp:176
 msgid "No installed Flatpak matches all of the currently applied filters"
 msgstr ""
-"कोई भी इंस्टॉल किया गया Flatpak वर्तमान में लागू सभी फ़िल्टर से मेल नहीं खाता"
-" है"
+"कोई भी इंस्टॉल किया गया Flatpak वर्तमान में लागू सभी फिल्टर से मेल नहीं खाता "
+"है"
 
 #: data/ui/window.blp:206
 msgid "Uninstall Selected Apps"
@@ -395,7 +395,7 @@ msgstr "रिमोट प्रबंधित करें…"
 
 #: data/ui/window.blp:250
 msgid "Install From File…"
-msgstr "फ़ाइल से इंस्टॉल करें…"
+msgstr "फाइल से इंस्टॉल करें…"
 
 #: data/ui/window.blp:255
 msgid "Install From The Web…"
@@ -407,11 +407,11 @@ msgstr "सूची ताज़ा करें"
 
 #: data/ui/window.blp:265
 msgid "_Keyboard Shortcuts"
-msgstr "_कीबोर्ड शॉर्टकट"
+msgstr "कीबोर्ड शॉर्टकट (_K)"
 
 #: data/ui/window.blp:270
 msgid "_About Warehouse"
-msgstr "_Warehouse के बारे में"
+msgstr "Warehouse के बारे में (_A)"
 
 #: data/ui/window.blp:279
 msgid "Copy Names"
@@ -586,7 +586,7 @@ msgstr "बचे हुए डेटा को प्रबंधित कर�
 
 #: src/gtk/help-overlay.blp:47
 msgid "Install From File"
-msgstr "फ़ाइल से इंस्टॉल करें"
+msgstr "फाइल से इंस्टॉल करें"
 
 #: src/gtk/help-overlay.blp:52
 msgid "General"
@@ -640,11 +640,11 @@ msgstr ""
 
 #: src/orphans_window.py:185
 msgid "Trash folders?"
-msgstr "ट्रैश फ़ोल्डर्स?"
+msgstr "ट्रैश फोल्डर्स?"
 
 #: src/orphans_window.py:185
 msgid "These folders will be sent to the trash."
-msgstr "ये फ़ोल्डर्स ट्रैश में भेज दिए जाएंगे।"
+msgstr "ये फोल्डर्स ट्रैश में भेज दिए जाएंगे।"
 
 #: src/orphans_window.py:190
 msgid "Continue"
@@ -653,7 +653,7 @@ msgstr "जारी रखें"
 #: src/orphans_window.py:198 src/properties_window.py:49
 #: src/snapshots_window.py:257 src/window.py:416
 msgid "Could not open folder"
-msgstr "फ़ोल्डर नहीं खोला जा सका"
+msgstr "फोल्डर नहीं खोला जा सका"
 
 #: src/orphans_window.py:216
 msgid "Could not manage data"
@@ -1000,7 +1000,7 @@ msgstr "सूची ताज़ा की गई"
 
 #: src/window.py:436
 msgid "Your files and data for this app will be sent to the trash."
-msgstr "इस ऐप के लिए आपकी फ़ाइलें और डेटा ट्रैश में भेज दिए जाएंगे।"
+msgstr "इस ऐप के लिए आपकी फाइलें और डेटा ट्रैश में भेज दिए जाएंगे।"
 
 #: src/window.py:477
 msgid "Disable Updates for {}?"
@@ -1036,7 +1036,7 @@ msgstr "चयनित ऐप्स का उपयोगकर्ता ड�
 
 #: src/window.py:583
 msgid "Your files and data for these apps will be sent to the trash."
-msgstr "इन ऐप्स के लिए आपकी फ़ाइलें और डेटा ट्रैश में भेज दिए जाएंगे।"
+msgstr "इन ऐप्स के लिए आपकी फाइलें और डेटा ट्रैश में भेज दिए जाएंगे।"
 
 #: src/window.py:633
 msgid "Could not snapshot some apps"
@@ -1088,4 +1088,4 @@ msgstr "ऐप सिस्टम पर प्रत्येक उपयो�
 
 #: src/window.py:822
 msgid "File type not supported"
-msgstr "फ़ाइल प्रकार समर्थित नहीं है"
+msgstr "फाइल प्रकार समर्थित नहीं है"
