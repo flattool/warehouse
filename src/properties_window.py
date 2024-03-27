@@ -6,7 +6,7 @@ import pathlib
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/properties.ui")
-class PropertiesWindow(Adw.Window):
+class PropertiesWindow(Adw.Dialog):
     __gtype_name__ = "PropertiesWindow"
 
     new_env = dict(os.environ)
@@ -226,6 +226,4 @@ class PropertiesWindow(Adw.Window):
         self.generate_lower()
 
         self.set_title(_("{} Properties").format(self.app_name))
-        self.set_size_request(260, 230)
-        self.set_transient_for(parent_window)
-        self.present()
+        self.present(parent_window)

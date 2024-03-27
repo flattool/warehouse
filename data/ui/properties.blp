@@ -1,14 +1,13 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $PropertiesWindow: Adw.Window {
-  default-width: 350;
-  default-height: 600;
-  modal: true;
+template $PropertiesWindow: Adw.Dialog {
+  content-width: 350;
+  content-height: 600;
 
   Adw.ToolbarView main_toolbar_view {
     [top]
-    HeaderBar header_bar {}
+    Adw.HeaderBar header_bar {}
 
     content: Adw.ToastOverlay toast_overlay {
       Box {
