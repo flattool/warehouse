@@ -1,16 +1,15 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $FilterWindow: Adw.Window {
-  default-width: 500;
-  default-height: 450;
+template $FilterWindow: Adw.Dialog {
   title: _("Set Filters");
-  modal: true;
+  content-width: 500;
+  content-height: 450;
 
+  child:
   Adw.ToolbarView main_toolbar_view {
     [top]
-    HeaderBar header_bar {
-      show-title-buttons: true;
+    Adw.HeaderBar header_bar {
     }
 
     content: Adw.ToastOverlay toast_overlay {
@@ -80,5 +79,5 @@ template $FilterWindow: Adw.Window {
         }
       }
     };
-  }
+  };
 }

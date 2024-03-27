@@ -23,7 +23,7 @@ import re
 import time
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
-from .properties_window import PropertiesWindow
+# from .properties_window import PropertiesWindow
 from .filter_window import FilterWindow
 from .common import myUtils
 from .remotes_window import RemotesWindow

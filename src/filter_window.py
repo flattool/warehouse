@@ -6,7 +6,7 @@ import pathlib
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/filter.ui")
-class FilterWindow(Adw.Window):
+class FilterWindow(Adw.Dialog):
     __gtype_name__ = "FilterWindow"
 
     show_apps_switch = Gtk.Template.Child()
@@ -196,9 +196,7 @@ class FilterWindow(Adw.Window):
         self.total_runtimes_selected = 0
 
         # Window Things
-        self.set_transient_for(main_window)
         self.add_controller(event_controller)
-        self.set_size_request(260, 230)
 
         self.show_apps_switch.set_active(self.settings.get_boolean("show-apps"))
         self.show_runtimes_switch.set_active(self.settings.get_boolean("show-runtimes"))
@@ -226,4 +224,4 @@ class FilterWindow(Adw.Window):
         else:
             self.generate_runtimes()
         self.check_is_resetable()
-        self.present()
+        self.present(main_window)
