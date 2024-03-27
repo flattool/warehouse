@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-05 11:31-0500\n"
-"PO-Revision-Date: 2024-03-08 04:31+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-03-21 22:20+0000\n"
+"Last-Translator: vadik317 <slavboris1255@gmail.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
 "Language: es\n"
@@ -133,8 +133,6 @@ msgid "Filter by Runtimes"
 msgstr "Filtrar por tiempos de ejecución"
 
 #: data/ui/filter.blp:74 data/ui/window.blp:179
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Reset Filters"
 msgstr "Establecer filtros"
 
@@ -209,14 +207,12 @@ msgid "Trash User Data"
 msgstr "Eliminar datos de usuario"
 
 #: data/ui/properties.blp:80
-#, fuzzy
-#| msgid "Show Apps Using this Runtime"
 msgid "Show Apps Using This Runtime"
-msgstr "Mostrar aplicaciones que usan este tiempo de ejecución"
+msgstr "Mostrar aplicaciones que usan este entorno de ejecución"
 
 #: data/ui/properties.blp:91
 msgid "Runtime"
-msgstr "Tiempo de ejecución"
+msgstr "Entorno de ejecución"
 
 #: data/ui/properties.blp:96 src/app_row_widget.py:136
 msgid "View Properties"
@@ -236,8 +232,6 @@ msgid "Manage Remotes"
 msgstr "Gestionar los repositorios remotos"
 
 #: data/ui/remotes.blp:14
-#, fuzzy
-#| msgid "Refresh list of remotes"
 msgid "Refresh List of Remotes"
 msgstr "Actualizar la lista de remotos"
 
@@ -246,8 +240,6 @@ msgid "Installed Remotes"
 msgstr "Remotos instalados"
 
 #: data/ui/remotes.blp:27
-#, fuzzy
-#| msgid "Show disabled"
 msgid "Show Disabled"
 msgstr "Mostrar desactivados"
 
@@ -272,30 +264,24 @@ msgid "This should only take a moment"
 msgstr "Esto solo debería llevar un momento"
 
 #: data/ui/search_install.blp:15
-#, fuzzy
-#| msgid "Search List"
 msgid "Search Criteria"
-msgstr "Buscar en la lista"
+msgstr "Buscar criterios"
 
 #: data/ui/search_install.blp:23
 msgid "Choose a Remote to Search"
-msgstr ""
+msgstr "Elige un remoto a buscar"
 
 #: data/ui/search_install.blp:37
-#, fuzzy
-#| msgid "No Results Found"
 msgid "Results"
-msgstr "No se han encontrado resultados"
+msgstr "Resultados"
 
 #: data/ui/search_install.blp:43
 msgid "Back"
-msgstr ""
+msgstr "Atras"
 
 #: data/ui/search_install.blp:77
-#, fuzzy
-#| msgid "Search"
 msgid "Start Search"
-msgstr "Buscar"
+msgstr "Empezar busqueda"
 
 #: data/ui/search_install.blp:86
 msgid "Search for Flatpaks"
@@ -306,15 +292,10 @@ msgid "Search for Flatpaks that you want to install"
 msgstr "Busque los Flatpaks que desee instalar"
 
 #: data/ui/search_install.blp:114
-#, fuzzy
-#| msgctxt "Shown with a spinner while search operation is pending"
-#| msgid "Searching"
 msgid "Searching"
 msgstr "Buscando"
 
 #: data/ui/search_install.blp:125
-#, fuzzy
-#| msgid "Too many results"
 msgid "Too Many Results"
 msgstr "Demasiados resultados"
 
@@ -475,16 +456,12 @@ msgstr ""
 "actualizaciones de seguridad"
 
 #: src/app_row_widget.py:144 src/orphans_window.py:266
-#, fuzzy
-#| msgid "Select All"
 msgid "Select"
-msgstr "Seleccionar todo"
+msgstr "Seleccionar"
 
 #: src/app_row_widget.py:152 src/remotes_window.py:231
-#, fuzzy
-#| msgid "View Properties"
 msgid "View More"
-msgstr "Ver propiedades"
+msgstr "Ver más"
 
 #: src/app_row_widget.py:163
 msgid "Copied name"
@@ -543,6 +520,8 @@ msgid ""
 "Working on {}\n"
 "{} out of {}"
 msgstr ""
+"Trabajando en {}\n"
+"{} de {}"
 
 #: src/downgrade_window.py:99
 msgid "Commit Hash: {}"
@@ -574,11 +553,11 @@ msgstr "{} seleccionado"
 
 #: src/filter_window.py:130 src/orphans_window.py:148 src/remotes_window.py:311
 msgid "User wide"
-msgstr "Usuario"
+msgstr "de usuario"
 
 #: src/filter_window.py:132 src/orphans_window.py:150 src/remotes_window.py:313
 msgid "System wide"
-msgstr "Sistema"
+msgstr "de sistema"
 
 #: src/filter_window.py:134 src/orphans_window.py:152 src/remotes_window.py:315
 msgid "Unknown install type"

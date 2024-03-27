@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-05 11:31-0500\n"
-"PO-Revision-Date: 2024-03-08 04:31+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-03-13 15:20+0000\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/tr/>\n"
 "Language: tr\n"
@@ -36,7 +36,7 @@ msgstr "Flatpak ile ilgili her şeyi yönetin"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:6
 msgid "Heliguy"
-msgstr ""
+msgstr "Heliguy"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
@@ -89,16 +89,12 @@ msgid "Downgrade"
 msgstr "Sürüm Düşür"
 
 #: data/ui/downgrade.blp:49
-#, fuzzy
-#| msgid "Fetching Releases…"
 msgid "Fetching Releases"
-msgstr "Sürümler Getiriliyor…"
+msgstr "Sürümler Getiriliyor"
 
 #: data/ui/downgrade.blp:57 data/ui/window.blp:107 data/ui/window.blp:162
-#, fuzzy
-#| msgid "This could take a while."
 msgid "This could take a while"
-msgstr "Biraz uzun sürebilir."
+msgstr "Biraz uzun sürebilir"
 
 #: data/ui/downgrade.blp:65 src/app_row_widget.py:262 src/window.py:477
 msgid "Disable Updates"
@@ -129,22 +125,16 @@ msgid "Show Runtimes"
 msgstr "Çalışma Zamanlarını Göster"
 
 #: data/ui/filter.blp:61
-#, fuzzy
-#| msgid "Filter Apps by Remotes"
 msgid "Filter by Remotes"
-msgstr "Uygulamaları Uzaklarına Göre Süz"
+msgstr "Uzaklara Göre Süz"
 
 #: data/ui/filter.blp:66
-#, fuzzy
-#| msgid "Filter Apps by Runtime"
 msgid "Filter by Runtimes"
-msgstr "Uygulamaları Çalışma Zamanlarına Göre Süz"
+msgstr "Çalışma Zamanlarına Göre Süz"
 
 #: data/ui/filter.blp:74 data/ui/window.blp:179
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Reset Filters"
-msgstr "Süzgeçleri Ayarla"
+msgstr "Süzgeçleri Sıfırla"
 
 #: data/ui/orphans.blp:14 data/ui/window.blp:12
 msgid "Search List"
@@ -155,10 +145,8 @@ msgid "Open Data Folder"
 msgstr "Veri Klasörünü Aç"
 
 #: data/ui/orphans.blp:81 data/ui/search_install.blp:177 data/ui/window.blp:98
-#, fuzzy
-#| msgid "Installing…"
 msgid "Installing"
-msgstr "Kuruluyor…"
+msgstr "Kuruluyor"
 
 #: data/ui/orphans.blp:102
 msgid "No Leftover Data"
@@ -173,10 +161,8 @@ msgid "No Results Found"
 msgstr "Sonuç Bulunamadı"
 
 #: data/ui/orphans.blp:109 data/ui/search_install.blp:94 data/ui/window.blp:188
-#, fuzzy
-#| msgid "Try a different search term."
 msgid "Try a different search term"
-msgstr "Farklı bir arama terimi deneyin."
+msgstr "Farklı bir arama terimi deneyin"
 
 #: data/ui/orphans.blp:119 data/ui/window.blp:200
 msgid "Select All"
@@ -196,10 +182,8 @@ msgid "Add Remote"
 msgstr "Uzak Ekle"
 
 #: data/ui/popular_remotes.blp:19
-#, fuzzy
-#| msgid "Choose from a list of popular remotes or add a new one."
 msgid "Choose from a list of popular remotes or add a new one"
-msgstr "Popüler uzak listesinden seçim yapın ya da yeni bir tane ekleyin."
+msgstr "Popüler uzak listesinden seçim yapın ya da yeni bir tane ekleyin"
 
 #: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
 msgid "Add a Repo File"
@@ -210,10 +194,8 @@ msgid "Add a Custom Remote"
 msgstr "Özel Uzak Ekle"
 
 #: data/ui/properties.blp:45
-#, fuzzy
-#| msgid "Loading User Data…"
 msgid "Loading User Data"
-msgstr "Kullanıcı Verileri Yükleniyor.."
+msgstr "Kullanıcı Verileri Yükleniyor"
 
 #: data/ui/properties.blp:50 src/app_row_widget.py:231
 #: src/orphans_window.py:258
@@ -225,8 +207,6 @@ msgid "Trash User Data"
 msgstr "Kullanıcı Verilerini Çöpe Taşı"
 
 #: data/ui/properties.blp:80
-#, fuzzy
-#| msgid "Show Apps Using this Runtime"
 msgid "Show Apps Using This Runtime"
 msgstr "Bu Çalışma Zamanını Kullanan Uygulamaları Göster"
 
@@ -252,26 +232,20 @@ msgid "Manage Remotes"
 msgstr "Uzakları Yönet"
 
 #: data/ui/remotes.blp:14
-#, fuzzy
-#| msgid "Refresh list of remotes"
 msgid "Refresh List of Remotes"
-msgstr "Uzaklar listesini yenile"
+msgstr "Uzaklar Listesini Yenile"
 
 #: data/ui/remotes.blp:23
 msgid "Installed Remotes"
 msgstr "Kurulu Uzaklar"
 
 #: data/ui/remotes.blp:27
-#, fuzzy
-#| msgid "Show disabled"
 msgid "Show Disabled"
-msgstr "Devre dışı olanları göster"
+msgstr "Devre Dışı Olanları Göster"
 
 #: data/ui/remotes.blp:41
-#, fuzzy
-#| msgid "No Results Found"
 msgid "No Remotes Found"
-msgstr "Sonuç Bulunamadı"
+msgstr "Uzak Bulunamadı"
 
 #: data/ui/remotes.blp:45
 msgid "Add a Popular Remote"
@@ -282,42 +256,32 @@ msgid "Add Other Remotes"
 msgstr "Diğer Uzakları Ekle"
 
 #: data/ui/remotes.blp:79
-#, fuzzy
-#| msgid "Adding Remote…"
 msgid "Adding Remote"
-msgstr "Uzak Ekleniyor…"
+msgstr "Uzak Ekleniyor"
 
 #: data/ui/remotes.blp:88 data/ui/window.blp:54
-#, fuzzy
-#| msgid "This should only take a moment."
 msgid "This should only take a moment"
-msgstr "Bu sadece bir dakikanızı alacaktır."
+msgstr "Bu sadece bir dakikanızı alacaktır"
 
 #: data/ui/search_install.blp:15
-#, fuzzy
-#| msgid "Search List"
 msgid "Search Criteria"
-msgstr "Listede Ara"
+msgstr "Arama Ölçütü"
 
 #: data/ui/search_install.blp:23
 msgid "Choose a Remote to Search"
-msgstr ""
+msgstr "Aranacak Uzağı Seç"
 
 #: data/ui/search_install.blp:37
-#, fuzzy
-#| msgid "No Results Found"
 msgid "Results"
-msgstr "Sonuç Bulunamadı"
+msgstr "Sonuçlar"
 
 #: data/ui/search_install.blp:43
 msgid "Back"
-msgstr ""
+msgstr "Geri"
 
 #: data/ui/search_install.blp:77
-#, fuzzy
-#| msgid "Search"
 msgid "Start Search"
-msgstr "Ara"
+msgstr "Aramaya Başla"
 
 #: data/ui/search_install.blp:86
 msgid "Search for Flatpaks"
@@ -328,17 +292,12 @@ msgid "Search for Flatpaks that you want to install"
 msgstr "Kurmak istediğiniz Flatpak'leri arayın"
 
 #: data/ui/search_install.blp:114
-#, fuzzy
-#| msgctxt "Shown with a spinner while search operation is pending"
-#| msgid "Searching…"
 msgid "Searching"
-msgstr "Aranıyor…"
+msgstr "Aranıyor"
 
 #: data/ui/search_install.blp:125
-#, fuzzy
-#| msgid "Too many results"
 msgid "Too Many Results"
-msgstr "Çok fazla sonuç var"
+msgstr "Çok Fazla Sonuç"
 
 #: data/ui/search_install.blp:126
 msgid "Try being more specific with your search"
@@ -377,48 +336,36 @@ msgid "Toggle Selection Mode"
 msgstr "Seçim Kipini Değiştir"
 
 #: data/ui/window.blp:53
-#, fuzzy
-#| msgid "Loading Flatpaks…"
 msgid "Loading Flatpaks"
-msgstr "Flatpak'ler Yükleniyor…"
+msgstr "Flatpak'ler Yükleniyor"
 
 #: data/ui/window.blp:129
-#, fuzzy
-#| msgid "Uninstalling…"
 msgid "Uninstalling"
-msgstr "Kaldırılıyor…"
+msgstr "Kaldırılıyor"
 
 #: data/ui/window.blp:157
-#, fuzzy
-#| msgid "Creating Snapshots…"
 msgid "Creating Snapshots"
-msgstr "Anlık Görüntüler Oluşturuluyor…"
+msgstr "Anlık Görüntüler Oluşturuluyor"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
 msgstr "Hiç Flatpak Bulunamadı"
 
 #: data/ui/window.blp:170
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed."
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
 msgstr ""
 "Warehouse, kurulu Flatpak listesini göremiyor ya da sistemde kurulu Flatpak "
-"yok."
+"yok"
 
 #: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
 msgstr "Süzgeçlerle Eşleyen Flatpak Yok"
 
 #: data/ui/window.blp:176
-#, fuzzy
-#| msgid "No installed Flatpak matches any of the currently applied filters."
 msgid "No installed Flatpak matches all of the currently applied filters"
-msgstr "Yüklü hiçbir Flatpak geçerli süzgeçlerle eşleşmiyor."
+msgstr "Kurulu hiçbir Flatpak geçerli süzgeçlerle eşleşmiyor"
 
 #: data/ui/window.blp:206
 msgid "Uninstall Selected Apps"
@@ -506,16 +453,12 @@ msgstr ""
 "almayacak"
 
 #: src/app_row_widget.py:144 src/orphans_window.py:266
-#, fuzzy
-#| msgid "Select All"
 msgid "Select"
-msgstr "Tümünü Seç"
+msgstr "Seç"
 
 #: src/app_row_widget.py:152 src/remotes_window.py:231
-#, fuzzy
-#| msgid "View Properties"
 msgid "View More"
-msgstr "Özellikleri Göster"
+msgstr "Daha Çoğunu Gör"
 
 #: src/app_row_widget.py:163
 msgid "Copied name"
@@ -574,6 +517,8 @@ msgid ""
 "Working on {}\n"
 "{} out of {}"
 msgstr ""
+"{} üstünde çalışıyor\n"
+"{} / {}"
 
 #: src/downgrade_window.py:99
 msgid "Commit Hash: {}"
@@ -597,11 +542,11 @@ msgstr "{} Sürüm Düşür"
 
 #: src/downgrade_window.py:180
 msgid "Ensure that {} will never be updated to a newer version"
-msgstr "{}  uygulamasının asla daha yeni sürüme güncellenmeyeceğinden emin ol"
+msgstr "{} uygulamasının asla daha yeni sürüme güncellenmeyeceğinden emin ol"
 
 #: src/filter_window.py:43 src/filter_window.py:47
 msgid "{} selected"
-msgstr ""
+msgstr "{} seçildi"
 
 #: src/filter_window.py:130 src/orphans_window.py:148 src/remotes_window.py:311
 msgid "User wide"
@@ -938,7 +883,7 @@ msgstr "Uygula"
 
 #: src/snapshots_window.py:107 src/snapshots_window.py:137
 msgid "Trash Snapshot"
-msgstr "Çöpe Taşı"
+msgstr "Anlık Görüntüyü Çöpe Taşı"
 
 #: src/snapshots_window.py:127
 msgid "Could not trash snapshot"
