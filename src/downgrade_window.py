@@ -107,6 +107,7 @@ class DowngradeWindow(Adw.Dialog):
             row.add_prefix(select)
             self.versions_group.add(row)
         self.main_stack.set_visible_child(self.outerbox)
+        self.apply_button.set_visible(True)
 
     def generate_list(self):
         task = Gio.Task.new(None, None, lambda *_: self.commits_callback())
@@ -143,7 +144,7 @@ class DowngradeWindow(Adw.Dialog):
         self.loading_label.set_label(_("Downgrading…"))
         self.set_can_close(False)
         self.main_stack.set_visible_child(self.loading)
-        self.apply_button.set_sensitive(False)
+        self.apply_button.set_visible(False)
 
         task = Gio.Task.new(None, None, lambda *_: self.downgrade_callack())
         task.run_in_thread(lambda *_: self.downgrade_thread())
