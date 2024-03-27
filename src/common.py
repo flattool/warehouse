@@ -14,6 +14,7 @@ class myUtils:
         self.uninstall_success = True
         self.new_env = dict(os.environ)
         self.new_env["LC_ALL"] = "C"
+        self.is_dialog_open = False
 
     def trash_folder(self, path):
         if not os.path.exists(path):

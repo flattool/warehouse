@@ -75,6 +75,8 @@ class WarehouseApplication(Adw.Application):
             "open-search-install", self.open_search_install, ["<primary>i"]
         )
 
+        self.is_dialog_open = False
+
         gtk_version = (
             str(Gtk.MAJOR_VERSION)
             + "."
@@ -102,16 +104,16 @@ class WarehouseApplication(Adw.Application):
             lang=lang,
         )
 
-        my_utils = myUtils(self)
+        self.my_utils = myUtils(self)
         total = 0
-        for rem in my_utils.get_host_remotes():
-            if my_utils.get_install_type(rem[7]) != "disabled":
+        for rem in self.my_utils.get_host_remotes():
+            if self.my_utils.get_install_type(rem[7]) != "disabled":
                 total += 1
         if total < 1:
             self.lookup_action(f"open-search-install").set_enabled(False)
 
     def open_search_install(self, widget, _):
-        SearchInstallWindow(self.props.active_window).present()
+        SearchInstallWindow(self.props.active_window).present(self.props.active_window)
 
     def batch_mode_shortcut(self, widget, _):
         button = self.props.active_window.batch_mode_button

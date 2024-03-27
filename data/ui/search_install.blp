@@ -1,11 +1,10 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $SearchInstallWindow: Adw.Window {
-  default-width: 500;
-  default-height: 450;
+template $SearchInstallWindow: Adw.Dialog {
+  content-width: 500;
+  content-height: 450;
   title: "";
-  modal: true;
 
   Adw.ToolbarView main_toolbar_view {
     content:

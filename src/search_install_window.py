@@ -51,9 +51,7 @@ class ResultRow(Adw.ActionRow):
 @Gtk.Template(
     resource_path="/io/github/flattool/Warehouse/../data/ui/search_install.ui"
 )
-class SearchInstallWindow(
-    Adw.Window
-):  # TODO: stop execution of thread when search is changed
+class SearchInstallWindow(Adw.Dialog):
     __gtype_name__ = "SearchInstallWindow"
 
     back_button = Gtk.Template.Child()
@@ -220,7 +218,8 @@ class SearchInstallWindow(
 
         def done(*args):
             self.parent_window.refresh_list_of_flatpaks(None, False)
-            self.disconnect(self.no_close_id)  # Make window able to close
+            # Make window able to close
+            self.set_can_close(True)
             if self.my_utils.install_success:
                 self.close()
                 self.parent_window.toast_overlay.add_toast(
@@ -234,9 +233,8 @@ class SearchInstallWindow(
                     Adw.Toast.new(_("Some apps didn't install"))
                 )
 
-        self.no_close_id = self.connect(
-            "close-request", lambda event: True
-        )  # Make window unable to close
+        # Make window unable to close
+        self.set_can_close(False)
         task = Gio.Task.new(None, None, done)
         task.run_in_thread(thread)
 
@@ -265,8 +263,4 @@ class SearchInstallWindow(
 
         # Apply Widgets
         self.add_controller(event_controller)
-        self.set_transient_for(parent_window)
         self.generate_remotes_list()
-        self.set_size_request(260, 230)
-        self.set_modal(True)
-        self.set_resizable(True)
