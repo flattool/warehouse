@@ -133,8 +133,12 @@ class PropertiesWindow(Adw.Window):
     def show_properties_handler(self):
         runtime = self.current_flatpak[13]
         for i in range(len(self.host_flatpaks)):
-            if runtime in self.host_flatpaks[i][8]:
+            # open the properties when the flatpak matches the runtime *and* installation type
+            if runtime in self.host_flatpaks[i][8] and self.install_type in self.host_flatpaks[i][12]:
                 PropertiesWindow(i, self.host_flatpaks, self.parent_window)
+                self.close()
+                return
+        self.toast_overlay.add_toast(Adw.Toast.new(_("Could not show properties")))
 
     def trash_data_handler(self):
         def on_response(_none, response, widget):
@@ -184,7 +188,6 @@ class PropertiesWindow(Adw.Window):
                 self.runtime.get_subtitle(), self.runtime.get_title()
             ),
         )
-        self.runtime_properties.connect("clicked", lambda *_: self.close())
         self.runtime_properties.connect(
             "clicked", lambda *_: self.show_properties_handler()
         )
