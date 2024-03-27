@@ -156,15 +156,15 @@ class PropertiesWindow(Adw.Dialog):
                     Adw.Toast.new(_("Could not trash user data"))
                 )
 
-        dialog = Adw.MessageDialog.new(
-            self, _("Send {}'s User Data to the Trash?").format(self.app_name)
+        dialog = Adw.AlertDialog.new(
+            _("Send {}'s User Data to the Trash?").format(self.app_name)
         )
         dialog.add_response("cancel", _("Cancel"))
         dialog.set_close_response("cancel")
         dialog.add_response("continue", _("Trash Data"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", on_response, dialog.choose_finish)
-        dialog.present()
+        dialog.present(self)
 
     def __init__(self, flatpak_index, host_flatpaks, parent_window, **kwargs):
         super().__init__(**kwargs)
