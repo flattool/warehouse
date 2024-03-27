@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-26 23:57-0400\n"
-"PO-Revision-Date: 2024-03-27 09:28+0000\n"
+"PO-Revision-Date: 2024-03-27 09:36+0000\n"
 "Last-Translator: Scrambled777 <nkkhalia@pm.me>\n"
 "Language-Team: Hindi <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hi/>\n"
@@ -714,11 +714,11 @@ msgstr "संदर्भ"
 
 #: src/properties_window.py:101
 msgid "Active Commit"
-msgstr ""
+msgstr "सक्रिय कमिट"
 
 #: src/properties_window.py:102
 msgid "Latest Commit"
-msgstr ""
+msgstr "नवीनतम कमिट"
 
 #: src/properties_window.py:103
 msgid "Installed Size"
@@ -806,31 +806,31 @@ msgstr "अक्षम"
 
 #: src/remotes_window.py:348
 msgid "The open source, pay-what-you-want app store from elementary"
-msgstr ""
+msgstr "Elementary द्वारा ओपन सोर्स, जो-चाहो-भुगतान-करो ऐप स्टोर"
 
 #: src/remotes_window.py:354
 msgid "Central repository of Flatpak applications"
-msgstr ""
+msgstr "Flatpak एप्लिकेशन का केंद्रीय भंडार"
 
 #: src/remotes_window.py:360
 msgid "Beta builds of Flatpak applications"
-msgstr ""
+msgstr "Flatpak एप्लिकेशन का बीटा संस्करण"
 
 #: src/remotes_window.py:366
 msgid "Flatpaks packaged by Fedora Linux"
-msgstr ""
+msgstr "Fedora Linux द्वारा पैक किए गए Flatpak"
 
 #: src/remotes_window.py:372
 msgid "The latest beta GNOME Apps and Runtimes"
-msgstr ""
+msgstr "नवीनतम बीटा GNOME ऐप्स और रनटाइम्स"
 
 #: src/remotes_window.py:378
 msgid "Beta KDE Apps and Runtimes"
-msgstr ""
+msgstr "बीटा KDE ऐप्स और रनटाइम्स"
 
 #: src/remotes_window.py:384
 msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr ""
+msgstr "वेबकिट डेवलपर और रनटाइम SDK का केंद्रीय भंडार"
 
 #: src/remotes_window.py:420 src/remotes_window.py:583
 msgid "Could not add {}"
@@ -874,7 +874,7 @@ msgstr "{} जोड़ें?"
 
 #: src/remotes_window.py:677
 msgid "Flatpak Repos"
-msgstr ""
+msgstr "Flatpak रिपो"
 
 #: src/snapshots_window.py:56
 msgid "There is no User Data to Snapshot"
@@ -1011,6 +1011,8 @@ msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
 msgstr ""
+"यह {} को मास्क कर देगा जिससे यह सुनिश्चित हो जाएगा कि उसे कभी भी कोई सुविधाएँ"
+" या सुरक्षा अपडेट प्राप्त नहीं होंगे।"
 
 #: src/window.py:500
 msgid "Could not Run App"
@@ -1066,7 +1068,7 @@ msgstr "चयनित ऐप ID कॉपी की गईं"
 
 #: src/window.py:742
 msgid "Copied selected app refs"
-msgstr ""
+msgstr "चयनित ऐप संदर्भ को कॉपी किया गया"
 
 #: src/window.py:753
 msgid "Could not install app"
