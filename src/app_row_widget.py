@@ -289,7 +289,7 @@ class AppRow(Adw.ActionRow):
                 ("snapshot" + str(index)),
                 lambda *_, row=current_flatpak: SnapshotsWindow(
                     parent_window, row
-                ).present(),
+                ),
             )
             snapshot_item = Gio.MenuItem.new(
                 _("Manage Snapshots"), f"win.snapshot{index}"

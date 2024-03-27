@@ -7,7 +7,7 @@ import time
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/snapshots.ui")
-class SnapshotsWindow(Adw.Window):
+class SnapshotsWindow(Adw.Dialog):
     __gtype_name__ = "SnapshotsWindow"
 
     new_env = dict(os.environ)
@@ -36,10 +36,8 @@ class SnapshotsWindow(Adw.Window):
             self.close()
 
     def show_list_or_empty(self):
-        try:
-            self.disconnect(self.no_close_id)  # Make window able to close
-        except:
-            pass
+        # Make window able to close
+        self.set_can_close(True)
 
         self.action_bar.set_revealed(True)
         if os.path.exists(self.snapshots_of_app_path):
@@ -129,8 +127,7 @@ class SnapshotsWindow(Adw.Window):
                     Adw.Toast.new(_("Could not trash snapshot"))
                 )
 
-        dialog = Adw.MessageDialog.new(
-            self,
+        dialog = Adw.AlertDialog.new(
             _("Trash Snapshot?"),
             _("This snapshot and its contents will be sent to the trash."),
         )
@@ -139,7 +136,7 @@ class SnapshotsWindow(Adw.Window):
         dialog.add_response("continue", _("Trash Snapshot"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", on_response, dialog.choose_finish)
-        dialog.present()
+        dialog.present(self)
 
     def create_snapshot(self):
         epoch = int(time.time())
@@ -161,9 +158,8 @@ class SnapshotsWindow(Adw.Window):
             if self.show_list_or_empty() == "list":
                 self.create_row(f"{epoch}_{self.app_version}.tar.zst")
 
-        self.no_close_id = self.connect(
-            "close-request", lambda event: True
-        )  # Make window unable to close
+        # Make window unable to close
+        self.set_can_close(False)
         self.loading_label.set_label(_("Creating Snapshot…"))
         self.action_bar.set_revealed(False)
         self.main_stack.set_visible_child(self.loading)
@@ -226,9 +222,8 @@ class SnapshotsWindow(Adw.Window):
                 )
                 return
 
-            self.no_close_id = self.connect(
-                "close-request", lambda event: True
-            )  # Make window unable to close
+            # Make window unable to close
+            self.set_can_close(False)
             self.loading_label.set_label(_("Applying Snapshot…"))
             self.action_bar.set_revealed(False)
             self.main_stack.set_visible_child(self.loading)
@@ -236,8 +231,7 @@ class SnapshotsWindow(Adw.Window):
             task = Gio.Task.new(None, None, lambda *_: callback())
             task.run_in_thread(lambda *_: thread())
 
-        dialog = Adw.MessageDialog.new(
-            self,
+        dialog = Adw.AlertDialog.new(
             _("Apply Snapshot?"),
             _("Applying this snapshot will trash any current user data for {}.").format(
                 self.app_name
@@ -248,7 +242,7 @@ class SnapshotsWindow(Adw.Window):
         dialog.add_response("continue", _("Apply Snapshot"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", on_response, dialog.choose_finish)
-        dialog.present()
+        dialog.present(self)
 
     def open_button_handler(self, widget, path):
         try:
@@ -294,5 +288,4 @@ class SnapshotsWindow(Adw.Window):
 
         # Window stuffs
         self.set_title(_("{} Snapshots").format(self.app_name))
-        self.set_transient_for(parent_window)
-        self.set_size_request(0, 230)
+        self.present(parent_window)

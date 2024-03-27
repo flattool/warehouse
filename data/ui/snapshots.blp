@@ -1,14 +1,13 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $SnapshotsWindow: Adw.Window {
-  default-width: 500;
-  default-height: 455;
-  modal: true;
+template $SnapshotsWindow: Adw.Dialog {
+  content-width: 500;
+  content-height: 455;
 
   Adw.ToolbarView main_toolbar_view {
     [top]
-    HeaderBar header_bar {
+    Adw.HeaderBar header_bar {
       [end]
       Button open_folder_button {
         icon-name: "document-open-symbolic";
