@@ -124,7 +124,7 @@ class WarehouseApplication(Adw.Application):
         self.props.active_window.refresh_list_of_flatpaks(widget, True)
 
     def show_remotes_shortcut(self, widget, _):
-        RemotesWindow(self.props.active_window).present()
+        RemotesWindow(self.props.active_window).present(self.props.active_window)
 
     def filters_shortcut(self, widget, _):
         FilterWindow(self.props.active_window)

@@ -1,10 +1,10 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $RemotesWindow: Adw.Window {
+template $RemotesWindow: Adw.Dialog {
   title: _("Manage Remotes");
-  default-width: 500;
-  default-height: 450;
+  content-width: 500;
+  content-height: 450;
 
   Adw.ToolbarView main_toolbar_view {
     [top]

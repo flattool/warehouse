@@ -6,7 +6,7 @@ import re
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/remotes.ui")
-class RemotesWindow(Adw.Window):
+class RemotesWindow(Adw.Dialog):
     __gtype_name__ = "RemotesWindow"
 
     remotes_list = Gtk.Template.Child()
@@ -90,13 +90,13 @@ class RemotesWindow(Adw.Window):
         body_text = _("Any installed apps from {} will stop receiving updates").format(
             name
         )
-        dialog = Adw.MessageDialog.new(self, _("Remove {}?").format(title), body_text)
+        dialog = Adw.AlertDialog.new(_("Remove {}?").format(title), body_text)
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Remove"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", self.remove_on_response, dialog.choose_finish, index)
-        dialog.present()
+        dialog.present(self)
 
     def enable_handler(self, button, index):
         name = self.host_remotes[index][0]
@@ -171,13 +171,13 @@ class RemotesWindow(Adw.Window):
         body_text = _("Any installed apps from {} will stop receiving updates").format(
             name
         )
-        dialog = Adw.MessageDialog.new(self, _("Disable {}?").format(title), body_text)
+        dialog = Adw.AlertDialog.new(_("Disable {}?").format(title), body_text)
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Disable"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", disable_response, dialog.choose_finish)
-        dialog.present()
+        dialog.present(self)
 
     def view_paks(self, type, remote):
         if "user" in type:
@@ -454,13 +454,12 @@ class RemotesWindow(Adw.Window):
         )
 
     def add_handler(self, row, name="", link=""):
-        dialog = Adw.MessageDialog.new(self, _("Add Flatpak Remote"))
+        dialog = Adw.AlertDialog.new(_("Add Flatpak Remote"))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Add"))
         dialog.set_response_enabled("continue", False)
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.SUGGESTED)
-        dialog.set_transient_for(self)
 
         def name_update(widget):
             is_enabled = True
@@ -551,7 +550,7 @@ class RemotesWindow(Adw.Window):
 
         dialog.set_extra_child(info_box)
         dialog.connect("response", self.on_add_response, dialog.choose_finish, row)
-        Gtk.Window.present(dialog)
+        dialog.present(self)
 
         if name != "":
             name_update(name_entry)
@@ -626,7 +625,7 @@ class RemotesWindow(Adw.Window):
         name = filepath.split("/")
         name = name[len(name) - 1]
 
-        dialog = Adw.MessageDialog.new(self, _("Add {}?").format(name))
+        dialog = Adw.AlertDialog.new(self, _("Add {}?").format(name))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Add"))
@@ -664,7 +663,7 @@ class RemotesWindow(Adw.Window):
         # Calls
         user_check.set_active(True)
         options_list.add_css_class("boxed-list")
-        Gtk.Window.present(dialog)
+        dialog.present(self)
 
     def file_callback(self, object, result):
         try:
@@ -681,7 +680,7 @@ class RemotesWindow(Adw.Window):
         file_chooser = Gtk.FileDialog()
         file_chooser.set_filters(filters)
         file_chooser.set_default_filter(filter)
-        file_chooser.open(self, None, self.file_callback)
+        file_chooser.open(self.main_window, None, self.file_callback)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -695,16 +694,10 @@ class RemotesWindow(Adw.Window):
         self.new_env["LC_ALL"] = "C"
         self.should_pulse = False
 
-        # Window Stuffs
-        self.set_size_request(260, 230)
-        self.set_modal(True)
-        self.set_resizable(True)
-
         event_controller = Gtk.EventControllerKey()
         event_controller.connect("key-pressed", self.key_handler)
         self.add_controller(event_controller)
         self.refresh.connect("clicked", lambda *_: self.generate_list())
-        self.set_transient_for(main_window)
 
         self.add_from_file.add_suffix(
             Gtk.Image.new_from_icon_name("right-large-symbolic")
