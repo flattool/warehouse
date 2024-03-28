@@ -15,6 +15,8 @@ class FilterWindow(Adw.Dialog):
     runtimes_expander = Gtk.Template.Child()
     reset_button = Gtk.Template.Child()
 
+    is_open = False
+
     def gsettings_bool_set(self, key, value):
         self.settings.set_boolean(key, value)
         self.check_is_resetable()
@@ -172,6 +174,9 @@ class FilterWindow(Adw.Dialog):
             self.runtimes_expander.add_row(runtime_row)
         self.row_subtitle_updater()
 
+    def test(self):
+        self.__class__.is_open = False
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
@@ -213,4 +218,11 @@ class FilterWindow(Adw.Dialog):
         else:
             self.generate_runtimes()
         self.check_is_resetable()
-        self.present(main_window)
+
+        self.connect("closed", lambda *_: self.test())
+
+        if self.__class__.is_open:
+            return
+        else:
+            self.present(main_window)
+            self.__class__.is_open = True
