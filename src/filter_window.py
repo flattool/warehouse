@@ -15,12 +15,6 @@ class FilterWindow(Adw.Dialog):
     runtimes_expander = Gtk.Template.Child()
     reset_button = Gtk.Template.Child()
 
-    def key_handler(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape or (
-            keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK
-        ):
-            self.close()
-
     def gsettings_bool_set(self, key, value):
         self.settings.set_boolean(key, value)
         self.check_is_resetable()
@@ -182,7 +176,6 @@ class FilterWindow(Adw.Dialog):
         super().__init__(**kwargs)
 
         # Create Variables
-        event_controller = Gtk.EventControllerKey()
         self.main_window = main_window
         self.my_utils = myUtils(self)
         self.host_remotes = self.my_utils.get_host_remotes()
@@ -195,14 +188,10 @@ class FilterWindow(Adw.Dialog):
         self.total_remotes_selected = 0
         self.total_runtimes_selected = 0
 
-        # Window Things
-        self.add_controller(event_controller)
-
         self.show_apps_switch.set_active(self.settings.get_boolean("show-apps"))
         self.show_runtimes_switch.set_active(self.settings.get_boolean("show-runtimes"))
 
         # Connections
-        event_controller.connect("key-pressed", self.key_handler)
         self.show_apps_switch.connect(
             "state-set",
             lambda button, state: self.gsettings_bool_set("show-apps", state),

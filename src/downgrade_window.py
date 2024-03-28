@@ -22,12 +22,6 @@ class DowngradeWindow(Adw.Dialog):
     main_stack = Gtk.Template.Child()
     outerbox = Gtk.Template.Child()
 
-    def key_handler(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape or (
-            keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK
-        ):
-            self.close()
-
     def selection_handler(self, button, index):
         self.apply_button.set_sensitive(True)
         if button.get_active():
@@ -101,6 +95,7 @@ class DowngradeWindow(Adw.Dialog):
             self.versions_group.add(row)
         self.main_stack.set_visible_child(self.outerbox)
         self.apply_button.set_visible(True)
+        self.mask_row.grab_focus() # Don't know why, but I need this in order for escape to close the window
 
     def generate_list(self):
         task = Gio.Task.new(None, None, lambda *_: self.commits_callback())
@@ -125,7 +120,6 @@ class DowngradeWindow(Adw.Dialog):
                 )
 
         self.parent_window.refresh_list_of_flatpaks(self, False)
-        print(self.response)
         self.close()
 
     def downgrade_thread(self):
@@ -159,14 +153,11 @@ class DowngradeWindow(Adw.Dialog):
         self.response = 0
         self.window_title = _("Downgrade {}").format(self.app_name)
         self.index = index
-        event_controller = Gtk.EventControllerKey()
 
         # Connections
-        event_controller.connect("key-pressed", self.key_handler)
         self.apply_button.connect("clicked", lambda *_: self.on_apply())
 
         # Apply
-        self.add_controller(event_controller)
         self.mask_row.set_subtitle(
             _("Ensure that {} will never be updated to a newer version").format(
                 self.app_name

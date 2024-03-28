@@ -29,12 +29,6 @@ class SnapshotsWindow(Adw.Dialog):
     loading_label = Gtk.Template.Child()
     action_bar = Gtk.Template.Child()
 
-    def key_handler(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape or (
-            keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK
-        ):
-            self.close()
-
     def show_list_or_empty(self):
         # Make window able to close
         self.set_can_close(True)
@@ -281,10 +275,6 @@ class SnapshotsWindow(Adw.Dialog):
             "clicked", self.open_button_handler, self.snapshots_of_app_path
         )
         self.new_snapshot.connect("clicked", lambda *_: self.create_snapshot())
-
-        event_controller = Gtk.EventControllerKey()
-        event_controller.connect("key-pressed", self.key_handler)
-        self.add_controller(event_controller)
 
         # Window stuffs
         self.set_title(_("{} Snapshots").format(self.app_name))

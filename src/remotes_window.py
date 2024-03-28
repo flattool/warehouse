@@ -26,16 +26,6 @@ class RemotesWindow(Adw.Dialog):
     rows_in_list = []
     rows_in_popular_list = []
 
-    def key_handler(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape or (
-            keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK
-        ):
-            self.close()
-        if keyval == Gdk.KEY_o and state == Gdk.ModifierType.CONTROL_MASK:
-            self.add_file_handler()
-        if keyval == Gdk.KEY_n and state == Gdk.ModifierType.CONTROL_MASK:
-            self.add_handler(None)
-
     def make_toast(self, text):
         self.toast_overlay.add_toast(Adw.Toast.new(text))
 
@@ -694,9 +684,6 @@ class RemotesWindow(Adw.Dialog):
         self.new_env["LC_ALL"] = "C"
         self.should_pulse = False
 
-        event_controller = Gtk.EventControllerKey()
-        event_controller.connect("key-pressed", self.key_handler)
-        self.add_controller(event_controller)
         self.refresh.connect("clicked", lambda *_: self.generate_list())
 
         self.add_from_file.add_suffix(
