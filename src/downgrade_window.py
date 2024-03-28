@@ -42,7 +42,6 @@ class DowngradeWindow(Adw.Dialog):
             capture_output=True,
             text=True
         ).stdout
-        print(output)
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
         data = [columns]
