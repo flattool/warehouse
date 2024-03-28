@@ -15,7 +15,7 @@ template $SearchInstallWindow: Adw.Dialog {
           Adw.ToastOverlay toast_overlay {
             Adw.ToolbarView {
               [top]
-              HeaderBar {
+              Adw.HeaderBar {
               }
               content:
               Adw.StatusPage {
@@ -36,12 +36,7 @@ template $SearchInstallWindow: Adw.Dialog {
           title: _("Results");
           Adw.ToolbarView {
             [top]
-            HeaderBar {
-              [start]
-              Button back_button {
-                tooltip-text: _("Back");
-                icon-name: "left-large-symbolic";
-              }
+            Adw.HeaderBar {
             }
             [bottom]
             ActionBar action_bar {
@@ -146,7 +141,7 @@ template $SearchInstallWindow: Adw.Dialog {
       }
       Adw.ToolbarView installing {
         [top]
-        HeaderBar {
+        Adw.HeaderBar {
         }
         content:
         Overlay overlay {

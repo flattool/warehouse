@@ -54,7 +54,6 @@ class ResultRow(Adw.ActionRow):
 class SearchInstallWindow(Adw.Dialog):
     __gtype_name__ = "SearchInstallWindow"
 
-    back_button = Gtk.Template.Child()
     nav_view = Gtk.Template.Child()
     search_page = Gtk.Template.Child()
     results_page = Gtk.Template.Child()
@@ -76,12 +75,6 @@ class SearchInstallWindow(Adw.Dialog):
     search_box = Gtk.Template.Child()
     toast_overlay = Gtk.Template.Child()
     progress_bar = Gtk.Template.Child()
-
-    def key_handler(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape or (
-            keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK
-        ):
-            self.close()
 
     def reset(self):
         self.results = []
@@ -107,14 +100,9 @@ class SearchInstallWindow(Adw.Dialog):
                 total += 1
         if total < 2:
             self.nav_view.push(self.results_page)
-            self.back_button.set_visible(False)
-            self.back_button.set_sensitive(False)
+            self.results_page.set_can_pop(False)
             self.search_remote = self.host_remotes[0][0]
             self.install_type = self.host_remotes[0][7]
-            self.nav_view.connect(
-                "popped", lambda *_: self.nav_view.push(self.results_page)
-            )
-            self.nav_view.set_animate_transitions(False)
 
             if self.host_remotes[0][1] == "-":
                 self.title = _("Search {}").format(self.host_remotes[0][0])
@@ -245,8 +233,6 @@ class SearchInstallWindow(Adw.Dialog):
         self.my_utils = myUtils(self)
         self.new_env = dict(os.environ)
         self.new_env["LC_ALL"] = "C"
-        event_controller = Gtk.EventControllerKey()
-        event_controller.connect("key-pressed", self.key_handler)
         self.host_remotes = self.my_utils.get_host_remotes()
         self.parent_window = parent_window
         self.results = []
@@ -255,12 +241,10 @@ class SearchInstallWindow(Adw.Dialog):
         self.install_type = ""
         self.title = _("Install From The Web")
 
-        self.back_button.connect("clicked", lambda *_: self.nav_view.pop())
         self.canel_search = Gio.Cancellable()
         self.search_entry.connect("activate", self.search_handler)
         self.search_button.connect("clicked", self.search_handler)
         self.install_button.connect("clicked", self.install_handler)
 
         # Apply Widgets
-        self.add_controller(event_controller)
         self.generate_remotes_list()
