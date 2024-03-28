@@ -36,19 +36,13 @@ class DowngradeWindow(Adw.Dialog):
     def get_commits(self):
         output = subprocess.run(
             [
-                "flatpak-spawn",
-                "--host",
-                "flatpak",
-                "remote-info",
-                "--log",
-                self.remote,
-                self.app_ref,
-                f"--{self.install_type}",
+                "flatpak-spawn", "--host", "sh", "-c",
+                f"LC_ALL=C flatpak remote-info --log {self.remote} {self.app_ref} --{self.install_type}"
             ],
             capture_output=True,
-            text=True,
-            env=self.new_env,
+            text=True
         ).stdout
+        print(output)
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
         data = [columns]
