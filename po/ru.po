@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-26 23:57-0400\n"
-"PO-Revision-Date: 2024-03-21 22:20+0000\n"
-"Last-Translator: vadik317 <slavboris1255@gmail.com>\n"
+"PO-Revision-Date: 2024-03-28 20:01+0000\n"
+"Last-Translator: Сергей Ворон <voron.s.a@gmail.com>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ru/>\n"
 "Language: ru\n"
@@ -728,22 +728,20 @@ msgid "Options"
 msgstr "Опции"
 
 #: src/properties_window.py:141
-#, fuzzy
-#| msgid "Could not show details"
 msgid "Could not show properties"
-msgstr "Не удалось показать детали"
+msgstr "Не удалось показать свойства"
 
 #: src/properties_window.py:149 src/window.py:430
 msgid "Trashed user data"
-msgstr "Данные приложения очищены"
+msgstr "Удаленные пользовательские данные"
 
 #: src/properties_window.py:156 src/window.py:425
 msgid "Could not trash user data"
-msgstr "Не удалось очистить данные приложения"
+msgstr "Не удалось удалить пользовательские данные"
 
 #: src/properties_window.py:160 src/window.py:433
 msgid "Send {}'s User Data to the Trash?"
-msgstr "Очистить данные приложения {}?"
+msgstr "Отправить пользовательские данные {} в корзину?"
 
 #: src/properties_window.py:164 src/window.py:440 src/window.py:587
 msgid "Trash Data"
