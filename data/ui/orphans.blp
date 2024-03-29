@@ -1,13 +1,13 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $OrphansWindow: Adw.Window {
-  default-width: 500;
-  default-height: 450;
+template $OrphansWindow: Adw.Dialog {
+  content-width: 500;
+  content-height: 450;
 
   Adw.ToolbarView main_toolbar_view {
     [top]
-    HeaderBar header_bar {
+    Adw.HeaderBar header_bar {
       [start]
       ToggleButton search_button {
         icon-name: "system-search-symbolic";

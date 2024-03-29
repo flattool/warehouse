@@ -6,7 +6,7 @@ import pathlib
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/../data/ui/orphans.ui")
-class OrphansWindow(Adw.Window):
+class OrphansWindow(Adw.Dialog):
     __gtype_name__ = "OrphansWindow"
 
     list_of_data = Gtk.Template.Child()
@@ -35,6 +35,7 @@ class OrphansWindow(Adw.Window):
     selected_remote_install_type = ""
     no_close_id = 0
     is_result = False
+    is_installing = False
 
     def key_handler(self, controller, keyval, keycode, state):
         if keyval == Gdk.KEY_Escape or (
@@ -69,10 +70,11 @@ class OrphansWindow(Adw.Window):
             check.set_active(button.get_active())
 
     def install_callback(self, *_args):
+        self.is_installing = False
         self.generate_list()
         self.progress_bar.set_visible(False)
         self.app_window.refresh_list_of_flatpaks(self, False)
-        self.disconnect(self.no_close_id)  # Make window able to close
+        self.set_can_close(True) # Make window able to close
         self.search_button.set_sensitive(True)
         if self.my_utils.install_success:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Installed successfully")))
@@ -82,6 +84,7 @@ class OrphansWindow(Adw.Window):
             )
 
     def install_handler(self):
+        self.is_installing = True
         self.main_stack.set_visible_child(self.installing)
         self.search_button.set_sensitive(False)
         self.set_title(self.window_title)
@@ -108,12 +111,9 @@ class OrphansWindow(Adw.Window):
             self.install_handler()
             self.progress_bar.set_visible(True)
             self.action_bar.set_visible(False)
-            self.no_close_id = self.connect(
-                "close-request", lambda event: True
-            )  # Make window unable to close
+            self.set_can_close(False) # Make window unable to close
 
-        dialog = Adw.MessageDialog.new(
-            self,
+        dialog = Adw.AlertDialog.new(
             _("Attempt to Install?"),
             _("Warehouse will attempt to install apps matching the selected data."),
         )
@@ -169,7 +169,7 @@ class OrphansWindow(Adw.Window):
             dialog.set_extra_child(remotes_scroll)
 
         dialog.connect("response", on_response, dialog.choose_finish)
-        dialog.present()
+        dialog.present(self)
 
     def trash_handler(self, button):
         def on_response(dialog, response_id, _function):
@@ -181,15 +181,15 @@ class OrphansWindow(Adw.Window):
             self.select_all_button.set_active(False)
             self.generate_list()
 
-        dialog = Adw.MessageDialog.new(
-            self, _("Trash folders?"), _("These folders will be sent to the trash.")
+        dialog = Adw.AlertDialog.new(
+            _("Trash folders?"), _("These folders will be sent to the trash.")
         )
         dialog.connect("response", on_response, dialog.choose_finish)
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Continue"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.present()
+        dialog.present(self)
 
     def open_button_handler(self, _widget, path=user_data_path):
         try:
@@ -286,6 +286,8 @@ class OrphansWindow(Adw.Window):
             return True
 
     def on_invalidate(self, row):
+        if self.is_installing:
+            return
         if self.list_of_data.get_row_at_index(0) == None:
             self.main_stack.set_visible_child(self.no_data)
             self.action_bar.set_visible(False)
@@ -300,6 +302,8 @@ class OrphansWindow(Adw.Window):
             self.action_bar.set_visible(False)
 
     def on_change(self, prop, prop2):
+        if self.is_installing:
+            return
         if self.search_bar.get_search_mode() == False:
             if self.list_of_data.get_row_at_index(0) == None:
                 self.main_stack.set_visible_child(self.no_data)
@@ -320,9 +324,6 @@ class OrphansWindow(Adw.Window):
         self.progress_bar.add_css_class("osd")
         self.app_window = main_window
 
-        self.set_modal(True)
-        self.set_transient_for(main_window)
-        self.set_size_request(260, 230)
         self.generate_list()
 
         event_controller = Gtk.EventControllerKey()

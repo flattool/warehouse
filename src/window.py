@@ -849,7 +849,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.my_utils = myUtils(self)
-        self.set_size_request(0, 354)
+        self.set_size_request(0, 360)
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse")
         self.settings.bind(
             "window-width", self, "default-width", Gio.SettingsBindFlags.DEFAULT

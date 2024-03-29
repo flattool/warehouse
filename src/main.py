@@ -120,7 +120,7 @@ class WarehouseApplication(Adw.Application):
         button.set_active(not button.get_active())
 
     def manage_data_shortcut(self, widget, _):
-        OrphansWindow(self.props.active_window).present()
+        OrphansWindow(self.props.active_window).present(self.props.active_window)
 
     def refresh_list_shortcut(self, widget, _):
         self.props.active_window.refresh_list_of_flatpaks(widget, True)
