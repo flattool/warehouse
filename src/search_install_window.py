@@ -76,6 +76,8 @@ class SearchInstallWindow(Adw.Dialog):
     toast_overlay = Gtk.Template.Child()
     progress_bar = Gtk.Template.Child()
 
+    is_open = False
+
     def reset(self):
         self.results = []
         self.results_list.remove_all()
@@ -149,7 +151,7 @@ class SearchInstallWindow(Adw.Dialog):
         self.action_bar.set_revealed(len(self.selected) > 0)
 
     def search_handler(self, *args):
-        self.canel_search.cancel()
+        self.cancel_search.cancel()
         self.reset()
         self.inner_stack.set_visible_child(self.loading_page)
         query = self.search_entry.get_text().strip()
@@ -185,7 +187,7 @@ class SearchInstallWindow(Adw.Dialog):
                 return
             self.generate_results_list()
 
-        task = Gio.Task.new(None, self.canel_search, done)
+        task = Gio.Task.new(None, self.cancel_search, done)
         task.run_in_thread(search_thread)
 
     def install_handler(self, *args):
@@ -205,12 +207,12 @@ class SearchInstallWindow(Adw.Dialog):
             )
 
         def done(*args):
-            self.parent_window.refresh_list_of_flatpaks(None, False)
+            self.main_window.refresh_list_of_flatpaks(None, False)
             # Make window able to close
             self.set_can_close(True)
             if self.my_utils.install_success:
                 self.close()
-                self.parent_window.toast_overlay.add_toast(
+                self.main_window.toast_overlay.add_toast(
                     Adw.Toast.new(_("Installed successfully"))
                 )
             else:
@@ -226,7 +228,7 @@ class SearchInstallWindow(Adw.Dialog):
         task = Gio.Task.new(None, None, done)
         task.run_in_thread(thread)
 
-    def __init__(self, parent_window, **kwargs):
+    def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
         # Create Variables
@@ -234,17 +236,26 @@ class SearchInstallWindow(Adw.Dialog):
         self.new_env = dict(os.environ)
         self.new_env["LC_ALL"] = "C"
         self.host_remotes = self.my_utils.get_host_remotes()
-        self.parent_window = parent_window
+        self.main_window = main_window
         self.results = []
         self.selected = []
         self.search_remote = ""
         self.install_type = ""
         self.title = _("Install From The Web")
 
-        self.canel_search = Gio.Cancellable()
+        self.cancel_search = Gio.Cancellable()
         self.search_entry.connect("activate", self.search_handler)
         self.search_button.connect("clicked", self.search_handler)
         self.install_button.connect("clicked", self.install_handler)
 
         # Apply Widgets
         self.generate_remotes_list()
+
+        def set_is_open_false(*args):
+            self.__class__.is_open = False
+        self.connect("closed", set_is_open_false)
+        if self.__class__.is_open:
+            return
+        else:
+            self.present(main_window)
+            self.__class__.is_open = True

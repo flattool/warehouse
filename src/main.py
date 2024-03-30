@@ -113,20 +113,20 @@ class WarehouseApplication(Adw.Application):
             self.lookup_action(f"open-search-install").set_enabled(False)
 
     def open_search_install(self, widget, _):
-        SearchInstallWindow(self.props.active_window).present(self.props.active_window)
+        SearchInstallWindow(self.props.active_window)
 
     def batch_mode_shortcut(self, widget, _):
         button = self.props.active_window.batch_mode_button
         button.set_active(not button.get_active())
 
     def manage_data_shortcut(self, widget, _):
-        OrphansWindow(self.props.active_window).present(self.props.active_window)
+        OrphansWindow(self.props.active_window)
 
     def refresh_list_shortcut(self, widget, _):
         self.props.active_window.refresh_list_of_flatpaks(widget, True)
 
     def show_remotes_shortcut(self, widget, _):
-        RemotesWindow(self.props.active_window).present(self.props.active_window)
+        RemotesWindow(self.props.active_window)
 
     def filters_shortcut(self, widget, _):
         FilterWindow(self.props.active_window)

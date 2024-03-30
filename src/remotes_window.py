@@ -23,6 +23,7 @@ class RemotesWindow(Adw.Dialog):
     show_disabled_button_button_content = Gtk.Template.Child()
     show_disabled = False
 
+    is_open = False
     rows_in_list = []
     rows_in_popular_list = []
 
@@ -698,4 +699,12 @@ class RemotesWindow(Adw.Dialog):
 
         # Calls
         self.generate_list()
-        # self.show_new_remote_options()
+
+        def set_is_open_false(*args):
+            self.__class__.is_open = False
+        self.connect("closed", set_is_open_false)
+        if self.__class__.is_open:
+            return
+        else:
+            self.present(main_window)
+            self.__class__.is_open = True

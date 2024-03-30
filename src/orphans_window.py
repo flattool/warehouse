@@ -33,9 +33,9 @@ class OrphansWindow(Adw.Dialog):
     should_select_all = False
     selected_remote = ""
     selected_remote_install_type = ""
-    no_close_id = 0
     is_result = False
     is_installing = False
+    is_open = False
 
     def key_handler(self, controller, keyval, keycode, state):
         if keyval == Gdk.KEY_Escape or (
@@ -342,3 +342,12 @@ class OrphansWindow(Adw.Dialog):
         self.search_bar.connect("notify", self.on_change)
         self.search_bar.connect_entry(self.search_entry)
         self.oepn_folder_button.connect("clicked", self.open_button_handler)
+
+        def set_is_open_false(*args):
+            self.__class__.is_open = False
+        self.connect("closed", set_is_open_false)
+        if self.__class__.is_open:
+            return
+        else:
+            self.present(main_window)
+            self.__class__.is_open = True
