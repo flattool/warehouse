@@ -165,8 +165,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.uninstall_flatpak(should_trash)
 
         # Create Widgets
-        dialog = Adw.MessageDialog.new(
-            self,
+        dialog = Adw.AlertDialog.new(
             _("Uninstall Selected Apps?"),
             _("It will not be possible to use these apps after removal."),
         )
@@ -228,7 +227,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Uninstall"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
-        Gtk.Window.present(dialog)
+        dialog.present(self)
 
     def uninstall_button_handler(self, row, name, ref, id):
         if self.currently_uninstalling:
@@ -261,8 +260,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         row.tickbox.set_active(True)
 
         # Create Widgets
-        dialog = Adw.MessageDialog.new(
-            self,
+        dialog = Adw.AlertDialog.new(
             _("Uninstall {}?").format(name),
             _("It will not be possible to use {} after removal.").format(name),
         )
@@ -303,7 +301,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.add_response("continue", _("Uninstall"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", uninstall_response, dialog.choose_finish)
-        Gtk.Window.present(dialog)
+        dialog.present(self)
 
     def window_set_empty(self, is_empty):
         self.batch_mode_button.set_sensitive(not is_empty)
@@ -429,8 +427,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.lookup_action(f"trash{index}").set_enabled(False)
             self.toast_overlay.add_toast(Adw.Toast.new(_("Trashed user data")))
 
-        dialog = Adw.MessageDialog.new(
-            self, _("Send {}'s User Data to the Trash?").format(name)
+        dialog = Adw.AlertDialog.new(
+            _("Send {}'s User Data to the Trash?").format(name)
         )
         dialog.set_body(
             _("Your files and data for this app will be sent to the trash.")
@@ -440,7 +438,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.add_response("continue", _("Trash Data"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", on_continue)
-        dialog.present()
+        dialog.present(self)
 
     def mask_flatpak(self, row):
         is_masked = (
@@ -473,8 +471,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         if is_masked:
             on_continue(self, None)
         else:
-            dialog = Adw.MessageDialog.new(
-                self, _("Disable Updates for {}?").format(row.app_name)
+            dialog = Adw.AlertDialog.new(
+                _("Disable Updates for {}?").format(row.app_name)
             )
             dialog.set_body(
                 _(
@@ -485,7 +483,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
             dialog.set_close_response("cancel")
             dialog.add_response("continue", _("Disable Updates"))
             dialog.connect("response", on_continue)
-            dialog.present()
+            dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
+            dialog.present(self)
 
     def pin_flatpak(self, row):
         def thread(*args):
@@ -535,6 +534,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             dialog.set_close_response("cancel")
             dialog.connect("response", on_continue)
             dialog.add_response("continue", _("Disable Auto Removal"))
+            dialog.set_response_appearance("continue", Adw.ResponseAppearance.SUGGESTED)
             dialog.present(self)
 
     def copy_item(self, to_copy, to_toast=None):
@@ -547,7 +547,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             return
 
         error = self.my_utils.run_app_error_message
-        dialog = Adw.MessageDialog.new(self, _("Could not Run App"), error)
+        dialog = Adw.AlertDialog.new(_("Could not Run App"), error)
         copy_button = Gtk.Button(
             label=_("Copy"), halign=Gtk.Align.CENTER, margin_top=12
         )
@@ -557,7 +557,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.set_extra_child(copy_button)
         dialog.add_response("ok", _("OK"))
         dialog.set_close_response("ok")
-        dialog.present()
+        dialog.present(self)
 
     def run_app_thread(self, ref, to_toast=None):
         self.run_app_error = False
@@ -627,8 +627,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.batch_mode_button.set_active(False)
 
     def batch_clean_handler(self, widget):
-        dialog = Adw.MessageDialog.new(
-            self,
+        dialog = Adw.AlertDialog.new(
             _("Trash Selected Apps' User Data?"),
             _("Your files and data for these apps will be sent to the trash."),
         )
@@ -637,7 +636,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.add_response("continue", _("Trash Data"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", self.on_batch_clean_response, dialog.choose_finish)
-        Gtk.Window.present(dialog)
+        dialog.present(self)
 
     def select_all_handler(self, widget):
         self.set_select_all(widget.get_active())
@@ -696,8 +695,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             task = Gio.Task.new(None, None, callback)
             task.run_in_thread(lambda *_: thread())
 
-        dialog = Adw.MessageDialog.new(
-            self,
+        dialog = Adw.AlertDialog.new(
             _("Create Snapshots?"),
             _(
                 "Snapshots are backups of the app's user data. They can be reapplied at any time. This could take a while."
@@ -707,7 +705,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Create Snapshots"))
         dialog.connect("response", batch_snapshot_response, dialog.choose_finish)
-        Gtk.Window.present(dialog)
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.SUGGESTED)
+        dialog.present(self)
 
     def set_select_all(self, should_select_all):
         i = 0
@@ -824,7 +823,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         name = filepath.split("/")
         name = name[len(name) - 1]
 
-        dialog = Adw.MessageDialog.new(self, _("Install {}?").format(name))
+        dialog = Adw.AlertDialog.new(_("Install {}?").format(name))
         dialog.set_close_response("cancel")
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Install"))
@@ -858,7 +857,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         # Calls
         user_check.set_active(True)
         options_list.add_css_class("boxed-list")
-        Gtk.Window.present(dialog)
+        dialog.present(self)
 
     def drop_callback(self, target, _x, _y, _data):
         filepath = target.get_value().get_path()
