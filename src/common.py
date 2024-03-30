@@ -119,9 +119,21 @@ class myUtils:
 
         return list
 
-    def get_host_pins(self):
+    def get_host_system_pins(self):
         output = subprocess.run(
             ["flatpak-spawn", "--host", "flatpak", "pin"],
+            capture_output=True,
+            text=True,
+            env=self.new_env,
+        ).stdout
+        data = output.strip().split("\n")
+        for i in range(len(data)):
+            data[i] = data[i].strip()
+        return data
+
+    def get_host_user_pins(self):
+        output = subprocess.run(
+            ["flatpak-spawn", "--host", "flatpak", "pin", "--user"],
             capture_output=True,
             text=True,
             env=self.new_env,

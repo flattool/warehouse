@@ -27,12 +27,19 @@ class AppRow(Adw.ActionRow):
 
         if self.mask_label.get_visible() == True:
             self.info_button.set_visible(True)
+            return
+
+        if self.pin_label.get_visible() == True:
+            self.info_button.set_visible(True)
+            return
 
         if self.eol_app_label.get_visible() == True:
             self.info_button.set_visible(True)
+            return
 
         if self.eol_runtime_label.get_visible() == True:
             self.info_button.set_visible(True)
+            return
 
     def set_masked(self, is_masked):
         self.mask_label.set_visible(is_masked)
@@ -83,6 +90,18 @@ class AppRow(Adw.ActionRow):
         )
         self.mask_label.add_css_class("warning")
 
+        self.pin_label = Gtk.Label(
+            label=_("Auto Removal Disabled"),
+            visible=False,
+            hexpand=True,
+            wrap=True,
+            valign=Gtk.Align.CENTER,
+            tooltip_text=_("{} is pinned and will not be auto removed even when it's required by no app").format(
+                self.app_name
+            )
+        )
+        self.pin_label.add_css_class("warning")
+
         self.eol_app_label = Gtk.Label(
             label=_("App EOL"),
             visible=False,
@@ -128,6 +147,7 @@ class AppRow(Adw.ActionRow):
         self.info_button.add_css_class("flat")
 
         info_box.append(self.mask_label)
+        info_box.append(self.pin_label)
         self.add_suffix(self.info_button)
 
         properties_button = Gtk.Button(
@@ -160,6 +180,16 @@ class AppRow(Adw.ActionRow):
         copy_menu_model = Gio.Menu()
         advanced_menu_model = Gio.Menu()
         self.add_suffix(self.row_menu)
+
+        self.is_pinned = False
+
+        if "user" in self.install_type:
+            if f"runtime/{self.app_ref}" in parent_window.user_pins:
+                self.is_pinned = True
+
+        if "system" in self.install_type:
+            if f"runtime/{self.app_ref}" in parent_window.system_pins:
+                self.is_pinned = True
 
         parent_window.create_action(
             ("copy-name" + str(index)),
@@ -284,6 +314,31 @@ class AppRow(Adw.ActionRow):
         )
         advanced_menu_model.append_item(unmask_item)
 
+        if "runtime" in parent_window.host_flatpaks[index][12]:
+            parent_window.create_action(
+                ("pin" + str(index)),
+                lambda *_, d=self.app_id, type=self.install_type, index=index: parent_window.pin_flatpak(
+                    self
+                ),
+            )
+            pin_item = Gio.MenuItem.new(_("Disable Auto Removal"), f"win.pin{index}")
+            pin_item.set_attribute_value(
+                "hidden-when", GLib.Variant.new_string("action-disabled")
+            )
+            advanced_menu_model.append_item(pin_item)
+
+            parent_window.create_action(
+                ("unpin" + str(index)),
+                lambda *_, d=self.app_id, type=self.install_type, index=index: parent_window.pin_flatpak(
+                    self
+                ),
+            )
+            unpin_item = Gio.MenuItem.new(_("Enable Auto Removal"), f"win.unpin{index}")
+            unpin_item.set_attribute_value(
+                "hidden-when", GLib.Variant.new_string("action-disabled")
+            )
+            advanced_menu_model.append_item(unpin_item)
+
         if "runtime" not in parent_window.host_flatpaks[index][12]:
             parent_window.create_action(
                 ("snapshot" + str(index)),
@@ -313,6 +368,12 @@ class AppRow(Adw.ActionRow):
             parent_window.lookup_action(f"mask{index}").set_enabled(False)
         else:
             parent_window.lookup_action(f"unmask{index}").set_enabled(False)
+
+        if self.is_runtime and self.is_pinned:
+            parent_window.lookup_action(f"pin{index}").set_enabled(False)
+        elif self.is_runtime:
+            parent_window.lookup_action(f"unpin{index}").set_enabled(False)
+        self.pin_label.set_visible(self.is_pinned)
 
         row_menu_model.append_section(None, advanced_menu_model)
         self.row_menu.set_menu_model(row_menu_model)

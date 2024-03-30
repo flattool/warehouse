@@ -487,6 +487,56 @@ class WarehouseWindow(Adw.ApplicationWindow):
             dialog.connect("response", on_continue)
             dialog.present()
 
+    def pin_flatpak(self, row):
+        def thread(*args):
+            command = f"flatpak-spawn --host flatpak pin --{row.install_type} runtime/{row.app_ref}"
+            if row.is_pinned:
+                command += " --remove"
+            response = subprocess.run(
+                command,
+                capture_output=True,
+                text=True,
+                shell=True
+            ).stderr
+            if response != "" and row.is_pinned:
+                GLib.idle_add(self.toast_overlay.add_toast(Adw.Toast.new(_("Could not enable auto removal"))))
+                return
+            elif response != "":
+                GLib.idle_add(self.toast_overlay.add_toast(Adw.Toast.new(_("Could not disable auto removal"))))
+                return
+            row.is_pinned = not row.is_pinned
+            GLib.idle_add(lambda *_, row=row: self.lookup_action(f"pin{row.index}").set_enabled(not row.is_pinned))
+            GLib.idle_add(lambda *_, row=row: self.lookup_action(f"unpin{row.index}").set_enabled(row.is_pinned))
+            GLib.idle_add(lambda *_, row=row: row.pin_label.set_visible(row.is_pinned))
+            GLib.idle_add(lambda *_, row=row: row.info_button_show_or_hide())
+
+        def callback(*args):
+            print("done")
+
+        def on_continue(dialog, response):
+            if response == "cancel":
+                return
+
+            task = Gio.Task.new(None, None, None)
+            task.run_in_thread(thread)
+
+        if row.is_pinned:
+            on_continue(self, None)
+        else:
+            dialog = Adw.AlertDialog.new(
+                _(
+                    "Disable Automatic Removal for {}?"
+                ).format(row.app_name),
+                _(
+                    "This will pin {} ensuring it well never be removed automatically, even if no app depends on it."
+                ).format(row.app_name),
+            )
+            dialog.add_response("cancel", _("Cancel"))
+            dialog.set_close_response("cancel")
+            dialog.connect("response", on_continue)
+            dialog.add_response("continue", _("Disable Auto Removal"))
+            dialog.present(self)
+
     def copy_item(self, to_copy, to_toast=None):
         self.clipboard.set(to_copy)
         if to_toast:
@@ -863,6 +913,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.settings.bind(
             "is-fullscreen", self, "fullscreened", Gio.SettingsBindFlags.DEFAULT
         )
+
+        self.system_pins = self.my_utils.get_host_system_pins()
+        self.user_pins = self.my_utils.get_host_user_pins()
 
         self.new_env = dict(os.environ)
         self.new_env["LC_ALL"] = "C"
