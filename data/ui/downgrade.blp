@@ -10,70 +10,72 @@ template $DowngradeWindow: Adw.Dialog {
     Adw.HeaderBar header_bar {
     }
 
-    content: Adw.ToastOverlay toast_overlay {
-      Overlay {
-        [overlay]
-        Button apply_button {
-          visible: false;
-          valign: end;
-          halign: center;
-          margin-bottom: 12;
-          sensitive: false;
-          Adw.ButtonContent {
-            label: _("Downgrade");
-            icon-name: "arrow-turn-left-down-symbolic";
-          }
+    [bottom]
+    ActionBar action_bar {
+      revealed: false;
 
-          styles [
-            "suggested-action",
-            "pill"
-          ]
+      [center]
+      Button apply_button {
+        visible: false;
+        valign: end;
+        halign: center;
+        margin-top: 6;
+        margin-bottom: 6;
+        Adw.ButtonContent {
+          label: _("Downgrade");
+          icon-name: "arrow-turn-left-down-symbolic";
         }
 
-        Stack main_stack {
-          Box loading {
-            orientation: vertical;
-            spacing: 10;
-            margin-top: 40;
-            margin-bottom: 20;
-            halign: center;
-            valign: center;
+        styles [
+          "suggested-action",
+          "pill"
+        ]
+      }
+    }
 
-            Spinner {
-              margin-bottom: 35;
-              width-request: 30;
-              height-request: 30;
-              opacity: 0.5;
-              spinning: true;
-            }
+    content: Adw.ToastOverlay toast_overlay {
+      Stack main_stack {
+        Box loading {
+          orientation: vertical;
+          spacing: 10;
+          margin-top: 40;
+          margin-bottom: 20;
+          halign: center;
+          valign: center;
 
-            Label loading_label {
-              label: _("Fetching Releases");
-              styles [
-                "title-1",
-                "title"
-              ]
-            }
+          Spinner {
+            margin-bottom: 35;
+            width-request: 30;
+            height-request: 30;
+            opacity: 0.5;
+            spinning: true;
+          }
 
-            Label {
-              label: _("This could take a while");
-              styles ["description", "body"]
+          Label loading_label {
+            label: _("Fetching Releases");
+            styles [
+              "title-1",
+              "title"
+            ]
+          }
+
+          Label {
+            label: _("This could take a while");
+            styles ["description", "body"]
+          }
+        }
+
+        Adw.PreferencesPage outerbox {
+          Adw.PreferencesGroup {
+            Adw.SwitchRow mask_row {
+              title: _("Disable Updates");
+              active: true;
             }
           }
 
-          Adw.PreferencesPage outerbox {
-            Adw.PreferencesGroup {
-              Adw.SwitchRow mask_row {
-                title: _("Disable Updates");
-                active: true;
-              }
-            }
-
-            Adw.PreferencesGroup versions_group {
-              title: _("Select a Release");
-              description: _("This will uninstall the current release and install the chosen one instead. Note that downgrading can cause issues.");
-              margin-bottom: 42;
-            }
+          Adw.PreferencesGroup versions_group {
+            title: _("Select a Release");
+            description: _("This will uninstall the current release and install the chosen one instead. Note that downgrading can cause issues.");
           }
         }
       }

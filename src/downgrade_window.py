@@ -21,9 +21,10 @@ class DowngradeWindow(Adw.Dialog):
     loading_label = Gtk.Template.Child()
     main_stack = Gtk.Template.Child()
     outerbox = Gtk.Template.Child()
+    action_bar = Gtk.Template.Child()
 
     def selection_handler(self, button, index):
-        self.apply_button.set_sensitive(True)
+        self.action_bar.set_revealed(True)
         if button.get_active():
             self.commit_to_use = self.versions[index][0]
 
