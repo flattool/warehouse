@@ -99,7 +99,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def uninstall_flatpak_callback(self, _a, _b):
         self.currently_uninstalling = False
-        self.refresh_list_of_flatpaks(_a, False)
+        self.refresh_list_of_flatpaks(_a)
         self.main_toolbar_view.set_sensitive(True)
         self.disconnect(self.no_close)
         self.uninstall_buttons_enable(True)
@@ -107,7 +107,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.search_button.set_sensitive(True)
         self.batch_actions_enable(False)
         if self.my_utils.uninstall_success:
-            self.refresh_list_of_flatpaks(self, False)
+            self.refresh_list_of_flatpaks(self)
             self.toast_overlay.add_toast(Adw.Toast.new(_("Uninstalled successfully")))
         else:
             self.toast_overlay.add_toast(
@@ -353,7 +353,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 self.flatpaks_list_box.get_row_at_index(index).grab_focus()
                 break
 
-    def refresh_list_of_flatpaks(self, widget, should_toast):
+    def refresh_list_of_flatpaks(self, widget):
         if self.currently_uninstalling:
             return
 
@@ -363,12 +363,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.generate_list_of_flatpaks()
             self.batch_mode_button.set_active(False)
             self.total_selected = 0
-            if should_toast:
-                self.toast_overlay.add_toast(Adw.Toast.new(_("List refreshed")))
 
         def runner(*args):
             import time
-            time.sleep(0.1)
+            time.sleep(0.2)
 
         self.main_stack.set_visible_child(self.refreshing)
         task = Gio.Task.new(None, None, callback)
@@ -808,7 +806,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.main_stack.set_visible_child(self.main_box)
         self.search_button.set_sensitive(True)
         if self.my_utils.install_success:
-            self.refresh_list_of_flatpaks(self, False)
+            self.refresh_list_of_flatpaks(self)
             self.toast_overlay.add_toast(Adw.Toast.new(_("Installed successfully")))
         else:
             self.toast_overlay.add_toast(Adw.Toast.new(_("Could not install app")))

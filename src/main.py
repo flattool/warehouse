@@ -123,7 +123,7 @@ class WarehouseApplication(Adw.Application):
         OrphansWindow(self.props.active_window)
 
     def refresh_list_shortcut(self, widget, _):
-        self.props.active_window.refresh_list_of_flatpaks(widget, True)
+        self.props.active_window.refresh_list_of_flatpaks(widget)
 
     def show_remotes_shortcut(self, widget, _):
         RemotesWindow(self.props.active_window)

@@ -207,7 +207,7 @@ class SearchInstallWindow(Adw.Dialog):
             )
 
         def done(*args):
-            self.main_window.refresh_list_of_flatpaks(None, False)
+            self.main_window.refresh_list_of_flatpaks(None)
             # Make window able to close
             self.set_can_close(True)
             if self.my_utils.install_success:

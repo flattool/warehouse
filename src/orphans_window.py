@@ -73,7 +73,7 @@ class OrphansWindow(Adw.Dialog):
         self.is_installing = False
         self.generate_list()
         self.progress_bar.set_visible(False)
-        self.app_window.refresh_list_of_flatpaks(self, False)
+        self.app_window.refresh_list_of_flatpaks(self)
         self.set_can_close(True) # Make window able to close
         self.search_button.set_sensitive(True)
         if self.my_utils.install_success:

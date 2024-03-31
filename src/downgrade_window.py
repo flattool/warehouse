@@ -119,7 +119,7 @@ class DowngradeWindow(Adw.Dialog):
                     )
                 )
 
-        self.parent_window.refresh_list_of_flatpaks(self, False)
+        self.parent_window.refresh_list_of_flatpaks(self)
         self.close()
 
     def downgrade_thread(self):
