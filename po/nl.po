@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-30 04:43+0000\n"
+"POT-Creation-Date: 2024-03-31 02:24+0000\n"
 "PO-Revision-Date: 2024-03-10 21:20+0000\n"
 "Last-Translator: Gert-dev <Gert-dev@users.noreply.weblate.fyralabs.com>\n"
 "Language-Team: Dutch <https://weblate.fyralabs.com/projects/flattool/"
@@ -81,7 +81,7 @@ msgstr "Versies ophalen…"
 msgid "This could take a while"
 msgstr "Dit kan even duren"
 
-#: data/ui/downgrade.blp:67 src/app_row_widget.py:299 src/window.py:486
+#: data/ui/downgrade.blp:67 src/app_row_widget.py:299 src/window.py:484
 msgid "Disable Updates"
 msgstr "Updates uitschakelen"
 
@@ -153,12 +153,12 @@ msgstr "Probeer een andere zoekopdracht"
 msgid "Select All"
 msgstr "Alles selecteren"
 
-#: data/ui/orphans.blp:124 src/window.py:199 src/window.py:282
+#: data/ui/orphans.blp:124 src/window.py:198 src/window.py:280
 msgid "Trash"
 msgstr "In prullenbak gooien"
 
 #: data/ui/orphans.blp:130 data/ui/search_install.blp:54
-#: src/orphans_window.py:122 src/window.py:830
+#: src/orphans_window.py:122 src/window.py:829
 msgid "Install"
 msgstr "Installeren"
 
@@ -448,7 +448,7 @@ msgstr ""
 msgid "Select"
 msgstr "Selecteren"
 
-#: src/app_row_widget.py:176 src/remotes_window.py:226
+#: src/app_row_widget.py:176 src/remotes_window.py:227
 msgid "View More"
 msgstr "Meer tonen"
 
@@ -492,7 +492,7 @@ msgstr "{} geopend"
 msgid "Open"
 msgstr "Openen"
 
-#: src/app_row_widget.py:256 src/window.py:229 src/window.py:303
+#: src/app_row_widget.py:256 src/window.py:228 src/window.py:301
 msgid "Uninstall"
 msgstr "Deïnstalleren"
 
@@ -500,7 +500,7 @@ msgstr "Deïnstalleren"
 msgid "Enable Updates"
 msgstr "Updates inschakelen"
 
-#: src/app_row_widget.py:324 src/window.py:537
+#: src/app_row_widget.py:324 src/window.py:536
 msgid "Disable Auto Removal"
 msgstr ""
 
@@ -528,7 +528,7 @@ msgstr "Commit-hash: {}"
 msgid "Could not downgrade {}"
 msgstr "Kon {} niet downgraden"
 
-#: src/downgrade_window.py:118 src/window.py:455
+#: src/downgrade_window.py:118 src/window.py:453
 msgid "Could not disable updates for {}"
 msgstr "Kon updates voor {} niet uitschakelen"
 
@@ -548,15 +548,15 @@ msgstr "Voorkom dat {} ooit bijgewerkt wordt naar een nieuwere versie"
 msgid "{} selected"
 msgstr "{} geselecteerd"
 
-#: src/filter_window.py:135 src/orphans_window.py:150 src/remotes_window.py:306
+#: src/filter_window.py:135 src/orphans_window.py:150 src/remotes_window.py:307
 msgid "User wide"
 msgstr "Gebruikersbreed"
 
-#: src/filter_window.py:137 src/orphans_window.py:152 src/remotes_window.py:308
+#: src/filter_window.py:137 src/orphans_window.py:152 src/remotes_window.py:309
 msgid "System wide"
 msgstr "Systeembreed"
 
-#: src/filter_window.py:139 src/orphans_window.py:154 src/remotes_window.py:310
+#: src/filter_window.py:139 src/orphans_window.py:154 src/remotes_window.py:311
 msgid "Unknown install type"
 msgstr "Onbekend installatietype"
 
@@ -617,7 +617,7 @@ msgstr "Doneren"
 msgid "Contributors"
 msgstr "Bijdragers"
 
-#: src/orphans_window.py:80 src/window.py:801
+#: src/orphans_window.py:80 src/window.py:800
 msgid "Installed successfully"
 msgstr "Met succes geïnstalleerd"
 
@@ -636,12 +636,12 @@ msgstr ""
 "geselecteerde data."
 
 #: src/orphans_window.py:121 src/orphans_window.py:189
-#: src/properties_window.py:156 src/remotes_window.py:85
-#: src/remotes_window.py:166 src/remotes_window.py:449
-#: src/remotes_window.py:620 src/snapshots_window.py:128
-#: src/snapshots_window.py:234 src/window.py:228 src/window.py:302
-#: src/window.py:438 src/window.py:484 src/window.py:534 src/window.py:636
-#: src/window.py:707 src/window.py:829
+#: src/properties_window.py:156 src/remotes_window.py:86
+#: src/remotes_window.py:167 src/remotes_window.py:450
+#: src/remotes_window.py:621 src/snapshots_window.py:128
+#: src/snapshots_window.py:234 src/window.py:227 src/window.py:300
+#: src/window.py:436 src/window.py:482 src/window.py:533 src/window.py:635
+#: src/window.py:705 src/window.py:828
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -658,7 +658,7 @@ msgid "Continue"
 msgstr "Verdergaan"
 
 #: src/orphans_window.py:198 src/properties_window.py:43
-#: src/snapshots_window.py:245 src/window.py:416
+#: src/snapshots_window.py:245 src/window.py:414
 msgid "Could not open folder"
 msgstr "Kon map niet openen"
 
@@ -666,7 +666,7 @@ msgstr "Kon map niet openen"
 msgid "Could not manage data"
 msgstr "Kon data niet beheren"
 
-#: src/properties_window.py:37 src/remotes_window.py:211
+#: src/properties_window.py:37 src/remotes_window.py:212
 msgid "Copied {}"
 msgstr "{} gekopieerd"
 
@@ -682,8 +682,8 @@ msgstr "Gebruikersdata"
 msgid "No User Data"
 msgstr "Geen gebruikersdata"
 
-#: src/properties_window.py:86 src/remotes_window.py:504
-#: src/remotes_window.py:629
+#: src/properties_window.py:86 src/remotes_window.py:505
+#: src/remotes_window.py:630
 msgid "Name"
 msgstr "Naam"
 
@@ -741,19 +741,19 @@ msgstr "Opties"
 msgid "Could not show properties"
 msgstr "Kon details niet tonen"
 
-#: src/properties_window.py:143 src/window.py:430
+#: src/properties_window.py:143 src/window.py:428
 msgid "Trashed user data"
 msgstr "Gebruikersdata in prullenbak gegooid"
 
-#: src/properties_window.py:150 src/window.py:425
+#: src/properties_window.py:150 src/window.py:423
 msgid "Could not trash user data"
 msgstr "Kon gebruikersdata niet in prullenbak gooien"
 
-#: src/properties_window.py:154 src/window.py:433
+#: src/properties_window.py:154 src/window.py:431
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Gebruikersdata van {} in de prullenbak gooien?"
 
-#: src/properties_window.py:158 src/window.py:440 src/window.py:637
+#: src/properties_window.py:158 src/window.py:438 src/window.py:636
 msgid "Trash Data"
 msgstr "Data in de prullenbak gooien"
 
@@ -761,127 +761,127 @@ msgstr "Data in de prullenbak gooien"
 msgid "{} Properties"
 msgstr "Eigenschappen van {}"
 
-#: src/remotes_window.py:70
+#: src/remotes_window.py:71
 msgid "Could not remove {}"
 msgstr "Kon {} niet verwijderen"
 
-#: src/remotes_window.py:80 src/remotes_window.py:161
+#: src/remotes_window.py:81 src/remotes_window.py:162
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr "Alle applicaties geïnstalleerd uit {} zullen geen updates meer krijgen"
 
-#: src/remotes_window.py:83
+#: src/remotes_window.py:84
 msgid "Remove {}?"
 msgstr "{} verwijderen?"
 
-#: src/remotes_window.py:86 src/remotes_window.py:271
+#: src/remotes_window.py:87 src/remotes_window.py:272
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: src/remotes_window.py:113
+#: src/remotes_window.py:114
 msgid "Could not enable {}"
 msgstr "Kon {} niet inschakelen"
 
-#: src/remotes_window.py:141
+#: src/remotes_window.py:142
 msgid "Could not disable {}"
 msgstr "Kon {} niet uitschakelen"
 
-#: src/remotes_window.py:164
+#: src/remotes_window.py:165
 msgid "Disable {}?"
 msgstr "{} uitschakelen?"
 
-#: src/remotes_window.py:167 src/remotes_window.py:262
+#: src/remotes_window.py:168 src/remotes_window.py:263
 msgid "Disable"
 msgstr "Uitschakelen"
 
-#: src/remotes_window.py:178
+#: src/remotes_window.py:179
 msgid "Could not view apps"
 msgstr "Kon applicaties niet bekijken"
 
-#: src/remotes_window.py:239
+#: src/remotes_window.py:240
 msgid "Set Filter"
 msgstr "Filter instellen"
 
-#: src/remotes_window.py:253
+#: src/remotes_window.py:254
 msgid "Enable"
 msgstr "Inschakelen"
 
-#: src/remotes_window.py:287
+#: src/remotes_window.py:288
 msgid "Copy remote name"
 msgstr "Naam bron kopiëren"
 
-#: src/remotes_window.py:301
+#: src/remotes_window.py:302
 msgid "Disabled"
 msgstr "Uitgeschakeld"
 
-#: src/remotes_window.py:338
+#: src/remotes_window.py:339
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr "De open source, 'betaal wat je wil', applicatiewinkel van elementary"
 
-#: src/remotes_window.py:344
+#: src/remotes_window.py:345
 msgid "Central repository of Flatpak applications"
 msgstr "Centrale bron van Flatpak-applicaties"
 
-#: src/remotes_window.py:350
+#: src/remotes_window.py:351
 msgid "Beta builds of Flatpak applications"
 msgstr "Bèta-versies van Flatpak-applicaties"
 
-#: src/remotes_window.py:356
+#: src/remotes_window.py:357
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "Flatpaks beheerd door Fedora Linux"
 
-#: src/remotes_window.py:362
+#: src/remotes_window.py:363
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "De laatste bèta-versies van GNOME-applicaties en -runtimes"
 
-#: src/remotes_window.py:368
+#: src/remotes_window.py:369
 msgid "Beta KDE Apps and Runtimes"
 msgstr "Bèta-versies van KDE-applicaties en -runtimes"
 
-#: src/remotes_window.py:374
+#: src/remotes_window.py:375
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr "Centrale bron van de WebKit ontwikkelaars- en runtime-SDK"
 
-#: src/remotes_window.py:410 src/remotes_window.py:572
+#: src/remotes_window.py:411 src/remotes_window.py:573
 msgid "Could not add {}"
 msgstr "Kon {} niet toevoegen"
 
-#: src/remotes_window.py:447
+#: src/remotes_window.py:448
 msgid "Add Flatpak Remote"
 msgstr "Flatpak-bron toevoegen"
 
-#: src/remotes_window.py:450 src/remotes_window.py:621
+#: src/remotes_window.py:451 src/remotes_window.py:622
 msgid "Add"
 msgstr "Toevoegen"
 
-#: src/remotes_window.py:508
+#: src/remotes_window.py:509
 msgid "URL"
 msgstr "URL"
 
-#: src/remotes_window.py:520 src/remotes_window.py:632 src/window.py:838
+#: src/remotes_window.py:521 src/remotes_window.py:633 src/window.py:837
 msgid "User"
 msgstr "Gebruiker"
 
-#: src/remotes_window.py:520 src/remotes_window.py:632
+#: src/remotes_window.py:521 src/remotes_window.py:633
 msgid "Remote will be available to only you"
 msgstr "De bron zal enkel voor jou beschikbaar zijn"
 
-#: src/remotes_window.py:528 src/remotes_window.py:635 src/window.py:841
+#: src/remotes_window.py:529 src/remotes_window.py:636 src/window.py:840
 msgid "System"
 msgstr "Systeem"
 
-#: src/remotes_window.py:529 src/remotes_window.py:636
+#: src/remotes_window.py:530 src/remotes_window.py:637
 msgid "Remote will be available to every user on the system"
 msgstr "De bron zal voor elke gebruiker op het systeem beschikbaar zijn"
 
-#: src/remotes_window.py:568
+#: src/remotes_window.py:569
 msgid "{} successfully added"
 msgstr "{} met succes toegevoegd"
 
-#: src/remotes_window.py:618
+#: src/remotes_window.py:619
 msgid "Add {}?"
 msgstr "{} toevoegen?"
 
-#: src/remotes_window.py:666
+#: src/remotes_window.py:667
 msgid "Flatpak Repos"
 msgstr "Flatpak-bronnen"
 
@@ -957,67 +957,67 @@ msgstr "Met succes gedeïnstalleerd"
 msgid "Could not uninstall some apps"
 msgstr "Kon sommige applicaties niet deïnstalleren"
 
-#: src/window.py:170
+#: src/window.py:169
 msgid "Uninstall Selected Apps?"
 msgstr "Geselecteerde applicaties deïnstalleren?"
 
-#: src/window.py:171
+#: src/window.py:170
 msgid "It will not be possible to use these apps after removal."
 msgstr ""
 "Het zal niet meer mogelijk zijn deze applicaties te gebruiken na ze te "
 "verwijderen."
 
-#: src/window.py:191 src/window.py:274
+#: src/window.py:190 src/window.py:272
 msgid "App Settings & Data"
 msgstr "Applicatie-instellingen en -data"
 
-#: src/window.py:195 src/window.py:278
+#: src/window.py:194 src/window.py:276
 msgid "Keep"
 msgstr "Behouden"
 
-#: src/window.py:196
+#: src/window.py:195
 msgid "Allow restoring these apps' settings and content"
 msgstr "Herstellen instellingen en inhoud van deze applicaties toestaan"
 
-#: src/window.py:200
+#: src/window.py:199
 msgid "Send these apps' settings and content to the trash"
 msgstr "Werp de instellingen en inhoud van deze applicaties in de prullenbak"
 
-#: src/window.py:236
+#: src/window.py:235
 msgid "Cannot uninstall while already uninstalling"
 msgstr "Deïnstalleren is niet beschikbaar wanneer er al gedeïnstalleerd wordt"
 
-#: src/window.py:266
+#: src/window.py:264
 msgid "Uninstall {}?"
 msgstr "{} deïnstalleren?"
 
-#: src/window.py:267
+#: src/window.py:265
 msgid "It will not be possible to use {} after removal."
 msgstr "Het zal niet mogelijk zijn om {} te gebruiken na het te verwijderen."
 
-#: src/window.py:279
+#: src/window.py:277
 msgid "Allow restoring this app's settings and content"
 msgstr "Herstellen instellingen en inhoud van deze applicatie toestaan"
 
-#: src/window.py:283
+#: src/window.py:281
 msgid "Send this app's settings and content to the trash"
 msgstr "Werp de instellingen en inhoud van deze applicatie in de prullenbak"
 
-#: src/window.py:361
+#: src/window.py:359
 msgid "List refreshed"
 msgstr "Lijst vernieuwd"
 
-#: src/window.py:436
+#: src/window.py:434
 msgid "Your files and data for this app will be sent to the trash."
 msgstr ""
 "Je bestanden en data van deze applicatie zullen in de prullenbak gegooid "
 "worden."
 
-#: src/window.py:477
+#: src/window.py:475
 msgid "Disable Updates for {}?"
 msgstr "Updates voor {} uitschakelen?"
 
-#: src/window.py:481
+#: src/window.py:479
 msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
@@ -1025,25 +1025,25 @@ msgstr ""
 "Dit zal {} maskeren waardoor toekomstige versies of beveiligingsupdates "
 "genegeerd worden."
 
-#: src/window.py:502
+#: src/window.py:501
 #, fuzzy
 #| msgid "Could not enable {}"
 msgid "Could not enable auto removal"
 msgstr "Kon {} niet inschakelen"
 
-#: src/window.py:505
+#: src/window.py:504
 #, fuzzy
 #| msgid "Could not disable {}"
 msgid "Could not disable auto removal"
 msgstr "Kon {} niet uitschakelen"
 
-#: src/window.py:528
+#: src/window.py:527
 #, fuzzy
 #| msgid "Disable Updates for {}?"
 msgid "Disable Automatic Removal for {}?"
 msgstr "Updates voor {} uitschakelen?"
 
-#: src/window.py:531
+#: src/window.py:530
 #, fuzzy
 #| msgid ""
 #| "This will mask {} ensuring it will never recieve any feature or security "
@@ -1071,25 +1071,25 @@ msgstr "{} heeft geen data om in de prullenbak te gooien"
 msgid "Could not trash {}'s data"
 msgstr "Kon data van {} niet in prullenbak gooien"
 
-#: src/window.py:632
+#: src/window.py:631
 msgid "Trash Selected Apps' User Data?"
 msgstr "Gebruikersdata van geselecteerde applicatie in prullenbak gooien?"
 
-#: src/window.py:633
+#: src/window.py:632
 msgid "Your files and data for these apps will be sent to the trash."
 msgstr ""
 "Je bestanden en data van deze applicaties zullen in de prullenbak gegooid "
 "worden."
 
-#: src/window.py:683
+#: src/window.py:682
 msgid "Could not snapshot some apps"
 msgstr "Kon geen snapshots maken van sommige apps"
 
-#: src/window.py:701
+#: src/window.py:699
 msgid "Create Snapshots?"
 msgstr "Snapshots aanmaken?"
 
-#: src/window.py:703
+#: src/window.py:701
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
@@ -1097,39 +1097,39 @@ msgstr ""
 "Snapshots zijn back-ups van de gebruikersdata van een app. Ze kunnen op elk "
 "moment teruggezet worden. Dit kan even duren."
 
-#: src/window.py:708
+#: src/window.py:706
 msgid "Create Snapshots"
 msgstr "Snapshots aanmaken"
 
-#: src/window.py:762
+#: src/window.py:761
 msgid "Copied selected app names"
 msgstr "Geselecteerde applicatienamen gekopieerd"
 
-#: src/window.py:777
+#: src/window.py:776
 msgid "Copied selected app IDs"
 msgstr "Geselecteerde applicatie-IDs gekopieerd"
 
-#: src/window.py:792
+#: src/window.py:791
 msgid "Copied selected app refs"
 msgstr "Geselecteerde applicatie-refs gekopieerd"
 
-#: src/window.py:803
+#: src/window.py:802
 msgid "Could not install app"
 msgstr "Kon applicatie niet installeren"
 
-#: src/window.py:827
+#: src/window.py:826
 msgid "Install {}?"
 msgstr "{} installeren?"
 
-#: src/window.py:838
+#: src/window.py:837
 msgid "The app will be available to only you"
 msgstr "De applicatie zal enkel voor jou beschikbaar zijn"
 
-#: src/window.py:842
+#: src/window.py:841
 msgid "The app will be available to every user on the system"
 msgstr "De applicatie zal voor elke gebruiker op het systeem beschikbaar zijn"
 
-#: src/window.py:872
+#: src/window.py:871
 msgid "File type not supported"
 msgstr "Bestandstype niet ondersteund"
 
