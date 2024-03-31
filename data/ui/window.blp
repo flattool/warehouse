@@ -187,6 +187,12 @@ template $WarehouseWindow: Adw.ApplicationWindow {
             title: _("No Results Found");
             description: _("Try a different search term");
           }
+
+          Adw.StatusPage refreshing {
+            icon-name: "arrow-circular-top-right-symbolic";
+            title: _("Refreshing List");
+            description: _("This should only take a moment");
+          }
         }
       }
     };

@@ -66,6 +66,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     no_matches = Gtk.Template.Child()
     reset_filters_button = Gtk.Template.Child()
     uninstalling_status = Gtk.Template.Child()
+    refreshing = Gtk.Template.Child()
 
     main_progress_bar = Gtk.ProgressBar(visible=False, can_target=False)
     main_progress_bar.add_css_class("osd")
@@ -355,12 +356,23 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def refresh_list_of_flatpaks(self, widget, should_toast):
         if self.currently_uninstalling:
             return
-        if should_toast:
-            self.toast_overlay.add_toast(Adw.Toast.new(_("List refreshed")))
-        self.flatpaks_list_box.remove_all()
-        self.generate_list_of_flatpaks()
-        self.batch_mode_button.set_active(False)
-        self.total_selected = 0
+
+        # I hate this so much...
+        def callback(*args):
+            self.flatpaks_list_box.remove_all()
+            self.generate_list_of_flatpaks()
+            self.batch_mode_button.set_active(False)
+            self.total_selected = 0
+            if should_toast:
+                self.toast_overlay.add_toast(Adw.Toast.new(_("List refreshed")))
+
+        def runner(*args):
+            import time
+            time.sleep(0.1)
+
+        self.main_stack.set_visible_child(self.refreshing)
+        task = Gio.Task.new(None, None, callback)
+        task.run_in_thread(runner)
 
     def reset_filters(self):
         settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
