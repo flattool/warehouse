@@ -2,12 +2,12 @@
 <component type="desktop">
 	<id>io.github.flattool.Warehouse.desktop</id>
   <launchable type="desktop-id">io.github.flattool.Warehouse.desktop</launchable>
-  <name translatable='no'>Warehouse</name>
-  <developer_name translatable="no">Heliguy</developer_name>
+  <name translate="no">Warehouse</name>
+  <developer_name translate="no">Heliguy</developer_name>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-only</project_license>
-	<summary translatable='yes'>Manage all things Flatpak</summary>
-	<description translatable='yes'>
+	<summary>Manage all things Flatpak</summary>
+	<description>
 	  <p>Warehouse is an app that manages installed Flatpaks, their user data, and Flatpak remotes.</p>
 	  <p>Features:</p>
       <ul>
@@ -65,7 +65,7 @@
   </screenshots>
   <releases>
     <release version="1.5.1" date="2024-3-8" timestamp="1709921475">
-      <description translatable="no">
+      <description translate="no">
         <p>Bug Fixes</p> 
         <ul>
           <li>Main list is no longer scrolled to the bottom on launch</li>
@@ -77,7 +77,7 @@
       </description>
     </release>
     <release version="1.5.0" date="2024-3-5" timestamp="1709694300">
-      <description translatable="no">
+      <description translate="no">
         <p>New Features and Changes</p>
         <ul>
           <li>Flatpaks can now be installed from the web, from any added remote</li>
@@ -96,7 +96,7 @@
       </description>
     </release>
     <release version="1.4.0" date="2023-12-17" timestamp="1702875630">
-      <description translatable="no">
+      <description translate="no">
         <p>New Features and Changes</p>
         <ul>
           <li>View disabled remotes, enable and disable remotes, and set a filter for a remote in the Manage Remotes window</li>
@@ -120,7 +120,7 @@
       </description>
     </release>
     <release version="1.3.0" date="2023-10-23" timestamp="1698112217">
-      <description translatable="no">
+      <description translate="no">
         <p>New Features and Changes</p>
         <ul>
           <li>Names, IDs, Refs, and Launch Commands can now be copied from a dropdown</li>
@@ -138,7 +138,7 @@
       </description>
     </release>
     <release version="1.2.1" date="2023-10-15" timestamp="1697405182">
-      <description translatable="no">
+      <description translate="no">
         <ul>
           <li>The main list of Flatpaks is now sorted by name instead of ID</li>
           <li>Warehouse can now be found in your app menu by searching for "flatpak"</li>
@@ -147,7 +147,7 @@
       </description>
     </release>
     <release version="1.2.0" date="2023-10-11" timestamp="1697076304">
-      <description translatable="no">
+      <description translate="no">
         <p>New Features and Changes</p>
         <ul>
           <li>Flatpaks files can be installed with a drag and drop or from a file selection</li>
@@ -172,7 +172,7 @@
       </description>
     </release>
     <release version="1.1.1" date="2023-10-6" timestamp="1696572524">
-      <description translatable="no">
+      <description translate="no">
         <p>Emergency Bug Fix</p>
         <ul>
           <li>Fix error causing a crash on Linux Mint</li>
@@ -181,7 +181,7 @@
       </description>
     </release>
     <release version="1.1.0" date="2023-10-4" timestamp="1696461734">
-			<description translatable="no">
+			<description translate="no">
 				<p>New Features and Changes</p>
         <ul>
           <li>Choose from a list of popular remotes when adding a new remote</li>
@@ -201,7 +201,7 @@
 			</description>
 		</release>
     <release version="1.0.0" date="2023-9-25" timestamp="1695695940">
-			<description translatable="no">
+			<description translate="no">
 				<p>First release of Warehouse</p>
 			</description>
 		</release>
