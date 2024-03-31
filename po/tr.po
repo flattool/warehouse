@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 02:24+0000\n"
+"POT-Creation-Date: 2024-03-31 05:08+0000\n"
 "PO-Revision-Date: 2024-03-13 15:20+0000\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <https://weblate.fyralabs.com/projects/flattool/"
@@ -81,7 +81,7 @@ msgstr "Sürümler Getiriliyor"
 msgid "This could take a while"
 msgstr "Biraz uzun sürebilir"
 
-#: data/ui/downgrade.blp:67 src/app_row_widget.py:299 src/window.py:484
+#: data/ui/downgrade.blp:67 src/app_row_widget.py:299 src/window.py:494
 msgid "Disable Updates"
 msgstr "Güncellemeleri Devre Dışı Bırak"
 
@@ -149,16 +149,16 @@ msgstr "Sonuç Bulunamadı"
 msgid "Try a different search term"
 msgstr "Farklı bir arama terimi deneyin"
 
-#: data/ui/orphans.blp:119 data/ui/window.blp:200
+#: data/ui/orphans.blp:119 data/ui/window.blp:206
 msgid "Select All"
 msgstr "Tümünü Seç"
 
-#: data/ui/orphans.blp:124 src/window.py:198 src/window.py:280
+#: data/ui/orphans.blp:124 src/window.py:199 src/window.py:281
 msgid "Trash"
 msgstr "Çöpe Taşı"
 
 #: data/ui/orphans.blp:130 data/ui/search_install.blp:54
-#: src/orphans_window.py:122 src/window.py:829
+#: src/orphans_window.py:122 src/window.py:839
 msgid "Install"
 msgstr "Kur"
 
@@ -204,7 +204,7 @@ msgid "View Properties"
 msgstr "Özellikleri Göster"
 
 #: data/ui/properties.blp:106 src/app_row_widget.py:234
-#: src/properties_window.py:106 src/window.py:552
+#: src/properties_window.py:106 src/window.py:562
 msgid "Copy"
 msgstr "Kopyala"
 
@@ -244,7 +244,7 @@ msgstr "Diğer Uzakları Ekle"
 msgid "Adding Remote"
 msgstr "Uzak Ekleniyor"
 
-#: data/ui/remotes.blp:88 data/ui/window.blp:54
+#: data/ui/remotes.blp:88 data/ui/window.blp:54 data/ui/window.blp:194
 msgid "This should only take a moment"
 msgstr "Bu sadece bir dakikanızı alacaktır"
 
@@ -348,59 +348,65 @@ msgstr "Süzgeçlerle Eşleyen Flatpak Yok"
 msgid "No installed Flatpak matches all of the currently applied filters"
 msgstr "Kurulu hiçbir Flatpak geçerli süzgeçlerle eşleşmiyor"
 
-#: data/ui/window.blp:206
+#: data/ui/window.blp:193
+#, fuzzy
+#| msgid "Refresh List"
+msgid "Refreshing List"
+msgstr "Listeyi Yenile"
+
+#: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
 msgstr "Seçili Uygulamaları Kaldır"
 
-#: data/ui/window.blp:212
+#: data/ui/window.blp:218
 msgid "Send Selected Apps' Data to the Trash"
 msgstr "Seçili Uygulamaların Verileri Çöpe Taşı"
 
-#: data/ui/window.blp:218
+#: data/ui/window.blp:224
 msgid "Open Copy Menu"
 msgstr "Kopyala Menüsünü Aç"
 
-#: data/ui/window.blp:225
+#: data/ui/window.blp:231
 msgid "Snapshot Selected Apps' Data"
 msgstr "Seçili Uygulamaların Verilerinin Anlık Görüntüsünü Oluştur"
 
-#: data/ui/window.blp:235
+#: data/ui/window.blp:241
 msgid "Manage Leftover Data…"
 msgstr "Artık Verileri Yönet…"
 
-#: data/ui/window.blp:244
+#: data/ui/window.blp:250
 msgid "Manage Remotes…"
 msgstr "Uzakları Yönet…"
 
-#: data/ui/window.blp:250
+#: data/ui/window.blp:256
 msgid "Install From File…"
 msgstr "Dosyadan Kur…"
 
-#: data/ui/window.blp:255
+#: data/ui/window.blp:261
 msgid "Install From The Web…"
 msgstr "İnternetten Kur…"
 
-#: data/ui/window.blp:261
+#: data/ui/window.blp:267
 msgid "Refresh List"
 msgstr "Listeyi Yenile"
 
-#: data/ui/window.blp:265
+#: data/ui/window.blp:271
 msgid "_Keyboard Shortcuts"
 msgstr "Klavye _Kısayolları"
 
-#: data/ui/window.blp:270
+#: data/ui/window.blp:276
 msgid "_About Warehouse"
 msgstr "Warehouse _Hakkında"
 
-#: data/ui/window.blp:279
+#: data/ui/window.blp:285
 msgid "Copy Names"
 msgstr "Adları Kopyala"
 
-#: data/ui/window.blp:284
+#: data/ui/window.blp:290
 msgid "Copy IDs"
 msgstr "Kimlikleri Kopyala"
 
-#: data/ui/window.blp:289
+#: data/ui/window.blp:295
 msgid "Copy Refs"
 msgstr "Referansları Kopyala"
 
@@ -490,7 +496,7 @@ msgstr "{} Açıldı"
 msgid "Open"
 msgstr "Aç"
 
-#: src/app_row_widget.py:256 src/window.py:228 src/window.py:301
+#: src/app_row_widget.py:256 src/window.py:229 src/window.py:302
 msgid "Uninstall"
 msgstr "Kaldır"
 
@@ -498,7 +504,7 @@ msgstr "Kaldır"
 msgid "Enable Updates"
 msgstr "Güncellemeleri Etkinleştir"
 
-#: src/app_row_widget.py:324 src/window.py:536
+#: src/app_row_widget.py:324 src/window.py:546
 msgid "Disable Auto Removal"
 msgstr ""
 
@@ -526,7 +532,7 @@ msgstr "İşleme Sağlaması: {}"
 msgid "Could not downgrade {}"
 msgstr "{} sürüm düşürülemedi"
 
-#: src/downgrade_window.py:118 src/window.py:453
+#: src/downgrade_window.py:118 src/window.py:463
 msgid "Could not disable updates for {}"
 msgstr "{} için güncellemeler devre dışı bırakılamadı"
 
@@ -615,7 +621,7 @@ msgstr "Bağış Yap"
 msgid "Contributors"
 msgstr "Katkıda Bulunanlar"
 
-#: src/orphans_window.py:80 src/window.py:800
+#: src/orphans_window.py:80 src/window.py:810
 msgid "Installed successfully"
 msgstr "Başarıyla kuruldu"
 
@@ -635,9 +641,9 @@ msgstr "Warehouse, seçilen verilerle eşleşen uygulamaları kurmayı deneyecek
 #: src/properties_window.py:156 src/remotes_window.py:86
 #: src/remotes_window.py:167 src/remotes_window.py:450
 #: src/remotes_window.py:621 src/snapshots_window.py:128
-#: src/snapshots_window.py:234 src/window.py:227 src/window.py:300
-#: src/window.py:436 src/window.py:482 src/window.py:533 src/window.py:635
-#: src/window.py:705 src/window.py:828
+#: src/snapshots_window.py:234 src/window.py:228 src/window.py:301
+#: src/window.py:446 src/window.py:492 src/window.py:543 src/window.py:645
+#: src/window.py:715 src/window.py:838
 msgid "Cancel"
 msgstr "İptal"
 
@@ -654,7 +660,7 @@ msgid "Continue"
 msgstr "Devam Et"
 
 #: src/orphans_window.py:198 src/properties_window.py:43
-#: src/snapshots_window.py:245 src/window.py:414
+#: src/snapshots_window.py:245 src/window.py:424
 msgid "Could not open folder"
 msgstr "Klasör açılamadı"
 
@@ -737,19 +743,19 @@ msgstr "Seçenekler"
 msgid "Could not show properties"
 msgstr "Ayrıntılar gösterilemedi"
 
-#: src/properties_window.py:143 src/window.py:428
+#: src/properties_window.py:143 src/window.py:438
 msgid "Trashed user data"
 msgstr "Çöpe taşınan kullanıcı verileri"
 
-#: src/properties_window.py:150 src/window.py:423
+#: src/properties_window.py:150 src/window.py:433
 msgid "Could not trash user data"
 msgstr "Kullanıcı verileri çöpe taşınamadı"
 
-#: src/properties_window.py:154 src/window.py:431
+#: src/properties_window.py:154 src/window.py:441
 msgid "Send {}'s User Data to the Trash?"
 msgstr "{} Kullanıcı Verilerini Çöpe Taşınsın Mı?"
 
-#: src/properties_window.py:158 src/window.py:438 src/window.py:636
+#: src/properties_window.py:158 src/window.py:448 src/window.py:646
 msgid "Trash Data"
 msgstr "Çöp Veri"
 
@@ -855,7 +861,7 @@ msgstr "Ekle"
 msgid "URL"
 msgstr "URL"
 
-#: src/remotes_window.py:521 src/remotes_window.py:633 src/window.py:837
+#: src/remotes_window.py:521 src/remotes_window.py:633 src/window.py:847
 msgid "User"
 msgstr "Kullanıcı"
 
@@ -863,7 +869,7 @@ msgstr "Kullanıcı"
 msgid "Remote will be available to only you"
 msgstr "Uzak sadece sizin tarafınızdan kullanılabilecek"
 
-#: src/remotes_window.py:529 src/remotes_window.py:636 src/window.py:840
+#: src/remotes_window.py:529 src/remotes_window.py:636 src/window.py:850
 msgid "System"
 msgstr "Sistem"
 
@@ -947,71 +953,67 @@ msgstr ""
 msgid "{} Snapshots"
 msgstr "{} Anlık Görüntü"
 
-#: src/window.py:110
+#: src/window.py:111
 msgid "Uninstalled successfully"
 msgstr "Kaldırıldı"
 
-#: src/window.py:113
+#: src/window.py:114
 msgid "Could not uninstall some apps"
 msgstr "Kimi uygulamalar kaldırılamadı"
 
-#: src/window.py:169
+#: src/window.py:170
 msgid "Uninstall Selected Apps?"
 msgstr "Seçili Uygulamalar Kaldırılsın Mı?"
 
-#: src/window.py:170
+#: src/window.py:171
 msgid "It will not be possible to use these apps after removal."
 msgstr "Kaldırıldıktan sonra bu uygulamalar kullanılamayacak."
 
-#: src/window.py:190 src/window.py:272
+#: src/window.py:191 src/window.py:273
 msgid "App Settings & Data"
 msgstr "Uygulama Ayarları ve Veriler"
 
-#: src/window.py:194 src/window.py:276
+#: src/window.py:195 src/window.py:277
 msgid "Keep"
 msgstr "Koru"
 
-#: src/window.py:195
+#: src/window.py:196
 msgid "Allow restoring these apps' settings and content"
 msgstr "Bu uygulamaların ayarlarını ve içeriğini geri yüklemeye izin ver"
 
-#: src/window.py:199
+#: src/window.py:200
 msgid "Send these apps' settings and content to the trash"
 msgstr "Bu uygulamaların ayarlarını ve içeriğini çöpe taşı"
 
-#: src/window.py:235
+#: src/window.py:236
 msgid "Cannot uninstall while already uninstalling"
 msgstr "Kaldırma işlemi sürdüğünden kaldırılamıyor"
 
-#: src/window.py:264
+#: src/window.py:265
 msgid "Uninstall {}?"
 msgstr "{} Kaldırılsın Mı?"
 
-#: src/window.py:265
+#: src/window.py:266
 msgid "It will not be possible to use {} after removal."
 msgstr "{} kaldırıldıktan sonra kullanılamayacak."
 
-#: src/window.py:277
+#: src/window.py:278
 msgid "Allow restoring this app's settings and content"
 msgstr "Bu uygulamanın ayarlarını ve içeriğini geri yüklemeye izin ver"
 
-#: src/window.py:281
+#: src/window.py:282
 msgid "Send this app's settings and content to the trash"
 msgstr "Bu uygulamanın ayarlarını ve içeriğini çöpe taşı"
 
-#: src/window.py:359
-msgid "List refreshed"
-msgstr "Liste yenilendi"
-
-#: src/window.py:434
+#: src/window.py:444
 msgid "Your files and data for this app will be sent to the trash."
 msgstr "Bu uygulama için olan dosyalarınız ve verileriniz çöpe taşınacak."
 
-#: src/window.py:475
+#: src/window.py:485
 msgid "Disable Updates for {}?"
 msgstr "{} Güncellemeleri Devre Dışı Bırakılsın Mı?"
 
-#: src/window.py:479
+#: src/window.py:489
 msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
@@ -1019,25 +1021,25 @@ msgstr ""
 "Bu, {} uygulamasını maskeleyecek, özellik ya da güvenlik güncellemesi "
 "almasını önleyecektir."
 
-#: src/window.py:501
+#: src/window.py:511
 #, fuzzy
 #| msgid "Could not enable {}"
 msgid "Could not enable auto removal"
 msgstr "{} etkinleştirilemedi"
 
-#: src/window.py:504
+#: src/window.py:514
 #, fuzzy
 #| msgid "Could not disable {}"
 msgid "Could not disable auto removal"
 msgstr "{} devre dışı bırakılamadı"
 
-#: src/window.py:527
+#: src/window.py:537
 #, fuzzy
 #| msgid "Disable Updates for {}?"
 msgid "Disable Automatic Removal for {}?"
 msgstr "{} Güncellemeleri Devre Dışı Bırakılsın Mı?"
 
-#: src/window.py:530
+#: src/window.py:540
 #, fuzzy
 #| msgid ""
 #| "This will mask {} ensuring it will never recieve any feature or security "
@@ -1049,39 +1051,39 @@ msgstr ""
 "Bu, {} uygulamasını maskeleyecek, özellik ya da güvenlik güncellemesi "
 "almasını önleyecektir."
 
-#: src/window.py:550
+#: src/window.py:560
 msgid "Could not Run App"
 msgstr "Uygulama Çalıştırılamadı"
 
-#: src/window.py:558
+#: src/window.py:568
 msgid "OK"
 msgstr "Tamam"
 
-#: src/window.py:610
+#: src/window.py:620
 msgid "{} has no data to trash"
 msgstr "{} için çöpe taşınacak veri yok"
 
-#: src/window.py:616
+#: src/window.py:626
 msgid "Could not trash {}'s data"
 msgstr "{} verileri çöpe taşınamadı"
 
-#: src/window.py:631
+#: src/window.py:641
 msgid "Trash Selected Apps' User Data?"
 msgstr "Seçilen Uygulamaların Kullanıcı Verileri Çöpe Taşınsın Mı?"
 
-#: src/window.py:632
+#: src/window.py:642
 msgid "Your files and data for these apps will be sent to the trash."
 msgstr "Bu uygulamalar için olan dosyalarınız ve verileriniz çöpe taşınacak."
 
-#: src/window.py:682
+#: src/window.py:692
 msgid "Could not snapshot some apps"
 msgstr "Kimi uygulamaların anlık görüntüsü oluşturulamadı"
 
-#: src/window.py:699
+#: src/window.py:709
 msgid "Create Snapshots?"
 msgstr "Anlık Görüntü Oluşturulsun Mu?"
 
-#: src/window.py:701
+#: src/window.py:711
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
@@ -1089,41 +1091,44 @@ msgstr ""
 "Anlık görüntüler, uygulamanın kullanıcı verilerinin yedekleridir. "
 "İstenildiği zaman yeniden uygulanabilirler. Bu biraz zaman alabilir."
 
-#: src/window.py:706
+#: src/window.py:716
 msgid "Create Snapshots"
 msgstr "Anlık Görüntü Oluştur"
 
-#: src/window.py:761
+#: src/window.py:771
 msgid "Copied selected app names"
 msgstr "Seçilen uygulama adları kopyalandı"
 
-#: src/window.py:776
+#: src/window.py:786
 msgid "Copied selected app IDs"
 msgstr "Seçilen uygulama kimlikleri kopyalandı"
 
-#: src/window.py:791
+#: src/window.py:801
 msgid "Copied selected app refs"
 msgstr "Seçilen uygulama referansları kopyalandı"
 
-#: src/window.py:802
+#: src/window.py:812
 msgid "Could not install app"
 msgstr "Uygulama kurulamadı"
 
-#: src/window.py:826
+#: src/window.py:836
 msgid "Install {}?"
 msgstr "{} Kurulsun Mu?"
 
-#: src/window.py:837
+#: src/window.py:847
 msgid "The app will be available to only you"
 msgstr "Uygulama sadece sizin kullanımınıza özel olacak"
 
-#: src/window.py:841
+#: src/window.py:851
 msgid "The app will be available to every user on the system"
 msgstr "Uygulama sistemdeki tüm kullanıcılar tarafından kullanılabilecek"
 
-#: src/window.py:871
+#: src/window.py:881
 msgid "File type not supported"
 msgstr "Dosya türü desteklenmiyor"
+
+#~ msgid "List refreshed"
+#~ msgstr "Liste yenilendi"
 
 #~ msgid "Heliguy"
 #~ msgstr "Heliguy"
