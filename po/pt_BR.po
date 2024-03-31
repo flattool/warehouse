@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-31 05:08+0000\n"
-"PO-Revision-Date: 2024-03-10 21:20+0000\n"
-"Last-Translator: Tuba <luiz_filipe_motta@hotmail.com>\n"
+"PO-Revision-Date: 2024-04-01 11:20+0000\n"
+"Last-Translator: \"A. Bento\" <kyweehz@pm.me>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.fyralabs.com/projects/"
 "flattool/warehouse/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -351,10 +351,8 @@ msgstr ""
 "Nenhum Flatpak instalado corresponde a todos os filtros atualmente aplicados"
 
 #: data/ui/window.blp:193
-#, fuzzy
-#| msgid "Refresh List"
 msgid "Refreshing List"
-msgstr "Atualizar lista"
+msgstr "Atualizando Lista"
 
 #: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
@@ -422,12 +420,14 @@ msgstr "{} está restrito e não será atualizado"
 
 #: src/app_row_widget.py:94
 msgid "Auto Removal Disabled"
-msgstr ""
+msgstr "Remoção Automática Desativada"
 
 #: src/app_row_widget.py:99
 msgid ""
 "{} is pinned and will not be auto removed even when it's required by no app"
 msgstr ""
+"{} está fixado e não será removido automaticamente mesmo quando não for mais "
+"necessário por nenhum aplicativo"
 
 #: src/app_row_widget.py:106
 msgid "App EOL"
@@ -509,11 +509,11 @@ msgstr "Ativar atualizações"
 
 #: src/app_row_widget.py:324 src/window.py:546
 msgid "Disable Auto Removal"
-msgstr ""
+msgstr "Desativar Remoção Automática"
 
 #: src/app_row_widget.py:336
 msgid "Enable Auto Removal"
-msgstr ""
+msgstr "Ativar Remoção Automática"
 
 #: src/app_row_widget.py:350
 msgid "Manage Snapshots"
@@ -743,10 +743,8 @@ msgid "Options"
 msgstr "Opções"
 
 #: src/properties_window.py:135
-#, fuzzy
-#| msgid "Could not show details"
 msgid "Could not show properties"
-msgstr "Não foi possível mostrar os detalhes"
+msgstr "Não foi possível mostrar as propriedades"
 
 #: src/properties_window.py:143 src/window.py:438
 msgid "Trashed user data"
@@ -1028,34 +1026,24 @@ msgstr ""
 "atualização de recursos ou segurança."
 
 #: src/window.py:511
-#, fuzzy
-#| msgid "Could not enable {}"
 msgid "Could not enable auto removal"
-msgstr "Não foi possível ativar {}"
+msgstr "Não foi possível ativar a remoção automática"
 
 #: src/window.py:514
-#, fuzzy
-#| msgid "Could not disable {}"
 msgid "Could not disable auto removal"
-msgstr "Não foi possível desativar {}"
+msgstr "Não foi possível desativar a remoção automática"
 
 #: src/window.py:537
-#, fuzzy
-#| msgid "Disable Updates for {}?"
 msgid "Disable Automatic Removal for {}?"
-msgstr "Desativar atualizações para {}?"
+msgstr "Desativar Remoção Automática para {}?"
 
 #: src/window.py:540
-#, fuzzy
-#| msgid ""
-#| "This will mask {} ensuring it will never recieve any feature or security "
-#| "updates."
 msgid ""
 "This will pin {} ensuring it well never be removed automatically, even if no "
 "app depends on it."
 msgstr ""
-"Isso irá restringir {}, garantindo que o aplicativo nunca receba nenhuma "
-"atualização de recursos ou segurança."
+"Isso irá fixar {} garantindo que nunca será removido automaticamente, mesmo "
+"que nenhum aplicativo dependa dele."
 
 #: src/window.py:560
 msgid "Could not Run App"
