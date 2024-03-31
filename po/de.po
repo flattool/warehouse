@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 02:24+0000\n"
+"POT-Creation-Date: 2024-03-31 05:08+0000\n"
 "PO-Revision-Date: 2024-03-20 10:20+0000\n"
 "Last-Translator: Vortex Acherontic <vortex@z-ray.de>\n"
 "Language-Team: German <https://weblate.fyralabs.com/projects/flattool/"
@@ -81,7 +81,7 @@ msgstr "Hole Veröffentlichungen"
 msgid "This could take a while"
 msgstr "Das kann einen Moment dauern"
 
-#: data/ui/downgrade.blp:67 src/app_row_widget.py:299 src/window.py:484
+#: data/ui/downgrade.blp:67 src/app_row_widget.py:299 src/window.py:494
 msgid "Disable Updates"
 msgstr "Updates deaktivieren"
 
@@ -149,16 +149,16 @@ msgstr "Keine Ergebnisse gefunden"
 msgid "Try a different search term"
 msgstr "Andere Suchbegriffe versuchen"
 
-#: data/ui/orphans.blp:119 data/ui/window.blp:200
+#: data/ui/orphans.blp:119 data/ui/window.blp:206
 msgid "Select All"
 msgstr "Alle auswählen"
 
-#: data/ui/orphans.blp:124 src/window.py:198 src/window.py:280
+#: data/ui/orphans.blp:124 src/window.py:199 src/window.py:281
 msgid "Trash"
 msgstr "Müll"
 
 #: data/ui/orphans.blp:130 data/ui/search_install.blp:54
-#: src/orphans_window.py:122 src/window.py:829
+#: src/orphans_window.py:122 src/window.py:839
 msgid "Install"
 msgstr "Installieren"
 
@@ -205,7 +205,7 @@ msgid "View Properties"
 msgstr "Eigenschaften anzeigen"
 
 #: data/ui/properties.blp:106 src/app_row_widget.py:234
-#: src/properties_window.py:106 src/window.py:552
+#: src/properties_window.py:106 src/window.py:562
 msgid "Copy"
 msgstr "Kopieren"
 
@@ -245,7 +245,7 @@ msgstr "Andere Gegenstellen hinzufügen"
 msgid "Adding Remote"
 msgstr "Gegenstelle hinzufügen"
 
-#: data/ui/remotes.blp:88 data/ui/window.blp:54
+#: data/ui/remotes.blp:88 data/ui/window.blp:54 data/ui/window.blp:194
 msgid "This should only take a moment"
 msgstr "Dies sollte nur einen Augenblick dauern"
 
@@ -349,59 +349,65 @@ msgstr "Keine Flatpaks passen zu diesen Filtern"
 msgid "No installed Flatpak matches all of the currently applied filters"
 msgstr "Kein Flatpak passt zu den ausgewählten Filtern"
 
-#: data/ui/window.blp:206
+#: data/ui/window.blp:193
+#, fuzzy
+#| msgid "Refresh List"
+msgid "Refreshing List"
+msgstr "Liste aktualisieren"
+
+#: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
 msgstr "Ausgewählte Anwendungen deinstallieren"
 
-#: data/ui/window.blp:212
+#: data/ui/window.blp:218
 msgid "Send Selected Apps' Data to the Trash"
 msgstr "Ausgewählte Anwendungsdaten in den Papierkorb legen"
 
-#: data/ui/window.blp:218
+#: data/ui/window.blp:224
 msgid "Open Copy Menu"
 msgstr "Kopiermenü öffnen"
 
-#: data/ui/window.blp:225
+#: data/ui/window.blp:231
 msgid "Snapshot Selected Apps' Data"
 msgstr "Schnappschuss der ausgewählten Anwendungsdaten anlegen"
 
-#: data/ui/window.blp:235
+#: data/ui/window.blp:241
 msgid "Manage Leftover Data…"
 msgstr "Zurückgelassene Daten verwalten…"
 
-#: data/ui/window.blp:244
+#: data/ui/window.blp:250
 msgid "Manage Remotes…"
 msgstr "Gegenstellen verwalten…"
 
-#: data/ui/window.blp:250
+#: data/ui/window.blp:256
 msgid "Install From File…"
 msgstr "Aus Datei installieren…"
 
-#: data/ui/window.blp:255
+#: data/ui/window.blp:261
 msgid "Install From The Web…"
 msgstr "Aus dem Internet installieren…"
 
-#: data/ui/window.blp:261
+#: data/ui/window.blp:267
 msgid "Refresh List"
 msgstr "Liste aktualisieren"
 
-#: data/ui/window.blp:265
+#: data/ui/window.blp:271
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastenkürzel"
 
-#: data/ui/window.blp:270
+#: data/ui/window.blp:276
 msgid "_About Warehouse"
 msgstr "_Über Warehouse"
 
-#: data/ui/window.blp:279
+#: data/ui/window.blp:285
 msgid "Copy Names"
 msgstr "Namen kopieren"
 
-#: data/ui/window.blp:284
+#: data/ui/window.blp:290
 msgid "Copy IDs"
 msgstr "IDs kopieren"
 
-#: data/ui/window.blp:289
+#: data/ui/window.blp:295
 msgid "Copy Refs"
 msgstr "Referenzen kopieren"
 
@@ -493,7 +499,7 @@ msgstr "Geöffnet {}"
 msgid "Open"
 msgstr "Öffnen"
 
-#: src/app_row_widget.py:256 src/window.py:228 src/window.py:301
+#: src/app_row_widget.py:256 src/window.py:229 src/window.py:302
 msgid "Uninstall"
 msgstr "Deinstallieren"
 
@@ -501,7 +507,7 @@ msgstr "Deinstallieren"
 msgid "Enable Updates"
 msgstr "Aktualisierungen aktivieren"
 
-#: src/app_row_widget.py:324 src/window.py:536
+#: src/app_row_widget.py:324 src/window.py:546
 msgid "Disable Auto Removal"
 msgstr ""
 
@@ -529,7 +535,7 @@ msgstr "Commit Hash: {}"
 msgid "Could not downgrade {}"
 msgstr "Konnte {} nicht herabstufen"
 
-#: src/downgrade_window.py:118 src/window.py:453
+#: src/downgrade_window.py:118 src/window.py:463
 msgid "Could not disable updates for {}"
 msgstr "Aktualisierungen für {} konnten nicht deaktiviert werden"
 
@@ -618,7 +624,7 @@ msgstr "Spenden"
 msgid "Contributors"
 msgstr "Mitwirkende"
 
-#: src/orphans_window.py:80 src/window.py:800
+#: src/orphans_window.py:80 src/window.py:810
 msgid "Installed successfully"
 msgstr "Erfolgreiche Installation"
 
@@ -640,9 +646,9 @@ msgstr ""
 #: src/properties_window.py:156 src/remotes_window.py:86
 #: src/remotes_window.py:167 src/remotes_window.py:450
 #: src/remotes_window.py:621 src/snapshots_window.py:128
-#: src/snapshots_window.py:234 src/window.py:227 src/window.py:300
-#: src/window.py:436 src/window.py:482 src/window.py:533 src/window.py:635
-#: src/window.py:705 src/window.py:828
+#: src/snapshots_window.py:234 src/window.py:228 src/window.py:301
+#: src/window.py:446 src/window.py:492 src/window.py:543 src/window.py:645
+#: src/window.py:715 src/window.py:838
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -659,7 +665,7 @@ msgid "Continue"
 msgstr "Fortfahren"
 
 #: src/orphans_window.py:198 src/properties_window.py:43
-#: src/snapshots_window.py:245 src/window.py:414
+#: src/snapshots_window.py:245 src/window.py:424
 msgid "Could not open folder"
 msgstr "Verzeichnis konnte nicht geöffnet werden"
 
@@ -742,19 +748,19 @@ msgstr "Optionen"
 msgid "Could not show properties"
 msgstr "Details konnten nicht angezeigt werden"
 
-#: src/properties_window.py:143 src/window.py:428
+#: src/properties_window.py:143 src/window.py:438
 msgid "Trashed user data"
 msgstr "Benutzerdaten gelöscht"
 
-#: src/properties_window.py:150 src/window.py:423
+#: src/properties_window.py:150 src/window.py:433
 msgid "Could not trash user data"
 msgstr "Benutzerdaten konnten nicht gelöscht werden"
 
-#: src/properties_window.py:154 src/window.py:431
+#: src/properties_window.py:154 src/window.py:441
 msgid "Send {}'s User Data to the Trash?"
 msgstr "{}'s Benutzerdaten in dem Papierkorb verschieben?"
 
-#: src/properties_window.py:158 src/window.py:438 src/window.py:636
+#: src/properties_window.py:158 src/window.py:448 src/window.py:646
 msgid "Trash Data"
 msgstr "Daten löschen"
 
@@ -861,7 +867,7 @@ msgstr "Hinzufügen"
 msgid "URL"
 msgstr "URL"
 
-#: src/remotes_window.py:521 src/remotes_window.py:633 src/window.py:837
+#: src/remotes_window.py:521 src/remotes_window.py:633 src/window.py:847
 msgid "User"
 msgstr "Nutzer"
 
@@ -869,7 +875,7 @@ msgstr "Nutzer"
 msgid "Remote will be available to only you"
 msgstr "Gegenstelle wird nur für Sie sichtbar sein"
 
-#: src/remotes_window.py:529 src/remotes_window.py:636 src/window.py:840
+#: src/remotes_window.py:529 src/remotes_window.py:636 src/window.py:850
 msgid "System"
 msgstr "System"
 
@@ -955,76 +961,72 @@ msgstr ""
 msgid "{} Snapshots"
 msgstr "{} Schnappschüsse"
 
-#: src/window.py:110
+#: src/window.py:111
 msgid "Uninstalled successfully"
 msgstr "Erfolgreich deinstalliert"
 
-#: src/window.py:113
+#: src/window.py:114
 msgid "Could not uninstall some apps"
 msgstr "Konnte nicht alle Anwendungen deinstallieren"
 
-#: src/window.py:169
+#: src/window.py:170
 msgid "Uninstall Selected Apps?"
 msgstr "Deinstalliere ausgewählte Anwendungen?"
 
-#: src/window.py:170
+#: src/window.py:171
 msgid "It will not be possible to use these apps after removal."
 msgstr ""
 "Es ist nicht möglich diese Anwendungen nach der Deinstallation zu verwenden."
 
-#: src/window.py:190 src/window.py:272
+#: src/window.py:191 src/window.py:273
 msgid "App Settings & Data"
 msgstr "Anwendungs Einstellungen & Daten"
 
-#: src/window.py:194 src/window.py:276
+#: src/window.py:195 src/window.py:277
 msgid "Keep"
 msgstr "Behalten"
 
-#: src/window.py:195
+#: src/window.py:196
 msgid "Allow restoring these apps' settings and content"
 msgstr ""
 "Erlaube es die Einstellungen und Daten der Anwendungen wiederherzustellen"
 
-#: src/window.py:199
+#: src/window.py:200
 msgid "Send these apps' settings and content to the trash"
 msgstr "Sende die Einstellungen und Daten der Anwendungen in den Müll"
 
-#: src/window.py:235
+#: src/window.py:236
 msgid "Cannot uninstall while already uninstalling"
 msgstr "Kann nicht deinstallieren während eine Deinstallation läuft"
 
-#: src/window.py:264
+#: src/window.py:265
 msgid "Uninstall {}?"
 msgstr "Deinstalliere {}?"
 
-#: src/window.py:265
+#: src/window.py:266
 msgid "It will not be possible to use {} after removal."
 msgstr ""
 "Es wird nicht mehr möglich sein {} nach der Deinstallation zu verwenden."
 
-#: src/window.py:277
+#: src/window.py:278
 msgid "Allow restoring this app's settings and content"
 msgstr ""
 "Erlaube das Wiederherstellen der Einstellungen und Inhalte dieser Anwendung"
 
-#: src/window.py:281
+#: src/window.py:282
 msgid "Send this app's settings and content to the trash"
 msgstr "Lege die Einstellungen und Inhalte dieser Anwendung in den Papierkorb"
 
-#: src/window.py:359
-msgid "List refreshed"
-msgstr "Liste aktualisiert"
-
-#: src/window.py:434
+#: src/window.py:444
 msgid "Your files and data for this app will be sent to the trash."
 msgstr ""
 "Ihre Dateien und Daten für diese Anwendungen werden in den Papierkorb gelegt."
 
-#: src/window.py:475
+#: src/window.py:485
 msgid "Disable Updates for {}?"
 msgstr "Aktualisierungen für {} deaktivieren?"
 
-#: src/window.py:479
+#: src/window.py:489
 msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
@@ -1032,25 +1034,25 @@ msgstr ""
 "Dies wird {} maskieren und sicherstellen dass es keine Sicherheits- oder "
 "Funktionsaktualisierungen erhalten wird."
 
-#: src/window.py:501
+#: src/window.py:511
 #, fuzzy
 #| msgid "Could not enable {}"
 msgid "Could not enable auto removal"
 msgstr "Konnte nicht {} aktivieren"
 
-#: src/window.py:504
+#: src/window.py:514
 #, fuzzy
 #| msgid "Could not disable {}"
 msgid "Could not disable auto removal"
 msgstr "Konnte {} nicht deaktivieren"
 
-#: src/window.py:527
+#: src/window.py:537
 #, fuzzy
 #| msgid "Disable Updates for {}?"
 msgid "Disable Automatic Removal for {}?"
 msgstr "Aktualisierungen für {} deaktivieren?"
 
-#: src/window.py:530
+#: src/window.py:540
 #, fuzzy
 #| msgid ""
 #| "This will mask {} ensuring it will never recieve any feature or security "
@@ -1062,40 +1064,40 @@ msgstr ""
 "Dies wird {} maskieren und sicherstellen dass es keine Sicherheits- oder "
 "Funktionsaktualisierungen erhalten wird."
 
-#: src/window.py:550
+#: src/window.py:560
 msgid "Could not Run App"
 msgstr "Anwendung konnte nicht gestartet werden"
 
-#: src/window.py:558
+#: src/window.py:568
 msgid "OK"
 msgstr "Okay"
 
-#: src/window.py:610
+#: src/window.py:620
 msgid "{} has no data to trash"
 msgstr "{} besitzt keine löschbaren Daten"
 
-#: src/window.py:616
+#: src/window.py:626
 msgid "Could not trash {}'s data"
 msgstr "Die Daten von {} konnten nicht gelöscht werden"
 
-#: src/window.py:631
+#: src/window.py:641
 msgid "Trash Selected Apps' User Data?"
 msgstr "Benutzerdaten der ausgewählten Anwendung löschen?"
 
-#: src/window.py:632
+#: src/window.py:642
 msgid "Your files and data for these apps will be sent to the trash."
 msgstr ""
 "Ihre Dateien und Daten für diese Anwendung werden in den Papierkorb gelegt."
 
-#: src/window.py:682
+#: src/window.py:692
 msgid "Could not snapshot some apps"
 msgstr "Für einige Anwendungen konnten keine Schnappschüsse angelegt werden"
 
-#: src/window.py:699
+#: src/window.py:709
 msgid "Create Snapshots?"
 msgstr "Schnappschuss anlegen?"
 
-#: src/window.py:701
+#: src/window.py:711
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
@@ -1104,41 +1106,44 @@ msgstr ""
 "Diese können jeder Zeit wiederhergestellt werden, könnte aber eine Weile "
 "dauern."
 
-#: src/window.py:706
+#: src/window.py:716
 msgid "Create Snapshots"
 msgstr "Schnappschüsse anlegen"
 
-#: src/window.py:761
+#: src/window.py:771
 msgid "Copied selected app names"
 msgstr "Ausgewählten Anwendungsnamen kopiert"
 
-#: src/window.py:776
+#: src/window.py:786
 msgid "Copied selected app IDs"
 msgstr "Ausgewählte Anwendungsid kopiert"
 
-#: src/window.py:791
+#: src/window.py:801
 msgid "Copied selected app refs"
 msgstr "Ausgewählte Anwendungsreferenzen kopiert"
 
-#: src/window.py:802
+#: src/window.py:812
 msgid "Could not install app"
 msgstr "Anwendung konnte nicht installiert werden"
 
-#: src/window.py:826
+#: src/window.py:836
 msgid "Install {}?"
 msgstr "{} installieren?"
 
-#: src/window.py:837
+#: src/window.py:847
 msgid "The app will be available to only you"
 msgstr "Diese Anwendung wird nur für Sie sichtbar sein"
 
-#: src/window.py:841
+#: src/window.py:851
 msgid "The app will be available to every user on the system"
 msgstr "Diese Anwendung wird für alle Benutzer des Systems sichtbar sein"
 
-#: src/window.py:871
+#: src/window.py:881
 msgid "File type not supported"
 msgstr "Dateityp nicht unterstützt"
+
+#~ msgid "List refreshed"
+#~ msgstr "Liste aktualisiert"
 
 #~ msgid "Heliguy"
 #~ msgstr "Heliguy"
