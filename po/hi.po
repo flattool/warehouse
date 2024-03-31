@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-31 02:24+0000\n"
-"PO-Revision-Date: 2024-03-27 22:09+0000\n"
+"PO-Revision-Date: 2024-03-31 04:51+0000\n"
 "Last-Translator: Scrambled777 <nkkhalia@pm.me>\n"
 "Language-Team: Hindi <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hi/>\n"
@@ -413,12 +413,14 @@ msgstr "{} छिपा हुआ है और इसे अपडेट नह
 
 #: src/app_row_widget.py:94
 msgid "Auto Removal Disabled"
-msgstr ""
+msgstr "स्वतः निष्कासन अक्षम"
 
 #: src/app_row_widget.py:99
 msgid ""
 "{} is pinned and will not be auto removed even when it's required by no app"
 msgstr ""
+"{} को पिन कर दिया गया है और किसी भी ऐप द्वारा इसकी आवश्यकता न होने पर भी इसे "
+"स्वतः हटाया नहीं जाएगा"
 
 #: src/app_row_widget.py:106
 msgid "App EOL"
@@ -497,11 +499,11 @@ msgstr "अपडेट सक्षम करें"
 
 #: src/app_row_widget.py:324 src/window.py:536
 msgid "Disable Auto Removal"
-msgstr ""
+msgstr "स्वतः निष्कासन अक्षम करें"
 
 #: src/app_row_widget.py:336
 msgid "Enable Auto Removal"
-msgstr ""
+msgstr "स्वतः निष्कासन सक्षम करें"
 
 #: src/app_row_widget.py:350
 msgid "Manage Snapshots"
@@ -1011,34 +1013,24 @@ msgstr ""
 "सुरक्षा अपडेट प्राप्त नहीं होंगे।"
 
 #: src/window.py:501
-#, fuzzy
-#| msgid "Could not enable {}"
 msgid "Could not enable auto removal"
-msgstr "{} सक्षम नहीं किया जा सका"
+msgstr "स्वतः निष्कासन सक्षम नहीं किया जा सका"
 
 #: src/window.py:504
-#, fuzzy
-#| msgid "Could not disable {}"
 msgid "Could not disable auto removal"
-msgstr "{} को अक्षम नहीं किया जा सका"
+msgstr "स्वतः निष्कासन अक्षम नहीं किया जा सका"
 
 #: src/window.py:527
-#, fuzzy
-#| msgid "Disable Updates for {}?"
 msgid "Disable Automatic Removal for {}?"
-msgstr "{} के लिए अपडेट अक्षम करें?"
+msgstr "{} के लिए स्वचालित निष्कासन अक्षम करें?"
 
 #: src/window.py:530
-#, fuzzy
-#| msgid ""
-#| "This will mask {} ensuring it will never recieve any feature or security "
-#| "updates."
 msgid ""
 "This will pin {} ensuring it well never be removed automatically, even if no "
 "app depends on it."
 msgstr ""
-"यह {} को मास्क कर देगा जिससे यह सुनिश्चित हो जाएगा कि उसे कभी भी कोई सुविधाएँ या "
-"सुरक्षा अपडेट प्राप्त नहीं होंगे।"
+"यह पिन {} करेगा यह सुनिश्चित करते हुए कि इसे कभी भी स्वचालित रूप से हटाया न "
+"जाए, भले ही कोई ऐप इस पर निर्भर न हो।"
 
 #: src/window.py:550
 msgid "Could not Run App"
