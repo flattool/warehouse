@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-31 05:08+0000\n"
-"PO-Revision-Date: 2024-03-28 20:01+0000\n"
+"PO-Revision-Date: 2024-04-01 11:20+0000\n"
 "Last-Translator: Сергей Ворон <voron.s.a@gmail.com>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ru/>\n"
@@ -350,8 +350,6 @@ msgid "No installed Flatpak matches all of the currently applied filters"
 msgstr "Ни один установленный Flatpak не соответствует всем текущим фильтрам"
 
 #: data/ui/window.blp:193
-#, fuzzy
-#| msgid "Refresh List"
 msgid "Refreshing List"
 msgstr "Обновить список"
 
@@ -421,12 +419,14 @@ msgstr "{} скрыт и не будет обновляться"
 
 #: src/app_row_widget.py:94
 msgid "Auto Removal Disabled"
-msgstr ""
+msgstr "Авто удаление отключено"
 
 #: src/app_row_widget.py:99
 msgid ""
 "{} is pinned and will not be auto removed even when it's required by no app"
 msgstr ""
+"{} закреплен и не будет удален автоматически, даже если это не требуется ни "
+"одним приложением"
 
 #: src/app_row_widget.py:106
 msgid "App EOL"
@@ -509,11 +509,11 @@ msgstr "Включить обновления"
 
 #: src/app_row_widget.py:324 src/window.py:546
 msgid "Disable Auto Removal"
-msgstr ""
+msgstr "Отключить авто удаление"
 
 #: src/app_row_widget.py:336
 msgid "Enable Auto Removal"
-msgstr ""
+msgstr "Включить авто удаление"
 
 #: src/app_row_widget.py:350
 msgid "Manage Snapshots"
@@ -1025,34 +1025,24 @@ msgstr ""
 "функций и безопасности."
 
 #: src/window.py:511
-#, fuzzy
-#| msgid "Could not enable {}"
 msgid "Could not enable auto removal"
-msgstr "Не удалось включить {}"
+msgstr "Не удалось включить авто удаление"
 
 #: src/window.py:514
-#, fuzzy
-#| msgid "Could not disable {}"
 msgid "Could not disable auto removal"
-msgstr "Не удалось отключить {}"
+msgstr "Не удалось отключить авто удаление"
 
 #: src/window.py:537
-#, fuzzy
-#| msgid "Disable Updates for {}?"
 msgid "Disable Automatic Removal for {}?"
-msgstr "Отключить обновления для {}?"
+msgstr "Отключить авто удаление для {}?"
 
 #: src/window.py:540
-#, fuzzy
-#| msgid ""
-#| "This will mask {} ensuring it will never recieve any feature or security "
-#| "updates."
 msgid ""
 "This will pin {} ensuring it well never be removed automatically, even if no "
 "app depends on it."
 msgstr ""
-"Это скроет {}, гарантируя, что он никогда не получит никаких обновлений "
-"функций и безопасности."
+"Это закрепит {}, гарантируя, что он никогда не будет удален автоматически, "
+"даже если от него не зависит ни одно приложение."
 
 #: src/window.py:560
 msgid "Could not Run App"
