@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-31 05:08+0000\n"
-"PO-Revision-Date: 2024-03-31 04:51+0000\n"
+"PO-Revision-Date: 2024-04-01 11:20+0000\n"
 "Last-Translator: Scrambled777 <nkkhalia@pm.me>\n"
 "Language-Team: Hindi <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hi/>\n"
@@ -348,10 +348,8 @@ msgid "No installed Flatpak matches all of the currently applied filters"
 msgstr "कोई भी इंस्टॉल किया गया Flatpak वर्तमान में लागू सभी फिल्टर से मेल नहीं खाता है"
 
 #: data/ui/window.blp:193
-#, fuzzy
-#| msgid "Refresh List"
 msgid "Refreshing List"
-msgstr "सूची ताज़ा करें"
+msgstr "सूची को ताज़ा किया जा रहा है"
 
 #: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
