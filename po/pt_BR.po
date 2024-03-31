@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-30 04:43+0000\n"
+"POT-Creation-Date: 2024-03-31 02:24+0000\n"
 "PO-Revision-Date: 2024-03-10 21:20+0000\n"
 "Last-Translator: Tuba <luiz_filipe_motta@hotmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.fyralabs.com/projects/"
@@ -81,7 +81,7 @@ msgstr "Obtendo versões"
 msgid "This could take a while"
 msgstr "Isso pode levar um tempo"
 
-#: data/ui/downgrade.blp:67 src/app_row_widget.py:299 src/window.py:486
+#: data/ui/downgrade.blp:67 src/app_row_widget.py:299 src/window.py:484
 msgid "Disable Updates"
 msgstr "Desativar atualizações"
 
@@ -153,12 +153,12 @@ msgstr "Tente um termo de busca diferente"
 msgid "Select All"
 msgstr "Selecionar tudo"
 
-#: data/ui/orphans.blp:124 src/window.py:199 src/window.py:282
+#: data/ui/orphans.blp:124 src/window.py:198 src/window.py:280
 msgid "Trash"
 msgstr "Enviar para a lixeira"
 
 #: data/ui/orphans.blp:130 data/ui/search_install.blp:54
-#: src/orphans_window.py:122 src/window.py:830
+#: src/orphans_window.py:122 src/window.py:829
 msgid "Install"
 msgstr "Instalar"
 
@@ -449,7 +449,7 @@ msgstr ""
 msgid "Select"
 msgstr "Selecionar"
 
-#: src/app_row_widget.py:176 src/remotes_window.py:226
+#: src/app_row_widget.py:176 src/remotes_window.py:227
 msgid "View More"
 msgstr "Ver mais"
 
@@ -493,7 +493,7 @@ msgstr "{} aberto"
 msgid "Open"
 msgstr "Abrir"
 
-#: src/app_row_widget.py:256 src/window.py:229 src/window.py:303
+#: src/app_row_widget.py:256 src/window.py:228 src/window.py:301
 msgid "Uninstall"
 msgstr "Desinstalar"
 
@@ -501,7 +501,7 @@ msgstr "Desinstalar"
 msgid "Enable Updates"
 msgstr "Ativar atualizações"
 
-#: src/app_row_widget.py:324 src/window.py:537
+#: src/app_row_widget.py:324 src/window.py:536
 msgid "Disable Auto Removal"
 msgstr ""
 
@@ -529,7 +529,7 @@ msgstr "Hash do commit: {}"
 msgid "Could not downgrade {}"
 msgstr "Não foi possível reverter {} para a versão anterior"
 
-#: src/downgrade_window.py:118 src/window.py:455
+#: src/downgrade_window.py:118 src/window.py:453
 msgid "Could not disable updates for {}"
 msgstr "Não foi possível desativar as atualizações para {}"
 
@@ -549,15 +549,15 @@ msgstr "Garanta que {} nunca será atualizado para uma versão mais recente"
 msgid "{} selected"
 msgstr "{} selecionado(s)"
 
-#: src/filter_window.py:135 src/orphans_window.py:150 src/remotes_window.py:306
+#: src/filter_window.py:135 src/orphans_window.py:150 src/remotes_window.py:307
 msgid "User wide"
 msgstr "Escopo de usuário"
 
-#: src/filter_window.py:137 src/orphans_window.py:152 src/remotes_window.py:308
+#: src/filter_window.py:137 src/orphans_window.py:152 src/remotes_window.py:309
 msgid "System wide"
 msgstr "Escopo de sistema"
 
-#: src/filter_window.py:139 src/orphans_window.py:154 src/remotes_window.py:310
+#: src/filter_window.py:139 src/orphans_window.py:154 src/remotes_window.py:311
 msgid "Unknown install type"
 msgstr "Tipo de instalação desconhecido"
 
@@ -618,7 +618,7 @@ msgstr "Doar"
 msgid "Contributors"
 msgstr "Contribuidores"
 
-#: src/orphans_window.py:80 src/window.py:801
+#: src/orphans_window.py:80 src/window.py:800
 msgid "Installed successfully"
 msgstr "Instalado com sucesso"
 
@@ -637,12 +637,12 @@ msgstr ""
 "selecionados."
 
 #: src/orphans_window.py:121 src/orphans_window.py:189
-#: src/properties_window.py:156 src/remotes_window.py:85
-#: src/remotes_window.py:166 src/remotes_window.py:449
-#: src/remotes_window.py:620 src/snapshots_window.py:128
-#: src/snapshots_window.py:234 src/window.py:228 src/window.py:302
-#: src/window.py:438 src/window.py:484 src/window.py:534 src/window.py:636
-#: src/window.py:707 src/window.py:829
+#: src/properties_window.py:156 src/remotes_window.py:86
+#: src/remotes_window.py:167 src/remotes_window.py:450
+#: src/remotes_window.py:621 src/snapshots_window.py:128
+#: src/snapshots_window.py:234 src/window.py:227 src/window.py:300
+#: src/window.py:436 src/window.py:482 src/window.py:533 src/window.py:635
+#: src/window.py:705 src/window.py:828
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -659,7 +659,7 @@ msgid "Continue"
 msgstr "Continuar"
 
 #: src/orphans_window.py:198 src/properties_window.py:43
-#: src/snapshots_window.py:245 src/window.py:416
+#: src/snapshots_window.py:245 src/window.py:414
 msgid "Could not open folder"
 msgstr "Não foi possível abrir a pasta"
 
@@ -667,7 +667,7 @@ msgstr "Não foi possível abrir a pasta"
 msgid "Could not manage data"
 msgstr "Não foi possível gerir os dados"
 
-#: src/properties_window.py:37 src/remotes_window.py:211
+#: src/properties_window.py:37 src/remotes_window.py:212
 msgid "Copied {}"
 msgstr "{} copiado"
 
@@ -683,8 +683,8 @@ msgstr "Dados de usuário"
 msgid "No User Data"
 msgstr "Não há dados de usuário"
 
-#: src/properties_window.py:86 src/remotes_window.py:504
-#: src/remotes_window.py:629
+#: src/properties_window.py:86 src/remotes_window.py:505
+#: src/remotes_window.py:630
 msgid "Name"
 msgstr "Nome"
 
@@ -742,19 +742,19 @@ msgstr "Opções"
 msgid "Could not show properties"
 msgstr "Não foi possível mostrar os detalhes"
 
-#: src/properties_window.py:143 src/window.py:430
+#: src/properties_window.py:143 src/window.py:428
 msgid "Trashed user data"
 msgstr "Dados de usuário enviados para a lixeira"
 
-#: src/properties_window.py:150 src/window.py:425
+#: src/properties_window.py:150 src/window.py:423
 msgid "Could not trash user data"
 msgstr "Não foi possível enviar os dados de usuário para a lixeira"
 
-#: src/properties_window.py:154 src/window.py:433
+#: src/properties_window.py:154 src/window.py:431
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Enviar dados de usuário do {} para a lixeira?"
 
-#: src/properties_window.py:158 src/window.py:440 src/window.py:637
+#: src/properties_window.py:158 src/window.py:438 src/window.py:636
 msgid "Trash Data"
 msgstr "Enviar dados para a lixeira"
 
@@ -762,130 +762,130 @@ msgstr "Enviar dados para a lixeira"
 msgid "{} Properties"
 msgstr "Propriedades do {}"
 
-#: src/remotes_window.py:70
+#: src/remotes_window.py:71
 msgid "Could not remove {}"
 msgstr "Não foi possível remover {}"
 
-#: src/remotes_window.py:80 src/remotes_window.py:161
+#: src/remotes_window.py:81 src/remotes_window.py:162
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr ""
 "Todos os aplicativos instalados de {} irão parar de receber atualizações"
 
-#: src/remotes_window.py:83
+#: src/remotes_window.py:84
 msgid "Remove {}?"
 msgstr "Remover {}?"
 
-#: src/remotes_window.py:86 src/remotes_window.py:271
+#: src/remotes_window.py:87 src/remotes_window.py:272
 msgid "Remove"
 msgstr "Remover"
 
-#: src/remotes_window.py:113
+#: src/remotes_window.py:114
 msgid "Could not enable {}"
 msgstr "Não foi possível ativar {}"
 
-#: src/remotes_window.py:141
+#: src/remotes_window.py:142
 msgid "Could not disable {}"
 msgstr "Não foi possível desativar {}"
 
-#: src/remotes_window.py:164
+#: src/remotes_window.py:165
 msgid "Disable {}?"
 msgstr "Desativar {}?"
 
-#: src/remotes_window.py:167 src/remotes_window.py:262
+#: src/remotes_window.py:168 src/remotes_window.py:263
 msgid "Disable"
 msgstr "Desativar"
 
-#: src/remotes_window.py:178
+#: src/remotes_window.py:179
 msgid "Could not view apps"
 msgstr "Não foi possível ver os aplicativos"
 
-#: src/remotes_window.py:239
+#: src/remotes_window.py:240
 msgid "Set Filter"
 msgstr "Definir filtro"
 
-#: src/remotes_window.py:253
+#: src/remotes_window.py:254
 msgid "Enable"
 msgstr "Ativar"
 
-#: src/remotes_window.py:287
+#: src/remotes_window.py:288
 msgid "Copy remote name"
 msgstr "Copiar nome do repositório remoto"
 
-#: src/remotes_window.py:301
+#: src/remotes_window.py:302
 msgid "Disabled"
 msgstr "Desativado"
 
-#: src/remotes_window.py:338
+#: src/remotes_window.py:339
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr ""
 "A loja de aplicativos de código aberto, pague-o-que-quiser, do elementary"
 
-#: src/remotes_window.py:344
+#: src/remotes_window.py:345
 msgid "Central repository of Flatpak applications"
 msgstr "Repositório central de aplicativos Flatpak"
 
-#: src/remotes_window.py:350
+#: src/remotes_window.py:351
 msgid "Beta builds of Flatpak applications"
 msgstr "Versões beta de aplicativos Flatpak"
 
-#: src/remotes_window.py:356
+#: src/remotes_window.py:357
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "Flatpaks empacotados pelo Fedora Linux"
 
-#: src/remotes_window.py:362
+#: src/remotes_window.py:363
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "As versões beta mais recentes dos aplicativos e runtimes do GNOME"
 
-#: src/remotes_window.py:368
+#: src/remotes_window.py:369
 msgid "Beta KDE Apps and Runtimes"
 msgstr "Versões beta dos aplicativos e runtimes do KDE"
 
-#: src/remotes_window.py:374
+#: src/remotes_window.py:375
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr "Repositório central do SDK de desenvolvedor e do runtime do WebKit"
 
-#: src/remotes_window.py:410 src/remotes_window.py:572
+#: src/remotes_window.py:411 src/remotes_window.py:573
 msgid "Could not add {}"
 msgstr "Não foi possível adicionar {}"
 
-#: src/remotes_window.py:447
+#: src/remotes_window.py:448
 msgid "Add Flatpak Remote"
 msgstr "Adicionar repositório remoto de Flatpak"
 
-#: src/remotes_window.py:450 src/remotes_window.py:621
+#: src/remotes_window.py:451 src/remotes_window.py:622
 msgid "Add"
 msgstr "Adicionar"
 
-#: src/remotes_window.py:508
+#: src/remotes_window.py:509
 msgid "URL"
 msgstr "URL"
 
-#: src/remotes_window.py:520 src/remotes_window.py:632 src/window.py:838
+#: src/remotes_window.py:521 src/remotes_window.py:633 src/window.py:837
 msgid "User"
 msgstr "Usuário"
 
-#: src/remotes_window.py:520 src/remotes_window.py:632
+#: src/remotes_window.py:521 src/remotes_window.py:633
 msgid "Remote will be available to only you"
 msgstr "O repositório remoto estará disponível somente para você"
 
-#: src/remotes_window.py:528 src/remotes_window.py:635 src/window.py:841
+#: src/remotes_window.py:529 src/remotes_window.py:636 src/window.py:840
 msgid "System"
 msgstr "Sistema"
 
-#: src/remotes_window.py:529 src/remotes_window.py:636
+#: src/remotes_window.py:530 src/remotes_window.py:637
 msgid "Remote will be available to every user on the system"
 msgstr ""
 "O repositório remoto estará disponível para todos os usuários do sistema"
 
-#: src/remotes_window.py:568
+#: src/remotes_window.py:569
 msgid "{} successfully added"
 msgstr "{} adicionado com sucesso"
 
-#: src/remotes_window.py:618
+#: src/remotes_window.py:619
 msgid "Add {}?"
 msgstr "Adicionar {}?"
 
-#: src/remotes_window.py:666
+#: src/remotes_window.py:667
 msgid "Flatpak Repos"
 msgstr "Repositórios Flatpak"
 
@@ -961,63 +961,63 @@ msgstr "Desinstalado com sucesso"
 msgid "Could not uninstall some apps"
 msgstr "Não foi possível desinstalar alguns aplicativos"
 
-#: src/window.py:170
+#: src/window.py:169
 msgid "Uninstall Selected Apps?"
 msgstr "Desinstalar aplicativos selecionados?"
 
-#: src/window.py:171
+#: src/window.py:170
 msgid "It will not be possible to use these apps after removal."
 msgstr "Não será possível usar estes aplicativos depois de removidos."
 
-#: src/window.py:191 src/window.py:274
+#: src/window.py:190 src/window.py:272
 msgid "App Settings & Data"
 msgstr "Configurações e dados do aplicativo"
 
-#: src/window.py:195 src/window.py:278
+#: src/window.py:194 src/window.py:276
 msgid "Keep"
 msgstr "Manter"
 
-#: src/window.py:196
+#: src/window.py:195
 msgid "Allow restoring these apps' settings and content"
 msgstr "Permitir a restauração das configurações e dados destes aplicativos"
 
-#: src/window.py:200
+#: src/window.py:199
 msgid "Send these apps' settings and content to the trash"
 msgstr "Enviar as configurações e dados destes aplicativos para a lixeira"
 
-#: src/window.py:236
+#: src/window.py:235
 msgid "Cannot uninstall while already uninstalling"
 msgstr "Não é possível desinstalar enquanto já está desinstalando"
 
-#: src/window.py:266
+#: src/window.py:264
 msgid "Uninstall {}?"
 msgstr "Desinstalar {}?"
 
-#: src/window.py:267
+#: src/window.py:265
 msgid "It will not be possible to use {} after removal."
 msgstr "Não será possível usar {} depois de removido."
 
-#: src/window.py:279
+#: src/window.py:277
 msgid "Allow restoring this app's settings and content"
 msgstr "Permitir a restauração das configurações e dados deste aplicativo"
 
-#: src/window.py:283
+#: src/window.py:281
 msgid "Send this app's settings and content to the trash"
 msgstr "Enviar as configurações e dados deste aplicativo para a lixeira"
 
-#: src/window.py:361
+#: src/window.py:359
 msgid "List refreshed"
 msgstr "Lista atualizada"
 
-#: src/window.py:436
+#: src/window.py:434
 msgid "Your files and data for this app will be sent to the trash."
 msgstr "Seus arquivos e dados deste aplicativo serão enviados para a lixeira."
 
-#: src/window.py:477
+#: src/window.py:475
 msgid "Disable Updates for {}?"
 msgstr "Desativar atualizações para {}?"
 
-#: src/window.py:481
+#: src/window.py:479
 msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
@@ -1025,25 +1025,25 @@ msgstr ""
 "Isso irá restringir {}, garantindo que o aplicativo nunca receba nenhuma "
 "atualização de recursos ou segurança."
 
-#: src/window.py:502
+#: src/window.py:501
 #, fuzzy
 #| msgid "Could not enable {}"
 msgid "Could not enable auto removal"
 msgstr "Não foi possível ativar {}"
 
-#: src/window.py:505
+#: src/window.py:504
 #, fuzzy
 #| msgid "Could not disable {}"
 msgid "Could not disable auto removal"
 msgstr "Não foi possível desativar {}"
 
-#: src/window.py:528
+#: src/window.py:527
 #, fuzzy
 #| msgid "Disable Updates for {}?"
 msgid "Disable Automatic Removal for {}?"
 msgstr "Desativar atualizações para {}?"
 
-#: src/window.py:531
+#: src/window.py:530
 #, fuzzy
 #| msgid ""
 #| "This will mask {} ensuring it will never recieve any feature or security "
@@ -1071,25 +1071,25 @@ msgstr "{} não possui dados para enviar para a lixeira"
 msgid "Could not trash {}'s data"
 msgstr "Não foi possível enviar os dados do {} para a lixeira"
 
-#: src/window.py:632
+#: src/window.py:631
 msgid "Trash Selected Apps' User Data?"
 msgstr ""
 "Enviar para a lixeira os dados de usuário dos aplicativos selecionados?"
 
-#: src/window.py:633
+#: src/window.py:632
 msgid "Your files and data for these apps will be sent to the trash."
 msgstr ""
 "Seus arquivos e dados destes aplicativos serão enviados para a lixeira."
 
-#: src/window.py:683
+#: src/window.py:682
 msgid "Could not snapshot some apps"
 msgstr "Não foi possível criar snapshot de alguns aplicativos"
 
-#: src/window.py:701
+#: src/window.py:699
 msgid "Create Snapshots?"
 msgstr "Criar snapshots?"
 
-#: src/window.py:703
+#: src/window.py:701
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
@@ -1097,39 +1097,39 @@ msgstr ""
 "Snapshots são backups dos dados do usuário do aplicativo. Eles podem ser "
 "reaplicados a qualquer momento. Isso pode levar um tempo."
 
-#: src/window.py:708
+#: src/window.py:706
 msgid "Create Snapshots"
 msgstr "Criar snapshots"
 
-#: src/window.py:762
+#: src/window.py:761
 msgid "Copied selected app names"
 msgstr "Copiar nomes dos aplicativos selecionados"
 
-#: src/window.py:777
+#: src/window.py:776
 msgid "Copied selected app IDs"
 msgstr "Copiar IDs dos aplicativos selecionados"
 
-#: src/window.py:792
+#: src/window.py:791
 msgid "Copied selected app refs"
 msgstr "Copiar refs dos aplicativos selecionados"
 
-#: src/window.py:803
+#: src/window.py:802
 msgid "Could not install app"
 msgstr "Não foi possível instalar o aplicativo"
 
-#: src/window.py:827
+#: src/window.py:826
 msgid "Install {}?"
 msgstr "Instalar {}?"
 
-#: src/window.py:838
+#: src/window.py:837
 msgid "The app will be available to only you"
 msgstr "O aplicativo estará disponível apenas para você"
 
-#: src/window.py:842
+#: src/window.py:841
 msgid "The app will be available to every user on the system"
 msgstr "O aplicativo estará disponível para todos os usuários do sistema"
 
-#: src/window.py:872
+#: src/window.py:871
 msgid "File type not supported"
 msgstr "Tipo de arquivo não suportado"
 
