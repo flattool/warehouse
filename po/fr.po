@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-31 05:08+0000\n"
-"PO-Revision-Date: 2024-03-09 20:20+0000\n"
+"PO-Revision-Date: 2024-04-02 09:06+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/fr/>\n"
@@ -95,7 +95,7 @@ msgid ""
 "Note that downgrading can cause issues."
 msgstr ""
 "Ceci désinstallera la version actuelle et installera celle choisie à la "
-"place. Noter que le rétrogradage peut causer des problèmes."
+"place. Notez que le rétrogradage peut causer des problèmes."
 
 #: data/ui/filter.blp:5 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
@@ -352,10 +352,8 @@ msgstr ""
 "Aucun Flatpak installé ne correspond aux filtres actuellement appliqués"
 
 #: data/ui/window.blp:193
-#, fuzzy
-#| msgid "Refresh List"
 msgid "Refreshing List"
-msgstr "Actualiser la liste"
+msgstr "Actualisation de la liste"
 
 #: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
@@ -423,12 +421,14 @@ msgstr "{} est masquée et ne sera plus mise à jour"
 
 #: src/app_row_widget.py:94
 msgid "Auto Removal Disabled"
-msgstr ""
+msgstr "Suppression automatique désactivée"
 
 #: src/app_row_widget.py:99
 msgid ""
 "{} is pinned and will not be auto removed even when it's required by no app"
 msgstr ""
+"{} est épinglé et ne sera pas automatiquement supprimé s’il n’est plus "
+"utilisé par aucune application"
 
 #: src/app_row_widget.py:106
 msgid "App EOL"
@@ -509,11 +509,11 @@ msgstr "Activer les mises à jour"
 
 #: src/app_row_widget.py:324 src/window.py:546
 msgid "Disable Auto Removal"
-msgstr ""
+msgstr "Désactiver la suppression automatique"
 
 #: src/app_row_widget.py:336
 msgid "Enable Auto Removal"
-msgstr ""
+msgstr "Activer la suppression automatique"
 
 #: src/app_row_widget.py:350
 msgid "Manage Snapshots"
@@ -744,10 +744,8 @@ msgid "Options"
 msgstr "Options"
 
 #: src/properties_window.py:135
-#, fuzzy
-#| msgid "Could not show details"
 msgid "Could not show properties"
-msgstr "Impossible d’afficher les détails"
+msgstr "Impossible d’afficher les propriétés"
 
 #: src/properties_window.py:143 src/window.py:438
 msgid "Trashed user data"
@@ -1036,34 +1034,24 @@ msgstr ""
 "de sécurité ou de fonctionnalités."
 
 #: src/window.py:511
-#, fuzzy
-#| msgid "Could not enable {}"
 msgid "Could not enable auto removal"
-msgstr "Impossible d’activer {}"
+msgstr "Impossible d’activer la suppression automatique"
 
 #: src/window.py:514
-#, fuzzy
-#| msgid "Could not disable {}"
 msgid "Could not disable auto removal"
-msgstr "Impossible de désactiver {}"
+msgstr "Impossible de désactiver la suppression automatique"
 
 #: src/window.py:537
-#, fuzzy
-#| msgid "Disable Updates for {}?"
 msgid "Disable Automatic Removal for {}?"
-msgstr "Désactiver les mises à jour pour {} ?"
+msgstr "Désactiver la suppression automatique pour {} ?"
 
 #: src/window.py:540
-#, fuzzy
-#| msgid ""
-#| "This will mask {} ensuring it will never recieve any feature or security "
-#| "updates."
 msgid ""
 "This will pin {} ensuring it well never be removed automatically, even if no "
 "app depends on it."
 msgstr ""
-"Ceci masquera {} pour que cette application ne reçoive plus de mises à jour "
-"de sécurité ou de fonctionnalités."
+"Ceci épinglera {} pour qu’il ne soit plus supprimé automatiquement, même si "
+"plus aucune application n’en dépend."
 
 #: src/window.py:560
 msgid "Could not Run App"
