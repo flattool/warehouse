@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-31 05:08+0000\n"
-"PO-Revision-Date: 2024-03-21 22:20+0000\n"
+"PO-Revision-Date: 2024-04-02 09:06+0000\n"
 "Last-Translator: vadik317 <slavboris1255@gmail.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
@@ -351,10 +351,8 @@ msgstr ""
 "aplicados actualmente"
 
 #: data/ui/window.blp:193
-#, fuzzy
-#| msgid "Refresh List"
 msgid "Refreshing List"
-msgstr "Actualizar lista"
+msgstr "Actualizando lista"
 
 #: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
@@ -422,12 +420,14 @@ msgstr "{} está restringido y no recibirá actualizaciones"
 
 #: src/app_row_widget.py:94
 msgid "Auto Removal Disabled"
-msgstr ""
+msgstr "Eliminación automática deshabilitada"
 
 #: src/app_row_widget.py:99
 msgid ""
 "{} is pinned and will not be auto removed even when it's required by no app"
 msgstr ""
+"{} está anclado y no se eliminará automáticamente incluso cuando no sea "
+"necesario para ninguna aplicación"
 
 #: src/app_row_widget.py:106
 msgid "App EOL"
@@ -509,11 +509,11 @@ msgstr "Activar actualizaciones"
 
 #: src/app_row_widget.py:324 src/window.py:546
 msgid "Disable Auto Removal"
-msgstr ""
+msgstr "Desactivar la eliminación automática"
 
 #: src/app_row_widget.py:336
 msgid "Enable Auto Removal"
-msgstr ""
+msgstr "Activar la eliminación automática"
 
 #: src/app_row_widget.py:350
 msgid "Manage Snapshots"
@@ -743,10 +743,8 @@ msgid "Options"
 msgstr "Opciones"
 
 #: src/properties_window.py:135
-#, fuzzy
-#| msgid "Could not show details"
 msgid "Could not show properties"
-msgstr "No se pueden mostrar los detalles"
+msgstr "No se pudieron mostrar las propiedades"
 
 #: src/properties_window.py:143 src/window.py:438
 msgid "Trashed user data"
