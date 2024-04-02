@@ -3,7 +3,7 @@ using Adw 1;
 
 template $PropertiesWindow: Adw.Dialog {
   content-width: 350;
-  content-height: 600;
+  content-height: 999999;
 
   Adw.ToolbarView main_toolbar_view {
     [top]
@@ -37,6 +37,32 @@ template $PropertiesWindow: Adw.Dialog {
                 styles [
                   "icon-dropshadow"
                 ]
+              }
+
+              Button {
+                margin-top: 6;
+
+                styles [
+                  "title-1",
+                  "flat"
+                ]
+
+                Label name {
+                  wrap: true;
+                }
+              }
+
+              Button {
+                sensitive: true;
+
+                styles [
+                  "title-4",
+                  "flat"
+                ]
+
+                Label description {
+                  wrap: true;
+                }
               }
 
               Adw.PreferencesGroup upper {

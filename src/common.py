@@ -191,6 +191,31 @@ class myUtils:
         sorted_array = sorted(data, key=lambda item: item[0].lower())
         return sorted_array
 
+    def get_flatpak_info(self, ref, install_type):
+        output = subprocess.run(
+            [
+                "flatpak-spawn", "--host", "sh", "-c",
+                f"flatpak info {ref} --{install_type}"
+            ],
+            capture_output=True,
+            text=True
+        ).stdout
+        lines = output.strip().split("\n")
+        columns = lines[0].split("\t")
+        data = [columns]
+        for line in lines[1:]:
+            row = line.split(": ")
+            for i in range(len(row)):
+                row[i] = row[i].strip()
+            data.append(row)
+        info = {}
+        info["name"] = data[0][0]
+        for i in range(2, len(data)):
+            if data[i][0] == '':
+                continue
+            info[data[i][0]] = data[i][1]
+        return info
+
     def get_dependent_runtimes(self):
         paks = self.get_host_flatpaks()
         dependent_runtimes = []

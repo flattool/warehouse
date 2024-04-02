@@ -30,7 +30,9 @@ class PropertiesWindow(Adw.Dialog):
     eol_app_banner = Gtk.Template.Child()
     eol_runtime_banner = Gtk.Template.Child()
     mask_banner = Gtk.Template.Child()
-
+    description = Gtk.Template.Child()
+    name = Gtk.Template.Child()
+    
     def copy_item(self, to_copy, to_toast=None):
         self.get_clipboard().set(to_copy)
         if to_toast:
@@ -82,31 +84,22 @@ class PropertiesWindow(Adw.Dialog):
                 self.view_apps.set_visible(True)
 
     def generate_lower(self):
-        column_headers = [
-            _("Name"),
-            _("Description"),
-            _("App ID"),
-            _("Version"),
-            _("Branch"),
-            _("Arch"),
-            _("Origin"),
-            _("Installation"),
-            _("Ref"),
-            _("Active Commit"),
-            _("Latest Commit"),
-            _("Installed Size"),
-            _("Options"),
-        ]
-
-        for i in range(len(column_headers)):
-            if self.current_flatpak[i] == "":
+        info = self.my_utils.get_flatpak_info(self.app_ref, self.install_type)
+        name_desc = info["name"].split(" - ")
+        self.name.set_label((name_desc[0]))
+        try:
+            self.description.set_label((name_desc[1]))
+        except:
+            pass
+        for key in info.keys():
+            if key == "name":
                 continue
-
             row = Adw.ActionRow(
-                title=column_headers[i], tooltip_text=_("Copy"), activatable=True
+                title=GLib.markup_escape_text(key),
+                subtitle=GLib.markup_escape_text(info[key]),
+                activatable=True,
             )
             row.add_suffix(Gtk.Image.new_from_icon_name("edit-copy-symbolic"))
-            row.set_subtitle(GLib.markup_escape_text(self.current_flatpak[i]))
             row.add_css_class("property")
             row.connect(
                 "activated",
