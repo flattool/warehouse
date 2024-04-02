@@ -449,9 +449,10 @@ class myUtils:
                 check=True,
                 env=self.new_env,
                 start_new_session=True,
+                capture_output=True,
             )
         except subprocess.CalledProcessError as e:
-            self.run_app_error_message = str(e)
+            self.run_app_error_message = e.stderr.decode()
             self.run_app_error = True
 
     def get_install_type(self, type_arr):
