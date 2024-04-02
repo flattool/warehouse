@@ -39,29 +39,31 @@ template $PropertiesWindow: Adw.Dialog {
                 ]
               }
 
-              Button {
-                margin-top: 6;
+              Label name {
+                wrap: true;
 
                 styles [
-                  "title-1",
-                  "flat"
+                  "title-1"
                 ]
-
-                Label name {
-                  wrap: true;
-                }
               }
 
-              Button {
-                sensitive: true;
-
+              Button description_button {
                 styles [
                   "title-4",
                   "flat"
                 ]
 
-                Label description {
-                  wrap: true;
+                Box {
+                  spacing: 12;
+
+                  Label description {
+                    halign: start;
+                    wrap: true;
+                    hexpand: true;
+                  }
+                  Image {
+                    icon-name: "edit-copy-symbolic";
+                  }
                 }
               }
 

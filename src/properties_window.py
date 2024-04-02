@@ -30,8 +30,9 @@ class PropertiesWindow(Adw.Dialog):
     eol_app_banner = Gtk.Template.Child()
     eol_runtime_banner = Gtk.Template.Child()
     mask_banner = Gtk.Template.Child()
-    description = Gtk.Template.Child()
     name = Gtk.Template.Child()
+    description = Gtk.Template.Child()
+    description_button = Gtk.Template.Child()
     
     def copy_item(self, to_copy, to_toast=None):
         self.get_clipboard().set(to_copy)
@@ -62,6 +63,12 @@ class PropertiesWindow(Adw.Dialog):
         self.size = self.my_utils.get_size_with_format(self.user_data_path)
 
     def generate_upper(self):
+        self.description_button.connect(
+            "clicked",
+            lambda *_a: self.copy_item(
+                self.description.get_label(), _("Description")
+            )
+        )
         image = self.my_utils.find_app_icon(self.app_id)
         self.runtime.set_subtitle(self.current_flatpak[13])
         if image.get_paintable() == None:
