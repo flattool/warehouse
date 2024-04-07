@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 05:08+0000\n"
+"POT-Creation-Date: 2024-04-06 23:51-0400\n"
 "PO-Revision-Date: 2024-03-08 04:31+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Ukrainian <https://weblate.fyralabs.com/projects/flattool/"
@@ -70,31 +70,31 @@ msgstr "Знайти та відправити у Смітник залишки 
 msgid "Reinstall apps that have leftover data"
 msgstr "Перевстановити додатки які мають залишки даних"
 
-#: data/ui/downgrade.blp:23 src/app_row_widget.py:360
+#: data/ui/downgrade.blp:25 src/app_row_widget.py:360
 msgid "Downgrade"
 msgstr "Даунгрейд"
 
-#: data/ui/downgrade.blp:51
+#: data/ui/downgrade.blp:55
 #, fuzzy
 #| msgid "Fetching Releases…"
 msgid "Fetching Releases"
 msgstr "Отримуємо дані про релізи…"
 
-#: data/ui/downgrade.blp:59 data/ui/window.blp:107 data/ui/window.blp:162
+#: data/ui/downgrade.blp:63 data/ui/window.blp:107 data/ui/window.blp:162
 #, fuzzy
 #| msgid "This could take a while."
 msgid "This could take a while"
 msgstr "Це може зайняти певний час."
 
-#: data/ui/downgrade.blp:67 src/app_row_widget.py:299 src/window.py:494
+#: data/ui/downgrade.blp:71 src/app_row_widget.py:299 src/window.py:494
 msgid "Disable Updates"
 msgstr "Вимкнути оновлення"
 
-#: data/ui/downgrade.blp:73
+#: data/ui/downgrade.blp:77
 msgid "Select a Release"
 msgstr "Обрати реліз"
 
-#: data/ui/downgrade.blp:74
+#: data/ui/downgrade.blp:78
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
@@ -193,41 +193,46 @@ msgstr "Додати файл репозиторію"
 msgid "Add a Custom Remote"
 msgstr "Додати власне віддалене сховище"
 
-#: data/ui/properties.blp:44
+#: data/ui/properties.blp:7
+#, fuzzy
+#| msgid "{} Properties"
+msgid "Properties"
+msgstr "Властивості {}"
+
+#: data/ui/properties.blp:73
 #, fuzzy
 #| msgid "Loading Flatpaks…"
 msgid "Loading User Data"
 msgstr "Завантажуємо Flatpak-и…"
 
-#: data/ui/properties.blp:49 src/app_row_widget.py:268
+#: data/ui/properties.blp:78 src/app_row_widget.py:268
 #: src/orphans_window.py:258
 msgid "Open User Data Folder"
 msgstr "Відкрити таку з даними користувача"
 
-#: data/ui/properties.blp:61 src/app_row_widget.py:281
+#: data/ui/properties.blp:90 src/app_row_widget.py:281
 msgid "Trash User Data"
 msgstr "Відправити дані користувача у Смітник"
 
-#: data/ui/properties.blp:79
+#: data/ui/properties.blp:108
 msgid "Show Apps Using This Runtime"
 msgstr ""
 
-#: data/ui/properties.blp:90
+#: data/ui/properties.blp:119
 #, fuzzy
 #| msgid "Runtime EOL"
 msgid "Runtime"
 msgstr "Рантайм більше не підтримується (EOL)"
 
-#: data/ui/properties.blp:95 src/app_row_widget.py:156
+#: data/ui/properties.blp:124 src/app_row_widget.py:156
 msgid "View Properties"
 msgstr "Переглянути властивості"
 
-#: data/ui/properties.blp:106 src/app_row_widget.py:234
-#: src/properties_window.py:106 src/window.py:562
+#: data/ui/properties.blp:135 src/app_row_widget.py:234 src/window.py:562
 msgid "Copy"
 msgstr "Скопіювати"
 
-#: data/ui/properties.blp:118
+#: data/ui/properties.blp:147
 msgid "Show Details in Store"
 msgstr ""
 
@@ -582,33 +587,33 @@ msgstr ""
 msgid "Manage Snapshots"
 msgstr "Керувати снапшотами"
 
-#: src/common.py:301 src/common.py:375
+#: src/common.py:326 src/common.py:400
 msgid ""
 "Working on {}\n"
 "{} out of {}"
 msgstr ""
 
-#: src/downgrade_window.py:87
+#: src/downgrade_window.py:88
 msgid "Commit Hash: {}"
 msgstr "Хеш-сума коміту: {}"
 
-#: src/downgrade_window.py:109
+#: src/downgrade_window.py:110
 msgid "Could not downgrade {}"
 msgstr "Не вдалося виконати даунгрейд {}"
 
-#: src/downgrade_window.py:118 src/window.py:463
+#: src/downgrade_window.py:119 src/window.py:463
 msgid "Could not disable updates for {}"
 msgstr "Не вдалося вимкнути оновлення для {}"
 
-#: src/downgrade_window.py:131
+#: src/downgrade_window.py:132
 msgid "Downgrading…"
 msgstr "Даунгрейдинг…"
 
-#: src/downgrade_window.py:154
+#: src/downgrade_window.py:155
 msgid "Downgrade {}"
 msgstr "Виконати даунгрейд {}"
 
-#: src/downgrade_window.py:162
+#: src/downgrade_window.py:163
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Впевнитися що {} ніколи не буде оновлюватися до новітніх версій"
 
@@ -729,7 +734,7 @@ msgstr "Ця тека буде відправлена в Смітник."
 msgid "Continue"
 msgstr "Продовжити"
 
-#: src/orphans_window.py:198 src/properties_window.py:43
+#: src/orphans_window.py:198 src/properties_window.py:46
 #: src/snapshots_window.py:245 src/window.py:424
 msgid "Could not open folder"
 msgstr "Не вдалося відкрити теку"
@@ -738,74 +743,25 @@ msgstr "Не вдалося відкрити теку"
 msgid "Could not manage data"
 msgstr "Не вдалося вправитися з даними"
 
-#: src/properties_window.py:37 src/remotes_window.py:212
+#: src/properties_window.py:40 src/remotes_window.py:212
 msgid "Copied {}"
 msgstr "Скопійовано {}"
 
-#: src/properties_window.py:49
+#: src/properties_window.py:52
 msgid "Could not show details"
 msgstr "Не вдалося показати подробиці"
 
-#: src/properties_window.py:55
+#: src/properties_window.py:58
 msgid "User Data"
 msgstr "Дані користувача"
 
-#: src/properties_window.py:75 src/properties_window.py:144
-msgid "No User Data"
-msgstr "Немає даних користувача"
-
-#: src/properties_window.py:86 src/remotes_window.py:505
-#: src/remotes_window.py:630
-msgid "Name"
-msgstr "Назва"
-
-#: src/properties_window.py:87
+#: src/properties_window.py:69
 msgid "Description"
 msgstr "Опис"
 
-#: src/properties_window.py:88
-msgid "App ID"
-msgstr "Ідентифікатор додатку"
-
-#: src/properties_window.py:89
-msgid "Version"
-msgstr "Версія"
-
-#: src/properties_window.py:90
-msgid "Branch"
-msgstr "Гілка"
-
-#: src/properties_window.py:91
-msgid "Arch"
-msgstr "Архітектура"
-
-#: src/properties_window.py:92
-msgid "Origin"
-msgstr "Походження"
-
-#: src/properties_window.py:93
-msgid "Installation"
-msgstr "Встановлення"
-
-#: src/properties_window.py:94
-msgid "Ref"
-msgstr "Референс"
-
-#: src/properties_window.py:95
-msgid "Active Commit"
-msgstr "Активний коміт"
-
-#: src/properties_window.py:96
-msgid "Latest Commit"
-msgstr "Останній коміт"
-
-#: src/properties_window.py:97
-msgid "Installed Size"
-msgstr "Розмір встановлених файлів"
-
-#: src/properties_window.py:98
-msgid "Options"
-msgstr "Властивості"
+#: src/properties_window.py:84 src/properties_window.py:144
+msgid "No User Data"
+msgstr "Немає даних користувача"
 
 #: src/properties_window.py:135
 #, fuzzy
@@ -828,10 +784,6 @@ msgstr "Відправити дані користувача додатку {} �
 #: src/properties_window.py:158 src/window.py:448 src/window.py:646
 msgid "Trash Data"
 msgstr "В Смітник"
-
-#: src/properties_window.py:218
-msgid "{} Properties"
-msgstr "Властивості {}"
 
 #: src/remotes_window.py:71
 msgid "Could not remove {}"
@@ -941,6 +893,10 @@ msgstr "Додати віддалене сховище Flatpak"
 #: src/remotes_window.py:451 src/remotes_window.py:622
 msgid "Add"
 msgstr "Додати"
+
+#: src/remotes_window.py:505 src/remotes_window.py:630
+msgid "Name"
+msgstr "Назва"
 
 #: src/remotes_window.py:509
 msgid "URL"
@@ -1235,6 +1191,39 @@ msgstr "Додаток буде доступний усім користувач
 #: src/window.py:881
 msgid "File type not supported"
 msgstr "Тип файлу не підтримується"
+
+#~ msgid "App ID"
+#~ msgstr "Ідентифікатор додатку"
+
+#~ msgid "Version"
+#~ msgstr "Версія"
+
+#~ msgid "Branch"
+#~ msgstr "Гілка"
+
+#~ msgid "Arch"
+#~ msgstr "Архітектура"
+
+#~ msgid "Origin"
+#~ msgstr "Походження"
+
+#~ msgid "Installation"
+#~ msgstr "Встановлення"
+
+#~ msgid "Ref"
+#~ msgstr "Референс"
+
+#~ msgid "Active Commit"
+#~ msgstr "Активний коміт"
+
+#~ msgid "Latest Commit"
+#~ msgstr "Останній коміт"
+
+#~ msgid "Installed Size"
+#~ msgstr "Розмір встановлених файлів"
+
+#~ msgid "Options"
+#~ msgstr "Властивості"
 
 #~ msgid "List refreshed"
 #~ msgstr "Список оновлено"

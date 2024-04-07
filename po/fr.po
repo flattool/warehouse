@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 05:08+0000\n"
-"PO-Revision-Date: 2024-03-09 20:20+0000\n"
+"POT-Creation-Date: 2024-04-06 23:51-0400\n"
+"PO-Revision-Date: 2024-04-02 09:06+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/fr/>\n"
@@ -69,33 +69,33 @@ msgstr "Chercher et supprimer les données utilisateur résiduelles"
 msgid "Reinstall apps that have leftover data"
 msgstr "Réinstaller les applications dont des données ont été conservées"
 
-#: data/ui/downgrade.blp:23 src/app_row_widget.py:360
+#: data/ui/downgrade.blp:25 src/app_row_widget.py:360
 msgid "Downgrade"
 msgstr "Rétrograder"
 
-#: data/ui/downgrade.blp:51
+#: data/ui/downgrade.blp:55
 msgid "Fetching Releases"
 msgstr "Récupération des versions"
 
-#: data/ui/downgrade.blp:59 data/ui/window.blp:107 data/ui/window.blp:162
+#: data/ui/downgrade.blp:63 data/ui/window.blp:107 data/ui/window.blp:162
 msgid "This could take a while"
 msgstr "Cela peut prendre du temps"
 
-#: data/ui/downgrade.blp:67 src/app_row_widget.py:299 src/window.py:494
+#: data/ui/downgrade.blp:71 src/app_row_widget.py:299 src/window.py:494
 msgid "Disable Updates"
 msgstr "Désactiver les mises à jour"
 
-#: data/ui/downgrade.blp:73
+#: data/ui/downgrade.blp:77
 msgid "Select a Release"
 msgstr "Sélectionnez une version"
 
-#: data/ui/downgrade.blp:74
+#: data/ui/downgrade.blp:78
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
 "Ceci désinstallera la version actuelle et installera celle choisie à la "
-"place. Noter que le rétrogradage peut causer des problèmes."
+"place. Notez que le rétrogradage peut causer des problèmes."
 
 #: data/ui/filter.blp:5 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
@@ -180,37 +180,42 @@ msgstr "Ajouter un fichier de répertoire"
 msgid "Add a Custom Remote"
 msgstr "Ajouter un dépôt personnalisé"
 
-#: data/ui/properties.blp:44
+#: data/ui/properties.blp:7
+#, fuzzy
+#| msgid "{} Properties"
+msgid "Properties"
+msgstr "Propriétés de {}"
+
+#: data/ui/properties.blp:73
 msgid "Loading User Data"
 msgstr "Chargement des données utilisateur"
 
-#: data/ui/properties.blp:49 src/app_row_widget.py:268
+#: data/ui/properties.blp:78 src/app_row_widget.py:268
 #: src/orphans_window.py:258
 msgid "Open User Data Folder"
 msgstr "Ouvrir le dossier des données utilisateur"
 
-#: data/ui/properties.blp:61 src/app_row_widget.py:281
+#: data/ui/properties.blp:90 src/app_row_widget.py:281
 msgid "Trash User Data"
 msgstr "Mettre les données utilisateur à la corbeille"
 
-#: data/ui/properties.blp:79
+#: data/ui/properties.blp:108
 msgid "Show Apps Using This Runtime"
 msgstr "Afficher les applications utilisant cet environnement d’exécution"
 
-#: data/ui/properties.blp:90
+#: data/ui/properties.blp:119
 msgid "Runtime"
 msgstr "Environnement d’exécution"
 
-#: data/ui/properties.blp:95 src/app_row_widget.py:156
+#: data/ui/properties.blp:124 src/app_row_widget.py:156
 msgid "View Properties"
 msgstr "Voir les propriétés"
 
-#: data/ui/properties.blp:106 src/app_row_widget.py:234
-#: src/properties_window.py:106 src/window.py:562
+#: data/ui/properties.blp:135 src/app_row_widget.py:234 src/window.py:562
 msgid "Copy"
 msgstr "Copier"
 
-#: data/ui/properties.blp:118
+#: data/ui/properties.blp:147
 msgid "Show Details in Store"
 msgstr "Afficher les détails dans le magasin"
 
@@ -352,10 +357,8 @@ msgstr ""
 "Aucun Flatpak installé ne correspond aux filtres actuellement appliqués"
 
 #: data/ui/window.blp:193
-#, fuzzy
-#| msgid "Refresh List"
 msgid "Refreshing List"
-msgstr "Actualiser la liste"
+msgstr "Actualisation de la liste"
 
 #: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
@@ -423,12 +426,14 @@ msgstr "{} est masquée et ne sera plus mise à jour"
 
 #: src/app_row_widget.py:94
 msgid "Auto Removal Disabled"
-msgstr ""
+msgstr "Suppression automatique désactivée"
 
 #: src/app_row_widget.py:99
 msgid ""
 "{} is pinned and will not be auto removed even when it's required by no app"
 msgstr ""
+"{} est épinglé et ne sera pas automatiquement supprimé s’il n’est plus "
+"utilisé par aucune application"
 
 #: src/app_row_widget.py:106
 msgid "App EOL"
@@ -509,17 +514,17 @@ msgstr "Activer les mises à jour"
 
 #: src/app_row_widget.py:324 src/window.py:546
 msgid "Disable Auto Removal"
-msgstr ""
+msgstr "Désactiver la suppression automatique"
 
 #: src/app_row_widget.py:336
 msgid "Enable Auto Removal"
-msgstr ""
+msgstr "Activer la suppression automatique"
 
 #: src/app_row_widget.py:350
 msgid "Manage Snapshots"
 msgstr "Gérer les instantanés"
 
-#: src/common.py:301 src/common.py:375
+#: src/common.py:326 src/common.py:400
 msgid ""
 "Working on {}\n"
 "{} out of {}"
@@ -527,27 +532,27 @@ msgstr ""
 "Travail en cours sur {}\n"
 "{} sur {}"
 
-#: src/downgrade_window.py:87
+#: src/downgrade_window.py:88
 msgid "Commit Hash: {}"
 msgstr "Hachage du commit : {}"
 
-#: src/downgrade_window.py:109
+#: src/downgrade_window.py:110
 msgid "Could not downgrade {}"
 msgstr "Impossible de rétrograder {}"
 
-#: src/downgrade_window.py:118 src/window.py:463
+#: src/downgrade_window.py:119 src/window.py:463
 msgid "Could not disable updates for {}"
 msgstr "Impossible de désactiver les mises à jour pour {}"
 
-#: src/downgrade_window.py:131
+#: src/downgrade_window.py:132
 msgid "Downgrading…"
 msgstr "Rétrogradage…"
 
-#: src/downgrade_window.py:154
+#: src/downgrade_window.py:155
 msgid "Downgrade {}"
 msgstr "Rétrograder {}"
 
-#: src/downgrade_window.py:162
+#: src/downgrade_window.py:163
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr ""
 "Assurez vous que {} ne sera jamais mise à jour vers une nouvelle version"
@@ -665,7 +670,7 @@ msgstr "Ces dossiers seront mis à la corbeille."
 msgid "Continue"
 msgstr "Continuer"
 
-#: src/orphans_window.py:198 src/properties_window.py:43
+#: src/orphans_window.py:198 src/properties_window.py:46
 #: src/snapshots_window.py:245 src/window.py:424
 msgid "Could not open folder"
 msgstr "Échec de l’ouverture du dossier"
@@ -674,80 +679,29 @@ msgstr "Échec de l’ouverture du dossier"
 msgid "Could not manage data"
 msgstr "Impossible de gérer les données"
 
-#: src/properties_window.py:37 src/remotes_window.py:212
+#: src/properties_window.py:40 src/remotes_window.py:212
 msgid "Copied {}"
 msgstr "{} copié"
 
-#: src/properties_window.py:49
+#: src/properties_window.py:52
 msgid "Could not show details"
 msgstr "Impossible d’afficher les détails"
 
-#: src/properties_window.py:55
+#: src/properties_window.py:58
 msgid "User Data"
 msgstr "Données utilisateur"
 
-#: src/properties_window.py:75 src/properties_window.py:144
-msgid "No User Data"
-msgstr "Aucune donnée utilisateur"
-
-#: src/properties_window.py:86 src/remotes_window.py:505
-#: src/remotes_window.py:630
-msgid "Name"
-msgstr "Nom"
-
-#: src/properties_window.py:87
+#: src/properties_window.py:69
 msgid "Description"
 msgstr "Description"
 
-#: src/properties_window.py:88
-msgid "App ID"
-msgstr "Identifiant de l’application"
-
-#: src/properties_window.py:89
-msgid "Version"
-msgstr "Version"
-
-#: src/properties_window.py:90
-msgid "Branch"
-msgstr "Branche"
-
-#: src/properties_window.py:91
-msgid "Arch"
-msgstr "Architecture"
-
-#: src/properties_window.py:92
-msgid "Origin"
-msgstr "Origine"
-
-#: src/properties_window.py:93
-msgid "Installation"
-msgstr "Installation"
-
-#: src/properties_window.py:94
-msgid "Ref"
-msgstr "Référentiel"
-
-#: src/properties_window.py:95
-msgid "Active Commit"
-msgstr "Commit actif"
-
-#: src/properties_window.py:96
-msgid "Latest Commit"
-msgstr "Dernier commit"
-
-#: src/properties_window.py:97
-msgid "Installed Size"
-msgstr "Taille installée"
-
-#: src/properties_window.py:98
-msgid "Options"
-msgstr "Options"
+#: src/properties_window.py:84 src/properties_window.py:144
+msgid "No User Data"
+msgstr "Aucune donnée utilisateur"
 
 #: src/properties_window.py:135
-#, fuzzy
-#| msgid "Could not show details"
 msgid "Could not show properties"
-msgstr "Impossible d’afficher les détails"
+msgstr "Impossible d’afficher les propriétés"
 
 #: src/properties_window.py:143 src/window.py:438
 msgid "Trashed user data"
@@ -764,10 +718,6 @@ msgstr "Mettre les données utilisateur de {} à la corbeille ?"
 #: src/properties_window.py:158 src/window.py:448 src/window.py:646
 msgid "Trash Data"
 msgstr "Mettre les données à la corbeille"
-
-#: src/properties_window.py:218
-msgid "{} Properties"
-msgstr "Propriétés de {}"
 
 #: src/remotes_window.py:71
 msgid "Could not remove {}"
@@ -862,6 +812,10 @@ msgstr "Ajouter un dépôt de logiciels Flatpak"
 #: src/remotes_window.py:451 src/remotes_window.py:622
 msgid "Add"
 msgstr "Ajouter"
+
+#: src/remotes_window.py:505 src/remotes_window.py:630
+msgid "Name"
+msgstr "Nom"
 
 #: src/remotes_window.py:509
 msgid "URL"
@@ -1036,34 +990,24 @@ msgstr ""
 "de sécurité ou de fonctionnalités."
 
 #: src/window.py:511
-#, fuzzy
-#| msgid "Could not enable {}"
 msgid "Could not enable auto removal"
-msgstr "Impossible d’activer {}"
+msgstr "Impossible d’activer la suppression automatique"
 
 #: src/window.py:514
-#, fuzzy
-#| msgid "Could not disable {}"
 msgid "Could not disable auto removal"
-msgstr "Impossible de désactiver {}"
+msgstr "Impossible de désactiver la suppression automatique"
 
 #: src/window.py:537
-#, fuzzy
-#| msgid "Disable Updates for {}?"
 msgid "Disable Automatic Removal for {}?"
-msgstr "Désactiver les mises à jour pour {} ?"
+msgstr "Désactiver la suppression automatique pour {} ?"
 
 #: src/window.py:540
-#, fuzzy
-#| msgid ""
-#| "This will mask {} ensuring it will never recieve any feature or security "
-#| "updates."
 msgid ""
 "This will pin {} ensuring it well never be removed automatically, even if no "
 "app depends on it."
 msgstr ""
-"Ceci masquera {} pour que cette application ne reçoive plus de mises à jour "
-"de sécurité ou de fonctionnalités."
+"Ceci épinglera {} pour qu’il ne soit plus supprimé automatiquement, même si "
+"plus aucune application n’en dépend."
 
 #: src/window.py:560
 msgid "Could not Run App"
@@ -1145,6 +1089,39 @@ msgstr "L’application sera disponible pour tous les utilisateurs de ce systèm
 #: src/window.py:881
 msgid "File type not supported"
 msgstr "Type de fichier non pris en charge"
+
+#~ msgid "App ID"
+#~ msgstr "Identifiant de l’application"
+
+#~ msgid "Version"
+#~ msgstr "Version"
+
+#~ msgid "Branch"
+#~ msgstr "Branche"
+
+#~ msgid "Arch"
+#~ msgstr "Architecture"
+
+#~ msgid "Origin"
+#~ msgstr "Origine"
+
+#~ msgid "Installation"
+#~ msgstr "Installation"
+
+#~ msgid "Ref"
+#~ msgstr "Référentiel"
+
+#~ msgid "Active Commit"
+#~ msgstr "Commit actif"
+
+#~ msgid "Latest Commit"
+#~ msgstr "Dernier commit"
+
+#~ msgid "Installed Size"
+#~ msgstr "Taille installée"
+
+#~ msgid "Options"
+#~ msgstr "Options"
 
 #~ msgid "List refreshed"
 #~ msgstr "Liste actualisée"

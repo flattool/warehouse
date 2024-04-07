@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 05:08+0000\n"
-"PO-Revision-Date: 2024-03-31 04:51+0000\n"
+"POT-Creation-Date: 2024-04-06 23:51-0400\n"
+"PO-Revision-Date: 2024-04-01 11:20+0000\n"
 "Last-Translator: Scrambled777 <nkkhalia@pm.me>\n"
 "Language-Team: Hindi <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hi/>\n"
@@ -69,27 +69,27 @@ msgstr "बचे हुए उपयोगकर्ता डेटा को �
 msgid "Reinstall apps that have leftover data"
 msgstr "जिन ऐप्स में डेटा बचा हुआ है उन्हें दोबारा इंस्टॉल करें"
 
-#: data/ui/downgrade.blp:23 src/app_row_widget.py:360
+#: data/ui/downgrade.blp:25 src/app_row_widget.py:360
 msgid "Downgrade"
 msgstr "डाउनग्रेड"
 
-#: data/ui/downgrade.blp:51
+#: data/ui/downgrade.blp:55
 msgid "Fetching Releases"
 msgstr "रिलीज़ लायी जा रही हैं"
 
-#: data/ui/downgrade.blp:59 data/ui/window.blp:107 data/ui/window.blp:162
+#: data/ui/downgrade.blp:63 data/ui/window.blp:107 data/ui/window.blp:162
 msgid "This could take a while"
 msgstr "इसमें कुछ समय लग सकता है"
 
-#: data/ui/downgrade.blp:67 src/app_row_widget.py:299 src/window.py:494
+#: data/ui/downgrade.blp:71 src/app_row_widget.py:299 src/window.py:494
 msgid "Disable Updates"
 msgstr "अपडेट अक्षम करें"
 
-#: data/ui/downgrade.blp:73
+#: data/ui/downgrade.blp:77
 msgid "Select a Release"
 msgstr "एक रिलीज़ चुनें"
 
-#: data/ui/downgrade.blp:74
+#: data/ui/downgrade.blp:78
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
@@ -178,37 +178,42 @@ msgstr "एक रेपो फाइल जोड़ें"
 msgid "Add a Custom Remote"
 msgstr "एक कस्टम रिमोट जोड़ें"
 
-#: data/ui/properties.blp:44
+#: data/ui/properties.blp:7
+#, fuzzy
+#| msgid "{} Properties"
+msgid "Properties"
+msgstr "{} प्रॉपर्टी"
+
+#: data/ui/properties.blp:73
 msgid "Loading User Data"
 msgstr "उपयोगकर्ता डेटा लोड हो रहा है"
 
-#: data/ui/properties.blp:49 src/app_row_widget.py:268
+#: data/ui/properties.blp:78 src/app_row_widget.py:268
 #: src/orphans_window.py:258
 msgid "Open User Data Folder"
 msgstr "उपयोगकर्ता डेटा फोल्डर खोलें"
 
-#: data/ui/properties.blp:61 src/app_row_widget.py:281
+#: data/ui/properties.blp:90 src/app_row_widget.py:281
 msgid "Trash User Data"
 msgstr "उपयोगकर्ता डेटा ट्रैश करें"
 
-#: data/ui/properties.blp:79
+#: data/ui/properties.blp:108
 msgid "Show Apps Using This Runtime"
 msgstr "इस रनटाइम का उपयोग करने वाली ऐप्स दिखाएं"
 
-#: data/ui/properties.blp:90
+#: data/ui/properties.blp:119
 msgid "Runtime"
 msgstr "रनटाइम"
 
-#: data/ui/properties.blp:95 src/app_row_widget.py:156
+#: data/ui/properties.blp:124 src/app_row_widget.py:156
 msgid "View Properties"
 msgstr "प्रॉपर्टी देखें"
 
-#: data/ui/properties.blp:106 src/app_row_widget.py:234
-#: src/properties_window.py:106 src/window.py:562
+#: data/ui/properties.blp:135 src/app_row_widget.py:234 src/window.py:562
 msgid "Copy"
 msgstr "कॉपी"
 
-#: data/ui/properties.blp:118
+#: data/ui/properties.blp:147
 msgid "Show Details in Store"
 msgstr "स्टोर में विवरण दिखाएं"
 
@@ -348,10 +353,8 @@ msgid "No installed Flatpak matches all of the currently applied filters"
 msgstr "कोई भी इंस्टॉल किया गया Flatpak वर्तमान में लागू सभी फिल्टर से मेल नहीं खाता है"
 
 #: data/ui/window.blp:193
-#, fuzzy
-#| msgid "Refresh List"
 msgid "Refreshing List"
-msgstr "सूची ताज़ा करें"
+msgstr "सूची को ताज़ा किया जा रहा है"
 
 #: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
@@ -515,7 +518,7 @@ msgstr "स्वतः निष्कासन सक्षम करें"
 msgid "Manage Snapshots"
 msgstr "स्नैपशॉट प्रबंधित करें"
 
-#: src/common.py:301 src/common.py:375
+#: src/common.py:326 src/common.py:400
 msgid ""
 "Working on {}\n"
 "{} out of {}"
@@ -523,27 +526,27 @@ msgstr ""
 "{} पर काम कर रहा हूँ\n"
 "{} में से {}"
 
-#: src/downgrade_window.py:87
+#: src/downgrade_window.py:88
 msgid "Commit Hash: {}"
 msgstr "कमिट हैश: {}"
 
-#: src/downgrade_window.py:109
+#: src/downgrade_window.py:110
 msgid "Could not downgrade {}"
 msgstr "डाउनग्रेड नहीं किया जा सका {}"
 
-#: src/downgrade_window.py:118 src/window.py:463
+#: src/downgrade_window.py:119 src/window.py:463
 msgid "Could not disable updates for {}"
 msgstr "{} के लिए अपडेट अक्षम नहीं किया जा सका"
 
-#: src/downgrade_window.py:131
+#: src/downgrade_window.py:132
 msgid "Downgrading…"
 msgstr "डाउनग्रेड किया जा रहा है…"
 
-#: src/downgrade_window.py:154
+#: src/downgrade_window.py:155
 msgid "Downgrade {}"
 msgstr "डाउनग्रेड {}"
 
-#: src/downgrade_window.py:162
+#: src/downgrade_window.py:163
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "सुनिश्चित करें कि {} को कभी भी नए संस्करण में अपडेट नहीं किया जाएगा"
 
@@ -658,7 +661,7 @@ msgstr "ये फोल्डर्स ट्रैश में भेज द�
 msgid "Continue"
 msgstr "जारी रखें"
 
-#: src/orphans_window.py:198 src/properties_window.py:43
+#: src/orphans_window.py:198 src/properties_window.py:46
 #: src/snapshots_window.py:245 src/window.py:424
 msgid "Could not open folder"
 msgstr "फोल्डर नहीं खोला जा सका"
@@ -667,74 +670,25 @@ msgstr "फोल्डर नहीं खोला जा सका"
 msgid "Could not manage data"
 msgstr "डेटा प्रबंधित नहीं किया जा सका"
 
-#: src/properties_window.py:37 src/remotes_window.py:212
+#: src/properties_window.py:40 src/remotes_window.py:212
 msgid "Copied {}"
 msgstr "कॉपी किया गया {}"
 
-#: src/properties_window.py:49
+#: src/properties_window.py:52
 msgid "Could not show details"
 msgstr "विवरण नहीं दिखा सके"
 
-#: src/properties_window.py:55
+#: src/properties_window.py:58
 msgid "User Data"
 msgstr "उपयोगकर्ता का डेटा"
 
-#: src/properties_window.py:75 src/properties_window.py:144
-msgid "No User Data"
-msgstr "कोई उपयोगकर्ता डेटा नहीं"
-
-#: src/properties_window.py:86 src/remotes_window.py:505
-#: src/remotes_window.py:630
-msgid "Name"
-msgstr "नाम"
-
-#: src/properties_window.py:87
+#: src/properties_window.py:69
 msgid "Description"
 msgstr "विवरण"
 
-#: src/properties_window.py:88
-msgid "App ID"
-msgstr "ऐप ID"
-
-#: src/properties_window.py:89
-msgid "Version"
-msgstr "संस्करण"
-
-#: src/properties_window.py:90
-msgid "Branch"
-msgstr "शाखा"
-
-#: src/properties_window.py:91
-msgid "Arch"
-msgstr "वास्तु"
-
-#: src/properties_window.py:92
-msgid "Origin"
-msgstr "मूल"
-
-#: src/properties_window.py:93
-msgid "Installation"
-msgstr "इंस्टालेशन"
-
-#: src/properties_window.py:94
-msgid "Ref"
-msgstr "संदर्भ"
-
-#: src/properties_window.py:95
-msgid "Active Commit"
-msgstr "सक्रिय कमिट"
-
-#: src/properties_window.py:96
-msgid "Latest Commit"
-msgstr "नवीनतम कमिट"
-
-#: src/properties_window.py:97
-msgid "Installed Size"
-msgstr "इन्स्टॉल्ड आकार"
-
-#: src/properties_window.py:98
-msgid "Options"
-msgstr "विकल्प"
+#: src/properties_window.py:84 src/properties_window.py:144
+msgid "No User Data"
+msgstr "कोई उपयोगकर्ता डेटा नहीं"
 
 #: src/properties_window.py:135
 msgid "Could not show properties"
@@ -755,10 +709,6 @@ msgstr "{} का उपयोगकर्ता डेटा कूड़ेद
 #: src/properties_window.py:158 src/window.py:448 src/window.py:646
 msgid "Trash Data"
 msgstr "ट्रैश डेटा"
-
-#: src/properties_window.py:218
-msgid "{} Properties"
-msgstr "{} प्रॉपर्टी"
 
 #: src/remotes_window.py:71
 msgid "Could not remove {}"
@@ -851,6 +801,10 @@ msgstr "Flatpak रिमोट जोड़ें"
 #: src/remotes_window.py:451 src/remotes_window.py:622
 msgid "Add"
 msgstr "जोड़ें"
+
+#: src/remotes_window.py:505 src/remotes_window.py:630
+msgid "Name"
+msgstr "नाम"
 
 #: src/remotes_window.py:509
 msgid "URL"
@@ -1109,6 +1063,39 @@ msgstr "ऐप सिस्टम पर प्रत्येक उपयो�
 #: src/window.py:881
 msgid "File type not supported"
 msgstr "फाइल प्रकार समर्थित नहीं है"
+
+#~ msgid "App ID"
+#~ msgstr "ऐप ID"
+
+#~ msgid "Version"
+#~ msgstr "संस्करण"
+
+#~ msgid "Branch"
+#~ msgstr "शाखा"
+
+#~ msgid "Arch"
+#~ msgstr "वास्तु"
+
+#~ msgid "Origin"
+#~ msgstr "मूल"
+
+#~ msgid "Installation"
+#~ msgstr "इंस्टालेशन"
+
+#~ msgid "Ref"
+#~ msgstr "संदर्भ"
+
+#~ msgid "Active Commit"
+#~ msgstr "सक्रिय कमिट"
+
+#~ msgid "Latest Commit"
+#~ msgstr "नवीनतम कमिट"
+
+#~ msgid "Installed Size"
+#~ msgstr "इन्स्टॉल्ड आकार"
+
+#~ msgid "Options"
+#~ msgstr "विकल्प"
 
 #~ msgid "List refreshed"
 #~ msgstr "सूची ताज़ा की गई"
