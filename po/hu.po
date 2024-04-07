@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 05:08+0000\n"
+"POT-Creation-Date: 2024-04-06 23:51-0400\n"
 "PO-Revision-Date: 2024-03-08 04:31+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
@@ -68,30 +68,30 @@ msgstr "Maradék felhasználói adatok törlése"
 msgid "Reinstall apps that have leftover data"
 msgstr "Applikációk újratelepítése, amelyeknek van maradék adatuk"
 
-#: data/ui/downgrade.blp:23 src/app_row_widget.py:360
+#: data/ui/downgrade.blp:25 src/app_row_widget.py:360
 msgid "Downgrade"
 msgstr "Visszafejlesztés"
 
-#: data/ui/downgrade.blp:51
+#: data/ui/downgrade.blp:55
 #, fuzzy
 #| msgid "Fetching Releases…"
 msgid "Fetching Releases"
 msgstr "Kiadások lekérése…"
 
-#: data/ui/downgrade.blp:59 data/ui/window.blp:107 data/ui/window.blp:162
+#: data/ui/downgrade.blp:63 data/ui/window.blp:107 data/ui/window.blp:162
 #, fuzzy
 msgid "This could take a while"
 msgstr "Telepítés… Ez eltarthat egy ideig"
 
-#: data/ui/downgrade.blp:67 src/app_row_widget.py:299 src/window.py:494
+#: data/ui/downgrade.blp:71 src/app_row_widget.py:299 src/window.py:494
 msgid "Disable Updates"
 msgstr "Frissítések kikapcsolása"
 
-#: data/ui/downgrade.blp:73
+#: data/ui/downgrade.blp:77
 msgid "Select a Release"
 msgstr "Kiadás kiválasztása"
 
-#: data/ui/downgrade.blp:74
+#: data/ui/downgrade.blp:78
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
@@ -190,40 +190,45 @@ msgstr "Tároló fájl hozzáadása"
 msgid "Add a Custom Remote"
 msgstr "Egyedi tároló hozzáadása"
 
-#: data/ui/properties.blp:44
+#: data/ui/properties.blp:7
+#, fuzzy
+#| msgid "{} Properties"
+msgid "Properties"
+msgstr "{} tulajdonságai"
+
+#: data/ui/properties.blp:73
 #, fuzzy
 msgid "Loading User Data"
 msgstr "Felhasználói adatok kukázása"
 
-#: data/ui/properties.blp:49 src/app_row_widget.py:268
+#: data/ui/properties.blp:78 src/app_row_widget.py:268
 #: src/orphans_window.py:258
 msgid "Open User Data Folder"
 msgstr "Adatmappa megnyitása"
 
-#: data/ui/properties.blp:61 src/app_row_widget.py:281
+#: data/ui/properties.blp:90 src/app_row_widget.py:281
 msgid "Trash User Data"
 msgstr "Felhasználói adatok kukázása"
 
-#: data/ui/properties.blp:79
+#: data/ui/properties.blp:108
 #, fuzzy
 #| msgid "Show Apps Using this Runtime"
 msgid "Show Apps Using This Runtime"
 msgstr "Applikációk megjelenítése, amelyek ezt a futtatókörnyezetet használják"
 
-#: data/ui/properties.blp:90
+#: data/ui/properties.blp:119
 msgid "Runtime"
 msgstr "Futtatókörnyezet"
 
-#: data/ui/properties.blp:95 src/app_row_widget.py:156
+#: data/ui/properties.blp:124 src/app_row_widget.py:156
 msgid "View Properties"
 msgstr "Tulajdonságok"
 
-#: data/ui/properties.blp:106 src/app_row_widget.py:234
-#: src/properties_window.py:106 src/window.py:562
+#: data/ui/properties.blp:135 src/app_row_widget.py:234 src/window.py:562
 msgid "Copy"
 msgstr "Másol"
 
-#: data/ui/properties.blp:118
+#: data/ui/properties.blp:147
 msgid "Show Details in Store"
 msgstr ""
 
@@ -567,34 +572,34 @@ msgstr ""
 msgid "Manage Snapshots"
 msgstr "Tárolók kezelése"
 
-#: src/common.py:301 src/common.py:375
+#: src/common.py:326 src/common.py:400
 msgid ""
 "Working on {}\n"
 "{} out of {}"
 msgstr ""
 
-#: src/downgrade_window.py:87
+#: src/downgrade_window.py:88
 msgid "Commit Hash: {}"
 msgstr "Véglegesítő hash: {}"
 
-#: src/downgrade_window.py:109
+#: src/downgrade_window.py:110
 msgid "Could not downgrade {}"
 msgstr "A(z) {} visszafejlesztése sikertelen"
 
-#: src/downgrade_window.py:118 src/window.py:463
+#: src/downgrade_window.py:119 src/window.py:463
 #, fuzzy
 msgid "Could not disable updates for {}"
 msgstr "A(z) {} frissítéseinek kikapcsolása sikertelen"
 
-#: src/downgrade_window.py:131
+#: src/downgrade_window.py:132
 msgid "Downgrading…"
 msgstr "Visszafejlesztés…"
 
-#: src/downgrade_window.py:154
+#: src/downgrade_window.py:155
 msgid "Downgrade {}"
 msgstr "{} visszafejlesztése"
 
-#: src/downgrade_window.py:162
+#: src/downgrade_window.py:163
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Biztosátja, hogy a(z) {} sose lesz frissítve"
 
@@ -718,7 +723,7 @@ msgstr "A mappák a kukába kerülnek."
 msgid "Continue"
 msgstr "Folytatás"
 
-#: src/orphans_window.py:198 src/properties_window.py:43
+#: src/orphans_window.py:198 src/properties_window.py:46
 #: src/snapshots_window.py:245 src/window.py:424
 msgid "Could not open folder"
 msgstr "Nem lehet megnyitni a mappát"
@@ -727,77 +732,28 @@ msgstr "Nem lehet megnyitni a mappát"
 msgid "Could not manage data"
 msgstr "Az adatok kezelése sikertelen"
 
-#: src/properties_window.py:37 src/remotes_window.py:212
+#: src/properties_window.py:40 src/remotes_window.py:212
 msgid "Copied {}"
 msgstr "{} másolva"
 
-#: src/properties_window.py:49
+#: src/properties_window.py:52
 #, fuzzy
 msgid "Could not show details"
 msgstr "Az adatok kukázása sikertelen"
 
-#: src/properties_window.py:55
+#: src/properties_window.py:58
 #, fuzzy
 msgid "User Data"
 msgstr "Felhasználói adatok kukázása"
 
-#: src/properties_window.py:75 src/properties_window.py:144
-#, fuzzy
-msgid "No User Data"
-msgstr "Felhasználói adatok kukázása"
-
-#: src/properties_window.py:86 src/remotes_window.py:505
-#: src/remotes_window.py:630
-msgid "Name"
-msgstr "Név"
-
-#: src/properties_window.py:87
+#: src/properties_window.py:69
 msgid "Description"
 msgstr "Leírás"
 
-#: src/properties_window.py:88
-msgid "App ID"
-msgstr "Azonosító"
-
-#: src/properties_window.py:89
-msgid "Version"
-msgstr "Verzió"
-
-#: src/properties_window.py:90
-msgid "Branch"
-msgstr "Ág"
-
-#: src/properties_window.py:91
-msgid "Arch"
-msgstr "Architektúra"
-
-#: src/properties_window.py:92
-msgid "Origin"
-msgstr "Eredet"
-
-#: src/properties_window.py:93
-msgid "Installation"
-msgstr "Telepítés"
-
-#: src/properties_window.py:94
-msgid "Ref"
-msgstr "Hivatkozás"
-
-#: src/properties_window.py:95
-msgid "Active Commit"
-msgstr "Aktív véglegesítő"
-
-#: src/properties_window.py:96
-msgid "Latest Commit"
-msgstr "Legutóbbi véglegesítő"
-
-#: src/properties_window.py:97
-msgid "Installed Size"
-msgstr "Telepítés mérete"
-
-#: src/properties_window.py:98
-msgid "Options"
-msgstr "Beállítások"
+#: src/properties_window.py:84 src/properties_window.py:144
+#, fuzzy
+msgid "No User Data"
+msgstr "Felhasználói adatok kukázása"
 
 #: src/properties_window.py:135
 #, fuzzy
@@ -819,10 +775,6 @@ msgstr "Kukázza a(z) {} adatait?"
 #: src/properties_window.py:158 src/window.py:448 src/window.py:646
 msgid "Trash Data"
 msgstr "Adatok kukázása"
-
-#: src/properties_window.py:218
-msgid "{} Properties"
-msgstr "{} tulajdonságai"
 
 #: src/remotes_window.py:71
 msgid "Could not remove {}"
@@ -931,6 +883,10 @@ msgstr "Flatpak tároló hozzáadása"
 #: src/remotes_window.py:451 src/remotes_window.py:622
 msgid "Add"
 msgstr "Hozzáad"
+
+#: src/remotes_window.py:505 src/remotes_window.py:630
+msgid "Name"
+msgstr "Név"
 
 #: src/remotes_window.py:509
 msgid "URL"
@@ -1221,6 +1177,39 @@ msgstr "Az applikáció minden felhasználó számára elérhető lesz"
 #: src/window.py:881
 msgid "File type not supported"
 msgstr "A fájl típus nem támogatott"
+
+#~ msgid "App ID"
+#~ msgstr "Azonosító"
+
+#~ msgid "Version"
+#~ msgstr "Verzió"
+
+#~ msgid "Branch"
+#~ msgstr "Ág"
+
+#~ msgid "Arch"
+#~ msgstr "Architektúra"
+
+#~ msgid "Origin"
+#~ msgstr "Eredet"
+
+#~ msgid "Installation"
+#~ msgstr "Telepítés"
+
+#~ msgid "Ref"
+#~ msgstr "Hivatkozás"
+
+#~ msgid "Active Commit"
+#~ msgstr "Aktív véglegesítő"
+
+#~ msgid "Latest Commit"
+#~ msgstr "Legutóbbi véglegesítő"
+
+#~ msgid "Installed Size"
+#~ msgstr "Telepítés mérete"
+
+#~ msgid "Options"
+#~ msgstr "Beállítások"
 
 #, fuzzy
 #~| msgid "No Remotes"

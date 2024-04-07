@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 05:08+0000\n"
+"POT-Creation-Date: 2024-04-06 23:51-0400\n"
 "PO-Revision-Date: 2024-03-13 15:20+0000\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <https://weblate.fyralabs.com/projects/flattool/"
@@ -69,27 +69,27 @@ msgstr "Kalan kullanıcı verilerini bul ve çöpe taşı"
 msgid "Reinstall apps that have leftover data"
 msgstr "Artık veri içeren uygulamaları yeniden kur"
 
-#: data/ui/downgrade.blp:23 src/app_row_widget.py:360
+#: data/ui/downgrade.blp:25 src/app_row_widget.py:360
 msgid "Downgrade"
 msgstr "Sürüm Düşür"
 
-#: data/ui/downgrade.blp:51
+#: data/ui/downgrade.blp:55
 msgid "Fetching Releases"
 msgstr "Sürümler Getiriliyor"
 
-#: data/ui/downgrade.blp:59 data/ui/window.blp:107 data/ui/window.blp:162
+#: data/ui/downgrade.blp:63 data/ui/window.blp:107 data/ui/window.blp:162
 msgid "This could take a while"
 msgstr "Biraz uzun sürebilir"
 
-#: data/ui/downgrade.blp:67 src/app_row_widget.py:299 src/window.py:494
+#: data/ui/downgrade.blp:71 src/app_row_widget.py:299 src/window.py:494
 msgid "Disable Updates"
 msgstr "Güncellemeleri Devre Dışı Bırak"
 
-#: data/ui/downgrade.blp:73
+#: data/ui/downgrade.blp:77
 msgid "Select a Release"
 msgstr "Bir Sürüm Seç"
 
-#: data/ui/downgrade.blp:74
+#: data/ui/downgrade.blp:78
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
@@ -178,37 +178,42 @@ msgstr "Depo Dosyası Ekle"
 msgid "Add a Custom Remote"
 msgstr "Özel Uzak Ekle"
 
-#: data/ui/properties.blp:44
+#: data/ui/properties.blp:7
+#, fuzzy
+#| msgid "{} Properties"
+msgid "Properties"
+msgstr "{} Özellikleri"
+
+#: data/ui/properties.blp:73
 msgid "Loading User Data"
 msgstr "Kullanıcı Verileri Yükleniyor"
 
-#: data/ui/properties.blp:49 src/app_row_widget.py:268
+#: data/ui/properties.blp:78 src/app_row_widget.py:268
 #: src/orphans_window.py:258
 msgid "Open User Data Folder"
 msgstr "Kullanıcı Veri Klasörünü Aç"
 
-#: data/ui/properties.blp:61 src/app_row_widget.py:281
+#: data/ui/properties.blp:90 src/app_row_widget.py:281
 msgid "Trash User Data"
 msgstr "Kullanıcı Verilerini Çöpe Taşı"
 
-#: data/ui/properties.blp:79
+#: data/ui/properties.blp:108
 msgid "Show Apps Using This Runtime"
 msgstr "Bu Çalışma Zamanını Kullanan Uygulamaları Göster"
 
-#: data/ui/properties.blp:90
+#: data/ui/properties.blp:119
 msgid "Runtime"
 msgstr "Çalışma Zamanı"
 
-#: data/ui/properties.blp:95 src/app_row_widget.py:156
+#: data/ui/properties.blp:124 src/app_row_widget.py:156
 msgid "View Properties"
 msgstr "Özellikleri Göster"
 
-#: data/ui/properties.blp:106 src/app_row_widget.py:234
-#: src/properties_window.py:106 src/window.py:562
+#: data/ui/properties.blp:135 src/app_row_widget.py:234 src/window.py:562
 msgid "Copy"
 msgstr "Kopyala"
 
-#: data/ui/properties.blp:118
+#: data/ui/properties.blp:147
 msgid "Show Details in Store"
 msgstr "Ayrıntıları Mağazada Göster"
 
@@ -516,7 +521,7 @@ msgstr ""
 msgid "Manage Snapshots"
 msgstr "Anlık Görüntüleri Yönet"
 
-#: src/common.py:301 src/common.py:375
+#: src/common.py:326 src/common.py:400
 msgid ""
 "Working on {}\n"
 "{} out of {}"
@@ -524,27 +529,27 @@ msgstr ""
 "{} üstünde çalışıyor\n"
 "{} / {}"
 
-#: src/downgrade_window.py:87
+#: src/downgrade_window.py:88
 msgid "Commit Hash: {}"
 msgstr "İşleme Sağlaması: {}"
 
-#: src/downgrade_window.py:109
+#: src/downgrade_window.py:110
 msgid "Could not downgrade {}"
 msgstr "{} sürüm düşürülemedi"
 
-#: src/downgrade_window.py:118 src/window.py:463
+#: src/downgrade_window.py:119 src/window.py:463
 msgid "Could not disable updates for {}"
 msgstr "{} için güncellemeler devre dışı bırakılamadı"
 
-#: src/downgrade_window.py:131
+#: src/downgrade_window.py:132
 msgid "Downgrading…"
 msgstr "Sürüm düşürülüyor…"
 
-#: src/downgrade_window.py:154
+#: src/downgrade_window.py:155
 msgid "Downgrade {}"
 msgstr "{} Sürüm Düşür"
 
-#: src/downgrade_window.py:162
+#: src/downgrade_window.py:163
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "{} uygulamasının asla daha yeni sürüme güncellenmeyeceğinden emin ol"
 
@@ -659,7 +664,7 @@ msgstr "Bu klasörler çöpe taşınacak."
 msgid "Continue"
 msgstr "Devam Et"
 
-#: src/orphans_window.py:198 src/properties_window.py:43
+#: src/orphans_window.py:198 src/properties_window.py:46
 #: src/snapshots_window.py:245 src/window.py:424
 msgid "Could not open folder"
 msgstr "Klasör açılamadı"
@@ -668,74 +673,25 @@ msgstr "Klasör açılamadı"
 msgid "Could not manage data"
 msgstr "Veriler yönetilemedi"
 
-#: src/properties_window.py:37 src/remotes_window.py:212
+#: src/properties_window.py:40 src/remotes_window.py:212
 msgid "Copied {}"
 msgstr "{} kopyalandı"
 
-#: src/properties_window.py:49
+#: src/properties_window.py:52
 msgid "Could not show details"
 msgstr "Ayrıntılar gösterilemedi"
 
-#: src/properties_window.py:55
+#: src/properties_window.py:58
 msgid "User Data"
 msgstr "Kullanıcı Verisi"
 
-#: src/properties_window.py:75 src/properties_window.py:144
-msgid "No User Data"
-msgstr "Kullanıcı Verisi Yok"
-
-#: src/properties_window.py:86 src/remotes_window.py:505
-#: src/remotes_window.py:630
-msgid "Name"
-msgstr "Ad"
-
-#: src/properties_window.py:87
+#: src/properties_window.py:69
 msgid "Description"
 msgstr "Açıklama"
 
-#: src/properties_window.py:88
-msgid "App ID"
-msgstr "Uygulama Kimliği"
-
-#: src/properties_window.py:89
-msgid "Version"
-msgstr "Sürüm"
-
-#: src/properties_window.py:90
-msgid "Branch"
-msgstr "Dal"
-
-#: src/properties_window.py:91
-msgid "Arch"
-msgstr "Mimari"
-
-#: src/properties_window.py:92
-msgid "Origin"
-msgstr "Köken"
-
-#: src/properties_window.py:93
-msgid "Installation"
-msgstr "Kurulum"
-
-#: src/properties_window.py:94
-msgid "Ref"
-msgstr "Referans"
-
-#: src/properties_window.py:95
-msgid "Active Commit"
-msgstr "Etkin İşleme"
-
-#: src/properties_window.py:96
-msgid "Latest Commit"
-msgstr "Son İşleme"
-
-#: src/properties_window.py:97
-msgid "Installed Size"
-msgstr "Kurulu Boyut"
-
-#: src/properties_window.py:98
-msgid "Options"
-msgstr "Seçenekler"
+#: src/properties_window.py:84 src/properties_window.py:144
+msgid "No User Data"
+msgstr "Kullanıcı Verisi Yok"
 
 #: src/properties_window.py:135
 #, fuzzy
@@ -758,10 +714,6 @@ msgstr "{} Kullanıcı Verilerini Çöpe Taşınsın Mı?"
 #: src/properties_window.py:158 src/window.py:448 src/window.py:646
 msgid "Trash Data"
 msgstr "Çöp Veri"
-
-#: src/properties_window.py:218
-msgid "{} Properties"
-msgstr "{} Özellikleri"
 
 #: src/remotes_window.py:71
 msgid "Could not remove {}"
@@ -856,6 +808,10 @@ msgstr "Flatpak Uzak Ekle"
 #: src/remotes_window.py:451 src/remotes_window.py:622
 msgid "Add"
 msgstr "Ekle"
+
+#: src/remotes_window.py:505 src/remotes_window.py:630
+msgid "Name"
+msgstr "Ad"
 
 #: src/remotes_window.py:509
 msgid "URL"
@@ -1126,6 +1082,39 @@ msgstr "Uygulama sistemdeki tüm kullanıcılar tarafından kullanılabilecek"
 #: src/window.py:881
 msgid "File type not supported"
 msgstr "Dosya türü desteklenmiyor"
+
+#~ msgid "App ID"
+#~ msgstr "Uygulama Kimliği"
+
+#~ msgid "Version"
+#~ msgstr "Sürüm"
+
+#~ msgid "Branch"
+#~ msgstr "Dal"
+
+#~ msgid "Arch"
+#~ msgstr "Mimari"
+
+#~ msgid "Origin"
+#~ msgstr "Köken"
+
+#~ msgid "Installation"
+#~ msgstr "Kurulum"
+
+#~ msgid "Ref"
+#~ msgstr "Referans"
+
+#~ msgid "Active Commit"
+#~ msgstr "Etkin İşleme"
+
+#~ msgid "Latest Commit"
+#~ msgstr "Son İşleme"
+
+#~ msgid "Installed Size"
+#~ msgstr "Kurulu Boyut"
+
+#~ msgid "Options"
+#~ msgstr "Seçenekler"
 
 #~ msgid "List refreshed"
 #~ msgstr "Liste yenilendi"

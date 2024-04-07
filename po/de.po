@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 05:08+0000\n"
+"POT-Creation-Date: 2024-04-06 23:51-0400\n"
 "PO-Revision-Date: 2024-03-20 10:20+0000\n"
 "Last-Translator: Vortex Acherontic <vortex@z-ray.de>\n"
 "Language-Team: German <https://weblate.fyralabs.com/projects/flattool/"
@@ -69,27 +69,27 @@ msgstr "Suche und lösche übrig gebliebene Nutzerdaten"
 msgid "Reinstall apps that have leftover data"
 msgstr "Installiere Anwendungen mit übrig gebliebenen Benutzerdaten neu"
 
-#: data/ui/downgrade.blp:23 src/app_row_widget.py:360
+#: data/ui/downgrade.blp:25 src/app_row_widget.py:360
 msgid "Downgrade"
 msgstr "Herabstufen"
 
-#: data/ui/downgrade.blp:51
+#: data/ui/downgrade.blp:55
 msgid "Fetching Releases"
 msgstr "Hole Veröffentlichungen"
 
-#: data/ui/downgrade.blp:59 data/ui/window.blp:107 data/ui/window.blp:162
+#: data/ui/downgrade.blp:63 data/ui/window.blp:107 data/ui/window.blp:162
 msgid "This could take a while"
 msgstr "Das kann einen Moment dauern"
 
-#: data/ui/downgrade.blp:67 src/app_row_widget.py:299 src/window.py:494
+#: data/ui/downgrade.blp:71 src/app_row_widget.py:299 src/window.py:494
 msgid "Disable Updates"
 msgstr "Updates deaktivieren"
 
-#: data/ui/downgrade.blp:73
+#: data/ui/downgrade.blp:77
 msgid "Select a Release"
 msgstr "Wähle Sie eine Veröffentlichung"
 
-#: data/ui/downgrade.blp:74
+#: data/ui/downgrade.blp:78
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
@@ -179,37 +179,42 @@ msgstr "Eine Gegenstellendatei hinzufügen"
 msgid "Add a Custom Remote"
 msgstr "Benutzerdefinierte Gegenstelle hinzufügen"
 
-#: data/ui/properties.blp:44
+#: data/ui/properties.blp:7
+#, fuzzy
+#| msgid "{} Properties"
+msgid "Properties"
+msgstr "{} Eigenschaften"
+
+#: data/ui/properties.blp:73
 msgid "Loading User Data"
 msgstr "Benutzerdaten laden"
 
-#: data/ui/properties.blp:49 src/app_row_widget.py:268
+#: data/ui/properties.blp:78 src/app_row_widget.py:268
 #: src/orphans_window.py:258
 msgid "Open User Data Folder"
 msgstr "Benutzerdatenverzeichnis öffnen"
 
-#: data/ui/properties.blp:61 src/app_row_widget.py:281
+#: data/ui/properties.blp:90 src/app_row_widget.py:281
 msgid "Trash User Data"
 msgstr "Benutzerdaten löschen"
 
-#: data/ui/properties.blp:79
+#: data/ui/properties.blp:108
 msgid "Show Apps Using This Runtime"
 msgstr "Anwendungen mit dieser Laufzeitumgebung anzeigen"
 
-#: data/ui/properties.blp:90
+#: data/ui/properties.blp:119
 msgid "Runtime"
 msgstr "Laufzeitumgebung"
 
-#: data/ui/properties.blp:95 src/app_row_widget.py:156
+#: data/ui/properties.blp:124 src/app_row_widget.py:156
 msgid "View Properties"
 msgstr "Eigenschaften anzeigen"
 
-#: data/ui/properties.blp:106 src/app_row_widget.py:234
-#: src/properties_window.py:106 src/window.py:562
+#: data/ui/properties.blp:135 src/app_row_widget.py:234 src/window.py:562
 msgid "Copy"
 msgstr "Kopieren"
 
-#: data/ui/properties.blp:118
+#: data/ui/properties.blp:147
 msgid "Show Details in Store"
 msgstr "Details im Shop anzeigen"
 
@@ -519,7 +524,7 @@ msgstr ""
 msgid "Manage Snapshots"
 msgstr "Schnappschüsse verwalten"
 
-#: src/common.py:301 src/common.py:375
+#: src/common.py:326 src/common.py:400
 msgid ""
 "Working on {}\n"
 "{} out of {}"
@@ -527,27 +532,27 @@ msgstr ""
 "Verarbeite {}\n"
 "{} von {} abgeschlossen"
 
-#: src/downgrade_window.py:87
+#: src/downgrade_window.py:88
 msgid "Commit Hash: {}"
 msgstr "Commit Hash: {}"
 
-#: src/downgrade_window.py:109
+#: src/downgrade_window.py:110
 msgid "Could not downgrade {}"
 msgstr "Konnte {} nicht herabstufen"
 
-#: src/downgrade_window.py:118 src/window.py:463
+#: src/downgrade_window.py:119 src/window.py:463
 msgid "Could not disable updates for {}"
 msgstr "Aktualisierungen für {} konnten nicht deaktiviert werden"
 
-#: src/downgrade_window.py:131
+#: src/downgrade_window.py:132
 msgid "Downgrading…"
 msgstr "Herabstufen…"
 
-#: src/downgrade_window.py:154
+#: src/downgrade_window.py:155
 msgid "Downgrade {}"
 msgstr "Stufe {} herab"
 
-#: src/downgrade_window.py:162
+#: src/downgrade_window.py:163
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Stelle sicher das {} auf keine neue Version aktualisiert wird"
 
@@ -664,7 +669,7 @@ msgstr "Diese Verzeichnisse werden in den Papierkorb gelegt."
 msgid "Continue"
 msgstr "Fortfahren"
 
-#: src/orphans_window.py:198 src/properties_window.py:43
+#: src/orphans_window.py:198 src/properties_window.py:46
 #: src/snapshots_window.py:245 src/window.py:424
 msgid "Could not open folder"
 msgstr "Verzeichnis konnte nicht geöffnet werden"
@@ -673,74 +678,25 @@ msgstr "Verzeichnis konnte nicht geöffnet werden"
 msgid "Could not manage data"
 msgstr "Daten konnten nicht verwaltet werden"
 
-#: src/properties_window.py:37 src/remotes_window.py:212
+#: src/properties_window.py:40 src/remotes_window.py:212
 msgid "Copied {}"
 msgstr "{} kopiert"
 
-#: src/properties_window.py:49
+#: src/properties_window.py:52
 msgid "Could not show details"
 msgstr "Details konnten nicht angezeigt werden"
 
-#: src/properties_window.py:55
+#: src/properties_window.py:58
 msgid "User Data"
 msgstr "Benutzerdaten"
 
-#: src/properties_window.py:75 src/properties_window.py:144
-msgid "No User Data"
-msgstr "Keine Benutzerdaten"
-
-#: src/properties_window.py:86 src/remotes_window.py:505
-#: src/remotes_window.py:630
-msgid "Name"
-msgstr "Name"
-
-#: src/properties_window.py:87
+#: src/properties_window.py:69
 msgid "Description"
 msgstr "Beschreibung"
 
-#: src/properties_window.py:88
-msgid "App ID"
-msgstr "Anwendungsid"
-
-#: src/properties_window.py:89
-msgid "Version"
-msgstr "Version"
-
-#: src/properties_window.py:90
-msgid "Branch"
-msgstr "Branch"
-
-#: src/properties_window.py:91
-msgid "Arch"
-msgstr "Architektur"
-
-#: src/properties_window.py:92
-msgid "Origin"
-msgstr "Herkunft"
-
-#: src/properties_window.py:93
-msgid "Installation"
-msgstr "Installation"
-
-#: src/properties_window.py:94
-msgid "Ref"
-msgstr "Referenz"
-
-#: src/properties_window.py:95
-msgid "Active Commit"
-msgstr "Aktiver Commit"
-
-#: src/properties_window.py:96
-msgid "Latest Commit"
-msgstr "Neuster Commit"
-
-#: src/properties_window.py:97
-msgid "Installed Size"
-msgstr "Installationsgröße"
-
-#: src/properties_window.py:98
-msgid "Options"
-msgstr "Optionen"
+#: src/properties_window.py:84 src/properties_window.py:144
+msgid "No User Data"
+msgstr "Keine Benutzerdaten"
 
 #: src/properties_window.py:135
 #, fuzzy
@@ -763,10 +719,6 @@ msgstr "{}'s Benutzerdaten in dem Papierkorb verschieben?"
 #: src/properties_window.py:158 src/window.py:448 src/window.py:646
 msgid "Trash Data"
 msgstr "Daten löschen"
-
-#: src/properties_window.py:218
-msgid "{} Properties"
-msgstr "{} Eigenschaften"
 
 #: src/remotes_window.py:71
 msgid "Could not remove {}"
@@ -862,6 +814,10 @@ msgstr "Flatpakgegenstelle hinzufügen"
 #: src/remotes_window.py:451 src/remotes_window.py:622
 msgid "Add"
 msgstr "Hinzufügen"
+
+#: src/remotes_window.py:505 src/remotes_window.py:630
+msgid "Name"
+msgstr "Name"
 
 #: src/remotes_window.py:509
 msgid "URL"
@@ -1141,6 +1097,39 @@ msgstr "Diese Anwendung wird für alle Benutzer des Systems sichtbar sein"
 #: src/window.py:881
 msgid "File type not supported"
 msgstr "Dateityp nicht unterstützt"
+
+#~ msgid "App ID"
+#~ msgstr "Anwendungsid"
+
+#~ msgid "Version"
+#~ msgstr "Version"
+
+#~ msgid "Branch"
+#~ msgstr "Branch"
+
+#~ msgid "Arch"
+#~ msgstr "Architektur"
+
+#~ msgid "Origin"
+#~ msgstr "Herkunft"
+
+#~ msgid "Installation"
+#~ msgstr "Installation"
+
+#~ msgid "Ref"
+#~ msgstr "Referenz"
+
+#~ msgid "Active Commit"
+#~ msgstr "Aktiver Commit"
+
+#~ msgid "Latest Commit"
+#~ msgstr "Neuster Commit"
+
+#~ msgid "Installed Size"
+#~ msgstr "Installationsgröße"
+
+#~ msgid "Options"
+#~ msgstr "Optionen"
 
 #~ msgid "List refreshed"
 #~ msgstr "Liste aktualisiert"
