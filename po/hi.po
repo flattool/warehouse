@@ -8,8 +8,9 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-06 23:51-0400\n"
-"PO-Revision-Date: 2024-04-01 11:20+0000\n"
-"Last-Translator: Scrambled777 <nkkhalia@pm.me>\n"
+"PO-Revision-Date: 2024-04-08 13:45+0000\n"
+"Last-Translator: Scrambled777 <Scrambled777@users.noreply.weblate.fyralabs."
+"com>\n"
 "Language-Team: Hindi <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hi/>\n"
 "Language: hi\n"
@@ -179,10 +180,8 @@ msgid "Add a Custom Remote"
 msgstr "एक कस्टम रिमोट जोड़ें"
 
 #: data/ui/properties.blp:7
-#, fuzzy
-#| msgid "{} Properties"
 msgid "Properties"
-msgstr "{} प्रॉपर्टी"
+msgstr "प्रॉपर्टी"
 
 #: data/ui/properties.blp:73
 msgid "Loading User Data"
