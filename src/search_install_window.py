@@ -103,8 +103,12 @@ class SearchInstallWindow(Adw.Dialog):
         if total < 2:
             self.nav_view.push(self.results_page)
             self.results_page.set_can_pop(False)
-            self.search_remote = self.host_remotes[0][0]
-            self.install_type = self.host_remotes[0][7]
+            
+            for rem in self.host_remotes:
+                if self.my_utils.get_install_type(rem[7]) != "disabled":
+                    self.search_remote = rem[0]
+                    break
+                
             if "user" in self.install_type:
                 self.install_type = "user"
             if "system" in self.install_type:
