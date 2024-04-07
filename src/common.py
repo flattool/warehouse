@@ -204,7 +204,7 @@ class myUtils:
         columns = lines[0].split("\t")
         data = [columns]
         for line in lines[1:]:
-            row = line.split(": ")
+            row = line.split(": ", 1)
             for i in range(len(row)):
                 row[i] = row[i].strip()
             data.append(row)
