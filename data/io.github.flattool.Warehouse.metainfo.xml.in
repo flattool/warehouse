@@ -64,6 +64,29 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.6.1" date="2024-4-7" timestamp="1712531365">
+      <description translate="no">
+        <p>Bug Fixes</p>
+        <ul>
+          <li>App Properties no longer has issues with information containing colon characters</li>
+        </ul>
+        <p>Previous Releases's New Features and Changes</p>
+        <ul>
+          <li>The main list has a status page while refreshing</li>
+          <li>Add ability to pin and unpin runtimes</li>
+          <li>App Properties shows license and proper commit information</li>
+          <li>App Properties better shows the app's name and description</li>
+          <li>Update to GNOME 46 GTK Technologies</li>
+          <li>Updated translations</li>
+        </ul>
+        <p>Previous Releases's Bug Fixes</p> 
+        <ul>
+          <li>When an attempt to run an app fails, correct runtime error information is shown</li>
+          <li>Install From The Web no longer behaves incorrectly on remote installations with options</li>
+          <li>The rare chance that Install From The Web selects a disabled remote has been fixed</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.6.0" date="2024-4-7" timestamp="1712463635">
       <description translate="no">
         <p>New Features and Changes</p>
