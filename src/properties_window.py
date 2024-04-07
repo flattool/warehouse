@@ -214,6 +214,4 @@ class PropertiesWindow(Adw.Dialog):
 
         self.generate_upper()
         self.generate_lower()
-
-        self.set_title(_("{} Properties").format(self.app_name))
         self.present(parent_window)
