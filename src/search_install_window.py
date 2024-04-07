@@ -105,6 +105,10 @@ class SearchInstallWindow(Adw.Dialog):
             self.results_page.set_can_pop(False)
             self.search_remote = self.host_remotes[0][0]
             self.install_type = self.host_remotes[0][7]
+            if "user" in self.install_type:
+                self.install_type = "user"
+            if "system" in self.install_type:
+                self.install_type = "system"
 
             if self.host_remotes[0][1] == "-":
                 self.title = _("Search {}").format(self.host_remotes[0][0])
