@@ -79,7 +79,7 @@
         <ul>
           <li>When an attempt to run an app fails, correct runtime error information is shown</li>
           <li>Install From The Web no longer behaves incorrectly on remote installations with options</li>
-          <li>The rare change that Install From The Web selects a disabled remote has been fixed</li>
+          <li>The rare chance that Install From The Web selects a disabled remote has been fixed</li>
         </ul>
       </description>
     </release>
