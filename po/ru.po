@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-06 23:51-0400\n"
-"PO-Revision-Date: 2024-04-01 11:20+0000\n"
+"PO-Revision-Date: 2024-04-08 13:45+0000\n"
 "Last-Translator: Сергей Ворон <voron.s.a@gmail.com>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ru/>\n"
@@ -180,10 +180,8 @@ msgid "Add a Custom Remote"
 msgstr "Добавить пользовательский репозиторий"
 
 #: data/ui/properties.blp:7
-#, fuzzy
-#| msgid "{} Properties"
 msgid "Properties"
-msgstr "Свойства {}"
+msgstr "Свойства"
 
 #: data/ui/properties.blp:73
 msgid "Loading User Data"
@@ -356,7 +354,7 @@ msgstr "Ни один установленный Flatpak не соответст
 
 #: data/ui/window.blp:193
 msgid "Refreshing List"
-msgstr "Обновить список"
+msgstr "Обновление списка"
 
 #: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
