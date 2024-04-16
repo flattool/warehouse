@@ -107,12 +107,8 @@ class SearchInstallWindow(Adw.Dialog):
             for rem in self.host_remotes:
                 if self.my_utils.get_install_type(rem[7]) != "disabled":
                     self.search_remote = rem[0]
+                    self.install_type = self.my_utils.get_install_type(rem[7])
                     break
-                
-            if "user" in self.install_type:
-                self.install_type = "user"
-            if "system" in self.install_type:
-                self.install_type = "system"
 
             if self.host_remotes[0][1] == "-":
                 self.title = _("Search {}").format(self.host_remotes[0][0])
@@ -125,6 +121,7 @@ class SearchInstallWindow(Adw.Dialog):
             )
             self.search_entry.grab_focus()
             return
+            
         self.nav_view.connect("popped", lambda *_: self.set_title(""))
         for remote in self.host_remotes:
             row = RemoteRow(remote)
