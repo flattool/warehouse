@@ -64,6 +64,14 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.6.2" date="2024-4-16" timestamp="1713282319">
+      <description translate="no">
+        <p>Bug Fixes</p>
+        <ul>
+          <li>Install from the Web no longer has issues on systems with only one remote</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.6.1" date="2024-4-7" timestamp="1712531365">
       <description translate="no">
         <p>Bug Fixes</p>
