@@ -8,22 +8,25 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-06 23:51-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-04-20 23:06+0000\n"
+"Last-Translator: Písek Pískovec <pisekpiskovec@gmail.com>\n"
+"Language-Team: Czech <https://weblate.fyralabs.com/projects/flattool/"
+"warehouse/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 5.4.2\n"
 
 #. Translators: Do not translate the applicaion name
 #: data/io.github.flattool.Warehouse.desktop.in:4
 msgid "Warehouse"
-msgstr ""
+msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 msgid "flatpak"
-msgstr ""
+msgstr "flatpak"
 
 #: data/io.github.flattool.Warehouse.desktop.in:12
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
@@ -66,37 +69,39 @@ msgstr ""
 
 #: data/ui/downgrade.blp:25 src/app_row_widget.py:360
 msgid "Downgrade"
-msgstr ""
+msgstr "Downgradovat"
 
 #: data/ui/downgrade.blp:55
 msgid "Fetching Releases"
-msgstr ""
+msgstr "Získávání Vydání"
 
 #: data/ui/downgrade.blp:63 data/ui/window.blp:107 data/ui/window.blp:162
 msgid "This could take a while"
-msgstr ""
+msgstr "Chvíli to může potrvat"
 
 #: data/ui/downgrade.blp:71 src/app_row_widget.py:299 src/window.py:494
 msgid "Disable Updates"
-msgstr ""
+msgstr "Zakázat Aktualizace"
 
 #: data/ui/downgrade.blp:77
 msgid "Select a Release"
-msgstr ""
+msgstr "Vybrat Vydání"
 
 #: data/ui/downgrade.blp:78
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
+"Toto odinstaluje současné vydání a místo toho nainstaluje vybrané vydání. "
+"Pozor, downgrade může způsobit problémy."
 
 #: data/ui/filter.blp:5 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
-msgstr ""
+msgstr "Nastavit Filtry"
 
 #: data/ui/filter.blp:39
 msgid "Show Apps"
-msgstr ""
+msgstr "Zobrazit Aplikace"
 
 #: data/ui/filter.blp:49
 msgid "Show Runtimes"
@@ -112,48 +117,48 @@ msgstr ""
 
 #: data/ui/filter.blp:73 data/ui/window.blp:179
 msgid "Reset Filters"
-msgstr ""
+msgstr "Resetovat Filtry"
 
 #: data/ui/orphans.blp:14 data/ui/window.blp:12
 msgid "Search List"
-msgstr ""
+msgstr "Seznam Hledání"
 
 #: data/ui/orphans.blp:20
 msgid "Open Data Folder"
-msgstr ""
+msgstr "Otevřít Složku s Daty"
 
 #: data/ui/orphans.blp:81 data/ui/search_install.blp:171 data/ui/window.blp:98
 msgid "Installing"
-msgstr ""
+msgstr "Instaluje se"
 
 #: data/ui/orphans.blp:102
 msgid "No Leftover Data"
-msgstr ""
+msgstr "Žádná Zbytková Data"
 
 #: data/ui/orphans.blp:103
 msgid "There is no leftover user data"
-msgstr ""
+msgstr "Nejsou žádná zbytková uživatelská data"
 
 #: data/ui/orphans.blp:108 data/ui/search_install.blp:87 data/ui/window.blp:187
 msgid "No Results Found"
-msgstr ""
+msgstr "Nalezeny Žádné Výsledky"
 
 #: data/ui/orphans.blp:109 data/ui/search_install.blp:88 data/ui/window.blp:188
 msgid "Try a different search term"
-msgstr ""
+msgstr "Zkuste jiný termín vyhledávání"
 
 #: data/ui/orphans.blp:119 data/ui/window.blp:206
 msgid "Select All"
-msgstr ""
+msgstr "Označit Vše"
 
 #: data/ui/orphans.blp:124 src/window.py:199 src/window.py:281
 msgid "Trash"
-msgstr ""
+msgstr "Smazat"
 
 #: data/ui/orphans.blp:130 data/ui/search_install.blp:54
 #: src/orphans_window.py:122 src/window.py:839
 msgid "Install"
-msgstr ""
+msgstr "Instalovat"
 
 #: data/ui/popular_remotes.blp:18
 msgid "Add Remote"
@@ -165,7 +170,7 @@ msgstr ""
 
 #: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
 msgid "Add a Repo File"
-msgstr ""
+msgstr "Přidat Soubor Repozitáře"
 
 #: data/ui/popular_remotes.blp:50 data/ui/remotes.blp:56
 msgid "Add a Custom Remote"
@@ -177,7 +182,7 @@ msgstr ""
 
 #: data/ui/properties.blp:73
 msgid "Loading User Data"
-msgstr ""
+msgstr "Načítání Uživatelských Dat"
 
 #: data/ui/properties.blp:78 src/app_row_widget.py:268
 #: src/orphans_window.py:258
@@ -186,7 +191,7 @@ msgstr ""
 
 #: data/ui/properties.blp:90 src/app_row_widget.py:281
 msgid "Trash User Data"
-msgstr ""
+msgstr "Smazat Uživatelská Data"
 
 #: data/ui/properties.blp:108
 msgid "Show Apps Using This Runtime"
@@ -202,7 +207,7 @@ msgstr ""
 
 #: data/ui/properties.blp:135 src/app_row_widget.py:234 src/window.py:562
 msgid "Copy"
-msgstr ""
+msgstr "Kopírovat"
 
 #: data/ui/properties.blp:147
 msgid "Show Details in Store"
