@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-06 23:51-0400\n"
-"PO-Revision-Date: 2024-04-08 13:45+0000\n"
+"PO-Revision-Date: 2024-05-05 18:20+0000\n"
 "Last-Translator: Scrambled777 <Scrambled777@users.noreply.weblate.fyralabs."
 "com>\n"
 "Language-Team: Hindi <https://weblate.fyralabs.com/projects/flattool/"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.4.2\n"
+"X-Generator: Weblate 5.5\n"
 
 #. Translators: Do not translate the applicaion name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -39,20 +39,20 @@ msgid ""
 "Warehouse is an app that manages installed Flatpaks, their user data, and "
 "Flatpak remotes."
 msgstr ""
-"Warehouse एक ऐप है जो इंस्टॉल किए गए Flatpak, उनके उपयोगकर्ता डेटा और Flatpak "
-"रिमोट का प्रबंधन करता है।"
+"Warehouse एक ऐप है जो स्थापित Flatpak, उनके उपयोक्ता डेटा और Flatpak रिमोट का"
+" प्रबंधन करता है।"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr "विशेषताएँ:"
+msgstr "विशेषताएं:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Show and filter the list of installed Flatpaks"
-msgstr "इंस्टॉल किए गए Flatpak की सूची दिखाएं और फिल्टर करें"
+msgstr "स्थापित Flatpak की सूची दिखाएं और फिल्टर करें"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Display properties of installed Flatpaks"
-msgstr "इंस्टॉल किया गए Flatpak की प्रॉपर्टी प्रदर्शित करें"
+msgstr "स्थापित Flatpak की प्रॉपर्टी प्रदर्शित करें"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Manage large groups of Flatpaks at once"
@@ -60,19 +60,19 @@ msgstr "Flatpak के बड़े समूहों को एक साथ �
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Add and remove Flatpak remotes"
-msgstr "Flatpak रिमोट जोड़ें और हटाएँ"
+msgstr "Flatpak रिमोट जोड़ें और हटाएं"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "Find and trash leftover user data"
-msgstr "बचे हुए उपयोगकर्ता डेटा को ढूंढें और ट्रैश करें"
+msgstr "बचे हुए उपयोक्ता डेटा को खोजें और रद्दी में डालें"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
-msgstr "जिन ऐप्स में डेटा बचा हुआ है उन्हें दोबारा इंस्टॉल करें"
+msgstr "जिन ऐप्स का डेटा बचा हुआ है उन्हें दोबारा स्थापित करें"
 
 #: data/ui/downgrade.blp:25 src/app_row_widget.py:360
 msgid "Downgrade"
-msgstr "डाउनग्रेड"
+msgstr "पदावनत"
 
 #: data/ui/downgrade.blp:55
 msgid "Fetching Releases"
@@ -84,7 +84,7 @@ msgstr "इसमें कुछ समय लग सकता है"
 
 #: data/ui/downgrade.blp:71 src/app_row_widget.py:299 src/window.py:494
 msgid "Disable Updates"
-msgstr "अपडेट अक्षम करें"
+msgstr "अद्यतन अक्षम करें"
 
 #: data/ui/downgrade.blp:77
 msgid "Select a Release"
@@ -95,16 +95,16 @@ msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
-"यह वर्तमान रिलीज़ को अनइंस्टॉल कर देगा और उसके स्थान पर चुने गए रिलीज़ को इंस्टॉल कर "
-"देगा। ध्यान दें कि डाउनग्रेड करने से समस्याएँ पैदा हो सकती हैं।"
+"यह वर्तमान रिलीज़ को अस्थापित कर देगा और उसके स्थान पर चुने गए रिलीज़ को "
+"स्थापित कर देगा। ध्यान दें कि पदावनत करने से समस्याएं पैदा हो सकती हैं।"
 
 #: data/ui/filter.blp:5 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
-msgstr "फिल्टर सेट करें"
+msgstr "फिल्टर तय करें"
 
 #: data/ui/filter.blp:39
 msgid "Show Apps"
-msgstr "ऐप्स दिखाएँ"
+msgstr "ऐप्स दिखाएं"
 
 #: data/ui/filter.blp:49
 msgid "Show Runtimes"
@@ -132,7 +132,7 @@ msgstr "डेटा फोल्डर खोलें"
 
 #: data/ui/orphans.blp:81 data/ui/search_install.blp:171 data/ui/window.blp:98
 msgid "Installing"
-msgstr "इंस्टाल किया जा रहा है"
+msgstr "स्थापित किया जा रहा है"
 
 #: data/ui/orphans.blp:102
 msgid "No Leftover Data"
@@ -140,7 +140,7 @@ msgstr "कोई बचा हुआ डेटा नहीं"
 
 #: data/ui/orphans.blp:103
 msgid "There is no leftover user data"
-msgstr "कोई भी उपयोगकर्ता डेटा शेष नहीं है"
+msgstr "कोई भी उपयोक्ता डेटा शेष नहीं है"
 
 #: data/ui/orphans.blp:108 data/ui/search_install.blp:87 data/ui/window.blp:187
 msgid "No Results Found"
@@ -148,7 +148,7 @@ msgstr "कोई परिणाम नहीं मिला"
 
 #: data/ui/orphans.blp:109 data/ui/search_install.blp:88 data/ui/window.blp:188
 msgid "Try a different search term"
-msgstr "कोई भिन्न खोज शब्द आज़माएँ"
+msgstr "कोई भिन्न खोज शब्द आज़माएं"
 
 #: data/ui/orphans.blp:119 data/ui/window.blp:206
 msgid "Select All"
@@ -156,12 +156,12 @@ msgstr "सभी चुनें"
 
 #: data/ui/orphans.blp:124 src/window.py:199 src/window.py:281
 msgid "Trash"
-msgstr "ट्रैश"
+msgstr "रद्दी"
 
 #: data/ui/orphans.blp:130 data/ui/search_install.blp:54
 #: src/orphans_window.py:122 src/window.py:839
 msgid "Install"
-msgstr "इंस्टॉल"
+msgstr "स्थापित करें"
 
 #: data/ui/popular_remotes.blp:18
 msgid "Add Remote"
@@ -169,15 +169,15 @@ msgstr "रिमोट जोड़ें"
 
 #: data/ui/popular_remotes.blp:19
 msgid "Choose from a list of popular remotes or add a new one"
-msgstr "लोकप्रिय रिमोट की सूची में से चुनें या एक नया जोड़ें"
+msgstr "लोकप्रिय रिमोट की सूची में से चुनें या नया जोड़ें"
 
 #: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
 msgid "Add a Repo File"
-msgstr "एक रेपो फाइल जोड़ें"
+msgstr "रेपो फाइल जोड़ें"
 
 #: data/ui/popular_remotes.blp:50 data/ui/remotes.blp:56
 msgid "Add a Custom Remote"
-msgstr "एक कस्टम रिमोट जोड़ें"
+msgstr "तदनुकूल रिमोट जोड़ें"
 
 #: data/ui/properties.blp:7
 msgid "Properties"
@@ -185,16 +185,16 @@ msgstr "प्रॉपर्टी"
 
 #: data/ui/properties.blp:73
 msgid "Loading User Data"
-msgstr "उपयोगकर्ता डेटा लोड हो रहा है"
+msgstr "उपयोक्ता डेटा लोड हो रहा है"
 
 #: data/ui/properties.blp:78 src/app_row_widget.py:268
 #: src/orphans_window.py:258
 msgid "Open User Data Folder"
-msgstr "उपयोगकर्ता डेटा फोल्डर खोलें"
+msgstr "उपयोक्ता डेटा फोल्डर खोलें"
 
 #: data/ui/properties.blp:90 src/app_row_widget.py:281
 msgid "Trash User Data"
-msgstr "उपयोगकर्ता डेटा ट्रैश करें"
+msgstr "उपयोक्ता डेटा ट्रैश करें"
 
 #: data/ui/properties.blp:108
 msgid "Show Apps Using This Runtime"
@@ -210,7 +210,7 @@ msgstr "प्रॉपर्टी देखें"
 
 #: data/ui/properties.blp:135 src/app_row_widget.py:234 src/window.py:562
 msgid "Copy"
-msgstr "कॉपी"
+msgstr "कॉपी करें"
 
 #: data/ui/properties.blp:147
 msgid "Show Details in Store"
@@ -226,11 +226,11 @@ msgstr "रिमोट की सूची ताज़ा करें"
 
 #: data/ui/remotes.blp:23
 msgid "Installed Remotes"
-msgstr "इंस्टॉल किये गये रिमोट"
+msgstr "स्थापित रिमोट"
 
 #: data/ui/remotes.blp:27
 msgid "Show Disabled"
-msgstr "अक्षम दिखाएँ"
+msgstr "अक्षम दिखाएं"
 
 #: data/ui/remotes.blp:41
 msgid "No Remotes Found"
@@ -238,7 +238,7 @@ msgstr "कोई रिमोट नहीं मिला"
 
 #: data/ui/remotes.blp:45
 msgid "Add a Popular Remote"
-msgstr "एक लोकप्रिय रिमोट जोड़ें"
+msgstr "लोकप्रिय रिमोट जोड़ें"
 
 #: data/ui/remotes.blp:49
 msgid "Add Other Remotes"
@@ -274,7 +274,7 @@ msgstr "Flatpak खोजें"
 
 #: data/ui/search_install.blp:82
 msgid "Search for Flatpaks that you want to install"
-msgstr "उन Flatpak को खोजें जिन्हें आप इंस्टॉल करना चाहते हैं"
+msgstr "उन Flatpak को खोजें जिन्हें आप स्थापित करना चाहते हैं"
 
 #: data/ui/search_install.blp:108
 msgid "Searching"
@@ -305,7 +305,8 @@ msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time."
 msgstr ""
-"स्नैपशॉट ऐप के उपयोगकर्ता डेटा का बैकअप हैं। इन्हें किसी भी समय पुनः लागू किया जा सकता है।"
+"स्नैपशॉट ऐप के उपयोक्ता डेटा का बैकअप हैं। इन्हें किसी भी समय पुनः लागू किया "
+"जा सकता है।"
 
 #: data/ui/window.blp:18
 msgid "Filter List"
@@ -313,7 +314,7 @@ msgstr "फिल्टर सूची"
 
 #: data/ui/window.blp:24
 msgid "Main Menu"
-msgstr "मुख्य मेन्यू"
+msgstr "मुख्य मेनू"
 
 #: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 msgid "Toggle Selection Mode"
@@ -321,11 +322,11 @@ msgstr "चयन मोड टॉगल करें"
 
 #: data/ui/window.blp:53
 msgid "Loading Flatpaks"
-msgstr "Flatpak लोड हो रहा है"
+msgstr "Flatpaks लोड हो रहे हैं"
 
 #: data/ui/window.blp:129
 msgid "Uninstalling"
-msgstr "अनइंस्टॉल किया जा रहा है"
+msgstr "स्थापना रद्द की जा रही है"
 
 #: data/ui/window.blp:157
 msgid "Creating Snapshots"
@@ -340,8 +341,8 @@ msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
 msgstr ""
-"Warehouse इंस्टॉल किए गए Flatpak की सूची नहीं देख सकता है या सिस्टम में कोई Flatpak "
-"इंस्टॉल नहीं है"
+"Warehouse स्थापित Flatpak की सूची नहीं देख सकता है या सिस्टम में कोई Flatpak "
+"स्थापित नहीं है"
 
 #: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
@@ -349,7 +350,7 @@ msgstr "कोई Flatpak मिलान फिल्टर नहीं"
 
 #: data/ui/window.blp:176
 msgid "No installed Flatpak matches all of the currently applied filters"
-msgstr "कोई भी इंस्टॉल किया गया Flatpak वर्तमान में लागू सभी फिल्टर से मेल नहीं खाता है"
+msgstr "कोई भी स्थापित Flatpak वर्तमान में लागू सभी फिल्टर से मेल नहीं खाता है"
 
 #: data/ui/window.blp:193
 msgid "Refreshing List"
@@ -357,11 +358,11 @@ msgstr "सूची को ताज़ा किया जा रहा है
 
 #: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
-msgstr "चयनित ऐप्स अनइंस्टॉल करें"
+msgstr "चयनित ऐप्स अस्थापित करें"
 
 #: data/ui/window.blp:218
 msgid "Send Selected Apps' Data to the Trash"
-msgstr "चयनित ऐप्स का डेटा ट्रैश में भेजें"
+msgstr "चयनित ऐप्स का डेटा रद्दी में भेजें"
 
 #: data/ui/window.blp:224
 msgid "Open Copy Menu"
@@ -381,11 +382,11 @@ msgstr "रिमोट प्रबंधित करें…"
 
 #: data/ui/window.blp:256
 msgid "Install From File…"
-msgstr "फाइल से इंस्टॉल करें…"
+msgstr "फाइल से स्थापित करें…"
 
 #: data/ui/window.blp:261
 msgid "Install From The Web…"
-msgstr "वेब से इंस्टॉल करें…"
+msgstr "वेब से स्थापित करें…"
 
 #: data/ui/window.blp:267
 msgid "Refresh List"
@@ -413,11 +414,11 @@ msgstr "संदर्भ कॉपी करें"
 
 #: src/app_row_widget.py:82
 msgid "Updates Disabled"
-msgstr "अपडेट अक्षम"
+msgstr "अद्यतन अक्षम"
 
 #: src/app_row_widget.py:87 src/properties_window.py:212
 msgid "{} is masked and will not be updated"
-msgstr "{} छिपा हुआ है और इसे अपडेट नहीं किया जाएगा"
+msgstr "{} छिपा हुआ है और इसे अद्यतन नहीं किया जाएगा"
 
 #: src/app_row_widget.py:94
 msgid "Auto Removal Disabled"
@@ -437,7 +438,9 @@ msgstr "ऐप EOL"
 #: src/app_row_widget.py:112 src/properties_window.py:195
 msgid ""
 "{} has reached its End of Life and will not receive any security updates"
-msgstr "{} अपने जीवन के अंत तक पहुंच गया है और उसे कोई सुरक्षा अपडेट प्राप्त नहीं होगा"
+msgstr ""
+"{} अपने जीवन के अंत तक पहुंच गया है और उसे कोई सुरक्षा अद्यतन प्राप्त नहीं "
+"होगा"
 
 #: src/app_row_widget.py:123
 msgid "Runtime EOL"
@@ -447,7 +450,9 @@ msgstr "रनटाइम EOL"
 msgid ""
 "{}'s runtime has reached its End of Life and will not receive any security "
 "updates"
-msgstr "{} का रनटाइम अपने अंत तक पहुंच गया है और उसे कोई सुरक्षा अपडेट प्राप्त नहीं होगा"
+msgstr ""
+"{} का रनटाइम अपने अंत तक पहुंच गया है और उसे कोई सुरक्षा अद्यतन प्राप्त नहीं "
+"होगा"
 
 #: src/app_row_widget.py:165 src/orphans_window.py:266
 msgid "Select"
@@ -499,11 +504,11 @@ msgstr "खोलें"
 
 #: src/app_row_widget.py:256 src/window.py:229 src/window.py:302
 msgid "Uninstall"
-msgstr "अनइंस्टॉल"
+msgstr "स्थापना रद्द करें"
 
 #: src/app_row_widget.py:311
 msgid "Enable Updates"
-msgstr "अपडेट सक्षम करें"
+msgstr "अद्यतन सक्षम करें"
 
 #: src/app_row_widget.py:324 src/window.py:546
 msgid "Disable Auto Removal"
@@ -531,23 +536,23 @@ msgstr "कमिट हैश: {}"
 
 #: src/downgrade_window.py:110
 msgid "Could not downgrade {}"
-msgstr "डाउनग्रेड नहीं किया जा सका {}"
+msgstr "पदावनत नहीं किया जा सका {}"
 
 #: src/downgrade_window.py:119 src/window.py:463
 msgid "Could not disable updates for {}"
-msgstr "{} के लिए अपडेट अक्षम नहीं किया जा सका"
+msgstr "{} के लिए अद्यतन अक्षम नहीं किया जा सका"
 
 #: src/downgrade_window.py:132
 msgid "Downgrading…"
-msgstr "डाउनग्रेड किया जा रहा है…"
+msgstr "पदावनत किया जा रहा है…"
 
 #: src/downgrade_window.py:155
 msgid "Downgrade {}"
-msgstr "डाउनग्रेड {}"
+msgstr "पदावनत {}"
 
 #: src/downgrade_window.py:163
 msgid "Ensure that {} will never be updated to a newer version"
-msgstr "सुनिश्चित करें कि {} को कभी भी नए संस्करण में अपडेट नहीं किया जाएगा"
+msgstr "सुनिश्चित करें कि {} को कभी भी नए संस्करण में अद्यतन नहीं किया जाएगा"
 
 #: src/filter_window.py:43 src/filter_window.py:49
 msgid "{} selected"
@@ -555,7 +560,7 @@ msgstr "{} चयनित"
 
 #: src/filter_window.py:135 src/orphans_window.py:150 src/remotes_window.py:307
 msgid "User wide"
-msgstr "उपयोगकर्ता विस्तृत"
+msgstr "उपयोक्ता विस्तृत"
 
 #: src/filter_window.py:137 src/orphans_window.py:152 src/remotes_window.py:309
 msgid "System wide"
@@ -563,7 +568,7 @@ msgstr "सिस्टम विस्तृत"
 
 #: src/filter_window.py:139 src/orphans_window.py:154 src/remotes_window.py:311
 msgid "Unknown install type"
-msgstr "अज्ञात इंस्टॉल प्रकार"
+msgstr "अज्ञात स्थापना प्रकार"
 
 #: src/gtk/help-overlay.blp:11
 msgid "App Management"
@@ -587,7 +592,7 @@ msgstr "बचे हुए डेटा को प्रबंधित कर�
 
 #: src/gtk/help-overlay.blp:47
 msgid "Install From File"
-msgstr "फाइल से इंस्टॉल करें"
+msgstr "फाइल से स्थापित करें"
 
 #: src/gtk/help-overlay.blp:52
 msgid "General"
@@ -599,7 +604,7 @@ msgstr "मेनू खोलें"
 
 #: src/gtk/help-overlay.blp:60
 msgid "Show Shortcuts"
-msgstr "शॉर्टकट दिखाएँ"
+msgstr "शॉर्टकट दिखाएं"
 
 #: src/gtk/help-overlay.blp:65
 msgid "Quit"
@@ -624,19 +629,20 @@ msgstr "योगदानकर्ता"
 
 #: src/orphans_window.py:80 src/window.py:810
 msgid "Installed successfully"
-msgstr "सफलतापूर्वक इंस्टॉल किया गया"
+msgstr "सफलतापूर्वक स्थापित किया गया"
 
 #: src/orphans_window.py:83
 msgid "Could not install some apps"
-msgstr "कुछ ऐप्स इंस्टॉल नहीं हो सके"
+msgstr "कुछ ऐप्स स्थापित नहीं हो सके"
 
 #: src/orphans_window.py:117
 msgid "Attempt to Install?"
-msgstr "इंस्टॉल करने का प्रयास करें?"
+msgstr "स्थापित करने का प्रयास करें?"
 
 #: src/orphans_window.py:118
 msgid "Warehouse will attempt to install apps matching the selected data."
-msgstr "Warehouse चयनित डेटा से मेल खाने वाले ऐप्स इंस्टॉल करने का प्रयास करेगा।"
+msgstr ""
+"Warehouse चयनित डेटा से मेल खाने वाले ऐप्स स्थापित करने का प्रयास करेगा।"
 
 #: src/orphans_window.py:121 src/orphans_window.py:189
 #: src/properties_window.py:156 src/remotes_window.py:86
@@ -646,15 +652,15 @@ msgstr "Warehouse चयनित डेटा से मेल खाने व
 #: src/window.py:446 src/window.py:492 src/window.py:543 src/window.py:645
 #: src/window.py:715 src/window.py:838
 msgid "Cancel"
-msgstr "रद्द"
+msgstr "रद्द करें"
 
 #: src/orphans_window.py:185
 msgid "Trash folders?"
-msgstr "ट्रैश फोल्डर्स?"
+msgstr "फोल्डरों को रद्दी में डालें?"
 
 #: src/orphans_window.py:185
 msgid "These folders will be sent to the trash."
-msgstr "ये फोल्डर्स ट्रैश में भेज दिए जाएंगे।"
+msgstr "इन फोल्डरों को रद्दी में भेजा जायेगा।"
 
 #: src/orphans_window.py:190
 msgid "Continue"
@@ -679,7 +685,7 @@ msgstr "विवरण नहीं दिखा सके"
 
 #: src/properties_window.py:58
 msgid "User Data"
-msgstr "उपयोगकर्ता का डेटा"
+msgstr "उपयोक्ता का डेटा"
 
 #: src/properties_window.py:69
 msgid "Description"
@@ -687,7 +693,7 @@ msgstr "विवरण"
 
 #: src/properties_window.py:84 src/properties_window.py:144
 msgid "No User Data"
-msgstr "कोई उपयोगकर्ता डेटा नहीं"
+msgstr "कोई उपयोक्ता डेटा नहीं"
 
 #: src/properties_window.py:135
 msgid "Could not show properties"
@@ -695,19 +701,19 @@ msgstr "प्रॉपर्टी नहीं दिखाए जा सक�
 
 #: src/properties_window.py:143 src/window.py:438
 msgid "Trashed user data"
-msgstr "उपयोगकर्ता डेटा ट्रैश किया गया"
+msgstr "उपयोक्ता डेटा रद्दी किया गया"
 
 #: src/properties_window.py:150 src/window.py:433
 msgid "Could not trash user data"
-msgstr "उपयोगकर्ता डेटा ट्रैश नहीं किया जा सका"
+msgstr "उपयोक्ता डेटा को रद्दी में नहीं डाला जा सका"
 
 #: src/properties_window.py:154 src/window.py:441
 msgid "Send {}'s User Data to the Trash?"
-msgstr "{} का उपयोगकर्ता डेटा कूड़ेदान में भेजें?"
+msgstr "{} का उपयोक्ता डेटा रद्दी में भेजें?"
 
 #: src/properties_window.py:158 src/window.py:448 src/window.py:646
 msgid "Trash Data"
-msgstr "ट्रैश डेटा"
+msgstr "डेटा रद्दी करें"
 
 #: src/remotes_window.py:71
 msgid "Could not remove {}"
@@ -715,15 +721,15 @@ msgstr "{} को हटाया नहीं जा सका"
 
 #: src/remotes_window.py:81 src/remotes_window.py:162
 msgid "Any installed apps from {} will stop receiving updates"
-msgstr "{} से इंस्टॉल किए गए किसी भी ऐप को अपडेट मिलना बंद हो जाएगा"
+msgstr "{} से स्थापित किसी भी ऐप को अद्यतन मिलना बंद हो जाएगा"
 
 #: src/remotes_window.py:84
 msgid "Remove {}?"
-msgstr "{} हटाएँ?"
+msgstr "{} हटाएं?"
 
 #: src/remotes_window.py:87 src/remotes_window.py:272
 msgid "Remove"
-msgstr "हटाएँ"
+msgstr "हटाएं"
 
 #: src/remotes_window.py:114
 msgid "Could not enable {}"
@@ -739,7 +745,7 @@ msgstr "{} को अक्षम करें?"
 
 #: src/remotes_window.py:168 src/remotes_window.py:263
 msgid "Disable"
-msgstr "अक्षम"
+msgstr "अक्षम करें"
 
 #: src/remotes_window.py:179
 msgid "Could not view apps"
@@ -747,11 +753,11 @@ msgstr "ऐप्स नहीं देखे जा सके"
 
 #: src/remotes_window.py:240
 msgid "Set Filter"
-msgstr "फिल्टर सेट करें"
+msgstr "फिल्टर तय करें"
 
 #: src/remotes_window.py:254
 msgid "Enable"
-msgstr "सक्षम"
+msgstr "सक्षम करें"
 
 #: src/remotes_window.py:288
 msgid "Copy remote name"
@@ -759,19 +765,19 @@ msgstr "रिमोट नाम कॉपी करें"
 
 #: src/remotes_window.py:302
 msgid "Disabled"
-msgstr "अक्षम"
+msgstr "अक्षम किया गया"
 
 #: src/remotes_window.py:339
 msgid "The open source, pay-what-you-want app store from elementary"
-msgstr "Elementary द्वारा ओपन सोर्स, जो-चाहो-भुगतान-करो ऐप स्टोर"
+msgstr "Elementary द्वारा खुला स्त्रोत, जो-चाहो-भुगतान-करो ऐप स्टोर"
 
 #: src/remotes_window.py:345
 msgid "Central repository of Flatpak applications"
-msgstr "Flatpak एप्लिकेशन का केंद्रीय भंडार"
+msgstr "Flatpak अनुप्रयोग की केंद्रीय रिपॉजिटरी"
 
 #: src/remotes_window.py:351
 msgid "Beta builds of Flatpak applications"
-msgstr "Flatpak एप्लिकेशन का बीटा संस्करण"
+msgstr "Flatpak अनुप्रयोगों का बीटा संस्करण"
 
 #: src/remotes_window.py:357
 msgid "Flatpaks packaged by Fedora Linux"
@@ -787,7 +793,7 @@ msgstr "बीटा KDE ऐप्स और रनटाइम्स"
 
 #: src/remotes_window.py:375
 msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr "वेबकिट डेवलपर और रनटाइम SDK का केंद्रीय भंडार"
+msgstr "WebKit विकासकर्ता और रनटाइम SDK की केंद्रीय रिपॉजिटरी"
 
 #: src/remotes_window.py:411 src/remotes_window.py:573
 msgid "Could not add {}"
@@ -811,7 +817,7 @@ msgstr "URL"
 
 #: src/remotes_window.py:521 src/remotes_window.py:633 src/window.py:847
 msgid "User"
-msgstr "उपयोगकर्ता"
+msgstr "उपयोक्ता"
 
 #: src/remotes_window.py:521 src/remotes_window.py:633
 msgid "Remote will be available to only you"
@@ -823,7 +829,7 @@ msgstr "सिस्टम"
 
 #: src/remotes_window.py:530 src/remotes_window.py:637
 msgid "Remote will be available to every user on the system"
-msgstr "सिस्टम पर हर उपयोगकर्ता के लिए रिमोट उपलब्ध होगा"
+msgstr "सिस्टम पर हर उपयोक्ता के लिए रिमोट उपलब्ध होगा"
 
 #: src/remotes_window.py:569
 msgid "{} successfully added"
@@ -839,7 +845,7 @@ msgstr "Flatpak रिपो"
 
 #: src/snapshots_window.py:48
 msgid "There is no User Data to Snapshot"
-msgstr "स्नैपशॉट के लिए कोई उपयोगकर्ता डेटा नहीं है"
+msgstr "स्नैपशॉट के लिए कोई उपयोक्ता डेटा नहीं है"
 
 #: src/snapshots_window.py:87
 msgid "Version {}"
@@ -851,19 +857,19 @@ msgstr "स्नैपशॉट लागू करें"
 
 #: src/snapshots_window.py:101 src/snapshots_window.py:130
 msgid "Trash Snapshot"
-msgstr "स्नैपशॉट ट्रैश करें"
+msgstr "स्नैपशॉट रद्दी करें"
 
 #: src/snapshots_window.py:121
 msgid "Could not trash snapshot"
-msgstr "स्नैपशॉट ट्रैश नहीं किया जा सका"
+msgstr "स्नैपशॉट रद्दी नहीं किया जा सका"
 
 #: src/snapshots_window.py:125
 msgid "Trash Snapshot?"
-msgstr "स्नैपशॉट ट्रैश करें?"
+msgstr "स्नैपशॉट रद्दी करें?"
 
 #: src/snapshots_window.py:126
 msgid "This snapshot and its contents will be sent to the trash."
-msgstr "यह स्नैपशॉट और इसकी सामग्री ट्रैश में भेज दी जाएगी।"
+msgstr "यह स्नैपशॉट और इसकी सामग्री रद्दी में भेज दी जाएगी।"
 
 #: src/snapshots_window.py:148
 msgid "Could not create snapshot"
@@ -892,7 +898,8 @@ msgstr "स्नैपशॉट लागू करें?"
 
 #: src/snapshots_window.py:230
 msgid "Applying this snapshot will trash any current user data for {}."
-msgstr "इस स्नैपशॉट को लागू करने से {} का कोई भी मौजूदा उपयोगकर्ता डेटा नष्ट हो जाएगा।"
+msgstr ""
+"इस स्नैपशॉट को लागू करने से {} का कोई भी मौजूदा उपयोक्ता डेटा नष्ट हो जाएगा।"
 
 #. Window stuffs
 #: src/snapshots_window.py:280
@@ -901,15 +908,15 @@ msgstr "{} स्नैपशॉट"
 
 #: src/window.py:111
 msgid "Uninstalled successfully"
-msgstr "सफलतापूर्वक अनइंस्टॉल किया गया"
+msgstr "सफलतापूर्वक अस्थापित"
 
 #: src/window.py:114
 msgid "Could not uninstall some apps"
-msgstr "कुछ ऐप्स को अनइंस्टॉल नहीं किया जा सका"
+msgstr "कुछ ऐप्स को अस्थापित नहीं किया जा सका"
 
 #: src/window.py:170
 msgid "Uninstall Selected Apps?"
-msgstr "चयनित ऐप्स अनइंस्टॉल करें?"
+msgstr "चयनित ऐप्स को अस्थापित करें?"
 
 #: src/window.py:171
 msgid "It will not be possible to use these apps after removal."
@@ -929,15 +936,15 @@ msgstr "इन ऐप्स की सेटिंग और सामग्र�
 
 #: src/window.py:200
 msgid "Send these apps' settings and content to the trash"
-msgstr "इन ऐप्स की सेटिंग और सामग्री को ट्रैश में भेजें"
+msgstr "इन ऐप्स की सेटिंग और सामग्री को रद्दी में भेजें"
 
 #: src/window.py:236
 msgid "Cannot uninstall while already uninstalling"
-msgstr "पहले से ही अनइंस्टॉल करते समय अनइंस्टॉल नहीं किया जा सकता"
+msgstr "पहले से ही अस्थापना करते समय अस्थापित नहीं किया जा सकता"
 
 #: src/window.py:265
 msgid "Uninstall {}?"
-msgstr "अनइंस्टॉल {}?"
+msgstr "अस्थापित करें {}?"
 
 #: src/window.py:266
 msgid "It will not be possible to use {} after removal."
@@ -949,23 +956,23 @@ msgstr "इस ऐप की सेटिंग और सामग्री क
 
 #: src/window.py:282
 msgid "Send this app's settings and content to the trash"
-msgstr "इस ऐप की सेटिंग्स और सामग्री को ट्रैश में भेजें"
+msgstr "इस ऐप की सेटिंग्स और सामग्री को रद्दी में भेजें"
 
 #: src/window.py:444
 msgid "Your files and data for this app will be sent to the trash."
-msgstr "इस ऐप के लिए आपकी फाइलें और डेटा ट्रैश में भेज दिए जाएंगे।"
+msgstr "इस ऐप के लिए आपकी फाइलें और डेटा रद्दी में भेज दिए जाएंगे।"
 
 #: src/window.py:485
 msgid "Disable Updates for {}?"
-msgstr "{} के लिए अपडेट अक्षम करें?"
+msgstr "{} के लिए अद्यतन अक्षम करें?"
 
 #: src/window.py:489
 msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
 msgstr ""
-"यह {} को मास्क कर देगा जिससे यह सुनिश्चित हो जाएगा कि उसे कभी भी कोई सुविधाएँ या "
-"सुरक्षा अपडेट प्राप्त नहीं होंगे।"
+"यह {} को मास्क कर देगा जिससे यह सुनिश्चित हो जाएगा कि उसे कभी भी कोई सुविधाएं"
+" या सुरक्षा अद्यतन प्राप्त नहीं होंगे।"
 
 #: src/window.py:511
 msgid "Could not enable auto removal"
@@ -997,19 +1004,19 @@ msgstr "ठीक है"
 
 #: src/window.py:620
 msgid "{} has no data to trash"
-msgstr "{} के पास ट्रैश करने के लिए कोई डेटा नहीं है"
+msgstr "{} के पास रद्दी करने के लिए कोई डेटा नहीं है"
 
 #: src/window.py:626
 msgid "Could not trash {}'s data"
-msgstr "{} का डेटा ट्रैश नहीं किया जा सका"
+msgstr "{} का डेटा रद्दी नहीं किया जा सका"
 
 #: src/window.py:641
 msgid "Trash Selected Apps' User Data?"
-msgstr "चयनित ऐप्स का उपयोगकर्ता डेटा ट्रैश करें?"
+msgstr "चयनित ऐप्स का उपयोक्ता डेटा रद्दी करें?"
 
 #: src/window.py:642
 msgid "Your files and data for these apps will be sent to the trash."
-msgstr "इन ऐप्स के लिए आपकी फाइलें और डेटा ट्रैश में भेज दिए जाएंगे।"
+msgstr "इन ऐप्स के लिए आपकी फाइलें और डेटा रद्दी में भेज दिए जाएंगे।"
 
 #: src/window.py:692
 msgid "Could not snapshot some apps"
@@ -1024,8 +1031,8 @@ msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
 msgstr ""
-"स्नैपशॉट ऐप के उपयोगकर्ता डेटा का बैकअप हैं। इन्हें किसी भी समय पुनः लागू किया जा सकता है। "
-"इसमें कुछ समय लग सकता है।"
+"स्नैपशॉट ऐप के उपयोक्ता डेटा का बैकअप हैं। इन्हें किसी भी समय पुनः लागू किया "
+"जा सकता है। इसमें कुछ समय लग सकता है।"
 
 #: src/window.py:716
 msgid "Create Snapshots"
@@ -1045,11 +1052,11 @@ msgstr "चयनित ऐप संदर्भ को कॉपी किय�
 
 #: src/window.py:812
 msgid "Could not install app"
-msgstr "ऐप इंस्टॉल नहीं किया जा सका"
+msgstr "ऐप स्थापित नहीं किया जा सका"
 
 #: src/window.py:836
 msgid "Install {}?"
-msgstr "इंस्टॉल {}?"
+msgstr "{} स्थापित करें?"
 
 #: src/window.py:847
 msgid "The app will be available to only you"
@@ -1057,7 +1064,7 @@ msgstr "ऐप केवल आपके लिए उपलब्ध होग�
 
 #: src/window.py:851
 msgid "The app will be available to every user on the system"
-msgstr "ऐप सिस्टम पर प्रत्येक उपयोगकर्ता के लिए उपलब्ध होगा"
+msgstr "ऐप सिस्टम पर प्रत्येक उपयोक्ता के लिए उपलब्ध होगा"
 
 #: src/window.py:881
 msgid "File type not supported"
