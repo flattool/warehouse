@@ -112,20 +112,12 @@ class DowngradeWindow(Adw.Dialog):
             self.apply_button.set_sensitive(True)
             return
 
-        if self.mask_row.get_active():
-            if self.my_utils.mask_flatpak(self.app_id, self.install_type) != 0:
-                self.parent_window.toast_overlay.add_toast(
-                    Adw.Toast.new(
-                        _("Could not disable updates for {}").format(self.app_name)
-                    )
-                )
-
         self.parent_window.refresh_list_of_flatpaks(self)
         self.close()
 
     def downgrade_thread(self):
         self.response = self.my_utils.downgrade_flatpak(
-            self.app_ref, self.commit_to_use, self.install_type
+            self.app_id, self.app_ref, self.commit_to_use, self.install_type, self.mask_row.get_active()
         )
 
     def on_apply(self):

@@ -263,23 +263,21 @@ class myUtils:
             return 1
         return 0
 
-    def downgrade_flatpak(self, ref, commit, install_type="system"):
+    def downgrade_flatpak(self, id, ref, commit, install_type="system", mask=False):
+        cmd_body = f"flatpak mask --remove --{install_type} {id}; flatpak update {ref} --commit={commit} --{install_type} -y;"
+        if mask:
+            cmd_body += f"flatpak mask --{install_type} {id}"
         command = [
             "flatpak-spawn",
-            "--host",
-            "pkexec",
-            "flatpak",
-            "update",
-            ref,
-            f"--commit={commit}",
-            f"--{install_type}",
-            "-y",
+            "--host", "pkexec",
+            "sh", "-c",
+            cmd_body,
         ]
-        if "--user" in command:
+        if install_type == "user":
             command.remove("pkexec")
         try:
             response = subprocess.run(
-                command, capture_output=True, text=True, env=self.new_env
+                command, capture_output=False, text=True, env=self.new_env
             ).stderr
         except subprocess.CalledProcessError as e:
             # if "note that" in response.lower():
