@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-06 23:51-0400\n"
-"PO-Revision-Date: 2024-03-08 04:31+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-06-07 02:29+0000\n"
+"Last-Translator: 张鹏 <scbeta@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.fyralabs.com/projects/"
 "flattool/warehouse/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.4.2\n"
+"X-Generator: Weblate 5.5\n"
 
 #. Translators: Do not translate the applicaion name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -31,43 +31,41 @@ msgstr "flatpak"
 #: data/io.github.flattool.Warehouse.desktop.in:12
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
-msgstr "管理 Flatpak 的所有内容"
+msgstr "管理 Flatpak 的一切"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
 "Warehouse is an app that manages installed Flatpaks, their user data, and "
 "Flatpak remotes."
-msgstr ""
-"Warehouse 是一个应用程序，用于管理已安装的 Flatpak、他们的用户数据和 Flatpak "
-"远程。"
+msgstr "[Warehouse]是一个用于管理已安装的Flatpak应用、用户数据和远程仓库的应用程序。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr "特性："
+msgstr "功能："
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Show and filter the list of installed Flatpaks"
-msgstr "列出和筛选已安装的 Flatpak"
+msgstr "列出和筛选已安装的Flatpak应用"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Display properties of installed Flatpaks"
-msgstr "显示已安装的 Flatpak 的属性"
+msgstr "显示已安装的 Flatpak 应用的属性"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Manage large groups of Flatpaks at once"
-msgstr "一次管理大型 Flatpak 组"
+msgstr "一次性管理大型Flatpak应用组"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Add and remove Flatpak remotes"
-msgstr "添加和删除 Flatpak 远程"
+msgstr "添加和删除Flatpak远程仓库"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "Find and trash leftover user data"
-msgstr "查找和回收剩余的用户数据"
+msgstr "查找和回收残留的用户数据"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
-msgstr "重新安装有剩余数据的应用"
+msgstr "重新安装有残留数据的应用"
 
 #: data/ui/downgrade.blp:25 src/app_row_widget.py:360
 msgid "Downgrade"
@@ -75,11 +73,11 @@ msgstr "降级"
 
 #: data/ui/downgrade.blp:55
 msgid "Fetching Releases"
-msgstr ""
+msgstr "正在获取发布版本"
 
 #: data/ui/downgrade.blp:63 data/ui/window.blp:107 data/ui/window.blp:162
 msgid "This could take a while"
-msgstr ""
+msgstr "这可能需要一段时间"
 
 #: data/ui/downgrade.blp:71 src/app_row_widget.py:299 src/window.py:494
 msgid "Disable Updates"
@@ -87,70 +85,69 @@ msgstr "禁用更新"
 
 #: data/ui/downgrade.blp:77
 msgid "Select a Release"
-msgstr ""
+msgstr "选择一个发布版本"
 
 #: data/ui/downgrade.blp:78
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
-msgstr ""
+msgstr "这将卸载当前版本并安装所选版本。请注意，降级可能会导致问题。"
 
 #: data/ui/filter.blp:5 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
-msgstr ""
+msgstr "设置过滤器"
 
 #: data/ui/filter.blp:39
 msgid "Show Apps"
-msgstr ""
+msgstr "显示应用程序"
 
 #: data/ui/filter.blp:49
 msgid "Show Runtimes"
-msgstr ""
+msgstr "显示运行库"
 
 #: data/ui/filter.blp:60
 msgid "Filter by Remotes"
-msgstr ""
+msgstr "按远程仓库筛选"
 
 #: data/ui/filter.blp:65
 msgid "Filter by Runtimes"
-msgstr ""
+msgstr "按运行库筛选"
 
 #: data/ui/filter.blp:73 data/ui/window.blp:179
 msgid "Reset Filters"
-msgstr ""
+msgstr "重置筛选器"
 
 #: data/ui/orphans.blp:14 data/ui/window.blp:12
 msgid "Search List"
-msgstr ""
+msgstr "搜索列表"
 
 #: data/ui/orphans.blp:20
 msgid "Open Data Folder"
-msgstr ""
+msgstr "打开数据文件夹"
 
 #: data/ui/orphans.blp:81 data/ui/search_install.blp:171 data/ui/window.blp:98
-#, fuzzy
 msgid "Installing"
-msgstr "卸载"
+msgstr "正在安装"
 
 #: data/ui/orphans.blp:102
 msgid "No Leftover Data"
-msgstr ""
+msgstr "没有残留数据"
 
 #: data/ui/orphans.blp:103
 msgid "There is no leftover user data"
-msgstr ""
+msgstr "没有残留的用户数据"
 
 #: data/ui/orphans.blp:108 data/ui/search_install.blp:87 data/ui/window.blp:187
 msgid "No Results Found"
-msgstr ""
+msgstr "没有找到结果"
 
 #: data/ui/orphans.blp:109 data/ui/search_install.blp:88 data/ui/window.blp:188
 msgid "Try a different search term"
-msgstr ""
+msgstr "尝试其他搜索词"
 
 #: data/ui/orphans.blp:119 data/ui/window.blp:206
 msgid "Select All"
-msgstr ""
+msgstr "选择全部"
 
 #: data/ui/orphans.blp:124 src/window.py:199 src/window.py:281
 msgid "Trash"
@@ -159,35 +156,31 @@ msgstr "回收"
 #: data/ui/orphans.blp:130 data/ui/search_install.blp:54
 #: src/orphans_window.py:122 src/window.py:839
 msgid "Install"
-msgstr ""
+msgstr "安装"
 
 #: data/ui/popular_remotes.blp:18
-#, fuzzy
 msgid "Add Remote"
-msgstr "添加和删除 Flatpak 远程"
+msgstr "添加远程仓库"
 
 #: data/ui/popular_remotes.blp:19
 msgid "Choose from a list of popular remotes or add a new one"
-msgstr ""
+msgstr "从热门远程仓库列表中进行选择或添加新远程仓库"
 
 #: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
 msgid "Add a Repo File"
-msgstr ""
+msgstr "添加一个仓库文件"
 
 #: data/ui/popular_remotes.blp:50 data/ui/remotes.blp:56
 msgid "Add a Custom Remote"
-msgstr ""
+msgstr "添加一个自定义远程仓库"
 
 #: data/ui/properties.blp:7
-#, fuzzy
-#| msgid "View Properties"
 msgid "Properties"
-msgstr "查看属性"
+msgstr "属性"
 
 #: data/ui/properties.blp:73
-#, fuzzy
 msgid "Loading User Data"
-msgstr "回收用户数据"
+msgstr "正在加载用户数据"
 
 #: data/ui/properties.blp:78 src/app_row_widget.py:268
 #: src/orphans_window.py:258
@@ -200,13 +193,11 @@ msgstr "回收用户数据"
 
 #: data/ui/properties.blp:108
 msgid "Show Apps Using This Runtime"
-msgstr ""
+msgstr "显示使用这个运行库的应用程序"
 
 #: data/ui/properties.blp:119
-#, fuzzy
-#| msgid "Runtime EOL"
 msgid "Runtime"
-msgstr "运行时寿命终结"
+msgstr "运行库"
 
 #: data/ui/properties.blp:124 src/app_row_widget.py:156
 msgid "View Properties"
@@ -218,213 +209,199 @@ msgstr "复制"
 
 #: data/ui/properties.blp:147
 msgid "Show Details in Store"
-msgstr ""
+msgstr "在商店中显示详情"
 
 #: data/ui/remotes.blp:5 src/gtk/help-overlay.blp:42
 msgid "Manage Remotes"
-msgstr ""
+msgstr "管理远程仓库"
 
 #: data/ui/remotes.blp:14
 msgid "Refresh List of Remotes"
-msgstr ""
+msgstr "刷新远程仓库列表"
 
 #: data/ui/remotes.blp:23
 msgid "Installed Remotes"
-msgstr ""
+msgstr "已安装的远程仓库"
 
 #: data/ui/remotes.blp:27
-#, fuzzy
 msgid "Show Disabled"
-msgstr "禁用更新"
+msgstr "显示已禁用"
 
 #: data/ui/remotes.blp:41
 msgid "No Remotes Found"
-msgstr ""
+msgstr "未找到远程仓库"
 
 #: data/ui/remotes.blp:45
-#, fuzzy
 msgid "Add a Popular Remote"
-msgstr "添加和删除 Flatpak 远程"
+msgstr "添加一个流行的远程仓库"
 
 #: data/ui/remotes.blp:49
 msgid "Add Other Remotes"
-msgstr ""
+msgstr "添加其他远程仓库"
 
 #: data/ui/remotes.blp:79
-#, fuzzy
 msgid "Adding Remote"
-msgstr "添加和删除 Flatpak 远程"
+msgstr "正在添加远程仓库"
 
 #: data/ui/remotes.blp:88 data/ui/window.blp:54 data/ui/window.blp:194
 msgid "This should only take a moment"
-msgstr ""
+msgstr "这应该只需要一点时间"
 
 #: data/ui/search_install.blp:14
 msgid "Search Criteria"
-msgstr ""
+msgstr "搜索条件"
 
 #: data/ui/search_install.blp:22
 msgid "Choose a Remote to Search"
-msgstr ""
+msgstr "选择要搜索的远程仓库"
 
 #: data/ui/search_install.blp:36
 msgid "Results"
-msgstr ""
+msgstr "结果"
 
 #: data/ui/search_install.blp:71
 msgid "Start Search"
-msgstr ""
+msgstr "开始搜索"
 
 #: data/ui/search_install.blp:80
 msgid "Search for Flatpaks"
-msgstr ""
+msgstr "搜索Flatpak应用"
 
 #: data/ui/search_install.blp:82
 msgid "Search for Flatpaks that you want to install"
-msgstr ""
+msgstr "搜索您想要安装的Flatpak应用"
 
 #: data/ui/search_install.blp:108
 msgid "Searching"
-msgstr ""
+msgstr "正在搜索"
 
 #: data/ui/search_install.blp:119
 msgid "Too Many Results"
-msgstr ""
+msgstr "结果太多了"
 
 #: data/ui/search_install.blp:120
 msgid "Try being more specific with your search"
-msgstr ""
+msgstr "尝试在搜索中更具体"
 
 #: data/ui/snapshots.blp:14
-#, fuzzy
-#| msgid "Open User Data Folder"
 msgid "Open Snapshots Folder"
-msgstr "打开用户数据文件夹"
+msgstr "打开快照文件夹"
 
 #: data/ui/snapshots.blp:32
 msgid "New Snapshot"
-msgstr ""
+msgstr "新快照"
 
 #: data/ui/snapshots.blp:83
 msgid "No Snapshots"
-msgstr ""
+msgstr "没有快照"
 
 #: data/ui/snapshots.blp:84
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time."
-msgstr ""
+msgstr "快照是应用程序用户数据的备份。它们可以随时重新应用。"
 
 #: data/ui/window.blp:18
 msgid "Filter List"
-msgstr ""
+msgstr "筛选器列表"
 
 #: data/ui/window.blp:24
 msgid "Main Menu"
-msgstr ""
+msgstr "主菜单"
 
 #: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 msgid "Toggle Selection Mode"
-msgstr ""
+msgstr "切换选择模式"
 
 #: data/ui/window.blp:53
-#, fuzzy
-#| msgid "Flatpaks"
 msgid "Loading Flatpaks"
-msgstr "Flatpak 应用"
+msgstr "正在加载Flatpak应用"
 
 #: data/ui/window.blp:129
-#, fuzzy
 msgid "Uninstalling"
-msgstr "卸载"
+msgstr "正在卸载"
 
 #: data/ui/window.blp:157
-#, fuzzy
-#| msgid "Open User Data Folder"
 msgid "Creating Snapshots"
-msgstr "打开用户数据文件夹"
+msgstr "正在创建快照"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
-msgstr ""
+msgstr "没有找到Flatpak应用"
 
 #: data/ui/window.blp:170
-#, fuzzy
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
-msgstr ""
-"Warehouse 是一个应用程序，用于管理已安装的 Flatpak、他们的用户数据和 Flatpak "
-"远程。"
+msgstr "Warehouse无法找到已安装Flatpak应用的列表或者系统中没有安装Flatpak应用"
 
 #: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
-msgstr ""
+msgstr "没有Flatpak应用匹配筛选器"
 
 #: data/ui/window.blp:176
 msgid "No installed Flatpak matches all of the currently applied filters"
-msgstr ""
+msgstr "没有安装的Flatpak应用与当前设置的全部过滤器匹配"
 
 #: data/ui/window.blp:193
 msgid "Refreshing List"
-msgstr ""
+msgstr "正在刷新列表"
 
 #: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
-msgstr ""
+msgstr "卸载选中的应用"
 
 #: data/ui/window.blp:218
 msgid "Send Selected Apps' Data to the Trash"
-msgstr ""
+msgstr "将选中的应用数据发送到回收站"
 
 #: data/ui/window.blp:224
 msgid "Open Copy Menu"
-msgstr ""
+msgstr "打开复制菜单"
 
 #: data/ui/window.blp:231
-#, fuzzy
 msgid "Snapshot Selected Apps' Data"
-msgstr "是否卸载选中的应用？"
+msgstr "为选中应用的数据创建快照"
 
 #: data/ui/window.blp:241
 msgid "Manage Leftover Data…"
-msgstr ""
+msgstr "管理残留数据…"
 
 #: data/ui/window.blp:250
 msgid "Manage Remotes…"
-msgstr ""
+msgstr "管理远程仓库…"
 
 #: data/ui/window.blp:256
 msgid "Install From File…"
-msgstr ""
+msgstr "从文件安装…"
 
 #: data/ui/window.blp:261
 msgid "Install From The Web…"
-msgstr ""
+msgstr "从网络安装…"
 
 #: data/ui/window.blp:267
 msgid "Refresh List"
-msgstr ""
+msgstr "刷新列表"
 
 #: data/ui/window.blp:271
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "键盘快捷键(_K)"
 
 #: data/ui/window.blp:276
 msgid "_About Warehouse"
-msgstr ""
+msgstr "关于Warehouse(_A)"
 
 #: data/ui/window.blp:285
 msgid "Copy Names"
-msgstr ""
+msgstr "复制名称"
 
 #: data/ui/window.blp:290
 msgid "Copy IDs"
-msgstr ""
+msgstr "复制ID"
 
 #: data/ui/window.blp:295
 msgid "Copy Refs"
-msgstr ""
+msgstr "复制引用"
 
 #: src/app_row_widget.py:82
 msgid "Updates Disabled"
@@ -436,12 +413,12 @@ msgstr "{} 被隐藏并且不会更新"
 
 #: src/app_row_widget.py:94
 msgid "Auto Removal Disabled"
-msgstr ""
+msgstr "自动移除已禁用"
 
 #: src/app_row_widget.py:99
 msgid ""
 "{} is pinned and will not be auto removed even when it's required by no app"
-msgstr ""
+msgstr "{}已固定，即使没有应用需要也不会自动删除"
 
 #: src/app_row_widget.py:106
 msgid "App EOL"
@@ -464,13 +441,11 @@ msgstr "{} 的运行时寿命已经终结并且不会再收到安全更新"
 
 #: src/app_row_widget.py:165 src/orphans_window.py:266
 msgid "Select"
-msgstr ""
+msgstr "选择"
 
 #: src/app_row_widget.py:176 src/remotes_window.py:227
-#, fuzzy
-#| msgid "View Properties"
 msgid "View More"
-msgstr "查看属性"
+msgstr "查看更多"
 
 #: src/app_row_widget.py:197
 msgid "Copied name"
@@ -522,104 +497,103 @@ msgstr "启用更新"
 
 #: src/app_row_widget.py:324 src/window.py:546
 msgid "Disable Auto Removal"
-msgstr ""
+msgstr "禁用自动移除"
 
 #: src/app_row_widget.py:336
 msgid "Enable Auto Removal"
-msgstr ""
+msgstr "启用自动移除"
 
 #: src/app_row_widget.py:350
 msgid "Manage Snapshots"
-msgstr ""
+msgstr "管理快照"
 
 #: src/common.py:326 src/common.py:400
 msgid ""
 "Working on {}\n"
 "{} out of {}"
 msgstr ""
+"在 {} 上工作\n"
+"{} 中的 {}"
 
 #: src/downgrade_window.py:88
 msgid "Commit Hash: {}"
-msgstr ""
+msgstr "提交哈希值：{}"
 
 #: src/downgrade_window.py:110
 msgid "Could not downgrade {}"
-msgstr ""
+msgstr "无法对 {} 降级"
 
 #: src/downgrade_window.py:119 src/window.py:463
-#, fuzzy
 msgid "Could not disable updates for {}"
-msgstr "无法打开目录"
+msgstr "无法对 {} 禁用更新"
 
 #: src/downgrade_window.py:132
 msgid "Downgrading…"
-msgstr ""
+msgstr "降级中…"
 
 #: src/downgrade_window.py:155
 msgid "Downgrade {}"
-msgstr ""
+msgstr "降级 {}"
 
 #: src/downgrade_window.py:163
 msgid "Ensure that {} will never be updated to a newer version"
-msgstr ""
+msgstr "确保 {} 永远不会更新到更新版本"
 
 #: src/filter_window.py:43 src/filter_window.py:49
 msgid "{} selected"
-msgstr ""
+msgstr "已选择 {} 项"
 
 #: src/filter_window.py:135 src/orphans_window.py:150 src/remotes_window.py:307
 msgid "User wide"
-msgstr ""
+msgstr "用户范围"
 
 #: src/filter_window.py:137 src/orphans_window.py:152 src/remotes_window.py:309
 msgid "System wide"
-msgstr ""
+msgstr "系统范围"
 
 #: src/filter_window.py:139 src/orphans_window.py:154 src/remotes_window.py:311
-#, fuzzy
-#| msgid "Uninstall"
 msgid "Unknown install type"
-msgstr "卸载"
+msgstr "未知安装类型"
 
 #: src/gtk/help-overlay.blp:11
 msgid "App Management"
-msgstr ""
+msgstr "应用管理"
 
 #: src/gtk/help-overlay.blp:14
 msgid "Search"
-msgstr ""
+msgstr "搜索"
 
 #: src/gtk/help-overlay.blp:24
 msgid "Refresh"
-msgstr ""
+msgstr "刷新"
 
 #: src/gtk/help-overlay.blp:34
 msgid "More Functions"
-msgstr ""
+msgstr "更多功能"
 
 #: src/gtk/help-overlay.blp:37 src/orphans_window.py:30
 msgid "Manage Leftover Data"
-msgstr ""
+msgstr "管理残留数据"
 
 #: src/gtk/help-overlay.blp:47
 msgid "Install From File"
-msgstr ""
+msgstr "从文件安装"
 
 #: src/gtk/help-overlay.blp:52
 msgid "General"
-msgstr ""
+msgstr "常规"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Open Menu"
-msgstr ""
+msgstr "打开菜单"
 
 #: src/gtk/help-overlay.blp:60
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "显示快捷键"
 
 #: src/gtk/help-overlay.blp:65
 msgid "Quit"
-msgstr ""
+msgstr "退出"
 
 #: src/main.py:149
 msgid "Flatpaks"
@@ -628,31 +602,31 @@ msgstr "Flatpak 应用"
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
 #: src/main.py:191
 msgid "translator-credits"
-msgstr ""
+msgstr "张鹏 <scbeta@qq.com>"
 
 #: src/main.py:197
 msgid "Donate"
-msgstr ""
+msgstr "捐助"
 
 #: src/main.py:199
 msgid "Contributors"
-msgstr ""
+msgstr "贡献者"
 
 #: src/orphans_window.py:80 src/window.py:810
 msgid "Installed successfully"
-msgstr ""
+msgstr "安装成功"
 
 #: src/orphans_window.py:83
 msgid "Could not install some apps"
-msgstr ""
+msgstr "无法安装一些应用"
 
 #: src/orphans_window.py:117
 msgid "Attempt to Install?"
-msgstr ""
+msgstr "尝试安装？"
 
 #: src/orphans_window.py:118
 msgid "Warehouse will attempt to install apps matching the selected data."
-msgstr ""
+msgstr "Warehouse 将尝试安装与所选数据匹配的应用。"
 
 #: src/orphans_window.py:121 src/orphans_window.py:189
 #: src/properties_window.py:156 src/remotes_window.py:86
@@ -666,15 +640,15 @@ msgstr "关闭"
 
 #: src/orphans_window.py:185
 msgid "Trash folders?"
-msgstr ""
+msgstr "将文件夹移动到回收站？"
 
 #: src/orphans_window.py:185
 msgid "These folders will be sent to the trash."
-msgstr ""
+msgstr "这些文件夹将会被移动到回收站。"
 
 #: src/orphans_window.py:190
 msgid "Continue"
-msgstr ""
+msgstr "继续"
 
 #: src/orphans_window.py:198 src/properties_window.py:46
 #: src/snapshots_window.py:245 src/window.py:424
@@ -683,35 +657,31 @@ msgstr "无法打开目录"
 
 #: src/orphans_window.py:216
 msgid "Could not manage data"
-msgstr ""
+msgstr "无法管理数据"
 
 #: src/properties_window.py:40 src/remotes_window.py:212
 msgid "Copied {}"
-msgstr ""
+msgstr "已复制 {} 项"
 
 #: src/properties_window.py:52
-#, fuzzy
 msgid "Could not show details"
-msgstr "无法回收用户数据"
+msgstr "无法显示详情"
 
 #: src/properties_window.py:58
-#, fuzzy
 msgid "User Data"
-msgstr "回收用户数据"
+msgstr "用户数据"
 
 #: src/properties_window.py:69
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
 #: src/properties_window.py:84 src/properties_window.py:144
-#, fuzzy
 msgid "No User Data"
-msgstr "回收用户数据"
+msgstr "没有用户数据"
 
 #: src/properties_window.py:135
-#, fuzzy
 msgid "Could not show properties"
-msgstr "无法回收用户数据"
+msgstr "无法显示属性"
 
 #: src/properties_window.py:143 src/window.py:438
 msgid "Trashed user data"
@@ -727,215 +697,197 @@ msgstr "发送 {} 的用户数据到回收站？"
 
 #: src/properties_window.py:158 src/window.py:448 src/window.py:646
 msgid "Trash Data"
-msgstr ""
+msgstr "回收数据"
 
 #: src/remotes_window.py:71
 msgid "Could not remove {}"
-msgstr ""
+msgstr "无法移除 {}"
 
 #: src/remotes_window.py:81 src/remotes_window.py:162
 msgid "Any installed apps from {} will stop receiving updates"
-msgstr ""
+msgstr "从 {} 中安装的应用都将停止接收更新"
 
 #: src/remotes_window.py:84
 msgid "Remove {}?"
-msgstr ""
+msgstr "移除 {}?"
 
 #: src/remotes_window.py:87 src/remotes_window.py:272
 msgid "Remove"
-msgstr ""
+msgstr "移除"
 
 #: src/remotes_window.py:114
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not enable {}"
-msgstr "无法打开目录"
+msgstr "无法启用 {}"
 
 #: src/remotes_window.py:142
-#, fuzzy
 msgid "Could not disable {}"
-msgstr "无法打开目录"
+msgstr "无法禁用 {}"
 
 #: src/remotes_window.py:165
-#, fuzzy
 msgid "Disable {}?"
-msgstr "禁用更新"
+msgstr "禁用 {}?"
 
 #: src/remotes_window.py:168 src/remotes_window.py:263
-#, fuzzy
 msgid "Disable"
-msgstr "禁用更新"
+msgstr "禁用"
 
 #: src/remotes_window.py:179
-#, fuzzy
-#| msgid "Could not uninstall some apps"
 msgid "Could not view apps"
-msgstr "无法卸载一些应用"
+msgstr "无法查看应用"
 
 #: src/remotes_window.py:240
 msgid "Set Filter"
-msgstr ""
+msgstr "设置筛选器"
 
 #: src/remotes_window.py:254
-#, fuzzy
-#| msgid "Enable Updates"
 msgid "Enable"
-msgstr "启用更新"
+msgstr "启用"
 
 #: src/remotes_window.py:288
 msgid "Copy remote name"
-msgstr ""
+msgstr "复制远程仓库名称"
 
 #: src/remotes_window.py:302
-#, fuzzy
 msgid "Disabled"
-msgstr "禁用更新"
+msgstr "已禁用"
 
 #: src/remotes_window.py:339
 msgid "The open source, pay-what-you-want app store from elementary"
-msgstr ""
+msgstr "开源、按需付费、来自于elementary的应用商店"
 
 #: src/remotes_window.py:345
 msgid "Central repository of Flatpak applications"
-msgstr ""
+msgstr "Flatpak应用程序的中央存储库"
 
 #: src/remotes_window.py:351
 msgid "Beta builds of Flatpak applications"
-msgstr ""
+msgstr "Flatpak应用程序的Beta测试版本"
 
 #: src/remotes_window.py:357
 msgid "Flatpaks packaged by Fedora Linux"
-msgstr ""
+msgstr "Fedora Linux打包的Flatpak应用"
 
 #: src/remotes_window.py:363
 msgid "The latest beta GNOME Apps and Runtimes"
-msgstr ""
+msgstr "最新的GNOME应用程序和运行库测试版"
 
 #: src/remotes_window.py:369
 msgid "Beta KDE Apps and Runtimes"
-msgstr ""
+msgstr "KDE应用程序和运行库测试版"
 
 #: src/remotes_window.py:375
 msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr ""
+msgstr "WebKit Developer 和 Runtime SDK 的中央存储库"
 
 #: src/remotes_window.py:411 src/remotes_window.py:573
 msgid "Could not add {}"
-msgstr ""
+msgstr "无法添加 {}"
 
 #: src/remotes_window.py:448
 msgid "Add Flatpak Remote"
-msgstr ""
+msgstr "添加Flatpak远程仓库"
 
 #: src/remotes_window.py:451 src/remotes_window.py:622
 msgid "Add"
-msgstr ""
+msgstr "添加"
 
 #: src/remotes_window.py:505 src/remotes_window.py:630
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: src/remotes_window.py:509
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/remotes_window.py:521 src/remotes_window.py:633 src/window.py:847
 msgid "User"
-msgstr ""
+msgstr "用户"
 
 #: src/remotes_window.py:521 src/remotes_window.py:633
 msgid "Remote will be available to only you"
-msgstr ""
+msgstr "远程仓库将只对您可用"
 
 #: src/remotes_window.py:529 src/remotes_window.py:636 src/window.py:850
 msgid "System"
-msgstr ""
+msgstr "系统"
 
 #: src/remotes_window.py:530 src/remotes_window.py:637
 msgid "Remote will be available to every user on the system"
-msgstr ""
+msgstr "远程仓库将会对系统上所有用户可用"
 
 #: src/remotes_window.py:569
 msgid "{} successfully added"
-msgstr ""
+msgstr "已成功添加 {}"
 
 #: src/remotes_window.py:619
 msgid "Add {}?"
-msgstr ""
+msgstr "添加 {}？"
 
 #: src/remotes_window.py:667
 msgid "Flatpak Repos"
-msgstr ""
+msgstr "Flatpak仓库"
 
 #: src/snapshots_window.py:48
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
 msgid "There is no User Data to Snapshot"
-msgstr "发送 {} 的用户数据到回收站？"
+msgstr "没有用户数据以创建快照"
 
 #: src/snapshots_window.py:87
 msgid "Version {}"
-msgstr ""
+msgstr "版本 {}"
 
 #: src/snapshots_window.py:95 src/snapshots_window.py:236
 msgid "Apply Snapshot"
-msgstr ""
+msgstr "应用快照"
 
 #: src/snapshots_window.py:101 src/snapshots_window.py:130
 msgid "Trash Snapshot"
-msgstr ""
+msgstr "回收快照"
 
 #: src/snapshots_window.py:121
-#, fuzzy
-#| msgid "Could not trash user data"
 msgid "Could not trash snapshot"
-msgstr "无法回收用户数据"
+msgstr "无法回收快照"
 
 #: src/snapshots_window.py:125
 msgid "Trash Snapshot?"
-msgstr ""
+msgstr "回收快照？"
 
 #: src/snapshots_window.py:126
-#, fuzzy
-#| msgid "Send this app's settings and content to the trash"
 msgid "This snapshot and its contents will be sent to the trash."
-msgstr "将此应用的设置和内容发送到回收站"
+msgstr "此快照和其中的内容将会被发送到回收站。"
 
 #: src/snapshots_window.py:148
-#, fuzzy
 msgid "Could not create snapshot"
-msgstr "无法卸载一些应用"
+msgstr "无法创建快照"
 
 #: src/snapshots_window.py:157
 msgid "Creating Snapshot…"
-msgstr ""
+msgstr "正在创建快照…"
 
 #: src/snapshots_window.py:191 src/snapshots_window.py:208
 #: src/snapshots_window.py:215
-#, fuzzy
 msgid "Could not apply snapshot"
-msgstr "无法卸载一些应用"
+msgstr "无法应用快照"
 
 #: src/snapshots_window.py:194
 msgid "Snapshot applied"
-msgstr ""
+msgstr "快照已应用"
 
 #: src/snapshots_window.py:221
 msgid "Applying Snapshot…"
-msgstr ""
+msgstr "正在应用快照…"
 
 #: src/snapshots_window.py:229
 msgid "Apply Snapshot?"
-msgstr ""
+msgstr "应用快照？"
 
 #: src/snapshots_window.py:230
 msgid "Applying this snapshot will trash any current user data for {}."
-msgstr ""
+msgstr "应用此快照将删除 {} 的当前用户数据。"
 
 #. Window stuffs
 #: src/snapshots_window.py:280
 msgid "{} Snapshots"
-msgstr ""
+msgstr "{} 项快照"
 
 #: src/window.py:111
 msgid "Uninstalled successfully"
@@ -991,115 +943,109 @@ msgstr "将此应用的设置和内容发送到回收站"
 
 #: src/window.py:444
 msgid "Your files and data for this app will be sent to the trash."
-msgstr ""
+msgstr "此应用程序的文件和数据将被发送到回收站。"
 
 #: src/window.py:485
 msgid "Disable Updates for {}?"
-msgstr ""
+msgstr "为 {} 禁用更新？"
 
 #: src/window.py:489
 msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
-msgstr ""
+msgstr "这将屏蔽 {}，确保它永远不会收到任何功能或安全更新。"
 
 #: src/window.py:511
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not enable auto removal"
-msgstr "无法打开目录"
+msgstr "无法启用自动移除"
 
 #: src/window.py:514
-#, fuzzy
 msgid "Could not disable auto removal"
-msgstr "无法打开目录"
+msgstr "无法禁用自动删除"
 
 #: src/window.py:537
 msgid "Disable Automatic Removal for {}?"
-msgstr ""
+msgstr "为 {} 禁用自动移除？"
 
 #: src/window.py:540
 msgid ""
 "This will pin {} ensuring it well never be removed automatically, even if no "
 "app depends on it."
-msgstr ""
+msgstr "这将固定 {}，确保它永远不会被自动删除，即使没有应用程序依赖于它。"
 
 #: src/window.py:560
 msgid "Could not Run App"
-msgstr ""
+msgstr "无法运行应用"
 
 #: src/window.py:568
 msgid "OK"
-msgstr ""
+msgstr "好的"
 
 #: src/window.py:620
-#, fuzzy
 msgid "{} has no data to trash"
-msgstr "发送 {} 的用户数据到回收站？"
+msgstr "{} 没有数据以回收"
 
 #: src/window.py:626
-#, fuzzy
 msgid "Could not trash {}'s data"
-msgstr "无法回收用户数据"
+msgstr "无法回收 {} 的数据"
 
 #: src/window.py:641
 msgid "Trash Selected Apps' User Data?"
-msgstr ""
+msgstr "回收选中应用的用户数据？"
 
 #: src/window.py:642
 msgid "Your files and data for these apps will be sent to the trash."
-msgstr ""
+msgstr "这些应用程序的文件和数据将被发送到回收站。"
 
 #: src/window.py:692
-#, fuzzy
 msgid "Could not snapshot some apps"
-msgstr "无法卸载一些应用"
+msgstr "无法为一些应用创建快照"
 
 #: src/window.py:709
 msgid "Create Snapshots?"
-msgstr ""
+msgstr "创建快照？"
 
 #: src/window.py:711
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
-msgstr ""
+msgstr "快照是应用程序用户数据的备份。它们可以随时重新应用。这可能需要一段时间。"
 
 #: src/window.py:716
 msgid "Create Snapshots"
-msgstr ""
+msgstr "创建快照"
 
 #: src/window.py:771
 msgid "Copied selected app names"
-msgstr ""
+msgstr "已复制选中应用的名称"
 
 #: src/window.py:786
 msgid "Copied selected app IDs"
-msgstr ""
+msgstr "已复制选中应用的ID"
 
 #: src/window.py:801
 msgid "Copied selected app refs"
-msgstr ""
+msgstr "已复制选中应用的引用"
 
 #: src/window.py:812
 msgid "Could not install app"
-msgstr ""
+msgstr "无法安装应用"
 
 #: src/window.py:836
 msgid "Install {}?"
-msgstr ""
+msgstr "安装 {}？"
 
 #: src/window.py:847
 msgid "The app will be available to only you"
-msgstr ""
+msgstr "该应用程序将仅供您使用"
 
 #: src/window.py:851
 msgid "The app will be available to every user on the system"
-msgstr ""
+msgstr "该应用程序将可供系统上的每个用户使用"
 
 #: src/window.py:881
 msgid "File type not supported"
-msgstr ""
+msgstr "文件类型不支持"
 
 #, fuzzy
 #~| msgid "Open"
