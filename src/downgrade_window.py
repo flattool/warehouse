@@ -106,18 +106,22 @@ class DowngradeWindow(Adw.Dialog):
         self.set_can_close(True)
 
         if self.response != 0:
-            self.toast_overlay.add_toast(
+            self.parent_window.toast_overlay.add_toast(
                 Adw.Toast.new(_("Could not downgrade {}").format(self.app_name))
             )
             self.apply_button.set_sensitive(True)
-            return
 
         self.parent_window.refresh_list_of_flatpaks(self)
         self.close()
 
     def downgrade_thread(self):
+        mask_list = None
+        if self.install_type == "system":
+            mask_list = self.parent_window.system_mask_list
+        if self.install_type == "user":
+            mask_list = self.parent_window.user_mask_list
         self.response = self.my_utils.downgrade_flatpak(
-            self.app_id, self.app_ref, self.commit_to_use, self.install_type, self.mask_row.get_active()
+            self.app_id, self.app_ref, self.commit_to_use, self.install_type, self.mask_row.get_active(), mask_list
         )
 
     def on_apply(self):
