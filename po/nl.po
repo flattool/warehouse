@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-06 23:51-0400\n"
+"POT-Creation-Date: 2024-07-03 14:05-0400\n"
 "PO-Revision-Date: 2024-06-13 18:33+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://weblate.fyralabs.com/projects/flattool/"
@@ -38,8 +38,8 @@ msgid ""
 "Warehouse is an app that manages installed Flatpaks, their user data, and "
 "Flatpak remotes."
 msgstr ""
-"Warehouse is een app die geïnstalleerde Flatpaks, hun gebruikers­gegevens, "
-"en Flatpak-bronnen helpt beheren."
+"Warehouse is een app die geïnstalleerde Flatpaks, hun gebruikers­gegevens, en "
+"Flatpak-bronnen helpt beheren."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -523,7 +523,7 @@ msgstr ""
 msgid "Manage Snapshots"
 msgstr "Snapshots beheren"
 
-#: src/common.py:326 src/common.py:400
+#: src/common.py:325 src/common.py:399
 msgid ""
 "Working on {}\n"
 "{} out of {}"
@@ -539,19 +539,15 @@ msgstr "Commit-hash: {}"
 msgid "Could not downgrade {}"
 msgstr "Kon {} niet downgraden"
 
-#: src/downgrade_window.py:119 src/window.py:463
-msgid "Could not disable updates for {}"
-msgstr "Kon updates voor {} niet uitschakelen"
-
-#: src/downgrade_window.py:132
+#: src/downgrade_window.py:128
 msgid "Downgrading…"
 msgstr "Downgraden…"
 
-#: src/downgrade_window.py:155
+#: src/downgrade_window.py:151
 msgid "Downgrade {}"
 msgstr "{} downgraden"
 
-#: src/downgrade_window.py:163
+#: src/downgrade_window.py:159
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Voorkom dat {} ooit bijgewerkt wordt naar een nieuwere versie"
 
@@ -967,6 +963,10 @@ msgid "Your files and data for this app will be sent to the trash."
 msgstr ""
 "Je bestanden en data van deze applicatie zullen in de prullenbak gegooid "
 "worden."
+
+#: src/window.py:463
+msgid "Could not disable updates for {}"
+msgstr "Kon updates voor {} niet uitschakelen"
 
 #: src/window.py:485
 msgid "Disable Updates for {}?"

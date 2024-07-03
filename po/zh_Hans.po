@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-06 23:51-0400\n"
+"POT-Creation-Date: 2024-07-03 14:05-0400\n"
 "PO-Revision-Date: 2024-06-07 02:29+0000\n"
 "Last-Translator: 张鹏 <scbeta@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.fyralabs.com/projects/"
@@ -37,7 +37,8 @@ msgstr "管理 Flatpak 的一切"
 msgid ""
 "Warehouse is an app that manages installed Flatpaks, their user data, and "
 "Flatpak remotes."
-msgstr "[Warehouse]是一个用于管理已安装的Flatpak应用、用户数据和远程仓库的应用程序。"
+msgstr ""
+"[Warehouse]是一个用于管理已安装的Flatpak应用、用户数据和远程仓库的应用程序。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -507,7 +508,7 @@ msgstr "启用自动移除"
 msgid "Manage Snapshots"
 msgstr "管理快照"
 
-#: src/common.py:326 src/common.py:400
+#: src/common.py:325 src/common.py:399
 msgid ""
 "Working on {}\n"
 "{} out of {}"
@@ -523,19 +524,15 @@ msgstr "提交哈希值：{}"
 msgid "Could not downgrade {}"
 msgstr "无法对 {} 降级"
 
-#: src/downgrade_window.py:119 src/window.py:463
-msgid "Could not disable updates for {}"
-msgstr "无法对 {} 禁用更新"
-
-#: src/downgrade_window.py:132
+#: src/downgrade_window.py:128
 msgid "Downgrading…"
 msgstr "降级中…"
 
-#: src/downgrade_window.py:155
+#: src/downgrade_window.py:151
 msgid "Downgrade {}"
 msgstr "降级 {}"
 
-#: src/downgrade_window.py:163
+#: src/downgrade_window.py:159
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "确保 {} 永远不会更新到更新版本"
 
@@ -945,6 +942,10 @@ msgstr "将此应用的设置和内容发送到回收站"
 msgid "Your files and data for this app will be sent to the trash."
 msgstr "此应用程序的文件和数据将被发送到回收站。"
 
+#: src/window.py:463
+msgid "Could not disable updates for {}"
+msgstr "无法对 {} 禁用更新"
+
 #: src/window.py:485
 msgid "Disable Updates for {}?"
 msgstr "为 {} 禁用更新？"
@@ -1009,7 +1010,8 @@ msgstr "创建快照？"
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
-msgstr "快照是应用程序用户数据的备份。它们可以随时重新应用。这可能需要一段时间。"
+msgstr ""
+"快照是应用程序用户数据的备份。它们可以随时重新应用。这可能需要一段时间。"
 
 #: src/window.py:716
 msgid "Create Snapshots"
