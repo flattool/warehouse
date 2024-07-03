@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-06 23:51-0400\n"
+"POT-Creation-Date: 2024-07-03 14:05-0400\n"
 "PO-Revision-Date: 2024-03-08 04:31+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Thai <https://weblate.fyralabs.com/projects/flattool/"
@@ -572,7 +572,7 @@ msgstr ""
 msgid "Manage Snapshots"
 msgstr "จัดการรีโมต"
 
-#: src/common.py:326 src/common.py:400
+#: src/common.py:325 src/common.py:399
 msgid ""
 "Working on {}\n"
 "{} out of {}"
@@ -586,20 +586,15 @@ msgstr "เพิ่มแฮช {}"
 msgid "Could not downgrade {}"
 msgstr "ไม่สามารถดาวน์เกรด {}"
 
-#: src/downgrade_window.py:119 src/window.py:463
-#, fuzzy
-msgid "Could not disable updates for {}"
-msgstr "ปิดการอัพเดทของ {}"
-
-#: src/downgrade_window.py:132
+#: src/downgrade_window.py:128
 msgid "Downgrading…"
 msgstr "กำลังดาวน์เกรด…"
 
-#: src/downgrade_window.py:155
+#: src/downgrade_window.py:151
 msgid "Downgrade {}"
 msgstr "ย้อนหลัง {}"
 
-#: src/downgrade_window.py:163
+#: src/downgrade_window.py:159
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "{} จะไม่ได้รับการอัพเดตเป็นเวอร์ชันที่ใหม่กว่า"
 
@@ -1051,6 +1046,11 @@ msgstr "ส่งการตั้งค่าแอปและเนื้อ
 #: src/window.py:444
 msgid "Your files and data for this app will be sent to the trash."
 msgstr "ไฟล์ของคุณและข้อมูลสำหรับแอปนี้จะถูกในไปไว้ในถังขยะ"
+
+#: src/window.py:463
+#, fuzzy
+msgid "Could not disable updates for {}"
+msgstr "ปิดการอัพเดทของ {}"
 
 #: src/window.py:485
 msgid "Disable Updates for {}?"

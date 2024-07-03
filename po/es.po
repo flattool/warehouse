@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-06 23:51-0400\n"
-"PO-Revision-Date: 2024-04-02 09:06+0000\n"
-"Last-Translator: vadik317 <slavboris1255@gmail.com>\n"
+"POT-Creation-Date: 2024-07-03 14:05-0400\n"
+"PO-Revision-Date: 2024-06-09 16:29+0000\n"
+"Last-Translator: Racsu <me@racsu.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4.2\n"
+"X-Generator: Weblate 5.5\n"
 
 #. Translators: Do not translate the applicaion name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -179,10 +179,8 @@ msgid "Add a Custom Remote"
 msgstr "Añadir un repositorio personalizado"
 
 #: data/ui/properties.blp:7
-#, fuzzy
-#| msgid "{} Properties"
 msgid "Properties"
-msgstr "Propiedades de {}"
+msgstr "Propiedades"
 
 #: data/ui/properties.blp:73
 msgid "Loading User Data"
@@ -365,7 +363,7 @@ msgstr "Desinstalar aplicaciones seleccionadas"
 
 #: data/ui/window.blp:218
 msgid "Send Selected Apps' Data to the Trash"
-msgstr "Enviar a la papelera los datos de las aplicaciones seleccionadas"
+msgstr "Enviar a la papelera los datos de las aplicaciones"
 
 #: data/ui/window.blp:224
 msgid "Open Copy Menu"
@@ -524,7 +522,7 @@ msgstr "Activar la eliminación automática"
 msgid "Manage Snapshots"
 msgstr "Gestionar instantáneas"
 
-#: src/common.py:326 src/common.py:400
+#: src/common.py:325 src/common.py:399
 msgid ""
 "Working on {}\n"
 "{} out of {}"
@@ -540,19 +538,15 @@ msgstr "Hash de la confirmación: {}"
 msgid "Could not downgrade {}"
 msgstr "No se pudo revertir {}"
 
-#: src/downgrade_window.py:119 src/window.py:463
-msgid "Could not disable updates for {}"
-msgstr "No se han podido desactivar las actualizaciones para {}"
-
-#: src/downgrade_window.py:132
+#: src/downgrade_window.py:128
 msgid "Downgrading…"
 msgstr "Revirtiendo…"
 
-#: src/downgrade_window.py:155
+#: src/downgrade_window.py:151
 msgid "Downgrade {}"
 msgstr "Revertir {}"
 
-#: src/downgrade_window.py:163
+#: src/downgrade_window.py:159
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Garantizar que nunca se actualizará a una versión más reciente"
 
@@ -973,6 +967,10 @@ msgstr ""
 msgid "Your files and data for this app will be sent to the trash."
 msgstr "Sus archivos y datos de esta aplicación se enviarán a la papelera."
 
+#: src/window.py:463
+msgid "Could not disable updates for {}"
+msgstr "No se han podido desactivar las actualizaciones para {}"
+
 #: src/window.py:485
 msgid "Disable Updates for {}?"
 msgstr "¿Desactivar actualizaciones para {}?"
@@ -986,34 +984,24 @@ msgstr ""
 "actualización de seguridad."
 
 #: src/window.py:511
-#, fuzzy
-#| msgid "Could not enable {}"
 msgid "Could not enable auto removal"
-msgstr "No se ha podido activar {}"
+msgstr "No se ha podido activar la eliminación automática"
 
 #: src/window.py:514
-#, fuzzy
-#| msgid "Could not disable {}"
 msgid "Could not disable auto removal"
-msgstr "No se ha podido desactivar {}"
+msgstr "No se ha podido desactivar la eliminación automática"
 
 #: src/window.py:537
-#, fuzzy
-#| msgid "Disable Updates for {}?"
 msgid "Disable Automatic Removal for {}?"
-msgstr "¿Desactivar actualizaciones para {}?"
+msgstr "¿Desactivar la eliminación automática para {}?"
 
 #: src/window.py:540
-#, fuzzy
-#| msgid ""
-#| "This will mask {} ensuring it will never recieve any feature or security "
-#| "updates."
 msgid ""
 "This will pin {} ensuring it well never be removed automatically, even if no "
 "app depends on it."
 msgstr ""
-"Esto restringirá {} asegurando que nunca reciba ninguna función o "
-"actualización de seguridad."
+"Esto fijará {} asegurando que nunca sea eliminado automáticamente, incluso "
+"si ninguna aplicación depende de él."
 
 #: src/window.py:560
 msgid "Could not Run App"

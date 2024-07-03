@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-06 23:51-0400\n"
-"PO-Revision-Date: 2024-03-10 21:20+0000\n"
-"Last-Translator: Gert-dev <Gert-dev@users.noreply.weblate.fyralabs.com>\n"
+"POT-Creation-Date: 2024-07-03 14:05-0400\n"
+"PO-Revision-Date: 2024-06-13 18:33+0000\n"
+"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/nl/>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4.2\n"
+"X-Generator: Weblate 5.5\n"
 
 #. Translators: Do not translate the applicaion name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -31,15 +31,15 @@ msgstr "flatpak"
 #: data/io.github.flattool.Warehouse.desktop.in:12
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
-msgstr "Beheer alles rond Flatpak"
+msgstr "Beheer alles rondom Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
 "Warehouse is an app that manages installed Flatpaks, their user data, and "
 "Flatpak remotes."
 msgstr ""
-"Warehouse is een applicatie die geïnstalleerde Flatpaks, hun gebruikersdata, "
-"en Flatpak-bronnen helpt beheren."
+"Warehouse is een app die geïnstalleerde Flatpaks, hun gebruikers­gegevens, en "
+"Flatpak-bronnen helpt beheren."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -67,7 +67,7 @@ msgstr "Zoek op en gooi overgebleven gebruikersdata in de prullenbak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
-msgstr "Herinstalleer applicaties met overgebleven data"
+msgstr "Herinstalleer apps met overgebleven gegevens"
 
 #: data/ui/downgrade.blp:25 src/app_row_widget.py:360
 msgid "Downgrade"
@@ -75,7 +75,7 @@ msgstr "Downgraden"
 
 #: data/ui/downgrade.blp:55
 msgid "Fetching Releases"
-msgstr "Versies ophalen…"
+msgstr "Uitgaven ophalen"
 
 #: data/ui/downgrade.blp:63 data/ui/window.blp:107 data/ui/window.blp:162
 msgid "This could take a while"
@@ -103,7 +103,7 @@ msgstr "Filters instellen"
 
 #: data/ui/filter.blp:39
 msgid "Show Apps"
-msgstr "Applicaties tonen"
+msgstr "Apps tonen"
 
 #: data/ui/filter.blp:49
 msgid "Show Runtimes"
@@ -127,7 +127,7 @@ msgstr "Lijst doorzoeken"
 
 #: data/ui/orphans.blp:20
 msgid "Open Data Folder"
-msgstr "Datamap openen"
+msgstr "Gegevens­map openen"
 
 #: data/ui/orphans.blp:81 data/ui/search_install.blp:171 data/ui/window.blp:98
 msgid "Installing"
@@ -139,15 +139,15 @@ msgstr "Geen overgebleven data"
 
 #: data/ui/orphans.blp:103
 msgid "There is no leftover user data"
-msgstr "Er werd geen overgebleven gebruikersdata teruggevonden"
+msgstr "Er zijn geen over­gebleven gebruikers­gegevens"
 
 #: data/ui/orphans.blp:108 data/ui/search_install.blp:87 data/ui/window.blp:187
 msgid "No Results Found"
-msgstr "Geen resultaten teruggevonden"
+msgstr "Geen resultaten gevonden"
 
 #: data/ui/orphans.blp:109 data/ui/search_install.blp:88 data/ui/window.blp:188
 msgid "Try a different search term"
-msgstr "Probeer een andere zoekopdracht"
+msgstr "Probeer een andere zoek­opdracht"
 
 #: data/ui/orphans.blp:119 data/ui/window.blp:206
 msgid "Select All"
@@ -172,34 +172,32 @@ msgstr "Kies uit een lijst van populaire bronnen of voeg een nieuwe toe"
 
 #: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
 msgid "Add a Repo File"
-msgstr "Collectiebestand toevoegen"
+msgstr "Repo-bestand toevoegen"
 
 #: data/ui/popular_remotes.blp:50 data/ui/remotes.blp:56
 msgid "Add a Custom Remote"
 msgstr "Aangepaste bron toevoegen"
 
 #: data/ui/properties.blp:7
-#, fuzzy
-#| msgid "{} Properties"
 msgid "Properties"
-msgstr "Eigenschappen van {}"
+msgstr "Eigenschappen"
 
 #: data/ui/properties.blp:73
 msgid "Loading User Data"
-msgstr "Gebruikersdata laden"
+msgstr "Gebruikers­gegevens laden"
 
 #: data/ui/properties.blp:78 src/app_row_widget.py:268
 #: src/orphans_window.py:258
 msgid "Open User Data Folder"
-msgstr "Map met gebruikersdata openen"
+msgstr "Map met gebruikers­gegevens openen"
 
 #: data/ui/properties.blp:90 src/app_row_widget.py:281
 msgid "Trash User Data"
-msgstr "Gebruikersdata in prullenbak gooien"
+msgstr "Gebruikers­gegevens in prullenbak gooien"
 
 #: data/ui/properties.blp:108
 msgid "Show Apps Using This Runtime"
-msgstr "Applicaties met deze runtime tonen"
+msgstr "Apps met deze runtime tonen"
 
 #: data/ui/properties.blp:119
 msgid "Runtime"
@@ -306,8 +304,8 @@ msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time."
 msgstr ""
-"Snapshots zijn back-ups van de gebruikersdata van een applicatie. Ze kunnen "
-"op elk moment teruggezet worden."
+"Snapshots zijn back-ups van de gebruikers­gegevens van een app. Ze kunnen op "
+"elk moment terug­gezet worden."
 
 #: data/ui/window.blp:18
 msgid "Filter List"
@@ -351,7 +349,9 @@ msgstr "Geen Flatpaks teruggevonden die voldoen aan zoekopdracht"
 
 #: data/ui/window.blp:176
 msgid "No installed Flatpak matches all of the currently applied filters"
-msgstr "Geen Flatpaks die aan alle zoekcriteria voldoen teruggevonden"
+msgstr ""
+"Geen enkele geïnstalleerde Flatpak komt overeen met alle momenteel "
+"toegepaste filters"
 
 #: data/ui/window.blp:193
 #, fuzzy
@@ -361,11 +361,11 @@ msgstr "Lijst vernieuwen"
 
 #: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
-msgstr "Geselecteerde applicaties deïnstalleren"
+msgstr "Geselecteerde apps deïnstalleren"
 
 #: data/ui/window.blp:218
 msgid "Send Selected Apps' Data to the Trash"
-msgstr "Data van geselecteerde applicaties in de prullenbak gooien"
+msgstr "Gegevens van geselecteerde apps in de prullenbak gooien"
 
 #: data/ui/window.blp:224
 msgid "Open Copy Menu"
@@ -523,7 +523,7 @@ msgstr ""
 msgid "Manage Snapshots"
 msgstr "Snapshots beheren"
 
-#: src/common.py:326 src/common.py:400
+#: src/common.py:325 src/common.py:399
 msgid ""
 "Working on {}\n"
 "{} out of {}"
@@ -539,19 +539,15 @@ msgstr "Commit-hash: {}"
 msgid "Could not downgrade {}"
 msgstr "Kon {} niet downgraden"
 
-#: src/downgrade_window.py:119 src/window.py:463
-msgid "Could not disable updates for {}"
-msgstr "Kon updates voor {} niet uitschakelen"
-
-#: src/downgrade_window.py:132
+#: src/downgrade_window.py:128
 msgid "Downgrading…"
 msgstr "Downgraden…"
 
-#: src/downgrade_window.py:155
+#: src/downgrade_window.py:151
 msgid "Downgrade {}"
 msgstr "{} downgraden"
 
-#: src/downgrade_window.py:163
+#: src/downgrade_window.py:159
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Voorkom dat {} ooit bijgewerkt wordt naar een nieuwere versie"
 
@@ -573,7 +569,7 @@ msgstr "Onbekend installatietype"
 
 #: src/gtk/help-overlay.blp:11
 msgid "App Management"
-msgstr "Applicatiebeheer"
+msgstr "App-beheer"
 
 #: src/gtk/help-overlay.blp:14
 msgid "Search"
@@ -634,7 +630,7 @@ msgstr "Met succes geïnstalleerd"
 
 #: src/orphans_window.py:83
 msgid "Could not install some apps"
-msgstr "Kon sommige applicaties niet installeren"
+msgstr "Kon sommige apps niet installeren"
 
 #: src/orphans_window.py:117
 msgid "Attempt to Install?"
@@ -643,8 +639,8 @@ msgstr "Proberen te installeren?"
 #: src/orphans_window.py:118
 msgid "Warehouse will attempt to install apps matching the selected data."
 msgstr ""
-"Warehouse zal proberen applicaties te installeren die overeenkomen met de "
-"geselecteerde data."
+"Warehouse zal proberen apps te installeren die overeenkomen met de "
+"geselecteerde gegevens."
 
 #: src/orphans_window.py:121 src/orphans_window.py:189
 #: src/properties_window.py:156 src/remotes_window.py:86
@@ -698,10 +694,8 @@ msgid "No User Data"
 msgstr "Geen gebruikersdata"
 
 #: src/properties_window.py:135
-#, fuzzy
-#| msgid "Could not show details"
 msgid "Could not show properties"
-msgstr "Kon details niet tonen"
+msgstr "Kon eigen­schappen niet tonen"
 
 #: src/properties_window.py:143 src/window.py:438
 msgid "Trashed user data"
@@ -725,7 +719,7 @@ msgstr "Kon {} niet verwijderen"
 
 #: src/remotes_window.py:81 src/remotes_window.py:162
 msgid "Any installed apps from {} will stop receiving updates"
-msgstr "Alle applicaties geïnstalleerd uit {} zullen geen updates meer krijgen"
+msgstr "Alle apps geïnstalleerd via {} zullen geen updates meer krijgen"
 
 #: src/remotes_window.py:84
 msgid "Remove {}?"
@@ -753,7 +747,7 @@ msgstr "Uitschakelen"
 
 #: src/remotes_window.py:179
 msgid "Could not view apps"
-msgstr "Kon applicaties niet bekijken"
+msgstr "Kon apps niet bekijken"
 
 #: src/remotes_window.py:240
 msgid "Set Filter"
@@ -777,11 +771,11 @@ msgstr "De open source, 'betaal wat je wil', applicatiewinkel van elementary"
 
 #: src/remotes_window.py:345
 msgid "Central repository of Flatpak applications"
-msgstr "Centrale bron van Flatpak-applicaties"
+msgstr "Centrale bron van Flatpak-apps"
 
 #: src/remotes_window.py:351
 msgid "Beta builds of Flatpak applications"
-msgstr "Bèta-versies van Flatpak-applicaties"
+msgstr "Bèta­versies van Flatpak-apps"
 
 #: src/remotes_window.py:357
 msgid "Flatpaks packaged by Fedora Linux"
@@ -789,11 +783,11 @@ msgstr "Flatpaks beheerd door Fedora Linux"
 
 #: src/remotes_window.py:363
 msgid "The latest beta GNOME Apps and Runtimes"
-msgstr "De laatste bèta-versies van GNOME-applicaties en -runtimes"
+msgstr "De laatste bèta­versies van GNOME-apps en -runtimes"
 
 #: src/remotes_window.py:369
 msgid "Beta KDE Apps and Runtimes"
-msgstr "Bèta-versies van KDE-applicaties en -runtimes"
+msgstr "Bèta­versies van KDE-apps en -runtimes"
 
 #: src/remotes_window.py:375
 msgid "Central repository of the WebKit Developer and Runtime SDK"
@@ -917,17 +911,16 @@ msgstr "Met succes gedeïnstalleerd"
 
 #: src/window.py:114
 msgid "Could not uninstall some apps"
-msgstr "Kon sommige applicaties niet deïnstalleren"
+msgstr "Kon sommige apps niet deïnstalleren"
 
 #: src/window.py:170
 msgid "Uninstall Selected Apps?"
-msgstr "Geselecteerde applicaties deïnstalleren?"
+msgstr "Geselecteerde apps deïnstalleren?"
 
 #: src/window.py:171
 msgid "It will not be possible to use these apps after removal."
 msgstr ""
-"Het zal niet meer mogelijk zijn deze applicaties te gebruiken na ze te "
-"verwijderen."
+"Het zal niet meer mogelijk zijn deze apps te gebruiken na ze te verwijderen."
 
 #: src/window.py:191 src/window.py:273
 msgid "App Settings & Data"
@@ -939,11 +932,11 @@ msgstr "Behouden"
 
 #: src/window.py:196
 msgid "Allow restoring these apps' settings and content"
-msgstr "Herstellen instellingen en inhoud van deze applicaties toestaan"
+msgstr "Instellingen en inhoud herstellen van deze apps toestaan"
 
 #: src/window.py:200
 msgid "Send these apps' settings and content to the trash"
-msgstr "Werp de instellingen en inhoud van deze applicaties in de prullenbak"
+msgstr "Gooi de instellingen en inhoud van deze apps in de prullenbak"
 
 #: src/window.py:236
 msgid "Cannot uninstall while already uninstalling"
@@ -970,6 +963,10 @@ msgid "Your files and data for this app will be sent to the trash."
 msgstr ""
 "Je bestanden en data van deze applicatie zullen in de prullenbak gegooid "
 "worden."
+
+#: src/window.py:463
+msgid "Could not disable updates for {}"
+msgstr "Kon updates voor {} niet uitschakelen"
 
 #: src/window.py:485
 msgid "Disable Updates for {}?"
@@ -1036,7 +1033,7 @@ msgstr "Gebruikersdata van geselecteerde applicatie in prullenbak gooien?"
 #: src/window.py:642
 msgid "Your files and data for these apps will be sent to the trash."
 msgstr ""
-"Je bestanden en data van deze applicaties zullen in de prullenbak gegooid "
+"Je bestanden en gegevens van deze apps zullen in de prullenbak gegooid "
 "worden."
 
 #: src/window.py:692

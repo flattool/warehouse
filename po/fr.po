@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-06 23:51-0400\n"
+"POT-Creation-Date: 2024-07-03 14:05-0400\n"
 "PO-Revision-Date: 2024-04-02 09:06+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://weblate.fyralabs.com/projects/flattool/"
@@ -524,7 +524,7 @@ msgstr "Activer la suppression automatique"
 msgid "Manage Snapshots"
 msgstr "Gérer les instantanés"
 
-#: src/common.py:326 src/common.py:400
+#: src/common.py:325 src/common.py:399
 msgid ""
 "Working on {}\n"
 "{} out of {}"
@@ -540,19 +540,15 @@ msgstr "Hachage du commit : {}"
 msgid "Could not downgrade {}"
 msgstr "Impossible de rétrograder {}"
 
-#: src/downgrade_window.py:119 src/window.py:463
-msgid "Could not disable updates for {}"
-msgstr "Impossible de désactiver les mises à jour pour {}"
-
-#: src/downgrade_window.py:132
+#: src/downgrade_window.py:128
 msgid "Downgrading…"
 msgstr "Rétrogradage…"
 
-#: src/downgrade_window.py:155
+#: src/downgrade_window.py:151
 msgid "Downgrade {}"
 msgstr "Rétrograder {}"
 
-#: src/downgrade_window.py:163
+#: src/downgrade_window.py:159
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr ""
 "Assurez vous que {} ne sera jamais mise à jour vers une nouvelle version"
@@ -976,6 +972,10 @@ msgid "Your files and data for this app will be sent to the trash."
 msgstr ""
 "Vos fichiers et données utilisateur pour cette application seront mis à la "
 "corbeille."
+
+#: src/window.py:463
+msgid "Could not disable updates for {}"
+msgstr "Impossible de désactiver les mises à jour pour {}"
 
 #: src/window.py:485
 msgid "Disable Updates for {}?"
