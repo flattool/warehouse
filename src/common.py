@@ -263,29 +263,30 @@ class myUtils:
             return 1
         return 0
 
-    def downgrade_flatpak(self, id, ref, commit, install_type="system", mask=False):
-        cmd_body = f"flatpak mask --remove --{install_type} {id}; flatpak update {ref} --commit={commit} --{install_type} -y;"
+    def downgrade_flatpak(self, id, ref, commit, install_type="system", mask=False, mask_list=None):
+        unmask_cmd = f"flatpak mask --remove --{install_type} {id} && "
+        update_cmd = f"flatpak updated {ref} --commit={commit} --{install_type} -y"
+        to_run_cmd = ""
+        if id in mask_list:
+            to_run_cmd += unmask_cmd
+        to_run_cmd += update_cmd
         if mask:
-            cmd_body += f"flatpak mask --{install_type} {id}"
+            to_run_cmd += f" && flatpak mask --{install_type} {id}"
         command = [
             "flatpak-spawn",
             "--host", "pkexec",
             "sh", "-c",
-            cmd_body,
+            to_run_cmd,
         ]
         if install_type == "user":
             command.remove("pkexec")
         try:
-            response = subprocess.run(
-                command, capture_output=False, text=True, env=self.new_env
-            ).stderr
+            subprocess.run(
+                command, capture_output=True, text=True, env=self.new_env, check=True
+            )
         except subprocess.CalledProcessError as e:
-            # if "note that" in response.lower():
-            #     return 0
-            print(f"Error setting mask for {app_id}:\n", e)
+            print("Error in common.downgrade_flatpak:", e.stderr)
             return 1
-        print(command)
-        print(response)
         return 0
 
     def uninstall_flatpak(
