@@ -1,18 +1,11 @@
 pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
-moduledir = join_paths(pkgdatadir, 'flattool_gui')
+moduledir = join_paths(pkgdatadir, 'Warehouse')
 gnome = import('gnome')
 
 blueprints = custom_target('blueprints',
   input: files(
     'gtk/help-overlay.blp',
-    '../data/ui/window.blp',
-    '../data/ui/orphans.blp',
-    '../data/ui/filter.blp',
-    '../data/ui/remotes.blp',
-    '../data/ui/downgrade.blp',
-    '../data/ui/search_install.blp',
-    '../data/ui/snapshots.blp',
-    '../data/ui/properties.blp',
+    'main_window/window.blp',
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
@@ -54,31 +47,8 @@ configure_file(
 warehouse_sources = [
   '__init__.py',
   'main.py',
-  'common.py',
-  'window.py',
-  'app_row_widget.py',
+  'main_window/window.py',
   '../data/style.css',
-  
-  'properties_window.py',
-  '../data/ui/properties.blp',
-  
-  'orphans_window.py',
-  '../data/ui/orphans.blp',
-  
-  'remotes_window.py',
-  '../data/ui/remotes.blp',
-  
-  'filter_window.py',
-  '../data/ui/filter.blp',
-  
-  'downgrade_window.py',
-  '../data/ui/downgrade.blp',
-  
-  'search_install_window.py',
-  '../data/ui/search_install.blp',
-  
-  'snapshots_window.py',
-  '../data/ui/snapshots.blp',
 ]
 
 configure_file(

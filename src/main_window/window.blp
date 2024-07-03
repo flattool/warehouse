@@ -1,0 +1,73 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $WarehouseWindow: Adw.ApplicationWindow {
+  title: "Warehouse";
+  content:
+    Adw.OverlaySplitView {
+      sidebar:
+        Adw.ToolbarView main_toolbar_view {
+          [top]
+          Adw.HeaderBar header_bar {
+            [end]
+            MenuButton main_menu {
+              icon-name: "open-menu-symbolic";
+              tooltip-text: _("Main Menu");
+              menu-model: primary_menu;
+            }
+          }
+        }
+      ;
+      content:
+        Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {}
+        }
+      ;
+    }
+  ;
+}
+
+menu primary_menu {
+  section {
+    item {
+      label: _("Manage Leftover Data…");
+      action: "app.manage-data-folders";
+    }
+
+    /*item {
+      label: _("_Preferences");
+      action: "app.preferences";
+    }*/
+    item {
+      label: _("Manage Remotes…");
+      action: "app.show-remotes-window";
+    }
+  }
+  section {
+    item {
+      label: _("Install From File…");
+      action: "app.install-from-file";
+    }
+
+    item {
+      label: _("Install From The Web…");
+      action: "app.open-search-install";
+    }
+  }
+  section {
+    item {
+      label: _("Refresh List");
+      action: "app.refresh-list";
+    }
+    item {
+      label: _("_Keyboard Shortcuts");
+      action: "win.show-help-overlay";
+    }
+
+    item {
+      label: _("_About Warehouse");
+      action: "app.about";
+    }
+  }
+}

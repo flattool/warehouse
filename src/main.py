@@ -27,13 +27,7 @@ gi.require_version("Adw", "1")
 
 from gi.repository import Gtk, Gio, Adw, GLib
 from .window import WarehouseWindow
-from .remotes_window import RemotesWindow
-from .orphans_window import OrphansWindow
-from .filter_window import FilterWindow
-from .search_install_window import SearchInstallWindow
 from .const import Config
-from .common import myUtils
-
 
 class WarehouseApplication(Adw.Application):
     """The main application singleton class."""
@@ -103,14 +97,6 @@ class WarehouseApplication(Adw.Application):
             app_id=self.get_application_id(),
             lang=lang,
         )
-
-        self.my_utils = myUtils(self)
-        total = 0
-        for rem in self.my_utils.get_host_remotes():
-            if self.my_utils.get_install_type(rem[7]) != "disabled":
-                total += 1
-        if total < 1:
-            self.lookup_action(f"open-search-install").set_enabled(False)
 
     def open_search_install(self, widget, _):
         SearchInstallWindow(self.props.active_window)

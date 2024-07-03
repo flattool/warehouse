@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/io/github/flattool/Warehouse">
-    <file preprocess="xml-stripblanks">../data/ui/window.ui</file>
-    <file preprocess="xml-stripblanks">../data/ui/orphans.ui</file>
-    <file preprocess="xml-stripblanks">../data/ui/filter.ui</file>
-    <file preprocess="xml-stripblanks">../data/ui/remotes.ui</file>
-    <file preprocess="xml-stripblanks">../data/ui/downgrade.ui</file>
-    <file preprocess="xml-stripblanks">../data/ui/search_install.ui</file>
-    <file preprocess="xml-stripblanks">../data/ui/snapshots.ui</file>
-    <file preprocess="xml-stripblanks">../data/ui/properties.ui</file>
     <file>../data/style.css</file>
+    <file preprocess="xml-stripblanks">main_window/window.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
     <!-- <file preprocess="xml-stripblanks">../data/io.github.flattool.Warehouse.metainfo.xml.in</file> -->
   </gresource>
