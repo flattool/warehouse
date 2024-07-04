@@ -48,6 +48,7 @@ warehouse_sources = [
   '__init__.py',
   'main.py',
   'main_window/window.py',
+  'host_info.py',
   '../data/style.css',
 ]
 

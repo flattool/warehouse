@@ -19,9 +19,12 @@ template $WarehouseWindow: Adw.ApplicationWindow {
         }
       ;
       content:
-        Adw.ToolbarView {
-          [top]
-          Adw.HeaderBar {}
+        Adw.NavigationPage {
+          title: "Test";
+          Adw.ToolbarView {
+            [top]
+            Adw.HeaderBar {}
+          }
         }
       ;
     }

@@ -23,6 +23,7 @@ import re
 import time
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
+from .host_info import HostInfo
 from .const import Config
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/main_window/window.ui")
@@ -62,3 +63,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
         if Config.DEVEL:
             self.add_css_class("devel")
+
+        def guh(*args):
+            for i in HostInfo.flatpaks:
+                print(i.info["name"])
+
+        HostInfo.get_flatpaks()

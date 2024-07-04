@@ -43,31 +43,6 @@ class WarehouseApplication(Adw.Application):
         self.create_action("quit", lambda *_: self.quit(), ["<primary>q"])
         self.create_action("about", self.on_about_action)
         self.create_action("preferences", self.on_preferences_action)
-        self.create_action("search", self.on_search_action, ["<primary>f"])
-        self.create_action("manage-data-folders", self.manage_data_shortcut)
-        self.create_action(
-            "toggle-batch-mode",
-            self.batch_mode_shortcut,
-            ["<primary>b", "<primary>Return"],
-        )
-        self.create_action(
-            "toggle-batch-mode-keypad", self.batch_mode_shortcut, ["<primary>KP_Enter"]
-        )  # This action is not added to the shortcuts window
-        self.create_action(
-            "manage-data-folders", self.manage_data_shortcut, ["<primary>d"]
-        )
-        self.create_action(
-            "refresh-list", self.refresh_list_shortcut, ["<primary>r", "F5"]
-        )
-        self.create_action(
-            "show-remotes-window", self.show_remotes_shortcut, ["<primary>m"]
-        )
-        self.create_action("set-filter", self.filters_shortcut, ["<primary>t"])
-        self.create_action("install-from-file", self.install_from_file, ["<primary>o"])
-        self.create_action("open-menu", self.main_menu_shortcut, ["F10"])
-        self.create_action(
-            "open-search-install", self.open_search_install, ["<primary>i"]
-        )
 
         self.is_dialog_open = False
 
@@ -97,29 +72,6 @@ class WarehouseApplication(Adw.Application):
             app_id=self.get_application_id(),
             lang=lang,
         )
-
-    def open_search_install(self, widget, _):
-        SearchInstallWindow(self.props.active_window)
-
-    def batch_mode_shortcut(self, widget, _):
-        button = self.props.active_window.batch_mode_button
-        button.set_active(not button.get_active())
-
-    def manage_data_shortcut(self, widget, _):
-        OrphansWindow(self.props.active_window)
-
-    def refresh_list_shortcut(self, widget, _):
-        self.props.active_window.refresh_list_of_flatpaks(widget)
-
-    def show_remotes_shortcut(self, widget, _):
-        RemotesWindow(self.props.active_window)
-
-    def filters_shortcut(self, widget, _):
-        FilterWindow(self.props.active_window)
-
-    def main_menu_shortcut(self, widget, _):
-        window = self.props.active_window
-        window.main_menu.set_active(True)
 
     def file_callback(self, object, result):
         window = self.props.active_window
@@ -197,11 +149,6 @@ class WarehouseApplication(Adw.Application):
         """Callback for the app.preferences action."""
         print("app.preferences action activated")
 
-    def on_search_action(self, widget, _):
-        self.props.active_window.search_bar.set_search_mode(
-            not self.props.active_window.search_bar.get_search_mode()
-        )
-
     def create_action(self, name, callback, shortcuts=None):
         """Add an application action.
 
@@ -216,7 +163,6 @@ class WarehouseApplication(Adw.Application):
         self.add_action(action)
         if shortcuts:
             self.set_accels_for_action(f"app.{name}", shortcuts)
-
 
 def main(version):
     """The application's entry point."""
