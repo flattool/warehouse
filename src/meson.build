@@ -4,8 +4,10 @@ gnome = import('gnome')
 
 blueprints = custom_target('blueprints',
   input: files(
+    'widgets/app_row.blp',
     'gtk/help-overlay.blp',
     'main_window/window.blp',
+    'packages_page/packages_page.blp'
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
@@ -47,8 +49,10 @@ configure_file(
 warehouse_sources = [
   '__init__.py',
   'main.py',
-  'main_window/window.py',
   'host_info.py',
+  'widgets/app_row.py',
+  'main_window/window.py',
+  'packages_page/packages_page.py',
   '../data/style.css',
 ]
 

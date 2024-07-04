@@ -41,7 +41,7 @@ class Flatpak:
             )
         except GLib.GError as e:
             print(e)
-            icon_path = None
+            self.icon_path = None
 
 
 class Remote:
@@ -79,6 +79,7 @@ class HostInfo:
             lines = output.strip().split("\n")
             for i in lines:
                 this.flatpaks.append(Flatpak(i.split("\t")))
+            this.flatpaks = sorted(this.flatpaks, key=lambda flatpak: flatpak.info["name"].lower())
 
         Gio.Task.new(None, None, callback).run_in_thread(thread)
 

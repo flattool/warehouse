@@ -23,12 +23,16 @@ import re
 import time
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
-from .host_info import HostInfo
+from .packages_page import PackagesPage
 from .const import Config
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/main_window/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):
     __gtype_name__ = "WarehouseWindow"
+    gtc = Gtk.Template.Child
+    main_breakpoint = gtc()
+    main_split = gtc()
+    sidebar_button = gtc()
 
     def key_handler(self, controller, keyval, keycode, state):
         if keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK:
@@ -61,11 +65,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         # file_drop.connect("drop", self.drop_callback)
         # self.scrolled_window.add_controller(file_drop)
 
+        self.main_split.set_content(PackagesPage(self))
+        self.sidebar_button.connect("clicked", lambda *_: self.main_split.set_show_sidebar(False))
+
         if Config.DEVEL:
             self.add_css_class("devel")
-
-        def guh(*args):
-            for i in HostInfo.flatpaks:
-                print(i.info["name"])
-
-        HostInfo.get_flatpaks()

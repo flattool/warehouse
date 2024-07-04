@@ -2,7 +2,9 @@
 <gresources>
   <gresource prefix="/io/github/flattool/Warehouse">
     <file>../data/style.css</file>
+    <file preprocess="xml-stripblanks">widgets/app_row.ui</file>
     <file preprocess="xml-stripblanks">main_window/window.ui</file>
+    <file preprocess="xml-stripblanks">packages_page/packages_page.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
     <!-- <file preprocess="xml-stripblanks">../data/io.github.flattool.Warehouse.metainfo.xml.in</file> -->
   </gresource>

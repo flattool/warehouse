@@ -1,0 +1,15 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $AppRow : Adw.ActionRow {
+    [prefix]
+    Image image {
+        icon-size: large;
+        icon-name: "application-x-executable-symbolic";
+    }
+    [suffix]
+    CheckButton check_button {
+        styles["selection-mode"]
+        visible: false;
+    }
+}
