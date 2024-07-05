@@ -8,11 +8,13 @@ class ErrorToast:
             if response_id == "copy":
                 clipboard.set(error_msg)
 
+        # Extra Object Creation
+        self.toast = Adw.Toast(title=display_msg, button_label=_("Details"))
         popup = Adw.AlertDialog.new(display_msg, None if format else error_msg)
+
+        # Apply
         popup.add_response("copy", _("Copy"))
         popup.add_response("ok", _("OK"))
-        popup.connect("response", on_response)
-
         if format:
             lb = Gtk.Label(selectable=True, wrap=True)#, natural_wrap_mode=Gtk.NaturalWrapMode.WORD)
             lb.set_markup(f"<tt>{GLib.markup_escape_text(error_msg)}</tt>")
@@ -20,5 +22,7 @@ class ErrorToast:
             # lb.set_selectable(True)
             popup.set_extra_child(lb)
 
-        self.toast = Adw.Toast(title=display_msg, button_label=_("Details"))
+        # Connections
         self.toast.connect("button-clicked", lambda *_: popup.present(parent_window))
+        popup.connect("response", on_response)
+

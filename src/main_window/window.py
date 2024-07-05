@@ -42,31 +42,24 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.set_size_request(360, 360)
+
+        # Extra Object Creation
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse")
-        self.settings.bind(
-            "window-width", self, "default-width", Gio.SettingsBindFlags.DEFAULT
-        )
-        self.settings.bind(
-            "window-height", self, "default-height", Gio.SettingsBindFlags.DEFAULT
-        )
-        self.settings.bind(
-            "is-maximized", self, "maximized", Gio.SettingsBindFlags.DEFAULT
-        )
-        self.settings.bind(
-            "is-fullscreen", self, "fullscreened", Gio.SettingsBindFlags.DEFAULT
-        )
-
         event_controller = Gtk.EventControllerKey()
-        event_controller.connect("key-pressed", self.key_handler)
-        self.add_controller(event_controller)
-
         file_drop = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
-        # file_drop.connect("drop", self.drop_callback)
+
+        # Apply
+        self.settings.bind("window-width", self, "default-width", Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind("window-height", self, "default-height", Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind("is-maximized", self, "maximized", Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind("is-fullscreen", self, "fullscreened", Gio.SettingsBindFlags.DEFAULT)
+        self.add_controller(event_controller)
         # self.scrolled_window.add_controller(file_drop)
-
         self.main_split.set_content(PackagesPage(self))
-        self.sidebar_button.connect("clicked", lambda *_: self.main_split.set_show_sidebar(False))
-
         if Config.DEVEL:
             self.add_css_class("devel")
+
+        # Connections
+        event_controller.connect("key-pressed", self.key_handler)
+        # file_drop.connect("drop", self.drop_callback)
+        self.sidebar_button.connect("clicked", lambda *_: self.main_split.set_show_sidebar(False))
