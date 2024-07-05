@@ -6,38 +6,49 @@ template $PackagesPage : Adw.BreakpointBin {
 	height-request: 1;
 
     Adw.Breakpoint packages_bpt {
-		condition ("max-width: 625")
+		condition ("max-width: 600")
+
+		setters {
+			packages_split.collapsed: true;
+		}
 	}
 
-    Adw.NavigationSplitView {
-        sidebar-width-fraction: 0.4;
-        max-sidebar-width: 999999999;
-        sidebar:
-            Adw.NavigationPage {
-                title: "Packages";
-                Adw.ToolbarView {
-                    [top]
-                    Adw.HeaderBar {
-                        [start]
-                        Button sidebar_button {
-                            label: "SB";
+    Adw.ToastOverlay packages_toast_overlay {
+        Adw.NavigationSplitView packages_split {
+            sidebar-width-fraction: 0.5;
+            max-sidebar-width: 999999999;
+            sidebar:
+                Adw.NavigationPage {
+                    title: "Packages";
+                    Adw.ToolbarView {
+                        [top]
+                        Adw.HeaderBar {
+                            [start]
+                            Button sidebar_button {
+                                icon-name: "dock-left-symbolic";
+                                visible: false;
+                            }
+                            [end]
+                            Button refresh_button {
+                                icon-name: "arrow-circular-top-right-symbolic";
+                            }
                         }
-                    }
-                    ScrolledWindow {
-                        ListBox packages_list_box {
-                            styles ["navigation-sidebar"]
+                        ScrolledWindow {
+                            ListBox packages_list_box {
+                                styles ["navigation-sidebar"]
+                            }
                         }
                     }
                 }
-            }
-        ;
-        content:
-            Adw.NavigationPage {
-                title: "Properties";
-                Adw.StatusPage {
-                    title: "Properties Panel";
+            ;
+            content:
+                Adw.NavigationPage {
+                    title: "Properties";
+                    Adw.StatusPage {
+                        title: "Properties Panel";
+                    }
                 }
-            }
-        ;
+            ;
+        }
     }
 }
