@@ -51,6 +51,7 @@ warehouse_sources = [
   'main.py',
   'host_info.py',
   'widgets/app_row.py',
+  'widgets/error_toast.py',
   'main_window/window.py',
   'packages_page/packages_page.py',
   '../data/style.css',
