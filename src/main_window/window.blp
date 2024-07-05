@@ -3,18 +3,23 @@ using Adw 1;
 
 template $WarehouseWindow: Adw.ApplicationWindow {
     title: "Warehouse";
+    // default-width: 240;
+    default-width: 865;
     Adw.Breakpoint main_breakpoint {
-        condition ("max-width: 865")
+        condition ("min-width: 865")
 
         setters {
-            main_split.collapsed: true;
-            main_split.max-sidebar-width: 280;
+            main_split.collapsed: false;
+            main_split.max-sidebar-width: 999999999;
         }
     }
     content:
         Adw.OverlaySplitView main_split {
+            collapsed: true;
+            show-sidebar: true;
             sidebar-width-fraction: 0.2;
-            max-sidebar-width: 999999999;
+            // max-sidebar-width: 280;
+            min-sidebar-width: 250;
             sidebar:
                 Adw.NavigationPage {
                     title: "Warehouse";
@@ -23,7 +28,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
                         Adw.HeaderBar header_bar {
                             [start]
                             Button sidebar_button {
-                                label: "SB";
+                                icon-name: "dock-left-symbolic";
                             }
                             [end]
                             MenuButton main_menu {
