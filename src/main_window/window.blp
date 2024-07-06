@@ -5,7 +5,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
     title: "Warehouse";
     // default-width: 240;
     default-width: 865;
-    width-request: 360;
+    width-request: 400;
     height-request: 360;
     Adw.Breakpoint main_breakpoint {
         condition ("min-width: 865")
@@ -31,6 +31,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
                             [start]
                             Button sidebar_button {
                                 icon-name: "dock-left-symbolic";
+                                tooltip-text: _("Hide Sidebar");
                             }
                             [end]
                             MenuButton main_menu {
@@ -41,9 +42,87 @@ template $WarehouseWindow: Adw.ApplicationWindow {
                         }
                         content:
                             ScrolledWindow {
-                                ListBox {
-                                    Adw.ActionRow {
-                                        title: "test";
+                                ListBox navigation_row_listbox {
+                                    styles ["navigation-sidebar"]
+
+                                    Box packages_row {
+                                        margin-top: 12;
+                                        margin-bottom: 12;
+                                        margin-start: 6;
+                                        margin-end: 6;
+                                        spacing: 12;
+
+                                        Image icon {
+                                            icon-name: "flatpak-symbolic";
+                                        }
+
+                                        Label {
+                                            label: _("Packages");
+                                        }
+                                    }
+                                
+                                    Box remotes_row {
+                                        margin-top: 12;
+                                        margin-bottom: 12;
+                                        margin-start: 6;
+                                        margin-end: 6;
+                                        spacing: 12;
+
+                                        Image {
+                                            icon-name: "server-pick-symbolic";
+                                        }
+
+                                        Label {
+                                            label: _("Remotes");
+                                        }
+                                    }
+                                    
+                                    Box user_data_row {
+                                        margin-top: 12;
+                                        margin-bottom: 12;
+                                        margin-start: 6;
+                                        margin-end: 6;
+                                        spacing: 12;
+
+                                        Image {
+                                            icon-name: "file-manager-symbolic";
+                                        }
+
+                                        Label {
+                                            label: _("User Data");
+                                        }
+                                    }
+                                
+                                    Box snapshots_row {
+                                        margin-top: 12;
+                                        margin-bottom: 12;
+                                        margin-start: 6;
+                                        margin-end: 6;
+                                        spacing: 12;
+
+                                        Image {
+                                            icon-name: "snapshots-alt-symbolic";
+                                        }
+
+                                        Label {
+                                            label: _("Snapshots");
+                                        }
+                                    }
+                                    
+                                    Box install_row {
+                                        margin-top: 12;
+                                        margin-bottom: 12;
+                                        margin-start: 6;
+                                        margin-end: 6;
+                                        spacing: 12;
+
+                                        Image {
+                                            icon-name: "arrow-pointing-at-line-down-symbolic";
+                                        }
+
+                                        Label {
+                                            label: _("Install Packages");
+                                        }
                                     }
                                 }
                             }

@@ -33,5 +33,10 @@
     <file preprocess="xml-stripblanks" alias="arrow-turn-left-down-symbolic.svg">../data/icons/arrow-turn-left-down-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="arrow-circular-top-right-symbolic.svg">../data/icons/arrow-circular-top-right-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="dock-left-symbolic.svg">../data/icons/dock-left-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="server-pick-symbolic.svg">../data/icons/server-pick-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="file-manager-symbolic.svg">../data/icons/file-manager-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="snapshots-alt-symbolic.svg">../data/icons/snapshots-alt-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="arrow-pointing-at-line-down-symbolic.svg">../data/icons/arrow-pointing-at-line-down-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="loupe-large-symbolic.svg">../data/icons/loupe-large-symbolic.svg</file>
   </gresource>
 </gresources>

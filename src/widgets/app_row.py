@@ -19,5 +19,6 @@ class AppRow(Adw.ActionRow):
         self.set_subtitle(package.info["id"])
         if package.icon_path:
             self.image.set_from_file(package.icon_path)
+            self.image.add_css_class("icon-dropshadow")
 
         # Connections

@@ -33,12 +33,35 @@ class WarehouseWindow(Adw.ApplicationWindow):
     main_breakpoint = gtc()
     main_split = gtc()
     sidebar_button = gtc()
+    navigation_row_listbox = gtc()
+    packages_row = gtc()
+    remotes_row = gtc()
+    user_data_row = gtc()
+    snapshots_row = gtc()
+    install_row = gtc()
 
     def key_handler(self, controller, keyval, keycode, state):
         if keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK:
             self.close()
+
         if keyval == Gdk.KEY_Escape:
             self.batch_mode_button.set_active(False)
+
+    def navigation_handler(self, _, row, hide_sidebar=True):
+        row = row.get_child()
+        page = self.pages[row]
+
+        if hide_sidebar and self.main_split.get_collapsed():
+            self.main_split.set_show_sidebar(False)
+
+        if type(self.main_split.get_content()) == page:
+            # Skip when the user clicks on the row that is already showing the page
+            return
+
+        if page.instance:
+            self.main_split.set_content(page.instance)
+        else:
+            self.main_split.set_content(page(main_window=self))
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -47,6 +70,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse")
         event_controller = Gtk.EventControllerKey()
         file_drop = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
+        self.pages = {
+            self.packages_row: PackagesPage,
+        }
 
         # Apply
         self.settings.bind("window-width", self, "default-width", Gio.SettingsBindFlags.DEFAULT)
@@ -55,11 +81,15 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.settings.bind("is-fullscreen", self, "fullscreened", Gio.SettingsBindFlags.DEFAULT)
         self.add_controller(event_controller)
         # self.scrolled_window.add_controller(file_drop)
-        self.main_split.set_content(PackagesPage(self))
+        # self.main_split.set_content(PackagesPage(self))
         if Config.DEVEL:
             self.add_css_class("devel")
 
         # Connections
         event_controller.connect("key-pressed", self.key_handler)
+        self.navigation_row_listbox.connect("row-activated", self.navigation_handler)
         # file_drop.connect("drop", self.drop_callback)
         self.sidebar_button.connect("clicked", lambda *_: self.main_split.set_show_sidebar(False))
+        
+        self.navigation_row_listbox.get_row_at_index(0).activate()
+        self.main_split.set_show_sidebar(True)

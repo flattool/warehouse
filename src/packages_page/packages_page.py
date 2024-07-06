@@ -12,6 +12,11 @@ class PackagesPage(Adw.BreakpointBin):
     refresh_button = gtc()
     packages_list_box = gtc()
 
+    # Referred to in the main window
+    #    It is used to determine if a new page should be made or not
+    #    This must be set to the created object from within the class's __init__ method
+    instance = None
+
     def generate_list(self, *args):
         self.packages_list_box.remove_all()
         for package in HostInfo.flatpaks:
@@ -28,10 +33,12 @@ class PackagesPage(Adw.BreakpointBin):
 
         # Apply
         HostInfo.get_flatpaks(callback=self.generate_list)
+        self.__class__.instance = self
 
         # Connections
         main_window.main_split.connect("notify::show-sidebar", lambda sidebar, *_: self.sidebar_button.set_visible(sidebar.get_collapsed() or not sidebar.get_show_sidebar()))
-        # main_window.main_split.connect("notify::collapsed", lambda sidebar, *_: self.sidebar_button.set_visible)
+        main_window.main_split.connect("notify::collapsed", lambda sidebar, *_: self.sidebar_button.set_visible(sidebar.get_collapsed() or not sidebar.get_show_sidebar()))
         self.sidebar_button.connect("clicked", lambda *_: main_window.main_split.set_show_sidebar(True))
         self.refresh_button.connect("clicked", lambda *_: HostInfo.get_flatpaks(callback=self.generate_list))
         # self.packages_list_box.connect("row-selected", self.row_select_handler)
+
