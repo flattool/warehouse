@@ -7,7 +7,8 @@ blueprints = custom_target('blueprints',
     'widgets/app_row.blp',
     'gtk/help-overlay.blp',
     'main_window/window.blp',
-    'packages_page/packages_page.blp'
+    'packages_page/packages_page.blp',
+    'properties_page/properties_page.blp',
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
@@ -54,6 +55,7 @@ warehouse_sources = [
   'widgets/error_toast.py',
   'main_window/window.py',
   'packages_page/packages_page.py',
+  'properties_page/properties_page.py',
   '../data/style.css',
 ]
 

@@ -2,6 +2,7 @@ from gi.repository import Adw, Gtk#, GLib, Gio, Pango
 from .host_info import HostInfo
 from .app_row import AppRow
 from .error_toast import ErrorToast
+from .properties_page import PropertiesPage
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/packages_page.ui")
 class PackagesPage(Adw.BreakpointBin):
@@ -12,7 +13,9 @@ class PackagesPage(Adw.BreakpointBin):
     refresh_button = gtc()
     search_bar = gtc()
     search_entry = gtc()
+    packages_split = gtc()
     packages_list_box = gtc()
+    properties_page = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -27,7 +30,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.packages_list_box.select_row(first_row)
 
     def row_select_handler(self, list_box, row):
-        print(row.get_title())
+        self.properties_page.set_properties(row.package)
 
     def filter_func(self, row):
         search_text = self.search_entry.get_text().lower()
@@ -55,4 +58,3 @@ class PackagesPage(Adw.BreakpointBin):
         self.search_entry.connect("search-changed", lambda *_: self.packages_list_box.invalidate_filter())
         self.search_bar.set_key_capture_widget(main_window)
         self.packages_list_box.connect("row-activated", self.row_select_handler)
-
