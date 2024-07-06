@@ -10,6 +10,7 @@ class PackagesPage(Adw.BreakpointBin):
     packages_toast_overlay = gtc()
     sidebar_button = gtc()
     refresh_button = gtc()
+    search_bar = gtc()
     search_entry = gtc()
     packages_list_box = gtc()
 
@@ -22,6 +23,8 @@ class PackagesPage(Adw.BreakpointBin):
         self.packages_list_box.remove_all()
         for package in HostInfo.flatpaks:
             self.packages_list_box.append(AppRow(package))
+        first_row = self.packages_list_box.get_row_at_index(0)
+        self.packages_list_box.select_row(first_row)
 
     def row_select_handler(self, list_box, row):
         print(row.get_title())
@@ -50,5 +53,6 @@ class PackagesPage(Adw.BreakpointBin):
         self.sidebar_button.connect("clicked", lambda *_: main_window.main_split.set_show_sidebar(True))
         self.refresh_button.connect("clicked", lambda *_: HostInfo.get_flatpaks(callback=self.generate_list))
         self.search_entry.connect("search-changed", lambda *_: self.packages_list_box.invalidate_filter())
-        # self.packages_list_box.connect("row-selected", self.row_select_handler)
+        self.search_bar.set_key_capture_widget(main_window)
+        self.packages_list_box.connect("row-activated", self.row_select_handler)
 

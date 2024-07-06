@@ -44,8 +44,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         if keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK:
             self.close()
 
-        if keyval == Gdk.KEY_Escape:
-            self.batch_mode_button.set_active(False)
+        # if keyval == Gdk.KEY_Escape:
+        #     self.batch_mode_button.set_active(False)
 
     def navigation_handler(self, _, row, hide_sidebar=True):
         row = row.get_child()
