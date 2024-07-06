@@ -265,7 +265,7 @@ class myUtils:
 
     def downgrade_flatpak(self, id, ref, commit, install_type="system", mask=False, mask_list=None):
         unmask_cmd = f"flatpak mask --remove --{install_type} {id} && "
-        update_cmd = f"flatpak updated {ref} --commit={commit} --{install_type} -y"
+        update_cmd = f"flatpak update {ref} --commit={commit} --{install_type} -y"
         to_run_cmd = ""
         if id in mask_list:
             to_run_cmd += unmask_cmd
