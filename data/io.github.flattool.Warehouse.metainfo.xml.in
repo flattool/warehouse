@@ -64,6 +64,19 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.6.4" date="2024-7-6" timestamp="1720282600">
+      <description translate="no">
+        <p>Bux Fixes</p>
+        <ul>
+          <li>Fix issue causing downgrade window to not be able to downgrade anything</li>
+        </ul>
+        <p>Previous Releases's Bug Fixes</p>
+        <ul>
+          <li>Downgrade Window no longer silently fails when downgrading a masked Flatpak, and instead, downgrades it</li>
+          <li>When downgrading and masking system Flatpaks, the password prompt only happens once instead of twice</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.6.3" date="2024-7-3" timestamp="1720030786">
       <description translate="no">
         <p>Bug Fixes</p>
