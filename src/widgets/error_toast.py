@@ -2,7 +2,7 @@ from gi.repository import Adw, Gtk, Gdk, GLib, Pango
 clipboard = Gdk.Display.get_default().get_clipboard()
 
 class ErrorToast:
-    def __init__(self, display_msg, error_msg, parent_window, format=True):
+    def __init__(self, display_msg, error_msg, parent_window):
 
         def on_response(dialog, response_id):
             if response_id == "copy":
@@ -10,7 +10,7 @@ class ErrorToast:
 
         # Extra Object Creation
         self.toast = Adw.Toast(title=display_msg, button_label=_("Details"))
-        popup = Adw.AlertDialog.new(display_msg, error_msg)
+        popup = Adw.AlertDialog.new(display_msg)
 
         # Apply
         print(display_msg)

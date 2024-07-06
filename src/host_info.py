@@ -8,7 +8,6 @@ icon_theme.add_search_path(f"{home}/.local/share/flatpak/exports/share/icons")
 direction = Gtk.Image().get_direction()
 
 class Flatpak:
-    cli_info = None
 
     def open_data(self):
         if not os.path.exists(self.data_path):
@@ -18,24 +17,52 @@ class Flatpak:
         except GLib.GError as e:
             return e
 
+    def get_data_size(self, callback=None):
+        size = [None]
+        def thread(*args):
+            sed = "sed 's/K/ KB/; s/M/ MB/; s/G/ GB/; s/T/ TB/; s/P/ PB/;'"
+            size[0] = subprocess.run(['sh', '-c', f"du -sh {self.data_path} | {sed}"], capture_output=True, text=True).stdout.split("\t")[0]
+        def on_done(*arg):
+            if callback:
+                callback(f"~ {size[0]}")
+        Gio.Task.new(None, None, on_done).run_in_thread(thread)
+
+    def trash_data(self, callback=None):
+        def thread(*args):
+            subprocess.run(['gio', 'trash', f"{self.data_path}"])
+        Gio.Task.new(None, None, lambda *_: callback()).run_in_thread(thread)
+
     def get_cli_info(self):
-        if not self.cli_info:
-            cmd = "LC_ALL=C flatpak info "
-            installation = self.info["installation"]
+        cli_info = {}
+        cmd = "LC_ALL=C flatpak info "
+        installation = self.info["installation"]
 
-            if installation == "user":
-                cmd += "--user "
-            elif installation == "system":
-                cmd += "--system "
-            else:
-                cmd += f"--installation={installation} "
+        if installation == "user":
+            cmd += "--user "
+        elif installation == "system":
+            cmd += "--system "
+        else:
+            cmd += f"--installation={installation} "
 
-            cmd += self.info["ref"]
+        cmd += self.info["ref"]
 
-            output = subprocess.run(['flatpak-spawn', '--host', 'sh', '-c', cmd], text=True, capture_output=True)
-            print(output)
+        try:
+            output = subprocess.run(['flatpak-spawn', '--host', 'sh', '-c', cmd], text=True, capture_output=True).stdout
+        except Exception as e:
+            raise e
 
-        return self.cli_info
+        lines = output.strip().split("\n")
+        for i, word in enumerate(lines):
+            word = word.strip().split(": ", 1)
+            if len(word) < 2:
+                continue
+
+            word[0] = word[0].lower()
+            if "installed" in word[0]:
+                word[1] = word[1].replace("?", " ")
+            cli_info[word[0]] = word[1]
+
+        return cli_info
 
     def __init__(self, columns):
         self.is_runtime = "runtime" in columns[12]
@@ -52,6 +79,7 @@ class Flatpak:
             "options":        columns[12],
         }
         self.data_path = f"{home}/.var/app/{columns[2]}"
+        self.data_size = -1
         installation = columns[7]
         if len(i := installation.split(' ')) > 1:
             self.info["installation"] = i[1].replace("(", "").replace(")", "")

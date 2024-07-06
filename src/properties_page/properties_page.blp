@@ -6,7 +6,8 @@ template $PropertiesPage : Adw.NavigationPage {
     Adw.ToastOverlay toast_overlay {
         Adw.ToolbarView {
             [top]
-            Adw.HeaderBar {
+            Adw.HeaderBar header_bar {
+                show-title: false;
                 [end]
                 MenuButton more_menu {
                     icon-name: "view-more-symbolic";
@@ -34,7 +35,7 @@ template $PropertiesPage : Adw.NavigationPage {
                     ;
                 }
             }
-            ScrolledWindow {
+            ScrolledWindow scrolled_window {
                 Adw.Clamp {
                     Box {
                         margin-start: 12;
@@ -46,6 +47,7 @@ template $PropertiesPage : Adw.NavigationPage {
 
                         Image app_icon {
                             pixel-size: 100;
+                            margin-top: 6;
                             margin-bottom: 18;
                             icon-name: "application-x-executable-symbolic";
                             styles["icon-dropshadow"]
@@ -68,7 +70,6 @@ template $PropertiesPage : Adw.NavigationPage {
                             wrap: true;
                             wrap-mode: word_char;
                             justify: center;
-                            margin-bottom: 18;
                             margin-start: 6;
                             margin-end: 6;
                         }
@@ -76,6 +77,7 @@ template $PropertiesPage : Adw.NavigationPage {
                         Box {
                             spacing: 6;
                             homogeneous: true;
+                            margin-top: 18;
                             margin-bottom: 12;
                             halign: center;
                             Button open_app_button {
@@ -95,8 +97,8 @@ template $PropertiesPage : Adw.NavigationPage {
                             Adw.PreferencesGroup actions {
                                 margin-bottom: 12;
                                 Adw.SwitchRow pin_row {
-                                    title: _("Remove When Unused");
-                                    subtitle: _("Pin this runtime so it's never auto removed");
+                                    title: _("Disable Automactic Removal");
+                                    subtitle: _("Pin this runtime to keep it installed");
                                 }
                                 Adw.ActionRow data_row {
                                     title: _("User Data");
@@ -117,16 +119,27 @@ template $PropertiesPage : Adw.NavigationPage {
                                         icon-name: "user-trash-symbolic";
                                         tooltip-text: _("Trash User Data");
                                     }
+
+                                    [suffix]
+                                    Spinner data_spinner {
+                                        spinning: true;
+                                    }
                                 }
                                 Adw.ExpanderRow version_row {
                                     title: _("Version");
                                     styles ["property"]
+                                    [suffix]
+                                    Label mask_label {
+                                        label: _("Updates disabled");
+                                        styles["warning"]
+                                    }
                                     Adw.SwitchRow mask_row {
                                         title: _("Disable Updates");
                                         subtitle: _("Mask this package so it's never updated");
                                     }
                                     Adw.ActionRow downgrade_row {
                                         title: _("Change Version");
+                                        subtitle: _("Upgrade or downgrade this package");
                                         activatable: true;
                                         Image {
                                             icon-name: "right-large-symbolic";
