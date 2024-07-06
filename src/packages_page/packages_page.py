@@ -15,7 +15,6 @@ class PackagesPage(Adw.BreakpointBin):
     search_entry = gtc()
     packages_split = gtc()
     packages_list_box = gtc()
-    properties_page = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -28,9 +27,12 @@ class PackagesPage(Adw.BreakpointBin):
             self.packages_list_box.append(AppRow(package))
         first_row = self.packages_list_box.get_row_at_index(0)
         self.packages_list_box.select_row(first_row)
+        self.properties_page.set_properties(first_row.package)
 
     def row_select_handler(self, list_box, row):
         self.properties_page.set_properties(row.package)
+        # if self.packages_split.get_collapsed():
+        self.packages_split.set_show_content(True)
 
     def filter_func(self, row):
         search_text = self.search_entry.get_text().lower()
@@ -44,10 +46,12 @@ class PackagesPage(Adw.BreakpointBin):
 
         # Extra Object Creation
         self.main_window = main_window
+        self.properties_page = PropertiesPage(main_window)
 
         # Apply
         HostInfo.get_flatpaks(callback=self.generate_list)
         self.packages_list_box.set_filter_func(self.filter_func)
+        self.packages_split.set_content(self.properties_page)
         self.__class__.instance = self
 
         # Connections

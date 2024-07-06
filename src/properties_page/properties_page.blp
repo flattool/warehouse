@@ -3,64 +3,208 @@ using Adw 1;
 
 template $PropertiesPage : Adw.NavigationPage {
     title: "Properties";
-    Adw.ToolbarView {
-        [top]
-        Adw.HeaderBar {
-
-        }
-        ScrolledWindow {
-            Adw.Clamp {
-                Box {
-                    margin-start: 12;
-                    margin-end: 12;
-                    margin-bottom: 12;
-                    orientation: vertical;
-                    halign: fill;
-                    hexpand: true;
-
-                    Image app_icon {
-                        pixel-size: 100;
-                        margin-bottom: 18;
-                        icon-name: "application-x-executable-symbolic";
-                        styles["icon-dropshadow"]
-                    }
-
-                    Label name {
-                        styles ["title-1"]
-                        selectable: true;
-                        wrap: true;
-                        wrap-mode: word_char;
-                        justify: center;
-                        margin-bottom: 12;
-                        margin-start: 6;
-                        margin-end: 6;
-                    }
-
-                    Label description {
-                        styles ["title-4"]
-                        selectable: true;
-                        wrap: true;
-                        wrap-mode: word_char;
-                        justify: center;
-                        margin-bottom: 18;
-                        margin-start: 6;
-                        margin-end: 6;
-                    }
-
-                    Box {
-                        spacing: 6;
-                        homogeneous: true;
-                        margin-bottom: 12;
-                        halign: center;
-                        Button open_app_button {
-                            styles ["suggested-action", "pill"]
-                            can-shrink: true;
-                            label: "Open";
+    Adw.ToastOverlay toast_overlay {
+        Adw.ToolbarView {
+            [top]
+            Adw.HeaderBar {
+                [end]
+                MenuButton more_menu {
+                    icon-name: "view-more-symbolic";
+                    popover:
+                        Popover {
+                            styles ["menu"]
+                            ListBox more_list {
+                                ListBoxRow details {
+                                    Label {
+                                        label: "Show Details in Store";
+                                    }
+                                }
+                                ListBoxRow view_snapshots {
+                                    Label {
+                                        label: "View Snapshots";
+                                    }
+                                }
+                                ListBoxRow copy_launch {
+                                    Label {
+                                        label: "Copy Launch Command";
+                                    }
+                                }
+                            }
                         }
-                        Button uninstall_button {
-                            styles ["pill"]
-                            can-shrink: true;
-                            label: "Uninstall";
+                    ;
+                }
+            }
+            ScrolledWindow {
+                Adw.Clamp {
+                    Box {
+                        margin-start: 12;
+                        margin-end: 12;
+                        margin-bottom: 12;
+                        orientation: vertical;
+                        halign: fill;
+                        hexpand: true;
+
+                        Image app_icon {
+                            pixel-size: 100;
+                            margin-bottom: 18;
+                            icon-name: "application-x-executable-symbolic";
+                            styles["icon-dropshadow"]
+                        }
+
+                        Label name {
+                            styles ["title-1"]
+                            selectable: true;
+                            wrap: true;
+                            wrap-mode: word_char;
+                            justify: center;
+                            margin-bottom: 12;
+                            margin-start: 6;
+                            margin-end: 6;
+                        }
+
+                        Label description {
+                            styles ["title-4"]
+                            selectable: true;
+                            wrap: true;
+                            wrap-mode: word_char;
+                            justify: center;
+                            margin-bottom: 18;
+                            margin-start: 6;
+                            margin-end: 6;
+                        }
+
+                        Box {
+                            spacing: 6;
+                            homogeneous: true;
+                            margin-bottom: 12;
+                            halign: center;
+                            Button open_app_button {
+                                styles ["suggested-action", "pill"]
+                                can-shrink: true;
+                                label: _("Open");
+                            }
+                            Button uninstall_button {
+                                styles ["pill"]
+                                can-shrink: true;
+                                label: _("Uninstall");
+                            }
+                        }
+
+                        Box information {
+                            orientation: vertical;
+                            Adw.PreferencesGroup actions {
+                                margin-bottom: 12;
+                                Adw.SwitchRow pin_row {
+                                    title: _("Remove When Unused");
+                                    subtitle: _("Pin this runtime so it's never auto removed");
+                                }
+                                Adw.ActionRow data_row {
+                                    title: _("User Data");
+                                    styles["property"]
+
+                                    [suffix]
+                                    Button open_data_button {
+                                        styles["flat"]
+                                        valign: center;
+                                        icon-name: "folder-open-symbolic";
+                                        tooltip-text: _("Open User Data");
+                                    }
+
+                                    [suffix]
+                                    Button trash_data_button {
+                                        styles["flat"]
+                                        valign: center;
+                                        icon-name: "user-trash-symbolic";
+                                        tooltip-text: _("Trash User Data");
+                                    }
+                                }
+                                Adw.ExpanderRow version_row {
+                                    title: _("Version");
+                                    styles ["property"]
+                                    Adw.SwitchRow mask_row {
+                                        title: _("Disable Updates");
+                                        subtitle: _("Mask this package so it's never updated");
+                                    }
+                                    Adw.ActionRow downgrade_row {
+                                        title: _("Change Version");
+                                        activatable: true;
+                                        Image {
+                                            icon-name: "right-large-symbolic";
+                                        }
+                                    }
+                                }
+                                Adw.ActionRow installed_size_row {
+                                    styles ["property"]
+                                    title: _("Installed Size");
+                                }
+                            }
+                            Adw.PreferencesGroup package_info {
+                                margin-bottom: 12;
+                                title: _("Package Information");
+                                Adw.ActionRow id_row {
+                                    styles ["property"]
+                                    title: _("Application ID");
+                                }
+                                Adw.ActionRow ref_row {
+                                    styles ["property"]
+                                    title: "Ref";
+                                }
+                                Adw.ActionRow arch_row {
+                                    styles ["property"]
+                                    title: _("Architecture");
+                                }
+                                Adw.ActionRow branch_row {
+                                    styles ["property"]
+                                    title: _("Branch");
+                                }
+                                Adw.ActionRow license_row {
+                                    styles ["property"]
+                                    title: _("License");
+                                }
+                            }
+                            Adw.PreferencesGroup remote_info {
+                                margin-bottom: 12;
+                                title: _("Installation Information");
+                                Adw.ActionRow runtime_row {
+                                    styles ["property"]
+                                    title: _("Runtime");
+                                }
+                                Adw.ActionRow sdk_row {
+                                    styles ["property"]
+                                    title: "SDK";
+                                }
+                                Adw.ActionRow origin_row {
+                                    styles ["property"]
+                                    title: _("Origin");
+                                }
+                                Adw.ActionRow collection_row {
+                                    styles ["property"]
+                                    title: _("Collection");
+                                }
+                                Adw.ActionRow installation_row {
+                                    styles ["property"]
+                                    title: _("Installation");
+                                }
+                            }
+                            Adw.PreferencesGroup commit_info {
+                                title: _("Commit Information");
+                                Adw.ActionRow commit_row {
+                                    styles ["property"]
+                                    title: "Commit";
+                                }
+                                Adw.ActionRow parent_row {
+                                    styles ["property"]
+                                    title: _("Parent");
+                                }
+                                Adw.ActionRow subject_row {
+                                    styles ["property"]
+                                    title: _("Subject");
+                                }
+                                Adw.ActionRow date_row {
+                                    styles ["property"]
+                                    title: _("Date");
+                                }
+                            }
                         }
                     }
                 }

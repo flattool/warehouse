@@ -10,17 +10,18 @@ class ErrorToast:
 
         # Extra Object Creation
         self.toast = Adw.Toast(title=display_msg, button_label=_("Details"))
-        popup = Adw.AlertDialog.new(display_msg, None if format else error_msg)
+        popup = Adw.AlertDialog.new(display_msg, error_msg)
 
         # Apply
+        print(display_msg)
+        print(error_msg)
         popup.add_response("copy", _("Copy"))
         popup.add_response("ok", _("OK"))
-        if format:
-            lb = Gtk.Label(selectable=True, wrap=True)#, natural_wrap_mode=Gtk.NaturalWrapMode.WORD)
-            lb.set_markup(f"<tt>{GLib.markup_escape_text(error_msg)}</tt>")
-            # lb.set_label(error_msg)
-            # lb.set_selectable(True)
-            popup.set_extra_child(lb)
+        lb = Gtk.Label(selectable=True, wrap=True)#, natural_wrap_mode=Gtk.NaturalWrapMode.WORD)
+        lb.set_markup(f"<tt>{GLib.markup_escape_text(error_msg)}</tt>")
+        # lb.set_label(error_msg)
+        # lb.set_selectable(True)
+        popup.set_extra_child(lb)
 
         # Connections
         self.toast.connect("button-clicked", lambda *_: popup.present(parent_window))

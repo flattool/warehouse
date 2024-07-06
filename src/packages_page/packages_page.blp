@@ -10,6 +10,7 @@ template $PackagesPage : Adw.BreakpointBin {
 
 		setters {
 			packages_split.collapsed: true;
+            packages_split.show-content: false;
 		}
 	}
 
@@ -99,9 +100,6 @@ template $PackagesPage : Adw.BreakpointBin {
                         }
                     }
                 }
-            ;
-            content:
-                $PropertiesPage properties_page {}
             ;
         }
     }

@@ -1,6 +1,4 @@
-import gi, subprocess, os, pathlib
-
-gi.require_version('Gtk', '4.0')
+import subprocess, os, pathlib
 
 from gi.repository import Gio, Gtk, GLib
 
@@ -10,6 +8,14 @@ icon_theme.add_search_path(f"{home}/.local/share/flatpak/exports/share/icons")
 direction = Gtk.Image().get_direction()
 
 class Flatpak:
+    def open_data(self):
+        if not os.path.exists(self.data_path):
+            return f"Path '{self.data_path}' does not exist"
+        try:
+            Gio.AppInfo.launch_default_for_uri(f"file://{self.data_path}", None)
+        except GLib.GError as e:
+            return e
+
     def __init__(self, columns):
         self.is_runtime = "runtime" in columns[12]
         self.info = {
@@ -24,7 +30,7 @@ class Flatpak:
             "installed_size": columns[11],
             "options":        columns[12],
         }
-        self.data_path = f"{home}/{columns[2]}"
+        self.data_path = f"{home}/.var/app/ {columns[2]}"
         installation = columns[7]
         if len(i := installation.split(' ')) > 1:
             self.info["installation"] = i[1].replace("(", "").replace(")", "")
