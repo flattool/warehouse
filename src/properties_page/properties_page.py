@@ -57,6 +57,8 @@ class PropertiesPage(Adw.NavigationPage):
         else:
             self.app_icon.set_from_icon_name("application-x-executable-symbolic")
 
+        package.get_cli_info()
+
     def open_data_handler(self, *args):
         if error := self.package.open_data():
             self.toast_overlay.add_toast(ErrorToast(_("Could not open data"), str(error), self.main_window).toast)

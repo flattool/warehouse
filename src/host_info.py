@@ -8,6 +8,8 @@ icon_theme.add_search_path(f"{home}/.local/share/flatpak/exports/share/icons")
 direction = Gtk.Image().get_direction()
 
 class Flatpak:
+    cli_info = None
+
     def open_data(self):
         if not os.path.exists(self.data_path):
             return f"Path '{self.data_path}' does not exist"
@@ -15,6 +17,25 @@ class Flatpak:
             Gio.AppInfo.launch_default_for_uri(f"file://{self.data_path}", None)
         except GLib.GError as e:
             return e
+
+    def get_cli_info(self):
+        if not self.cli_info:
+            cmd = "LC_ALL=C flatpak info "
+            installation = self.info["installation"]
+
+            if installation == "user":
+                cmd += "--user "
+            elif installation == "system":
+                cmd += "--system "
+            else:
+                cmd += f"--installation={installation} "
+
+            cmd += self.info["ref"]
+
+            output = subprocess.run(['flatpak-spawn', '--host', 'sh', '-c', cmd], text=True, capture_output=True)
+            print(output)
+
+        return self.cli_info
 
     def __init__(self, columns):
         self.is_runtime = "runtime" in columns[12]
@@ -30,7 +51,7 @@ class Flatpak:
             "installed_size": columns[11],
             "options":        columns[12],
         }
-        self.data_path = f"{home}/.var/app/ {columns[2]}"
+        self.data_path = f"{home}/.var/app/{columns[2]}"
         installation = columns[7]
         if len(i := installation.split(' ')) > 1:
             self.info["installation"] = i[1].replace("(", "").replace(")", "")
