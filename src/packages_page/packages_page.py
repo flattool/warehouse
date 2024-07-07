@@ -24,7 +24,12 @@ class PackagesPage(Adw.BreakpointBin):
     def generate_list(self, *args):
         self.packages_list_box.remove_all()
         for package in HostInfo.flatpaks:
-            self.packages_list_box.append(AppRow(package))
+            row = AppRow(package)
+            app_id = package.info["id"]
+            installation = package.info["installation"]
+            if package.is_masked:
+                row.add_css_class("warning")
+            self.packages_list_box.append(row)
         first_row = self.packages_list_box.get_row_at_index(0)
         self.packages_list_box.select_row(first_row)
         self.properties_page.set_properties(first_row.package)
@@ -50,6 +55,7 @@ class PackagesPage(Adw.BreakpointBin):
 
         # Apply
         HostInfo.get_flatpaks(callback=self.generate_list)
+
         self.packages_list_box.set_filter_func(self.filter_func)
         self.packages_split.set_content(self.properties_page)
         self.__class__.instance = self

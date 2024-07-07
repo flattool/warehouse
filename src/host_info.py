@@ -1,6 +1,7 @@
 import subprocess, os, pathlib
 
-from gi.repository import Gio, Gtk, GLib
+from gi.repository import Gio, Gtk, GLib, Adw
+# from .app_row import AppRow
 
 home = f"{pathlib.Path.home()}"
 icon_theme = Gtk.IconTheme.new()
@@ -28,9 +29,10 @@ class Flatpak:
         Gio.Task.new(None, None, on_done).run_in_thread(thread)
 
     def trash_data(self, callback=None):
-        def thread(*args):
+        try:
             subprocess.run(['gio', 'trash', f"{self.data_path}"])
-        Gio.Task.new(None, None, lambda *_: callback()).run_in_thread(thread)
+        except Exception as e:
+            raise e
 
     def get_cli_info(self):
         cli_info = {}
@@ -86,6 +88,8 @@ class Flatpak:
         else:
             self.info["installation"] = installation
 
+        self.is_masked = self.info["id"] in HostInfo.masks[self.info["installation"]]
+
         try:
             self.icon_path = (
                 icon_theme.lookup_icon(
@@ -119,52 +123,27 @@ class HostInfo:
         icon_theme.add_search_path(f"{i}/exports/share/icons")
     
     flatpaks = []
+    remotes = []
+    installations = []
+    masks = {}
+    pins = {}
     @classmethod
     def get_flatpaks(this, callback=None):
         # Callback is a function to run after the host flatpaks are found
         this.flatpaks.clear()
-
-        def thread(task, *args):
-            output = subprocess.run(
-                ['flatpak-spawn', '--host',
-                'flatpak', 'list', '--columns=all'],
-                text=True,
-                capture_output=True,
-            ).stdout
-            lines = output.strip().split("\n")
-            for i in lines:
-                this.flatpaks.append(Flatpak(i.split("\t")))
-            this.flatpaks = sorted(this.flatpaks, key=lambda flatpak: flatpak.info["name"].lower())
-
-        Gio.Task.new(None, None, callback).run_in_thread(thread)
-
-    remotes = []
-    installations = []
-    @classmethod
-    def get_remotes(this, callback=None):
-        # Callback is a function to run after the host remotes are found
         this.remotes.clear()
         this.installations.clear()
+        this.masks.clear()
+        this.pins.clear()
 
         def thread(task, *args):
-            
-            # Get all config files for any extra installations
-            custom_install_config_path = "/run/host/etc/flatpak/installations.d"
-            if os.path.exists(custom_install_config_path):
-                for file in os.listdir(custom_install_config_path):
-                    with open(f"{custom_install_config_path}/{file}", "r") as f:
-                        for line in f:
-                            if line.startswith("[Installation"):
-                                # Get specifically the installation name itself
-                                this.installations.append(line.replace("[Installation \"", "").replace("\"]", "").strip())
 
+            # Remotes
             def remote_info(installation):
                 cmd = ['flatpak-spawn', '--host',
                 'flatpak', 'remotes']
-                if installation == "user":
-                    cmd.append("--user")
-                elif installation == "system":
-                    cmd.append("--system")
+                if installation == "user" or installation == "system":
+                    cmd.append(f"--{installation}")
                 else:
                     cmd.append(f"--installation={installation}")
                 output = subprocess.run(
@@ -178,9 +157,62 @@ class HostInfo:
                         if installation == "user" or installation == "system":
                             this.installations.append(installation)
 
+                # Masks
+                cmd = ['flatpak-spawn', '--host',
+                'flatpak', 'mask',]
+                if installation == "user" or installation == "system":
+                    cmd.append(f"--{installation}")
+                else:
+                    cmd.append(f"--installation={installation}")
+                output = subprocess.run(
+                    cmd, text=True,
+                    capture_output=True,
+                ).stdout
+                lines = output.strip().replace(" ", "").split("\n")
+                if lines[0] != '':
+                    this.masks[installation] = lines
+
+                # Pins
+                cmd = ['flatpak-spawn', '--host',
+                'flatpak', 'pin',]
+                if installation == "user" or installation == "system":
+                    cmd.append(f"--{installation}")
+                else:
+                    cmd.append(f"--installation={installation}")
+                output = subprocess.run(
+                    cmd, text=True,
+                    capture_output=True,
+                ).stdout
+                lines = output.strip().replace(" ", "").split("\n")
+                if lines[0] != '':
+                    this.pins[installation] = lines
+
+            # Installations
+            # Get all config files for any extra installations
+            custom_install_config_path = "/run/host/etc/flatpak/installations.d"
+            if os.path.exists(custom_install_config_path):
+                for file in os.listdir(custom_install_config_path):
+                    with open(f"{custom_install_config_path}/{file}", "r") as f:
+                        for line in f:
+                            if line.startswith("[Installation"):
+                                # Get specifically the installation name itself
+                                this.installations.append(line.replace("[Installation \"", "").replace("\"]", "").strip())
+
             for i in this.installations:
                 remote_info(i)
             remote_info("user")
             remote_info("system")
+
+            # Packages
+            output = subprocess.run(
+                ['flatpak-spawn', '--host',
+                'flatpak', 'list', '--columns=all'],
+                text=True,
+                capture_output=True,
+            ).stdout
+            lines = output.strip().split("\n")
+            for i in lines:
+                this.flatpaks.append(Flatpak(i.split("\t")))
+            this.flatpaks = sorted(this.flatpaks, key=lambda flatpak: flatpak.info["name"].lower())
 
         Gio.Task.new(None, None, callback).run_in_thread(thread)

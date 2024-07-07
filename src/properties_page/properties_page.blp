@@ -17,17 +17,22 @@ template $PropertiesPage : Adw.NavigationPage {
                             ListBox more_list {
                                 ListBoxRow details {
                                     Label {
-                                        label: "Show Details in Store";
+                                        label: _("Show Details in Store");
                                     }
                                 }
-                                ListBoxRow view_snapshots {
+                                ListBoxRow reinstall {
                                     Label {
-                                        label: "View Snapshots";
+                                        label: _("Reinstall");
                                     }
                                 }
                                 ListBoxRow copy_launch {
                                     Label {
-                                        label: "Copy Launch Command";
+                                        label: _("Copy Launch Command");
+                                    }
+                                }
+                                ListBoxRow view_snapshots {
+                                    Label {
+                                        label: _("View Snapshots");
                                     }
                                 }
                             }

@@ -21,6 +21,7 @@ class PropertiesPage(Adw.NavigationPage):
     trash_data_button = gtc()
     data_spinner = gtc()
     version_row = gtc()
+    mask_label = gtc()
     mask_row = gtc()
     downgrade_row = gtc()
     installed_size_row = gtc()
@@ -90,7 +91,7 @@ class PropertiesPage(Adw.NavigationPage):
         try:
             cli_info = package.get_cli_info()
         except Exception as e:
-            self.toast_overlay.add_toast(ErrorToast(_("Could not get properties"), str(e), self.main_window).toast)
+            self.toast_overlay.add_toast(ErrorToast(_("Could not get properties"), str(e)).toast)
             return
 
         for key, row in self.info_rows.items():
@@ -106,21 +107,25 @@ class PropertiesPage(Adw.NavigationPage):
                     row.set_subtitle(_("No version information found"))
                 continue
             except Exception as e:
-                self.toast_overlay.add_toast(ErrorToast(_("Could not get properties"), str(e), self.main_window).toast)
+                self.toast_overlay.add_toast(ErrorToast(_("Could not get properties"), str(e)).toast)
                 continue
+
+        self.mask_label.set_visible(package.is_masked)
+
+    def ask_confirmation(self, title, description):
+        pass
 
     def open_data_handler(self, *args):
         if error := self.package.open_data():
-            self.toast_overlay.add_toast(ErrorToast(_("Could not open data"), str(error), self.main_window).toast)
+            self.toast_overlay.add_toast(ErrorToast(_("Could not open data"), str(error)).toast)
 
     def trash_data_handler(self, *args):
-        def when_done(*args):
+        try:
+            self.package.trash_data()
             self.set_properties(self.package, refresh=True)
             self.toast_overlay.add_toast(Adw.Toast.new("Trashed User Data"))
-        try:
-            self.package.trash_data(when_done)
         except Exception as e:
-            self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(e), self.main_window).toast)
+            self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(e)).toast)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)

@@ -25,6 +25,7 @@ import time
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from .packages_page import PackagesPage
 from .const import Config
+from .error_toast import ErrorToast
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/main_window/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):
@@ -75,6 +76,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         }
 
         # Apply
+        ErrorToast.main_window = self
         self.settings.bind("window-width", self, "default-width", Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind("window-height", self, "default-height", Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind("is-maximized", self, "maximized", Gio.SettingsBindFlags.DEFAULT)

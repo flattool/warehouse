@@ -1,8 +1,9 @@
-from gi.repository import Adw, Gtk, Gdk, GLib, Pango
+from gi.repository import Adw, Gtk, Gdk, GLib
 clipboard = Gdk.Display.get_default().get_clipboard()
 
 class ErrorToast:
-    def __init__(self, display_msg, error_msg, parent_window):
+    main_window = None
+    def __init__(self, display_msg, error_msg):
 
         def on_response(dialog, response_id):
             if response_id == "copy":
@@ -24,6 +25,5 @@ class ErrorToast:
         popup.set_extra_child(lb)
 
         # Connections
-        self.toast.connect("button-clicked", lambda *_: popup.present(parent_window))
+        self.toast.connect("button-clicked", lambda *_: popup.present(self.main_window))
         popup.connect("response", on_response)
-
