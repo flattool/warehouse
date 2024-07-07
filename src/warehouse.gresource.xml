@@ -40,5 +40,8 @@
     <file preprocess="xml-stripblanks" alias="arrow-pointing-at-line-down-symbolic.svg">../data/icons/arrow-pointing-at-line-down-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="loupe-large-symbolic.svg">../data/icons/loupe-large-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="folder-open-symbolic.svg">../data/icons/folder-open-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="padlock2-symbolic.svg">../data/icons/padlock2-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="pin-small-symbolic.svg">../data/icons/pin-small-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="error-small-symbolic.svg">../data/icons/error-small-symbolic.svg</file>
   </gresource>
 </gresources>

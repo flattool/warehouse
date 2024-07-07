@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk#, GLib, Gio, Pango
+from gi.repository import Adw, Gtk,GLib#, Gio, Pango
 from .error_toast import ErrorToast
 import subprocess, os
 
@@ -59,9 +59,9 @@ class PropertiesPage(Adw.NavigationPage):
         self.description.set_label(pkg_description)
 
         if package.icon_path:
-            self.app_icon.set_from_file(package.icon_path)
+            GLib.idle_add(lambda *_: self.app_icon.set_from_file(package.icon_path))
         else:
-            self.app_icon.set_from_icon_name("application-x-executable-symbolic")
+            GLib.idle_add(lambda *_: self.app_icon.set_from_icon_name("application-x-executable-symbolic"))
 
         self.pin_row.set_visible(package.is_runtime)
         self.open_app_button.set_visible(package.is_runtime)

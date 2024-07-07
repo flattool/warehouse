@@ -15,10 +15,10 @@ class AppRow(Adw.ActionRow):
         self.package = package
 
         # Apply
-        self.set_title(package.info["name"])
-        self.set_subtitle(package.info["id"])
+        GLib.idle_add(lambda *_: self.set_title(package.info["name"]))
+        GLib.idle_add(lambda *_: self.set_subtitle(package.info["id"]))
         if package.icon_path:
-            self.image.set_from_file(package.icon_path)
-            self.image.add_css_class("icon-dropshadow")
+            GLib.idle_add(lambda *_: self.image.add_css_class("icon-dropshadow"))
+            GLib.idle_add(lambda *_: self.image.set_from_file(package.icon_path))
 
         # Connections

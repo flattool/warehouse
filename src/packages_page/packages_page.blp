@@ -58,7 +58,7 @@ template $PackagesPage : Adw.BreakpointBin {
 								hexpand: true;
 							}
                         }
-                        ScrolledWindow {
+                        ScrolledWindow scrolled_window {
                             ListBox packages_list_box {
                                 styles ["navigation-sidebar"]
                             }
@@ -103,4 +103,14 @@ template $PackagesPage : Adw.BreakpointBin {
             ;
         }
     }
+}
+
+Adw.StatusPage refresh_status {
+    title: "Refreshing";
+    description: "Refreshing the page lol haha";
+    child: 
+        Spinner spinner {
+            spinning: true;
+        }
+    ;
 }

@@ -140,22 +140,22 @@ class HostInfo:
 
             # Remotes
             def remote_info(installation):
-                cmd = ['flatpak-spawn', '--host',
-                'flatpak', 'remotes']
-                if installation == "user" or installation == "system":
-                    cmd.append(f"--{installation}")
-                else:
-                    cmd.append(f"--installation={installation}")
-                output = subprocess.run(
-                    cmd, text=True,
-                    capture_output=True,
-                ).stdout
-                lines = output.strip().split("\n")
-                for i in lines:
-                    if i != "":
-                        this.remotes.append(Remote(i.strip(), installation))
-                        if installation == "user" or installation == "system":
-                            this.installations.append(installation)
+                # cmd = ['flatpak-spawn', '--host',
+                # 'flatpak', 'remotes']
+                # if installation == "user" or installation == "system":
+                #     cmd.append(f"--{installation}")
+                # else:
+                #     cmd.append(f"--installation={installation}")
+                # output = subprocess.run(
+                #     cmd, text=True,
+                #     capture_output=True,
+                # ).stdout
+                # lines = output.strip().split("\n")
+                # for i in lines:
+                #     if i != "":
+                #         this.remotes.append(Remote(i.strip(), installation))
+                #         if installation == "user" or installation == "system":
+                #             this.installations.append(installation)
 
                 # Masks
                 cmd = ['flatpak-spawn', '--host',
