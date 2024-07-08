@@ -9,26 +9,30 @@ template $AppRow : Adw.ActionRow {
         icon-name: "application-x-executable-symbolic";
     }
     [suffix]
-    Image eol_package_label {
-        icon-name: "error-small-symbolic";
+    Image eol_package_package_status_icon {
+        icon-name: "error-symbolic";
         tooltip-text: _("This package is End Of Life, and will not recieve any security updates");
+        visible: false;
         styles["error"]
     }
     [suffix]
-    Image eol_runtime_label {
-        icon-name: "error-small-symbolic";
+    Image eol_runtime_status_icon {
+        icon-name: "error-symbolic";
         tooltip-text: _("This app's runtime is End Of Life, and will not recieve any security updates");
+        visible: false;
         styles["error"]
     }
     [suffix]
     Image pinned_status_icon {
-        icon-name: "pin-small-symbolic";
+        icon-name: "pin-symbolic";
         tooltip-text: _("This runtime will never be automatically removed");
+        visible: false;
     }
     [suffix]
     Image masked_status_icon {
         icon-name: "software-update-urgent-symbolic";
         tooltip-text: _("Updates are disabled for this package");
+        visible: false;
     }
     [suffix]
     CheckButton check_button {

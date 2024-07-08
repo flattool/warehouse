@@ -88,7 +88,18 @@ class Flatpak:
         else:
             self.info["installation"] = installation
 
-        self.is_masked = self.info["id"] in HostInfo.masks[self.info["installation"]]
+        self.is_eol = "eol=" in self.info["options"]
+        self.dependant_runtime = None
+
+        try:
+            self.is_masked = self.info["id"] in HostInfo.masks[self.info["installation"]]
+        except KeyError:
+            self.is_masked = False
+
+        try:
+            self.is_pinned = f"runtime/{self.info['ref']}" in HostInfo.pins[self.info["installation"]]
+        except KeyError:
+            self.is_pinned = False
 
         try:
             self.icon_path = (
@@ -123,6 +134,7 @@ class HostInfo:
         icon_theme.add_search_path(f"{i}/exports/share/icons")
     
     flatpaks = []
+    ref_to_flatpak = {}
     remotes = []
     installations = []
     masks = {}
@@ -131,6 +143,7 @@ class HostInfo:
     def get_flatpaks(this, callback=None):
         # Callback is a function to run after the host flatpaks are found
         this.flatpaks.clear()
+        this.ref_to_flatpak.clear()
         this.remotes.clear()
         this.installations.clear()
         this.masks.clear()
@@ -212,7 +225,24 @@ class HostInfo:
             ).stdout
             lines = output.strip().split("\n")
             for i in lines:
-                this.flatpaks.append(Flatpak(i.split("\t")))
+                package = Flatpak(i.split("\t"))
+                this.flatpaks.append(package)
+                this.ref_to_flatpak[package.info["ref"]] = package
+            
+            # Dependant Runtimes
+            output = subprocess.run(
+                ['flatpak-spawn', '--host',
+                'flatpak', 'list', '--columns=runtime'],
+                text=True,
+                capture_output=True,
+            ).stdout
+            lines = output.strip().split("\n")
+            for index, runtime in enumerate(lines):
+                package = this.flatpaks[index]
+                if package.is_runtime:
+                    continue
+                package.dependant_runtime = this.ref_to_flatpak[runtime]
+
             this.flatpaks = sorted(this.flatpaks, key=lambda flatpak: flatpak.info["name"].lower())
 
         Gio.Task.new(None, None, callback).run_in_thread(thread)

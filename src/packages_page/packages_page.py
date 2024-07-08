@@ -27,11 +27,16 @@ class PackagesPage(Adw.BreakpointBin):
         self.packages_list_box.remove_all()
         for package in HostInfo.flatpaks:
             row = AppRow(package)
-            app_id = package.info["id"]
-            installation = package.info["installation"]
-            if package.is_masked:
-                row.add_css_class("warning")
+            row.masked_status_icon.set_visible(package.is_masked)
+            row.pinned_status_icon.set_visible(package.is_pinned)
+            row.eol_package_package_status_icon.set_visible(package.is_eol)
+            try:
+                if not package.is_runtime:
+                    row.eol_runtime_status_icon.set_visible(package.dependant_runtime.is_eol)
+            except Exception as e:
+                self.packages_toast_overlay.add_toast(ErrorToast(_("Error getting Flatpak '{}'").format(package.info["name"]), str(e)).toast)
             self.packages_list_box.append(row)
+
         first_row = self.packages_list_box.get_row_at_index(0)
         self.packages_list_box.select_row(first_row)
         self.properties_page.set_properties(first_row.package)

@@ -6,6 +6,10 @@ class AppRow(Adw.ActionRow):
     __gtype_name__ = 'AppRow'
     gtc = Gtk.Template.Child
     image = gtc()
+    eol_package_package_status_icon = gtc()
+    eol_runtime_status_icon = gtc()
+    pinned_status_icon = gtc()
+    masked_status_icon = gtc()
     check_button = gtc()
 
     def __init__(self, package, **kwargs):
