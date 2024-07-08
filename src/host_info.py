@@ -1,6 +1,6 @@
 import subprocess, os, pathlib
 
-from gi.repository import Gio, Gtk, GLib, Adw
+from gi.repository import Gio, Gtk, GLib, Adw, Gdk
 # from .app_row import AppRow
 
 home = f"{pathlib.Path.home()}"
@@ -9,6 +9,20 @@ icon_theme.add_search_path(f"{home}/.local/share/flatpak/exports/share/icons")
 direction = Gtk.Image().get_direction()
 
 class Flatpak:
+
+    def open_app(self, callback=None):
+        self.failed_app_run = None
+        def thread(*args):
+            if self.is_runtime:
+                self.failed_app_run = "error: cannot open a runtime"
+            try:
+                subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'run', f"{self.info['ref']}"], capture_output=True, text=True, check=True)
+            except subprocess.CalledProcessError as cpe:
+                self.failed_app_run = cpe.stderr
+            except Exception as e:
+                self.failed_app_run = e
+
+        Gio.Task.new(None, None, callback).run_in_thread(thread)
 
     def open_data(self):
         if not os.path.exists(self.data_path):
@@ -30,7 +44,9 @@ class Flatpak:
 
     def trash_data(self, callback=None):
         try:
-            subprocess.run(['gio', 'trash', f"{self.data_path}"])
+            subprocess.run(['gio', 'trash', f"{self.data_path}"], capture_output=True, text=True, check=True)
+        except subprocess.CalledProcessError as cpe:
+            raise cpe
         except Exception as e:
             raise e
 
@@ -90,6 +106,7 @@ class Flatpak:
 
         self.is_eol = "eol=" in self.info["options"]
         self.dependant_runtime = None
+        self.failed_app_run = None
 
         try:
             self.is_masked = self.info["id"] in HostInfo.masks[self.info["installation"]]
@@ -121,6 +138,7 @@ class Remote:
 
 class HostInfo:
     home = home
+    clipboard = Gdk.Display.get_default().get_clipboard()
 
     # Get all possible installation icon theme dirs
     output = subprocess.run(
