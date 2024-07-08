@@ -157,12 +157,12 @@ class PropertiesPage(Adw.NavigationPage):
         self.nav_view.push(new_page)
 
     def open_app_handler(self, *args):
+        self.toast_overlay.add_toast(Adw.Toast(title=_("Opened {}").format(self.package.info["name"])))
+        
         def callback(*args):
             if fail := self.package.failed_app_run:
                 fail = fail.stderr if type(fail) == subprocess.CalledProcessError else fail
                 self.toast_overlay.add_toast(ErrorToast(_("Could not open {}").format(self.package.info["name"]), str(fail)).toast)
-            else:
-                self.toast_overlay.add_toast(Adw.Toast(title=_("Opened {}").format(self.package.info["name"])))
 
         self.package.open_app(callback)
 
