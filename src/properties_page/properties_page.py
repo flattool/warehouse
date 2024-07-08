@@ -6,6 +6,8 @@ import subprocess, os
 class PropertiesPage(Adw.NavigationPage):
     __gtype_name__ = 'PropertiesPage'
     gtc = Gtk.Template.Child
+    nav_view = gtc()
+    inner_nav_page = gtc()
     toast_overlay = gtc()
     header_bar = gtc()
     scrolled_window = gtc()
@@ -50,12 +52,19 @@ class PropertiesPage(Adw.NavigationPage):
     def set_properties(self, package, refresh=False):
         if package == self.package and not refresh:
             # Do not update the ui if the same app row is clicked
-            print("skip")
             return
-        
+
         self.package = package
-        self.set_title(_("{} Properties").format(package.info["name"]))
-        self.name.set_label(package.info["name"])
+        
+        pkg_name = package.info["name"]
+        if pkg_name != "":
+            self.inner_nav_page.set_title(_("{} Properties").format(package.info["name"]))
+            self.name.set_visible(True)
+            self.name.set_label(pkg_name)
+        else:
+            self.name.set_visible(False)
+            self.inner_nav_page.set_title(_("Properties"))
+
         pkg_description = package.info["description"]
         self.description.set_visible(pkg_description != "")
         self.description.set_label(pkg_description)
@@ -138,6 +147,11 @@ class PropertiesPage(Adw.NavigationPage):
         except Exception as e:
             self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(e)).toast)
 
+    def runtime_row_click_handler(self, *args):
+        new_page = self.__class__(self.main_window)
+        new_page.set_properties(self.package.dependant_runtime)
+        self.nav_view.push(new_page)
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
@@ -168,3 +182,4 @@ class PropertiesPage(Adw.NavigationPage):
         self.open_data_button.connect("clicked", self.open_data_handler)
         self.scrolled_window.get_vadjustment().connect("value-changed", lambda adjustment: self.header_bar.set_show_title(not adjustment.get_value() == 0))
         self.trash_data_button.connect("clicked", self.trash_data_handler)
+        self.runtime_row.connect("activated", self.runtime_row_click_handler)

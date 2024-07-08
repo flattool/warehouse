@@ -46,7 +46,7 @@ class PackagesPage(Adw.BreakpointBin):
 
     def row_select_handler(self, list_box, row):
         self.properties_page.set_properties(row.package)
-        # if self.packages_split.get_collapsed():
+        self.properties_page.nav_view.pop()
         self.packages_split.set_show_content(True)
 
     def filter_func(self, row):
