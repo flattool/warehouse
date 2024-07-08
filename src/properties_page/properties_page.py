@@ -1,5 +1,6 @@
 from gi.repository import Adw, Gtk,GLib#, Gio, Pango
 from .error_toast import ErrorToast
+from .host_info import HostInfo
 import subprocess, os
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/properties_page/properties_page.ui")
@@ -106,6 +107,7 @@ class PropertiesPage(Adw.NavigationPage):
                 self.package.get_data_size(lambda size: callback(size))
             else:
                 self.data_row.set_subtitle(_("No User Data"))
+                self.data_spinner.set_visible(False)
 
         cli_info = None
         try:
@@ -144,13 +146,29 @@ class PropertiesPage(Adw.NavigationPage):
             self.package.trash_data()
             self.set_properties(self.package, refresh=True)
             self.toast_overlay.add_toast(Adw.Toast.new("Trashed User Data"))
+        except subprocess.CalledProcessError as cpe:
+            self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(cpe.stderr)).toast)
         except Exception as e:
             self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(e)).toast)
 
-    def runtime_row_click_handler(self, *args):
+    def runtime_row_handler(self, *args):
         new_page = self.__class__(self.main_window)
         new_page.set_properties(self.package.dependant_runtime)
         self.nav_view.push(new_page)
+
+    def open_app_handler(self, *args):
+        def callback(*args):
+            if fail := self.package.failed_app_run:
+                fail = fail.stderr if type(fail) == subprocess.CalledProcessError else fail
+                self.toast_overlay.add_toast(ErrorToast(_("Could not open {}").format(self.package.info["name"]), str(fail)).toast)
+            else:
+                self.toast_overlay.add_toast(Adw.Toast(title=_("Opened {}").format(self.package.info["name"])))
+
+        self.package.open_app(callback)
+
+    def copy_handler(self, row):
+        HostInfo.clipboard.set(row.get_subtitle())
+        self.toast_overlay.add_toast(Adw.Toast(title=_("Copeid {}").format(row.get_title())))
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -182,4 +200,10 @@ class PropertiesPage(Adw.NavigationPage):
         self.open_data_button.connect("clicked", self.open_data_handler)
         self.scrolled_window.get_vadjustment().connect("value-changed", lambda adjustment: self.header_bar.set_show_title(not adjustment.get_value() == 0))
         self.trash_data_button.connect("clicked", self.trash_data_handler)
-        self.runtime_row.connect("activated", self.runtime_row_click_handler)
+        self.runtime_row.connect("activated", self.runtime_row_handler)
+        self.open_app_button.connect("clicked", self.open_app_handler)
+        for key in self.info_rows:
+            row = self.info_rows[key]
+            if type(row) != Adw.ActionRow:
+                continue
+            row.connect("activated", self.copy_handler)
