@@ -18,7 +18,7 @@ class Flatpak:
             try:
                 subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'run', f"{self.info['ref']}"], capture_output=True, text=True, check=True)
             except subprocess.CalledProcessError as cpe:
-                self.failed_app_run = cpe.stderr
+                self.failed_app_run = cpe
             except Exception as e:
                 self.failed_app_run = e
 
@@ -49,6 +49,28 @@ class Flatpak:
             raise cpe
         except Exception as e:
             raise e
+
+    def set_mask(self, should_mask, callback=None):
+        self.failed_mask = None
+        def thread(*args):
+            cmd = ['flatpak-spawn', '--host', 'flatpak', 'mask', self.info["id"]]
+            installation = self.info["installation"]
+            if installation == "user" or installation == "system":
+                cmd.append(f"--{installation}")
+            else:
+                cmd.append(f"--installation={installation}")
+            
+            if not should_mask:
+                cmd.append("--remove")
+            
+            try:
+                subprocess.run(cmd, check=True, capture_output=True, text=True)
+            except subprocess.CalledProcessError as cpe:
+                self.failed_mask = cpe
+            except Exception as e:
+                self.failed_mask = e
+
+        Gio.Task.new(None, None, callback).run_in_thread(thread)
 
     def get_cli_info(self):
         cli_info = {}
@@ -107,6 +129,7 @@ class Flatpak:
         self.is_eol = "eol=" in self.info["options"]
         self.dependant_runtime = None
         self.failed_app_run = None
+        self.failed_mask = None
 
         try:
             self.is_masked = self.info["id"] in HostInfo.masks[self.info["installation"]]

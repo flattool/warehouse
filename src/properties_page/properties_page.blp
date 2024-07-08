@@ -152,9 +152,15 @@ template $PropertiesPage : Adw.NavigationPage {
                                                 label: _("Updates Disabled");
                                                 styles["warning"]
                                             }
-                                            Adw.SwitchRow mask_row {
+                                            Adw.ActionRow mask_row {
                                                 title: _("Disable Updates");
                                                 subtitle: _("Mask this package so it's never updated");
+                                                activatable: true;
+                                                Gtk.Switch mask_switch {
+                                                    valign: center;
+                                                    can-focus: false;
+                                                    can-target: false;
+                                                }
                                             }
                                             Adw.ActionRow downgrade_row {
                                                 title: _("Change Version");
@@ -187,9 +193,15 @@ template $PropertiesPage : Adw.NavigationPage {
                                                 icon-name: "right-large-symbolic";
                                             }
                                         }
-                                        Adw.SwitchRow pin_row {
+                                        Adw.ActionRow pin_row {
                                             title: _("Disable Automactic Removal");
                                             subtitle: _("Pin this runtime to keep it installed");
+                                            activatable: true;
+                                            Gtk.Switch pin_switch {
+                                                valign: center;
+                                                can-focus: false;
+                                                can-target: false;
+                                            }
                                         }
                                     }
                                     Adw.PreferencesGroup package_info {

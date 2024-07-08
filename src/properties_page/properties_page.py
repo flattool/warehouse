@@ -20,6 +20,7 @@ class PropertiesPage(Adw.NavigationPage):
     uninstall_button = gtc()
     
     pin_row = gtc()
+    pin_switch = gtc()
     data_row = gtc()
     open_data_button = gtc()
     trash_data_button = gtc()
@@ -27,6 +28,7 @@ class PropertiesPage(Adw.NavigationPage):
     version_row = gtc()
     mask_label = gtc()
     mask_row = gtc()
+    mask_switch = gtc()
     downgrade_row = gtc()
     installed_size_row = gtc()
     runtime_row = gtc()
@@ -133,9 +135,9 @@ class PropertiesPage(Adw.NavigationPage):
                 continue
 
         self.mask_label.set_visible(package.is_masked)
+        self.mask_switch.set_active(package.is_masked)
 
-    def ask_confirmation(self, title, description):
-        pass
+        self.pin_switch.set_active(package.is_pinned)
 
     def open_data_handler(self, *args):
         if error := self.package.open_data():
@@ -147,9 +149,24 @@ class PropertiesPage(Adw.NavigationPage):
             self.set_properties(self.package, refresh=True)
             self.toast_overlay.add_toast(Adw.Toast.new("Trashed User Data"))
         except subprocess.CalledProcessError as cpe:
-            self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(cpe.stderr)).toast)
+            self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), cpe.stderr).toast)
         except Exception as e:
             self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(e)).toast)
+
+    def set_mask_handler(self, *args):
+        state = not self.mask_switch.get_active()
+        def callback(*args):
+            if fail := self.package.failed_mask:
+                response = _("Could not Disable Updates") if state else _("Could not Enable Updates")
+                fail = fail.stderr if type(fail) == subprocess.CalledProcessError else fail
+                self.toast_overlay.add_toast(ErrorToast(response, str(fail)).toast)
+                GLib.idle_add(lambda *_: self.mask_switch.set_active(not state))
+            else:
+                response = _("Disabled Updates") if state else _("Enabled Updates")
+                self.toast_overlay.add_toast(Adw.Toast(title=_(response)))
+                GLib.idle_add(lambda *_: self.mask_switch.set_active(state))
+
+        self.package.set_mask(state, callback)
 
     def runtime_row_handler(self, *args):
         new_page = self.__class__(self.main_window)
@@ -202,6 +219,7 @@ class PropertiesPage(Adw.NavigationPage):
         self.trash_data_button.connect("clicked", self.trash_data_handler)
         self.runtime_row.connect("activated", self.runtime_row_handler)
         self.open_app_button.connect("clicked", self.open_app_handler)
+        self.mask_row.connect("activated", self.set_mask_handler)
         for key in self.info_rows:
             row = self.info_rows[key]
             if type(row) != Adw.ActionRow:
