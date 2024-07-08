@@ -97,14 +97,27 @@ template $PropertiesPage : Adw.NavigationPage {
                             }
                         }
 
+                        Box eol_box {
+                            margin-bottom: 12;
+                            styles ["card"]
+                            Label status_label {
+                                margin-top: 6;
+                                margin-bottom: 7;
+                                margin-start: 6;
+                                margin-end: 6;
+                                label: _("This package is End Of Life, and will not recieve any security updates");
+                                styles ["heading", "error"]
+                                halign: center;
+                                hexpand: true;
+                                wrap: true;
+                                justify: center;
+                            }
+                        }
+
                         Box information {
                             orientation: vertical;
                             Adw.PreferencesGroup actions {
                                 margin-bottom: 12;
-                                Adw.SwitchRow pin_row {
-                                    title: _("Disable Automactic Removal");
-                                    subtitle: _("Pin this runtime to keep it installed");
-                                }
                                 Adw.ActionRow data_row {
                                     title: _("User Data");
                                     styles["property"]
@@ -155,6 +168,24 @@ template $PropertiesPage : Adw.NavigationPage {
                                     styles ["property"]
                                     title: _("Installed Size");
                                 }
+                                Adw.ActionRow runtime_row {
+                                    styles ["property"]
+                                    title: _("Runtime");
+                                    activatable: true;
+                                    Image eol_package_package_status_icon {
+                                        icon-name: "error-symbolic";
+                                        tooltip-text: _("This package is End Of Life, and will not recieve any security updates");
+                                        margin-end: 6;
+                                        styles["error"]
+                                    }
+                                    Image {
+                                        icon-name: "right-large-symbolic";
+                                    }
+                                }
+                                Adw.SwitchRow pin_row {
+                                    title: _("Disable Automactic Removal");
+                                    subtitle: _("Pin this runtime to keep it installed");
+                                }
                             }
                             Adw.PreferencesGroup package_info {
                                 margin-bottom: 12;
@@ -183,10 +214,6 @@ template $PropertiesPage : Adw.NavigationPage {
                             Adw.PreferencesGroup remote_info {
                                 margin-bottom: 12;
                                 title: _("Installation Information");
-                                Adw.ActionRow runtime_row {
-                                    styles ["property"]
-                                    title: _("Runtime");
-                                }
                                 Adw.ActionRow sdk_row {
                                     styles ["property"]
                                     title: "SDK";

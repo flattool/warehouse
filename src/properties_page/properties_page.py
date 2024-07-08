@@ -12,6 +12,7 @@ class PropertiesPage(Adw.NavigationPage):
     app_icon = gtc()
     name = gtc()
     description = gtc()
+    eol_box = gtc()
     open_app_button = gtc()
     uninstall_button = gtc()
     
@@ -25,6 +26,8 @@ class PropertiesPage(Adw.NavigationPage):
     mask_row = gtc()
     downgrade_row = gtc()
     installed_size_row = gtc()
+    runtime_row = gtc()
+    eol_package_package_status_icon = gtc()
     
     id_row = gtc()
     ref_row = gtc()
@@ -32,7 +35,6 @@ class PropertiesPage(Adw.NavigationPage):
     branch_row = gtc()
     license_row = gtc()
 
-    runtime_row = gtc()
     sdk_row = gtc()
     origin_row = gtc()
     collection_row = gtc()
@@ -63,13 +65,22 @@ class PropertiesPage(Adw.NavigationPage):
         else:
             GLib.idle_add(lambda *_: self.app_icon.set_from_icon_name("application-x-executable-symbolic"))
 
+        self.eol_box.set_visible(package.is_eol)
         self.pin_row.set_visible(package.is_runtime)
         self.open_app_button.set_visible(package.is_runtime)
         self.open_app_button.set_visible(not package.is_runtime)
-        if not package.is_runtime:
+        self.data_row.set_visible(not package.is_runtime)
+        if package.is_runtime:
+            self.runtime_row.set_visible(False)
+        else:
             has_path = os.path.exists(package.data_path)
             self.trash_data_button.set_sensitive(has_path)
             self.open_data_button.set_sensitive(has_path)
+
+            if not self.package.dependant_runtime is None:
+                self.runtime_row.set_visible(True)
+                self.runtime_row.set_subtitle(self.package.dependant_runtime.info["name"])
+                self.eol_package_package_status_icon.set_visible(self.package.dependant_runtime.is_eol)
 
             if has_path:
                 self.trash_data_button.set_visible(False)
@@ -142,7 +153,6 @@ class PropertiesPage(Adw.NavigationPage):
             "branch": self.branch_row,
             "license": self.license_row,
 
-            "runtime": self.runtime_row,
             "sdk": self.sdk_row,
             "origin": self.origin_row,
             "collection": self.collection_row,
