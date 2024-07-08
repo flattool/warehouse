@@ -163,10 +163,25 @@ class PropertiesPage(Adw.NavigationPage):
                 GLib.idle_add(lambda *_: self.mask_switch.set_active(not state))
             else:
                 response = _("Disabled Updates") if state else _("Enabled Updates")
-                self.toast_overlay.add_toast(Adw.Toast(title=_(response)))
+                self.toast_overlay.add_toast(Adw.Toast(title=response))
                 GLib.idle_add(lambda *_: self.mask_switch.set_active(state))
 
         self.package.set_mask(state, callback)
+
+    def set_pin_handler(self, *args):
+        state = not self.pin_switch.get_active()
+        def callback(*args):
+            if fail := self.package.failed_pin:
+                response = _("Could not Disable Autoremoval") if state else _("Could not Enable Autoremoval")
+                fail = fail.stderr if type(fail) == subprocess.CalledProcessError else fail
+                self.toast_overlay.add_toast(ErrorToast(response, str(fail)).toast)
+                GLib.idle_add(lambda *_: self.pin_switch.set_active(not state))
+            else:
+                response = _("Disabled Autoremoval") if state else _("Enabled Autoremoval")
+                self.toast_overlay.add_toast(Adw.Toast(title=response))
+                GLib.idle_add(lambda *_: self.pin_switch.set_active(state))
+
+        self.package.set_pin(state, callback)
 
     def runtime_row_handler(self, *args):
         new_page = self.__class__(self.main_window)
@@ -220,6 +235,7 @@ class PropertiesPage(Adw.NavigationPage):
         self.runtime_row.connect("activated", self.runtime_row_handler)
         self.open_app_button.connect("clicked", self.open_app_handler)
         self.mask_row.connect("activated", self.set_mask_handler)
+        self.pin_row.connect("activated", self.set_pin_handler)
         for key in self.info_rows:
             row = self.info_rows[key]
             if type(row) != Adw.ActionRow:

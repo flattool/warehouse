@@ -72,6 +72,31 @@ class Flatpak:
 
         Gio.Task.new(None, None, callback).run_in_thread(thread)
 
+    def set_pin(self, should_pin, callback=None):
+        self.failed_pin = None
+        if not self.is_runtime:
+            self.failed_pin = "Cannot pin an application"
+        
+        def thread(*args):
+            cmd = ['flatpak-spawn', '--host', 'flatpak', 'pin', f"runtime/{self.info['ref']}"]
+            installation = self.info["installation"]
+            if installation == "user" or installation == "system":
+                cmd.append(f"--{installation}")
+            else:
+                cmd.append(f"--installation={installation}")
+
+            if not should_pin:
+                cmd.append("--remove")
+
+            try:
+                subprocess.run(cmd, check=True, capture_output=True, text=True)
+            except subprocess.CalledProcessError as cpe:
+                self.failed_pin = cpe
+            except Exception as e:
+                self.failed_mask = e
+
+        Gio.Task.new(None, None, callback).run_in_thread(thread)
+
     def get_cli_info(self):
         cli_info = {}
         cmd = "LC_ALL=C flatpak info "
