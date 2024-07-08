@@ -17,6 +17,7 @@ class PackagesPage(Adw.BreakpointBin):
     packages_split = gtc()
     packages_list_box = gtc()
     refresh_status = gtc()
+    select_button = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -30,6 +31,7 @@ class PackagesPage(Adw.BreakpointBin):
             row.masked_status_icon.set_visible(package.is_masked)
             row.pinned_status_icon.set_visible(package.is_pinned)
             row.eol_package_package_status_icon.set_visible(package.is_eol)
+            row.check_button.set_visible(self.select_button.get_active())
             try:
                 if not package.is_runtime:
                     row.eol_runtime_status_icon.set_visible(package.dependant_runtime.is_eol)
@@ -56,6 +58,16 @@ class PackagesPage(Adw.BreakpointBin):
         if search_text in title or search_text in subtitle:
             return True
 
+    def set_selection_mode(self, is_enabled):
+        i = 0
+        while row := self.packages_list_box.get_row_at_index(i):
+            i += 1
+            GLib.idle_add(row.check_button.set_active, False)
+            GLib.idle_add(row.check_button.set_visible, is_enabled)
+
+    def select_button_handler(self, button):
+        self.set_selection_mode(button.get_active())
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
@@ -81,3 +93,5 @@ class PackagesPage(Adw.BreakpointBin):
         self.search_entry.connect("search-changed", lambda *_: self.packages_list_box.invalidate_filter())
         self.search_bar.set_key_capture_widget(main_window)
         self.packages_list_box.connect("row-activated", self.row_select_handler)
+
+        self.select_button.connect("clicked", self.select_button_handler)
