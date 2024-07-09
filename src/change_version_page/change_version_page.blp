@@ -1,0 +1,59 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $ChangeVersionPage : Adw.NavigationPage {
+    title: _("Change Versions");
+    Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {
+        }
+        Adw.ToastOverlay {
+            ScrolledWindow scrolled_window {
+                Adw.Clamp {
+                    Box {
+                        margin-start: 12;
+                        margin-end: 12;
+                        margin-top: 12;
+                        margin-bottom: 12;
+                        spacing: 12;
+                        orientation: vertical;
+                        halign: fill;
+                        hexpand: true;
+
+                        CheckButton root_group_check_button {
+                            visible: false;
+                            active: true;
+                        }
+
+                        Adw.PreferencesGroup mask_group {
+                            Adw.SwitchRow mask_row {
+                                title: _("Disable Updates");
+                            }
+                        }
+
+                        Adw.PreferencesGroup versions_group {
+                            title: _("Select a Release");
+                            description: _("This will uninstalls the current release and install the chosen one instead. Note that downgrading can cause issues.");
+                        }
+                    }
+                }
+            }
+        }
+        [bottom]
+        ActionBar action_bar {
+            revealed: false;
+            [center]
+            Button apply_button {
+                sensitive: bind action_bar.revealed;
+                halign: center;
+                margin-top: 3;
+                margin-bottom: 3;
+                Adw.ButtonContent {
+                    label: _("Change Version");
+                    icon-name: "double-ended-arrows-vertical-symbolic";
+                }
+                styles ["suggested-action", "pill"]
+            }
+        }
+    }
+}

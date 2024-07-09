@@ -1,6 +1,7 @@
 from gi.repository import Adw, Gtk,GLib#, Gio, Pango
 from .error_toast import ErrorToast
 from .host_info import HostInfo
+from .change_version_page import ChangeVersionPage
 import subprocess, os
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/properties_page/properties_page.ui")
@@ -29,7 +30,7 @@ class PropertiesPage(Adw.NavigationPage):
     mask_label = gtc()
     mask_row = gtc()
     mask_switch = gtc()
-    downgrade_row = gtc()
+    change_version_row = gtc()
     installed_size_row = gtc()
     runtime_row = gtc()
     eol_package_package_status_icon = gtc()
@@ -202,6 +203,10 @@ class PropertiesPage(Adw.NavigationPage):
         HostInfo.clipboard.set(row.get_subtitle())
         self.toast_overlay.add_toast(Adw.Toast(title=_("Copeid {}").format(row.get_title())))
 
+    def change_version_handler(self, row):
+        page = ChangeVersionPage(self.main_window, self.package)
+        self.nav_view.push(page)
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
@@ -236,6 +241,7 @@ class PropertiesPage(Adw.NavigationPage):
         self.open_app_button.connect("clicked", self.open_app_handler)
         self.mask_row.connect("activated", self.set_mask_handler)
         self.pin_row.connect("activated", self.set_pin_handler)
+        self.change_version_row.connect("activated", self.change_version_handler)
         for key in self.info_rows:
             row = self.info_rows[key]
             if type(row) != Adw.ActionRow:

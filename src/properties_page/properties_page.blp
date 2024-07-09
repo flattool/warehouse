@@ -147,6 +147,7 @@ template $PropertiesPage : Adw.NavigationPage {
                                         Adw.ExpanderRow version_row {
                                             title: _("Version");
                                             styles ["property"]
+                                            expanded: true;
                                             [suffix]
                                             Label mask_label {
                                                 label: _("Updates Disabled");
@@ -162,7 +163,7 @@ template $PropertiesPage : Adw.NavigationPage {
                                                     can-target: false;
                                                 }
                                             }
-                                            Adw.ActionRow downgrade_row {
+                                            Adw.ActionRow change_version_row {
                                                 title: _("Change Version");
                                                 subtitle: _("Upgrade or downgrade this package");
                                                 activatable: true;

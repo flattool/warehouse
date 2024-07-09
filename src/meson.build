@@ -9,6 +9,7 @@ blueprints = custom_target('blueprints',
     'main_window/window.blp',
     'packages_page/packages_page.blp',
     'properties_page/properties_page.blp',
+    'change_version_page/change_version_page.blp',
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
@@ -56,6 +57,7 @@ warehouse_sources = [
   'main_window/window.py',
   'packages_page/packages_page.py',
   'properties_page/properties_page.py',
+  'change_version_page/change_version_page.py',
   '../data/style.css',
 ]
 
