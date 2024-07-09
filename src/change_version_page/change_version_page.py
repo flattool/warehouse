@@ -1,6 +1,7 @@
 from gi.repository import Adw, Gtk,GLib, Gio
 from .error_toast import ErrorToast
 from .host_info import HostInfo
+from .status_box import StatusBox
 import subprocess, os
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/change_version_page/change_version_page.ui")
@@ -9,6 +10,7 @@ class ChangeVersionPage(Adw.NavigationPage):
     gtc = Gtk.Template.Child
     toast_overlay = gtc()
     scrolled_window = gtc()
+    versions_clamp = gtc()
     root_group_check_button = gtc()
     mask_group = gtc()
     mask_row = gtc()
@@ -76,7 +78,7 @@ class ChangeVersionPage(Adw.NavigationPage):
         if not self.failure is None:
             self.toast_overlay.add_toast(ErrorToast(_("Could not get versions"), self.failure).toast)
         else:
-            print("yay")
+            self.scrolled_window.set_child(self.versions_clamp)
 
     def loader_test(self, *args):
         def thread(*args):
@@ -97,7 +99,7 @@ class ChangeVersionPage(Adw.NavigationPage):
         self.set_title(_("{} Versions").format(pkg_name))
         self.mask_row.set_subtitle(_("Ensure that {} will never be updated to a newer version").format(pkg_name))
         
-        # Gio.Task.new(None, None, self.get_commits_callback).run_in_thread(self.get_commits)
+        self.scrolled_window.set_child(StatusBox(_("Fetching Releases"), _("This could take a while")))
         Gio.Task.new(None, None, self.get_commits_callback).run_in_thread(self.get_commits)
 
         # for i in range(10):

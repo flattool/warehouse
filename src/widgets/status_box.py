@@ -14,7 +14,7 @@ class StatusBox(Gtk.Box):
     cancel_button = gtc()
     cancel_button_content = gtc()
     
-    def __init__(self, title, description, show_loading_bar=True, on_cancel=None, **kwargs):
+    def __init__(self, title, description, show_loading_bar=False, on_cancel=None, **kwargs):
         super().__init__(**kwargs)
         self.title.set_label(title)
         self.description.set_label(description)

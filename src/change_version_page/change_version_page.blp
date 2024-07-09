@@ -8,36 +8,7 @@ template $ChangeVersionPage : Adw.NavigationPage {
         Adw.HeaderBar {
         }
         Adw.ToastOverlay toast_overlay {
-            ScrolledWindow scrolled_window {
-                Adw.Clamp {
-                    Box {
-                        margin-start: 12;
-                        margin-end: 12;
-                        margin-top: 12;
-                        margin-bottom: 12;
-                        spacing: 12;
-                        orientation: vertical;
-                        halign: fill;
-                        hexpand: true;
-
-                        CheckButton root_group_check_button {
-                            visible: false;
-                            active: true;
-                        }
-
-                        Adw.PreferencesGroup mask_group {
-                            Adw.SwitchRow mask_row {
-                                title: _("Disable Updates");
-                            }
-                        }
-
-                        Adw.PreferencesGroup versions_group {
-                            title: _("Select a Release");
-                            description: _("This will uninstalls the current release and install the chosen one instead. Note that downgrading can cause issues.");
-                        }
-                    }
-                }
-            }
+            ScrolledWindow scrolled_window {}
         }
         [bottom]
         ActionBar action_bar {
@@ -54,6 +25,35 @@ template $ChangeVersionPage : Adw.NavigationPage {
                 }
                 styles ["suggested-action", "pill"]
             }
+        }
+    }
+}
+
+Adw.Clamp versions_clamp {
+    Box {
+        margin-start: 12;
+        margin-end: 12;
+        margin-top: 12;
+        margin-bottom: 12;
+        spacing: 12;
+        orientation: vertical;
+        halign: fill;
+        hexpand: true;
+
+        CheckButton root_group_check_button {
+            visible: false;
+            active: true;
+        }
+
+        Adw.PreferencesGroup mask_group {
+            Adw.SwitchRow mask_row {
+                title: _("Disable Updates");
+            }
+        }
+
+        Adw.PreferencesGroup versions_group {
+            title: _("Select a Release");
+            description: _("This will uninstalls the current release and install the chosen one instead. Note that downgrading can cause issues.");
         }
     }
 }
