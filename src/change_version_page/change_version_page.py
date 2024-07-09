@@ -14,6 +14,7 @@ class ChangeVersionPage(Adw.NavigationPage):
     mask_row = gtc()
     versions_group = gtc()
     action_bar = gtc()
+    apply_button = gtc()
 
     selected_commit = None
     failure = None
@@ -71,12 +72,19 @@ class ChangeVersionPage(Adw.NavigationPage):
     def set_commit(self, commit):
         self.selected_commit = commit
 
-    def callback(self, *args):
+    def get_commits_callback(self, *args):
         if not self.failure is None:
             self.toast_overlay.add_toast(ErrorToast(_("Could not get versions"), self.failure).toast)
         else:
             print("yay")
 
+    def loader_test(self, *args):
+        def thread(*args):
+            cmd = subprocess.Popen("for i in {1..20}; do echo $i; sleep 1s; done", shell=True, text=True, stdout=subprocess.PIPE)
+            for line in cmd.stdout:
+                line = line.strip()
+                GLib.idle_add(lambda *_: self.set_title(line))
+        Gio.Task.new(None, None, None).run_in_thread(thread)
 
     def __init__(self, main_window, package, **kwargs):
         super().__init__(**kwargs)
@@ -89,7 +97,8 @@ class ChangeVersionPage(Adw.NavigationPage):
         self.set_title(_("{} Versions").format(pkg_name))
         self.mask_row.set_subtitle(_("Ensure that {} will never be updated to a newer version").format(pkg_name))
         
-        Gio.Task.new(None, None, self.callback).run_in_thread(self.get_commits)
+        # Gio.Task.new(None, None, self.get_commits_callback).run_in_thread(self.get_commits)
+        Gio.Task.new(None, None, self.get_commits_callback).run_in_thread(self.get_commits)
 
         # for i in range(10):
         #     row = Adw.ActionRow(title=f"Update to {i}.0", subtitle="Some dumb nerd shit I don't care about", activatable=True)
@@ -102,3 +111,4 @@ class ChangeVersionPage(Adw.NavigationPage):
 
         # Connections
         self.root_group_check_button.connect("toggled", lambda *_: self.action_bar.set_revealed(True))
+        self.apply_button.connect("clicked", self.loader_test)
