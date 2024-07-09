@@ -7,6 +7,7 @@
     <file preprocess="xml-stripblanks">main_window/window.ui</file>
     <file preprocess="xml-stripblanks">packages_page/packages_page.ui</file>
     <file preprocess="xml-stripblanks">properties_page/properties_page.ui</file>
+    <file preprocess="xml-stripblanks">change_version_page/change_version_page.ui</file>
     <!-- <file preprocess="xml-stripblanks">../data/io.github.flattool.Warehouse.metainfo.xml.in</file> -->
   </gresource>
   <gresource prefix="/io/github/flattool/Warehouse/icons/scalable/actions/">
@@ -45,5 +46,6 @@
     <file preprocess="xml-stripblanks" alias="pin-small-symbolic.svg">../data/icons/pin-small-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="error-small-symbolic.svg">../data/icons/error-small-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="copy-symbolic.svg">../data/icons/copy-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="double-ended-arrows-vertical-symbolic.svg">../data/icons/double-ended-arrows-vertical-symbolic.svg</file>
   </gresource>
 </gresources>
