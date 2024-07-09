@@ -26,6 +26,7 @@ from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from .packages_page import PackagesPage
 from .const import Config
 from .error_toast import ErrorToast
+from .status_box import StatusBox
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/main_window/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):

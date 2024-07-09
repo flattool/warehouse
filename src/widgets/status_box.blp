@@ -1,0 +1,77 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $StatusBox : Box {
+    orientation: vertical;
+    spacing: 10;
+    margin-top: 40;
+    margin-bottom: 20;
+    halign: center;
+    valign: center;
+
+    margin-start: 24;
+    margin-end: 24;
+
+    Spinner spinner {
+        margin-bottom: 35;
+        width-request: 30;
+        height-request: 30;
+        opacity: 0.5;
+        spinning: true;
+    }
+
+    Label title {
+        halign: center;
+        label: "No Title Set";
+        wrap: true;
+        styles ["title-1"]
+    }
+
+    Label description {
+        halign: center;
+        label: "No Description Set";
+        wrap: true;
+        styles["description", "body"]
+    }
+
+    Adw.Clamp {
+        Box progress_box {
+            margin-top: 36;
+            spacing: 12;
+            halign: fill;
+
+            Label mirror_label {
+                valign: center;
+                label: bind progress_label.label;
+                styles ["heading"]
+                opacity: 0.0;
+                wrap: true;
+                wrap-mode: char;
+            }
+
+            ProgressBar progress_bar {
+                valign: center;
+                hexpand: true;
+                fraction: 0.5;
+            }
+
+            Label progress_label {
+                valign: center;
+                label: "-1%";
+                styles ["heading"]
+                wrap: true;
+                wrap-mode: char;
+            }
+        }
+    }
+
+    Button cancel_button {
+        margin-top: 12;
+        halign: center;
+        styles ["pill"]
+        Adw.ButtonContent cancel_button_content {
+            icon-name: "cross-filled-symbolic";
+            label: _("Cancel");
+        }
+    }
+}

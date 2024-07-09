@@ -5,6 +5,7 @@ gnome = import('gnome')
 blueprints = custom_target('blueprints',
   input: files(
     'widgets/app_row.blp',
+    'widgets/status_box.blp',
     'gtk/help-overlay.blp',
     'main_window/window.blp',
     'packages_page/packages_page.blp',
@@ -54,6 +55,7 @@ warehouse_sources = [
   'host_info.py',
   'widgets/app_row.py',
   'widgets/error_toast.py',
+  'widgets/status_box.py',
   'main_window/window.py',
   'packages_page/packages_page.py',
   'properties_page/properties_page.py',
