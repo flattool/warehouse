@@ -35,6 +35,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.packages_list_box.remove_all()
         for package in HostInfo.flatpaks:
             row = AppRow(package)
+            package.app_row = row
             row.masked_status_icon.set_visible(package.is_masked)
             row.pinned_status_icon.set_visible(package.is_pinned)
             row.eol_package_package_status_icon.set_visible(package.is_eol)
@@ -78,7 +79,7 @@ class PackagesPage(Adw.BreakpointBin):
             return
         self.status_view.set_content(status_box)
 
-    def refresh_button_handler(self, *args):
+    def refresh_handler(self, *args):
         self.set_status(self.loading_status)
         HostInfo.get_flatpaks(callback=self.generate_list)
 
@@ -101,7 +102,7 @@ class PackagesPage(Adw.BreakpointBin):
 
         # Extra Object Creation
         self.main_window = main_window
-        self.properties_page = PropertiesPage(main_window)
+        self.properties_page = PropertiesPage(main_window, self)
         self.filters_page = FiltersPage(main_window, self)
         self.loading_status = StatusBox(_("Fetching Packages"), _("This should only take a moment"))
 
@@ -121,7 +122,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.search_entry.connect("search-changed", lambda *_: self.packages_list_box.invalidate_filter())
         self.search_bar.set_key_capture_widget(main_window)
         self.packages_list_box.connect("row-activated", self.row_select_handler)
-        self.refresh_button.connect("clicked", self.refresh_button_handler)
+        self.refresh_button.connect("clicked", self.refresh_handler)
         self.select_button.connect("clicked", self.select_button_handler)
         self.filter_button.connect("toggled", self.filter_button_handler)
         self.packages_split.connect("notify::show-content", self.filter_page_handler)

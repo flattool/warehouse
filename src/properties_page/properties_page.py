@@ -179,6 +179,7 @@ class PropertiesPage(Adw.NavigationPage):
                 response = _("Disabled Updates") if state else _("Enabled Updates")
                 self.toast_overlay.add_toast(Adw.Toast(title=response))
                 GLib.idle_add(lambda *_: self.mask_switch.set_active(state))
+                self.package.app_row.masked_status_icon.set_visible(state)
 
         self.package.set_mask(state, callback)
 
@@ -194,11 +195,12 @@ class PropertiesPage(Adw.NavigationPage):
                 response = _("Disabled Autoremoval") if state else _("Enabled Autoremoval")
                 self.toast_overlay.add_toast(Adw.Toast(title=response))
                 GLib.idle_add(lambda *_: self.pin_switch.set_active(state))
+                self.package.app_row.pinned_status_icon.set_visible(state)
 
         self.package.set_pin(state, callback)
 
     def runtime_row_handler(self, *args):
-        new_page = self.__class__(self.main_window)
+        new_page = self.__class__(self.main_window, self.packages_page)
         new_page.set_properties(self.package.dependant_runtime)
         self.nav_view.push(new_page)
 
@@ -220,7 +222,7 @@ class PropertiesPage(Adw.NavigationPage):
         page = ChangeVersionPage(self.main_window, self.package)
         self.nav_view.push(page)
 
-    def __init__(self, main_window, **kwargs):
+    def __init__(self, main_window, packages_page, **kwargs):
         super().__init__(**kwargs)
 
         # Extra Object Creation
@@ -246,6 +248,7 @@ class PropertiesPage(Adw.NavigationPage):
             "date": self.date_row,
         }
 
+        self.packages_page = packages_page
         self.__class__.main_window = main_window
 
         # Connections

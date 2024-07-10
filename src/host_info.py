@@ -155,6 +155,7 @@ class Flatpak:
         self.dependant_runtime = None
         self.failed_app_run = None
         self.failed_mask = None
+        self.app_row = None
 
         try:
             self.is_masked = self.info["id"] in HostInfo.masks[self.info["installation"]]
