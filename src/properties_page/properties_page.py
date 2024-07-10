@@ -145,14 +145,27 @@ class PropertiesPage(Adw.NavigationPage):
             self.toast_overlay.add_toast(ErrorToast(_("Could not open data"), str(error)).toast)
 
     def trash_data_handler(self, *args):
-        try:
-            self.package.trash_data()
-            self.set_properties(self.package, refresh=True)
-            self.toast_overlay.add_toast(Adw.Toast.new("Trashed User Data"))
-        except subprocess.CalledProcessError as cpe:
-            self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), cpe.stderr).toast)
-        except Exception as e:
-            self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(e)).toast)
+        def on_choice(_, response):
+            if response != 'continue':
+                return
+            try:
+                self.package.trash_data()
+                self.set_properties(self.package, refresh=True)
+                self.toast_overlay.add_toast(Adw.Toast.new("Trashed User Data"))
+            except subprocess.CalledProcessError as cpe:
+                self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), cpe.stderr).toast)
+            except Exception as e:
+                self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(e)).toast)
+
+        dialog = Adw.AlertDialog(
+            heading=_("Send {}'s User Data to the Trash?").format(self.package.info["name"]),
+            body=_("Your settings and data for this app will be sent to the trash")
+        )
+        dialog.add_response('cancel', _("Cancel"))
+        dialog.add_response('continue', _("Trash Data"))
+        dialog.connect("response", on_choice)
+        dialog.set_response_appearance('continue', Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.present(self.main_window)
 
     def set_mask_handler(self, *args):
         state = not self.mask_switch.get_active()
@@ -232,6 +245,8 @@ class PropertiesPage(Adw.NavigationPage):
             "subject": self.subject_row,
             "date": self.date_row,
         }
+
+        self.__class__.main_window = main_window
 
         # Connections
         self.open_data_button.connect("clicked", self.open_data_handler)
