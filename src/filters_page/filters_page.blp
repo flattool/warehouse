@@ -1,0 +1,118 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $FiltersPage : Adw.NavigationPage {
+    title: _("Filter Packages");
+    Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+        ScrolledWindow {
+            Adw.Clamp {
+                Box {
+                    margin-start: 12;
+                    margin-end: 12;
+                    margin-bottom: 12;
+                    orientation: vertical;
+                    halign: fill;
+                    spacing: 24;
+                    Adw.PreferencesGroup {
+                        title: _("Package Type");
+                        description: _("Show packages of these types");
+                        header-suffix: 
+                            Button all_types_button {
+                                Adw.ButtonContent {
+                                    label: _("Select All");
+                                    icon-name: "selection-mode-symbolic";
+                                }
+                                valign: center;
+                                styles ["flat"]
+                            }
+                        ;
+                        Adw.ActionRow application_row {
+                            title: _("Applications");
+                            subtitle: _("Packages that can be opened");
+                            CheckButton app_check {
+                                styles["selection-mode"]
+                            }
+                            activatable-widget: app_check;
+                        }
+                        Adw.ActionRow runtime_row {
+                            title: _("Runtimes");
+                            subtitle: _("Packages that applications depend on");
+                            CheckButton runtime-check {
+                                styles["selection-mode"]
+                            }
+                            activatable-widget: runtime-check;
+                        }
+                    }
+                    Adw.PreferencesGroup {
+                        title: _("Remotes");
+                        description: _("Show packages from these remotes");
+                        header-suffix:
+                            Button all_remotes_button {
+                                Adw.ButtonContent {
+                                    label: _("Select All");
+                                    icon-name: "selection-mode-symbolic";
+                                }
+                                valign: center;
+                                styles ["flat"]
+                            }
+                        ;
+                        Adw.ActionRow {
+                            title: _("Flathub");
+                            subtitle: _("Installation: User");
+                            CheckButton {
+                                styles["selection-mode"]
+                            }
+                        }
+                        Adw.ActionRow {
+                            title: _("Flathub");
+                            subtitle: _("Installation: System");
+                            CheckButton {
+                                styles["selection-mode"]
+                            }
+                        }
+                    }
+                    Adw.PreferencesGroup {
+                        title: _("Runtimes");
+                        description: _("Show apps that use these runtimes");
+                        header-suffix:
+                            Button all_runtimes_button {
+                                Adw.ButtonContent {
+                                    label: _("Select All");
+                                    icon-name: "selection-mode-symbolic";
+                                }
+                                valign: center;
+                                styles ["flat"]
+                            }
+                        ;
+                        Adw.ActionRow {
+                            title: _("org.freedesktop.Platform.ffmpeg-full/x86_64/23.08");
+                            CheckButton {
+                                styles["selection-mode"]
+                            }
+                        }
+                        Adw.ActionRow {
+                            title: _("org.gnome.Platform/x86_64/44");
+                            CheckButton {
+                                styles["selection-mode"]
+                            }
+                        }
+                        Adw.ActionRow {
+                            title: _("org.gnome.Platform/x86_64/45");
+                            CheckButton {
+                                styles["selection-mode"]
+                            }
+                        }
+                        Adw.ActionRow {
+                            title: _("org.freedesktop.Platform.Compat.i386/x86_64/23.08");
+                            CheckButton {
+                                styles["selection-mode"]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

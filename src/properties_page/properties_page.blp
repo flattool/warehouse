@@ -51,7 +51,6 @@ template $PropertiesPage : Adw.NavigationPage {
                                 margin-bottom: 12;
                                 orientation: vertical;
                                 halign: fill;
-                                hexpand: true;
 
                                 Image app_icon {
                                     pixel-size: 100;
@@ -147,7 +146,6 @@ template $PropertiesPage : Adw.NavigationPage {
                                         Adw.ExpanderRow version_row {
                                             title: _("Version");
                                             styles ["property"]
-                                            expanded: true;
                                             [suffix]
                                             Label mask_label {
                                                 label: _("Updates Disabled");

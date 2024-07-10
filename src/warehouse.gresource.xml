@@ -6,6 +6,7 @@
     <file preprocess="xml-stripblanks">widgets/app_row.ui</file>
     <file preprocess="xml-stripblanks">main_window/window.ui</file>
     <file preprocess="xml-stripblanks">packages_page/packages_page.ui</file>
+    <file preprocess="xml-stripblanks">filters_page/filters_page.ui</file>
     <file preprocess="xml-stripblanks">properties_page/properties_page.ui</file>
     <file preprocess="xml-stripblanks">change_version_page/change_version_page.ui</file>
     <file preprocess="xml-stripblanks">widgets/status_box.ui</file>

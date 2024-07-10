@@ -4,15 +4,18 @@ from .app_row import AppRow
 from .error_toast import ErrorToast
 from .properties_page import PropertiesPage
 from .status_box import StatusBox
+from .filters_page import FiltersPage
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/packages_page.ui")
 class PackagesPage(Adw.BreakpointBin):
     __gtype_name__ = 'PackagesPage'
     gtc = Gtk.Template.Child
+    packages_bpt = gtc()
     packages_toast_overlay = gtc()
     stack = gtc()
     scrolled_window = gtc()
     sidebar_button = gtc()
+    filter_button = gtc()
     refresh_button = gtc()
     search_bar = gtc()
     search_entry = gtc()
@@ -21,6 +24,7 @@ class PackagesPage(Adw.BreakpointBin):
     select_button = gtc()
     packages_navpage = gtc()
     status_view = gtc()
+    content_stack = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -52,6 +56,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.properties_page.set_properties(row.package)
         self.properties_page.nav_view.pop()
         self.packages_split.set_show_content(True)
+        self.filter_button.set_active(False)
 
     def filter_func(self, row):
         search_text = self.search_entry.get_text().lower()
@@ -80,18 +85,32 @@ class PackagesPage(Adw.BreakpointBin):
     def select_button_handler(self, button):
         self.set_selection_mode(button.get_active())
 
+    def filter_button_handler(self, button):
+        if button.get_active():
+            self.content_stack.set_visible_child(self.filters_page)
+            self.packages_split.set_show_content(True)
+        else:
+            self.content_stack.set_visible_child(self.properties_page)
+
+    def filter_page_handler(self, *args):
+        if self.packages_split.get_collapsed() and not self.packages_split.get_show_content():
+            self.filter_button.set_active(False)
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
         # Extra Object Creation
         self.main_window = main_window
         self.properties_page = PropertiesPage(main_window)
+        self.filters_page = FiltersPage(main_window, self)
+        self.loading_status = StatusBox(_("Fetching Packages"), _("This should only take a moment"))
 
         # Apply
         HostInfo.get_flatpaks(callback=self.generate_list)
 
         self.packages_list_box.set_filter_func(self.filter_func)
-        self.packages_split.set_content(self.properties_page)
+        self.content_stack.add_child(self.properties_page)
+        self.content_stack.add_child(self.filters_page)
         self.__class__.instance = self
 
         # Connections
@@ -103,7 +122,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.search_bar.set_key_capture_widget(main_window)
         self.packages_list_box.connect("row-activated", self.row_select_handler)
         self.refresh_button.connect("clicked", self.refresh_button_handler)
-
         self.select_button.connect("clicked", self.select_button_handler)
-
-        self.loading_status = StatusBox(_("Fetching Packages"), _("This should only take a moment"))
+        self.filter_button.connect("toggled", self.filter_button_handler)
+        self.packages_split.connect("notify::show-content", self.filter_page_handler)
+        self.packages_bpt.connect("apply", self.filter_page_handler)

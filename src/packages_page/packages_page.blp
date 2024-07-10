@@ -11,6 +11,7 @@ template $PackagesPage : Adw.BreakpointBin {
 		setters {
 			packages_split.collapsed: true;
             packages_split.show-content: false;
+            content_stack.transition-duration: 9999999;
 		}
 	}
 
@@ -42,14 +43,14 @@ template $PackagesPage : Adw.BreakpointBin {
                                     tooltip-text: _("Search Packages");
                                 }
                                 [start]
-                                Button filter_button {
-                                    icon-name: "funnel-symbolic";
-                                    tooltip-text: _("Filter Packages");
-                                }
-                                [end]
                                 Button refresh_button {
                                     icon-name: "arrow-circular-top-right-symbolic";
                                     tooltip-text: _("Refresh List");
+                                }
+                                [end]
+                                ToggleButton filter_button {
+                                    icon-name: "funnel-symbolic";
+                                    tooltip-text: _("Filter Packages");
                                 }
                                 [end]
                                 ToggleButton select_button {
@@ -105,6 +106,14 @@ template $PackagesPage : Adw.BreakpointBin {
                                     }
                                 }
                             }
+                        }
+                    }
+                ;
+                content:
+                    Adw.NavigationPage {
+                        title: "Content Stack";
+                        Stack content_stack {
+                            transition-type: slide_left_right;
                         }
                     }
                 ;
