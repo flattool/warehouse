@@ -32,7 +32,7 @@ Warehouse is now available on Flathub! Visit your software store and search for 
 </a>
 
 ## 💬 Get in Contact
-- We have a [Discord Server](https://discord.gg/Sq85C42Xkt) and a [Matrix Space](https://matrix.to/#/#warehouse-development:matrix.org) to discuss and send announcements in!
+- We have a [Discord Server](https://discord.gg/Sq85C42Xkt) to discuss and send announcements in!
 - You can always open issues, PRs, and use other GitHub features here
 
 ## 📜 Code of Conduct
