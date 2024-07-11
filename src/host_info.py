@@ -181,9 +181,11 @@ class Flatpak:
 
 
 class Remote:
-    def __init__(self, name, installation):
+    def __init__(self, name, title):
         self.name = name
-        self.installation = installation
+        self.title = title
+        if title == "" or title == "-":
+            self.title = name
 
 class HostInfo:
     home = home
@@ -202,10 +204,11 @@ class HostInfo:
     
     flatpaks = []
     ref_to_flatpak = {}
-    remotes = []
+    remotes = {}
     installations = []
     masks = {}
     pins = {}
+    dependant_runtime_refs = []
     @classmethod
     def get_flatpaks(this, callback=None):
         # Callback is a function to run after the host flatpaks are found
@@ -215,27 +218,29 @@ class HostInfo:
         this.installations.clear()
         this.masks.clear()
         this.pins.clear()
+        this.dependant_runtime_refs.clear()
 
         def thread(task, *args):
 
             # Remotes
             def remote_info(installation):
-                # cmd = ['flatpak-spawn', '--host',
-                # 'flatpak', 'remotes']
-                # if installation == "user" or installation == "system":
-                #     cmd.append(f"--{installation}")
-                # else:
-                #     cmd.append(f"--installation={installation}")
-                # output = subprocess.run(
-                #     cmd, text=True,
-                #     capture_output=True,
-                # ).stdout
-                # lines = output.strip().split("\n")
-                # for i in lines:
-                #     if i != "":
-                #         this.remotes.append(Remote(i.strip(), installation))
-                #         if installation == "user" or installation == "system":
-                #             this.installations.append(installation)
+                cmd = ['flatpak-spawn', '--host',
+                'flatpak', 'remotes', '--columns=name,title']
+                if installation == "user" or installation == "system":
+                    cmd.append(f"--{installation}")
+                else:
+                    cmd.append(f"--installation={installation}")
+                output = subprocess.run(
+                    cmd, text=True,
+                    capture_output=True,
+                ).stdout
+                lines = output.strip().replace(" ", "").split("\n")
+                if lines[0] != '':
+                    remote_list = []
+                    for line in lines:
+                        line = line.split("\t")
+                        remote_list.append(Remote(line[0], line[1]))
+                    this.remotes[installation] = remote_list
 
                 # Masks
                 cmd = ['flatpak-spawn', '--host',
@@ -278,6 +283,8 @@ class HostInfo:
                                 # Get specifically the installation name itself
                                 this.installations.append(line.replace("[Installation \"", "").replace("\"]", "").strip())
 
+            this.installations.append("user")
+            this.installations.append("system")
             for i in this.installations:
                 remote_info(i)
             remote_info("user")
@@ -309,7 +316,10 @@ class HostInfo:
                 if package.is_runtime:
                     continue
                 package.dependant_runtime = this.ref_to_flatpak[runtime]
+                if not runtime in this.dependant_runtime_refs:
+                    this.dependant_runtime_refs.append(runtime)
 
             this.flatpaks = sorted(this.flatpaks, key=lambda flatpak: flatpak.info["name"].lower())
+            this.dependant_runtime_refs = sorted(this.dependant_runtime_refs)
 
         Gio.Task.new(None, None, callback).run_in_thread(thread)

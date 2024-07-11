@@ -33,8 +33,14 @@ class PackagesPage(Adw.BreakpointBin):
 
     def generate_list(self, *args):
         self.packages_list_box.remove_all()
+        GLib.idle_add(lambda *_: self.filters_page.generate_list())
+        first = True
         for package in HostInfo.flatpaks:
-            row = AppRow(package)
+            row = None
+            if first:
+                row = AppRow(package, lambda *_: self.stack.set_visible_child(self.packages_split))
+            else:
+                row = AppRow(package)
             package.app_row = row
             row.masked_status_icon.set_visible(package.is_masked)
             row.pinned_status_icon.set_visible(package.is_pinned)
@@ -51,7 +57,6 @@ class PackagesPage(Adw.BreakpointBin):
         self.packages_list_box.select_row(first_row)
         self.properties_page.set_properties(first_row.package)
         self.scrolled_window.set_vadjustment(Gtk.Adjustment.new(0,0,0,0,0,0)) # Scroll list to top
-        self.stack.set_visible_child(self.packages_split)
 
     def row_select_handler(self, list_box, row):
         self.properties_page.set_properties(row.package)
@@ -99,6 +104,7 @@ class PackagesPage(Adw.BreakpointBin):
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
+        HostInfo.get_flatpaks(callback=self.generate_list)
 
         # Extra Object Creation
         self.main_window = main_window
@@ -107,8 +113,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.loading_status = StatusBox(_("Fetching Packages"), _("This should only take a moment"))
 
         # Apply
-        HostInfo.get_flatpaks(callback=self.generate_list)
-
+        self.set_status(self.loading_status)
         self.packages_list_box.set_filter_func(self.filter_func)
         self.content_stack.add_child(self.properties_page)
         self.content_stack.add_child(self.filters_page)
@@ -127,3 +132,4 @@ class PackagesPage(Adw.BreakpointBin):
         self.filter_button.connect("toggled", self.filter_button_handler)
         self.packages_split.connect("notify::show-content", self.filter_page_handler)
         self.packages_bpt.connect("apply", self.filter_page_handler)
+        self.filter_button.set_active(True)

@@ -12,17 +12,24 @@ class AppRow(Adw.ActionRow):
     masked_status_icon = gtc()
     check_button = gtc()
 
-    def __init__(self, package, **kwargs):
+    def idle_stuff(self):
+        if self.package.icon_path:
+            self.image.add_css_class("icon-dropshadow")
+            self.image.set_from_file(self.package.icon_path)
+        
+        if self.callback:
+            self.callback()
+
+    def __init__(self, package, callback=None, **kwargs):
         super().__init__(**kwargs)
 
         # Extra Object Creation
         self.package = package
+        self.callback = callback
 
         # Apply
         GLib.idle_add(lambda *_: self.set_title(package.info["name"]))
         GLib.idle_add(lambda *_: self.set_subtitle(package.info["id"]))
-        if package.icon_path:
-            GLib.idle_add(lambda *_: self.image.add_css_class("icon-dropshadow"))
-            GLib.idle_add(lambda *_: self.image.set_from_file(package.icon_path))
+        GLib.idle_add(lambda *_: self.idle_stuff())
 
         # Connections

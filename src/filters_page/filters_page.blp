@@ -11,6 +11,7 @@ template $FiltersPage : Adw.NavigationPage {
                 Box {
                     margin-start: 12;
                     margin-end: 12;
+                    margin-top: 12;
                     margin-bottom: 12;
                     orientation: vertical;
                     halign: fill;
@@ -18,16 +19,6 @@ template $FiltersPage : Adw.NavigationPage {
                     Adw.PreferencesGroup {
                         title: _("Package Type");
                         description: _("Show packages of these types");
-                        header-suffix: 
-                            Button all_types_button {
-                                Adw.ButtonContent {
-                                    label: _("Select All");
-                                    icon-name: "selection-mode-symbolic";
-                                }
-                                valign: center;
-                                styles ["flat"]
-                            }
-                        ;
                         Adw.ActionRow application_row {
                             title: _("Applications");
                             subtitle: _("Packages that can be opened");
@@ -39,17 +30,17 @@ template $FiltersPage : Adw.NavigationPage {
                         Adw.ActionRow runtime_row {
                             title: _("Runtimes");
                             subtitle: _("Packages that applications depend on");
-                            CheckButton runtime-check {
+                            CheckButton runtime_check {
                                 styles["selection-mode"]
                             }
-                            activatable-widget: runtime-check;
+                            activatable-widget: runtime_check;
                         }
                     }
-                    Adw.PreferencesGroup {
+                    Adw.PreferencesGroup remotes_group {
                         title: _("Remotes");
                         description: _("Show packages from these remotes");
                         header-suffix:
-                            Button all_remotes_button {
+                            ToggleButton all_remotes_button {
                                 Adw.ButtonContent {
                                     label: _("Select All");
                                     icon-name: "selection-mode-symbolic";
@@ -58,26 +49,12 @@ template $FiltersPage : Adw.NavigationPage {
                                 styles ["flat"]
                             }
                         ;
-                        Adw.ActionRow {
-                            title: _("Flathub");
-                            subtitle: _("Installation: User");
-                            CheckButton {
-                                styles["selection-mode"]
-                            }
-                        }
-                        Adw.ActionRow {
-                            title: _("Flathub");
-                            subtitle: _("Installation: System");
-                            CheckButton {
-                                styles["selection-mode"]
-                            }
-                        }
                     }
-                    Adw.PreferencesGroup {
+                    Adw.PreferencesGroup runtimes_group {
                         title: _("Runtimes");
                         description: _("Show apps that use these runtimes");
                         header-suffix:
-                            Button all_runtimes_button {
+                            ToggleButton all_runtimes_button {
                                 Adw.ButtonContent {
                                     label: _("Select All");
                                     icon-name: "selection-mode-symbolic";
@@ -86,30 +63,6 @@ template $FiltersPage : Adw.NavigationPage {
                                 styles ["flat"]
                             }
                         ;
-                        Adw.ActionRow {
-                            title: _("org.freedesktop.Platform.ffmpeg-full/x86_64/23.08");
-                            CheckButton {
-                                styles["selection-mode"]
-                            }
-                        }
-                        Adw.ActionRow {
-                            title: _("org.gnome.Platform/x86_64/44");
-                            CheckButton {
-                                styles["selection-mode"]
-                            }
-                        }
-                        Adw.ActionRow {
-                            title: _("org.gnome.Platform/x86_64/45");
-                            CheckButton {
-                                styles["selection-mode"]
-                            }
-                        }
-                        Adw.ActionRow {
-                            title: _("org.freedesktop.Platform.Compat.i386/x86_64/23.08");
-                            CheckButton {
-                                styles["selection-mode"]
-                            }
-                        }
                     }
                 }
             }
