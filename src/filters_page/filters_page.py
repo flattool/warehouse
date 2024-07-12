@@ -16,8 +16,6 @@ class FilterRow(Adw.ActionRow):
 class FiltersPage(Adw.NavigationPage):
     __gtype_name__ = 'FiltersPage'
     gtc = Gtk.Template.Child
-    test_button = gtc()
-
     app_check = gtc()
     runtime_check = gtc()
     remotes_group = gtc()
@@ -165,8 +163,6 @@ class FiltersPage(Adw.NavigationPage):
             self.settings.set_string("runtimes-list", self.runtimes_string)
 
         # Connections
-        self.test_button.connect("clicked", self.test)
-
         self.app_check.connect("toggled", self.app_check_handler)
         self.runtime_check.connect("toggled", self.runtime_check_handler)
         self.all_remotes_button.connect("state-set", self.all_remotes_handler)
