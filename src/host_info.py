@@ -97,6 +97,38 @@ class Flatpak:
 
         Gio.Task.new(None, None, callback).run_in_thread(thread)
 
+    def uninstall(self, callback=None):
+        self.failed_uninstall = None
+
+        def thread(*args):
+            prefix = ['flatpak-spawn', '--host']
+            cmd = ['flatpak', 'uninstall', '-y', self.info["ref"]]
+            installation = self.info["installation"]
+            if installation == "system" or installation == "user":
+                cmd.append(f"--{installation}")
+            else:
+                cmd.append(f"--installation={installation}")
+
+            try:
+                subprocess.run(prefix + cmd, check=True, text=True)
+                # print(prefix + cmd)
+            except subprocess.CalledProcessError as cpe:
+                if installation == "user":
+                    self.failed_uninstall = cpe
+                    return
+                
+                try:
+                    subprocess.run(prefix + ['pkexec'] + cmd, check=True, text=True)
+                except subprocess.CalledProcessError as cpe2:
+                    self.failed_uninstall = cpe2
+                except Exception as e2:
+                    self.failed_uninstall = e2
+
+            except Exception as e:
+                self.failed_uninstall = e
+
+        Gio.Task.new(None, None, callback).run_in_thread(thread)
+
     def get_cli_info(self):
         cli_info = {}
         cmd = "LC_ALL=C flatpak info "
@@ -155,6 +187,7 @@ class Flatpak:
         self.dependant_runtime = None
         self.failed_app_run = None
         self.failed_mask = None
+        self.failed_uninstall = None
         self.app_row = None
 
         try:

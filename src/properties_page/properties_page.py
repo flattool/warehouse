@@ -199,13 +199,40 @@ class PropertiesPage(Adw.NavigationPage):
 
         self.package.set_pin(state, callback)
 
+    def uninstall_handler(self, *args):
+        def on_choice(_, response):
+            if response != 'continue':
+                return
+            self.packages_page.set_status(self.packages_page.uninstall_status)
+            self.package.uninstall(callback)
+
+        def callback(*args):
+            if fail := self.package.failed_uninstall:
+                fail = fail.stderr if type(fail) == subprocess.CalledProcessError else fail
+                self.toast_overlay.add_toast(ErrorToast(_("Could not uninstall"), str(fail)).toast)
+                self.packages_page.stack.set_visible_child(self.packages_page.packages_split)
+            else:
+                self.packages_page.refresh_handler()
+                self.packages_page.packages_toast_overlay.add_toast(Adw.Toast(title=_("Uninstalled {}").format(self.package.info["name"])))
+
+        # name = self.package.info["name"]
+        dialog = Adw.AlertDialog(
+            heading=_("Uninstall {}?").format(guhhh := self.package.info["name"]),
+            body=_("It will not be possible to use {} after removal.").format(guhhh),
+        )
+        dialog.add_response('cancel', _("Cancel"))
+        dialog.add_response('continue', _("Uninstall"))
+        dialog.connect("response", on_choice)
+        dialog.set_response_appearance('continue', Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.present(self.main_window)
+
     def runtime_row_handler(self, *args):
         new_page = self.__class__(self.main_window, self.packages_page)
         new_page.set_properties(self.package.dependant_runtime)
         self.nav_view.push(new_page)
 
     def open_app_handler(self, *args):
-        self.toast_overlay.add_toast(Adw.Toast(title=_("Opened {}").format(self.package.info["name"])))
+        self.toast_overlay.add_toast(Adw.Toast(title=_("Openeing {}…").format(self.package.info["name"])))
         
         def callback(*args):
             if fail := self.package.failed_app_run:
@@ -257,6 +284,7 @@ class PropertiesPage(Adw.NavigationPage):
         self.trash_data_button.connect("clicked", self.trash_data_handler)
         self.runtime_row.connect("activated", self.runtime_row_handler)
         self.open_app_button.connect("clicked", self.open_app_handler)
+        self.uninstall_button.connect("clicked", self.uninstall_handler)
         self.mask_row.connect("activated", self.set_mask_handler)
         self.pin_row.connect("activated", self.set_pin_handler)
         self.change_version_row.connect("activated", self.change_version_handler)

@@ -111,6 +111,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.properties_page = PropertiesPage(main_window, self)
         self.filters_page = FiltersPage(main_window, self)
         self.loading_status = StatusBox(_("Fetching Packages"), _("This should only take a moment"))
+        self.uninstall_status = StatusBox(_("Uninstalling…"), _("This should only take a moment"))
 
         # Apply
         self.set_status(self.loading_status)
