@@ -5,7 +5,12 @@ template $FiltersPage : Adw.NavigationPage {
     title: _("Filter Packages");
     Adw.ToolbarView {
         [top]
-        Adw.HeaderBar {}
+        Adw.HeaderBar {
+            [start]
+            Button test_button {
+                label: "Test";
+            }
+        }
         ScrolledWindow {
             Adw.Clamp {
                 Box {
@@ -17,7 +22,7 @@ template $FiltersPage : Adw.NavigationPage {
                     halign: fill;
                     spacing: 24;
                     Adw.PreferencesGroup {
-                        title: _("Package Type");
+                        title: _("Filter by Package Type");
                         description: _("Show packages of these types");
                         Adw.ActionRow application_row {
                             title: _("Applications");
@@ -37,32 +42,52 @@ template $FiltersPage : Adw.NavigationPage {
                         }
                     }
                     Adw.PreferencesGroup remotes_group {
-                        title: _("Remotes");
-                        description: _("Show packages from these remotes");
+                        title: _("Filter by Remotes");
+                        description: _("Showing packages from all remotes");
                         header-suffix:
-                            ToggleButton all_remotes_button {
-                                Adw.ButtonContent {
-                                    label: _("Select All");
-                                    icon-name: "selection-mode-symbolic";
-                                }
+                            Switch all_remotes_button {
                                 valign: center;
-                                styles ["flat"]
                             }
                         ;
+                        Revealer {
+                            reveal-child: bind all_remotes_button.active;
+                            Box {
+                                orientation: vertical;
+                                spacing: 6;
+                                SearchEntry remotes_search {
+                                    placeholder-text: _("Search Remotes");
+                                }
+                                ListBox remotes_listbox {
+                                    selection-mode: none;
+                                    sensitive: bind all_remotes_button.active;
+                                    styles ["boxed-list"]
+                                }
+                            }
+                        }
                     }
                     Adw.PreferencesGroup runtimes_group {
-                        title: _("Runtimes");
-                        description: _("Show apps that use these runtimes");
+                        title: _("Filter by Runtimes");
+                        description: _("Showing packages using any runtime");
                         header-suffix:
-                            ToggleButton all_runtimes_button {
-                                Adw.ButtonContent {
-                                    label: _("Select All");
-                                    icon-name: "selection-mode-symbolic";
-                                }
+                            Switch all_runtimes_button {
                                 valign: center;
-                                styles ["flat"]
                             }
                         ;
+                        Revealer {
+                            reveal-child: bind all_runtimes_button.active;
+                            Box {
+                                orientation: vertical;
+                                spacing: 6;
+                                SearchEntry runtimes_search {
+                                    placeholder-text: _("Search Remotes");
+                                }
+                                ListBox runtimes_listbox {
+                                    selection-mode: none;
+                                    sensitive: bind all_runtimes_button.active;
+                                    styles ["boxed-list"]
+                                }
+                            }
+                        }
                     }
                 }
             }
