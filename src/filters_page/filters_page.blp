@@ -18,9 +18,9 @@ template $FiltersPage : Adw.NavigationPage {
                     margin-end: 12;
                     margin-top: 12;
                     margin-bottom: 12;
+                    spacing: 24;
                     orientation: vertical;
                     halign: fill;
-                    spacing: 24;
                     Adw.PreferencesGroup {
                         title: _("Filter by Package Type");
                         description: _("Show packages of these types");
@@ -41,50 +41,68 @@ template $FiltersPage : Adw.NavigationPage {
                             activatable-widget: runtime_check;
                         }
                     }
+
                     Adw.PreferencesGroup remotes_group {
                         title: _("Filter by Remotes");
-                        description: _("Showing packages from all remotes");
+                        description: _("Showing packages from selected remotes");
                         header-suffix:
                             Switch all_remotes_button {
                                 valign: center;
                             }
                         ;
-                        Revealer {
-                            reveal-child: bind all_remotes_button.active;
+                        Adw.ActionRow {
+                            visible: bind all_remotes_button.active inverted;
+                            [child]
                             Box {
                                 orientation: vertical;
-                                spacing: 6;
-                                SearchEntry remotes_search {
-                                    placeholder-text: _("Search Remotes");
+                                Label {
+                                    margin-top: 7;
+                                    label: _("Showing packages from all remotes");
+                                    wrap: true;
+                                    halign: center;
+                                    styles ["heading"]
                                 }
-                                ListBox remotes_listbox {
-                                    selection-mode: none;
-                                    sensitive: bind all_remotes_button.active;
-                                    styles ["boxed-list"]
+                                Label {
+                                    label: _("Enable to show packages from selected remotes");
+                                    margin-start: 16;
+                                    margin-end: 16;
+                                    margin-bottom: 8;
+                                    justify: center;
+                                    halign: center;
+                                    wrap: true;
                                 }
                             }
                         }
                     }
+
                     Adw.PreferencesGroup runtimes_group {
                         title: _("Filter by Runtimes");
-                        description: _("Showing packages using any runtime");
+                        description: _("Show apps using selected runtimes");
                         header-suffix:
                             Switch all_runtimes_button {
                                 valign: center;
                             }
                         ;
-                        Revealer {
-                            reveal-child: bind all_runtimes_button.active;
+                        Adw.ActionRow {
+                            visible: bind all_runtimes_button.active inverted;
+                            [child]
                             Box {
                                 orientation: vertical;
-                                spacing: 6;
-                                SearchEntry runtimes_search {
-                                    placeholder-text: _("Search Remotes");
+                                Label {
+                                    margin-top: 7;
+                                    label: _("Showing apps using any runtime");
+                                    wrap: true;
+                                    halign: center;
+                                    styles ["heading"]
                                 }
-                                ListBox runtimes_listbox {
-                                    selection-mode: none;
-                                    sensitive: bind all_runtimes_button.active;
-                                    styles ["boxed-list"]
+                                Label {
+                                    label: _("Enable to show apps using selected runtimes");
+                                    margin-start: 16;
+                                    margin-end: 16;
+                                    margin-bottom: 8;
+                                    justify: center;
+                                    halign: center;
+                                    wrap: true;
                                 }
                             }
                         }
