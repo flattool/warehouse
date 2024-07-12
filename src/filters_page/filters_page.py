@@ -16,7 +16,6 @@ class FilterRow(Adw.ActionRow):
 class FiltersPage(Adw.NavigationPage):
     __gtype_name__ = 'FiltersPage'
     gtc = Gtk.Template.Child
-
     test_button = gtc()
 
     app_check = gtc()
@@ -33,11 +32,11 @@ class FiltersPage(Adw.NavigationPage):
         if not self.is_settings_settable:
             return
         self.settings.set_boolean("show-apps", self.show_apps)
-        self.settings.set_boolean("show-runtimes", self.show_runtimes)
         self.settings.set_string("remotes-list", self.remotes_string)
+        self.settings.set_boolean("show-runtimes", self.show_runtimes)
         self.settings.set_string("runtimes-list", self.runtimes_string)
-        self.total_sets += 1
-        self.test()
+        self.packages_page.apply_filters()
+        print("set gsettings")
 
     def remote_row_check_handler(self, row):
         if row.check_button.get_active():
@@ -48,26 +47,22 @@ class FiltersPage(Adw.NavigationPage):
 
     def runtime_row_check_handler(self, row):
         if row.check_button.get_active():
-            self.runtimes_string += f"{row.item},"
+            self.runtimes_string += f"{row.item};"
         else:
-            self.runtimes_string = self.runtimes_string.replace(f"{row.item},", "")
+            self.runtimes_string = self.runtimes_string.replace(f"{row.item};", "")
         self.update_gsettings()
 
-    def generate_list(self):
-        self.is_settings_settable = False
-
+    def generate_remote_filters(self):
         for row in self.remote_rows:
             self.remotes_group.remove(row)
-
-        for row in self.runtime_rows:
-            self.runtimes_group.remove(row)
-
         self.remote_rows.clear()
-        self.runtime_rows.clear()
-
-        self.app_check.set_active(self.show_apps)
-        self.runtime_check.set_active(self.show_runtimes)
-
+        if len(HostInfo.remotes) < 2 and len(list(HostInfo.remotes.items())[0][1]) < 2:
+            self.remotes_group.set_visible(False)
+            if self.remotes_string != "all":
+                self.remotes_string = "all"
+                self.settings.set_string("remotes-list", self.remotes_string)
+                self.packages_page.apply_filters()
+            return
         for i, installation in enumerate(HostInfo.installations):
             try:
                 for remote in HostInfo.remotes[installation]:
@@ -83,6 +78,17 @@ class FiltersPage(Adw.NavigationPage):
                 pass
         self.all_remotes_button.set_active("all" != self.remotes_string)
 
+    def generate_runtime_filters(self):
+        for row in self.runtime_rows:
+            self.runtimes_group.remove(row)
+        self.runtime_rows.clear()
+        if len(HostInfo.dependant_runtime_refs) < 2:
+            self.runtimes_group.set_visible(False)
+            if self.runtimes_string != "all":
+                self.runtimes_string = "all"
+                self.settings.set_string("runtimes-list", self.runtimes_string)
+                self.packages_page.apply_filters()
+            return
         for j, ref in enumerate(HostInfo.dependant_runtime_refs):
             row = FilterRow(ref)
             row.set_title(ref)
@@ -92,6 +98,16 @@ class FiltersPage(Adw.NavigationPage):
             self.runtime_rows.append(row)
             self.runtimes_group.add(row)
         self.all_runtimes_button.set_active("all" != self.runtimes_string)
+
+    def generate_list(self):
+        self.is_settings_settable = False
+        
+        self.app_check.set_active(self.show_apps)
+        self.runtime_check.set_active(self.show_runtimes)
+
+        self.generate_remote_filters()
+        self.generate_runtime_filters()
+
         self.is_settings_settable = True
 
     def all_remotes_handler(self, switch, state):
@@ -116,19 +132,11 @@ class FiltersPage(Adw.NavigationPage):
         for row in self.runtime_rows:
             row.set_visible(state)
             if state and row.check_button.get_active():
-                self.runtimes_string += row.item
+                self.runtimes_string += f"{row.item};"
             elif state:
-                self.runtimes_string.replace
+                self.runtimes_string.replace(f"{row.item};", "")
         
         self.update_gsettings()
-
-    def test(self, *args):
-        print('\n-------------------------------------')
-        print(self.settings.get_boolean("show-apps"))
-        print(self.settings.get_boolean("show-runtimes"))
-        print(self.settings.get_string("remotes-list"))
-        print(self.settings.get_string("runtimes-list"))
-        print("total sets:", self.total_sets)
 
     def app_check_handler(self, *args):
         self.show_apps = self.app_check.get_active()
@@ -142,15 +150,19 @@ class FiltersPage(Adw.NavigationPage):
         super().__init__(**kwargs)
 
         # Extra Objects Creation
+        self.packages_page = packages_page
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
         self.is_settings_settable = False
         self.show_apps = self.settings.get_boolean("show-apps")
         self.show_runtimes = self.settings.get_boolean("show-runtimes")
         self.remotes_string = self.settings.get_string("remotes-list")
         self.runtimes_string = self.settings.get_string("runtimes-list")
-        self.total_sets = 0
 
         # Apply
+        if "," in self.runtimes_string:
+            # Convert Warehouse 1.X runtimes filter string from , to ; for item seperationg
+            self.runtimes_string = self.runtimes_string.replace(",", ";")
+            self.settings.set_string("runtimes-list", self.runtimes_string)
 
         # Connections
         self.test_button.connect("clicked", self.test)

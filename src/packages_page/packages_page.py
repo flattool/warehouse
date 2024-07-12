@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk, GLib#, Gio, Pango
+from gi.repository import Adw, Gtk, GLib, Gio
 from .host_info import HostInfo
 from .app_row import AppRow
 from .error_toast import ErrorToast
@@ -31,6 +31,25 @@ class PackagesPage(Adw.BreakpointBin):
     #    This must be set to the created object from within the class's __init__ method
     instance = None
 
+    def apply_filters(self):
+        i = 0
+        show_apps = self.filter_settings.get_boolean("show-apps")
+        show_runtimes = self.filter_settings.get_boolean("show-runtimes")
+        remotes_list = self.filter_settings.get_string("remotes-list")
+        runtimes_list = self.filter_settings.get_string("runtimes-list")
+        while row := self.packages_list_box.get_row_at_index(i):
+            i += 1
+            visible = True
+            if row.package.is_runtime and not show_runtimes:
+                visible = False
+            if (not row.package.is_runtime) and (not show_apps):
+                visible = False
+            if remotes_list != "all" and not f"{row.package.info['origin']}<>{row.package.info['installation']}" in remotes_list:
+                visible = False
+            if runtimes_list != "all" and (row.package.is_runtime or row.package.dependant_runtime and not row.package.dependant_runtime.info["ref"] in runtimes_list):
+                visible = False
+            GLib.idle_add(row.set_visible, visible)
+
     def generate_list(self, *args):
         self.packages_list_box.remove_all()
         GLib.idle_add(lambda *_: self.filters_page.generate_list())
@@ -57,6 +76,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.packages_list_box.select_row(first_row)
         self.properties_page.set_properties(first_row.package)
         self.scrolled_window.set_vadjustment(Gtk.Adjustment.new(0,0,0,0,0,0)) # Scroll list to top
+        self.apply_filters()
 
     def row_select_handler(self, list_box, row):
         self.properties_page.set_properties(row.package)
@@ -112,6 +132,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.filters_page = FiltersPage(main_window, self)
         self.loading_status = StatusBox(_("Fetching Packages"), _("This should only take a moment"))
         self.uninstall_status = StatusBox(_("Uninstalling…"), _("This should only take a moment"))
+        self.filter_settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
 
         # Apply
         self.set_status(self.loading_status)
