@@ -22,11 +22,34 @@ class FiltersPage(Adw.NavigationPage):
     all_remotes_switch = gtc()
     runtimes_group = gtc()
     all_runtimes_switch = gtc()
+    action_bar = gtc()
+    reset_button = gtc()
 
     remote_rows = []
     runtime_rows = []
 
+    def reset_filters(self):
+        self.settings.reset("show-apps")
+        self.settings.reset("show-runtimes")
+        self.settings.reset("remotes-list")
+        self.settings.reset("runtimes-list")
+        self.generate_filters()
+        self.packages_page.apply_filters()
+
+    def is_defaulted(self):
+        default = True
+        if not self.app_check.get_active():
+            default = False
+        if self.runtime_check.get_active():
+            default = False
+        if self.all_remotes_switch.get_active():
+            default = False
+        if self.all_runtimes_switch.get_active():
+            default = False
+        self.action_bar.set_revealed(not default)
+
     def update_gsettings(self):
+        self.is_defaulted()
         if not self.is_settings_settable:
             return
         self.settings.set_boolean("show-apps", self.show_apps)
@@ -134,6 +157,10 @@ class FiltersPage(Adw.NavigationPage):
 
     def generate_filters(self):
         self.is_settings_settable = False
+        self.show_apps = self.settings.get_boolean("show-apps")
+        self.show_runtimes = self.settings.get_boolean("show-runtimes")
+        self.remotes_string = self.settings.get_string("remotes-list")
+        self.runtimes_string = self.settings.get_string("runtimes-list")
         
         self.app_check.set_active(self.show_apps)
         self.runtime_check.set_active(self.show_runtimes)
@@ -150,6 +177,7 @@ class FiltersPage(Adw.NavigationPage):
         self.packages_page = packages_page
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
         self.is_settings_settable = False
+
         self.show_apps = self.settings.get_boolean("show-apps")
         self.show_runtimes = self.settings.get_boolean("show-runtimes")
         self.remotes_string = self.settings.get_string("remotes-list")
@@ -166,3 +194,4 @@ class FiltersPage(Adw.NavigationPage):
         self.runtime_check.connect("toggled", self.runtime_check_handler)
         self.all_remotes_switch.connect("state-set", self.all_remotes_handler)
         self.all_runtimes_switch.connect("state-set", self.all_runtimes_handler)
+        self.reset_button.connect("clicked", lambda *_: self.reset_filters())

@@ -12,6 +12,7 @@ template $PackagesPage : Adw.BreakpointBin {
 			packages_split.collapsed: true;
             packages_split.show-content: false;
             content_stack.transition-duration: 9999999;
+            reset_filters_button.visible: true;
 		}
 	}
 
@@ -87,6 +88,12 @@ template $PackagesPage : Adw.BreakpointBin {
                                 title: _("No Packages Match Filters");
                                 description: _("No installed package matches all of the currently applied filters");
                                 icon-name: "funnel-symbolic";
+                                Button reset_filters_button {
+                                    label: _("Reset Filters");
+                                    halign: center;
+                                    visible: false;
+                                    styles ["pill"]
+                                }
                             }
                             Adw.StatusPage no_packages {
                                 title: _("No Packages Found");
