@@ -19,9 +19,9 @@ class FiltersPage(Adw.NavigationPage):
     app_check = gtc()
     runtime_check = gtc()
     remotes_group = gtc()
+    all_remotes_switch = gtc()
     runtimes_group = gtc()
-    all_remotes_button = gtc()
-    all_runtimes_button = gtc()
+    all_runtimes_switch = gtc()
 
     remote_rows = []
     runtime_rows = []
@@ -30,11 +30,46 @@ class FiltersPage(Adw.NavigationPage):
         if not self.is_settings_settable:
             return
         self.settings.set_boolean("show-apps", self.show_apps)
-        self.settings.set_string("remotes-list", self.remotes_string)
         self.settings.set_boolean("show-runtimes", self.show_runtimes)
+        self.settings.set_string("remotes-list", self.remotes_string)
         self.settings.set_string("runtimes-list", self.runtimes_string)
         self.packages_page.apply_filters()
-        print("set gsettings")
+
+    def app_check_handler(self, *args):
+        self.show_apps = self.app_check.get_active()
+        self.update_gsettings()
+        
+    def runtime_check_handler(self, *args):
+        self.show_runtimes = self.runtime_check.get_active()
+        self.update_gsettings()
+
+    def all_remotes_handler(self, switch, state):
+        self.remotes_string = ""
+        if not state:
+            self.remotes_string = "all"
+
+        for row in self.remote_rows:
+            row.set_visible(state)
+            if state and row.check_button.get_active():
+                self.remotes_string += f"{row.item.name}<>{row.installation};"
+            elif state:
+                self.remotes_string.replace(f"{row.item.name}<>{row.installation};", "")
+        
+        self.update_gsettings()
+
+    def all_runtimes_handler(self, switch, state):
+        self.runtimes_string = ""
+        if not state:
+            self.runtimes_string = "all"
+        
+        for row in self.runtime_rows:
+            row.set_visible(state)
+            if state and row.check_button.get_active():
+                self.runtimes_string += f"{row.item};"
+            elif state:
+                self.runtimes_string.replace(f"{row.item};", "")
+        
+        self.update_gsettings()
 
     def remote_row_check_handler(self, row):
         if row.check_button.get_active():
@@ -69,12 +104,12 @@ class FiltersPage(Adw.NavigationPage):
                     row.set_subtitle(_("Installation: {}").format(installation))
                     row.check_button.set_active(f"{remote.name}<>{installation}" in self.remotes_string)
                     row.check_button.connect("toggled", lambda *_, row=row: self.remote_row_check_handler(row))
-                    row.set_visible(self.all_remotes_button.get_active())
+                    row.set_visible(self.all_remotes_switch.get_active())
                     self.remote_rows.append(row)
                     self.remotes_group.add(row)
             except KeyError:
                 pass
-        self.all_remotes_button.set_active("all" != self.remotes_string)
+        self.all_remotes_switch.set_active("all" != self.remotes_string)
 
     def generate_runtime_filters(self):
         for row in self.runtime_rows:
@@ -92,12 +127,12 @@ class FiltersPage(Adw.NavigationPage):
             row.set_title(ref)
             row.check_button.set_active(ref in self.runtimes_string)
             row.check_button.connect("toggled", lambda *_, row=row: self.runtime_row_check_handler(row))
-            row.set_visible(self.all_runtimes_button.get_active())
+            row.set_visible(self.all_runtimes_switch.get_active())
             self.runtime_rows.append(row)
             self.runtimes_group.add(row)
-        self.all_runtimes_button.set_active("all" != self.runtimes_string)
+        self.all_runtimes_switch.set_active("all" != self.runtimes_string)
 
-    def generate_list(self):
+    def generate_filters(self):
         self.is_settings_settable = False
         
         self.app_check.set_active(self.show_apps)
@@ -107,42 +142,6 @@ class FiltersPage(Adw.NavigationPage):
         self.generate_runtime_filters()
 
         self.is_settings_settable = True
-
-    def all_remotes_handler(self, switch, state):
-        self.remotes_string = ""
-        if not state:
-            self.remotes_string = "all"
-
-        for row in self.remote_rows:
-            row.set_visible(state)
-            if state and row.check_button.get_active():
-                self.remotes_string += f"{row.item.name}<>{row.installation};"
-            elif state:
-                self.remotes_string.replace(f"{row.item.name}<>{row.installation};", "")
-        
-        self.update_gsettings()
-
-    def all_runtimes_handler(self, switch, state):
-        self.runtimes_string = ""
-        if not state:
-            self.runtimes_string = "all"
-        
-        for row in self.runtime_rows:
-            row.set_visible(state)
-            if state and row.check_button.get_active():
-                self.runtimes_string += f"{row.item};"
-            elif state:
-                self.runtimes_string.replace(f"{row.item};", "")
-        
-        self.update_gsettings()
-
-    def app_check_handler(self, *args):
-        self.show_apps = self.app_check.get_active()
-        self.update_gsettings()
-        
-    def runtime_check_handler(self, *args):
-        self.show_runtimes = self.runtime_check.get_active()
-        self.update_gsettings()
 
     def __init__(self, main_window, packages_page, **kwargs):
         super().__init__(**kwargs)
@@ -165,5 +164,5 @@ class FiltersPage(Adw.NavigationPage):
         # Connections
         self.app_check.connect("toggled", self.app_check_handler)
         self.runtime_check.connect("toggled", self.runtime_check_handler)
-        self.all_remotes_button.connect("state-set", self.all_remotes_handler)
-        self.all_runtimes_button.connect("state-set", self.all_runtimes_handler)
+        self.all_remotes_switch.connect("state-set", self.all_remotes_handler)
+        self.all_runtimes_switch.connect("state-set", self.all_runtimes_handler)

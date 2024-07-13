@@ -41,12 +41,12 @@ template $FiltersPage : Adw.NavigationPage {
                         title: _("Filter by Remotes");
                         description: _("Showing packages from selected remotes");
                         header-suffix:
-                            Switch all_remotes_button {
+                            Switch all_remotes_switch {
                                 valign: center;
                             }
                         ;
                         Adw.ActionRow {
-                            visible: bind all_remotes_button.active inverted;
+                            visible: bind all_remotes_switch.active inverted;
                             [child]
                             Box {
                                 orientation: vertical;
@@ -74,12 +74,12 @@ template $FiltersPage : Adw.NavigationPage {
                         title: _("Filter by Runtimes");
                         description: _("Show apps using selected runtimes");
                         header-suffix:
-                            Switch all_runtimes_button {
+                            Switch all_runtimes_switch {
                                 valign: center;
                             }
                         ;
                         Adw.ActionRow {
-                            visible: bind all_runtimes_button.active inverted;
+                            visible: bind all_runtimes_switch.active inverted;
                             [child]
                             Box {
                                 orientation: vertical;

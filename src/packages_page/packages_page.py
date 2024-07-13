@@ -52,7 +52,7 @@ class PackagesPage(Adw.BreakpointBin):
 
     def generate_list(self, *args):
         self.packages_list_box.remove_all()
-        GLib.idle_add(lambda *_: self.filters_page.generate_list())
+        GLib.idle_add(lambda *_: self.filters_page.generate_filters())
         first = True
         for package in HostInfo.flatpaks:
             row = None
