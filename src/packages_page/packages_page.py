@@ -12,8 +12,12 @@ class PackagesPage(Adw.BreakpointBin):
     gtc = Gtk.Template.Child
     packages_bpt = gtc()
     packages_toast_overlay = gtc()
-    stack = gtc()
+    status_stack = gtc()
     scrolled_window = gtc()
+    uninstalling = gtc()
+    loading_packages = gtc()
+    no_filter_results = gtc()
+    no_packages = gtc()
     sidebar_button = gtc()
     filter_button = gtc()
     refresh_button = gtc()
@@ -23,7 +27,6 @@ class PackagesPage(Adw.BreakpointBin):
     packages_list_box = gtc()
     select_button = gtc()
     packages_navpage = gtc()
-    status_view = gtc()
     content_stack = gtc()
 
     # Referred to in the main window
@@ -31,12 +34,42 @@ class PackagesPage(Adw.BreakpointBin):
     #    This must be set to the created object from within the class's __init__ method
     instance = None
 
+    def set_status(self, to_set):
+        
+        if to_set is self.scrolled_window:
+            self.properties_page.stack.set_visible_child(self.properties_page.nav_view)
+            self.select_button.set_sensitive(True)
+            self.filter_button.set_sensitive(True)
+            self.filters_page.set_sensitive(True)
+        else:
+            self.select_button.set_sensitive(False)
+
+        if to_set is self.loading_packages or to_set is self.uninstalling:
+            self.properties_page.stack.set_visible_child(self.properties_page.loading_tbv)
+            self.filter_button.set_sensitive(False)
+            self.filters_page.set_sensitive(False)
+
+        if to_set is self.no_packages:
+            self.properties_page.stack.set_visible_child(self.properties_page.error_tbv)
+            self.filter_button.set_sensitive(False)
+            self.filter_button.set_active(False)
+        
+        if to_set is self.no_filter_results:
+            self.properties_page.stack.set_visible_child(self.properties_page.error_tbv)
+            self.filter_button.set_sensitive(True)
+            self.filters_page.set_sensitive(True)
+            if not self.packages_split.get_collapsed():
+                self.filter_button.set_active(True)
+
+        self.status_stack.set_visible_child(to_set)
+
     def apply_filters(self):
         i = 0
         show_apps = self.filter_settings.get_boolean("show-apps")
         show_runtimes = self.filter_settings.get_boolean("show-runtimes")
         remotes_list = self.filter_settings.get_string("remotes-list")
         runtimes_list = self.filter_settings.get_string("runtimes-list")
+        total_visible = 0
         while row := self.packages_list_box.get_row_at_index(i):
             i += 1
             visible = True
@@ -49,17 +82,21 @@ class PackagesPage(Adw.BreakpointBin):
             if runtimes_list != "all" and (row.package.is_runtime or row.package.dependant_runtime and not row.package.dependant_runtime.info["ref"] in runtimes_list):
                 visible = False
             GLib.idle_add(row.set_visible, visible)
+            if visible:
+                total_visible += 1
+        if total_visible == 0:
+            self.set_status(self.no_filter_results)
+        else:
+            GLib.idle_add(lambda *_: self.set_status(self.scrolled_window))
 
     def generate_list(self, *args):
         self.packages_list_box.remove_all()
         GLib.idle_add(lambda *_: self.filters_page.generate_filters())
-        first = True
+        if len(HostInfo.flatpaks) == 0:
+            self.set_status(self.no_packages)
+            return
         for package in HostInfo.flatpaks:
-            row = None
-            if first:
-                row = AppRow(package, lambda *_: self.stack.set_visible_child(self.packages_split))
-            else:
-                row = AppRow(package)
+            row = AppRow(package)
             package.app_row = row
             row.masked_status_icon.set_visible(package.is_masked)
             row.pinned_status_icon.set_visible(package.is_pinned)
@@ -98,14 +135,9 @@ class PackagesPage(Adw.BreakpointBin):
             GLib.idle_add(row.check_button.set_active, False)
             GLib.idle_add(row.check_button.set_visible, is_enabled)
 
-    def set_status(self, status_box):
-        self.stack.set_visible_child(self.status_view)
-        if self.status_view.get_content() == status_box:
-            return
-        self.status_view.set_content(status_box)
-
     def refresh_handler(self, *args):
-        self.set_status(self.loading_status)
+        self.select_button.set_active(False)
+        self.set_status(self.loading_packages)
         HostInfo.get_flatpaks(callback=self.generate_list)
 
     def select_button_handler(self, button):
@@ -130,16 +162,20 @@ class PackagesPage(Adw.BreakpointBin):
         self.main_window = main_window
         self.properties_page = PropertiesPage(main_window, self)
         self.filters_page = FiltersPage(main_window, self)
-        self.loading_status = StatusBox(_("Fetching Packages"), _("This should only take a moment"))
-        self.uninstall_status = StatusBox(_("Uninstalling…"), _("This should only take a moment"))
         self.filter_settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
 
         # Apply
-        self.set_status(self.loading_status)
+        # self.set_status("loading_packages")
         self.packages_list_box.set_filter_func(self.filter_func)
         self.content_stack.add_child(self.properties_page)
         self.content_stack.add_child(self.filters_page)
         self.__class__.instance = self
+
+        self.loading_packages
+        self.uninstalling
+        self.no_filter_results
+        self.no_packages
+        self.scrolled_window
 
         # Connections
         main_window.main_split.connect("notify::show-sidebar", lambda sidebar, *_: self.sidebar_button.set_visible(sidebar.get_collapsed() or not sidebar.get_show_sidebar()))
@@ -154,4 +190,3 @@ class PackagesPage(Adw.BreakpointBin):
         self.filter_button.connect("toggled", self.filter_button_handler)
         self.packages_split.connect("notify::show-content", self.filter_page_handler)
         self.packages_bpt.connect("apply", self.filter_page_handler)
-        self.filter_button.set_active(True)

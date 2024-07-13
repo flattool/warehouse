@@ -8,6 +8,10 @@ import subprocess, os
 class PropertiesPage(Adw.NavigationPage):
     __gtype_name__ = 'PropertiesPage'
     gtc = Gtk.Template.Child
+    stack = gtc()
+    error_tbv = gtc()
+    loading_tbv = gtc()
+
     nav_view = gtc()
     inner_nav_page = gtc()
     toast_overlay = gtc()
@@ -203,7 +207,7 @@ class PropertiesPage(Adw.NavigationPage):
         def on_choice(_, response):
             if response != 'continue':
                 return
-            self.packages_page.set_status(self.packages_page.uninstall_status)
+            self.packages_page.set_status(self.packages_page.uninstalling)
             self.package.uninstall(callback)
 
         def callback(*args):
