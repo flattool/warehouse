@@ -18,6 +18,7 @@ class PackagesPage(Adw.BreakpointBin):
     loading_packages = gtc()
     no_filter_results = gtc()
     no_packages = gtc()
+    no_results = gtc()
     sidebar_button = gtc()
     filter_button = gtc()
     refresh_button = gtc()
@@ -60,6 +61,9 @@ class PackagesPage(Adw.BreakpointBin):
             self.filters_page.set_sensitive(True)
             if not self.packages_split.get_collapsed():
                 self.filter_button.set_active(True)
+
+        if to_set is self.no_results:
+            self.filters_page.set_sensitive(False)
 
         self.status_stack.set_visible_child(to_set)
 
@@ -126,6 +130,7 @@ class PackagesPage(Adw.BreakpointBin):
         title = row.get_title().lower()
         subtitle = row.get_subtitle().lower()
         if search_text in title or search_text in subtitle:
+            self.is_result = True
             return True
 
     def set_selection_mode(self, is_enabled):
@@ -154,6 +159,18 @@ class PackagesPage(Adw.BreakpointBin):
         if self.packages_split.get_collapsed() and not self.packages_split.get_show_content():
             self.filter_button.set_active(False)
 
+    def on_invalidate(self, row):
+        current_status = self.status_stack.get_visible_child()
+        if not current_status is self.no_results:
+            self.prev_status = current_status
+
+        self.is_result = False
+        self.packages_list_box.invalidate_filter()
+        if self.is_result:
+            self.set_status(self.prev_status)
+        else:
+            self.set_status(self.no_results)
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
         HostInfo.get_flatpaks(callback=self.generate_list)
@@ -163,6 +180,8 @@ class PackagesPage(Adw.BreakpointBin):
         self.properties_page = PropertiesPage(main_window, self)
         self.filters_page = FiltersPage(main_window, self)
         self.filter_settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
+        self.is_result = False
+        self.prev_status = None
 
         # Apply
         # self.set_status("loading_packages")
@@ -171,18 +190,12 @@ class PackagesPage(Adw.BreakpointBin):
         self.content_stack.add_child(self.filters_page)
         self.__class__.instance = self
 
-        self.loading_packages
-        self.uninstalling
-        self.no_filter_results
-        self.no_packages
-        self.scrolled_window
-
         # Connections
         main_window.main_split.connect("notify::show-sidebar", lambda sidebar, *_: self.sidebar_button.set_visible(sidebar.get_collapsed() or not sidebar.get_show_sidebar()))
         main_window.main_split.connect("notify::collapsed", lambda sidebar, *_: self.sidebar_button.set_visible(sidebar.get_collapsed() or not sidebar.get_show_sidebar()))
         self.sidebar_button.connect("clicked", lambda *_: main_window.main_split.set_show_sidebar(True))
 
-        self.search_entry.connect("search-changed", lambda *_: self.packages_list_box.invalidate_filter())
+        self.search_entry.connect("search-changed", self.on_invalidate)
         self.search_bar.set_key_capture_widget(main_window)
         self.packages_list_box.connect("row-activated", self.row_select_handler)
         self.refresh_button.connect("clicked", self.refresh_handler)

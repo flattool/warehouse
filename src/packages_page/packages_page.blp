@@ -93,6 +93,11 @@ template $PackagesPage : Adw.BreakpointBin {
                                 description: _("Warehouse cannot see the list of installed packages or your system has no packages installed");
                                 icon-name: "error-symbolic";
                             }
+                            Adw.StatusPage no_results {
+                                title: _("No Results Found");
+                                description: _("Try a different search");
+                                icon-name: "system-search-symbolic";
+                            }
                         }
                         [bottom]
                         Revealer {
