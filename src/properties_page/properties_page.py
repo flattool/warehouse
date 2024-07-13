@@ -141,8 +141,8 @@ class PropertiesPage(Adw.NavigationPage):
 
         self.mask_label.set_visible(package.is_masked)
         self.mask_switch.set_active(package.is_masked)
-
         self.pin_switch.set_active(package.is_pinned)
+        GLib.idle_add(lambda *_: self.stack.set_visible_child(self.nav_view))
 
     def open_data_handler(self, *args):
         if error := self.package.open_data():
