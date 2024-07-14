@@ -62,11 +62,16 @@ class ChangeVersionPage(Adw.NavigationPage):
         def idle(*args):
             for index, commit in enumerate(commits):
                 row = Adw.ActionRow(title=GLib.markup_escape_text(changes[index]), subtitle=f"{GLib.markup_escape_text(commit)}\n{GLib.markup_escape_text(dates[index])}")
-                check = Gtk.CheckButton()
-                check.connect("activate", lambda *_, comm=commit: self.set_commit(comm))
-                check.set_group(self.root_group_check_button)
-                row.set_activatable_widget(check)
-                row.add_prefix(check)
+                if commit == self.package.cli_info["commit"]:
+                    row.set_sensitive(False)
+                    row.add_prefix(Gtk.Image(icon_name="check-plain-symbolic", margin_start=5, margin_end=5))
+                    row.set_tooltip_text(_("Currently Installed Version"))
+                else:
+                    check = Gtk.CheckButton()
+                    check.connect("activate", lambda *_, comm=commit: self.set_commit(comm))
+                    check.set_group(self.root_group_check_button)
+                    row.set_activatable_widget(check)
+                    row.add_prefix(check)
                 self.versions_group.add(row)
 
         GLib.idle_add(idle)

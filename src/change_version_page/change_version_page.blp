@@ -48,12 +48,13 @@ Adw.Clamp versions_clamp {
         Adw.PreferencesGroup mask_group {
             Adw.SwitchRow mask_row {
                 title: _("Disable Updates");
+                active: true;
             }
         }
 
         Adw.PreferencesGroup versions_group {
             title: _("Select a Release");
-            description: _("This will uninstalls the current release and install the chosen one instead. Note that downgrading can cause issues.");
+            description: _("This will uninstall the current release and install the chosen one instead. Note that downgrading can cause issues.");
         }
     }
 }

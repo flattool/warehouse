@@ -159,6 +159,7 @@ class Flatpak:
                 word[1] = word[1].replace("?", " ")
             cli_info[word[0]] = word[1]
 
+        self.cli_info = cli_info
         return cli_info
 
     def __init__(self, columns):
@@ -177,6 +178,7 @@ class Flatpak:
         }
         self.data_path = f"{home}/.var/app/{columns[2]}"
         self.data_size = -1
+        self.cli_info = None
         installation = columns[7]
         if len(i := installation.split(' ')) > 1:
             self.info["installation"] = i[1].replace("(", "").replace(")", "")
