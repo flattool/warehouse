@@ -29,6 +29,8 @@ class PackagesPage(Adw.BreakpointBin):
     packages_list_box = gtc()
     select_button = gtc()
     packages_navpage = gtc()
+    select_all_button = gtc()
+    trash_button = gtc()
     content_stack = gtc()
 
     # Referred to in the main window
@@ -86,13 +88,36 @@ class PackagesPage(Adw.BreakpointBin):
                 visible = False
             if runtimes_list != "all" and (row.package.is_runtime or row.package.dependant_runtime and not row.package.dependant_runtime.info["ref"] in runtimes_list):
                 visible = False
+            
             GLib.idle_add(row.set_visible, visible)
             if visible:
                 total_visible += 1
+            else:
+                row.check_button.set_active(False)
+
         if total_visible == 0:
             self.set_status(self.no_filter_results)
         else:
             GLib.idle_add(lambda *_: self.set_status(self.scrolled_window))
+
+    def row_select_handler(self, row):
+        if row.check_button.get_active():
+            self.selected_rows.append(row)
+        else:
+            self.selected_rows.remove(row)
+            
+        if (total := len(self.selected_rows)) > 0:
+            self.packages_navpage.set_title(_("{} Selected").format(total))
+        else:
+            self.packages_navpage.set_title(_("Packages"))
+
+        print(self.selected_rows)
+
+    def select_all_handler(self, *args):
+        i = 0
+        while row := self.packages_list_box.get_row_at_index(i):
+            i += 1
+            row.check_button.set_active(row.get_visible())
 
     def generate_list(self, *args):
         self.packages_list_box.remove_all()
@@ -107,6 +132,7 @@ class PackagesPage(Adw.BreakpointBin):
             row.pinned_status_icon.set_visible(package.is_pinned)
             row.eol_package_package_status_icon.set_visible(package.is_eol)
             row.check_button.set_visible(self.select_button.get_active())
+            row.check_button.connect("toggled", lambda *_, row=row: self.row_select_handler(row))
             try:
                 if not package.is_runtime:
                     row.eol_runtime_status_icon.set_visible(package.dependant_runtime.is_eol)
@@ -120,7 +146,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.scrolled_window.set_vadjustment(Gtk.Adjustment.new(0,0,0,0,0,0)) # Scroll list to top
         self.apply_filters()
 
-    def row_select_handler(self, list_box, row):
+    def row_activate_handler(self, list_box, row):
         self.properties_page.set_properties(row.package)
         self.properties_page.nav_view.pop()
         self.packages_split.set_show_content(True)
@@ -142,6 +168,8 @@ class PackagesPage(Adw.BreakpointBin):
             GLib.idle_add(row.check_button.set_visible, is_enabled)
 
     def refresh_handler(self, *args):
+        self.packages_navpage.set_title(_("Packages"))
+        self.selected_rows.clear()
         self.select_button.set_active(False)
         self.set_status(self.loading_packages)
         HostInfo.get_flatpaks(callback=self.generate_list)
@@ -183,6 +211,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.filter_settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
         self.is_result = False
         self.prev_status = None
+        self.selected_rows = []
 
         # Apply
         # self.set_status("loading_packages")
@@ -198,10 +227,11 @@ class PackagesPage(Adw.BreakpointBin):
 
         self.search_entry.connect("search-changed", self.on_invalidate)
         self.search_bar.set_key_capture_widget(main_window)
-        self.packages_list_box.connect("row-activated", self.row_select_handler)
+        self.packages_list_box.connect("row-activated", self.row_activate_handler)
         self.refresh_button.connect("clicked", self.refresh_handler)
         self.select_button.connect("clicked", self.select_button_handler)
         self.filter_button.connect("toggled", self.filter_button_handler)
         self.reset_filters_button.connect("clicked", lambda *_: self.filters_page.reset_filters())
         self.packages_split.connect("notify::show-content", self.filter_page_handler)
         self.packages_bpt.connect("apply", self.filter_page_handler)
+        self.select_all_button.connect("clicked", self.select_all_handler)

@@ -22,7 +22,7 @@ template $PackagesPage : Adw.BreakpointBin {
             max-sidebar-width: 999999999;
             sidebar:
                 Adw.NavigationPage packages_navpage {
-                    title: "Packages";
+                    title: _("Packages");
                     Adw.ToolbarView packages_tbv {
                         [top]
                         Adw.HeaderBar {
@@ -115,7 +115,7 @@ template $PackagesPage : Adw.BreakpointBin {
                                 styles ["toolbar"]
                                 hexpand: true;
                                 homogeneous: true;
-                                Button {
+                                Button select_all_button {
                                     styles ["raised"]
                                     Adw.ButtonContent {
                                         icon-name: "selection-mode-symbolic";
@@ -132,7 +132,7 @@ template $PackagesPage : Adw.BreakpointBin {
                                     }
                                     popover: copy_pop;
                                 }
-                                Button {
+                                Button trash_button {
                                     styles ["raised"]
                                     Adw.ButtonContent {
                                         icon-name: "user-trash-symbolic";
