@@ -32,6 +32,10 @@ class PackagesPage(Adw.BreakpointBin):
     select_all_button = gtc()
     trash_button = gtc()
     content_stack = gtc()
+    copy_menu = gtc()
+    copy_names = gtc()
+    copy_ids = gtc()
+    copy_refs = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -167,6 +171,30 @@ class PackagesPage(Adw.BreakpointBin):
             GLib.idle_add(row.check_button.set_active, False)
             GLib.idle_add(row.check_button.set_visible, is_enabled)
 
+    def selection_copy(self, box, row):
+        info = ""
+        feedback = ""
+        match row.get_child():
+            case self.copy_names:
+                info = "name"
+                feedback = _("Names")
+            case self.copy_ids:
+                info = "id"
+                feedback = _("IDs")
+            case self.copy_refs:
+                info = "ref"
+                feedback = _("Refs")
+
+        to_copy = []
+        for row in self.selected_rows:
+            to_copy.append(row.package.info[info])
+            to_copy += ['\n']
+        try:
+            HostInfo.clipboard.set("".join(to_copy[:-1]))
+            self.packages_toast_overlay.add_toast(Adw.Toast(title=_("Copied {}").format(feedback)))
+        except Exception as e:
+            self.packages_toast_overlay.add_toast(ErrorToast(_("Could not copy {}").format(feedback), str(e)).toast)
+
     def refresh_handler(self, *args):
         self.packages_navpage.set_title(_("Packages"))
         self.selected_rows.clear()
@@ -235,3 +263,5 @@ class PackagesPage(Adw.BreakpointBin):
         self.packages_split.connect("notify::show-content", self.filter_page_handler)
         self.packages_bpt.connect("apply", self.filter_page_handler)
         self.select_all_button.connect("clicked", self.select_all_handler)
+
+        self.copy_menu.connect("row-activated", self.selection_copy)
