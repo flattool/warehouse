@@ -22,17 +22,13 @@ template $FiltersPage : Adw.NavigationPage {
                         Adw.ActionRow application_row {
                             title: _("Applications");
                             subtitle: _("Packages that can be opened");
-                            CheckButton app_check {
-                                styles["selection-mode"]
-                            }
+                            CheckButton app_check {}
                             activatable-widget: app_check;
                         }
                         Adw.ActionRow runtime_row {
                             title: _("Runtimes");
                             subtitle: _("Packages that applications depend on");
-                            CheckButton runtime_check {
-                                styles["selection-mode"]
-                            }
+                            CheckButton runtime_check {}
                             activatable-widget: runtime_check;
                         }
                     }

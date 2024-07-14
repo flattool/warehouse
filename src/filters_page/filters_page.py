@@ -8,7 +8,6 @@ class FilterRow(Adw.ActionRow):
         self.item = item
         self.installation = installation
         self.check_button = Gtk.CheckButton()
-        self.check_button.add_css_class("selection-mode")
         self.add_suffix(self.check_button)
         self.set_activatable_widget(self.check_button)
 
