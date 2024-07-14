@@ -221,8 +221,8 @@ class PropertiesPage(Adw.NavigationPage):
 
         # name = self.package.info["name"]
         dialog = Adw.AlertDialog(
-            heading=_("Uninstall {}?").format(guhhh := self.package.info["name"]),
-            body=_("It will not be possible to use {} after removal.").format(guhhh),
+            heading=_("Uninstall {}?").format(name := self.package.info["name"]),
+            body=_("It will not be possible to use {} after removal.").format(name),
         )
         dialog.add_response('cancel', _("Cancel"))
         dialog.add_response('continue', _("Uninstall"))

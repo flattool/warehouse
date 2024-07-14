@@ -110,7 +110,7 @@ class Flatpak:
                 cmd.append(f"--installation={installation}")
 
             try:
-                subprocess.run(prefix + cmd, check=True, text=True)
+                subprocess.run(prefix + cmd, check=True, text=True, capture_output=True)
                 # print(prefix + cmd)
             except subprocess.CalledProcessError as cpe:
                 if installation == "user":
