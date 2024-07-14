@@ -32,7 +32,7 @@ class PackagesPage(Adw.BreakpointBin):
     packages_navpage = gtc()
     select_all_button = gtc()
     content_stack = gtc()
-    bottom_bar = gtc()
+    copy_button = gtc()
     copy_pop = gtc()
     copy_menu = gtc()
     copy_names = gtc()
@@ -116,10 +116,12 @@ class PackagesPage(Adw.BreakpointBin):
             
         if (total := len(self.selected_rows)) > 0:
             self.packages_navpage.set_title(_("{} Selected").format(total))
-            self.bottom_bar.set_sensitive(True)
+            self.copy_button.set_sensitive(True)
+            self.uninstall_button.set_sensitive(True)
         else:
             self.packages_navpage.set_title(_("Packages"))
-            self.bottom_bar.set_sensitive(False)
+            self.copy_button.set_sensitive(False)
+            self.uninstall_button.set_sensitive(False)
 
     def select_all_handler(self, *args):
         i = 0
@@ -130,7 +132,8 @@ class PackagesPage(Adw.BreakpointBin):
     def generate_list(self, *args):
         self.packages_list_box.remove_all()
         GLib.idle_add(lambda *_: self.filters_page.generate_filters())
-        self.bottom_bar.set_sensitive(False)
+        self.copy_button.set_sensitive(False)
+        self.uninstall_button.set_sensitive(False)
         if len(HostInfo.flatpaks) == 0:
             self.set_status(self.no_packages)
             return
