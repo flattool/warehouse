@@ -33,6 +33,7 @@ class PackagesPage(Adw.BreakpointBin):
     select_all_button = gtc()
     content_stack = gtc()
     bottom_bar = gtc()
+    copy_pop = gtc()
     copy_menu = gtc()
     copy_names = gtc()
     copy_ids = gtc()
@@ -176,6 +177,7 @@ class PackagesPage(Adw.BreakpointBin):
             GLib.idle_add(row.check_button.set_visible, is_enabled)
 
     def selection_copy(self, box, row):
+        self.copy_pop.popdown()
         info = ""
         feedback = ""
         match row.get_child():
