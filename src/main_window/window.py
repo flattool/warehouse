@@ -24,6 +24,7 @@ import time
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from .packages_page import PackagesPage
+from .user_data_page import UserDataPage
 from .const import Config
 from .error_toast import ErrorToast
 from .status_box import StatusBox
@@ -74,6 +75,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         file_drop = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
         self.pages = {
             self.packages_row: PackagesPage,
+            
+            self.user_data_row: UserDataPage,
         }
 
         # Apply

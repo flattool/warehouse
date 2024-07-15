@@ -11,6 +11,8 @@ blueprints = custom_target('blueprints',
     'packages_page/packages_page.blp',
     'filters_page/filters_page.blp',
     'properties_page/properties_page.blp',
+    'user_data_page/user_data_page.blp',
+    'widgets/data_box.blp',
     'change_version_page/change_version_page.blp',
   ),
   output: '.',
@@ -62,6 +64,8 @@ warehouse_sources = [
   'filters_page/filters_page.py',
   'properties_page/properties_page.py',
   'change_version_page/change_version_page.py',
+  'user_data_page/user_data_page.py',
+  'widgets/data_box.py',
   '../data/style.css',
 ]
 

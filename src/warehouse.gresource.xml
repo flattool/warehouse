@@ -9,7 +9,9 @@
     <file preprocess="xml-stripblanks">filters_page/filters_page.ui</file>
     <file preprocess="xml-stripblanks">properties_page/properties_page.ui</file>
     <file preprocess="xml-stripblanks">change_version_page/change_version_page.ui</file>
+    <file preprocess="xml-stripblanks">user_data_page/user_data_page.ui</file>
     <file preprocess="xml-stripblanks">widgets/status_box.ui</file>
+    <file preprocess="xml-stripblanks">widgets/data_box.ui</file>
     <!-- <file preprocess="xml-stripblanks">../data/io.github.flattool.Warehouse.metainfo.xml.in</file> -->
   </gresource>
   <gresource prefix="/io/github/flattool/Warehouse/icons/scalable/actions/">
@@ -49,5 +51,8 @@
     <file preprocess="xml-stripblanks" alias="error-small-symbolic.svg">../data/icons/error-small-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="copy-symbolic.svg">../data/icons/copy-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="double-ended-arrows-vertical-symbolic.svg">../data/icons/double-ended-arrows-vertical-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="vertical-arrows-long-symbolic.svg">../data/icons/vertical-arrows-long-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="dot-symbolic.svg">../data/icons/dot-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="folder-templates-symbolic.svg">../data/icons/folder-templates-symbolic.svg</file>
   </gresource>
 </gresources>

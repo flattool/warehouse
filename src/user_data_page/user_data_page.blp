@@ -1,0 +1,254 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $UserDataPage : Adw.BreakpointBin {
+    // title: _("User Data");
+    width-request: 1;
+    height-request: 1;
+
+    Adw.Breakpoint {
+        condition ("max-width: 585")
+
+        setters {
+            header_bar.show-title: false;
+            switcher_bar.reveal: true;
+            switcher_bar.visible: true;
+        }
+    }
+
+    Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar header_bar {
+            title-widget:
+                Adw.ViewSwitcher {
+                    stack: stack;
+                    policy: wide;
+                }
+            ;
+            [start]
+            ToggleButton search_button {
+                icon-name: "system-search-symbolic";
+                tooltip-text: _("Search User Data");
+            }
+            [end]
+            MenuButton sort_button {
+                popover: sort_pop;
+                icon-name: "vertical-arrows-long-symbolic";
+                tooltip-text: _("Sort User Data");
+            }
+            [end]
+            ToggleButton select_button {
+                icon-name: "selection-mode-symbolic";
+                tooltip-text: _("Select User Data");
+            }
+        }
+        [top]
+        Adw.Clamp {
+            SearchBar search_bar {
+                search-mode-enabled: bind search_button.active bidirectional;
+                key-capture-widget: template;
+            
+                SearchEntry search_entry {
+                    hexpand: true;
+                    placeholder-text: _("Search User Data");
+                }
+            }
+        }
+        [bottom]
+        Revealer {
+            reveal-child: bind select_button.active;
+            transition-type: slide_up;
+            [center]
+            Box bottom_bar {
+                styles ["toolbar"]
+                hexpand: true;
+                homogeneous: true;
+                Button select_all_button {
+                    styles ["raised"]
+                    Adw.ButtonContent {
+                        icon-name: "selection-mode-symbolic";
+                        label: _("Select All");
+                        can-shrink: true;
+                    }
+                }
+                Button copy_button {
+                    styles ["raised"]
+                    Adw.ButtonContent {
+                        icon-name: "edit-copy-symbolic";
+                        label: _("Copy");
+                        can-shrink: true;
+                    }
+                }
+                Button uninstall_button {
+                    styles ["raised"]
+                    Adw.ButtonContent {
+                        icon-name: "user-trash-symbolic";
+                        label: _("Uninstall");
+                        can-shrink: true;
+                    }
+                }
+            }
+        }
+        [bottom]
+        Adw.ViewSwitcherBar switcher_bar {
+            stack: stack;
+            visible: false;
+        }
+        Adw.ViewStack stack {
+            Adw.ViewStackPage {
+                name: "active";
+                title: _("Active Data");
+                icon-name: "file-manager-symbolic";
+                child:
+                    ScrolledWindow {
+                        Box {
+                            orientation: vertical;
+                            Box {
+                                orientation: vertical;
+                                margin-start: 24;
+                                margin-end: 24;
+                                Label {
+                                    label: _("Active User Data");
+                                    styles ["title-1"]
+                                    hexpand: true;
+                                    halign: start;
+                                }
+                                Label {
+                                    label: "32 Items - 39.7 GB";
+                                    styles ["title-3"]
+                                    hexpand: true;
+                                    halign: start;
+                                }
+                            }
+                            Separator {
+                                margin-start: 12;
+                                margin-end: 12;
+                                margin-top: 9;
+                                margin-bottom: 6;
+                            }
+                            FlowBox flow_box {
+                                styles ["boxed-list"]
+                                homogeneous: true;
+                                valign: start;
+                                selection-mode: none;
+                                max-children-per-line: 6;
+                                margin-start: 12;
+                                margin-end: 12;
+                                margin-bottom: 12;
+                            }
+                        }
+                    }
+                ;
+            }
+            Adw.ViewStackPage {
+                name: "leftover";
+                title: _("Leftover Data");
+                icon-name: "folder-templates-symbolic";
+                child:
+                    ScrolledWindow {
+                        Box {
+                            orientation: vertical;
+                            Box {
+                                orientation: vertical;
+                                margin-start: 24;
+                                margin-end: 24;
+                                Label {
+                                    label: _("Leftover User Data");
+                                    styles ["title-1"]
+                                    hexpand: true;
+                                    halign: start;
+                                }
+                                Label {
+                                    label: "25 Items - 18.6 GB";
+                                    styles ["title-3"]
+                                    hexpand: true;
+                                    halign: start;
+                                }
+                            }
+                            Separator {
+                                margin-start: 12;
+                                margin-end: 12;
+                                margin-top: 9;
+                                margin-bottom: 6;
+                            }
+                            FlowBox {
+                                styles ["boxed-list"]
+                                homogeneous: true;
+                                valign: start;
+                                selection-mode: none;
+                                max-children-per-line: 6;
+                                margin-start: 12;
+                                margin-end: 12;
+                                margin-bottom: 12;
+                            }
+                        }
+                    }
+                ;
+            }
+        }
+    }
+}
+
+Popover sort_pop {
+    styles ["menu"]
+    Box {
+        orientation: vertical;
+        margin-start: 6;
+        margin-end: 6;
+        margin-top: 6;
+        margin-bottom: 6;
+        Box {
+            homogeneous: true;
+            spacing: 3;
+            ToggleButton asc {
+                styles ["flat"]
+                label: _("Ascending");
+                can-focus: bind asc.active inverted;
+                can-target: bind asc.active inverted;
+            }
+            ToggleButton dsc {
+                styles ["flat"]
+                label: _("Descending");
+                active: bind asc.active inverted bidirectional;
+                can-focus: bind dsc.active inverted;
+                can-target: bind dsc.active inverted;
+            }
+        }
+        Separator {
+        }
+        Box sort_list {
+            orientation: vertical;
+            ToggleButton sort_name {
+                styles ["flat"]
+                can-focus: bind sort_name.active inverted;
+                can-target: bind sort_name.active inverted;
+                Label {
+                    styles ["body"]
+                    halign: start;
+                    label: _("Sort By Name");
+                }
+            }
+            ToggleButton sort_id {
+                styles ["flat"]
+                can-focus: bind sort_id.active inverted;
+                can-target: bind sort_id.active inverted;
+                Label {
+                    styles ["body"]
+                    halign: start;
+                    label: _("Sort By ID");
+                }
+            }
+            ToggleButton sort_size {
+                active: true;
+                can-focus: bind sort_size.active inverted;
+                can-target: bind sort_size.active inverted;
+                styles ["flat"]
+                Label {
+                    styles ["body"]
+                    halign: start;
+                    label: _("Sort By Size");
+                }
+            }
+        }
+    }
+}
