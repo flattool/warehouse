@@ -1,7 +1,7 @@
 from gi.repository import Adw, Gtk, GLib, Gio, Pango
 from .host_info import HostInfo
 
-@Gtk.Template(resource_path="/io/github/flattool/Warehouse/widgets/data_box.ui")
+@Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/data_box.ui")
 class DataBox(Gtk.ListBox):
     __gtype_name__ = 'DataBox'
     gtc = Gtk.Template.Child

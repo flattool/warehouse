@@ -3,15 +3,14 @@
   <gresource prefix="/io/github/flattool/Warehouse">
     <file>../data/style.css</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
-    <file preprocess="xml-stripblanks">widgets/app_row.ui</file>
+    <file preprocess="xml-stripblanks">packages_page/app_row.ui</file>
     <file preprocess="xml-stripblanks">main_window/window.ui</file>
     <file preprocess="xml-stripblanks">packages_page/packages_page.ui</file>
-    <file preprocess="xml-stripblanks">filters_page/filters_page.ui</file>
+    <file preprocess="xml-stripblanks">packages_page/filters_page.ui</file>
     <file preprocess="xml-stripblanks">properties_page/properties_page.ui</file>
     <file preprocess="xml-stripblanks">change_version_page/change_version_page.ui</file>
     <file preprocess="xml-stripblanks">user_data_page/user_data_page.ui</file>
-    <file preprocess="xml-stripblanks">widgets/status_box.ui</file>
-    <file preprocess="xml-stripblanks">widgets/data_box.ui</file>
+    <file preprocess="xml-stripblanks">user_data_page/data_box.ui</file>
     <!-- <file preprocess="xml-stripblanks">../data/io.github.flattool.Warehouse.metainfo.xml.in</file> -->
   </gresource>
   <gresource prefix="/io/github/flattool/Warehouse/icons/scalable/actions/">

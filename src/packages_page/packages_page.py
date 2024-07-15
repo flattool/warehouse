@@ -3,7 +3,6 @@ from .host_info import HostInfo
 from .app_row import AppRow
 from .error_toast import ErrorToast
 from .properties_page import PropertiesPage
-from .status_box import StatusBox
 from .filters_page import FiltersPage
 import subprocess
 

@@ -11,7 +11,7 @@ class FilterRow(Adw.ActionRow):
         self.add_suffix(self.check_button)
         self.set_activatable_widget(self.check_button)
 
-@Gtk.Template(resource_path="/io/github/flattool/Warehouse/filters_page/filters_page.ui")
+@Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/filters_page.ui")
 class FiltersPage(Adw.NavigationPage):
     __gtype_name__ = 'FiltersPage'
     gtc = Gtk.Template.Child
