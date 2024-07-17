@@ -23,6 +23,7 @@ import re
 import time
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
+from .host_info import HostInfo
 from .packages_page import PackagesPage
 from .user_data_page import UserDataPage
 from .const import Config
@@ -34,7 +35,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     gtc = Gtk.Template.Child
     main_breakpoint = gtc()
     main_split = gtc()
-    sidebar_button = gtc()
+    refresh_button = gtc()
     navigation_row_listbox = gtc()
     packages_row = gtc()
     remotes_row = gtc()
@@ -65,6 +66,20 @@ class WarehouseWindow(Adw.ApplicationWindow):
         else:
             self.main_split.set_content(page(main_window=self))
 
+    def start_loading(self, *args):
+        for _, page in self.pages.items():
+            if page.instance:
+                page.instance.start_loading()
+
+    def end_loading(self, *args):
+            for _, page in self.pages.items():
+                if page.instance:
+                    page.instance.end_loading()
+
+    def refresh_handler(self, *args):
+        self.start_loading()
+        HostInfo.get_flatpaks(callback=self.end_loading)
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -94,7 +109,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
         event_controller.connect("key-pressed", self.key_handler)
         self.navigation_row_listbox.connect("row-activated", self.navigation_handler)
         # file_drop.connect("drop", self.drop_callback)
-        self.sidebar_button.connect("clicked", lambda *_: self.main_split.set_show_sidebar(False))
+        self.refresh_button.connect("clicked", self.refresh_handler)
         
         self.navigation_row_listbox.get_row_at_index(0).activate()
         self.main_split.set_show_sidebar(True)
+
+        self.start_loading()
+        HostInfo.get_flatpaks(callback=self.end_loading)

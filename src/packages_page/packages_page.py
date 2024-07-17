@@ -22,7 +22,6 @@ class PackagesPage(Adw.BreakpointBin):
     no_results = gtc()
     sidebar_button = gtc()
     filter_button = gtc()
-    refresh_button = gtc()
     search_bar = gtc()
     search_entry = gtc()
     packages_split = gtc()
@@ -223,7 +222,7 @@ class PackagesPage(Adw.BreakpointBin):
                     details = err.stderr if type(err) == subprocess.CalledProcessError else str(err)
                     self.packages_toast_overlay.add_toast(ErrorToast(_("Could not uninstall packages"), details).toast)
                 else:
-                    self.refresh_handler()
+                    self.main_window.refresh_handler()
                     GLib.idle_add(lambda *__: self.packages_toast_overlay.add_toast(Adw.Toast(title=_("Uninstalled Packages"))))
 
             Gio.Task.new(None, None, callback).run_in_thread(thread)
@@ -239,12 +238,14 @@ class PackagesPage(Adw.BreakpointBin):
         dialog.connect("response", on_response)
         dialog.present(self.main_window)
 
-    def refresh_handler(self, *args):
+    def start_loading(self):
         self.packages_navpage.set_title(_("Packages"))
         self.selected_rows.clear()
         self.select_button.set_active(False)
         self.set_status(self.loading_packages)
-        HostInfo.get_flatpaks(callback=self.generate_list)
+
+    def end_loading(self):
+        self.generate_list()
 
     def select_button_handler(self, button):
         self.set_selection_mode(button.get_active())
@@ -274,7 +275,6 @@ class PackagesPage(Adw.BreakpointBin):
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
-        HostInfo.get_flatpaks(callback=self.generate_list)
 
         # Extra Object Creation
         self.main_window = main_window
@@ -293,14 +293,11 @@ class PackagesPage(Adw.BreakpointBin):
         self.__class__.instance = self
 
         # Connections
-        main_window.main_split.connect("notify::show-sidebar", lambda sidebar, *_: self.sidebar_button.set_visible(sidebar.get_collapsed() or not sidebar.get_show_sidebar()))
-        main_window.main_split.connect("notify::collapsed", lambda sidebar, *_: self.sidebar_button.set_visible(sidebar.get_collapsed() or not sidebar.get_show_sidebar()))
-        self.sidebar_button.connect("clicked", lambda *_: main_window.main_split.set_show_sidebar(True))
+        self.sidebar_button.connect("clicked", lambda *_, ms=main_window.main_split: ms.set_show_sidebar(not ms.get_show_sidebar() if not ms.get_collapsed() else True))
 
         self.search_entry.connect("search-changed", self.on_invalidate)
         self.search_bar.set_key_capture_widget(main_window)
         self.packages_list_box.connect("row-activated", self.row_activate_handler)
-        self.refresh_button.connect("clicked", self.refresh_handler)
         self.select_button.connect("clicked", self.select_button_handler)
         self.filter_button.connect("toggled", self.filter_button_handler)
         self.reset_filters_button.connect("clicked", lambda *_: self.filters_page.reset_filters())

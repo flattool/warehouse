@@ -56,6 +56,12 @@ class UserDataPage(Adw.BreakpointBin):
         elif self.switcher_bar.get_reveal():
             self.header_bar.set_show_title(False)
 
+    def start_loading(self, *args):
+        pass
+
+    def end_loading(self, *args):
+        pass
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
@@ -70,10 +76,8 @@ class UserDataPage(Adw.BreakpointBin):
             self.flow_box.get_child_at_index(i).set_focusable(False)
 
         # Connections
-        main_window.main_split.connect("notify::show-sidebar", lambda sidebar, *_: self.sidebar_button.set_visible(sidebar.get_collapsed() or not sidebar.get_show_sidebar()))
-        main_window.main_split.connect("notify::collapsed", lambda sidebar, *_: self.sidebar_button.set_visible(sidebar.get_collapsed() or not sidebar.get_show_sidebar()))
-        self.sidebar_button.connect("clicked", lambda *_: main_window.main_split.set_show_sidebar(True))
-        self.sidebar_button.set_visible(main_window.main_split.get_collapsed())
+        self.sidebar_button.connect("clicked", lambda *_, ms=main_window.main_split: ms.set_show_sidebar(not ms.get_show_sidebar() if not ms.get_collapsed() else True))
+        
         self.adj.connect("value-changed", self.show_title_handler)
 
 
