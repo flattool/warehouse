@@ -245,7 +245,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.set_status(self.loading_packages)
 
     def end_loading(self):
-        self.generate_list()
+        GLib.idle_add(lambda *_: self.generate_list())
 
     def select_button_handler(self, button):
         self.set_selection_mode(button.get_active())

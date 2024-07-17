@@ -1,6 +1,41 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $ActiveDataPage : Adw.ViewStackPage {
-    
+template $ActiveDataPage : ScrolledWindow {
+    Box {
+        orientation: vertical;
+        Box {
+            orientation: vertical;
+            margin-start: 24;
+            margin-end: 24;
+            Label {
+                label: _("Active User Data");
+                styles ["title-1"]
+                hexpand: true;
+                halign: start;
+            }
+            Label {
+                label: "32 Items - 39.7 GB";
+                styles ["title-3"]
+                hexpand: true;
+                halign: start;
+            }
+        }
+        Separator {
+            margin-start: 12;
+            margin-end: 12;
+            margin-top: 9;
+            margin-bottom: 6;
+        }
+        FlowBox flow_box {
+            styles ["boxed-list"]
+            homogeneous: true;
+            valign: start;
+            selection-mode: none;
+            max-children-per-line: 6;
+            margin-start: 12;
+            margin-end: 12;
+            margin-bottom: 12;
+        }
+    }
 }
