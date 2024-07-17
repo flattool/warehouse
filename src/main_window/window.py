@@ -35,6 +35,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     gtc = Gtk.Template.Child
     main_breakpoint = gtc()
     main_split = gtc()
+    stack = gtc()
     refresh_button = gtc()
     navigation_row_listbox = gtc()
     packages_row = gtc()
@@ -54,17 +55,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         row = row.get_child()
         page = self.pages[row]
 
-        if hide_sidebar and self.main_split.get_collapsed():
-            self.main_split.set_show_sidebar(False)
-
-        if type(self.main_split.get_content()) == page:
-            # Skip when the user clicks on the row that is already showing the page
-            return
-
-        if page.instance:
-            self.main_split.set_content(page.instance)
-        else:
-            self.main_split.set_content(page(main_window=self))
+        self.stack.set_visible_child(page)
 
     def start_loading(self, *args):
         for _, page in self.pages.items():
@@ -88,10 +79,13 @@ class WarehouseWindow(Adw.ApplicationWindow):
         event_controller = Gtk.EventControllerKey()
         file_drop = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
         self.pages = {
-            self.packages_row: PackagesPage,
+            self.packages_row: PackagesPage(main_window=self),
             
-            self.user_data_row: UserDataPage,
+            self.user_data_row: UserDataPage(main_window=self),
         }
+
+        for _, page in self.pages.items():
+            self.stack.add_child(page)
 
         # Apply
         ErrorToast.main_window = self
@@ -111,7 +105,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         # file_drop.connect("drop", self.drop_callback)
         self.refresh_button.connect("clicked", self.refresh_handler)
         
-        self.navigation_row_listbox.get_row_at_index(0).activate()
+        self.navigation_row_listbox.get_row_at_index(2).activate()
         self.main_split.set_show_sidebar(True)
 
         self.start_loading()
