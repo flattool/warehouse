@@ -69,12 +69,24 @@ class UserDataPage(Adw.BreakpointBin):
         self.ldp.spinner.set_visible(True)
 
     def end_loading(self, *args):
-        self.sort_mode = "size"
-        def callback(*args):
-            self.adp.generate_list(self.sort_mode, data=self.active_data, paks=self.data_flatpaks)
-            self.ldp.generate_list(self.sort_mode, data=self.leftover_data)
+        def test(box1, box2):
+            return box1.get_child().get_label() > box2.get_child().get_label()
 
-        Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
+        def test2(box1, box2):
+            return box1.get_child().get_label() < box2.get_child().get_label()
+
+        self.adp.flow_box.insert(Gtk.Label(label="B"), 4)
+        self.adp.flow_box.insert(Gtk.Label(label="D"), 1)
+        self.adp.flow_box.insert(Gtk.Label(label="A"), 1)
+        self.adp.flow_box.set_sort_func(test)
+        self.adp.flow_box.insert(Gtk.Label(label="C"), 1)
+        self.adp.flow_box.set_sort_func(test2)
+        # self.sort_mode = "size"
+        # def callback(*args):
+        #     self.adp.generate_list(self.sort_mode, data=self.active_data, paks=self.data_flatpaks)
+        #     self.ldp.generate_list(self.sort_mode, data=self.leftover_data)
+
+        # Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
