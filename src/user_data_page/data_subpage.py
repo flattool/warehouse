@@ -27,14 +27,22 @@ class DataSubpage(Gtk.ScrolledWindow):
 
     def get_size(self, path):
         sed = "sed 's/K/ KB/; s/M/ MB/; s/G/ GB/; s/T/ TB/; s/P/ PB/;'"
-        self.total_size += int(subprocess.run(['du', '-s', path], capture_output=True, text=True).stdout.split("\t")[0])
+        return int(subprocess.run(['du', '-s', path], capture_output=True, text=True).stdout.split("\t")[0])
 
     def show_size(self, data):
         for folder in data:
-            self.get_size(f"{HostInfo.home}/.var/app/{folder}")
+            self.total_size += self.get_size(f"{HostInfo.home}/.var/app/{folder}")
 
         self.size_label.set_label(self.human_readable_size(self.total_size))
         self.spinner.set_visible(False)
+
+    def sort_boxes(self, sort_mode):
+        if sort_mode == "name":
+                self.boxes = sorted(self.boxes, key=lambda box: box.title)
+        elif sort_mode == "id":
+            self.boxes = sorted(self.boxes, key=lambda box: box.subtitle)
+        else:
+            self.boxes = sorted(self.boxes, key=lambda box: box.size)
 
     def generate_list(self, sort_mode, data=None, paks=None):
         self.total_size = 0
@@ -48,21 +56,19 @@ class DataSubpage(Gtk.ScrolledWindow):
             if paks:
                 for package in paks:
                     folder = package.info["id"]
-                    box = DataBox(package.info["name"], folder, f"{HostInfo.home}/.var/app/{folder}", package.icon_path)
+                    path = f"{HostInfo.home}/.var/app/{folder}"
+                    box = DataBox(package.info["name"], folder, path, package.icon_path)
+                    box.size = self.get_size(path)
+                    box.size_label.set_label(self.human_readable_size(box.size))
                     self.boxes.append(box)
             else:
                 for folder in data:
                     box = DataBox(folder.split('.')[-1], folder, f"{HostInfo.home}/.var/app/{folder}")
                     self.boxes.append(box)
 
-        def callback(sort_mode):
-            if sort_mode == "name":
-                self.boxes = sorted(self.boxes, key=lambda box: box.title)
-            elif sort_mode == "id":
-                self.boxes = sorted(self.boxes, key=lambda box: box.subtitle)
-            else:
-                pass
+            self.sort_boxes(sort_mode)
 
+        def callback(sort_mode):
             for box in self.boxes:
                 self.flow_box.append(box)
         

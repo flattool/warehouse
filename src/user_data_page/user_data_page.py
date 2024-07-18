@@ -67,10 +67,9 @@ class UserDataPage(Adw.BreakpointBin):
         self.adp.spinner.set_visible(True)
         self.ldp.size_label.set_label("Loading Size…")
         self.ldp.spinner.set_visible(True)
-        pass
 
     def end_loading(self, *args):
-        self.sort_mode = "id"
+        self.sort_mode = "size"
         def callback(*args):
             self.adp.generate_list(self.sort_mode, data=self.active_data, paks=self.data_flatpaks)
             self.ldp.generate_list(self.sort_mode, data=self.leftover_data)

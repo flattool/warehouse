@@ -28,5 +28,6 @@ class DataBox(Gtk.ListBox):
         self.icon_path = icon_path
         self.data_path = data_path
         self.callback = callback
+        self.size = None
 
         self.idle_stuff()
