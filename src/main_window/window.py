@@ -63,12 +63,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 page.instance.start_loading()
 
     def end_loading(self, *args):
-            for _, page in self.pages.items():
-                if page.instance:
-                    page.instance.end_loading()
+        for _, page in self.pages.items():
+            if page.instance:
+                page.instance.end_loading()
+        self.refresh_button.set_sensitive(True)
 
     def refresh_handler(self, *args):
         self.start_loading()
+        self.refresh_button.set_sensitive(False)
         HostInfo.get_flatpaks(callback=self.end_loading)
 
     def __init__(self, **kwargs):

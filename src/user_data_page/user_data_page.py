@@ -1,7 +1,9 @@
 from gi.repository import Adw, Gtk, GLib, Gio, Pango
 from .error_toast import ErrorToast
-from .active_data_page import ActiveDataPage
-from .leftover_data_page import LeftoverDataPage
+from .data_box import DataBox
+from .data_subpage import DataSubpage
+from .host_info import HostInfo
+import os
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/user_data_page.ui")
 class UserDataPage(Adw.BreakpointBin):
@@ -47,11 +49,33 @@ class UserDataPage(Adw.BreakpointBin):
     #     elif self.switcher_bar.get_reveal():
     #         self.header_bar.set_show_title(False)
 
+    def sort_data(self, *args):
+        self.data_flatpaks.clear()
+        self.active_data.clear()
+        self.leftover_data.clear()
+        # paks = dict(HostInfo.id_to_flatpak)
+
+        for folder in os.listdir(f"{HostInfo.home}/.var/app"):
+            try:
+                self.data_flatpaks.append(HostInfo.id_to_flatpak[folder])
+                self.active_data.append(folder)
+            except KeyError:
+                self.leftover_data.append(folder)
+
     def start_loading(self, *args):
+        self.adp.size_label.set_label("Loading Size…")
+        self.adp.spinner.set_visible(True)
+        self.ldp.size_label.set_label("Loading Size…")
+        self.ldp.spinner.set_visible(True)
         pass
 
     def end_loading(self, *args):
-        pass
+        self.sort_mode = "id"
+        def callback(*args):
+            self.adp.generate_list(self.sort_mode, data=self.active_data, paks=self.data_flatpaks)
+            self.ldp.generate_list(self.sort_mode, data=self.leftover_data)
+
+        Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -59,16 +83,22 @@ class UserDataPage(Adw.BreakpointBin):
         # Extra Object Creation
         self.__class__.instance = self
         # self.adj = self.scrolled_window.get_vadjustment()
+        self.adp = DataSubpage(_("Active Data"), main_window)
+        self.ldp = DataSubpage(_("Leftover Data"), main_window)
+        self.data_flatpaks = []
+        self.active_data = []
+        self.leftover_data = []
+        self.total_items = 0
 
         # Apply
         self.stack.add_titled_with_icon(
-            child=ActiveDataPage(main_window, self),
+            child=self.adp,
             name="active",
             title=_("Active Data"),
             icon_name="file-manager-symbolic",
         )
         self.stack.add_titled_with_icon(
-            child=LeftoverDataPage(main_window, self),
+            child=self.ldp,
             name="leftover",
             title=_("Leftover Data"),
             icon_name="folder-templates-symbolic",

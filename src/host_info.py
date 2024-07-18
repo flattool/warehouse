@@ -238,6 +238,7 @@ class HostInfo:
         icon_theme.add_search_path(f"{i}/exports/share/icons")
     
     flatpaks = []
+    id_to_flatpak = {}
     ref_to_flatpak = {}
     remotes = {}
     installations = []
@@ -248,6 +249,7 @@ class HostInfo:
     def get_flatpaks(this, callback=None):
         # Callback is a function to run after the host flatpaks are found
         this.flatpaks.clear()
+        this.id_to_flatpak.clear()
         this.ref_to_flatpak.clear()
         this.remotes.clear()
         this.installations.clear()
@@ -336,6 +338,7 @@ class HostInfo:
             for i in lines:
                 package = Flatpak(i.split("\t"))
                 this.flatpaks.append(package)
+                this.id_to_flatpak[package.info["id"]] = package
                 this.ref_to_flatpak[package.info["ref"]] = package
             
             # Dependant Runtimes

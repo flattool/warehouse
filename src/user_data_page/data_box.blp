@@ -13,7 +13,7 @@ template $DataBox : ListBox {
             Box title_box {
                 margin-top: 12;
                 margin-bottom: 12;
-                Image app_icon {
+                Image image {
                     margin-start: 12;
                     margin-end: 12;
                     icon-name: "application-x-executable-symbolic";
@@ -31,7 +31,7 @@ template $DataBox : ListBox {
                     }
                     Label subtitle_label {
                         label: "No subtitle set";
-                        hexpand: true;
+                        // hexpand: true;
                         halign: start;
                         ellipsize: middle;
                         margin-end: 12;
@@ -43,6 +43,9 @@ template $DataBox : ListBox {
                 margin-start: 12;
                 margin-end: 6;
                 margin-bottom: 6;
+                Spinner spinner {
+                    spinning: true;
+                }
                 Label size_label {
                     label: "No size set";
                     halign: start;
