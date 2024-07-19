@@ -54,5 +54,10 @@
     <file preprocess="xml-stripblanks" alias="vertical-arrows-long-symbolic.svg">../data/icons/vertical-arrows-long-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="dot-symbolic.svg">../data/icons/dot-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="folder-templates-symbolic.svg">../data/icons/folder-templates-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="view-sort-ascending-symbolic.svg">../data/icons/view-sort-ascending-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="view-sort-descending-symbolic.svg">../data/icons/view-sort-descending-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="font-x-generic-symbolic.svg">../data/icons/font-x-generic-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="tag-outline-symbolic.svg">../data/icons/tag-outline-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="harddisk-symbolic.svg">../data/icons/harddisk-symbolic.svg</file>
   </gresource>
 </gresources>

@@ -66,11 +66,10 @@ class DataSubpage(Gtk.ScrolledWindow):
             self.ready_to_sort_size = True
             self.flow_box.invalidate_sort()
 
-    def generate_list(self, flatpaks, data, sort_mode):
+    def generate_list(self, flatpaks, data):
         self.boxes.clear()
         self.ready_to_sort_size = False
         self.finished_boxes = 0
-        self.sort_mode = sort_mode
         self.total_items = len(data)
         self.subtitle.set_label(_("{} Items").format(self.total_items))
         if flatpaks:

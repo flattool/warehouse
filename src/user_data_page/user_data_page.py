@@ -28,7 +28,7 @@ class UserDataPage(Adw.BreakpointBin):
     #    This must be set to the created object from within the class's __init__ method
     instance = None
 
-    def sort_handler(self, button):
+    def sort_handler(self, button, should_sort=True):
         if not button.get_active():
             return
 
@@ -58,8 +58,9 @@ class UserDataPage(Adw.BreakpointBin):
                 self.adp.sort_mode = "size"
                 self.ldp.sort_mode = "size"
 
-        self.adp.flow_box.invalidate_sort()
-        self.ldp.flow_box.invalidate_sort()
+        if should_sort:
+            self.adp.flow_box.invalidate_sort()
+            self.ldp.flow_box.invalidate_sort()
 
     # def bpt_handler(self, _, is_applied):
     #     if is_applied and self.adj.get_value() == 0:
@@ -94,10 +95,16 @@ class UserDataPage(Adw.BreakpointBin):
         self.ldp.spinner.set_visible(True)
         self.ldp.flow_box.remove_all()
 
+        self.sort_handler(self.asc, False)
+        self.sort_handler(self.dsc, False)
+        self.sort_handler(self.sort_name, False)
+        self.sort_handler(self.sort_id, False)
+        self.sort_handler(self.sort_size, False)
+
     def end_loading(self, *args):
         def callback(*args):
-            self.adp.generate_list(self.data_flatpaks, self.active_data, "size")
-            self.ldp.generate_list([], self.leftover_data, "name")
+            self.adp.generate_list(self.data_flatpaks, self.active_data)
+            self.ldp.generate_list([], self.leftover_data)
         
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
 

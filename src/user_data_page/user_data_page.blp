@@ -119,52 +119,57 @@ Popover sort_pop {
             homogeneous: true;
             spacing: 3;
             ToggleButton asc {
+                active: true;
                 styles ["flat"]
-                label: _("Ascending");
                 can-focus: bind asc.active inverted;
                 can-target: bind asc.active inverted;
+                Adw.ButtonContent {
+                    icon-name: "view-sort-ascending-symbolic";
+                    label: _("Ascending");
+                }
             }
             ToggleButton dsc {
                 styles ["flat"]
-                label: _("Descending");
                 active: bind asc.active inverted bidirectional;
                 can-focus: bind dsc.active inverted;
                 can-target: bind dsc.active inverted;
+                Adw.ButtonContent {
+                    icon-name: "view-sort-descending-symbolic";
+                    label: _("Descending");
+                }
             }
         }
         Separator {
         }
         Box sort_list {
-            orientation: vertical;
+            homogeneous: true;
+            spacing: 3;
             ToggleButton sort_name {
+                active: true;
                 styles ["flat"]
                 can-focus: bind sort_name.active inverted;
                 can-target: bind sort_name.active inverted;
-                Label {
-                    styles ["body"]
-                    halign: start;
-                    label: _("Sort By Name");
+                Adw.ButtonContent {
+                    icon-name: "font-x-generic-symbolic";
+                    label: _("Name");
                 }
             }
             ToggleButton sort_id {
                 styles ["flat"]
                 can-focus: bind sort_id.active inverted;
                 can-target: bind sort_id.active inverted;
-                Label {
-                    styles ["body"]
-                    halign: start;
-                    label: _("Sort By ID");
+                Adw.ButtonContent {
+                    icon-name: "tag-outline-symbolic";
+                    label: _("ID");
                 }
             }
             ToggleButton sort_size {
-                active: true;
                 can-focus: bind sort_size.active inverted;
                 can-target: bind sort_size.active inverted;
                 styles ["flat"]
-                Label {
-                    styles ["body"]
-                    halign: start;
-                    label: _("Sort By Size");
+                Adw.ButtonContent {
+                    icon-name: "harddisk-symbolic";
+                    label: _("Size");
                 }
             }
         }
