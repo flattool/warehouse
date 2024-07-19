@@ -7,6 +7,7 @@ class DataBox(Gtk.ListBox):
     __gtype_name__ = 'DataBox'
     gtc = Gtk.Template.Child
 
+    row = gtc()
     image = gtc()
     title_label = gtc()
     subtitle_label = gtc()

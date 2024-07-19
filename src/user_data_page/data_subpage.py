@@ -70,6 +70,16 @@ class DataSubpage(Gtk.ScrolledWindow):
         else:
             for i, folder in enumerate(data):
                 self.flow_box.append(DataBox(folder.split('.')[-1], folder, f"{HostInfo.home}/.var/app/{folder}", None, self.box_size_callback))
+                child = self.flow_box.get_child_at_index(i)
+                child.set_focusable(False)
+        
+        idx = 0
+        while box := self.flow_box.get_child_at_index(idx):
+            idx += 1
+            box.set_focusable(False)
+            child = box.get_child()
+            child.set_focusable(False)
+            child.row.set_focusable(child.check_button.get_visible())
 
     def __init__(self, title, main_window, **kwargs):
         super().__init__(**kwargs)

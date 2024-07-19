@@ -13,6 +13,7 @@ class UserDataPage(Adw.BreakpointBin):
     header_bar = gtc()
     switcher_bar = gtc()
     sidebar_button = gtc()
+    search_button = gtc()
     select_button = gtc()
     stack = gtc()
     sort_pop = gtc()
@@ -105,6 +106,7 @@ class UserDataPage(Adw.BreakpointBin):
         def callback(*args):
             self.adp.generate_list(self.data_flatpaks, self.active_data)
             self.ldp.generate_list([], self.leftover_data)
+            self.search_button.grab_focus()
         
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
 
