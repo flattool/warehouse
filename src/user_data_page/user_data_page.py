@@ -15,6 +15,7 @@ class UserDataPage(Adw.BreakpointBin):
     sidebar_button = gtc()
     search_button = gtc()
     select_button = gtc()
+    search_entry = gtc()
     stack = gtc()
     sort_pop = gtc()
     asc = gtc()
@@ -116,8 +117,8 @@ class UserDataPage(Adw.BreakpointBin):
         # Extra Object Creation
         self.__class__.instance = self
         # self.adj = self.scrolled_window.get_vadjustment()
-        self.adp = DataSubpage(_("Active Data"), main_window)
-        self.ldp = DataSubpage(_("Leftover Data"), main_window)
+        self.adp = DataSubpage(_("Active Data"), self, main_window)
+        self.ldp = DataSubpage(_("Leftover Data"), self, main_window)
         self.data_flatpaks = []
         self.active_data = []
         self.leftover_data = []

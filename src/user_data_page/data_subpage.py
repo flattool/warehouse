@@ -81,7 +81,15 @@ class DataSubpage(Gtk.ScrolledWindow):
             child.set_focusable(False)
             child.row.set_focusable(child.check_button.get_visible())
 
-    def __init__(self, title, main_window, **kwargs):
+    def filter_func(self, box):
+        search_text = self.parent_page.search_entry.get_text().lower()
+        box = box.get_child()
+        return search_text in box.title.lower() or search_text in box.subtitle.lower()
+
+    def on_invalidate(self, box):
+        self.flow_box.invalidate_filter()
+
+    def __init__(self, title, parent_page, main_window, **kwargs):
         super().__init__(**kwargs)
 
         GLib.idle_add(lambda *_: self.title.set_label(title))
@@ -91,6 +99,7 @@ class DataSubpage(Gtk.ScrolledWindow):
 
         # Extra Object Creation
         self.main_window = main_window
+        self.parent_page = parent_page
         self.sort_mode = ""
         self.sort_ascend = False
         self.total_size = 0
@@ -101,5 +110,7 @@ class DataSubpage(Gtk.ScrolledWindow):
 
         # Apply
         self.flow_box.set_sort_func(self.sort_func)
+        self.flow_box.set_filter_func(self.filter_func)
 
         # Connections
+        parent_page.search_entry.connect("search-changed", self.on_invalidate)
