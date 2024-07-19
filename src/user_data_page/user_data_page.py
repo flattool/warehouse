@@ -16,6 +16,8 @@ class UserDataPage(Adw.BreakpointBin):
     select_button = gtc()
     stack = gtc()
     sort_pop = gtc()
+    asc = gtc()
+    dsc = gtc()
     sort_list = gtc()
     sort_name = gtc()
     sort_id = gtc()
@@ -27,15 +29,37 @@ class UserDataPage(Adw.BreakpointBin):
     instance = None
 
     def sort_handler(self, button):
-        if button.get_active() == False:
+        if not button.get_active():
             return
-        self.sort_name.set_active(self.sort_name is button)
-        self.sort_id.set_active(self.sort_id is button)
-        self.sort_size.set_active(self.sort_size is button)
-        if button is self.sort_name:
-            self.sort_id.grab_focus()
-        else:
-            self.sort_name.grab_focus()
+
+        match button:
+            case self.asc:
+                self.adp.sort_ascend = True
+                self.ldp.sort_ascend = True
+            case self.dsc:
+                self.adp.sort_ascend = False
+                self.ldp.sort_ascend = False
+            case self.sort_name:
+                self.sort_id.grab_focus()
+                self.sort_id.set_active(False)
+                self.sort_size.set_active(False)
+                self.adp.sort_mode = "name"
+                self.ldp.sort_mode = "name"
+            case self.sort_id:
+                self.sort_size.grab_focus()
+                self.sort_size.set_active(False)
+                self.sort_name.set_active(False)
+                self.adp.sort_mode = "id"
+                self.ldp.sort_mode = "id"
+            case self.sort_size:
+                self.sort_name.grab_focus()
+                self.sort_name.set_active(False)
+                self.sort_id.set_active(False)
+                self.adp.sort_mode = "size"
+                self.ldp.sort_mode = "size"
+
+        self.adp.flow_box.invalidate_sort()
+        self.ldp.flow_box.invalidate_sort()
 
     # def bpt_handler(self, _, is_applied):
     #     if is_applied and self.adj.get_value() == 0:
@@ -65,28 +89,17 @@ class UserDataPage(Adw.BreakpointBin):
     def start_loading(self, *args):
         self.adp.size_label.set_label("Loading Size…")
         self.adp.spinner.set_visible(True)
+        self.adp.flow_box.remove_all()
         self.ldp.size_label.set_label("Loading Size…")
         self.ldp.spinner.set_visible(True)
+        self.ldp.flow_box.remove_all()
 
     def end_loading(self, *args):
-        def test(box1, box2):
-            return box1.get_child().get_label() > box2.get_child().get_label()
-
-        def test2(box1, box2):
-            return box1.get_child().get_label() < box2.get_child().get_label()
-
-        self.adp.flow_box.insert(Gtk.Label(label="B"), 4)
-        self.adp.flow_box.insert(Gtk.Label(label="D"), 1)
-        self.adp.flow_box.insert(Gtk.Label(label="A"), 1)
-        self.adp.flow_box.set_sort_func(test)
-        self.adp.flow_box.insert(Gtk.Label(label="C"), 1)
-        self.adp.flow_box.set_sort_func(test2)
-        # self.sort_mode = "size"
-        # def callback(*args):
-        #     self.adp.generate_list(self.sort_mode, data=self.active_data, paks=self.data_flatpaks)
-        #     self.ldp.generate_list(self.sort_mode, data=self.leftover_data)
-
-        # Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
+        def callback(*args):
+            self.adp.generate_list(self.data_flatpaks, self.active_data, "size")
+            self.ldp.generate_list([], self.leftover_data, "name")
+        
+        Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -118,6 +131,8 @@ class UserDataPage(Adw.BreakpointBin):
         # Connections
         self.sidebar_button.connect("clicked", lambda *_, ms=main_window.main_split: ms.set_show_sidebar(not ms.get_show_sidebar() if not ms.get_collapsed() else True))
         # self.adj.connect("value-changed", self.show_title_handler)
+        self.asc.connect("toggled", self.sort_handler)
+        self.dsc.connect("toggled", self.sort_handler)
         self.sort_name.connect("toggled", self.sort_handler)
         self.sort_id.connect("toggled", self.sort_handler)
         self.sort_size.connect("toggled", self.sort_handler)

@@ -30,49 +30,57 @@ class DataSubpage(Gtk.ScrolledWindow):
         return int(subprocess.run(['du', '-s', path], capture_output=True, text=True).stdout.split("\t")[0])
 
     def show_size(self, data):
-        for folder in data:
-            self.total_size += self.get_size(f"{HostInfo.home}/.var/app/{folder}")
+        def thread(*args):
+            for folder in data:
+                self.total_size += self.get_size(f"{HostInfo.home}/.var/app/{folder}")
 
-        self.size_label.set_label(self.human_readable_size(self.total_size))
-        self.spinner.set_visible(False)
+        def callback(*args):
+            self.size_label.set_label(self.human_readable_size(self.total_size))
+            self.spinner.set_visible(False)
 
-    def sort_boxes(self, sort_mode):
-        if sort_mode == "name":
-                self.boxes = sorted(self.boxes, key=lambda box: box.title)
-        elif sort_mode == "id":
-            self.boxes = sorted(self.boxes, key=lambda box: box.subtitle)
-        else:
-            self.boxes = sorted(self.boxes, key=lambda box: box.size)
+        Gio.Task.new(None, None, callback).run_in_thread(thread)
 
-    def generate_list(self, sort_mode, data=None, paks=None):
-        self.total_size = 0
-        Gio.Task().run_in_thread(lambda *_: self.show_size(data))
-        self.flow_box.remove_all()
-        total = len(data)
-        GLib.idle_add(lambda *_z: self.subtitle.set_label(_("{} Items").format(total)))
+    def sort_func(self, box1, box2):
+        i1 = None
+        i2 = None
+        if self.sort_mode == "name":
+            i1 = box1.get_child().title.lower()
+            i2 = box2.get_child().title.lower()
+
+        if self.sort_mode == "id":
+            i1 = box1.get_child().subtitle.lower()
+            i2 = box2.get_child().subtitle.lower()
+
+        if self.sort_mode == "size" and self.ready_to_sort_size:
+            i1 = box1.get_child().size
+            i2 = box2.get_child().size
+
+        if i1 is None or i2 is None:
+            return 0
+
+        return i1 > i2 if self.sort_ascend else i1 < i2
+
+    def box_size_callback(self):
+        self.finished_boxes += 1
+        if self.finished_boxes == self.total_items:
+            self.ready_to_sort_size = True
+            self.flow_box.invalidate_sort()
+
+    def generate_list(self, flatpaks, data, sort_mode):
         self.boxes.clear()
-
-        def thread(sort_mode, data, paks):
-            if paks:
-                for package in paks:
-                    folder = package.info["id"]
-                    path = f"{HostInfo.home}/.var/app/{folder}"
-                    box = DataBox(package.info["name"], folder, path, package.icon_path)
-                    box.size = self.get_size(path)
-                    box.size_label.set_label(self.human_readable_size(box.size))
-                    self.boxes.append(box)
-            else:
-                for folder in data:
-                    box = DataBox(folder.split('.')[-1], folder, f"{HostInfo.home}/.var/app/{folder}")
-                    self.boxes.append(box)
-
-            self.sort_boxes(sort_mode)
-
-        def callback(sort_mode):
-            for box in self.boxes:
+        self.ready_to_sort_size = False
+        self.finished_boxes = 0
+        self.sort_mode = sort_mode
+        self.total_items = len(data)
+        self.subtitle.set_label(_("{} Items").format(self.total_items))
+        if flatpaks:
+            for i, pak in enumerate(flatpaks):
+                box = DataBox(pak.info["name"], pak.info["id"], pak.data_path, pak.icon_path, self.box_size_callback)
+                self.boxes.append(box)
                 self.flow_box.append(box)
-        
-        Gio.Task.new(None, None, lambda *_: callback(sort_mode)).run_in_thread(lambda *_: thread(sort_mode, data, paks))
+        else:
+            for i, folder in enumerate(data):
+                self.flow_box.append(DataBox(folder.split('.')[-1], folder, f"{HostInfo.home}/.var/app/{folder}"))
 
     def __init__(self, title, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -84,9 +92,15 @@ class DataSubpage(Gtk.ScrolledWindow):
 
         # Extra Object Creation
         self.main_window = main_window
+        self.sort_mode = ""
+        self.sort_ascend = False
         self.total_size = 0
+        self.total_items = 0
         self.boxes = []
+        self.ready_to_sort_size = False
+        self.finished_boxes = 0
 
         # Apply
+        self.flow_box.set_sort_func(self.sort_func)
 
         # Connections
