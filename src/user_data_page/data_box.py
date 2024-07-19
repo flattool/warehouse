@@ -15,13 +15,14 @@ class DataBox(Gtk.ListBox):
     check_button = gtc()
 
     def human_readable_size(self):
+        working_size = self.size
         units = ['KB', 'MB', 'GB', 'TB']
         # size *= 1024
         for unit in units:
-            if self.size < 1024:
-                return f"~ {round(self.size)} {unit}"
-            self.size /= 1024
-        return f"~ {round(self.size)} PB"
+            if working_size < 1024:
+                return f"~ {round(working_size)} {unit}"
+            working_size /= 1024
+        return f"~ {round(working_size)} PB"
 
     def get_size(self, *args):
         self.size = int(subprocess.run(['du', '-s', self.data_path], capture_output=True, text=True).stdout.split("\t")[0])
@@ -31,7 +32,7 @@ class DataBox(Gtk.ListBox):
             self.size_label.set_label(self.human_readable_size())
             self.spinner.set_visible(False)
             if self.callback:
-                self.callback()
+                self.callback(self.size)
 
         Gio.Task.new(None, None, callback).run_in_thread(self.get_size)
 

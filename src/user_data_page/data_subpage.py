@@ -16,29 +16,15 @@ class DataSubpage(Gtk.ScrolledWindow):
     size_label = gtc()
     flow_box = gtc()
 
-    def human_readable_size(self, size):
+    def human_readable_size(self):
+        working_size = self.total_size
         units = ['KB', 'MB', 'GB', 'TB']
         # size *= 1024
         for unit in units:
-            if size < 1024:
-                return f"~ {round(size)} {unit}"
-            size /= 1024
-        return f"~ {round(size)} PB"
-
-    def get_size(self, path):
-        sed = "sed 's/K/ KB/; s/M/ MB/; s/G/ GB/; s/T/ TB/; s/P/ PB/;'"
-        return int(subprocess.run(['du', '-s', path], capture_output=True, text=True).stdout.split("\t")[0])
-
-    def show_size(self, data):
-        def thread(*args):
-            for folder in data:
-                self.total_size += self.get_size(f"{HostInfo.home}/.var/app/{folder}")
-
-        def callback(*args):
-            self.size_label.set_label(self.human_readable_size(self.total_size))
-            self.spinner.set_visible(False)
-
-        Gio.Task.new(None, None, callback).run_in_thread(thread)
+            if working_size < 1024:
+                return f"~ {round(working_size)} {unit}"
+            working_size /= 1024
+        return f"~ {round(working_size)} PB"
 
     def sort_func(self, box1, box2):
         i1 = None
@@ -60,9 +46,12 @@ class DataSubpage(Gtk.ScrolledWindow):
 
         return i1 > i2 if self.sort_ascend else i1 < i2
 
-    def box_size_callback(self):
+    def box_size_callback(self, size):
         self.finished_boxes += 1
+        self.total_size += size
         if self.finished_boxes == self.total_items:
+            self.size_label.set_label(self.human_readable_size())
+            self.spinner.set_visible(False)
             self.ready_to_sort_size = True
             self.flow_box.invalidate_sort()
 
@@ -70,6 +59,7 @@ class DataSubpage(Gtk.ScrolledWindow):
         self.boxes.clear()
         self.ready_to_sort_size = False
         self.finished_boxes = 0
+        self.total_size = 0
         self.total_items = len(data)
         self.subtitle.set_label(_("{} Items").format(self.total_items))
         if flatpaks:
@@ -79,7 +69,7 @@ class DataSubpage(Gtk.ScrolledWindow):
                 self.flow_box.append(box)
         else:
             for i, folder in enumerate(data):
-                self.flow_box.append(DataBox(folder.split('.')[-1], folder, f"{HostInfo.home}/.var/app/{folder}"))
+                self.flow_box.append(DataBox(folder.split('.')[-1], folder, f"{HostInfo.home}/.var/app/{folder}", None, self.box_size_callback))
 
     def __init__(self, title, main_window, **kwargs):
         super().__init__(**kwargs)
