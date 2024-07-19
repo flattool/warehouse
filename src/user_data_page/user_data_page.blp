@@ -28,7 +28,7 @@ template $UserDataPage : Adw.BreakpointBin {
                     }
                 ;
                 [start]
-                Button sidebar_button {
+                ToggleButton sidebar_button {
                     icon-name: "dock-left-symbolic";
                     tooltip-text: _("Show Sidebar");
                 }
@@ -38,13 +38,26 @@ template $UserDataPage : Adw.BreakpointBin {
                     tooltip-text: _("Search User Data");
                 }
                 [end]
-                MenuButton sort_button {
-                    popover: sort_pop;
+                MenuButton active_sort_button {
+                    popover: active_sort_pop;
                     icon-name: "vertical-arrows-long-symbolic";
                     tooltip-text: _("Sort User Data");
                 }
                 [end]
-                ToggleButton select_button {
+                ToggleButton active_select_button {
+                    icon-name: "selection-mode-symbolic";
+                    tooltip-text: _("Select User Data");
+                }
+                [end]
+                MenuButton leftover_sort_button {
+                    visible: false;
+                    popover: leftover_sort_pop;
+                    icon-name: "vertical-arrows-long-symbolic";
+                    tooltip-text: _("Sort User Data");
+                }
+                [end]
+                ToggleButton leftover_select_button {
+                    visible: false;
                     icon-name: "selection-mode-symbolic";
                     tooltip-text: _("Select User Data");
                 }
@@ -63,7 +76,6 @@ template $UserDataPage : Adw.BreakpointBin {
             }
             [bottom]
             Revealer {
-                reveal-child: bind select_button.active;
                 transition-type: slide_up;
                 [center]
                 Box bottom_bar {
@@ -107,7 +119,7 @@ template $UserDataPage : Adw.BreakpointBin {
     }
 }
 
-Popover sort_pop {
+Popover active_sort_pop {
     styles ["menu"]
     Box {
         orientation: vertical;
@@ -118,21 +130,21 @@ Popover sort_pop {
         Box {
             homogeneous: true;
             spacing: 3;
-            ToggleButton asc {
+            ToggleButton active_asc {
                 active: true;
                 styles ["flat"]
-                can-focus: bind asc.active inverted;
-                can-target: bind asc.active inverted;
+                can-focus: bind active_asc.active inverted;
+                can-target: bind active_asc.active inverted;
                 Adw.ButtonContent {
                     icon-name: "view-sort-ascending-symbolic";
                     label: _("Ascending");
                 }
             }
-            ToggleButton dsc {
+            ToggleButton active_dsc {
                 styles ["flat"]
-                active: bind asc.active inverted bidirectional;
-                can-focus: bind dsc.active inverted;
-                can-target: bind dsc.active inverted;
+                active: bind active_asc.active inverted bidirectional;
+                can-focus: bind active_dsc.active inverted;
+                can-target: bind active_dsc.active inverted;
                 Adw.ButtonContent {
                     icon-name: "view-sort-descending-symbolic";
                     label: _("Descending");
@@ -141,31 +153,100 @@ Popover sort_pop {
         }
         Separator {
         }
-        Box sort_list {
+        Box {
             homogeneous: true;
             spacing: 3;
-            ToggleButton sort_name {
+            ToggleButton active_sort_name {
                 active: true;
                 styles ["flat"]
-                can-focus: bind sort_name.active inverted;
-                can-target: bind sort_name.active inverted;
+                can-focus: bind active_sort_name.active inverted;
+                can-target: bind active_sort_name.active inverted;
                 Adw.ButtonContent {
                     icon-name: "font-x-generic-symbolic";
                     label: _("Name");
                 }
             }
-            ToggleButton sort_id {
+            ToggleButton active_sort_id {
                 styles ["flat"]
-                can-focus: bind sort_id.active inverted;
-                can-target: bind sort_id.active inverted;
+                can-focus: bind active_sort_id.active inverted;
+                can-target: bind active_sort_id.active inverted;
                 Adw.ButtonContent {
                     icon-name: "tag-outline-symbolic";
                     label: _("ID");
                 }
             }
-            ToggleButton sort_size {
-                can-focus: bind sort_size.active inverted;
-                can-target: bind sort_size.active inverted;
+            ToggleButton active_sort_size {
+                can-focus: bind active_sort_size.active inverted;
+                can-target: bind active_sort_size.active inverted;
+                styles ["flat"]
+                Adw.ButtonContent {
+                    icon-name: "harddisk-symbolic";
+                    label: _("Size");
+                }
+            }
+        }
+    }
+}
+
+Popover leftover_sort_pop {
+    styles ["menu"]
+    Box {
+        orientation: vertical;
+        margin-start: 6;
+        margin-end: 6;
+        margin-top: 6;
+        margin-bottom: 6;
+        Box {
+            homogeneous: true;
+            spacing: 3;
+            ToggleButton leftover_asc {
+                active: true;
+                styles ["flat"]
+                can-focus: bind leftover_asc.active inverted;
+                can-target: bind leftover_asc.active inverted;
+                Adw.ButtonContent {
+                    icon-name: "view-sort-ascending-symbolic";
+                    label: _("Ascending");
+                }
+            }
+            ToggleButton leftover_dsc {
+                styles ["flat"]
+                active: bind leftover_asc.active inverted bidirectional;
+                can-focus: bind leftover_dsc.active inverted;
+                can-target: bind leftover_dsc.active inverted;
+                Adw.ButtonContent {
+                    icon-name: "view-sort-descending-symbolic";
+                    label: _("Descending");
+                }
+            }
+        }
+        Separator {
+        }
+        Box {
+            homogeneous: true;
+            spacing: 3;
+            ToggleButton leftover_sort_name {
+                active: true;
+                styles ["flat"]
+                can-focus: bind leftover_sort_name.active inverted;
+                can-target: bind leftover_sort_name.active inverted;
+                Adw.ButtonContent {
+                    icon-name: "font-x-generic-symbolic";
+                    label: _("Name");
+                }
+            }
+            ToggleButton leftover_sort_id {
+                styles ["flat"]
+                can-focus: bind leftover_sort_id.active inverted;
+                can-target: bind leftover_sort_id.active inverted;
+                Adw.ButtonContent {
+                    icon-name: "tag-outline-symbolic";
+                    label: _("ID");
+                }
+            }
+            ToggleButton leftover_sort_size {
+                can-focus: bind leftover_sort_size.active inverted;
+                can-target: bind leftover_sort_size.active inverted;
                 styles ["flat"]
                 Adw.ButtonContent {
                     icon-name: "harddisk-symbolic";

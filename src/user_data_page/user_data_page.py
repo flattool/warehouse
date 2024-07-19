@@ -14,55 +14,58 @@ class UserDataPage(Adw.BreakpointBin):
     switcher_bar = gtc()
     sidebar_button = gtc()
     search_button = gtc()
-    select_button = gtc()
+    active_select_button = gtc()
+    active_sort_button = gtc()
+    leftover_select_button = gtc()
+    leftover_sort_button = gtc()
     search_entry = gtc()
     stack = gtc()
-    sort_pop = gtc()
-    asc = gtc()
-    dsc = gtc()
-    sort_list = gtc()
-    sort_name = gtc()
-    sort_id = gtc()
-    sort_size = gtc()
+    # sort_pop = gtc()
+    # asc = gtc()
+    # dsc = gtc()
+    # sort_list = gtc()
+    # sort_name = gtc()
+    # sort_id = gtc()
+    # sort_size = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
     #    This must be set to the created object from within the class's __init__ method
     instance = None
 
-    def sort_handler(self, button, should_sort=True):
-        if not button.get_active():
-            return
+    # def sort_handler(self, button, should_sort=True):
+    #     if not button.get_active():
+    #         return
 
-        match button:
-            case self.asc:
-                self.adp.sort_ascend = True
-                self.ldp.sort_ascend = True
-            case self.dsc:
-                self.adp.sort_ascend = False
-                self.ldp.sort_ascend = False
-            case self.sort_name:
-                self.sort_id.grab_focus()
-                self.sort_id.set_active(False)
-                self.sort_size.set_active(False)
-                self.adp.sort_mode = "name"
-                self.ldp.sort_mode = "name"
-            case self.sort_id:
-                self.sort_size.grab_focus()
-                self.sort_size.set_active(False)
-                self.sort_name.set_active(False)
-                self.adp.sort_mode = "id"
-                self.ldp.sort_mode = "id"
-            case self.sort_size:
-                self.sort_name.grab_focus()
-                self.sort_name.set_active(False)
-                self.sort_id.set_active(False)
-                self.adp.sort_mode = "size"
-                self.ldp.sort_mode = "size"
+    #     match button:
+    #         case self.asc:
+    #             self.adp.sort_ascend = True
+    #             self.ldp.sort_ascend = True
+    #         case self.dsc:
+    #             self.adp.sort_ascend = False
+    #             self.ldp.sort_ascend = False
+    #         case self.sort_name:
+    #             self.sort_id.grab_focus()
+    #             self.sort_id.set_active(False)
+    #             self.sort_size.set_active(False)
+    #             self.adp.sort_mode = "name"
+    #             self.ldp.sort_mode = "name"
+    #         case self.sort_id:
+    #             self.sort_size.grab_focus()
+    #             self.sort_size.set_active(False)
+    #             self.sort_name.set_active(False)
+    #             self.adp.sort_mode = "id"
+    #             self.ldp.sort_mode = "id"
+    #         case self.sort_size:
+    #             self.sort_name.grab_focus()
+    #             self.sort_name.set_active(False)
+    #             self.sort_id.set_active(False)
+    #             self.adp.sort_mode = "size"
+    #             self.ldp.sort_mode = "size"
 
-        if should_sort:
-            self.adp.flow_box.invalidate_sort()
-            self.ldp.flow_box.invalidate_sort()
+    #     if should_sort:
+    #         self.adp.flow_box.invalidate_sort()
+    #         self.ldp.flow_box.invalidate_sort()
 
     # def bpt_handler(self, _, is_applied):
     #     if is_applied and self.adj.get_value() == 0:
@@ -97,11 +100,11 @@ class UserDataPage(Adw.BreakpointBin):
         self.ldp.spinner.set_visible(True)
         self.ldp.flow_box.remove_all()
 
-        self.sort_handler(self.asc, False)
-        self.sort_handler(self.dsc, False)
-        self.sort_handler(self.sort_name, False)
-        self.sort_handler(self.sort_id, False)
-        self.sort_handler(self.sort_size, False)
+        # self.sort_handler(self.asc, False)
+        # self.sort_handler(self.dsc, False)
+        # self.sort_handler(self.sort_name, False)
+        # self.sort_handler(self.sort_id, False)
+        # self.sort_handler(self.sort_size, False)
 
     def end_loading(self, *args):
         def callback(*args):
@@ -110,6 +113,12 @@ class UserDataPage(Adw.BreakpointBin):
             self.search_button.grab_focus()
         
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
+
+    def switch_view_handler(self, page):
+        self.active_select_button.set_visible(page is self.adp)
+        self.active_sort_button.set_visible(page is self.adp)
+        self.leftover_select_button.set_visible(page is self.ldp)
+        self.leftover_sort_button.set_visible(page is self.ldp)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -123,6 +132,7 @@ class UserDataPage(Adw.BreakpointBin):
         self.active_data = []
         self.leftover_data = []
         self.total_items = 0
+        ms=main_window.main_split
 
         # Apply
         self.stack.add_titled_with_icon(
@@ -137,14 +147,18 @@ class UserDataPage(Adw.BreakpointBin):
             title=_("Leftover Data"),
             icon_name="folder-templates-symbolic",
         )
+        self.sidebar_button.set_active(ms.get_show_sidebar())
 
         # Connections
-        self.sidebar_button.connect("clicked", lambda *_, ms=main_window.main_split: ms.set_show_sidebar(not ms.get_show_sidebar() if not ms.get_collapsed() else True))
+        # self.sidebar_button.connect("clicked", lambda *_, ms=main_window.main_split: ms.set_show_sidebar(not ms.get_show_sidebar() if not ms.get_collapsed() else True))
+        main_window.main_split.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
+        self.sidebar_button.connect("toggled", lambda *_: ms.set_show_sidebar(self.sidebar_button.get_active()))
+        self.stack.connect("notify::visible-child", lambda *_: self.switch_view_handler(self.stack.get_visible_child()))
         # self.adj.connect("value-changed", self.show_title_handler)
-        self.asc.connect("toggled", self.sort_handler)
-        self.dsc.connect("toggled", self.sort_handler)
-        self.sort_name.connect("toggled", self.sort_handler)
-        self.sort_id.connect("toggled", self.sort_handler)
-        self.sort_size.connect("toggled", self.sort_handler)
+        # self.asc.connect("toggled", self.sort_handler)
+        # self.dsc.connect("toggled", self.sort_handler)
+        # self.sort_name.connect("toggled", self.sort_handler)
+        # self.sort_id.connect("toggled", self.sort_handler)
+        # self.sort_size.connect("toggled", self.sort_handler)
         # self.bpt.connect("apply", self.bpt_handler, True)
         # self.bpt.connect("unapply", self.bpt_handler, False)

@@ -6,10 +6,15 @@ from .host_info import HostInfo
 import subprocess
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/data_subpage.ui")
-class DataSubpage(Gtk.ScrolledWindow):
+class DataSubpage(Gtk.Box):
     __gtype_name__ = 'DataSubpage'
     gtc = Gtk.Template.Child
 
+    scrolled_window = gtc()
+    
+    outer_box = gtc()
+    label_box = gtc()
+    subtitle_size_box = gtc()
     title = gtc()
     subtitle = gtc()
     spinner = gtc()
@@ -62,6 +67,7 @@ class DataSubpage(Gtk.ScrolledWindow):
         self.total_size = 0
         self.total_items = len(data)
         self.subtitle.set_label(_("{} Items").format(self.total_items))
+        self.min_horizontal_label_width = self.label_box.get_preferred_size()[1].width
         if flatpaks:
             for i, pak in enumerate(flatpaks):
                 box = DataBox(pak.info["name"], pak.info["id"], pak.data_path, pak.icon_path, self.box_size_callback)
@@ -89,6 +95,14 @@ class DataSubpage(Gtk.ScrolledWindow):
     def on_invalidate(self, box):
         self.flow_box.invalidate_filter()
 
+    def label_orientation_handler(self, adj):
+        current_page_width = adj.get_upper() - 24
+        
+        if self.label_box.get_allocated_width() < self.min_horizontal_label_width:
+            GLib.idle_add(lambda *_: self.label_box.set_orientation(Gtk.Orientation.VERTICAL))
+        else:
+            GLib.idle_add(lambda *_: self.label_box.set_orientation(Gtk.Orientation.HORIZONTAL))
+
     def __init__(self, title, parent_page, main_window, **kwargs):
         super().__init__(**kwargs)
 
@@ -107,6 +121,7 @@ class DataSubpage(Gtk.ScrolledWindow):
         self.boxes = []
         self.ready_to_sort_size = False
         self.finished_boxes = 0
+        self.min_horizontal_label_width = self.label_box.get_preferred_size()[1].width
 
         # Apply
         self.flow_box.set_sort_func(self.sort_func)
@@ -114,3 +129,6 @@ class DataSubpage(Gtk.ScrolledWindow):
 
         # Connections
         parent_page.search_entry.connect("search-changed", self.on_invalidate)
+
+        # self.title.get_preferred_size()[1].width + self.subtitle.get_preferred_size()[1].width
+        self.scrolled_window.get_hadjustment().connect("changed", self.label_orientation_handler)
