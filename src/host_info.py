@@ -225,6 +225,7 @@ class Remote:
 class HostInfo:
     home = home
     clipboard = Gdk.Display.get_default().get_clipboard()
+    main_window = None
 
     # Get all possible installation icon theme dirs
     output = subprocess.run(

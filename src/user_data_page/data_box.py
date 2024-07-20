@@ -65,6 +65,7 @@ class DataBox(Gtk.ListBox):
 
     def trash_handler(self, *args):
         self.failed_trash = False
+
         def thread(*args):
             try:
                 subprocess.run(['gio', 'trash', self.data_path], check=True, text=True, capture_output=True)
@@ -81,7 +82,18 @@ class DataBox(Gtk.ListBox):
                 if self.trash_callback:
                     self.trash_callback(self)
 
-        Gio.Task.new(None, None, callback).run_in_thread(thread)
+        def on_response(_, response):
+            if response != "continue":
+                return
+
+            Gio.Task.new(None, None, callback).run_in_thread(thread)
+
+        dialog = Adw.AlertDialog(heading=_("Trash {}?").format(self.title), body=_("{}'s data will be sent to the trash").format(self.title))
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Continue"))
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.connect("response", on_response)
+        dialog.present(ErrorToast.main_window)
 
     def __init__(self, toast_overlay, title, subtitle, data_path, icon_path=None, callback=None, trash_callback=None, **kwargs):
         super().__init__(**kwargs)
