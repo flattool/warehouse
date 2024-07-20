@@ -273,6 +273,9 @@ class PackagesPage(Adw.BreakpointBin):
         else:
             self.set_status(self.no_results)
 
+    def sort_func(self, row1, row2):
+        return row1.package.info["name"] > row2.package.info["name"]
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
@@ -288,6 +291,7 @@ class PackagesPage(Adw.BreakpointBin):
         # Apply
         # self.set_status("loading_packages")
         self.packages_list_box.set_filter_func(self.filter_func)
+        self.packages_list_box.set_sort_func(self.sort_func)
         self.content_stack.add_child(self.properties_page)
         self.content_stack.add_child(self.filters_page)
         self.__class__.instance = self

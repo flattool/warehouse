@@ -357,7 +357,4 @@ class HostInfo:
                 if not runtime in this.dependant_runtime_refs:
                     this.dependant_runtime_refs.append(runtime)
 
-            this.flatpaks = sorted(this.flatpaks, key=lambda flatpak: flatpak.info["name"].lower())
-            this.dependant_runtime_refs = sorted(this.dependant_runtime_refs)
-
         Gio.Task.new(None, None, callback).run_in_thread(thread)
