@@ -44,7 +44,7 @@ class Flatpak:
 
     def trash_data(self, callback=None):
         try:
-            subprocess.run(['gio', 'trash', f"{self.data_path}"], capture_output=True, text=True, check=True)
+            subprocess.run(['gio', 'trash', self.data_path], capture_output=True, text=True, check=True)
         except subprocess.CalledProcessError as cpe:
             raise cpe
         except Exception as e:

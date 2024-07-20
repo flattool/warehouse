@@ -19,6 +19,7 @@ class UserDataPage(Adw.BreakpointBin):
     leftover_select_button = gtc()
     leftover_sort_button = gtc()
     search_entry = gtc()
+    toast_overlay = gtc()
     stack = gtc()
     revealer = gtc()
     

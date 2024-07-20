@@ -72,12 +72,12 @@ class DataSubpage(Gtk.Box):
         self.min_horizontal_label_width = self.label_box.get_preferred_size()[1].width
         if flatpaks:
             for i, pak in enumerate(flatpaks):
-                box = DataBox(pak.info["name"], pak.info["id"], pak.data_path, pak.icon_path, self.box_size_callback)
+                box = DataBox(self.parent_page.toast_overlay, pak.info["name"], pak.info["id"], pak.data_path, pak.icon_path, self.box_size_callback, lambda trashed_box: self.flow_box.remove(trashed_box))
                 self.boxes.append(box)
                 self.flow_box.append(box)
         else:
             for i, folder in enumerate(data):
-                box = DataBox(folder.split('.')[-1], folder, f"{HostInfo.home}/.var/app/{folder}", None, self.box_size_callback)
+                box = DataBox(self.parent_page.toast_overlay, folder.split('.')[-1], folder, f"{HostInfo.home}/.var/app/{folder}", None, self.box_size_callback, lambda trashed_box: self.flow_box.remove(trashed_box))
                 self.flow_box.append(box)
                 child = self.flow_box.get_child_at_index(i)
                 child.set_focusable(False)
