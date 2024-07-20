@@ -20,64 +20,24 @@ class UserDataPage(Adw.BreakpointBin):
     leftover_sort_button = gtc()
     search_entry = gtc()
     stack = gtc()
-    # sort_pop = gtc()
-    # asc = gtc()
-    # dsc = gtc()
-    # sort_list = gtc()
-    # sort_name = gtc()
-    # sort_id = gtc()
-    # sort_size = gtc()
+    
+    active_asc = gtc()
+    active_dsc = gtc()
+    active_sort_name = gtc()
+    active_sort_id = gtc()
+    active_sort_size = gtc()
+
+    leftover_asc = gtc()
+    leftover_dsc = gtc()
+    leftover_sort_name = gtc()
+    leftover_sort_id = gtc()
+    leftover_sort_size = gtc()
+    
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
     #    This must be set to the created object from within the class's __init__ method
     instance = None
-
-    # def sort_handler(self, button, should_sort=True):
-    #     if not button.get_active():
-    #         return
-
-    #     match button:
-    #         case self.asc:
-    #             self.adp.sort_ascend = True
-    #             self.ldp.sort_ascend = True
-    #         case self.dsc:
-    #             self.adp.sort_ascend = False
-    #             self.ldp.sort_ascend = False
-    #         case self.sort_name:
-    #             self.sort_id.grab_focus()
-    #             self.sort_id.set_active(False)
-    #             self.sort_size.set_active(False)
-    #             self.adp.sort_mode = "name"
-    #             self.ldp.sort_mode = "name"
-    #         case self.sort_id:
-    #             self.sort_size.grab_focus()
-    #             self.sort_size.set_active(False)
-    #             self.sort_name.set_active(False)
-    #             self.adp.sort_mode = "id"
-    #             self.ldp.sort_mode = "id"
-    #         case self.sort_size:
-    #             self.sort_name.grab_focus()
-    #             self.sort_name.set_active(False)
-    #             self.sort_id.set_active(False)
-    #             self.adp.sort_mode = "size"
-    #             self.ldp.sort_mode = "size"
-
-    #     if should_sort:
-    #         self.adp.flow_box.invalidate_sort()
-    #         self.ldp.flow_box.invalidate_sort()
-
-    # def bpt_handler(self, _, is_applied):
-    #     if is_applied and self.adj.get_value() == 0:
-    #         self.header_bar.set_show_title(False)
-    #     else:
-    #         self.header_bar.set_show_title(True)
-
-    # def show_title_handler(self, *args):
-    #     if self.adj.get_value() != 0:
-    #         self.header_bar.set_show_title(True)
-    #     elif self.switcher_bar.get_reveal():
-    #         self.header_bar.set_show_title(False)
 
     def sort_data(self, *args):
         self.data_flatpaks.clear()
@@ -100,12 +60,6 @@ class UserDataPage(Adw.BreakpointBin):
         self.ldp.spinner.set_visible(True)
         self.ldp.flow_box.remove_all()
 
-        # self.sort_handler(self.asc, False)
-        # self.sort_handler(self.dsc, False)
-        # self.sort_handler(self.sort_name, False)
-        # self.sort_handler(self.sort_id, False)
-        # self.sort_handler(self.sort_size, False)
-
     def end_loading(self, *args):
         def callback(*args):
             self.adp.generate_list(self.data_flatpaks, self.active_data)
@@ -115,6 +69,7 @@ class UserDataPage(Adw.BreakpointBin):
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
 
     def switch_view_handler(self, page):
+        print('test')
         self.active_select_button.set_visible(page is self.adp)
         self.active_sort_button.set_visible(page is self.adp)
         self.leftover_select_button.set_visible(page is self.ldp)
@@ -154,11 +109,47 @@ class UserDataPage(Adw.BreakpointBin):
         main_window.main_split.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
         self.sidebar_button.connect("toggled", lambda *_: ms.set_show_sidebar(self.sidebar_button.get_active()))
         self.stack.connect("notify::visible-child", lambda *_: self.switch_view_handler(self.stack.get_visible_child()))
-        # self.adj.connect("value-changed", self.show_title_handler)
-        # self.asc.connect("toggled", self.sort_handler)
-        # self.dsc.connect("toggled", self.sort_handler)
-        # self.sort_name.connect("toggled", self.sort_handler)
-        # self.sort_id.connect("toggled", self.sort_handler)
-        # self.sort_size.connect("toggled", self.sort_handler)
-        # self.bpt.connect("apply", self.bpt_handler, True)
-        # self.bpt.connect("unapply", self.bpt_handler, False)
+        
+        def sorter(button=None):
+            if button and not button.get_active():
+                return
+
+            if self.active_sort_name.get_active():
+                self.adp.sort_mode = "name"
+            elif self.active_sort_id.get_active():
+                self.adp.sort_mode = "id"
+            elif self.active_sort_size.get_active():
+                self.adp.sort_mode = "size"
+            
+            if self.leftover_sort_name.get_active():
+                self.ldp.sort_mode = "name"
+            elif self.leftover_sort_id.get_active():
+                self.ldp.sort_mode = "id"
+            elif self.leftover_sort_size.get_active():
+                self.ldp.sort_mode = "size"
+                
+            self.adp.sort_ascend = self.active_asc.get_active()
+            self.ldp.sort_ascend = self.leftover_asc.get_active()
+
+            self.adp.flow_box.invalidate_sort()
+            self.ldp.flow_box.invalidate_sort()
+
+        self.active_asc.connect("clicked", sorter)
+        self.active_dsc.connect("clicked", sorter)
+        self.active_sort_name.connect("clicked", sorter)
+        self.active_sort_id.connect("clicked", sorter)
+        self.active_sort_size.connect("clicked", sorter)
+
+        self.leftover_asc.connect("clicked", sorter)
+        self.leftover_dsc.connect("clicked", sorter)
+        self.leftover_sort_name.connect("clicked", sorter)
+        self.leftover_sort_id.connect("clicked", sorter)
+        self.leftover_sort_size.connect("clicked", sorter)
+
+        sorter()
+
+        def thingie(*args):
+            while True:
+                print(self.leftover_sort_id.get_active())
+
+        # Gio.Task().run_in_thread(thingie)

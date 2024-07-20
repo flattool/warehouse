@@ -32,6 +32,8 @@ class DataSubpage(Gtk.Box):
         return f"~ {round(working_size)} PB"
 
     def sort_func(self, box1, box2):
+        import random
+        # print(random.randint(1, 100), self.sort_mode, self.sort_ascend)
         i1 = None
         i2 = None
         if self.sort_mode == "name":
@@ -75,7 +77,8 @@ class DataSubpage(Gtk.Box):
                 self.flow_box.append(box)
         else:
             for i, folder in enumerate(data):
-                self.flow_box.append(DataBox(folder.split('.')[-1], folder, f"{HostInfo.home}/.var/app/{folder}", None, self.box_size_callback))
+                box = DataBox(folder.split('.')[-1], folder, f"{HostInfo.home}/.var/app/{folder}", None, self.box_size_callback)
+                self.flow_box.append(box)
                 child = self.flow_box.get_child_at_index(i)
                 child.set_focusable(False)
         

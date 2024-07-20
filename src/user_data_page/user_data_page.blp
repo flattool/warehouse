@@ -133,18 +133,14 @@ Popover active_sort_pop {
             ToggleButton active_asc {
                 active: true;
                 styles ["flat"]
-                can-focus: bind active_asc.active inverted;
-                can-target: bind active_asc.active inverted;
                 Adw.ButtonContent {
                     icon-name: "view-sort-ascending-symbolic";
                     label: _("Ascending");
                 }
             }
             ToggleButton active_dsc {
+                group: active_asc;
                 styles ["flat"]
-                active: bind active_asc.active inverted bidirectional;
-                can-focus: bind active_dsc.active inverted;
-                can-target: bind active_dsc.active inverted;
                 Adw.ButtonContent {
                     icon-name: "view-sort-descending-symbolic";
                     label: _("Descending");
@@ -159,25 +155,21 @@ Popover active_sort_pop {
             ToggleButton active_sort_name {
                 active: true;
                 styles ["flat"]
-                can-focus: bind active_sort_name.active inverted;
-                can-target: bind active_sort_name.active inverted;
                 Adw.ButtonContent {
                     icon-name: "font-x-generic-symbolic";
                     label: _("Name");
                 }
             }
             ToggleButton active_sort_id {
+                group: active_sort_name;
                 styles ["flat"]
-                can-focus: bind active_sort_id.active inverted;
-                can-target: bind active_sort_id.active inverted;
                 Adw.ButtonContent {
                     icon-name: "tag-outline-symbolic";
                     label: _("ID");
                 }
             }
             ToggleButton active_sort_size {
-                can-focus: bind active_sort_size.active inverted;
-                can-target: bind active_sort_size.active inverted;
+                group: active_sort_name;
                 styles ["flat"]
                 Adw.ButtonContent {
                     icon-name: "harddisk-symbolic";
@@ -202,18 +194,14 @@ Popover leftover_sort_pop {
             ToggleButton leftover_asc {
                 active: true;
                 styles ["flat"]
-                can-focus: bind leftover_asc.active inverted;
-                can-target: bind leftover_asc.active inverted;
                 Adw.ButtonContent {
                     icon-name: "view-sort-ascending-symbolic";
                     label: _("Ascending");
                 }
             }
             ToggleButton leftover_dsc {
+                group: leftover_asc;
                 styles ["flat"]
-                active: bind leftover_asc.active inverted bidirectional;
-                can-focus: bind leftover_dsc.active inverted;
-                can-target: bind leftover_dsc.active inverted;
                 Adw.ButtonContent {
                     icon-name: "view-sort-descending-symbolic";
                     label: _("Descending");
@@ -228,25 +216,21 @@ Popover leftover_sort_pop {
             ToggleButton leftover_sort_name {
                 active: true;
                 styles ["flat"]
-                can-focus: bind leftover_sort_name.active inverted;
-                can-target: bind leftover_sort_name.active inverted;
                 Adw.ButtonContent {
                     icon-name: "font-x-generic-symbolic";
                     label: _("Name");
                 }
             }
             ToggleButton leftover_sort_id {
+                group: leftover_sort_name;
                 styles ["flat"]
-                can-focus: bind leftover_sort_id.active inverted;
-                can-target: bind leftover_sort_id.active inverted;
                 Adw.ButtonContent {
                     icon-name: "tag-outline-symbolic";
                     label: _("ID");
                 }
             }
             ToggleButton leftover_sort_size {
-                can-focus: bind leftover_sort_size.active inverted;
-                can-target: bind leftover_sort_size.active inverted;
+                group: leftover_sort_name;
                 styles ["flat"]
                 Adw.ButtonContent {
                     icon-name: "harddisk-symbolic";
