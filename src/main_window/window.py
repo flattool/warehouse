@@ -54,8 +54,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def navigation_handler(self, _, row, hide_sidebar=True):
         row = row.get_child()
         page = self.pages[row]
-
         self.stack.set_visible_child(page)
+        if self.main_split.get_collapsed():
+            self.main_split.set_show_sidebar(False)
 
     def start_loading(self, *args):
         for _, page in self.pages.items():

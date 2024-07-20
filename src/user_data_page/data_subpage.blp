@@ -18,18 +18,6 @@ template $DataSubpage : Box {
                 wrap: true;
             }
             Box subtitle_size_box {
-                Label subtitle {
-                    label: "No Subtutle Set";
-                    styles ["title-3"]
-                    wrap: true;
-                }
-                Image {
-                    icon-name: "dot-symbolic";
-                    margin-start: 6;
-                    margin-end: 6;
-                    margin-top: 3;
-                    valign: center;
-                }
                 Spinner spinner {
                     spinning: true;
                     valign: center;
@@ -40,6 +28,18 @@ template $DataSubpage : Box {
                     label: _("Loading Size…");
                     styles ["title-3"]
                     halign: start;
+                    wrap: true;
+                }
+                Image {
+                    icon-name: "dot-symbolic";
+                    margin-start: 6;
+                    margin-end: 6;
+                    margin-top: 3;
+                    valign: center;
+                }
+                Label subtitle {
+                    label: "No Subtutle Set";
+                    styles ["title-3"]
                     wrap: true;
                 }
             }

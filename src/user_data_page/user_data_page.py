@@ -20,6 +20,7 @@ class UserDataPage(Adw.BreakpointBin):
     leftover_sort_button = gtc()
     search_entry = gtc()
     stack = gtc()
+    revealer = gtc()
     
     active_asc = gtc()
     active_dsc = gtc()
@@ -69,11 +70,16 @@ class UserDataPage(Adw.BreakpointBin):
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
 
     def switch_view_handler(self, page):
-        print('test')
         self.active_select_button.set_visible(page is self.adp)
         self.active_sort_button.set_visible(page is self.adp)
         self.leftover_select_button.set_visible(page is self.ldp)
         self.leftover_sort_button.set_visible(page is self.ldp)
+        self.active_select_button.set_active(False)
+        self.leftover_select_button.set_active(False)
+        self.revealer_handler()
+
+    def revealer_handler(self, *args):
+        self.revealer.set_reveal_child(self.active_select_button.get_active() or self.leftover_select_button.get_active())
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -109,6 +115,8 @@ class UserDataPage(Adw.BreakpointBin):
         main_window.main_split.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
         self.sidebar_button.connect("toggled", lambda *_: ms.set_show_sidebar(self.sidebar_button.get_active()))
         self.stack.connect("notify::visible-child", lambda *_: self.switch_view_handler(self.stack.get_visible_child()))
+        self.active_select_button.connect("toggled", self.revealer_handler)
+        self.leftover_select_button.connect("toggled", self.revealer_handler)
         
         def sorter(button=None):
             if button and not button.get_active():
@@ -127,7 +135,7 @@ class UserDataPage(Adw.BreakpointBin):
                 self.ldp.sort_mode = "id"
             elif self.leftover_sort_size.get_active():
                 self.ldp.sort_mode = "size"
-                
+
             self.adp.sort_ascend = self.active_asc.get_active()
             self.ldp.sort_ascend = self.leftover_asc.get_active()
 
@@ -147,9 +155,3 @@ class UserDataPage(Adw.BreakpointBin):
         self.leftover_sort_size.connect("clicked", sorter)
 
         sorter()
-
-        def thingie(*args):
-            while True:
-                print(self.leftover_sort_id.get_active())
-
-        # Gio.Task().run_in_thread(thingie)
