@@ -1,8 +1,17 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $DataSubpage : Box {
-    Box outer_box {
+template $DataSubpage : Stack {
+    Adw.StatusPage loading_data {
+        title: _("Loading Data");
+        description: _("This should only take a moment");
+        child:
+            Spinner {
+                spinning: true;
+            }
+        ;
+    }
+    Box content_box {
         orientation: vertical;
         Box label_box {
             margin-start: 24;
@@ -46,14 +55,13 @@ template $DataSubpage : Box {
             margin-bottom: 9;
         }
         ScrolledWindow scrolled_window {
+            vexpand: true;
             Box {
                 orientation: vertical;
-                vexpand: true;
                 Separator {
                     margin-start: 12;
                     margin-end: 12;
-                    // margin-top: 9;
-                    margin-bottom: 6;
+                    margin-bottom: 9;
                 }
                 FlowBox flow_box {
                     styles ["boxed-list"]
@@ -67,5 +75,14 @@ template $DataSubpage : Box {
                 }
             }
         }
+    }
+    Adw.StatusPage no_data {
+        // Contents will be set from the subpage object
+    }
+    Adw.StatusPage no_results {
+        title: _("No Results Found");
+        description: _("Try a different search");
+        icon-name: "system-search-symbolic";
+        valign: center;
     }
 }

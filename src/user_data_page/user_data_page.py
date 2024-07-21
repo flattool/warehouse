@@ -14,27 +14,22 @@ class UserDataPage(Adw.BreakpointBin):
     switcher_bar = gtc()
     sidebar_button = gtc()
     search_button = gtc()
-    active_select_button = gtc()
-    active_sort_button = gtc()
-    leftover_select_button = gtc()
-    leftover_sort_button = gtc()
+    select_button = gtc()
+    sort_button = gtc()
     search_entry = gtc()
     toast_overlay = gtc()
     stack = gtc()
     revealer = gtc()
     
-    active_asc = gtc()
-    active_dsc = gtc()
-    active_sort_name = gtc()
-    active_sort_id = gtc()
-    active_sort_size = gtc()
-
-    leftover_asc = gtc()
-    leftover_dsc = gtc()
-    leftover_sort_name = gtc()
-    leftover_sort_id = gtc()
-    leftover_sort_size = gtc()
+    sort_ascend = gtc()
+    sort_descend = gtc()
+    sort_name = gtc()
+    sort_id = gtc()
+    sort_size = gtc()
     
+    select_all_button = gtc()
+    copy_button = gtc()
+    trash_button = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -55,10 +50,12 @@ class UserDataPage(Adw.BreakpointBin):
                 self.leftover_data.append(folder)
 
     def start_loading(self, *args):
-        self.adp.size_label.set_label("Loading Size…")
+        self.adp.set_visible_child(self.adp.loading_data)
+        self.adp.size_label.set_label("Loading Size")
         self.adp.spinner.set_visible(True)
         self.adp.flow_box.remove_all()
-        self.ldp.size_label.set_label("Loading Size…")
+        self.ldp.set_visible_child(self.ldp.loading_data)
+        self.ldp.size_label.set_label("Loading Size")
         self.ldp.spinner.set_visible(True)
         self.ldp.flow_box.remove_all()
 
@@ -70,17 +67,68 @@ class UserDataPage(Adw.BreakpointBin):
         
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
 
-    def switch_view_handler(self, page):
-        self.active_select_button.set_visible(page is self.adp)
-        self.active_sort_button.set_visible(page is self.adp)
-        self.leftover_select_button.set_visible(page is self.ldp)
-        self.leftover_sort_button.set_visible(page is self.ldp)
-        self.active_select_button.set_active(False)
-        self.leftover_select_button.set_active(False)
-        self.revealer_handler()
+    def sorter(self, button=None):
+        if button and not button.get_active():
+            return
 
-    def revealer_handler(self, *args):
-        self.revealer.set_reveal_child(self.active_select_button.get_active() or self.leftover_select_button.get_active())
+        if self.sort_name.get_active():
+            self.adp.sort_mode = "name"
+            self.ldp.sort_mode = "name"
+        elif self.sort_id.get_active():
+            self.adp.sort_mode = "id"
+            self.ldp.sort_mode = "id"
+        elif self.sort_size.get_active():
+            self.adp.sort_mode = "size"
+            self.ldp.sort_mode = "size"
+            
+
+        self.adp.sort_ascend = self.sort_ascend.get_active()
+        self.ldp.sort_ascend = self.sort_ascend.get_active()
+
+        self.adp.flow_box.invalidate_sort()
+        self.ldp.flow_box.invalidate_sort()
+
+    def view_change_handler(self, *args):
+        child = self.stack.get_visible_child()
+        if child.total_size == 0:
+            self.search_button.set_active(False)
+            self.search_button.set_sensitive(False)
+            self.select_button.set_active(False)
+            self.select_button.set_sensitive(False)
+            self.sort_button.set_active(False)
+            self.sort_button.set_sensitive(False)
+        else:
+            self.search_button.set_sensitive(True)
+            self.select_button.set_sensitive(True)
+            self.sort_button.set_sensitive(True)
+
+        has_selected = len(child.selected_boxes) > 0
+        self.copy_button.set_sensitive(has_selected)
+        self.trash_button.set_sensitive(has_selected)
+        
+    def select_toggle_handler(self, *args):
+        active = self.select_button.get_active()
+        self.adp.set_selection_mode(active)
+        self.ldp.set_selection_mode(active)
+        if not active:
+            self.copy_button.set_sensitive(False)
+            self.trash_button.set_sensitive(False)
+
+    def select_all_handler(self, *args):
+        child = self.stack.get_visible_child()
+        child.select_all_handler()
+
+    def copy_handler(self, *args):
+        child = self.stack.get_visible_child()
+        to_copy = ""
+        for box in child.selected_boxes:
+            to_copy += "\n" + box.data_path
+        
+        if len(to_copy) > 0:
+            HostInfo.clipboard.set(to_copy.replace("\n", "", 1))
+            self.toast_overlay.add_toast(Adw.Toast(title=_("Copied paths")))
+        else:
+            self.toast_overlay.add_toast(ErrorToast(_("Could not copy paths"), _("No boxes were selected")).toast)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -88,8 +136,8 @@ class UserDataPage(Adw.BreakpointBin):
         # Extra Object Creation
         self.__class__.instance = self
         # self.adj = self.scrolled_window.get_vadjustment()
-        self.adp = DataSubpage(_("Active Data"), self, main_window)
-        self.ldp = DataSubpage(_("Leftover Data"), self, main_window)
+        self.adp = DataSubpage(_("Active Data"), self, True, main_window)
+        self.ldp = DataSubpage(_("Leftover Data"), self, False, main_window)
         self.data_flatpaks = []
         self.active_data = []
         self.leftover_data = []
@@ -115,44 +163,18 @@ class UserDataPage(Adw.BreakpointBin):
         # self.sidebar_button.connect("clicked", lambda *_, ms=main_window.main_split: ms.set_show_sidebar(not ms.get_show_sidebar() if not ms.get_collapsed() else True))
         main_window.main_split.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
         self.sidebar_button.connect("toggled", lambda *_: ms.set_show_sidebar(self.sidebar_button.get_active()))
-        self.stack.connect("notify::visible-child", lambda *_: self.switch_view_handler(self.stack.get_visible_child()))
-        self.active_select_button.connect("toggled", self.revealer_handler)
-        self.leftover_select_button.connect("toggled", self.revealer_handler)
+        self.stack.connect("notify::visible-child", self.view_change_handler)
+
+        self.select_button.connect("toggled", self.select_toggle_handler)
         
-        def sorter(button=None):
-            if button and not button.get_active():
-                return
+        self.select_all_button.connect("clicked", self.select_all_handler)
+        self.copy_button.connect("clicked", self.copy_handler)
 
-            if self.active_sort_name.get_active():
-                self.adp.sort_mode = "name"
-            elif self.active_sort_id.get_active():
-                self.adp.sort_mode = "id"
-            elif self.active_sort_size.get_active():
-                self.adp.sort_mode = "size"
-            
-            if self.leftover_sort_name.get_active():
-                self.ldp.sort_mode = "name"
-            elif self.leftover_sort_id.get_active():
-                self.ldp.sort_mode = "id"
-            elif self.leftover_sort_size.get_active():
-                self.ldp.sort_mode = "size"
+        self.sort_ascend.connect("clicked", self.sorter)
+        self.sort_descend.connect("clicked", self.sorter)
+        self.sort_name.connect("clicked", self.sorter)
+        self.sort_id.connect("clicked", self.sorter)
+        self.sort_size.connect("clicked", self.sorter)
 
-            self.adp.sort_ascend = self.active_asc.get_active()
-            self.ldp.sort_ascend = self.leftover_asc.get_active()
-
-            self.adp.flow_box.invalidate_sort()
-            self.ldp.flow_box.invalidate_sort()
-
-        self.active_asc.connect("clicked", sorter)
-        self.active_dsc.connect("clicked", sorter)
-        self.active_sort_name.connect("clicked", sorter)
-        self.active_sort_id.connect("clicked", sorter)
-        self.active_sort_size.connect("clicked", sorter)
-
-        self.leftover_asc.connect("clicked", sorter)
-        self.leftover_dsc.connect("clicked", sorter)
-        self.leftover_sort_name.connect("clicked", sorter)
-        self.leftover_sort_id.connect("clicked", sorter)
-        self.leftover_sort_size.connect("clicked", sorter)
-
-        sorter()
+        # Apply again
+        self.sorter()

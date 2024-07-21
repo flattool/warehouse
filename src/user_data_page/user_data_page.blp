@@ -38,26 +38,13 @@ template $UserDataPage : Adw.BreakpointBin {
                     tooltip-text: _("Search User Data");
                 }
                 [end]
-                MenuButton active_sort_button {
-                    popover: active_sort_pop;
+                MenuButton sort_button {
+                    popover: sort_pop;
                     icon-name: "vertical-arrows-long-symbolic";
                     tooltip-text: _("Sort User Data");
                 }
                 [end]
-                ToggleButton active_select_button {
-                    icon-name: "selection-mode-symbolic";
-                    tooltip-text: _("Select User Data");
-                }
-                [end]
-                MenuButton leftover_sort_button {
-                    visible: false;
-                    popover: leftover_sort_pop;
-                    icon-name: "vertical-arrows-long-symbolic";
-                    tooltip-text: _("Sort User Data");
-                }
-                [end]
-                ToggleButton leftover_select_button {
-                    visible: false;
+                ToggleButton select_button {
                     icon-name: "selection-mode-symbolic";
                     tooltip-text: _("Select User Data");
                 }
@@ -76,6 +63,7 @@ template $UserDataPage : Adw.BreakpointBin {
             }
             [bottom]
             Revealer revealer {
+                reveal-child: bind select_button.active;
                 transition-type: slide_up;
                 [center]
                 Box bottom_bar {
@@ -91,6 +79,7 @@ template $UserDataPage : Adw.BreakpointBin {
                         }
                     }
                     Button copy_button {
+                        sensitive: false;
                         styles ["raised"]
                         Adw.ButtonContent {
                             icon-name: "edit-copy-symbolic";
@@ -98,11 +87,12 @@ template $UserDataPage : Adw.BreakpointBin {
                             can-shrink: true;
                         }
                     }
-                    Button uninstall_button {
+                    Button trash_button {
+                        sensitive: false;
                         styles ["raised"]
                         Adw.ButtonContent {
                             icon-name: "user-trash-symbolic";
-                            label: _("Uninstall");
+                            label: _("Move to Trash");
                             can-shrink: true;
                         }
                     }
@@ -121,7 +111,7 @@ template $UserDataPage : Adw.BreakpointBin {
     }
 }
 
-Popover active_sort_pop {
+Popover sort_pop {
     styles ["menu"]
     Box {
         orientation: vertical;
@@ -132,7 +122,7 @@ Popover active_sort_pop {
         Box {
             homogeneous: true;
             spacing: 3;
-            ToggleButton active_asc {
+            ToggleButton sort_ascend {
                 active: true;
                 styles ["flat"]
                 Adw.ButtonContent {
@@ -140,8 +130,8 @@ Popover active_sort_pop {
                     label: _("Ascending");
                 }
             }
-            ToggleButton active_dsc {
-                group: active_asc;
+            ToggleButton sort_descend {
+                group: sort_ascend;
                 styles ["flat"]
                 Adw.ButtonContent {
                     icon-name: "view-sort-descending-symbolic";
@@ -154,7 +144,7 @@ Popover active_sort_pop {
         Box {
             homogeneous: true;
             spacing: 3;
-            ToggleButton active_sort_name {
+            ToggleButton sort_name {
                 active: true;
                 styles ["flat"]
                 Adw.ButtonContent {
@@ -162,77 +152,16 @@ Popover active_sort_pop {
                     label: _("Name");
                 }
             }
-            ToggleButton active_sort_id {
-                group: active_sort_name;
+            ToggleButton sort_id {
+                group: sort_name;
                 styles ["flat"]
                 Adw.ButtonContent {
                     icon-name: "tag-outline-symbolic";
                     label: _("ID");
                 }
             }
-            ToggleButton active_sort_size {
-                group: active_sort_name;
-                styles ["flat"]
-                Adw.ButtonContent {
-                    icon-name: "harddisk-symbolic";
-                    label: _("Size");
-                }
-            }
-        }
-    }
-}
-
-Popover leftover_sort_pop {
-    styles ["menu"]
-    Box {
-        orientation: vertical;
-        margin-start: 6;
-        margin-end: 6;
-        margin-top: 6;
-        margin-bottom: 6;
-        Box {
-            homogeneous: true;
-            spacing: 3;
-            ToggleButton leftover_asc {
-                active: true;
-                styles ["flat"]
-                Adw.ButtonContent {
-                    icon-name: "view-sort-ascending-symbolic";
-                    label: _("Ascending");
-                }
-            }
-            ToggleButton leftover_dsc {
-                group: leftover_asc;
-                styles ["flat"]
-                Adw.ButtonContent {
-                    icon-name: "view-sort-descending-symbolic";
-                    label: _("Descending");
-                }
-            }
-        }
-        Separator {
-        }
-        Box {
-            homogeneous: true;
-            spacing: 3;
-            ToggleButton leftover_sort_name {
-                active: true;
-                styles ["flat"]
-                Adw.ButtonContent {
-                    icon-name: "font-x-generic-symbolic";
-                    label: _("Name");
-                }
-            }
-            ToggleButton leftover_sort_id {
-                group: leftover_sort_name;
-                styles ["flat"]
-                Adw.ButtonContent {
-                    icon-name: "tag-outline-symbolic";
-                    label: _("ID");
-                }
-            }
-            ToggleButton leftover_sort_size {
-                group: leftover_sort_name;
+            ToggleButton sort_size {
+                group: sort_name;
                 styles ["flat"]
                 Adw.ButtonContent {
                     icon-name: "harddisk-symbolic";
