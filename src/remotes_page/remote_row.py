@@ -7,6 +7,7 @@ class RemoteRow(Adw.ActionRow):
     gtc = Gtk.Template.Child
 
     suffix_label = gtc()
+    filter_button = gtc()
     menu_pop = gtc()
     menu_listbox = gtc()
 
@@ -44,3 +45,4 @@ class RemoteRow(Adw.ActionRow):
 
         # Connections
         self.menu_listbox.connect("row-activated", self.on_menu_action)
+        self.filter_button.connect("clicked", lambda *_: parent_page.filter_remote(self))
