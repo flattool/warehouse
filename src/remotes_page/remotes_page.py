@@ -21,20 +21,6 @@ class NewRemoteRow(Adw.ActionRow):
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/remotes_page/remotes_page.ui")
 class RemotesPage(Adw.NavigationPage):
-    __gtype_name__ = 'RemotesPage'
-    gtc = Gtk.Template.Child
-
-    sidebar_button = gtc()
-    search_bar = gtc()
-    toast_overlay = gtc()
-    stack = gtc()
-    current_remotes_group = gtc()
-    new_remotes_group = gtc()
-
-    # Statuses
-    loading_remotes = gtc()
-    no_remotes = gtc()
-    content_page = gtc()
 
     # Preselected Remotes
     new_remotes = [
@@ -82,6 +68,22 @@ class RemotesPage(Adw.NavigationPage):
         }
     ]
 
+    __gtype_name__ = 'RemotesPage'
+    gtc = Gtk.Template.Child
+
+    sidebar_button = gtc()
+    search_button = gtc()
+    search_bar = gtc()
+    toast_overlay = gtc()
+    stack = gtc()
+    current_remotes_group = gtc()
+    new_remotes_group = gtc()
+
+    # Statuses
+    loading_remotes = gtc()
+    no_remotes = gtc()
+    content_page = gtc()
+
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
     #    This must be set to the created object from within the class's __init__ method
@@ -91,15 +93,25 @@ class RemotesPage(Adw.NavigationPage):
         self.stack.set_visible_child(self.loading_remotes)
         for row in self.current_remote_rows:
             self.current_remotes_group.remove(row)
+
         self.current_remote_rows.clear()
 
     def end_loading(self):
-        self.stack.set_visible_child(self.content_page)
+        if len(HostInfo.remotes) < 1 or len(list(HostInfo.remotes.items())[0][1]) < 1:
+            self.search_button.set_sensitive(False)
+            self.search_button.set_active(False)
+            self.stack.set_visible_child(self.no_remotes)
+            return
+        else:
+            self.search_button.set_sensitive(True)
+
         for install in HostInfo.installations:
             for remote in HostInfo.remotes[install]:
                 row = RemoteRow(self, install, remote)
                 self.current_remotes_group.add(row)
                 self.current_remote_rows.append(row)
+
+        self.stack.set_visible_child(self.content_page)
 
     def filter_remote(self, row):
         self.filter_setting.set_boolean("show-apps", True)
