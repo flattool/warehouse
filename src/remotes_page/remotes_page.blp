@@ -31,7 +31,6 @@ template $RemotesPage : Adw.NavigationPage {
         Adw.ToastOverlay {
             Stack stack {
                 Adw.StatusPage loading_remotes {
-                    visible: false;
                     title: _("Loading Remotes");
                     description: _("This should only take a moment");
                     child:
@@ -46,7 +45,6 @@ template $RemotesPage : Adw.NavigationPage {
                     icon-name: "system-search-symbolic";
                 }
                 Adw.StatusPage no_remotes {
-                    visible: false;
                     title: _("No Remotes Found");
                     description: _("Warehouse cannot see the current remotes or your system has no remotes added");
                     icon-name: "error-symbolic";

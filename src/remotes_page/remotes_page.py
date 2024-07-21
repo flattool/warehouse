@@ -23,6 +23,12 @@ class RemotesPage(Adw.NavigationPage):
     #    It is used to determine if a new page should be made or not
     #    This must be set to the created object from within the class's __init__ method
     instance = None
+    
+    def start_loading(self):
+        self.stack.set_visible_child(self.loading_remotes)
+
+    def end_loading(self):
+        self.stack.set_visible_child(self.content_page)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -30,6 +36,7 @@ class RemotesPage(Adw.NavigationPage):
         # Extra Object Creation
         ms = main_window.main_split
         self.search_bar.set_key_capture_widget(main_window)
+        self.__class__.instance = self
 
         # Connections
         ms.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
