@@ -16,6 +16,16 @@ template $RemotesPage : Adw.NavigationPage {
                 icon-name: "loupe-large-symbolic";
                 tooltip-text: _("Search Packages");
             }
+            [end]
+            Button {
+                tooltip-text: _("Add Remote from File");
+                sensitive: false;
+                Adw.ButtonContent {
+                    can-shrink: true;
+                    icon-name: "folder-open-symbolic";
+                    label: _("Open");
+                }
+            }
         }
         [top]
         Adw.Clamp {
