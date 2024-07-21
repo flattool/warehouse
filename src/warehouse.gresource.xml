@@ -12,6 +12,7 @@
     <file preprocess="xml-stripblanks">user_data_page/data_box.ui</file>
     <file preprocess="xml-stripblanks">user_data_page/user_data_page.ui</file>
     <file preprocess="xml-stripblanks">user_data_page/data_subpage.ui</file>
+    <file preprocess="xml-stripblanks">remotes_page/remotes_page.ui</file>
     <!-- <file preprocess="xml-stripblanks">../data/io.github.flattool.Warehouse.metainfo.xml.in</file> -->
   </gresource>
   <gresource prefix="/io/github/flattool/Warehouse/icons/scalable/actions/">

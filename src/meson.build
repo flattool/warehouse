@@ -13,6 +13,7 @@ blueprints = custom_target('blueprints',
     'user_data_page/data_box.blp',
     'user_data_page/user_data_page.blp',
     'user_data_page/data_subpage.blp',
+    'remotes_page/remotes_page.blp',
     'change_version_page/change_version_page.blp',
   ),
   output: '.',
@@ -66,6 +67,7 @@ warehouse_sources = [
   'user_data_page/data_box.py',
   'user_data_page/user_data_page.py',
   'user_data_page/data_subpage.py',
+  'remotes_page/remotes_page.py',
   '../data/style.css',
 ]
 

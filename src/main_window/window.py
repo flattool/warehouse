@@ -25,6 +25,7 @@ import time
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from .host_info import HostInfo
 from .packages_page import PackagesPage
+from .remotes_page import RemotesPage
 from .user_data_page import UserDataPage
 from .const import Config
 from .error_toast import ErrorToast
@@ -83,7 +84,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         file_drop = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
         self.pages = {
             self.packages_row: PackagesPage(main_window=self),
-            
+            self.remotes_row: RemotesPage(main_window=self),
             self.user_data_row: UserDataPage(main_window=self),
         }
 
@@ -108,7 +109,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         # file_drop.connect("drop", self.drop_callback)
         self.refresh_button.connect("clicked", self.refresh_handler)
         
-        self.navigation_row_listbox.get_row_at_index(2).activate()
+        self.navigation_row_listbox.get_row_at_index(1).activate()
         self.main_split.set_show_sidebar(True)
 
         self.start_loading()

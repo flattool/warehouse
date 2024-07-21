@@ -1,0 +1,64 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $RemotesPage : Adw.NavigationPage {
+    title: _("Manage Remotes");
+    Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {
+            [start]
+            ToggleButton sidebar_button {
+                icon-name: "dock-left-symbolic";
+                tooltip-text: _("Show Sidebar");
+            }
+        }
+        Adw.ToastOverlay {
+            Stack stack {
+                Adw.StatusPage loading_remotes {
+                    visible: false;
+                    title: _("Loading Remotes");
+                    description: _("This should only take a moment");
+                    child:
+                        Spinner {
+                            spinning: true;
+                        }
+                    ;
+                }
+                Adw.StatusPage no_packages {
+                    visible: false;
+                    title: _("No Remotes Found");
+                    description: _("Warehouse cannot see the current remotes or your system has no remotes added");
+                    icon-name: "error-symbolic";
+                }
+                Adw.PreferencesPage content_page {
+                    Adw.PreferencesGroup current_remotes {
+                        title: _("Current Remotes");
+                        description: _("Remotes available on your system");
+                        Adw.ActionRow {
+                            title: "test";
+                        }
+                        Adw.ActionRow {
+                            title: "test";
+                        }
+                        Adw.ActionRow {
+                            title: "test";
+                        }
+                    }
+                    Adw.PreferencesGroup new_remotes {
+                        title: _("Add Remotes");
+                        description: _("Add new remotes to get more software");
+                        Adw.ActionRow {
+                            title: "test";
+                        }
+                        Adw.ActionRow {
+                            title: "test";
+                        }
+                        Adw.ActionRow {
+                            title: "test";
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
