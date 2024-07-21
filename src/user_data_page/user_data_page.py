@@ -18,6 +18,7 @@ class UserDataPage(Adw.BreakpointBin):
     search_button = gtc()
     select_button = gtc()
     sort_button = gtc()
+    search_bar = gtc()
     search_entry = gtc()
     toast_overlay = gtc()
     stack = gtc()
@@ -215,4 +216,5 @@ class UserDataPage(Adw.BreakpointBin):
         self.sort_size.connect("clicked", self.sorter)
 
         # Apply again
+        self.search_bar.set_key_capture_widget(main_window)
         self.sorter()
