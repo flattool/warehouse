@@ -11,6 +11,22 @@ template $RemotesPage : Adw.NavigationPage {
                 icon-name: "dock-left-symbolic";
                 tooltip-text: _("Show Sidebar");
             }
+            [start]
+            ToggleButton search_button {
+                icon-name: "loupe-large-symbolic";
+                tooltip-text: _("Search Packages");
+            }
+        }
+        [top]
+        Adw.Clamp {
+            SearchBar search_bar {
+                search-mode-enabled: bind search_button.active bidirectional;
+                key-capture-widget: template;
+                SearchEntry search_entry {
+                    hexpand: true;
+                    placeholder-text: _("Search Remotes");
+                }
+            }
         }
         Adw.ToastOverlay {
             Stack stack {
@@ -24,7 +40,12 @@ template $RemotesPage : Adw.NavigationPage {
                         }
                     ;
                 }
-                Adw.StatusPage no_packages {
+                Adw.StatusPage no_results {
+                    title: _("No Results Found");
+                    description: _("Try a different search");
+                    icon-name: "system-search-symbolic";
+                }
+                Adw.StatusPage no_remotes {
                     visible: false;
                     title: _("No Remotes Found");
                     description: _("Warehouse cannot see the current remotes or your system has no remotes added");

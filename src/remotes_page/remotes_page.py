@@ -9,6 +9,15 @@ class RemotesPage(Adw.NavigationPage):
     gtc = Gtk.Template.Child
 
     sidebar_button = gtc()
+    search_bar = gtc()
+    stack = gtc()
+    current_remotes = gtc()
+    new_remotes = gtc()
+
+    # Statuses
+    loading_remotes = gtc()
+    no_remotes = gtc()
+    content_page = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -20,6 +29,7 @@ class RemotesPage(Adw.NavigationPage):
 
         # Extra Object Creation
         ms = main_window.main_split
+        self.search_bar.set_key_capture_widget(main_window)
 
         # Connections
         ms.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
