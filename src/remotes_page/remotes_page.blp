@@ -28,7 +28,7 @@ template $RemotesPage : Adw.NavigationPage {
                 }
             }
         }
-        Adw.ToastOverlay {
+        Adw.ToastOverlay toast_overlay {
             Stack stack {
                 Adw.StatusPage loading_remotes {
                     title: _("Loading Remotes");
@@ -50,20 +50,11 @@ template $RemotesPage : Adw.NavigationPage {
                     icon-name: "error-symbolic";
                 }
                 Adw.PreferencesPage content_page {
-                    Adw.PreferencesGroup current_remotes {
+                    Adw.PreferencesGroup current_remotes_group {
                         title: _("Current Remotes");
                         description: _("Remotes available on your system");
-                        Adw.ActionRow {
-                            title: "test";
-                        }
-                        Adw.ActionRow {
-                            title: "test";
-                        }
-                        Adw.ActionRow {
-                            title: "test";
-                        }
                     }
-                    Adw.PreferencesGroup new_remotes {
+                    Adw.PreferencesGroup new_remotes_group {
                         title: _("Add Remotes");
                         description: _("Add new remotes to get more software");
                         Adw.ActionRow {

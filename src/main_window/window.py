@@ -75,6 +75,13 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.refresh_button.set_sensitive(False)
         HostInfo.get_flatpaks(callback=self.end_loading)
 
+    def activate_row(self, nav_row):
+        idx = 0
+        while row := self.navigation_row_listbox.get_row_at_index(idx):
+            idx += 1
+            if row.get_child() is nav_row:
+                row.activate()
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -109,7 +116,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         # file_drop.connect("drop", self.drop_callback)
         self.refresh_button.connect("clicked", self.refresh_handler)
         
-        self.navigation_row_listbox.get_row_at_index(1).activate()
+        self.activate_row(self.remotes_row)
         self.main_split.set_show_sidebar(True)
 
         self.start_loading()
