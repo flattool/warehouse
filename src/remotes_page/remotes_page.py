@@ -17,7 +17,6 @@ class NewRemoteRow(Adw.ActionRow):
         self.info = info
         GLib.idle_add(self.idle_stuff)
         self.set_activatable(True)
-        self.connect("activated", lambda *_: print(info["name"]))
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/remotes_page/remotes_page.ui")
 class RemotesPage(Adw.NavigationPage):
@@ -111,7 +110,7 @@ class RemotesPage(Adw.NavigationPage):
                 self.current_remotes_group.add(row)
                 self.current_remote_rows.append(row)
 
-        self.stack.set_visible_child(self.content_page)
+        GLib.idle_add(lambda *_: self.stack.set_visible_child(self.content_page))
 
     def filter_remote(self, row):
         self.filter_setting.set_boolean("show-apps", True)
@@ -122,6 +121,55 @@ class RemotesPage(Adw.NavigationPage):
         packages_page.filters_page.generate_filters()
         packages_page.apply_filters()
         GLib.idle_add(lambda *_: self.main_window.activate_row(self.main_window.packages_row))
+    
+    def remove_remote(self, row):
+        error = [None]
+        def thread(*args):
+            install = row.installation
+            cmd = ['flatpak-spawn', '--host', 'flatpak', 'remote-delete', row.remote.name, '-y']
+            if install == "user" or install == "system":
+                cmd.append(f"--{install}")
+            else:
+                cmd.append(f"--installation={install}")
+
+            print(cmd)
+
+        def on_response(_, response):
+            if response != "continue":
+                return
+            
+            thread()
+
+        dialog = Adw.AlertDialog(heading=_("Remove {}?").format(row.remote.title), body=_("Any installed apps from {} will stop receiving updates").format(row.remote.name))
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Remove"))
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.connect("response", on_response)
+        dialog.present(self.main_window)
+
+    def add_remote(self, name, url_or_path, formatted_installation, title=None):
+        error = [None]
+        cmd = ['flatpak-spawn', '--host', 'flatpak', 'remote-add', name, url_or_path, formatted_installation]
+        if title:
+            cmd.append(title)
+
+        def thread(*args):
+            try:
+                subprocess.run(cmd, check=True, capture_output=True, text=True)
+            except subprocess.CalledProcessError as cpe:
+                error[0] = cpe.stderr
+            except Exception as e:
+                error[0] = e
+
+        def callback(*args):
+            if error[0]:
+                self.toast_overlay.add_toast(ErrorToast(_("Could not add remote"), str(error[0])).toast)
+            else:
+                self.toast_overlay.add_toast(Adw.Toast(title=_("Added {}").format(title if title else name)))
+                self.start_loading()
+                self.end_loading()
+
+        Gio.Task.new(None, None, callback).run_in_thread(thread)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -141,4 +189,5 @@ class RemotesPage(Adw.NavigationPage):
         # Apply
         for item in self.new_remotes:
             row = NewRemoteRow(item)
+            # row.connect("activated", lambda *_, row=row: self.add_remote())
             self.new_remotes_group.add(row)

@@ -16,16 +16,6 @@ template $RemotesPage : Adw.NavigationPage {
                 icon-name: "loupe-large-symbolic";
                 tooltip-text: _("Search Packages");
             }
-            [end]
-            Button {
-                tooltip-text: _("Add Remote from File");
-                sensitive: false;
-                Adw.ButtonContent {
-                    can-shrink: true;
-                    icon-name: "folder-open-symbolic";
-                    label: _("Open");
-                }
-            }
         }
         [top]
         Adw.Clamp {
@@ -65,8 +55,31 @@ template $RemotesPage : Adw.NavigationPage {
                         description: _("Remotes available on your system");
                     }
                     Adw.PreferencesGroup new_remotes_group {
-                        title: _("Add Remotes");
+                        title: _("Add Popular Remotes");
                         description: _("Add new remotes to get more software");
+                    }
+                    Adw.PreferencesGroup other_remotes {
+                        title: _("Add Other Remotes");
+                        Adw.ActionRow file_remote_row {
+                            activatable: true;
+                            sensitive: false;
+                            title: _("Add a Repo File");
+                            subtitle: _("Open a downloaded repo file to add");
+                            [suffix]
+                            Image {
+                                icon-name: "plus-large-symbolic";
+                            }
+                        }
+                        Adw.ActionRow custom_remote_row {
+                            activatable: true;
+                            sensitive: false;
+                            title: _("Add a Custom Remote");
+                            subtitle: _("Manually enter new remote details");
+                            [suffix]
+                            Image {
+                                icon-name: "plus-large-symbolic";
+                            }
+                        }
                     }
                 }
             }

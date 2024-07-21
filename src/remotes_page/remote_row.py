@@ -24,7 +24,7 @@ class RemoteRow(Adw.ActionRow):
             HostInfo.clipboard.set(self.get_subtitle())
             self.parent_page.toast_overlay.add_toast(Adw.Toast(title=_("Copied name")))
         elif row is self.remove:
-            print("remove")
+            self.parent_page.remove_remote(self)
         self.menu_pop.popdown()
 
     def idle_stuff(self):
