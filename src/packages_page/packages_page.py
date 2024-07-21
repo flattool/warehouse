@@ -287,6 +287,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.is_result = False
         self.prev_status = None
         self.selected_rows = []
+        ms = main_window.main_split
 
         # Apply
         # self.set_status("loading_packages")
@@ -297,7 +298,8 @@ class PackagesPage(Adw.BreakpointBin):
         self.__class__.instance = self
 
         # Connections
-        self.sidebar_button.connect("clicked", lambda *_, ms=main_window.main_split: ms.set_show_sidebar(not ms.get_show_sidebar() if not ms.get_collapsed() else True))
+        ms.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
+        self.sidebar_button.connect("toggled", lambda *_: ms.set_show_sidebar(self.sidebar_button.get_active()))
 
         self.search_entry.connect("search-changed", self.on_invalidate)
         self.search_bar.set_key_capture_widget(main_window)
