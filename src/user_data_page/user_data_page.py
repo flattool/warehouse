@@ -3,7 +3,9 @@ from .error_toast import ErrorToast
 from .data_box import DataBox
 from .data_subpage import DataSubpage
 from .host_info import HostInfo
-import os
+import os, subprocess
+
+import time
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/user_data_page.ui")
 class UserDataPage(Adw.BreakpointBin):
@@ -50,6 +52,7 @@ class UserDataPage(Adw.BreakpointBin):
                 self.leftover_data.append(folder)
 
     def start_loading(self, *args):
+        self.select_button.set_active(False)
         self.adp.set_visible_child(self.adp.loading_data)
         self.adp.size_label.set_label("Loading Size")
         self.adp.spinner.set_visible(True)
@@ -80,8 +83,7 @@ class UserDataPage(Adw.BreakpointBin):
         elif self.sort_size.get_active():
             self.adp.sort_mode = "size"
             self.ldp.sort_mode = "size"
-            
-
+        
         self.adp.sort_ascend = self.sort_ascend.get_active()
         self.ldp.sort_ascend = self.sort_ascend.get_active()
 
@@ -124,11 +126,46 @@ class UserDataPage(Adw.BreakpointBin):
         for box in child.selected_boxes:
             to_copy += "\n" + box.data_path
         
-        if len(to_copy) > 0:
+        if len(to_copy) == 0:
+            self.toast_overlay.add_toast(ErrorToast(_("Could not copy paths"), _("No boxes were selected")).toast)
+        else:
             HostInfo.clipboard.set(to_copy.replace("\n", "", 1))
             self.toast_overlay.add_toast(Adw.Toast(title=_("Copied paths")))
-        else:
-            self.toast_overlay.add_toast(ErrorToast(_("Could not copy paths"), _("No boxes were selected")).toast)
+
+    def trash_handler(self, *args):
+        error = [None]
+
+        def thread(path):
+            cmd = ['gio', 'trash'] + path
+            try:
+                subprocess.run(cmd, check=True, capture_output=True, text=True)
+            except subprocess.CalledProcessError as cpe:
+                error[0] = cpe.stderr
+            except Exception as e:
+                error[0] = e
+
+        def callback(*args):
+            self.start_loading()
+            self.end_loading()
+            if error[0]:
+                self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(error[0])).toast)
+            else:
+                self.toast_overlay.add_toast(Adw.Toast(title=_("Trashed data")))
+
+        child = self.stack.get_visible_child()
+        to_trash = []
+        for box in child.selected_boxes:
+            to_trash.append(box.data_path)
+        
+        if len(to_trash) == 0:
+            self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), _("No boxes were selected")).toast)
+            return
+        
+        self.select_button.set_active(False)
+        child.set_visible_child(child.loading_data)
+        Gio.Task.new(None, None, callback).run_in_thread(lambda *_: thread(to_trash))
+        
+        # self.toast_overlay.add_toast(Adw.Toast(title=_("Trashed data")))
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -169,6 +206,7 @@ class UserDataPage(Adw.BreakpointBin):
         
         self.select_all_button.connect("clicked", self.select_all_handler)
         self.copy_button.connect("clicked", self.copy_handler)
+        self.trash_button.connect("clicked", self.trash_handler)
 
         self.sort_ascend.connect("clicked", self.sorter)
         self.sort_descend.connect("clicked", self.sorter)

@@ -81,8 +81,11 @@ class DataSubpage(Gtk.Stack):
             idx += 1
             box = box.get_child()
             if not is_enabled:
+                # continue
                 GLib.idle_add(lambda *_, box=box: box.check_button.set_active(False))
             GLib.idle_add(lambda *_, box=box: box.check_button.set_visible(is_enabled))
+        # if not is_enabled:
+        #     return
 
     def box_select_handler(self, _, box):
         box = box.get_child()
@@ -90,10 +93,10 @@ class DataSubpage(Gtk.Stack):
             return
         cb = box.check_button
         if cb.get_active():
-            cb.set_active(False)
+            GLib.idle_add(lambda *_: cb.set_active(False))
             self.selected_boxes.remove(box)
         else:
-            cb.set_active(True)
+            GLib.idle_add(lambda *_: cb.set_active(True))
             self.selected_boxes.append(box)
         
         total = len(self.selected_boxes)
@@ -104,7 +107,8 @@ class DataSubpage(Gtk.Stack):
         idx = 0
         while box := self.flow_box.get_child_at_index(idx):
             idx += 1
-            self.box_select_handler(None, box)
+            if not box.get_child().check_button.get_active():
+                self.box_select_handler(None, box)
 
     def generate_list(self, flatpaks, data):
         self.boxes.clear()
@@ -131,8 +135,6 @@ class DataSubpage(Gtk.Stack):
                 self.flow_box.append(box)
                 child = self.flow_box.get_child_at_index(i)
                 child.set_focusable(False)
-
-        self.flow_box.connect("child-activated", self.box_select_handler)
         
         idx = 0
         while box := self.flow_box.get_child_at_index(idx):
@@ -218,6 +220,7 @@ class DataSubpage(Gtk.Stack):
 
         # Connections
         parent_page.search_entry.connect("search-changed", self.on_invalidate)
+        self.flow_box.connect("child-activated", self.box_select_handler)
 
         # self.title.get_preferred_size()[1].width + self.subtitle.get_preferred_size()[1].width
         self.scrolled_window.get_hadjustment().connect("changed", self.label_orientation_handler)
