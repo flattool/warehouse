@@ -84,12 +84,12 @@ class RemoteRow(Adw.ActionRow):
                 
             Gio.Task.new(None, None, callback).run_in_thread(thread)
 
-        dialog = Adw.AlertDialog(heading=_("Disable {}?").format(row.remote.title), body=_("Any installed apps from {} will stop receiving updates").format(row.remote.name))
+        dialog = Adw.AlertDialog(heading=_("Disable {}?").format(self.remote.title), body=_("Any installed apps from {} will stop receiving updates").format(self.remote.name))
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Remove"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", on_response)
-        dialog.present(self.main_window)
+        dialog.present(self.parent_page.main_window)
 
     def on_menu_action(self, listbox, row):
         row = row.get_child()
@@ -103,7 +103,7 @@ class RemoteRow(Adw.ActionRow):
             case self.enable_remote:
                 Gio.Task().run_in_thread(self.enable_remote_handler)
             case self.disable_remote:
-                self.disable_remote_handler
+                self.disable_remote_handler()
             case self.remove:
                 self.parent_page.remove_remote(self)
 
