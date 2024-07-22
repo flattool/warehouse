@@ -15,6 +15,8 @@ class AddRemoteDialog(Adw.Dialog):
     installation_row = gtc()
 
     def on_apply(self, *args):
+        self.close()
+        self.parent_page.stack.set_visible_child(self.parent_page.loading_remotes)
         error = [None]
         def thread(*args):
             cmd = [
@@ -39,7 +41,10 @@ class AddRemoteDialog(Adw.Dialog):
         
         def callback(*args):
             if error[0]:
-                print(error[0])
+                self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not add remote"), str(error[0])))
+            else:
+                self.main_window.refresh_handler()
+                self.parent_page.toast_overlay.add_toast(Adw.Toast(title=_("Added {}").format(self.name_row.get_text())))
 
         Gio.Task.new(None, None, callback).run_in_thread(thread)
 
@@ -48,6 +53,8 @@ class AddRemoteDialog(Adw.Dialog):
 
         # Extra Object Creation
         self.string_list = Gtk.StringList(strings=HostInfo.installations)
+        self.main_window = main_window
+        self.parent_page = parent_page
 
         # Apply
         self.installation_row.set_model(self.string_list)

@@ -144,8 +144,8 @@ class RemotesPage(Adw.NavigationPage):
             if error[0]:
                 self.toast_overlay.add_toast(ErrorToast(_("Could not remove remote"), str(error[0])).toast)
             else:
-                self.toast_overlay.add_toast(Adw.Toast(title=_("Removed remote")))
                 self.main_window.refresh_handler()
+                self.toast_overlay.add_toast(Adw.Toast(title=_("Removed remote")))
 
         def on_response(_, response):
             if response != "continue":
