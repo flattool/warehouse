@@ -8,15 +8,21 @@ class AddRemoteDialog(Adw.Dialog):
     __gtype_name__ = "AddRemoteDialog"
     gtc = Gtk.Template.Child
 
+    action_bar = gtc()
+    toast_overlay = gtc()
+    stack = gtc()
     apply_button = gtc()
+    content_page = gtc()
     title_row = gtc()
     name_row = gtc()
     url_row = gtc()
     installation_row = gtc()
+    loading_page = gtc()
 
     def on_apply(self, *args):
-        self.close()
-        self.parent_page.stack.set_visible_child(self.parent_page.loading_remotes)
+        self.stack.set_visible_child(self.loading_page)
+        self.apply_button.set_sensitive(False)
+        self.action_bar.set_revealed(False)
         error = [None]
         def thread(*args):
             cmd = [
@@ -41,10 +47,14 @@ class AddRemoteDialog(Adw.Dialog):
         
         def callback(*args):
             if error[0]:
-                self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not add remote"), str(error[0])))
+                self.stack.set_visible_child(self.content_page)
+                self.action_bar.set_revealed(True)
+                self.apply_button.set_sensitive(True)
+                self.toast_overlay.add_toast(ErrorToast(_("Could not add remote"), str(error[0])).toast)
             else:
+                self.close()
                 self.main_window.refresh_handler()
-                self.parent_page.toast_overlay.add_toast(Adw.Toast(title=_("Added {}").format(self.name_row.get_text())))
+                self.parent_page.toast_overlay.add_toast(Adw.Toast(title=_("Added {}").format(self.title_row.get_text())))
 
         Gio.Task.new(None, None, callback).run_in_thread(thread)
 

@@ -23,19 +23,32 @@ template $AddRemoteDialog : Adw.Dialog {
                 }
             }
         }
-        Adw.PreferencesPage {
-            Adw.PreferencesGroup {
-                Adw.EntryRow title_row {
-                    title: _("Enter Title");
+        Adw.ToastOverlay toast_overlay {
+            Stack stack {
+                Adw.PreferencesPage content_page {
+                    Adw.PreferencesGroup {
+                        Adw.EntryRow title_row {
+                            title: _("Enter Title");
+                        }
+                        Adw.EntryRow name_row {
+                            title: _("Enter Name");
+                        }
+                        Adw.EntryRow url_row {
+                            title: _("Enter Repo URL");
+                        }
+                        Adw.ComboRow installation_row {
+                            title: _("Installation");
+                        }
+                    }
                 }
-                Adw.EntryRow name_row {
-                    title: _("Enter Name");
-                }
-                Adw.EntryRow url_row {
-                    title: _("Enter Repo URL");
-                }
-                Adw.ComboRow installation_row {
-                    title: _("Installation");
+                Adw.StatusPage loading_page {
+                    title: _("Adding Remote");
+                    description: _("This should only take a moment");
+                    child:
+                        Spinner {
+                            spinning: true;
+                        }
+                    ;
                 }
             }
         }
