@@ -27,7 +27,7 @@ class AddRemoteDialog(Adw.Dialog):
         def thread(*args):
             cmd = [
                 'flatpak-spawn', '--host',
-                'flatpak', 'remote-add', '--if-not-exists',
+                'flatpak', 'remote-add',
                 f'--title={self.title_row.get_text()}',
                 self.name_row.get_text(),
                 self.url_row.get_text()
