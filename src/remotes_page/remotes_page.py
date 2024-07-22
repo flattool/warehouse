@@ -78,6 +78,8 @@ class RemotesPage(Adw.NavigationPage):
     toast_overlay = gtc()
     stack = gtc()
     current_remotes_group = gtc()
+    show_disabled_button = gtc()
+    show_disabled_button_content = gtc()
     new_remotes_group = gtc()
     file_remote_row = gtc()
     custom_remote_row = gtc()
@@ -95,6 +97,7 @@ class RemotesPage(Adw.NavigationPage):
     
     def start_loading(self):
         self.stack.set_visible_child(self.loading_remotes)
+        self.total_disabled = 0
         for row in self.current_remote_rows:
             self.current_remotes_group.remove(row)
 
@@ -111,12 +114,18 @@ class RemotesPage(Adw.NavigationPage):
         else:
             self.search_button.set_sensitive(True)
 
+        show_disabled = self.show_disabled_button.get_active()
+        self.show_disabled_button.set_visible(False)
         for install in HostInfo.installations:
             try:
                 for remote in HostInfo.remotes[install]:
                     row = RemoteRow(self, install, remote)
                     self.current_remotes_group.add(row)
                     self.current_remote_rows.append(row)
+                    if (not show_disabled) and remote.disabled:
+                        row.set_visible(False)
+                        self.total_disabled += 1
+                        self.show_disabled_button.set_visible(True)
             except KeyError:
                 continue
 
@@ -174,11 +183,14 @@ class RemotesPage(Adw.NavigationPage):
     def on_search(self, entry):
         text = entry.get_text().lower()
         total = 0
+        show_disabled = self.show_disabled_button.get_active()
+        
         for row in self.current_remote_rows:
-            visible = text in row.get_title().lower() or text in row.get_subtitle().lower()
+            title_match = text in row.get_title().lower()
+            subtitle_match = text in row.get_subtitle().lower()
+            visible = (title_match or subtitle_match) and (show_disabled or not row.remote.disabled)
+            total += visible
             row.set_visible(visible)
-            if visible:
-                total += 1
 
         self.stack.set_visible_child(self.content_page if total > 0 else self.no_results)
 
@@ -211,6 +223,10 @@ class RemotesPage(Adw.NavigationPage):
         file_chooser.set_default_filter(file_filter)
         file_chooser.open(self.main_window, None, self.file_callback)
 
+    def show_disabled_handler(self, button):
+        self.show_disabled_button_content.set_icon_name("eye-open-negative-filled-symbolic" if button.get_active() else "eye-not-looking-symbolic")
+        self.on_search(self.search_entry)
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
@@ -221,6 +237,7 @@ class RemotesPage(Adw.NavigationPage):
         self.search_bar.set_key_capture_widget(main_window)
         self.current_remote_rows = []
         self.filter_setting = Gio.Settings.new("io.github.flattool.Warehouse.filter")
+        self.total_disabled = 0
 
         # Connections
         ms.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
@@ -228,6 +245,7 @@ class RemotesPage(Adw.NavigationPage):
         self.file_remote_row.connect("activated", lambda *_: self.add_file_handler())
         self.custom_remote_row.connect("activated", lambda *_: AddRemoteDialog(main_window, self).present(main_window))
         self.search_entry.connect("search-changed", self.on_search)
+        self.show_disabled_button.connect("toggled", self.show_disabled_handler)
 
         # Appply
         for item in self.new_remotes:

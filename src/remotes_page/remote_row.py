@@ -22,11 +22,15 @@ class RemoteRow(Adw.ActionRow):
     def enable_remote_handler(self, *args):
         def idle_stuff(*args):
             self.remove_css_class("warning")
-            self.set_subtitle(_("Installation: {}").format(self.installation))
+            self.set_icon_name("")
             self.remote.disabled = False
             self.parent_page.toast_overlay.add_toast(Adw.Toast(title=_("Enabled remote")))
             self.menu_listbox.get_row_at_index(2).set_visible(False)
             self.menu_listbox.get_row_at_index(3).set_visible(True)
+            self.parent_page.total_disabled -= 1
+            if self.parent_page.total_disabled == 0:
+                self.parent_page.show_disabled_button.set_active(False)
+                self.parent_page.show_disabled_button.set_visible(False)
 
         if not self.remote.disabled:
             self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not enable remote"), _("Remote is already enabled")).toast)
@@ -52,13 +56,16 @@ class RemoteRow(Adw.ActionRow):
     def disable_remote_handler(self, *args):
         def callback(*args):
             self.add_css_class("warning")
-            self.set_subtitle(_("Disabled"))
+            self.set_icon_name("error-symbolic")
             self.remote.disabled = True
             self.parent_page.toast_overlay.add_toast(Adw.Toast(title=_("Disabled remote")))
             self.menu_listbox.get_row_at_index(2).set_visible(True)
             self.menu_listbox.get_row_at_index(3).set_visible(False)
+            self.set_visible(self.parent_page.show_disabled_button.get_active())
+            self.parent_page.show_disabled_button.set_visible(True)
+            self.parent_page.total_disabled += 1
 
-        def thread():
+        def thread(*args):
             if self.remote.disabled:
                 self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not disable remote"), _("Remote is already disabled")).toast)
                 return
@@ -86,7 +93,7 @@ class RemoteRow(Adw.ActionRow):
 
         dialog = Adw.AlertDialog(heading=_("Disable {}?").format(self.remote.title), body=_("Any installed apps from {} will stop receiving updates").format(self.remote.name))
         dialog.add_response("cancel", _("Cancel"))
-        dialog.add_response("continue", _("Remove"))
+        dialog.add_response("continue", _("Disable"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", on_response)
         dialog.present(self.parent_page.main_window)
@@ -111,12 +118,11 @@ class RemoteRow(Adw.ActionRow):
 
     def idle_stuff(self):
         self.set_title(self.remote.title)
-        if self.remote.disabled:
-            self.set_subtitle(_("Disabled"))
-            self.add_css_class("warning")
-        else:
-            self.set_subtitle(_("Installation: {}").format(self.installation))
+        self.set_subtitle(_("Installation: {}").format(self.installation))
         self.suffix_label.set_label(self.remote.name)
+        if self.remote.disabled:
+            self.set_icon_name("error-symbolic")
+            self.add_css_class("warning")
 
     def __init__(self, parent_page, installation, remote, **kwargs):
         super().__init__(**kwargs)

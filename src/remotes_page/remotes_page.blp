@@ -53,6 +53,16 @@ template $RemotesPage : Adw.NavigationPage {
                     Adw.PreferencesGroup current_remotes_group {
                         title: _("Current Remotes");
                         description: _("Remotes available on your system");
+                        header-suffix:
+                            ToggleButton show_disabled_button {
+                                valign: center;
+                                styles ["flat"]
+                                Adw.ButtonContent show_disabled_button_content {
+                                    icon-name: "eye-not-looking-symbolic";
+                                    label: _("Show Disabled");
+                                }
+                            }
+                        ;
                     }
                     Adw.PreferencesGroup new_remotes_group {
                         visible: bind search_button.active inverted;
