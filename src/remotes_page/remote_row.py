@@ -50,7 +50,7 @@ class RemoteRow(Adw.ActionRow):
         idle_stuff()
 
     def disable_remote_handler(self, *args):
-        def idle_stuff(*args):
+        def callback(*args):
             self.add_css_class("warning")
             self.set_subtitle(_("Disabled"))
             self.remote.disabled = True
@@ -58,26 +58,38 @@ class RemoteRow(Adw.ActionRow):
             self.menu_listbox.get_row_at_index(2).set_visible(True)
             self.menu_listbox.get_row_at_index(3).set_visible(False)
 
-        if self.remote.disabled:
-            self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not disable remote"), _("Remote is already disabled")).toast)
-            return
+        def thread():
+            if self.remote.disabled:
+                self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not disable remote"), _("Remote is already disabled")).toast)
+                return
 
-        cmd = ['flatpak-spawn', '--host', 'flatpak', 'remote-modify', '--disable', self.remote.name]
-        if self.installation == "user" or self.installation == "system":
-            cmd.append(f"--{self.installation}")
-        else:
-            cmd.append(f"--installation={self.installation}")
+            cmd = ['flatpak-spawn', '--host', 'flatpak', 'remote-modify', '--disable', self.remote.name]
+            if self.installation == "user" or self.installation == "system":
+                cmd.append(f"--{self.installation}")
+            else:
+                cmd.append(f"--installation={self.installation}")
 
-        try:
-            subprocess.run(cmd, check=True, capture_output=True, text=True)
-        except subprocess.CalledProcessError as cpe:
-            GLib.idle_add(lambda *args, cpe=cpe: self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not disable remote"), str(cpe.stderr)).toast))
-            return
-        except Exception as e:
-            GLib.idle_add(lambda *args, e=e: self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not disable remote"), str(e)).toast))
-            return
+            try:
+                subprocess.run(cmd, check=True, capture_output=True, text=True)
+            except subprocess.CalledProcessError as cpe:
+                GLib.idle_add(lambda *args, cpe=cpe: self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not disable remote"), str(cpe.stderr)).toast))
+                return
+            except Exception as e:
+                GLib.idle_add(lambda *args, e=e: self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not disable remote"), str(e)).toast))
+                return
 
-        idle_stuff()
+        def on_response(_, response):
+            if response != "continue":
+                return
+                
+            Gio.Task.new(None, None, callback).run_in_thread(thread)
+
+        dialog = Adw.AlertDialog(heading=_("Disable {}?").format(row.remote.title), body=_("Any installed apps from {} will stop receiving updates").format(row.remote.name))
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Remove"))
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.connect("response", on_response)
+        dialog.present(self.main_window)
 
     def on_menu_action(self, listbox, row):
         row = row.get_child()
@@ -91,7 +103,7 @@ class RemoteRow(Adw.ActionRow):
             case self.enable_remote:
                 Gio.Task().run_in_thread(self.enable_remote_handler)
             case self.disable_remote:
-                Gio.Task().run_in_thread(self.disable_remote_handler)
+                self.disable_remote_handler
             case self.remove:
                 self.parent_page.remove_remote(self)
 
