@@ -78,6 +78,8 @@ class RemotesPage(Adw.NavigationPage):
     stack = gtc()
     current_remotes_group = gtc()
     new_remotes_group = gtc()
+    file_remote_row = gtc()
+    custom_remote_row = gtc()
 
     # Statuses
     loading_remotes = gtc()
@@ -106,10 +108,13 @@ class RemotesPage(Adw.NavigationPage):
             self.search_button.set_sensitive(True)
 
         for install in HostInfo.installations:
-            for remote in HostInfo.remotes[install]:
-                row = RemoteRow(self, install, remote)
-                self.current_remotes_group.add(row)
-                self.current_remote_rows.append(row)
+            try:
+                for remote in HostInfo.remotes[install]:
+                    row = RemoteRow(self, install, remote)
+                    self.current_remotes_group.add(row)
+                    self.current_remote_rows.append(row)
+            except KeyError:
+                continue
 
         GLib.idle_add(lambda *_: self.stack.set_visible_child(self.content_page))
 
@@ -174,6 +179,7 @@ class RemotesPage(Adw.NavigationPage):
         # Connections
         ms.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
         self.sidebar_button.connect("toggled", lambda *_: ms.set_show_sidebar(self.sidebar_button.get_active()))
+        self.custom_remote_row.connect("activated", lambda *_: AddRemoteDialog(main_window, self).present(main_window))
 
         # Appply
         for item in self.new_remotes:

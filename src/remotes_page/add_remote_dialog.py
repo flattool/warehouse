@@ -1,7 +1,7 @@
 from gi.repository import Adw, Gtk, GLib, Gio
 from .host_info import HostInfo
 from .error_toast import ErrorToast
-import subprocess
+import subprocess, re
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/remotes_page/add_remote_dialog.ui")
 class AddRemoteDialog(Adw.Dialog):
@@ -58,6 +58,23 @@ class AddRemoteDialog(Adw.Dialog):
 
         Gio.Task.new(None, None, callback).run_in_thread(thread)
 
+    def check_entries(self, row):
+        is_passing = re.match(self.rexes[row], row.get_text())
+        if is_passing:
+            row.remove_css_class("error")
+        else:
+            row.add_css_class("error")
+
+        match row:
+            case self.title_row:
+                self.title_passes = bool(is_passing)
+            case self.name_row:
+                self.name_passes = bool(is_passing)
+            case self.url_row:
+                self.url_passes = bool(is_passing)
+        
+        self.apply_button.set_sensitive(self.title_passes and self.name_passes and self.url_passes)
+
     def __init__(self, main_window, parent_page, remote_info=None, **kwargs):
         super().__init__(**kwargs)
 
@@ -65,6 +82,15 @@ class AddRemoteDialog(Adw.Dialog):
         self.string_list = Gtk.StringList(strings=HostInfo.installations)
         self.main_window = main_window
         self.parent_page = parent_page
+        
+        self.rexes = {
+            self.title_row: "^(?=.*[A-Za-z0-9])[A-Za-z0-9._-]+( +[A-Za-z0-9._-]+)*$", #"^(?=.*[A-Za-z0-9])[A-Za-z0-9._-]+( [A-Za-z0-9._-]+)*$",
+            self.name_row:  "^[a-zA-Z0-9\-._]+$",
+            self.url_row:   "^[a-zA-Z0-9\-._~:/?#[\]@!$&\'()*+,;=]+$"
+        }
+        self.title_passes = False
+        self.name_passes = False
+        self.url_passes = False
 
         # Apply
         self.installation_row.set_model(self.string_list)
@@ -79,3 +105,6 @@ class AddRemoteDialog(Adw.Dialog):
 
         # Connections
         self.apply_button.connect("clicked", self.on_apply)
+        self.title_row.connect("changed", self.check_entries)
+        self.name_row.connect("changed", self.check_entries)
+        self.url_row.connect("changed", self.check_entries)
