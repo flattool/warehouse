@@ -182,6 +182,35 @@ class RemotesPage(Adw.NavigationPage):
 
         self.stack.set_visible_child(self.content_page if total > 0 else self.no_results)
 
+    def file_callback(self, chooser, result):
+        try:
+            file = chooser.open_finish(result)
+            path = file.get_path()
+            name = path.split("/")[-1].split(".")[0]
+            info = {
+                "title": name.title(),
+                "name": name,
+                "description": "local file",
+                "link": path,
+            }
+            AddRemoteDialog(self.main_window, self, info).present(self.main_window)
+        except GLib.GError as ge:
+            if "Dismissed by user" in str(ge):
+                return
+            self.toast_overlay.add_toast(ErrorToast(_("Could not open file"), str(ge)).toast)
+        except Exception as e:
+            self.toast_overlay.add_toast(ErrorToast(_("Could not open file"), str(e)).toast)
+
+    def add_file_handler(self):
+        file_filter = Gtk.FileFilter(name=_("Flatpak Repos"))
+        file_filter.add_suffix("flatpakrepo")
+        filters = Gio.ListStore.new(Gtk.FileFilter)
+        filters.append(file_filter)
+        file_chooser = Gtk.FileDialog()
+        file_chooser.set_filters(filters)
+        file_chooser.set_default_filter(file_filter)
+        file_chooser.open(self.main_window, None, self.file_callback)
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
@@ -196,6 +225,7 @@ class RemotesPage(Adw.NavigationPage):
         # Connections
         ms.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
         self.sidebar_button.connect("toggled", lambda *_: ms.set_show_sidebar(self.sidebar_button.get_active()))
+        self.file_remote_row.connect("activated", lambda *_: self.add_file_handler())
         self.custom_remote_row.connect("activated", lambda *_: AddRemoteDialog(main_window, self).present(main_window))
         self.search_entry.connect("search-changed", self.on_search)
 

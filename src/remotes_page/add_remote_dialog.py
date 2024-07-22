@@ -96,12 +96,17 @@ class AddRemoteDialog(Adw.Dialog):
         self.installation_row.set_model(self.string_list)
         if remote_info:
             self.title_row.set_text(remote_info["title"])
-            self.title_row.set_editable(False)
             self.name_row.set_text(remote_info["name"])
-            self.name_row.set_editable(False)
             self.url_row.set_text(remote_info["link"])
-            self.url_row.set_editable(False)
-            self.apply_button.set_sensitive(True)
+            if remote_info["description"] == "local file":
+                self.check_entries(self.title_row)
+                self.check_entries(self.name_row)
+                self.check_entries(self.url_row)
+            else:
+                self.title_row.set_editable(False)
+                self.name_row.set_editable(False)
+                self.url_row.set_editable(False)
+                self.apply_button.set_sensitive(True)
 
         # Connections
         self.apply_button.connect("clicked", self.on_apply)
