@@ -273,7 +273,7 @@ class HostInfo:
                     cmd, text=True,
                     capture_output=True,
                 ).stdout
-                lines = output.strip().replace(" ", "").split("\n")
+                lines = output.strip().split("\n")
                 if lines[0] != '':
                     remote_list = []
                     for line in lines:

@@ -4,7 +4,7 @@ using Adw 1;
 template $AddRemoteDialog : Adw.Dialog {
     title: _("Add a Remote");
     content-width: 500;
-    content-height: 450;
+    content-height: 375;
     Adw.ToolbarView {
         [top]
         Adw.HeaderBar {
@@ -15,6 +15,7 @@ template $AddRemoteDialog : Adw.Dialog {
             Button apply_button {
                 margin-top: 3;
                 margin-bottom: 3;
+                sensitive: false;
                 styles ["pill", "suggested-action"]
                 Adw.ButtonContent {
                     icon-name: "plus-large-symbolic";
