@@ -127,19 +127,31 @@ class RemotesPage(Adw.NavigationPage):
         error = [None]
         def thread(*args):
             install = row.installation
-            cmd = ['flatpak-spawn', '--host', 'flatpak', 'remote-delete', row.remote.name, '-y']
+            cmd = ['flatpak-spawn', '--host', 'flatpak', 'remote-delete', row.remote.name, '--force']
             if install == "user" or install == "system":
                 cmd.append(f"--{install}")
             else:
                 cmd.append(f"--installation={install}")
 
-            print(cmd)
+            try:
+                subprocess.run(cmd, check=True, capture_output=True, text=True)
+            except subprocess.CalledProcessError as cpe:
+                error[0] = cpe.stderr
+            except Exception as e:
+                error[0] = e
+
+        def callback(*args):
+            if error[0]:
+                self.toast_overlay.add_toast(ErrorToast(_("Could not remove remote"), str(error[0])).toast)
+            else:
+                self.toast_overlay.add_toast(Adw.Toast(title=_("Removed remote")))
+                self.main_window.refresh_handler()
 
         def on_response(_, response):
             if response != "continue":
                 return
             
-            thread()
+            Gio.Task.new(None, None, callback).run_in_thread(thread)
 
         dialog = Adw.AlertDialog(heading=_("Remove {}?").format(row.remote.title), body=_("Any installed apps from {} will stop receiving updates").format(row.remote.name))
         dialog.add_response("cancel", _("Cancel"))
@@ -147,30 +159,6 @@ class RemotesPage(Adw.NavigationPage):
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", on_response)
         dialog.present(self.main_window)
-
-    # def add_remote(self, name, url_or_path, formatted_installation, title=None):
-    #     error = [None]
-    #     cmd = ['flatpak-spawn', '--host', 'flatpak', 'remote-add', name, url_or_path, formatted_installation]
-    #     if title:
-    #         cmd.append(title)
-
-    #     def thread(*args):
-    #         try:
-    #             subprocess.run(cmd, check=True, capture_output=True, text=True)
-    #         except subprocess.CalledProcessError as cpe:
-    #             error[0] = cpe.stderr
-    #         except Exception as e:
-    #             error[0] = e
-
-    #     def callback(*args):
-    #         if error[0]:
-    #             self.toast_overlay.add_toast(ErrorToast(_("Could not add remote"), str(error[0])).toast)
-    #         else:
-    #             self.toast_overlay.add_toast(Adw.Toast(title=_("Added {}").format(title if title else name)))
-    #             self.start_loading()
-    #             self.end_loading()
-
-    #     Gio.Task.new(None, None, callback).run_in_thread(thread)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
