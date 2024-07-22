@@ -50,7 +50,8 @@ class UserDataPage(Adw.BreakpointBin):
                 self.data_flatpaks.append(HostInfo.id_to_flatpak[folder])
                 self.active_data.append(folder)
             except KeyError:
-                self.leftover_data.append(folder)
+                # self.leftover_data.append(folder)
+                pass
 
     def start_loading(self, *args):
         self.select_button.set_active(False)
@@ -100,10 +101,12 @@ class UserDataPage(Adw.BreakpointBin):
             self.select_button.set_sensitive(False)
             self.sort_button.set_active(False)
             self.sort_button.set_sensitive(False)
+            self.search_entry.set_editable(False)
         else:
             self.search_button.set_sensitive(True)
             self.select_button.set_sensitive(True)
             self.sort_button.set_sensitive(True)
+            self.search_entry.set_editable(True)
 
         has_selected = len(child.selected_boxes) > 0
         self.copy_button.set_sensitive(has_selected)

@@ -120,7 +120,9 @@ class DataSubpage(Gtk.Stack):
 
         if self.total_items == 1:
             self.subtitle.set_label(_("1 Item"))
+            self.parent_page.search_entry.set_editable(True)
         else:
+            self.parent_page.search_entry.set_editable(True)
             self.subtitle.set_label(_("{} Items").format(self.total_items))
                 
         self.min_horizontal_label_width = self.label_box.get_preferred_size()[1].width

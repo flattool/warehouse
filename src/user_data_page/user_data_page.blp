@@ -53,8 +53,8 @@ template $UserDataPage : Adw.BreakpointBin {
             Adw.Clamp {
                 SearchBar search_bar {
                     search-mode-enabled: bind search_button.active bidirectional;
-                
                     SearchEntry search_entry {
+                        editable: false;
                         hexpand: true;
                         placeholder-text: _("Search User Data");
                     }
