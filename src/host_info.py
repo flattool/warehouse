@@ -216,9 +216,10 @@ class Flatpak:
 
 
 class Remote:
-    def __init__(self, name, title):
+    def __init__(self, name, title, disabled):
         self.name = name
         self.title = title
+        self.disabled = disabled
         if title == "" or title == "-":
             self.title = name
 
@@ -263,7 +264,7 @@ class HostInfo:
             # Remotes
             def remote_info(installation):
                 cmd = ['flatpak-spawn', '--host',
-                'flatpak', 'remotes', '--columns=name,title']
+                'flatpak', 'remotes', '--columns=name,title,options', '--show-disabled']
                 if installation == "user" or installation == "system":
                     cmd.append(f"--{installation}")
                 else:
@@ -277,7 +278,7 @@ class HostInfo:
                     remote_list = []
                     for line in lines:
                         line = line.split("\t")
-                        remote_list.append(Remote(line[0], line[1]))
+                        remote_list.append(Remote(name=line[0], title=line[1], disabled=(len(line) == 3) and "disabled" in line[2]))
                     this.remotes[installation] = remote_list
 
                 # Masks

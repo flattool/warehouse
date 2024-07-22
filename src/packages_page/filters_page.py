@@ -111,16 +111,18 @@ class FiltersPage(Adw.NavigationPage):
         for row in self.remote_rows:
             self.remotes_group.remove(row)
         self.remote_rows.clear()
-        if len(HostInfo.remotes) < 2 and len(list(HostInfo.remotes.items())[0][1]) < 2:
-            self.remotes_group.set_visible(False)
-            if self.remotes_string != "all":
-                self.remotes_string = "all"
-                self.settings.set_string("remotes-list", self.remotes_string)
-                self.packages_page.apply_filters()
-            return
+        # if len(HostInfo.remotes) < 2 and len(list(HostInfo.remotes.items())[0][1]) < 2:
+        #     self.remotes_group.set_visible(False)
+        #     if self.remotes_string != "all":
+        #         self.remotes_string = "all"
+        #         self.settings.set_string("remotes-list", self.remotes_string)
+        #         self.packages_page.apply_filters()
+        #     return
         for i, installation in enumerate(HostInfo.installations):
             try:
                 for remote in HostInfo.remotes[installation]:
+                    # if remote.disabled:
+                    #     continue
                     row = FilterRow(remote, installation)
                     row.set_title(remote.title)
                     row.set_subtitle(_("Installation: {}").format(installation))

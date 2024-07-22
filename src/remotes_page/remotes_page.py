@@ -2,6 +2,7 @@ from gi.repository import Adw, Gtk, GLib, Gio
 from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .remote_row import RemoteRow
+from .add_remote_dialog import AddRemoteDialog
 import subprocess
 
 class NewRemoteRow(Adw.ActionRow):
@@ -147,29 +148,29 @@ class RemotesPage(Adw.NavigationPage):
         dialog.connect("response", on_response)
         dialog.present(self.main_window)
 
-    def add_remote(self, name, url_or_path, formatted_installation, title=None):
-        error = [None]
-        cmd = ['flatpak-spawn', '--host', 'flatpak', 'remote-add', name, url_or_path, formatted_installation]
-        if title:
-            cmd.append(title)
+    # def add_remote(self, name, url_or_path, formatted_installation, title=None):
+    #     error = [None]
+    #     cmd = ['flatpak-spawn', '--host', 'flatpak', 'remote-add', name, url_or_path, formatted_installation]
+    #     if title:
+    #         cmd.append(title)
 
-        def thread(*args):
-            try:
-                subprocess.run(cmd, check=True, capture_output=True, text=True)
-            except subprocess.CalledProcessError as cpe:
-                error[0] = cpe.stderr
-            except Exception as e:
-                error[0] = e
+    #     def thread(*args):
+    #         try:
+    #             subprocess.run(cmd, check=True, capture_output=True, text=True)
+    #         except subprocess.CalledProcessError as cpe:
+    #             error[0] = cpe.stderr
+    #         except Exception as e:
+    #             error[0] = e
 
-        def callback(*args):
-            if error[0]:
-                self.toast_overlay.add_toast(ErrorToast(_("Could not add remote"), str(error[0])).toast)
-            else:
-                self.toast_overlay.add_toast(Adw.Toast(title=_("Added {}").format(title if title else name)))
-                self.start_loading()
-                self.end_loading()
+    #     def callback(*args):
+    #         if error[0]:
+    #             self.toast_overlay.add_toast(ErrorToast(_("Could not add remote"), str(error[0])).toast)
+    #         else:
+    #             self.toast_overlay.add_toast(Adw.Toast(title=_("Added {}").format(title if title else name)))
+    #             self.start_loading()
+    #             self.end_loading()
 
-        Gio.Task.new(None, None, callback).run_in_thread(thread)
+    #     Gio.Task.new(None, None, callback).run_in_thread(thread)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -186,8 +187,8 @@ class RemotesPage(Adw.NavigationPage):
         ms.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
         self.sidebar_button.connect("toggled", lambda *_: ms.set_show_sidebar(self.sidebar_button.get_active()))
 
-        # Apply
+        # Appply
         for item in self.new_remotes:
             row = NewRemoteRow(item)
-            # row.connect("activated", lambda *_, row=row: self.add_remote())
+            row.connect("activated", lambda *_: AddRemoteDialog(item).present(main_window))
             self.new_remotes_group.add(row)

@@ -15,6 +15,7 @@ blueprints = custom_target('blueprints',
     'user_data_page/data_subpage.blp',
     'remotes_page/remotes_page.blp',
     'remotes_page/remote_row.blp',
+    'remotes_page/add_remote_dialog.blp',
     'change_version_page/change_version_page.blp',
   ),
   output: '.',
@@ -70,6 +71,7 @@ warehouse_sources = [
   'user_data_page/data_subpage.py',
   'remotes_page/remotes_page.py',
   'remotes_page/remote_row.py',
+  'remotes_page/add_remote_dialog.py',
   '../data/style.css',
 ]
 
