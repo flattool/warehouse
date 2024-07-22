@@ -178,5 +178,5 @@ class RemotesPage(Adw.NavigationPage):
         # Appply
         for item in self.new_remotes:
             row = NewRemoteRow(item)
-            row.connect("activated", lambda *_: AddRemoteDialog(main_window, self, item).present(main_window))
+            row.connect("activated", lambda *_, remote_info=item: AddRemoteDialog(main_window, self, remote_info).present(main_window))
             self.new_remotes_group.add(row)
