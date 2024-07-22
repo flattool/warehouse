@@ -81,6 +81,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
             idx += 1
             if row.get_child() is nav_row:
                 row.activate()
+                nav_row.grab_focus()
+                return
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
