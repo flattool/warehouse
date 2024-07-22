@@ -55,10 +55,12 @@ template $RemotesPage : Adw.NavigationPage {
                         description: _("Remotes available on your system");
                     }
                     Adw.PreferencesGroup new_remotes_group {
+                        visible: bind search_button.active inverted;
                         title: _("Add Popular Remotes");
                         description: _("Add new remotes to get more software");
                     }
                     Adw.PreferencesGroup other_remotes {
+                        visible: bind search_button.active inverted;
                         title: _("Add Other Remotes");
                         Adw.ActionRow file_remote_row {
                             activatable: true;

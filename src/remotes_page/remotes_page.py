@@ -74,6 +74,7 @@ class RemotesPage(Adw.NavigationPage):
     sidebar_button = gtc()
     search_button = gtc()
     search_bar = gtc()
+    search_entry = gtc()
     toast_overlay = gtc()
     stack = gtc()
     current_remotes_group = gtc()
@@ -83,6 +84,7 @@ class RemotesPage(Adw.NavigationPage):
 
     # Statuses
     loading_remotes = gtc()
+    no_results = gtc()
     no_remotes = gtc()
     content_page = gtc()
 
@@ -103,6 +105,8 @@ class RemotesPage(Adw.NavigationPage):
             self.search_button.set_sensitive(False)
             self.search_button.set_active(False)
             self.stack.set_visible_child(self.no_remotes)
+            self.search_button.set_sensitive(False)
+            self.search_entry.set_editable(False)
             return
         else:
             self.search_button.set_sensitive(True)
@@ -117,6 +121,8 @@ class RemotesPage(Adw.NavigationPage):
                 continue
 
         GLib.idle_add(lambda *_: self.stack.set_visible_child(self.content_page))
+        self.search_button.set_sensitive(True)
+        self.search_entry.set_editable(True)
 
     def filter_remote(self, row):
         self.filter_setting.set_boolean("show-apps", True)
@@ -165,6 +171,17 @@ class RemotesPage(Adw.NavigationPage):
         dialog.connect("response", on_response)
         dialog.present(self.main_window)
 
+    def on_search(self, entry):
+        text = entry.get_text().lower()
+        total = 0
+        for row in self.current_remote_rows:
+            visible = text in row.get_title().lower() or text in row.get_subtitle().lower()
+            row.set_visible(visible)
+            if visible:
+                total += 1
+
+        self.stack.set_visible_child(self.content_page if total > 0 else self.no_results)
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
@@ -180,6 +197,7 @@ class RemotesPage(Adw.NavigationPage):
         ms.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
         self.sidebar_button.connect("toggled", lambda *_: ms.set_show_sidebar(self.sidebar_button.get_active()))
         self.custom_remote_row.connect("activated", lambda *_: AddRemoteDialog(main_window, self).present(main_window))
+        self.search_entry.connect("search-changed", self.on_search)
 
         # Appply
         for item in self.new_remotes:
