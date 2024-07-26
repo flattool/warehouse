@@ -1,0 +1,33 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $SnapshotPage : Adw.BreakpointBin {
+    width-request: 1;
+	height-request: 1;
+
+    Adw.Breakpoint packages_bpt {
+		condition ("max-width: 600")
+
+		setters {
+			split_view.collapsed: true;
+            split_view.show-content: false;
+		}
+	}
+
+    Adw.NavigationSplitView split_view {
+        sidebar-width-fraction: 0.5;
+        max-sidebar-width: 999999999;
+        sidebar:
+            Adw.NavigationPage nav_page {
+                title: _("Snapshots");
+                Adw.ToastOverlay toast_overlay {
+                    Adw.ToolbarView sidebar_tbv {
+                        [top]
+                        Adw.HeaderBar {
+                        }
+                    }
+                }
+            }
+        ;
+    }
+}

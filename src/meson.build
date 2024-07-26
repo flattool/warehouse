@@ -17,6 +17,7 @@ blueprints = custom_target('blueprints',
     'remotes_page/remote_row.blp',
     'remotes_page/add_remote_dialog.blp',
     'change_version_page/change_version_page.blp',
+    'snapshot_page/snapshot_page.blp',
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
@@ -72,6 +73,7 @@ warehouse_sources = [
   'remotes_page/remotes_page.py',
   'remotes_page/remote_row.py',
   'remotes_page/add_remote_dialog.py',
+  'snapshot_page/snapshot_page.py',
   '../data/style.css',
 ]
 

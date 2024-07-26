@@ -27,6 +27,7 @@ from .host_info import HostInfo
 from .packages_page import PackagesPage
 from .remotes_page import RemotesPage
 from .user_data_page import UserDataPage
+from .snapshot_page import SnapshotPage
 from .const import Config
 from .error_toast import ErrorToast
 
@@ -95,6 +96,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.packages_row: PackagesPage(main_window=self),
             self.remotes_row: RemotesPage(main_window=self),
             self.user_data_row: UserDataPage(main_window=self),
+            self.snapshots_row: SnapshotPage(main_window=self),
+            # self.install_row: None,
         }
 
         for _, page in self.pages.items():
