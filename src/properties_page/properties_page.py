@@ -216,7 +216,7 @@ class PropertiesPage(Adw.NavigationPage):
                 self.toast_overlay.add_toast(ErrorToast(_("Could not uninstall"), str(fail)).toast)
                 self.packages_page.stack.set_visible_child(self.packages_page.packages_split)
             else:
-                self.packages_page.refresh_handler()
+                self.main_window.refresh_handler()
                 self.packages_page.packages_toast_overlay.add_toast(Adw.Toast(title=_("Uninstalled {}").format(self.package.info["name"])))
 
         # name = self.package.info["name"]
