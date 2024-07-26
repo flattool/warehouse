@@ -50,8 +50,7 @@ class UserDataPage(Adw.BreakpointBin):
                 self.data_flatpaks.append(HostInfo.id_to_flatpak[folder])
                 self.active_data.append(folder)
             except KeyError:
-                # self.leftover_data.append(folder)
-                pass
+                self.leftover_data.append(folder)
 
     def start_loading(self, *args):
         self.select_button.set_active(False)
