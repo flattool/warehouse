@@ -5,7 +5,7 @@ template $SnapshotPage : Adw.BreakpointBin {
     width-request: 1;
 	height-request: 1;
 
-    Adw.Breakpoint packages_bpt {
+    Adw.Breakpoint bp1 {
 		condition ("max-width: 600")
 
 		setters {
@@ -14,20 +14,107 @@ template $SnapshotPage : Adw.BreakpointBin {
 		}
 	}
 
-    Adw.NavigationSplitView split_view {
-        sidebar-width-fraction: 0.5;
-        max-sidebar-width: 999999999;
-        sidebar:
-            Adw.NavigationPage nav_page {
-                title: _("Snapshots");
-                Adw.ToastOverlay toast_overlay {
-                    Adw.ToolbarView sidebar_tbv {
-                        [top]
-                        Adw.HeaderBar {
+    // Adw.Breakpoint bp2 {
+    //     condition ("max-width: 700")
+
+    //     setters {
+    //         header_bar.title-widget: null;
+    //         switcher_bar.reveal: true;
+    //     }
+    // }
+
+    Adw.ToastOverlay toast_overlay {
+        Adw.NavigationSplitView split_view {
+            sidebar-width-fraction: 0.5;
+            max-sidebar-width: 999999999;
+            sidebar:
+                Adw.NavigationPage sidebar_navpage {
+                    title: _("Snapshots");
+                    Adw.BreakpointBin {
+                        width-request: 1;
+                        height-request: 1;
+
+                        Adw.Breakpoint bp2 {
+                            condition ("max-width: 595")
+
+                            setters {
+                                header_bar.title-widget: null;
+                                switcher_bar.reveal: true;
+                            }
+                        }
+
+                        Adw.ToolbarView sidebar_tbv {
+                            [top]
+                            Adw.HeaderBar header_bar {
+                                title-widget:
+                                    Adw.ViewSwitcher {
+                                        stack: view_stack;
+                                        policy: wide;
+                                    }
+                                ;
+                                [start]
+                                ToggleButton sidebar_button {
+                                    icon-name: "dock-left-symbolic";
+                                    tooltip-text: _("Show Sidebar");
+                                }
+                                [start]
+                                ToggleButton search_button {
+                                    icon-name: "loupe-large-symbolic";
+                                    tooltip-text: _("Search Packages");
+                                }
+                                [end]
+                                ToggleButton select_button {
+                                    icon-name: "selection-mode-symbolic";
+                                    tooltip-text: _("Select Packages");
+                                }
+                            }
+                            [bottom]
+                            Adw.ViewSwitcherBar switcher_bar {
+                                stack: view_stack;
+                            }
+                            Adw.ViewStack view_stack {
+                                Adw.ViewStackPage {
+                                    title: _("Active Snapshots");
+                                    child:
+                                        ScrolledWindow {
+                                            ListBox {
+                                                styles ["navigation-sidebar"]
+                                                Adw.ActionRow {
+                                                    title: "sussy baka";
+                                                }
+                                            }
+                                        }
+                                    ;
+                                }
+                                Adw.ViewStackPage {
+                                    title: _("Leftover Snapshots");
+                                    child:
+                                        ScrolledWindow {
+                                            ListBox {
+                                                styles ["navigation-sidebar"]
+                                                Adw.ActionRow {
+                                                    title: "skibidi toilet";
+                                                }
+                                            }
+                                        }
+                                    ;
+                                }
+                            }
                         }
                     }
                 }
-            }
-        ;
+            ;
+            content:
+                Adw.NavigationPage content_navpage {
+                    title: _("Content 8===D~");
+                    Adw.ToolbarView {
+                        [top]
+                        Adw.HeaderBar {
+
+                        }
+                    }
+                }
+            ;
+        }
     }
 }

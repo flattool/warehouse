@@ -121,7 +121,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         # file_drop.connect("drop", self.drop_callback)
         self.refresh_button.connect("clicked", self.refresh_handler)
         
-        self.activate_row(self.remotes_row)
+        self.activate_row(self.snapshots_row)
         self.main_split.set_show_sidebar(True)
 
         self.start_loading()
