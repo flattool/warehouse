@@ -19,6 +19,7 @@ blueprints = custom_target('blueprints',
     'change_version_page/change_version_page.blp',
     'snapshot_page/snapshot_page.blp',
     'snapshot_page/snapshots_list_page.blp',
+    'snapshot_page/snapshot_box.blp',
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
@@ -76,6 +77,7 @@ warehouse_sources = [
   'remotes_page/add_remote_dialog.py',
   'snapshot_page/snapshot_page.py',
   'snapshot_page/snapshots_list_page.py',
+  'snapshot_page/snapshot_box.py',
   '../data/style.css',
 ]
 

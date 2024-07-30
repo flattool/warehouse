@@ -1,0 +1,69 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $SnapshotBox : Gtk.Box {
+    orientation: vertical;
+    spacing: 6;
+    Box {
+        margin-start: 12;
+        margin-end:   12;
+        margin-top:    6;
+        spacing: 12;
+        Box {
+            orientation: vertical;
+            Label title {
+                label: "A Snapshot";
+                wrap: true;
+                justify: left;
+                halign: start;
+                styles ["title-4"]
+            }
+            Label date {
+                label: "2024-04-03 4:30 PM";
+                wrap: true;
+                justify: left;
+                halign: start;
+            }
+        }
+        Label version {
+            label: "Version: 45.3";
+            wrap: true;
+            justify: right;
+            hexpand: true;
+        }
+    }
+    Box {
+        margin-start:  6;
+        margin-end:    6;
+        margin-bottom: 6;
+        spacing: 3;
+        homogeneous: true;
+        Button {
+            Adw.ButtonContent {
+                label: "Apply";
+                icon-name: "check-plain-symbolic";
+                can-shrink: true;
+            }
+            hexpand: true;
+            styles ["flat"]
+        }
+        Button {
+            Adw.ButtonContent {
+                label: "Rename";
+                icon-name: "dot-symbolic";
+                can-shrink: true;
+            }
+            hexpand: true;
+            styles ["flat"]
+        }
+        Button {
+            Adw.ButtonContent {
+                label: "Trash";
+                icon-name: "user-trash-symbolic";
+                can-shrink: true;
+            }
+            hexpand: true;
+            styles ["flat"]
+        }
+    }
+}
