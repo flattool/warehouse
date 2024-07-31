@@ -45,6 +45,9 @@ class UserDataPage(Adw.BreakpointBin):
         self.leftover_data.clear()
         # paks = dict(HostInfo.id_to_flatpak)
 
+        if not os.path.exists(f"{HostInfo.home}/.var/app"):
+            return
+
         for folder in os.listdir(f"{HostInfo.home}/.var/app"):
             try:
                 self.data_flatpaks.append(HostInfo.id_to_flatpak[folder])
