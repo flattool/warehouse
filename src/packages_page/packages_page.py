@@ -95,7 +95,7 @@ class PackagesPage(Adw.BreakpointBin):
             if runtimes_list != "all" and (row.package.is_runtime or row.package.dependant_runtime and not row.package.dependant_runtime.info["ref"] in runtimes_list):
                 visible = False
             
-            GLib.idle_add(row.set_visible, visible)
+            row.set_visible(visible)
             if visible:
                 total_visible += 1
             else:
@@ -150,11 +150,18 @@ class PackagesPage(Adw.BreakpointBin):
                 self.packages_toast_overlay.add_toast(ErrorToast(_("Error getting Flatpak '{}'").format(package.info["name"]), str(e)).toast)
             self.packages_list_box.append(row)
 
-        first_row = self.packages_list_box.get_row_at_index(0)
-        self.packages_list_box.select_row(first_row)
-        self.properties_page.set_properties(first_row.package)
-        self.scrolled_window.set_vadjustment(Gtk.Adjustment.new(0,0,0,0,0,0)) # Scroll list to top
         self.apply_filters()
+        first_visible_row = None
+        i = 0
+        while row := self.packages_list_box.get_row_at_index(i):
+            i += 1
+            if row.get_visible():
+                first_visible_row = row
+                break
+        
+        self.packages_list_box.select_row(first_visible_row)
+        self.properties_page.set_properties(first_visible_row.package)
+        self.scrolled_window.set_vadjustment(Gtk.Adjustment.new(0,0,0,0,0,0)) # Scroll list to top
 
     def row_activate_handler(self, list_box, row):
         self.properties_page.set_properties(row.package)
