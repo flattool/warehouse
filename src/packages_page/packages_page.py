@@ -274,7 +274,7 @@ class PackagesPage(Adw.BreakpointBin):
             self.set_status(self.no_results)
 
     def sort_func(self, row1, row2):
-        return row1.package.info["name"] > row2.package.info["name"]
+        return row1.package.info["name"].lower() > row2.package.info["name"].lower ()
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
