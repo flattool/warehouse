@@ -36,6 +36,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     __gtype_name__ = "WarehouseWindow"
     gtc = Gtk.Template.Child
     main_breakpoint = gtc()
+    toast_overlay = gtc()
     main_split = gtc()
     stack = gtc()
     refresh_button = gtc()
@@ -89,6 +90,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         super().__init__(**kwargs)
 
         # Extra Object Creation
+        HostInfo.main_window = self
+        ErrorToast.main_window = self
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse")
         event_controller = Gtk.EventControllerKey()
         file_drop = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
@@ -104,7 +107,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.stack.add_child(page)
 
         # Apply
-        ErrorToast.main_window = self
         self.settings.bind("window-width", self, "default-width", Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind("window-height", self, "default-height", Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind("is-maximized", self, "maximized", Gio.SettingsBindFlags.DEFAULT)
@@ -121,7 +123,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         # file_drop.connect("drop", self.drop_callback)
         self.refresh_button.connect("clicked", self.refresh_handler)
         
-        self.activate_row(self.snapshots_row)
+        self.activate_row(self.packages_row)
         self.main_split.set_show_sidebar(True)
 
         self.start_loading()

@@ -1,5 +1,4 @@
 from gi.repository import Adw, Gtk, Gdk, GLib
-from .host_info import HostInfo
 
 class ErrorToast:
     main_window = None
@@ -7,11 +6,12 @@ class ErrorToast:
 
         def on_response(dialog, response_id):
             if response_id == "copy":
-                HostInfo.clipboard.set(error_msg)
+                self.clipboard.set(error_msg)
 
         # Extra Object Creation
         self.toast = Adw.Toast(title=display_msg, button_label=_("Details"))
         popup = Adw.AlertDialog.new(display_msg)
+        self.clipboard = Gdk.Display.get_default().get_clipboard()
 
         # Apply
         print(display_msg)

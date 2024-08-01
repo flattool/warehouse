@@ -1,7 +1,6 @@
-import subprocess, os, pathlib
-
 from gi.repository import Gio, Gtk, GLib, Adw, Gdk
-# from .app_row import AppRow
+from .error_toast import ErrorToast
+import subprocess, os, pathlib
 
 home = f"{pathlib.Path.home()}"
 icon_theme = Gtk.IconTheme.new()
@@ -311,52 +310,57 @@ class HostInfo:
                 if lines[0] != '':
                     this.pins[installation] = lines
 
-            # Installations
-            # Get all config files for any extra installations
-            custom_install_config_path = "/run/host/etc/flatpak/installations.d"
-            if os.path.exists(custom_install_config_path):
-                for file in os.listdir(custom_install_config_path):
-                    with open(f"{custom_install_config_path}/{file}", "r") as f:
-                        for line in f:
-                            if line.startswith("[Installation"):
-                                # Get specifically the installation name itself
-                                this.installations.append(line.replace("[Installation \"", "").replace("\"]", "").strip())
+            try:
+                # Installations
+                # Get all config files for any extra installations
+                custom_install_config_path = "/run/host/etc/flatpak/installations.d"
+                if os.path.exists(custom_install_config_path):
+                    for file in os.listdir(custom_install_config_path):
+                        with open(f"{custom_install_config_path}/{file}", "r") as f:
+                            for line in f:
+                                if line.startswith("[Installation"):
+                                    # Get specifically the installation name itself
+                                    this.installations.append(line.replace("[Installation \"", "").replace("\"]", "").strip())
 
-            this.installations.append("user")
-            this.installations.append("system")
-            for i in this.installations:
-                remote_info(i)
-            remote_info("user")
-            remote_info("system")
+                this.installations.append("user")
+                this.installations.append("system")
+                for i in this.installations:
+                    remote_info(i)
+                remote_info("user")
+                remote_info("system")
 
-            # Packages
-            output = subprocess.run(
-                ['flatpak-spawn', '--host',
-                'flatpak', 'list', '--columns=all'],
-                text=True,
-                capture_output=True,
-            ).stdout
-            lines = output.strip().split("\n")
-            for i in lines:
-                package = Flatpak(i.split("\t"))
-                this.flatpaks.append(package)
-                this.id_to_flatpak[package.info["id"]] = package
-                this.ref_to_flatpak[package.info["ref"]] = package
-            
-            # Dependant Runtimes
-            output = subprocess.run(
-                ['flatpak-spawn', '--host',
-                'flatpak', 'list', '--columns=runtime'],
-                text=True,
-                capture_output=True,
-            ).stdout
-            lines = output.strip().split("\n")
-            for index, runtime in enumerate(lines):
-                package = this.flatpaks[index]
-                if package.is_runtime:
-                    continue
-                package.dependant_runtime = this.ref_to_flatpak[runtime]
-                if not runtime in this.dependant_runtime_refs:
-                    this.dependant_runtime_refs.append(runtime)
+                # Packages
+                output = subprocess.run(
+                    ['flatpak-spawn', '--host',
+                    'flatpak', 'list', '--columns=all'],
+                    text=True, check=True,
+                    capture_output=True,
+                ).stdout
+                lines = output.strip().split("\n")
+                for i in lines:
+                    package = Flatpak(i.split("\t"))
+                    this.flatpaks.append(package)
+                    this.id_to_flatpak[package.info["id"]] = package
+                    this.ref_to_flatpak[package.info["ref"]] = package
+                
+                # Dependant Runtimes
+                output = subprocess.run(
+                    ['flatpak-spawn', '--host',
+                    'flatpak', 'list', '--columns=runtime'],
+                    text=True, check=True,
+                    capture_output=True,
+                ).stdout
+                lines = output.strip().split("\n")
+                for index, runtime in enumerate(lines):
+                    package = this.flatpaks[index]
+                    if package.is_runtime:
+                        continue
+                    package.dependant_runtime = this.ref_to_flatpak[runtime]
+                    if not runtime in this.dependant_runtime_refs:
+                        this.dependant_runtime_refs.append(runtime)
+            except subprocess.CalledProcessError as cpe:
+                this.main_window.toast_overlay.add_toast(ErrorToast(_("Could not load pacakges"), cpe.stderr).toast)
+            except Exception as e:
+                this.main_window.toast_overlay.add_toast(ErrorToast(_("Could not load pacakges"), str(e)).toast)
 
         Gio.Task.new(None, None, callback).run_in_thread(thread)

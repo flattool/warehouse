@@ -16,124 +16,126 @@ template $WarehouseWindow: Adw.ApplicationWindow {
         }
     }
     content:
-        Adw.OverlaySplitView main_split {
-            collapsed: true;
-            show-sidebar: true;
-            sidebar-width-fraction: 0.2;
-            // max-sidebar-width: 280;
-            min-sidebar-width: 250;
-            sidebar:
-                Adw.NavigationPage {
-                    title: "Warehouse";
-                    Adw.ToolbarView main_toolbar_view {
-                        [top]
-                        Adw.HeaderBar header_bar {
-                            [start]
-                            Button refresh_button {
-                                icon-name: "arrow-circular-top-right-symbolic";
-                                tooltip-text: _("Refresh List");
+        Adw.ToastOverlay toast_overlay {
+            Adw.OverlaySplitView main_split {
+                collapsed: true;
+                show-sidebar: true;
+                sidebar-width-fraction: 0.2;
+                // max-sidebar-width: 280;
+                min-sidebar-width: 250;
+                sidebar:
+                    Adw.NavigationPage {
+                        title: "Warehouse";
+                        Adw.ToolbarView main_toolbar_view {
+                            [top]
+                            Adw.HeaderBar header_bar {
+                                [start]
+                                Button refresh_button {
+                                    icon-name: "arrow-circular-top-right-symbolic";
+                                    tooltip-text: _("Refresh List");
+                                }
+                                [end]
+                                MenuButton main_menu {
+                                    icon-name: "open-menu-symbolic";
+                                    tooltip-text: _("Main Menu");
+                                    menu-model: primary_menu;
+                                }
                             }
-                            [end]
-                            MenuButton main_menu {
-                                icon-name: "open-menu-symbolic";
-                                tooltip-text: _("Main Menu");
-                                menu-model: primary_menu;
-                            }
-                        }
-                        content:
-                            ScrolledWindow {
-                                ListBox navigation_row_listbox {
-                                    styles ["navigation-sidebar"]
+                            content:
+                                ScrolledWindow {
+                                    ListBox navigation_row_listbox {
+                                        styles ["navigation-sidebar"]
 
-                                    Box packages_row {
-                                        margin-top: 12;
-                                        margin-bottom: 12;
-                                        margin-start: 6;
-                                        margin-end: 6;
-                                        spacing: 12;
+                                        Box packages_row {
+                                            margin-top: 12;
+                                            margin-bottom: 12;
+                                            margin-start: 6;
+                                            margin-end: 6;
+                                            spacing: 12;
 
-                                        Image icon {
-                                            icon-name: "flatpak-symbolic";
+                                            Image icon {
+                                                icon-name: "flatpak-symbolic";
+                                            }
+
+                                            Label {
+                                                label: _("Packages");
+                                            }
                                         }
-
-                                        Label {
-                                            label: _("Packages");
-                                        }
-                                    }
-                                
-                                    Box remotes_row {
-                                        margin-top: 12;
-                                        margin-bottom: 12;
-                                        margin-start: 6;
-                                        margin-end: 6;
-                                        spacing: 12;
-
-                                        Image {
-                                            icon-name: "server-pick-symbolic";
-                                        }
-
-                                        Label {
-                                            label: _("Remotes");
-                                        }
-                                    }
                                     
-                                    Box user_data_row {
-                                        margin-top: 12;
-                                        margin-bottom: 12;
-                                        margin-start: 6;
-                                        margin-end: 6;
-                                        spacing: 12;
+                                        Box remotes_row {
+                                            margin-top: 12;
+                                            margin-bottom: 12;
+                                            margin-start: 6;
+                                            margin-end: 6;
+                                            spacing: 12;
 
-                                        Image {
-                                            icon-name: "file-manager-symbolic";
-                                        }
+                                            Image {
+                                                icon-name: "server-pick-symbolic";
+                                            }
 
-                                        Label {
-                                            label: _("User Data");
+                                            Label {
+                                                label: _("Remotes");
+                                            }
                                         }
-                                    }
-                                
-                                    Box snapshots_row {
-                                        margin-top: 12;
-                                        margin-bottom: 12;
-                                        margin-start: 6;
-                                        margin-end: 6;
-                                        spacing: 12;
+                                        
+                                        Box user_data_row {
+                                            margin-top: 12;
+                                            margin-bottom: 12;
+                                            margin-start: 6;
+                                            margin-end: 6;
+                                            spacing: 12;
 
-                                        Image {
-                                            icon-name: "snapshots-alt-symbolic";
-                                        }
+                                            Image {
+                                                icon-name: "file-manager-symbolic";
+                                            }
 
-                                        Label {
-                                            label: _("Snapshots");
+                                            Label {
+                                                label: _("User Data");
+                                            }
                                         }
-                                    }
                                     
-                                    Box install_row {
-                                        margin-top: 12;
-                                        margin-bottom: 12;
-                                        margin-start: 6;
-                                        margin-end: 6;
-                                        spacing: 12;
+                                        Box snapshots_row {
+                                            margin-top: 12;
+                                            margin-bottom: 12;
+                                            margin-start: 6;
+                                            margin-end: 6;
+                                            spacing: 12;
 
-                                        Image {
-                                            icon-name: "arrow-pointing-at-line-down-symbolic";
+                                            Image {
+                                                icon-name: "snapshots-alt-symbolic";
+                                            }
+
+                                            Label {
+                                                label: _("Snapshots");
+                                            }
                                         }
+                                        
+                                        Box install_row {
+                                            margin-top: 12;
+                                            margin-bottom: 12;
+                                            margin-start: 6;
+                                            margin-end: 6;
+                                            spacing: 12;
 
-                                        Label {
-                                            label: _("Install Packages");
+                                            Image {
+                                                icon-name: "arrow-pointing-at-line-down-symbolic";
+                                            }
+
+                                            Label {
+                                                label: _("Install Packages");
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        ;
+                            ;
+                        }
                     }
-                }
-            ;
-            content:
-                Stack stack {
-                }
-            ;
+                ;
+                content:
+                    Stack stack {
+                    }
+                ;
+            }
         }
     ;
 }
