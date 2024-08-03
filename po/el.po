@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-03 14:05-0400\n"
-"PO-Revision-Date: 2024-07-30 16:34+0000\n"
+"PO-Revision-Date: 2024-08-04 18:34+0000\n"
 "Last-Translator: Athanasios Nektarios Karachalios Stagkas <Nasos.Karachalios."
 "Stagkas@proton.me>\n"
 "Language-Team: Greek <https://weblate.fyralabs.com/projects/flattool/"
@@ -323,157 +323,167 @@ msgstr ""
 
 #: data/ui/window.blp:53
 msgid "Loading Flatpaks"
-msgstr ""
+msgstr "Φόρτωση Flatpaks"
 
 #: data/ui/window.blp:129
 msgid "Uninstalling"
-msgstr ""
+msgstr "Απεγκατάσταση"
 
 #: data/ui/window.blp:157
 msgid "Creating Snapshots"
-msgstr ""
+msgstr "Δημιουργία Στιγμιότυπων"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
-msgstr ""
+msgstr "Δεν Βρέθηκαν Flatpaks"
 
 #: data/ui/window.blp:170
+#, fuzzy
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
 msgstr ""
+"Η αποθήκη δεν μπορεί να δει τη λίστα των εγκατεστημένων Flatpaks ή το "
+"σύστημα δεν έχει εγκατεστημένα Flatpaks"
 
 #: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
-msgstr ""
+msgstr "Δεν υπάρχουν φίλτρα αντιστοιχίας με Flatpaks"
 
 #: data/ui/window.blp:176
 msgid "No installed Flatpak matches all of the currently applied filters"
-msgstr ""
+msgstr "Κανένα εγκατεστημένο Flatpak δεν ταιριάζει με όλα τα τρέχοντα φίλτρα"
 
 #: data/ui/window.blp:193
 msgid "Refreshing List"
-msgstr ""
+msgstr "Ανανέωση λίστας"
 
 #: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
-msgstr ""
+msgstr "Απεγκατάσταση επιλεγμένων εφαρμογών"
 
 #: data/ui/window.blp:218
 msgid "Send Selected Apps' Data to the Trash"
-msgstr ""
+msgstr "Αποστολή δεδομένων επιλεγμένων εφαρμογών στον κάδο απορριμμάτων"
 
 #: data/ui/window.blp:224
 msgid "Open Copy Menu"
-msgstr ""
+msgstr "Άνοιγμα μενού αντιγραφής"
 
 #: data/ui/window.blp:231
 msgid "Snapshot Selected Apps' Data"
-msgstr ""
+msgstr "Στιγμιότυπο δεδομένων επιλεγμένων εφαρμογών"
 
 #: data/ui/window.blp:241
 msgid "Manage Leftover Data…"
-msgstr ""
+msgstr "Διαχειριστείτε τα εναπομείναντα δεδομένα…"
 
 #: data/ui/window.blp:250
 msgid "Manage Remotes…"
-msgstr ""
+msgstr "Διαχείριση αποθετηρίων…"
 
 #: data/ui/window.blp:256
 msgid "Install From File…"
-msgstr ""
+msgstr "Εγκατάσταση από αρχείο…"
 
 #: data/ui/window.blp:261
 msgid "Install From The Web…"
-msgstr ""
+msgstr "Εγκατάσταση από το διαδίκτυο…"
 
 #: data/ui/window.blp:267
 msgid "Refresh List"
-msgstr ""
+msgstr "Ανανέωση Λίστας"
 
 #: data/ui/window.blp:271
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Συντομεύσεις πληκτρολογίου"
 
 #: data/ui/window.blp:276
+#, fuzzy
 msgid "_About Warehouse"
-msgstr ""
+msgstr "_Περί Αποθήκης"
 
 #: data/ui/window.blp:285
 msgid "Copy Names"
-msgstr ""
+msgstr "Αντιγραφή Ονομάτων"
 
 #: data/ui/window.blp:290
 msgid "Copy IDs"
-msgstr ""
+msgstr "Αντιγραφή Αναγνωριστικών"
 
 #: data/ui/window.blp:295
 msgid "Copy Refs"
-msgstr ""
+msgstr "Αντιγραφή Αναφορών"
 
 #: src/app_row_widget.py:82
 msgid "Updates Disabled"
-msgstr ""
+msgstr "Απενεργοποιημένες Ενημερώσεις"
 
 #: src/app_row_widget.py:87 src/properties_window.py:212
 msgid "{} is masked and will not be updated"
-msgstr ""
+msgstr "{} αποκρύπτεται και δεν θα ενημερωθεί"
 
 #: src/app_row_widget.py:94
 msgid "Auto Removal Disabled"
-msgstr ""
+msgstr "Αυτόματη Αφαίρεση Απενεργοποιημένη"
 
 #: src/app_row_widget.py:99
 msgid ""
 "{} is pinned and will not be auto removed even when it's required by no app"
 msgstr ""
+"{} είναι καρφιτσωμένο και δεν θα αφαιρεθεί αυτόματα ακόμα και όταν δεν "
+"απαιτείται από καμία εφαρμογή"
 
 #: src/app_row_widget.py:106
 msgid "App EOL"
-msgstr ""
+msgstr "Εφαρμογή Τέλους Βίου"
 
 #: src/app_row_widget.py:112 src/properties_window.py:195
 msgid ""
 "{} has reached its End of Life and will not receive any security updates"
 msgstr ""
+"{} έχει φτάσει στο τέλος της διάρκειας ζωής του και δεν θα λαμβάνει "
+"ενημερώσεις ασφαλείας"
 
 #: src/app_row_widget.py:123
 msgid "Runtime EOL"
-msgstr ""
+msgstr "Βιβλιοθήκη Τέλους βίου"
 
 #: src/app_row_widget.py:129 src/properties_window.py:203
 msgid ""
 "{}'s runtime has reached its End of Life and will not receive any security "
 "updates"
 msgstr ""
+"Η βιβλιοθήκη του {} έχει φτάσει στο τέλος της ζωής του και δεν θα λαμβάνει "
+"ενημερώσεις ασφαλείας"
 
 #: src/app_row_widget.py:165 src/orphans_window.py:266
 msgid "Select"
-msgstr ""
+msgstr "Επιλογή"
 
 #: src/app_row_widget.py:176 src/remotes_window.py:227
 msgid "View More"
-msgstr ""
+msgstr "Προβολή Περισσότερων"
 
 #: src/app_row_widget.py:197
 msgid "Copied name"
-msgstr ""
+msgstr "Αντιγραμμένο Όνομα"
 
 #: src/app_row_widget.py:201
 msgid "Copy Name"
-msgstr ""
+msgstr "Αντιγραφή Ονόματος"
 
 #: src/app_row_widget.py:206
 msgid "Copied ID"
-msgstr ""
+msgstr "Αντιγραμμένο Αναγνωριστικό"
 
 #: src/app_row_widget.py:211
 msgid "Copy ID"
-msgstr ""
+msgstr "Αντιγραφή Αναγνωριστικού"
 
 #: src/app_row_widget.py:216
 msgid "Copied ref"
-msgstr ""
+msgstr "Αντιγραμμένη Αναφορά"
 
 #: src/app_row_widget.py:221
 msgid "Copy Ref"
@@ -620,11 +630,11 @@ msgstr ""
 
 #: src/orphans_window.py:83
 msgid "Could not install some apps"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εγκατάσταση ορισμένων εφαρμογών"
 
 #: src/orphans_window.py:117
 msgid "Attempt to Install?"
-msgstr ""
+msgstr "Προσπάθεια εγκατάστασης?"
 
 #: src/orphans_window.py:118
 msgid "Warehouse will attempt to install apps matching the selected data."
