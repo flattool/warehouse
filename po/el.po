@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-03 14:05-0400\n"
-"PO-Revision-Date: 2024-08-04 18:34+0000\n"
+"PO-Revision-Date: 2024-08-07 23:01+0000\n"
 "Last-Translator: Athanasios Nektarios Karachalios Stagkas <Nasos.Karachalios."
 "Stagkas@proton.me>\n"
 "Language-Team: Greek <https://weblate.fyralabs.com/projects/flattool/"
@@ -652,92 +652,94 @@ msgstr ""
 
 #: src/orphans_window.py:185
 msgid "Trash folders?"
-msgstr ""
+msgstr "Απόθεση φακέλων στα απορρίμματα;"
 
 #: src/orphans_window.py:185
 msgid "These folders will be sent to the trash."
-msgstr ""
+msgstr "Αυτοί οι φάκελοι θα σταλούν στα σκουπίδια."
 
 #: src/orphans_window.py:190
 msgid "Continue"
-msgstr ""
+msgstr "Συνέχεια"
 
 #: src/orphans_window.py:198 src/properties_window.py:46
 #: src/snapshots_window.py:245 src/window.py:424
 msgid "Could not open folder"
-msgstr ""
+msgstr "Δεν μπόρεσε να γίνει άνοιγμα φακέλου"
 
 #: src/orphans_window.py:216
 msgid "Could not manage data"
-msgstr ""
+msgstr "Δεν μπόρεσε να γίνει διαχείριση δεδομένων"
 
 #: src/properties_window.py:40 src/remotes_window.py:212
 msgid "Copied {}"
-msgstr ""
+msgstr "Αντιγράφηκε {}"
 
 #: src/properties_window.py:52
 msgid "Could not show details"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εμφάνιση λεπτομερειών"
 
 #: src/properties_window.py:58
 msgid "User Data"
-msgstr ""
+msgstr "Δεδομένα Χρήστη"
 
 #: src/properties_window.py:69
 msgid "Description"
-msgstr ""
+msgstr "Περιγραφή"
 
 #: src/properties_window.py:84 src/properties_window.py:144
 msgid "No User Data"
-msgstr ""
+msgstr "Δεν υπάρχουν Δεδομένα Χρήστη"
 
 #: src/properties_window.py:135
 msgid "Could not show properties"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εμφάνιση ιδιοτήτων"
 
 #: src/properties_window.py:143 src/window.py:438
 msgid "Trashed user data"
-msgstr ""
+msgstr "Απορρίφθηκαν τα Δεδομένα Χρήστη"
 
 #: src/properties_window.py:150 src/window.py:433
 msgid "Could not trash user data"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η απόρριψη δεδομένων χρήστη"
 
 #: src/properties_window.py:154 src/window.py:441
 msgid "Send {}'s User Data to the Trash?"
-msgstr ""
+msgstr "Αποστολή δεδομένων χρήστη {} στον κάδο απορριμμάτων;"
 
 #: src/properties_window.py:158 src/window.py:448 src/window.py:646
 msgid "Trash Data"
-msgstr ""
+msgstr "Δεδομένα Απορριμμάτων"
 
 #: src/remotes_window.py:71
 msgid "Could not remove {}"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η αφαίρεση {}"
 
 #: src/remotes_window.py:81 src/remotes_window.py:162
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr ""
+"Όλες οι εγκατεστημένες εφαρμογές από {} θα σταματήσουν να λαμβάνουν "
+"ενημερώσεις"
 
 #: src/remotes_window.py:84
 msgid "Remove {}?"
-msgstr ""
+msgstr "Αφαίρεση {};"
 
 #: src/remotes_window.py:87 src/remotes_window.py:272
 msgid "Remove"
-msgstr ""
+msgstr "Αφαίρεση"
 
 #: src/remotes_window.py:114
 msgid "Could not enable {}"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η ενεργοποίηση {}"
 
 #: src/remotes_window.py:142
 msgid "Could not disable {}"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η απενεργοποίηση {}"
 
 #: src/remotes_window.py:165
 msgid "Disable {}?"
-msgstr ""
+msgstr "Απενεργοποίηση {};"
 
 #: src/remotes_window.py:168 src/remotes_window.py:263
 msgid "Disable"
