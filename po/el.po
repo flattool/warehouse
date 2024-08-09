@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-03 14:05-0400\n"
-"PO-Revision-Date: 2024-08-07 23:01+0000\n"
+"PO-Revision-Date: 2024-08-10 16:34+0000\n"
 "Last-Translator: Athanasios Nektarios Karachalios Stagkas <Nasos.Karachalios."
 "Stagkas@proton.me>\n"
 "Language-Team: Greek <https://weblate.fyralabs.com/projects/flattool/"
@@ -831,23 +831,23 @@ msgstr ""
 
 #: src/remotes_window.py:569
 msgid "{} successfully added"
-msgstr ""
+msgstr "{} προστέθηκε επιτυχώς"
 
 #: src/remotes_window.py:619
 msgid "Add {}?"
-msgstr ""
+msgstr "Προσθήκη {};"
 
 #: src/remotes_window.py:667
 msgid "Flatpak Repos"
-msgstr ""
+msgstr "Flatpak Αποθετήρια"
 
 #: src/snapshots_window.py:48
 msgid "There is no User Data to Snapshot"
-msgstr ""
+msgstr "Δεν υπάρχουν δεδομένα χρήστη για τη δημιουργία στιγμιότυπου"
 
 #: src/snapshots_window.py:87
 msgid "Version {}"
-msgstr ""
+msgstr "Έκδοση {}"
 
 #: src/snapshots_window.py:95 src/snapshots_window.py:236
 msgid "Apply Snapshot"
