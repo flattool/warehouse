@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-03 14:05-0400\n"
-"PO-Revision-Date: 2024-08-10 16:34+0000\n"
+"PO-Revision-Date: 2024-08-11 11:33+0000\n"
 "Last-Translator: Athanasios Nektarios Karachalios Stagkas <Nasos.Karachalios."
 "Stagkas@proton.me>\n"
 "Language-Team: Greek <https://weblate.fyralabs.com/projects/flattool/"
@@ -107,7 +107,6 @@ msgid "Show Apps"
 msgstr "Εμφάνιση Εφαρμογών"
 
 #: data/ui/filter.blp:49
-#, fuzzy
 msgid "Show Runtimes"
 msgstr "Εμφάνιση Βιβλιοθηκών"
 
@@ -116,7 +115,6 @@ msgid "Filter by Remotes"
 msgstr "Φίλτρο ανά Αποθετήριο"
 
 #: data/ui/filter.blp:65
-#, fuzzy
 msgid "Filter by Runtimes"
 msgstr "Φίλτρο ανά Βιβλιοθήκη"
 
@@ -162,7 +160,6 @@ msgstr "Απορρίμματα"
 
 #: data/ui/orphans.blp:130 data/ui/search_install.blp:54
 #: src/orphans_window.py:122 src/window.py:839
-#, fuzzy
 msgid "Install"
 msgstr "Εγκατάσταση"
 
@@ -338,7 +335,6 @@ msgid "No Flatpaks Found"
 msgstr "Δεν Βρέθηκαν Flatpaks"
 
 #: data/ui/window.blp:170
-#, fuzzy
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
@@ -399,7 +395,6 @@ msgid "_Keyboard Shortcuts"
 msgstr "_Συντομεύσεις πληκτρολογίου"
 
 #: data/ui/window.blp:276
-#, fuzzy
 msgid "_About Warehouse"
 msgstr "_Περί Αποθήκης"
 
@@ -871,196 +866,215 @@ msgstr ""
 
 #: src/snapshots_window.py:148
 msgid "Could not create snapshot"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η δημιουργία στιγμιότυπου"
 
 #: src/snapshots_window.py:157
 msgid "Creating Snapshot…"
-msgstr ""
+msgstr "Δημιουργία Στιγμιότυπου…"
 
 #: src/snapshots_window.py:191 src/snapshots_window.py:208
 #: src/snapshots_window.py:215
 msgid "Could not apply snapshot"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εφαρμογή στιγμιότυπου"
 
 #: src/snapshots_window.py:194
 msgid "Snapshot applied"
-msgstr ""
+msgstr "Εφαρμογή Στιγμιότυπου"
 
 #: src/snapshots_window.py:221
 msgid "Applying Snapshot…"
-msgstr ""
+msgstr "Εφαρμογή Στιγμιότυπου…"
 
 #: src/snapshots_window.py:229
 msgid "Apply Snapshot?"
-msgstr ""
+msgstr "Εφαρμογή Στιγμιότυπου;"
 
 #: src/snapshots_window.py:230
 msgid "Applying this snapshot will trash any current user data for {}."
 msgstr ""
+"Η εφαρμογή αυτού του στιγμιότυπου θα καταστρέψει όλα τα τρέχοντα δεδομένα "
+"χρήστη για {}."
 
 #. Window stuffs
 #: src/snapshots_window.py:280
 msgid "{} Snapshots"
-msgstr ""
+msgstr "{} Στιγμιότυπα"
 
 #: src/window.py:111
 msgid "Uninstalled successfully"
-msgstr ""
+msgstr "Απεγκαταστάθηκε με επιτυχία"
 
 #: src/window.py:114
 msgid "Could not uninstall some apps"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η απεγκατάσταση ορισμένων εφαρμογών"
 
 #: src/window.py:170
 msgid "Uninstall Selected Apps?"
-msgstr ""
+msgstr "Απεγκατάσταση Επιλεγμένων Εφαρμογών;"
 
 #: src/window.py:171
 msgid "It will not be possible to use these apps after removal."
-msgstr ""
+msgstr "Δεν θα είναι δυνατή η χρήση αυτών των εφαρμογών μετά την αφαίρεση."
 
 #: src/window.py:191 src/window.py:273
 msgid "App Settings & Data"
-msgstr ""
+msgstr "Ρυθμίσεις & Δεδομένα Εφαρμογής"
 
 #: src/window.py:195 src/window.py:277
 msgid "Keep"
-msgstr ""
+msgstr "Διατηρήστε το"
 
 #: src/window.py:196
 msgid "Allow restoring these apps' settings and content"
 msgstr ""
+"Επιτρέψτε την επαναφορά των ρυθμίσεων και του περιεχομένου αυτών των "
+"εφαρμογών"
 
 #: src/window.py:200
 msgid "Send these apps' settings and content to the trash"
 msgstr ""
+"Στείλτε τις ρυθμίσεις και το περιεχόμενο αυτών των εφαρμογών στον κάδο "
+"απορριμμάτων"
 
 #: src/window.py:236
 msgid "Cannot uninstall while already uninstalling"
-msgstr ""
+msgstr "Δεν είναι δυνατή η απεγκατάσταση ενώ ήδη γίνεται απεγκατάσταση"
 
 #: src/window.py:265
 msgid "Uninstall {}?"
-msgstr ""
+msgstr "Απεγκατάσταση {};"
 
 #: src/window.py:266
 msgid "It will not be possible to use {} after removal."
-msgstr ""
+msgstr "Δεν θα είναι δυνατή η χρήση του {} μετά την αφαίρεση."
 
 #: src/window.py:278
 msgid "Allow restoring this app's settings and content"
 msgstr ""
+"Επιτρέψτε την επαναφορά των ρυθμίσεων και του περιεχομένου αυτής της "
+"εφαρμογής"
 
 #: src/window.py:282
 msgid "Send this app's settings and content to the trash"
 msgstr ""
+"Στείλτε τις ρυθμίσεις και το περιεχόμενο αυτής της εφαρμογής στα σκουπίδια"
 
 #: src/window.py:444
 msgid "Your files and data for this app will be sent to the trash."
 msgstr ""
+"Τα αρχεία και τα δεδομένα σας για αυτή την εφαρμογή θα σταλούν στον κάδο "
+"απορριμμάτων."
 
 #: src/window.py:463
 msgid "Could not disable updates for {}"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η απενεργοποίηση των ενημερώσεων για {}"
 
 #: src/window.py:485
 msgid "Disable Updates for {}?"
-msgstr ""
+msgstr "Απενεργοποίηση ενημερώσεων για {};"
 
 #: src/window.py:489
 msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
 msgstr ""
+"Αυτό θα αποκρύψει το {} εξασφαλίζοντας ότι δεν θα λάβει ποτέ καμία ενημέρωση "
+"χαρακτηριστικών ή ασφαλείας."
 
 #: src/window.py:511
 msgid "Could not enable auto removal"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η ενεργοποίηση της αυτόματης αφαίρεσης"
 
 #: src/window.py:514
 msgid "Could not disable auto removal"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η απενεργοποίηση της αυτόματης αφαίρεσης"
 
 #: src/window.py:537
 msgid "Disable Automatic Removal for {}?"
-msgstr ""
+msgstr "Απενεργοποίηση αυτόματης αφαίρεσης για {};"
 
 #: src/window.py:540
 msgid ""
 "This will pin {} ensuring it well never be removed automatically, even if no "
 "app depends on it."
 msgstr ""
+"Αυτό θα καρφιτσώσει το {} εξασφαλίζοντας ότι δεν θα αφαιρεθεί ποτέ αυτόματα, "
+"ακόμη και αν καμία εφαρμογή δεν εξαρτάται από αυτό."
 
 #: src/window.py:560
 msgid "Could not Run App"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εκτέλεση της εφαρμογής"
 
 #: src/window.py:568
 msgid "OK"
-msgstr ""
+msgstr "ΕΝΤΆΞΕΙ"
 
 #: src/window.py:620
 msgid "{} has no data to trash"
-msgstr ""
+msgstr "{} δεν έχει δεδομένα για απόρριψη"
 
 #: src/window.py:626
 msgid "Could not trash {}'s data"
-msgstr ""
+msgstr "Δεν μπόρεσε να απορρίψει τα δεδομένα του {}"
 
 #: src/window.py:641
 msgid "Trash Selected Apps' User Data?"
-msgstr ""
+msgstr "Απόρριψη δεδομένων χρήστη επιλεγμένων εφαρμογών;"
 
 #: src/window.py:642
 msgid "Your files and data for these apps will be sent to the trash."
 msgstr ""
+"Τα αρχεία και τα δεδομένα σας για αυτές τις εφαρμογές θα σταλούν στον κάδο "
+"απορριμμάτων."
 
 #: src/window.py:692
 msgid "Could not snapshot some apps"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η λήψη στιγμιότυπων ορισμένων εφαρμογών"
 
 #: src/window.py:709
 msgid "Create Snapshots?"
-msgstr ""
+msgstr "Δημιουργία Στιγμιότυπων;"
 
 #: src/window.py:711
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
 msgstr ""
+"Τα στιγμιότυπα είναι αντίγραφα ασφαλείας των δεδομένων χρήστη της εφαρμογής. "
+"Μπορούν να εφαρμοστούν ξανά ανά πάσα στιγμή. Αυτό μπορεί να πάρει λίγο χρόνο."
 
 #: src/window.py:716
 msgid "Create Snapshots"
-msgstr ""
+msgstr "Δημιουργία Στιγμιότυπων"
 
 #: src/window.py:771
 msgid "Copied selected app names"
-msgstr ""
+msgstr "Αντιγραφή επιλεγμένων ονομάτων εφαρμογών"
 
 #: src/window.py:786
 msgid "Copied selected app IDs"
-msgstr ""
+msgstr "Αντιγραφή επιλεγμένων αναγνωριστικών εφαρμογών"
 
 #: src/window.py:801
 msgid "Copied selected app refs"
-msgstr ""
+msgstr "Αντιγραφή επιλεγμένων αναφορών εφαρμογών"
 
 #: src/window.py:812
 msgid "Could not install app"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εγκατάσταση της εφαρμογής"
 
 #: src/window.py:836
 msgid "Install {}?"
-msgstr ""
+msgstr "Εγκατάσταση {};"
 
 #: src/window.py:847
 msgid "The app will be available to only you"
-msgstr ""
+msgstr "Η εφαρμογή θα είναι διαθέσιμη μόνο σε εσάς"
 
 #: src/window.py:851
 msgid "The app will be available to every user on the system"
-msgstr ""
+msgstr "Η εφαρμογή θα είναι διαθέσιμη σε κάθε χρήστη του συστήματος"
 
 #: src/window.py:881
 msgid "File type not supported"
-msgstr ""
+msgstr "Ο τύπος αρχείου δεν υποστηρίζεται"
