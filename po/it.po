@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-03 14:05-0400\n"
-"PO-Revision-Date: 2024-08-10 16:34+0000\n"
+"PO-Revision-Date: 2024-08-13 14:34+0000\n"
 "Last-Translator: Nekothegamer <nekotheggamer@gmail.com>\n"
 "Language-Team: Italian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/it/>\n"
@@ -342,18 +342,21 @@ msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
 msgstr ""
+"Warehouse non può vedere la lista dei Flatpak installati o il sistema non ha "
+"Flatpak installati"
 
 #: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
-msgstr ""
+msgstr "Nessun Flatpak corrisponde ai filtri"
 
 #: data/ui/window.blp:176
 msgid "No installed Flatpak matches all of the currently applied filters"
 msgstr ""
+"Nessun Flatpak installato corrisponde a tutti i filtri attualmente applicati"
 
 #: data/ui/window.blp:193
 msgid "Refreshing List"
-msgstr ""
+msgstr "Aggiornamento lista"
 
 #: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
