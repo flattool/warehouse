@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-03 14:05-0400\n"
-"PO-Revision-Date: 2024-04-20 23:06+0000\n"
-"Last-Translator: Písek Pískovec <pisekpiskovec@gmail.com>\n"
+"PO-Revision-Date: 2024-08-12 13:09+0000\n"
+"Last-Translator: Lordus Kordus <lorduskordus@gmail.com>\n"
 "Language-Team: Czech <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/cs/>\n"
 "Language: cs\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 5.4.2\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. Translators: Do not translate the applicaion name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -31,53 +31,58 @@ msgstr "flatpak"
 #: data/io.github.flattool.Warehouse.desktop.in:12
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
-msgstr ""
+msgstr "Spravovat vše týkající se Flatpaku"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
+#, fuzzy
 msgid ""
 "Warehouse is an app that manages installed Flatpaks, their user data, and "
 "Flatpak remotes."
 msgstr ""
+"Warehouse je aplikace, která umožňuje správu nainstalovaných Flatpaků, "
+"jejich uživatelských dat a Vzdálených repozitářů."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr ""
+msgstr "Funkce:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Show and filter the list of installed Flatpaks"
-msgstr ""
+msgstr "Zobrazit a vyfiltrovat seznam nainstalovaných Flatpaků"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Display properties of installed Flatpaks"
-msgstr ""
+msgstr "Zobrazit vlastnosti nainstalovaných Flatpaků"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Manage large groups of Flatpaks at once"
-msgstr ""
+msgstr "Spravovat velké skupiny Flatpaků najednou"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
+#, fuzzy
 msgid "Add and remove Flatpak remotes"
-msgstr ""
+msgstr "Přidat a odstranit Flatpak repozitáře"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "Find and trash leftover user data"
-msgstr ""
+msgstr "Najít a odstranit zbylá uživatelská data"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
-msgstr ""
+msgstr "Přeinstalovat aplikace, které mají zbylá data"
 
 #: data/ui/downgrade.blp:25 src/app_row_widget.py:360
 msgid "Downgrade"
 msgstr "Downgradovat"
 
 #: data/ui/downgrade.blp:55
+#, fuzzy
 msgid "Fetching Releases"
-msgstr "Získávání Vydání"
+msgstr "Získávám Vydání"
 
 #: data/ui/downgrade.blp:63 data/ui/window.blp:107 data/ui/window.blp:162
 msgid "This could take a while"
-msgstr "Chvíli to může potrvat"
+msgstr "Tohle může chvíli trvat"
 
 #: data/ui/downgrade.blp:71 src/app_row_widget.py:299 src/window.py:494
 msgid "Disable Updates"
@@ -92,8 +97,8 @@ msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
-"Toto odinstaluje současné vydání a místo toho nainstaluje vybrané vydání. "
-"Pozor, downgrade může způsobit problémy."
+"Tohle odinstaluje současné vydání a nainstaluje vybrané. Pozor, downgrade "
+"může způsobit potíže."
 
 #: data/ui/filter.blp:5 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
@@ -105,15 +110,16 @@ msgstr "Zobrazit Aplikace"
 
 #: data/ui/filter.blp:49
 msgid "Show Runtimes"
-msgstr ""
+msgstr "Zobrazit Běhová Prostředí"
 
 #: data/ui/filter.blp:60
+#, fuzzy
 msgid "Filter by Remotes"
-msgstr ""
+msgstr "Filtrovat podle Vzdálených Repozitářů"
 
 #: data/ui/filter.blp:65
 msgid "Filter by Runtimes"
-msgstr ""
+msgstr "Filtrovat podle Běhových prostředí"
 
 #: data/ui/filter.blp:73 data/ui/window.blp:179
 msgid "Reset Filters"
@@ -129,19 +135,19 @@ msgstr "Otevřít Složku s Daty"
 
 #: data/ui/orphans.blp:81 data/ui/search_install.blp:171 data/ui/window.blp:98
 msgid "Installing"
-msgstr "Instaluje se"
+msgstr "Instaluji"
 
 #: data/ui/orphans.blp:102
 msgid "No Leftover Data"
-msgstr "Žádná Zbytková Data"
+msgstr "Žádná Zbylá Data"
 
 #: data/ui/orphans.blp:103
 msgid "There is no leftover user data"
-msgstr "Nejsou žádná zbytková uživatelská data"
+msgstr "Neexistují žádná zbylá uživatelská data"
 
 #: data/ui/orphans.blp:108 data/ui/search_install.blp:87 data/ui/window.blp:187
 msgid "No Results Found"
-msgstr "Nalezeny Žádné Výsledky"
+msgstr "Nenalezeny Žádné Výsledky"
 
 #: data/ui/orphans.blp:109 data/ui/search_install.blp:88 data/ui/window.blp:188
 msgid "Try a different search term"
@@ -149,11 +155,11 @@ msgstr "Zkuste jiný termín vyhledávání"
 
 #: data/ui/orphans.blp:119 data/ui/window.blp:206
 msgid "Select All"
-msgstr "Označit Vše"
+msgstr "Vybrat Vše"
 
 #: data/ui/orphans.blp:124 src/window.py:199 src/window.py:281
 msgid "Trash"
-msgstr "Smazat"
+msgstr "Odsranit"
 
 #: data/ui/orphans.blp:130 data/ui/search_install.blp:54
 #: src/orphans_window.py:122 src/window.py:839
@@ -161,24 +167,28 @@ msgid "Install"
 msgstr "Instalovat"
 
 #: data/ui/popular_remotes.blp:18
+#, fuzzy
 msgid "Add Remote"
-msgstr ""
+msgstr "Přidat Vzdálený Repozitář"
 
 #: data/ui/popular_remotes.blp:19
+#, fuzzy
 msgid "Choose from a list of popular remotes or add a new one"
-msgstr ""
+msgstr "Zvolit ze seznamu populárních repozitářů nebo přidat nový"
 
 #: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
+#, fuzzy
 msgid "Add a Repo File"
 msgstr "Přidat Soubor Repozitáře"
 
 #: data/ui/popular_remotes.blp:50 data/ui/remotes.blp:56
+#, fuzzy
 msgid "Add a Custom Remote"
-msgstr ""
+msgstr "Přidat Vlastní Repozitář"
 
 #: data/ui/properties.blp:7
 msgid "Properties"
-msgstr ""
+msgstr "Vlastnosti"
 
 #: data/ui/properties.blp:73
 msgid "Loading User Data"
@@ -187,23 +197,23 @@ msgstr "Načítání Uživatelských Dat"
 #: data/ui/properties.blp:78 src/app_row_widget.py:268
 #: src/orphans_window.py:258
 msgid "Open User Data Folder"
-msgstr ""
+msgstr "Otevřít Složku s Uživatelskými Daty"
 
 #: data/ui/properties.blp:90 src/app_row_widget.py:281
 msgid "Trash User Data"
-msgstr "Smazat Uživatelská Data"
+msgstr "Odstranit Uživatelská Data"
 
 #: data/ui/properties.blp:108
 msgid "Show Apps Using This Runtime"
-msgstr ""
+msgstr "Zobrazit Aplikace Používající Toto Běhové Prostředí"
 
 #: data/ui/properties.blp:119
 msgid "Runtime"
-msgstr ""
+msgstr "Běhové prostředí"
 
 #: data/ui/properties.blp:124 src/app_row_widget.py:156
 msgid "View Properties"
-msgstr ""
+msgstr "Zobrazit Vlastnosti"
 
 #: data/ui/properties.blp:135 src/app_row_widget.py:234 src/window.py:562
 msgid "Copy"
@@ -211,195 +221,207 @@ msgstr "Kopírovat"
 
 #: data/ui/properties.blp:147
 msgid "Show Details in Store"
-msgstr ""
+msgstr "Zobrazit Detaily v Obchodu"
 
 #: data/ui/remotes.blp:5 src/gtk/help-overlay.blp:42
+#, fuzzy
 msgid "Manage Remotes"
-msgstr ""
+msgstr "Spravovat Vzdálené Repozitáře"
 
 #: data/ui/remotes.blp:14
+#, fuzzy
 msgid "Refresh List of Remotes"
-msgstr ""
+msgstr "Obnovit Seznam Vzdálených Repozitářů"
 
 #: data/ui/remotes.blp:23
+#, fuzzy
 msgid "Installed Remotes"
-msgstr ""
+msgstr "Nainstalované Vzdálené Repozitáře"
 
 #: data/ui/remotes.blp:27
 msgid "Show Disabled"
-msgstr ""
+msgstr "Zobrazit Zakázané"
 
 #: data/ui/remotes.blp:41
+#, fuzzy
 msgid "No Remotes Found"
-msgstr ""
+msgstr "Nenalezeny Žádné Vzdálené Repozitáře"
 
 #: data/ui/remotes.blp:45
+#, fuzzy
 msgid "Add a Popular Remote"
-msgstr ""
+msgstr "Přidat Populární Vzdálený Repozitář"
 
 #: data/ui/remotes.blp:49
+#, fuzzy
 msgid "Add Other Remotes"
-msgstr ""
+msgstr "Přidat Ostatní Vzdálené Repozitáře"
 
 #: data/ui/remotes.blp:79
+#, fuzzy
 msgid "Adding Remote"
-msgstr ""
+msgstr "Přidávám Vzdálený Repozitář"
 
 #: data/ui/remotes.blp:88 data/ui/window.blp:54 data/ui/window.blp:194
 msgid "This should only take a moment"
-msgstr ""
+msgstr "Tohle by mělo trvat jen chvíli"
 
 #: data/ui/search_install.blp:14
 msgid "Search Criteria"
-msgstr ""
+msgstr "Vyhledávací Kritéria"
 
 #: data/ui/search_install.blp:22
+#, fuzzy
 msgid "Choose a Remote to Search"
-msgstr ""
+msgstr "Zvolit Repozitář pro Vyhledávání"
 
 #: data/ui/search_install.blp:36
 msgid "Results"
-msgstr ""
+msgstr "Výsledky"
 
 #: data/ui/search_install.blp:71
 msgid "Start Search"
-msgstr ""
+msgstr "Začít Vyhledávat"
 
 #: data/ui/search_install.blp:80
 msgid "Search for Flatpaks"
-msgstr ""
+msgstr "Vyhledávat Flatpaky"
 
 #: data/ui/search_install.blp:82
 msgid "Search for Flatpaks that you want to install"
-msgstr ""
+msgstr "Vyhledávat Flatpaky, které chcete nainstalovat"
 
 #: data/ui/search_install.blp:108
 msgid "Searching"
-msgstr ""
+msgstr "Hledám"
 
 #: data/ui/search_install.blp:119
 msgid "Too Many Results"
-msgstr ""
+msgstr "Příliš Mnoho Výsledků"
 
 #: data/ui/search_install.blp:120
 msgid "Try being more specific with your search"
-msgstr ""
+msgstr "Zkuste být více specifičtí při vyhledávání"
 
 #: data/ui/snapshots.blp:14
 msgid "Open Snapshots Folder"
-msgstr ""
+msgstr "Otevřít Složku se Snímky"
 
 #: data/ui/snapshots.blp:32
 msgid "New Snapshot"
-msgstr ""
+msgstr "Nový Snímek"
 
 #: data/ui/snapshots.blp:83
 msgid "No Snapshots"
-msgstr ""
+msgstr "Žádné Snímky"
 
 #: data/ui/snapshots.blp:84
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time."
 msgstr ""
+"Snímky jsou zálohy uživatelských dat aplikace. Mohou být aplikovány kdykoliv."
 
 #: data/ui/window.blp:18
 msgid "Filter List"
-msgstr ""
+msgstr "Seznam Filtrů"
 
 #: data/ui/window.blp:24
 msgid "Main Menu"
-msgstr ""
+msgstr "Hlavní Menu"
 
 #: data/ui/window.blp:31 src/gtk/help-overlay.blp:29
 msgid "Toggle Selection Mode"
-msgstr ""
+msgstr "Přepnout Mód Výběru"
 
 #: data/ui/window.blp:53
 msgid "Loading Flatpaks"
-msgstr ""
+msgstr "Načítání Flatpaků"
 
 #: data/ui/window.blp:129
 msgid "Uninstalling"
-msgstr ""
+msgstr "Odinstaluji"
 
 #: data/ui/window.blp:157
 msgid "Creating Snapshots"
-msgstr ""
+msgstr "Vytvářím Snímky"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
-msgstr ""
+msgstr "Nenalezeny žádné Flatpaky"
 
 #: data/ui/window.blp:170
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
 msgstr ""
+"Aplikace Warehouse nevidí seznam nainstalovaných Flatpaků nebo systém nemá "
+"žádné Flatpaky nainstalován"
 
 #: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
-msgstr ""
+msgstr "Žádné Flatpaky Neodpovídají Filtrům"
 
 #: data/ui/window.blp:176
 msgid "No installed Flatpak matches all of the currently applied filters"
-msgstr ""
+msgstr "Žádný nainstalovaný Flatpak neodpovídá všem aplikovaným filtrů"
 
 #: data/ui/window.blp:193
 msgid "Refreshing List"
-msgstr ""
+msgstr "Obnovuji Seznam"
 
 #: data/ui/window.blp:212
 msgid "Uninstall Selected Apps"
-msgstr ""
+msgstr "Odinstalovat Vybrané Aplikace"
 
 #: data/ui/window.blp:218
 msgid "Send Selected Apps' Data to the Trash"
-msgstr ""
+msgstr "Přesunout Data Vybraných Aplikací do Koše"
 
 #: data/ui/window.blp:224
 msgid "Open Copy Menu"
-msgstr ""
+msgstr "Otevřít Menu Kopírování"
 
 #: data/ui/window.blp:231
 msgid "Snapshot Selected Apps' Data"
-msgstr ""
+msgstr "Vytvořit Snímek Dat Vybraných Aplikací"
 
 #: data/ui/window.blp:241
 msgid "Manage Leftover Data…"
-msgstr ""
+msgstr "Spravovat Zbylá Data…"
 
 #: data/ui/window.blp:250
+#, fuzzy
 msgid "Manage Remotes…"
-msgstr ""
+msgstr "Spravovat Vzdálené Repozitáře…"
 
 #: data/ui/window.blp:256
 msgid "Install From File…"
-msgstr ""
+msgstr "Instalovat ze Souboru…"
 
 #: data/ui/window.blp:261
 msgid "Install From The Web…"
-msgstr ""
+msgstr "Instalovat z Webu…"
 
 #: data/ui/window.blp:267
 msgid "Refresh List"
-msgstr ""
+msgstr "Obnovit Seznam"
 
 #: data/ui/window.blp:271
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Klávesové Zkratky"
 
 #: data/ui/window.blp:276
 msgid "_About Warehouse"
-msgstr ""
+msgstr "_O Aplikaci Warehouse"
 
 #: data/ui/window.blp:285
 msgid "Copy Names"
-msgstr ""
+msgstr "Kopírovat Názvy"
 
 #: data/ui/window.blp:290
 msgid "Copy IDs"
-msgstr ""
+msgstr "Kopírovat více ID"
 
 #: data/ui/window.blp:295
 msgid "Copy Refs"
@@ -407,63 +429,67 @@ msgstr ""
 
 #: src/app_row_widget.py:82
 msgid "Updates Disabled"
-msgstr ""
+msgstr "Aktualizace Zakázány"
 
 #: src/app_row_widget.py:87 src/properties_window.py:212
 msgid "{} is masked and will not be updated"
-msgstr ""
+msgstr "{} je zamaskován a nebude aktualizován"
 
 #: src/app_row_widget.py:94
 msgid "Auto Removal Disabled"
-msgstr ""
+msgstr "Automatické Odstranění Vypnuto"
 
 #: src/app_row_widget.py:99
 msgid ""
 "{} is pinned and will not be auto removed even when it's required by no app"
 msgstr ""
+"{} je přišpendlen a nebude automaticky odstraněn ani když není požadován "
+"žádnou aplikací"
 
 #: src/app_row_widget.py:106
 msgid "App EOL"
-msgstr ""
+msgstr "Aplikace EOL"
 
 #: src/app_row_widget.py:112 src/properties_window.py:195
 msgid ""
 "{} has reached its End of Life and will not receive any security updates"
-msgstr ""
+msgstr "{} dosáhl End of Life a nebude dostávat žádné bezpečnostní aktualizace"
 
 #: src/app_row_widget.py:123
 msgid "Runtime EOL"
-msgstr ""
+msgstr "Běhové prostředí EOL"
 
 #: src/app_row_widget.py:129 src/properties_window.py:203
 msgid ""
 "{}'s runtime has reached its End of Life and will not receive any security "
 "updates"
 msgstr ""
+"{} běhové prostředí dosáhlo End of Life a nebude dostávat žádné bezpečnostní "
+"aktualizace"
 
 #: src/app_row_widget.py:165 src/orphans_window.py:266
 msgid "Select"
-msgstr ""
+msgstr "Vybrat"
 
 #: src/app_row_widget.py:176 src/remotes_window.py:227
 msgid "View More"
-msgstr ""
+msgstr "Zobrazit Více"
 
 #: src/app_row_widget.py:197
 msgid "Copied name"
-msgstr ""
+msgstr "Zkopírováno jméno"
 
 #: src/app_row_widget.py:201
 msgid "Copy Name"
-msgstr ""
+msgstr "Kopírovat Název"
 
 #: src/app_row_widget.py:206
 msgid "Copied ID"
-msgstr ""
+msgstr "Zkopírováno ID"
 
 #: src/app_row_widget.py:211
 msgid "Copy ID"
-msgstr ""
+msgstr "Kopírovat ID"
 
 #: src/app_row_widget.py:216
 msgid "Copied ref"
@@ -475,45 +501,47 @@ msgstr ""
 
 #: src/app_row_widget.py:227
 msgid "Copied launch command"
-msgstr ""
+msgstr "Zkopírován příkaz spuštění"
 
 #: src/app_row_widget.py:231
 msgid "Copy Launch Command"
-msgstr ""
+msgstr "Kopírovat Příkaz pro Spuštění"
 
 #: src/app_row_widget.py:243
 msgid "Opened {}"
-msgstr ""
+msgstr "Otevřen {}"
 
 #: src/app_row_widget.py:246
 msgid "Open"
-msgstr ""
+msgstr "Otevřít"
 
 #: src/app_row_widget.py:256 src/window.py:229 src/window.py:302
 msgid "Uninstall"
-msgstr ""
+msgstr "Odinstalovat"
 
 #: src/app_row_widget.py:311
 msgid "Enable Updates"
-msgstr ""
+msgstr "Povolit Aktualizace"
 
 #: src/app_row_widget.py:324 src/window.py:546
 msgid "Disable Auto Removal"
-msgstr ""
+msgstr "Zakázat Automatické Odstraňování"
 
 #: src/app_row_widget.py:336
 msgid "Enable Auto Removal"
-msgstr ""
+msgstr "Povolit Automatické Odstraňování"
 
 #: src/app_row_widget.py:350
 msgid "Manage Snapshots"
-msgstr ""
+msgstr "Spravovat Snímky"
 
 #: src/common.py:325 src/common.py:399
 msgid ""
 "Working on {}\n"
 "{} out of {}"
 msgstr ""
+"Pracuji na {}\n"
+"{} z {}"
 
 #: src/downgrade_window.py:88
 msgid "Commit Hash: {}"
@@ -521,23 +549,24 @@ msgstr ""
 
 #: src/downgrade_window.py:110
 msgid "Could not downgrade {}"
-msgstr ""
+msgstr "Nebylo možné downgradovat {}"
 
 #: src/downgrade_window.py:128
 msgid "Downgrading…"
-msgstr ""
+msgstr "Downgraduji…"
 
 #: src/downgrade_window.py:151
 msgid "Downgrade {}"
-msgstr ""
+msgstr "Downgrade {}"
 
 #: src/downgrade_window.py:159
 msgid "Ensure that {} will never be updated to a newer version"
-msgstr ""
+msgstr "Ujistit se, že {} nikdy nebude aktualizován na novější verzi"
 
 #: src/filter_window.py:43 src/filter_window.py:49
+#, fuzzy
 msgid "{} selected"
-msgstr ""
+msgstr "{} vybráno"
 
 #: src/filter_window.py:135 src/orphans_window.py:150 src/remotes_window.py:307
 msgid "User wide"
@@ -549,80 +578,81 @@ msgstr ""
 
 #: src/filter_window.py:139 src/orphans_window.py:154 src/remotes_window.py:311
 msgid "Unknown install type"
-msgstr ""
+msgstr "Neznámý typ instalace"
 
 #: src/gtk/help-overlay.blp:11
 msgid "App Management"
-msgstr ""
+msgstr "Správa Aplikace"
 
 #: src/gtk/help-overlay.blp:14
 msgid "Search"
-msgstr ""
+msgstr "Vyhledat"
 
 #: src/gtk/help-overlay.blp:24
 msgid "Refresh"
-msgstr ""
+msgstr "Obnovit"
 
 #: src/gtk/help-overlay.blp:34
 msgid "More Functions"
-msgstr ""
+msgstr "Více Funkcí"
 
 #: src/gtk/help-overlay.blp:37 src/orphans_window.py:30
 msgid "Manage Leftover Data"
-msgstr ""
+msgstr "Spravovat Zbylá Data"
 
 #: src/gtk/help-overlay.blp:47
 msgid "Install From File"
-msgstr ""
+msgstr "Instalovat ze Souboru"
 
 #: src/gtk/help-overlay.blp:52
 msgid "General"
-msgstr ""
+msgstr "Obecné"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Open Menu"
-msgstr ""
+msgstr "Otevřít Menu"
 
 #: src/gtk/help-overlay.blp:60
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Zobrazit Zkratky"
 
 #: src/gtk/help-overlay.blp:65
 msgid "Quit"
-msgstr ""
+msgstr "Skončit"
 
 #: src/main.py:149
 msgid "Flatpaks"
-msgstr ""
+msgstr "Flatpaky"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
 #: src/main.py:191
 msgid "translator-credits"
-msgstr ""
+msgstr "lorduskordus <lorduskordus@gmail.com>"
 
 #: src/main.py:197
 msgid "Donate"
-msgstr ""
+msgstr "Přispět"
 
 #: src/main.py:199
 msgid "Contributors"
-msgstr ""
+msgstr "Přispěvatelé"
 
 #: src/orphans_window.py:80 src/window.py:810
 msgid "Installed successfully"
-msgstr ""
+msgstr "Úspěšně nainstalováno"
 
 #: src/orphans_window.py:83
 msgid "Could not install some apps"
-msgstr ""
+msgstr "Nebylo možné nainstalovat některé aplikace"
 
 #: src/orphans_window.py:117
 msgid "Attempt to Install?"
-msgstr ""
+msgstr "Zkusit Nainstalovat?"
 
 #: src/orphans_window.py:118
 msgid "Warehouse will attempt to install apps matching the selected data."
 msgstr ""
+"Aplikace Warehouse zkusí nainstalovat aplikace odpovídající vybraným datům."
 
 #: src/orphans_window.py:121 src/orphans_window.py:189
 #: src/properties_window.py:156 src/remotes_window.py:86
@@ -632,144 +662,146 @@ msgstr ""
 #: src/window.py:446 src/window.py:492 src/window.py:543 src/window.py:645
 #: src/window.py:715 src/window.py:838
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušit"
 
 #: src/orphans_window.py:185
 msgid "Trash folders?"
-msgstr ""
+msgstr "Odstranit složky?"
 
 #: src/orphans_window.py:185
 msgid "These folders will be sent to the trash."
-msgstr ""
+msgstr "Tyto složky budou přesunuty do koše."
 
 #: src/orphans_window.py:190
 msgid "Continue"
-msgstr ""
+msgstr "Pokračovat"
 
 #: src/orphans_window.py:198 src/properties_window.py:46
 #: src/snapshots_window.py:245 src/window.py:424
 msgid "Could not open folder"
-msgstr ""
+msgstr "Nebylo možné otevřít složku"
 
 #: src/orphans_window.py:216
 msgid "Could not manage data"
-msgstr ""
+msgstr "Nebylo možné spravovat data"
 
 #: src/properties_window.py:40 src/remotes_window.py:212
 msgid "Copied {}"
-msgstr ""
+msgstr "Zkopírováno {}"
 
 #: src/properties_window.py:52
 msgid "Could not show details"
-msgstr ""
+msgstr "Nebylo možné zobrazit detaily"
 
 #: src/properties_window.py:58
 msgid "User Data"
-msgstr ""
+msgstr "Uživatelská Data"
 
 #: src/properties_window.py:69
 msgid "Description"
-msgstr ""
+msgstr "Popis"
 
 #: src/properties_window.py:84 src/properties_window.py:144
 msgid "No User Data"
-msgstr ""
+msgstr "Žádná Uživatelská Data"
 
 #: src/properties_window.py:135
 msgid "Could not show properties"
-msgstr ""
+msgstr "Nebylo možné zobrazit vlastnosti"
 
 #: src/properties_window.py:143 src/window.py:438
 msgid "Trashed user data"
-msgstr ""
+msgstr "Odstraněna uživatelská data"
 
 #: src/properties_window.py:150 src/window.py:433
 msgid "Could not trash user data"
-msgstr ""
+msgstr "Nebylo možné odstranit uživatelská data"
 
 #: src/properties_window.py:154 src/window.py:441
 msgid "Send {}'s User Data to the Trash?"
-msgstr ""
+msgstr "Přesunout Uživatelská Data {} do Koše?"
 
 #: src/properties_window.py:158 src/window.py:448 src/window.py:646
 msgid "Trash Data"
-msgstr ""
+msgstr "Odstranit Data"
 
 #: src/remotes_window.py:71
 msgid "Could not remove {}"
-msgstr ""
+msgstr "Nebylo možné odstranit {}"
 
 #: src/remotes_window.py:81 src/remotes_window.py:162
 msgid "Any installed apps from {} will stop receiving updates"
-msgstr ""
+msgstr "Jakékoliv nainstalované aplikace z {} přestanou dostávat aktualizace"
 
 #: src/remotes_window.py:84
 msgid "Remove {}?"
-msgstr ""
+msgstr "Odstranit {}?"
 
 #: src/remotes_window.py:87 src/remotes_window.py:272
 msgid "Remove"
-msgstr ""
+msgstr "Odstranit"
 
 #: src/remotes_window.py:114
 msgid "Could not enable {}"
-msgstr ""
+msgstr "Nebylo možné zapnout {}"
 
 #: src/remotes_window.py:142
 msgid "Could not disable {}"
-msgstr ""
+msgstr "Nebylo možné zakázat {}"
 
 #: src/remotes_window.py:165
 msgid "Disable {}?"
-msgstr ""
+msgstr "Zakázat {}?"
 
 #: src/remotes_window.py:168 src/remotes_window.py:263
 msgid "Disable"
-msgstr ""
+msgstr "Zakázat"
 
 #: src/remotes_window.py:179
 msgid "Could not view apps"
-msgstr ""
+msgstr "Nebylo možné zobrazit aplikace"
 
 #: src/remotes_window.py:240
 msgid "Set Filter"
-msgstr ""
+msgstr "Nastavit Filtr"
 
 #: src/remotes_window.py:254
 msgid "Enable"
-msgstr ""
+msgstr "Povolit"
 
 #: src/remotes_window.py:288
+#, fuzzy
 msgid "Copy remote name"
-msgstr ""
+msgstr "Kopírovat název repozitáře"
 
 #: src/remotes_window.py:302
 msgid "Disabled"
-msgstr ""
+msgstr "Zakázáno"
 
 #: src/remotes_window.py:339
 msgid "The open source, pay-what-you-want app store from elementary"
-msgstr ""
+msgstr "Open source, zaplať-kolik-chceš obchod s aplikacemi od elementary"
 
 #: src/remotes_window.py:345
+#, fuzzy
 msgid "Central repository of Flatpak applications"
-msgstr ""
+msgstr "Centrální repozitář Flatpak aplikací"
 
 #: src/remotes_window.py:351
 msgid "Beta builds of Flatpak applications"
-msgstr ""
+msgstr "Beta verze Flatpak aplikací"
 
 #: src/remotes_window.py:357
 msgid "Flatpaks packaged by Fedora Linux"
-msgstr ""
+msgstr "Flatpaky zabaleny týmem Fedora Linux"
 
 #: src/remotes_window.py:363
 msgid "The latest beta GNOME Apps and Runtimes"
-msgstr ""
+msgstr "Nejnovější beta GNOME Aplikace a Běhová Prostředí"
 
 #: src/remotes_window.py:369
 msgid "Beta KDE Apps and Runtimes"
-msgstr ""
+msgstr "Beta KDE Aplikace a Běhová prostředí"
 
 #: src/remotes_window.py:375
 msgid "Central repository of the WebKit Developer and Runtime SDK"
@@ -777,251 +809,265 @@ msgstr ""
 
 #: src/remotes_window.py:411 src/remotes_window.py:573
 msgid "Could not add {}"
-msgstr ""
+msgstr "Nebylo možné přidat {}"
 
 #: src/remotes_window.py:448
+#, fuzzy
 msgid "Add Flatpak Remote"
-msgstr ""
+msgstr "Přidat Flatpak Repozitář"
 
 #: src/remotes_window.py:451 src/remotes_window.py:622
 msgid "Add"
-msgstr ""
+msgstr "Přidat"
 
 #: src/remotes_window.py:505 src/remotes_window.py:630
 msgid "Name"
-msgstr ""
+msgstr "Jméno"
 
 #: src/remotes_window.py:509
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/remotes_window.py:521 src/remotes_window.py:633 src/window.py:847
 msgid "User"
-msgstr ""
+msgstr "Uživatel"
 
 #: src/remotes_window.py:521 src/remotes_window.py:633
+#, fuzzy
 msgid "Remote will be available to only you"
-msgstr ""
+msgstr "Vzdálený Repozitář bude dostupný jen vám"
 
 #: src/remotes_window.py:529 src/remotes_window.py:636 src/window.py:850
 msgid "System"
-msgstr ""
+msgstr "Systém"
 
 #: src/remotes_window.py:530 src/remotes_window.py:637
+#, fuzzy
 msgid "Remote will be available to every user on the system"
-msgstr ""
+msgstr "Vzdálený Repozitář bude dostupný každému uživateli v systému"
 
 #: src/remotes_window.py:569
+#, fuzzy
 msgid "{} successfully added"
-msgstr ""
+msgstr "{} úspěšně přidáno"
 
 #: src/remotes_window.py:619
 msgid "Add {}?"
-msgstr ""
+msgstr "Přidat {}?"
 
 #: src/remotes_window.py:667
+#, fuzzy
 msgid "Flatpak Repos"
-msgstr ""
+msgstr "Flatpak Repozitáře"
 
 #: src/snapshots_window.py:48
 msgid "There is no User Data to Snapshot"
-msgstr ""
+msgstr "Neexistují žádná Uživatelská Data pro vytvoření Snímku"
 
 #: src/snapshots_window.py:87
 msgid "Version {}"
-msgstr ""
+msgstr "Verze {}"
 
 #: src/snapshots_window.py:95 src/snapshots_window.py:236
 msgid "Apply Snapshot"
-msgstr ""
+msgstr "Aplikovat Snímek"
 
 #: src/snapshots_window.py:101 src/snapshots_window.py:130
 msgid "Trash Snapshot"
-msgstr ""
+msgstr "Odstranit Snímek"
 
 #: src/snapshots_window.py:121
 msgid "Could not trash snapshot"
-msgstr ""
+msgstr "Nebylo možné odstranit snímek"
 
 #: src/snapshots_window.py:125
 msgid "Trash Snapshot?"
-msgstr ""
+msgstr "Odstranit Snímek?"
 
 #: src/snapshots_window.py:126
 msgid "This snapshot and its contents will be sent to the trash."
-msgstr ""
+msgstr "Tento snímek a jeho obsah bude přesunut do koše."
 
 #: src/snapshots_window.py:148
 msgid "Could not create snapshot"
-msgstr ""
+msgstr "Nebylo možné vytvořit snímek"
 
 #: src/snapshots_window.py:157
 msgid "Creating Snapshot…"
-msgstr ""
+msgstr "Vytvářím Snímek…"
 
 #: src/snapshots_window.py:191 src/snapshots_window.py:208
 #: src/snapshots_window.py:215
 msgid "Could not apply snapshot"
-msgstr ""
+msgstr "Nebylo možné aplikovat snímek"
 
 #: src/snapshots_window.py:194
 msgid "Snapshot applied"
-msgstr ""
+msgstr "Snímek aplikován"
 
 #: src/snapshots_window.py:221
 msgid "Applying Snapshot…"
-msgstr ""
+msgstr "Aplikuji Snímek…"
 
 #: src/snapshots_window.py:229
 msgid "Apply Snapshot?"
-msgstr ""
+msgstr "Aplikovat Snímek?"
 
 #: src/snapshots_window.py:230
 msgid "Applying this snapshot will trash any current user data for {}."
 msgstr ""
+"Aplikováním tohoto snímku odstraníte jakákoliv data současného uživatele pro "
+"{}."
 
 #. Window stuffs
 #: src/snapshots_window.py:280
 msgid "{} Snapshots"
-msgstr ""
+msgstr "{} Snímky"
 
 #: src/window.py:111
 msgid "Uninstalled successfully"
-msgstr ""
+msgstr "Úspěšně odinstalováno"
 
 #: src/window.py:114
 msgid "Could not uninstall some apps"
-msgstr ""
+msgstr "Nebylo možné odinstalovat některé aplikace"
 
 #: src/window.py:170
 msgid "Uninstall Selected Apps?"
-msgstr ""
+msgstr "Odinstalovat Vybrané Aplikace?"
 
 #: src/window.py:171
 msgid "It will not be possible to use these apps after removal."
-msgstr ""
+msgstr "Po odstranění nebude možné používat tyto aplikace."
 
 #: src/window.py:191 src/window.py:273
 msgid "App Settings & Data"
-msgstr ""
+msgstr "Nastavení & Data Aplikace"
 
 #: src/window.py:195 src/window.py:277
 msgid "Keep"
-msgstr ""
+msgstr "Ponechat"
 
 #: src/window.py:196
 msgid "Allow restoring these apps' settings and content"
-msgstr ""
+msgstr "Povolit obnovení obsahu a nastavení těchto aplikací"
 
 #: src/window.py:200
 msgid "Send these apps' settings and content to the trash"
-msgstr ""
+msgstr "Přesunout nastavení a obsah těchto aplikací do koše"
 
 #: src/window.py:236
 msgid "Cannot uninstall while already uninstalling"
-msgstr ""
+msgstr "Není možné odinstalovat když odinstalace právě probíhá"
 
 #: src/window.py:265
 msgid "Uninstall {}?"
-msgstr ""
+msgstr "Odinstalovat {}?"
 
 #: src/window.py:266
 msgid "It will not be possible to use {} after removal."
-msgstr ""
+msgstr "Po odstranění nebude možné používat {}."
 
 #: src/window.py:278
 msgid "Allow restoring this app's settings and content"
-msgstr ""
+msgstr "Povolit obnovení obsahu a nastavení této aplikace"
 
 #: src/window.py:282
 msgid "Send this app's settings and content to the trash"
-msgstr ""
+msgstr "Přesunout nastavení a obsah této aplikace do koše"
 
 #: src/window.py:444
 msgid "Your files and data for this app will be sent to the trash."
-msgstr ""
+msgstr "Vaše soubory a data pro tuto aplikaci budou přesunuty do koše."
 
 #: src/window.py:463
 msgid "Could not disable updates for {}"
-msgstr ""
+msgstr "Nebylo možné zakázat aktualizace pro {}"
 
 #: src/window.py:485
 msgid "Disable Updates for {}?"
-msgstr ""
+msgstr "Zakázat Aktualizace pro {}?"
 
 #: src/window.py:489
 msgid ""
 "This will mask {} ensuring it will never recieve any feature or security "
 "updates."
 msgstr ""
+"Tohle zamaskuje {}, což zajistí, že nikdy nedostane žádnou funkcionální nebo "
+"bezpečnostní aktualizaci."
 
 #: src/window.py:511
 msgid "Could not enable auto removal"
-msgstr ""
+msgstr "Nebylo možné zapnout automatické odstraňování"
 
 #: src/window.py:514
 msgid "Could not disable auto removal"
-msgstr ""
+msgstr "Nebylo možné zakázat automatické odstraňování"
 
 #: src/window.py:537
 msgid "Disable Automatic Removal for {}?"
-msgstr ""
+msgstr "Zakázat Automatické Odstraňování pro {}?"
 
 #: src/window.py:540
+#, fuzzy
 msgid ""
 "This will pin {} ensuring it well never be removed automatically, even if no "
 "app depends on it."
 msgstr ""
+"Tohle přišpendlí {}, což zajistí, že nikdy nebude automaticky odstraněno, i "
+"když na tom nezávisí žádná aplikace."
 
 #: src/window.py:560
 msgid "Could not Run App"
-msgstr ""
+msgstr "Nebylo možné Spustit Aplikaci"
 
 #: src/window.py:568
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/window.py:620
 msgid "{} has no data to trash"
-msgstr ""
+msgstr "{} nemá data k zahození"
 
 #: src/window.py:626
 msgid "Could not trash {}'s data"
-msgstr ""
+msgstr "Nebylo možné odstranit data {}"
 
 #: src/window.py:641
 msgid "Trash Selected Apps' User Data?"
-msgstr ""
+msgstr "Odstranit Uživatelská Data Vybraných Aplikací?"
 
 #: src/window.py:642
 msgid "Your files and data for these apps will be sent to the trash."
-msgstr ""
+msgstr "Vaše soubory a data pro tyto aplikace budou přesunuty do koše."
 
 #: src/window.py:692
 msgid "Could not snapshot some apps"
-msgstr ""
+msgstr "Nebylo možné vytvořit snímek některých aplikací"
 
 #: src/window.py:709
 msgid "Create Snapshots?"
-msgstr ""
+msgstr "Vytvořit Snímky?"
 
 #: src/window.py:711
 msgid ""
 "Snapshots are backups of the app's user data. They can be reapplied at any "
 "time. This could take a while."
 msgstr ""
+"Snímky jsou zálohy uživatelských dat aplikace. Mohou být aplikovány "
+"kdykoliv. Tohle může chvíli trvat."
 
 #: src/window.py:716
 msgid "Create Snapshots"
-msgstr ""
+msgstr "Vytvořit Snímky"
 
 #: src/window.py:771
 msgid "Copied selected app names"
-msgstr ""
+msgstr "Zkopírovány názvy vybraných aplikací"
 
 #: src/window.py:786
 msgid "Copied selected app IDs"
-msgstr ""
+msgstr "Zkopírovány ID vybraných aplikací"
 
 #: src/window.py:801
 msgid "Copied selected app refs"
@@ -1029,20 +1075,20 @@ msgstr ""
 
 #: src/window.py:812
 msgid "Could not install app"
-msgstr ""
+msgstr "Nebylo možné nainstalovat aplikaci"
 
 #: src/window.py:836
 msgid "Install {}?"
-msgstr ""
+msgstr "Instalovat {}?"
 
 #: src/window.py:847
 msgid "The app will be available to only you"
-msgstr ""
+msgstr "Apikace bude dostupná pouze Vám"
 
 #: src/window.py:851
 msgid "The app will be available to every user on the system"
-msgstr ""
+msgstr "Aplikace bude dostupná všem uživatelům v systému"
 
 #: src/window.py:881
 msgid "File type not supported"
-msgstr ""
+msgstr "Typ souboru není podporován"
