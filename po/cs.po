@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-03 14:05-0400\n"
-"PO-Revision-Date: 2024-08-12 13:09+0000\n"
+"PO-Revision-Date: 2024-08-12 14:03+0000\n"
 "Last-Translator: Lordus Kordus <lorduskordus@gmail.com>\n"
 "Language-Team: Czech <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/cs/>\n"
@@ -34,13 +34,12 @@ msgid "Manage all things Flatpak"
 msgstr "Spravovat vše týkající se Flatpaku"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
-#, fuzzy
 msgid ""
 "Warehouse is an app that manages installed Flatpaks, their user data, and "
 "Flatpak remotes."
 msgstr ""
-"Warehouse je aplikace, která umožňuje správu nainstalovaných Flatpaků, "
-"jejich uživatelských dat a Vzdálených repozitářů."
+"Warehouse je aplikace umožňující správu nainstalovaných Flatpaků, jejich "
+"uživatelských dat a zdrojů Flatpaku."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -59,9 +58,8 @@ msgid "Manage large groups of Flatpaks at once"
 msgstr "Spravovat velké skupiny Flatpaků najednou"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
-#, fuzzy
 msgid "Add and remove Flatpak remotes"
-msgstr "Přidat a odstranit Flatpak repozitáře"
+msgstr "Přidat a odstranit zdroje Flatpaku"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "Find and trash leftover user data"
@@ -69,14 +67,13 @@ msgstr "Najít a odstranit zbylá uživatelská data"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
-msgstr "Přeinstalovat aplikace, které mají zbylá data"
+msgstr "Znovu nainstalovat aplikace, které mají zbylá data"
 
 #: data/ui/downgrade.blp:25 src/app_row_widget.py:360
 msgid "Downgrade"
 msgstr "Downgradovat"
 
 #: data/ui/downgrade.blp:55
-#, fuzzy
 msgid "Fetching Releases"
 msgstr "Získávám Vydání"
 
@@ -113,13 +110,12 @@ msgid "Show Runtimes"
 msgstr "Zobrazit Běhová Prostředí"
 
 #: data/ui/filter.blp:60
-#, fuzzy
 msgid "Filter by Remotes"
-msgstr "Filtrovat podle Vzdálených Repozitářů"
+msgstr "Filtrovat dle Zdrojů"
 
 #: data/ui/filter.blp:65
 msgid "Filter by Runtimes"
-msgstr "Filtrovat podle Běhových prostředí"
+msgstr "Filtrovat dle Běhových prostředí"
 
 #: data/ui/filter.blp:73 data/ui/window.blp:179
 msgid "Reset Filters"
@@ -167,24 +163,20 @@ msgid "Install"
 msgstr "Instalovat"
 
 #: data/ui/popular_remotes.blp:18
-#, fuzzy
 msgid "Add Remote"
-msgstr "Přidat Vzdálený Repozitář"
+msgstr "Přidat Zdroj"
 
 #: data/ui/popular_remotes.blp:19
-#, fuzzy
 msgid "Choose from a list of popular remotes or add a new one"
-msgstr "Zvolit ze seznamu populárních repozitářů nebo přidat nový"
+msgstr "Vyberte si ze seznamu populárních zdrojů nebo přidejte nový"
 
 #: data/ui/popular_remotes.blp:45 data/ui/remotes.blp:51
-#, fuzzy
 msgid "Add a Repo File"
 msgstr "Přidat Soubor Repozitáře"
 
 #: data/ui/popular_remotes.blp:50 data/ui/remotes.blp:56
-#, fuzzy
 msgid "Add a Custom Remote"
-msgstr "Přidat Vlastní Repozitář"
+msgstr "Přidat Vlastní Zdroj"
 
 #: data/ui/properties.blp:7
 msgid "Properties"
@@ -224,43 +216,36 @@ msgid "Show Details in Store"
 msgstr "Zobrazit Detaily v Obchodu"
 
 #: data/ui/remotes.blp:5 src/gtk/help-overlay.blp:42
-#, fuzzy
 msgid "Manage Remotes"
-msgstr "Spravovat Vzdálené Repozitáře"
+msgstr "Spravovat Zdroje"
 
 #: data/ui/remotes.blp:14
-#, fuzzy
 msgid "Refresh List of Remotes"
-msgstr "Obnovit Seznam Vzdálených Repozitářů"
+msgstr "Obnovit Seznam Zdrojů"
 
 #: data/ui/remotes.blp:23
-#, fuzzy
 msgid "Installed Remotes"
-msgstr "Nainstalované Vzdálené Repozitáře"
+msgstr "Nainstalované Zdroje"
 
 #: data/ui/remotes.blp:27
 msgid "Show Disabled"
 msgstr "Zobrazit Zakázané"
 
 #: data/ui/remotes.blp:41
-#, fuzzy
 msgid "No Remotes Found"
-msgstr "Nenalezeny Žádné Vzdálené Repozitáře"
+msgstr "Nenalezeny Žádné Zdroje"
 
 #: data/ui/remotes.blp:45
-#, fuzzy
 msgid "Add a Popular Remote"
-msgstr "Přidat Populární Vzdálený Repozitář"
+msgstr "Přidat Populární Zdroj"
 
 #: data/ui/remotes.blp:49
-#, fuzzy
 msgid "Add Other Remotes"
-msgstr "Přidat Ostatní Vzdálené Repozitáře"
+msgstr "Přidat Ostatní Zdroje"
 
 #: data/ui/remotes.blp:79
-#, fuzzy
 msgid "Adding Remote"
-msgstr "Přidávám Vzdálený Repozitář"
+msgstr "Přidávám Zdroj"
 
 #: data/ui/remotes.blp:88 data/ui/window.blp:54 data/ui/window.blp:194
 msgid "This should only take a moment"
@@ -271,9 +256,8 @@ msgid "Search Criteria"
 msgstr "Vyhledávací Kritéria"
 
 #: data/ui/search_install.blp:22
-#, fuzzy
 msgid "Choose a Remote to Search"
-msgstr "Zvolit Repozitář pro Vyhledávání"
+msgstr "Vyberte Zdroj pro Vyhledávání"
 
 #: data/ui/search_install.blp:36
 msgid "Results"
@@ -285,11 +269,11 @@ msgstr "Začít Vyhledávat"
 
 #: data/ui/search_install.blp:80
 msgid "Search for Flatpaks"
-msgstr "Vyhledávat Flatpaky"
+msgstr "Vyhledávejte Flatpaky"
 
 #: data/ui/search_install.blp:82
 msgid "Search for Flatpaks that you want to install"
-msgstr "Vyhledávat Flatpaky, které chcete nainstalovat"
+msgstr "Vyhledávejte Flatpaky, které chcete nainstalovat"
 
 #: data/ui/search_install.blp:108
 msgid "Searching"
@@ -391,9 +375,8 @@ msgid "Manage Leftover Data…"
 msgstr "Spravovat Zbylá Data…"
 
 #: data/ui/window.blp:250
-#, fuzzy
 msgid "Manage Remotes…"
-msgstr "Spravovat Vzdálené Repozitáře…"
+msgstr "Spravovat Zdroje…"
 
 #: data/ui/window.blp:256
 msgid "Install From File…"
@@ -425,7 +408,7 @@ msgstr "Kopírovat více ID"
 
 #: data/ui/window.blp:295
 msgid "Copy Refs"
-msgstr ""
+msgstr "Kopírovat Reference"
 
 #: src/app_row_widget.py:82
 msgid "Updates Disabled"
@@ -493,11 +476,11 @@ msgstr "Kopírovat ID"
 
 #: src/app_row_widget.py:216
 msgid "Copied ref"
-msgstr ""
+msgstr "Zkopírována reference"
 
 #: src/app_row_widget.py:221
 msgid "Copy Ref"
-msgstr ""
+msgstr "Kopírovat Referenci"
 
 #: src/app_row_widget.py:227
 msgid "Copied launch command"
@@ -545,7 +528,7 @@ msgstr ""
 
 #: src/downgrade_window.py:88
 msgid "Commit Hash: {}"
-msgstr ""
+msgstr "Commit Hash: {}"
 
 #: src/downgrade_window.py:110
 msgid "Could not downgrade {}"
@@ -564,17 +547,16 @@ msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Ujistit se, že {} nikdy nebude aktualizován na novější verzi"
 
 #: src/filter_window.py:43 src/filter_window.py:49
-#, fuzzy
 msgid "{} selected"
 msgstr "{} vybráno"
 
 #: src/filter_window.py:135 src/orphans_window.py:150 src/remotes_window.py:307
 msgid "User wide"
-msgstr ""
+msgstr "Systémový"
 
 #: src/filter_window.py:137 src/orphans_window.py:152 src/remotes_window.py:309
 msgid "System wide"
-msgstr ""
+msgstr "Uživatelský"
 
 #: src/filter_window.py:139 src/orphans_window.py:154 src/remotes_window.py:311
 msgid "Unknown install type"
@@ -770,9 +752,8 @@ msgid "Enable"
 msgstr "Povolit"
 
 #: src/remotes_window.py:288
-#, fuzzy
 msgid "Copy remote name"
-msgstr "Kopírovat název repozitáře"
+msgstr "Kopírovat název zdroje"
 
 #: src/remotes_window.py:302
 msgid "Disabled"
@@ -783,7 +764,6 @@ msgid "The open source, pay-what-you-want app store from elementary"
 msgstr "Open source, zaplať-kolik-chceš obchod s aplikacemi od elementary"
 
 #: src/remotes_window.py:345
-#, fuzzy
 msgid "Central repository of Flatpak applications"
 msgstr "Centrální repozitář Flatpak aplikací"
 
@@ -805,16 +785,15 @@ msgstr "Beta KDE Aplikace a Běhová prostředí"
 
 #: src/remotes_window.py:375
 msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr ""
+msgstr "Centrální repozitář Vývojářského a Běhového prostředí SDK pro WebKit"
 
 #: src/remotes_window.py:411 src/remotes_window.py:573
 msgid "Could not add {}"
 msgstr "Nebylo možné přidat {}"
 
 #: src/remotes_window.py:448
-#, fuzzy
 msgid "Add Flatpak Remote"
-msgstr "Přidat Flatpak Repozitář"
+msgstr "Přidat Zdroj Flatpaku"
 
 #: src/remotes_window.py:451 src/remotes_window.py:622
 msgid "Add"
@@ -833,21 +812,18 @@ msgid "User"
 msgstr "Uživatel"
 
 #: src/remotes_window.py:521 src/remotes_window.py:633
-#, fuzzy
 msgid "Remote will be available to only you"
-msgstr "Vzdálený Repozitář bude dostupný jen vám"
+msgstr "Zdroj bude dostupný jen vám"
 
 #: src/remotes_window.py:529 src/remotes_window.py:636 src/window.py:850
 msgid "System"
 msgstr "Systém"
 
 #: src/remotes_window.py:530 src/remotes_window.py:637
-#, fuzzy
 msgid "Remote will be available to every user on the system"
-msgstr "Vzdálený Repozitář bude dostupný každému uživateli v systému"
+msgstr "Zdroj bude dostupný každému uživateli v systému"
 
 #: src/remotes_window.py:569
-#, fuzzy
 msgid "{} successfully added"
 msgstr "{} úspěšně přidáno"
 
@@ -856,7 +832,6 @@ msgid "Add {}?"
 msgstr "Přidat {}?"
 
 #: src/remotes_window.py:667
-#, fuzzy
 msgid "Flatpak Repos"
 msgstr "Flatpak Repozitáře"
 
@@ -1009,13 +984,12 @@ msgid "Disable Automatic Removal for {}?"
 msgstr "Zakázat Automatické Odstraňování pro {}?"
 
 #: src/window.py:540
-#, fuzzy
 msgid ""
 "This will pin {} ensuring it well never be removed automatically, even if no "
 "app depends on it."
 msgstr ""
-"Tohle přišpendlí {}, což zajistí, že nikdy nebude automaticky odstraněno, i "
-"když na tom nezávisí žádná aplikace."
+"Tohle přišpendlí {}, což zajistí, že nikdy nebude automaticky odstraněn, i "
+"když na něm nezávisí žádná aplikace."
 
 #: src/window.py:560
 msgid "Could not Run App"
@@ -1071,7 +1045,7 @@ msgstr "Zkopírovány ID vybraných aplikací"
 
 #: src/window.py:801
 msgid "Copied selected app refs"
-msgstr ""
+msgstr "Zkopírovány reference vybraných aplikací"
 
 #: src/window.py:812
 msgid "Could not install app"
