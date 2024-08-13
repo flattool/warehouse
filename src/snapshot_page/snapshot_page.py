@@ -30,11 +30,17 @@ class SnapshotPage(Adw.BreakpointBin):
     gtc = Gtk.Template.Child
 
     sidebar_button = gtc()
+    toast_overlay = gtc()
     active_box = gtc()
     active_listbox = gtc()
     leftover_box = gtc()
     leftover_listbox = gtc()
     split_view = gtc()
+    stack = gtc()
+    loading_snapshots = gtc()
+    no_snapshots = gtc()
+    no_results = gtc()
+    scrolled_window = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -46,6 +52,13 @@ class SnapshotPage(Adw.BreakpointBin):
         self.active_snapshot_paks.clear()
         self.leftover_snapshots.clear()
         bad_folders = []
+
+        if not os.path.exists(self.snapshots_path):
+            try:
+                os.makedirs(self.snapshots_path)
+            except Exception as e:
+                self.toast_overlay.add_toast(ErrorToast(_("Could not load Snapshots"), str(e)).toast)
+                return
         
         for folder in os.listdir(self.snapshots_path):
             if folder.count('.') < 2 or ' ' in folder:
@@ -83,20 +96,21 @@ class SnapshotPage(Adw.BreakpointBin):
             self.active_box.set_visible(True)
             first_row = self.active_listbox.get_row_at_index(0)
             self.active_listbox.select_row(first_row)
+            self.stack.set_visible_child(self.scrolled_window)
         else:
             self.active_box.set_visible(False)
 
     def generate_leftover_list(self):
         for folder in self.leftover_snapshots:
             row = LeftoverSnapshotRow(folder)
-            
             self.leftover_listbox.append(row)            
 
         if len(self.leftover_snapshots) > 0:
             self.leftover_box.set_visible(True)
             if len(self.active_snapshot_paks) == 0:
-                first_row = self.leftover_box.get_row_at_index(0)
-                self.leftover_box.select_row(first_row)
+                self.stack.set_visible_child(self.scrolled_window)
+                first_row = self.leftover_listbox.get_row_at_index(0)
+                self.leftover_listbox.select_row(first_row)
         else:
             self.leftover_box.set_visible(False)
 
@@ -114,12 +128,32 @@ class SnapshotPage(Adw.BreakpointBin):
         self.active_listbox.remove_all()
         self.leftover_box.set_visible(True)
         self.leftover_listbox.remove_all()
+        self.stack.set_visible_child(self.loading_snapshots)
 
     def end_loading(self):
         def callback(*args):
             self.generate_active_list()
             self.generate_leftover_list()
-            # self.list_page.end_loading()
+            if (not self.active_box.get_visible()) and (not self.leftover_box.get_visible()):
+                self.stack.set_visible_child(self.no_snapshots)
+                #
+                #
+                #
+                #
+                #
+                #
+                #
+                #
+                #
+                #
+                #
+                #
+                #
+                #
+                #
+                #
+                #
+                #
 
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_snapshots)
 
@@ -144,4 +178,4 @@ class SnapshotPage(Adw.BreakpointBin):
 
         # Apply
         self.sidebar_button.set_active(ms.get_show_sidebar())
-        self.split_view.set_content(self.list_page)
+        self.split_view.set_content(self.list_page)##

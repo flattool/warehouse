@@ -35,7 +35,7 @@ template $FiltersPage : Adw.NavigationPage {
 
                     Adw.PreferencesGroup remotes_group {
                         title: _("Filter by Remotes");
-                        description: _("Showing packages from selected remotes");
+                        description: _("Show packages from selected remotes");
                         header-suffix:
                             Switch all_remotes_switch {
                                 valign: center;
@@ -45,6 +45,7 @@ template $FiltersPage : Adw.NavigationPage {
                             visible: bind all_remotes_switch.active inverted;
                             [child]
                             Box {
+                                spacing: 3;
                                 orientation: vertical;
                                 Label {
                                     margin-top: 7;
@@ -78,6 +79,7 @@ template $FiltersPage : Adw.NavigationPage {
                             visible: bind all_runtimes_switch.active inverted;
                             [child]
                             Box {
+                                spacing: 3;
                                 orientation: vertical;
                                 Label {
                                     margin-top: 7;

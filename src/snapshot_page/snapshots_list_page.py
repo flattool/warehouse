@@ -11,12 +11,13 @@ class SnapshotsListPage(Adw.NavigationPage):
     gtc = Gtk.Template.Child
 
     listbox = gtc()
+    toast_overlay = gtc()
 
     snapshots_path = f"{HostInfo.home}/.var/app/io.github.flattool.Warehouse/data/Snapshots/"
 
     def thread(self, *args):
-        for snapshot in os.listdir(f"{self.snapshots_path}{self.current_folder}"):
-            row = SnapshotBox(snapshot)
+        for snapshot in os.listdir(folder := f"{self.snapshots_path}{self.current_folder}/"):
+            row = SnapshotBox(snapshot, folder, self.toast_overlay)
             self.snapshots_rows.append(row)
 
     def callback(self, *args):
@@ -25,6 +26,9 @@ class SnapshotsListPage(Adw.NavigationPage):
             self.listbox.get_row_at_index(i).set_activatable(False)
 
     def set_snapshots(self, folder, title):
+        if self.current_folder == folder:
+            return
+            
         self.current_folder = folder
         self.set_title(_("{} Snapshots").format(title))
         self.snapshots_rows.clear()

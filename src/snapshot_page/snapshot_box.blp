@@ -12,21 +12,21 @@ template $SnapshotBox : Gtk.Box {
         Box {
             orientation: vertical;
             Label title {
-                label: "A Snapshot";
+                label: _("No Name Set");
                 wrap: true;
                 justify: left;
                 halign: start;
                 styles ["title-4"]
             }
             Label date {
-                label: "2024-04-03 4:30 PM";
+                label: _("No date found");
                 wrap: true;
                 justify: left;
                 halign: start;
             }
         }
         Label version {
-            label: "Version: 45.3";
+            label: _("No version found");
             wrap: true;
             justify: right;
             hexpand: true;
@@ -38,27 +38,27 @@ template $SnapshotBox : Gtk.Box {
         margin-bottom: 6;
         spacing: 3;
         homogeneous: true;
-        Button {
+        Button apply_button {
             Adw.ButtonContent {
-                label: "Apply";
+                label: _("Apply");
                 icon-name: "check-plain-symbolic";
                 can-shrink: true;
             }
             hexpand: true;
             styles ["flat"]
         }
-        Button {
+        Button rename_button {
             Adw.ButtonContent {
-                label: "Rename";
+                label: _("Rename");
                 icon-name: "dot-symbolic";
                 can-shrink: true;
             }
             hexpand: true;
             styles ["flat"]
         }
-        Button {
+        Button trash_button {
             Adw.ButtonContent {
-                label: "Trash";
+                label: _("Trash");
                 icon-name: "user-trash-symbolic";
                 can-shrink: true;
             }
@@ -67,3 +67,5 @@ template $SnapshotBox : Gtk.Box {
         }
     }
 }
+
+Adw.AlertDialog name_dialog {}
