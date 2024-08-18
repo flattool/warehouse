@@ -1,0 +1,163 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $InstallPage : Adw.BreakpointBin {
+    width-request: 1;
+	height-request: 1;
+
+    Adw.Breakpoint bp1 {
+		condition ("max-width: 600")
+
+		setters {
+			split_view.collapsed: true;
+            split_view.show-content: false;
+		}
+	}
+
+    Adw.ToastOverlay toast_overlay {
+        Adw.NavigationSplitView split_view {
+            sidebar-width-fraction: 0.5;
+            max-sidebar-width: 999999999;
+            sidebar:
+                Adw.NavigationPage sidebar_navpage {
+                    title: _("Search for Packages");
+
+                    Gtk.Stack sb_stack {
+                        Adw.ToolbarView no_remotes {
+                            visible: false;
+                            [top]
+                            Adw.HeaderBar {
+                                show-title: false;
+                            }
+                            Adw.StatusPage {
+                                icon-name: "error-symbolic";
+                                title: _("No Remotes Found");
+                                description: _("Warehouse cannot see the current remotes or your system has no remotes added");
+                                Button open_remotes_page_button {
+                                    label: _("Add Remotes");
+                                    halign: center;
+                                    styles ["pill"]
+                                }
+                            }
+                        }
+
+                        Adw.NavigationView sb_page_view {
+                            Adw.NavigationPage {
+                                title: _("Install Packages");
+
+                                Adw.ToolbarView {
+                                    [top]
+                                    Adw.HeaderBar {
+                                    }
+                                    Adw.PreferencesPage {
+                                        Adw.PreferencesGroup remotes_group {
+                                            title: "Choose a Remote";
+                                            description: "Choose a remote to search for packages in";
+                                        }
+                                    }
+                                }
+                            }
+
+                            Adw.NavigationPage results {
+                                title: _("Search REMOTE");
+
+                                Adw.ToolbarView sidebar_tbv {
+                                    [top]
+                                    Adw.HeaderBar header_bar {
+                                        show-back-button: false;
+                                        [start]
+                                        ToggleButton sidebar_button {
+                                            icon-name: "dock-left-symbolic";
+                                            tooltip-text: _("Show Sidebar");
+                                        }
+                                        [start]
+                                        Button back_button {
+                                            icon-name: "left-large-symbolic";
+                                            tooltip-text: _("Back");
+                                        }
+                                    }
+                                    [top]
+                                    Adw.Clamp {
+                                        maximum-size: 577;
+                                        Box {
+                                            margin-top:    3;
+                                            margin-bottom: 3;
+                                            margin-start:  6;
+                                            margin-end:    6;
+                                            styles ["linked"]
+                                            Gtk.SearchEntry search_entry {
+                                                search-delay: 700;
+                                                halign: fill;
+                                                hexpand: true;
+                                                placeholder-text: _("Search for Packages");
+                                            }
+                                            Button search_apply_button {
+                                                icon-name: "right-large-symbolic";
+                                            }
+                                        }
+                                    }
+                                    ScrolledWindow {
+                                        Adw.Clamp {
+                                            ListBox results_list {
+                                                styles["boxed-list"]
+                                                valign: start;
+                                                selection-mode: none;
+                                                margin-start: 12;
+                                                margin-end: 12;
+                                                margin-top: 12;
+                                                margin-bottom: 12;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ;
+            content:
+                Adw.NavigationPage results_page {
+                    title: _("Pending Packages");
+                    Adw.ToolbarView {
+                        [top]
+                        Adw.HeaderBar {
+                            [start]
+                            Button clear_button {
+                                label: _("Remove All");
+                            }
+                        }
+                        [bottom]
+                        Box {
+                            homogeneous: true;
+                            styles ["toolbar"]
+                            Button remove_all_button {
+                                styles ["raised"]
+                                Adw.ButtonContent {
+                                    can-shrink: true;
+                                    icon-name: "minus-large-symbolic";
+                                    label: _("Remove All");
+                                }
+                            }
+                            Button open_button {
+                                styles ["raised"]
+                                Adw.ButtonContent {
+                                    can-shrink: true;
+                                    icon-name: "folder-open-symbolic";
+                                    label: _("Add File");
+                                }
+                            }
+                            Button install_button {
+                                styles ["raised", "suggested-action"]
+                                Adw.ButtonContent {
+                                    can-shrink: true;
+                                    icon-name: "arrow-pointing-at-line-down-symbolic";
+                                    label: _("Install");
+                                }
+                            }
+                        }
+                    }
+                }
+            ;
+        }
+    }
+}

@@ -18,6 +18,7 @@
     <file preprocess="xml-stripblanks">snapshot_page/snapshot_page.ui</file>
     <file preprocess="xml-stripblanks">snapshot_page/snapshots_list_page.ui</file>
     <file preprocess="xml-stripblanks">snapshot_page/snapshot_box.ui</file>
+    <file preprocess="xml-stripblanks">install_page/install_page.ui</file>
     <!-- <file preprocess="xml-stripblanks">../data/io.github.flattool.Warehouse.metainfo.xml.in</file> -->
   </gresource>
   <gresource prefix="/io/github/flattool/Warehouse/icons/scalable/actions/">
@@ -65,5 +66,7 @@
     <file preprocess="xml-stripblanks" alias="font-x-generic-symbolic.svg">../data/icons/font-x-generic-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="tag-outline-symbolic.svg">../data/icons/tag-outline-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="harddisk-symbolic.svg">../data/icons/harddisk-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="arrow-turn-down-right-symbolic.svg">../data/icons/arrow-turn-down-right-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="minus-large-symbolic.svg">../data/icons/minus-large-symbolic.svg</file>
   </gresource>
 </gresources>

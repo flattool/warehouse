@@ -28,6 +28,7 @@ from .packages_page import PackagesPage
 from .remotes_page import RemotesPage
 from .user_data_page import UserDataPage
 from .snapshot_page import SnapshotPage
+from .install_page import InstallPage
 from .const import Config
 from .error_toast import ErrorToast
 
@@ -100,7 +101,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.remotes_row: RemotesPage(main_window=self),
             self.user_data_row: UserDataPage(main_window=self),
             self.snapshots_row: SnapshotPage(main_window=self),
-            # self.install_row: None,
+            self.install_row: InstallPage(main_window=self),
         }
 
         for _, page in self.pages.items():
@@ -123,7 +124,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         # file_drop.connect("drop", self.drop_callback)
         self.refresh_button.connect("clicked", self.refresh_handler)
         
-        self.activate_row(self.packages_row)
+        self.activate_row(self.install_row)
         self.main_split.set_show_sidebar(True)
 
         self.start_loading()
