@@ -21,6 +21,7 @@ blueprints = custom_target('blueprints',
     'snapshot_page/snapshots_list_page.blp',
     'snapshot_page/snapshot_box.blp',
     'install_page/install_page.blp',
+    'install_page/result_row.blp',
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
@@ -80,6 +81,7 @@ warehouse_sources = [
   'snapshot_page/snapshots_list_page.py',
   'snapshot_page/snapshot_box.py',
   'install_page/install_page.py',
+  'install_page/result_row.py',
   '../data/style.css',
 ]
 

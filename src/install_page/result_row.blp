@@ -1,0 +1,39 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $ResultRow : Adw.ActionRow {
+    activatable: true;
+    title: "No title set";
+    subtitle: "No subtitle set";
+
+    Box {
+        orientation: vertical;
+        valign: center;
+        spacing: 4;
+        margin-end: 4;
+        Label version_label {
+            styles ["subtitle"]
+            label: "";
+            justify: right;
+            halign: end;
+            hexpand: true;
+            wrap: true;
+        }
+        Label branch_label {
+            styles ["subtitle"]
+            label: "";
+            justify: right;
+            halign: end;
+            hexpand: true;
+            wrap: true;
+        }
+    }
+    [suffix]
+    Image add_image {
+        icon-name: "plus-large-symbolic";
+    }
+    [suffix]
+    Image sub_image {
+        icon-name: "minus-large-symbolic";
+    }
+}
