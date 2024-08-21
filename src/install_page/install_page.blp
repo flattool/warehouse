@@ -11,6 +11,8 @@ template $InstallPage : Adw.BreakpointBin {
 		setters {
 			split_view.collapsed: true;
             split_view.show-content: false;
+            results_action_bar.visible: true;
+            pending_action_bar.visible: true;
 		}
 	}
 
@@ -48,11 +50,29 @@ template $InstallPage : Adw.BreakpointBin {
                                 Adw.ToolbarView {
                                     [top]
                                     Adw.HeaderBar {
+                                        [start]
+                                        ToggleButton sidebar_button {
+                                            icon-name: "dock-left-symbolic";
+                                            tooltip-text: _("Show Sidebar");
+                                        }
                                     }
                                     Adw.PreferencesPage {
                                         Adw.PreferencesGroup remotes_group {
-                                            title: "Choose a Remote";
-                                            description: "Choose a remote to search for packages in";
+                                            title: _("Search in a Remote");
+                                            description: _("Choose a remote to search for new packages");
+                                        }
+                                        Adw.PreferencesGroup local_group {
+                                            title: _("Add a File");
+                                            description: _("Install a package from a file on your system");
+                                            Adw.ActionRow open_row {
+                                                title: _("Open");
+                                                subtitle: _("Add the file you want to install");
+                                                activatable: true;
+                                                [suffix]
+                                                Image {
+                                                    icon-name: "folder-open-symbolic";
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -64,17 +84,6 @@ template $InstallPage : Adw.BreakpointBin {
                                 Adw.ToolbarView sidebar_tbv {
                                     [top]
                                     Adw.HeaderBar header_bar {
-                                        show-back-button: false;
-                                        [start]
-                                        ToggleButton sidebar_button {
-                                            icon-name: "dock-left-symbolic";
-                                            tooltip-text: _("Show Sidebar");
-                                        }
-                                        [start]
-                                        Button back_button {
-                                            icon-name: "left-large-symbolic";
-                                            tooltip-text: _("Back");
-                                        }
                                     }
                                     [top]
                                     Adw.Clamp {
@@ -109,6 +118,22 @@ template $InstallPage : Adw.BreakpointBin {
                                             }
                                         }
                                     }
+                                    [bottom]
+                                    ActionBar results_action_bar {
+                                        visible: false;
+                                        revealed: false;
+                                        [center]
+                                        Button review_button {
+                                            sensitive: bind results_action_bar.revealed;
+                                            margin-top: 3;
+                                            margin-bottom: 3;
+                                            styles ["pill", "suggested-action"]
+                                            Adw.ButtonContent {
+                                                icon-name: "view-list-bullet-symbolic";
+                                                label: _("Review and Install");
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -116,41 +141,36 @@ template $InstallPage : Adw.BreakpointBin {
                 }
             ;
             content:
-                Adw.NavigationPage results_page {
+                Adw.NavigationPage pending_page {
                     title: _("Pending Packages");
                     Adw.ToolbarView {
                         [top]
                         Adw.HeaderBar {
-                            [start]
-                            Button clear_button {
-                                label: _("Remove All");
+                        }
+                        Stack pending_stack {
+                            Adw.StatusPage no_added_packages_status {
+                                icon-name: "flatpak-symbolic";
+                                title: _("Install New Packages");
+                                description: _("Search for a package or add one from a file");
+                            }
+                            Adw.PreferencesPage added_pref_page {
                             }
                         }
-                        Adw.PreferencesPage added_pref_page {
-                            
-                        }
+                        // Button open_button {
+                        //     visible: false;
+                        //     Adw.ButtonContent {
+                        //         can-shrink: true;
+                        //         icon-name: "folder-open-symbolic";
+                        //         label: _("Add File");
+                        //     }
+                        // }
                         [bottom]
-                        Box {
-                            homogeneous: true;
-                            styles ["toolbar"]
-                            Button remove_all_button {
-                                styles ["raised"]
-                                Adw.ButtonContent {
-                                    can-shrink: true;
-                                    icon-name: "minus-large-symbolic";
-                                    label: _("Remove All");
-                                }
-                            }
-                            Button open_button {
-                                styles ["raised"]
-                                Adw.ButtonContent {
-                                    can-shrink: true;
-                                    icon-name: "folder-open-symbolic";
-                                    label: _("Add File");
-                                }
-                            }
+                        ActionBar pending_action_bar {
+                            revealed: false;
+                            [center]
                             Button install_button {
-                                styles ["raised", "suggested-action"]
+                                sensitive: bind pending_action_bar.revealed;
+                                styles ["pill", "suggested-action"]
                                 Adw.ButtonContent {
                                     can-shrink: true;
                                     icon-name: "arrow-pointing-at-line-down-symbolic";

@@ -5,6 +5,7 @@ template $ResultRow : Adw.ActionRow {
     activatable: true;
     title: "No title set";
     subtitle: "No subtitle set";
+    tooltip-text: _("Add Package to Queue");
 
     Box {
         orientation: vertical;
@@ -35,5 +36,16 @@ template $ResultRow : Adw.ActionRow {
     [suffix]
     Image sub_image {
         icon-name: "minus-large-symbolic";
+    }
+    [suffix]
+    Image selected_image {
+        icon-name: "check-plain-symbolic";
+        visible: false;
+    }
+    [suffix]
+    Image already_installed_image {
+        visible: false;
+        icon-name: "selection-mode-symbolic";
+        styles ["success"]
     }
 }

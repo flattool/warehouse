@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk, GLib, Gio
+from gi.repository import Adw, Gtk, GLib, Gio, Gdk
 from .host_info import HostInfo
 from .error_toast import ErrorToast
 import os, subprocess
@@ -12,25 +12,32 @@ class ResultRow(Adw.ActionRow):
     branch_label = gtc()
     add_image = gtc()
     sub_image = gtc()
+    selected_image = gtc()
 
     def idle_stuff(self):
-        self.set_title(GLib.markup_escape_text(self.name))
-        self.set_subtitle(self.app_id)
-        self.version_label.set_label(GLib.markup_escape_text(self.version))
-        self.branch_label.set_label(GLib.markup_escape_text(self.branch))
+        self.set_title(GLib.markup_escape_text(self.package.name))
+        self.set_subtitle(self.package.app_id)
+        self.version_label.set_label(GLib.markup_escape_text(self.package.version))
+        self.branch_label.set_label(GLib.markup_escape_text(self.package.branch))
         self.version_label.set_visible(len(self.version_label.get_label()) != 0)
         self.branch_label.set_visible(len(self.branch_label.get_label()) != 0)
-        self.sub_image.set_visible(bool(self.original_row))
-        self.add_image.set_visible(not bool(self.original_row))
-        self.set_tooltip_text(_("Remove Package from Queue") if bool(self.original_row) else _("Add Package to Queue"))
+        if self.is_added:
+            self.set_tooltip_text(_("Remove Package from Queue"))
 
-    def __init__(self, name, app_id, branch, version, original_row=None, **kwargs):
+    def set_is_added(self, is_added):
+        self.is_added = is_added
+        self.set_sensitive(not is_added)
+        self.add_image.set_visible(not is_added)
+        self.selected_image.set_visible(is_added)
+        self.set_tooltip_text(_("This package is queued") if is_added else _("Add Package to Queue"))
+
+    def __init__(self, package, is_added=False, **kwargs):
         super().__init__(**kwargs)
 
-        self.name = name
-        self.app_id = app_id
-        self.branch = branch
-        self.version = version
-        self.original_row = original_row
+        self.is_added = is_added
+        self.package = package
+
+        self.sub_image.set_visible(is_added)
+        self.add_image.set_visible(not is_added)
 
         GLib.idle_add(self.idle_stuff)
