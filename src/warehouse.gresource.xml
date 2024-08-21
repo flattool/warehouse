@@ -69,5 +69,7 @@
     <file preprocess="xml-stripblanks" alias="harddisk-symbolic.svg">../data/icons/harddisk-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="arrow-turn-down-right-symbolic.svg">../data/icons/arrow-turn-down-right-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="minus-large-symbolic.svg">../data/icons/minus-large-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="view-list-bullet-symbolic.svg">../data/icons/view-list-bullet-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="list-remove-all-symbolic.svg">../data/icons/list-remove-all-symbolic.svg</file>
   </gresource>
 </gresources>
