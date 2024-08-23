@@ -273,12 +273,12 @@ class HostInfo:
                     capture_output=True,
                 ).stdout
                 lines = output.strip().split("\n")
+                remote_list = []
                 if lines[0] != '':
-                    remote_list = []
                     for line in lines:
                         line = line.split("\t")
                         remote_list.append(Remote(name=line[0], title=line[1], disabled=(len(line) == 3) and "disabled" in line[2]))
-                    this.remotes[installation] = remote_list
+                this.remotes[installation] = remote_list
 
                 # Masks
                 cmd = ['flatpak-spawn', '--host',

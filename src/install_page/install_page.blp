@@ -5,7 +5,7 @@ template $InstallPage : Adw.BreakpointBin {
     width-request: 1;
 	height-request: 1;
 
-    Adw.Breakpoint bp1 {
+    Adw.Breakpoint break_point {
 		condition ("max-width: 600")
 
 		setters {
@@ -13,6 +13,7 @@ template $InstallPage : Adw.BreakpointBin {
             split_view.show-content: false;
             results_action_bar.visible: true;
             pending_action_bar.visible: true;
+            pending_page.child: null;
 		}
 	}
 
@@ -73,6 +74,12 @@ template $InstallPage : Adw.BreakpointBin {
                                                     icon-name: "folder-open-symbolic";
                                                 }
                                             }
+                                        }
+                                    }
+                                    [bottom]
+                                    ActionBar {
+                                        Button test_button {
+                                            label: "test";
                                         }
                                     }
                                 }
@@ -143,9 +150,10 @@ template $InstallPage : Adw.BreakpointBin {
             content:
                 Adw.NavigationPage pending_page {
                     title: _("Pending Packages");
-                    Adw.ToolbarView {
+                    [child]
+                    Adw.ToolbarView pending_toolbar_view {
                         [top]
-                        Adw.HeaderBar {
+                        Adw.HeaderBar pending_headerbar {
                         }
                         Stack pending_stack {
                             Adw.StatusPage no_added_packages_status {

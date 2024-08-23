@@ -74,6 +74,11 @@ class InstallPage(Adw.BreakpointBin):
     sidebar_button = gtc()
     pending_stack = gtc()
     no_added_packages_status = gtc()
+    break_point = gtc()
+    pending_toolbar_view = gtc()
+    pending_headerbar = gtc()
+
+    test_button = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -215,6 +220,7 @@ class InstallPage(Adw.BreakpointBin):
             self.added_package_groups.pop(f'{row.package.remote}<>{row.package.installation}', None)
 
         if len(self.added_package_groups) == 0:
+            self.list_popup.close()
             self.pending_stack.set_visible_child(self.no_added_packages_status)
         
     def list_focus_grabber(self, row):
@@ -237,6 +243,15 @@ class InstallPage(Adw.BreakpointBin):
         if prev_unadded_row:
             prev_unadded_row.grab_focus()
 
+    def break_point_handler(self, bp, is_applied):
+        self.list_popup.close()
+        self.pending_headerbar.set_show_start_title_buttons(not is_applied)
+        self.pending_headerbar.set_show_end_title_buttons(not is_applied)
+        if is_applied:
+            self.popup_holder.set_child(self.pending_toolbar_view)
+        else:
+            self.popup_holder.set_child(None)
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
         self.instance = self
@@ -248,7 +263,17 @@ class InstallPage(Adw.BreakpointBin):
         # self.search_entry.connect("search-changed", self.on_search)
         self.search_entry.connect("activate", self.on_search)
         self.search_apply_button.connect("clicked", self.on_search)
-        self.review_button.connect("clicked", lambda *_: self.split_view.set_show_content(True))
+
+
+        # self.review_button.connect("clicked", lambda *_: self.split_view.set_show_content(True))
+        self.review_button.connect("clicked", lambda *_: self.list_popup.present(main_window))
+        
+        self.popup_holder = Adw.NavigationPage(title=_("Pending Packages"))
+        self.list_popup = Adw.Dialog(width_request=400, child=self.popup_holder, follows_content_size=True, presentation_mode=Adw.DialogPresentationMode.BOTTOM_SHEET)
+
+        self.break_point.connect("apply", self.break_point_handler, True)
+        self.break_point.connect("unapply", self.break_point_handler, False)
+        # self.test_button.connect("clicked", lambda *_: self.list_popup.present(main_window))
 
         ms = main_window.main_split
         ms.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
