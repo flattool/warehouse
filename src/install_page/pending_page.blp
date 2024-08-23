@@ -1,0 +1,35 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PendingPage : Adw.NavigationPage {
+    title: _("Pending Packages");
+    Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {
+        }
+        Adw.PreferencesPage preferences_page {
+            Adw.PreferencesGroup {
+                title: "Flathub";
+                description: "Installation: system";
+                Adw.ActionRow {
+                    title: "Firefox";
+                    subtitle: "org.mozilla.Firefox";
+                }
+            }
+        }
+        [bottom]
+        ActionBar pending_action_bar {
+            revealed: true;
+            [center]
+            Button install_button {
+                sensitive: bind pending_action_bar.revealed;
+                styles ["pill", "suggested-action"]
+                Adw.ButtonContent {
+                    can-shrink: true;
+                    icon-name: "arrow-pointing-at-line-down-symbolic";
+                    label: _("Install");
+                }
+            }
+        }
+    }
+}

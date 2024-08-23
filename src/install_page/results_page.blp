@@ -1,0 +1,77 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $ResultsPage : Adw.NavigationPage {
+    title: _("Search a Remote");
+    Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+        [top]
+        Adw.Clamp {
+            maximum-size: 577;
+            Box {
+                margin-top:    3;
+                margin-bottom: 3;
+                margin-start:  6;
+                margin-end:    6;
+                styles ["linked"]
+                Gtk.SearchEntry search_entry {
+                    search-delay: 700;
+                    halign: fill;
+                    hexpand: true;
+                    placeholder-text: _("Search for Packages");
+                }
+                Button search_apply_button {
+                    icon-name: "right-large-symbolic";
+                }
+            }
+        }
+        Stack stack {
+            Adw.StatusPage new_search {
+                icon-name: "flatpak-symbolic";
+                title: _("Search for Flatpaks");
+                description: _("Search for Flatpaks you want to install");
+            }
+            Adw.StatusPage loading {
+                title: _("Searching");
+                description: _("This should only take a moment");
+                child:
+                    Spinner {
+                        spinning: true;
+                    }
+                ;
+            }
+            ScrolledWindow results_view {
+                Adw.Clamp {
+                    ListBox results_list {
+                        margin-start:  12;
+                        margin-end:    12;
+                        margin-top:    12;
+                        margin-bottom: 12;
+                        styles ["boxed-list"]
+                        selection-mode: none;
+                        valign: start;
+                    }
+                }
+            }
+            Adw.StatusPage no_results {
+                icon-name: "loupe-large-symbolic";
+                title: _("No Results Found");
+                description: _("Try a different search term");
+            }
+        }
+        [bottom]
+        ActionBar action_bar {
+            [center]
+            Button review_button {
+                margin-top: 3;
+                margin-bottom: 3;
+                styles ["pill", "suggested-action"]
+                Adw.ButtonContent {
+                    icon-name: "view-list-bullet-symbolic";
+                    label: _("Review and Install");
+                }
+            }
+        }
+    }
+}

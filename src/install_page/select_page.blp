@@ -1,0 +1,62 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $SelectPage : Adw.NavigationPage {
+    title: _("Install Packages");
+
+    Adw.ToastOverlay toast_overlay {
+        Adw.NavigationView nav_view {
+            Adw.NavigationPage select_nav_page {
+                title: _("Install Packages");
+                Adw.ToolbarView {
+                    [top]
+                    Adw.HeaderBar {
+                        [start]
+                        ToggleButton sidebar_button {
+                            icon-name: "dock-left-symbolic";
+                            tooltip-text: _("Show Sidebar");
+                        }
+                        [start]
+                        Button test {
+                            label: "test";
+                        }
+                    }
+                    Adw.PreferencesPage {
+                        Adw.PreferencesGroup remotes_group {
+                            title: _("Search in a Remote");
+                            description: _("Choose a remote to search for new packages");
+                        }
+                        Adw.PreferencesGroup no_remotes {
+                            title: _("Online Searches Disabled");
+                            description: _("Your system has no remotes added to search from");
+                            visible: bind remotes_group.visible inverted;
+                            Adw.ActionRow add_remote_row {
+                                title: _("Add a Remote");
+                                subtitle: _("Add a remote to your system to enable online searching");
+                                activatable: true;
+                                [suffix]
+                                Image {
+                                    icon-name: "right-large-symbolic";
+                                }
+                            }
+                        }
+                        Adw.PreferencesGroup local_group {
+                            title: _("Add a File");
+                            description: _("Install a package from a file on your system");
+                            Adw.ActionRow open_row {
+                                title: _("Open");
+                                subtitle: _("Add the file you want to install");
+                                activatable: true;
+                                [suffix]
+                                Image {
+                                    icon-name: "folder-open-symbolic";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            $ResultsPage results_page {}
+        }
+    }
+}
