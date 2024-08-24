@@ -9,8 +9,9 @@ class InstallPage(Adw.BreakpointBin):
     gtc = Gtk.Template.Child
 
     break_point = gtc()
-    select_page = gtc()
     split_view = gtc()
+    select_page = gtc()
+    pending_page = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -45,3 +46,4 @@ class InstallPage(Adw.BreakpointBin):
         # Apply
         # ======== self.split_view.set_sidebar(self.select_page)
         # ======== self.split_view.set_content(self.pending_page)
+        self.select_page.results_page.pending_page = self.pending_page

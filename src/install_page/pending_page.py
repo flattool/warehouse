@@ -34,27 +34,49 @@ class PendingPage(Adw.NavigationPage):
     none_pending = gtc()
     preferences_page = gtc()
 
-    def add_package(self, row):
+    def add_package_row(self, row):
+        self.added_packages.append(row.package)
+        row.set_state(ResultRow.PackageState.SELECTED)
         key = f"{row.package.remote}<>{row.package.installation}"
-        row = ResultRow(row.package, ResultRow.PackageState.ADDED)
-        row.connect("activated", self.remove_package, group)
+        added_row = ResultRow(row.package, ResultRow.PackageState.ADDED, row.origin_list_box)
+        group = None
         try:
             group = self.groups[key]
-            group.add_row(row)
+            group.add_row(added_row)
         except KeyError:
-            group = AddedGroup(row.package.remote, row.package.installation)
-            group.add_row(row)
+            group = AddedGroup(added_row.package.remote, added_row.package.installation)
+            group.add_row(added_row)
             self.groups[key] = group
-            self.preferences_page.append(group)
+            self.preferences_page.add(group)
 
-    def remove_package(self, row, group):
-        pass
+        added_row.connect("activated", self.remove_package_row, group)
+        self.stack.set_visible_child(self.preferences_page)
+
+    def remove_package_row(self, row, group):
+        # row.origin_row.set_state(ResultRow.PackageState.NEW)
+        for item in row.origin_list_box:
+            if item.state == ResultRow.PackageState.SELECTED and item.package.is_similar(row.package):
+                item.set_state(ResultRow.PackageState.NEW)
+                break
+
+        group.rem_row(row)
+        if row.package in self.added_packages:
+            self.added_packages.remove(row.package)
+            
+        if len(group.rows) == 0:    
+            key = f"{row.package.remote}<>{row.package.installation}"
+            self.groups.pop(key, None)
+            self.preferences_page.remove(group)
+        
+        if len(self.added_packages) == 0:
+            self.stack.set_visible_child(self.none_pending)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         # Extra Object Creation
         self.groups = {} # remote<>installation: adw.preference_group
+        self.added_packages = []
 
         # Connections
 

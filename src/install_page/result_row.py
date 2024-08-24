@@ -30,7 +30,7 @@ class ResultRow(Adw.ActionRow):
         self.version_label.set_visible(len(self.version_label.get_label()) != 0)
         self.branch_label.set_visible(len(self.branch_label.get_label()) != 0)
 
-    def update_state_handler(self, state):
+    def set_state(self, state):
         if state == self.state:
             return
 
@@ -57,15 +57,17 @@ class ResultRow(Adw.ActionRow):
                 self.set_tooltip_text(_("This Package is Already Installed"))
                 self.installed_image.set_visible(True)
 
-    def __init__(self, package, package_state, parent_row=None, **kwargs):
+    def __init__(self, package, package_state, origin_list_box, **kwargs):
         super().__init__(**kwargs)
 
         # Extra Object Creation
         self.state = None
         self.package = package
+        self.origin_list_box = origin_list_box
 
         # Connections
 
         # Apply
         GLib.idle_add(self.idle_stuff)
-        self.update_state_handler(package_state)
+        self.set_state(package_state)
+

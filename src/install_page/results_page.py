@@ -56,8 +56,8 @@ class ResultsPage(Adw.NavigationPage):
         if nav_view:
             nav_view.push(self)
 
-    def add_package(self, row):
-        print(row)
+    def add_package_row(self, row):
+        self.pending_page.add_package_row(row)
 
     def on_search(self, *args):
         self.packages.clear()
@@ -96,8 +96,17 @@ class ResultsPage(Adw.NavigationPage):
                         continue
 
                     package = AddedPackage(info[0], info[2], info[4], info[3], self.remote, self.installation)
-                    row = ResultRow(package, ResultRow.PackageState.NEW)
-                    row.connect("activated", self.add_package)
+                    row = ResultRow(package, ResultRow.PackageState.NEW, self.results_list)
+                    for item in self.pending_page.added_packages:
+                        if package.is_similar(item):
+                            row.set_state(ResultRow.PackageState.SELECTED)
+
+                    if package.app_id in HostInfo.id_to_flatpak:
+                        installed_package = HostInfo.id_to_flatpak[package.app_id]
+                        if installed_package.info["id"] == package.app_id and installed_package.info["branch"] == package.branch:
+                            row.set_state(ResultRow.PackageState.INSTALLED)
+
+                    row.connect("activated", self.add_package_row)
                     self.packages.append(package)
                     GLib.idle_add(lambda *_, _row=row: self.results_list.append(_row))
 
@@ -126,6 +135,7 @@ class ResultsPage(Adw.NavigationPage):
         self.remote = None
         self.installation = None
         self.packages = []
+        self.pending_page = None
 
         # Connections
         self.search_entry.connect("activate", self.on_search)
