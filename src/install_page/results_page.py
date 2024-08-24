@@ -42,6 +42,7 @@ class ResultsPage(Adw.NavigationPage):
     results_list = gtc()
     stack = gtc()
     new_search = gtc()
+    too_many = gtc()
     loading = gtc()
     results_view= gtc()
     no_results = gtc()
@@ -50,9 +51,13 @@ class ResultsPage(Adw.NavigationPage):
         self.remote = remote
         self.installation = installation
         self.set_title(_("Search {}").format(remote.title))
+        self.search_entry.set_text("")
         self.search_entry.grab_focus()
         if nav_view:
             nav_view.push(self)
+
+    def add_package(self, row):
+        print(row)
 
     def on_search(self, *args):
         self.packages.clear()
@@ -66,15 +71,19 @@ class ResultsPage(Adw.NavigationPage):
         def thread(*args):
             installation = ""
             if self.installation == "user" or self.installation == "system":
-                installation = self.installation
+                installation = f"--{self.installation}"
             else:
                 installation = f"--installation={self.installation}"
 
             try:
                 output = subprocess.run(
-                    ['flatpak-spawn', '--host', 'flatpak', 'search', '--columns=all', self.remote.name, installation, self.search_entry.get_text()],
+                    ['flatpak-spawn', '--host', 'flatpak', 'search', '--columns=all', installation, self.search_entry.get_text()],
                     check=True, text=True, capture_output=True
                 ).stdout.split('\n')
+                if len(output) > 100:
+                    GLib.idle_add(lambda *_: self.stack.set_visible_child(self.too_many))
+                    return
+
                 for line in output:
                     line = line.strip()
                     
@@ -82,19 +91,27 @@ class ResultsPage(Adw.NavigationPage):
                     if len(info) != 6:
                         continue
 
+                    remotes = info[5].split(',')
+                    if not self.remote.name in remotes:
+                        continue
+
                     package = AddedPackage(info[0], info[2], info[4], info[3], self.remote, self.installation)
-                    row = ResultRow(package)
+                    row = ResultRow(package, ResultRow.PackageState.NEW)
+                    row.connect("activated", self.add_package)
                     self.packages.append(package)
                     GLib.idle_add(lambda *_, _row=row: self.results_list.append(_row))
+
+                if len(self.packages) > 0:
+                    GLib.idle_add(lambda *_: self.stack.set_visible_child(self.results_view))
+                else:
+                    GLib.idle_add(lambda *_: self.stack.set_visible_child(self.no_results))
 
             except subprocess.CalledProcessError as cpe:
                 print(cpe)
 
         def callback(*args):
-            if len(self.packages) > 0:
-                self.stack.set_visible_child(self.results_view)
-            else:
-                self.stack.set_visible_child(self.no_results)
+            pass
+                
 
         Gio.Task.new(None, None, callback).run_in_thread(thread)
 

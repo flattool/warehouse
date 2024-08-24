@@ -1,6 +1,7 @@
 from gi.repository import Adw, Gtk, GLib, Gio, Gdk
 from .host_info import HostInfo
 from .error_toast import ErrorToast
+from enum import Enum
 import os, subprocess
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/result_row.ui")
@@ -13,6 +14,13 @@ class ResultRow(Adw.ActionRow):
     add_image = gtc()
     sub_image = gtc()
     selected_image = gtc()
+    installed_image = gtc()
+
+    class PackageState(Enum):
+        NEW = 0
+        SELECTED = 1
+        ADDED = 2
+        INSTALLED = 3
 
     def idle_stuff(self):
         self.set_title(GLib.markup_escape_text(self.package.name))
@@ -21,23 +29,43 @@ class ResultRow(Adw.ActionRow):
         self.branch_label.set_label(GLib.markup_escape_text(self.package.branch))
         self.version_label.set_visible(len(self.version_label.get_label()) != 0)
         self.branch_label.set_visible(len(self.branch_label.get_label()) != 0)
-        if self.is_added:
-            self.set_tooltip_text(_("Remove Package from Queue"))
 
-    def set_is_added(self, is_added):
-        self.is_added = is_added
-        self.set_sensitive(not is_added)
-        self.add_image.set_visible(not is_added)
-        self.selected_image.set_visible(is_added)
-        self.set_tooltip_text(_("This package is queued") if is_added else _("Add Package to Queue"))
+    def update_state_handler(self, state):
+        if state == self.state:
+            return
 
-    def __init__(self, package, is_added=False, **kwargs):
+        self.state = state
+        self.add_image.set_visible(False)
+        self.sub_image.set_visible(False)
+        self.selected_image.set_visible(False)
+        self.installed_image.set_visible(False)
+        match state:
+            case self.PackageState.NEW:
+                self.set_sensitive(True)
+                self.set_tooltip_text(_("Add Package to Queue"))
+                self.add_image.set_visible(True)
+            case self.PackageState.SELECTED:
+                self.set_sensitive(False)
+                self.set_tooltip_text(_("Package has been Added to Queue"))
+                self.selected_image.set_visible(True)
+            case self.PackageState.ADDED:
+                self.set_sensitive(True)
+                self.set_tooltip_text(_("Remove Package from Queue"))
+                self.sub_image.set_visible(True)
+            case self.PackageState.INSTALLED:
+                self.set_sensitive(False)
+                self.set_tooltip_text(_("This Package is Already Installed"))
+                self.installed_image.set_visible(True)
+
+    def __init__(self, package, package_state, parent_row=None, **kwargs):
         super().__init__(**kwargs)
 
-        self.is_added = is_added
+        # Extra Object Creation
+        self.state = None
         self.package = package
 
-        self.sub_image.set_visible(is_added)
-        self.add_image.set_visible(not is_added)
+        # Connections
 
+        # Apply
         GLib.idle_add(self.idle_stuff)
+        self.update_state_handler(package_state)

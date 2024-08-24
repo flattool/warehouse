@@ -17,10 +17,12 @@ class SelectPage(Adw.NavigationPage):
     test = gtc()
 
     def start_loading(self):
-        pass
+        self.nav_view.pop()
+        for row in self.remote_rows:
+            self.remotes_group.remove(row)
+        self.remote_rows.clear()
 
     def end_loading(self):
-        total_remotes = 0
         for installation, remotes in HostInfo.remotes.items():
             for remote in remotes:
                 if remote.disabled:
@@ -30,9 +32,9 @@ class SelectPage(Adw.NavigationPage):
                 row.add_suffix(Gtk.Image(icon_name="right-large-symbolic"))
                 row.connect("activated", self.results_page.show_remote, remote, installation, self.nav_view)
                 self.remotes_group.add(row)
-                total_remotes += 1
+                self.remote_rows.append(row)
 
-        self.remotes_group.set_visible(total_remotes != 0)
+        self.remotes_group.set_visible(len(self.remote_rows) != 0)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -45,6 +47,7 @@ class SelectPage(Adw.NavigationPage):
         self.sidebar_button.connect("toggled", lambda *_: ms.set_show_sidebar(self.sidebar_button.get_active()))
         self.add_remote_row.connect("activated", lambda *_: HostInfo.main_window.activate_row(HostInfo.main_window.remotes_row))
         self.nav_view.connect("popped", self.results_page.on_back)
+        self.remote_rows = []
 
         self.test.connect("clicked", lambda *_: self.nav_view.push(self.results_page))
 

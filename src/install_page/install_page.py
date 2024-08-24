@@ -3,29 +3,6 @@ from .host_info import HostInfo
 from .select_page import SelectPage
 from .pending_page import PendingPage
 
-class AddedGroup(Adw.PreferencesGroup):
-    __gtype_name__ = "AddedGroup"
-
-    def add_row(self, row):
-        self.package_rows.append(row)
-        self.add(row)
-        self.set_visible(True)
-
-    def rem_row(self, row):
-        if row in self.package_rows:
-            self.package_rows.remove(row)
-            self.remove(row)
-
-    def __init__(self, remote, installation, **kwargs):
-        super().__init__(**kwargs)
-
-        self.remote = remote
-        self.installation = installation
-        self.package_rows = []
-
-        self.set_title(f"{remote.title}")
-        self.set_description(_("Installation: {}").format(installation))
-
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/install_page.ui")
 class InstallPage(Adw.BreakpointBin):
     __gtype_name__ = "InstallPage"
@@ -57,6 +34,8 @@ class InstallPage(Adw.BreakpointBin):
         self.instance = self
 
         # Extra Object Creation
+        # ======== self.select_page = SelectPage()
+        # ======== self.pending_page = PendingPage()
 
         # Connections
         self.break_point.connect("apply", self.breakpoint_handler, True)
@@ -64,3 +43,5 @@ class InstallPage(Adw.BreakpointBin):
         self.select_page.results_page.review_button.connect("clicked", lambda *_: self.split_view.set_show_content(True))
 
         # Apply
+        # ======== self.split_view.set_sidebar(self.select_page)
+        # ======== self.split_view.set_content(self.pending_page)

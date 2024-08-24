@@ -34,17 +34,15 @@ template $ResultRow : Adw.ActionRow {
         icon-name: "plus-large-symbolic";
     }
     [suffix]
+    Image selected_image {
+        icon-name: "check-plain-symbolic";
+    }
+    [suffix]
     Image sub_image {
         icon-name: "minus-large-symbolic";
     }
     [suffix]
-    Image selected_image {
-        icon-name: "check-plain-symbolic";
-        visible: false;
-    }
-    [suffix]
-    Image already_installed_image {
-        visible: false;
+    Image installed_image {
         icon-name: "selection-mode-symbolic";
         styles ["success"]
     }

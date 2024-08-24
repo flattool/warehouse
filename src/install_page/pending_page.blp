@@ -7,13 +7,20 @@ template $PendingPage : Adw.NavigationPage {
         [top]
         Adw.HeaderBar {
         }
-        Adw.PreferencesPage preferences_page {
-            Adw.PreferencesGroup {
-                title: "Flathub";
-                description: "Installation: system";
-                Adw.ActionRow {
-                    title: "Firefox";
-                    subtitle: "org.mozilla.Firefox";
+        Stack stack {
+            Adw.StatusPage none_pending {
+                icon-name: "flatpak-symbolic";
+                title: _("Add Packages");
+                description: _("Packages queued to install will show up here");
+            }
+            Adw.PreferencesPage preferences_page {
+                Adw.PreferencesGroup {
+                    title: "Flathub";
+                    description: "Installation: system";
+                    Adw.ActionRow {
+                        title: "Firefox";
+                        subtitle: "org.mozilla.Firefox";
+                    }
                 }
             }
         }
