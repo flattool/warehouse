@@ -110,29 +110,23 @@ class FiltersPage(Adw.NavigationPage):
     def generate_remote_filters(self):
         for row in self.remote_rows:
             self.remotes_group.remove(row)
+
         self.remote_rows.clear()
-        # if len(HostInfo.remotes) < 2 and len(list(HostInfo.remotes.items())[0][1]) < 2:
-        #     self.remotes_group.set_visible(False)
-        #     if self.remotes_string != "all":
-        #         self.remotes_string = "all"
-        #         self.settings.set_string("remotes-list", self.remotes_string)
-        #         self.packages_page.apply_filters()
-        #     return
-        for i, installation in enumerate(HostInfo.installations):
-            try:
-                for remote in HostInfo.remotes[installation]:
-                    # if remote.disabled:
-                    #     continue
-                    row = FilterRow(remote, installation)
-                    row.set_title(remote.title)
-                    row.set_subtitle(_("Installation: {}").format(installation))
-                    row.check_button.set_active(f"{remote.name}<>{installation}" in self.remotes_string)
-                    row.check_button.connect("toggled", lambda *_, row=row: self.remote_row_check_handler(row))
-                    row.set_visible(self.all_remotes_switch.get_active())
-                    self.remote_rows.append(row)
-                    self.remotes_group.add(row)
-            except KeyError:
-                pass
+        for installation, remotes in HostInfo.remotes.items():
+            for remote in remotes:
+                if remote.disabled:
+                    continue
+
+                row = FilterRow(remote, installation)
+                row.set_title(remote.title)
+                row.set_subtitle(_("Installation: {}").format(installation))
+                row.check_button.set_active(f"{remote.name}<>{installation}" in self.remotes_string)
+                row.check_button.connect("toggled", lambda *_, row=row: self.remote_row_check_handler(row))
+                row.set_visible(self.all_remotes_switch.get_active())
+                self.remote_rows.append(row)
+                self.remotes_group.add(row)
+
+        self.remotes_group.set_visible(len(self.remote_rows) > 1)
         self.all_remotes_switch.set_active("all" != self.remotes_string)
 
     def generate_runtime_filters(self):

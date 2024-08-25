@@ -175,6 +175,10 @@ class RemotesPage(Adw.NavigationPage):
             if error[0]:
                 self.toast_overlay.add_toast(ErrorToast(_("Could not remove remote"), str(error[0])).toast)
             else:
+                filters_page = HostInfo.main_window.pages[HostInfo.main_window.packages_row].filters_page
+                filters_page.settings.reset("remotes-list")
+                filters_page.all_remotes_switch.set_active(False)
+                # filters_page.packages_page.apply_filters()
                 self.main_window.refresh_handler()
                 self.toast_overlay.add_toast(Adw.Toast(title=_("Removed {}").format(row.remote.title)))
 

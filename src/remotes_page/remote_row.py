@@ -51,8 +51,11 @@ class RemoteRow(Adw.ActionRow):
             self.menu_listbox.get_row_at_index(2).set_visible(False)
             self.menu_listbox.get_row_at_index(3).set_visible(True)
             self.parent_page.total_disabled -= 1
-            HostInfo.main_window.pages[HostInfo.main_window.install_row].start_loading()
-            HostInfo.main_window.pages[HostInfo.main_window.install_row].end_loading()
+            install_page = HostInfo.main_window.pages[HostInfo.main_window.install_row]
+            install_page.start_loading()
+            install_page.end_loading()
+            filters_page = HostInfo.main_window.pages[HostInfo.main_window.packages_row].filters_page
+            filters_page.generate_filters()
             if self.parent_page.total_disabled == 0:
                 self.parent_page.show_disabled_button.set_active(False)
                 self.parent_page.show_disabled_button.set_visible(False)
@@ -71,8 +74,14 @@ class RemoteRow(Adw.ActionRow):
             self.parent_page.show_disabled_button.set_visible(True)
             self.parent_page.total_disabled += 1
             self.parent_page.none_visible_handler()
-            HostInfo.main_window.pages[HostInfo.main_window.install_row].start_loading()
-            HostInfo.main_window.pages[HostInfo.main_window.install_row].end_loading()
+            install_page = HostInfo.main_window.pages[HostInfo.main_window.install_row]
+            install_page.start_loading()
+            install_page.end_loading()
+            filters_page = HostInfo.main_window.pages[HostInfo.main_window.packages_row].filters_page
+            filters_page.settings.reset("remotes-list")
+            filters_page.all_remotes_switch.set_active(False)
+            filters_page.generate_filters()
+            filters_page.packages_page.apply_filters()
 
         def thread(*args):
             if self.remote.disabled:
