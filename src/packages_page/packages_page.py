@@ -127,6 +127,10 @@ class PackagesPage(Adw.BreakpointBin):
             i += 1
             row.check_button.set_active(row.get_visible())
 
+    def row_rclick_handler(self, row):
+        self.select_button.set_active(True)
+        GLib.idle_add(lambda *_, button=row.check_button: button.set_active(not button.get_active()))
+
     def generate_list(self, *args):
         self.packages_list_box.remove_all()
         GLib.idle_add(lambda *_: self.filters_page.generate_filters())
@@ -135,8 +139,9 @@ class PackagesPage(Adw.BreakpointBin):
         if len(HostInfo.flatpaks) == 0:
             self.set_status(self.no_packages)
             return
+
         for package in HostInfo.flatpaks:
-            row = AppRow(package)
+            row = AppRow(package, self.row_rclick_handler)
             package.app_row = row
             row.masked_status_icon.set_visible(package.is_masked)
             row.pinned_status_icon.set_visible(package.is_pinned)
@@ -148,6 +153,7 @@ class PackagesPage(Adw.BreakpointBin):
                     row.eol_runtime_status_icon.set_visible(package.dependant_runtime.is_eol)
             except Exception as e:
                 self.packages_toast_overlay.add_toast(ErrorToast(_("Error getting Flatpak '{}'").format(package.info["name"]), str(e)).toast)
+                
             self.packages_list_box.append(row)
 
         self.apply_filters()
@@ -162,7 +168,7 @@ class PackagesPage(Adw.BreakpointBin):
         if not first_visible_row is None:
             self.packages_list_box.select_row(first_visible_row)
             self.properties_page.set_properties(first_visible_row.package)
-            
+
         self.scrolled_window.set_vadjustment(Gtk.Adjustment.new(0,0,0,0,0,0)) # Scroll list to top
 
     def row_activate_handler(self, list_box, row):
@@ -313,7 +319,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.search_entry.connect("search-changed", self.on_invalidate)
         self.search_bar.set_key_capture_widget(main_window)
         self.packages_list_box.connect("row-activated", self.row_activate_handler)
-        self.select_button.connect("clicked", self.select_button_handler)
+        self.select_button.connect("toggled", self.select_button_handler)
         self.filter_button.connect("toggled", self.filter_button_handler)
         self.reset_filters_button.connect("clicked", lambda *_: self.filters_page.reset_filters())
         self.packages_split.connect("notify::show-content", self.filter_page_handler)

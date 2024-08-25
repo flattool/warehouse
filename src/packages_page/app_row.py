@@ -16,20 +16,26 @@ class AppRow(Adw.ActionRow):
         if self.package.icon_path:
             self.image.add_css_class("icon-dropshadow")
             self.image.set_from_file(self.package.icon_path)
-        
-        if self.callback:
-            self.callback()
 
-    def __init__(self, package, callback=None, **kwargs):
+    def gest(self, *args):
+        self.on_long_press(self)
+
+    def __init__(self, package, on_long_press=None, **kwargs):
         super().__init__(**kwargs)
 
         # Extra Object Creation
         self.package = package
-        self.callback = callback
+        self.on_long_press = on_long_press
+        self.rclick_gesture = Gtk.GestureClick()
+        self.long_press_gesture = Gtk.GestureLongPress()
 
         # Apply
         GLib.idle_add(lambda *_: self.set_title(package.info["name"]))
         GLib.idle_add(lambda *_: self.set_subtitle(package.info["id"]))
         GLib.idle_add(lambda *_: self.idle_stuff())
+        self.rclick_gesture.set_button(3)
+        self.add_controller(self.rclick_gesture)
 
         # Connections
+        self.rclick_gesture.connect("released", self.gest)
+        self.long_press_gesture.connect("pressed", self.gest)
