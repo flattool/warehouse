@@ -44,11 +44,6 @@ template $RemotesPage : Adw.NavigationPage {
                     description: _("Try a different search");
                     icon-name: "system-search-symbolic";
                 }
-                Adw.StatusPage no_remotes {
-                    title: _("No Remotes Found");
-                    description: _("Warehouse cannot see the current remotes or your system has no remotes added");
-                    icon-name: "error-symbolic";
-                }
                 Adw.PreferencesPage content_page {
                     Adw.PreferencesGroup current_remotes_group {
                         title: _("Current Remotes");
@@ -64,19 +59,60 @@ template $RemotesPage : Adw.NavigationPage {
                             }
                         ;
                         Adw.ActionRow none_visible {
+                            styles ["warning"]
                             [child]
                             Box {
                                 spacing: 3;
                                 orientation: vertical;
-                                Label {
-                                    margin-top: 7;
-                                    label: _("No Enabled Remotes");
-                                    wrap: true;
+                                Box {
                                     halign: center;
-                                    styles ["heading"]
+                                    Image {
+                                        valign: center;
+                                        margin-top: 7;
+                                        margin-end: 6;
+                                        icon-name: "eye-not-looking-symbolic";
+                                    }
+                                    Label {
+                                        margin-top: 7;
+                                        label: _("No Enabled Remotes");
+                                        wrap: true;
+                                        styles ["heading"]
+                                    }
                                 }
                                 Label {
                                     label: _("You only have disabled remotes on this system");
+                                    margin-start: 16;
+                                    margin-end: 16;
+                                    margin-bottom: 8;
+                                    justify: center;
+                                    halign: center;
+                                    wrap: true;
+                                }
+                            }
+                        }
+                        Adw.ActionRow no_remotes {
+                            styles ["error"]
+                            [child]
+                            Box {
+                                spacing: 3;
+                                orientation: vertical;
+                                Box {
+                                    halign: center;
+                                    Image {
+                                        valign: center;
+                                        margin-top: 7;
+                                        margin-end: 6;
+                                        icon-name: "error-symbolic";
+                                    }
+                                    Label {
+                                        margin-top: 7;
+                                        label: _("No Remotes Found");
+                                        wrap: true;
+                                        styles ["heading"]
+                                    }
+                                }
+                                Label {
+                                    label: _("Warehouse cannot see the current remotes or your system has no remotes added");
                                     margin-start: 16;
                                     margin-end: 16;
                                     margin-bottom: 8;

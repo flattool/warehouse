@@ -134,6 +134,12 @@ class RemotesPage(Adw.NavigationPage):
 
         self.none_visible.set_visible(total_visible == 0)
 
+        if len(self.current_remote_rows) == 0:
+            self.no_remotes.set_visible(True)
+            self.none_visible.set_visible(False)
+        else:
+            self.no_remotes.set_visible(False)
+
         GLib.idle_add(lambda *_: self.stack.set_visible_child(self.content_page))
         self.search_button.set_sensitive(True)
         self.search_entry.set_editable(True)

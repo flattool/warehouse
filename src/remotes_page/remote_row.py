@@ -20,7 +20,30 @@ class RemoteRow(Adw.ActionRow):
     remove = gtc()
 
     def enable_remote_handler(self, *args):
-        def idle_stuff(*args):
+        if not self.remote.disabled:
+            self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not enable remote"), _("Remote is already enabled")).toast)
+            return
+
+        has_error = []
+        def thread(*args):
+            cmd = ['flatpak-spawn', '--host', 'flatpak', 'remote-modify', '--enable', self.remote.name]
+            if self.installation == "user" or self.installation == "system":
+                cmd.append(f"--{self.installation}")
+            else:
+                cmd.append(f"--installation={self.installation}")
+
+            try:
+                subprocess.run(cmd, check=True, capture_output=True, text=True)
+            except subprocess.CalledProcessError as cpe:
+                has_error.append(str(cpe.stderr))
+            except Exception as e:
+                has_error.append(str(e))
+
+        def callback(*args):
+            if len(has_error) > 0:
+                GLib.idle_add(lambda *args, cpe=cpe: self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not enable remote"), has_error[0]).toast))
+                return
+                
             self.remove_css_class("warning")
             self.set_icon_name("")
             self.remote.disabled = False
@@ -33,27 +56,8 @@ class RemoteRow(Adw.ActionRow):
             if self.parent_page.total_disabled == 0:
                 self.parent_page.show_disabled_button.set_active(False)
                 self.parent_page.show_disabled_button.set_visible(False)
-
-        if not self.remote.disabled:
-            self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not enable remote"), _("Remote is already enabled")).toast)
-            return
-
-        cmd = ['flatpak-spawn', '--host', 'flatpak', 'remote-modify', '--enable', self.remote.name]
-        if self.installation == "user" or self.installation == "system":
-            cmd.append(f"--{self.installation}")
-        else:
-            cmd.append(f"--installation={self.installation}")
-
-        try:
-            subprocess.run(cmd, check=True, capture_output=True, text=True)
-        except subprocess.CalledProcessError as cpe:
-            GLib.idle_add(lambda *args, cpe=cpe: self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not enable remote"), str(cpe.stderr)).toast))
-            return
-        except Exception as e:
-            GLib.idle_add(lambda *args, e=e: self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not enable remote"), str(e)).toast))
-            return
-
-        idle_stuff()
+        
+        Gio.Task.new(None, None, callback).run_in_thread(thread)
 
     def disable_remote_handler(self, *args):
         def callback(*args):
@@ -113,7 +117,7 @@ class RemoteRow(Adw.ActionRow):
                 HostInfo.clipboard.set(self.get_subtitle())
                 self.parent_page.toast_overlay.add_toast(Adw.Toast(title=_("Copied name")))
             case self.enable_remote:
-                Gio.Task().run_in_thread(self.enable_remote_handler)
+                self.enable_remote_handler()
             case self.disable_remote:
                 self.disable_remote_handler()
             case self.remove:
