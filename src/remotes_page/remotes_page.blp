@@ -63,6 +63,29 @@ template $RemotesPage : Adw.NavigationPage {
                                 }
                             }
                         ;
+                        Adw.ActionRow none_visible {
+                            [child]
+                            Box {
+                                spacing: 3;
+                                orientation: vertical;
+                                Label {
+                                    margin-top: 7;
+                                    label: _("No Enabled Remotes");
+                                    wrap: true;
+                                    halign: center;
+                                    styles ["heading"]
+                                }
+                                Label {
+                                    label: _("You only have disabled remotes on this system");
+                                    margin-start: 16;
+                                    margin-end: 16;
+                                    margin-bottom: 8;
+                                    justify: center;
+                                    halign: center;
+                                    wrap: true;
+                                }
+                            }
+                        }
                     }
                     Adw.PreferencesGroup new_remotes_group {
                         visible: bind search_button.active inverted;

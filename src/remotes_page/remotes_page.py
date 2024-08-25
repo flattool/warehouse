@@ -83,6 +83,7 @@ class RemotesPage(Adw.NavigationPage):
     new_remotes_group = gtc()
     file_remote_row = gtc()
     custom_remote_row = gtc()
+    none_visible = gtc()
 
     # Statuses
     loading_remotes = gtc()
@@ -103,31 +104,35 @@ class RemotesPage(Adw.NavigationPage):
 
         self.current_remote_rows.clear()
 
-    def end_loading(self):
-        if len(HostInfo.remotes) < 1 or len(list(HostInfo.remotes.items())[0][1]) < 1:
-            self.search_button.set_sensitive(False)
-            self.search_button.set_active(False)
-            self.stack.set_visible_child(self.no_remotes)
-            self.search_button.set_sensitive(False)
-            self.search_entry.set_editable(False)
-            return
-        else:
-            self.search_button.set_sensitive(True)
+    def none_visible_handler(self):
+        any_visible = False
+        for row in self.current_remote_rows:
+            if row.get_visible():
+                any_visible = True
+                break
+        
+        self.none_visible.set_visible(not any_visible)
 
+    def end_loading(self):
         show_disabled = self.show_disabled_button.get_active()
         self.show_disabled_button.set_visible(False)
-        for install in HostInfo.installations:
-            try:
-                for remote in HostInfo.remotes[install]:
-                    row = RemoteRow(self, install, remote)
-                    self.current_remotes_group.add(row)
-                    self.current_remote_rows.append(row)
-                    if (not show_disabled) and remote.disabled:
+        total_visible = 0
+        for installation, remotes in HostInfo.remotes.items():
+            for remote in remotes:
+                row = RemoteRow(self, installation, remote)
+                self.current_remote_rows.append(row)
+                self.current_remotes_group.add(row)
+                if row.remote.disabled:
+                    self.total_disabled += 1
+                    self.show_disabled_button.set_visible(True)
+                    if show_disabled:
+                        total_visible += 1
+                    else:
                         row.set_visible(False)
-                        self.total_disabled += 1
-                        self.show_disabled_button.set_visible(True)
-            except KeyError:
-                continue
+                else:
+                    total_visible += 1
+
+        self.none_visible.set_visible(total_visible == 0)
 
         GLib.idle_add(lambda *_: self.stack.set_visible_child(self.content_page))
         self.search_button.set_sensitive(True)
@@ -224,8 +229,20 @@ class RemotesPage(Adw.NavigationPage):
         file_chooser.open(self.main_window, None, self.file_callback)
 
     def show_disabled_handler(self, button):
-        self.show_disabled_button_content.set_icon_name("eye-open-negative-filled-symbolic" if button.get_active() else "eye-not-looking-symbolic")
-        self.on_search(self.search_entry)
+        show_disabled = button.get_active()
+        self.show_disabled_button_content.set_icon_name("eye-open-negative-filled-symbolic" if show_disabled else "eye-not-looking-symbolic")
+        total_visible = 0
+        for row in self.current_remote_rows:
+            if row.remote.disabled:
+                if show_disabled: # show disabled
+                    row.set_visible(True)
+                    total_visible += 1
+                else:
+                    row.set_visible(False)
+            else:
+                total_visible += 1
+
+        self.none_visible.set_visible(total_visible == 0)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)

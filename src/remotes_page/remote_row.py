@@ -28,6 +28,8 @@ class RemoteRow(Adw.ActionRow):
             self.menu_listbox.get_row_at_index(2).set_visible(False)
             self.menu_listbox.get_row_at_index(3).set_visible(True)
             self.parent_page.total_disabled -= 1
+            HostInfo.main_window.pages[HostInfo.main_window.install_row].start_loading()
+            HostInfo.main_window.pages[HostInfo.main_window.install_row].end_loading()
             if self.parent_page.total_disabled == 0:
                 self.parent_page.show_disabled_button.set_active(False)
                 self.parent_page.show_disabled_button.set_visible(False)
@@ -64,6 +66,9 @@ class RemoteRow(Adw.ActionRow):
             self.set_visible(self.parent_page.show_disabled_button.get_active())
             self.parent_page.show_disabled_button.set_visible(True)
             self.parent_page.total_disabled += 1
+            self.parent_page.none_visible_handler()
+            HostInfo.main_window.pages[HostInfo.main_window.install_row].start_loading()
+            HostInfo.main_window.pages[HostInfo.main_window.install_row].end_loading()
 
         def thread(*args):
             if self.remote.disabled:
