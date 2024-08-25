@@ -159,8 +159,10 @@ class PackagesPage(Adw.BreakpointBin):
                 first_visible_row = row
                 break
         
-        self.packages_list_box.select_row(first_visible_row)
-        self.properties_page.set_properties(first_visible_row.package)
+        if not first_visible_row is None:
+            self.packages_list_box.select_row(first_visible_row)
+            self.properties_page.set_properties(first_visible_row.package)
+            
         self.scrolled_window.set_vadjustment(Gtk.Adjustment.new(0,0,0,0,0,0)) # Scroll list to top
 
     def row_activate_handler(self, list_box, row):
