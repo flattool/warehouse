@@ -139,7 +139,9 @@ class FiltersPage(Adw.NavigationPage):
                 self.runtimes_string = "all"
                 self.settings.set_string("runtimes-list", self.runtimes_string)
                 self.packages_page.apply_filters()
+
             return
+
         for j, ref in enumerate(HostInfo.dependant_runtime_refs):
             row = FilterRow(ref)
             row.set_title(ref)
@@ -148,6 +150,8 @@ class FiltersPage(Adw.NavigationPage):
             row.set_visible(self.all_runtimes_switch.get_active())
             self.runtime_rows.append(row)
             self.runtimes_group.add(row)
+
+        self.runtimes_group.set_visible(len(self.runtime_rows) > 1)
         self.all_runtimes_switch.set_active("all" != self.runtimes_string)
 
     def generate_filters(self):
