@@ -183,6 +183,11 @@ class DataSubpage(Gtk.Stack):
         else:
             GLib.idle_add(lambda *_: self.label_box.set_orientation(Gtk.Orientation.HORIZONTAL))
 
+    def update_sort_mode(self):
+        self.sort_ascend = self.settings.get_boolean("sort-ascend")
+        self.sort_mode = self.settings.get_string("sort-mode")
+        self.flow_box.invalidate_sort()
+
     def __init__(self, title, parent_page, is_active, main_window, **kwargs):
         super().__init__(**kwargs)
 
@@ -206,6 +211,7 @@ class DataSubpage(Gtk.Stack):
         self.min_horizontal_label_width = self.label_box.get_preferred_size()[1].width
         self.is_result = False
         self.prev_status = None
+        self.settings = Gio.Settings.new("io.github.flattool.Warehouse.data_page")
 
         # Apply
         self.flow_box.set_sort_func(self.sort_func)

@@ -74,25 +74,22 @@ class UserDataPage(Adw.BreakpointBin):
         
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
 
-    def sorter(self, button=None):
-        if button and not button.get_active():
-            return
+    def sort_button_handler(self, button):
+        if button in {self.sort_ascend, self.sort_descend}:
+            self.settings.set_boolean("sort-ascend", self.sort_ascend.get_active())
+        else:
+            self.settings.set_string("sort-mode", self.buttons_to_sort_modes[button])
 
-        if self.sort_name.get_active():
-            self.adp.sort_mode = "name"
-            self.ldp.sort_mode = "name"
-        elif self.sort_id.get_active():
-            self.adp.sort_mode = "id"
-            self.ldp.sort_mode = "id"
-        elif self.sort_size.get_active():
-            self.adp.sort_mode = "size"
-            self.ldp.sort_mode = "size"
-        
-        self.adp.sort_ascend = self.sort_ascend.get_active()
-        self.ldp.sort_ascend = self.sort_ascend.get_active()
+        self.adp.update_sort_mode()
+        self.ldp.update_sort_mode()
 
-        self.adp.flow_box.invalidate_sort()
-        self.ldp.flow_box.invalidate_sort()
+    def load_sort_settings(self):
+        mode = self.settings.get_string("sort-mode")
+        ascend = self.settings.get_boolean("sort-ascend")
+        self.sort_modes_to_buttons[mode].set_active(True)
+        (self.sort_ascend if ascend else self.sort_descend).set_active(True)
+        self.adp.update_sort_mode()
+        self.ldp.update_sort_mode()
 
     def view_change_handler(self, *args):
         child = self.stack.get_visible_child()
@@ -178,14 +175,22 @@ class UserDataPage(Adw.BreakpointBin):
 
         # Extra Object Creation
         self.__class__.instance = self
-        # self.adj = self.scrolled_window.get_vadjustment()
         self.adp = DataSubpage(_("Active Data"), self, True, main_window)
         self.ldp = DataSubpage(_("Leftover Data"), self, False, main_window)
         self.data_flatpaks = []
         self.active_data = []
         self.leftover_data = []
         self.total_items = 0
-        ms=main_window.main_split
+        self.settings = Gio.Settings.new("io.github.flattool.Warehouse.data_page")
+
+        self.sort_modes_to_buttons = {
+            "name": self.sort_name,
+            "id": self.sort_id,
+            "size": self.sort_size,
+        }
+        self.buttons_to_sort_modes = {}
+        for key, button in self.sort_modes_to_buttons.items():
+            self.buttons_to_sort_modes[button] = key
 
         # Apply
         self.stack.add_titled_with_icon(
@@ -210,12 +215,12 @@ class UserDataPage(Adw.BreakpointBin):
         self.copy_button.connect("clicked", self.copy_handler)
         self.trash_button.connect("clicked", self.trash_handler)
 
-        self.sort_ascend.connect("clicked", self.sorter)
-        self.sort_descend.connect("clicked", self.sorter)
-        self.sort_name.connect("clicked", self.sorter)
-        self.sort_id.connect("clicked", self.sorter)
-        self.sort_size.connect("clicked", self.sorter)
+        self.sort_ascend.connect("clicked", self.sort_button_handler)
+        self.sort_descend.connect("clicked", self.sort_button_handler)
+        self.sort_name.connect("clicked", self.sort_button_handler)
+        self.sort_id.connect("clicked", self.sort_button_handler)
+        self.sort_size.connect("clicked", self.sort_button_handler)
 
         # Apply again
         self.search_bar.set_key_capture_widget(main_window)
-        self.sorter()
+        self.load_sort_settings()
