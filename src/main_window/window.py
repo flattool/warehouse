@@ -93,6 +93,19 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.settings.set_boolean("sidebar-shown", state)
         print(self.settings.get_boolean("sidebar-shown"))
 
+    def show_saved_page(self):
+        page_to_show = self.settings.get_string("page-shown")
+        page_found = False
+        for row, page in self.pages.items():
+            self.stack.add_child(page)
+
+            if page.page_name == page_to_show:
+                page_found = True
+                self.activate_row(row)
+
+        if not page_found:
+            self.navigation_row_listbox.get_row_at_index(0).activate()
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -111,13 +124,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         }
 
         self.navigation_row_listbox.connect("row-activated", self.navigation_handler)
-
-        page_to_show = self.settings.get_string("page-shown")
-        print(page_to_show)
-        for row, page in self.pages.items():
-            self.stack.add_child(page)
-            if page_to_show == page.page_name:
-                self.activate_row(row)
+        self.show_saved_page()
 
         # Apply
         self.settings.bind("window-width", self, "default-width", Gio.SettingsBindFlags.DEFAULT)
