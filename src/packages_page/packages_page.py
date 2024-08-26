@@ -106,6 +106,22 @@ class PackagesPage(Adw.BreakpointBin):
             self.set_status(self.no_filter_results)
         else:
             GLib.idle_add(lambda *_: self.set_status(self.scrolled_window))
+            if self.current_row_for_properties and not self.current_row_for_properties.get_visible():
+                self.select_first_visible_row()
+
+    def select_first_visible_row(self):
+        first_visible_row = None
+        i = 0
+        while row := self.packages_list_box.get_row_at_index(i):
+            i += 1
+            if row.get_visible():
+                first_visible_row = row
+                self.current_row_for_properties = row
+                break
+        
+        if not first_visible_row is None:
+            self.packages_list_box.select_row(first_visible_row)
+            self.properties_page.set_properties(first_visible_row.package)
 
     def row_select_handler(self, row):
         if row.check_button.get_active():
@@ -158,17 +174,7 @@ class PackagesPage(Adw.BreakpointBin):
             self.packages_list_box.append(row)
 
         self.apply_filters()
-        first_visible_row = None
-        i = 0
-        while row := self.packages_list_box.get_row_at_index(i):
-            i += 1
-            if row.get_visible():
-                first_visible_row = row
-                break
-        
-        if not first_visible_row is None:
-            self.packages_list_box.select_row(first_visible_row)
-            self.properties_page.set_properties(first_visible_row.package)
+        self.select_first_visible_row()
 
         self.scrolled_window.set_vadjustment(Gtk.Adjustment.new(0,0,0,0,0,0)) # Scroll list to top
 
@@ -177,6 +183,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.properties_page.nav_view.pop()
         self.packages_split.set_show_content(True)
         self.filter_button.set_active(False)
+        self.current_row_for_properties = row
 
     def filter_func(self, row):
         search_text = self.search_entry.get_text().lower()
@@ -303,6 +310,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.is_result = False
         self.prev_status = None
         self.selected_rows = []
+        self.current_row_for_properties = None
 
         # Apply
         # self.set_status("loading_packages")
