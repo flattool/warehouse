@@ -69,6 +69,7 @@ warehouse_sources = [
   'host_info.py',
   'packages_page/app_row.py',
   'gtk/error_toast.py',
+  'gtk/sidebar_button.py',
   'main_window/window.py',
   'packages_page/packages_page.py',
   'packages_page/filters_page.py',

@@ -4,6 +4,7 @@ from .app_row import AppRow
 from .error_toast import ErrorToast
 from .properties_page import PropertiesPage
 from .filters_page import FiltersPage
+from .sidebar_button import SidebarButton
 import subprocess
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/packages_page.ui")
@@ -20,7 +21,6 @@ class PackagesPage(Adw.BreakpointBin):
     reset_filters_button = gtc()
     no_packages = gtc()
     no_results = gtc()
-    sidebar_button = gtc()
     filter_button = gtc()
     search_bar = gtc()
     search_entry = gtc()
@@ -303,7 +303,6 @@ class PackagesPage(Adw.BreakpointBin):
         self.is_result = False
         self.prev_status = None
         self.selected_rows = []
-        ms = main_window.main_split
 
         # Apply
         # self.set_status("loading_packages")
@@ -314,8 +313,6 @@ class PackagesPage(Adw.BreakpointBin):
         self.__class__.instance = self
 
         # Connections
-        ms.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
-        self.sidebar_button.connect("toggled", lambda *_: ms.set_show_sidebar(self.sidebar_button.get_active()))
 
         self.search_entry.connect("search-changed", self.on_invalidate)
         self.search_bar.set_key_capture_widget(main_window)

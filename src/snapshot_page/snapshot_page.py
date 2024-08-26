@@ -3,6 +3,7 @@ from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .app_row import AppRow
 from .snapshots_list_page import SnapshotsListPage
+from .sidebar_button import SidebarButton
 import os, subprocess
 
 class LeftoverSnapshotRow(Adw.ActionRow):
@@ -29,7 +30,6 @@ class SnapshotPage(Adw.BreakpointBin):
     __gtype_name__ = "SnapshotPage"
     gtc = Gtk.Template.Child
 
-    sidebar_button = gtc()
     toast_overlay = gtc()
     active_box = gtc()
     active_listbox = gtc()
@@ -163,7 +163,6 @@ class SnapshotPage(Adw.BreakpointBin):
         super().__init__(**kwargs)
 
         # Extra Object Creation
-        ms = main_window.main_split
         self.__class__.instance = self
         self.main_window = main_window
         self.active_snapshot_paks = []
@@ -173,11 +172,8 @@ class SnapshotPage(Adw.BreakpointBin):
         self.list_page = SnapshotsListPage(self)
 
         # Connections
-        ms.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
-        self.sidebar_button.connect("toggled", lambda *_: ms.set_show_sidebar(self.sidebar_button.get_active()))
         self.active_listbox.connect("row-activated", self.active_select_handler)
         self.leftover_listbox.connect("row-activated", self.leftover_select_handler)
 
         # Apply
-        self.sidebar_button.set_active(ms.get_show_sidebar())
         self.split_view.set_content(self.list_page)##

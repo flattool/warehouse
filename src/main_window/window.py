@@ -143,3 +143,4 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
         self.start_loading()
         HostInfo.get_flatpaks(callback=self.end_loading)
+        # GLib.idle_add(lambda *_: self.main_split.set_show_sidebar(False))

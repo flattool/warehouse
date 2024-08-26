@@ -71,7 +71,6 @@ class RemotesPage(Adw.NavigationPage):
     __gtype_name__ = 'RemotesPage'
     gtc = Gtk.Template.Child
 
-    sidebar_button = gtc()
     search_button = gtc()
     search_bar = gtc()
     search_entry = gtc()
@@ -261,15 +260,12 @@ class RemotesPage(Adw.NavigationPage):
         # Extra Object Creation
         self.__class__.instance = self
         self.main_window = main_window
-        ms = main_window.main_split
         self.search_bar.set_key_capture_widget(main_window)
         self.current_remote_rows = []
         self.filter_setting = Gio.Settings.new("io.github.flattool.Warehouse.filter")
         self.total_disabled = 0
 
         # Connections
-        ms.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
-        self.sidebar_button.connect("toggled", lambda *_: ms.set_show_sidebar(self.sidebar_button.get_active()))
         self.file_remote_row.connect("activated", lambda *_: self.add_file_handler())
         self.custom_remote_row.connect("activated", lambda *_: AddRemoteDialog(main_window, self).present(main_window))
         self.search_entry.connect("search-changed", self.on_search)

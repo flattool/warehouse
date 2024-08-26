@@ -12,10 +12,7 @@ template $SelectPage : Adw.NavigationPage {
                     [top]
                     Adw.HeaderBar {
                         [start]
-                        ToggleButton sidebar_button {
-                            icon-name: "dock-left-symbolic";
-                            tooltip-text: _("Show Sidebar");
-                        }
+                        $SidebarButton {}
                         [start]
                         Button test {
                             label: "test";

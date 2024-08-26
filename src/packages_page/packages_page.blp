@@ -27,10 +27,7 @@ template $PackagesPage : Adw.BreakpointBin {
                         [top]
                         Adw.HeaderBar {
                             [start]
-                            ToggleButton sidebar_button {
-                                icon-name: "dock-left-symbolic";
-                                tooltip-text: _("Show Sidebar");
-                            }
+                            $SidebarButton {}
                             [start]
                             ToggleButton search_button {
                                 icon-name: "loupe-large-symbolic";

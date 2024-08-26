@@ -3,6 +3,7 @@ from .error_toast import ErrorToast
 from .data_box import DataBox
 from .data_subpage import DataSubpage
 from .host_info import HostInfo
+from .sidebar_button import SidebarButton
 import os, subprocess
 
 import time
@@ -14,7 +15,6 @@ class UserDataPage(Adw.BreakpointBin):
     bpt = gtc()
     header_bar = gtc()
     switcher_bar = gtc()
-    sidebar_button = gtc()
     search_button = gtc()
     select_button = gtc()
     sort_button = gtc()
@@ -200,12 +200,8 @@ class UserDataPage(Adw.BreakpointBin):
             title=_("Leftover Data"),
             icon_name="folder-templates-symbolic",
         )
-        self.sidebar_button.set_active(ms.get_show_sidebar())
 
         # Connections
-        # self.sidebar_button.connect("clicked", lambda *_, ms=main_window.main_split: ms.set_show_sidebar(not ms.get_show_sidebar() if not ms.get_collapsed() else True))
-        ms.connect("notify::show-sidebar", lambda *_: self.sidebar_button.set_active(ms.get_show_sidebar()))
-        self.sidebar_button.connect("toggled", lambda *_: ms.set_show_sidebar(self.sidebar_button.get_active()))
         self.stack.connect("notify::visible-child", self.view_change_handler)
 
         self.select_button.connect("toggled", self.select_toggle_handler)

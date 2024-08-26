@@ -7,10 +7,7 @@ template $RemotesPage : Adw.NavigationPage {
         [top]
         Adw.HeaderBar header_bar {
             [start]
-            ToggleButton sidebar_button {
-                icon-name: "dock-left-symbolic";
-                tooltip-text: _("Show Sidebar");
-            }
+            $SidebarButton {}
             [start]
             ToggleButton search_button {
                 icon-name: "loupe-large-symbolic";
