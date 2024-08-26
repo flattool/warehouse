@@ -95,6 +95,7 @@ class RemotesPage(Adw.NavigationPage):
     #    It is used to determine if a new page should be made or not
     #    This must be set to the created object from within the class's __init__ method
     instance = None
+    page_name = "remotes"
     
     def start_loading(self):
         self.stack.set_visible_child(self.loading_remotes)

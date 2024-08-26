@@ -38,6 +38,7 @@ class UserDataPage(Adw.BreakpointBin):
     #    It is used to determine if a new page should be made or not
     #    This must be set to the created object from within the class's __init__ method
     instance = None
+    page_name = "user-data"
 
     def sort_data(self, *args):
         self.data_flatpaks.clear()

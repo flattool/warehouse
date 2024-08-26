@@ -55,13 +55,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         # if keyval == Gdk.KEY_Escape:
         #     self.batch_mode_button.set_active(False)
 
-    def navigation_handler(self, _, row, hide_sidebar=True):
-        row = row.get_child()
-        page = self.pages[row]
-        self.stack.set_visible_child(page)
-        if self.main_split.get_collapsed():
-            self.main_split.set_show_sidebar(False)
-
     def start_loading(self, *args):
         for _, page in self.pages.items():
             if page.instance:
@@ -78,6 +71,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.refresh_button.set_sensitive(False)
         HostInfo.get_flatpaks(callback=self.end_loading)
 
+    def navigation_handler(self, _, row):
+        row = row.get_child()
+        page = self.pages[row]
+        self.stack.set_visible_child(page)
+        self.settings.set_string("page-shown", page.page_name)
+        if self.main_split.get_collapsed():
+            self.main_split.set_show_sidebar(False)
+
     def activate_row(self, nav_row):
         idx = 0
         while row := self.navigation_row_listbox.get_row_at_index(idx):
@@ -85,7 +86,12 @@ class WarehouseWindow(Adw.ApplicationWindow):
             if row.get_child() is nav_row:
                 row.activate()
                 nav_row.grab_focus()
-                return
+                break
+
+    def save_sidebar_state(self, *args):
+        state = self.main_split.get_show_sidebar()
+        self.settings.set_boolean("sidebar-shown", state)
+        print(self.settings.get_boolean("sidebar-shown"))
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -104,8 +110,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.install_row: InstallPage(main_window=self),
         }
 
-        for _, page in self.pages.items():
+        self.navigation_row_listbox.connect("row-activated", self.navigation_handler)
+
+        page_to_show = self.settings.get_string("page-shown")
+        print(page_to_show)
+        for row, page in self.pages.items():
             self.stack.add_child(page)
+            if page_to_show == page.page_name:
+                self.activate_row(row)
 
         # Apply
         self.settings.bind("window-width", self, "default-width", Gio.SettingsBindFlags.DEFAULT)
@@ -120,12 +132,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
         # Connections
         event_controller.connect("key-pressed", self.key_handler)
-        self.navigation_row_listbox.connect("row-activated", self.navigation_handler)
         # file_drop.connect("drop", self.drop_callback)
         self.refresh_button.connect("clicked", self.refresh_handler)
         
-        self.activate_row(self.install_row)
-        self.main_split.set_show_sidebar(True)
+        # self.activate_row(self.user_data_row)
+        # self.main_split.set_show_sidebar(self.settings.get_boolean("sidebar-shown"))
+        # GLib.idle_add(lambda *_: self.main_split.set_show_sidebar(False))
+        # print(self.settings.get_boolean("sidebar-shown"))
+        # self.main_split.connect("notify::show-sidebar", self.save_sidebar_state)
 
         self.start_loading()
         HostInfo.get_flatpaks(callback=self.end_loading)

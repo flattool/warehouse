@@ -42,6 +42,7 @@ class PackagesPage(Adw.BreakpointBin):
     #    It is used to determine if a new page should be made or not
     #    This must be set to the created object from within the class's __init__ method
     instance = None
+    page_name = "packages"
 
     def set_status(self, to_set):
         

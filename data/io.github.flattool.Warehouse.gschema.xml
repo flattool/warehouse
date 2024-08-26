@@ -13,6 +13,12 @@
 		<key name="is-fullscreen" type="b">
 			<default>false</default>
 		</key>
+		<key name="sidebar-shown" type="b">
+			<default>true</default>
+		</key>
+		<key name="page-shown" type="s">
+			<default>"packages"</default>
+		</key>
 	</schema>
 	<schema id="io.github.flattool.Warehouse.filter" path="/io/github/flattool/Warehouse/filter/">
 		<key name="show-apps" type="b">
@@ -26,6 +32,14 @@
 		</key>
 		<key name="runtimes-list" type="s">
 			<default>"all"</default>
+		</key>
+	</schema>
+	<schema id="io.github.flattool.Warehouse.data_page" path="/io/github/flattool/Warehouse/data_page/">
+		<key name="sort-ascend" type="b">
+			<default>false</default>
+		</key>
+		<key name="sort-mode" type="s">
+			<default>"size"</default>
 		</key>
 	</schema>
 </schemalist>
