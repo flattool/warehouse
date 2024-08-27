@@ -2,6 +2,7 @@ from gi.repository import Adw, Gtk,GLib#, Gio, Pango
 from .error_toast import ErrorToast
 from .host_info import HostInfo
 from .change_version_page import ChangeVersionPage
+from .uninstall_dialog import UninstallDialog
 import subprocess, os
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/properties_page/properties_page.ui")
@@ -204,11 +205,18 @@ class PropertiesPage(Adw.NavigationPage):
         self.package.set_pin(state, callback)
 
     def uninstall_handler(self, *args):
-        def on_choice(_, response):
-            if response != 'continue':
-                return
+        def on_choice(should_trash):
             self.packages_page.set_status(self.packages_page.uninstalling)
             self.package.uninstall(callback)
+            if should_trash:
+                try:
+                    self.package.trash_data()
+                    self.set_properties(self.package, refresh=True)
+                    self.toast_overlay.add_toast(Adw.Toast.new("Trashed User Data"))
+                except subprocess.CalledProcessError as cpe:
+                    self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), cpe.stderr).toast)
+                except Exception as e:
+                    self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(e)).toast)
 
         def callback(*args):
             if fail := self.package.failed_uninstall:
@@ -220,14 +228,7 @@ class PropertiesPage(Adw.NavigationPage):
                 self.packages_page.packages_toast_overlay.add_toast(Adw.Toast(title=_("Uninstalled {}").format(self.package.info["name"])))
 
         # name = self.package.info["name"]
-        dialog = Adw.AlertDialog(
-            heading=_("Uninstall {}?").format(name := self.package.info["name"]),
-            body=_("It will not be possible to use {} after removal.").format(name),
-        )
-        dialog.add_response('cancel', _("Cancel"))
-        dialog.add_response('continue', _("Uninstall"))
-        dialog.connect("response", on_choice)
-        dialog.set_response_appearance('continue', Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog = UninstallDialog(on_choice)
         dialog.present(self.main_window)
 
     def runtime_row_handler(self, *args):

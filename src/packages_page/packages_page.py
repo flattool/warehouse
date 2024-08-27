@@ -5,7 +5,8 @@ from .error_toast import ErrorToast
 from .properties_page import PropertiesPage
 from .filters_page import FiltersPage
 from .sidebar_button import SidebarButton
-import subprocess
+from .uninstall_dialog import UninstallDialog
+import subprocess, os
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/packages_page.ui")
 class PackagesPage(Adw.BreakpointBin):
@@ -150,6 +151,7 @@ class PackagesPage(Adw.BreakpointBin):
 
     def generate_list(self, *args):
         self.packages_list_box.remove_all()
+        self.selected_rows.clear()
         GLib.idle_add(lambda *_: self.filters_page.generate_filters())
         self.copy_button.set_sensitive(False)
         self.uninstall_button.set_sensitive(False)
@@ -226,15 +228,21 @@ class PackagesPage(Adw.BreakpointBin):
             self.packages_toast_overlay.add_toast(ErrorToast(_("Could not copy {}").format(feedback), str(e)).toast)
 
     def selection_uninstall(self, *args):
-        def on_response(alert_dialog, response):
-            if response != "continue":
-                return
-            
+        def on_response(should_trash):
             GLib.idle_add(lambda *_: self.set_status(self.uninstalling))
             error = [None]
             def thread(*args):
+                cmd = ['flatpak-spawn', '--host', 'flatpak', 'uninstall', '-y']
+                to_trash = []
+                for row in self.selected_rows:
+                    cmd.append(row.package.info["ref"])
+                    if should_trash and os.path.exists(row.package.data_path):
+                        to_trash.append(row.package.data_path)
+
                 try:
                     subprocess.run(cmd, check=True, capture_output=True)
+                    if should_trash:
+                        subprocess.run(['gio', 'trash'] + to_trash, check=True, capture_output=True)
                 except subprocess.CalledProcessError as cpe:
                     error[0] = cpe
                 except Exception as e:
@@ -249,21 +257,12 @@ class PackagesPage(Adw.BreakpointBin):
                     GLib.idle_add(lambda *__: self.packages_toast_overlay.add_toast(Adw.Toast(title=_("Uninstalled Packages"))))
 
             Gio.Task.new(None, None, callback).run_in_thread(thread)
-        
-        cmd = ['flatpak-spawn', '--host', 'flatpak', 'uninstall', '-y']
-        for row in self.selected_rows:
-            cmd.append(row.package.info["ref"])
-        
-        dialog = Adw.AlertDialog(heading=_("Uninstall Packages?"), body=_("It will not be possible to use these packages after removal"))
-        dialog.add_response("cancel", _("Cancel"))
-        dialog.add_response("continue", _("Uninstall"))
-        dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.connect("response", on_response)
+
+        dialog = UninstallDialog(on_response)
         dialog.present(self.main_window)
 
     def start_loading(self):
         self.packages_navpage.set_title(_("Packages"))
-        self.selected_rows.clear()
         self.select_button.set_active(False)
         self.set_status(self.loading_packages)
 

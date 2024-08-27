@@ -1,0 +1,32 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $UninstallDialog : Adw.AlertDialog {
+    // responses [
+    //     cancel: _("Cancel"),
+    //     continue: _("Uninstall") destructive,
+    // ]
+
+    extra-child:
+        Adw.PreferencesGroup group {
+            Adw.ActionRow {
+                title: _("Keep");
+                subtitle: _("Allows restoring app settings and content");
+                activatable-widget: keep;
+                [prefix]
+                CheckButton keep {
+                    active: true;
+                }
+            }
+            Adw.ActionRow {
+                title: _("Trash");
+                subtitle: _("Send data to the trash");
+                activatable-widget: trash;
+                [prefix]
+                CheckButton trash {
+                    group: keep;
+                }
+            }
+        }
+    ;
+}

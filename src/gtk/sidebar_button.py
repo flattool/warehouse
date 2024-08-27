@@ -12,6 +12,7 @@ class SidebarButton(Gtk.ToggleButton):
 
         # Connections
         main_split.connect("notify::show-sidebar", lambda *_: self.set_active(main_split.get_show_sidebar()))
+        # main_split.connect("notify::collapsed", lambda *_: self.set_visible(main_split.get_collapsed()))
         self.connect("toggled", lambda *_: main_split.set_show_sidebar(self.get_active()))
 
         # Apply

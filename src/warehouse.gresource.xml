@@ -7,6 +7,7 @@
     <file preprocess="xml-stripblanks">main_window/window.ui</file>
     <file preprocess="xml-stripblanks">packages_page/packages_page.ui</file>
     <file preprocess="xml-stripblanks">packages_page/filters_page.ui</file>
+    <file preprocess="xml-stripblanks">packages_page/uninstall_dialog.ui</file>
     <file preprocess="xml-stripblanks">properties_page/properties_page.ui</file>
     <file preprocess="xml-stripblanks">change_version_page/change_version_page.ui</file>
     <file preprocess="xml-stripblanks">user_data_page/data_box.ui</file>
