@@ -155,18 +155,29 @@ class UserDataPage(Adw.BreakpointBin):
             else:
                 self.toast_overlay.add_toast(Adw.Toast(title=_("Trashed data")))
 
-        child = self.stack.get_visible_child()
-        to_trash = []
-        for box in child.selected_boxes:
-            to_trash.append(box.data_path)
-        
-        if len(to_trash) == 0:
-            self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), _("No boxes were selected")).toast)
-            return
-        
-        self.select_button.set_active(False)
-        child.set_visible_child(child.loading_data)
-        Gio.Task.new(None, None, callback).run_in_thread(lambda *_: thread(to_trash))
+        def on_response(dialog, response):
+            if response != "continue":
+                return
+                
+            child = self.stack.get_visible_child()
+            to_trash = []
+            for box in child.selected_boxes:
+                to_trash.append(box.data_path)
+            
+            if len(to_trash) == 0:
+                self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), _("No boxes were selected")).toast)
+                return
+            
+            self.select_button.set_active(False)
+            child.set_visible_child(child.loading_data)
+            Gio.Task.new(None, None, callback).run_in_thread(lambda *_: thread(to_trash))
+
+        dialog = Adw.AlertDialog(heading=_("Trash Data?"), body=_("Data will be sent to the trash"))
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Continue"))
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.connect("response", on_response)
+        dialog.present(ErrorToast.main_window)
         
         # self.toast_overlay.add_toast(Adw.Toast(title=_("Trashed data")))
 
