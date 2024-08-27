@@ -1,7 +1,7 @@
 from gi.repository import Adw, Gtk, Gdk, GLib
 from .host_info import HostInfo
 
-class SidebarButton(Gtk.ToggleButton):
+class SidebarButton(Gtk.Button):
     __gtype_name__ = "SidebarButton"
 
     def __init__(self, **kwargs):
@@ -11,9 +11,8 @@ class SidebarButton(Gtk.ToggleButton):
         main_split = HostInfo.main_window.main_split
 
         # Connections
-        main_split.connect("notify::show-sidebar", lambda *_: self.set_active(main_split.get_show_sidebar()))
-        # main_split.connect("notify::collapsed", lambda *_: self.set_visible(main_split.get_collapsed()))
-        self.connect("toggled", lambda *_: main_split.set_show_sidebar(self.get_active()))
+        main_split.connect("notify::collapsed", lambda *_: self.set_visible(main_split.get_collapsed()))
+        self.connect("clicked", lambda *_: main_split.set_show_sidebar(True))
 
         # Apply
         self.set_icon_name("dock-left-symbolic")
