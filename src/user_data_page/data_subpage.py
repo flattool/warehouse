@@ -75,44 +75,51 @@ class DataSubpage(Gtk.Stack):
             self.set_visible_child(self.no_data)
 
     def set_selection_mode(self, is_enabled):
-        self.selected_boxes.clear()
         idx = 0
         while box := self.flow_box.get_child_at_index(idx):
             idx += 1
             box = box.get_child()
             if not is_enabled:
-                # continue
                 GLib.idle_add(lambda *_, box=box: box.check_button.set_active(False))
-            GLib.idle_add(lambda *_, box=box: box.check_button.set_visible(is_enabled))
-        # if not is_enabled:
-        #     return
 
-    def box_select_handler(self, _, box):
-        box = box.get_child()
-        if not box.check_button.get_visible():
-            return
+            GLib.idle_add(lambda *_, box=box: box.check_button.set_visible(is_enabled))
+
+        self.selected_boxes.clear()
+
+    def box_select_handler(self, box):
         cb = box.check_button
         if cb.get_active():
-            GLib.idle_add(lambda *_: cb.set_active(False))
-            self.selected_boxes.remove(box)
-        else:
-            GLib.idle_add(lambda *_: cb.set_active(True))
             self.selected_boxes.append(box)
+        else:
+            try:
+                self.selected_boxes.remove(box)
+            except ValueError:
+                pass
         
         total = len(self.selected_boxes)
         self.parent_page.copy_button.set_sensitive(total)
         self.parent_page.trash_button.set_sensitive(total)
+
+    def box_interact_handler(self, flow_box, box):
+        box = box.get_child()
+        cb = box.check_button
+        if cb.get_visible():
+            cb.set_active(not cb.get_active())
 
     def select_all_handler(self, *args):
         idx = 0
         while box := self.flow_box.get_child_at_index(idx):
             idx += 1
             if not box.get_child().check_button.get_active():
-                self.box_select_handler(None, box)
+                self.box_select_handler(box.get_child())
+
+    def box_rclick_handler(self, box):
+        self.parent_page.select_button.set_active(True)
+        box.check_button.set_active(not box.check_button.get_active())
 
     def generate_list(self, flatpaks, data):
+        self.flow_box.remove_all()
         self.boxes.clear()
-        self.selected_boxes.clear()
         self.ready_to_sort_size = False
         self.finished_boxes = 0
         self.total_size = 0
@@ -129,14 +136,15 @@ class DataSubpage(Gtk.Stack):
         if flatpaks:
             for i, pak in enumerate(flatpaks):
                 box = DataBox(self.parent_page.toast_overlay, pak.info["name"], pak.info["id"], pak.data_path, pak.icon_path, self.box_size_callback, self.trash_handler)
+                box.check_button.connect("toggled", lambda *_, box=box: self.box_select_handler(box))
                 self.boxes.append(box)
                 self.flow_box.append(box)
+
         else:
             for i, folder in enumerate(data):
                 box = DataBox(self.parent_page.toast_overlay, folder.split('.')[-1], folder, f"{HostInfo.home}/.var/app/{folder}", None, self.box_size_callback, self.trash_handler)
+                box.check_button.connect("toggled", lambda *_, box=box: self.box_select_handler(box))
                 self.flow_box.append(box)
-                child = self.flow_box.get_child_at_index(i)
-                child.set_focusable(False)
         
         idx = 0
         while box := self.flow_box.get_child_at_index(idx):
@@ -145,6 +153,12 @@ class DataSubpage(Gtk.Stack):
             child = box.get_child()
             child.set_focusable(False)
             child.row.set_focusable(child.check_button.get_visible())
+            rclick = Gtk.GestureClick(button=3)
+            rclick.connect("released", lambda *_, child=child: self.box_rclick_handler(child))
+            box.add_controller(rclick)
+            long_press = Gtk.GestureLongPress()
+            long_press.connect("pressed", lambda *_, child=child: self.box_rclick_handler(child))
+            box.add_controller(long_press)
 
         if idx == 0:
             self.set_visible_child(self.no_data)
@@ -228,7 +242,7 @@ class DataSubpage(Gtk.Stack):
 
         # Connections
         parent_page.search_entry.connect("search-changed", self.on_invalidate)
-        self.flow_box.connect("child-activated", self.box_select_handler)
+        self.flow_box.connect("child-activated", self.box_interact_handler)
 
         # self.title.get_preferred_size()[1].width + self.subtitle.get_preferred_size()[1].width
         self.scrolled_window.get_hadjustment().connect("changed", self.label_orientation_handler)

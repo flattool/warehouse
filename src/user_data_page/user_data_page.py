@@ -61,11 +61,11 @@ class UserDataPage(Adw.BreakpointBin):
         self.adp.set_visible_child(self.adp.loading_data)
         self.adp.size_label.set_label("Loading Size")
         self.adp.spinner.set_visible(True)
-        self.adp.flow_box.remove_all()
+        # self.adp.flow_box.remove_all()
         self.ldp.set_visible_child(self.ldp.loading_data)
         self.ldp.size_label.set_label("Loading Size")
         self.ldp.spinner.set_visible(True)
-        self.ldp.flow_box.remove_all()
+        # self.ldp.flow_box.remove_all()
 
     def end_loading(self, *args):
         def callback(*args):

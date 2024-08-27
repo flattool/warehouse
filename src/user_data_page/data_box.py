@@ -88,7 +88,7 @@ class DataBox(Gtk.ListBox):
 
             Gio.Task.new(None, None, callback).run_in_thread(thread)
 
-        dialog = Adw.AlertDialog(heading=_("Trash {}?").format(self.title), body=_("{}'s data will be sent to the trash").format(self.title))
+        dialog = Adw.AlertDialog(heading=_("Trash {}'s Data?").format(self.title), body=_("{}'s data will be sent to the trash").format(self.title))
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Continue"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
