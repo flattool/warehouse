@@ -61,7 +61,7 @@ class ChangeVersionPage(Adw.NavigationPage):
         def idle(*args):
             for index, commit in enumerate(commits):
                 row = Adw.ActionRow(title=GLib.markup_escape_text(changes[index]), subtitle=f"{GLib.markup_escape_text(commit)}\n{GLib.markup_escape_text(dates[index])}")
-                if commit == self.package.cli_info["commit"]:
+                if commit == self.package.cli_info.get("commit", None):
                     row.set_sensitive(False)
                     row.add_prefix(Gtk.Image(icon_name="check-plain-symbolic", margin_start=5, margin_end=5))
                     row.set_tooltip_text(_("Currently Installed Version"))
