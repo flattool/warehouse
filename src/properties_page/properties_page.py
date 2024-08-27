@@ -228,7 +228,7 @@ class PropertiesPage(Adw.NavigationPage):
                 self.packages_page.packages_toast_overlay.add_toast(Adw.Toast(title=_("Uninstalled {}").format(self.package.info["name"])))
 
         # name = self.package.info["name"]
-        dialog = UninstallDialog(on_choice)
+        dialog = UninstallDialog(on_choice, os.path.exists(self.package.data_path), self.package.info["name"])
         dialog.present(self.main_window)
 
     def runtime_row_handler(self, *args):

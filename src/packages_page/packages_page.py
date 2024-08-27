@@ -258,7 +258,7 @@ class PackagesPage(Adw.BreakpointBin):
 
             Gio.Task.new(None, None, callback).run_in_thread(thread)
 
-        dialog = UninstallDialog(on_response)
+        dialog = UninstallDialog(on_response, True)
         dialog.present(self.main_window)
 
     def start_loading(self):

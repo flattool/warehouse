@@ -14,11 +14,11 @@ class UninstallDialog(Adw.AlertDialog):
         
         self.continue_callback(self.trash.get_active())
 
-    def __init__(self, continue_callback, package_name=None, **kwargs):
+    def __init__(self, continue_callback, show_trash_option, package_name=None, **kwargs):
         super().__init__(**kwargs)
 
         if package_name:
-            self.set_heading(GLib.markup_escape_text(_("Uninstall {}").format(package_name)))
+            self.set_heading(GLib.markup_escape_text(_("Uninstall {}?").format(package_name)))
             self.set_body(GLib.markup_escape_text(_("It will not be possible to use {} after removal").format(package_name)))
         else:
             self.set_heading(GLib.markup_escape_text(_("Uninstall Packages?")))
@@ -30,3 +30,4 @@ class UninstallDialog(Adw.AlertDialog):
         self.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         self.connect("response", self.on_response)
         self.group.set_title(GLib.markup_escape_text(_("App Settings & Content")))
+        self.group.set_visible(show_trash_option)
