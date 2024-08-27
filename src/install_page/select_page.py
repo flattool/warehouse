@@ -14,8 +14,6 @@ class SelectPage(Adw.NavigationPage):
     remotes_group = gtc()
     add_remote_row = gtc()
 
-    test = gtc()
-
     def start_loading(self):
         self.nav_view.pop()
         for row in self.remote_rows:
@@ -45,7 +43,5 @@ class SelectPage(Adw.NavigationPage):
         self.add_remote_row.connect("activated", lambda *_: HostInfo.main_window.activate_row(HostInfo.main_window.remotes_row))
         self.nav_view.connect("popped", self.results_page.on_back)
         self.remote_rows = []
-
-        self.test.connect("clicked", lambda *_: self.nav_view.push(self.results_page))
 
         # Apply

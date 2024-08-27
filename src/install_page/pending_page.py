@@ -15,6 +15,10 @@ class AddedGroup(Adw.PreferencesGroup):
             self.rows.remove(row)
             self.remove(row)
 
+    def remove_all(self, button):
+        while len(self.rows) > 0 and (row := self.rows[0]):
+            row.activate()
+
     def __init__(self, remote, installation, **kwargs):
         super().__init__(**kwargs)
 
@@ -24,6 +28,17 @@ class AddedGroup(Adw.PreferencesGroup):
 
         self.set_title(f"{remote.title}")
         self.set_description(_("Installation: {}").format(installation))
+
+        remove_all = Gtk.Button(
+            child=Adw.ButtonContent(
+                icon_name="list-remove-all-symbolic",
+                label=_("Remove All"),
+            ),
+            valign = Gtk.Align.CENTER,
+        )
+        remove_all.add_css_class("flat")
+        remove_all.connect("clicked", self.remove_all)
+        self.set_header_suffix(remove_all)
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/pending_page.ui")
 class PendingPage(Adw.NavigationPage):
