@@ -75,6 +75,10 @@ class DataSubpage(Gtk.Stack):
             self.set_visible_child(self.no_data)
 
     def set_selection_mode(self, is_enabled):
+        if not is_enabled:
+            self.size_label.set_visible(True)
+            self.subtitle.set_visible(False)
+
         idx = 0
         while box := self.flow_box.get_child_at_index(idx):
             idx += 1
@@ -97,6 +101,9 @@ class DataSubpage(Gtk.Stack):
                 pass
         
         total = len(self.selected_boxes)
+        self.subtitle.set_visible(not total == 0)
+        self.size_label.set_visible(total == 0)
+        self.subtitle.set_label(_("{} Selected").format(total))
         self.parent_page.copy_button.set_sensitive(total)
         self.parent_page.trash_button.set_sensitive(total)
 
@@ -110,8 +117,7 @@ class DataSubpage(Gtk.Stack):
         idx = 0
         while box := self.flow_box.get_child_at_index(idx):
             idx += 1
-            if not box.get_child().check_button.get_active():
-                self.box_select_handler(box.get_child())
+            box.get_child().check_button.set_active(True)
 
     def box_rclick_handler(self, box):
         self.parent_page.select_button.set_active(True)
@@ -124,15 +130,7 @@ class DataSubpage(Gtk.Stack):
         self.finished_boxes = 0
         self.total_size = 0
         self.total_items = len(data)
-
-        if self.total_items == 1:
-            self.subtitle.set_label(_("1 Item"))
-            self.parent_page.search_entry.set_editable(True)
-        else:
-            self.parent_page.search_entry.set_editable(True)
-            self.subtitle.set_label(_("{} Items").format(self.total_items))
-                
-        self.min_horizontal_label_width = self.label_box.get_preferred_size()[1].width
+        self.parent_page.search_entry.set_editable(True)
         if flatpaks:
             for i, pak in enumerate(flatpaks):
                 box = DataBox(self.parent_page.toast_overlay, pak.info["name"], pak.info["id"], pak.data_path, pak.icon_path, self.box_size_callback, self.trash_handler)
@@ -189,14 +187,6 @@ class DataSubpage(Gtk.Stack):
         elif self.total_items == 0:
             self.set_visible_child(self.no_data)
 
-    def label_orientation_handler(self, adj):
-        current_page_width = adj.get_upper() - 24
-        
-        if self.label_box.get_allocated_width() < self.min_horizontal_label_width:
-            GLib.idle_add(lambda *_: self.label_box.set_orientation(Gtk.Orientation.VERTICAL))
-        else:
-            GLib.idle_add(lambda *_: self.label_box.set_orientation(Gtk.Orientation.HORIZONTAL))
-
     def update_sort_mode(self):
         self.sort_ascend = self.settings.get_boolean("sort-ascend")
         self.sort_mode = self.settings.get_string("sort-mode")
@@ -222,7 +212,6 @@ class DataSubpage(Gtk.Stack):
         self.selected_boxes = []
         self.ready_to_sort_size = False
         self.finished_boxes = 0
-        self.min_horizontal_label_width = self.label_box.get_preferred_size()[1].width
         self.is_result = False
         self.prev_status = None
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse.data_page")
@@ -243,6 +232,3 @@ class DataSubpage(Gtk.Stack):
         # Connections
         parent_page.search_entry.connect("search-changed", self.on_invalidate)
         self.flow_box.connect("child-activated", self.box_interact_handler)
-
-        # self.title.get_preferred_size()[1].width + self.subtitle.get_preferred_size()[1].width
-        self.scrolled_window.get_hadjustment().connect("changed", self.label_orientation_handler)

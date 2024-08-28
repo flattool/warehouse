@@ -179,7 +179,9 @@ class UserDataPage(Adw.BreakpointBin):
         dialog.connect("response", on_response)
         dialog.present(ErrorToast.main_window)
         
-        # self.toast_overlay.add_toast(Adw.Toast(title=_("Trashed data")))
+    def breakpoint_handler(self, bpt, is_applied):
+        self.adp.label_box.set_orientation(Gtk.Orientation.VERTICAL if is_applied else Gtk.Orientation.HORIZONTAL)
+        self.ldp.label_box.set_orientation(Gtk.Orientation.VERTICAL if is_applied else Gtk.Orientation.HORIZONTAL)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -219,18 +221,17 @@ class UserDataPage(Adw.BreakpointBin):
 
         # Connections
         self.stack.connect("notify::visible-child", self.view_change_handler)
-
         self.select_button.connect("toggled", self.select_toggle_handler)
-        
         self.select_all_button.connect("clicked", self.select_all_handler)
         self.copy_button.connect("clicked", self.copy_handler)
         self.trash_button.connect("clicked", self.trash_handler)
-
         self.sort_ascend.connect("clicked", self.sort_button_handler)
         self.sort_descend.connect("clicked", self.sort_button_handler)
         self.sort_name.connect("clicked", self.sort_button_handler)
         self.sort_id.connect("clicked", self.sort_button_handler)
         self.sort_size.connect("clicked", self.sort_button_handler)
+        self.bpt.connect("apply", self.breakpoint_handler, True)
+        self.bpt.connect("unapply", self.breakpoint_handler, False)
 
         # Apply again
         self.search_bar.set_key_capture_widget(main_window)
