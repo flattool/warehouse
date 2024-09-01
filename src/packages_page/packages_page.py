@@ -6,6 +6,7 @@ from .properties_page import PropertiesPage
 from .filters_page import FiltersPage
 from .sidebar_button import SidebarButton
 from .uninstall_dialog import UninstallDialog
+from .loading_status import LoadingStatus
 import subprocess, os
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/packages_page.ui")
@@ -16,8 +17,8 @@ class PackagesPage(Adw.BreakpointBin):
     packages_toast_overlay = gtc()
     status_stack = gtc()
     scrolled_window = gtc()
-    uninstalling = gtc()
-    loading_packages = gtc()
+    # uninstalling = gtc()
+    # loading_packages = gtc()
     no_filter_results = gtc()
     reset_filters_button = gtc()
     no_packages = gtc()
@@ -303,6 +304,8 @@ class PackagesPage(Adw.BreakpointBin):
 
         # Extra Object Creation
         self.main_window = main_window
+        self.loading_packages = LoadingStatus(_("Loading Packages"), _("This should only take a moment"))
+        self.uninstalling = LoadingStatus(_("Uninstalling Packages"), _("This should only take a moment"))
         self.properties_page = PropertiesPage(main_window, self)
         self.filters_page = FiltersPage(main_window, self)
         self.filter_settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
@@ -313,6 +316,8 @@ class PackagesPage(Adw.BreakpointBin):
 
         # Apply
         # self.set_status("loading_packages")
+        self.status_stack.add_child(self.loading_packages)
+        self.status_stack.add_child(self.uninstalling)
         self.packages_list_box.set_filter_func(self.filter_func)
         self.packages_list_box.set_sort_func(self.sort_func)
         self.content_stack.add_child(self.properties_page)

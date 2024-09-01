@@ -1,0 +1,36 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $LoadingStatus : ScrolledWindow {
+    Box {
+        orientation: vertical;
+        valign: center;
+        halign: fill;
+        spacing: 12;
+        margin-start:  12;
+        margin-end:    12;
+        margin-top:    12;
+        margin-bottom: 12;
+        Spinner {
+            height-request: 30;
+            spinning: true;
+        }
+        Label title_label {
+            label: "No Title Set";
+            wrap: true;
+            justify: center;
+            styles ["title-1"]
+        }
+        Label description_label {
+            label: "No Description Set";
+            wrap: true;
+            justify: center;
+            styles ["description", "body"]
+        }
+        Button button {
+            label: "No Label Set";
+            styles ["pill"]
+            halign: center;
+        }
+    }
+}

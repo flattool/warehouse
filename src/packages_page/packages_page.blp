@@ -53,29 +53,29 @@ template $PackagesPage : Adw.BreakpointBin {
                             }
                         }
                         Stack status_stack {
-                            Adw.StatusPage loading_packages {
-                                title: _("Loading Packages");
-                                description: _("This should only take a moment");
-                                child:
-                                    Spinner {
-                                        spinning: true;
-                                    }
-                                ;
-                            }
+                            // Adw.StatusPage loading_packages {
+                            //     title: _("Loading Packages");
+                            //     description: _("This should only take a moment");
+                            //     child:
+                            //         Spinner {
+                            //             spinning: true;
+                            //         }
+                            //     ;
+                            // }
                             ScrolledWindow scrolled_window {
                                 ListBox packages_list_box {
                                     styles ["navigation-sidebar"]
                                 }
                             }
-                            Adw.StatusPage uninstalling {
-                                title: _("Uninstalling Packages");
-                                description: _("This should only take a moment");
-                                child:
-                                    Spinner {
-                                        spinning: true;
-                                    }
-                                ;
-                            }
+                            // Adw.StatusPage uninstalling {
+                            //     title: _("Uninstalling Packages");
+                            //     description: _("This should only take a moment");
+                            //     child:
+                            //         Spinner {
+                            //             spinning: true;
+                            //         }
+                            //     ;
+                            // }
                             Adw.StatusPage no_filter_results {
                                 title: _("No Packages Match Filters");
                                 description: _("No installed package matches all of the currently applied filters");
