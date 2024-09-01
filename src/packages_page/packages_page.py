@@ -151,6 +151,7 @@ class PackagesPage(Adw.BreakpointBin):
         GLib.idle_add(lambda *_, button=row.check_button: button.set_active(not button.get_active()))
 
     def generate_list(self, *args):
+        self.properties_page.nav_view.pop_to_page(self.properties_page.inner_nav_page)
         self.packages_list_box.remove_all()
         self.selected_rows.clear()
         GLib.idle_add(lambda *_: self.filters_page.generate_filters())
