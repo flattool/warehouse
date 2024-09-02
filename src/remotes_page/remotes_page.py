@@ -157,6 +157,7 @@ class RemotesPage(Adw.NavigationPage):
         packages_page.filters_page.generate_filters()
         packages_page.apply_filters()
         GLib.idle_add(lambda *_: self.main_window.activate_row(self.main_window.packages_row))
+        GLib.idle_add(lambda *args: packages_page.packages_toast_overlay.add_toast(Adw.Toast(title=_("Showing all packages from {}").format(row.remote.title))))
     
     def remove_remote(self, row):
         error = [None]
