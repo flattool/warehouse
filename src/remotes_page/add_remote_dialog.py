@@ -9,9 +9,9 @@ class AddRemoteDialog(Adw.Dialog):
     __gtype_name__ = "AddRemoteDialog"
     gtc = Gtk.Template.Child
 
-    action_bar = gtc()
     toast_overlay = gtc()
     stack = gtc()
+    cancel_button = gtc()
     apply_button = gtc()
     content_page = gtc()
     title_row = gtc()
@@ -22,7 +22,6 @@ class AddRemoteDialog(Adw.Dialog):
     def on_apply(self, *args):
         self.stack.set_visible_child(self.loading_page)
         self.apply_button.set_sensitive(False)
-        self.action_bar.set_revealed(False)
         error = [None]
         def thread(*args):
             cmd = [
@@ -48,7 +47,6 @@ class AddRemoteDialog(Adw.Dialog):
         def callback(*args):
             if error[0]:
                 self.stack.set_visible_child(self.content_page)
-                self.action_bar.set_revealed(True)
                 self.apply_button.set_sensitive(True)
                 self.toast_overlay.add_toast(ErrorToast(_("Could not add remote"), str(error[0])).toast)
             else:
@@ -104,6 +102,7 @@ class AddRemoteDialog(Adw.Dialog):
                 self.check_entries(self.title_row)
                 self.check_entries(self.name_row)
                 self.check_entries(self.url_row)
+                self.url_row.set_editable(False)
             else:
                 self.title_row.set_editable(False)
                 self.name_row.set_editable(False)
@@ -111,6 +110,7 @@ class AddRemoteDialog(Adw.Dialog):
                 self.apply_button.set_sensitive(True)
 
         # Connections
+        self.cancel_button.connect("clicked", lambda *_: self.close())
         self.apply_button.connect("clicked", self.on_apply)
         self.title_row.connect("changed", self.check_entries)
         self.name_row.connect("changed", self.check_entries)
