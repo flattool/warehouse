@@ -212,6 +212,10 @@ class RemotesPage(Adw.NavigationPage):
             total += visible
             row.set_visible(visible)
 
+        if text == "":
+            self.stack.set_visible_child(self.content_page)
+            return
+
         self.stack.set_visible_child(self.content_page if total > 0 else self.no_results)
 
     def file_callback(self, chooser, result):
