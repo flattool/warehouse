@@ -3,6 +3,7 @@ from .error_toast import ErrorToast
 from .host_info import HostInfo
 from .change_version_page import ChangeVersionPage
 from .uninstall_dialog import UninstallDialog
+from .loading_status import LoadingStatus
 import subprocess, os
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/properties_page/properties_page.ui")
@@ -279,7 +280,7 @@ class PropertiesPage(Adw.NavigationPage):
             "subject": self.subject_row,
             "date": self.date_row,
         }
-
+        self.loading_tbv.set_content(LoadingStatus(_("Loading Properties"), _("This should only take a moment")))
         self.packages_page = packages_page
         self.__class__.main_window = main_window
 

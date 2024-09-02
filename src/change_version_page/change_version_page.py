@@ -1,6 +1,7 @@
 from gi.repository import Adw, Gtk,GLib, Gio
 from .error_toast import ErrorToast
 from .host_info import HostInfo
+from .loading_status import LoadingStatus
 import subprocess, os
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/change_version_page/change_version_page.ui")
@@ -103,7 +104,7 @@ class ChangeVersionPage(Adw.NavigationPage):
         self.set_title(_("{} Versions").format(pkg_name))
         self.mask_row.set_subtitle(_("Ensure that {} will never be updated to a newer version").format(pkg_name))
         
-        self.scrolled_window.set_child(Adw.StatusPage(title=_("Fetching Releases"), description=_("This could take a while")))
+        self.scrolled_window.set_child(LoadingStatus(_("Fetching Releases"), _("This could take a while")))
         Gio.Task.new(None, None, self.get_commits_callback).run_in_thread(self.get_commits)
 
         # for i in range(10):

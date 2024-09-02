@@ -3,6 +3,7 @@ from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .remote_row import RemoteRow
 from .add_remote_dialog import AddRemoteDialog
+from .loading_status import LoadingStatus
 import subprocess
 
 class NewRemoteRow(Adw.ActionRow):
@@ -85,7 +86,6 @@ class RemotesPage(Adw.NavigationPage):
     none_visible = gtc()
 
     # Statuses
-    loading_remotes = gtc()
     no_results = gtc()
     no_remotes = gtc()
     content_page = gtc()
@@ -97,21 +97,16 @@ class RemotesPage(Adw.NavigationPage):
     page_name = "remotes"
     
     def start_loading(self):
+        self.search_button.set_active(False)
+        self.search_button.set_sensitive(False)
+        self.search_entry.set_text("")
+        self.search_entry.set_editable(False)
         self.stack.set_visible_child(self.loading_remotes)
         self.total_disabled = 0
         for row in self.current_remote_rows:
             self.current_remotes_group.remove(row)
 
         self.current_remote_rows.clear()
-
-    def none_visible_handler(self):
-        any_visible = False
-        for row in self.current_remote_rows:
-            if row.get_visible():
-                any_visible = True
-                break
-        
-        self.none_visible.set_visible(not any_visible)
 
     def end_loading(self):
         show_disabled = self.show_disabled_button.get_active()
@@ -143,6 +138,15 @@ class RemotesPage(Adw.NavigationPage):
         GLib.idle_add(lambda *_: self.stack.set_visible_child(self.content_page))
         self.search_button.set_sensitive(True)
         self.search_entry.set_editable(True)
+
+    def none_visible_handler(self):
+        any_visible = False
+        for row in self.current_remote_rows:
+            if row.get_visible():
+                any_visible = True
+                break
+        
+        self.none_visible.set_visible(not any_visible)
 
     def filter_remote(self, row):
         self.filter_setting.set_boolean("show-apps", True)
@@ -260,6 +264,7 @@ class RemotesPage(Adw.NavigationPage):
         # Extra Object Creation
         self.__class__.instance = self
         self.main_window = main_window
+        self.loading_remotes = LoadingStatus(_("Loading Remotes"), _("This should only take a moment"))
         self.search_bar.set_key_capture_widget(main_window)
         self.current_remote_rows = []
         self.filter_setting = Gio.Settings.new("io.github.flattool.Warehouse.filter")
@@ -272,6 +277,7 @@ class RemotesPage(Adw.NavigationPage):
         self.show_disabled_button.connect("toggled", self.show_disabled_handler)
 
         # Appply
+        self.stack.add_child(self.loading_remotes)
         for item in self.new_remotes:
             row = NewRemoteRow(item)
             row.connect("activated", lambda *_, remote_info=item: AddRemoteDialog(main_window, self, remote_info).present(main_window))

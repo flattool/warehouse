@@ -1,6 +1,7 @@
 from gi.repository import Adw, Gtk, GLib, Gio
 from .host_info import HostInfo
 from .error_toast import ErrorToast
+from .loading_status import LoadingStatus
 import subprocess, re
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/remotes_page/add_remote_dialog.ui")
@@ -17,7 +18,6 @@ class AddRemoteDialog(Adw.Dialog):
     name_row = gtc()
     url_row = gtc()
     installation_row = gtc()
-    loading_page = gtc()
 
     def on_apply(self, *args):
         self.stack.set_visible_child(self.loading_page)
@@ -82,6 +82,7 @@ class AddRemoteDialog(Adw.Dialog):
         self.string_list = Gtk.StringList(strings=HostInfo.installations)
         self.main_window = main_window
         self.parent_page = parent_page
+        self.loading_page = LoadingStatus(_("Adding Remote"), _("This should only take a moment"))
         
         self.rexes = {
             self.title_row: "^(?=.*[A-Za-z0-9])[A-Za-z0-9._-]+( +[A-Za-z0-9._-]+)*$", #"^(?=.*[A-Za-z0-9])[A-Za-z0-9._-]+( [A-Za-z0-9._-]+)*$",
@@ -93,6 +94,7 @@ class AddRemoteDialog(Adw.Dialog):
         self.url_passes = False
 
         # Apply
+        self.stack.add_child(self.loading_page)
         self.installation_row.set_model(self.string_list)
         if remote_info:
             self.title_row.set_text(remote_info["title"])

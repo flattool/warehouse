@@ -3,6 +3,7 @@ from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .data_box import DataBox
 from .host_info import HostInfo
+from .loading_status import LoadingStatus
 import subprocess
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/data_subpage.ui")
@@ -21,7 +22,6 @@ class DataSubpage(Gtk.Stack):
     flow_box = gtc()
 
     # Statuses
-    loading_data = gtc()
     content_box = gtc()
     no_data = gtc()
     no_results = gtc()
@@ -203,6 +203,7 @@ class DataSubpage(Gtk.Stack):
         # Extra Object Creation
         self.main_window = main_window
         self.parent_page = parent_page
+        self.loading_data = LoadingStatus(_("Loading User Data"), _("This should only take a moment"))
         # self.is_active = is_active
         self.sort_mode = ""
         self.sort_ascend = False
@@ -217,6 +218,7 @@ class DataSubpage(Gtk.Stack):
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse.data_page")
 
         # Apply
+        self.add_child(self.loading_data)
         self.flow_box.set_sort_func(self.sort_func)
         self.flow_box.set_filter_func(self.filter_func)
 

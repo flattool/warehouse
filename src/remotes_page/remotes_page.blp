@@ -27,15 +27,15 @@ template $RemotesPage : Adw.NavigationPage {
         }
         Adw.ToastOverlay toast_overlay {
             Stack stack {
-                Adw.StatusPage loading_remotes {
-                    title: _("Loading Remotes");
-                    description: _("This should only take a moment");
-                    child:
-                        Spinner {
-                            spinning: true;
-                        }
-                    ;
-                }
+                // Adw.StatusPage loading_remotes {
+                //     title: _("Loading Remotes");
+                //     description: _("This should only take a moment");
+                //     child:
+                //         Spinner {
+                //             spinning: true;
+                //         }
+                //     ;
+                // }
                 Adw.StatusPage no_results {
                     title: _("No Results Found");
                     description: _("Try a different search");

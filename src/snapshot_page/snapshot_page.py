@@ -4,6 +4,7 @@ from .error_toast import ErrorToast
 from .app_row import AppRow
 from .snapshots_list_page import SnapshotsListPage
 from .sidebar_button import SidebarButton
+from .loading_status import LoadingStatus
 import os, subprocess
 
 class LeftoverSnapshotRow(Adw.ActionRow):
@@ -37,7 +38,6 @@ class SnapshotPage(Adw.BreakpointBin):
     leftover_listbox = gtc()
     split_view = gtc()
     stack = gtc()
-    loading_snapshots = gtc()
     no_snapshots = gtc()
     no_results = gtc()
     scrolled_window = gtc()
@@ -165,6 +165,7 @@ class SnapshotPage(Adw.BreakpointBin):
         # Extra Object Creation
         self.__class__.instance = self
         self.main_window = main_window
+        self.loading_snapshots = LoadingStatus(_("Loading Snapshots"), _("This should only take a moment"))
         self.active_snapshot_paks = []
         # self.active_rows = []
         self.leftover_snapshots = []
@@ -176,4 +177,5 @@ class SnapshotPage(Adw.BreakpointBin):
         self.leftover_listbox.connect("row-activated", self.leftover_select_handler)
 
         # Apply
+        self.stack.add_child(self.loading_snapshots)
         self.split_view.set_content(self.list_page)##
