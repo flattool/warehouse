@@ -99,7 +99,6 @@ class RemotesPage(Adw.NavigationPage):
     def start_loading(self):
         self.search_button.set_active(False)
         self.search_button.set_sensitive(False)
-        self.search_entry.set_text("")
         self.search_entry.set_editable(False)
         self.stack.set_visible_child(self.loading_remotes)
         self.total_disabled = 0

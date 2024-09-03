@@ -24,6 +24,7 @@ class PackagesPage(Adw.BreakpointBin):
     no_packages = gtc()
     no_results = gtc()
     filter_button = gtc()
+    search_button = gtc()
     search_bar = gtc()
     search_entry = gtc()
     packages_split = gtc()
@@ -53,6 +54,9 @@ class PackagesPage(Adw.BreakpointBin):
             self.select_button.set_sensitive(True)
             self.filter_button.set_sensitive(True)
             self.filters_page.set_sensitive(True)
+
+            self.search_button.set_sensitive(True)
+            self.search_entry.set_editable(True)
         else:
             self.select_button.set_sensitive(False)
 
@@ -61,6 +65,10 @@ class PackagesPage(Adw.BreakpointBin):
             self.filter_button.set_sensitive(False)
             self.filters_page.set_sensitive(False)
             self.select_button.set_active(False)
+
+            self.search_button.set_active(False)
+            self.search_button.set_sensitive(False)
+            self.search_entry.set_editable(False)
 
         if to_set is self.no_packages:
             self.properties_page.stack.set_visible_child(self.properties_page.error_tbv)

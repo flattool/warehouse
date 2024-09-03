@@ -57,20 +57,23 @@ class UserDataPage(Adw.BreakpointBin):
                 self.leftover_data.append(folder)
 
     def start_loading(self, *args):
+        self.header_bar.set_sensitive(False)
+        self.search_button.set_active(False)
+        self.search_entry.set_editable(False)
         self.select_button.set_active(False)
         self.adp.set_visible_child(self.adp.loading_data)
         self.adp.size_label.set_label("Loading Size")
         self.adp.spinner.set_visible(True)
-        # self.adp.flow_box.remove_all()
         self.ldp.set_visible_child(self.ldp.loading_data)
         self.ldp.size_label.set_label("Loading Size")
         self.ldp.spinner.set_visible(True)
-        # self.ldp.flow_box.remove_all()
 
     def end_loading(self, *args):
         def callback(*args):
             self.adp.generate_list(self.data_flatpaks, self.active_data)
             self.ldp.generate_list([], self.leftover_data)
+            self.header_bar.set_sensitive(True)
+            self.search_entry.set_editable(True)
         
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
 
