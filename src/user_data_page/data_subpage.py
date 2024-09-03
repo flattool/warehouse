@@ -132,6 +132,7 @@ class DataSubpage(Gtk.Stack):
         self.total_size = 0
         self.total_items = len(data)
         self.parent_page.search_entry.set_editable(True)
+        self.should_rclick = True
         if flatpaks:
             for i, pak in enumerate(flatpaks):
                 box = DataBox(self, self.parent_page.toast_overlay, pak.info["name"], pak.info["id"], pak.data_path, pak.icon_path, self.box_size_callback, self.trash_handler)
@@ -213,7 +214,7 @@ class DataSubpage(Gtk.Stack):
         self.boxes = []
         self.selected_boxes = []
         self.ready_to_sort_size = False
-        self.should_rclick = False
+        self.should_rclick = True
         self.finished_boxes = 0
         self.is_result = False
         self.prev_status = None
