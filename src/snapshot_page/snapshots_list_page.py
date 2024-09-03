@@ -17,6 +17,9 @@ class SnapshotsListPage(Adw.NavigationPage):
 
     def thread(self, *args):
         for snapshot in os.listdir(folder := f"{self.snapshots_path}{self.current_folder}/"):
+            if snapshot.endswith(".json"):
+                continue
+            
             row = SnapshotBox(snapshot, folder, self.toast_overlay)
             self.snapshots_rows.append(row)
 

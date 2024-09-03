@@ -41,6 +41,7 @@ class SnapshotPage(Adw.BreakpointBin):
     no_snapshots = gtc()
     no_results = gtc()
     scrolled_window = gtc()
+    open_button = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -98,7 +99,6 @@ class SnapshotPage(Adw.BreakpointBin):
             self.active_box.set_visible(True)
             first_row = self.active_listbox.get_row_at_index(0)
             self.active_listbox.select_row(first_row)
-            self.stack.set_visible_child(self.scrolled_window)
         else:
             self.active_box.set_visible(False)
 
@@ -125,7 +125,6 @@ class SnapshotPage(Adw.BreakpointBin):
         self.list_page.set_snapshots(row.folder, row.get_title())
 
     def start_loading(self):
-        # self.list_page.start_loading()
         self.active_box.set_visible(True)
         self.active_listbox.remove_all()
         self.leftover_box.set_visible(True)
@@ -137,27 +136,18 @@ class SnapshotPage(Adw.BreakpointBin):
             self.generate_active_list()
             self.generate_leftover_list()
             if (not self.active_box.get_visible()) and (not self.leftover_box.get_visible()):
-                self.stack.set_visible_child(self.no_snapshots)
-                #
-                #
-                #
-                #
-                #
-                #
-                #
-                #
-                #
-                #
-                #
-                #
-                #
-                #
-                #
-                #
-                #
-                #
+                GLib.idle_add(lambda *_: self.stack.set_visible_child(self.no_snapshots))
+            else:
+                GLib.idle_add(lambda *_: self.stack.set_visible_child(self.scrolled_window))
 
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_snapshots)
+
+    def open_snapshots_folder(self, button):
+        try:
+            Gio.AppInfo.launch_default_for_uri(f"file://{self.snapshots_path}", None)
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Opened snapshots folder")))
+        except Exception as e:
+            self.toast_overlay.add_toast(ErrorToast(_("Could not open folder"), str(e)).toast)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -175,6 +165,7 @@ class SnapshotPage(Adw.BreakpointBin):
         # Connections
         self.active_listbox.connect("row-activated", self.active_select_handler)
         self.leftover_listbox.connect("row-activated", self.leftover_select_handler)
+        self.open_button.connect("clicked", self.open_snapshots_folder)
 
         # Apply
         self.stack.add_child(self.loading_snapshots)

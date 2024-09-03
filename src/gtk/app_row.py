@@ -1,7 +1,7 @@
 from gi.repository import Adw, Gtk, GLib, Gio, Pango
 from .host_info import HostInfo
 
-@Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/app_row.ui")
+@Gtk.Template(resource_path="/io/github/flattool/Warehouse/gtk/app_row.ui")
 class AppRow(Adw.ActionRow):
     __gtype_name__ = 'AppRow'
     gtc = Gtk.Template.Child
@@ -18,7 +18,8 @@ class AppRow(Adw.ActionRow):
             self.image.set_from_file(self.package.icon_path)
 
     def gesture_handler(self, *args):
-        self.on_long_press(self)
+        if self.on_long_press:
+            self.on_long_press(self)
 
     def __init__(self, package, on_long_press=None, **kwargs):
         super().__init__(**kwargs)

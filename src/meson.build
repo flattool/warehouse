@@ -4,7 +4,7 @@ gnome = import('gnome')
 
 blueprints = custom_target('blueprints',
   input: files(
-    'packages_page/app_row.blp',
+    'gtk/app_row.blp',
     'gtk/help-overlay.blp',
     'gtk/loading_status.blp',
     'main_window/window.blp',
@@ -73,7 +73,7 @@ warehouse_sources = [
   'gtk/sidebar_button.py',
   'gtk/loading_status.py',
   'main_window/window.py',
-  'packages_page/app_row.py',
+  'gtk/app_row.py',
   'packages_page/uninstall_dialog.py',
   'packages_page/packages_page.py',
   'packages_page/filters_page.py',

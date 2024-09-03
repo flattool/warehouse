@@ -14,23 +14,13 @@ template $SnapshotPage : Adw.BreakpointBin {
 		}
 	}
 
-    // Adw.Breakpoint bp2 {
-    //     condition ("max-width: 700")
-
-    //     setters {
-    //         header_bar.title-widget: null;
-    //         switcher_bar.reveal: true;
-    //     }
-    // }
-
-    Adw.ToastOverlay toast_overlay {
-        Adw.NavigationSplitView split_view {
-            sidebar-width-fraction: 0.5;
-            max-sidebar-width: 999999999;
-            sidebar:
-                Adw.NavigationPage sidebar_navpage {
-                    title: _("Snapshots");
-
+    Adw.NavigationSplitView split_view {
+        sidebar-width-fraction: 0.5;
+        max-sidebar-width: 999999999;
+        sidebar:
+            Adw.NavigationPage sidebar_navpage {
+                title: _("Snapshots");
+                Adw.ToastOverlay toast_overlay {
                     Adw.ToolbarView sidebar_tbv {
                         [top]
                         Adw.HeaderBar header_bar {
@@ -40,6 +30,11 @@ template $SnapshotPage : Adw.BreakpointBin {
                             ToggleButton search_button {
                                 icon-name: "loupe-large-symbolic";
                                 tooltip-text: _("Search Packages");
+                            }
+                            [start]
+                            Button open_button {
+                                icon-name: "folder-open-symbolic";
+                                tooltip-text: _("Open Snapshots Folder");
                             }
                             [end]
                             Button new_button {
@@ -63,9 +58,17 @@ template $SnapshotPage : Adw.BreakpointBin {
                             //     ;
                             // }
                             Adw.StatusPage no_snapshots {
-                                title: _("No Snapshots Found");
-                                description: _("Warehouse cannot see the list of snapshots or you don't have any snapshots");
-                                icon-name: "error-symbolic";
+                                title: _("No Snapshots");
+                                description: _("Create a Snapshot to save the state of any Flatpak application");
+                                icon-name: "snapshots-alt-symbolic";
+                                Button status_new_button {
+                                    styles ["suggested-action", "pill"]
+                                    halign: center;
+                                    Adw.ButtonContent {
+                                        icon-name: "plus-large-symbolic";
+                                        label: _("New Snapshot");
+                                    }
+                                }
                             }
                             Adw.StatusPage no_results {
                                 title: _("No Results Found");
@@ -133,7 +136,7 @@ template $SnapshotPage : Adw.BreakpointBin {
                         }
                     }
                 }
-            ;
-        }
+            }
+        ;
     }
 }

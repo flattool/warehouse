@@ -61,5 +61,4 @@ class SnapshotBox(Gtk.Box):
         self.json_path = f"{snapshots_path}{folder.replace('tar.zst', 'json')}"
         
         self.rename_button.connect("clicked", self.json_handler)
-        print(self.json_path)
         
