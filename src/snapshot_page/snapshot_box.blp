@@ -47,7 +47,7 @@ template $SnapshotBox : Gtk.Box {
             hexpand: true;
             styles ["flat"]
         }
-        Button rename_button {
+        MenuButton rename_button {
             Adw.ButtonContent {
                 label: _("Rename");
                 icon-name: "dot-symbolic";
@@ -55,6 +55,7 @@ template $SnapshotBox : Gtk.Box {
             }
             hexpand: true;
             styles ["flat"]
+            popover: rename_menu;
         }
         Button trash_button {
             Adw.ButtonContent {
@@ -64,6 +65,32 @@ template $SnapshotBox : Gtk.Box {
             }
             hexpand: true;
             styles ["flat"]
+        }
+    }
+}
+
+Popover rename_menu {
+    Box {
+        orientation: vertical;
+        spacing: 11;
+        margin-start:  12;
+        margin-end:    12;
+        margin-top: 5;
+        margin-bottom: 12;
+        Label {
+            label: _("Rename Snapshot?");
+            styles ["title-2"]
+        }
+        Box {
+            spacing: 6;
+            Entry rename_entry {
+                text: bind title.label;
+            }
+            Button apply_rename {
+                icon-name: "check-plain-symbolic";
+                tooltip-text: _("Confirm Rename");
+                styles ["circular", "suggested-action"]
+            }
         }
     }
 }
