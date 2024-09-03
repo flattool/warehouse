@@ -16,6 +16,7 @@ class UserDataPage(Adw.BreakpointBin):
     header_bar = gtc()
     switcher_bar = gtc()
     search_button = gtc()
+    open_button = gtc()
     select_button = gtc()
     sort_button = gtc()
     search_bar = gtc()
@@ -39,6 +40,7 @@ class UserDataPage(Adw.BreakpointBin):
     #    This must be set to the created object from within the class's __init__ method
     instance = None
     page_name = "user-data"
+    data_path = f"{HostInfo.home}/.var/app"
 
     def sort_data(self, *args):
         self.data_flatpaks.clear()
@@ -46,10 +48,10 @@ class UserDataPage(Adw.BreakpointBin):
         self.leftover_data.clear()
         # paks = dict(HostInfo.id_to_flatpak)
 
-        if not os.path.exists(f"{HostInfo.home}/.var/app"):
+        if not os.path.exists(self.data_path):
             return
 
-        for folder in os.listdir(f"{HostInfo.home}/.var/app"):
+        for folder in os.listdir(self.data_path):
             try:
                 self.data_flatpaks.append(HostInfo.id_to_flatpak[folder])
                 self.active_data.append(folder)
@@ -186,6 +188,13 @@ class UserDataPage(Adw.BreakpointBin):
         self.adp.label_box.set_orientation(Gtk.Orientation.VERTICAL if is_applied else Gtk.Orientation.HORIZONTAL)
         self.ldp.label_box.set_orientation(Gtk.Orientation.VERTICAL if is_applied else Gtk.Orientation.HORIZONTAL)
 
+    def open_data_folder(self, button):
+        try:
+            Gio.AppInfo.launch_default_for_uri(f"file://{self.data_path}", None)
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Opened data folder")))
+        except Exception as e:
+            self.toast_overlay.add_toast(ErrorToast(_("Could not open folder"), str(e)).toast)
+
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
 
@@ -223,6 +232,7 @@ class UserDataPage(Adw.BreakpointBin):
         )
 
         # Connections
+        self.open_button.connect("clicked", self.open_data_folder)
         self.stack.connect("notify::visible-child", self.view_change_handler)
         self.select_button.connect("toggled", self.select_toggle_handler)
         self.select_all_button.connect("clicked", self.select_all_handler)
