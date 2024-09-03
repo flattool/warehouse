@@ -120,8 +120,9 @@ class DataSubpage(Gtk.Stack):
             box.get_child().check_button.set_active(True)
 
     def box_rclick_handler(self, box):
-        self.parent_page.select_button.set_active(True)
-        box.check_button.set_active(not box.check_button.get_active())
+        if self.should_rclick:
+            self.parent_page.select_button.set_active(True)
+            box.check_button.set_active(not box.check_button.get_active())
 
     def generate_list(self, flatpaks, data):
         self.flow_box.remove_all()
@@ -133,14 +134,14 @@ class DataSubpage(Gtk.Stack):
         self.parent_page.search_entry.set_editable(True)
         if flatpaks:
             for i, pak in enumerate(flatpaks):
-                box = DataBox(self.parent_page.toast_overlay, pak.info["name"], pak.info["id"], pak.data_path, pak.icon_path, self.box_size_callback, self.trash_handler)
+                box = DataBox(self, self.parent_page.toast_overlay, pak.info["name"], pak.info["id"], pak.data_path, pak.icon_path, self.box_size_callback, self.trash_handler)
                 box.check_button.connect("toggled", lambda *_, box=box: self.box_select_handler(box))
                 self.boxes.append(box)
                 self.flow_box.append(box)
 
         else:
             for i, folder in enumerate(data):
-                box = DataBox(self.parent_page.toast_overlay, folder.split('.')[-1], folder, f"{HostInfo.home}/.var/app/{folder}", None, self.box_size_callback, self.trash_handler)
+                box = DataBox(self, self.parent_page.toast_overlay, folder.split('.')[-1], folder, f"{HostInfo.home}/.var/app/{folder}", None, self.box_size_callback, self.trash_handler)
                 box.check_button.connect("toggled", lambda *_, box=box: self.box_select_handler(box))
                 self.flow_box.append(box)
         
@@ -212,6 +213,7 @@ class DataSubpage(Gtk.Stack):
         self.boxes = []
         self.selected_boxes = []
         self.ready_to_sort_size = False
+        self.should_rclick = False
         self.finished_boxes = 0
         self.is_result = False
         self.prev_status = None

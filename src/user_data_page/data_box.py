@@ -83,21 +83,24 @@ class DataBox(Gtk.ListBox):
                     self.trash_callback(self)
 
         def on_response(_, response):
+            self.parent_page.should_rclick = True
             if response != "continue":
                 return
 
             Gio.Task.new(None, None, callback).run_in_thread(thread)
 
+        self.parent_page.should_rclick = False
         dialog = Adw.AlertDialog(heading=_("Trash {}'s Data?").format(self.title), body=_("{}'s data will be sent to the trash").format(self.title))
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Continue"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", on_response)
-        dialog.present(ErrorToast.main_window)
+        dialog.present(HostInfo.main_window)
 
-    def __init__(self, toast_overlay, title, subtitle, data_path, icon_path=None, callback=None, trash_callback=None, **kwargs):
+    def __init__(self, parent_page, toast_overlay, title, subtitle, data_path, icon_path=None, callback=None, trash_callback=None, **kwargs):
         super().__init__(**kwargs)
 
+        self.parent_page = parent_page
         # Extra Object Creation
         self.toast_overlay = toast_overlay
         self.title = title
