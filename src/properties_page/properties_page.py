@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk,GLib#, Gio, Pango
+from gi.repository import Adw, Gtk,GLib, Gio
 from .error_toast import ErrorToast
 from .host_info import HostInfo
 from .change_version_page import ChangeVersionPage
@@ -13,6 +13,9 @@ class PropertiesPage(Adw.NavigationPage):
     stack = gtc()
     error_tbv = gtc()
     loading_tbv = gtc()
+
+    more_menu = gtc()
+    more_list = gtc()
 
     nav_view = gtc()
     inner_nav_page = gtc()
@@ -65,7 +68,6 @@ class PropertiesPage(Adw.NavigationPage):
             return
 
         self.package = package
-        
         pkg_name = package.info["name"]
         if pkg_name != "":
             self.inner_nav_page.set_title(_("{} Properties").format(package.info["name"]))
@@ -145,7 +147,14 @@ class PropertiesPage(Adw.NavigationPage):
         self.mask_switch.set_active(package.is_masked)
         self.pin_switch.set_active(package.is_pinned)
         GLib.idle_add(lambda *_: self.stack.set_visible_child(self.nav_view))
+        self.more_list.remove_all()
+        if self.open_app_button.get_visible():
+            self.more_list.append(self.view_snapshots)
+            self.more_list.append(self.copy_launch_command)
 
+        self.more_list.append(self.show_details)
+        self.more_list.append(self.reinstall)
+        
     def open_data_handler(self, *args):
         if error := self.package.open_data():
             self.toast_overlay.add_toast(ErrorToast(_("Could not open data"), str(error)).toast)
@@ -255,6 +264,28 @@ class PropertiesPage(Adw.NavigationPage):
         page = ChangeVersionPage(self.main_window, self.package)
         self.nav_view.push(page)
 
+    def more_menu_handler(self, listbox, row):
+        self.more_menu.popdown()
+        match row.get_child():
+            case self.view_snapshots:
+                print("not implemented")
+
+            case self.copy_launch_command:
+                try:
+                    HostInfo.clipboard.set(f"flatpak run {self.package.info['ref']}")
+                    self.toast_overlay.add_toast(Adw.Toast.new(_("Copied launch command")))
+                except Exception as e:
+                    self.toast_overlay.add_toast(ErrorToast(_("Could not copy launch command"), str(e)).toast)
+
+            case self.show_details:
+                try:
+                    Gio.AppInfo.launch_default_for_uri(f"appstream://{self.package.info['id']}", None)
+                except Exception as e:
+                    self.toast_overlay.add_toast(ErrorToast(_("Could not show details"), str(e)).toast)
+
+            case self.reinstall:
+                print("not implemented")
+
     def __init__(self, main_window, packages_page, **kwargs):
         super().__init__(**kwargs)
 
@@ -283,8 +314,19 @@ class PropertiesPage(Adw.NavigationPage):
         self.loading_tbv.set_content(LoadingStatus(_("Loading Properties"), _("This should only take a moment")))
         self.packages_page = packages_page
         self.__class__.main_window = main_window
+        self.view_snapshots = Gtk.Label(halign=Gtk.Align.START, label=_("View Snapshots"))
+        self.copy_launch_command = Gtk.Label(halign=Gtk.Align.START, label=_("Copy Launch Command"))
+        self.show_details = Gtk.Label(halign=Gtk.Align.START, label=_("Show Details"))
+        self.reinstall = Gtk.Label(halign=Gtk.Align.START, label=_("Reinstall"))
+
+        # Apply
+        self.more_list.append(self.view_snapshots)
+        self.more_list.append(self.copy_launch_command)
+        self.more_list.append(self.show_details)
+        self.more_list.append(self.reinstall)
 
         # Connections
+        self.more_list.connect("row-activated", self.more_menu_handler)
         self.open_data_button.connect("clicked", self.open_data_handler)
         self.scrolled_window.get_vadjustment().connect("value-changed", lambda adjustment: self.header_bar.set_show_title(not adjustment.get_value() == 0))
         self.trash_data_button.connect("clicked", self.trash_data_handler)
@@ -298,4 +340,5 @@ class PropertiesPage(Adw.NavigationPage):
             row = self.info_rows[key]
             if type(row) != Adw.ActionRow:
                 continue
+
             row.connect("activated", self.copy_handler)

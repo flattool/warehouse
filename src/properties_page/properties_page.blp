@@ -9,9 +9,6 @@ template $PropertiesPage : Adw.NavigationPage {
             Adw.HeaderBar {
                 show-title: false;
             }
-            // Adw.StatusPage {
-            //     title: _("Loading Properties");
-            // }
         }
         Adw.ToolbarView error_tbv {
             [top]
@@ -33,35 +30,9 @@ template $PropertiesPage : Adw.NavigationPage {
                         Adw.HeaderBar header_bar {
                             show-title: false;
                             [end]
-                            MenuButton more_menu {
+                            MenuButton more_menu_button {
                                 icon-name: "view-more-symbolic";
-                                popover:
-                                    Popover {
-                                        styles ["menu"]
-                                        ListBox more_list {
-                                            ListBoxRow details {
-                                                Label {
-                                                    label: _("Show Details in Store");
-                                                }
-                                            }
-                                            ListBoxRow reinstall {
-                                                Label {
-                                                    label: _("Reinstall");
-                                                }
-                                            }
-                                            ListBoxRow copy_launch {
-                                                Label {
-                                                    label: _("Copy Launch Command");
-                                                }
-                                            }
-                                            ListBoxRow view_snapshots {
-                                                Label {
-                                                    label: _("View Snapshots");
-                                                }
-                                            }
-                                        }
-                                    }
-                                ;
+                                popover: more_menu;
                             }
                         }
                         ScrolledWindow scrolled_window {
@@ -347,5 +318,11 @@ template $PropertiesPage : Adw.NavigationPage {
                 }
             }
         }
+    }
+}
+
+Popover more_menu {
+    styles ["menu"]
+    ListBox more_list {
     }
 }
