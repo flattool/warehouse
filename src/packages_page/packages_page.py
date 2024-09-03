@@ -201,7 +201,7 @@ class PackagesPage(Adw.BreakpointBin):
         search_text = self.search_entry.get_text().lower()
         title = row.get_title().lower()
         subtitle = row.get_subtitle().lower()
-        if search_text in title or search_text in subtitle:
+        if row.get_visible() and (search_text in title or search_text in subtitle):
             self.is_result = True
             return True
 
