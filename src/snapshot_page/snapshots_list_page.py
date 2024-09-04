@@ -2,6 +2,7 @@ from gi.repository import Adw, Gtk, GLib, Gio
 from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .snapshot_box import SnapshotBox
+from .loading_status import LoadingStatus
 import os
 
 
@@ -10,6 +11,9 @@ class SnapshotsListPage(Adw.NavigationPage):
     __gtype_name__ = "SnapshotsListPage"
     gtc = Gtk.Template.Child
 
+    stack = gtc()
+    toolbar_view = gtc()
+    loading_view = gtc()
     listbox = gtc()
     toast_overlay = gtc()
     open_button = gtc()
@@ -19,18 +23,21 @@ class SnapshotsListPage(Adw.NavigationPage):
             if snapshot.endswith(".json"):
                 continue
             
-            row = SnapshotBox(snapshot, folder, self.toast_overlay)
+            row = SnapshotBox(self, snapshot, folder, self.toast_overlay)
             self.snapshots_rows.append(row)
 
     def callback(self, *args):
         for i, row in enumerate(self.snapshots_rows):
             self.listbox.append(row)
             self.listbox.get_row_at_index(i).set_activatable(False)
+        
+        self.stack.set_visible_child(self.toolbar_view)
 
     def set_snapshots(self, folder, title):
         if self.current_folder == folder:
             return
-            
+        
+        self.stack.set_visible_child(self.loading_view)
         self.current_folder = folder
         self.set_title(_("{} Snapshots").format(title))
         self.snapshots_rows.clear()
@@ -53,6 +60,7 @@ class SnapshotsListPage(Adw.NavigationPage):
         super().__init__(**kwargs)
 
         # Extra Object Creation
+        self.parent_page = parent_page
         self.snapshots_path = parent_page.snapshots_path
         self.current_folder = None
         self.snapshots_rows = []
@@ -61,3 +69,4 @@ class SnapshotsListPage(Adw.NavigationPage):
         self.open_button.connect("clicked", self.open_snapshots_folder)
 
         # Apply
+        self.loading_view.set_content(LoadingStatus(_("Loading Snapshots"), _("This should only take a moment")))
