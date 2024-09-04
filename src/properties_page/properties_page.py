@@ -232,7 +232,7 @@ class PropertiesPage(Adw.NavigationPage):
             if fail := self.package.failed_uninstall:
                 fail = fail.stderr if type(fail) == subprocess.CalledProcessError else fail
                 self.toast_overlay.add_toast(ErrorToast(_("Could not uninstall"), str(fail)).toast)
-                self.packages_page.stack.set_visible_child(self.packages_page.packages_split)
+                self.packages_page.set_status(self.packages_page.scrolled_window)
             else:
                 self.main_window.refresh_handler()
                 self.packages_page.packages_toast_overlay.add_toast(Adw.Toast(title=_("Uninstalled {}").format(self.package.info["name"])))

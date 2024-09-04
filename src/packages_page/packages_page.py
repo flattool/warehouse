@@ -259,12 +259,12 @@ class PackagesPage(Adw.BreakpointBin):
                     error[0] = e
 
             def callback(*args):
+                self.main_window.refresh_handler()
                 if err := error[0]:
                     details = err.stderr if type(err) == subprocess.CalledProcessError else str(err)
-                    self.packages_toast_overlay.add_toast(ErrorToast(_("Could not uninstall packages"), details).toast)
+                    GLib.idle_add(lambda *args: self.packages_toast_overlay.add_toast(ErrorToast(_("Could not uninstall packages"), details).toast))
                 else:
-                    self.main_window.refresh_handler()
-                    GLib.idle_add(lambda *__: self.packages_toast_overlay.add_toast(Adw.Toast(title=_("Uninstalled Packages"))))
+                    GLib.idle_add(lambda *args: self.packages_toast_overlay.add_toast(Adw.Toast(title=_("Uninstalled Packages"))))
 
             Gio.Task.new(None, None, callback).run_in_thread(thread)
 

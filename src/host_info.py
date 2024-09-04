@@ -100,8 +100,7 @@ class Flatpak:
         self.failed_uninstall = None
 
         def thread(*args):
-            prefix = ['flatpak-spawn', '--host']
-            cmd = ['flatpak', 'uninstall', '-y', self.info["ref"]]
+            cmd = ['flatpak-spawn', '--host', 'flatpak', 'uninstall', '-y', self.info["ref"]]
             installation = self.info["installation"]
             if installation == "system" or installation == "user":
                 cmd.append(f"--{installation}")
@@ -109,20 +108,9 @@ class Flatpak:
                 cmd.append(f"--installation={installation}")
 
             try:
-                subprocess.run(prefix + cmd, check=True, text=True, capture_output=True)
-                # print(prefix + cmd)
+                subprocess.run(cmd, check=True, text=True, capture_output=True)
             except subprocess.CalledProcessError as cpe:
-                if installation == "user":
-                    self.failed_uninstall = cpe
-                    return
-                
-                try:
-                    subprocess.run(prefix + ['pkexec'] + cmd, check=True, text=True)
-                except subprocess.CalledProcessError as cpe2:
-                    self.failed_uninstall = cpe2
-                except Exception as e2:
-                    self.failed_uninstall = e2
-
+                self.failed_uninstall = cpe
             except Exception as e:
                 self.failed_uninstall = e
 
