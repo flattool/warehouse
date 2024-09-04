@@ -169,4 +169,4 @@ class SnapshotPage(Adw.BreakpointBin):
 
         # Apply
         self.stack.add_child(self.loading_snapshots)
-        self.split_view.set_content(self.list_page)##
+        self.split_view.set_content(self.list_page)

@@ -7,6 +7,11 @@ template $SnapshotsListPage : Adw.NavigationPage {
         Adw.ToolbarView {
             [top]
             Adw.HeaderBar {
+                [start]
+                Button open_button {
+                    icon-name: "folder-open-symbolic";
+                    tooltip-text: _("Open Snapshots Folder for this App");
+                }
             }
             ScrolledWindow {
                 Adw.Clamp {

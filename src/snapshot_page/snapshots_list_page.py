@@ -12,8 +12,7 @@ class SnapshotsListPage(Adw.NavigationPage):
 
     listbox = gtc()
     toast_overlay = gtc()
-
-    snapshots_path = f"{HostInfo.home}/.var/app/io.github.flattool.Warehouse/data/Snapshots/"
+    open_button = gtc()
 
     def thread(self, *args):
         for snapshot in os.listdir(folder := f"{self.snapshots_path}{self.current_folder}/"):
@@ -39,8 +38,26 @@ class SnapshotsListPage(Adw.NavigationPage):
 
         Gio.Task.new(None, None, self.callback).run_in_thread(self.thread)
 
+    def open_snapshots_folder(self, button):
+        path = f"{self.snapshots_path}{self.current_folder}/"
+        try:
+            if not os.path.exists(path):
+                raise Exception(f"error: File '{path}' does not exist")
+
+            Gio.AppInfo.launch_default_for_uri(f"file://{path}", None)
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Opened snapshots folder")))
+        except Exception as e:
+            self.toast_overlay.add_toast(ErrorToast(_("Could not open folder"), str(e)).toast)
+
     def __init__(self, parent_page, **kwargs):
         super().__init__(**kwargs)
 
+        # Extra Object Creation
+        self.snapshots_path = parent_page.snapshots_path
         self.current_folder = None
         self.snapshots_rows = []
+
+        # Connections
+        self.open_button.connect("clicked", self.open_snapshots_folder)
+
+        # Apply
