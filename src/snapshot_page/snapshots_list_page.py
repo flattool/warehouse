@@ -11,9 +11,7 @@ class SnapshotsListPage(Adw.NavigationPage):
     __gtype_name__ = "SnapshotsListPage"
     gtc = Gtk.Template.Child
 
-    stack = gtc()
     toolbar_view = gtc()
-    loading_view = gtc()
     listbox = gtc()
     toast_overlay = gtc()
     open_button = gtc()
@@ -30,14 +28,11 @@ class SnapshotsListPage(Adw.NavigationPage):
         for i, row in enumerate(self.snapshots_rows):
             self.listbox.append(row)
             self.listbox.get_row_at_index(i).set_activatable(False)
-        
-        self.stack.set_visible_child(self.toolbar_view)
 
     def set_snapshots(self, folder, title):
         if self.current_folder == folder:
             return
-        
-        self.stack.set_visible_child(self.loading_view)
+
         self.current_folder = folder
         self.set_title(_("{} Snapshots").format(title))
         self.snapshots_rows.clear()
@@ -69,4 +64,3 @@ class SnapshotsListPage(Adw.NavigationPage):
         self.open_button.connect("clicked", self.open_snapshots_folder)
 
         # Apply
-        self.loading_view.set_content(LoadingStatus(_("Loading Snapshots"), _("This should only take a moment")))

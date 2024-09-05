@@ -14,129 +14,157 @@ template $SnapshotPage : Adw.BreakpointBin {
 		}
 	}
 
-    Adw.NavigationSplitView split_view {
-        sidebar-width-fraction: 0.5;
-        max-sidebar-width: 999999999;
-        sidebar:
-            Adw.NavigationPage sidebar_navpage {
-                title: _("Snapshots");
-                Adw.ToastOverlay toast_overlay {
-                    Adw.ToolbarView sidebar_tbv {
-                        [top]
-                        Adw.HeaderBar header_bar {
-                            [start]
-                            $SidebarButton {}
-                            [start]
-                            ToggleButton search_button {
-                                icon-name: "loupe-large-symbolic";
-                                tooltip-text: _("Search Packages");
-                            }
-                            [start]
-                            Button open_button {
-                                icon-name: "folder-open-symbolic";
-                                tooltip-text: _("Open Snapshots Folder");
-                            }
-                            [end]
-                            Button new_button {
-                                icon-name: "plus-large-symbolic";
-                                tooltip-text: _("New Snapshot");
-                            }
-                            [end]
-                            ToggleButton select_button {
-                                icon-name: "selection-mode-symbolic";
-                                tooltip-text: _("Select Packages");
-                            }
-                        }
-                        Stack stack {
-                            // Adw.StatusPage loading_snapshots {
-                            //     title: _("Loading Snapshot");
-                            //     description: _("This should only take a moment");
-                            //     child:
-                            //         Spinner {
-                            //             spinning: true;
-                            //         }
-                            //     ;
-                            // }
-                            Adw.StatusPage no_snapshots {
-                                title: _("No Snapshots");
-                                description: _("Create a Snapshot to save the state of any Flatpak application");
-                                icon-name: "snapshots-alt-symbolic";
-                                Button status_new_button {
-                                    styles ["suggested-action", "pill"]
-                                    halign: center;
-                                    Adw.ButtonContent {
+    Adw.NavigationPage {
+        title: _("Snapshots");
+        Stack status_stack {
+            Adw.NavigationSplitView split_view {
+                sidebar-width-fraction: 0.5;
+                max-sidebar-width: 999999999;
+                sidebar:
+                    Adw.NavigationPage sidebar_navpage {
+                        title: _("Snapshots");
+                        Adw.ToastOverlay toast_overlay {
+                            Adw.ToolbarView sidebar_tbv {
+                                [top]
+                                Adw.HeaderBar header_bar {
+                                    [start]
+                                    $SidebarButton {}
+                                    [start]
+                                    ToggleButton search_button {
+                                        icon-name: "loupe-large-symbolic";
+                                        tooltip-text: _("Search Packages");
+                                    }
+                                    [start]
+                                    Button open_button {
+                                        icon-name: "folder-open-symbolic";
+                                        tooltip-text: _("Open Snapshots Folder");
+                                    }
+                                    [end]
+                                    Button new_button {
                                         icon-name: "plus-large-symbolic";
-                                        label: _("New Snapshot");
+                                        tooltip-text: _("New Snapshot");
+                                    }
+                                    [end]
+                                    ToggleButton select_button {
+                                        icon-name: "selection-mode-symbolic";
+                                        tooltip-text: _("Select Packages");
                                     }
                                 }
-                            }
-                            Adw.StatusPage no_results {
-                                title: _("No Results Found");
-                                description: _("Try a different search");
-                                icon-name: "system-search-symbolic";
-                            }
-                            ScrolledWindow scrolled_window {
-                                Box {
-                                    orientation: vertical;
-
-                                    Box active_box {
-                                        orientation: vertical;
-
-                                        Label {
-                                            label: _("Active Snapshots");
-                                            halign: start;
-                                            styles ["heading"]
-                                            margin-top: 3;
-                                            margin-bottom: 6;
-                                            margin-start: 12;
-                                            margin-end: 12;
-                                            wrap: true;
-                                        }
-                                        Label {
-                                            label: _("Snapshots of installed apps");
-                                            halign: start;
-                                            styles ["dim-label"]
-                                            margin-start: 12;
-                                            margin-end: 12;
-                                            wrap: true;
-                                        }
-                                        ListBox active_listbox {
-                                            styles ["navigation-sidebar"]
-                                            valign: start;
-                                        }
+                                Stack stack {
+                                    // Adw.StatusPage loading_snapshots {
+                                    //     title: _("Loading Snapshot");
+                                    //     description: _("This should only take a moment");
+                                    //     child:
+                                    //         Spinner {
+                                    //             spinning: true;
+                                    //         }
+                                    //     ;
+                                    // }
+                                    Adw.StatusPage no_results {
+                                        title: _("No Results Found");
+                                        description: _("Try a different search");
+                                        icon-name: "system-search-symbolic";
                                     }
-                                    Box leftover_box {
-                                        orientation: vertical;
-                                        
-                                        Label {
-                                            label: _("Leftover Snapshots");
-                                            halign: start;
-                                            styles ["heading"]
-                                            margin-top: 3;
-                                            margin-bottom: 6;
-                                            margin-start: 12;
-                                            margin-end: 12;
-                                            wrap: true;
-                                        }
-                                        Label {
-                                            label: _("Snapshots of apps that are no longer installed");
-                                            halign: start;
-                                            styles ["dim-label"]
-                                            margin-start: 12;
-                                            margin-end: 12;
-                                            wrap: true;
-                                        }
-                                        ListBox leftover_listbox {
-                                            styles ["navigation-sidebar"]
-                                            valign: start;
+                                    ScrolledWindow scrolled_window {
+                                        Box {
+                                            orientation: vertical;
+
+                                            Box active_box {
+                                                orientation: vertical;
+
+                                                Label {
+                                                    label: _("Active Snapshots");
+                                                    halign: start;
+                                                    styles ["heading"]
+                                                    margin-top: 3;
+                                                    margin-bottom: 6;
+                                                    margin-start: 12;
+                                                    margin-end: 12;
+                                                    wrap: true;
+                                                }
+                                                Label {
+                                                    label: _("Snapshots of installed apps");
+                                                    halign: start;
+                                                    styles ["dim-label"]
+                                                    margin-start: 12;
+                                                    margin-end: 12;
+                                                    margin-bottom: 3;
+                                                    wrap: true;
+                                                }
+                                                ListBox active_listbox {
+                                                    styles ["navigation-sidebar"]
+                                                    valign: start;
+                                                }
+                                            }
+                                            Box leftover_box {
+                                                orientation: vertical;
+                                                
+                                                Label {
+                                                    label: _("Leftover Snapshots");
+                                                    halign: start;
+                                                    styles ["heading"]
+                                                    margin-top: 3;
+                                                    margin-bottom: 6;
+                                                    margin-start: 12;
+                                                    margin-end: 12;
+                                                    wrap: true;
+                                                }
+                                                Label {
+                                                    label: _("Snapshots of apps that are no longer installed");
+                                                    halign: start;
+                                                    styles ["dim-label"]
+                                                    margin-start: 12;
+                                                    margin-end: 12;
+                                                    margin-bottom: 3;
+                                                    wrap: true;
+                                                }
+                                                ListBox leftover_listbox {
+                                                    styles ["navigation-sidebar"]
+                                                    valign: start;
+                                                }
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     }
+                ;
+            }
+            Adw.ToolbarView no_snapshots {
+                [top]
+                Adw.HeaderBar {
+                    [start]
+                    $SidebarButton {}
+                    [start]
+                    Button status_open_button {
+                        icon-name: "folder-open-symbolic";
+                        tooltip-text: _("Open Snapshots Folder");
+                    }
+                }
+                Adw.ToastOverlay no_snapshots_toast {
+                    Adw.StatusPage {
+                        title: _("No Snapshots");
+                        description: _("Create a Snapshot to save the state of any Flatpak application");
+                        icon-name: "snapshots-alt-symbolic";
+                        Button status_new_button {
+                            styles ["suggested-action", "pill"]
+                            halign: center;
+                            Adw.ButtonContent {
+                                icon-name: "plus-large-symbolic";
+                                label: _("New Snapshot");
+                            }
+                        }
+                    }
                 }
             }
-        ;
+            Adw.ToolbarView loading_view {
+                [top]
+                Adw.HeaderBar {
+                    [start]
+                    $SidebarButton {}
+                }
+            }
+        }
     }
 }
