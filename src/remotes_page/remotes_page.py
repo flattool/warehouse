@@ -84,8 +84,10 @@ class RemotesPage(Adw.NavigationPage):
     file_remote_row = gtc()
     custom_remote_row = gtc()
     none_visible = gtc()
+    status_stack = gtc()
+    loading_view = gtc()
+    main_view = gtc()
 
-    # Statuses
     no_results = gtc()
     no_remotes = gtc()
     content_page = gtc()
@@ -98,9 +100,7 @@ class RemotesPage(Adw.NavigationPage):
     
     def start_loading(self):
         self.search_button.set_active(False)
-        self.search_button.set_sensitive(False)
-        self.search_entry.set_editable(False)
-        self.stack.set_visible_child(self.loading_remotes)
+        self.status_stack.set_visible_child(self.loading_view)
         self.total_disabled = 0
         for row in self.current_remote_rows:
             self.current_remotes_group.remove(row)
@@ -134,9 +134,7 @@ class RemotesPage(Adw.NavigationPage):
         else:
             self.no_remotes.set_visible(False)
 
-        GLib.idle_add(lambda *_: self.stack.set_visible_child(self.content_page))
-        self.search_button.set_sensitive(True)
-        self.search_entry.set_editable(True)
+        GLib.idle_add(lambda *_: self.status_stack.set_visible_child(self.main_view))
 
     def none_visible_handler(self):
         any_visible = False
@@ -268,7 +266,6 @@ class RemotesPage(Adw.NavigationPage):
         # Extra Object Creation
         self.__class__.instance = self
         self.main_window = main_window
-        self.loading_remotes = LoadingStatus(_("Loading Remotes"), _("This should only take a moment"))
         self.search_bar.set_key_capture_widget(main_window)
         self.current_remote_rows = []
         self.filter_setting = Gio.Settings.new("io.github.flattool.Warehouse.filter")
@@ -281,7 +278,7 @@ class RemotesPage(Adw.NavigationPage):
         self.show_disabled_button.connect("toggled", self.show_disabled_handler)
 
         # Appply
-        self.stack.add_child(self.loading_remotes)
+        self.loading_view.set_content(LoadingStatus(_("Loading Remotes"), _("This should only take a moment")))
         for item in self.new_remotes:
             row = NewRemoteRow(item)
             row.connect("activated", lambda *_, remote_info=item: AddRemoteDialog(main_window, self, remote_info).present(main_window))

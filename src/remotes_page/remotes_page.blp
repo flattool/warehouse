@@ -3,149 +3,149 @@ using Adw 1;
 
 template $RemotesPage : Adw.NavigationPage {
     title: _("Manage Remotes");
-    Adw.ToolbarView {
-        [top]
-        Adw.HeaderBar header_bar {
-            [start]
-            $SidebarButton {}
-            [start]
-            ToggleButton search_button {
-                icon-name: "loupe-large-symbolic";
-                tooltip-text: _("Search Packages");
-            }
-        }
-        [top]
-        Adw.Clamp {
-            SearchBar search_bar {
-                search-mode-enabled: bind search_button.active bidirectional;
-                key-capture-widget: template;
-                SearchEntry search_entry {
-                    hexpand: true;
-                    placeholder-text: _("Search Remotes");
+    Adw.ToastOverlay toast_overlay {
+        Stack status_stack {
+            Adw.ToolbarView loading_view {
+                [top]
+                Adw.HeaderBar {
+                    [start]
+                    $SidebarButton {}
                 }
             }
-        }
-        Adw.ToastOverlay toast_overlay {
-            Stack stack {
-                // Adw.StatusPage loading_remotes {
-                //     title: _("Loading Remotes");
-                //     description: _("This should only take a moment");
-                //     child:
-                //         Spinner {
-                //             spinning: true;
-                //         }
-                //     ;
-                // }
-                Adw.StatusPage no_results {
-                    title: _("No Results Found");
-                    description: _("Try a different search");
-                    icon-name: "system-search-symbolic";
+            Adw.ToolbarView main_view {
+                [top]
+                Adw.HeaderBar header_bar {
+                    [start]
+                    $SidebarButton {}
+                    [start]
+                    ToggleButton search_button {
+                        icon-name: "loupe-large-symbolic";
+                        tooltip-text: _("Search Packages");
+                    }
                 }
-                Adw.PreferencesPage content_page {
-                    Adw.PreferencesGroup current_remotes_group {
-                        title: _("Current Remotes");
-                        description: _("Remotes available on your system");
-                        header-suffix:
-                            ToggleButton show_disabled_button {
-                                valign: center;
-                                styles ["flat"]
-                                Adw.ButtonContent show_disabled_button_content {
-                                    icon-name: "eye-not-looking-symbolic";
-                                    label: _("Show Disabled");
-                                }
-                            }
-                        ;
-                        Adw.ActionRow none_visible {
-                            styles ["warning"]
-                            [child]
-                            Box {
-                                spacing: 3;
-                                orientation: vertical;
-                                Box {
-                                    halign: center;
-                                    Image {
-                                        valign: center;
-                                        margin-top: 7;
-                                        margin-end: 6;
+                [top]
+                Adw.Clamp {
+                    SearchBar search_bar {
+                        search-mode-enabled: bind search_button.active bidirectional;
+                        key-capture-widget: template;
+                        SearchEntry search_entry {
+                            hexpand: true;
+                            placeholder-text: _("Search Remotes");
+                        }
+                    }
+                }
+                Stack stack {
+                    Adw.PreferencesPage content_page {
+                        Adw.PreferencesGroup current_remotes_group {
+                            title: _("Current Remotes");
+                            description: _("Remotes available on your system");
+                            header-suffix:
+                                ToggleButton show_disabled_button {
+                                    valign: center;
+                                    styles ["flat"]
+                                    Adw.ButtonContent show_disabled_button_content {
                                         icon-name: "eye-not-looking-symbolic";
-                                    }
-                                    Label {
-                                        margin-top: 7;
-                                        label: _("No Enabled Remotes");
-                                        wrap: true;
-                                        styles ["heading"]
+                                        label: _("Show Disabled");
                                     }
                                 }
-                                Label {
-                                    label: _("You only have disabled remotes on this system");
-                                    margin-start: 16;
-                                    margin-end: 16;
-                                    margin-bottom: 8;
-                                    justify: center;
-                                    halign: center;
-                                    wrap: true;
-                                }
-                            }
-                        }
-                        Adw.ActionRow no_remotes {
-                            styles ["error"]
-                            [child]
-                            Box {
-                                spacing: 3;
-                                orientation: vertical;
+                            ;
+                            Adw.ActionRow none_visible {
+                                styles ["warning"]
+                                [child]
                                 Box {
-                                    halign: center;
-                                    Image {
-                                        valign: center;
-                                        margin-top: 7;
-                                        margin-end: 6;
-                                        icon-name: "error-symbolic";
+                                    spacing: 3;
+                                    orientation: vertical;
+                                    Box {
+                                        halign: center;
+                                        Image {
+                                            valign: center;
+                                            margin-top: 7;
+                                            margin-end: 6;
+                                            icon-name: "eye-not-looking-symbolic";
+                                        }
+                                        Label {
+                                            margin-top: 7;
+                                            label: _("No Enabled Remotes");
+                                            wrap: true;
+                                            styles ["heading"]
+                                        }
                                     }
                                     Label {
-                                        margin-top: 7;
-                                        label: _("No Remotes Found");
+                                        label: _("You only have disabled remotes on this system");
+                                        margin-start: 16;
+                                        margin-end: 16;
+                                        margin-bottom: 8;
+                                        justify: center;
+                                        halign: center;
                                         wrap: true;
-                                        styles ["heading"]
                                     }
                                 }
-                                Label {
-                                    label: _("Warehouse cannot see the current remotes or your system has no remotes added");
-                                    margin-start: 16;
-                                    margin-end: 16;
-                                    margin-bottom: 8;
-                                    justify: center;
-                                    halign: center;
-                                    wrap: true;
+                            }
+                            Adw.ActionRow no_remotes {
+                                styles ["error"]
+                                [child]
+                                Box {
+                                    spacing: 3;
+                                    orientation: vertical;
+                                    Box {
+                                        halign: center;
+                                        Image {
+                                            valign: center;
+                                            margin-top: 7;
+                                            margin-end: 6;
+                                            icon-name: "error-symbolic";
+                                        }
+                                        Label {
+                                            margin-top: 7;
+                                            label: _("No Remotes Found");
+                                            wrap: true;
+                                            styles ["heading"]
+                                        }
+                                    }
+                                    Label {
+                                        label: _("Warehouse cannot see the current remotes or your system has no remotes added");
+                                        margin-start: 16;
+                                        margin-end: 16;
+                                        margin-bottom: 8;
+                                        justify: center;
+                                        halign: center;
+                                        wrap: true;
+                                    }
+                                }
+                            }
+                        }
+                        Adw.PreferencesGroup new_remotes_group {
+                            visible: bind search_button.active inverted;
+                            title: _("Add Popular Remotes");
+                            description: _("Add new remotes to get more software");
+                        }
+                        Adw.PreferencesGroup other_remotes {
+                            visible: bind search_button.active inverted;
+                            title: _("Add Other Remotes");
+                            Adw.ActionRow file_remote_row {
+                                activatable: true;
+                                title: _("Add a Repo File");
+                                subtitle: _("Open a downloaded repo file to add");
+                                [suffix]
+                                Image {
+                                    icon-name: "plus-large-symbolic";
+                                }
+                            }
+                            Adw.ActionRow custom_remote_row {
+                                activatable: true;
+                                title: _("Add a Custom Remote");
+                                subtitle: _("Manually enter new remote details");
+                                [suffix]
+                                Image {
+                                    icon-name: "plus-large-symbolic";
                                 }
                             }
                         }
                     }
-                    Adw.PreferencesGroup new_remotes_group {
-                        visible: bind search_button.active inverted;
-                        title: _("Add Popular Remotes");
-                        description: _("Add new remotes to get more software");
-                    }
-                    Adw.PreferencesGroup other_remotes {
-                        visible: bind search_button.active inverted;
-                        title: _("Add Other Remotes");
-                        Adw.ActionRow file_remote_row {
-                            activatable: true;
-                            title: _("Add a Repo File");
-                            subtitle: _("Open a downloaded repo file to add");
-                            [suffix]
-                            Image {
-                                icon-name: "plus-large-symbolic";
-                            }
-                        }
-                        Adw.ActionRow custom_remote_row {
-                            activatable: true;
-                            title: _("Add a Custom Remote");
-                            subtitle: _("Manually enter new remote details");
-                            [suffix]
-                            Image {
-                                icon-name: "plus-large-symbolic";
-                            }
-                        }
+                    Adw.StatusPage no_results {
+                        title: _("No Results Found");
+                        description: _("Try a different search");
+                        icon-name: "system-search-symbolic";
                     }
                 }
             }
