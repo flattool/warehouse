@@ -68,6 +68,7 @@ class DataSubpage(Gtk.Stack):
             if self.sort_mode == "size":
                 self.flow_box.invalidate_sort()
                 self.set_visible_child(self.content_box)
+                GLib.idle_add(lambda *_: self.parent_page.status_stack.set_visible_child(self.parent_page.main_view))
 
     def trash_handler(self, trashed_box):
         self.flow_box.remove(trashed_box)
@@ -164,6 +165,7 @@ class DataSubpage(Gtk.Stack):
             self.set_visible_child(self.no_data)
         elif self.sort_mode != "size":
             self.set_visible_child(self.content_box)
+            self.parent_page.status_stack.set_visible_child(self.parent_page.main_view)
 
     def filter_func(self, box):
         search_text = self.parent_page.search_entry.get_text().lower()
@@ -205,7 +207,6 @@ class DataSubpage(Gtk.Stack):
         # Extra Object Creation
         self.main_window = main_window
         self.parent_page = parent_page
-        self.loading_data = LoadingStatus(_("Loading User Data"), _("This should only take a moment"))
         # self.is_active = is_active
         self.sort_mode = ""
         self.sort_ascend = False
@@ -221,7 +222,6 @@ class DataSubpage(Gtk.Stack):
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse.data_page")
 
         # Apply
-        self.add_child(self.loading_data)
         self.flow_box.set_sort_func(self.sort_func)
         self.flow_box.set_filter_func(self.filter_func)
 

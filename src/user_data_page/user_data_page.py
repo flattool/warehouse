@@ -4,15 +4,18 @@ from .data_box import DataBox
 from .data_subpage import DataSubpage
 from .host_info import HostInfo
 from .sidebar_button import SidebarButton
+from .loading_status import LoadingStatus
 import os, subprocess
-
-import time
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/user_data_page.ui")
 class UserDataPage(Adw.BreakpointBin):
     __gtype_name__ = 'UserDataPage'
     gtc = Gtk.Template.Child
+
     bpt = gtc()
+    status_stack = gtc()
+    loading_view = gtc()
+    main_view = gtc()
     header_bar = gtc()
     switcher_bar = gtc()
     search_button = gtc()
@@ -59,23 +62,18 @@ class UserDataPage(Adw.BreakpointBin):
                 self.leftover_data.append(folder)
 
     def start_loading(self, *args):
-        self.header_bar.set_sensitive(False)
+        self.status_stack.set_visible_child(self.loading_view)
         self.search_button.set_active(False)
-        self.search_entry.set_editable(False)
         self.select_button.set_active(False)
-        self.adp.set_visible_child(self.adp.loading_data)
-        self.adp.size_label.set_label("Loading Size")
+        self.adp.size_label.set_label(_("Loading Size"))
         self.adp.spinner.set_visible(True)
-        self.ldp.set_visible_child(self.ldp.loading_data)
-        self.ldp.size_label.set_label("Loading Size")
+        self.ldp.size_label.set_label(_("Loading Size"))
         self.ldp.spinner.set_visible(True)
 
     def end_loading(self, *args):
         def callback(*args):
             self.adp.generate_list(self.data_flatpaks, self.active_data)
             self.ldp.generate_list([], self.leftover_data)
-            self.header_bar.set_sensitive(True)
-            self.search_entry.set_editable(True)
         
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
 
@@ -247,5 +245,6 @@ class UserDataPage(Adw.BreakpointBin):
         self.bpt.connect("unapply", self.breakpoint_handler, False)
 
         # Apply again
+        self.loading_view.set_content(LoadingStatus(_("Loading User Data"), _("This should only take a moment")))
         self.search_bar.set_key_capture_widget(main_window)
         self.load_sort_settings()
