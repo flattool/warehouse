@@ -17,12 +17,24 @@ template $InstallPage : Adw.BreakpointBin {
 		}
 	}
 
-    Adw.ToastOverlay toast_overlay {
-        Adw.NavigationSplitView split_view {
-            sidebar-width-fraction: 0.5;
-            max-sidebar-width: 999999999;
-            sidebar: $SelectPage select_page {};
-            content: $PendingPage pending_page {};
+    Adw.NavigationPage {
+        title: _("Install Packages");
+        Adw.ToastOverlay toast_overlay {
+            Stack status_stack {
+                Adw.ToolbarView loading_view {
+                    [top]
+                    Adw.HeaderBar {
+                        [start]
+                        $SidebarButton {}
+                    }
+                }
+                Adw.NavigationSplitView split_view {
+                    sidebar-width-fraction: 0.5;
+                    max-sidebar-width: 999999999;
+                    sidebar: $SelectPage select_page {};
+                    content: $PendingPage pending_page {};
+                }
+            }
         }
     }
 }
