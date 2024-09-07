@@ -37,15 +37,15 @@ template $ResultsPage : Adw.NavigationPage {
                 title: _("Too Many Results");
                 description: _("Try being more specific with your search");
             }
-            Adw.StatusPage loading {
-                title: _("Searching");
-                description: _("This should only take a moment");
-                child:
-                    Spinner {
-                        spinning: true;
-                    }
-                ;
-            }
+            // Adw.StatusPage loading {
+            //     title: _("Searching");
+            //     description: _("This should only take a moment");
+            //     child:
+            //         Spinner {
+            //             spinning: true;
+            //         }
+            //     ;
+            // }
             ScrolledWindow results_view {
                 Adw.Clamp {
                     ListBox results_list {

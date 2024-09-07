@@ -2,6 +2,7 @@ from gi.repository import Adw, Gtk, GLib, Gio
 from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .result_row import ResultRow
+from .loading_status import LoadingStatus
 import subprocess
 
 class AddedPackage:
@@ -43,7 +44,6 @@ class ResultsPage(Adw.NavigationPage):
     stack = gtc()
     new_search = gtc()
     too_many = gtc()
-    loading = gtc()
     results_view= gtc()
     no_results = gtc()
 
@@ -136,9 +136,11 @@ class ResultsPage(Adw.NavigationPage):
         self.installation = None
         self.packages = []
         self.pending_page = None
+        self.loading = LoadingStatus(_("Searching"), _("This should only take a moment"))
 
         # Connections
         self.search_entry.connect("activate", self.on_search)
         self.search_apply_button.connect("clicked", self.on_search)
 
         # Apply
+        self.stack.add_child(self.loading)
