@@ -46,6 +46,7 @@ class PendingPage(Adw.NavigationPage):
     gtc = Gtk.Template.Child
 
     stack = gtc()
+    main_view = gtc()
     none_pending = gtc()
     preferences_page = gtc()
 
@@ -65,7 +66,7 @@ class PendingPage(Adw.NavigationPage):
             self.preferences_page.add(group)
 
         added_row.connect("activated", self.remove_package_row, group)
-        self.stack.set_visible_child(self.preferences_page)
+        self.stack.set_visible_child(self.main_view)
 
     def remove_package_row(self, row, group):
         # row.origin_row.set_state(ResultRow.PackageState.NEW)
