@@ -1,0 +1,72 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $NewSnapshotDialog : Adw.Dialog {
+    follows-content-size: true;
+    width-request: 400;
+    Adw.NavigationView nav_view {
+        Adw.NavigationPage app_list_page {
+            title: _("Choose Applications");
+            Adw.ToolbarView {
+                [top]
+                Adw.HeaderBar {
+                    show-start-title-buttons: false;
+                    show-end-title-buttons: false;
+                    [start]
+                    Button list_cancel_button {
+                        label: _("Cancel");
+                    }
+                    [start]
+                    ToggleButton search_button {
+                        icon-name: "loupe-large-symbolic";
+                        tooltip-text: _("Search Apps");
+                    }
+                    [end]
+                    Button next_button {
+                        // sensitive: false;
+                        label: _("Next");
+                        styles ["suggested-action"]
+                    }
+                }
+                [top]
+                SearchBar search_bar {
+                    search-mode-enabled: bind search_button.active bidirectional;
+                    key-capture-widget: template;
+                    SearchEntry search_entry {
+                        hexpand: true;
+                        placeholder-text: _("Search Apps");
+                    }
+                }
+                ScrolledWindow {
+                    propagate-natural-height: true;
+                    propagate-natural-width: true;
+                    ListBox listbox {
+                        valign: start;
+                        margin-start:  12;
+                        margin-bottom: 12;
+                        margin-top:    12;
+                        margin-end:    12;
+                        selection-mode: none;
+                        styles ["boxed-list"]
+                    }
+                }
+            }
+        }
+        Adw.NavigationPage details_page {
+            title: _("New Snapshot");
+            Adw.ToolbarView {
+                [top]
+                Adw.HeaderBar {
+                    show-start-title-buttons: false;
+                    show-end-title-buttons: false;
+                    [end]
+                    Button create_button {
+                        // sensitive: false;
+                        label: _("Snapshot");
+                        styles ["suggested-action"]
+                    }
+                }
+            }
+        }
+    }
+}

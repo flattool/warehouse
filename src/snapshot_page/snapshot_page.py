@@ -5,6 +5,7 @@ from .app_row import AppRow
 from .snapshots_list_page import SnapshotsListPage
 from .sidebar_button import SidebarButton
 from .loading_status import LoadingStatus
+from .new_snapshot_dialog import NewSnapshotDialog
 import os, subprocess
 
 class LeftoverSnapshotRow(Adw.ActionRow):
@@ -184,6 +185,7 @@ class SnapshotPage(Adw.BreakpointBin):
         self.leftover_listbox.connect("row-activated", self.leftover_select_handler)
         self.open_button.connect("clicked", self.open_snapshots_folder, self.toast_overlay)
         self.status_open_button.connect("clicked", self.open_snapshots_folder, self.no_snapshots_toast)
+        self.new_button.connect("clicked", lambda *_: NewSnapshotDialog().present(HostInfo.main_window))
 
         # Apply
         self.loading_view.set_content(LoadingStatus(_("Loading Snapshots"), _("This should only take a moment")))
