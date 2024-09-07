@@ -5,7 +5,6 @@ from .snapshot_box import SnapshotBox
 from .loading_status import LoadingStatus
 import os
 
-
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/snapshots_list_page.ui")
 class SnapshotsListPage(Adw.NavigationPage):
     __gtype_name__ = "SnapshotsListPage"
@@ -29,8 +28,8 @@ class SnapshotsListPage(Adw.NavigationPage):
             self.listbox.append(row)
             self.listbox.get_row_at_index(i).set_activatable(False)
 
-    def set_snapshots(self, folder, title):
-        if self.current_folder == folder:
+    def set_snapshots(self, folder, title, refresh=False):
+        if self.current_folder == folder and not refresh:
             return
 
         self.current_folder = folder

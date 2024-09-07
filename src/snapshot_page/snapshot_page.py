@@ -122,14 +122,14 @@ class SnapshotPage(Adw.BreakpointBin):
         else:
             self.leftover_box.set_visible(False)
 
-    def active_select_handler(self, listbox, row, should_show_content=True):
+    def active_select_handler(self, listbox, row, should_show_content=True, refresh=False):
         self.leftover_listbox.select_row(None)
-        self.list_page.set_snapshots(row.package.info["id"], row.package.info["name"])
+        self.list_page.set_snapshots(row.package.info["id"], row.package.info["name"], refresh)
         self.split_view.set_show_content(should_show_content)
 
-    def leftover_select_handler(self, listbox, row, should_show_content=True):
+    def leftover_select_handler(self, listbox, row, should_show_content=True, refresh=False):
         self.active_listbox.select_row(None)
-        self.list_page.set_snapshots(row.folder, row.name)
+        self.list_page.set_snapshots(row.folder, row.name, refresh)
         self.split_view.set_show_content(should_show_content)
 
     def start_loading(self):
@@ -142,10 +142,10 @@ class SnapshotPage(Adw.BreakpointBin):
     def select_first_row(self):
         if row := self.active_listbox.get_row_at_index(0):
             self.active_listbox.select_row(row)
-            self.active_select_handler(None, row, False)
+            self.active_select_handler(None, row, False, True)
         elif row := self.leftover_listbox.get_row_at_index(0):
             self.leftover_listbox.select_row(row)
-            self.leftover_select_handler(None, row, False)
+            self.leftover_select_handler(None, row, False, True)
 
     def end_loading(self):
         def callback(*args):
