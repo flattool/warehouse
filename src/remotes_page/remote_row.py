@@ -46,6 +46,7 @@ class RemoteRow(Adw.ActionRow):
                 
             self.remove_css_class("warning")
             self.set_icon_name("")
+            self.set_tooltip_text("")
             self.remote.disabled = False
             self.parent_page.toast_overlay.add_toast(Adw.Toast(title=_("Enabled remote")))
             self.menu_listbox.get_row_at_index(2).set_visible(False)
@@ -66,6 +67,7 @@ class RemoteRow(Adw.ActionRow):
         def callback(*args):
             self.add_css_class("warning")
             self.set_icon_name("error-symbolic")
+            self.set_tooltip_text(_("Remote is Disabled"))
             self.remote.disabled = True
             self.parent_page.toast_overlay.add_toast(Adw.Toast(title=_("Disabled remote")))
             self.menu_listbox.get_row_at_index(2).set_visible(True)
@@ -141,6 +143,7 @@ class RemoteRow(Adw.ActionRow):
         if self.remote.disabled:
             self.set_icon_name("error-symbolic")
             self.add_css_class("warning")
+            self.set_tooltip_text(_("Remote is Disabled"))
 
     def __init__(self, parent_page, installation, remote, **kwargs):
         super().__init__(**kwargs)
