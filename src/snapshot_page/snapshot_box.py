@@ -53,6 +53,8 @@ class SnapshotBox(Gtk.Box):
                 name = data['name']
                 if name != "":
                     self.title.set_label(GLib.markup_escape_text(name))
+                else:
+                    self.title.set_label(_("No Name Set"))
                 
         except Exception as e:
             self.toast_overlay.add_toast(ErrorToast(_("Could not write data"), str(e)).toast)

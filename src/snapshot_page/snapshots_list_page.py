@@ -3,6 +3,7 @@ from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .snapshot_box import SnapshotBox
 from .loading_status import LoadingStatus
+from .new_snapshot_dialog import NewSnapshotDialog
 import os
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/snapshots_list_page.ui")
@@ -14,6 +15,7 @@ class SnapshotsListPage(Adw.NavigationPage):
     listbox = gtc()
     toast_overlay = gtc()
     open_button = gtc()
+    new_button = gtc()
 
     def thread(self, *args):
         for snapshot in os.listdir(folder := f"{self.snapshots_path}{self.current_folder}/"):
@@ -28,12 +30,14 @@ class SnapshotsListPage(Adw.NavigationPage):
             self.listbox.append(row)
             self.listbox.get_row_at_index(i).set_activatable(False)
 
-    def set_snapshots(self, folder, title, refresh=False):
+    def set_snapshots(self, package, refresh=False):
+        folder = package.info["id"]
         if self.current_folder == folder and not refresh:
             return
 
+        self.current_package = package
         self.current_folder = folder
-        self.set_title(_("{} Snapshots").format(title))
+        self.set_title(_("{} Snapshots").format(package.info["name"]))
         self.snapshots_rows.clear()
         self.listbox.remove_all()
 
@@ -49,6 +53,9 @@ class SnapshotsListPage(Adw.NavigationPage):
             self.toast_overlay.add_toast(Adw.Toast.new(_("Opened snapshots folder")))
         except Exception as e:
             self.toast_overlay.add_toast(ErrorToast(_("Could not open folder"), str(e)).toast)
+            
+    def on_new(self, button):
+        NewSnapshotDialog(self.parent_page, self.current_package).present(HostInfo.main_window)
 
     def __init__(self, parent_page, **kwargs):
         super().__init__(**kwargs)
@@ -57,9 +64,11 @@ class SnapshotsListPage(Adw.NavigationPage):
         self.parent_page = parent_page
         self.snapshots_path = parent_page.snapshots_path
         self.current_folder = None
+        self.current_package = None
         self.snapshots_rows = []
 
         # Connections
         self.open_button.connect("clicked", self.open_snapshots_folder)
+        self.new_button.connect("clicked", self.on_new)
 
         # Apply

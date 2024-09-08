@@ -10,15 +10,15 @@ class NewSnapshotDialog(Adw.Dialog):
     __gtype_name__ = "NewSnapshotDialog"
     gtc = Gtk.Template.Child
     
-    nav_view = gtc()
-    
-    app_list_page = gtc()
+    nav_page = gtc()
     list_cancel_button = gtc()
-    next_button = gtc()
-    listbox = gtc()
-    
-    details_page = gtc()
+    search_button = gtc()
     create_button = gtc()
+    search_entry = gtc()
+    name_entry = gtc()
+    listbox = gtc()
+    select_all_button = gtc()
+    total_selected_label = gtc()
     
     def row_gesture_handler(self, row):
         row.check_button.set_active(not row.check_button.get_active())
@@ -28,11 +28,11 @@ class NewSnapshotDialog(Adw.Dialog):
             self.selected_rows.append(row)
         else:
             self.selected_rows.remove(row)
-            
-        if (total := len(self.selected_rows)) > 0:
-            self.app_list_page.set_title(_("{} Selected").format(total))
-        else:
-            self.app_list_page.set_title(_("Choose Applications"))
+        
+        self.valid_checker()
+        total = len(self.selected_rows)
+        self.total_selected_label.set_label(_("{} Selected").format(total))
+        self.total_selected_label.set_visible(total > 0)
     
     def generate_list(self, *args):
         for package in HostInfo.flatpaks:
@@ -43,12 +43,43 @@ class NewSnapshotDialog(Adw.Dialog):
             row.check_button.connect("toggled", lambda *_, row=row: self.row_select_handler(row))
             row.set_activatable(True)
             row.set_activatable_widget(row.check_button)
-            GLib.idle_add(lambda *_, row=row: self.listbox.append(row))
+            self.listbox.append(row)
     
     def sort_func(self, row1, row2):
-        return row1.get_title().lower() > row2.get_title().lower()
+        return row1.package.info["name"].lower() > row2.package.info["name"].lower()
+        
+    def filter_func(self, row):
+        title = row.get_title().lower()
+        subtitle = row.get_subtitle().lower()
+        search = self.search_entry.get_text().lower()
+        return search in title or search in subtitle
+        
+    def on_close(self, *args):
+        self.search_button.set_active(False)
+        if len(self.selected_rows) > 1:
+            while len(self.selected_rows) > 0:
+                self.selected_rows[0].check_button.set_active(False)
     
-    def __init__(self, **kwargs):
+    def valid_checker(self):
+        valid = len(self.selected_rows) > 0 and len(self.name_entry.get_text().strip()) > 0
+        self.create_button.set_sensitive(valid)
+        
+    def on_invalidate(self, search_entry):
+        self.listbox.invalidate_filter()
+        
+    def on_select_all(self, button):
+        i = 0
+        while row := self.listbox.get_row_at_index(i):
+            i += 1
+            row.check_button.set_active(True)
+            
+    def set_single(self, package):
+        row = AppRow(package)
+        row.set_activatable(False)
+        self.selected_rows.append(row)
+        self.listbox.append(row)
+    
+    def __init__(self, parent_page, package=None, **kwargs):
         super().__init__(**kwargs)
         
         # Extra Object Creations
@@ -56,9 +87,22 @@ class NewSnapshotDialog(Adw.Dialog):
         self.selected_rows = []
         
         # Connections
+        self.connect("closed", self.on_close)
+        self.search_entry.connect("search-changed", self.on_invalidate)
         self.list_cancel_button.connect("clicked", lambda *_: self.close())
-        self.next_button.connect("clicked", lambda *_: self.nav_view.push(self.details_page))
+        self.name_entry.connect("changed", lambda *_: self.valid_checker())
+        self.select_all_button.connect("clicked", self.on_select_all)
         
         # Apply
-        Gio.Task.new(None, None, None).run_in_thread(self.generate_list)
         self.listbox.set_sort_func(self.sort_func)
+        self.listbox.set_filter_func(self.filter_func)
+        if not package is None:
+            self.search_entry.set_editable(False)
+            self.search_button.set_visible(False)
+            self.nav_page.set_title(_("New Snapshot"))
+            self.name_entry.set_title(_("Name this Snapshot"))
+            self.set_single(package)
+        else:
+            self.nav_page.set_title(_("New Snapshots"))
+            self.name_entry.set_title(_("Name these Snapshot"))
+            self.generate_list()

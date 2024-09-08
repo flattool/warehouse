@@ -125,20 +125,13 @@ class SnapshotPage(Adw.BreakpointBin):
 
     def active_select_handler(self, listbox, row, should_show_content=True, refresh=False):
         self.leftover_listbox.select_row(None)
-        self.list_page.set_snapshots(row.package.info["id"], row.package.info["name"], refresh)
+        self.list_page.set_snapshots(row.package, refresh)
         self.split_view.set_show_content(should_show_content)
 
     def leftover_select_handler(self, listbox, row, should_show_content=True, refresh=False):
         self.active_listbox.select_row(None)
-        self.list_page.set_snapshots(row.folder, row.name, refresh)
+        self.list_page.set_snapshots(row.package, refresh)
         self.split_view.set_show_content(should_show_content)
-
-    def start_loading(self):
-        self.active_box.set_visible(True)
-        self.active_listbox.remove_all()
-        self.leftover_box.set_visible(True)
-        self.leftover_listbox.remove_all()
-        self.status_stack.set_visible_child(self.loading_view)
 
     def select_first_row(self):
         if row := self.active_listbox.get_row_at_index(0):
@@ -148,8 +141,16 @@ class SnapshotPage(Adw.BreakpointBin):
             self.leftover_listbox.select_row(row)
             self.leftover_select_handler(None, row, False, True)
 
+    def start_loading(self):
+        self.active_box.set_visible(True)
+        self.active_listbox.remove_all()
+        self.leftover_box.set_visible(True)
+        self.leftover_listbox.remove_all()
+        self.status_stack.set_visible_child(self.loading_view)
+
     def end_loading(self):
         def callback(*args):
+            self.new_snapshot_dialog = NewSnapshotDialog(self)
             self.generate_active_list()
             self.generate_leftover_list()
             if (not self.active_box.get_visible()) and (not self.leftover_box.get_visible()):
@@ -185,7 +186,7 @@ class SnapshotPage(Adw.BreakpointBin):
         self.leftover_listbox.connect("row-activated", self.leftover_select_handler)
         self.open_button.connect("clicked", self.open_snapshots_folder, self.toast_overlay)
         self.status_open_button.connect("clicked", self.open_snapshots_folder, self.no_snapshots_toast)
-        self.new_button.connect("clicked", lambda *_: NewSnapshotDialog().present(HostInfo.main_window))
+        self.new_button.connect("clicked", lambda *_: self.new_snapshot_dialog.present(HostInfo.main_window))
 
         # Apply
         self.loading_view.set_content(LoadingStatus(_("Loading Snapshots"), _("This should only take a moment")))
