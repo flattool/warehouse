@@ -64,6 +64,14 @@
     </screenshot>
   </screenshots>
   <releases>
+      <release version="1.6.5" date="2024-9-18" timestamp="1720282600">
+      <description translate="no">
+        <p>New Features and Changes</p>
+        <ul>
+          <li>Bump GNOME runtime version to 47</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.6.4" date="2024-7-6" timestamp="1720282600">
       <description translate="no">
         <p>Bux Fixes</p>
