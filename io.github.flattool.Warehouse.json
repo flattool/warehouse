@@ -1,10 +1,10 @@
 {
-    "id" : "io.github.flattool.Warehouse",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "46",
-    "sdk" : "org.gnome.Sdk",
-    "command" : "warehouse",
-    "finish-args" : [
+    "id": "io.github.flattool.Warehouse",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "47",
+    "sdk": "org.gnome.Sdk",
+    "command": "warehouse",
+    "finish-args": [
         "--share=ipc",
         "--socket=fallback-x11",
         "--device=dri",
@@ -14,7 +14,7 @@
         "--filesystem=~/.local/share/flatpak/:ro",
         "--filesystem=~/.var/app/"
     ],
-    "cleanup" : [
+    "cleanup": [
         "/include",
         "/lib/pkgconfig",
         "/man",
@@ -25,30 +25,28 @@
         "*.la",
         "*.a"
     ],
-    "modules" : [
+    "modules": [
         {
-            "name" : "blueprint-compiler",
-            "buildsystem" : "meson",
-            "sources" : [
+            "name": "blueprint-compiler",
+            "buildsystem": "meson",
+            "sources": [
                 {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "tag" : "v0.10.0"
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
+                    "tag": "v0.10.0"
                 }
             ],
-            "cleanup" : [
-                "*"
-            ]
+            "cleanup": ["*"]
         },
         {
-            "name" : "warehouse",
-            "builddir" : true,
-            "buildsystem" : "meson",
-            "config-opts": [ "-Dprofile=default" ],
-            "sources" : [
+            "name": "warehouse",
+            "builddir": true,
+            "buildsystem": "meson",
+            "config-opts": ["-Dprofile=default"],
+            "sources": [
                 {
-                    "type" : "dir",
-                    "path" : "."
+                    "type": "dir",
+                    "path": "."
                 }
             ]
         }
