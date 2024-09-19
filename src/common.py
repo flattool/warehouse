@@ -167,27 +167,31 @@ class myUtils:
 
     def get_host_flatpaks(self):
         output = subprocess.run(
-            ["flatpak-spawn", "--host", "flatpak", "list", "--columns=all"],
+            ["flatpak-spawn", "--host", "flatpak", "list",
+            "--columns=name,application,version,branch,arch,origin,installation,ref,active,latest,size,options,runtime"],
             capture_output=True,
             text=True,
             env=self.new_env,
         ).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
-        data = [columns]
-        for line in lines[1:]:
+        data = []
+        for line in lines:
             row = line.split("\t")
+            row.insert(1, " ")
+            if len(row) < 14:
+                row.append("")
             data.append(row)
-
-        output = subprocess.run(
-            ["flatpak-spawn", "--host", "flatpak", "list", "--columns=runtime"],
-            capture_output=True,
-            text=True,
-            env=self.new_env,
-        ).stdout
-        lines = output.split("\n")
-        for i in range(len(data)):
-            data[i].append(lines[i])
+            
+        # output = subprocess.run(
+        #     ["flatpak-spawn", "--host", "flatpak", "list", "--columns=runtime"],
+        #     capture_output=True,
+        #     text=True,
+        #     env=self.new_env,
+        # ).stdout
+        # lines = output.split("\n")
+        # for i in range(len(data)):
+        #     data[i].append(lines[i])
         sorted_array = sorted(data, key=lambda item: item[0].lower())
         return sorted_array
 
