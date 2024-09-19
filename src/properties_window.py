@@ -97,7 +97,7 @@ class PropertiesWindow(Adw.Dialog):
         try:
             self.description.set_label((name_desc[1]))
         except:
-            pass
+            self.description.set_visible(False)
         for key in info.keys():
             if key == "name":
                 continue

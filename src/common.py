@@ -206,14 +206,18 @@ class myUtils:
         ).stdout
         lines = output.strip().split("\n")
         columns = lines[0].split("\t")
-        data = [columns]
-        for line in lines[1:]:
+        data = []
+        for line in lines:
             row = line.split(": ", 1)
             for i in range(len(row)):
                 row[i] = row[i].strip()
             data.append(row)
         info = {}
-        info["name"] = data[0][0]
+        maybe_name = data[0][0]
+        if not "ID" in maybe_name:
+            info["name"] = data[0][0]
+        else:
+            info["name"] = ref.split("/")[0].split(".")[-1]
         for i in range(2, len(data)):
             if data[i][0] == '':
                 continue
