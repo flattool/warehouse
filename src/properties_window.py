@@ -93,11 +93,16 @@ class PropertiesWindow(Adw.Dialog):
     def generate_lower(self):
         info = self.my_utils.get_flatpak_info(self.app_ref, self.install_type)
         name_desc = info["name"].split(" - ")
-        self.name.set_label((name_desc[0]))
+        if len(name_desc[0]) > 0:
+            self.name.set_label((name_desc[0]))
+        else:
+            self.name.set_visible(False)
+            
         try:
             self.description.set_label((name_desc[1]))
         except:
             self.description.set_visible(False)
+            
         for key in info.keys():
             if key == "name":
                 continue
