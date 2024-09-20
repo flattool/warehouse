@@ -203,6 +203,7 @@ class WarehouseApplication(Adw.Application):
                 "Óscar Fernández Díaz",
                 "Runar https://github.com/runarcn",
                 "skøldis <warehouse@turtle.garden>",
+                "Maxim Therrien <maxim@mtsd.ca>",
             ],
         )
         about.present(self.props.active_window)
