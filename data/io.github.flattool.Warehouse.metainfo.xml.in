@@ -8,8 +8,8 @@
 	<project_license>GPL-3.0-only</project_license>
 	<summary>Manage all things Flatpak</summary>
 	<description>
-	  <p>Warehouse is an app that manages installed Flatpaks, their user data, and Flatpak remotes.</p>
-	  <p>Features:</p>
+    <p>Warehouse is an app that manages installed Flatpaks, their user data, and Flatpak remotes.</p>
+    <p>Features:</p>
       <ul>
         <li>Show and filter the list of installed Flatpaks</li>
         <li>Display properties of installed Flatpaks</li>
@@ -64,11 +64,16 @@
     </screenshot>
   </screenshots>
   <releases>
-      <release version="1.6.5" date="2024-9-18" timestamp="1720282600">
+    <release version="1.6.5" date="2024-9-18" timestamp="1726790850">
       <description translate="no">
         <p>New Features and Changes</p>
         <ul>
           <li>Bump GNOME runtime version to 47</li>
+        </ul>
+        <p>Bug Fixes</p>
+        <ul>
+          <li>Fix issue causing crash on startup due to Flatpaks with multi-line descriptions</li>
+          <li>Fix Properties Window's layout when a long package name is shown</li>
         </ul>
       </description>
     </release>
