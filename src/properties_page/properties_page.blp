@@ -7,10 +7,21 @@ template $PropertiesPage : Adw.NavigationPage {
         width-request: 1;
         height-request: 1;
         Adw.Breakpoint {
-            condition ("max-width: 450")
+            condition ("min-width: 450")
             
             setters {
-                header_box.orientation: vertical;
+                header_box.orientation: horizontal;
+                header_box.hexpand: true;
+                header_box.halign: center;
+                label_box.margin-start: 16;
+                name.justify: left;
+                name.natural-wrap-mode: none;
+                name.hexpand: true;
+                name.halign: start;
+                description.justify: left;
+                description.natural-wrap-mode: none;
+                description.hexpand: true;
+                description.halign: start;
             }
         }
         Stack stack {
@@ -55,6 +66,7 @@ template $PropertiesPage : Adw.NavigationPage {
                                         halign: fill;
 
                                         Box header_box {
+                                            orientation: vertical;
                                             Image app_icon {
                                                 pixel-size: 100;
                                                 margin-top: 6;
@@ -63,8 +75,9 @@ template $PropertiesPage : Adw.NavigationPage {
                                                 styles["icon-dropshadow"]
                                             }
 
-                                            Box {
+                                            Box label_box {
                                                 orientation: vertical;
+                                                valign: center;
                                                 Label name {
                                                     styles ["title-1"]
                                                     wrap: true;
