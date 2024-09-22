@@ -12,6 +12,7 @@ class InstallPage(Adw.BreakpointBin):
 
     break_point = gtc()
     split_view = gtc()
+    multi_view = gtc()
     select_page = gtc()
     pending_page = gtc()
     status_stack = gtc()
@@ -32,7 +33,7 @@ class InstallPage(Adw.BreakpointBin):
     
     def end_loading(self):
         self.select_page.end_loading()
-        self.status_stack.set_visible_child(self.split_view)
+        self.status_stack.set_visible_child(self.multi_view)
 
     def breakpoint_handler(self, bp, is_applied):
         self.select_page.results_page.action_bar.set_revealed(is_applied)
