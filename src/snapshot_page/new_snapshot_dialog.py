@@ -56,9 +56,8 @@ class NewSnapshotDialog(Adw.Dialog):
         
     def on_close(self, *args):
         self.search_button.set_active(False)
-        if len(self.selected_rows) > 1:
-            while len(self.selected_rows) > 0:
-                self.selected_rows[0].check_button.set_active(False)
+        for row in self.selected_rows.copy():
+            row.check_button.set_active(False)
     
     def valid_checker(self):
         valid = len(self.selected_rows) > 0 and len(self.name_entry.get_text().strip()) > 0
@@ -78,6 +77,10 @@ class NewSnapshotDialog(Adw.Dialog):
         row.set_activatable(False)
         self.selected_rows.append(row)
         self.listbox.append(row)
+        
+    def present(self, *args, **kwargs):
+        super().present(*args, **kwargs)
+        self.name_entry.grab_focus()
     
     def __init__(self, parent_page, package=None, **kwargs):
         super().__init__(**kwargs)
@@ -104,5 +107,5 @@ class NewSnapshotDialog(Adw.Dialog):
             self.set_single(package)
         else:
             self.nav_page.set_title(_("New Snapshots"))
-            self.name_entry.set_title(_("Name these Snapshot"))
+            self.name_entry.set_title(_("Name these Snapshots"))
             self.generate_list()
