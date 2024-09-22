@@ -35,9 +35,6 @@ class InstallPage(Adw.BreakpointBin):
         self.select_page.end_loading()
         self.status_stack.set_visible_child(self.multi_view)
 
-    def breakpoint_handler(self, bp, is_applied):
-        self.select_page.results_page.action_bar.set_revealed(is_applied)
-
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
         self.instance = self
@@ -47,9 +44,6 @@ class InstallPage(Adw.BreakpointBin):
         # ======== self.pending_page = PendingPage()
 
         # Connections
-        self.break_point.connect("apply", self.breakpoint_handler, True)
-        self.break_point.connect("unapply", self.breakpoint_handler, False)
-        self.select_page.results_page.review_button.connect("clicked", lambda *_: self.split_view.set_show_content(True))
 
         # Apply
         # ======== self.split_view.set_sidebar(self.select_page)

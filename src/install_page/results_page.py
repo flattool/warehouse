@@ -36,8 +36,6 @@ class ResultsPage(Adw.NavigationPage):
     __gtype_name__ = "ResultsPage"
     gtc = Gtk.Template.Child
 
-    action_bar = gtc()
-    review_button = gtc()
     search_entry = gtc()
     search_apply_button = gtc()
     results_list = gtc()

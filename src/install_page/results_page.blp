@@ -65,18 +65,5 @@ template $ResultsPage : Adw.NavigationPage {
                 description: _("Try a different search term");
             }
         }
-        [bottom]
-        ActionBar action_bar {
-            [center]
-            Button review_button {
-                margin-top: 3;
-                margin-bottom: 3;
-                styles ["pill", "suggested-action"]
-                Adw.ButtonContent {
-                    icon-name: "view-list-bullet-symbolic";
-                    label: _("Review and Install");
-                }
-            }
-        }
     }
 }
