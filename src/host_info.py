@@ -129,14 +129,29 @@ class Flatpak:
             cmd += f"--installation={installation} "
 
         cmd += self.info["ref"]
-
         try:
-            output = subprocess.run(['flatpak-spawn', '--host', 'sh', '-c', cmd], text=True, capture_output=True).stdout
+            output = subprocess.run(
+                ['flatpak-spawn', '--host', 'sh', '-c', cmd],
+                text=True, capture_output=True
+            ).stdout
         except Exception as e:
             raise e
 
         lines = output.strip().split("\n")
+        cli_info["description"] = ""
+        first = lines.pop(0)
+        if " - " in first:
+            cli_info["description"] = first.split(" - ")[1]
+            
+        # Handle descriptions that contain newlines
+        while (line := lines.pop(0)) and not ":" in line:
+            if len(line) > 0:
+                cli_info["description"] += f" {line}"
+        
         for i, word in enumerate(lines):
+            if not ":" in word:
+                continue
+            
             word = word.strip().split(": ", 1)
             if len(word) < 2:
                 continue
@@ -150,23 +165,23 @@ class Flatpak:
         return cli_info
 
     def __init__(self, columns):
-        self.is_runtime = "runtime" in columns[12]
         self.info = {
             "name":           columns[0],
-            "description":    columns[1],
-            "id":             columns[2],
-            "version":        columns[3],
-            "branch":         columns[4],
-            "arch":           columns[5],
-            "origin":         columns[6],
-            "ref":            columns[8],
-            "installed_size": columns[11],
-            "options":        columns[12],
+            "id":             columns[1],
+            "version":        columns[2],
+            "branch":         columns[3],
+            "arch":           columns[4],
+            "origin":         columns[5],
+            "installation":   columns[6],
+            "ref":            columns[7],
+            "installed_size": columns[8],
+            "options":        columns[9],
         }
-        self.data_path = f"{home}/.var/app/{columns[2]}"
+        self.is_runtime = "runtime" in self.info["options"]
+        self.data_path = f"{home}/.var/app/{self.info["id"]}"
         self.data_size = -1
         self.cli_info = None
-        installation = columns[7]
+        installation = self.info["installation"]
         if len(i := installation.split(' ')) > 1:
             self.info["installation"] = i[1].replace("(", "").replace(")", "")
         else:
@@ -319,8 +334,8 @@ class HostInfo:
 
                 # Packages
                 output = subprocess.run(
-                    ['flatpak-spawn', '--host',
-                    'flatpak', 'list', '--columns=all'],
+                    ['flatpak-spawn', '--host', 'flatpak', 'list',
+                    '--columns=name,application,version,branch,arch,origin,installation,ref,size,options'],
                     text=True, check=True,
                     capture_output=True,
                 ).stdout

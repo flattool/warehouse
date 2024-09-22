@@ -77,10 +77,6 @@ class PropertiesPage(Adw.NavigationPage):
             self.name.set_visible(False)
             self.inner_nav_page.set_title(_("Properties"))
 
-        pkg_description = package.info["description"]
-        self.description.set_visible(pkg_description != "")
-        self.description.set_label(pkg_description)
-
         if package.icon_path:
             GLib.idle_add(lambda *_: self.app_icon.set_from_file(package.icon_path))
         else:
@@ -123,6 +119,9 @@ class PropertiesPage(Adw.NavigationPage):
         cli_info = None
         try:
             cli_info = package.get_cli_info()
+            pkg_description = package.cli_info["description"]
+            self.description.set_visible(pkg_description != "")
+            self.description.set_label(pkg_description)
         except Exception as e:
             self.toast_overlay.add_toast(ErrorToast(_("Could not get properties"), str(e)).toast)
             return
