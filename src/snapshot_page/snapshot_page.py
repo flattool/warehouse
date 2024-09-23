@@ -151,7 +151,6 @@ class SnapshotPage(Adw.BreakpointBin):
     def end_loading(self):
         def callback(*args):
             self.new_snapshot_dialog = NewSnapshotDialog(self, self.snapshotting_status, self.refresh)
-            self.new_snapshot_dialog.create_button.connect("clicked", lambda *_: self.status_stack.set_visible_child(self.snapshotting_view))
             self.generate_active_list()
             self.generate_leftover_list()
             if (not self.active_box.get_visible()) and (not self.leftover_box.get_visible()):

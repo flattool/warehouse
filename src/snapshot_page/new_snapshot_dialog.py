@@ -97,6 +97,7 @@ class NewSnapshotDialog(Adw.Dialog):
         return True
         
     def on_create(self, button):
+        self.snapshot_page.status_stack.set_visible_child(self.snapshot_page.snapshotting_view)
         self.workers.clear()
         for row in self.selected_rows:
             if "io.github.flattool.Warehouse" in row.package.info["id"]:
@@ -138,10 +139,11 @@ class NewSnapshotDialog(Adw.Dialog):
         if self.create_button.get_sensitive():
             self.create_button.activate()
     
-    def __init__(self, parent_page, loading_status, on_done=None, package=None, **kwargs):
+    def __init__(self, snapshot_page, loading_status, on_done=None, package=None, **kwargs):
         super().__init__(**kwargs)
         
         # Extra Object Creations
+        self.snapshot_page = snapshot_page
         self.loading_status = loading_status
         self.on_done = on_done
         self.rows = []
