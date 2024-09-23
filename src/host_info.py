@@ -229,6 +229,7 @@ class HostInfo:
     home = home
     clipboard = Gdk.Display.get_default().get_clipboard()
     main_window = None
+    snapshots_path = f"{home}/.var/app/io.github.flattool.Warehouse/data/Snapshots/"
 
     # Get all possible installation icon theme dirs
     output = subprocess.run(

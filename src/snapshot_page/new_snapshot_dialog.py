@@ -3,7 +3,8 @@ from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .loading_status import LoadingStatus
 from .app_row import AppRow
-import subprocess, os
+from .tar_worker import TarWorker
+import subprocess, os, time
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/new_snapshot_dialog.ui")
 class NewSnapshotDialog(Adw.Dialog):
@@ -29,10 +30,10 @@ class NewSnapshotDialog(Adw.Dialog):
         else:
             self.selected_rows.remove(row)
         
-        self.valid_checker()
         total = len(self.selected_rows)
         self.total_selected_label.set_label(_("{} Selected").format(total))
         self.total_selected_label.set_visible(total > 0)
+        self.valid_checker()
     
     def generate_list(self, *args):
         for package in HostInfo.flatpaks:
@@ -63,6 +64,33 @@ class NewSnapshotDialog(Adw.Dialog):
         valid = len(self.selected_rows) > 0 and len(self.name_entry.get_text().strip()) > 0
         self.create_button.set_sensitive(valid)
         
+    def get_total_fraction(self):
+        total = 0
+        stopped_workers_amount = 0
+        for worker in self.workers:
+            total += worker.fraction
+            if worker.stop:
+                stopped_workers_amount += 1
+            
+            if stopped_workers_amount == len(self.workers):
+                return False
+            
+        print(f"{total / len(self.workers):.2f}")
+        return True
+        
+    def on_create(self, button):
+        self.workers.clear()
+        for row in self.selected_rows:
+            package = row.package
+            worker = TarWorker(
+                existing_path=package.data_path,
+                new_path=f"{HostInfo.snapshots_path}{package.info['id']}",
+                file_name=f"{int(time.time())}_{package.info["version"]}",
+                name=self.name_entry.get_text(),
+            )
+            self.workers.append(worker)
+            worker.compress()
+        
     def on_invalidate(self, search_entry):
         self.listbox.invalidate_filter()
         
@@ -88,9 +116,11 @@ class NewSnapshotDialog(Adw.Dialog):
         # Extra Object Creations
         self.rows = []
         self.selected_rows = []
+        self.workers = []
         
         # Connections
         self.connect("closed", self.on_close)
+        self.create_button.connect("clicked", self.on_create)
         self.search_entry.connect("search-changed", self.on_invalidate)
         self.list_cancel_button.connect("clicked", lambda *_: self.close())
         self.name_entry.connect("changed", lambda *_: self.valid_checker())

@@ -62,7 +62,7 @@ class SnapshotsListPage(Adw.NavigationPage):
 
         # Extra Object Creation
         self.parent_page = parent_page
-        self.snapshots_path = parent_page.snapshots_path
+        self.snapshots_path = HostInfo.snapshots_path
         self.current_folder = None
         self.current_package = None
         self.snapshots_rows = []

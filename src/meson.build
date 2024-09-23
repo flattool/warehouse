@@ -86,6 +86,7 @@ warehouse_sources = [
   'remotes_page/remotes_page.py',
   'remotes_page/remote_row.py',
   'remotes_page/add_remote_dialog.py',
+  'snapshot_page/tar_worker.py',
   'snapshot_page/snapshot_page.py',
   'snapshot_page/snapshots_list_page.py',
   'snapshot_page/snapshot_box.py',

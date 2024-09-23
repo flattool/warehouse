@@ -55,28 +55,26 @@ class SnapshotPage(Adw.BreakpointBin):
     #    This must be set to the created object from within the class's __init__ method
     instance = None
     page_name = "snapshots"
-    
-    snapshots_path = f"{HostInfo.home}/.var/app/io.github.flattool.Warehouse/data/Snapshots/"
 
     def sort_snapshots(self, *args):
         self.active_snapshot_paks.clear()
         self.leftover_snapshots.clear()
         bad_folders = []
 
-        if not os.path.exists(self.snapshots_path):
+        if not os.path.exists(HostInfo.snapshots_path):
             try:
-                os.makedirs(self.snapshots_path)
+                os.makedirs(HostInfo.snapshots_path)
             except Exception as e:
                 self.toast_overlay.add_toast(ErrorToast(_("Could not load Snapshots"), str(e)).toast)
                 return
         
-        for folder in os.listdir(self.snapshots_path):
+        for folder in os.listdir(HostInfo.snapshots_path):
             if folder.count('.') < 2 or ' ' in folder:
                 bad_folders.append(folder)
                 continue
             
             has_tar = False
-            for file in os.listdir(f"{self.snapshots_path}{folder}"):
+            for file in os.listdir(f"{HostInfo.snapshots_path}{folder}"):
                 if file.endswith(".tar.zst"):
                     has_tar = True
                     break
@@ -93,7 +91,7 @@ class SnapshotPage(Adw.BreakpointBin):
 
         for folder in bad_folders:
             try:
-                subprocess.run(['gio', 'trash', f'{self.snapshots_path}{folder}'])
+                subprocess.run(['gio', 'trash', f'{HostInfo.snapshots_path}{folder}'])
             except Exception:
                 pass
 
@@ -164,7 +162,7 @@ class SnapshotPage(Adw.BreakpointBin):
 
     def open_snapshots_folder(self, button, overlay):
         try:
-            Gio.AppInfo.launch_default_for_uri(f"file://{self.snapshots_path}", None)
+            Gio.AppInfo.launch_default_for_uri(f"file://{HostInfo.snapshots_path}", None)
             overlay.add_toast(Adw.Toast.new(_("Opened snapshots folder")))
         except Exception as e:
             overlay.add_toast(ErrorToast(_("Could not open folder"), str(e)).toast)
