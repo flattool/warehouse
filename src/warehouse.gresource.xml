@@ -77,5 +77,6 @@
     <file preprocess="xml-stripblanks" alias="minus-large-symbolic.svg">../data/icons/minus-large-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="view-list-bullet-symbolic.svg">../data/icons/view-list-bullet-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="list-remove-all-symbolic.svg">../data/icons/list-remove-all-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="edit-symbolic.svg">../data/icons/edit-symbolic.svg</file>
   </gresource>
 </gresources>
