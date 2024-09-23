@@ -64,7 +64,12 @@ class RemoteRow(Adw.ActionRow):
         Gio.Task.new(None, None, callback).run_in_thread(thread)
 
     def disable_remote_handler(self, *args):
+        error = [None]
+
         def callback(*args):
+            if error[0]:
+                return
+
             self.add_css_class("warning")
             self.set_icon_name("error-symbolic")
             self.set_tooltip_text(_("Remote is Disabled"))
@@ -100,9 +105,11 @@ class RemoteRow(Adw.ActionRow):
                 subprocess.run(cmd, check=True, capture_output=True, text=True)
             except subprocess.CalledProcessError as cpe:
                 GLib.idle_add(lambda *args, cpe=cpe: self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not disable remote"), str(cpe.stderr)).toast))
+                error[0] = cpe
                 return
             except Exception as e:
                 GLib.idle_add(lambda *args, e=e: self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not disable remote"), str(e)).toast))
+                error[0] = e
                 return
 
         def on_response(_, response):
