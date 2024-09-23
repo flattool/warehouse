@@ -79,7 +79,6 @@ class NewSnapshotDialog(Adw.Dialog):
             if stopped_workers_amount == len(self.workers):
                 self.loading_status.progress_bar.set_fraction(1)
                 self.loading_status.progress_label.set_label(f"{len(self.workers)} / {len(self.workers)}")
-                print("1.00")
                 if self.on_done:
                     self.on_done()
                     
@@ -87,7 +86,6 @@ class NewSnapshotDialog(Adw.Dialog):
                 
             self.loading_status.progress_label.set_label(f"{stopped_workers_amount} / {len(self.workers)}")
             
-        print(total / len(self.workers))
         self.loading_status.progress_bar.set_fraction(total / len(self.workers))
         return True
         

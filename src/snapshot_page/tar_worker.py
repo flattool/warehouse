@@ -20,7 +20,7 @@ class TarWorker:
                 os.makedirs(self.new_path)
                 
             self.total = int(subprocess.run(['du', '-s', self.existing_path], check=True, text=True, capture_output=True).stdout.split('\t')[0])
-            self.total /= 2.5 # estimate for space savings
+            self.total /= 2.2 # estimate for space savings
             subprocess.run(['tar', 'cafv', f'{self.new_path}/{self.file_name}.tar.zst', '-C', self.existing_path, '.'], check=True, capture_output=True)
             
             with open(f"{self.new_path}/{self.file_name}.json", 'w') as file:

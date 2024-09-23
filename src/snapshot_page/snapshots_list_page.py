@@ -10,13 +10,13 @@ import os
 class SnapshotsListPage(Adw.NavigationPage):
     __gtype_name__ = "SnapshotsListPage"
     gtc = Gtk.Template.Child
-
+    
     toolbar_view = gtc()
     listbox = gtc()
     toast_overlay = gtc()
     open_button = gtc()
     new_button = gtc()
-
+    
     def thread(self, *args):
         for snapshot in os.listdir(folder := f"{self.snapshots_path}{self.current_folder}/"):
             if snapshot.endswith(".json"):
@@ -24,51 +24,57 @@ class SnapshotsListPage(Adw.NavigationPage):
             
             row = SnapshotBox(self, snapshot, folder, self.toast_overlay)
             self.snapshots_rows.append(row)
-
+            
     def callback(self, *args):
         for i, row in enumerate(self.snapshots_rows):
             self.listbox.append(row)
             self.listbox.get_row_at_index(i).set_activatable(False)
-
+            
     def set_snapshots(self, package, refresh=False):
         folder = package.info["id"]
         if self.current_folder == folder and not refresh:
             return
-
+            
         self.current_package = package
         self.current_folder = folder
         self.set_title(_("{} Snapshots").format(package.info["name"]))
         self.snapshots_rows.clear()
         self.listbox.remove_all()
-
+        
         Gio.Task.new(None, None, self.callback).run_in_thread(self.thread)
-
+        
     def open_snapshots_folder(self, button):
         path = f"{self.snapshots_path}{self.current_folder}/"
         try:
             if not os.path.exists(path):
                 raise Exception(f"error: File '{path}' does not exist")
-
+                
             Gio.AppInfo.launch_default_for_uri(f"file://{path}", None)
             self.toast_overlay.add_toast(Adw.Toast.new(_("Opened snapshots folder")))
         except Exception as e:
             self.toast_overlay.add_toast(ErrorToast(_("Could not open folder"), str(e)).toast)
             
+    def on_done(self):
+        self.parent_page.status_stack.set_visible_child(self.parent_page.split_view)
+        self.set_snapshots(self.current_package, refresh=True)
+            
     def on_new(self, button):
-        NewSnapshotDialog(self.parent_page, self.current_package).present(HostInfo.main_window)
-
+        dialog = NewSnapshotDialog(self.parent_page, self.parent_page.snapshotting_status, self.on_done, self.current_package)
+        dialog.create_button.connect("clicked", lambda *_: self.parent_page.status_stack.set_visible_child(self.parent_page.snapshotting_view))
+        dialog.present(HostInfo.main_window)
+        
     def __init__(self, parent_page, **kwargs):
         super().__init__(**kwargs)
-
+        
         # Extra Object Creation
         self.parent_page = parent_page
         self.snapshots_path = HostInfo.snapshots_path
         self.current_folder = None
         self.current_package = None
         self.snapshots_rows = []
-
+        
         # Connections
         self.open_button.connect("clicked", self.open_snapshots_folder)
         self.new_button.connect("clicked", self.on_new)
-
+        
         # Apply
