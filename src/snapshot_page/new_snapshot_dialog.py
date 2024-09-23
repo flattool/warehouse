@@ -68,6 +68,12 @@ class NewSnapshotDialog(Adw.Dialog):
         text = self.name_entry.get_text().strip()
         valid = len(self.selected_rows) > 0 and len(text) > 0 and not("/" in text or "\0" in text)
         self.create_button.set_sensitive(valid)
+        if valid:
+            self.name_entry.remove_css_class("error")
+        else:
+            self.name_entry.add_css_class("error")
+            
+        return valid
         
     def get_total_fraction(self):
         total = 0
@@ -128,6 +134,10 @@ class NewSnapshotDialog(Adw.Dialog):
         super().present(*args, **kwargs)
         self.name_entry.grab_focus()
     
+    def enter_handler(self, *args):
+        if self.create_button.get_sensitive():
+            self.create_button.activate()
+    
     def __init__(self, parent_page, loading_status, on_done=None, package=None, **kwargs):
         super().__init__(**kwargs)
         
@@ -144,6 +154,7 @@ class NewSnapshotDialog(Adw.Dialog):
         self.search_entry.connect("search-changed", self.on_invalidate)
         self.list_cancel_button.connect("clicked", lambda *_: self.close())
         self.name_entry.connect("changed", lambda *_: self.valid_checker())
+        self.name_entry.connect("entry-activated", self.enter_handler)
         self.select_all_button.connect("clicked", self.on_select_all)
         
         # Apply

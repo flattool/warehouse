@@ -71,6 +71,11 @@ class SnapshotBox(Gtk.Box):
         text = self.rename_entry.get_text().strip()
         valid = not ("/" in text or "\0" in text) and len(text) > 0
         self.apply_rename.set_sensitive(valid)
+        if valid:
+            self.rename_entry.remove_css_class("error")
+        else:
+            self.rename_entry.add_css_class("error")
+            
         return valid
 
     def on_trash(self, button):
