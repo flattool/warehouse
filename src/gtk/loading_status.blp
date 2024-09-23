@@ -28,6 +28,26 @@ template $LoadingStatus : ScrolledWindow {
             justify: center;
             styles ["description", "body"]
         }
+        Adw.Clamp progress_clamp {
+            margin-start:  24;
+            margin-end:    24;
+            margin-top:    12;
+            margin-bottom: 12;
+            maximum-size: 400;
+            Box {
+                halign: fill;
+                hexpand: true;
+                spacing: 12;
+                ProgressBar progress_bar {
+                    halign: fill;
+                    hexpand: true;
+                    valign: center;
+                }
+                Label progress_label {
+                    valign: center;
+                }
+            }
+        }
         Button button {
             label: "No Label Set";
             styles ["pill"]

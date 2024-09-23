@@ -37,8 +37,12 @@ class NewSnapshotDialog(Adw.Dialog):
     
     def generate_list(self, *args):
         for package in HostInfo.flatpaks:
+            if "io.github.flattool.Warehouse" in package.info["id"]:
+                continue
+            
             if package.is_runtime or not os.path.exists(package.data_path):
                 continue
+            
             row = AppRow(package, self.row_gesture_handler)
             row.check_button.set_visible(True)
             row.check_button.connect("toggled", lambda *_, row=row: self.row_select_handler(row))
@@ -58,7 +62,7 @@ class NewSnapshotDialog(Adw.Dialog):
     def on_close(self, *args):
         self.search_button.set_active(False)
         for row in self.selected_rows.copy():
-            row.check_button.set_active(False)
+            GLib.idle_add(lambda *_, row=row: row.check_button.set_active(False))
     
     def valid_checker(self):
         valid = len(self.selected_rows) > 0 and len(self.name_entry.get_text().strip()) > 0
@@ -71,17 +75,28 @@ class NewSnapshotDialog(Adw.Dialog):
             total += worker.fraction
             if worker.stop:
                 stopped_workers_amount += 1
-            
+                
             if stopped_workers_amount == len(self.workers):
+                self.loading_status.progress_bar.set_fraction(1)
+                self.loading_status.progress_label.set_label(f"{len(self.workers)} / {len(self.workers)}")
                 print("1.00")
+                if self.on_done:
+                    self.on_done()
+                    
                 return False
+                
+            self.loading_status.progress_label.set_label(f"{stopped_workers_amount} / {len(self.workers)}")
             
-        print(f"{total / len(self.workers):.2f}")
+        print(total / len(self.workers))
+        self.loading_status.progress_bar.set_fraction(total / len(self.workers))
         return True
         
     def on_create(self, button):
         self.workers.clear()
         for row in self.selected_rows:
+            if "io.github.flattool.Warehouse" in row.package.info["id"]:
+                continue
+                
             package = row.package
             worker = TarWorker(
                 existing_path=package.data_path,
@@ -91,7 +106,9 @@ class NewSnapshotDialog(Adw.Dialog):
             )
             self.workers.append(worker)
             worker.compress()
+            
         GLib.timeout_add(10, self.get_total_fraction)
+        self.close()
         
     def on_invalidate(self, search_entry):
         self.listbox.invalidate_filter()
@@ -112,10 +129,12 @@ class NewSnapshotDialog(Adw.Dialog):
         super().present(*args, **kwargs)
         self.name_entry.grab_focus()
     
-    def __init__(self, parent_page, package=None, **kwargs):
+    def __init__(self, parent_page, loading_status, on_done=None, package=None, **kwargs):
         super().__init__(**kwargs)
         
         # Extra Object Creations
+        self.loading_status = loading_status
+        self.on_done = on_done
         self.rows = []
         self.selected_rows = []
         self.workers = []

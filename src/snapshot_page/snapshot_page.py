@@ -50,6 +50,7 @@ class SnapshotPage(Adw.BreakpointBin):
     new_button = gtc()
     status_stack = gtc()
     loading_view = gtc()
+    snapshotting_view = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -141,15 +142,16 @@ class SnapshotPage(Adw.BreakpointBin):
             self.leftover_select_handler(None, row, False, True)
 
     def start_loading(self):
+        self.status_stack.set_visible_child(self.loading_view)
         self.active_box.set_visible(True)
         self.active_listbox.remove_all()
         self.leftover_box.set_visible(True)
         self.leftover_listbox.remove_all()
-        self.status_stack.set_visible_child(self.loading_view)
 
     def end_loading(self):
         def callback(*args):
-            self.new_snapshot_dialog = NewSnapshotDialog(self)
+            self.new_snapshot_dialog = NewSnapshotDialog(self, self.snapshotting_status, self.refresh)
+            self.new_snapshot_dialog.create_button.connect("clicked", lambda *_: self.status_stack.set_visible_child(self.snapshotting_view))
             self.generate_active_list()
             self.generate_leftover_list()
             if (not self.active_box.get_visible()) and (not self.leftover_box.get_visible()):
@@ -158,7 +160,7 @@ class SnapshotPage(Adw.BreakpointBin):
                 self.select_first_row()
                 GLib.idle_add(lambda *_: self.stack.set_visible_child(self.scrolled_window))
                 GLib.idle_add(lambda *_: self.status_stack.set_visible_child(self.split_view))
-
+                
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_snapshots)
 
     def open_snapshots_folder(self, button, overlay):
@@ -167,10 +169,20 @@ class SnapshotPage(Adw.BreakpointBin):
             overlay.add_toast(Adw.Toast.new(_("Opened snapshots folder")))
         except Exception as e:
             overlay.add_toast(ErrorToast(_("Could not open folder"), str(e)).toast)
-
+            
+    def on_cancel(self):
+        pass
+        
+    def on_new(self, *args):
+        self.new_snapshot_dialog.present(HostInfo.main_window)
+        
+    def refresh(self):
+        self.start_loading()
+        self.end_loading()
+        
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
-
+        
         # Extra Object Creation
         self.__class__.instance = self
         self.main_window = main_window
@@ -179,15 +191,17 @@ class SnapshotPage(Adw.BreakpointBin):
         self.leftover_snapshots = []
         # self.leftover_rows = []
         self.list_page = SnapshotsListPage(self)
+        self.snapshotting_status = LoadingStatus(_("Creating Snapshots"), _("This might take a while"), True, self.on_cancel)
 
         # Connections
         self.active_listbox.connect("row-activated", self.active_select_handler)
         self.leftover_listbox.connect("row-activated", self.leftover_select_handler)
         self.open_button.connect("clicked", self.open_snapshots_folder, self.toast_overlay)
         self.status_open_button.connect("clicked", self.open_snapshots_folder, self.no_snapshots_toast)
-        self.status_new_button.connect("clicked", lambda *_: self.new_snapshot_dialog.present(HostInfo.main_window))
-        self.new_button.connect("clicked", lambda *_: self.new_snapshot_dialog.present(HostInfo.main_window))
+        self.status_new_button.connect("clicked", self.on_new)
+        self.new_button.connect("clicked", self.on_new)
 
         # Apply
         self.loading_view.set_content(LoadingStatus(_("Loading Snapshots"), _("This should only take a moment")))
+        self.snapshotting_view.set_content(self.snapshotting_status)
         self.split_view.set_content(self.list_page)
