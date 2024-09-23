@@ -94,8 +94,7 @@ class SnapshotBox(Gtk.Box):
                 self.toast_overlay.add_toast(ErrorToast(_("Could not trash snapshot"), error[0]).toast)
                 return
 
-            self.parent_page.parent_page.start_loading()
-            self.parent_page.parent_page.end_loading()
+            self.parent_page.on_trash()
             self.toast_overlay.add_toast(Adw.Toast.new(_("Trashed snapshot")))
 
         def on_response(_, response):

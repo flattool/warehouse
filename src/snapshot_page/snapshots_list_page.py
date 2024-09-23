@@ -26,6 +26,10 @@ class SnapshotsListPage(Adw.NavigationPage):
             self.snapshots_rows.append(row)
             
     def callback(self, *args):
+        if len(self.snapshots_rows) == 0:
+            self.parent_page.refresh()
+            return
+
         for i, row in enumerate(self.snapshots_rows):
             self.listbox.append(row)
             self.listbox.get_row_at_index(i).set_activatable(False)
@@ -39,11 +43,11 @@ class SnapshotsListPage(Adw.NavigationPage):
         if type(package_or_folder) is str:
             self.set_title(package_or_folder)
             folder = package_or_folder
-            self.new_button.set_visible(False)
+            self.new_button.set_sensitive(False)
         else:
             folder = package_or_folder.info["id"]
             self.set_title(_("{} Snapshots").format(package_or_folder.info["name"]))
-            self.new_button.set_visible(os.path.exists(package_or_folder.data_path))
+            self.new_button.set_sensitive(os.path.exists(package_or_folder.data_path))
 
         self.current_folder = folder
         self.snapshots_rows.clear()
@@ -75,6 +79,9 @@ class SnapshotsListPage(Adw.NavigationPage):
         row1 = row1.get_child()
         row2 = row2.get_child()
         return row1.epoch > row2.epoch
+
+    def on_trash(self):
+        self.set_snapshots(self.package_or_folder, refresh=True)
         
     def __init__(self, parent_page, **kwargs):
         super().__init__(**kwargs)
