@@ -130,7 +130,7 @@ class SnapshotPage(Adw.BreakpointBin):
 
     def leftover_select_handler(self, listbox, row, should_show_content=True, refresh=False):
         self.active_listbox.select_row(None)
-        self.list_page.set_snapshots(row.package, refresh)
+        self.list_page.set_snapshots(row.folder, refresh)
         self.split_view.set_show_content(should_show_content)
 
     def select_first_row(self):

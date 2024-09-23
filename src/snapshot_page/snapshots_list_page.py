@@ -30,14 +30,22 @@ class SnapshotsListPage(Adw.NavigationPage):
             self.listbox.append(row)
             self.listbox.get_row_at_index(i).set_activatable(False)
             
-    def set_snapshots(self, package, refresh=False):
-        folder = package.info["id"]
-        if self.current_folder == folder and not refresh:
+    def set_snapshots(self, package_or_folder, refresh=False):
+        if package_or_folder == self.package_or_folder and not refresh:
             return
-            
-        self.current_package = package
+
+        folder = None
+        self.package_or_folder = package_or_folder
+        if type(package_or_folder) is str:
+            self.set_title(package_or_folder)
+            folder = package_or_folder
+            self.new_button.set_visible(False)
+        else:
+            folder = package_or_folder.info["id"]
+            self.set_title(_("{} Snapshots").format(package_or_folder.info["name"]))
+            self.new_button.set_visible(os.path.exists(package_or_folder.data_path))
+
         self.current_folder = folder
-        self.set_title(_("{} Snapshots").format(package.info["name"]))
         self.snapshots_rows.clear()
         self.listbox.remove_all()
         
@@ -56,10 +64,10 @@ class SnapshotsListPage(Adw.NavigationPage):
             
     def on_done(self):
         self.parent_page.status_stack.set_visible_child(self.parent_page.split_view)
-        self.set_snapshots(self.current_package, refresh=True)
+        self.set_snapshots(self.package_or_folder, refresh=True)
             
     def on_new(self, button):
-        dialog = NewSnapshotDialog(self.parent_page, self.parent_page.snapshotting_status, self.on_done, self.current_package)
+        dialog = NewSnapshotDialog(self.parent_page, self.parent_page.snapshotting_status, self.on_done, self.package_or_folder)
         dialog.create_button.connect("clicked", lambda *_: self.parent_page.status_stack.set_visible_child(self.parent_page.snapshotting_view))
         dialog.present(HostInfo.main_window)
         
@@ -70,7 +78,7 @@ class SnapshotsListPage(Adw.NavigationPage):
         self.parent_page = parent_page
         self.snapshots_path = HostInfo.snapshots_path
         self.current_folder = None
-        self.current_package = None
+        self.package_or_folder = None
         self.snapshots_rows = []
         
         # Connections
