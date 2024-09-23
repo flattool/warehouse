@@ -171,7 +171,8 @@ class SnapshotPage(Adw.BreakpointBin):
             overlay.add_toast(ErrorToast(_("Could not open folder"), str(e)).toast)
             
     def on_cancel(self):
-        pass
+        for worker in self.new_snapshot_dialog.workers:
+            worker.do_cancel("manual_cancel")
         
     def on_new(self, *args):
         self.new_snapshot_dialog.present(HostInfo.main_window)
@@ -204,4 +205,5 @@ class SnapshotPage(Adw.BreakpointBin):
         # Apply
         self.loading_view.set_content(LoadingStatus(_("Loading Snapshots"), _("This should only take a moment")))
         self.snapshotting_view.set_content(self.snapshotting_status)
+        self.snapshotting_status.button.set_label(_("Cancel"))
         self.split_view.set_content(self.list_page)

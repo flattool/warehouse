@@ -12,10 +12,6 @@ class LoadingStatus(Gtk.ScrolledWindow):
     progress_bar = gtc()
     progress_label = gtc()
     button = gtc()
-    
-    def set_progress_label(self, *args):
-        text = self.progress_bar.get_fraction() * 100
-        self.progress_label.set_label(f"{text:.0f}%")
 
     def __init__(self, title, description, show_progress=False, on_cancel=None, **kwargs):
         super().__init__(**kwargs)
@@ -26,6 +22,4 @@ class LoadingStatus(Gtk.ScrolledWindow):
         if on_cancel is None:
             self.button.set_visible(False)
         else:
-            self.button.connect("clicked", lambda *_: on_cancel)
-            
-        # self.progress_bar.connect("notify::fraction", self.set_progress_label)
+            self.button.connect("clicked", lambda *_: on_cancel())

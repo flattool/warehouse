@@ -105,7 +105,7 @@ class NewSnapshotDialog(Adw.Dialog):
             self.workers.append(worker)
             worker.compress()
             
-        GLib.timeout_add(10, self.get_total_fraction)
+        GLib.timeout_add(200, self.get_total_fraction)
         self.close()
         
     def on_invalidate(self, search_entry):
