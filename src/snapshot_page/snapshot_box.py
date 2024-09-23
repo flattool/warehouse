@@ -123,7 +123,8 @@ class SnapshotBox(Gtk.Box):
         self.parent_page = parent_page
         self.folder = folder
         self.snapshots_path = snapshots_path
-        date_data = GLib.DateTime.new_from_unix_local(int(split_folder[0])).format("%x %X")
+        self.epoch = int(split_folder[0])
+        date_data = GLib.DateTime.new_from_unix_local(self.epoch).format("%x %X")
         self.date.set_label(date_data)
         self.version.set_label(_("Version: {}").format(split_folder[1].replace(".tar.zst", "")))
         self.json_path = f"{snapshots_path}{folder.replace('tar.zst', 'json')}"

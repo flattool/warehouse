@@ -70,6 +70,11 @@ class SnapshotsListPage(Adw.NavigationPage):
         dialog = NewSnapshotDialog(self.parent_page, self.parent_page.snapshotting_status, self.on_done, self.package_or_folder)
         dialog.create_button.connect("clicked", lambda *_: self.parent_page.status_stack.set_visible_child(self.parent_page.snapshotting_view))
         dialog.present(HostInfo.main_window)
+
+    def sort_func(self, row1, row2):
+        row1 = row1.get_child()
+        row2 = row2.get_child()
+        return row1.epoch > row2.epoch
         
     def __init__(self, parent_page, **kwargs):
         super().__init__(**kwargs)
@@ -86,3 +91,4 @@ class SnapshotsListPage(Adw.NavigationPage):
         self.new_button.connect("clicked", self.on_new)
         
         # Apply
+        self.listbox.set_sort_func(self.sort_func)
