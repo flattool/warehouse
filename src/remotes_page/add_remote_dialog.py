@@ -108,6 +108,8 @@ class AddRemoteDialog(Adw.Dialog):
                 self.name_row.set_editable(False)
                 self.url_row.set_editable(False)
                 self.apply_button.set_sensitive(True)
+        else:
+            self.apply_button.set_sensitive(False)
 
         # Connections
         self.cancel_button.connect("clicked", lambda *_: self.close())
