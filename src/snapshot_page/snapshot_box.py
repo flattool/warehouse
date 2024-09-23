@@ -1,7 +1,7 @@
 from gi.repository import Adw, Gtk, GLib, Gio
 from .host_info import HostInfo
 from .error_toast import ErrorToast
-import os, subprocess, json
+import os, subprocess, json, re
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/snapshot_box.ui")
 class SnapshotBox(Gtk.Box):
@@ -60,9 +60,18 @@ class SnapshotBox(Gtk.Box):
             self.toast_overlay.add_toast(ErrorToast(_("Could not write data"), str(e)).toast)
 
     def on_rename(self, widget):
+        if not self.valid_checker():
+            return
+
         self.update_json('name', self.rename_entry.get_text().strip())
         self.load_from_json()
         self.rename_menu.popdown()
+
+    def valid_checker(self, *args):
+        text = self.rename_entry.get_text().strip()
+        valid = not ("/" in text or "\0" in text) and len(text) > 0
+        self.apply_rename.set_sensitive(valid)
+        return valid
 
     def on_trash(self, button):
         error = [None]
@@ -116,4 +125,5 @@ class SnapshotBox(Gtk.Box):
         self.load_from_json()
         self.apply_rename.connect("clicked", self.on_rename)
         self.rename_entry.connect("activate", self.on_rename)
+        self.rename_entry.connect("changed", self.valid_checker)
         self.trash_button.connect("clicked", self.on_trash)

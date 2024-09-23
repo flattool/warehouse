@@ -65,7 +65,8 @@ class NewSnapshotDialog(Adw.Dialog):
             GLib.idle_add(lambda *_, row=row: row.check_button.set_active(False))
     
     def valid_checker(self):
-        valid = len(self.selected_rows) > 0 and len(self.name_entry.get_text().strip()) > 0
+        text = self.name_entry.get_text().strip()
+        valid = len(self.selected_rows) > 0 and len(text) > 0 and not("/" in text or "\0" in text)
         self.create_button.set_sensitive(valid)
         
     def get_total_fraction(self):
