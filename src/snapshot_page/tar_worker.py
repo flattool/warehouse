@@ -20,7 +20,7 @@ class TarWorker:
                 os.makedirs(self.new_path)
                 
             self.total = int(subprocess.run(['du', '-s', self.existing_path], check=True, text=True, capture_output=True).stdout.split('\t')[0])
-            self.total /= 1.5 # estimate for space savings
+            self.total /= 2.5 # estimate for space savings
             subprocess.run(['tar', 'cafv', f'{self.new_path}/{self.file_name}.tar.zst', '-C', self.existing_path, '.'], check=True, capture_output=True)
             
             with open(f"{self.new_path}/{self.file_name}.json", 'w') as file:
@@ -45,12 +45,7 @@ class TarWorker:
             output = subprocess.run(['du', '-s', f"{self.new_path}/{self.file_name}.tar.zst"], check=True, text=True, capture_output=True).stdout.split('\t')[0]
             working_total = int(output)
             self.fraction = working_total / self.total
-            if self.stop:
-                print("fraction: 1.00")
-                return False # stop the timeout
-            else:
-                print(f"fraction: {self.fraction:.2f}")
-                return True # continue the timeout
+            return not self.stop
                 
         except subprocess.CalledProcessError as cpe:
             return not self.stop # continue the timeout or stop the timeout

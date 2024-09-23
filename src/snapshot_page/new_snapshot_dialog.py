@@ -73,6 +73,7 @@ class NewSnapshotDialog(Adw.Dialog):
                 stopped_workers_amount += 1
             
             if stopped_workers_amount == len(self.workers):
+                print("1.00")
                 return False
             
         print(f"{total / len(self.workers):.2f}")
@@ -90,6 +91,7 @@ class NewSnapshotDialog(Adw.Dialog):
             )
             self.workers.append(worker)
             worker.compress()
+        GLib.timeout_add(10, self.get_total_fraction)
         
     def on_invalidate(self, search_entry):
         self.listbox.invalidate_filter()
