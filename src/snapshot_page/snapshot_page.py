@@ -34,6 +34,8 @@ class SnapshotPage(Adw.BreakpointBin):
     gtc = Gtk.Template.Child
 
     toast_overlay = gtc()
+    search_entry = gtc()
+    search_bar = gtc()
     active_box = gtc()
     active_listbox = gtc()
     leftover_box = gtc()
@@ -194,6 +196,33 @@ class SnapshotPage(Adw.BreakpointBin):
         self.start_loading()
         self.end_loading()
         
+    def on_search(self, search_entry):
+        text = search_entry.get_text().lower()
+        i = 0
+        total_active_visible = 0
+        while row := self.active_listbox.get_row_at_index(i):
+            i += 1
+            row.set_visible(False)
+            if text in row.get_title().lower():
+                row.set_visible(True)
+                total_active_visible += 1
+        self.active_box.set_visible(total_active_visible > 0)
+        
+        i = 0
+        total_leftover_visible = 0
+        while row := self.leftover_listbox.get_row_at_index(i):
+            i += 1
+            row.set_visible(False)
+            if text in row.get_title().lower():
+                row.set_visible(True)
+                total_leftover_visible += 1
+        self.leftover_box.set_visible(total_leftover_visible > 0)
+        
+        if total_active_visible > 0 or total_leftover_visible > 0:
+            self.stack.set_visible_child(self.scrolled_window)
+        else:
+            self.stack.set_visible_child(self.no_results)
+        
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
         
@@ -214,8 +243,10 @@ class SnapshotPage(Adw.BreakpointBin):
         self.status_open_button.connect("clicked", self.open_snapshots_folder)
         self.status_new_button.connect("clicked", self.on_new)
         self.new_button.connect("clicked", self.on_new)
+        self.search_entry.connect("search-changed", self.on_search)
 
         # Apply
+        self.search_bar.set_key_capture_widget(HostInfo.main_window)
         self.loading_view.set_content(LoadingStatus(_("Loading Snapshots"), _("This should only take a moment")))
         self.snapshotting_view.set_content(self.snapshotting_status)
         self.snapshotting_status.button.set_label(_("Cancel"))

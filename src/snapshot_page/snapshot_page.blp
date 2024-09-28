@@ -50,16 +50,15 @@ template $SnapshotPage : Adw.BreakpointBin {
                                         tooltip-text: _("Select Packages");
                                     }
                                 }
+                                [top]
+                                SearchBar search_bar {
+                                    search-mode-enabled: bind search_button.active bidirectional;
+                                    SearchEntry search_entry {
+                                        hexpand: true;
+                                        placeholder-text: _("Search Snapshots");
+                                    }
+                                }
                                 Stack stack {
-                                    // Adw.StatusPage loading_snapshots {
-                                    //     title: _("Loading Snapshot");
-                                    //     description: _("This should only take a moment");
-                                    //     child:
-                                    //         Spinner {
-                                    //             spinning: true;
-                                    //         }
-                                    //     ;
-                                    // }
                                     Adw.StatusPage no_results {
                                         title: _("No Results Found");
                                         description: _("Try a different search");
