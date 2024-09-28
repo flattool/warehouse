@@ -113,18 +113,35 @@ class SnapshotBox(Gtk.Box):
         
     def get_fraction(self):
         loading_status = self.snapshot_page.snapshotting_status
-        loading_status.title_label.set_label(_("Applying Snapshot"))
         loading_status.progress_bar.set_fraction(self.worker.fraction)
         if self.worker.stop:
             self.snapshot_page.status_stack.set_visible_child(self.snapshot_page.split_view)
+            self.parent_page.set_snapshots(self.parent_page.package_or_folder, True)
             return False # Stop the timeout
         else:
             return True # Continue the timeout
         
     def on_apply(self, button):
-        self.snapshot_page.status_stack.set_visible_child(self.snapshot_page.snapshotting_view)
-        self.worker.extract()
-        GLib.timeout_add(200, self.get_fraction)
+        def on_response(dialog, response):
+            if response != "continue":
+                return
+                
+            self.snapshot_page.snapshotting_status.title_label.set_label(_("Applying Snapshot"))
+            self.snapshot_page.snapshotting_status.progress_label.set_visible(False)
+            self.snapshot_page.snapshotting_status.progress_bar.set_fraction(0.0)
+            self.snapshot_page.status_stack.set_visible_child(self.snapshot_page.snapshotting_view)
+            self.worker.extract()
+            GLib.timeout_add(200, self.get_fraction)
+        
+        has_data = os.path.exists(self.worker.new_path)
+        dialog = Adw.AlertDialog(
+            heading=_("Apply Snapshot?"),
+            body=_("Any current user data for this app will be trashed") if has_data else "",
+        )
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Apply"))
+        dialog.connect("response", on_response)
+        dialog.present(HostInfo.main_window)
         
     def __init__(self, parent_page, folder, snapshots_path, toast_overlay, **kwargs):
         super().__init__(**kwargs)

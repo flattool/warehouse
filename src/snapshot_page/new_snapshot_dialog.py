@@ -98,6 +98,7 @@ class NewSnapshotDialog(Adw.Dialog):
         
     def on_create(self, button):
         self.loading_status.title_label.set_label(_("Creating Snapshot"))
+        self.loading_status.progress_bar.set_fraction(0.0)
         self.snapshot_page.status_stack.set_visible_child(self.snapshot_page.snapshotting_view)
         self.workers.clear()
         for row in self.selected_rows:
@@ -114,6 +115,7 @@ class NewSnapshotDialog(Adw.Dialog):
             self.workers.append(worker)
             worker.compress()
             
+        self.loading_status.progress_label.set_visible(len(self.workers) > 1)
         GLib.timeout_add(200, self.get_total_fraction)
         self.close()
         
