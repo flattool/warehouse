@@ -267,7 +267,10 @@ class PropertiesPage(Adw.NavigationPage):
         self.more_menu.popdown()
         match row.get_child():
             case self.view_snapshots:
-                print("not implemented")
+                snapshots_row = HostInfo.main_window.snapshots_row
+                snapshots_page = HostInfo.main_window.pages[snapshots_row]
+                HostInfo.main_window.activate_row(snapshots_row)
+                snapshots_page.show_snapshot(self.package)
 
             case self.copy_launch_command:
                 try:
@@ -319,10 +322,6 @@ class PropertiesPage(Adw.NavigationPage):
         self.reinstall = Gtk.Label(halign=Gtk.Align.START, label=_("Reinstall"))
 
         # Apply
-        self.more_list.append(self.view_snapshots)
-        self.more_list.append(self.copy_launch_command)
-        self.more_list.append(self.show_details)
-        self.more_list.append(self.reinstall)
 
         # Connections
         self.more_list.connect("row-activated", self.more_menu_handler)

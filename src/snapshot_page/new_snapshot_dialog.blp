@@ -4,83 +4,85 @@ using Adw 1;
 template $NewSnapshotDialog : Adw.Dialog {
     follows-content-size: true;
     width-request: 400;
-    Adw.NavigationPage nav_page {
-        title: "No Title Set";
-        Adw.ToolbarView {
-            [top]
-            Adw.HeaderBar {
-                show-start-title-buttons: false;
-                show-end-title-buttons: false;
-                [start]
-                Button list_cancel_button {
-                    label: _("Cancel");
-                }
-                [start]
-                ToggleButton search_button {
-                    icon-name: "loupe-large-symbolic";
-                    tooltip-text: _("Search Apps");
-                }
-                [end]
-                Button create_button {
-                    sensitive: false;
-                    label: _("Create");
-                    styles ["suggested-action"]
-                }
-            }
-            [top]
-            Adw.Clamp {
-                SearchBar search_bar {
-                    search-mode-enabled: bind search_button.active bidirectional;
-                    key-capture-widget: template;
-                    SearchEntry search_entry {
-                        hexpand: true;
-                        placeholder-text: _("Search Apps");
+    Adw.ToastOverlay toast_overlay {
+        Adw.NavigationPage nav_page {
+            title: "No Title Set";
+            Adw.ToolbarView {
+                [top]
+                Adw.HeaderBar {
+                    show-start-title-buttons: false;
+                    show-end-title-buttons: false;
+                    [start]
+                    Button list_cancel_button {
+                        label: _("Cancel");
+                    }
+                    [start]
+                    ToggleButton search_button {
+                        icon-name: "loupe-large-symbolic";
+                        tooltip-text: _("Search Apps");
+                    }
+                    [end]
+                    Button create_button {
+                        sensitive: false;
+                        label: _("Create");
+                        styles ["suggested-action"]
                     }
                 }
-            }
-            Adw.Clamp {
-                ScrolledWindow {
-                    propagate-natural-height: true;
-                    propagate-natural-width: true;
-                    Box {
-                        orientation: vertical;
-                        Adw.EntryRow name_entry {
-                            title: "No Title Set";
-                            margin-start: 12;
-                            margin-end:   12;
-                            margin-top:   12;
-                            margin-bottom: 12;
-                            styles ["card"]
-                        }
-                        ListBox listbox {
-                            valign: start;
-                            margin-start:  12;
-                            margin-end:    12;
-                            // margin-top:    12;
-                            margin-bottom: 12;
-                            selection-mode: none;
-                            styles ["boxed-list"]
+                [top]
+                Adw.Clamp {
+                    SearchBar search_bar {
+                        search-mode-enabled: bind search_button.active bidirectional;
+                        key-capture-widget: template;
+                        SearchEntry search_entry {
+                            hexpand: true;
+                            placeholder-text: _("Search Apps");
                         }
                     }
                 }
-            }
-            [bottom]
-            ActionBar {
-                revealed: bind search_button.visible;
-                [start]
-                Button select_all_button {
-                    styles ["raised"]
-                    Adw.ButtonContent {
-                        label: _("Select All");
-                        icon-name: "selection-mode-symbolic";
+                Adw.Clamp {
+                    ScrolledWindow {
+                        propagate-natural-height: true;
+                        propagate-natural-width: true;
+                        Box {
+                            orientation: vertical;
+                            Adw.EntryRow name_entry {
+                                title: "No Title Set";
+                                margin-start: 12;
+                                margin-end:   12;
+                                margin-top:   12;
+                                margin-bottom: 12;
+                                styles ["card"]
+                            }
+                            ListBox listbox {
+                                valign: start;
+                                margin-start:  12;
+                                margin-end:    12;
+                                // margin-top:    12;
+                                margin-bottom: 12;
+                                selection-mode: none;
+                                styles ["boxed-list"]
+                            }
+                        }
                     }
                 }
-                [end]
-                Label total_selected_label {
-                    label: "";
-                    ellipsize: middle;
-                    margin-end: 6;
-                    visible: false;
+                [bottom]
+                ActionBar {
+                    revealed: bind search_button.visible;
+                    [start]
+                    Button select_all_button {
+                        styles ["raised"]
+                        Adw.ButtonContent {
+                            label: _("Select All");
+                            icon-name: "selection-mode-symbolic";
+                        }
+                    }
+                    [end]
+                    Label total_selected_label {
+                        label: "";
+                        ellipsize: middle;
+                        margin-end: 6;
+                        visible: false;
+                    }
                 }
             }
         }

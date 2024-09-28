@@ -11,6 +11,7 @@ class NewSnapshotDialog(Adw.Dialog):
     __gtype_name__ = "NewSnapshotDialog"
     gtc = Gtk.Template.Child
     
+    toast_overlay = gtc()
     nav_page = gtc()
     list_cancel_button = gtc()
     search_button = gtc()

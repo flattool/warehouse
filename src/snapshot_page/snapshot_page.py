@@ -34,7 +34,6 @@ class SnapshotPage(Adw.BreakpointBin):
     gtc = Gtk.Template.Child
 
     toast_overlay = gtc()
-    no_snapshots_toast = gtc()
     active_box = gtc()
     active_listbox = gtc()
     leftover_box = gtc()
@@ -140,6 +139,21 @@ class SnapshotPage(Adw.BreakpointBin):
         elif row := self.leftover_listbox.get_row_at_index(0):
             self.leftover_listbox.select_row(row)
             self.leftover_select_handler(None, row, False, True)
+            
+    def show_snapshot(self, package):
+        i = 0
+        while row := self.active_listbox.get_row_at_index(i):
+            i += 1
+            if row.package is package:
+                self.active_listbox.select_row(row)
+                self.active_select_handler(None, row, True)
+                self.toast_overlay.add_toast(Adw.Toast(title=_("Showing snapshots for {}").format(package.info['name'])))
+                break
+        else:
+            dialog = NewSnapshotDialog(self, self.snapshotting_status, self.refresh, package)
+            toast = Adw.Toast(title=_("No snapshots for {}").format(package.info['name']), button_label=_("New"))
+            toast.connect("button-clicked", lambda *_: dialog.present(HostInfo.main_window))
+            self.toast_overlay.add_toast(toast)
 
     def start_loading(self):
         self.status_stack.set_visible_child(self.loading_view)
@@ -162,12 +176,12 @@ class SnapshotPage(Adw.BreakpointBin):
                 
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_snapshots)
 
-    def open_snapshots_folder(self, button, overlay):
+    def open_snapshots_folder(self, button):
         try:
             Gio.AppInfo.launch_default_for_uri(f"file://{HostInfo.snapshots_path}", None)
-            overlay.add_toast(Adw.Toast.new(_("Opened snapshots folder")))
+            self.toast_overlay.add_toast(Adw.Toast.new(_("Opened snapshots folder")))
         except Exception as e:
-            overlay.add_toast(ErrorToast(_("Could not open folder"), str(e)).toast)
+            self.toast_overlay.add_toast(ErrorToast(_("Could not open folder"), str(e)).toast)
             
     def on_cancel(self):
         for worker in self.new_snapshot_dialog.workers:
@@ -196,8 +210,8 @@ class SnapshotPage(Adw.BreakpointBin):
         # Connections
         self.active_listbox.connect("row-activated", self.active_select_handler)
         self.leftover_listbox.connect("row-activated", self.leftover_select_handler)
-        self.open_button.connect("clicked", self.open_snapshots_folder, self.toast_overlay)
-        self.status_open_button.connect("clicked", self.open_snapshots_folder, self.no_snapshots_toast)
+        self.open_button.connect("clicked", self.open_snapshots_folder)
+        self.status_open_button.connect("clicked", self.open_snapshots_folder)
         self.status_new_button.connect("clicked", self.on_new)
         self.new_button.connect("clicked", self.on_new)
 
