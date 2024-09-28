@@ -222,6 +222,12 @@ class SnapshotPage(Adw.BreakpointBin):
             self.stack.set_visible_child(self.scrolled_window)
         else:
             self.stack.set_visible_child(self.no_results)
+            
+    def sort_func(self, row1, row2):
+        if type(row1) is AppRow:
+            return row1.package.info['name'].lower() > row2.package.info['name'].lower()
+        else:
+            return row1.name.lower() > row2.name.lower()
         
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -235,7 +241,7 @@ class SnapshotPage(Adw.BreakpointBin):
         # self.leftover_rows = []
         self.list_page = SnapshotsListPage(self)
         self.snapshotting_status = LoadingStatus("Initial Title", _("This might take a while"), True, self.on_cancel)
-
+        
         # Connections
         self.active_listbox.connect("row-activated", self.active_select_handler)
         self.leftover_listbox.connect("row-activated", self.leftover_select_handler)
@@ -244,10 +250,12 @@ class SnapshotPage(Adw.BreakpointBin):
         self.status_new_button.connect("clicked", self.on_new)
         self.new_button.connect("clicked", self.on_new)
         self.search_entry.connect("search-changed", self.on_search)
-
+        
         # Apply
         self.search_bar.set_key_capture_widget(HostInfo.main_window)
         self.loading_view.set_content(LoadingStatus(_("Loading Snapshots"), _("This should only take a moment")))
         self.snapshotting_view.set_content(self.snapshotting_status)
         self.snapshotting_status.button.set_label(_("Cancel"))
         self.split_view.set_content(self.list_page)
+        self.active_listbox.set_sort_func(self.sort_func)
+        self.leftover_listbox.set_sort_func(self.sort_func)
