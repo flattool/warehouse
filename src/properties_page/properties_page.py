@@ -159,7 +159,7 @@ class PropertiesPage(Adw.NavigationPage):
             self.toast_overlay.add_toast(ErrorToast(_("Could not open data"), str(error)).toast)
 
     def trash_data_handler(self, *args):
-        def on_choice(_, response):
+        def on_choice(dialog, response):
             if response != 'continue':
                 return
             try:

@@ -117,6 +117,8 @@ class SnapshotBox(Gtk.Box):
         if self.worker.stop:
             self.snapshot_page.status_stack.set_visible_child(self.snapshot_page.split_view)
             self.parent_page.set_snapshots(self.parent_page.package_or_folder, True)
+            properties_page = HostInfo.main_window.pages[HostInfo.main_window.packages_row].properties_page
+            properties_page.set_properties(properties_page.package, True)
             return False # Stop the timeout
         else:
             return True # Continue the timeout
