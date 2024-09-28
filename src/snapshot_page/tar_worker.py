@@ -40,30 +40,51 @@ class TarWorker:
             self.stop = True # tell the check timeout to stop, because we know the file is done being made
             
         except subprocess.CalledProcessError as cpe:
-            print("Called Error")
-            self.do_cancel(cpe.stderr.decode())  # stderr is in bytes, so decode it
+            print("Called Error in Compress Thread")
+            self.do_cancel(cpe.stderr.decode(), [f'{self.new_path}/{self.file_name}.tar.zst', f'{self.new_path}/{self.file_name}.json'])  # stderr is in bytes, so decode it
             
         except Exception as e:
-            print("Exception")
-            self.do_cancel(str(e))
+            print("Exception in Compress Thread")
+            self.do_cancel(str(e), [f'{self.new_path}/{self.file_name}.tar.zst', f'{self.new_path}/{self.file_name}.json'])
+            
+    def extract_thread(self, *args):
+        try:
+            if not os.path.exists(self.new_path):
+                os.makedirs(self.new_path) # create the new user data path if none exists
+            else:
+                subprocess.run('gio', 'trash', self.new_path) # trash the current user data, because new data will go in its place
+                
+            self.total = int(subprocess.run(['du', '-s', self.existing_path], check=True, text=True, capture_output=True).stdout.split('\t')[0])
+            self.total *= 2.2 # estimate from space savings
+            self.process = subprocess.Popen(['tar', '--zstd', '-xvf', self.existing_path, '-C',  self.new_path])
+            stdout, stderr = self.process.communicate()
+            if self.process.returncode != 0:
+                raise subprocess.CalledProcessError(self.process.returncode, self.process.args, output=stdout, stderr=stderr)
+                
+        except subprocess.CalledProcessError as cpe:
+            print("Called Error in Extract Thread")
+            self.do_cancel(cpe.stderr.decode(), [self.new_path])
+            
+        except Exception as e:
+            print("Exception in Extract Thread")
+            self.do_cancel(str(e), [self.new_path])
 
-    def do_cancel(self, error_str=None):
+    def do_cancel(self, error_str, files_to_trash=None):
         self.process.terminate()
         self.process.wait()
-        if error_str == "manual_cancel":
+        if not files_to_trash is None:
             try:
-                subprocess.run(['gio', 'trash', f'{self.new_path}/{self.file_name}.tar.zst'],capture_output=True)
-                subprocess.run(['gio', 'trash', f'{self.new_path}/{self.file_name}.json'],capture_output=True)
+                subprocess.run(['gio', 'trash'] + files_to_trash, capture_output=True)
 
             except Exception:
                 pass
 
         self.stop = True
-        print("Error in compression:", error_str)
+        print("Error in cancelling:", error_str)
             
-    def check_size(self):
+    def check_size(self, check_path):
         try:
-            output = subprocess.run(['du', '-s', f"{self.new_path}/{self.file_name}.tar.zst"], check=True, text=True, capture_output=True).stdout.split('\t')[0]
+            output = subprocess.run(['du', '-s', check_path], check=True, text=True, capture_output=True).stdout.split('\t')[0]
             working_total = int(output)
             self.fraction = working_total / self.total
             return not self.stop
@@ -74,5 +95,9 @@ class TarWorker:
     def compress(self):
         self.stop = False
         Gio.Task.new(None, None, None).run_in_thread(self.compress_thread)
-        GLib.timeout_add(200, self.check_size)
+        GLib.timeout_add(200, self.check_size, f"{self.new_path}/{self.file_name}.tar.zst")
         
+    def extract(self):
+        self.stop = False
+        Gio.Task.new(None, None, None).run_in_thread(self.existing_path)
+        GLib.timeout_add(200, self.check_size, self.new_path)

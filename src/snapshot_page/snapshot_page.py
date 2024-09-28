@@ -191,7 +191,7 @@ class SnapshotPage(Adw.BreakpointBin):
         self.leftover_snapshots = []
         # self.leftover_rows = []
         self.list_page = SnapshotsListPage(self)
-        self.snapshotting_status = LoadingStatus(_("Creating Snapshots"), _("This might take a while"), True, self.on_cancel)
+        self.snapshotting_status = LoadingStatus("Initial Title", _("This might take a while"), True, self.on_cancel)
 
         # Connections
         self.active_listbox.connect("row-activated", self.active_select_handler)

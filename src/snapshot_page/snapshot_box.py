@@ -1,6 +1,7 @@
 from gi.repository import Adw, Gtk, GLib, Gio
 from .host_info import HostInfo
 from .error_toast import ErrorToast
+from .tar_worker import TarWorker
 import os, subprocess, json, re
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/snapshot_box.ui")
@@ -109,11 +110,27 @@ class SnapshotBox(Gtk.Box):
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", on_response)
         dialog.present(HostInfo.main_window)
-            
+        
+    def get_fraction(self):
+        loading_status = self.parent_page.parent_page.loading_status
+        loading_status.title_label.set_label(_("Applying Snapshot"))
+        loading_status.progress_bar.set_fraction(total / len(self.workers))
+        
+    def on_apply(self, button):
+        self.parent_page.parent_page.status_stack.set_visible_child(self.snapshot_page.snapshotting_view)
+        self.worker.extract()
+        
+        
     def __init__(self, parent_page, folder, snapshots_path, toast_overlay, **kwargs):
         super().__init__(**kwargs)
 
         self.toast_overlay = toast_overlay
+        self.app_id = snapshots_path.split('/')[-2].strip()
+        self.worker = TarWorker(
+            existing_path=f"{snapshots_path}{folder}",
+            new_path=f"{HostInfo.home}/.var/app/{self.app_id}/",
+            file_name=self.app_id,
+        )
 
         split_folder = folder.split('_')
         if len(split_folder) < 2:
@@ -128,6 +145,7 @@ class SnapshotBox(Gtk.Box):
         self.version.set_label(_("Version: {}").format(split_folder[1].replace(".tar.zst", "")))
         self.json_path = f"{snapshots_path}{folder.replace('tar.zst', 'json')}"
         self.load_from_json()
+        self.apply_button.connect("clicked", self.on_apply)
         self.apply_rename.connect("clicked", self.on_rename)
         self.rename_entry.connect("activate", self.on_rename)
         self.rename_entry.connect("changed", self.valid_checker)
