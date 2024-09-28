@@ -17,16 +17,31 @@ class LeftoverSnapshotRow(Adw.ActionRow):
         icon.set_icon_size(Gtk.IconSize.LARGE)
         self.add_prefix(icon)
         self.add_suffix(self.check_button)
+        
+    def gesture_handler(self, *args):
+        self.on_long_press(self)
 
-    def __init__(self, folder, **kwargs):
+    def __init__(self, folder, on_long_press, **kwargs):
         super().__init__(**kwargs)
         
+        # Extra Object Creation
         self.folder = folder
-        self.set_activatable(True)
-        self.name = self.folder.split('.')[-1]
         self.check_button = Gtk.CheckButton(visible=False)
+        self.on_long_press = on_long_press
+        self.rclick_gesture = Gtk.GestureClick(button=3)
+        self.long_press_gesture = Gtk.GestureLongPress()
+        
+        # Apply
+        self.add_controller(self.rclick_gesture)
+        self.add_controller(self.long_press_gesture)
         self.check_button.add_css_class("selection-mode")
+        self.name = self.folder.split('.')[-1]
+        self.set_activatable(True)
         GLib.idle_add(lambda *_: self.idle_stuff())
+        
+        # Connections
+        self.rclick_gesture.connect("released", self.gesture_handler)
+        self.long_press_gesture.connect("pressed", self.gesture_handler)
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/snapshot_page.ui")
 class SnapshotPage(Adw.BreakpointBin):
@@ -106,10 +121,14 @@ class SnapshotPage(Adw.BreakpointBin):
                 subprocess.run(['gio', 'trash', f'{HostInfo.snapshots_path}{folder}'])
             except Exception:
                 pass
+            
+    def long_press_handler(self, row):
+        self.select_button.set_active(True)
+        row.check_button.set_active(not row.check_button.get_active())
                 
     def generate_active_list(self):
         for pak in self.active_snapshot_paks:
-            row = AppRow(pak)
+            row = AppRow(pak, self.long_press_handler)
             row.check_button.connect("toggled", lambda *_, _row=row: self.row_select_handler(_row))
             self.active_listbox.append(row)
             
@@ -122,9 +141,9 @@ class SnapshotPage(Adw.BreakpointBin):
             
     def generate_leftover_list(self):
         for folder in self.leftover_snapshots:
-            row = LeftoverSnapshotRow(folder)
+            row = LeftoverSnapshotRow(folder, self.long_press_handler)
             row.check_button.connect("toggled", lambda *_, _row=row: self.row_select_handler(_row))
-            self.leftover_listbox.append(row)            
+            self.leftover_listbox.append(row)
             
         if len(self.leftover_snapshots) > 0:
             self.leftover_box.set_visible(True)
