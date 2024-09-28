@@ -71,7 +71,7 @@ class SnapshotsListPage(Adw.NavigationPage):
         self.set_snapshots(self.package_or_folder, refresh=True)
             
     def on_new(self, button):
-        dialog = NewSnapshotDialog(self.parent_page, self.parent_page.snapshotting_status, self.on_done, self.package_or_folder)
+        dialog = NewSnapshotDialog(self.parent_page, self.parent_page.snapshotting_status, self.on_done, [self.package_or_folder])
         dialog.present(HostInfo.main_window)
 
     def sort_func(self, row1, row2):

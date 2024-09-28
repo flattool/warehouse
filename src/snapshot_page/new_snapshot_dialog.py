@@ -143,17 +143,18 @@ class NewSnapshotDialog(Adw.Dialog):
             i += 1
             row.check_button.set_active(True)
             
-    def set_single(self, package):
-        row = AppRow(package)
-        row.set_activatable(False)
-        self.selected_rows.append(row)
-        self.listbox.append(row)
+    def set_packages(self, packages):
+        for package in packages:
+            row = AppRow(package)
+            row.set_activatable(False)
+            self.selected_rows.append(row)
+            self.listbox.append(row)
     
     def enter_handler(self, *args):
         if self.create_button.get_sensitive():
             self.create_button.activate()
     
-    def __init__(self, snapshot_page, loading_status, on_done=None, package=None, **kwargs):
+    def __init__(self, snapshot_page, loading_status, on_done=None, packages=None, **kwargs):
         super().__init__(**kwargs)
         
         # Extra Object Creations
@@ -177,13 +178,15 @@ class NewSnapshotDialog(Adw.Dialog):
         # Apply
         self.listbox.set_sort_func(self.sort_func)
         self.listbox.set_filter_func(self.filter_func)
-        if not package is None:
+        self.name_entry.set_title(_("Name these Snapshots"))
+        if not packages is None:
             self.search_entry.set_editable(False)
             self.search_button.set_visible(False)
             self.nav_page.set_title(_("New Snapshot"))
-            self.name_entry.set_title(_("Name this Snapshot"))
-            self.set_single(package)
+            if len(packages) == 1:
+                self.name_entry.set_title(_("Name this Snapshot"))
+            self.set_packages(packages)
+            self.no_results.set_visible(False)
         else:
             self.nav_page.set_title(_("New Snapshots"))
-            self.name_entry.set_title(_("Name these Snapshots"))
             self.generate_list()

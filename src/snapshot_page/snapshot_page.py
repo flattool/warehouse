@@ -6,6 +6,7 @@ from .snapshots_list_page import SnapshotsListPage
 from .sidebar_button import SidebarButton
 from .loading_status import LoadingStatus
 from .new_snapshot_dialog import NewSnapshotDialog
+from .tar_worker import TarWorker
 import os, subprocess
 
 class LeftoverSnapshotRow(Adw.ActionRow):
@@ -183,7 +184,7 @@ class SnapshotPage(Adw.BreakpointBin):
                 self.toast_overlay.add_toast(Adw.Toast(title=_("Showing snapshots for {}").format(package.info['name'])))
                 break
         else:
-            dialog = NewSnapshotDialog(self, self.snapshotting_status, self.refresh, package)
+            dialog = NewSnapshotDialog(self, self.snapshotting_status, self.refresh, [package])
             toast = Adw.Toast(title=_("No snapshots for {}").format(package.info['name']), button_label=_("New"))
             toast.connect("button-clicked", lambda *_: dialog.present(HostInfo.main_window))
             self.toast_overlay.add_toast(toast)
@@ -347,17 +348,27 @@ class SnapshotPage(Adw.BreakpointBin):
             except subprocess.CalledProcessError as cpe:
                 self.toast_overlay.add_toast(ErrorToast(_("Could not trash snapshots"), cpe.stderr).toast)
             
-        dialog = Adw.AlertDialog(heading=_("Trash Snapshots?"), body=_("These snapshots will be sent to the trash"))
+        dialog = Adw.AlertDialog(heading=_("Trash Snapshots?"), body=_("These apps' snapshots will be sent to the trash"))
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Trash"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", on_response)
         dialog.present(HostInfo.main_window)
         
+    def select_new_handler(self):
+        packages = []
+        for row in self.selected_active_rows:
+            if os.path.exists(row.package.data_path):
+                packages.append(row.package)
+                
+        NewSnapshotDialog(self, self.snapshotting_status, self.refresh, packages).present(HostInfo.main_window)
+        
     def more_menu_handler(self, listbox, row):
         self.more_popover.popdown()
         row = row.get_child()
         match row:
+            case self.new_snapshots:
+                self.select_new_handler()
             case self.trash_snapshots:
                 self.select_trash_handler()
         
