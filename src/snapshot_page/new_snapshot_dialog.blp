@@ -39,8 +39,8 @@ template $NewSnapshotDialog : Adw.Dialog {
                         }
                     }
                 }
-                Adw.Clamp {
-                    ScrolledWindow {
+                Stack stack {
+                    ScrolledWindow scrolled_window {
                         propagate-natural-height: true;
                         propagate-natural-width: true;
                         Box {
@@ -63,6 +63,11 @@ template $NewSnapshotDialog : Adw.Dialog {
                                 styles ["boxed-list"]
                             }
                         }
+                    }
+                    Adw.StatusPage no_results {
+                        title: _("No Results Found");
+                        description: _("Try a different search");
+                        icon-name: "system-search-symbolic";
                     }
                 }
                 [bottom]

@@ -21,6 +21,9 @@ class NewSnapshotDialog(Adw.Dialog):
     listbox = gtc()
     select_all_button = gtc()
     total_selected_label = gtc()
+    scrolled_window = gtc()
+    no_results = gtc()
+    stack = gtc()
     
     def row_gesture_handler(self, row):
         row.check_button.set_active(not row.check_button.get_active())
@@ -58,7 +61,11 @@ class NewSnapshotDialog(Adw.Dialog):
         title = row.get_title().lower()
         subtitle = row.get_subtitle().lower()
         search = self.search_entry.get_text().lower()
-        return search in title or search in subtitle
+        if search in title or search in subtitle:
+            self.is_result = True
+            return True
+        else:
+            return False
         
     def on_close(self, *args):
         self.search_button.set_active(False)
@@ -67,14 +74,15 @@ class NewSnapshotDialog(Adw.Dialog):
     
     def valid_checker(self):
         text = self.name_entry.get_text().strip()
-        valid = len(self.selected_rows) > 0 and len(text) > 0 and not("/" in text or "\0" in text)
-        self.create_button.set_sensitive(valid)
-        if valid:
+        something_selected = len(self.selected_rows) > 0
+        text_good = len(text) > 0 and not("/" in text or "\0" in text)
+        self.create_button.set_sensitive(something_selected and text_good)
+        if text_good:
             self.name_entry.remove_css_class("error")
         else:
             self.name_entry.add_css_class("error")
             
-        return valid
+        return something_selected and text_good
         
     def get_total_fraction(self):
         total = 0
@@ -121,7 +129,12 @@ class NewSnapshotDialog(Adw.Dialog):
         self.close()
         
     def on_invalidate(self, search_entry):
+        self.is_result = False
         self.listbox.invalidate_filter()
+        if self.is_result:
+            self.stack.set_visible_child(self.scrolled_window)
+        else:
+            self.stack.set_visible_child(self.no_results)
         
     def on_select_all(self, button):
         i = 0
@@ -134,10 +147,6 @@ class NewSnapshotDialog(Adw.Dialog):
         row.set_activatable(False)
         self.selected_rows.append(row)
         self.listbox.append(row)
-        
-    def present(self, *args, **kwargs):
-        super().present(*args, **kwargs)
-        self.name_entry.grab_focus()
     
     def enter_handler(self, *args):
         if self.create_button.get_sensitive():
@@ -150,6 +159,7 @@ class NewSnapshotDialog(Adw.Dialog):
         self.snapshot_page = snapshot_page
         self.loading_status = loading_status
         self.on_done = on_done
+        self.is_result = False
         self.rows = []
         self.selected_rows = []
         self.workers = []
