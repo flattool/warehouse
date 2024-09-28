@@ -119,6 +119,9 @@ class SnapshotBox(Gtk.Box):
             self.parent_page.set_snapshots(self.parent_page.package_or_folder, True)
             properties_page = HostInfo.main_window.pages[HostInfo.main_window.packages_row].properties_page
             properties_page.set_properties(properties_page.package, True)
+            data_page = HostInfo.main_window.pages[HostInfo.main_window.user_data_row]
+            data_page.start_loading()
+            data_page.end_loading()
             return False # Stop the timeout
         else:
             return True # Continue the timeout
