@@ -120,6 +120,7 @@ class NewSnapshotDialog(Adw.Dialog):
                 new_path=f"{HostInfo.snapshots_path}{package.info['id']}",
                 file_name=f"{int(time.time())}_{package.info["version"]}",
                 name=self.name_entry.get_text(),
+                toast_overlay=self.snapshot_page.toast_overlay,
             )
             self.workers.append(worker)
             worker.compress()

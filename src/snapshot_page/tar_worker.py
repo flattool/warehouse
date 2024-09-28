@@ -4,7 +4,7 @@ from .error_toast import ErrorToast
 import os, tarfile, subprocess, json
 
 class TarWorker:
-    def __init__(self, existing_path, new_path, file_name, name=""):
+    def __init__(self, existing_path, new_path, file_name, name="", toast_overlay=None):
         self.existing_path = existing_path
         self.new_path = new_path
         self.file_name = file_name
@@ -14,6 +14,7 @@ class TarWorker:
         self.fraction = 0.0
         self.total = 0
         self.process = None
+        self.toast_overlay = toast_overlay
         
     def compress_thread(self, *args):
         try:
@@ -80,13 +81,14 @@ class TarWorker:
         if not files_to_trash is None:
             try:
                 subprocess.run(['gio', 'trash'] + files_to_trash, capture_output=True, check=True)
-
+                
             except Exception:
                 pass
-
+                
         self.stop = True
-        print("Error in cancelling:", error_str)
-            
+        if self.toast_overlay:
+            self.toast_overlay.add_toast(ErrorToast(_("Error in snapshot handling"), error_str).toast)
+        
     def check_size(self, check_path):
         try:
             output = subprocess.run(['du', '-s', check_path], check=True, text=True, capture_output=True).stdout.split('\t')[0]
