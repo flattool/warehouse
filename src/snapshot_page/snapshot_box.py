@@ -104,7 +104,7 @@ class SnapshotBox(Gtk.Box):
 
             Gio.Task.new(None, None, callback).run_in_thread(thread)
 
-        dialog = Adw.AlertDialog(heading=_("Trash Snapshot?"), body=_("This snapshot will be moved to the trash"))
+        dialog = Adw.AlertDialog(heading=_("Trash Snapshot?"), body=_("This snapshot will be sent to the trash"))
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Trash"))
         dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)

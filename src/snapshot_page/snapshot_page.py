@@ -72,6 +72,7 @@ class SnapshotPage(Adw.BreakpointBin):
     select_all_button = gtc()
     copy_button = gtc()
     more_button = gtc()
+    more_popover = gtc()
     more_menu = gtc()
     new_snapshots = gtc()
     apply_snapshots = gtc()
@@ -188,11 +189,14 @@ class SnapshotPage(Adw.BreakpointBin):
             self.toast_overlay.add_toast(toast)
             
     def start_loading(self):
+        self.select_button.set_active(False)
         self.status_stack.set_visible_child(self.loading_view)
         self.active_box.set_visible(True)
         self.active_listbox.remove_all()
         self.leftover_box.set_visible(True)
         self.leftover_listbox.remove_all()
+        self.selected_active_rows.clear()
+        self.selected_leftover_rows.clear()
         
     def end_loading(self):
         def callback(*args):
@@ -206,8 +210,6 @@ class SnapshotPage(Adw.BreakpointBin):
                 GLib.idle_add(lambda *_: self.stack.set_visible_child(self.scrolled_window))
                 GLib.idle_add(lambda *_: self.status_stack.set_visible_child(self.split_view))
                 
-        self.selected_active_rows.clear()
-        self.selected_leftover_rows.clear()
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_snapshots)
         
     def open_snapshots_folder(self, button):
@@ -325,6 +327,40 @@ class SnapshotPage(Adw.BreakpointBin):
         HostInfo.clipboard.set(to_copy)
         self.toast_overlay.add_toast(Adw.Toast(title=_("Copied Snapshot Paths")))
         
+    def select_trash_handler(self):
+        def on_response(dialog, response):
+            to_trash = []
+            if response != "continue":
+                return
+                
+            for row in self.selected_active_rows:
+                to_trash.append(f"{HostInfo.snapshots_path}{row.package.info['id']}")
+            
+            for row in self.selected_leftover_rows:
+                to_trash.append(f"{HostInfo.snapshots_path}{row.folder}")
+                
+            try:
+                subprocess.run(['gio', 'trash'] + to_trash, check=True, text=True, capture_output=True)
+                self.start_loading()
+                self.end_loading()
+                self.toast_overlay.add_toast(Adw.Toast(title=_("Trashed snapshots")))
+            except subprocess.CalledProcessError as cpe:
+                self.toast_overlay.add_toast(ErrorToast(_("Could not trash snapshots"), cpe.stderr).toast)
+            
+        dialog = Adw.AlertDialog(heading=_("Trash Snapshots?"), body=_("These snapshots will be sent to the trash"))
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Trash"))
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.connect("response", on_response)
+        dialog.present(HostInfo.main_window)
+        
+    def more_menu_handler(self, listbox, row):
+        self.more_popover.popdown()
+        row = row.get_child()
+        match row:
+            case self.trash_snapshots:
+                self.select_trash_handler()
+        
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
         
@@ -351,6 +387,7 @@ class SnapshotPage(Adw.BreakpointBin):
         self.select_button.connect("toggled", self.set_selection_mode)
         self.select_all_button.connect("clicked", self.select_all_handler)
         self.copy_button.connect("clicked", self.select_copy_handler)
+        self.more_menu.connect("row-activated", self.more_menu_handler)
         
         # Apply
         self.search_bar.set_key_capture_widget(HostInfo.main_window)
