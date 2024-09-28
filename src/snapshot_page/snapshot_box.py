@@ -112,18 +112,24 @@ class SnapshotBox(Gtk.Box):
         dialog.present(HostInfo.main_window)
         
     def get_fraction(self):
-        loading_status = self.parent_page.parent_page.loading_status
+        loading_status = self.snapshot_page.snapshotting_status
         loading_status.title_label.set_label(_("Applying Snapshot"))
-        loading_status.progress_bar.set_fraction(total / len(self.workers))
+        loading_status.progress_bar.set_fraction(self.worker.fraction)
+        if self.worker.stop:
+            self.snapshot_page.status_stack.set_visible_child(self.snapshot_page.split_view)
+            return False # Stop the timeout
+        else:
+            return True # Continue the timeout
         
     def on_apply(self, button):
-        self.parent_page.parent_page.status_stack.set_visible_child(self.snapshot_page.snapshotting_view)
+        self.snapshot_page.status_stack.set_visible_child(self.snapshot_page.snapshotting_view)
         self.worker.extract()
-        
+        GLib.timeout_add(200, self.get_fraction)
         
     def __init__(self, parent_page, folder, snapshots_path, toast_overlay, **kwargs):
         super().__init__(**kwargs)
 
+        self.snapshot_page = parent_page.parent_page
         self.toast_overlay = toast_overlay
         self.app_id = snapshots_path.split('/')[-2].strip()
         self.worker = TarWorker(

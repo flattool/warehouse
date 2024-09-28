@@ -49,17 +49,22 @@ class TarWorker:
             
     def extract_thread(self, *args):
         try:
-            if not os.path.exists(self.new_path):
-                os.makedirs(self.new_path) # create the new user data path if none exists
-            else:
-                subprocess.run('gio', 'trash', self.new_path) # trash the current user data, because new data will go in its place
+            if os.path.exists(self.new_path):
+                subprocess.run(['gio', 'trash', self.new_path], capture_output=True, check=True) # trash the current user data, because new data will go in its place
+                
+            os.makedirs(self.new_path) # create the new user data path
                 
             self.total = int(subprocess.run(['du', '-s', self.existing_path], check=True, text=True, capture_output=True).stdout.split('\t')[0])
             self.total *= 2.2 # estimate from space savings
-            self.process = subprocess.Popen(['tar', '--zstd', '-xvf', self.existing_path, '-C',  self.new_path])
+            self.process = subprocess.Popen(['tar', '--zstd', '-xvf', self.existing_path, '-C',  self.new_path],
+                stdout=subprocess.PIPE, 
+                stderr=subprocess.PIPE
+            )
             stdout, stderr = self.process.communicate()
             if self.process.returncode != 0:
                 raise subprocess.CalledProcessError(self.process.returncode, self.process.args, output=stdout, stderr=stderr)
+                
+            self.stop = True # tell the check timeout to stop, because we know the file is done being made
                 
         except subprocess.CalledProcessError as cpe:
             print("Called Error in Extract Thread")
@@ -74,7 +79,7 @@ class TarWorker:
         self.process.wait()
         if not files_to_trash is None:
             try:
-                subprocess.run(['gio', 'trash'] + files_to_trash, capture_output=True)
+                subprocess.run(['gio', 'trash'] + files_to_trash, capture_output=True, check=True)
 
             except Exception:
                 pass
@@ -99,5 +104,5 @@ class TarWorker:
         
     def extract(self):
         self.stop = False
-        Gio.Task.new(None, None, None).run_in_thread(self.existing_path)
+        Gio.Task.new(None, None, None).run_in_thread(self.extract_thread)
         GLib.timeout_add(200, self.check_size, self.new_path)
