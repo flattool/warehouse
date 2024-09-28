@@ -129,6 +129,44 @@ template $SnapshotPage : Adw.BreakpointBin {
                                         }
                                     }
                                 }
+                                [bottom]
+                                Revealer {
+                                    reveal-child: bind select_button.active;
+                                    transition-type: slide_up;
+                                    [center]
+                                    Box bottom_bar {
+                                        styles ["toolbar"]
+                                        hexpand: true;
+                                        homogeneous: true;
+                                        Button select_all_button {
+                                            styles ["raised"]
+                                            Adw.ButtonContent {
+                                                icon-name: "selection-mode-symbolic";
+                                                label: _("Select All");
+                                                can-shrink: true;
+                                            }
+                                        }
+                                        Button copy_button {
+                                            sensitive: false;
+                                            styles ["raised"]
+                                            Adw.ButtonContent {
+                                                icon-name: "edit-copy-symbolic";
+                                                label: _("Copy");
+                                                can-shrink: true;
+                                            }
+                                        }
+                                        MenuButton more_button {
+                                            sensitive: false;
+                                            popover: more_popover;
+                                            styles ["raised"]
+                                            Adw.ButtonContent {
+                                                icon-name: "view-more-symbolic";
+                                                label: _("More");
+                                                can-shrink: true;
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     ;
@@ -175,6 +213,24 @@ template $SnapshotPage : Adw.BreakpointBin {
                     }
                 }
             }
+        }
+    }
+}
+
+Popover more_popover {
+    styles ["menu"]
+    ListBox more_menu {
+        Label new_snapshots {
+            label: _("New Snapshots");
+            halign: start;
+        }
+        Label apply_snapshots {
+            label: _("Apply Snapshots");
+            halign: start;
+        }
+        Label trash_snapshots {
+            label: _("Trash Snapshots");
+            halign: start;
         }
     }
 }
