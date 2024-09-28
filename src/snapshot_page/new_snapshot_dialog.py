@@ -97,6 +97,7 @@ class NewSnapshotDialog(Adw.Dialog):
         return True
         
     def on_create(self, button):
+        self.loading_status.title_label.set_label(_("Creating Snapshot"))
         self.snapshot_page.status_stack.set_visible_child(self.snapshot_page.snapshotting_view)
         self.workers.clear()
         for row in self.selected_rows:
