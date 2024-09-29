@@ -4,19 +4,6 @@ from .error_toast import ErrorToast
 import os, tarfile, subprocess, json
 
 class TarWorker:
-    def __init__(self, existing_path, new_path, file_name="", name="", toast_overlay=None):
-        self.existing_path = existing_path
-        self.new_path = new_path
-        self.file_name = file_name
-        self.name = name
-        self.should_check = False
-        self.stop = False
-        self.fraction = 0.0
-        self.total = 0
-        self.process = None
-        self.toast_overlay = toast_overlay
-        self.has_cancelled = False
-        
     def compress_thread(self, *args):
         try:
             if not os.path.exists(self.new_path):
@@ -43,11 +30,11 @@ class TarWorker:
             
         except subprocess.CalledProcessError as cpe:
             print("Called Error in Compress Thread")
-            self.do_cancel(cpe.stderr.decode(), [f'{self.new_path}/{self.file_name}.tar.zst', f'{self.new_path}/{self.file_name}.json'])  # stderr is in bytes, so decode it
+            self.do_cancel(cpe.stderr.decode())  # stderr is in bytes, so decode it
             
         except Exception as e:
             print("Exception in Compress Thread")
-            self.do_cancel(str(e), [f'{self.new_path}/{self.file_name}.tar.zst', f'{self.new_path}/{self.file_name}.json'])
+            self.do_cancel(str(e))
             
     def extract_thread(self, *args):
         try:
@@ -69,31 +56,29 @@ class TarWorker:
             self.stop = True # tell the check timeout to stop, because we know the file is done being made
                 
         except subprocess.CalledProcessError as cpe:
-            print("Called Error in Extract Thread")
-            self.do_cancel(cpe.stderr.decode(), [self.new_path])
+            self.do_cancel(cpe.stderr.decode())
             
         except Exception as e:
-            print("Exception in Extract Thread")
-            self.do_cancel(str(e), [self.new_path])
-
-    def do_cancel(self, error_str, files_to_trash=None):
-        if self.has_cancelled:
+            self.do_cancel(str(e))
+            
+    def do_cancel(self, error_str):
+        if self.has_cancelled or self.stop:
             return
             
         self.has_cancelled = True
         self.process.terminate()
         self.process.wait()
-        if not files_to_trash is None:
+        if len(self.files_to_trash_on_cancel) > 0:
             try:
-                subprocess.run(['gio', 'trash'] + files_to_trash, capture_output=True, check=True)
+                subprocess.run(['gio', 'trash'] + self.files_to_trash_on_cancel, capture_output=True, check=True)
                 
             except Exception:
                 pass
                 
         self.stop = True
-        if self.toast_overlay:
+        if self.toast_overlay and error_str != "manual_cancel":
             self.toast_overlay.add_toast(ErrorToast(_("Error in snapshot handling"), error_str).toast)
-        
+            
     def check_size(self, check_path):
         try:
             output = subprocess.run(['du', '-s', check_path], check=True, text=True, capture_output=True).stdout.split('\t')[0]
@@ -106,10 +91,26 @@ class TarWorker:
             
     def compress(self):
         self.stop = False
+        self.files_to_trash_on_cancel = [f'{self.new_path}/{self.file_name}.tar.zst', f'{self.new_path}/{self.file_name}.json']
         Gio.Task.new(None, None, None).run_in_thread(self.compress_thread)
         GLib.timeout_add(200, self.check_size, f"{self.new_path}/{self.file_name}.tar.zst")
         
     def extract(self):
         self.stop = False
+        self.files_to_trash_on_cancel = [self.new_path]
         Gio.Task.new(None, None, None).run_in_thread(self.extract_thread)
         GLib.timeout_add(200, self.check_size, self.new_path)
+        
+    def __init__(self, existing_path, new_path, file_name="", name="", toast_overlay=None):
+        self.existing_path = existing_path
+        self.new_path = new_path
+        self.file_name = file_name
+        self.name = name
+        self.should_check = False
+        self.stop = False
+        self.fraction = 0.0
+        self.total = 0
+        self.process = None
+        self.toast_overlay = toast_overlay
+        self.has_cancelled = False
+        self.files_to_trash_on_cancel = []

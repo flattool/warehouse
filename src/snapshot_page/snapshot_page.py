@@ -226,6 +226,9 @@ class SnapshotPage(Adw.BreakpointBin):
         for worker in self.workers:
             worker.do_cancel("manual_cancel")
             
+        if self.new_snapshot_dialog is None:
+            return
+            
         for worker in self.new_snapshot_dialog.workers:
             worker.do_cancel("manual_cancel")
             
@@ -486,11 +489,10 @@ class SnapshotPage(Adw.BreakpointBin):
         self.selected_active_rows = []
         self.selected_leftover_rows = []
         self.workers = []
-        # self.active_rows = []
         self.leftover_snapshots = []
-        # self.leftover_rows = []
         self.list_page = SnapshotsListPage(self)
         self.snapshotting_status = LoadingStatus("Initial Title", _("This might take a while"), True, self.on_cancel)
+        self.new_snapshot_dialog = None
         
         # Connections
         self.active_listbox.connect("row-activated", self.active_select_handler)
