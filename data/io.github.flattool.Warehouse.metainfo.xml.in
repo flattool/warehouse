@@ -8,8 +8,8 @@
 	<project_license>GPL-3.0-only</project_license>
 	<summary>Manage all things Flatpak</summary>
 	<description>
-	  <p>Warehouse is an app that manages installed Flatpaks, their user data, and Flatpak remotes.</p>
-	  <p>Features:</p>
+    <p>Warehouse is an app that manages installed Flatpaks, their user data, and Flatpak remotes.</p>
+    <p>Features:</p>
       <ul>
         <li>Show and filter the list of installed Flatpaks</li>
         <li>Display properties of installed Flatpaks</li>
@@ -23,11 +23,11 @@
     <color type="primary" scheme_preference="light">#AECEF4</color>
     <color type="primary" scheme_preference="dark">#072F5E</color>
   </branding>
-  <recommends>
+  <supports>
     <control>keyboard</control>
     <control>pointing</control>
     <control>touch</control>
-  </recommends>
+  </supports>
   <requires>
     <display_length compare="ge">330</display_length>
   </requires>
