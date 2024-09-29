@@ -15,10 +15,10 @@ class PackagesPage(Adw.BreakpointBin):
     gtc = Gtk.Template.Child
     packages_bpt = gtc()
     packages_toast_overlay = gtc()
+    stack = gtc()
     status_stack = gtc()
     scrolled_window = gtc()
-    # uninstalling = gtc()
-    # loading_packages = gtc()
+    loading_view = gtc()
     no_filter_results = gtc()
     reset_filters_button = gtc()
     no_packages = gtc()
@@ -60,7 +60,7 @@ class PackagesPage(Adw.BreakpointBin):
         else:
             self.select_button.set_sensitive(False)
 
-        if to_set is self.loading_packages or to_set is self.uninstalling:
+        if to_set is self.uninstalling:
             self.properties_page.stack.set_visible_child(self.properties_page.loading_tbv)
             self.filter_button.set_sensitive(False)
             self.filters_page.set_sensitive(False)
@@ -84,8 +84,12 @@ class PackagesPage(Adw.BreakpointBin):
 
         if to_set is self.no_results:
             self.filters_page.set_sensitive(False)
-
-        self.status_stack.set_visible_child(to_set)
+            
+        if to_set is self.loading_packages:
+            self.stack.set_visible_child(self.loading_view)
+        else:
+            self.stack.set_visible_child(self.packages_split)
+            self.status_stack.set_visible_child(to_set)
 
     def apply_filters(self):
         i = 0
@@ -324,8 +328,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.current_row_for_properties = None
 
         # Apply
-        # self.set_status("loading_packages")
-        self.status_stack.add_child(self.loading_packages)
+        self.loading_view.set_content(self.loading_packages)
         self.status_stack.add_child(self.uninstalling)
         self.packages_list_box.set_filter_func(self.filter_func)
         self.packages_list_box.set_sort_func(self.sort_func)
