@@ -142,8 +142,8 @@ class NewSnapshotDialog(Adw.Dialog):
             i += 1
             row.check_button.set_active(True)
             
-    def set_packages(self, packages):
-        for package in packages:
+    def set_packages(self):
+        for package in self.packages:
             row = AppRow(package)
             row.set_activatable(False)
             self.selected_rows.append(row)
@@ -152,6 +152,11 @@ class NewSnapshotDialog(Adw.Dialog):
     def enter_handler(self, *args):
         if self.create_button.get_sensitive():
             self.create_button.activate()
+            
+    def present(self, *args, **kwargs):
+        super().present(*args, **kwargs)
+        if not self.search_button.get_visible():
+            self.name_entry.grab_focus()
     
     def __init__(self, snapshot_page, loading_status, on_done=None, packages=None, **kwargs):
         super().__init__(**kwargs)
@@ -164,6 +169,7 @@ class NewSnapshotDialog(Adw.Dialog):
         self.rows = []
         self.selected_rows = []
         self.workers = []
+        self.packages = packages
         
         # Connections
         self.connect("closed", self.on_close)
@@ -182,10 +188,10 @@ class NewSnapshotDialog(Adw.Dialog):
             self.search_entry.set_editable(False)
             self.search_button.set_visible(False)
             self.nav_page.set_title(_("New Snapshot"))
+            self.set_packages()
+            self.no_results.set_visible(False)
             if len(packages) == 1:
                 self.name_entry.set_title(_("Name this Snapshot"))
-            self.set_packages(packages)
-            self.no_results.set_visible(False)
         else:
             self.nav_page.set_title(_("New Snapshots"))
             self.generate_list()
