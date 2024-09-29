@@ -29,7 +29,7 @@ class SnapshotsListPage(Adw.NavigationPage):
         if len(self.snapshots_rows) == 0:
             self.parent_page.refresh()
             return
-
+            
         for i, row in enumerate(self.snapshots_rows):
             self.listbox.append(row)
             self.listbox.get_row_at_index(i).set_activatable(False)
@@ -37,7 +37,7 @@ class SnapshotsListPage(Adw.NavigationPage):
     def set_snapshots(self, package_or_folder, refresh=False):
         if package_or_folder == self.package_or_folder and not refresh:
             return
-
+            
         folder = None
         self.package_or_folder = package_or_folder
         if type(package_or_folder) is str:
@@ -48,7 +48,7 @@ class SnapshotsListPage(Adw.NavigationPage):
             folder = package_or_folder.info["id"]
             self.set_title(_("{} Snapshots").format(package_or_folder.info["name"]))
             self.new_button.set_sensitive(os.path.exists(package_or_folder.data_path))
-
+            
         self.current_folder = folder
         self.snapshots_rows.clear()
         self.listbox.remove_all()
@@ -71,14 +71,14 @@ class SnapshotsListPage(Adw.NavigationPage):
         self.set_snapshots(self.package_or_folder, refresh=True)
             
     def on_new(self, button):
-        dialog = NewSnapshotDialog(self.parent_page, self.parent_page.snapshotting_status, self.on_done, [self.package_or_folder])
-        dialog.present(HostInfo.main_window)
-
+        self.parent_page.new_snapshot_dialog = NewSnapshotDialog(self.parent_page, self.parent_page.snapshotting_status, self.on_done, [self.package_or_folder])
+        self.parent_page.new_snapshot_dialog.present(HostInfo.main_window)
+        
     def sort_func(self, row1, row2):
         row1 = row1.get_child()
         row2 = row2.get_child()
         return row1.epoch > row2.epoch
-
+        
     def on_trash(self):
         self.set_snapshots(self.package_or_folder, refresh=True)
         

@@ -29,11 +29,9 @@ class TarWorker:
             self.stop = True # tell the check timeout to stop, because we know the file is done being made
             
         except subprocess.CalledProcessError as cpe:
-            print("Called Error in Compress Thread")
             self.do_cancel(cpe.stderr.decode())  # stderr is in bytes, so decode it
             
         except Exception as e:
-            print("Exception in Compress Thread")
             self.do_cancel(str(e))
             
     def extract_thread(self, *args):
