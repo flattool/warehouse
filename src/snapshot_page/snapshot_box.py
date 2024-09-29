@@ -122,6 +122,9 @@ class SnapshotBox(Gtk.Box):
             data_page = HostInfo.main_window.pages[HostInfo.main_window.user_data_row]
             data_page.start_loading()
             data_page.end_loading()
+            if self.worker in self.snapshot_page.workers:
+                self.snapshot_page.workers.remove(self.worker)
+                
             return False # Stop the timeout
         else:
             return True # Continue the timeout
@@ -135,6 +138,7 @@ class SnapshotBox(Gtk.Box):
             self.snapshot_page.snapshotting_status.progress_label.set_visible(False)
             self.snapshot_page.snapshotting_status.progress_bar.set_fraction(0.0)
             self.snapshot_page.status_stack.set_visible_child(self.snapshot_page.snapshotting_view)
+            self.snapshot_page.workers.append(self.worker)
             self.worker.extract()
             GLib.timeout_add(200, self.get_fraction)
         
