@@ -15,6 +15,7 @@ class TarWorker:
         self.total = 0
         self.process = None
         self.toast_overlay = toast_overlay
+        self.has_cancelled = False
         
     def compress_thread(self, *args):
         try:
@@ -76,6 +77,10 @@ class TarWorker:
             self.do_cancel(str(e), [self.new_path])
 
     def do_cancel(self, error_str, files_to_trash=None):
+        if self.has_cancelled:
+            return
+            
+        self.has_cancelled = True
         self.process.terminate()
         self.process.wait()
         if not files_to_trash is None:

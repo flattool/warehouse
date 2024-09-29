@@ -204,7 +204,6 @@ class SnapshotPage(Adw.BreakpointBin):
         
     def end_loading(self):
         def callback(*args):
-            self.new_snapshot_dialog = NewSnapshotDialog(self, self.snapshotting_status, self.refresh)
             self.generate_active_list()
             self.generate_leftover_list()
             if (not self.active_box.get_visible()) and (not self.leftover_box.get_visible()):
@@ -224,10 +223,14 @@ class SnapshotPage(Adw.BreakpointBin):
             self.toast_overlay.add_toast(ErrorToast(_("Could not open folder"), str(e)).toast)
             
     def on_cancel(self):
+        for worker in self.workers:
+            worker.do_cancel("manual_cancel")
+            
         for worker in self.new_snapshot_dialog.workers:
             worker.do_cancel("manual_cancel")
             
     def on_new(self, *args):
+        self.new_snapshot_dialog = NewSnapshotDialog(self, self.snapshotting_status, self.refresh)
         self.new_snapshot_dialog.present(HostInfo.main_window)
         
     def refresh(self):
@@ -347,7 +350,8 @@ class SnapshotPage(Adw.BreakpointBin):
             self.toast_overlay.add_toast(Adw.Toast(title=_("No apps in your selection can be snapshotted")))
             return
                 
-        NewSnapshotDialog(self, self.snapshotting_status, self.refresh, packages).present(HostInfo.main_window)
+        self.new_snapshot_dialog = NewSnapshotDialog(self, self.snapshotting_status, self.refresh, packages)
+        self.new_snapshot_dialog.present(HostInfo.main_window)
         
     def get_snapshots_from_entry(self, app_ids):
         id_to_tar = {}
@@ -379,6 +383,7 @@ class SnapshotPage(Adw.BreakpointBin):
                 self.snapshotting_status.progress_bar.set_fraction(1)
                 self.snapshotting_status.progress_label.set_label(f"{len(self.workers)} / {len(self.workers)}")
                 HostInfo.main_window.refresh_handler()
+                self.workers.clear()
                 return False
                 
         self.snapshotting_status.progress_label.set_label(f"{stopped_workers_amount + 1} / {len(self.workers)}")
