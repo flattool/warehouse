@@ -4,7 +4,7 @@ from .error_toast import ErrorToast
 import os, tarfile, subprocess, json
 
 class TarWorker:
-    def __init__(self, existing_path, new_path, file_name, name="", toast_overlay=None):
+    def __init__(self, existing_path, new_path, file_name="", name="", toast_overlay=None):
         self.existing_path = existing_path
         self.new_path = new_path
         self.file_name = file_name
@@ -92,7 +92,7 @@ class TarWorker:
     def check_size(self, check_path):
         try:
             output = subprocess.run(['du', '-s', check_path], check=True, text=True, capture_output=True).stdout.split('\t')[0]
-            working_total = int(output)
+            working_total = float(output)
             self.fraction = working_total / self.total
             return not self.stop
             

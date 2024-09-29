@@ -100,8 +100,7 @@ class NewSnapshotDialog(Adw.Dialog):
                     
                 return False
                 
-            self.loading_status.progress_label.set_label(f"{stopped_workers_amount} / {len(self.workers)}")
-            
+        self.loading_status.progress_label.set_label(f"{stopped_workers_amount + 1} / {len(self.workers)}")
         self.loading_status.progress_bar.set_fraction(total / len(self.workers))
         return True
         

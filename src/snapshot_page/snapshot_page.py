@@ -190,6 +190,7 @@ class SnapshotPage(Adw.BreakpointBin):
             self.toast_overlay.add_toast(toast)
             
     def start_loading(self):
+        self.workers.clear()
         self.select_button.set_active(False)
         self.status_stack.set_visible_child(self.loading_view)
         self.active_box.set_visible(True)
@@ -307,8 +308,14 @@ class SnapshotPage(Adw.BreakpointBin):
         total_leftover = len(self.selected_leftover_rows)
         total = total_active + total_leftover
         self.sidebar_navpage.set_title(_("{} Selected").format(total_active + total_leftover) if total > 0 else _("Snapshots"))
+        self.new_snapshots.set_visible(total_active > 0)
         self.copy_button.set_sensitive(total > 0)
         self.more_button.set_sensitive(total > 0)
+        i = 0
+        while row := self.more_menu.get_row_at_index(i):
+            i += 1
+            if row.get_child() is self.new_snapshots:
+                row.set_visible(total_active > 0)
         
     def select_copy_handler(self, *args):
         to_copy = ""
@@ -328,6 +335,102 @@ class SnapshotPage(Adw.BreakpointBin):
         HostInfo.clipboard.set(to_copy)
         self.toast_overlay.add_toast(Adw.Toast(title=_("Copied Snapshot Paths")))
         
+    def select_new_handler(self):
+        packages = []
+        for row in self.selected_active_rows:
+            if os.path.exists(row.package.data_path):
+                packages.append(row.package)
+                
+        if len(packages) == 0:
+            self.toast_overlay.add_toast(Adw.Toast(title=_("No apps in your selection can be snapshotted")))
+            return
+                
+        NewSnapshotDialog(self, self.snapshotting_status, self.refresh, packages).present(HostInfo.main_window)
+        
+    def get_snapshots_from_entry(self, app_ids):
+        id_to_tar = {}
+        for app_id in app_ids:
+            path = f"{HostInfo.snapshots_path}{app_id}"
+            if not os.path.exists:
+                continue
+                
+            tarlist = []
+            for file in os.listdir(path):
+                if file.endswith(".tar.zst"):
+                    tarlist.append(file)
+                    
+            id_to_tar[app_id] = tarlist
+            if len(tarlist) < 1:
+                id_to_tar.pop(app_id, None)
+            
+        return id_to_tar
+        
+    def get_total_fraction(self):
+        total = 0
+        stopped_workers_amount = 0
+        for worker in self.workers:
+            total += worker.fraction
+            if worker.stop:
+                stopped_workers_amount += 1
+                
+            if stopped_workers_amount == len(self.workers):
+                self.snapshotting_status.progress_bar.set_fraction(1)
+                self.snapshotting_status.progress_label.set_label(f"{len(self.workers)} / {len(self.workers)}")
+                HostInfo.main_window.refresh_handler()
+                return False
+                
+        self.snapshotting_status.progress_label.set_label(f"{stopped_workers_amount + 1} / {len(self.workers)}")
+        self.snapshotting_status.progress_bar.set_fraction(total / len(self.workers))
+        return True
+        
+    def on_apply_response(self, dialog, response):
+        if response != "continue":
+            return
+            
+        app_ids = []
+        for row in self.selected_active_rows:
+            app_ids.append(row.package.info['id'])
+            
+        for row in self.selected_leftover_rows:
+            app_ids.append(row.folder)
+            
+        id_to_tar = self.get_snapshots_from_entry(app_ids)
+        for app_id in id_to_tar:
+            biggest = 0
+            biggest_tar = ""
+            for tar in id_to_tar[app_id]:
+                epoch = int(tar.split('_')[0])
+                if epoch > biggest:
+                    biggest = epoch
+                    biggest_tar = tar
+                    
+            id_to_tar[app_id] = tar
+        
+        for app_id, tar in id_to_tar.items():
+            worker = TarWorker(
+                existing_path=f"{HostInfo.snapshots_path}{app_id}/{tar}",
+                new_path=f"{HostInfo.home}/.var/app/{app_id}/",
+                toast_overlay=self.toast_overlay,
+            )
+            self.workers.append(worker)
+            worker.extract()
+        
+        if len(self.workers) > 0:
+            self.snapshotting_status.title_label.set_label(_("Applying Snapshots"))
+            self.snapshotting_status.progress_bar.set_fraction(0.0)
+            self.snapshotting_status.progress_label.set_visible(len(self.workers) > 1)
+            self.status_stack.set_visible_child(self.snapshotting_view)
+            GLib.timeout_add(200, self.get_total_fraction)
+        else:
+            self.toast_overlay.add_toast(ErrorToast(_("No snapshots to extract"), _("No snapshots were found to extract")))
+            
+    def select_apply_handler(self):
+        dialog = Adw.AlertDialog(heading=_("Apply These Snapshots?"), body=_("This will trash the current apps' user data, and apply their newest snapshot"))
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Continue"))
+        dialog.connect("response", self.on_apply_response)
+        dialog.present(HostInfo.main_window)
+        
     def select_trash_handler(self):
         def on_response(dialog, response):
             to_trash = []
@@ -336,7 +439,7 @@ class SnapshotPage(Adw.BreakpointBin):
                 
             for row in self.selected_active_rows:
                 to_trash.append(f"{HostInfo.snapshots_path}{row.package.info['id']}")
-            
+                
             for row in self.selected_leftover_rows:
                 to_trash.append(f"{HostInfo.snapshots_path}{row.folder}")
                 
@@ -355,20 +458,14 @@ class SnapshotPage(Adw.BreakpointBin):
         dialog.connect("response", on_response)
         dialog.present(HostInfo.main_window)
         
-    def select_new_handler(self):
-        packages = []
-        for row in self.selected_active_rows:
-            if os.path.exists(row.package.data_path):
-                packages.append(row.package)
-                
-        NewSnapshotDialog(self, self.snapshotting_status, self.refresh, packages).present(HostInfo.main_window)
-        
     def more_menu_handler(self, listbox, row):
         self.more_popover.popdown()
         row = row.get_child()
         match row:
             case self.new_snapshots:
                 self.select_new_handler()
+            case self.apply_snapshots:
+                self.select_apply_handler()
             case self.trash_snapshots:
                 self.select_trash_handler()
         
@@ -381,6 +478,7 @@ class SnapshotPage(Adw.BreakpointBin):
         self.active_snapshot_paks = []
         self.selected_active_rows = []
         self.selected_leftover_rows = []
+        self.workers = []
         # self.active_rows = []
         self.leftover_snapshots = []
         # self.leftover_rows = []

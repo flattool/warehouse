@@ -157,7 +157,6 @@ class SnapshotBox(Gtk.Box):
         self.worker = TarWorker(
             existing_path=f"{snapshots_path}{folder}",
             new_path=f"{HostInfo.home}/.var/app/{self.app_id}/",
-            file_name=self.app_id,
             toast_overlay=self.toast_overlay,
         )
 
