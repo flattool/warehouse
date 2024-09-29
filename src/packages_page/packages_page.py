@@ -19,6 +19,7 @@ class PackagesPage(Adw.BreakpointBin):
     status_stack = gtc()
     scrolled_window = gtc()
     loading_view = gtc()
+    uninstalling_view = gtc()
     no_filter_results = gtc()
     reset_filters_button = gtc()
     no_packages = gtc()
@@ -60,16 +61,6 @@ class PackagesPage(Adw.BreakpointBin):
         else:
             self.select_button.set_sensitive(False)
 
-        if to_set is self.uninstalling:
-            self.properties_page.stack.set_visible_child(self.properties_page.loading_tbv)
-            self.filter_button.set_sensitive(False)
-            self.filters_page.set_sensitive(False)
-            self.select_button.set_active(False)
-
-            self.search_button.set_active(False)
-            self.search_button.set_sensitive(False)
-            self.search_entry.set_editable(False)
-
         if to_set is self.no_packages:
             self.properties_page.stack.set_visible_child(self.properties_page.error_tbv)
             self.filter_button.set_sensitive(False)
@@ -85,8 +76,9 @@ class PackagesPage(Adw.BreakpointBin):
         if to_set is self.no_results:
             self.filters_page.set_sensitive(False)
             
-        if to_set is self.loading_packages:
+        if to_set is self.loading_packages or to_set is self.uninstalling:
             self.stack.set_visible_child(self.loading_view)
+            self.stack.set_visible_child(self.uninstalling_view)
         else:
             self.stack.set_visible_child(self.packages_split)
             self.status_stack.set_visible_child(to_set)
@@ -314,11 +306,12 @@ class PackagesPage(Adw.BreakpointBin):
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
-
+        
         # Extra Object Creation
         self.main_window = main_window
         self.loading_packages = LoadingStatus(_("Loading Packages"), _("This should only take a moment"))
         self.uninstalling = LoadingStatus(_("Uninstalling Packages"), _("This should only take a moment"))
+        self.uninstalling_view.set_content(self.uninstalling)
         self.properties_page = PropertiesPage(main_window, self)
         self.filters_page = FiltersPage(main_window, self)
         self.filter_settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
@@ -326,18 +319,16 @@ class PackagesPage(Adw.BreakpointBin):
         self.prev_status = None
         self.selected_rows = []
         self.current_row_for_properties = None
-
+        
         # Apply
         self.loading_view.set_content(self.loading_packages)
-        self.status_stack.add_child(self.uninstalling)
         self.packages_list_box.set_filter_func(self.filter_func)
         self.packages_list_box.set_sort_func(self.sort_func)
         self.content_stack.add_child(self.properties_page)
         self.content_stack.add_child(self.filters_page)
         self.__class__.instance = self
-
+        
         # Connections
-
         self.search_entry.connect("search-changed", self.on_invalidate)
         self.search_bar.set_key_capture_widget(main_window)
         self.packages_list_box.connect("row-activated", self.row_activate_handler)
@@ -347,6 +338,5 @@ class PackagesPage(Adw.BreakpointBin):
         self.packages_split.connect("notify::show-content", self.filter_page_handler)
         self.packages_bpt.connect("apply", self.filter_page_handler)
         self.select_all_button.connect("clicked", self.select_all_handler)
-
         self.copy_menu.connect("row-activated", self.selection_copy)
         self.uninstall_button.connect("clicked", self.selection_uninstall)

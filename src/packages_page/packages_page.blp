@@ -26,6 +26,13 @@ template $PackagesPage : Adw.BreakpointBin {
                     $SidebarButton {}
                 }
             }
+            Adw.ToolbarView uninstalling_view {
+                [top]
+                Adw.HeaderBar {
+                    [start]
+                    $SidebarButton {}
+                }
+            }
             Adw.NavigationSplitView packages_split {
                 sidebar-width-fraction: 0.5;
                 max-sidebar-width: 999999999;
