@@ -51,9 +51,10 @@ class SnapshotPage(Adw.BreakpointBin):
     
     toast_overlay = gtc()
     sidebar_navpage = gtc()
+    search_button = gtc()
+    select_button = gtc()
     search_entry = gtc()
     search_bar = gtc()
-    select_button = gtc()
     active_box = gtc()
     active_listbox = gtc()
     leftover_box = gtc()
@@ -190,6 +191,7 @@ class SnapshotPage(Adw.BreakpointBin):
             self.toast_overlay.add_toast(toast)
             
     def start_loading(self):
+        self.search_button.set_active(False)
         self.workers.clear()
         self.select_button.set_active(False)
         self.status_stack.set_visible_child(self.loading_view)
