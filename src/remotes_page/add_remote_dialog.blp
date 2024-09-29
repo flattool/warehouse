@@ -23,43 +23,32 @@ template $AddRemoteDialog : Adw.Dialog {
             }
         }
         Adw.ToastOverlay toast_overlay {
-            Stack stack {
-                ScrolledWindow content_page {
-                    propagate-natural-height: true;
-                    propagate-natural-width: true;
-                    Adw.Clamp {
-                        ListBox {
-                            margin-start:  12;
-                            margin-end:    12;
-                            margin-top:    12;
-                            margin-bottom: 12;
-                            selection-mode: none;
-                            valign: start;
-                            styles ["boxed-list"]
-                            Adw.EntryRow title_row {
-                                title: _("Enter Title");
-                            }
-                            Adw.EntryRow name_row {
-                                title: _("Enter Name");
-                            }
-                            Adw.EntryRow url_row {
-                                title: _("Enter Repo URL");
-                            }
-                            Adw.ComboRow installation_row {
-                                title: _("Installation");
-                            }
+            ScrolledWindow content_page {
+                propagate-natural-height: true;
+                propagate-natural-width: true;
+                Adw.Clamp {
+                    ListBox {
+                        margin-start:  12;
+                        margin-end:    12;
+                        margin-top:    12;
+                        margin-bottom: 12;
+                        selection-mode: none;
+                        valign: start;
+                        styles ["boxed-list"]
+                        Adw.EntryRow title_row {
+                            title: _("Enter Title");
+                        }
+                        Adw.EntryRow name_row {
+                            title: _("Enter Name");
+                        }
+                        Adw.EntryRow url_row {
+                            title: _("Enter Repo URL");
+                        }
+                        Adw.ComboRow installation_row {
+                            title: _("Installation");
                         }
                     }
                 }
-                // Adw.StatusPage loading_page {
-                //     title: _("Adding Remote");
-                //     description: _("This should only take a moment");
-                //     child:
-                //         Spinner {
-                //             spinning: true;
-                //         }
-                //     ;
-                // }
             }
         }
     }

@@ -12,6 +12,13 @@ template $RemotesPage : Adw.NavigationPage {
                     $SidebarButton {}
                 }
             }
+            Adw.ToolbarView adding_view {
+                [top]
+                Adw.HeaderBar {
+                    [start]
+                    $SidebarButton {}
+                }
+            }
             Adw.ToolbarView main_view {
                 [top]
                 Adw.HeaderBar header_bar {

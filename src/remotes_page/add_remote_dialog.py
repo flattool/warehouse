@@ -8,9 +8,8 @@ import subprocess, re
 class AddRemoteDialog(Adw.Dialog):
     __gtype_name__ = "AddRemoteDialog"
     gtc = Gtk.Template.Child
-
+    
     toast_overlay = gtc()
-    stack = gtc()
     cancel_button = gtc()
     apply_button = gtc()
     content_page = gtc()
@@ -18,9 +17,9 @@ class AddRemoteDialog(Adw.Dialog):
     name_row = gtc()
     url_row = gtc()
     installation_row = gtc()
-
+    
     def on_apply(self, *args):
-        self.stack.set_visible_child(self.loading_page)
+        self.parent_page.status_stack.set_visible_child(self.parent_page.adding_view)
         self.apply_button.set_sensitive(False)
         error = [None]
         def thread(*args):
@@ -36,33 +35,33 @@ class AddRemoteDialog(Adw.Dialog):
                 cmd.append(f"--{installation}")
             else:
                 cmd.append(f"--installation={installation}")
-            
+                
             try:
                 subprocess.run(cmd, check=True, capture_output=True, text=True)
             except subprocess.CalledProcessError as cpe:
                 error[0] = cpe.stderr
             except Exception as e:
                 error[0] = e
-        
+                
         def callback(*args):
             if error[0]:
-                self.stack.set_visible_child(self.content_page)
+                self.parent_page.status_stack.set_visible_child(self.parent_page.main_view)
                 self.apply_button.set_sensitive(True)
-                self.toast_overlay.add_toast(ErrorToast(_("Could not add remote"), str(error[0])).toast)
+                self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not add remote"), str(error[0])).toast)
             else:
-                self.close()
                 self.main_window.refresh_handler()
                 self.parent_page.toast_overlay.add_toast(Adw.Toast(title=_("Added {}").format(self.title_row.get_text())))
-
+                
         Gio.Task.new(None, None, callback).run_in_thread(thread)
-
+        self.close()
+        
     def check_entries(self, row):
         is_passing = re.match(self.rexes[row], row.get_text())
         if is_passing:
             row.remove_css_class("error")
         else:
             row.add_css_class("error")
-
+            
         match row:
             case self.title_row:
                 self.title_passes = bool(is_passing)
@@ -70,29 +69,27 @@ class AddRemoteDialog(Adw.Dialog):
                 self.name_passes = bool(is_passing)
             case self.url_row:
                 self.url_passes = bool(is_passing)
-        
+                
         self.apply_button.set_sensitive(self.title_passes and self.name_passes and self.url_passes)
-
+        
     def __init__(self, main_window, parent_page, remote_info=None, **kwargs):
         super().__init__(**kwargs)
-
+        
         # Extra Object Creation
         self.string_list = Gtk.StringList(strings=HostInfo.installations)
         self.main_window = main_window
         self.parent_page = parent_page
-        self.loading_page = LoadingStatus(_("Adding Remote"), _("This should only take a moment"))
         
         self.rexes = {
-            self.title_row: "^(?=.*[A-Za-z0-9])[A-Za-z0-9._-]+( +[A-Za-z0-9._-]+)*$", #"^(?=.*[A-Za-z0-9])[A-Za-z0-9._-]+( [A-Za-z0-9._-]+)*$",
-            self.name_row:  "^[a-zA-Z0-9\-._]+$",
-            self.url_row:   "^[a-zA-Z0-9\-._~:/?#[\]@!$&\'()*+,;=]+$"
+            self.title_row: r"^(?=.*[A-Za-z0-9])[A-Za-z0-9._-]+( +[A-Za-z0-9._-]+)*$",
+            self.name_row: r"^[a-zA-Z0-9\-._]+$",
+            self.url_row: r"^[a-zA-Z0-9\-._~:/?#[\]@!$&\'()*+,;=]+$",
         }
         self.title_passes = False
         self.name_passes = False
         self.url_passes = False
-
+        
         # Apply
-        self.stack.add_child(self.loading_page)
         self.installation_row.set_model(self.string_list)
         if remote_info:
             self.title_row.set_text(remote_info["title"])
@@ -110,7 +107,7 @@ class AddRemoteDialog(Adw.Dialog):
                 self.apply_button.set_sensitive(True)
         else:
             self.apply_button.set_sensitive(False)
-
+            
         # Connections
         self.cancel_button.connect("clicked", lambda *_: self.close())
         self.apply_button.connect("clicked", self.on_apply)
