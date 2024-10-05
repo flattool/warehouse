@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-03 14:05-0400\n"
-"PO-Revision-Date: 2024-09-21 15:34+0000\n"
+"PO-Revision-Date: 2024-10-06 04:11+0000\n"
 "Last-Translator: sunniva <frejaland.47@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.fyralabs.com/projects/"
 "flattool/warehouse/nb_NO/>\n"
@@ -608,7 +608,7 @@ msgstr "Flatpakker"
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
 #: src/main.py:191
 msgid "translator-credits"
-msgstr "sunniva <turtle@turtle.garden>"
+msgstr "Sunniva Løvstad <warehouse@turtle.garden>"
 
 #: src/main.py:197
 msgid "Donate"
