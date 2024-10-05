@@ -76,8 +76,9 @@ class PackagesPage(Adw.BreakpointBin):
         if to_set is self.no_results:
             self.filters_page.set_sensitive(False)
             
-        if to_set is self.loading_packages or to_set is self.uninstalling:
+        if to_set is self.loading_packages:
             self.stack.set_visible_child(self.loading_view)
+        elif to_set is self.uninstalling:
             self.stack.set_visible_child(self.uninstalling_view)
         else:
             self.stack.set_visible_child(self.packages_split)
