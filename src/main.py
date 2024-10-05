@@ -202,7 +202,7 @@ class WarehouseApplication(Adw.Application):
                 "Win <winsdominoes2018@gmail.com>",
                 "Óscar Fernández Díaz",
                 "Runar https://github.com/runarcn",
-                "skøldis <warehouse@turtle.garden>",
+                "Sunniva Løvstad <warehouse@turtle.garden>",
                 "Maxim Therrien <maxim@mtsd.ca>",
             ],
         )
