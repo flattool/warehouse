@@ -26,6 +26,11 @@
         "*.la",
         "*.a"
     ],
+    "build-options" : {
+        "env" : {
+            "MOUNT_FUSE_PATH" : "../tmp/"
+        }
+    },
     "modules" : [
         {
             "name" : "blueprint-compiler",
@@ -39,6 +44,108 @@
             ],
             "cleanup" : [
                 "*"
+            ]
+        },
+        {
+            "name" : "libfuse",
+            "config-opts" : [
+                "UDEV_RULES_PATH=/app/etc/udev/rules.d",
+                "INIT_D_PATH=/app/etc/init.d"
+            ],
+            "cleanup" : [
+                "/bin/ulockmgr_server"
+            ],
+            "post-install" : [
+                "install -m a+rx fusermount-wrapper.sh /app/bin/fusermount"
+            ],
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/libfuse/libfuse/releases/download/fuse-2.9.9/fuse-2.9.9.tar.gz",
+                    "sha256" : "d0e69d5d608cc22ff4843791ad097f554dd32540ddc9bed7638cc6fea7c1b4b5"
+                },
+                {
+                    "type" : "patch",
+                    "path" : "fuse-2.9.2-namespace-conflict-fix.patch"
+                },
+                {
+                    "type" : "patch",
+                    "path" : "fuse-disable-sys-mount-under-flatpak.patch"
+                },
+                {
+                    "type" : "patch",
+                    "path" : "fuse-2.9.2-closefrom.patch"
+                },
+                {
+                    "type" : "file",
+                    "path" : "fusermount-wrapper.sh"
+                }
+            ]
+        },
+        {
+            "name": "ostree",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--disable-rofiles-fuse"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/ostreedev/ostree.git",
+                    "branch": "main"
+                }
+            ]
+        },
+        {
+            "name": "pyparsing",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=/app --no-deps ./pyparsing-*.whl"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/8a/bb/488841f56197b13700afd5658fc279a2025a39e22449b7cf29864669b15d/pyparsing-2.4.7-py2.py3-none-any.whl",
+                    "sha256": "ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"
+                }
+            ]
+        },
+        {
+            "name" : "flatpak",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Ddocbook_docs=disabled",
+                "-Dseccomp=disabled",
+                "-Dsandboxed_triggers=false",
+                "-Dsystem_helper=disabled",
+                "-Dsystem_install_dir=/var/lib/flatpak",
+                "--sysconfdir=/var/run/host/etc",
+                "-Dman=disabled",
+                "-Dhttp_backend=curl",
+                "-Dsystemd=disabled",
+                "-Dtests=false"
+            ],
+            "cleanup" : [
+                "/bin/flatpak-bisect",
+                "/bin/flatpak-coredumpctl",
+                "/etc/profile.d",
+                "/lib/systemd",
+                "/share/dbus-1/interfaces/org.freedesktop.*",
+                "/share/dbus-1/services/org.freedesktop.*",
+                "/share/flatpak/triggers",
+                "/share/gdm",
+                "/share/zsh"
+            ],
+            "post-install" : [
+                "cp /usr/bin/update-mime-database /app/bin",
+                "cp /usr/bin/update-desktop-database /app/bin"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://github.com/flatpak/flatpak.git",
+                    "tag" : "1.15.6"
+                }
             ]
         },
         {
