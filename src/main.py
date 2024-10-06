@@ -24,8 +24,9 @@ import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
+gi.require_version("Flatpak", "1.0")
 
-from gi.repository import Gtk, Gio, Adw, GLib
+from gi.repository import Gtk, Gio, Adw, GLib, Flatpak
 from .window import WarehouseWindow
 from .const import Config
 from .error_toast import ErrorToast
