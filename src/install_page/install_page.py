@@ -5,6 +5,7 @@ from .pending_page import PendingPage
 from .sidebar_button import SidebarButton
 from .loading_status import LoadingStatus
 from .package_install_worker import PackageInstallWorker
+from .error_toast import ErrorToast
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/install_page.ui")
 class InstallPage(Adw.BreakpointBin):
@@ -28,6 +29,7 @@ class InstallPage(Adw.BreakpointBin):
 
     current_installation = ""
     current_remote = None
+    did_error = False
 
     def start_loading(self):
         self.status_stack.set_visible_child(self.loading_view)
@@ -37,9 +39,19 @@ class InstallPage(Adw.BreakpointBin):
         self.select_page.end_loading()
         self.status_stack.set_visible_child(self.multi_view)
         
+    def install_callback(self):
+        HostInfo.main_window.refresh_handler()
+        if not self.did_error:
+            HostInfo.main_window.toast_overlay.add_toast(Adw.Toast(title=_("Installed Packages")))
+        
+    def install_error_callback(self, user_facing_label, error_message):
+        self.did_error = True
+        GLib.idle_add(lambda *_: HostInfo.main_window.toast_overlay.add_toast(ErrorToast(user_facing_label, error_message).toast))
+        
     def install_packages(self, package_requests):
         print(package_requests)
-        if PackageInstallWorker.install(package_requests, self.installing_status, HostInfo.main_window.refresh_handler, None):
+        self.did_error = False
+        if PackageInstallWorker.install(package_requests, self.installing_status, self.install_callback, self.install_error_callback):
             self.status_stack.set_visible_child(self.installing_view)
 
     def __init__(self, main_window, **kwargs):
