@@ -4,6 +4,7 @@ from .select_page import SelectPage
 from .pending_page import PendingPage
 from .sidebar_button import SidebarButton
 from .loading_status import LoadingStatus
+from .package_install_worker import PackageInstallWorker
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/install_page.ui")
 class InstallPage(Adw.BreakpointBin):
@@ -17,6 +18,7 @@ class InstallPage(Adw.BreakpointBin):
     pending_page = gtc()
     status_stack = gtc()
     loading_view = gtc()
+    installing_view = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -34,19 +36,23 @@ class InstallPage(Adw.BreakpointBin):
     def end_loading(self):
         self.select_page.end_loading()
         self.status_stack.set_visible_child(self.multi_view)
+        
+    def install_packages(self, package_requests):
+        print(package_requests)
+        if PackageInstallWorker.install(package_requests, self.installing_status, HostInfo.main_window.refresh_handler, None):
+            self.status_stack.set_visible_child(self.installing_view)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
         self.instance = self
 
         # Extra Object Creation
-        # ======== self.select_page = SelectPage()
-        # ======== self.pending_page = PendingPage()
+        self.installing_status = LoadingStatus(_("Installing Packages"), _("This could take a while"), True, PackageInstallWorker.cancel)
 
         # Connections
 
         # Apply
-        # ======== self.split_view.set_sidebar(self.select_page)
-        # ======== self.split_view.set_content(self.pending_page)
         self.select_page.results_page.pending_page = self.pending_page
         self.loading_view.set_content(LoadingStatus(_("Loading Installation Options"), _("This should only take a moment")))
+        self.installing_status.button.set_label(_("Cancel"))
+        self.installing_view.set_content(self.installing_status)

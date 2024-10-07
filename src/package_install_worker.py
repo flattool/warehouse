@@ -24,13 +24,6 @@ class PackageInstallWorker:
 	cancelled = False
 	
 	@classmethod
-	def on_error(this, user_facing_label, error_message):
-		print("\nPackageInstallWorker error:", user_facing_label)
-		print(error_message, "\n")
-		if not this.error_callback is None:
-			this.error_callback(user_facing_label, error_message)
-	
-	@classmethod
 	def update_status(this, index, package_ratio, complete, total):
 		group_ratio = (package_ratio + complete) / (total or 1)
 		final_ratio = (group_ratio + index) / (this.total_groups or 1)
@@ -40,7 +33,7 @@ class PackageInstallWorker:
 		print("=======================================")
 		
 		if not this.loading_status is None:	
-			GLib.idle_add(lambda *_: loading_status.progress_bar.set_fraction(final_ratio))
+			GLib.idle_add(lambda *_: this.loading_status.progress_bar.set_fraction(final_ratio))
 			
 	@classmethod
 	def install_thread(this):
@@ -83,7 +76,7 @@ class PackageInstallWorker:
 					errors.append(error)
 					
 			if len(errors) > 0:
-				this.on_error("\n".join(errors))
+				this.on_error(_("Could not install some packages"), "\n".join(errors))
 				
 		except subprocess.TimeoutExpired as te:
 			this.process.terminate()
@@ -95,6 +88,9 @@ class PackageInstallWorker:
 		
 	@classmethod
 	def cancel(this):
+		if this.process is None:
+			return
+			
 		try:
 			this.cancelled = True
 			this.process.terminate()
@@ -106,8 +102,18 @@ class PackageInstallWorker:
 	def on_done(this, *args):
 		this.process = None
 		this.cancelled = False
+		if not this.loading_status is None:
+			this.loading_status.progress_bar.set_fraction(0.0)
+			
 		if not this.callback is None:
 			this.callback()
+			
+	@classmethod
+	def on_error(this, user_facing_label, error_message):
+		print("\nPackageInstallWorker error:", user_facing_label)
+		print(error_message, "\n")
+		if not this.error_callback is None:
+			this.error_callback(user_facing_label, error_message)
 			
 	@classmethod
 	def install(this, groups, loading_status=None, callback=None, error_callback=None):
@@ -125,5 +131,5 @@ class PackageInstallWorker:
 			this.on_error(_("Could not install packages"), _("No packages were asked to be installed."))
 			return False
 			
-		Gio.Task.new(None, None, callback).run_in_thread(lambda *_: this.install_thread())
+		Gio.Task.new(None, None, this.on_done).run_in_thread(lambda *_: this.install_thread())
 		return True

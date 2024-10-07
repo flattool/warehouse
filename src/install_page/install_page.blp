@@ -24,6 +24,13 @@ template $InstallPage : Adw.BreakpointBin {
                         $SidebarButton {}
                     }
                 }
+                Adw.ToolbarView installing_view {
+                    [top]
+                    Adw.HeaderBar {
+                        [start]
+                        $SidebarButton {}
+                    }
+                }
                 Adw.MultiLayoutView multi_view {
                     Adw.Layout wide {
                         Adw.NavigationSplitView split_view {
