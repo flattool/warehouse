@@ -5,7 +5,7 @@ class PackageInstallWorker:
 	""" Expect Package Installation Request Data to be Formatted as Such
 		[
 			{
-				"remote": "<remote name>",
+				"remote": "<remote name>" or "local_file",
 				"installation": "<installation name>",
 				"package_names": ["<pkg id 1>", "<pkg id 2>", ...],
 			},
@@ -50,11 +50,14 @@ class PackageInstallWorker:
 				else:
 					real_installation = f"--installation={installation}"
 					
-				this.process = subprocess.Popen(
-					['flatpak-spawn', '--host', 'flatpak', 'install', '-y', group['remote'], real_installation] + group['package_names'],
-					stdout=subprocess.PIPE,  stderr=subprocess.PIPE, text=True,
-				)
-				print(group['remote'], group['package_names'], "\n\n\n\n\n\n\n\n")
+				cmd = ['flatpak-spawn', '--host', 'flatpak', 'install', '-y']
+				
+				# Handle local file installs. They don't have a remote specified
+				if group['remote'] != "local_file":
+					cmd.append(group['remote'])
+					
+				cmd += [real_installation] + group['package_names']
+				this.process = subprocess.Popen(cmd, stdout=subprocess.PIPE,  stderr=subprocess.PIPE, text=True)
 				percent_pattern = r'\d{1,3}%'
 				amount_pattern = r'(\d+)/(\d+)'
 				for line in this.process.stdout:
