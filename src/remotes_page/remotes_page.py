@@ -56,12 +56,6 @@ class RemotesPage(Adw.NavigationPage):
             "description": _("The latest beta GNOME Apps and Runtimes"),
         },
         {
-            "title": "KDE Testing Applications",
-            "name": "kdeapps",
-            "link": "https://distribute.kde.org/kdeapps.flatpakrepo",
-            "description": _("Beta KDE Apps and Runtimes"),
-        },
-        {
             "title": "WebKit Developer SDK",
             "name": "webkit-sdk",
             "link": "https://software.igalia.com/flatpak-refs/webkit-sdk.flatpakrepo",
