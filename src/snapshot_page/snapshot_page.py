@@ -360,7 +360,7 @@ class SnapshotPage(Adw.BreakpointBin):
         id_to_tar = {}
         for app_id in app_ids:
             path = f"{HostInfo.snapshots_path}{app_id}"
-            if not os.path.exists:
+            if not os.path.exists(path):
                 continue
                 
             tarlist = []
