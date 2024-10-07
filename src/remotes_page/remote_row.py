@@ -129,10 +129,10 @@ class RemoteRow(Adw.ActionRow):
         row = row.get_child()
         match row:
             case self.copy_title:
-                HostInfo.clipboard.set(self.get_title())
+                HostInfo.clipboard.set(self.remote.title)
                 self.parent_page.toast_overlay.add_toast(Adw.Toast(title=_("Copied title")))
             case self.copy_name:
-                HostInfo.clipboard.set(self.get_subtitle())
+                HostInfo.clipboard.set(self.remote.name)
                 self.parent_page.toast_overlay.add_toast(Adw.Toast(title=_("Copied name")))
             case self.enable_remote:
                 self.enable_remote_handler()
