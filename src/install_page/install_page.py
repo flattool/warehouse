@@ -34,6 +34,7 @@ class InstallPage(Adw.BreakpointBin):
     def start_loading(self):
         self.status_stack.set_visible_child(self.loading_view)
         self.select_page.start_loading()
+        self.pending_page.reset()
     
     def end_loading(self):
         self.select_page.end_loading()

@@ -15,7 +15,7 @@ class AddedGroup(Adw.PreferencesGroup):
             self.rows.remove(row)
             self.remove(row)
             
-    def remove_all(self, button):
+    def remove_all(self, *args):
         while len(self.rows) > 0 and (row := self.rows[0]):
             row.activate()
             
@@ -103,6 +103,14 @@ class PendingPage(Adw.NavigationPage):
             
         install_page = HostInfo.main_window.pages[HostInfo.main_window.install_row]
         install_page.install_packages(package_requests)
+        
+    def reset(self):
+        for key, group in self.groups.items():
+            self.preferences_page.remove(group)
+        
+        self.groups.clear()
+        self.added_packages.clear()
+        self.stack.set_visible_child(self.none_pending)
         
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
