@@ -257,7 +257,7 @@ class PropertiesPage(Adw.NavigationPage):
 
     def copy_handler(self, row):
         HostInfo.clipboard.set(row.get_subtitle())
-        self.toast_overlay.add_toast(Adw.Toast(title=_("Copeid {}").format(row.get_title())))
+        self.toast_overlay.add_toast(Adw.Toast(title=_("Copied {}").format(row.get_title())))
 
     def change_version_handler(self, row):
         page = ChangeVersionPage(self.main_window, self.package)
