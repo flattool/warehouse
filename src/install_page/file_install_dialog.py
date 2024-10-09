@@ -8,7 +8,14 @@ class FileInstallDialog(Adw.AlertDialog):
 	gtc = Gtk.Template.Child
 	
 	packages_group = gtc()
-	installation_row = gtc()
+	user_row = gtc()
+	system_row = gtc()
+	single_installation_row = gtc()
+	installation_choice_row = gtc()
+	user_check = gtc()
+	system_check = gtc()
+	single_check = gtc()
+	choice_check = gtc()
 	
 	def generate_list(self):
 		for file in self.files:
@@ -33,13 +40,33 @@ class FileInstallDialog(Adw.AlertDialog):
 		
 		# Apply
 		self.generate_list()
-		self.installation_row.set_model(Gtk.StringList(strings=HostInfo.installations))
+		# self.installation_row.set_model(Gtk.StringList(strings=HostInfo.installations))
+		
 		if len(files) > 1:
 			self.set_heading(_("Add These Packages?"))
 			self.set_body(_("Queue these packages to be installed"))
+			self.user_row.set_subtitle(_("These packages will only be available to you"))
+			self.system_row.set_subtitle(_("These packages will be available to everyone"))
 		else:
 			self.set_heading(_("Add This Package?"))
 			self.set_body(_("Queue this package to be installed"))
+			self.user_row.set_subtitle(_("This package will only be available to you"))
+			self.system_row.set_subtitle(_("This package will be available to everyone"))
+			
+		custom_installations = []
+		for installation in HostInfo.installations:
+			if installation.startswith("user") or installation.startswith("system"):
+				continue
+				
+			custom_installations.append(installation)
+			
+		if len(custom_installations) == 1:
+			self.single_installation_row.set_visible(True)
+			self.single_installation_row.set_title(custom_installations[0])
+		elif len(custom_installations) > 1:
+			self.installation_choice_row.set_visible(True)
+			self.installation_choice_row.set_model(Gtk.StringList(strings=custom_installations))
 			
 		# Connections
 		self.connect("response", self.on_response)
+		self.installation_choice_row.connect("notify::css-classes", lambda *_: self.choice_check.activate())
