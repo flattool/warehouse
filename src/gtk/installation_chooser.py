@@ -27,10 +27,12 @@ class InstallationChooser(Adw.PreferencesGroup):
 		if is_plural:
 			self.user_row.set_subtitle(_("These {} will only be available to you").format(content_name))
 			self.system_row.set_subtitle(_("These {} will be available to everyone").format(content_name))
+			self.set_description(_("Choose how these {} will be installed").format(content_name))
 		else:
 			self.user_row.set_subtitle(_("This {} will only be available to you").format(content_name))
 			self.system_row.set_subtitle(_("This {} will be available to everyone").format(content_name))
-		
+			self.set_description(_("Choose how this {} will be installed").format(content_name))
+			
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
 		
