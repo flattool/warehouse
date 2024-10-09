@@ -1,40 +1,21 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $FileInstallDialog : Adw.Dialog {
-    title: _("Install Local Files");
+template $FileInstallDialog : Adw.AlertDialog {
     follows-content-size: true;
-    Adw.ToolbarView {
-        [top]
-        Adw.HeaderBar {
-            show-start-title-buttons: false;
-            show-end-title-buttons: false;
-            [start]
-            Button cancel_button {
-                label: _("Cancel");
-            }
-            [end]
-            Button apply_button {
-                styles ["suggested-action"]
-                label: _("Add");
-            }
+    Box {
+        orientation: vertical;
+        spacing: 12;
+        Adw.PreferencesGroup packages_group {
         }
-        Adw.ToastOverlay toast_overlay {
-            ScrolledWindow content_page {
-                propagate-natural-height: true;
-                propagate-natural-width: true;
-                Adw.Clamp {
-                    ListBox list_box {
-                        margin-start:  12;
-                        margin-end:    12;
-                        margin-top:    12;
-                        margin-bottom: 12;
-                        selection-mode: none;
-                        valign: start;
-                        styles ["boxed-list"]
-                    }
-                }
+        Adw.PreferencesGroup installation_group {
+            Adw.ComboRow installation_row {
+                title: _("Installation");
             }
         }
     }
+    responses [
+        cancel: _("Cancel"),
+        continue: _("Add") suggested,
+    ]
 }

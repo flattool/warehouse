@@ -3,6 +3,7 @@ from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .results_page import ResultsPage
 from .sidebar_button import SidebarButton
+from .file_install_dialog import FileInstallDialog
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/select_page.ui")
 class SelectPage(Adw.NavigationPage):
@@ -37,40 +38,15 @@ class SelectPage(Adw.NavigationPage):
         
     def on_file_dialog_response(self, dialog, response, row):
         installation = row.get_selected_item().get_string()
-        HostInfo.main_window.toast_overlay.add_toast(
-            ErrorToast(response, installation).toast
-        )
+        HostInfo.main_window.toast_overlay.add_toast(ErrorToast(response, installation).toast)
         
     def file_choose_callback(self, object, result):
         files = object.open_multiple_finish(result)
         if not files:
+            HostInfo.toast_overlay.add_toast(ErrorToast(_("Could not add files"), _("No files were found to install")))
             return
             
-        # file = object.open_finish(result)
-        pg = Adw.PreferencesGroup(
-            title=_("Choose an installation for this package"),
-            description=_("Apps installed to the {} installation are only available for you.").format("user"),
-        )
-        rows = []
-        for file in files:
-            row = Adw.ComboRow(
-                title=file.get_basename(),
-                model=Gtk.StringList(strings=HostInfo.installations)
-            )
-            rows.append(row)
-            pg.add(row)
-        dialog = Adw.AlertDialog(
-            heading=_("Install this Package?"),
-            body=file.get_basename(),
-            extra_child=pg,
-        )
-        pg.add(row)
-        dialog.present(HostInfo.main_window)
-        dialog.add_response("cancel", _("Cancel"))
-        dialog.add_response("continue", _("Install"))
-        dialog.set_response_appearance("continue", Adw.ResponseAppearance.SUGGESTED)
-        # dialog.connect("response", self.on_file_dialog_response, row)
-        dialog.present(HostInfo.main_window)
+        FileInstallDialog(self, files).present(HostInfo.main_window)
         
     def on_open(self, *args):
         file_filter = Gtk.FileFilter(name=_("Flatpaks"))
