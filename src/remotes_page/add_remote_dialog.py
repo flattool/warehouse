@@ -2,6 +2,7 @@ from gi.repository import Adw, Gtk, GLib, Gio
 from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .loading_status import LoadingStatus
+from .installation_chooser import InstallationChooser
 import subprocess, re
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/remotes_page/add_remote_dialog.ui")
@@ -16,7 +17,7 @@ class AddRemoteDialog(Adw.Dialog):
     title_row = gtc()
     name_row = gtc()
     url_row = gtc()
-    installation_row = gtc()
+    installation_chooser = gtc()
     
     def on_apply(self, *args):
         self.parent_page.status_stack.set_visible_child(self.parent_page.adding_view)
@@ -30,7 +31,7 @@ class AddRemoteDialog(Adw.Dialog):
                 self.name_row.get_text(),
                 self.url_row.get_text()
             ]
-            installation = self.installation_row.get_selected_item().get_string()
+            installation = self.installation_chooser.get_installation()
             if installation == "user" or installation == "system":
                 cmd.append(f"--{installation}")
             else:
@@ -90,7 +91,7 @@ class AddRemoteDialog(Adw.Dialog):
         self.url_passes = False
         
         # Apply
-        self.installation_row.set_model(self.string_list)
+        self.installation_chooser.set_content_strings(_("remote"), False)
         if remote_info:
             self.title_row.set_text(remote_info["title"])
             self.name_row.set_text(remote_info["name"])
