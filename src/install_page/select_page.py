@@ -36,17 +36,13 @@ class SelectPage(Adw.NavigationPage):
                 
         self.remotes_group.set_visible(len(self.remote_rows) != 0)
         
-    def on_file_dialog_response(self, dialog, response, row):
-        installation = row.get_selected_item().get_string()
-        HostInfo.main_window.toast_overlay.add_toast(ErrorToast(response, installation).toast)
-        
     def file_choose_callback(self, object, result):
         files = object.open_multiple_finish(result)
         if not files:
             HostInfo.toast_overlay.add_toast(ErrorToast(_("Could not add files"), _("No files were found to install")))
             return
             
-        FileInstallDialog(self, files).present(HostInfo.main_window)
+        FileInstallDialog(self, files, self.results_page.add_local_package_rows).present(HostInfo.main_window)
         
     def on_open(self, *args):
         file_filter = Gtk.FileFilter(name=_("Flatpaks"))
