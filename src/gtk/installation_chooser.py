@@ -43,7 +43,7 @@ class InstallationChooser(Adw.PreferencesGroup):
 		
 		# Apply
 		custom_installations = []
-		for installation in HostInfo.installations + ['extra', 'something']:
+		for installation in HostInfo.installations:
 			if installation.startswith("user") or installation.startswith("system"):
 				continue
 				
