@@ -42,8 +42,14 @@ class AttemptInstallDialog(Adw.AlertDialog):
 				break
 				
 		if not active_row is None:
+			install_page = HostInfo.main_window.pages[HostInfo.main_window.install_row]
+			HostInfo.main_window.activate_row(HostInfo.main_window.install_row)
 			self.callback(True)
-			print(row.remote_name, row.remote_installation, self.package_names)
+			install_page.install_packages([{
+				"remote": row.remote_name,
+				"installation": row.remote_installation,
+				"package_names": self.package_names,
+			}])
 		elif not self.callback is None:
 			self.callback(False)
 				
