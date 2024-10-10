@@ -47,12 +47,6 @@ template $UserDataPage : Adw.BreakpointBin {
                         icon-name: "folder-open-symbolic";
                         tooltip-text: _("Open User Data Folder");
                     }
-                    
-                    [start]
-                    Button test_button {
-                        label: "test";
-                    }
-                    
                     [end]
                     MenuButton sort_button {
                         popover: sort_pop;
@@ -102,12 +96,33 @@ template $UserDataPage : Adw.BreakpointBin {
                                 can-shrink: true;
                             }
                         }
+                        Button install_button {
+                            visible: false;
+                            sensitive: false;
+                            styles ["raised"]
+                            Adw.ButtonContent {
+                                icon-name: "arrow-pointing-at-line-down-symbolic";
+                                label: _("Install");
+                                can-shrink: true;
+                            }
+                        }
                         Button trash_button {
                             sensitive: false;
                             styles ["raised"]
                             Adw.ButtonContent {
                                 icon-name: "user-trash-symbolic";
                                 label: _("Move to Trash");
+                                can-shrink: true;
+                            }
+                        }
+                        MenuButton more_button {
+                            visible: false;
+                            sensitive: false;
+                            popover: more_popover;
+                            styles ["raised"]
+                            Adw.ButtonContent {
+                                icon-name: "view-more-symbolic";
+                                label: _("More");
                                 can-shrink: true;
                             }
                         }
@@ -123,6 +138,20 @@ template $UserDataPage : Adw.BreakpointBin {
                     }
                 }
             }
+        }
+    }
+}
+
+Popover more_popover {
+    styles ["menu"]
+    ListBox more_menu {
+        Label more_install {
+            label: _("Install");
+            halign: start;
+        }
+        Label more_trash {
+            label: _("Move to Trash");
+            halign: start;
         }
     }
 }

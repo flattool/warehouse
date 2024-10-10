@@ -38,32 +38,37 @@ class UserDataPage(Adw.BreakpointBin):
     select_all_button = gtc()
     copy_button = gtc()
     trash_button = gtc()
+    install_button = gtc()
+    more_button = gtc()
+    more_popover = gtc()
+    more_menu = gtc()
+    more_trash = gtc()
+    more_install = gtc()
     
-    test_button = gtc()
-
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
     #    This must be set to the created object from within the class's __init__ method
     instance = None
     page_name = "user-data"
     data_path = f"{HostInfo.home}/.var/app"
-
+    bpt_is_applied = False
+    
     def sort_data(self, *args):
         self.data_flatpaks.clear()
         self.active_data.clear()
         self.leftover_data.clear()
         # paks = dict(HostInfo.id_to_flatpak)
-
+        
         if not os.path.exists(self.data_path):
             return
-
+            
         for folder in os.listdir(self.data_path):
             try:
                 self.data_flatpaks.append(HostInfo.id_to_flatpak[folder])
                 self.active_data.append(folder)
             except KeyError:
                 self.leftover_data.append(folder)
-
+                
     def start_loading(self, *args):
         self.status_stack.set_visible_child(self.loading_view)
         self.search_button.set_active(False)
@@ -72,23 +77,23 @@ class UserDataPage(Adw.BreakpointBin):
         self.adp.spinner.set_visible(True)
         self.ldp.size_label.set_label(_("Loading Size"))
         self.ldp.spinner.set_visible(True)
-
+        
     def end_loading(self, *args):
         def callback(*args):
             self.adp.generate_list(self.data_flatpaks, self.active_data)
             self.ldp.generate_list([], self.leftover_data)
-        
+            
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_data)
-
+        
     def sort_button_handler(self, button):
         if button in {self.sort_ascend, self.sort_descend}:
             self.settings.set_boolean("sort-ascend", self.sort_ascend.get_active())
         else:
             self.settings.set_string("sort-mode", self.buttons_to_sort_modes[button])
-
+            
         self.adp.update_sort_mode()
         self.ldp.update_sort_mode()
-
+        
     def load_sort_settings(self):
         mode = self.settings.get_string("sort-mode")
         ascend = self.settings.get_boolean("sort-ascend")
@@ -96,7 +101,7 @@ class UserDataPage(Adw.BreakpointBin):
         (self.sort_ascend if ascend else self.sort_descend).set_active(True)
         self.adp.update_sort_mode()
         self.ldp.update_sort_mode()
-
+        
     def view_change_handler(self, *args):
         child = self.stack.get_visible_child()
         if child.total_size == 0:
@@ -112,10 +117,16 @@ class UserDataPage(Adw.BreakpointBin):
             self.select_button.set_sensitive(True)
             self.sort_button.set_sensitive(True)
             self.search_entry.set_editable(True)
-
+            
+        self.more_button.set_visible(child is self.ldp and self.bpt_is_applied)
+        self.install_button.set_visible(child is self.ldp and not self.bpt_is_applied)
+        self.trash_button.set_visible(child is self.adp or not self.bpt_is_applied)
+        
         has_selected = len(child.selected_boxes) > 0
         self.copy_button.set_sensitive(has_selected)
         self.trash_button.set_sensitive(has_selected)
+        self.install_button.set_sensitive(has_selected)
+        self.more_button.set_sensitive(has_selected)
         
     def select_toggle_handler(self, *args):
         active = self.select_button.get_active()
@@ -124,26 +135,28 @@ class UserDataPage(Adw.BreakpointBin):
         if not active:
             self.copy_button.set_sensitive(False)
             self.trash_button.set_sensitive(False)
-
+            self.install_button.set_sensitive(False)
+            self.more_button.set_sensitive(False)
+            
     def select_all_handler(self, *args):
         child = self.stack.get_visible_child()
         child.select_all_handler()
-
+        
     def copy_handler(self, *args):
         child = self.stack.get_visible_child()
         to_copy = ""
         for box in child.selected_boxes:
             to_copy += "\n" + box.data_path
-        
+            
         if len(to_copy) == 0:
             self.toast_overlay.add_toast(ErrorToast(_("Could not copy paths"), _("No boxes were selected")).toast)
         else:
             HostInfo.clipboard.set(to_copy.replace("\n", "", 1))
             self.toast_overlay.add_toast(Adw.Toast(title=_("Copied paths")))
-
+            
     def trash_handler(self, *args):
         error = [None]
-
+        
         def thread(path):
             cmd = ['gio', 'trash'] + path
             try:
@@ -152,7 +165,7 @@ class UserDataPage(Adw.BreakpointBin):
                 error[0] = cpe.stderr
             except Exception as e:
                 error[0] = e
-
+                
         def callback(*args):
             self.start_loading()
             self.end_loading()
@@ -160,7 +173,7 @@ class UserDataPage(Adw.BreakpointBin):
                 self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(error[0])).toast)
             else:
                 self.toast_overlay.add_toast(Adw.Toast(title=_("Trashed data")))
-
+                
         def on_response(dialog, response):
             if response != "continue":
                 return
@@ -169,15 +182,15 @@ class UserDataPage(Adw.BreakpointBin):
             to_trash = []
             for box in child.selected_boxes:
                 to_trash.append(box.data_path)
-            
+                
             if len(to_trash) == 0:
                 self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), _("No boxes were selected")).toast)
                 return
-            
+                
             self.select_button.set_active(False)
             child.set_visible_child(child.loading_data)
             Gio.Task.new(None, None, callback).run_in_thread(lambda *_: thread(to_trash))
-
+            
         dialog = Adw.AlertDialog(heading=_("Trash Data?"), body=_("Data will be sent to the trash"))
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Continue"))
@@ -186,19 +199,41 @@ class UserDataPage(Adw.BreakpointBin):
         dialog.present(ErrorToast.main_window)
         
     def breakpoint_handler(self, bpt, is_applied):
+        self.bpt_is_applied = is_applied
         self.adp.label_box.set_orientation(Gtk.Orientation.VERTICAL if is_applied else Gtk.Orientation.HORIZONTAL)
         self.ldp.label_box.set_orientation(Gtk.Orientation.VERTICAL if is_applied else Gtk.Orientation.HORIZONTAL)
-
+        child = self.stack.get_visible_child()
+        self.install_button.set_visible(child is self.ldp and not is_applied)
+        self.more_button.set_visible(child is self.ldp and is_applied)
+        self.trash_button.set_visible(child is self.adp or not is_applied)
+        
     def open_data_folder(self, button):
         try:
             Gio.AppInfo.launch_default_for_uri(f"file://{self.data_path}", None)
             self.toast_overlay.add_toast(Adw.Toast.new(_("Opened data folder")))
         except Exception as e:
             self.toast_overlay.add_toast(ErrorToast(_("Could not open folder"), str(e)).toast)
-
+            
+    def install_handler(self, *args):
+        child = self.stack.get_visible_child()
+        package_names = []
+        for box in child.selected_boxes:
+            package_names.append(box.subtitle)
+            
+        AttemptInstallDialog(package_names, lambda is_valid: self.select_button.set_active(not is_valid))
+        
+    def more_menu_handler(self, listbox, row):
+        self.more_popover.popdown()
+        row = row.get_child()
+        match row:
+            case self.more_install:
+                self.install_handler()
+            case self.more_trash:
+                self.trash_handler()
+            
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
-
+        
         # Extra Object Creation
         self.__class__.instance = self
         self.adp = DataSubpage(_("Active Data"), self, True, main_window)
@@ -208,7 +243,7 @@ class UserDataPage(Adw.BreakpointBin):
         self.leftover_data = []
         self.total_items = 0
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse.data_page")
-
+        
         self.sort_modes_to_buttons = {
             "name": self.sort_name,
             "id": self.sort_id,
@@ -217,7 +252,7 @@ class UserDataPage(Adw.BreakpointBin):
         self.buttons_to_sort_modes = {}
         for key, button in self.sort_modes_to_buttons.items():
             self.buttons_to_sort_modes[button] = key
-
+            
         # Apply
         self.stack.add_titled_with_icon(
             child=self.adp,
@@ -231,7 +266,7 @@ class UserDataPage(Adw.BreakpointBin):
             title=_("Leftover Data"),
             icon_name="folder-templates-symbolic",
         )
-
+        
         # Connections
         self.open_button.connect("clicked", self.open_data_folder)
         self.stack.connect("notify::visible-child", self.view_change_handler)
@@ -239,6 +274,8 @@ class UserDataPage(Adw.BreakpointBin):
         self.select_all_button.connect("clicked", self.select_all_handler)
         self.copy_button.connect("clicked", self.copy_handler)
         self.trash_button.connect("clicked", self.trash_handler)
+        self.install_button.connect("clicked", self.install_handler)
+        self.more_menu.connect("row-activated", self.more_menu_handler)
         self.sort_ascend.connect("clicked", self.sort_button_handler)
         self.sort_descend.connect("clicked", self.sort_button_handler)
         self.sort_name.connect("clicked", self.sort_button_handler)
@@ -247,8 +284,6 @@ class UserDataPage(Adw.BreakpointBin):
         self.bpt.connect("apply", self.breakpoint_handler, True)
         self.bpt.connect("unapply", self.breakpoint_handler, False)
         
-        self.test_button.connect("clicked", lambda *_: AttemptInstallDialog(lambda x, y: print(x, y)))
-
         # Apply again
         self.loading_view.set_content(LoadingStatus(_("Loading User Data"), _("This should only take a moment")))
         self.search_bar.set_key_capture_widget(main_window)

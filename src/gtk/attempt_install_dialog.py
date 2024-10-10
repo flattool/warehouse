@@ -31,18 +31,28 @@ class AttemptInstallDialog(Adw.AlertDialog):
 					
 	def on_response(self, dialog, response):
 		if response != "continue":
+			if not self.callback is None:
+				self.callback(False)
 			return
 			
+		active_row = None
 		for row in self.rows:
 			if row.check_button.get_active():
-				self.callback(row.remote_installation, row.remote_name)
-				return
+				active_row = row
+				break
 				
-	def __init__(self, callback, **kwargs):
+		if not active_row is None:
+			self.callback(True)
+			print(row.remote_name, row.remote_installation, self.package_names)
+		elif not self.callback is None:
+			self.callback(False)
+				
+	def __init__(self, package_names, callback=None, **kwargs):
 		super().__init__(**kwargs)
 		
 		# Extra Object Creation
 		self.rows = []
+		self.package_names = package_names
 		self.callback = callback
 		
 		# Apply

@@ -107,6 +107,8 @@ class DataSubpage(Gtk.Stack):
         self.subtitle.set_label(_("{} Selected").format(total))
         self.parent_page.copy_button.set_sensitive(total)
         self.parent_page.trash_button.set_sensitive(total)
+        self.parent_page.install_button.set_sensitive(total)
+        self.parent_page.more_button.set_sensitive(total)
 
     def box_interact_handler(self, flow_box, box):
         box = box.get_child()
