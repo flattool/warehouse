@@ -33,6 +33,7 @@ class AttemptInstallDialog(Adw.AlertDialog):
 		if response != "continue":
 			if not self.callback is None:
 				self.callback(False)
+				
 			return
 			
 		active_row = None
@@ -52,7 +53,7 @@ class AttemptInstallDialog(Adw.AlertDialog):
 			}])
 		elif not self.callback is None:
 			self.callback(False)
-				
+			
 	def __init__(self, package_names, callback=None, **kwargs):
 		super().__init__(**kwargs)
 		
