@@ -68,10 +68,19 @@ template $InstallPage : Adw.BreakpointBin {
                                 id: "pending_page";
                             }
                             [bottom-bar]
-                            Label {
-                                label: _("Pending Packages");
+                            Box {
                                 margin-top: 12;
-                                margin-bottom: 12;
+                                margin-bottom: 14;
+                                spacing: 6;
+                                halign: center;
+                                Image {
+                                    icon-name: "flatpak-symbolic";
+                                    icon-size: normal;
+                                }
+                                Label {
+                                    label: _("Pending Packages");
+                                    styles ["heading"]
+                                }
                             }
                         }
                     }

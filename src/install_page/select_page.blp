@@ -34,16 +34,11 @@ template $SelectPage : Adw.NavigationPage {
                             }
                         }
                         Adw.PreferencesGroup local_group {
-                            title: _("Add a File");
-                            description: _("Install a package from a file on your system");
-                            Adw.ActionRow open_row {
-                                title: _("Open");
-                                subtitle: _("Add the file you want to install");
-                                activatable: true;
-                                [suffix]
-                                Image {
-                                    icon-name: "folder-open-symbolic";
-                                }
+                            title: _("Add Packages");
+                            description: _("Install packages from files on your system");
+                            Adw.ButtonRow open_row {
+                                title: _("Open Files");
+                                start-icon-name: "folder-open-symbolic";
                             }
                         }
                     }

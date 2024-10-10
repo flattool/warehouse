@@ -36,12 +36,12 @@ class FileInstallDialog(Adw.Dialog):
 		if len(files) > 1:
 			self.set_title(_("Install Packages"))
 			# self.packages_group.set_title(_("Review Packages"))
-			self.packages_group.set_title(_("The following packages will be installed"))
+			self.packages_group.set_description(_("The following packages will be installed"))
 			self.installation_chooser.set_content_strings(_("Packages"), True)
 		else:
 			self.set_title(_("Install a Package"))
 			# self.packages_group.set_title(_("Review Package"))
-			self.packages_group.set_title(_("The following package will be installed"))
+			self.packages_group.set_description(_("The following package will be installed"))
 			self.installation_chooser.set_content_strings(_("package"), False)
 		
 		# Connections

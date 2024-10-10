@@ -25,11 +25,12 @@ template $FileInstallDialog : Adw.Dialog {
                 margin-start:  12;
                 margin-end:    12;
                 margin-bottom: 12;
-                margin-top: 3;
+                margin-top: 6;
                 Box {
                     orientation: vertical;
                     spacing: 12;
                     Adw.PreferencesGroup packages_group {
+                        title: _("Review Selection");
                     }
                     $InstallationChooser installation_chooser {
                     }
