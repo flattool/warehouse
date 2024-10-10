@@ -78,6 +78,7 @@ class SnapshotPage(Adw.BreakpointBin):
     more_menu = gtc()
     new_snapshots = gtc()
     apply_snapshots = gtc()
+    install_from_snapshots = gtc()
     trash_snapshots = gtc()
     
     # Referred to in the main window
@@ -322,8 +323,13 @@ class SnapshotPage(Adw.BreakpointBin):
         i = 0
         while row := self.more_menu.get_row_at_index(i):
             i += 1
-            if row.get_child() is self.new_snapshots:
-                row.set_visible(total_active > 0)
+            match row.get_child():
+                case self.new_snapshots:
+                    row.set_visible(total_active > 0 and total_leftover == 0)
+                case self.apply_snapshots:
+                    row.set_visible(total_active > 0 and total_leftover == 0)
+                case self.install_from_snapshots:
+                    row.set_visible(total_active == 0 and total_leftover > 0)
         
     def select_copy_handler(self, *args):
         to_copy = ""
@@ -441,6 +447,9 @@ class SnapshotPage(Adw.BreakpointBin):
         dialog.connect("response", self.on_apply_response)
         dialog.present(HostInfo.main_window)
         
+    def install_handler(self):
+        print("install")
+        
     def select_trash_handler(self):
         def on_response(dialog, response):
             to_trash = []
@@ -476,6 +485,8 @@ class SnapshotPage(Adw.BreakpointBin):
                 self.select_new_handler()
             case self.apply_snapshots:
                 self.select_apply_handler()
+            case self.install_from_snapshots:
+                self.install_handler()
             case self.trash_snapshots:
                 self.select_trash_handler()
         

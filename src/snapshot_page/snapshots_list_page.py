@@ -18,11 +18,14 @@ class SnapshotsListPage(Adw.NavigationPage):
     new_button = gtc()
     
     def thread(self, *args):
+        is_leftover = type(self.package_or_folder) is str
         for snapshot in os.listdir(folder := f"{self.snapshots_path}{self.current_folder}/"):
             if snapshot.endswith(".json"):
                 continue
             
             row = SnapshotBox(self, snapshot, folder, self.toast_overlay)
+            row.apply_button.set_sensitive(not is_leftover)
+            row.apply_button.set_tooltip_text(_("This App is not Installed"))
             self.snapshots_rows.append(row)
             
     def callback(self, *args):
