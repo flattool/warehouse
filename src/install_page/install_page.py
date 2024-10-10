@@ -11,7 +11,7 @@ from .error_toast import ErrorToast
 class InstallPage(Adw.BreakpointBin):
     __gtype_name__ = "InstallPage"
     gtc = Gtk.Template.Child
-
+    
     break_point = gtc()
     split_view = gtc()
     multi_view = gtc()
@@ -20,22 +20,22 @@ class InstallPage(Adw.BreakpointBin):
     status_stack = gtc()
     loading_view = gtc()
     installing_view = gtc()
-
+    
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
     #    This must be set to the created object from within the class's __init__ method
     instance = None
     page_name = "install"
-
+    
     current_installation = ""
     current_remote = None
     did_error = False
-
+    
     def start_loading(self):
         self.status_stack.set_visible_child(self.loading_view)
         self.select_page.start_loading()
         self.pending_page.reset()
-    
+        
     def end_loading(self):
         self.select_page.end_loading()
         self.status_stack.set_visible_child(self.multi_view)
@@ -44,26 +44,25 @@ class InstallPage(Adw.BreakpointBin):
         HostInfo.main_window.refresh_handler()
         if not self.did_error:
             HostInfo.main_window.toast_overlay.add_toast(Adw.Toast(title=_("Installed Packages")))
-        
+            
     def install_error_callback(self, user_facing_label, error_message):
         self.did_error = True
         GLib.idle_add(lambda *_: HostInfo.main_window.toast_overlay.add_toast(ErrorToast(user_facing_label, error_message).toast))
         
     def install_packages(self, package_requests):
-        print(package_requests)
         self.did_error = False
         if PackageInstallWorker.install(package_requests, self.installing_status, self.install_callback, self.install_error_callback):
             self.status_stack.set_visible_child(self.installing_view)
-
+            
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
         self.instance = self
-
+        
         # Extra Object Creation
         self.installing_status = LoadingStatus(_("Installing Packages"), _("This could take a while"), True, PackageInstallWorker.cancel)
-
+        
         # Connections
-
+        
         # Apply
         self.select_page.results_page.pending_page = self.pending_page
         self.loading_view.set_content(LoadingStatus(_("Loading Installation Options"), _("This should only take a moment")))

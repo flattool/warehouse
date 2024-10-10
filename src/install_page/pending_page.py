@@ -69,11 +69,6 @@ class PendingPage(Adw.NavigationPage):
         added_row.connect("activated", self.remove_package_row, group)
         self.stack.set_visible_child(self.main_view)
         
-    def add_local_package_rows(self, installation, files):
-        print("Installation:", installation)
-        for file in files:
-            print(file.get_basename())
-        
     def remove_package_row(self, row, group):
         # row.origin_row.set_state(ResultRow.PackageState.NEW)
         for item in row.origin_list_box:

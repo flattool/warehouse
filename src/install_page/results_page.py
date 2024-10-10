@@ -57,9 +57,6 @@ class ResultsPage(Adw.NavigationPage):
     def add_package_row(self, row):
         self.pending_page.add_package_row(row)
         
-    def add_local_package_rows(self, installation, files):
-        self.pending_page.add_local_package_rows(installation, files)
-        
     def on_search(self, *args):
         self.packages.clear()
         self.stack.set_visible_child(self.loading)

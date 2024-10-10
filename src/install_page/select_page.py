@@ -37,13 +37,18 @@ class SelectPage(Adw.NavigationPage):
         self.remotes_group.set_visible(len(self.remote_rows) != 0)
         
     def file_choose_callback(self, object, result):
-        files = object.open_multiple_finish(result)
-        if not files:
-            HostInfo.toast_overlay.add_toast(ErrorToast(_("Could not add files"), _("No files were found to install")))
-            return
+        try:
+            files = object.open_multiple_finish(result)
+            if not files:
+                HostInfo.main_window.toast_overlay.add_toast(ErrorToast(_("Could not add files"), _("No files were found to install")))
+                return
+                
+            FileInstallDialog(self, files, self.results_page.add_local_package_rows).present(HostInfo.main_window)
             
-        FileInstallDialog(self, files, self.results_page.add_local_package_rows).present(HostInfo.main_window)
-        
+        except GLib.GError as gle:
+            if not (gle.domain == "gtk-dialog-error-quark" and gle.code == 2):
+                HostInfo.main_window.toast_overlay.add_toast(ErrorToast(_("Could not add files"), str(gle)).toast)
+                
     def on_open(self, *args):
         file_filter = Gtk.FileFilter(name=_("Flatpaks"))
         file_filter.add_suffix("flatpak")
