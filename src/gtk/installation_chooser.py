@@ -18,7 +18,6 @@ class InstallationChooser(Adw.PreferencesGroup):
 	def get_installation(self):
 		for button, func in self.check_buttons.items():
 			if button.get_active():
-				HostInfo.main_window.toast_overlay.add_toast(Adw.Toast(title=func()))
 				return func()
 				
 		return "" # Case for when no button is active (which shouldn't happen)

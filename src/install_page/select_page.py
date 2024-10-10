@@ -36,6 +36,19 @@ class SelectPage(Adw.NavigationPage):
                 
         self.remotes_group.set_visible(len(self.remote_rows) != 0)
         
+    def local_install_apply_callback(self, installation, file_names):
+        install_page = HostInfo.main_window.pages[HostInfo.main_window.install_row]
+        requests = []
+        for file in file_names:
+            # sadly flatpak doesn't support multiple local installs in one command :(
+            requests.append({
+                "remote": "local_file",
+                "installation": installation,
+                "package_names": [file.get_path()],
+            })
+            
+        install_page.install_packages(requests)
+        
     def file_choose_callback(self, object, result):
         try:
             files = object.open_multiple_finish(result)
@@ -43,7 +56,7 @@ class SelectPage(Adw.NavigationPage):
                 HostInfo.main_window.toast_overlay.add_toast(ErrorToast(_("Could not add files"), _("No files were found to install")))
                 return
                 
-            FileInstallDialog(self, files, self.results_page.add_local_package_rows).present(HostInfo.main_window)
+            FileInstallDialog(self, files, self.local_install_apply_callback).present(HostInfo.main_window)
             
         except GLib.GError as gle:
             if not (gle.domain == "gtk-dialog-error-quark" and gle.code == 2):

@@ -72,7 +72,7 @@ class PackageInstallWorker:
 							total = int(amount[1])
 							this.update_status(index, ratio, complete, total)
 						else:
-							this.update_status(index, ratio)
+							this.update_status(index, ratio, 0, 1)
 							
 				this.process.wait(timeout=10)
 				if error := this.process.communicate()[1].strip():
