@@ -247,7 +247,7 @@ class UserDataPage(Adw.BreakpointBin):
         self.bpt.connect("apply", self.breakpoint_handler, True)
         self.bpt.connect("unapply", self.breakpoint_handler, False)
         
-        self.test_button.connect("clicked", lambda *_: AttemptInstallDialog(None))
+        self.test_button.connect("clicked", lambda *_: AttemptInstallDialog(lambda x, y: print(x, y)))
 
         # Apply again
         self.loading_view.set_content(LoadingStatus(_("Loading User Data"), _("This should only take a moment")))

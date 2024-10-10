@@ -26,14 +26,16 @@ class AttemptInstallDialog(Adw.AlertDialog):
 				self.preferences_group.add(row)
 				if len(self.rows) > 1:
 					button.set_group(self.rows[0].check_button)
-				
+				else:
+					button.activate()
+					
 	def on_response(self, dialog, response):
 		if response != "continue":
 			return
 			
 		for row in self.rows:
 			if row.check_button.get_active():
-				print(row.remote_installation, row.remote_name)
+				self.callback(row.remote_installation, row.remote_name)
 				return
 				
 	def __init__(self, callback, **kwargs):
@@ -45,6 +47,11 @@ class AttemptInstallDialog(Adw.AlertDialog):
 		
 		# Apply
 		self.generate_list()
+		if len(self.rows) == 1:
+			self.set_extra_child(None)
+		elif len(self.rows) < 1:
+			HostInfo.main_window.toast_overlay.add_toast(ErrorToast(_("Can't find matching packages"), _("Your system has no remotes added")).toast)
+			
 		self.present(HostInfo.main_window)
 		
 		# Connections
