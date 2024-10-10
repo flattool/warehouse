@@ -5,6 +5,7 @@ from .data_subpage import DataSubpage
 from .host_info import HostInfo
 from .sidebar_button import SidebarButton
 from .loading_status import LoadingStatus
+from .attempt_install_dialog import AttemptInstallDialog
 import os, subprocess
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/user_data_page.ui")
@@ -37,6 +38,8 @@ class UserDataPage(Adw.BreakpointBin):
     select_all_button = gtc()
     copy_button = gtc()
     trash_button = gtc()
+    
+    test_button = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -243,6 +246,8 @@ class UserDataPage(Adw.BreakpointBin):
         self.sort_size.connect("clicked", self.sort_button_handler)
         self.bpt.connect("apply", self.breakpoint_handler, True)
         self.bpt.connect("unapply", self.breakpoint_handler, False)
+        
+        self.test_button.connect("clicked", lambda *_: AttemptInstallDialog(None))
 
         # Apply again
         self.loading_view.set_content(LoadingStatus(_("Loading User Data"), _("This should only take a moment")))
