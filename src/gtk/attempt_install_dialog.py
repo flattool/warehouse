@@ -50,6 +50,7 @@ class AttemptInstallDialog(Adw.AlertDialog):
 				"remote": row.remote_name,
 				"installation": row.remote_installation,
 				"package_names": self.package_names,
+				"extra_flags": [],
 			}])
 		elif not self.callback is None:
 			self.callback(False)

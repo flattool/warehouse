@@ -8,6 +8,7 @@ class PackageInstallWorker:
 				"remote": "<remote name>" or "local_file",
 				"installation": "<installation name>",
 				"package_names": ["<pkg id 1>", "<pkg id 2>", ...],
+				"extra_flags": ["<flag 1>", "<flag 2>", ...],
 			},
 			{
 				...
@@ -56,7 +57,7 @@ class PackageInstallWorker:
 				if group['remote'] != "local_file":
 					cmd.append(group['remote'])
 					
-				cmd += [real_installation] + group['package_names']
+				cmd += [real_installation] + group['package_names'] + group['extra_flags']
 				this.process = subprocess.Popen(cmd, stdout=subprocess.PIPE,  stderr=subprocess.PIPE, text=True)
 				percent_pattern = r'\d{1,3}%'
 				amount_pattern = r'(\d+)/(\d+)'

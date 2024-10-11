@@ -45,6 +45,7 @@ class SelectPage(Adw.NavigationPage):
                 "remote": "local_file",
                 "installation": installation,
                 "package_names": [file.get_path()],
+                "extra_flags": [],
             })
             
         install_page.install_packages(requests)
