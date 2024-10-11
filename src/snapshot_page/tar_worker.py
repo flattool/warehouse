@@ -27,6 +27,7 @@ class TarWorker:
                 json.dump(data, file, indent=4)
                 
             self.stop = True # tell the check timeout to stop, because we know the file is done being made
+            HostInfo.main_window.remove_refresh_lockout("managing snapshot")
             
         except subprocess.CalledProcessError as cpe:
             self.do_cancel(cpe.stderr.decode())  # stderr is in bytes, so decode it
@@ -52,7 +53,8 @@ class TarWorker:
                 raise subprocess.CalledProcessError(self.process.returncode, self.process.args, output=stdout, stderr=stderr)
                 
             self.stop = True # tell the check timeout to stop, because we know the file is done being made
-                
+            HostInfo.main_window.remove_refresh_lockout("managing snapshot")
+            
         except subprocess.CalledProcessError as cpe:
             self.do_cancel(cpe.stderr.decode())
             
@@ -74,6 +76,7 @@ class TarWorker:
                 pass
                 
         self.stop = True
+        HostInfo.main_window.remove_refresh_lockout("managing snapshot")
         if self.toast_overlay and error_str != "manual_cancel":
             self.toast_overlay.add_toast(ErrorToast(_("Error in snapshot handling"), error_str).toast)
             
@@ -90,12 +93,14 @@ class TarWorker:
     def compress(self):
         self.stop = False
         self.files_to_trash_on_cancel = [f'{self.new_path}/{self.file_name}.tar.zst', f'{self.new_path}/{self.file_name}.json']
+        HostInfo.main_window.add_refresh_lockout("managing snapshot")
         Gio.Task.new(None, None, None).run_in_thread(self.compress_thread)
         GLib.timeout_add(200, self.check_size, f"{self.new_path}/{self.file_name}.tar.zst")
         
     def extract(self):
         self.stop = False
         self.files_to_trash_on_cancel = [self.new_path]
+        HostInfo.main_window.add_refresh_lockout("managing snapshot")
         Gio.Task.new(None, None, None).run_in_thread(self.extract_thread)
         GLib.timeout_add(200, self.check_size, self.new_path)
         
