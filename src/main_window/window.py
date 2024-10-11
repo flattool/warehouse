@@ -64,12 +64,34 @@ class WarehouseWindow(Adw.ApplicationWindow):
         for _, page in self.pages.items():
             if page.instance:
                 page.instance.end_loading()
+                
         self.refresh_button.set_sensitive(True)
-
-    def refresh_handler(self, *args):
+        self.refresh_requested = False
+        
+    def do_refresh(self):
         self.start_loading()
         self.refresh_button.set_sensitive(False)
         HostInfo.get_flatpaks(callback=self.end_loading)
+
+    def refresh_handler(self, *args):
+        if len(self.refresh_lockouts) == 0:
+            self.do_refresh()
+        else:
+            self.refresh_requested = True
+            
+    def add_refresh_lockout(self, reason):
+        self.refresh_lockouts.append(reason)
+        self.refresh_button.set_sensitive(False)
+        
+    def remove_refresh_lockout(self, reason):
+        if reason in self.refresh_lockouts:
+            self.refresh_lockouts.remove(reason)
+            
+        if len(self.refresh_lockouts) == 0:
+            if self.refresh_requested:
+                self.do_refresh()
+            else:
+                self.refresh_button.set_sensitive(True)
 
     def navigation_handler(self, _, row):
         row = row.get_child()
@@ -122,9 +144,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.snapshots_row: SnapshotPage(main_window=self),
             self.install_row: InstallPage(main_window=self),
         }
-
         self.navigation_row_listbox.connect("row-activated", self.navigation_handler)
         self.show_saved_page()
+        self.refresh_lockouts = []
+        self.refresh_requested = False
 
         # Apply
         self.settings.bind("window-width", self, "default-width", Gio.SettingsBindFlags.DEFAULT)
