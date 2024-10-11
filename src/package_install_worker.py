@@ -1,4 +1,5 @@
 from gi.repository import Adw, Gtk, GLib, Gio
+from .host_info import HostInfo
 import subprocess, re
 
 class PackageInstallWorker:
@@ -106,6 +107,7 @@ class PackageInstallWorker:
 	def on_done(this, *args):
 		this.process = None
 		this.cancelled = False
+		HostInfo.main_window.remove_refresh_lockout("installing packages")
 		if not this.loading_status is None:
 			this.loading_status.progress_bar.set_fraction(0.0)
 			
@@ -114,8 +116,6 @@ class PackageInstallWorker:
 			
 	@classmethod
 	def on_error(this, user_facing_label, error_message):
-		print("\nPackageInstallWorker error:", user_facing_label)
-		print(error_message, "\n")
 		if not this.error_callback is None:
 			this.error_callback(user_facing_label, error_message)
 			
@@ -135,5 +135,6 @@ class PackageInstallWorker:
 			this.on_error(_("Could not install packages"), _("No packages were asked to be installed."))
 			return False
 			
+		HostInfo.main_window.add_refresh_lockout("installing packages")
 		Gio.Task.new(None, None, this.on_done).run_in_thread(lambda *_: this.install_thread())
 		return True
