@@ -223,7 +223,6 @@ class PropertiesPage(Adw.NavigationPage):
                 try:
                     self.package.trash_data()
                     self.set_properties(self.package, refresh=True)
-                    self.toast_overlay.add_toast(Adw.Toast.new("Trashed User Data"))
                 except subprocess.CalledProcessError as cpe:
                     self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), cpe.stderr).toast)
                 except Exception as e:
@@ -236,7 +235,7 @@ class PropertiesPage(Adw.NavigationPage):
                 self.packages_page.set_status(self.packages_page.scrolled_window)
             else:
                 self.main_window.refresh_handler()
-                self.packages_page.packages_toast_overlay.add_toast(Adw.Toast(title=_("Uninstalled {}").format(self.package.info["name"])))
+                HostInfo.main_window.toast_overlay.add_toast(Adw.Toast(title=_("Uninstalled {}").format(self.package.info["name"])))
                 
         # name = self.package.info["name"]
         dialog = UninstallDialog(on_choice, os.path.exists(self.package.data_path), self.package.info["name"])
