@@ -95,9 +95,10 @@ class PendingPage(Adw.NavigationPage):
         package_requests = []
         for key, group in self.groups.items():
             item = {
-                'remote': group.remote.name,
-                'installation': group.installation,
-                'package_names': [],
+                "remote": group.remote.name,
+                "installation": group.installation,
+                "package_names": [],
+                "extra_flags": [],
             }
             for row in group.rows:
                 item['package_names'].append(row.package.app_id)

@@ -252,7 +252,7 @@ class PackagesPage(Adw.BreakpointBin):
 
                 try:
                     subprocess.run(cmd, check=True, capture_output=True)
-                    if should_trash:
+                    if should_trash and len(to_trash) > 0:
                         subprocess.run(['gio', 'trash'] + to_trash, check=True, capture_output=True)
                 except subprocess.CalledProcessError as cpe:
                     error[0] = cpe
