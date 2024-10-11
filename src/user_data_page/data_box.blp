@@ -63,6 +63,12 @@ template $DataBox : ListBox {
                     visible: bind check_button.visible inverted;
                     styles ["flat", "circular"]
                 }
+                Button install_button {
+                    icon-name: "arrow-pointing-at-line-down-symbolic";
+                    tooltip-text: _("Attempt to Install");
+                    visible: bind check_button.visible inverted;
+                    styles ["flat", "circular"]
+                }
                 Button trash_button {
                     icon-name: "user-trash-symbolic";
                     tooltip-text: _("Trash User Data");
