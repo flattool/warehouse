@@ -273,6 +273,35 @@ class PropertiesPage(Adw.NavigationPage):
         self.reinstall_did_error = True
         GLib.idle_add(lambda *_: HostInfo.main_window.toast_overlay.add_toast(ErrorToast(user_facing_label, error_message).toast))
         
+    def reinstall_handler(self):
+        def on_response(dialog, response):
+            if response != "continue":
+                return
+                
+            self.reinstall_did_error = False
+            PackageInstallWorker.install(
+                [{
+                    "installation": self.package.info['installation'],
+                    "remote": self.package.info['origin'],
+                    "package_names": [self.package.info['ref']],
+                    "extra_flags": ["--reinstall"],
+                }],
+                self.packages_page.reinstalling,
+                self.reinstall_callback,
+                self.reinstall_error_callback,
+            )
+            self.packages_page.set_status(self.packages_page.reinstalling)
+            
+        dialog = Adw.AlertDialog(
+            heading=_("Reinstall {}?").format(self.package.info['name']),
+            body=_("The package will be uninstalled, and the reinstalled from the same remote and installation.")
+        )
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("continue", _("Reinstall"))
+        dialog.set_response_appearance("continue", Adw.ResponseAppearance.SUGGESTED)
+        dialog.connect("response", on_response)
+        dialog.present(HostInfo.main_window)
+        
     def more_menu_handler(self, listbox, row):
         self.more_menu.popdown()
         match row.get_child():
@@ -296,19 +325,7 @@ class PropertiesPage(Adw.NavigationPage):
                     self.toast_overlay.add_toast(ErrorToast(_("Could not show details"), str(e)).toast)
                     
             case self.reinstall:
-                self.reinstall_did_error = False
-                PackageInstallWorker.install(
-                    [{
-                        "installation": self.package.info['installation'],
-                        "remote": self.package.info['origin'],
-                        "package_names": [self.package.info['ref']],
-                        "extra_flags": ["--reinstall"],
-                    }],
-                    self.packages_page.reinstalling,
-                    self.reinstall_callback,
-                    self.reinstall_error_callback,
-                )
-                self.packages_page.set_status(self.packages_page.reinstalling)
+                self.reinstall_handler()
                 
     def __init__(self, main_window, packages_page, **kwargs):
         super().__init__(**kwargs)
