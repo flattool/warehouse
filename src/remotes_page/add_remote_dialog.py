@@ -24,6 +24,7 @@ class AddRemoteDialog(Adw.Dialog):
         self.apply_button.set_sensitive(False)
         error = [None]
         def thread(*args):
+            HostInfo.main_window.add_refresh_lockout("adding remote")
             cmd = [
                 'flatpak-spawn', '--host',
                 'flatpak', 'remote-add',
@@ -45,6 +46,7 @@ class AddRemoteDialog(Adw.Dialog):
                 error[0] = e
                 
         def callback(*args):
+            HostInfo.main_window.remove_refresh_lockout("adding remote")
             if error[0]:
                 self.parent_page.status_stack.set_visible_child(self.parent_page.main_view)
                 self.apply_button.set_sensitive(True)
