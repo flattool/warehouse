@@ -507,7 +507,7 @@ class SnapshotPage(Adw.BreakpointBin):
         self.workers = []
         self.leftover_snapshots = []
         self.list_page = SnapshotsListPage(self)
-        self.snapshotting_status = LoadingStatus("Initial Title", _("This might take a while"), True, self.on_cancel)
+        self.snapshotting_status = LoadingStatus("Initial Title", _("This could take a while"), True, self.on_cancel)
         self.new_snapshot_dialog = None
         
         # Connections
@@ -527,7 +527,6 @@ class SnapshotPage(Adw.BreakpointBin):
         self.search_bar.set_key_capture_widget(HostInfo.main_window)
         self.loading_view.set_content(LoadingStatus(_("Loading Snapshots"), _("This should only take a moment")))
         self.snapshotting_view.set_content(self.snapshotting_status)
-        self.snapshotting_status.button.set_label(_("Cancel"))
         self.split_view.set_content(self.list_page)
         self.active_listbox.set_sort_func(self.sort_func)
         self.leftover_listbox.set_sort_func(self.sort_func)

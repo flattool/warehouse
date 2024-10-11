@@ -92,5 +92,4 @@ class InstallPage(Adw.BreakpointBin):
         self.select_page.results_page.pending_page = self.pending_page
         self.select_page.results_page.install_page = self
         self.loading_view.set_content(LoadingStatus(_("Loading Installation Options"), _("This should only take a moment")))
-        self.installing_status.button.set_label(_("Cancel"))
         self.installing_view.set_content(self.installing_status)
