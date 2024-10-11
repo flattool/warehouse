@@ -243,6 +243,7 @@ class PackagesPage(Adw.BreakpointBin):
             GLib.idle_add(lambda *_: self.set_status(self.uninstalling))
             error = [None]
             def thread(*args):
+                HostInfo.main_window.add_refresh_lockout("batch uninstalling packages")
                 cmd = ['flatpak-spawn', '--host', 'flatpak', 'uninstall', '-y']
                 to_trash = []
                 for row in self.selected_rows:
@@ -261,6 +262,7 @@ class PackagesPage(Adw.BreakpointBin):
 
             def callback(*args):
                 self.main_window.refresh_handler()
+                HostInfo.main_window.remove_refresh_lockout("batch uninstalling packages")
                 if err := error[0]:
                     details = err.stderr if type(err) == subprocess.CalledProcessError else str(err)
                     GLib.idle_add(lambda *args: self.packages_toast_overlay.add_toast(ErrorToast(_("Could not uninstall packages"), details).toast))

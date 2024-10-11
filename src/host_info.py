@@ -98,10 +98,16 @@ class Flatpak:
 
         Gio.Task.new(None, None, callback).run_in_thread(thread)
 
-    def uninstall(self, callback=None):
+    def uninstall(self, callee_callback=None):
         self.failed_uninstall = None
+        
+        def callback(*args):
+            HostInfo.main_window.remove_refresh_lockout("uninstalling packages")
+            if not callee_callback is None:
+                callee_callback()
 
         def thread(*args):
+            HostInfo.main_window.add_refresh_lockout("uninstalling packages")
             cmd = ['flatpak-spawn', '--host', 'flatpak', 'uninstall', '-y', self.info["ref"]]
             installation = self.info["installation"]
             if installation == "system" or installation == "user":
