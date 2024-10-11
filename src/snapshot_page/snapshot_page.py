@@ -7,6 +7,7 @@ from .sidebar_button import SidebarButton
 from .loading_status import LoadingStatus
 from .new_snapshot_dialog import NewSnapshotDialog
 from .tar_worker import TarWorker
+from .attempt_install_dialog import AttemptInstallDialog
 import os, subprocess
 
 class LeftoverSnapshotRow(Adw.ActionRow):
@@ -448,7 +449,11 @@ class SnapshotPage(Adw.BreakpointBin):
         dialog.present(HostInfo.main_window)
         
     def install_handler(self):
-        print("install")
+        package_names = []
+        for row in self.selected_leftover_rows:
+            package_names.append(row.folder)
+            
+        AttemptInstallDialog(package_names, lambda is_valid: self.select_button.set_active(not is_valid))
         
     def select_trash_handler(self):
         def on_response(dialog, response):
