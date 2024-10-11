@@ -25,7 +25,7 @@ class SnapshotsListPage(Adw.NavigationPage):
             
             row = SnapshotBox(self, snapshot, folder, self.toast_overlay)
             row.apply_button.set_sensitive(not is_leftover)
-            row.apply_button.set_tooltip_text(_("This App is not Installed"))
+            row.apply_button.set_tooltip_text(_("App not Installed"))
             self.snapshots_rows.append(row)
             
     def callback(self, *args):
@@ -47,11 +47,17 @@ class SnapshotsListPage(Adw.NavigationPage):
             self.set_title(package_or_folder)
             folder = package_or_folder
             self.new_button.set_sensitive(False)
+            self.new_button.set_tooltip_text(_("App not Installed"))
         else:
             folder = package_or_folder.info["id"]
             self.set_title(_("{} Snapshots").format(package_or_folder.info["name"]))
-            self.new_button.set_sensitive(os.path.exists(package_or_folder.data_path))
-            
+            if os.path.exists(package_or_folder.data_path):
+                self.new_button.set_sensitive(True)
+                self.new_button.set_tooltip_text(None)
+            else:
+                self.new_button.set_sensitive(False)
+                self.new_button.set_tooltip_text(_("No Data Found to Snapshot"))
+                
         self.current_folder = folder
         self.snapshots_rows.clear()
         self.listbox.remove_all()

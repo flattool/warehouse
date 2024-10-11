@@ -88,6 +88,9 @@ class PendingPage(Adw.NavigationPage):
         if len(self.added_packages) == 0:
             self.stack.set_visible_child(self.none_pending)
             
+        install_page = HostInfo.main_window.pages[HostInfo.main_window.install_row]
+        install_page.package_removed()
+        
     def on_install(self, *args):
         package_requests = []
         for key, group in self.groups.items():

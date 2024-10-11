@@ -9,21 +9,15 @@ template $ResultsPage : Adw.NavigationPage {
         [top]
         Adw.Clamp {
             maximum-size: 577;
-            Box {
-                margin-top:    3;
-                margin-bottom: 3;
-                margin-start:  6;
-                margin-end:    6;
-                styles ["linked"]
-                Gtk.SearchEntry search_entry {
-                    search-delay: 700;
-                    halign: fill;
-                    hexpand: true;
-                    placeholder-text: _("Search for Packages");
-                }
-                Button search_apply_button {
-                    icon-name: "right-large-symbolic";
-                }
+            margin-top:    3;
+            margin-bottom: 3;
+            margin-start: 6;
+            margin-end:   6;
+            SearchEntry search_entry {
+                search-delay: 500;
+                halign: fill;
+                // hexpand: true;
+                placeholder-text: _("Search for Packages");
             }
         }
         Stack stack {
@@ -37,15 +31,6 @@ template $ResultsPage : Adw.NavigationPage {
                 title: _("Too Many Results");
                 description: _("Try being more specific with your search");
             }
-            // Adw.StatusPage loading {
-            //     title: _("Searching");
-            //     description: _("This should only take a moment");
-            //     child:
-            //         Spinner {
-            //             spinning: true;
-            //         }
-            //     ;
-            // }
             ScrolledWindow results_view {
                 Adw.Clamp {
                     ListBox results_list {

@@ -8,19 +8,19 @@ import subprocess
 class AddedPackage:
     def __eq__(self, other):
         return (
-            self.name == other.name and \
-            self.app_id == other.app_id and \
-            self.branch == other.branch and \
-            self.version == other.version and \
-            self.remote == other.remote and \
-            self.installation == other.installation
+            self.name == other.name
+            and self.app_id == other.app_id
+            and self.branch == other.branch
+            and self.version == other.version
+            and self.remote == other.remote
+            and self.installation == other.installation
         )
 
     def is_similar(self, other):
         return (
-            self.app_id == other.app_id and \
-            self.branch == other.branch and \
-            self.version == other.version
+            self.app_id == other.app_id
+            and self.branch == other.branch
+            and self.version == other.version
         )
 
     def __init__(self, name, app_id, branch, version, remote, installation):
@@ -35,16 +35,15 @@ class AddedPackage:
 class ResultsPage(Adw.NavigationPage):
     __gtype_name__ = "ResultsPage"
     gtc = Gtk.Template.Child
-
+    
     search_entry = gtc()
-    search_apply_button = gtc()
     results_list = gtc()
     stack = gtc()
     new_search = gtc()
     too_many = gtc()
     results_view= gtc()
     no_results = gtc()
-
+    
     def show_remote(self, row, remote, installation, nav_view=None):
         self.remote = remote
         self.installation = installation
@@ -56,7 +55,9 @@ class ResultsPage(Adw.NavigationPage):
             
     def add_package_row(self, row):
         self.pending_page.add_package_row(row)
-        
+        if not self.install_page is None:
+            self.install_page.package_added()
+            
     def on_search(self, *args):
         self.packages.clear()
         self.stack.set_visible_child(self.loading)
@@ -116,11 +117,7 @@ class ResultsPage(Adw.NavigationPage):
             except subprocess.CalledProcessError as cpe:
                 print(cpe)
                 
-        def callback(*args):
-            pass
-            
-            
-        Gio.Task.new(None, None, callback).run_in_thread(thread)
+        Gio.Task().run_in_thread(thread)
         
     def on_back(self, *args):
         self.results_list.remove_all()
@@ -135,10 +132,10 @@ class ResultsPage(Adw.NavigationPage):
         self.packages = []
         self.pending_page = None
         self.loading = LoadingStatus(_("Searching"), _("This should only take a moment"))
+        self.install_page = None
         
         # Connections
-        self.search_entry.connect("activate", self.on_search)
-        self.search_apply_button.connect("clicked", self.on_search)
+        self.search_entry.connect("search-changed", self.on_search)
         
         # Apply
         self.stack.add_child(self.loading)

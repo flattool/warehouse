@@ -20,6 +20,9 @@ class InstallPage(Adw.BreakpointBin):
     status_stack = gtc()
     loading_view = gtc()
     installing_view = gtc()
+    bottom_sheet = gtc()
+    bottom_child = gtc()
+    bottom_label = gtc()
     
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -54,17 +57,40 @@ class InstallPage(Adw.BreakpointBin):
         if PackageInstallWorker.install(package_requests, self.installing_status, self.install_callback, self.install_error_callback):
             self.status_stack.set_visible_child(self.installing_view)
             
+    def bottom_bar_visual_handler(self, is_added):
+        total = self.total_added_packages
+        if total == 0:
+            self.bottom_child.set_reveal_child(False)
+            self.bottom_sheet.set_bottom_bar(None)
+        elif total == 1:
+            self.bottom_label.set_label(_("{} Pending Package").format(1))
+            if is_added:
+                self.bottom_sheet.set_bottom_bar(self.bottom_child)
+                self.bottom_child.set_reveal_child(True)
+        else:
+            self.bottom_label.set_label(_("{} Pending Packages").format(total))
+            
+    def package_added(self):
+        self.total_added_packages += 1
+        self.bottom_bar_visual_handler(True)
+        
+    def package_removed(self):
+        self.total_added_packages -= 1
+        self.bottom_bar_visual_handler(False)
+        
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
         self.instance = self
         
         # Extra Object Creation
         self.installing_status = LoadingStatus(_("Installing Packages"), _("This could take a while"), True, PackageInstallWorker.cancel)
+        self.total_added_packages = 0
         
         # Connections
         
         # Apply
         self.select_page.results_page.pending_page = self.pending_page
+        self.select_page.results_page.install_page = self
         self.loading_view.set_content(LoadingStatus(_("Loading Installation Options"), _("This should only take a moment")))
         self.installing_status.button.set_label(_("Cancel"))
         self.installing_view.set_content(self.installing_status)

@@ -67,21 +67,6 @@ template $InstallPage : Adw.BreakpointBin {
                             Adw.LayoutSlot {
                                 id: "pending_page";
                             }
-                            [bottom-bar]
-                            Box {
-                                margin-top: 12;
-                                margin-bottom: 14;
-                                spacing: 6;
-                                halign: center;
-                                Image {
-                                    icon-name: "flatpak-symbolic";
-                                    icon-size: normal;
-                                }
-                                Label {
-                                    label: _("Pending Packages");
-                                    styles ["heading"]
-                                }
-                            }
                         }
                     }
                     [select_page]
@@ -90,6 +75,33 @@ template $InstallPage : Adw.BreakpointBin {
                     $PendingPage pending_page {}
                 }
             }
+        }
+    }
+}
+
+Revealer bottom_child {
+    reveal-child: false;
+    Box {
+        margin-top: 12;
+        margin-bottom: 14;
+        spacing: 12;
+        halign: center;
+        valign: center;
+        styles ["flat"]
+        [start]
+        Image {
+            icon-name: "flatpak-symbolic";
+            icon-size: normal;
+        }
+        [center]
+        Label bottom_label {
+            label: _("Pending Packages");
+            styles ["heading"]
+        }
+        [end]
+        Image {
+            icon-name: "right-large-symbolic";
+            icon-size: normal;
         }
     }
 }
