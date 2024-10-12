@@ -209,11 +209,9 @@ class RemotesPage(Adw.NavigationPage):
             return
 
         self.stack.set_visible_child(self.content_page if total > 0 else self.no_results)
-
-    def file_callback(self, chooser, result):
+        
+    def local_file_handler(self, path):
         try:
-            file = chooser.open_finish(result)
-            path = file.get_path()
             name = path.split("/")[-1].split(".")[0]
             info = {
                 "title": name.title(),
@@ -222,6 +220,14 @@ class RemotesPage(Adw.NavigationPage):
                 "link": path,
             }
             AddRemoteDialog(self.main_window, self, info).present(self.main_window)
+        except Exception as e:
+            self.toast_overlay.add_toast(ErrorToast(_("Could not open file"), str(e)).toast)
+
+    def file_callback(self, chooser, result):
+        try:
+            file = chooser.open_finish(result)
+            path = file.get_path()
+            self.local_file_handler(path)
         except GLib.GError as ge:
             if "Dismissed by user" in str(ge):
                 return

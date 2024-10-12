@@ -172,6 +172,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 # Adding a remote
                 self.activate_row(self.remotes_row)
                 remotes_page = self.pages[self.remotes_row]
+                remotes_page.local_file_handler(remotes[0])
             elif len(paks) > 0:
                 # Add packages
                 self.activate_row(self.install_row)
@@ -179,7 +180,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 install_page.select_page.file_dialog_handler(paks)
                 
         except Exception as e:
-            self.toast_overlay.add_toast(ErrorToast(_("Could not open files"), str(e)))
+            self.toast_overlay.add_toast(ErrorToast(_("Could not open files"), str(e)).toast)
             
     def on_drop_enter(self, *args):
         self.file_drop_stack.set_visible_child(self.file_drop_view)
