@@ -81,15 +81,15 @@ class PackageInstallWorker:
 					errors.append(error)
 					
 			if len(errors) > 0:
-				this.on_error(_("Could not install some packages"), "\n".join(errors))
+				this.on_error(_("Errors occurred during installation"), "\n".join(errors))
 				
 		except subprocess.TimeoutExpired as te:
 			this.process.terminate()
-			this.on_error(_("Could not install some packages"), _("Failed to exit cleanly"))
+			this.on_error(_("Error occurred during installation"), _("Failed to exit cleanly"))
 				
 		except Exception as e:
 			this.process.terminate()
-			this.on_error(_("Could not install some packages"), str(e))
+			this.on_error(_("Error occurred during installation"), str(e))
 		
 	@classmethod
 	def cancel(this):
@@ -132,7 +132,7 @@ class PackageInstallWorker:
 		this.error_callback = error_callback
 		
 		if this.total_groups < 1:
-			this.on_error(_("Could not install packages"), _("No packages were asked to be installed."))
+			this.on_error(_("Could not install packages"), _("No packages were requested to be installed."))
 			return False
 			
 		HostInfo.main_window.add_refresh_lockout("installing packages")

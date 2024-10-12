@@ -63,15 +63,15 @@ class ChangeVersionWorker:
 						
 			this.process.wait(timeout=10)
 			if error := this.process.communicate()[1].strip():
-				this.on_error(_("Could not change version"), error)
+				this.on_error(_("Error occurred while changing version"), error)
 				
 		except subprocess.TimeoutExpired as te:
 			this.process.terminate()
-			this.on_error(_("Could not change version"), _("Failed to exit cleanly"))
+			this.on_error(_("Error occurred while changing version"), _("Failed to exit cleanly"))
 			
 		except Exception as e:
 			this.process.terminate()
-			this.on_error(_("Could not change version"), str(e))
+			this.on_error(_("Error occurred while changing version"), str(e))
 		
 	@classmethod
 	def cancel(this):
