@@ -38,7 +38,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
     gtc = Gtk.Template.Child
     main_breakpoint = gtc()
     toast_overlay = gtc()
+    file_drop_stack = gtc()
     main_split = gtc()
+    file_drop_view = gtc()
     stack = gtc()
     refresh_button = gtc()
     navigation_row_listbox = gtc()
@@ -127,7 +129,17 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
         if not page_found:
             self.navigation_row_listbox.get_row_at_index(0).activate()
-
+            
+    def on_file_drop(self, target, _x, _y, _data):
+        print(target, _x, _y, _data)
+        
+    def on_drop_enter(self, *args):
+        self.file_drop_stack.set_visible_child(self.file_drop_view)
+        return 1
+        
+    def on_drop_leave(self, *args):
+        self.file_drop_stack.set_visible_child(self.main_split)
+        
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -135,8 +147,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         HostInfo.main_window = self
         ErrorToast.main_window = self
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse")
-        event_controller = Gtk.EventControllerKey()
-        file_drop = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
         self.pages = {
             self.packages_row: PackagesPage(main_window=self),
             self.remotes_row: RemotesPage(main_window=self),
@@ -148,19 +158,25 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.show_saved_page()
         self.refresh_lockouts = []
         self.refresh_requested = False
+        file_drop = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
+        event_controller = Gtk.EventControllerKey()
 
         # Apply
+        self.add_controller(file_drop)
+        self.add_controller(event_controller)
         self.settings.bind("window-width", self, "default-width", Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind("window-height", self, "default-height", Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind("is-maximized", self, "maximized", Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind("is-fullscreen", self, "fullscreened", Gio.SettingsBindFlags.DEFAULT)
-        self.add_controller(event_controller)
         # self.scrolled_window.add_controller(file_drop)
         # self.main_split.set_content(PackagesPage(self))
         if Config.DEVEL:
             self.add_css_class("devel")
 
         # Connections
+        file_drop.connect("drop", self.on_file_drop)
+        file_drop.connect("enter", self.on_drop_enter)
+        file_drop.connect("leave", self.on_drop_leave)
         event_controller.connect("key-pressed", self.key_handler)
         # file_drop.connect("drop", self.drop_callback)
         self.refresh_button.connect("clicked", self.refresh_handler)

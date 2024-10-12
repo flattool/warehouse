@@ -9,7 +9,6 @@ template $WarehouseWindow: Adw.ApplicationWindow {
     height-request: 260;
     Adw.Breakpoint main_breakpoint {
         condition ("min-width: 865")
-
         setters {
             main_split.collapsed: false;
             main_split.max-sidebar-width: 999999999;
@@ -17,124 +16,118 @@ template $WarehouseWindow: Adw.ApplicationWindow {
     }
     content:
         Adw.ToastOverlay toast_overlay {
-            Adw.OverlaySplitView main_split {
-                collapsed: true;
-                show-sidebar: true;
-                sidebar-width-fraction: 0.2;
-                // max-sidebar-width: 280;
-                min-sidebar-width: 250;
-                sidebar:
-                    Adw.NavigationPage {
-                        title: "Warehouse";
-                        Adw.ToolbarView main_toolbar_view {
-                            [top]
-                            Adw.HeaderBar header_bar {
-                                [start]
-                                Button refresh_button {
-                                    icon-name: "arrow-circular-top-right-symbolic";
-                                    tooltip-text: _("Refresh List");
+            Stack file_drop_stack {
+                transition-type: crossfade;
+                Adw.OverlaySplitView main_split {
+                    collapsed: true;
+                    show-sidebar: true;
+                    sidebar-width-fraction: 0.2;
+                    // max-sidebar-width: 280;
+                    min-sidebar-width: 250;
+                    sidebar:
+                        Adw.NavigationPage {
+                            title: "Warehouse";
+                            Adw.ToolbarView main_toolbar_view {
+                                [top]
+                                Adw.HeaderBar header_bar {
+                                    [start]
+                                    Button refresh_button {
+                                        icon-name: "arrow-circular-top-right-symbolic";
+                                        tooltip-text: _("Refresh List");
+                                    }
+                                    [end]
+                                    MenuButton main_menu {
+                                        icon-name: "open-menu-symbolic";
+                                        tooltip-text: _("Main Menu");
+                                        menu-model: primary_menu;
+                                    }
                                 }
-                                [end]
-                                MenuButton main_menu {
-                                    icon-name: "open-menu-symbolic";
-                                    tooltip-text: _("Main Menu");
-                                    menu-model: primary_menu;
-                                }
-                            }
-                            content:
-                                ScrolledWindow {
-                                    ListBox navigation_row_listbox {
-                                        styles ["navigation-sidebar"]
-
-                                        Box packages_row {
-                                            margin-top: 12;
-                                            margin-bottom: 12;
-                                            margin-start: 6;
-                                            margin-end: 6;
-                                            spacing: 12;
-
-                                            Image icon {
-                                                icon-name: "flatpak-symbolic";
+                                content:
+                                    ScrolledWindow {
+                                        ListBox navigation_row_listbox {
+                                            styles ["navigation-sidebar"]
+                                            Box packages_row {
+                                                margin-top: 12;
+                                                margin-bottom: 12;
+                                                margin-start: 6;
+                                                margin-end: 6;
+                                                spacing: 12;
+                                                Image icon {
+                                                    icon-name: "flatpak-symbolic";
+                                                }
+                                                Label {
+                                                    label: _("Packages");
+                                                }
                                             }
-
-                                            Label {
-                                                label: _("Packages");
+                                            Box remotes_row {
+                                                margin-top: 12;
+                                                margin-bottom: 12;
+                                                margin-start: 6;
+                                                margin-end: 6;
+                                                spacing: 12;
+                                                Image {
+                                                    icon-name: "server-pick-symbolic";
+                                                }
+                                                Label {
+                                                    label: _("Remotes");
+                                                }
                                             }
-                                        }
-                                    
-                                        Box remotes_row {
-                                            margin-top: 12;
-                                            margin-bottom: 12;
-                                            margin-start: 6;
-                                            margin-end: 6;
-                                            spacing: 12;
-
-                                            Image {
-                                                icon-name: "server-pick-symbolic";
+                                            
+                                            Box user_data_row {
+                                                margin-top: 12;
+                                                margin-bottom: 12;
+                                                margin-start: 6;
+                                                margin-end: 6;
+                                                spacing: 12;
+                                                Image {
+                                                    icon-name: "file-manager-symbolic";
+                                                }
+                                                Label {
+                                                    label: _("User Data");
+                                                }
                                             }
-
-                                            Label {
-                                                label: _("Remotes");
+                                            Box snapshots_row {
+                                                margin-top: 12;
+                                                margin-bottom: 12;
+                                                margin-start: 6;
+                                                margin-end: 6;
+                                                spacing: 12;
+                                                Image {
+                                                    icon-name: "snapshots-alt-symbolic";
+                                                }
+                                                Label {
+                                                    label: _("Snapshots");
+                                                }
                                             }
-                                        }
-                                        
-                                        Box user_data_row {
-                                            margin-top: 12;
-                                            margin-bottom: 12;
-                                            margin-start: 6;
-                                            margin-end: 6;
-                                            spacing: 12;
-
-                                            Image {
-                                                icon-name: "file-manager-symbolic";
-                                            }
-
-                                            Label {
-                                                label: _("User Data");
-                                            }
-                                        }
-                                    
-                                        Box snapshots_row {
-                                            margin-top: 12;
-                                            margin-bottom: 12;
-                                            margin-start: 6;
-                                            margin-end: 6;
-                                            spacing: 12;
-
-                                            Image {
-                                                icon-name: "snapshots-alt-symbolic";
-                                            }
-
-                                            Label {
-                                                label: _("Snapshots");
-                                            }
-                                        }
-                                        
-                                        Box install_row {
-                                            margin-top: 12;
-                                            margin-bottom: 12;
-                                            margin-start: 6;
-                                            margin-end: 6;
-                                            spacing: 12;
-
-                                            Image {
-                                                icon-name: "arrow-pointing-at-line-down-symbolic";
-                                            }
-
-                                            Label {
-                                                label: _("Install Packages");
+                                            Box install_row {
+                                                margin-top: 12;
+                                                margin-bottom: 12;
+                                                margin-start: 6;
+                                                margin-end: 6;
+                                                spacing: 12;
+                                                Image {
+                                                    icon-name: "arrow-pointing-at-line-down-symbolic";
+                                                }
+                                                Label {
+                                                    label: _("Install Packages");
+                                                }
                                             }
                                         }
                                     }
-                                }
-                            ;
+                                ;
+                            }
                         }
-                    }
-                ;
-                content:
-                    Stack stack {
-                    }
-                ;
+                    ;
+                    content:
+                        Stack stack {
+                        }
+                    ;
+                }
+                Adw.StatusPage file_drop_view {
+                    icon-name: "folder-open-symbolic";
+                    title: _("Drop to Open");
+                    description: _("Install Flatpaks or Add a Remotes");
+                }
             }
         }
     ;
