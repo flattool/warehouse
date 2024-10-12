@@ -50,6 +50,9 @@ class SelectPage(Adw.NavigationPage):
             
         install_page.install_packages(requests)
         
+    def file_dialog_handler(self, files):
+        FileInstallDialog(self, files, self.local_install_apply_callback).present(HostInfo.main_window)
+        
     def file_choose_callback(self, object, result):
         try:
             files = object.open_multiple_finish(result)
@@ -57,7 +60,7 @@ class SelectPage(Adw.NavigationPage):
                 HostInfo.main_window.toast_overlay.add_toast(ErrorToast(_("Could not add files"), _("No files were found to install")))
                 return
                 
-            FileInstallDialog(self, files, self.local_install_apply_callback).present(HostInfo.main_window)
+            self.file_dialog_handler(files)
             
         except GLib.GError as gle:
             if not (gle.domain == "gtk-dialog-error-quark" and gle.code == 2):
