@@ -46,7 +46,13 @@ class WarehouseApplication(Adw.Application):
         self.create_action("quit", lambda *_: self.quit(), ["<primary>q"])
         self.create_action("refresh", self.on_refresh_shortcut, ["<primary>r", "F5"])
         self.create_action("open-menu", lambda *_: self.props.active_window.main_menu.popup(), ["F10"])
-
+        
+        self.create_action("show-packages-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("p"), ["<primary>p"])
+        self.create_action("show-remotes-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("m"), ["<primary>m"])
+        self.create_action("show-user-data-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("d"), ["<primary>d"])
+        self.create_action("show-snapshots-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("s"), ["<primary>s"])
+        self.create_action("show-install-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("i"), ["<primary>i"])
+        
         self.is_dialog_open = False
 
         gtk_version = (

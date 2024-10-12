@@ -117,11 +117,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 nav_row.grab_focus()
                 break
 
-    def save_sidebar_state(self, *args):
-        state = self.main_split.get_show_sidebar()
-        self.settings.set_boolean("sidebar-shown", state)
-        print(self.settings.get_boolean("sidebar-shown"))
-
     def show_saved_page(self):
         page_to_show = self.settings.get_string("page-shown")
         page_found = False
@@ -194,6 +189,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def on_drop_leave(self, *args):
         self.file_drop_stack.set_visible_child(self.main_split)
         
+    def switch_page_shortcut_handler(self, letter):
+        self.activate_row(self.shortcut_to_pages[letter])
+        
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -207,6 +205,13 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.user_data_row: UserDataPage(main_window=self),
             self.snapshots_row: SnapshotPage(main_window=self),
             self.install_row: InstallPage(main_window=self),
+        }
+        self.shortcut_to_pages = {
+            "p": self.packages_row,
+            "m": self.remotes_row,
+            "d": self.user_data_row,
+            "s": self.snapshots_row,
+            "i": self.install_row,
         }
         self.navigation_row_listbox.connect("row-activated", self.navigation_handler)
         self.show_saved_page()
