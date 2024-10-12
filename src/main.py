@@ -41,9 +41,11 @@ class WarehouseApplication(Adw.Application):
             application_id="io.github.flattool.Warehouse",
             flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
         )
-        self.create_action("quit", lambda *_: self.quit(), ["<primary>q"])
         self.create_action("about", self.on_about_action)
         self.create_action("preferences", self.on_preferences_action)
+        self.create_action("quit", lambda *_: self.quit(), ["<primary>q"])
+        self.create_action("refresh", self.on_refresh_shortcut, ["<primary>r", "F5"])
+        self.create_action("open-menu", lambda *_: self.props.active_window.main_menu.popup(), ["F10"])
 
         self.is_dialog_open = False
 
@@ -73,27 +75,30 @@ class WarehouseApplication(Adw.Application):
             app_id=self.get_application_id(),
             lang=lang,
         )
+        
+    def on_refresh_shortcut(self, *args):
+        self.props.active_window.refresh_handler()
 
-    def file_callback(self, object, result):
-        window = self.props.active_window
-        try:
-            file = object.open_finish(result)
-            window.install_file(file.get_path())
-        except GLib.GError:
-            pass
+    # def file_callback(self, object, result):
+    #     window = self.props.active_window
+    #     try:
+    #         file = object.open_finish(result)
+    #         window.install_file(file.get_path())
+    #     except GLib.GError:
+    #         pass
 
-    def install_from_file(self, widget, _a):
-        window = self.props.active_window
+    # def install_from_file(self, widget, _a):
+    #     window = self.props.active_window
 
-        filter = Gtk.FileFilter(name=_("Flatpaks"))
-        filter.add_suffix("flatpak")
-        filter.add_suffix("flatpakref")
-        filters = Gio.ListStore.new(Gtk.FileFilter)
-        filters.append(filter)
-        file_chooser = Gtk.FileDialog()
-        file_chooser.set_filters(filters)
-        file_chooser.set_default_filter(filter)
-        file_chooser.open(window, None, self.file_callback)
+    #     filter = Gtk.FileFilter(name=_("Flatpaks"))
+    #     filter.add_suffix("flatpak")
+    #     filter.add_suffix("flatpakref")
+    #     filters = Gio.ListStore.new(Gtk.FileFilter)
+    #     filters.append(filter)
+    #     file_chooser = Gtk.FileDialog()
+    #     file_chooser.set_filters(filters)
+    #     file_chooser.set_default_filter(filter)
+    #     file_chooser.open(window, None, self.file_callback)
 
     def do_activate(self):
         """Called when the application is activated.

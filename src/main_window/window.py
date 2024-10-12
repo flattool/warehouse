@@ -43,6 +43,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     file_drop_view = gtc()
     stack = gtc()
     refresh_button = gtc()
+    main_menu = gtc()
     navigation_row_listbox = gtc()
     packages_row = gtc()
     remotes_row = gtc()
