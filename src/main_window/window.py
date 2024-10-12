@@ -22,7 +22,7 @@ import subprocess
 import re
 import time
 
-from gi.repository import Adw, Gdk, Gio, GLib, Gtk
+from gi.repository import Adw, Gdk, Gio, GLib, Gtk, GObject
 from .host_info import HostInfo
 from .packages_page import PackagesPage
 from .remotes_page import RemotesPage
@@ -130,9 +130,51 @@ class WarehouseWindow(Adw.ApplicationWindow):
         if not page_found:
             self.navigation_row_listbox.get_row_at_index(0).activate()
             
-    def on_file_drop(self, target, _x, _y, _data):
-        print(target, _x, _y, _data)
-        
+    def on_file_drop(self, drop_target, value, x, y):
+        paks = []
+        remotes = []
+        for file in value:
+            path = file.get_path()
+            if path.endswith(".flatpak") or path.endswith(".flatpakref"):
+                paks.append(path)
+            elif path.endswith(".flatpakrepo"):
+                remotes.append(path)
+            else:
+                dialog = Adw.AlertDialog(
+                    heading=_("Unsupported Filetype"),
+                    body=_("Only .flatpak, .flatpakref, and .flatpakrepo files are supported."),
+                )
+                dialog.add_response("continue", _("OK"))
+                dialog.present(self)
+                return
+                
+        if len(remotes) > 0 and len(paks) > 0:
+            dialog = Adw.AlertDialog(
+                heading=_("Mixed Filetypes"),
+                body=_("Flatpaks and remotes cannot be installed at the same time."),
+            )
+            dialog.add_css_class("error")
+            dialog.add_response("continue", _("OK"))
+            dialog.present(self)
+            return
+            
+        if len(remotes) > 1:
+            dialog = Adw.AlertDialog(
+                heading=_("Too Many Remotes"),
+                body=_("Only one remote at a time is supported."),
+            )
+            dialog.add_response("continue", _("OK"))
+            dialog.present(self)
+            return
+            
+        # Adding a remote
+        if len(remotes) == 1:
+            self.activate_row(self.remotes_row)
+            remotes_page = self.pages[self.remotes_row]
+        elif len(paks) > 0:
+            self.activate_row(self.install_row)
+            install_page = self.pages[self.install_row]
+            
     def on_drop_enter(self, *args):
         self.file_drop_stack.set_visible_child(self.file_drop_view)
         return 1
@@ -158,7 +200,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.show_saved_page()
         self.refresh_lockouts = []
         self.refresh_requested = False
-        file_drop = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
+        file_drop = Gtk.DropTarget.new(Gdk.FileList, Gdk.DragAction.COPY)
         event_controller = Gtk.EventControllerKey()
 
         # Apply
