@@ -296,7 +296,7 @@ class PropertiesPage(Adw.NavigationPage):
             
         dialog = Adw.AlertDialog(
             heading=_("Reinstall {}?").format(self.package.info['name']),
-            body=_("The package will be uninstalled, and the reinstalled from the same remote and installation.")
+            body=_("This package will be uninstalled, and then reinstalled from the same remote and installation.")
         )
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Reinstall"))
