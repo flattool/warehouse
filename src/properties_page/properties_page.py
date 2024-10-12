@@ -191,10 +191,12 @@ class PropertiesPage(Adw.NavigationPage):
                 fail = fail.stderr if type(fail) == subprocess.CalledProcessError else fail
                 self.toast_overlay.add_toast(ErrorToast(response, str(fail)).toast)
                 GLib.idle_add(lambda *_: self.mask_switch.set_active(not state))
+                GLib.idle_add(lambda *_: self.mask_label.set_visible(not state))
             else:
                 response = _("Disabled Updates") if state else _("Enabled Updates")
                 self.toast_overlay.add_toast(Adw.Toast(title=response))
                 GLib.idle_add(lambda *_: self.mask_switch.set_active(state))
+                GLib.idle_add(lambda *_: self.mask_label.set_visible(state))
                 self.package.app_row.masked_status_icon.set_visible(state)
                 
         self.package.set_mask(state, callback)
