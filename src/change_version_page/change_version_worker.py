@@ -7,7 +7,7 @@ class ChangeVersionWorker:
 	callback = None
 	error_callback = None
 	loading_status = None
-	cancelled = False
+	did_error = False
 	
 	@classmethod
 	def update_status(this, package_ratio, complete, total):
@@ -22,28 +22,56 @@ class ChangeVersionWorker:
 			
 	@classmethod
 	def change_version_thread(this, should_mask, package, commit):
-		cmd = ['flatpak-spawn', '--host', 'pkexec', 'sh', '-c']
-		
-		installation = package.info['installation']
-		real_installation = ""
-		if installation == "user" or installation == "system":
-			real_installation = f"--{installation}"
-		else:
-			real_installation = f"--installation={installation}"
+		try:
+			cmd = ['flatpak-spawn', '--host', 'pkexec', 'sh', '-c']
 			
-		suffix = ""
-		unmask_cmd = f"flatpak mask --remove {real_installation} {package.info['id']} && "
-		change_version_cmd = f"flatpak update {package.info['ref']} --commit={commit} {real_installation}"
-		mask_cmd = f" && flatpak mask {real_installation} {package.info['id']}"
-		if package.is_masked:
-			suffix += unmask_cmd
+			installation = package.info['installation']
+			real_installation = ""
+			if installation == "user" or installation == "system":
+				real_installation = f"--{installation}"
+			else:
+				real_installation = f"--installation={installation}"
+				
+			suffix = ""
+			unmask_cmd = f"flatpak mask --remove {real_installation} {package.info['id']} && "
+			change_version_cmd = f"flatpak update {package.info['ref']} --commit={commit} {real_installation} -y"
+			mask_cmd = f" && flatpak mask {real_installation} {package.info['id']}"
+			if package.is_masked:
+				suffix += unmask_cmd
+				
+			suffix += change_version_cmd
+			if should_mask:
+				suffix += mask_cmd
+				
+			cmd.append(suffix)
+			this.process = subprocess.Popen(cmd, stdout=subprocess.PIPE,  stderr=subprocess.PIPE, text=True)
+			percent_pattern = r'\d{1,3}%'
+			amount_pattern = r'(\d+)/(\d+)'
+			for line in this.process.stdout:
+				line = line.strip()
+				percent_match = re.search(percent_pattern, line)
+				if percent_match:
+					ratio = int(percent_match.group()[0:-1]) / 100.0
+					amount_match = re.search(amount_pattern, line)
+					if amount_match:
+						amount = amount_match.group().split('/')
+						complete = int(amount[0]) - 1
+						total = int(amount[1])
+						this.update_status(ratio, complete, total)
+					else:
+						this.update_status(ratio, 0, 1)
+						
+			this.process.wait(timeout=10)
+			if error := this.process.communicate()[1].strip():
+				this.on_error(_("Could not change version"), error)
+				
+		except subprocess.TimeoutExpired as te:
+			this.process.terminate()
+			this.on_error(_("Could not change version"), _("Failed to exit cleanly"))
 			
-		suffix += change_version_cmd
-		if should_mask:
-			suffix += mask_cmd
-			
-		cmd.append(suffix)
-		print(cmd)
+		except Exception as e:
+			this.process.terminate()
+			this.on_error(_("Could not change version"), str(e))
 		
 	@classmethod
 	def cancel(this):
@@ -51,32 +79,31 @@ class ChangeVersionWorker:
 			return
 			
 		try:
-			this.cancelled = True
 			this.process.terminate()
 			this.process.wait(timeout=10)
 		except Exception as e:
-			this.on_error(_("Could not cancel installation"), str(e))
+			this.on_error(_("Could not cancel version change"), str(e))
 			
 	@classmethod
 	def on_done(this, *args):
 		this.process = None
-		this.cancelled = False
 		HostInfo.main_window.remove_refresh_lockout("changing version")
 		if not this.loading_status is None:
 			this.loading_status.progress_bar.set_fraction(0.0)
 			
 		if not this.callback is None:
-			this.callback()
+			this.callback(this.did_error)
 			
 	@classmethod
 	def on_error(this, user_facing_label, error_message):
+		this.did_error = True
 		if not this.error_callback is None:
 			this.error_callback(user_facing_label, error_message)
 			
 	@classmethod
 	def change_version(this, should_mask, package, commit, loading_status=None, callback=None, error_callback=None):
 		if not this.process is None:
-			this.on_error(_("Could not install packages"), _("Packages are currently being installed."))
+			this.on_error(_("Could not change version"), _("Another package is changing version."))
 			return False
 			
 		this.loading_status = loading_status

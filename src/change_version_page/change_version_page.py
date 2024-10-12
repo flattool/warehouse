@@ -87,8 +87,14 @@ class ChangeVersionPage(Adw.NavigationPage):
         else:
             self.scrolled_window.set_child(self.versions_clamp)
             
-    def loader_test(self, *args):
-        ChangeVersionWorker.change_version(self.mask_row.get_active(), self.package, self.selected_commit)
+    def on_apply(self, *args):
+        ChangeVersionWorker.change_version(
+            self.mask_row.get_active(),
+            self.package, self.selected_commit,
+            None,
+            lambda did_error: print("done!", did_error),
+            print,
+        )
         
     def __init__(self, main_window, package, **kwargs):
         super().__init__(**kwargs)
@@ -105,4 +111,5 @@ class ChangeVersionPage(Adw.NavigationPage):
         
         # Connections
         self.root_group_check_button.connect("toggled", lambda *_: self.action_bar.set_revealed(True))
-        self.apply_button.connect("clicked", self.loader_test)
+        self.apply_button.connect("clicked", self.on_apply)
+
