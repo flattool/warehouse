@@ -45,6 +45,8 @@ class PackagesPage(Adw.BreakpointBin):
     copy_ids = gtc()
     copy_refs = gtc()
     uninstall_button = gtc()
+    properties_page = gtc()
+    filters_page = gtc()
 
     # Referred to in the main window
     #    It is used to determine if a new page should be made or not
@@ -327,8 +329,6 @@ class PackagesPage(Adw.BreakpointBin):
         self.reinstalling_view.set_content(self.reinstalling)
         self.changing_version = LoadingStatus(_("Changing Version"), _("This could take a while"), True, ChangeVersionWorker.cancel)
         self.changing_version_view.set_content(self.changing_version)
-        self.properties_page = PropertiesPage(main_window, self)
-        self.filters_page = FiltersPage(main_window, self)
         self.filter_settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
         self.is_result = False
         self.prev_status = None
@@ -339,8 +339,8 @@ class PackagesPage(Adw.BreakpointBin):
         self.loading_view.set_content(self.loading_packages)
         self.packages_list_box.set_filter_func(self.filter_func)
         self.packages_list_box.set_sort_func(self.sort_func)
-        self.content_stack.add_child(self.properties_page)
-        self.content_stack.add_child(self.filters_page)
+        self.properties_page.packages_page = self
+        self.filters_page.packages_page = self
         self.__class__.instance = self
         
         # Connections

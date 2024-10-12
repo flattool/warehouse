@@ -169,14 +169,14 @@ class FiltersPage(Adw.NavigationPage):
 
         self.is_settings_settable = True
 
-    def __init__(self, main_window, packages_page, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         # Extra Objects Creation
-        self.packages_page = packages_page
+        self.packages_page = None # To be set in packages page
+        self.main_window = HostInfo.main_window
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
         self.is_settings_settable = False
-
         self.show_apps = self.settings.get_boolean("show-apps")
         self.show_runtimes = self.settings.get_boolean("show-runtimes")
         self.remotes_string = self.settings.get_string("remotes-list")

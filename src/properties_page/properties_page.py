@@ -329,11 +329,11 @@ class PropertiesPage(Adw.NavigationPage):
             case self.reinstall:
                 self.reinstall_handler()
                 
-    def __init__(self, main_window, packages_page, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
         
         # Extra Object Creation
-        self.main_window = main_window
+        self.main_window = HostInfo.main_window
         self.info_rows = {
             "version": self.version_row,
             "installed": self.installed_size_row,
@@ -355,8 +355,8 @@ class PropertiesPage(Adw.NavigationPage):
             "date": self.date_row,
         }
         self.loading_tbv.set_content(LoadingStatus(_("Loading Properties"), _("This should only take a moment")))
-        self.packages_page = packages_page
-        self.__class__.main_window = main_window
+        self.packages_page = None # To be set in packages page
+        self.__class__.main_window = self.main_window
         self.view_snapshots = Gtk.Label(halign=Gtk.Align.START, label=_("View Snapshots"))
         self.copy_launch_command = Gtk.Label(halign=Gtk.Align.START, label=_("Copy Launch Command"))
         self.show_details = Gtk.Label(halign=Gtk.Align.START, label=_("Show Details"))
