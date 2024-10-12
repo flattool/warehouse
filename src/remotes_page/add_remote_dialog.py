@@ -30,7 +30,7 @@ class AddRemoteDialog(Adw.Dialog):
                 'flatpak', 'remote-add',
                 f'--title={self.title_row.get_text()}',
                 self.name_row.get_text(),
-                self.url_row.get_text()
+                f'\"{self.url_row.get_text()}\"',
             ]
             installation = self.installation_chooser.get_installation()
             if installation == "user" or installation == "system":
@@ -86,7 +86,7 @@ class AddRemoteDialog(Adw.Dialog):
         self.rexes = {
             self.title_row: r"^(?=.*[A-Za-z0-9])[A-Za-z0-9._-]+( +[A-Za-z0-9._-]+)*$",
             self.name_row: r"^[a-zA-Z0-9\-._]+$",
-            self.url_row: r"^[a-zA-Z0-9\-._~:/?#[\]@!$&\'()*+,;=]+$",
+            self.url_row: r"^[a-zA-Z0-9\-._~:/?#[\]@!$&\'()*+,;= ]+$",
         }
         self.title_passes = False
         self.name_passes = False
