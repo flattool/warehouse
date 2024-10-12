@@ -86,6 +86,7 @@ warehouse_sources = [
   'packages_page/filters_page.py',
   'properties_page/properties_page.py',
   'change_version_page/change_version_page.py',
+  'change_version_page/change_version_worker.py',
   'user_data_page/data_box.py',
   'user_data_page/user_data_page.py',
   'user_data_page/data_subpage.py',
