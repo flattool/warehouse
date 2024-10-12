@@ -69,6 +69,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
                 
         self.refresh_button.set_sensitive(True)
         self.refresh_requested = False
+        self.remove_refresh_lockout("refresh handler direct")
         
     def do_refresh(self):
         self.start_loading()
@@ -77,7 +78,10 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
     def refresh_handler(self, *args):
         if len(self.refresh_lockouts) == 0:
+            self.add_refresh_lockout("refresh handler direct")
             self.do_refresh()
+        elif "refresh handler direct" in self.refresh_lockouts:
+            return
         else:
             self.refresh_requested = True
             
