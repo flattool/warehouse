@@ -21,8 +21,29 @@ class ChangeVersionWorker:
 			GLib.idle_add(lambda *_: this.loading_status.progress_bar.set_fraction(final_ratio))
 			
 	@classmethod
-	def change_version_thread(this, ref, commit):
-		pass
+	def change_version_thread(this, should_mask, package, commit):
+		cmd = ['flatpak-spawn', '--host', 'pkexec', 'sh', '-c']
+		
+		installation = package.info['installation']
+		real_installation = ""
+		if installation == "user" or installation == "system":
+			real_installation = f"--{installation}"
+		else:
+			real_installation = f"--installation={installation}"
+			
+		suffix = ""
+		unmask_cmd = f"flatpak mask --remove {real_installation} {package.info['id']} && "
+		change_version_cmd = f"flatpak update {package.info['ref']} --commit={commit} {real_installation}"
+		mask_cmd = f" && flatpak mask {real_installation} {package.info['id']}"
+		if package.is_masked:
+			suffix += unmask_cmd
+			
+		suffix += change_version_cmd
+		if should_mask:
+			suffix += mask_cmd
+			
+		cmd.append(suffix)
+		print(cmd)
 		
 	@classmethod
 	def cancel(this):
@@ -53,7 +74,7 @@ class ChangeVersionWorker:
 			this.error_callback(user_facing_label, error_message)
 			
 	@classmethod
-	def change_version(this, ref, commit, loading_status=None, callback=None, error_callback=None):
+	def change_version(this, should_mask, package, commit, loading_status=None, callback=None, error_callback=None):
 		if not this.process is None:
 			this.on_error(_("Could not install packages"), _("Packages are currently being installed."))
 			return False
@@ -62,5 +83,5 @@ class ChangeVersionWorker:
 		this.callback = callback
 		this.error_callback = error_callback
 		HostInfo.main_window.add_refresh_lockout("changing version")
-		Gio.Task.new(None, None, this.on_done).run_in_thread(lambda *_: this.change_version_thread(ref, commit))
+		Gio.Task.new(None, None, this.on_done).run_in_thread(lambda *_: this.change_version_thread(should_mask, package, commit))
 		return True

@@ -66,6 +66,7 @@ class Flatpak:
             
             try:
                 subprocess.run(cmd, check=True, capture_output=True, text=True)
+                self.is_masked = should_mask
             except subprocess.CalledProcessError as cpe:
                 self.failed_mask = cpe
             except Exception as e:
