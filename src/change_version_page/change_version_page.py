@@ -87,19 +87,29 @@ class ChangeVersionPage(Adw.NavigationPage):
         else:
             self.scrolled_window.set_child(self.versions_clamp)
             
+    def callback(self, did_error):
+        HostInfo.main_window.refresh_handler()
+        if not did_error:
+            HostInfo.main_window.toast_overlay.add_toast(Adw.Toast(title=_("Changed {}'s Version").format(self.package.info['name'])))
+        
+    def error_callback(self, user_facing_label, error_message):
+        HostInfo.main_window.toast_overlay.add_toast(ErrorToast(user_facing_label, error_message).toast)
+        
     def on_apply(self, *args):
-        ChangeVersionWorker.change_version(
+        if ChangeVersionWorker.change_version(
             self.mask_row.get_active(),
             self.package, self.selected_commit,
-            None,
-            lambda did_error: print("done!", did_error),
-            print,
-        )
-        
-    def __init__(self, main_window, package, **kwargs):
+            self.packages_page.changing_version,
+            self.callback,
+            self.error_callback,
+        ):
+            self.packages_page.set_status(self.packages_page.changing_version)
+            
+    def __init__(self, packages_page, package, **kwargs):
         super().__init__(**kwargs)
         
         # Extra Object Creation
+        self.packages_page = packages_page
         self.package = package
         
         # Apply

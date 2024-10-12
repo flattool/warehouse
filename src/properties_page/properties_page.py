@@ -263,7 +263,7 @@ class PropertiesPage(Adw.NavigationPage):
         self.toast_overlay.add_toast(Adw.Toast(title=_("Copied {}").format(row.get_title())))
         
     def change_version_handler(self, row):
-        page = ChangeVersionPage(self.main_window, self.package)
+        page = ChangeVersionPage(self.packages_page, self.package)
         self.nav_view.push(page)
         
     def reinstall_callback(self):

@@ -8,6 +8,7 @@ from .sidebar_button import SidebarButton
 from .uninstall_dialog import UninstallDialog
 from .loading_status import LoadingStatus
 from .package_install_worker import PackageInstallWorker
+from .change_version_worker import ChangeVersionWorker
 import subprocess, os
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/packages_page.ui")
@@ -22,6 +23,7 @@ class PackagesPage(Adw.BreakpointBin):
     loading_view = gtc()
     uninstalling_view = gtc()
     reinstalling_view = gtc()
+    changing_version_view = gtc()
     no_filter_results = gtc()
     reset_filters_button = gtc()
     no_packages = gtc()
@@ -84,6 +86,8 @@ class PackagesPage(Adw.BreakpointBin):
             self.stack.set_visible_child(self.uninstalling_view)
         elif to_set is self.reinstalling:
             self.stack.set_visible_child(self.reinstalling_view)
+        elif to_set is self.changing_version:
+            self.stack.set_visible_child(self.changing_version_view)
         else:
             self.stack.set_visible_child(self.packages_split)
             self.status_stack.set_visible_child(to_set)
@@ -321,6 +325,8 @@ class PackagesPage(Adw.BreakpointBin):
         self.uninstalling_view.set_content(self.uninstalling)
         self.reinstalling = LoadingStatus(_("Reinstalling Package"), _("This could take a while"), True, PackageInstallWorker.cancel)
         self.reinstalling_view.set_content(self.reinstalling)
+        self.changing_version = LoadingStatus(_("Changing Version"), _("This could take a while"), True, ChangeVersionWorker.cancel)
+        self.changing_version_view.set_content(self.changing_version)
         self.properties_page = PropertiesPage(main_window, self)
         self.filters_page = FiltersPage(main_window, self)
         self.filter_settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
