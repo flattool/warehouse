@@ -22,12 +22,13 @@ class SnapshotsListPage(Adw.NavigationPage):
         for snapshot in os.listdir(folder := f"{self.snapshots_path}{self.current_folder}/"):
             if snapshot.endswith(".json"):
                 continue
-            
+                
             row = SnapshotBox(self, snapshot, folder, self.toast_overlay)
             row.apply_button.set_sensitive(not is_leftover)
-            row.apply_button.set_tooltip_text(_("App not Installed"))
             self.snapshots_rows.append(row)
-            
+            if is_leftover:
+                row.apply_button.set_tooltip_text(_("App not Installed"))
+                
     def callback(self, *args):
         if len(self.snapshots_rows) == 0:
             self.parent_page.refresh()
