@@ -44,8 +44,6 @@ class Flatpak:
     def trash_data(self, callback=None):
         try:
             subprocess.run(['gio', 'trash', self.data_path], capture_output=True, text=True, check=True)
-            snapshot_list_page = HostInfo.main_window.pages[HostInfo.main_window.snapshots_row].list_page
-            snapshot_list_page.set_snapshots(snapshot_list_page.package_or_folder, True)
         except subprocess.CalledProcessError as cpe:
             raise cpe
         except Exception as e:

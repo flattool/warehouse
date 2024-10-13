@@ -163,6 +163,10 @@ class UserDataPage(Adw.BreakpointBin):
             cmd = ['gio', 'trash'] + path
             try:
                 subprocess.run(cmd, check=True, capture_output=True, text=True)
+                properties_page = HostInfo.main_window.pages[HostInfo.main_window.packages_row].properties_page
+                properties_page.set_properties(properties_page.package, True)
+                snapshot_list_page = HostInfo.main_window.pages[HostInfo.main_window.snapshots_row].list_page
+                snapshot_list_page.set_snapshots(snapshot_list_page.package_or_folder, True)
             except subprocess.CalledProcessError as cpe:
                 error[0] = cpe.stderr
             except Exception as e:
@@ -190,7 +194,7 @@ class UserDataPage(Adw.BreakpointBin):
                 return
                 
             self.select_button.set_active(False)
-            child.set_visible_child(child.loading_data)
+            self.status_stack.set_visible_child(self.loading_view)
             Gio.Task.new(None, None, callback).run_in_thread(lambda *_: thread(to_trash))
             
         if len(child.selected_boxes) < 1 or self.is_trash_dialog_open:
