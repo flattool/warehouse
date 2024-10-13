@@ -43,6 +43,10 @@ class WarehouseApplication(Adw.Application):
         )
         self.create_action("about", self.on_about_action)
         self.create_action("preferences", self.on_preferences_action)
+        self.create_action("quit", lambda *_: self.quit(), ["<primary>q"])
+        self.create_action("open-menu", lambda *_: self.props.active_window.main_menu.popup(), ["F10"])
+        self.create_action("refresh", lambda *_: self.props.active_window.refresh_handler(), ["<primary>r", "F5"])
+        self.create_action("open-files", self.on_open_files_shortcut, ["<primary>o"])
         
         self.create_action("show-packages-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("p"), ["<primary>p"])
         self.create_action("show-remotes-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("m"), ["<primary>m"])
@@ -50,11 +54,8 @@ class WarehouseApplication(Adw.Application):
         self.create_action("show-snapshots-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("s"), ["<primary>s"])
         self.create_action("show-install-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("i"), ["<primary>i"])
         
-        self.create_action("quit", lambda *_: self.quit(), ["<primary>q"])
-        self.create_action("refresh", lambda *_: self.props.active_window.refresh_handler(), ["<primary>r", "F5"])
-        self.create_action("open-menu", lambda *_: self.props.active_window.main_menu.popup(), ["F10"])
-        self.create_action("open-files", self.on_open_files_shortcut, ["<primary>o"])
-        self.create_action("toggle-select-mode", self.on_toggle_select_mode_shortcut, ["<primary>b", "<primary>Return", "<primary>KP_Enter"])
+        self.create_action("toggle-select-mode", self.on_toggle_select_mode_shortcut, ["<primary>b", "<primary>Return"])
+        self.create_action("toggle-selection-kp-enter", self.on_toggle_select_mode_shortcut, ["<primary>KP_Enter"]) # Doesn't show in the shortcuts window
         self.create_action("toggle-search-mode", self.on_toggle_search_mode_shortcut, ["<primary>f"])
         self.create_action("filter", self.on_filter_shortcut, ["<primary>t"])
         self.create_action("new", self.on_new_shortcut, ["<primary>n"])

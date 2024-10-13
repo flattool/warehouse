@@ -4,9 +4,17 @@ ShortcutsWindow help_overlay {
 	modal: true;
 	ShortcutsSection {
 		section-name: "shortcuts";
-		// max-height: 8;
+		max-height: 17;
 		ShortcutsGroup {
 			title: _("General");
+			ShortcutsShortcut {
+				title: _("Refresh");
+				action-name: "app.refresh";
+			}
+			ShortcutsShortcut {
+				title: _("Open Files");
+				action-name: "app.open-files";
+			}
 			ShortcutsShortcut {
 				title: _("Open Menu");
 				action-name: "app.open-menu";
@@ -18,6 +26,109 @@ ShortcutsWindow help_overlay {
 			ShortcutsShortcut {
 				title: _("Quit");
 				action-name: "app.quit";
+			}
+		}
+		ShortcutsGroup {
+			title: _("Navigation");
+			ShortcutsShortcut {
+				title: _("Show Packages Page");
+				action-name: "app.show-packages-page";
+			}
+			ShortcutsShortcut {
+				title: _("Show Remotes Page");
+				action-name: "app.show-remotes-page";
+			}
+			ShortcutsShortcut {
+				title: _("Show User Data Page");
+				action-name: "app.show-user-data-page";
+			}
+			ShortcutsShortcut {
+				title: _("Show Snapshots Page");
+				action-name: "app.show-snapshots-page";
+			}
+			ShortcutsShortcut {
+				title: _("Show Install Page");
+				action-name: "app.show-install-page";
+			}
+		}
+		ShortcutsGroup {
+			title: _("Packages Page");
+			ShortcutsShortcut {
+				title: _("Selection Mode");
+				action-name: "app.toggle-select-mode";
+			}
+			ShortcutsShortcut {
+				title: _("Search Mode");
+				action-name: "app.toggle-search-mode";
+			}
+			ShortcutsShortcut {
+				title: _("Edit Filters");
+				action-name: "app.filter";
+			}
+			ShortcutsShortcut {
+				title: _("Uninstall Selected Packages");
+				action-name: "app.delete";
+			}
+		}
+		ShortcutsGroup {
+			title: _("Remotes Page");
+			ShortcutsShortcut {
+				title: _("Search Mode");
+				action-name: "app.toggle-search-mode";
+			}
+			ShortcutsShortcut {
+				title: _("Show or Hide Disabled Remotes");
+				action-name: "app.filter";
+			}
+			ShortcutsShortcut {
+				title: _("New Remote");
+				action-name: "app.new";
+			}
+		}
+		ShortcutsGroup {
+			title: _("User Data Page");
+			ShortcutsShortcut {
+				title: _("Selection Mode");
+				action-name: "app.toggle-select-mode";
+			}
+			ShortcutsShortcut {
+				title: _("Search Mode");
+				action-name: "app.toggle-search-mode";
+			}
+			ShortcutsShortcut {
+				title: _("Edit Sorting Modes");
+				action-name: "app.filter";
+			}
+			ShortcutsShortcut {
+				title: _("Trash Selected Data");
+				action-name: "app.delete";
+			}
+			ShortcutsShortcut {
+				title: _("Show Active Data");
+				action-name: "app.active-data-view";
+			}
+			ShortcutsShortcut {
+				title: _("Show Leftover Data");
+				action-name: "app.leftover-data-view";
+			}
+		}
+		ShortcutsGroup {
+			title: _("Snapshots Page");
+			ShortcutsShortcut {
+				title: _("Selection Mode");
+				action-name: "app.toggle-select-mode";
+			}
+			ShortcutsShortcut {
+				title: _("Search Mode");
+				action-name: "app.toggle-search-mode";
+			}
+			ShortcutsShortcut {
+				title: _("Trash Selected Snapshots");
+				action-name: "app.delete";
+			}
+			ShortcutsShortcut {
+				title: _("New Snapshots");
+				action-name: "app.new";
 			}
 		}
 	}
