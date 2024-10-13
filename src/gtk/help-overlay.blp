@@ -1,70 +1,24 @@
 using Gtk 4.0;
 
 ShortcutsWindow help_overlay {
-  modal: true;
-
-  ShortcutsSection {
-    section-name: "shortcuts";
-    // max-height: 8;
-
-    ShortcutsGroup {
-      title: _("App Management");
-
-      ShortcutsShortcut {
-        title: _("Search");
-        action-name: "app.search";
-      }
-
-      ShortcutsShortcut {
-        title: _("Set Filters");
-        action-name: "app.set-filter";
-      }
-
-      ShortcutsShortcut {
-        title: _("Refresh");
-        action-name: "app.refresh";
-      }
-
-      ShortcutsShortcut {
-        title: _("Toggle Selection Mode");
-        action-name: "app.toggle-batch-mode";
-      }
-    }
-    ShortcutsGroup {
-      title: _("More Functions");
-
-      ShortcutsShortcut {
-        title: _("Manage Leftover Data");
-        action-name: "app.manage-data-folders";
-      }
-
-      ShortcutsShortcut {
-        title: _("Manage Remotes");
-        action-name: "app.show-remotes-window";
-      }
-
-      ShortcutsShortcut {
-        title: _("Install From File");
-        action-name: "app.install-from-file";
-      }
-    }
-    ShortcutsGroup {
-      title: _("General");
-
-      ShortcutsShortcut {
-        title: _("Open Menu");
-        action-name: "app.open-menu";
-      }
-
-      ShortcutsShortcut {
-        title: _("Show Shortcuts");
-        action-name: "win.show-help-overlay";
-      }
-
-      ShortcutsShortcut {
-        title: _("Quit");
-        action-name: "app.quit";
-      }
-    }
-  }
+	modal: true;
+	ShortcutsSection {
+		section-name: "shortcuts";
+		// max-height: 8;
+		ShortcutsGroup {
+			title: _("General");
+			ShortcutsShortcut {
+				title: _("Open Menu");
+				action-name: "app.open-menu";
+			}
+			ShortcutsShortcut {
+				title: _("Show Shortcuts");
+				action-name: "win.show-help-overlay";
+			}
+			ShortcutsShortcut {
+				title: _("Quit");
+				action-name: "app.quit";
+			}
+		}
+	}
 }

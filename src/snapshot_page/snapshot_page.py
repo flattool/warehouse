@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk, GLib, Gio
+from gi.repository import Adw, Gtk, GLib, Gio, Gdk
 from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .app_row import AppRow
@@ -12,7 +12,7 @@ import os, subprocess
 
 class LeftoverSnapshotRow(Adw.ActionRow):
     __gtype_name__ = "LeftoverSnapshotRow"
-
+    
     def idle_stuff(self):
         self.set_title(self.name)
         icon = Gtk.Image.new_from_icon_name("application-x-executable-symbolic")
@@ -22,7 +22,7 @@ class LeftoverSnapshotRow(Adw.ActionRow):
         
     def gesture_handler(self, *args):
         self.on_long_press(self)
-
+        
     def __init__(self, folder, on_long_press, **kwargs):
         super().__init__(**kwargs)
         
@@ -44,7 +44,7 @@ class LeftoverSnapshotRow(Adw.ActionRow):
         # Connections
         self.rclick_gesture.connect("released", self.gesture_handler)
         self.long_press_gesture.connect("pressed", self.gesture_handler)
-
+        
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/snapshot_page.ui")
 class SnapshotPage(Adw.BreakpointBin):
     __gtype_name__ = "SnapshotPage"
@@ -87,6 +87,7 @@ class SnapshotPage(Adw.BreakpointBin):
     #    This must be set to the created object from within the class's __init__ method
     instance = None
     page_name = "snapshots"
+    is_trash_dialog_open = False
     
     def sort_snapshots(self, *args):
         self.active_snapshot_paks.clear()
@@ -126,11 +127,11 @@ class SnapshotPage(Adw.BreakpointBin):
                 subprocess.run(['gio', 'trash', f'{HostInfo.snapshots_path}{folder}'])
             except Exception:
                 pass
-            
+                
     def long_press_handler(self, row):
         self.select_button.set_active(True)
         row.check_button.set_active(not row.check_button.get_active())
-                
+        
     def generate_active_list(self):
         for pak in self.active_snapshot_paks:
             row = AppRow(pak, self.long_press_handler)
@@ -359,7 +360,7 @@ class SnapshotPage(Adw.BreakpointBin):
         if len(packages) == 0:
             self.toast_overlay.add_toast(Adw.Toast(title=_("No apps in your selection can be snapshotted")))
             return
-                
+            
         self.new_snapshot_dialog = NewSnapshotDialog(self, self.snapshotting_status, self.refresh, packages)
         self.new_snapshot_dialog.present(HostInfo.main_window)
         
@@ -378,7 +379,7 @@ class SnapshotPage(Adw.BreakpointBin):
             id_to_tar[app_id] = tarlist
             if len(tarlist) < 1:
                 id_to_tar.pop(app_id, None)
-            
+                
         return id_to_tar
         
     def get_total_fraction(self):
@@ -422,7 +423,7 @@ class SnapshotPage(Adw.BreakpointBin):
                     biggest_tar = tar
                     
             id_to_tar[app_id] = tar
-        
+            
         for app_id, tar in id_to_tar.items():
             worker = TarWorker(
                 existing_path=f"{HostInfo.snapshots_path}{app_id}/{tar}",
@@ -431,7 +432,7 @@ class SnapshotPage(Adw.BreakpointBin):
             )
             self.workers.append(worker)
             worker.extract()
-        
+            
         if len(self.workers) > 0:
             self.snapshotting_status.title_label.set_label(_("Applying Snapshots"))
             self.snapshotting_status.progress_bar.set_fraction(0.0)
@@ -456,7 +457,14 @@ class SnapshotPage(Adw.BreakpointBin):
         AttemptInstallDialog(package_names, lambda is_valid: self.select_button.set_active(not is_valid))
         
     def select_trash_handler(self):
+        if (
+            self.is_trash_dialog_open
+            or len(self.selected_active_rows) + len(self.selected_leftover_rows) < 1
+        ):
+            return
+            
         def on_response(dialog, response):
+            self.is_trash_dialog_open = False
             to_trash = []
             if response != "continue":
                 return
@@ -474,7 +482,8 @@ class SnapshotPage(Adw.BreakpointBin):
                 self.toast_overlay.add_toast(Adw.Toast(title=_("Trashed snapshots")))
             except subprocess.CalledProcessError as cpe:
                 self.toast_overlay.add_toast(ErrorToast(_("Could not trash snapshots"), cpe.stderr).toast)
-            
+                
+        self.is_trash_dialog_open = True
         dialog = Adw.AlertDialog(heading=_("Trash Snapshots?"), body=_("These apps' snapshots will be sent to the trash"))
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Trash"))
@@ -494,7 +503,11 @@ class SnapshotPage(Adw.BreakpointBin):
                 self.install_handler()
             case self.trash_snapshots:
                 self.select_trash_handler()
-        
+                
+    def key_handler(self, controller, keyval, keycode, state):
+        if keyval == Gdk.KEY_Escape:
+            self.select_button.set_active(False)
+            
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
         
@@ -509,8 +522,19 @@ class SnapshotPage(Adw.BreakpointBin):
         self.list_page = SnapshotsListPage(self)
         self.snapshotting_status = LoadingStatus("Initial Title", _("This could take a while"), True, self.on_cancel)
         self.new_snapshot_dialog = None
+        event_controller = Gtk.EventControllerKey()
+        
+        # Apply
+        self.add_controller(event_controller)
+        self.search_bar.set_key_capture_widget(HostInfo.main_window)
+        self.loading_view.set_content(LoadingStatus(_("Loading Snapshots"), _("This should only take a moment")))
+        self.snapshotting_view.set_content(self.snapshotting_status)
+        self.split_view.set_content(self.list_page)
+        self.active_listbox.set_sort_func(self.sort_func)
+        self.leftover_listbox.set_sort_func(self.sort_func)
         
         # Connections
+        event_controller.connect("key-pressed", self.key_handler)
         self.active_listbox.connect("row-activated", self.active_select_handler)
         self.leftover_listbox.connect("row-activated", self.leftover_select_handler)
         self.open_button.connect("clicked", self.open_snapshots_folder)
@@ -522,11 +546,3 @@ class SnapshotPage(Adw.BreakpointBin):
         self.select_all_button.connect("clicked", self.select_all_handler)
         self.copy_button.connect("clicked", self.select_copy_handler)
         self.more_menu.connect("row-activated", self.more_menu_handler)
-        
-        # Apply
-        self.search_bar.set_key_capture_widget(HostInfo.main_window)
-        self.loading_view.set_content(LoadingStatus(_("Loading Snapshots"), _("This should only take a moment")))
-        self.snapshotting_view.set_content(self.snapshotting_status)
-        self.split_view.set_content(self.list_page)
-        self.active_listbox.set_sort_func(self.sort_func)
-        self.leftover_listbox.set_sort_func(self.sort_func)

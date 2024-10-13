@@ -24,6 +24,7 @@ class NewSnapshotDialog(Adw.Dialog):
     scrolled_window = gtc()
     no_results = gtc()
     stack = gtc()
+    is_open = False
     
     def row_gesture_handler(self, row):
         row.check_button.set_active(not row.check_button.get_active())
@@ -68,6 +69,7 @@ class NewSnapshotDialog(Adw.Dialog):
             return False
         
     def on_close(self, *args):
+        self.__class__.is_open = False
         self.search_button.set_active(False)
         for row in self.selected_rows.copy():
             GLib.idle_add(lambda *_, row=row: row.check_button.set_active(False))
@@ -149,16 +151,20 @@ class NewSnapshotDialog(Adw.Dialog):
             row.set_activatable(False)
             self.selected_rows.append(row)
             self.listbox.append(row)
-    
+        
     def enter_handler(self, *args):
         if self.create_button.get_sensitive():
             self.create_button.activate()
             
     def present(self, *args, **kwargs):
+        if self.__class__.is_open:
+            return
+            
         super().present(*args, **kwargs)
+        self.__class__.is_open = True
         if not self.search_button.get_visible():
             self.name_entry.grab_focus()
-    
+            
     def __init__(self, snapshot_page, loading_status, on_done=None, packages=None, **kwargs):
         super().__init__(**kwargs)
         

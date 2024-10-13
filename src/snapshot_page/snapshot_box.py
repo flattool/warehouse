@@ -8,7 +8,7 @@ import os, subprocess, json, re
 class SnapshotBox(Gtk.Box):
     __gtype_name__ = "SnapshotBox"
     gtc = Gtk.Template.Child
-
+    
     title = gtc()
     date = gtc()
     version = gtc()
@@ -18,7 +18,7 @@ class SnapshotBox(Gtk.Box):
     rename_entry = gtc()
     apply_rename = gtc()
     trash_button = gtc()
-
+    
     def create_json(self):
         try:
             data = {
@@ -31,7 +31,7 @@ class SnapshotBox(Gtk.Box):
                 
         except Exception as e:
             self.toast_overlay.add_toast(ErrorToast(_("Could not write data"), str(e)).toast)
-
+            
     def update_json(self, key, value):
         try:
             with open(self.json_path, 'r+') as file:
@@ -40,14 +40,14 @@ class SnapshotBox(Gtk.Box):
                 file.seek(0)
                 json.dump(data, file, indent=4)
                 file.truncate()
-
+                
         except Exception as e:
             self.toast_overlay.add_toast(ErrorToast(_("Could not write data"), str(e)).toast)
-
+            
     def load_from_json(self):
         if not os.path.exists(self.json_path):
             self.create_json()
-        
+            
         try:
             with open(self.json_path, 'r') as file:
                 data = json.load(file)
@@ -59,15 +59,15 @@ class SnapshotBox(Gtk.Box):
                 
         except Exception as e:
             self.toast_overlay.add_toast(ErrorToast(_("Could not write data"), str(e)).toast)
-
+            
     def on_rename(self, widget):
         if not self.valid_checker():
             return
-
+            
         self.update_json('name', self.rename_entry.get_text().strip())
         self.load_from_json()
         self.rename_menu.popdown()
-
+        
     def valid_checker(self, *args):
         text = self.rename_entry.get_text().strip()
         valid = not ("/" in text or "\0" in text) and len(text) > 0
@@ -78,10 +78,13 @@ class SnapshotBox(Gtk.Box):
             self.rename_entry.add_css_class("error")
             
         return valid
-
+        
     def on_trash(self, button):
         error = [None]
         path = f"{self.snapshots_path}{self.folder}"
+        if self.snapshot_page.is_trash_dialog_open:
+            return
+            
         def thread(*args):
             try:
                 subprocess.run(['gio', 'trash', path], capture_output=True, text=True, check=True)
@@ -89,21 +92,23 @@ class SnapshotBox(Gtk.Box):
                 error[0] = cpe.stderr
             except Exception as e:
                 error[0] = str(e)
-
+                
         def callback(*args):
             if not error[0] is None:
                 self.toast_overlay.add_toast(ErrorToast(_("Could not trash snapshot"), error[0]).toast)
                 return
-
+                
             self.parent_page.on_trash()
             self.toast_overlay.add_toast(Adw.Toast.new(_("Trashed snapshot")))
-
+            
         def on_response(_, response):
+            self.snapshot_page.is_trash_dialog_open = False
             if response != "continue":
                 return
-
+                
             Gio.Task.new(None, None, callback).run_in_thread(thread)
-
+            
+        self.snapshot_page.is_trash_dialog_open = True
         dialog = Adw.AlertDialog(heading=_("Trash Snapshot?"), body=_("This snapshot will be sent to the trash"))
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Trash"))
@@ -128,7 +133,7 @@ class SnapshotBox(Gtk.Box):
             return False # Stop the timeout
         else:
             return True # Continue the timeout
-        
+            
     def on_apply(self, button):
         def on_response(dialog, response):
             if response != "continue":
@@ -141,7 +146,7 @@ class SnapshotBox(Gtk.Box):
             self.snapshot_page.workers.append(self.worker)
             self.worker.extract()
             GLib.timeout_add(200, self.get_fraction)
-        
+            
         has_data = os.path.exists(self.worker.new_path)
         dialog = Adw.AlertDialog(
             heading=_("Apply Snapshot?"),
@@ -154,7 +159,7 @@ class SnapshotBox(Gtk.Box):
         
     def __init__(self, parent_page, folder, snapshots_path, toast_overlay, **kwargs):
         super().__init__(**kwargs)
-
+        
         self.snapshot_page = parent_page.parent_page
         self.toast_overlay = toast_overlay
         self.app_id = snapshots_path.split('/')[-2].strip()
@@ -163,11 +168,11 @@ class SnapshotBox(Gtk.Box):
             new_path=f"{HostInfo.home}/.var/app/{self.app_id}/",
             toast_overlay=self.toast_overlay,
         )
-
+        
         split_folder = folder.split('_')
         if len(split_folder) < 2:
             return
-
+            
         self.parent_page = parent_page
         self.folder = folder
         self.snapshots_path = snapshots_path

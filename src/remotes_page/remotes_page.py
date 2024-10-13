@@ -260,6 +260,9 @@ class RemotesPage(Adw.NavigationPage):
                 total_visible += 1
 
         self.none_visible.set_visible(total_visible == 0)
+        
+    def new_custom_handler(self, *args):
+        AddRemoteDialog(self.main_window, self).present(self.main_window)
 
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -274,7 +277,7 @@ class RemotesPage(Adw.NavigationPage):
 
         # Connections
         self.file_remote_row.connect("activated", lambda *_: self.add_file_handler())
-        self.custom_remote_row.connect("activated", lambda *_: AddRemoteDialog(main_window, self).present(main_window))
+        self.custom_remote_row.connect("activated", self.new_custom_handler)
         self.search_entry.connect("search-changed", self.on_search)
         self.show_disabled_button.connect("toggled", self.show_disabled_handler)
 

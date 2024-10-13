@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk, GLib, Gio, Pango
+from gi.repository import Adw, Gtk, GLib, Gio, Gdk
 from .error_toast import ErrorToast
 from .data_box import DataBox
 from .data_subpage import DataSubpage
@@ -12,7 +12,7 @@ import os, subprocess
 class UserDataPage(Adw.BreakpointBin):
     __gtype_name__ = 'UserDataPage'
     gtc = Gtk.Template.Child
-
+    
     bpt = gtc()
     status_stack = gtc()
     loading_view = gtc()
@@ -52,6 +52,7 @@ class UserDataPage(Adw.BreakpointBin):
     page_name = "user-data"
     data_path = f"{HostInfo.home}/.var/app"
     bpt_is_applied = False
+    is_trash_dialog_open = False
     
     def sort_data(self, *args):
         self.data_flatpaks.clear()
@@ -156,6 +157,7 @@ class UserDataPage(Adw.BreakpointBin):
             
     def trash_handler(self, *args):
         error = [None]
+        child = self.stack.get_visible_child()
         
         def thread(path):
             cmd = ['gio', 'trash'] + path
@@ -175,10 +177,10 @@ class UserDataPage(Adw.BreakpointBin):
                 self.toast_overlay.add_toast(Adw.Toast(title=_("Trashed data")))
                 
         def on_response(dialog, response):
+            self.is_trash_dialog_open = False
             if response != "continue":
                 return
                 
-            child = self.stack.get_visible_child()
             to_trash = []
             for box in child.selected_boxes:
                 to_trash.append(box.data_path)
@@ -191,6 +193,10 @@ class UserDataPage(Adw.BreakpointBin):
             child.set_visible_child(child.loading_data)
             Gio.Task.new(None, None, callback).run_in_thread(lambda *_: thread(to_trash))
             
+        if len(child.selected_boxes) < 1 or self.is_trash_dialog_open:
+            return
+            
+        self.is_trash_dialog_open = True
         dialog = Adw.AlertDialog(heading=_("Trash Data?"), body=_("Data will be sent to the trash"))
         dialog.add_response("cancel", _("Cancel"))
         dialog.add_response("continue", _("Continue"))
@@ -230,6 +236,10 @@ class UserDataPage(Adw.BreakpointBin):
                 self.install_handler()
             case self.more_trash:
                 self.trash_handler()
+                
+    def key_handler(self, controller, keyval, keycode, state):
+        if keyval == Gdk.KEY_Escape:
+            self.select_button.set_active(False)
             
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
@@ -243,17 +253,19 @@ class UserDataPage(Adw.BreakpointBin):
         self.leftover_data = []
         self.total_items = 0
         self.settings = Gio.Settings.new("io.github.flattool.Warehouse.data_page")
-        
         self.sort_modes_to_buttons = {
             "name": self.sort_name,
             "id": self.sort_id,
             "size": self.sort_size,
         }
         self.buttons_to_sort_modes = {}
+        event_controller = Gtk.EventControllerKey()
+        
+        # Apply
+        self.add_controller(event_controller)
         for key, button in self.sort_modes_to_buttons.items():
             self.buttons_to_sort_modes[button] = key
             
-        # Apply
         self.stack.add_titled_with_icon(
             child=self.adp,
             name="active",
@@ -268,6 +280,7 @@ class UserDataPage(Adw.BreakpointBin):
         )
         
         # Connections
+        event_controller.connect("key-pressed", self.key_handler)
         self.open_button.connect("clicked", self.open_data_folder)
         self.stack.connect("notify::visible-child", self.view_change_handler)
         self.select_button.connect("toggled", self.select_toggle_handler)

@@ -18,6 +18,7 @@ class AddRemoteDialog(Adw.Dialog):
     name_row = gtc()
     url_row = gtc()
     installation_chooser = gtc()
+    is_open = False
     
     def on_apply(self, *args):
         self.parent_page.status_stack.set_visible_child(self.parent_page.adding_view)
@@ -75,6 +76,16 @@ class AddRemoteDialog(Adw.Dialog):
                 
         self.apply_button.set_sensitive(self.title_passes and self.name_passes and self.url_passes)
         
+    def present(self, *args, **kwargs):
+        if self.__class__.is_open:
+            return
+            
+        self.__class__.is_open = True
+        super().present(*args, **kwargs)
+        
+    def on_close(self, *args):
+        self.__class__.is_open = False
+        
     def __init__(self, main_window, parent_page, remote_info=None, **kwargs):
         super().__init__(**kwargs)
         
@@ -112,6 +123,7 @@ class AddRemoteDialog(Adw.Dialog):
             self.apply_button.set_sensitive(False)
             
         # Connections
+        self.connect("closed", self.on_close)
         self.cancel_button.connect("clicked", lambda *_: self.close())
         self.apply_button.connect("clicked", self.on_apply)
         self.title_row.connect("changed", self.check_entries)
