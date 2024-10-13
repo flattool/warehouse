@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/io/github/flattool/Warehouse">
-    <file>../data/style.css</file>
+    <file alias="style.css">../data/style.css</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
     <file preprocess="xml-stripblanks">gtk/loading_status.ui</file>
     <file preprocess="xml-stripblanks">gtk/app_row.ui</file>

@@ -1,0 +1,10 @@
+/* Thanks, TheEvilSkeleton! */
+.drag-overlay-status-page {
+	background-color: alpha(var(--accent-bg-color), 0.5);
+	color: var(--accent-fg-color);
+	padding: 32px;
+}
+
+.blurred {
+	filter: blur(6px);
+}

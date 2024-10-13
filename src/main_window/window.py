@@ -32,7 +32,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
     gtc = Gtk.Template.Child
     main_breakpoint = gtc()
     toast_overlay = gtc()
-    file_drop_stack = gtc()
+    file_drop_revealer = gtc()
     main_split = gtc()
     file_drop_view = gtc()
     stack = gtc()
@@ -177,11 +177,13 @@ class WarehouseWindow(Adw.ApplicationWindow):
             self.toast_overlay.add_toast(ErrorToast(_("Could not open files"), str(e)).toast)
             
     def on_drop_enter(self, *args):
-        self.file_drop_stack.set_visible_child(self.file_drop_view)
+        self.main_split.add_css_class("blurred")
+        self.file_drop_revealer.set_reveal_child(True)
         return 1
         
     def on_drop_leave(self, *args):
-        self.file_drop_stack.set_visible_child(self.main_split)
+        self.main_split.remove_css_class("blurred")
+        self.file_drop_revealer.set_reveal_child(False)
         
     def switch_page_shortcut_handler(self, letter):
         self.activate_row(self.shortcut_to_pages[letter])

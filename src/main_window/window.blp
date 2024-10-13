@@ -16,8 +16,18 @@ template $WarehouseWindow: Adw.ApplicationWindow {
     }
     content:
         Adw.ToastOverlay toast_overlay {
-            Stack file_drop_stack {
-                transition-type: crossfade;
+            Overlay {
+                [overlay]
+                Revealer file_drop_revealer {
+                    can-target: false;
+                    transition-type: crossfade;
+                    Adw.StatusPage file_drop_view {
+                        icon-name: "folder-open-symbolic";
+                        title: _("Drop to Open");
+                        description: _("Install Flatpaks or Add a Remotes");
+                        styles ["drag-overlay-status-page"]
+                    }
+                }
                 Adw.OverlaySplitView main_split {
                     collapsed: true;
                     show-sidebar: true;
@@ -122,11 +132,6 @@ template $WarehouseWindow: Adw.ApplicationWindow {
                         Stack stack {
                         }
                     ;
-                }
-                Adw.StatusPage file_drop_view {
-                    icon-name: "folder-open-symbolic";
-                    title: _("Drop to Open");
-                    description: _("Install Flatpaks or Add a Remotes");
                 }
             }
         }
