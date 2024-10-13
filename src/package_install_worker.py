@@ -1,3 +1,4 @@
+from gi.repository import Gio, GLib
 from .host_info import HostInfo
 import subprocess, re
 
