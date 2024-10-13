@@ -16,21 +16,15 @@
 #
 # SPDX-License-Identifier: GPL-3.0-only
 
-import os
-import pathlib
-import subprocess
-import re
-import time
-
-from gi.repository import Adw, Gdk, Gio, GLib, Gtk, GObject
+from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from .host_info import HostInfo
 from .packages_page import PackagesPage
 from .remotes_page import RemotesPage
 from .user_data_page import UserDataPage
 from .snapshot_page import SnapshotPage
 from .install_page import InstallPage
-from .const import Config
 from .error_toast import ErrorToast
+from .const import Config
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/main_window/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):

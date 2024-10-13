@@ -1,10 +1,10 @@
-from gi.repository import Adw, Gtk, GLib, Gio
+from gi.repository import Adw, Gtk, GLib
 from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .loading_status import LoadingStatus
 from .app_row import AppRow
 from .tar_worker import TarWorker
-import subprocess, os, time
+import os, time
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/new_snapshot_dialog.ui")
 class NewSnapshotDialog(Adw.Dialog):

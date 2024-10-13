@@ -1,4 +1,3 @@
-from gi.repository import Adw, Gtk, GLib, Gio
 from .host_info import HostInfo
 import subprocess, re
 

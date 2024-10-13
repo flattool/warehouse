@@ -1,10 +1,8 @@
-from gi.repository import Adw, Gtk, GLib, Gio, Pango
+from gi.repository import Gtk, GLib, Gio
 from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .data_box import DataBox
-from .host_info import HostInfo
 from .loading_status import LoadingStatus
-import subprocess
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/data_subpage.ui")
 class DataSubpage(Gtk.Stack):

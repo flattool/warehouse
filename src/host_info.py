@@ -1,4 +1,4 @@
-from gi.repository import Gio, Gtk, GLib, Adw, Gdk
+from gi.repository import Gio, Gtk, GLib, Gdk
 from .error_toast import ErrorToast
 import subprocess, os, pathlib
 

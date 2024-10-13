@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk,GLib, Gio
+from gi.repository import Adw, Gtk, GLib, Gio
 from .error_toast import ErrorToast
 from .host_info import HostInfo
 from .change_version_page import ChangeVersionPage

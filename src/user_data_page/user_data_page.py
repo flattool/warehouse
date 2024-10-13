@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk, GLib, Gio, Gdk
+from gi.repository import Adw, Gtk, Gio, Gdk
 from .error_toast import ErrorToast
 from .data_box import DataBox
 from .data_subpage import DataSubpage

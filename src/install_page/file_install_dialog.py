@@ -1,7 +1,4 @@
-from gi.repository import Adw, Gtk, GLib, Gio
-from .host_info import HostInfo
-from .error_toast import ErrorToast
-from .installation_chooser import InstallationChooser
+from gi.repository import Adw, Gtk
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/file_install_dialog.ui")
 class FileInstallDialog(Adw.Dialog):

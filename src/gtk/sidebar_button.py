@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk, Gdk, GLib
+from gi.repository import Gtk
 from .host_info import HostInfo
 
 class SidebarButton(Gtk.Button):

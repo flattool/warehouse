@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk, GLib, Gio, Pango
+from gi.repository import Adw, Gtk, GLib
 from .host_info import HostInfo
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/gtk/app_row.ui")

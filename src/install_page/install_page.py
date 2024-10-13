@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk, GLib, Gio
+from gi.repository import Adw, Gtk, GLib
 from .host_info import HostInfo
 from .select_page import SelectPage
 from .pending_page import PendingPage

@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk, GLib, Gio
+from gi.repository import Adw, Gtk, Gio
 from .host_info import HostInfo
 
 class FilterRow(Adw.ActionRow):

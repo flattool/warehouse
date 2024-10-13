@@ -1,6 +1,5 @@
 from gi.repository import Adw, Gtk, GLib, Gio
 from .host_info import HostInfo
-from .error_toast import ErrorToast
 from .result_row import ResultRow
 from .loading_status import LoadingStatus
 import subprocess

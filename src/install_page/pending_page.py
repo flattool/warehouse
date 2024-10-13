@@ -1,6 +1,5 @@
-from gi.repository import Adw, Gtk, GLib, Gio
+from gi.repository import Adw, Gtk
 from .host_info import HostInfo
-from .error_toast import ErrorToast
 from .result_row import ResultRow
 
 class AddedGroup(Adw.PreferencesGroup):

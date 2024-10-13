@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk, GLib, Gio, Pango
+from gi.repository import Adw, Gtk, GLib
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/uninstall_dialog.ui")
 class UninstallDialog(Adw.AlertDialog):

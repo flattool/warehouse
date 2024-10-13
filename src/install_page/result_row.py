@@ -1,8 +1,6 @@
-from gi.repository import Adw, Gtk, GLib, Gio, Gdk
-from .host_info import HostInfo
-from .error_toast import ErrorToast
+from gi.repository import Adw, Gtk, GLib
 from enum import Enum
-import os, subprocess
+import os
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/result_row.ui")
 class ResultRow(Adw.ActionRow):
