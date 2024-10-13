@@ -29,6 +29,7 @@ from gi.repository import Gtk, Gio, Adw, GLib
 from .host_info import HostInfo
 from .window import WarehouseWindow
 from .const import Config
+from .error_toast import ErrorToast
 
 class WarehouseApplication(Adw.Application):
     """The main application singleton class."""
@@ -96,9 +97,17 @@ class WarehouseApplication(Adw.Application):
         window = self.props.active_window
         
         def file_choose_callback(object, result):
-            files = object.open_multiple_finish(result)
-            window.on_file_drop(None, files, None, None)
-            
+            try:
+                files = object.open_multiple_finish(result)
+                if not files:
+                    window.toast_overlay.add_toast(ErrorToast(_("Could not add files"), _("No files were found")).toast)
+                    return
+                    
+                window.on_file_drop(None, files, None, None)
+            except GLib.GError as gle:
+                if not (gle.domain == "gtk-dialog-error-quark" and gle.code == 2):
+                    window.toast_overlay.add_toast(ErrorToast(_("Could not add files"), str(gle)).toast)
+                    
         file_filter = Gtk.FileFilter(name=_("Flatpaks & Remotes"))
         file_filter.add_suffix("flatpak")
         file_filter.add_suffix("flatpakref")
