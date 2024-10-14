@@ -250,7 +250,7 @@ class PackagesPage(Adw.BreakpointBin):
             self.packages_toast_overlay.add_toast(ErrorToast(_("Could not copy {}").format(feedback), str(e)).toast)
             
     def selection_uninstall(self, *args):
-        if len(self.selected_rows) < 1:
+        if len(self.selected_rows) < 1 or not self.uninstall_button.get_active():
             return
             
         def on_response(should_trash):
