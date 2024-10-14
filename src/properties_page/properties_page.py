@@ -168,11 +168,14 @@ class PropertiesPage(Adw.NavigationPage):
                 self.package.trash_data()
                 self.set_properties(self.package, refresh=True)
                 self.toast_overlay.add_toast(Adw.Toast.new("Trashed User Data"))
-                snapshot_list_page = HostInfo.main_window.pages[HostInfo.main_window.snapshots_row].list_page
-                snapshot_list_page.set_snapshots(snapshot_list_page.package_or_folder, True)
                 user_data_page = HostInfo.main_window.pages[HostInfo.main_window.user_data_row]
                 user_data_page.start_loading()
                 user_data_page.end_loading()
+                snapshot_list_page = HostInfo.main_window.pages[HostInfo.main_window.snapshots_row].list_page
+                snapshot_list_package = snapshot_list_page.package_or_folder
+                if not snapshot_list_package is None:
+                    snapshot_list_page.set_snapshots(snapshot_list_package, True)
+                    
             except subprocess.CalledProcessError as cpe:
                 self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), cpe.stderr).toast)
             except Exception as e:

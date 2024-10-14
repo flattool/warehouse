@@ -80,9 +80,15 @@ class DataBox(Gtk.ListBox):
             try:
                 subprocess.run(['gio', 'trash', self.data_path], check=True, text=True, capture_output=True)
                 properties_page = HostInfo.main_window.pages[HostInfo.main_window.packages_row].properties_page
-                properties_page.set_properties(properties_page.package, True)
+                properties_package = properties_page.package
+                if not properties_package is None:
+                    properties_page.set_properties(properties_package, True)
+                    
                 snapshot_list_page = HostInfo.main_window.pages[HostInfo.main_window.snapshots_row].list_page
-                snapshot_list_page.set_snapshots(snapshot_list_page.package_or_folder, True)
+                snapshot_list_package = snapshot_list_page.package_or_folder
+                if not snapshot_list_package is None:
+                    snapshot_list_page.set_snapshots(snapshot_list_package, True)
+                    
             except subprocess.CalledProcessError as cpe:
                 self.failed_trash = cpe.stderr
             except Exception as e:
