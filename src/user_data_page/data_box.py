@@ -142,3 +142,4 @@ class DataBox(Gtk.ListBox):
         # Apply
         self.idle_stuff()
         self.show_size()
+        self.trash_button.set_sensitive(not "io.github.flattool.Warehouse" in subtitle)
