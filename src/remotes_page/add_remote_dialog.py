@@ -31,7 +31,7 @@ class AddRemoteDialog(Adw.Dialog):
                 'flatpak', 'remote-add',
                 f'--title={self.title_row.get_text()}',
                 self.name_row.get_text(),
-                f'\"{self.url_row.get_text()}\"',
+                self.url_row.get_text(),
             ]
             installation = self.installation_chooser.get_installation()
             if installation == "user" or installation == "system":
