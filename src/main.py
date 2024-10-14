@@ -57,7 +57,7 @@ class WarehouseApplication(Adw.Application):
         
         self.create_action("toggle-select-mode", self.on_toggle_select_mode_shortcut, ["<primary>b", "<primary>Return"])
         self.create_action("toggle-selection-kp-enter", self.on_toggle_select_mode_shortcut, ["<primary>KP_Enter"]) # Doesn't show in the shortcuts window
-        self.create_action("toggle-search-mode", self.on_toggle_search_mode_shortcut, ["<primary>f"])
+        self.create_action("search-mode", self.on_search_mode_shortcut, ["<primary>f"])
         self.create_action("filter", self.on_filter_shortcut, ["<primary>t"])
         self.create_action("new", self.on_new_shortcut, ["<primary>n"])
         self.create_action("active-data-view", lambda *_: self.on_data_view_shortcut(True), ["<Alt>1"])
@@ -125,10 +125,10 @@ class WarehouseApplication(Adw.Application):
         except AttributeError:
             pass
             
-    def on_toggle_search_mode_shortcut(self, *args):
+    def on_search_mode_shortcut(self, *args):
         try:
             button = self.props.active_window.stack.get_visible_child().search_button
-            button.set_active(not button.get_active())
+            button.set_active(True)
         except AttributeError:
             pass
             
