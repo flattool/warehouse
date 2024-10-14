@@ -216,6 +216,26 @@ class SnapshotPage(Adw.BreakpointBin):
                 GLib.idle_add(lambda *_: self.stack.set_visible_child(self.scrolled_window))
                 GLib.idle_add(lambda *_: self.status_stack.set_visible_child(self.split_view))
                 
+            data_path = f"{HostInfo.home}/.var/app"
+            total_data = 0
+            for folder in os.listdir(data_path):
+                if folder == "io.github.flattool.Warehouse":
+                    continue
+                    
+                total_data += 1
+                break
+                
+            if total_data > 0:
+                self.new_button.set_sensitive(True)
+                self.new_button.set_tooltip_text(None)
+                self.status_new_button.set_sensitive(True)
+                self.status_new_button.set_tooltip_text(None)
+            else:
+                self.new_button.set_sensitive(False)
+                self.new_button.set_tooltip_text(_("No Data Found to Snapshot"))
+                self.status_new_button.set_sensitive(False)
+                self.status_new_button.set_tooltip_text(_("No Data Found to Snapshot"))
+                
         Gio.Task.new(None, None, callback).run_in_thread(self.sort_snapshots)
         
     def open_snapshots_folder(self, button):
