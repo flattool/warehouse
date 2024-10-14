@@ -45,13 +45,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
     snapshots_row = gtc()
     install_row = gtc()
 
-    def key_handler(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_w and state == Gdk.ModifierType.CONTROL_MASK:
-            self.close()
-
-        # if keyval == Gdk.KEY_Escape:
-        #     self.batch_mode_button.set_active(False)
-
     def start_loading(self, *args):
         for _, page in self.pages.items():
             if page.instance:
@@ -188,6 +181,15 @@ class WarehouseWindow(Adw.ApplicationWindow):
     def switch_page_shortcut_handler(self, letter):
         self.activate_row(self.shortcut_to_pages[letter])
         
+    def key_handler(self, controller, keyval, keycode, state):
+        if keyval == Gdk.KEY_BackSpace or keyval == Gdk.KEY_Delete:
+            page = self.stack.get_visible_child()
+            try:
+                if page.select_button.get_active():
+                    page.on_backspace_handler()
+            except AttributeError:
+                pass
+                
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 

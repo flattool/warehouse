@@ -155,7 +155,7 @@ class UserDataPage(Adw.BreakpointBin):
             HostInfo.clipboard.set(to_copy.replace("\n", "", 1))
             self.toast_overlay.add_toast(Adw.Toast(title=_("Copied paths")))
             
-    def trash_handler(self, *args):
+    def selection_trash_handler(self, *args):
         error = [None]
         child = self.stack.get_visible_child()
         
@@ -239,7 +239,7 @@ class UserDataPage(Adw.BreakpointBin):
             case self.more_install:
                 self.install_handler()
             case self.more_trash:
-                self.trash_handler()
+                self.selection_trash_handler()
                 
     def key_handler(self, controller, keyval, keycode, state):
         if keyval == Gdk.KEY_Escape:
@@ -263,6 +263,7 @@ class UserDataPage(Adw.BreakpointBin):
             "size": self.sort_size,
         }
         self.buttons_to_sort_modes = {}
+        self.on_backspace_handler = self.selection_trash_handler
         event_controller = Gtk.EventControllerKey()
         
         # Apply
@@ -290,7 +291,7 @@ class UserDataPage(Adw.BreakpointBin):
         self.select_button.connect("toggled", self.select_toggle_handler)
         self.select_all_button.connect("clicked", self.select_all_handler)
         self.copy_button.connect("clicked", self.copy_handler)
-        self.trash_button.connect("clicked", self.trash_handler)
+        self.trash_button.connect("clicked", self.selection_trash_handler)
         self.install_button.connect("clicked", self.install_handler)
         self.more_menu.connect("row-activated", self.more_menu_handler)
         self.sort_ascend.connect("clicked", self.sort_button_handler)

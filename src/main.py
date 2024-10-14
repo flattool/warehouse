@@ -60,7 +60,6 @@ class WarehouseApplication(Adw.Application):
         self.create_action("toggle-search-mode", self.on_toggle_search_mode_shortcut, ["<primary>f"])
         self.create_action("filter", self.on_filter_shortcut, ["<primary>t"])
         self.create_action("new", self.on_new_shortcut, ["<primary>n"])
-        self.create_action("delete", self.on_delete_shortcut, ["BackSpace", "Delete"])
         self.create_action("active-data-view", lambda *_: self.on_data_view_shortcut(True), ["<Alt>1"])
         self.create_action("leftover-data-view", lambda *_: self.on_data_view_shortcut(False), ["<Alt>2"])
         
@@ -167,22 +166,6 @@ class WarehouseApplication(Adw.Application):
             
     def on_delete_shortcut(self, *args):
         page = self.props.active_window.stack.get_visible_child()
-        try:
-            if not page.select_button.get_active():
-                return
-                
-            page.selection_uninstall()
-        except AttributeError:
-            pass
-            
-        try:
-            if not page.select_button.get_active():
-                return
-                
-            page.trash_handler()
-        except AttributeError:
-            pass
-            
         try:
             if not page.select_button.get_active():
                 return

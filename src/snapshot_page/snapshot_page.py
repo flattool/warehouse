@@ -456,10 +456,10 @@ class SnapshotPage(Adw.BreakpointBin):
             
         AttemptInstallDialog(package_names, lambda is_valid: self.select_button.set_active(not is_valid))
         
-    def select_trash_handler(self):
+    def selection_trash_handler(self):
         if (
-            self.is_trash_dialog_open
-            or len(self.selected_active_rows) + len(self.selected_leftover_rows) < 1
+            len(self.selected_active_rows) + len(self.selected_leftover_rows) < 1
+            or self.is_trash_dialog_open
         ):
             return
             
@@ -502,7 +502,7 @@ class SnapshotPage(Adw.BreakpointBin):
             case self.install_from_snapshots:
                 self.install_handler()
             case self.trash_snapshots:
-                self.select_trash_handler()
+                self.selection_trash_handler()
                 
     def key_handler(self, controller, keyval, keycode, state):
         if keyval == Gdk.KEY_Escape:
@@ -522,6 +522,7 @@ class SnapshotPage(Adw.BreakpointBin):
         self.list_page = SnapshotsListPage(self)
         self.snapshotting_status = LoadingStatus("Initial Title", _("This could take a while"), True, self.on_cancel)
         self.new_snapshot_dialog = None
+        self.on_backspace_handler = self.selection_trash_handler
         event_controller = Gtk.EventControllerKey()
         
         # Apply

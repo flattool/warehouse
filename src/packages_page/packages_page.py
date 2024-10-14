@@ -345,6 +345,7 @@ class PackagesPage(Adw.BreakpointBin):
         self.prev_status = None
         self.selected_rows = []
         self.current_row_for_properties = None
+        self.on_backspace_handler = self.selection_uninstall
         event_controller = Gtk.EventControllerKey()
         
         # Apply
