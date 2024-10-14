@@ -217,15 +217,16 @@ class SnapshotPage(Adw.BreakpointBin):
                 GLib.idle_add(lambda *_: self.status_stack.set_visible_child(self.split_view))
                 
             data_path = f"{HostInfo.home}/.var/app"
-            total_data = 0
-            for folder in os.listdir(data_path):
-                if folder == "io.github.flattool.Warehouse":
+            data_exists = False
+            for package in HostInfo.flatpaks:
+                if package.info['id'] == "io.io.github.flattool.Warehouse":
                     continue
                     
-                total_data += 1
-                break
-                
-            if total_data > 0:
+                if os.path.exists(package.data_path):
+                    data_exists = True
+                    break
+                    
+            if data_exists:
                 self.new_button.set_sensitive(True)
                 self.new_button.set_tooltip_text(None)
                 self.status_new_button.set_sensitive(True)
