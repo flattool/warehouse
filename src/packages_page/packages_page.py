@@ -149,7 +149,12 @@ class PackagesPage(Adw.BreakpointBin):
         if (total := len(self.selected_rows)) > 0:
             self.packages_navpage.set_title(_("{} Selected").format(total))
             self.copy_button.set_sensitive(True)
-            self.uninstall_button.set_sensitive(True)
+            for row in self.selected_rows:
+                if "io.github.flattool.Warehouse" in row.package.info['id']:
+                    self.uninstall_button.set_sensitive(False)
+                    break
+            else:
+                self.uninstall_button.set_sensitive(True)
         else:
             self.packages_navpage.set_title(_("Packages"))
             self.copy_button.set_sensitive(False)

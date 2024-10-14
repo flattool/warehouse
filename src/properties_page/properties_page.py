@@ -89,11 +89,12 @@ class PropertiesPage(Adw.NavigationPage):
         self.open_app_button.set_visible(package.is_runtime)
         self.open_app_button.set_visible(not package.is_runtime)
         self.data_row.set_visible(not package.is_runtime)
+        self.uninstall_button.set_sensitive(self.package.info['id'] != "io.github.flattool.Warehouse")
         if package.is_runtime:
             self.runtime_row.set_visible(False)
         else:
             has_path = os.path.exists(package.data_path)
-            self.trash_data_button.set_sensitive(has_path)
+            self.trash_data_button.set_sensitive(has_path and self.package.info['id'] != "io.github.flattool.Warehouse")
             self.open_data_button.set_sensitive(has_path)
             
             if not self.package.dependant_runtime is None:
