@@ -86,6 +86,7 @@ class DataSubpage(Gtk.Stack):
                 GLib.idle_add(lambda *_, box=box: box.check_button.set_active(False))
 
             GLib.idle_add(lambda *_, box=box: box.check_button.set_visible(is_enabled))
+            GLib.idle_add(lambda *_, box=box: box.install_button.set_visible(box.is_leftover and not is_enabled))
 
         self.selected_boxes.clear()
 
