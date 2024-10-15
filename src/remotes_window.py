@@ -237,7 +237,7 @@ class RemotesWindow(Adw.Dialog):
                 filter_button = Gtk.Button()
                 filter_button.set_child(
                     Adw.ButtonContent(
-                        icon_name="funnel-symbolic", label=_("Set Filter")
+                        icon_name="funnel-outline-symbolic", label=_("Set Filter")
                     )
                 )
                 filter_button.add_css_class("flat")
