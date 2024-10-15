@@ -76,7 +76,7 @@ class ResultsPage(Adw.NavigationPage):
                 
             try:
                 output = subprocess.run(
-                    ['flatpak-spawn', '--host', 'flatpak', 'search', '--columns=alls', installation, self.search_entry.get_text()],
+                    ['flatpak-spawn', '--host', 'flatpak', 'search', '--columns=all', installation, self.search_entry.get_text()],
                     check=True, text=True, capture_output=True
                 ).stdout.split('\n')
                 if len(output) > 100:
