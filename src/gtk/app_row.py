@@ -36,6 +36,9 @@ class AppRow(Adw.ActionRow):
         GLib.idle_add(lambda *_: self.idle_stuff())
         self.add_controller(self.rclick_gesture)
         self.add_controller(self.long_press_gesture)
+        if package.info['id'] == "io.github.flattool.Warehouse":
+            self.check_button.set_active = lambda *_: None
+            self.check_button.set_sensitive(False)
 
         # Connections
         self.rclick_gesture.connect("released", self.gesture_handler)

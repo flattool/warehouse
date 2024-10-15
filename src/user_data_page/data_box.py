@@ -133,13 +133,16 @@ class DataBox(Gtk.ListBox):
         self.size = None
         self.failed_trash = None
         
+        # Apply
+        self.idle_stuff()
+        self.show_size()
+        if subtitle == "io.github.flattool.Warehouse":
+            self.check_button.set_active = lambda *_: None
+            self.check_button.set_sensitive(False)
+            self.trash_button.set_sensitive(False)
+            
         # Connections
         self.copy_button.connect("clicked", self.copy_handler)
         self.open_button.connect("clicked", self.open_handler)
         self.install_button.connect("clicked", self.install_handler)
         self.trash_button.connect("clicked", self.trash_handler)
-        
-        # Apply
-        self.idle_stuff()
-        self.show_size()
-        self.trash_button.set_sensitive(not "io.github.flattool.Warehouse" in subtitle)
