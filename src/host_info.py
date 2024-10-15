@@ -353,25 +353,32 @@ class HostInfo:
                     this.flatpaks.append(package)
                     this.id_to_flatpak[package.info["id"]] = package
                     this.ref_to_flatpak[package.info["ref"]] = package
-                
+                    
                 # Dependant Runtimes
                 output = subprocess.run(
                     ['flatpak-spawn', '--host',
-                    'flatpak', 'list', '--columns=runtime'],
+                    'flatpak', 'list', '--columns=runtime,ref'],
                     text=True, check=True,
                     capture_output=True,
                 ).stdout
-                lines = output.strip().split("\n")
-                for index, runtime in enumerate(lines):
+                lines = output.split("\n")
+                for index, line in enumerate(lines):
+                    split_line = line.split("\t")
+                    if len(split_line) < 2 or split_line[0] == '':
+                        continue
+                        
                     package = this.flatpaks[index]
                     if package.is_runtime:
                         continue
+                        
+                    runtime = split_line[0]
                     package.dependant_runtime = this.ref_to_flatpak[runtime]
                     if not runtime in this.dependant_runtime_refs:
                         this.dependant_runtime_refs.append(runtime)
+                        
             except subprocess.CalledProcessError as cpe:
                 this.main_window.toast_overlay.add_toast(ErrorToast(_("Could not load pacakges"), cpe.stderr).toast)
             except Exception as e:
                 this.main_window.toast_overlay.add_toast(ErrorToast(_("Could not load pacakges"), str(e)).toast)
-
+                
         Gio.Task.new(None, None, callback).run_in_thread(thread)
