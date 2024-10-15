@@ -219,7 +219,7 @@ class SnapshotPage(Adw.BreakpointBin):
             data_path = f"{HostInfo.home}/.var/app"
             data_exists = False
             for package in HostInfo.flatpaks:
-                if package.info['id'] == "io.io.github.flattool.Warehouse":
+                if package.info['id'] == "io.github.flattool.Warehouse":
                     continue
                     
                 if os.path.exists(package.data_path):
