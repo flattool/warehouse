@@ -247,10 +247,6 @@ class UserDataPage(Adw.BreakpointBin):
             case self.more_trash:
                 self.selection_trash_handler()
                 
-    def key_handler(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape:
-            self.select_button.set_active(False)
-            
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
         
@@ -270,10 +266,9 @@ class UserDataPage(Adw.BreakpointBin):
         }
         self.buttons_to_sort_modes = {}
         self.on_backspace_handler = self.selection_trash_handler
-        event_controller = Gtk.EventControllerKey()
+        self.on_escape_handler = lambda *_: self.select_button.set_active(False)
         
         # Apply
-        self.add_controller(event_controller)
         for key, button in self.sort_modes_to_buttons.items():
             self.buttons_to_sort_modes[button] = key
             
@@ -291,7 +286,6 @@ class UserDataPage(Adw.BreakpointBin):
         )
         
         # Connections
-        event_controller.connect("key-pressed", self.key_handler)
         self.open_button.connect("clicked", self.open_data_folder)
         self.stack.connect("notify::visible-child", self.view_change_handler)
         self.select_button.connect("toggled", self.select_toggle_handler)

@@ -525,10 +525,6 @@ class SnapshotPage(Adw.BreakpointBin):
             case self.trash_snapshots:
                 self.selection_trash_handler()
                 
-    def key_handler(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape:
-            self.select_button.set_active(False)
-            
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
         
@@ -544,10 +540,9 @@ class SnapshotPage(Adw.BreakpointBin):
         self.snapshotting_status = LoadingStatus("Initial Title", _("This could take a while"), True, self.on_cancel)
         self.new_snapshot_dialog = None
         self.on_backspace_handler = self.selection_trash_handler
-        event_controller = Gtk.EventControllerKey()
+        self.on_escape_handler = lambda *_: self.select_button.set_active(False)
         
         # Apply
-        self.add_controller(event_controller)
         self.search_bar.set_key_capture_widget(HostInfo.main_window)
         self.loading_view.set_content(LoadingStatus(_("Loading Snapshots"), _("This should only take a moment")))
         self.snapshotting_view.set_content(self.snapshotting_status)
@@ -556,7 +551,6 @@ class SnapshotPage(Adw.BreakpointBin):
         self.leftover_listbox.set_sort_func(self.sort_func)
         
         # Connections
-        event_controller.connect("key-pressed", self.key_handler)
         self.active_listbox.connect("row-activated", self.active_select_handler)
         self.leftover_listbox.connect("row-activated", self.leftover_select_handler)
         self.open_button.connect("clicked", self.open_snapshots_folder)

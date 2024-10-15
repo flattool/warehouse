@@ -182,11 +182,16 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.activate_row(self.shortcut_to_pages[letter])
         
     def key_handler(self, controller, keyval, keycode, state):
+        page = self.stack.get_visible_child()
         if keyval == Gdk.KEY_BackSpace or keyval == Gdk.KEY_Delete:
-            page = self.stack.get_visible_child()
             try:
                 if page.select_button.get_active():
                     page.on_backspace_handler()
+            except AttributeError:
+                pass
+        elif keyval == Gdk.KEY_Escape:
+            try:
+                page.on_escape_handler()
             except AttributeError:
                 pass
                 

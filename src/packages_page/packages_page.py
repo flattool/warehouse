@@ -321,13 +321,12 @@ class PackagesPage(Adw.BreakpointBin):
     def sort_func(self, row1, row2):
         return row1.package.info["name"].lower() > row2.package.info["name"].lower()
         
-    def key_handler(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape:
-            if self.select_button.get_active():
-                self.select_button.set_active(False)
-            elif self.filter_button.get_active():
-                self.filter_button.set_active(False)
-                
+    def on_escape_handler(self):
+        if self.select_button.get_active():
+            self.select_button.set_active(False)
+        elif self.filter_button.get_active():
+            self.filter_button.set_active(False)
+            
     def __init__(self, main_window, **kwargs):
         super().__init__(**kwargs)
         
@@ -346,10 +345,8 @@ class PackagesPage(Adw.BreakpointBin):
         self.selected_rows = []
         self.current_row_for_properties = None
         self.on_backspace_handler = self.selection_uninstall
-        event_controller = Gtk.EventControllerKey()
         
         # Apply
-        self.add_controller(event_controller)
         self.loading_view.set_content(self.loading_packages)
         self.packages_list_box.set_filter_func(self.filter_func)
         self.packages_list_box.set_sort_func(self.sort_func)
@@ -358,7 +355,6 @@ class PackagesPage(Adw.BreakpointBin):
         self.__class__.instance = self
         
         # Connections
-        event_controller.connect("key-pressed", self.key_handler)
         self.search_entry.connect("search-changed", self.on_invalidate)
         self.search_bar.set_key_capture_widget(main_window)
         self.packages_list_box.connect("row-activated", self.row_activate_handler)
