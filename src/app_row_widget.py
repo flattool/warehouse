@@ -151,7 +151,7 @@ class AppRow(Adw.ActionRow):
         self.add_suffix(self.info_button)
 
         properties_button = Gtk.Button(
-            icon_name="info-symbolic",
+            icon_name="info-outline-symbolic",
             valign=Gtk.Align.CENTER,
             tooltip_text=_("View Properties"),
         )
