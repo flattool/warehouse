@@ -72,6 +72,8 @@ class DataSubpage(Gtk.Stack):
         self.flow_box.remove(trashed_box)
         if not self.flow_box.get_child_at_index(0):
             self.set_visible_child(self.no_data)
+            self.parent_page.start_loading()
+            self.parent_page.end_loading()
 
     def set_selection_mode(self, is_enabled):
         if not is_enabled:
