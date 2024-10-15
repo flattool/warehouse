@@ -220,7 +220,7 @@ class Flatpak:
                 .get_path()
             )
         except GLib.GError as e:
-            print(e)
+            print(f"Minor error in looking up icon for {self.info['id']}", e)
             self.icon_path = None
 
 

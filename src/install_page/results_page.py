@@ -2,6 +2,7 @@ from gi.repository import Adw, Gtk, GLib, Gio
 from .host_info import HostInfo
 from .result_row import ResultRow
 from .loading_status import LoadingStatus
+from .error_toast import ErrorToast
 import subprocess
 
 class AddedPackage:
@@ -75,7 +76,7 @@ class ResultsPage(Adw.NavigationPage):
                 
             try:
                 output = subprocess.run(
-                    ['flatpak-spawn', '--host', 'flatpak', 'search', '--columns=all', installation, self.search_entry.get_text()],
+                    ['flatpak-spawn', '--host', 'flatpak', 'search', '--columns=alls', installation, self.search_entry.get_text()],
                     check=True, text=True, capture_output=True
                 ).stdout.split('\n')
                 if len(output) > 100:
@@ -114,7 +115,8 @@ class ResultsPage(Adw.NavigationPage):
                     GLib.idle_add(lambda *_: self.stack.set_visible_child(self.no_results))
                     
             except subprocess.CalledProcessError as cpe:
-                print(cpe)
+                GLib.idle_add(lambda *_, cpe=cpe: HostInfo.main_window.toast_overlay.add_toast(ErrorToast("Could not search for package", cpe.stderr).toast))
+                GLib.idle_add(lambda *_: self.install_page.select_page.nav_view.pop())
                 
         Gio.Task().run_in_thread(thread)
         
