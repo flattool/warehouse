@@ -8,103 +8,110 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-03 14:05-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-10-17 18:34+0000\n"
+"Last-Translator: JTi65 <jouko.tiilikainen@gmail.com>\n"
+"Language-Team: Finnish <https://weblate.fyralabs.com/projects/flattool/"
+"warehouse/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.7.2\n"
 
 #. Translators: Do not translate the applicaion name
 #: data/io.github.flattool.Warehouse.desktop.in:4
 msgid "Warehouse"
-msgstr ""
+msgstr "Varasto"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 msgid "flatpak"
-msgstr ""
+msgstr "flatpak"
 
 #: data/io.github.flattool.Warehouse.desktop.in:12
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
-msgstr ""
+msgstr "Hallitse kaikkea Flatpakissä"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
 "Warehouse is an app that manages installed Flatpaks, their user data, and "
 "Flatpak remotes."
 msgstr ""
+"Warehouse on sovellus, joka hallitsee asennettuja Flatpakeja, niiden "
+"käyttäjätietoja ja Flatpak-kaukosäätimiä"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr ""
+msgstr "Ominaisuudet:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Show and filter the list of installed Flatpaks"
-msgstr ""
+msgstr "Näytä ja suodata asennettujen Flatpakkien luettelo"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Display properties of installed Flatpaks"
-msgstr ""
+msgstr "Näytä asennettujen Flatpakkien ominaisuudet"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Manage large groups of Flatpaks at once"
-msgstr ""
+msgstr "Hallitse suuria Flatpaks-ryhmiä kerralla"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Add and remove Flatpak remotes"
-msgstr ""
+msgstr "Lisää ja poista Flatpak-kaukosäätimet"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "Find and trash leftover user data"
-msgstr ""
+msgstr "Etsi ja siirrä jäljelle jääneet käyttäjätiedot"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
-msgstr ""
+msgstr "Asenna uudelleen sovellukset, joissa on ylimääräistä dataa"
 
 #: data/ui/downgrade.blp:25 src/app_row_widget.py:360
 msgid "Downgrade"
-msgstr ""
+msgstr "Vähennä"
 
 #: data/ui/downgrade.blp:55
 msgid "Fetching Releases"
-msgstr ""
+msgstr "Julkaisujen hakeminen"
 
 #: data/ui/downgrade.blp:63 data/ui/window.blp:107 data/ui/window.blp:162
 msgid "This could take a while"
-msgstr ""
+msgstr "Tämä voi kestää hetken"
 
 #: data/ui/downgrade.blp:71 src/app_row_widget.py:299 src/window.py:494
 msgid "Disable Updates"
-msgstr ""
+msgstr "Poista päivitykset käytöstä"
 
 #: data/ui/downgrade.blp:77
 msgid "Select a Release"
-msgstr ""
+msgstr "Valitse julkaisu"
 
 #: data/ui/downgrade.blp:78
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
+"Tämä poistaa nykyisen julkaisun ja asentaa sen sijaan valitun.  Huomaa, että "
+"alempi versio voi aiheuttaa ongelmia"
 
 #: data/ui/filter.blp:5 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
-msgstr ""
+msgstr "Aseta filtterit"
 
 #: data/ui/filter.blp:39
 msgid "Show Apps"
-msgstr ""
+msgstr "Näytä ohjelmat"
 
 #: data/ui/filter.blp:49
 msgid "Show Runtimes"
-msgstr ""
+msgstr "Näytä suoritusajat"
 
 #: data/ui/filter.blp:60
 msgid "Filter by Remotes"
-msgstr ""
+msgstr "Suodata kaukosäätimen mukaan"
 
 #: data/ui/filter.blp:65
 msgid "Filter by Runtimes"
