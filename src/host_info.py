@@ -377,8 +377,8 @@ class HostInfo:
                         this.dependant_runtime_refs.append(runtime)
                         
             except subprocess.CalledProcessError as cpe:
-                this.main_window.toast_overlay.add_toast(ErrorToast(_("Could not load pacakges"), cpe.stderr).toast)
+                this.main_window.toast_overlay.add_toast(ErrorToast(_("Could not load packages"), cpe.stderr).toast)
             except Exception as e:
-                this.main_window.toast_overlay.add_toast(ErrorToast(_("Could not load pacakges"), str(e)).toast)
+                this.main_window.toast_overlay.add_toast(ErrorToast(_("Could not load packages"), str(e)).toast)
                 
         Gio.Task.new(None, None, callback).run_in_thread(thread)
