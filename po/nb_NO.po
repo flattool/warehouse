@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-03 14:05-0400\n"
-"PO-Revision-Date: 2024-10-06 04:11+0000\n"
-"Last-Translator: sunniva <frejaland.47@gmail.com>\n"
+"PO-Revision-Date: 2024-10-22 21:12+0000\n"
+"Last-Translator: sunniva <turtle@turtle.garden>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.fyralabs.com/projects/"
 "flattool/warehouse/nb_NO/>\n"
 "Language: nb_NO\n"
@@ -38,24 +38,24 @@ msgid ""
 "Warehouse is an app that manages installed Flatpaks, their user data, and "
 "Flatpak remotes."
 msgstr ""
-"Warehouse er et program som behandler installerte flatpaker, brukerdataene "
+"Warehouse er et program som behandler installerte Flatpaker, brukerdataene "
 "deres, og Flatpak-fjernservere."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr "Egenskaper:"
+msgstr "Funksjoner:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Show and filter the list of installed Flatpaks"
-msgstr "Vis og sorter listen over installerte flatpakker"
+msgstr "Vis og sorter listen over installerte Flatpaker"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Display properties of installed Flatpaks"
-msgstr "Vis egenskaper til installerte flatpaker"
+msgstr "Vis egenskaper til installerte Flatpaker"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Manage large groups of Flatpaks at once"
-msgstr "Behandle store mengder flatpakker samtidig"
+msgstr "Behandle store mengder Flatpaker samtidig"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Add and remove Flatpak remotes"
@@ -67,7 +67,7 @@ msgstr "Find og slett brukerdatarester"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid "Reinstall apps that have leftover data"
-msgstr "Ominstaller apper med datarester"
+msgstr "Installer apper med datarester på nytt"
 
 #: data/ui/downgrade.blp:25 src/app_row_widget.py:360
 msgid "Downgrade"
@@ -94,12 +94,12 @@ msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
-"Dette avinstallerer den nåværende utgaven og installerer den valgte utgave "
-"isteden. NB: Nedgradering kan forårsake feil."
+"Dette avinstallerer den nåværende utgaven og installerer den valgte utgave i "
+"stedet. NB: Nedgradering kan forårsake feil."
 
 #: data/ui/filter.blp:5 src/gtk/help-overlay.blp:19
 msgid "Set Filters"
-msgstr "Still inn filter"
+msgstr "Still inn filtre"
 
 #: data/ui/filter.blp:39
 msgid "Show Apps"
@@ -119,7 +119,7 @@ msgstr "Filtrer etter runtimer"
 
 #: data/ui/filter.blp:73 data/ui/window.blp:179
 msgid "Reset Filters"
-msgstr "Tilbakestill filter"
+msgstr "Tilbakestill filtre"
 
 #: data/ui/orphans.blp:14 data/ui/window.blp:12
 msgid "Search List"
@@ -143,11 +143,11 @@ msgstr "Det finnes ingen brukerdatarester"
 
 #: data/ui/orphans.blp:108 data/ui/search_install.blp:87 data/ui/window.blp:187
 msgid "No Results Found"
-msgstr "Ingen treff funnet"
+msgstr "Ingen treff"
 
 #: data/ui/orphans.blp:109 data/ui/search_install.blp:88 data/ui/window.blp:188
 msgid "Try a different search term"
-msgstr "Prøv et annet søkeord"
+msgstr "Prøv et annet søketerm"
 
 #: data/ui/orphans.blp:119 data/ui/window.blp:206
 msgid "Select All"
@@ -155,7 +155,7 @@ msgstr "Velg alle"
 
 #: data/ui/orphans.blp:124 src/window.py:199 src/window.py:281
 msgid "Trash"
-msgstr "Kast i papirkurven"
+msgstr "Flytt til papirkurven"
 
 #: data/ui/orphans.blp:130 data/ui/search_install.blp:54
 #: src/orphans_window.py:122 src/window.py:839
@@ -261,7 +261,7 @@ msgstr "Velg en fjernserver å søke gjennom"
 
 #: data/ui/search_install.blp:36
 msgid "Results"
-msgstr "Resultat"
+msgstr "Resultater"
 
 #: data/ui/search_install.blp:71
 msgid "Start Search"
@@ -269,11 +269,11 @@ msgstr "Start søking"
 
 #: data/ui/search_install.blp:80
 msgid "Search for Flatpaks"
-msgstr "Søk etter flatpakker"
+msgstr "Søk etter Flatpaker"
 
 #: data/ui/search_install.blp:82
 msgid "Search for Flatpaks that you want to install"
-msgstr "Søk etter flatpakker som du vil installere"
+msgstr "Søk etter Flatpaker som du vil installere"
 
 #: data/ui/search_install.blp:108
 msgid "Searching"
@@ -281,11 +281,11 @@ msgstr "Søker"
 
 #: data/ui/search_install.blp:119
 msgid "Too Many Results"
-msgstr "For mange resultat"
+msgstr "For mange resultater"
 
 #: data/ui/search_install.blp:120
 msgid "Try being more specific with your search"
-msgstr "Prøv et mer spesifikt søkeord"
+msgstr "Prøv et mer spesifikt søketerm"
 
 #: data/ui/snapshots.blp:14
 msgid "Open Snapshots Folder"
@@ -321,7 +321,7 @@ msgstr "Bytt velgingsmodus"
 
 #: data/ui/window.blp:53
 msgid "Loading Flatpaks"
-msgstr "Laster inn flatpakker"
+msgstr "Laster inn Flatpaker"
 
 #: data/ui/window.blp:129
 msgid "Uninstalling"
@@ -333,23 +333,23 @@ msgstr "Oppretter øyeblikksbilder"
 
 #: data/ui/window.blp:169
 msgid "No Flatpaks Found"
-msgstr "Ingen flatpakker funnet"
+msgstr "Ingen Flatpaker funnet"
 
 #: data/ui/window.blp:170
 msgid ""
 "Warehouse cannot see the list of installed Flatpaks or the system has no "
 "Flatpaks installed"
 msgstr ""
-"Warehouse kan ikke nå listen over installerte flatpakker, eller har systemet "
-"ingen flatpakker installerte"
+"Warehouse kan ikke nå listen over installerte Flatpaker, eller systemet har "
+"ingen Flatpaker installerte"
 
 #: data/ui/window.blp:175
 msgid "No Flatpaks Match Filters"
-msgstr "Ingen flatpakker oppfyller filtera"
+msgstr "Ingen Flatpaker oppfyller filtrene"
 
 #: data/ui/window.blp:176
 msgid "No installed Flatpak matches all of the currently applied filters"
-msgstr "Ingen installerte flatpakker oppfyller alle filter i bruk"
+msgstr "Ingen installerte Flatpaker oppfyller alle filtre i bruk"
 
 #: data/ui/window.blp:193
 msgid "Refreshing List"
@@ -385,7 +385,7 @@ msgstr "Installer fra fil…"
 
 #: data/ui/window.blp:261
 msgid "Install From The Web…"
-msgstr "Installer fra internettet…"
+msgstr "Installer fra internett…"
 
 #: data/ui/window.blp:267
 msgid "Refresh List"
@@ -603,7 +603,7 @@ msgstr "Avslutt"
 
 #: src/main.py:149
 msgid "Flatpaks"
-msgstr "Flatpakker"
+msgstr "Flatpaker"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
 #: src/main.py:191
@@ -704,7 +704,7 @@ msgstr "Send {}s brukerdata til papirskurven?"
 
 #: src/properties_window.py:158 src/window.py:448 src/window.py:646
 msgid "Trash Data"
-msgstr "Slett Data"
+msgstr "Slett data"
 
 #: src/remotes_window.py:71
 msgid "Could not remove {}"
@@ -772,7 +772,7 @@ msgstr "Beta-utgaver av Flatpak-applikasjoner"
 
 #: src/remotes_window.py:357
 msgid "Flatpaks packaged by Fedora Linux"
-msgstr "Flatpakker fra Fedora Linux"
+msgstr "Flatpaker fra Fedora Linux"
 
 #: src/remotes_window.py:363
 msgid "The latest beta GNOME Apps and Runtimes"
@@ -812,7 +812,7 @@ msgstr "Bruker"
 
 #: src/remotes_window.py:521 src/remotes_window.py:633
 msgid "Remote will be available to only you"
-msgstr "Fjernserveren vil være tilgjengelig bare for deg"
+msgstr "Fjernserveren vil kun være tilgjengelig for deg"
 
 #: src/remotes_window.py:529 src/remotes_window.py:636 src/window.py:850
 msgid "System"
