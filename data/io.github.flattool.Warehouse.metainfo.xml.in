@@ -39,31 +39,64 @@
   <url type="donation">https://ko-fi.com/heliguy</url>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/MainView.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/packages_page_wide.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/BatchMode.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/propteries_page_skinny.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Properties.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/remotes_page_wide.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Remotes.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/data_page_wide.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/SearchInstall.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/snapshots_page_wide.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Snapshots.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/install_page_wide.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Orphans.png</image>
-    </screenshot>
-    <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Downgrade.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/install_page_skinny.png</image>
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.0.0" date="2024-10-28" timestamp="1730014216">
+      <description translate="no">
+        <p>New Features</p>
+        <ul>
+          <li>All new UI to make using Warehouse's features easier</li>
+          <li>UI now better adapts to larger window sizes</li>
+          <li>UI now better adapts to smaller window sizes</li>
+          <li>Improved UI for installing packages from remotes</li>
+          <li>Snapshots can be given names</li>
+          <li>Packages can be reinstalled with a few clicks</li>
+          <li>User Data can now be sorted in multiple ways</li>
+          <li>Active User Data can be browsed just as easily as leftover User Data</li>
+          <li>Custom installation locations are now supported</li>
+          <li>Leftover Snapshots are now shown</li>
+          <li>Apps can be reinstalled from leftover Snapshots</li>
+          <li>Installation location of disabled remotes is now shown</li>
+        </ul>
+        <p>Changes</p>
+        <ul>
+          <li>Packages list filter options are now easier to understand, and more predictable with how they are applied</li>
+          <li>Improved keyboard shortcuts for quick navigation</li>
+          <li>The Downgrades (renamed to Change Version) interface now shows the currently installed version</li>
+          <li>Long running processes now have progress bars and can be canceled</li>
+          <li>Better status icons for End of Life, Masked, and Pinned packages</li>
+          <li>Warehouse no longer disables closing its window when long running processes are happening</li>
+          <li>Refreshing now shows a loading animation</li>
+        </ul>
+        <p>Bug Fixes and Performance Improvements</p>
+        <ul>
+          <li>Warehouse is now faster to open</li>
+          <li>Getting system information is now faster</li>
+          <li>Long running processes no longer freeze the app</li>
+          <li>Refreshing is no longer possible when long running processes are happening</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.6.3" date="2024-7-3" timestamp="1720030786">
       <description translate="no">
         <p>Bug Fixes</p>
