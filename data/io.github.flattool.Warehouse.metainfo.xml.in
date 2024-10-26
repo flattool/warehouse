@@ -8,16 +8,19 @@
 	<project_license>GPL-3.0-only</project_license>
 	<summary>Manage all things Flatpak</summary>
 	<description>
-    <p>Warehouse is an app that manages installed Flatpaks, their user data, and Flatpak remotes.</p>
+    <p>Warehouse provides a simple UI to control complex Flatpak options, all without resorting the command line.</p>
     <p>Features:</p>
-      <ul>
-        <li>Show and filter the list of installed Flatpaks</li>
-        <li>Display properties of installed Flatpaks</li>
-        <li>Manage large groups of Flatpaks at once</li>
-        <li>Add and remove Flatpak remotes</li>
-        <li>Find and trash leftover user data</li>
-        <li>Reinstall apps that have leftover data</li>
-      </ul>
+    <ul>
+      <li>Manage installed Flatpaks and view properties of any package</li>
+      <li>Change versions of a Flatpak to rollback any unwanted updates</li>
+      <li>Pin runtimes and mask Flatpaks</li>
+      <li>Filter packages and sort data, to help find anything easily</li>
+      <li>See current app user data, and cleanup any unused data left behind</li>
+      <li>Add popular Flatpak remotes with a few clicks or add custom remotes instead</li>
+      <li>Take snapshots of your apps' user data, saving your data</li>
+      <li>Install new packages from any remote, or from your system</li>
+      <li>Responsive UI to fit large and small screen sizes</li>
+    </ul>
 	</description>
   <branding>
     <color type="primary" scheme_preference="light">#AECEF4</color>
@@ -40,24 +43,31 @@
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/packages_page_wide.png</image>
+      <caption>Manage Installed Packages in Three Pane UI</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/propteries_page_skinny.png</image>
+      <caption>Properties Page in Narrow Window</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/remotes_page_wide.png</image>
+      <caption>Manage Installed Remotes and Add New Remotes</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/data_page_wide.png</image>
+      <caption>Manage Apps' User Data</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/snapshots_page_wide.png</image>
+      <caption>Backup Apps' User Data</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/install_page_wide.png</image>
+      <caption>Install New Packages from Files or Remotes</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/install_page_skinny.png</image>
+      <caption>Install Page in Narrow Window</caption>
     </screenshot>
   </screenshots>
   <releases>
