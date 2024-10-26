@@ -38,7 +38,7 @@ Warehouse is now available on Flathub! Visit your software store and search for 
 - You can always open issues, PRs, and use other GitHub features here
 
 ## 📜 Code of Conduct
-- The Warehouse project follows the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct). See `CODE_OF_CONDUCT.md` for more information.
+- The Warehouse project follows the [GNOME Code of Conduct](https://conduct.gnome.org/). See `CODE_OF_CONDUCT.md` for more information.
 
 ## ℹ️ Important Notes:
 - Warehouse assumes Flatpak user data is located in the default directory: `~/.var/app`.

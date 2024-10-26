@@ -15,7 +15,7 @@
         "--filesystem=~/.var/app/",
         "--filesystem=host-etc"
     ],
-    "cleanup" : [
+    "cleanup": [
         "/include",
         "/lib/pkgconfig",
         "/man",
@@ -26,20 +26,18 @@
         "*.la",
         "*.a"
     ],
-    "modules" : [
+    "modules": [
         {
-            "name" : "blueprint-compiler",
-            "buildsystem" : "meson",
-            "sources" : [
+            "name": "blueprint-compiler",
+            "buildsystem": "meson",
+            "sources": [
                 {
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/jwestman/blueprint-compiler",
                     "tag" : "v0.14.0"
                 }
             ],
-            "cleanup" : [
-                "*"
-            ]
+            "cleanup": ["*"]
         },
         {
             "name" : "warehouse",
@@ -48,8 +46,8 @@
             "config-opts": [ "-Dprofile=development" ],
             "sources" : [
                 {
-                    "type" : "dir",
-                    "path" : "."
+                    "type": "dir",
+                    "path": "."
                 }
             ]
         }
