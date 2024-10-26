@@ -8,7 +8,7 @@
 	<project_license>GPL-3.0-only</project_license>
 	<summary>Manage all things Flatpak</summary>
 	<description>
-    <p>Warehouse provides a simple UI to control complex Flatpak options, all without resorting the command line.</p>
+    <p>Warehouse provides a simple UI to control complex Flatpak options, all without resorting to the command line.</p>
     <p>Features:</p>
     <ul>
       <li>Manage installed Flatpaks and view properties of any package</li>
