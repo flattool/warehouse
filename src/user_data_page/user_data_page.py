@@ -20,7 +20,6 @@ class UserDataPage(Adw.BreakpointBin):
     header_bar = gtc()
     switcher_bar = gtc()
     search_button = gtc()
-    open_button = gtc()
     select_button = gtc()
     sort_button = gtc()
     search_bar = gtc()
@@ -223,13 +222,6 @@ class UserDataPage(Adw.BreakpointBin):
         self.more_button.set_visible(child is self.ldp and is_applied)
         self.trash_button.set_visible(child is self.adp or not is_applied)
         
-    def open_data_folder(self, button):
-        try:
-            Gio.AppInfo.launch_default_for_uri(f"file://{self.data_path}", None)
-            self.toast_overlay.add_toast(Adw.Toast.new(_("Opened data folder")))
-        except Exception as e:
-            self.toast_overlay.add_toast(ErrorToast(_("Could not open folder"), str(e)).toast)
-            
     def install_handler(self, *args):
         child = self.stack.get_visible_child()
         package_names = []
@@ -286,7 +278,6 @@ class UserDataPage(Adw.BreakpointBin):
         )
         
         # Connections
-        self.open_button.connect("clicked", self.open_data_folder)
         self.stack.connect("notify::visible-child", self.view_change_handler)
         self.select_button.connect("toggled", self.select_toggle_handler)
         self.select_all_button.connect("clicked", self.select_all_handler)

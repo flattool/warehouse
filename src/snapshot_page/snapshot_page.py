@@ -65,7 +65,6 @@ class SnapshotPage(Adw.BreakpointBin):
     no_snapshots = gtc()
     no_results = gtc()
     scrolled_window = gtc()
-    open_button = gtc()
     status_open_button = gtc()
     status_new_button = gtc()
     new_button = gtc()
@@ -553,7 +552,6 @@ class SnapshotPage(Adw.BreakpointBin):
         # Connections
         self.active_listbox.connect("row-activated", self.active_select_handler)
         self.leftover_listbox.connect("row-activated", self.leftover_select_handler)
-        self.open_button.connect("clicked", self.open_snapshots_folder)
         self.status_open_button.connect("clicked", self.open_snapshots_folder)
         self.status_new_button.connect("clicked", self.on_new)
         self.new_button.connect("clicked", self.on_new)
