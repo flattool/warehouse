@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-18 18:28-0400\n"
+"POT-Creation-Date: 2024-10-26 15:32-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,8 +33,8 @@ msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
-"Warehouse is an app that manages installed Flatpaks, their user data, and "
-"Flatpak remotes."
+"Warehouse provides a simple UI to control complex Flatpak options, all "
+"without resorting to the command line."
 msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
@@ -42,27 +42,68 @@ msgid "Features:"
 msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
-msgid "Show and filter the list of installed Flatpaks"
+msgid "Manage installed Flatpaks and view properties of any package"
 msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
-msgid "Display properties of installed Flatpaks"
+msgid "Change versions of a Flatpak to rollback any unwanted updates"
 msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
-msgid "Manage large groups of Flatpaks at once"
+msgid "Pin runtimes and mask Flatpaks"
 msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
-msgid "Add and remove Flatpak remotes"
+msgid "Filter packages and sort data, to help find anything easily"
 msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
-msgid "Find and trash leftover user data"
+msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
-msgid "Reinstall apps that have leftover data"
+msgid ""
+"Add popular Flatpak remotes with a few clicks or add custom remotes instead"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:20
+msgid "Take snapshots of your apps' user data, saving your data"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:21
+msgid "Install new packages from any remote, or from your system"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:22
+msgid "Responsive UI to fit large and small screen sizes"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
+msgid "Manage Installed Packages in Three Pane UI"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
+msgid "Properties Page in Narrow Window"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
+msgid "Manage Installed Remotes and Add New Remotes"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
+msgid "Manage Apps' User Data"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
+msgid "Backup Apps' User Data"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
+msgid "Install New Packages from Files or Remotes"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
+msgid "Install Page in Narrow Window"
 msgstr ""
 
 #: src/main.py:102 src/main.py:108 src/install_page/select_page.py:60
@@ -155,18 +196,18 @@ msgstr ""
 #: src/properties_page/properties_page.py:310
 #: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:122
 #: src/remotes_page/remotes_page.py:189 src/user_data_page/data_box.py:114
-#: src/user_data_page/user_data_page.py:211
-#: src/snapshot_page/new_snapshot_dialog.blp:17
+#: src/user_data_page/user_data_page.py:210
+#: src/snapshot_page/new_snapshot_dialog.blp:16
 #: src/snapshot_page/snapshot_box.py:113 src/snapshot_page/snapshot_box.py:155
-#: src/snapshot_page/snapshot_page.py:468
-#: src/snapshot_page/snapshot_page.py:509
+#: src/snapshot_page/snapshot_page.py:467
+#: src/snapshot_page/snapshot_page.py:508
 #: src/install_page/file_install_dialog.blp:13
 msgid "Cancel"
 msgstr ""
 
 #: src/gtk/attempt_install_dialog.blp:9
-#: src/user_data_page/user_data_page.blp:105
-#: src/user_data_page/user_data_page.blp:149
+#: src/user_data_page/user_data_page.blp:100
+#: src/user_data_page/user_data_page.blp:144
 #: src/install_page/file_install_dialog.blp:18
 #: src/install_page/pending_page.blp:35
 msgid "Install"
@@ -200,8 +241,8 @@ msgid "Details"
 msgstr ""
 
 #: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
-#: src/user_data_page/user_data_page.blp:95
-#: src/snapshot_page/snapshot_page.blp:154
+#: src/user_data_page/user_data_page.blp:90
+#: src/snapshot_page/snapshot_page.blp:149
 msgid "Copy"
 msgstr ""
 
@@ -364,23 +405,23 @@ msgstr ""
 msgid "Show Sidebar"
 msgstr ""
 
-#: src/main_window/window.blp:26
+#: src/main_window/window.blp:24
 msgid "Drop to Open"
 msgstr ""
 
-#: src/main_window/window.blp:27
+#: src/main_window/window.blp:25
 msgid "Install Flatpaks or Add a Remote"
 msgstr ""
 
-#: src/main_window/window.blp:45
+#: src/main_window/window.blp:43
 msgid "Refresh List"
 msgstr ""
 
-#: src/main_window/window.blp:50
+#: src/main_window/window.blp:48
 msgid "Main Menu"
 msgstr ""
 
-#: src/main_window/window.blp:68 src/packages_page/packages_page.blp:20
+#: src/main_window/window.blp:66 src/packages_page/packages_page.blp:20
 #: src/packages_page/packages_page.blp:55
 #: src/packages_page/packages_page.py:154
 #: src/packages_page/packages_page.py:287
@@ -388,36 +429,36 @@ msgstr ""
 msgid "Packages"
 msgstr ""
 
-#: src/main_window/window.blp:81
+#: src/main_window/window.blp:79
 msgid "Remotes"
 msgstr ""
 
-#: src/main_window/window.blp:95 src/properties_page/properties_page.blp:114
+#: src/main_window/window.blp:93 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
 msgid "User Data"
 msgstr ""
 
-#: src/main_window/window.blp:108 src/snapshot_page/snapshot_page.blp:18
+#: src/main_window/window.blp:106 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
-#: src/snapshot_page/snapshot_page.py:342
+#: src/snapshot_page/snapshot_page.py:341
 msgid "Snapshots"
 msgstr ""
 
-#: src/main_window/window.blp:121 src/install_page/file_install_dialog.py:34
+#: src/main_window/window.blp:119 src/install_page/file_install_dialog.py:34
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
 msgid "Install Packages"
 msgstr ""
 
-#: src/main_window/window.blp:151
+#: src/main_window/window.blp:149
 msgid "_Open Files"
 msgstr ""
 
-#: src/main_window/window.blp:155
+#: src/main_window/window.blp:153
 msgid "_Keyboard Shortcuts"
 msgstr ""
 
-#: src/main_window/window.blp:159
+#: src/main_window/window.blp:157
 msgid "_About Warehouse"
 msgstr ""
 
@@ -521,7 +562,7 @@ msgid "Search Packages"
 msgstr ""
 
 #: src/packages_page/packages_page.blp:75
-#: src/snapshot_page/snapshot_page.blp:50
+#: src/snapshot_page/snapshot_page.blp:45
 msgid "Select Packages"
 msgstr ""
 
@@ -545,22 +586,22 @@ msgstr ""
 
 #: src/packages_page/packages_page.blp:109
 #: src/remotes_page/remotes_page.blp:153 src/user_data_page/data_subpage.blp:68
-#: src/snapshot_page/new_snapshot_dialog.blp:68
-#: src/snapshot_page/snapshot_page.blp:63 src/install_page/results_page.blp:49
+#: src/snapshot_page/new_snapshot_dialog.blp:67
+#: src/snapshot_page/snapshot_page.blp:58 src/install_page/results_page.blp:49
 msgid "No Results Found"
 msgstr ""
 
 #: src/packages_page/packages_page.blp:110
 #: src/remotes_page/remotes_page.blp:154 src/user_data_page/data_subpage.blp:69
-#: src/snapshot_page/new_snapshot_dialog.blp:69
-#: src/snapshot_page/snapshot_page.blp:64
+#: src/snapshot_page/new_snapshot_dialog.blp:68
+#: src/snapshot_page/snapshot_page.blp:59
 msgid "Try a different search"
 msgstr ""
 
 #: src/packages_page/packages_page.blp:127
-#: src/user_data_page/user_data_page.blp:86
-#: src/snapshot_page/new_snapshot_dialog.blp:80
-#: src/snapshot_page/snapshot_page.blp:145
+#: src/user_data_page/user_data_page.blp:81
+#: src/snapshot_page/new_snapshot_dialog.blp:79
+#: src/snapshot_page/snapshot_page.blp:140
 msgid "Select All"
 msgstr ""
 
@@ -585,7 +626,7 @@ msgstr ""
 #: src/packages_page/packages_page.py:150
 #: src/user_data_page/data_subpage.py:108
 #: src/snapshot_page/new_snapshot_dialog.py:39
-#: src/snapshot_page/snapshot_page.py:342
+#: src/snapshot_page/snapshot_page.py:341
 msgid "{} Selected"
 msgstr ""
 
@@ -630,8 +671,8 @@ msgstr ""
 #: src/packages_page/packages_page.py:336
 #: src/properties_page/properties_page.py:366
 #: src/remotes_page/remotes_page.py:285 src/remotes_page/remotes_page.py:286
-#: src/user_data_page/user_data_page.py:306
-#: src/snapshot_page/snapshot_page.py:547 src/install_page/install_page.py:94
+#: src/user_data_page/user_data_page.py:297
+#: src/snapshot_page/snapshot_page.py:546 src/install_page/install_page.py:94
 #: src/install_page/results_page.py:135
 msgid "This should only take a moment"
 msgstr ""
@@ -647,7 +688,7 @@ msgstr ""
 #: src/packages_page/packages_page.py:338
 #: src/packages_page/packages_page.py:340
 #: src/change_version_page/change_version_page.py:119
-#: src/snapshot_page/snapshot_page.py:540 src/install_page/install_page.py:86
+#: src/snapshot_page/snapshot_page.py:539 src/install_page/install_page.py:86
 msgid "This could take a while"
 msgstr ""
 
@@ -665,7 +706,7 @@ msgstr ""
 
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:114
-#: src/snapshot_page/snapshot_page.py:510
+#: src/snapshot_page/snapshot_page.py:509
 msgid "Trash"
 msgstr ""
 
@@ -824,7 +865,7 @@ msgstr ""
 
 #. Apply again
 #: src/properties_page/properties_page.py:109
-#: src/user_data_page/user_data_page.py:306
+#: src/user_data_page/user_data_page.py:297
 msgid "Loading User Data"
 msgstr ""
 
@@ -849,8 +890,8 @@ msgstr ""
 #: src/properties_page/properties_page.py:183
 #: src/properties_page/properties_page.py:238
 #: src/properties_page/properties_page.py:240 src/user_data_page/data_box.py:99
-#: src/user_data_page/user_data_page.py:185
-#: src/user_data_page/user_data_page.py:199
+#: src/user_data_page/user_data_page.py:184
+#: src/user_data_page/user_data_page.py:198
 msgid "Could not trash data"
 msgstr ""
 
@@ -1030,7 +1071,7 @@ msgid "Title"
 msgstr ""
 
 #: src/remotes_page/add_remote_dialog.blp:43
-#: src/user_data_page/user_data_page.blp:195
+#: src/user_data_page/user_data_page.blp:190
 msgid "Name"
 msgstr ""
 
@@ -1263,12 +1304,11 @@ msgstr ""
 msgid "Could not copy data path"
 msgstr ""
 
-#: src/user_data_page/data_box.py:65 src/user_data_page/user_data_page.py:229
+#: src/user_data_page/data_box.py:65
 msgid "Opened data folder"
 msgstr ""
 
-#: src/user_data_page/data_box.py:67 src/user_data_page/user_data_page.py:231
-#: src/snapshot_page/snapshot_page.py:247
+#: src/user_data_page/data_box.py:67 src/snapshot_page/snapshot_page.py:246
 #: src/snapshot_page/snapshots_list_page.py:77
 msgid "Could not open folder"
 msgstr ""
@@ -1281,8 +1321,8 @@ msgstr ""
 msgid "{}'s data will be sent to the trash"
 msgstr ""
 
-#: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:212
-#: src/snapshot_page/snapshot_page.py:469
+#: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:211
+#: src/snapshot_page/snapshot_page.py:468
 msgid "Continue"
 msgstr ""
 
@@ -1313,94 +1353,90 @@ msgid "There is no leftover user data"
 msgstr ""
 
 #: src/user_data_page/user_data_page.blp:43
-#: src/user_data_page/user_data_page.blp:69
+#: src/user_data_page/user_data_page.blp:64
 msgid "Search User Data"
 msgstr ""
 
-#: src/user_data_page/user_data_page.blp:48
-msgid "Open User Data Folder"
-msgstr ""
-
-#: src/user_data_page/user_data_page.blp:54
+#: src/user_data_page/user_data_page.blp:49
 msgid "Sort User Data"
 msgstr ""
 
-#: src/user_data_page/user_data_page.blp:59
+#: src/user_data_page/user_data_page.blp:54
 msgid "Select User Data"
 msgstr ""
 
-#: src/user_data_page/user_data_page.blp:114
-#: src/user_data_page/user_data_page.blp:153
+#: src/user_data_page/user_data_page.blp:109
+#: src/user_data_page/user_data_page.blp:148
 msgid "Move to Trash"
 msgstr ""
 
-#: src/user_data_page/user_data_page.blp:125
-#: src/snapshot_page/snapshot_page.blp:164
+#: src/user_data_page/user_data_page.blp:120
+#: src/snapshot_page/snapshot_page.blp:159
 msgid "More"
 msgstr ""
 
-#: src/user_data_page/user_data_page.blp:174
+#: src/user_data_page/user_data_page.blp:169
 msgid "Ascending"
 msgstr ""
 
-#: src/user_data_page/user_data_page.blp:182
+#: src/user_data_page/user_data_page.blp:177
 msgid "Descending"
 msgstr ""
 
-#: src/user_data_page/user_data_page.blp:203
+#: src/user_data_page/user_data_page.blp:198
 msgid "ID"
 msgstr ""
 
-#: src/user_data_page/user_data_page.blp:211
+#: src/user_data_page/user_data_page.blp:206
 msgid "Size"
 msgstr ""
 
-#: src/user_data_page/user_data_page.py:77
-#: src/user_data_page/user_data_page.py:79
+#: src/user_data_page/user_data_page.py:76
+#: src/user_data_page/user_data_page.py:78
 msgid "Loading Size"
 msgstr ""
 
-#: src/user_data_page/user_data_page.py:153
+#: src/user_data_page/user_data_page.py:152
 msgid "Could not copy paths"
 msgstr ""
 
-#: src/user_data_page/user_data_page.py:153
-#: src/user_data_page/user_data_page.py:199
+#: src/user_data_page/user_data_page.py:152
+#: src/user_data_page/user_data_page.py:198
 msgid "No boxes were selected"
 msgstr ""
 
-#: src/user_data_page/user_data_page.py:156
+#: src/user_data_page/user_data_page.py:155
 msgid "Copied paths"
 msgstr ""
 
-#: src/user_data_page/user_data_page.py:187
+#: src/user_data_page/user_data_page.py:186
 msgid "Trashed data"
 msgstr ""
 
-#: src/user_data_page/user_data_page.py:210
+#: src/user_data_page/user_data_page.py:209
 msgid "Trash Data?"
 msgstr ""
 
-#: src/user_data_page/user_data_page.py:210
+#: src/user_data_page/user_data_page.py:209
 msgid "Data will be sent to the trash"
 msgstr ""
 
-#: src/user_data_page/user_data_page.py:255
-#: src/user_data_page/user_data_page.py:278
+#: src/user_data_page/user_data_page.py:247
+#: src/user_data_page/user_data_page.py:270
 msgid "Active Data"
 msgstr ""
 
-#: src/user_data_page/user_data_page.py:256
-#: src/user_data_page/user_data_page.py:284
+#: src/user_data_page/user_data_page.py:248
+#: src/user_data_page/user_data_page.py:276
 msgid "Leftover Data"
 msgstr ""
 
-#: src/snapshot_page/new_snapshot_dialog.blp:22
-#: src/snapshot_page/new_snapshot_dialog.blp:38
+#: src/snapshot_page/new_snapshot_dialog.blp:21
+#: src/snapshot_page/new_snapshot_dialog.blp:37
 msgid "Search Apps"
 msgstr ""
 
-#: src/snapshot_page/new_snapshot_dialog.blp:27
+#: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
 msgstr ""
 
@@ -1413,8 +1449,8 @@ msgid "Name these Snapshots"
 msgstr ""
 
 #: src/snapshot_page/new_snapshot_dialog.py:197
-#: src/snapshot_page/snapshot_page.blp:45
-#: src/snapshot_page/snapshot_page.blp:195
+#: src/snapshot_page/snapshot_page.blp:40
+#: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
 msgstr ""
@@ -1488,128 +1524,127 @@ msgstr ""
 msgid "Version: {}"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.blp:40
-#: src/snapshot_page/snapshot_page.blp:182
-msgid "Open Snapshots Folder"
-msgstr ""
-
-#: src/snapshot_page/snapshot_page.blp:58
+#: src/snapshot_page/snapshot_page.blp:53
 msgid "Search Snapshots"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.blp:75
+#: src/snapshot_page/snapshot_page.blp:70
 msgid "Active Snapshots"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.blp:86
+#: src/snapshot_page/snapshot_page.blp:81
 msgid "Snapshots of installed apps"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.blp:104
+#: src/snapshot_page/snapshot_page.blp:99
 msgid "Leftover Snapshots"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.blp:115
+#: src/snapshot_page/snapshot_page.blp:110
 msgid "Snapshots of apps that are no longer installed"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.blp:187
+#: src/snapshot_page/snapshot_page.blp:177
+msgid "Open Snapshots Folder"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.blp:182
 msgid "No Snapshots"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.blp:188
+#: src/snapshot_page/snapshot_page.blp:183
 msgid "Create a Snapshot to save the state of any Flatpak application"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.blp:224
+#: src/snapshot_page/snapshot_page.blp:219
 msgid "Snapshot Apps"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.blp:228
+#: src/snapshot_page/snapshot_page.blp:223
 msgid "Install Apps"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.blp:232
+#: src/snapshot_page/snapshot_page.blp:227
 msgid "Apply Snapshots"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.blp:236
+#: src/snapshot_page/snapshot_page.blp:231
 msgid "Trash Snapshots"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:101
+#: src/snapshot_page/snapshot_page.py:100
 msgid "Could not load Snapshots"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:188
+#: src/snapshot_page/snapshot_page.py:187
 msgid "Showing snapshots for {}"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:192
+#: src/snapshot_page/snapshot_page.py:191
 msgid "No snapshots for {}"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:192
+#: src/snapshot_page/snapshot_page.py:191
 msgid "New"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:236
-#: src/snapshot_page/snapshot_page.py:238
+#: src/snapshot_page/snapshot_page.py:235
+#: src/snapshot_page/snapshot_page.py:237
 #: src/snapshot_page/snapshots_list_page.py:60
 msgid "No Data Found to Snapshot"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:245
+#: src/snapshot_page/snapshot_page.py:244
 #: src/snapshot_page/snapshots_list_page.py:75
 msgid "Opened snapshots folder"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:373
+#: src/snapshot_page/snapshot_page.py:372
 msgid "Copied Snapshot Paths"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:382
+#: src/snapshot_page/snapshot_page.py:381
 msgid "No apps in your selection can be snapshotted"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:458
+#: src/snapshot_page/snapshot_page.py:457
 msgid "Applying Snapshots"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:464
+#: src/snapshot_page/snapshot_page.py:463
 msgid "No snapshots to extract"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:464
+#: src/snapshot_page/snapshot_page.py:463
 msgid "No snapshots were found to extract"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:467
+#: src/snapshot_page/snapshot_page.py:466
 msgid "Apply These Snapshots?"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:467
+#: src/snapshot_page/snapshot_page.py:466
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:503
+#: src/snapshot_page/snapshot_page.py:502
 msgid "Trashed snapshots"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:505
+#: src/snapshot_page/snapshot_page.py:504
 msgid "Could not trash snapshots"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:508
+#: src/snapshot_page/snapshot_page.py:507
 msgid "Trash Snapshots?"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:508
+#: src/snapshot_page/snapshot_page.py:507
 msgid "These apps' snapshots will be sent to the trash"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:547
+#: src/snapshot_page/snapshot_page.py:546
 msgid "Loading Snapshots"
 msgstr ""
 
