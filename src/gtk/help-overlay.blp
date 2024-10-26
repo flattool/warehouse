@@ -1,70 +1,123 @@
 using Gtk 4.0;
 
 ShortcutsWindow help_overlay {
-  modal: true;
-
-  ShortcutsSection {
-    section-name: "shortcuts";
-    // max-height: 8;
-
-    ShortcutsGroup {
-      title: _("App Management");
-
-      ShortcutsShortcut {
-        title: _("Search");
-        action-name: "app.search";
-      }
-
-      ShortcutsShortcut {
-        title: _("Set Filters");
-        action-name: "app.set-filter";
-      }
-
-      ShortcutsShortcut {
-        title: _("Refresh");
-        action-name: "app.refresh-list";
-      }
-
-      ShortcutsShortcut {
-        title: _("Toggle Selection Mode");
-        action-name: "app.toggle-batch-mode";
-      }
-    }
-    ShortcutsGroup {
-      title: _("More Functions");
-
-      ShortcutsShortcut {
-        title: _("Manage Leftover Data");
-        action-name: "app.manage-data-folders";
-      }
-
-      ShortcutsShortcut {
-        title: _("Manage Remotes");
-        action-name: "app.show-remotes-window";
-      }
-
-      ShortcutsShortcut {
-        title: _("Install From File");
-        action-name: "app.install-from-file";
-      }
-    }
-    ShortcutsGroup {
-      title: _("General");
-
-      ShortcutsShortcut {
-        title: _("Open Menu");
-        action-name: "app.open-menu";
-      }
-
-      ShortcutsShortcut {
-        title: _("Show Shortcuts");
-        action-name: "win.show-help-overlay";
-      }
-
-      ShortcutsShortcut {
-        title: _("Quit");
-        action-name: "app.quit";
-      }
-    }
-  }
+	modal: true;
+	ShortcutsSection {
+		section-name: "shortcuts";
+		max-height: 17;
+		ShortcutsGroup {
+			title: _("General");
+			ShortcutsShortcut {
+				title: _("Refresh");
+				action-name: "app.refresh";
+			}
+			ShortcutsShortcut {
+				title: _("Open Files");
+				action-name: "app.open-files";
+			}
+			ShortcutsShortcut {
+				title: _("Open Menu");
+				action-name: "app.open-menu";
+			}
+			ShortcutsShortcut {
+				title: _("Show Shortcuts");
+				action-name: "win.show-help-overlay";
+			}
+			ShortcutsShortcut {
+				title: _("Quit");
+				action-name: "app.quit";
+			}
+		}
+		ShortcutsGroup {
+			title: _("Navigation");
+			ShortcutsShortcut {
+				title: _("Show Packages Page");
+				action-name: "app.show-packages-page";
+			}
+			ShortcutsShortcut {
+				title: _("Show Remotes Page");
+				action-name: "app.show-remotes-page";
+			}
+			ShortcutsShortcut {
+				title: _("Show User Data Page");
+				action-name: "app.show-user-data-page";
+			}
+			ShortcutsShortcut {
+				title: _("Show Snapshots Page");
+				action-name: "app.show-snapshots-page";
+			}
+			ShortcutsShortcut {
+				title: _("Show Install Page");
+				action-name: "app.show-install-page";
+			}
+		}
+		ShortcutsGroup {
+			title: _("Packages Page");
+			ShortcutsShortcut {
+				title: _("Search Mode");
+				action-name: "app.search-mode";
+			}
+			ShortcutsShortcut {
+				title: _("Edit Filters");
+				action-name: "app.filter";
+			}
+			ShortcutsShortcut {
+				title: _("Selection Mode");
+				action-name: "app.toggle-select-mode";
+			}
+		}
+		ShortcutsGroup {
+			title: _("Remotes Page");
+			ShortcutsShortcut {
+				title: _("Search Mode");
+				action-name: "app.search-mode";
+			}
+			ShortcutsShortcut {
+				title: _("Show or Hide Disabled Remotes");
+				action-name: "app.filter";
+			}
+			ShortcutsShortcut {
+				title: _("New Remote");
+				action-name: "app.new";
+			}
+		}
+		ShortcutsGroup {
+			title: _("User Data Page");
+			ShortcutsShortcut {
+				title: _("Search Mode");
+				action-name: "app.search-mode";
+			}
+			ShortcutsShortcut {
+				title: _("Edit Sorting Modes");
+				action-name: "app.filter";
+			}
+			ShortcutsShortcut {
+				title: _("Selection Mode");
+				action-name: "app.toggle-select-mode";
+			}
+			ShortcutsShortcut {
+				title: _("Show Active Data");
+				action-name: "app.active-data-view";
+			}
+			ShortcutsShortcut {
+				title: _("Show Leftover Data");
+				action-name: "app.leftover-data-view";
+			}
+		}
+		ShortcutsGroup {
+			title: _("Snapshots Page");
+			ShortcutsShortcut {
+				title: _("Search Mode");
+				action-name: "app.search-mode";
+			}
+			ShortcutsShortcut {
+				title: _("Selection Mode");
+				action-name: "app.toggle-select-mode";
+			}
+			ShortcutsShortcut {
+				title: _("New Snapshots");
+				action-name: "app.new";
+			}
+		}
+	}
 }

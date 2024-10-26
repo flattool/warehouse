@@ -26,57 +26,45 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 
 from gi.repository import Gtk, Gio, Adw, GLib
+from .host_info import HostInfo
 from .window import WarehouseWindow
-from .remotes_window import RemotesWindow
-from .orphans_window import OrphansWindow
-from .filter_window import FilterWindow
-from .search_install_window import SearchInstallWindow
 from .const import Config
-from .common import myUtils
-
+from .error_toast import ErrorToast
 
 class WarehouseApplication(Adw.Application):
     """The main application singleton class."""
-
+    
     troubleshooting = "OS: {os}\nWarehouse version: {wv}\nGTK: {gtk}\nlibadwaita: {adw}\nApp ID: {app_id}\nProfile: {profile}\nLanguage: {lang}"
     version = Config.VERSION
-
+    
     def __init__(self):
         super().__init__(
             application_id="io.github.flattool.Warehouse",
             flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
         )
-        self.create_action("quit", lambda *_: self.quit(), ["<primary>q"])
         self.create_action("about", self.on_about_action)
         self.create_action("preferences", self.on_preferences_action)
-        self.create_action("search", self.on_search_action, ["<primary>f"])
-        self.create_action("manage-data-folders", self.manage_data_shortcut)
-        self.create_action(
-            "toggle-batch-mode",
-            self.batch_mode_shortcut,
-            ["<primary>b", "<primary>Return"],
-        )
-        self.create_action(
-            "toggle-batch-mode-keypad", self.batch_mode_shortcut, ["<primary>KP_Enter"]
-        )  # This action is not added to the shortcuts window
-        self.create_action(
-            "manage-data-folders", self.manage_data_shortcut, ["<primary>d"]
-        )
-        self.create_action(
-            "refresh-list", self.refresh_list_shortcut, ["<primary>r", "F5"]
-        )
-        self.create_action(
-            "show-remotes-window", self.show_remotes_shortcut, ["<primary>m"]
-        )
-        self.create_action("set-filter", self.filters_shortcut, ["<primary>t"])
-        self.create_action("install-from-file", self.install_from_file, ["<primary>o"])
-        self.create_action("open-menu", self.main_menu_shortcut, ["F10"])
-        self.create_action(
-            "open-search-install", self.open_search_install, ["<primary>i"]
-        )
-
+        self.create_action("quit", lambda *_: self.quit(), ["<primary>q"])
+        self.create_action("open-menu", lambda *_: self.props.active_window.main_menu.popup(), ["F10"])
+        self.create_action("refresh", lambda *_: self.props.active_window.refresh_handler(), ["<primary>r", "F5"])
+        self.create_action("open-files", self.on_open_files_shortcut, ["<primary>o"])
+        
+        self.create_action("show-packages-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("p"), ["<primary>p"])
+        self.create_action("show-remotes-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("m"), ["<primary>m"])
+        self.create_action("show-user-data-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("d"), ["<primary>d"])
+        self.create_action("show-snapshots-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("s"), ["<primary>s"])
+        self.create_action("show-install-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("i"), ["<primary>i"])
+        
+        self.create_action("toggle-select-mode", self.on_toggle_select_mode_shortcut, ["<primary>b", "<primary>Return"])
+        self.create_action("toggle-selection-kp-enter", self.on_toggle_select_mode_shortcut, ["<primary>KP_Enter"]) # Doesn't show in the shortcuts window
+        self.create_action("search-mode", self.on_search_mode_shortcut, ["<primary>f"])
+        self.create_action("filter", self.on_filter_shortcut, ["<primary>t"])
+        self.create_action("new", self.on_new_shortcut, ["<primary>n"])
+        self.create_action("active-data-view", lambda *_: self.on_data_view_shortcut(True), ["<Alt>1"])
+        self.create_action("leftover-data-view", lambda *_: self.on_data_view_shortcut(False), ["<Alt>2"])
+        
         self.is_dialog_open = False
-
+        
         gtk_version = (
             str(Gtk.MAJOR_VERSION)
             + "."
@@ -93,7 +81,7 @@ class WarehouseApplication(Adw.Application):
         )
         os_string = GLib.get_os_info("NAME") + " " + GLib.get_os_info("VERSION")
         lang = GLib.environ_getenv(GLib.get_environ(), "LANG")
-
+        
         self.troubleshooting = self.troubleshooting.format(
             os=os_string,
             wv=self.version,
@@ -103,62 +91,101 @@ class WarehouseApplication(Adw.Application):
             app_id=self.get_application_id(),
             lang=lang,
         )
-
-        self.my_utils = myUtils(self)
-        total = 0
-        for rem in self.my_utils.get_host_remotes():
-            if self.my_utils.get_install_type(rem[7]) != "disabled":
-                total += 1
-        if total < 1:
-            self.lookup_action(f"open-search-install").set_enabled(False)
-
-    def open_search_install(self, widget, _):
-        SearchInstallWindow(self.props.active_window)
-
-    def batch_mode_shortcut(self, widget, _):
-        button = self.props.active_window.batch_mode_button
-        button.set_active(not button.get_active())
-
-    def manage_data_shortcut(self, widget, _):
-        OrphansWindow(self.props.active_window)
-
-    def refresh_list_shortcut(self, widget, _):
-        self.props.active_window.refresh_list_of_flatpaks(widget)
-
-    def show_remotes_shortcut(self, widget, _):
-        RemotesWindow(self.props.active_window)
-
-    def filters_shortcut(self, widget, _):
-        FilterWindow(self.props.active_window)
-
-    def main_menu_shortcut(self, widget, _):
+        
+    def on_open_files_shortcut(self, *args):
         window = self.props.active_window
-        window.main_menu.set_active(True)
-
-    def file_callback(self, object, result):
-        window = self.props.active_window
-        try:
-            file = object.open_finish(result)
-            window.install_file(file.get_path())
-        except GLib.GError:
-            pass
-
-    def install_from_file(self, widget, _a):
-        window = self.props.active_window
-
-        filter = Gtk.FileFilter(name=_("Flatpaks"))
-        filter.add_suffix("flatpak")
-        filter.add_suffix("flatpakref")
+        
+        def file_choose_callback(object, result):
+            try:
+                files = object.open_multiple_finish(result)
+                if not files:
+                    window.toast_overlay.add_toast(ErrorToast(_("Could not add files"), _("No files were found")).toast)
+                    return
+                    
+                window.on_file_drop(None, files, None, None)
+            except GLib.GError as gle:
+                if not (gle.domain == "gtk-dialog-error-quark" and gle.code == 2):
+                    window.toast_overlay.add_toast(ErrorToast(_("Could not add files"), str(gle)).toast)
+                    
+        file_filter = Gtk.FileFilter(name=_("Flatpaks & Remotes"))
+        file_filter.add_suffix("flatpak")
+        file_filter.add_suffix("flatpakref")
+        file_filter.add_suffix("flatpakrepo")
         filters = Gio.ListStore.new(Gtk.FileFilter)
-        filters.append(filter)
+        filters.append(file_filter)
         file_chooser = Gtk.FileDialog()
         file_chooser.set_filters(filters)
-        file_chooser.set_default_filter(filter)
-        file_chooser.open(window, None, self.file_callback)
-
+        file_chooser.set_default_filter(file_filter)
+        file_chooser.open_multiple(window, None, file_choose_callback)
+        
+    def on_toggle_select_mode_shortcut(self, *args):
+        try:
+            button = self.props.active_window.stack.get_visible_child().select_button
+            button.set_active(not button.get_active())
+        except AttributeError:
+            pass
+            
+    def on_search_mode_shortcut(self, *args):
+        try:
+            button = self.props.active_window.stack.get_visible_child().search_button
+            button.set_active(True)
+        except AttributeError:
+            pass
+            
+    def on_filter_shortcut(self, *args):
+        try:
+            button = self.props.active_window.stack.get_visible_child().filter_button
+            button.set_active(not button.get_active())
+        except AttributeError:
+            pass
+            
+        try:
+            button = self.props.active_window.stack.get_visible_child().sort_button
+            button.set_active(True)
+        except AttributeError:
+            pass
+            
+        try:
+            button = self.props.active_window.stack.get_visible_child().show_disabled_button
+            if button.get_visible():
+                button.set_active(not button.get_active())
+        except AttributeError:
+            pass
+            
+    def on_new_shortcut(self, *args):
+        page = self.props.active_window.stack.get_visible_child()
+        try:
+            page.new_custom_handler()
+        except AttributeError:
+            pass
+            
+        try:
+            page.on_new()
+        except AttributeError:
+            pass
+            
+    def on_delete_shortcut(self, *args):
+        page = self.props.active_window.stack.get_visible_child()
+        try:
+            if not page.select_button.get_active():
+                return
+                
+            page.select_trash_handler()
+        except AttributeError:
+            pass
+            
+    def on_data_view_shortcut(self, is_active):
+        page = self.props.active_window.stack.get_visible_child()
+        try:
+            adp = page.adp
+            ldp = page.ldp
+            page.stack.set_visible_child(adp if is_active else ldp)
+        except AttributeError:
+            pass
+            
     def do_activate(self):
         """Called when the application is activated.
-
+        
         We raise the application's main window, creating it if
         necessary.
         """
@@ -166,7 +193,7 @@ class WarehouseApplication(Adw.Application):
         if not win:
             win = WarehouseWindow(application=self)
         win.present()
-
+        
     def on_about_action(self, widget, _a):
         """Callback for the app.about action."""
         about = Adw.AboutDialog(
@@ -207,23 +234,17 @@ class WarehouseApplication(Adw.Application):
             ],
         )
         about.present(self.props.active_window)
-
+        
     def on_preferences_action(self, widget, _):
         """Callback for the app.preferences action."""
         print("app.preferences action activated")
-
-    def on_search_action(self, widget, _):
-        self.props.active_window.search_bar.set_search_mode(
-            not self.props.active_window.search_bar.get_search_mode()
-        )
-
+        
     def create_action(self, name, callback, shortcuts=None):
         """Add an application action.
-
+        
         Args:
             name: the name of the action
-            callback: the function to be called when the action is
-              activated
+            callback: the function to be called when the action is activated
             shortcuts: an optional list of accelerators
         """
         action = Gio.SimpleAction.new(name, None)
@@ -231,8 +252,7 @@ class WarehouseApplication(Adw.Application):
         self.add_action(action)
         if shortcuts:
             self.set_accels_for_action(f"app.{name}", shortcuts)
-
-
+            
 def main(version):
     """The application's entry point."""
     app = WarehouseApplication()

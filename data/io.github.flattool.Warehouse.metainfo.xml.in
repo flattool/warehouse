@@ -8,26 +8,29 @@
 	<project_license>GPL-3.0-only</project_license>
 	<summary>Manage all things Flatpak</summary>
 	<description>
-    <p>Warehouse is an app that manages installed Flatpaks, their user data, and Flatpak remotes.</p>
+    <p>Warehouse provides a simple UI to control complex Flatpak options, all without resorting to the command line.</p>
     <p>Features:</p>
-      <ul>
-        <li>Show and filter the list of installed Flatpaks</li>
-        <li>Display properties of installed Flatpaks</li>
-        <li>Manage large groups of Flatpaks at once</li>
-        <li>Add and remove Flatpak remotes</li>
-        <li>Find and trash leftover user data</li>
-        <li>Reinstall apps that have leftover data</li>
-      </ul>
+    <ul>
+      <li>Manage installed Flatpaks and view properties of any package</li>
+      <li>Change versions of a Flatpak to rollback any unwanted updates</li>
+      <li>Pin runtimes and mask Flatpaks</li>
+      <li>Filter packages and sort data, to help find anything easily</li>
+      <li>See current app user data, and cleanup any unused data left behind</li>
+      <li>Add popular Flatpak remotes with a few clicks or add custom remotes instead</li>
+      <li>Take snapshots of your apps' user data, saving your data</li>
+      <li>Install new packages from any remote, or from your system</li>
+      <li>Responsive UI to fit large and small screen sizes</li>
+    </ul>
 	</description>
   <branding>
     <color type="primary" scheme_preference="light">#AECEF4</color>
     <color type="primary" scheme_preference="dark">#072F5E</color>
   </branding>
-  <recommends>
+  <supports>
     <control>keyboard</control>
     <control>pointing</control>
     <control>touch</control>
-  </recommends>
+  </supports>
   <requires>
     <display_length compare="ge">330</display_length>
   </requires>
@@ -39,54 +42,68 @@
   <url type="donation">https://ko-fi.com/heliguy</url>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/MainView.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/packages_page_wide.png</image>
+      <caption>Manage Installed Packages in Three Pane UI</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/BatchMode.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/propteries_page_skinny.png</image>
+      <caption>Properties Page in Narrow Window</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Properties.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/remotes_page_wide.png</image>
+      <caption>Manage Installed Remotes and Add New Remotes</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Remotes.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/data_page_wide.png</image>
+      <caption>Manage Apps' User Data</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/SearchInstall.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/snapshots_page_wide.png</image>
+      <caption>Backup Apps' User Data</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Snapshots.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/install_page_wide.png</image>
+      <caption>Install New Packages from Files or Remotes</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Orphans.png</image>
-    </screenshot>
-    <screenshot>
-      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/Downgrade.png</image>
+      <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/install_page_skinny.png</image>
+      <caption>Install Page in Narrow Window</caption>
     </screenshot>
   </screenshots>
   <releases>
-    <release version="1.6.5" date="2024-9-18" timestamp="1726790850">
+    <release version="2.0.0" date="2024-10-28" timestamp="1730014216">
       <description translate="no">
-        <p>New Features and Changes</p>
+        <p>New Features</p>
         <ul>
-          <li>Bump GNOME runtime version to 47</li>
+          <li>All new UI to make using Warehouse's features easier</li>
+          <li>UI now better adapts to larger window sizes</li>
+          <li>UI now better adapts to smaller window sizes</li>
+          <li>Improved UI for installing packages from remotes</li>
+          <li>Snapshots can be given names</li>
+          <li>Packages can be reinstalled with a few clicks</li>
+          <li>User Data can now be sorted in multiple ways</li>
+          <li>Active User Data can be browsed just as easily as leftover User Data</li>
+          <li>Custom installation locations are now supported</li>
+          <li>Leftover Snapshots are now shown</li>
+          <li>Apps can be reinstalled from leftover Snapshots</li>
+          <li>Installation location of disabled remotes is now shown</li>
         </ul>
-        <p>Bug Fixes</p>
+        <p>Changes</p>
         <ul>
-          <li>Fix issue causing crash on startup due to Flatpaks with multi-line descriptions</li>
-          <li>Fix Properties Window's layout when a long package name is shown</li>
+          <li>Packages list filter options are now easier to understand, and more predictable with how they are applied</li>
+          <li>Improved keyboard shortcuts for quick navigation</li>
+          <li>The Downgrades (renamed to Change Version) interface now shows the currently installed version</li>
+          <li>Long running processes now have progress bars and can be canceled</li>
+          <li>Better status icons for End of Life, Masked, and Pinned packages</li>
+          <li>Warehouse no longer disables closing its window when long running processes are happening</li>
+          <li>Refreshing now shows a loading animation</li>
         </ul>
-      </description>
-    </release>
-    <release version="1.6.4" date="2024-7-6" timestamp="1720282600">
-      <description translate="no">
-        <p>Bux Fixes</p>
+        <p>Bug Fixes and Performance Improvements</p>
         <ul>
-          <li>Fix issue causing downgrade window to not be able to downgrade anything</li>
-        </ul>
-        <p>Previous Releases's Bug Fixes</p>
-        <ul>
-          <li>Downgrade Window no longer silently fails when downgrading a masked Flatpak, and instead, downgrades it</li>
-          <li>When downgrading and masking system Flatpaks, the password prompt only happens once instead of twice</li>
+          <li>Warehouse is now faster to open</li>
+          <li>Getting system information is now faster</li>
+          <li>Long running processes no longer freeze the app</li>
+          <li>Refreshing is no longer possible when long running processes are happening</li>
         </ul>
       </description>
     </release>

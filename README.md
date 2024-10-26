@@ -2,21 +2,23 @@
 
 ![Image banner in the style of GNOME art showing a box truck, tower crane, and storage garage sat on and next to a road.](readme_banner.svg)
 
-## Warehouse is a versatile toolbox for managing flatpak user data, viewing flatpak app info, and batch managing installed flatpaks.
+## Warehouse is a versatile toolbox and provides a simple UI to control complex Flatpak options, all without resorting to the command line.
 
 ## 🚀 Main Features:
 
-1. **Viewing Flatpak Info:** 📋 Warehouse can display all the information provided by the `flatpak list` command in a user-friendly graphical window. Each item includes a button for easy copying.
+1. **Viewing Flatpak Info:** 📋 Warehouse can display all the information provided by the `Flatpak list` command in a user-friendly graphical window. Each item includes a button for easy copying.
 
-2. **Managing User Data:** 🗑️ Flatpaks store user data in a specific system location, often left behind when an app is uninstalled. Warehouse can uninstall an app and delete its data, delete data without uninstalling, or simply show if an app has user data.
+2. **Change Package Versions:** ↕️ Rollback any unwanted updates of any package, so long as the remote has older versions.
 
-3. **Batch Actions:** ⚡ Warehouse features a batch mode for swift uninstallations, user data deletions, and app ID copying in bulk.
+3. **Managing User Data:** 🗑️ Flatpaks store user data in a specific system location, often left behind when an app is uninstalled. Warehouse can uninstall an app and delete its data, delete data without uninstalling, or simply show if an app has user data.
 
-4. **Leftover Data Management:** 📁 Warehouse scans the user data folder to check for installed apps associated with the data. If none are found, it can delete the data or attempt to install a matching flatpak.
+4. **Batch Actions:** ⚡ Warehouse features a batch mode for swift uninstallations, user data deletions, and app ID copying in bulk.
 
-5. **Manage Remotes:** 📦 Installed and enabled Flatpak remotes can be deleted, and new remotes can be added.
+5. **Leftover Data Management:** 📁 Warehouse scans the user data folder to check for installed apps associated with the data. If none are found, it can delete the data or attempt to install a matching Flatpak.
 
-![Various screenshots of Warehouse's abilities](screenshots.png)
+6. **Manage Remotes:** 📦 Installed and enabled Flatpak remotes can be deleted, and new remotes can be added.
+
+7. **Make Snapshots:** 🕐 Copy app user data to take quick backups before doing anything risky with your data.
 
 ## ⏬ Installation:
 
@@ -39,13 +41,13 @@ Warehouse is now available on Flathub! Visit your software store and search for 
 - The Warehouse project follows the [GNOME Code of Conduct](https://conduct.gnome.org/). See `CODE_OF_CONDUCT.md` for more information.
 
 ## ℹ️ Important Notes:
-- Warehouse assumes flatpak user data is located in the default directory: `~/.var/app`.
-- Warehouse does not aim to replace flatpak; it simply facilitates appropriate flatpak commands for the desired actions.
+- Warehouse assumes Flatpak user data is located in the default directory: `~/.var/app`.
+- Warehouse does not aim to replace Flatpak; it simply facilitates appropriate Flatpak commands for the desired actions.
 - This project is still in its early stages, developed by a newcomer. Your understanding of potential bugs is greatly appreciated.
 
 ## 🛠️ Installation from Repo Steps:
 
-1. Visit the [releases](https://github.com/flattool/warehouse/releases) page and download `io.github.flattool.Warehouse.flatpak`.
+1. Visit the [releases](https://github.com/flattool/warehouse/releases) page and download `io.github.flattool.Warehouse.Flatpak`.
 2. Install it using your software store or run the following command:
    ```shell
    flatpak install /path/to/io.github.flattool.Warehouse.flatpak

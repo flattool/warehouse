@@ -1,0 +1,73 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $DataSubpage : Stack {
+    Box content_box {
+        orientation: vertical;
+        Box label_box {
+            margin-start: 24;
+            margin-end: 24;
+            halign: fill;
+            hexpand: true;
+            Label title {
+                label: _("No Title Set");
+                styles ["title-1"]
+                hexpand: true;
+                justify: fill;
+                halign: start;
+                wrap: true;
+            }
+            Box subtitle_size_box {
+                Spinner spinner {
+                    spinning: true;
+                    valign: center;
+                    margin-top: 3;
+                    margin-end: 6;
+                }
+                Label size_label {
+                    label: _("Loading Size…");
+                    styles ["title-3"]
+                    halign: start;
+                    wrap: true;
+                }
+                Label subtitle {
+                    visible: false;
+                    label: "No Subtutle Set";
+                    styles ["title-3"]
+                    wrap: true;
+                }
+            }
+            margin-bottom: 9;
+        }
+        ScrolledWindow scrolled_window {
+            vexpand: true;
+            Box {
+                orientation: vertical;
+                Separator {
+                    margin-start: 12;
+                    margin-end: 12;
+                    margin-bottom: 9;
+                }
+                FlowBox flow_box {
+                    styles ["boxed-list"]
+                    homogeneous: true;
+                    valign: start;
+                    selection-mode: none;
+                    max-children-per-line: 6;
+                    margin-start: 12;
+                    margin-end: 12;
+                    margin-bottom: 12;
+                }
+            }
+        }
+    }
+    Adw.StatusPage no_data {
+        // Contents will be set from the subpage object
+    }
+    Adw.StatusPage no_results {
+        title: _("No Results Found");
+        description: _("Try a different search");
+        icon-name: "system-search-symbolic";
+        valign: center;
+    }
+}

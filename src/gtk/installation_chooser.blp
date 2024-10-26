@@ -1,0 +1,40 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $InstallationChooser : Adw.PreferencesGroup {
+	title: _("Choose Installation");
+	Adw.ActionRow user_row {
+		[prefix]
+		CheckButton user_check {
+			active: true;
+		}
+		title: _("User");
+		activatable-widget: user_check;
+	}
+	Adw.ActionRow system_row {
+		[prefix]
+		CheckButton system_check {
+			group: user_check;
+		}
+		title: _("System");
+		activatable-widget: system_check;
+	}
+	Adw.ActionRow single_row {
+		visible: false;
+		[prefix]
+		CheckButton single_check {
+			group: user_check;
+		}
+		subtitle: _("Custom installation");
+		activatable-widget: single_check;
+	}
+	Adw.ComboRow choice_row {
+		visible: false;
+		[prefix]
+		CheckButton choice_check {
+			group: user_check;
+		}
+		title: _("Other Installation");
+		subtitle: _("Choose a custom installation");
+	}
+}

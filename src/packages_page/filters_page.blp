@@ -1,0 +1,118 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $FiltersPage : Adw.NavigationPage {
+    title: _("Filter Packages");
+    Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+        ScrolledWindow {
+            Adw.Clamp {
+                Box {
+                    margin-start: 12;
+                    margin-end: 12;
+                    margin-top: 12;
+                    margin-bottom: 12;
+                    spacing: 24;
+                    orientation: vertical;
+                    halign: fill;
+                    Adw.PreferencesGroup {
+                        title: _("Filter by Package Type");
+                        description: _("Show packages of these types");
+                        Adw.ActionRow application_row {
+                            title: _("Applications");
+                            subtitle: _("Packages that can be opened");
+                            CheckButton app_check {}
+                            activatable-widget: app_check;
+                        }
+                        Adw.ActionRow runtime_row {
+                            title: _("Runtimes");
+                            subtitle: _("Packages that applications depend on");
+                            CheckButton runtime_check {}
+                            activatable-widget: runtime_check;
+                        }
+                    }
+
+                    Adw.PreferencesGroup remotes_group {
+                        title: _("Filter by Remotes");
+                        description: _("Show packages from selected remotes");
+                        header-suffix:
+                            Switch all_remotes_switch {
+                                valign: center;
+                            }
+                        ;
+                        Adw.ActionRow {
+                            visible: bind all_remotes_switch.active inverted;
+                            [child]
+                            Box {
+                                spacing: 3;
+                                orientation: vertical;
+                                Label {
+                                    margin-top: 7;
+                                    label: _("Showing packages from all remotes");
+                                    wrap: true;
+                                    halign: center;
+                                    styles ["heading"]
+                                }
+                                Label {
+                                    label: _("Enable to show packages from selected remotes");
+                                    margin-start: 16;
+                                    margin-end: 16;
+                                    margin-bottom: 8;
+                                    justify: center;
+                                    halign: center;
+                                    wrap: true;
+                                }
+                            }
+                        }
+                    }
+
+                    Adw.PreferencesGroup runtimes_group {
+                        title: _("Filter by Runtimes");
+                        description: _("Show apps using selected runtimes");
+                        header-suffix:
+                            Switch all_runtimes_switch {
+                                valign: center;
+                            }
+                        ;
+                        Adw.ActionRow {
+                            visible: bind all_runtimes_switch.active inverted;
+                            [child]
+                            Box {
+                                spacing: 3;
+                                orientation: vertical;
+                                Label {
+                                    margin-top: 7;
+                                    label: _("Showing apps using any runtime");
+                                    wrap: true;
+                                    halign: center;
+                                    styles ["heading"]
+                                }
+                                Label {
+                                    label: _("Enable to show apps using selected runtimes");
+                                    margin-start: 16;
+                                    margin-end: 16;
+                                    margin-bottom: 8;
+                                    justify: center;
+                                    halign: center;
+                                    wrap: true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        [bottom]
+        ActionBar action_bar {
+            [center]
+            Button reset_button {
+                sensitive: bind action_bar.revealed;
+                margin-top: 3;
+                margin-bottom: 3;
+                label: _("Reset Filters");
+                styles ["pill"]
+            }
+        }
+    }
+}
