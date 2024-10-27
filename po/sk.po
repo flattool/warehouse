@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-26 15:32-0400\n"
-"PO-Revision-Date: 2024-10-27 17:15+0000\n"
+"PO-Revision-Date: 2024-10-27 18:18+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
 "Language-Team: Slovak <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/sk/>\n"
@@ -83,6 +83,8 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
 msgstr ""
+"Nainštalujte nové balíky z ľubovoľného vzdialeného repozitára alebo zo "
+"svojho systému"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:22
 msgid "Responsive UI to fit large and small screen sizes"
@@ -114,7 +116,7 @@ msgstr "Inštalujte nové balíky zo súborov alebo vzdialených repozitárov"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
-msgstr ""
+msgstr "Stránka inštalácie v úzkom okne"
 
 #: src/main.py:102 src/main.py:108 src/install_page/select_page.py:60
 #: src/install_page/select_page.py:67
@@ -308,7 +310,7 @@ msgstr "Zobraziť stránku s údajmi používateľa"
 
 #: src/gtk/help-overlay.blp:46
 msgid "Show Snapshots Page"
-msgstr ""
+msgstr "Zobraziť stránku so snapshotmi"
 
 #: src/gtk/help-overlay.blp:50
 msgid "Show Install Page"
@@ -543,7 +545,7 @@ msgstr "Zobrazenie balíkov z vybraných vzdialených repozitárov"
 
 #: src/packages_page/filters_page.blp:52
 msgid "Showing packages from all remotes"
-msgstr ""
+msgstr "Zobrazenie balíkov zo všetkých vzdialených repozitárov"
 
 #: src/packages_page/filters_page.blp:58
 msgid "Enable to show packages from selected remotes"
@@ -555,11 +557,11 @@ msgstr "Filtrovať podľa Runtimes"
 
 #: src/packages_page/filters_page.blp:72
 msgid "Show apps using selected runtimes"
-msgstr ""
+msgstr "Zobraziť aplikácie používajúce vybrané runtime"
 
 #: src/packages_page/filters_page.blp:86
 msgid "Showing apps using any runtime"
-msgstr ""
+msgstr "Zobrazenie aplikácií používajúce ľubovoľný runtime"
 
 #: src/packages_page/filters_page.blp:92
 msgid "Enable to show apps using selected runtimes"
@@ -574,12 +576,12 @@ msgstr "Obnoviť filtre"
 #: src/packages_page/packages_page.blp:83 src/remotes_page/remotes_page.blp:30
 #: src/snapshot_page/snapshot_page.blp:35
 msgid "Search Packages"
-msgstr ""
+msgstr "Hľadať balíky"
 
 #: src/packages_page/packages_page.blp:75
 #: src/snapshot_page/snapshot_page.blp:45
 msgid "Select Packages"
-msgstr ""
+msgstr "Vybrať balíky"
 
 #: src/packages_page/packages_page.blp:93
 msgid "No Packages Match Filters"
@@ -643,7 +645,7 @@ msgstr "Kopírovať Ref"
 #: src/snapshot_page/new_snapshot_dialog.py:39
 #: src/snapshot_page/snapshot_page.py:341
 msgid "{} Selected"
-msgstr ""
+msgstr "{} vybrané"
 
 #: src/packages_page/packages_page.py:191
 msgid "Error getting Flatpak '{}'"
@@ -668,11 +670,11 @@ msgstr "Skopírované {}"
 
 #: src/packages_page/packages_page.py:245
 msgid "Could not copy {}"
-msgstr ""
+msgstr "Nepodarilo sa skopírovať {}"
 
 #: src/packages_page/packages_page.py:277
 msgid "Could not uninstall packages"
-msgstr ""
+msgstr "Nepodarilo sa odinštalovať balíky"
 
 #: src/packages_page/packages_page.py:279
 msgid "Uninstalled Packages"
@@ -680,7 +682,7 @@ msgstr ""
 
 #: src/packages_page/packages_page.py:335
 msgid "Loading Packages"
-msgstr ""
+msgstr "Načítavanie balíkov"
 
 #: src/packages_page/packages_page.py:335
 #: src/packages_page/packages_page.py:336
@@ -891,7 +893,7 @@ msgstr "Žiadne používateľské údaje"
 #: src/properties_page/properties_page.py:129
 #: src/properties_page/properties_page.py:145
 msgid "Could not get properties"
-msgstr ""
+msgstr "Nepodarilo sa získať vlastnosti"
 
 #: src/properties_page/properties_page.py:142
 msgid "No version information found"
@@ -899,7 +901,7 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:162
 msgid "Could not open data"
-msgstr ""
+msgstr "Nepodarilo sa otvoriť údaje"
 
 #: src/properties_page/properties_page.py:181
 #: src/properties_page/properties_page.py:183
@@ -908,7 +910,7 @@ msgstr ""
 #: src/user_data_page/user_data_page.py:184
 #: src/user_data_page/user_data_page.py:198
 msgid "Could not trash data"
-msgstr ""
+msgstr "Nepodarilo sa vyhodiť údaje do koša"
 
 #: src/properties_page/properties_page.py:186
 msgid "Send {}'s User Data to the Trash?"
@@ -924,11 +926,11 @@ msgstr "Vyhodiť údajte"
 
 #: src/properties_page/properties_page.py:199
 msgid "Could not Disable Updates"
-msgstr ""
+msgstr "Nepodarilo sa zakázať aktualizácie"
 
 #: src/properties_page/properties_page.py:199
 msgid "Could not Enable Updates"
-msgstr ""
+msgstr "Nepodarilo sa povoliť aktualizácie"
 
 #: src/properties_page/properties_page.py:205
 msgid "Disabled Updates"
@@ -940,11 +942,11 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:217
 msgid "Could not Disable Autoremoval"
-msgstr ""
+msgstr "Nepodarilo sa zakázať automatické odstraňovanie"
 
 #: src/properties_page/properties_page.py:217
 msgid "Could not Enable Autoremoval"
-msgstr ""
+msgstr "Nepodarilo sa povoliť automatické odstraňovanie"
 
 #: src/properties_page/properties_page.py:222
 msgid "Disabled Autoremoval"
@@ -956,7 +958,7 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:245
 msgid "Could not uninstall"
-msgstr ""
+msgstr "Nepodarilo sa odinštalovať"
 
 #: src/properties_page/properties_page.py:249
 msgid "Uninstalled {}"
@@ -968,7 +970,7 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:266
 msgid "Could not open {}"
-msgstr ""
+msgstr "Nepodarilo sa otvoriť {}"
 
 #: src/properties_page/properties_page.py:281
 msgid "Reinstalled {}"
@@ -995,7 +997,7 @@ msgstr "Skopírovaný príkaz na spustenie"
 
 #: src/properties_page/properties_page.py:330
 msgid "Could not copy launch command"
-msgstr ""
+msgstr "Nepodarilo sa skopírovať príkaz na spustenie"
 
 #: src/properties_page/properties_page.py:336
 msgid "Could not show details"
@@ -1003,7 +1005,7 @@ msgstr "Nepodarilo sa zobraziť podrobnosti"
 
 #: src/properties_page/properties_page.py:366
 msgid "Loading Properties"
-msgstr ""
+msgstr "Načítavanie vlastností"
 
 #: src/properties_page/properties_page.py:369
 msgid "View Snapshots"
@@ -1015,7 +1017,7 @@ msgstr "Kopírovať príkaz na spustenie"
 
 #: src/properties_page/properties_page.py:371
 msgid "Show Details"
-msgstr ""
+msgstr "Zobraziť podrobnosti"
 
 #: src/change_version_page/change_version_page.blp:5
 msgid "Change Versions"
@@ -1039,7 +1041,7 @@ msgstr ""
 
 #: src/change_version_page/change_version_page.py:86
 msgid "Could not get versions"
-msgstr ""
+msgstr "Nepodarilo sa získať verzie"
 
 #: src/change_version_page/change_version_page.py:93
 msgid "Changed {}'s Version"
@@ -1065,19 +1067,19 @@ msgstr ""
 
 #: src/change_version_page/change_version_worker.py:85
 msgid "Could not cancel version change"
-msgstr ""
+msgstr "Nepodarilo sa zrušiť zmenu verzie"
 
 #: src/change_version_page/change_version_worker.py:106
 msgid "Could not change version"
-msgstr ""
+msgstr "Nepodarilo sa zmeniť verziu"
 
 #: src/change_version_page/change_version_worker.py:106
 msgid "Another package is changing version."
-msgstr ""
+msgstr "Ďalší balík mení verziu."
 
 #: src/remotes_page/add_remote_dialog.blp:5 src/install_page/select_page.blp:27
 msgid "Add a Remote"
-msgstr ""
+msgstr "Pridať vzdialený repozitár"
 
 #: src/remotes_page/add_remote_dialog.blp:22
 msgid "Add"
@@ -1102,7 +1104,7 @@ msgstr "Nepodarilo sa pridať vzdialený repozitár"
 
 #: src/remotes_page/add_remote_dialog.py:57
 msgid "Added {}"
-msgstr ""
+msgstr "Pridané {}"
 
 #. Apply
 #: src/remotes_page/add_remote_dialog.py:107
@@ -1111,7 +1113,7 @@ msgstr ""
 
 #: src/remotes_page/remote_row.blp:21
 msgid "Set a Filter for this Remote"
-msgstr ""
+msgstr "Nastaviť filter pre tento vzdialený repozitár"
 
 #: src/remotes_page/remote_row.blp:29
 msgid "More Actions"
@@ -1139,7 +1141,7 @@ msgstr "Odstrániť"
 
 #: src/remotes_page/remote_row.py:24 src/remotes_page/remote_row.py:44
 msgid "Could not enable remote"
-msgstr ""
+msgstr "Nepodarilo sa povoliť vzdialený repozitár"
 
 #: src/remotes_page/remote_row.py:24
 msgid "Remote is already enabled"
@@ -1160,7 +1162,7 @@ msgstr ""
 #: src/remotes_page/remote_row.py:95 src/remotes_page/remote_row.py:107
 #: src/remotes_page/remote_row.py:111
 msgid "Could not disable remote"
-msgstr ""
+msgstr "Nepodarilo sa vypnúť vzdialený repozitár"
 
 #: src/remotes_page/remote_row.py:95
 msgid "Remote is already disabled"
@@ -1188,7 +1190,7 @@ msgstr "Spravovať vzdialený repozitár"
 
 #: src/remotes_page/remotes_page.blp:40
 msgid "Search Remotes"
-msgstr ""
+msgstr "Hľadať vzdialené repozitáre"
 
 #: src/remotes_page/remotes_page.blp:47
 msgid "Current Remotes"
@@ -1221,11 +1223,11 @@ msgstr ""
 
 #: src/remotes_page/remotes_page.blp:126
 msgid "Add Popular Remotes"
-msgstr ""
+msgstr "Pridať obľúbené vzdialené repozitáre"
 
 #: src/remotes_page/remotes_page.blp:127
 msgid "Add new remotes to get more software"
-msgstr ""
+msgstr "Pridajte nové vzdialené repozitáre, aby ste získali viac softvéru"
 
 #: src/remotes_page/remotes_page.blp:131
 msgid "Add Other Remotes"
@@ -1275,11 +1277,11 @@ msgstr "Centrálny repozitár WebKit Developer a Runtime SDK"
 
 #: src/remotes_page/remotes_page.py:152
 msgid "Showing all packages from {}"
-msgstr ""
+msgstr "Zobrazenie všetkých balíkov z {}"
 
 #: src/remotes_page/remotes_page.py:173
 msgid "Could not remove remote"
-msgstr ""
+msgstr "Nepodarilo sa odstrániť vzdialený repozitár"
 
 #: src/remotes_page/remotes_page.py:180
 msgid "Removed {}"
@@ -1292,7 +1294,7 @@ msgstr "Odstrániť {}?"
 #: src/remotes_page/remotes_page.py:224 src/remotes_page/remotes_page.py:234
 #: src/remotes_page/remotes_page.py:236
 msgid "Could not open file"
-msgstr ""
+msgstr "Nepodarilo sa otvoriť súbor"
 
 #: src/remotes_page/remotes_page.py:239
 msgid "Flatpak Repos"
@@ -1305,7 +1307,7 @@ msgstr "Pridávanie vzdialeného repozitára"
 
 #: src/remotes_page/remotes_page.py:286
 msgid "Loading Remotes"
-msgstr ""
+msgstr "Načítavanie vzdialených repozitárov"
 
 #: src/user_data_page/data_box.blp:56
 msgid "Copy Path"
@@ -1321,7 +1323,7 @@ msgstr ""
 
 #: src/user_data_page/data_box.py:60
 msgid "Could not copy data path"
-msgstr ""
+msgstr "Nepodarilo sa skopírovať cestu k údajom"
 
 #: src/user_data_page/data_box.py:65
 msgid "Opened data folder"
@@ -1351,7 +1353,7 @@ msgstr ""
 
 #: src/user_data_page/data_subpage.blp:28
 msgid "Loading Size…"
-msgstr ""
+msgstr "Načítavanie veľkosti…"
 
 #: src/user_data_page/data_subpage.py:233
 msgid "No Active Data"
@@ -1374,7 +1376,7 @@ msgstr "Nezostali žiadne zostatkové používateľské údaje"
 #: src/user_data_page/user_data_page.blp:43
 #: src/user_data_page/user_data_page.blp:64
 msgid "Search User Data"
-msgstr ""
+msgstr "Hľadať údaje používateľa"
 
 #: src/user_data_page/user_data_page.blp:49
 msgid "Sort User Data"
@@ -1382,7 +1384,7 @@ msgstr ""
 
 #: src/user_data_page/user_data_page.blp:54
 msgid "Select User Data"
-msgstr ""
+msgstr "Vyberte údaje používateľa"
 
 #: src/user_data_page/user_data_page.blp:109
 #: src/user_data_page/user_data_page.blp:148
@@ -1413,7 +1415,7 @@ msgstr "Veľkosť"
 #: src/user_data_page/user_data_page.py:76
 #: src/user_data_page/user_data_page.py:78
 msgid "Loading Size"
-msgstr ""
+msgstr "Načítavanie veľkosti"
 
 #: src/user_data_page/user_data_page.py:152
 msgid "Could not copy paths"
@@ -1453,7 +1455,7 @@ msgstr "Zostatkové údaje"
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
 msgid "Search Apps"
-msgstr ""
+msgstr "Hľadať aplikácie"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
@@ -1509,7 +1511,7 @@ msgstr ""
 #: src/snapshot_page/snapshot_box.py:33 src/snapshot_page/snapshot_box.py:45
 #: src/snapshot_page/snapshot_box.py:61
 msgid "Could not write data"
-msgstr ""
+msgstr "Nepodarilo sa zapísať údaje"
 
 #: src/snapshot_page/snapshot_box.py:98
 msgid "Could not trash snapshot"
@@ -1545,7 +1547,7 @@ msgstr ""
 
 #: src/snapshot_page/snapshot_page.blp:53
 msgid "Search Snapshots"
-msgstr ""
+msgstr "Hľadať Snapshoty"
 
 #: src/snapshot_page/snapshot_page.blp:70
 msgid "Active Snapshots"
@@ -1581,7 +1583,7 @@ msgstr ""
 
 #: src/snapshot_page/snapshot_page.blp:223
 msgid "Install Apps"
-msgstr ""
+msgstr "Inštalovať aplikácie"
 
 #: src/snapshot_page/snapshot_page.blp:227
 msgid "Apply Snapshots"
@@ -1593,11 +1595,11 @@ msgstr ""
 
 #: src/snapshot_page/snapshot_page.py:100
 msgid "Could not load Snapshots"
-msgstr ""
+msgstr "Nepodarilo sa načítať Snapshot-y"
 
 #: src/snapshot_page/snapshot_page.py:187
 msgid "Showing snapshots for {}"
-msgstr ""
+msgstr "Zobrazenie snapshotov pre {}"
 
 #: src/snapshot_page/snapshot_page.py:191
 msgid "No snapshots for {}"
@@ -1653,7 +1655,7 @@ msgstr ""
 
 #: src/snapshot_page/snapshot_page.py:504
 msgid "Could not trash snapshots"
-msgstr ""
+msgstr "Nepodarilo sa vyhodiť snapshoty do koša"
 
 #: src/snapshot_page/snapshot_page.py:507
 msgid "Trash Snapshots?"
@@ -1699,7 +1701,7 @@ msgstr ""
 
 #: src/install_page/file_install_dialog.py:39
 msgid "Install a Package"
-msgstr ""
+msgstr "Inštalovať balík"
 
 #. self.packages_group.set_title(_("Review Package"))
 #: src/install_page/file_install_dialog.py:41
@@ -1712,7 +1714,7 @@ msgstr ""
 
 #: src/install_page/install_page.blp:41
 msgid "Select Source"
-msgstr ""
+msgstr "Vyberte zdroj"
 
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
@@ -1770,12 +1772,12 @@ msgstr "Tento balík je už nainštalovaný"
 
 #: src/install_page/results_page.blp:5
 msgid "Search a Remote"
-msgstr ""
+msgstr "Vyhľadať vzdialený repozitár"
 
 #. hexpand: true;
 #: src/install_page/results_page.blp:20
 msgid "Search for Packages"
-msgstr ""
+msgstr "Vyhľadávanie balíkov"
 
 #: src/install_page/results_page.blp:26
 msgid "Search for Flatpaks"
@@ -1783,7 +1785,7 @@ msgstr "Hľadať balíky Flatpak"
 
 #: src/install_page/results_page.blp:27
 msgid "Search for Flatpaks you want to install"
-msgstr ""
+msgstr "Vyhľadajte balíky Flatpak, ktoré chcete nainštalovať"
 
 #: src/install_page/results_page.blp:31
 msgid "Too Many Results"
@@ -1799,7 +1801,7 @@ msgstr "Skúste iný hľadaný výraz"
 
 #: src/install_page/results_page.py:50
 msgid "Search {}"
-msgstr ""
+msgstr "Hľadať {}"
 
 #: src/install_page/results_page.py:135
 msgid "Searching"
@@ -1807,7 +1809,7 @@ msgstr "Vyhľadávanie"
 
 #: src/install_page/select_page.blp:19
 msgid "Search in a Remote"
-msgstr ""
+msgstr "Vyhľadávať vo vzdialenom repozitári"
 
 #: src/install_page/select_page.blp:20
 msgid "Choose a remote to search for new packages"
@@ -1823,11 +1825,11 @@ msgstr ""
 
 #: src/install_page/select_page.blp:28
 msgid "Add a remote to your system to enable online searching"
-msgstr ""
+msgstr "Pridať vzdialený repozitár do systému a umožniť vyhľadávanie online"
 
 #: src/install_page/select_page.blp:38
 msgid "Install packages from files on your system"
-msgstr ""
+msgstr "Inštalovať balíky zo súborov v systéme"
 
 #: src/install_page/select_page.py:60
 msgid "No files were found to install"
