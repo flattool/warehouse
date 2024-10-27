@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-26 15:32-0400\n"
-"PO-Revision-Date: 2024-04-08 13:45+0000\n"
+"PO-Revision-Date: 2024-10-27 17:15+0000\n"
 "Last-Translator: Сергей Ворон <voron.s.a@gmail.com>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.4.2\n"
+"X-Generator: Weblate 5.7.2\n"
 
 #. Translators: Do not translate the applicaion name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -39,6 +39,8 @@ msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
+"Warehouse предоставляет простой интерфейс для управления сложными "
+"параметрами Flatpak без использования командной строки."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -47,31 +49,38 @@ msgstr "Возможности:"
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
 msgstr ""
+"Управление установленными пакетами Flatpak и просмотр свойств любого пакета"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
 msgstr ""
+"Изменение версии пакетов Flatpak, чтобы откатить нежелательные обновления"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
-msgstr ""
+msgstr "Закрепление сред выполнения и маскировка Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
-msgstr ""
+msgstr "Фильтр пакетов и сортировка данных, чтобы легко найти что-либо"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
+"Просмотр текущих пользовательских данных приложения и удаление всех "
+"оставшихся неиспользуемых данных"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
 msgstr ""
+"Добавьте популярные Flatpak репозитории всего за несколько кликов или "
+"добавьте свои собственные репозитории"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
 msgstr ""
+"Делайте снимки пользовательских данных ваших приложений, сохраняя ваши данные"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
@@ -111,24 +120,20 @@ msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
-msgstr ""
+msgstr "Страница установки в небольшом окне"
 
 #: src/main.py:102 src/main.py:108 src/install_page/select_page.py:60
 #: src/install_page/select_page.py:67
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not add files"
-msgstr "Не удалось добавить {}"
+msgstr "Не удалось добавить файлы"
 
 #: src/main.py:102
 msgid "No files were found"
-msgstr ""
+msgstr "Файлы не найдены"
 
 #: src/main.py:110
-#, fuzzy
-#| msgid "Add Flatpak Remote"
 msgid "Flatpaks & Remotes"
-msgstr "Добавить репозиторий Flatpak"
+msgstr "Пакеты и репозитории"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
 #: src/main.py:218
@@ -144,83 +149,66 @@ msgid "Contributors"
 msgstr "Участники"
 
 #: src/host_info.py:380 src/host_info.py:382
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not load packages"
-msgstr "Не удалось добавить {}"
+msgstr "Не удалось загрузить пакеты"
 
 #: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
-msgstr ""
+msgstr "Во время установки возникли ошибки"
 
 #: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
-msgstr ""
+msgstr "Произошла ошибка во время установки"
 
 #: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:70
 msgid "Failed to exit cleanly"
-msgstr ""
+msgstr "Не удалось выйти без ошибок"
 
 #: src/package_install_worker.py:104
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not cancel installation"
-msgstr "Не удалось установить приложение"
+msgstr "Не удалось отменить установку"
 
 #: src/package_install_worker.py:125 src/package_install_worker.py:135
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not install packages"
-msgstr "Не удалось установить приложение"
+msgstr "Не удалось установить пакеты"
 
 #: src/package_install_worker.py:125
 msgid "Packages are currently being installed."
-msgstr ""
+msgstr "В настоящее время идет установка пакетов."
 
 #: src/package_install_worker.py:135
 msgid "No packages were requested to be installed."
-msgstr ""
+msgstr "Не было запрошено ни одного пакета для установки."
 
 #: src/gtk/app_row.blp:14
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid "This package is End Of Life, and will not receive any security updates"
 msgstr ""
-"Срок поддержки приложения {} закончился и оно больше не будет получать "
-"никаких обновлений безопасности"
+"Этот пакет больше не поддерживается и не будет получать никаких обновлений "
+"безопасности"
 
 #: src/gtk/app_row.blp:21
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid ""
 "This app's runtime is End Of Life, and will not receive any security updates"
 msgstr ""
-"Срок поддержки приложения {} закончился и оно больше не будет получать "
-"никаких обновлений безопасности"
+"Срок службы этого приложения истек, и оно не будет получать никаких "
+"обновлений безопасности"
 
 #: src/gtk/app_row.blp:28
 msgid "This runtime will never be automatically removed"
-msgstr ""
+msgstr "Эта среда выполнения никогда не будет удалена автоматически"
 
 #: src/gtk/app_row.blp:34
 msgid "Updates are disabled for this package"
-msgstr ""
+msgstr "Обновления для этого пакета отключены"
 
 #: src/gtk/attempt_install_dialog.blp:5
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "Attempt an Install?"
 msgstr "Попытаться установить?"
 
 #: src/gtk/attempt_install_dialog.blp:6
-#, fuzzy
-#| msgid "Warehouse will attempt to install apps matching the selected data."
 msgid "Warehouse will try to install the matching packages."
-msgstr ""
-"Warehouse попытается установить приложения, соответствующие выбранным данным."
+msgstr "Warehouse попытается установить соответствующие пакеты."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:37
@@ -246,35 +234,31 @@ msgid "Install"
 msgstr "Установить"
 
 #: src/gtk/attempt_install_dialog.blp:12
-#, fuzzy
-#| msgid "Choose a Remote to Search"
 msgid "Choose a Remote"
-msgstr "Выбрать репозиторий который обыскивать"
+msgstr "Выбрать репозиторий"
 
 #: src/gtk/attempt_install_dialog.blp:13
 msgid "Select a remote to attempt to install from"
-msgstr ""
+msgstr "Выбрать репозиторий, с которого будет выполнена попытка установки"
 
 #: src/gtk/attempt_install_dialog.py:18 src/packages_page/filters_page.py:122
 #: src/remotes_page/remote_row.py:148 src/install_page/pending_page.py:29
 #: src/install_page/select_page.py:31
-#, fuzzy
-#| msgid "Installation"
 msgid "Installation: {}"
-msgstr "Установка"
+msgstr "Установка: {}"
 
 #: src/gtk/attempt_install_dialog.py:71
 msgid "Can't find matching packages"
-msgstr ""
+msgstr "Не удается найти подходящие пакеты"
 
 #: src/gtk/attempt_install_dialog.py:71
 msgid "Your system has no remotes added"
-msgstr ""
+msgstr "В вашей системе нет добавленных репозиториев"
 
 #. Extra Object Creation
 #: src/gtk/error_toast.py:12
 msgid "Details"
-msgstr ""
+msgstr "Подробности"
 
 #: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
@@ -296,10 +280,8 @@ msgid "Refresh"
 msgstr "Обновить"
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Open Files"
-msgstr "Установить фильтры"
+msgstr "Открыть файлы"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
@@ -315,46 +297,36 @@ msgstr "Выйти"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
-msgstr ""
+msgstr "Навигация"
 
 #: src/gtk/help-overlay.blp:34
 msgid "Show Packages Page"
-msgstr ""
+msgstr "Показать страницу пакетов"
 
 #: src/gtk/help-overlay.blp:38
-#, fuzzy
-#| msgid "No Remotes Found"
 msgid "Show Remotes Page"
-msgstr "Репозиториев не найдено"
+msgstr "Показать страницу репозиториев"
 
 #: src/gtk/help-overlay.blp:42
-#, fuzzy
-#| msgid "No User Data"
 msgid "Show User Data Page"
-msgstr "Нет пользовательских данных"
+msgstr "Показать страницу данных пользователя"
 
 #: src/gtk/help-overlay.blp:46
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Show Snapshots Page"
-msgstr "Нет снимков"
+msgstr "Показать страницу снимков"
 
 #: src/gtk/help-overlay.blp:50
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show Install Page"
-msgstr "Показать отключенные"
+msgstr "Показать страницу установки"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Packages Page"
-msgstr ""
+msgstr "Страница пакетов"
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
-#, fuzzy
-#| msgid "Search"
 msgid "Search Mode"
-msgstr "Поиск"
+msgstr "Режим поиска"
 
 #: src/gtk/help-overlay.blp:61
 #, fuzzy
@@ -1334,22 +1306,16 @@ msgid "remote"
 msgstr "Добавить репозиторий"
 
 #: src/remotes_page/remote_row.blp:21
-#, fuzzy
-#| msgid "View apps from this remote"
 msgid "Set a Filter for this Remote"
-msgstr "Просмотр приложений с этого репозитория"
+msgstr "Установить фильтр для этого репозитория"
 
 #: src/remotes_page/remote_row.blp:29
-#, fuzzy
-#| msgid "More Functions"
 msgid "More Actions"
-msgstr "Дополнительные функции"
+msgstr "Дополнительные действия"
 
 #: src/remotes_page/remote_row.blp:37
-#, fuzzy
-#| msgid "Copy Ref"
 msgid "Copy Title"
-msgstr "Копировать ссылку"
+msgstr "Копировать заголовок"
 
 #: src/remotes_page/remote_row.blp:41
 msgid "Copy Name"
