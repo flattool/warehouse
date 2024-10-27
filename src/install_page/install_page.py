@@ -35,6 +35,8 @@ class InstallPage(Adw.BreakpointBin):
     did_error = False
     
     def start_loading(self):
+        self.total_added_packages = 0
+        self.bottom_bar_visual_handler(False)
         self.status_stack.set_visible_child(self.loading_view)
         self.select_page.start_loading()
         self.pending_page.reset()
