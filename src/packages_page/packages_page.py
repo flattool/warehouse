@@ -53,6 +53,7 @@ class PackagesPage(Adw.BreakpointBin):
     #    This must be set to the created object from within the class's __init__ method
     instance = None
     page_name = "packages"
+    last_activated_row = None
     
     def set_status(self, to_set):
         
@@ -198,6 +199,11 @@ class PackagesPage(Adw.BreakpointBin):
         self.scrolled_window.set_vadjustment(Gtk.Adjustment.new(0,0,0,0,0,0)) # Scroll list to top
         
     def row_activate_handler(self, list_box, row):
+        if self.select_button.get_active():
+            row.check_button.set_active(not row.check_button.get_active())
+            return
+            
+        self.last_activated_row = row
         self.properties_page.set_properties(row.package)
         self.properties_page.nav_view.pop()
         self.packages_split.set_show_content(True)
@@ -213,6 +219,12 @@ class PackagesPage(Adw.BreakpointBin):
             return True
             
     def set_selection_mode(self, is_enabled):
+        if is_enabled:
+            self.packages_list_box.set_selection_mode(Gtk.SelectionMode.NONE)
+        else:
+            self.packages_list_box.set_selection_mode(Gtk.SelectionMode.SINGLE)
+            self.packages_list_box.select_row(self.last_activated_row)
+            
         i = 0
         while row := self.packages_list_box.get_row_at_index(i):
             i += 1
@@ -284,6 +296,7 @@ class PackagesPage(Adw.BreakpointBin):
         dialog.present(self.main_window)
         
     def start_loading(self):
+        self.last_activated_row = None
         self.packages_navpage.set_title(_("Packages"))
         self.select_button.set_active(False)
         self.set_status(self.loading_packages)

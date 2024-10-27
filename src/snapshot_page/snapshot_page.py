@@ -87,6 +87,7 @@ class SnapshotPage(Adw.BreakpointBin):
     instance = None
     page_name = "snapshots"
     is_trash_dialog_open = False
+    last_activated_row = None
     
     def sort_snapshots(self, *args):
         self.active_snapshot_paks.clear()
@@ -139,8 +140,6 @@ class SnapshotPage(Adw.BreakpointBin):
             
         if len(self.active_snapshot_paks) > 0:
             self.active_box.set_visible(True)
-            # first_row = self.active_listbox.get_row_at_index(0)
-            # self.active_listbox.select_row(first_row)
         else:
             self.active_box.set_visible(False)
             
@@ -154,17 +153,25 @@ class SnapshotPage(Adw.BreakpointBin):
             self.leftover_box.set_visible(True)
             if len(self.active_snapshot_paks) == 0:
                 self.stack.set_visible_child(self.scrolled_window)
-                # first_row = self.leftover_listbox.get_row_at_index(0)
-                # self.leftover_listbox.select_row(first_row)
         else:
             self.leftover_box.set_visible(False)
             
     def active_select_handler(self, listbox, row, should_show_content=True, refresh=False):
+        if row.check_button.get_visible():
+            row.check_button.set_active(not row.check_button.get_active())
+            return
+            
+        self.last_activated_row = row
         self.leftover_listbox.select_row(None)
         self.list_page.set_snapshots(row.package, refresh)
         self.split_view.set_show_content(should_show_content)
         
     def leftover_select_handler(self, listbox, row, should_show_content=True, refresh=False):
+        if row.check_button.get_visible():
+            row.check_button.set_active(not row.check_button.get_active())
+            return
+            
+        self.last_activated_row = row
         self.active_listbox.select_row(None)
         self.list_page.set_snapshots(row.folder, refresh)
         self.split_view.set_show_content(should_show_content)
@@ -193,6 +200,7 @@ class SnapshotPage(Adw.BreakpointBin):
             self.toast_overlay.add_toast(toast)
             
     def start_loading(self):
+        self.last_activated_row = None
         self.search_button.set_active(False)
         self.workers.clear()
         self.select_button.set_active(False)
@@ -298,6 +306,13 @@ class SnapshotPage(Adw.BreakpointBin):
             
     def set_selection_mode(self, *args):
         enable = self.select_button.get_active()
+        self.active_listbox.set_selection_mode(Gtk.SelectionMode.NONE if enable else Gtk.SelectionMode.SINGLE)
+        self.leftover_listbox.set_selection_mode(Gtk.SelectionMode.NONE if enable else Gtk.SelectionMode.SINGLE)
+        if self.last_activated_row in self.active_listbox:
+            self.active_listbox.select_row(self.last_activated_row)
+        elif self.last_activated_row in self.leftover_listbox:
+            self.leftover_listbox.select_row(self.last_activated_row)
+            
         i = 0
         while row := self.active_listbox.get_row_at_index(i):
             i += 1
