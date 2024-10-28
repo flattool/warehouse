@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-05-16 03:23+0000\n"
-"Last-Translator: lucasmz <git@lucasmz.dev>\n"
+"PO-Revision-Date: 2024-10-29 07:39+0000\n"
+"Last-Translator: Eduardo Teles <edu.teles@pm.me>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.fyralabs.com/projects/"
 "flattool/warehouse/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.8.1\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -38,6 +38,8 @@ msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
+"O Warehouse oferece uma interface simples para controlar opções complexas do "
+"Flatpak, tudo sem precisar recorrer à linha de comando."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -46,10 +48,12 @@ msgstr "Recursos:"
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
 msgstr ""
+"Gerencie Flatpaks instalados e visualize as propriedades de qualquer pacote"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
 msgstr ""
+"Altere as versões de um Flatpak para reverter qualquer atualização indesejada"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
@@ -58,55 +62,57 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
 msgstr ""
+"Filtre pacotes e organize os dados para encontrar qualquer coisa facilmente"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
+"Veja os dados de usuário do app atual e limpe qualquer dado não utilizado "
+"que foi deixado para trás"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
 msgstr ""
+"Adicione repositórios populares do Flatpak com alguns cliques ou adicione "
+"repositórios personalizados se preferir"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
 msgstr ""
+"Tire snapshots dos dados de usuário dos seus apps, salvando suas informações"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
-msgstr ""
+msgstr "Instale novos pacotes de qualquer repositório ou do seu sistema"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:22
 msgid "Responsive UI to fit large and small screen sizes"
-msgstr ""
+msgstr "Interface responsiva para se ajustar a telas grandes e pequenas"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
-msgstr ""
+msgstr "Gerencie pacotes instalados em uma interface de três painéis"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
-msgstr ""
+msgstr "Página de propriedades em janela pequena"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
-msgstr ""
+msgstr "Gerencie repositórios instalados e adicione novos repositórios"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:58
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Manage Apps' User Data"
-msgstr "Excluir os dados de usuário dos aplicativos selecionados?"
+msgstr "Gerencie os dados de usuário dos aplicativos"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:62
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Backup Apps' User Data"
-msgstr "Excluir os dados de usuário dos aplicativos selecionados?"
+msgstr "Backup dos dados de usuário dos aplicativos"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
-msgstr ""
+msgstr "Instale novos pacotes a partir de arquivos ou do repositório"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
@@ -114,20 +120,16 @@ msgstr ""
 
 #: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
 #: src/install_page/select_page.py:67
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not add files"
-msgstr "Não foi possível adicionar {}"
+msgstr "Não foi possível adicionar arquivos"
 
 #: src/main.py:101
 msgid "No files were found"
-msgstr ""
+msgstr "Nenhum arquivo foi encontrado"
 
 #: src/main.py:109
-#, fuzzy
-#| msgid "Add Flatpak Remote"
 msgid "Flatpaks & Remotes"
-msgstr "Adicionar repositório remoto de Flatpak"
+msgstr "Flatpaks & Repositórios"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
 #: src/main.py:217
@@ -146,83 +148,66 @@ msgid "Contributors"
 msgstr "Contribuidores"
 
 #: src/host_info.py:380 src/host_info.py:382
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not load packages"
-msgstr "Não foi possível adicionar {}"
+msgstr "Não foi possível carregar os pacotes"
 
 #: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
-msgstr ""
+msgstr "Ocorreram erros durante a instalação"
 
 #: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
-msgstr ""
+msgstr "Ocorreu um erro durante a instalação"
 
 #: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:70
 msgid "Failed to exit cleanly"
-msgstr ""
+msgstr "Falha ao sair corretamente"
 
 #: src/package_install_worker.py:104
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not cancel installation"
-msgstr "Não foi possível instalar o aplicativo"
+msgstr "Não foi possível cancelar a instalação"
 
 #: src/package_install_worker.py:125 src/package_install_worker.py:135
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not install packages"
-msgstr "Não foi possível instalar o aplicativo"
+msgstr "Não foi possível instalar os pacotes"
 
 #: src/package_install_worker.py:125
 msgid "Packages are currently being installed."
-msgstr ""
+msgstr "Pacotes estão sendo instalados no momento."
 
 #: src/package_install_worker.py:135
 msgid "No packages were requested to be installed."
-msgstr ""
+msgstr "Nenhum pacote foi solicitado para instalação."
 
 #: src/gtk/app_row.blp:14 src/properties_page/properties_page.blp:100
 #: src/properties_page/properties_page.blp:179
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid "This package is End Of Life, and will not receive any security updates"
 msgstr ""
-"{} chegou a seu Fim de Vida e não receberá nenhuma atualização de segurança"
+"Este pacote está em Fim de Vida e não receberá mais atualizações de segurança"
 
 #: src/gtk/app_row.blp:21
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid ""
 "This app's runtime is End Of Life, and will not receive any security updates"
 msgstr ""
-"{} chegou a seu Fim de Vida e não receberá nenhuma atualização de segurança"
+"O runtime deste aplicativo está em Fim de Vida e não receberá mais "
+"atualizações de segurança"
 
 #: src/gtk/app_row.blp:28
 msgid "This runtime will never be automatically removed"
-msgstr ""
+msgstr "Este runtime nunca será removido automaticamente"
 
 #: src/gtk/app_row.blp:34
 msgid "Updates are disabled for this package"
-msgstr ""
+msgstr "As atualizações estão desativadas para este pacote"
 
 #: src/gtk/attempt_install_dialog.blp:5
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "Attempt an Install?"
-msgstr "Tentar instalar?"
+msgstr "Tentar uma instalação?"
 
 #: src/gtk/attempt_install_dialog.blp:6
-#, fuzzy
-#| msgid "Warehouse will attempt to install apps matching the selected data."
 msgid "Warehouse will try to install the matching packages."
-msgstr ""
-"O Warehouse tentará instalar aplicativos que correspondam aos dados "
-"selecionados."
+msgstr "O Warehouse tentará instalar os pacotes correspondentes."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:37
@@ -248,35 +233,31 @@ msgid "Install"
 msgstr "Instalar"
 
 #: src/gtk/attempt_install_dialog.blp:12
-#, fuzzy
-#| msgid "Choose a Remote to Search"
 msgid "Choose a Remote"
-msgstr "Escolha um repositório remoto para pesquisar"
+msgstr "Escolha um Repositório"
 
 #: src/gtk/attempt_install_dialog.blp:13
 msgid "Select a remote to attempt to install from"
-msgstr ""
+msgstr "Selecione um repositório para tentar instalar"
 
 #: src/gtk/attempt_install_dialog.py:18 src/packages_page/filters_page.py:122
 #: src/remotes_page/remote_row.py:148 src/install_page/pending_page.py:29
 #: src/install_page/select_page.py:31
-#, fuzzy
-#| msgid "Installation"
 msgid "Installation: {}"
-msgstr "Instalação"
+msgstr "Instalação: {}"
 
 #: src/gtk/attempt_install_dialog.py:71
 msgid "Can't find matching packages"
-msgstr ""
+msgstr "Não foi possível encontrar pacotes correspondentes"
 
 #: src/gtk/attempt_install_dialog.py:71
 msgid "Your system has no remotes added"
-msgstr ""
+msgstr "Seu sistema não tem repositórios adicionados"
 
 #. Extra Object Creation
 #: src/gtk/error_toast.py:12
 msgid "Details"
-msgstr ""
+msgstr "Detalhes"
 
 #: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
@@ -298,10 +279,8 @@ msgid "Refresh"
 msgstr "Atualizar"
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Open Files"
-msgstr "Definir filtros"
+msgstr "Abrir Arquivos"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
@@ -317,81 +296,61 @@ msgstr "Fechar"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
-msgstr ""
+msgstr "Navegação"
 
 #: src/gtk/help-overlay.blp:34
 msgid "Show Packages Page"
-msgstr ""
+msgstr "Mostrar Página de Pacotes"
 
 #: src/gtk/help-overlay.blp:38
-#, fuzzy
-#| msgid "No Remotes Found"
 msgid "Show Remotes Page"
-msgstr "Nenhum repositório remoto encontrado"
+msgstr "Mostrar Página do Repositório"
 
 #: src/gtk/help-overlay.blp:42
-#, fuzzy
-#| msgid "No User Data"
 msgid "Show User Data Page"
-msgstr "Não há dados de usuário"
+msgstr "Mostrar Página de Dados do Usuário"
 
 #: src/gtk/help-overlay.blp:46
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Show Snapshots Page"
-msgstr "Nenhuma snapshot"
+msgstr "Mostrar Página de Snapshots"
 
 #: src/gtk/help-overlay.blp:50
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show Install Page"
-msgstr "Mostrar desativados"
+msgstr "Mostrar Página de Instalação"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Packages Page"
-msgstr ""
+msgstr "Página do Pacote"
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
-#, fuzzy
-#| msgid "Search"
 msgid "Search Mode"
-msgstr "Buscar"
+msgstr "Mode de Busca"
 
 #: src/gtk/help-overlay.blp:61
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Edit Filters"
-msgstr "Definir filtros"
+msgstr "Editar filtros"
 
 #: src/gtk/help-overlay.blp:65 src/gtk/help-overlay.blp:95
 #: src/gtk/help-overlay.blp:114
-#, fuzzy
-#| msgid "Toggle Selection Mode"
 msgid "Selection Mode"
-msgstr "Ativar/desativar modo de seleção"
+msgstr "Modo de seleção"
 
 #: src/gtk/help-overlay.blp:70
 msgid "Remotes Page"
-msgstr ""
+msgstr "Página dos Repositórios"
 
 #: src/gtk/help-overlay.blp:76
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show or Hide Disabled Remotes"
-msgstr "Mostrar desativados"
+msgstr "Mostrar ou Ocultar Repositórios Desativados"
 
 #: src/gtk/help-overlay.blp:80
-#, fuzzy
-#| msgid "Add Remote"
 msgid "New Remote"
-msgstr "Adicionar repositório"
+msgstr "Novo repositório"
 
 #: src/gtk/help-overlay.blp:85
-#, fuzzy
-#| msgid "User Data"
 msgid "User Data Page"
-msgstr "Dados de usuário"
+msgstr "Página de Dados do Usuário"
 
 #: src/gtk/help-overlay.blp:91
 msgid "Edit Sorting Modes"
