@@ -1,311 +1,311 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
 	<id>io.github.flattool.Warehouse.desktop</id>
-  <launchable type="desktop-id">io.github.flattool.Warehouse.desktop</launchable>
-  <name translate="no">Warehouse</name>
-  <developer_name translate="no">Heliguy</developer_name>
+	<launchable type="desktop-id">io.github.flattool.Warehouse.desktop</launchable>
+	<name translate="no">Warehouse</name>
+	<developer_name translate="no">Heliguy</developer_name>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-only</project_license>
 	<summary>Manage all things Flatpak</summary>
 	<description>
-	<p>Warehouse provides a simple UI to control complex Flatpak options, all without resorting to the command line.</p>
-	<p>Features:</p>
-	<ul>
-	  <li>Manage installed Flatpaks and view properties of any package</li>
-	  <li>Change versions of a Flatpak to rollback any unwanted updates</li>
-	  <li>Pin runtimes and mask Flatpaks</li>
-	  <li>Filter packages and sort data, to help find anything easily</li>
-	  <li>See current app user data, and cleanup any unused data left behind</li>
-	  <li>Add popular Flatpak remotes with a few clicks or add custom remotes instead</li>
-	  <li>Take snapshots of your apps' user data, saving your data</li>
-	  <li>Install new packages from any remote, or from your system</li>
-	  <li>Responsive UI to fit large and small screen sizes</li>
-	</ul>
+		<p>Warehouse provides a simple UI to control complex Flatpak options, all without resorting to the command line.</p>
+		<p>Features:</p>
+		<ul>
+			<li>Manage installed Flatpaks and view properties of any package</li>
+			<li>Change versions of a Flatpak to rollback any unwanted updates</li>
+			<li>Pin runtimes and mask Flatpaks</li>
+			<li>Filter packages and sort data, to help find anything easily</li>
+			<li>See current app user data, and cleanup any unused data left behind</li>
+			<li>Add popular Flatpak remotes with a few clicks or add custom remotes instead</li>
+			<li>Take snapshots of your apps' user data, saving your data</li>
+			<li>Install new packages from any remote, or from your system</li>
+			<li>Responsive UI to fit large and small screen sizes</li>
+		</ul>
 	</description>
-  <branding>
-	<color type="primary" scheme_preference="light">#AECEF4</color>
-	<color type="primary" scheme_preference="dark">#072F5E</color>
-  </branding>
-  <supports>
-	<control>keyboard</control>
-	<control>pointing</control>
-	<control>touch</control>
-  </supports>
-  <requires>
-	<display_length compare="ge">330</display_length>
-  </requires>
-  <content_rating type="oars-1.1"/>
-  <url type="homepage">https://github.com/flattool/warehouse</url>
-  <url type="bugtracker">https://github.com/flattool/warehouse/issues</url>
-  <url type="vcs-browser">https://github.com/flattool/warehouse</url>
-  <url type="translate">https://weblate.fyralabs.com/projects/flattool/warehouse/</url>
-  <url type="donation">https://ko-fi.com/heliguy</url>
-  <screenshots>
-	<screenshot type="default">
-	  <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/packages_page_wide.png</image>
-	  <caption>Manage Installed Packages in Three Pane UI</caption>
-	</screenshot>
-	<screenshot>
-	  <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/propteries_page_skinny.png</image>
-	  <caption>Properties Page in Narrow Window</caption>
-	</screenshot>
-	<screenshot>
-	  <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/remotes_page_wide.png</image>
-	  <caption>Manage Installed Remotes and Add New Remotes</caption>
-	</screenshot>
-	<screenshot>
-	  <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/data_page_wide.png</image>
-	  <caption>Manage Apps' User Data</caption>
-	</screenshot>
-	<screenshot>
-	  <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/snapshots_page_wide.png</image>
-	  <caption>Backup Apps' User Data</caption>
-	</screenshot>
-	<screenshot>
-	  <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/install_page_wide.png</image>
-	  <caption>Install New Packages from Files or Remotes</caption>
-	</screenshot>
-	<screenshot>
-	  <image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/install_page_skinny.png</image>
-	  <caption>Install Page in Narrow Window</caption>
-	</screenshot>
-  </screenshots>
-  <releases>
-	<release version="2.0.0" date="2024-10-28" timestamp="1730014216">
-	  <description translate="no">
-		<p>New Features</p>
-		<ul>
-		  <li>All new UI to make using Warehouse's features easier</li>
-		  <li>UI now better adapts to larger window sizes</li>
-		  <li>UI now better adapts to smaller window sizes</li>
-		  <li>Improved UI for installing packages from remotes</li>
-		  <li>Snapshots can be given names</li>
-		  <li>Packages can be reinstalled with a few clicks</li>
-		  <li>User Data can now be sorted in multiple ways</li>
-		  <li>Active User Data can be browsed just as easily as leftover User Data</li>
-		  <li>Custom installation locations are now supported</li>
-		  <li>Leftover Snapshots are now shown</li>
-		  <li>Apps can be reinstalled from leftover Snapshots</li>
-		  <li>Installation location of disabled remotes is now shown</li>
-		</ul>
-		<p>Changes</p>
-		<ul>
-		  <li>Packages list filter options are now easier to understand, and more predictable with how they are applied</li>
-		  <li>Improved keyboard shortcuts for quick navigation</li>
-		  <li>The Downgrades (renamed to Change Version) interface now shows the currently installed version</li>
-		  <li>Long running processes now have progress bars and can be canceled</li>
-		  <li>Better status icons for End of Life, Masked, and Pinned packages</li>
-		  <li>Warehouse no longer disables closing its window when long running processes are happening</li>
-		  <li>Refreshing now shows a loading animation</li>
-		</ul>
-		<p>Bug Fixes and Performance Improvements</p>
-		<ul>
-		  <li>Warehouse is now faster to open</li>
-		  <li>Getting system information is now faster</li>
-		  <li>Long running processes no longer freeze the app</li>
-		  <li>Refreshing is no longer possible when long running processes are happening</li>
-		</ul>
-	  </description>
-	</release>
-	<release version="1.6.3" date="2024-7-3" timestamp="1720030786">
-	  <description translate="no">
-		<p>Bug Fixes</p>
-		<ul>
-		  <li>Downgrade Window no longer silently fails when downgrading a masked Flatpak, and instead, downgrades it</li>
-		  <li>When downgrading and masking system Flatpaks, the password prompt only happens once instead of twice</li>
-		</ul>
-	  </description>
-	</release>
-	<release version="1.6.2" date="2024-4-16" timestamp="1713282319">
-	  <description translate="no">
-		<p>Bug Fixes</p>
-		<ul>
-		  <li>Install from the Web no longer has issues on systems with only one remote</li>
-		</ul>
-	  </description>
-	</release>
-	<release version="1.6.1" date="2024-4-7" timestamp="1712531365">
-	  <description translate="no">
-		<p>Bug Fixes</p>
-		<ul>
-		  <li>App Properties no longer has issues with information containing colon characters</li>
-		</ul>
-		<p>Previous Releases's New Features and Changes</p>
-		<ul>
-		  <li>The main list has a status page while refreshing</li>
-		  <li>Add ability to pin and unpin runtimes</li>
-		  <li>App Properties shows license and proper commit information</li>
-		  <li>App Properties better shows the app's name and description</li>
-		  <li>Update to GNOME 46 GTK Technologies</li>
-		  <li>Updated translations</li>
-		</ul>
-		<p>Previous Releases's Bug Fixes</p>
-		<ul>
-		  <li>When an attempt to run an app fails, correct runtime error information is shown</li>
-		  <li>Install From The Web no longer behaves incorrectly on remote installations with options</li>
-		  <li>The rare chance that Install From The Web selects a disabled remote has been fixed</li>
-		</ul>
-	  </description>
-	</release>
-	<release version="1.6.0" date="2024-4-7" timestamp="1712463635">
-	  <description translate="no">
-		<p>New Features and Changes</p>
-		<ul>
-		  <li>The main list has a status page while refreshing</li>
-		  <li>Add ability to pin and unpin runtimes</li>
-		  <li>App Properties shows license and proper commit information</li>
-		  <li>App Properties better shows the app's name and description</li>
-		  <li>Update to GNOME 46 GTK Technologies</li>
-		  <li>Updated translations</li>
-		</ul>
-		<p>Bug Fixes</p>
-		<ul>
-		  <li>When an attempt to run an app fails, correct runtime error information is shown</li>
-		  <li>Install From The Web no longer behaves incorrectly on remote installations with options</li>
-		  <li>The rare chance that Install From The Web selects a disabled remote has been fixed</li>
-		</ul>
-	  </description>
-	</release>
-	<release version="1.5.1" date="2024-3-8" timestamp="1709921475">
-	  <description translate="no">
-		<p>Bug Fixes</p>
-		<ul>
-		  <li>Main list is no longer scrolled to the bottom on launch</li>
-		  <li>Leftover Data window no longer tries to use a different window for toast messages</li>
-		  <li>Fix issue causing Downgrade window to not be able to downgrade user installation Flatpaks</li>
-		  <li>Fix the accidental removal of translations</li>
-		  <li>Fix issue causing Reset Filters button to be clickable upon Filter Window opening even when the filters are default</li>
-		</ul>
-	  </description>
-	</release>
-	<release version="1.5.0" date="2024-3-5" timestamp="1709694300">
-	  <description translate="no">
-		<p>New Features and Changes</p>
-		<ul>
-		  <li>Flatpaks can now be installed from the web, from any added remote</li>
-		  <li>Filters are now saved and restored between sessions</li>
-		  <li>Filters now apply live</li>
-		  <li>Move Refresh Button into Main Menu</li>
-		  <li>Period, 0 to 9, and underscores are now allowed in new Custom Remote names</li>
-		  <li>Updated translations</li>
-		</ul>
-		<p>Bug Fixes</p>
-		<ul>
-		  <li>Hide Show Disabled Remotes button when there aren't any</li>
-		  <li>Fix Batch Snapshots accidentally triggering Select All</li>
-		  <li>Misc UI element tooltips and alignments</li>
-		</ul>
-	  </description>
-	</release>
-	<release version="1.4.0" date="2023-12-17" timestamp="1702875630">
-	  <description translate="no">
-		<p>New Features and Changes</p>
-		<ul>
-		  <li>View disabled remotes, enable and disable remotes, and set a filter for a remote in the Manage Remotes window</li>
-		  <li>Added a new Snapshot feature. Snapshots can be created and applied at any time for quick saving app user data</li>
-		  <li>Added a batch action to create Snapshots</li>
-		  <li>Revamped the Properties window, and it can also open app details in the software store</li>
-		  <li>Merged the Popular Remotes window into the Manage Remotes window</li>
-		  <li>Removed labels in the main list, placing them in popup text buttons instead, to save room</li>
-		  <li>Added progress bars to show progress of batch actions</li>
-		  <li>Empty search pages now display a message</li>
-		  <li>Added a troubleshooting information page</li>
-		  <li>Added a donation link</li>
-		  <li>Added translations (NL, FR, RU, SV, UK)</li>
-		</ul>
-		<p>Bug Fixes</p>
-		<ul>
-		  <li>Launching Warehouse no longer hangs when grabbing the list of Flatpaks</li>
-		  <li>Unexpected errors are caught more often and handled better</li>
-		  <li>Fixed a few typos</li>
-		</ul>
-	  </description>
-	</release>
-	<release version="1.3.0" date="2023-10-23" timestamp="1698112217">
-	  <description translate="no">
-		<p>New Features and Changes</p>
-		<ul>
-		  <li>Names, IDs, Refs, and Launch Commands can now be copied from a dropdown</li>
-		  <li>Updates can now be disabled and enabled for Flatpaks</li>
-		  <li>Warehouse can now downgrade Flatpaks</li>
-		  <li>Apps can be now be ran from Warehouse</li>
-		  <li>Control + Keypad Enter now also toggles select mode</li>
-		  <li>Added translations (HG, ES, TH)</li>
-		</ul>
-		<p>Bug Fixes</p>
-		<ul>
-		  <li>The runtime filter button in the properties window now only shows when that runtime is a dependent runtime</li>
-		  <li>Removed the Select All keyboard shortcut as it interfered with the search bar</li>
-		</ul>
-	  </description>
-	</release>
-	<release version="1.2.1" date="2023-10-15" timestamp="1697405182">
-	  <description translate="no">
-		<ul>
-		  <li>The main list of Flatpaks is now sorted by name instead of ID</li>
-		  <li>Warehouse can now be found in your app menu by searching for "flatpak"</li>
-		  <li>Corrected typo in the previous release's change log</li>
-		</ul>
-	  </description>
-	</release>
-	<release version="1.2.0" date="2023-10-11" timestamp="1697076304">
-	  <description translate="no">
-		<p>New Features and Changes</p>
-		<ul>
-		  <li>Flatpaks files can be installed with a drag and drop or from a file selection</li>
-		  <li>Flatpak remotes can be added with a drag and drop or from a file selection</li>
-		  <li>Apps can now be filtered by dependent runtimes</li>
-		  <li>Properties of a runtime now shows a button to show only apps that rely on the runtime</li>
-		  <li>A loading indicator is now shown when adding a remote</li>
-		  <li>Added Webkit Testing to the list of popular remotes</li>
-		  <li>Added a search bar to the Leftover Data window</li>
-		  <li>Added a button to open the entire user data folder the Leftover Data window</li>
-		  <li>Added a button on each row in the Leftover Data list to open them directly</li>
-		  <li>Changed margins of lists to improve legibility</li>
-		  <li>F10 now opens the main menu</li>
-		</ul>
-		<p>Bug Fixes and Stability Improvements</p>
-		<ul>
-		  <li>Fixed a crash that would sometimes occur when opening the Leftover Data window</li>
-		  <li>Popular remotes are now named correcting and have proper descriptions</li>
-		  <li>The filter button now disables when the Filter window is closed by the keyboard</li>
-		  <li>The default filter is no longer allowed to be set as a new filter</li>
-		</ul>
-	  </description>
-	</release>
-	<release version="1.1.1" date="2023-10-6" timestamp="1696572524">
-	  <description translate="no">
-		<p>Emergency Bug Fix</p>
-		<ul>
-		  <li>Fix error causing a crash on Linux Mint</li>
-		  <li>Correct typo in the app summary</li>
-		</ul>
-	  </description>
-	</release>
-	<release version="1.1.0" date="2023-10-4" timestamp="1696461734">
+	<branding>
+		<color type="primary" scheme_preference="light">#AECEF4</color>
+		<color type="primary" scheme_preference="dark">#072F5E</color>
+	</branding>
+	<supports>
+		<control>keyboard</control>
+		<control>pointing</control>
+		<control>touch</control>
+	</supports>
+	<requires>
+		<display_length compare="ge">330</display_length>
+	</requires>
+	<content_rating type="oars-1.1"/>
+	<url type="homepage">https://github.com/flattool/warehouse</url>
+	<url type="bugtracker">https://github.com/flattool/warehouse/issues</url>
+	<url type="vcs-browser">https://github.com/flattool/warehouse</url>
+	<url type="translate">https://weblate.fyralabs.com/projects/flattool/warehouse/</url>
+	<url type="donation">https://ko-fi.com/heliguy</url>
+	<screenshots>
+		<screenshot type="default">
+			<image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/packages_page_wide.png</image>
+			<caption>Manage Installed Packages in Three Pane UI</caption>
+		</screenshot>
+		<screenshot>
+			<image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/propteries_page_skinny.png</image>
+			<caption>Properties Page in Narrow Window</caption>
+		</screenshot>
+		<screenshot>
+			<image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/remotes_page_wide.png</image>
+			<caption>Manage Installed Remotes and Add New Remotes</caption>
+		</screenshot>
+		<screenshot>
+			<image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/data_page_wide.png</image>
+			<caption>Manage Apps' User Data</caption>
+		</screenshot>
+		<screenshot>
+			<image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/snapshots_page_wide.png</image>
+			<caption>Backup Apps' User Data</caption>
+		</screenshot>
+		<screenshot>
+			<image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/install_page_wide.png</image>
+			<caption>Install New Packages from Files or Remotes</caption>
+		</screenshot>
+		<screenshot>
+			<image>https://raw.githubusercontent.com/flattool/warehouse/main/app_page_screeshots/install_page_skinny.png</image>
+			<caption>Install Page in Narrow Window</caption>
+		</screenshot>
+	</screenshots>
+	<releases>
+		<release version="2.0.0" date="2024-10-28" timestamp="1730089891">
 			<description translate="no">
-				<p>New Features and Changes</p>
-		<ul>
-		  <li>Choose from a list of popular remotes when adding a new remote</li>
-		  <li>App properties now shows the runtime that the app relies on</li>
-		  <li>Apps and runtimes that are End of Life are now noted as such</li>
-		  <li>Window size and state is remembered between sessions</li>
-		</ul>
-		<p>Bug Fixes and Performance Improvements</p>
-		<ul>
-		  <li>The UI no longer freezes when uninstalling apps</li>
-		  <li>The UI no longer freezes when getting file sizes of large files</li>
-		  <li>Toggling batch mode no longer causes a freeze</li>
-		  <li>Selecting all apps no longer causes a freeze</li>
-		  <li>Applying and removing a filter no longer causes a freeze</li>
-		  <li>Fixed issue where the no remotes status page would not be removed when a new remote was added</li>
-		</ul>
+				<p>New Features</p>
+				<ul>
+					<li>All new UI to make using Warehouse's features easier</li>
+					<li>UI now better adapts to larger window sizes</li>
+					<li>UI now better adapts to smaller window sizes</li>
+					<li>Improved UI for installing packages from remotes</li>
+					<li>Snapshots can be given names</li>
+					<li>Packages can be reinstalled with a few clicks</li>
+					<li>User Data can now be sorted in multiple ways</li>
+					<li>Active User Data can be browsed just as easily as leftover User Data</li>
+					<li>Custom installation locations are now supported</li>
+					<li>Leftover Snapshots are now shown</li>
+					<li>Apps can be reinstalled from leftover Snapshots</li>
+					<li>Installation location of disabled remotes is now shown</li>
+				</ul>
+				<p>Changes</p>
+				<ul>
+					<li>Packages list filter options are now easier to understand, and more predictable with how they are applied</li>
+					<li>Improved keyboard shortcuts for quick navigation</li>
+					<li>The Downgrades (renamed to Change Version) interface now shows the currently installed version</li>
+					<li>Long running processes now have progress bars and can be canceled</li>
+					<li>Better status icons for End of Life, Masked, and Pinned packages</li>
+					<li>Warehouse no longer disables closing its window when long running processes are happening</li>
+					<li>Refreshing now shows a loading animation</li>
+				</ul>
+				<p>Bug Fixes and Performance Improvements</p>
+				<ul>
+					<li>Warehouse is now faster to open</li>
+					<li>Getting system information is now faster</li>
+					<li>Long running processes no longer freeze the app</li>
+					<li>Refreshing is no longer possible when long running processes are happening</li>
+				</ul>
 			</description>
 		</release>
-	<release version="1.0.0" date="2023-9-25" timestamp="1695695940">
+		<release version="1.6.3" date="2024-7-3" timestamp="1720030786">
+			<description translate="no">
+				<p>Bug Fixes</p>
+				<ul>
+					<li>Downgrade Window no longer silently fails when downgrading a masked Flatpak, and instead, downgrades it</li>
+					<li>When downgrading and masking system Flatpaks, the password prompt only happens once instead of twice</li>
+				</ul>
+			</description>
+		</release>
+		<release version="1.6.2" date="2024-4-16" timestamp="1713282319">
+			<description translate="no">
+				<p>Bug Fixes</p>
+				<ul>
+					<li>Install from the Web no longer has issues on systems with only one remote</li>
+				</ul>
+			</description>
+		</release>
+		<release version="1.6.1" date="2024-4-7" timestamp="1712531365">
+			<description translate="no">
+				<p>Bug Fixes</p>
+				<ul>
+					<li>App Properties no longer has issues with information containing colon characters</li>
+				</ul>
+				<p>Previous Releases's New Features and Changes</p>
+				<ul>
+					<li>The main list has a status page while refreshing</li>
+					<li>Add ability to pin and unpin runtimes</li>
+					<li>App Properties shows license and proper commit information</li>
+					<li>App Properties better shows the app's name and description</li>
+					<li>Update to GNOME 46 GTK Technologies</li>
+					<li>Updated translations</li>
+				</ul>
+				<p>Previous Releases's Bug Fixes</p>
+				<ul>
+					<li>When an attempt to run an app fails, correct runtime error information is shown</li>
+					<li>Install From The Web no longer behaves incorrectly on remote installations with options</li>
+					<li>The rare chance that Install From The Web selects a disabled remote has been fixed</li>
+				</ul>
+			</description>
+		</release>
+		<release version="1.6.0" date="2024-4-7" timestamp="1712463635">
+			<description translate="no">
+				<p>New Features and Changes</p>
+				<ul>
+					<li>The main list has a status page while refreshing</li>
+					<li>Add ability to pin and unpin runtimes</li>
+					<li>App Properties shows license and proper commit information</li>
+					<li>App Properties better shows the app's name and description</li>
+					<li>Update to GNOME 46 GTK Technologies</li>
+					<li>Updated translations</li>
+				</ul>
+				<p>Bug Fixes</p>
+				<ul>
+					<li>When an attempt to run an app fails, correct runtime error information is shown</li>
+					<li>Install From The Web no longer behaves incorrectly on remote installations with options</li>
+					<li>The rare chance that Install From The Web selects a disabled remote has been fixed</li>
+				</ul>
+			</description>
+		</release>
+		<release version="1.5.1" date="2024-3-8" timestamp="1709921475">
+			<description translate="no">
+				<p>Bug Fixes</p>
+				<ul>
+					<li>Main list is no longer scrolled to the bottom on launch</li>
+					<li>Leftover Data window no longer tries to use a different window for toast messages</li>
+					<li>Fix issue causing Downgrade window to not be able to downgrade user installation Flatpaks</li>
+					<li>Fix the accidental removal of translations</li>
+					<li>Fix issue causing Reset Filters button to be clickable upon Filter Window opening even when the filters are default</li>
+				</ul>
+			</description>
+		</release>
+		<release version="1.5.0" date="2024-3-5" timestamp="1709694300">
+			<description translate="no">
+				<p>New Features and Changes</p>
+				<ul>
+					<li>Flatpaks can now be installed from the web, from any added remote</li>
+					<li>Filters are now saved and restored between sessions</li>
+					<li>Filters now apply live</li>
+					<li>Move Refresh Button into Main Menu</li>
+					<li>Period, 0 to 9, and underscores are now allowed in new Custom Remote names</li>
+					<li>Updated translations</li>
+				</ul>
+				<p>Bug Fixes</p>
+				<ul>
+					<li>Hide Show Disabled Remotes button when there aren't any</li>
+					<li>Fix Batch Snapshots accidentally triggering Select All</li>
+					<li>Misc UI element tooltips and alignments</li>
+				</ul>
+			</description>
+		</release>
+		<release version="1.4.0" date="2023-12-17" timestamp="1702875630">
+			<description translate="no">
+				<p>New Features and Changes</p>
+				<ul>
+					<li>View disabled remotes, enable and disable remotes, and set a filter for a remote in the Manage Remotes window</li>
+					<li>Added a new Snapshot feature. Snapshots can be created and applied at any time for quick saving app user data</li>
+					<li>Added a batch action to create Snapshots</li>
+					<li>Revamped the Properties window, and it can also open app details in the software store</li>
+					<li>Merged the Popular Remotes window into the Manage Remotes window</li>
+					<li>Removed labels in the main list, placing them in popup text buttons instead, to save room</li>
+					<li>Added progress bars to show progress of batch actions</li>
+					<li>Empty search pages now display a message</li>
+					<li>Added a troubleshooting information page</li>
+					<li>Added a donation link</li>
+					<li>Added translations (NL, FR, RU, SV, UK)</li>
+				</ul>
+				<p>Bug Fixes</p>
+				<ul>
+					<li>Launching Warehouse no longer hangs when grabbing the list of Flatpaks</li>
+					<li>Unexpected errors are caught more often and handled better</li>
+					<li>Fixed a few typos</li>
+				</ul>
+			</description>
+		</release>
+		<release version="1.3.0" date="2023-10-23" timestamp="1698112217">
+			<description translate="no">
+				<p>New Features and Changes</p>
+				<ul>
+					<li>Names, IDs, Refs, and Launch Commands can now be copied from a dropdown</li>
+					<li>Updates can now be disabled and enabled for Flatpaks</li>
+					<li>Warehouse can now downgrade Flatpaks</li>
+					<li>Apps can be now be ran from Warehouse</li>
+					<li>Control + Keypad Enter now also toggles select mode</li>
+					<li>Added translations (HG, ES, TH)</li>
+				</ul>
+				<p>Bug Fixes</p>
+				<ul>
+					<li>The runtime filter button in the properties window now only shows when that runtime is a dependent runtime</li>
+					<li>Removed the Select All keyboard shortcut as it interfered with the search bar</li>
+				</ul>
+			</description>
+		</release>
+		<release version="1.2.1" date="2023-10-15" timestamp="1697405182">
+			<description translate="no">
+				<ul>
+					<li>The main list of Flatpaks is now sorted by name instead of ID</li>
+					<li>Warehouse can now be found in your app menu by searching for "flatpak"</li>
+					<li>Corrected typo in the previous release's change log</li>
+				</ul>
+			</description>
+		</release>
+		<release version="1.2.0" date="2023-10-11" timestamp="1697076304">
+			<description translate="no">
+				<p>New Features and Changes</p>
+				<ul>
+					<li>Flatpaks files can be installed with a drag and drop or from a file selection</li>
+					<li>Flatpak remotes can be added with a drag and drop or from a file selection</li>
+					<li>Apps can now be filtered by dependent runtimes</li>
+					<li>Properties of a runtime now shows a button to show only apps that rely on the runtime</li>
+					<li>A loading indicator is now shown when adding a remote</li>
+					<li>Added Webkit Testing to the list of popular remotes</li>
+					<li>Added a search bar to the Leftover Data window</li>
+					<li>Added a button to open the entire user data folder the Leftover Data window</li>
+					<li>Added a button on each row in the Leftover Data list to open them directly</li>
+					<li>Changed margins of lists to improve legibility</li>
+					<li>F10 now opens the main menu</li>
+				</ul>
+				<p>Bug Fixes and Stability Improvements</p>
+				<ul>
+					<li>Fixed a crash that would sometimes occur when opening the Leftover Data window</li>
+					<li>Popular remotes are now named correcting and have proper descriptions</li>
+					<li>The filter button now disables when the Filter window is closed by the keyboard</li>
+					<li>The default filter is no longer allowed to be set as a new filter</li>
+				</ul>
+			</description>
+		</release>
+		<release version="1.1.1" date="2023-10-6" timestamp="1696572524">
+			<description translate="no">
+				<p>Emergency Bug Fix</p>
+				<ul>
+					<li>Fix error causing a crash on Linux Mint</li>
+					<li>Correct typo in the app summary</li>
+				</ul>
+			</description>
+		</release>
+		<release version="1.1.0" date="2023-10-4" timestamp="1696461734">
+			<description translate="no">
+				<p>New Features and Changes</p>
+				<ul>
+					<li>Choose from a list of popular remotes when adding a new remote</li>
+					<li>App properties now shows the runtime that the app relies on</li>
+					<li>Apps and runtimes that are End of Life are now noted as such</li>
+					<li>Window size and state is remembered between sessions</li>
+				</ul>
+				<p>Bug Fixes and Performance Improvements</p>
+				<ul>
+					<li>The UI no longer freezes when uninstalling apps</li>
+					<li>The UI no longer freezes when getting file sizes of large files</li>
+					<li>Toggling batch mode no longer causes a freeze</li>
+					<li>Selecting all apps no longer causes a freeze</li>
+					<li>Applying and removing a filter no longer causes a freeze</li>
+					<li>Fixed issue where the no remotes status page would not be removed when a new remote was added</li>
+				</ul>
+			</description>
+		</release>
+		<release version="1.0.0" date="2023-9-25" timestamp="1695695940">
 			<description translate="no">
 				<p>First release of Warehouse</p>
 			</description>
 		</release>
-  </releases>
+	</releases>
 </component>
