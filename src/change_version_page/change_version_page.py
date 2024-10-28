@@ -122,4 +122,3 @@ class ChangeVersionPage(Adw.NavigationPage):
         # Connections
         self.root_group_check_button.connect("toggled", lambda *_: self.action_bar.set_revealed(True))
         self.apply_button.connect("clicked", self.on_apply)
-
