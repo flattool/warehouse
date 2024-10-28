@@ -97,10 +97,10 @@ class PropertiesPage(Adw.NavigationPage):
             self.trash_data_button.set_sensitive(has_path and self.package.info['id'] != "io.github.flattool.Warehouse")
             self.open_data_button.set_sensitive(has_path)
             
-            if not self.package.dependant_runtime is None:
+            if not self.package.dependent_runtime is None:
                 self.runtime_row.set_visible(True)
-                self.runtime_row.set_subtitle(self.package.dependant_runtime.info["name"])
-                self.eol_package_package_status_icon.set_visible(self.package.dependant_runtime.is_eol)
+                self.runtime_row.set_subtitle(self.package.dependent_runtime.info["name"])
+                self.eol_package_package_status_icon.set_visible(self.package.dependent_runtime.is_eol)
                 
             if has_path:
                 self.trash_data_button.set_visible(False)
@@ -254,11 +254,11 @@ class PropertiesPage(Adw.NavigationPage):
     def runtime_row_handler(self, *args):
         new_page = self.__class__()
         new_page.packages_page = self.packages_page
-        new_page.set_properties(self.package.dependant_runtime)
+        new_page.set_properties(self.package.dependent_runtime)
         self.nav_view.push(new_page)
         
     def open_app_handler(self, *args):
-        self.toast_overlay.add_toast(Adw.Toast(title=_("Openeing {}…").format(self.package.info["name"])))
+        self.toast_overlay.add_toast(Adw.Toast(title=_("Opening {}…").format(self.package.info["name"])))
         
         def callback(*args):
             if fail := self.package.failed_app_run:

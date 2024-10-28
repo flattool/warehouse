@@ -1,5 +1,5 @@
 [Desktop Entry]
-# Translators: Do not translate the applicaion name
+# Translators: Do not translate the application name
 Name=Warehouse
 Exec=warehouse
 Icon=io.github.flattool.Warehouse

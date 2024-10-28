@@ -111,7 +111,7 @@ class PackagesPage(Adw.BreakpointBin):
                 visible = False
             if remotes_list != "all" and not f"{row.package.info['origin']}<>{row.package.info['installation']}" in remotes_list:
                 visible = False
-            if runtimes_list != "all" and (row.package.is_runtime or row.package.dependant_runtime and not row.package.dependant_runtime.info["ref"] in runtimes_list):
+            if runtimes_list != "all" and (row.package.is_runtime or row.package.dependent_runtime and not row.package.dependent_runtime.info["ref"] in runtimes_list):
                 visible = False
                 
             row.set_visible(visible)
@@ -187,7 +187,7 @@ class PackagesPage(Adw.BreakpointBin):
             row.check_button.connect("toggled", lambda *_, row=row: self.row_select_handler(row))
             try:
                 if not package.is_runtime:
-                    row.eol_runtime_status_icon.set_visible(package.dependant_runtime.is_eol)
+                    row.eol_runtime_status_icon.set_visible(package.dependent_runtime.is_eol)
             except Exception as e:
                 self.packages_toast_overlay.add_toast(ErrorToast(_("Error getting Flatpak '{}'").format(package.info["name"]), str(e)).toast)
                 

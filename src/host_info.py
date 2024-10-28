@@ -195,7 +195,7 @@ class Flatpak:
             self.info["installation"] = installation
 
         self.is_eol = "eol=" in self.info["options"]
-        self.dependant_runtime = None
+        self.dependent_runtime = None
         self.failed_app_run = None
         self.failed_mask = None
         self.failed_uninstall = None
@@ -256,7 +256,7 @@ class HostInfo:
     installations = []
     masks = {}
     pins = {}
-    dependant_runtime_refs = []
+    dependent_runtime_refs = []
     @classmethod
     def get_flatpaks(this, callback=None):
         # Callback is a function to run after the host flatpaks are found
@@ -267,7 +267,7 @@ class HostInfo:
         this.installations.clear()
         this.masks.clear()
         this.pins.clear()
-        this.dependant_runtime_refs.clear()
+        this.dependent_runtime_refs.clear()
 
         def thread(task, *args):
 
@@ -354,7 +354,7 @@ class HostInfo:
                     this.id_to_flatpak[package.info["id"]] = package
                     this.ref_to_flatpak[package.info["ref"]] = package
                     
-                # Dependant Runtimes
+                # Dependent Runtimes
                 output = subprocess.run(
                     ['flatpak-spawn', '--host',
                     'flatpak', 'list', '--columns=runtime,ref'],
@@ -372,9 +372,9 @@ class HostInfo:
                         continue
                         
                     runtime = split_line[0]
-                    package.dependant_runtime = this.ref_to_flatpak[runtime]
-                    if not runtime in this.dependant_runtime_refs:
-                        this.dependant_runtime_refs.append(runtime)
+                    package.dependent_runtime = this.ref_to_flatpak[runtime]
+                    if not runtime in this.dependent_runtime_refs:
+                        this.dependent_runtime_refs.append(runtime)
                         
             except subprocess.CalledProcessError as cpe:
                 this.main_window.toast_overlay.add_toast(ErrorToast(_("Could not load packages"), cpe.stderr).toast)

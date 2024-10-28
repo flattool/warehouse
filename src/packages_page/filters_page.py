@@ -133,7 +133,7 @@ class FiltersPage(Adw.NavigationPage):
         for row in self.runtime_rows:
             self.runtimes_group.remove(row)
         self.runtime_rows.clear()
-        if len(HostInfo.dependant_runtime_refs) < 2:
+        if len(HostInfo.dependent_runtime_refs) < 2:
             self.runtimes_group.set_visible(False)
             if self.runtimes_string != "all":
                 self.runtimes_string = "all"
@@ -142,7 +142,7 @@ class FiltersPage(Adw.NavigationPage):
 
             return
 
-        for j, ref in enumerate(HostInfo.dependant_runtime_refs):
+        for j, ref in enumerate(HostInfo.dependent_runtime_refs):
             row = FilterRow(ref)
             row.set_title(ref)
             row.check_button.set_active(ref in self.runtimes_string)

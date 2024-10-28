@@ -281,7 +281,7 @@ class RemotesPage(Adw.NavigationPage):
         self.search_entry.connect("search-changed", self.on_search)
         self.show_disabled_button.connect("toggled", self.show_disabled_handler)
 
-        # Appply
+        # Apply
         self.adding_view.set_content(LoadingStatus(_("Adding Remote"), _("This should only take a moment")))
         self.loading_view.set_content(LoadingStatus(_("Loading Remotes"), _("This should only take a moment")))
         for item in self.new_remotes:

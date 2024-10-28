@@ -1,4 +1,4 @@
-> This document exists to inform feature requesters, contributors, and anyone else who is curios on the state of Warehouse. Make sure to give this a read before requesting any new features.
+> This document exists to inform feature requesters, contributors, and anyone else who is curious on the state of Warehouse. Make sure to give this a read before requesting any new features.
 
 # Features Being Worked On
 
