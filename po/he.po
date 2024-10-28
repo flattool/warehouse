@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Translators: Do not translate the applicaion name
+#. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
 msgid "Warehouse"
 msgstr ""

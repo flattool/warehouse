@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Weblate 5.7.2\n"
 
-#. Translators: Do not translate the applicaion name
+#. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
 msgid "Warehouse"
 msgstr "Warehouse"
@@ -90,7 +90,8 @@ msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:22
 msgid "Responsive UI to fit large and small screen sizes"
-msgstr "Responzívne používateľské rozhranie pre veľké a malé veľkosti obrazovky"
+msgstr ""
+"Responzívne používateľské rozhranie pre veľké a malé veľkosti obrazovky"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
@@ -496,7 +497,8 @@ msgstr "Zmiešané typy súborov"
 
 #: src/main_window/window.py:142
 msgid "Flatpaks and remotes cannot be installed at the same time."
-msgstr "Balíky Flatpack a vzdialené repozitáre nie je možné inštalovať súčasne."
+msgstr ""
+"Balíky Flatpack a vzdialené repozitáre nie je možné inštalovať súčasne."
 
 #: src/main_window/window.py:151
 msgid "Too Many Remotes"
@@ -1553,7 +1555,8 @@ msgstr "Použiť Snapshot?"
 
 #: src/snapshot_page/snapshot_box.py:153
 msgid "Any current user data for this app will be trashed"
-msgstr "Akékoľvek aktuálne používateľské údaje pre túto aplikáciu budú vymazané"
+msgstr ""
+"Akékoľvek aktuálne používateľské údaje pre túto aplikáciu budú vymazané"
 
 #: src/snapshot_page/snapshot_box.py:182
 msgid "Version: {}"
