@@ -2,40 +2,40 @@ using Gtk 4.0;
 using Adw 1;
 
 template $PendingPage : Adw.NavigationPage {
-    title: _("Pending Packages");
-    Stack stack {
-        Adw.ToolbarView none_pending {
-            [top]
-            Adw.HeaderBar {
-            }
-            Adw.StatusPage {
-                icon-name: "flatpak-symbolic";
-                title: _("Add Packages");
-                description: _("Packages queued to install will show up here");
-            }
-        }
-        Adw.ToolbarView main_view {
-            [top]
-            Adw.HeaderBar {
-            }
-            Adw.PreferencesPage preferences_page {
-            }
-            [bottom]
-            ActionBar pending_action_bar {
-                revealed: true;
-                [center]
-                Button install_button {
-                    margin-top: 3;
-                    margin-bottom: 3;
-                    sensitive: bind pending_action_bar.revealed;
-                    styles ["pill", "suggested-action"]
-                    Adw.ButtonContent {
-                        can-shrink: true;
-                        icon-name: "arrow-pointing-at-line-down-symbolic";
-                        label: _("Install");
-                    }
-                }
-            }
-        }
-    }
+	title: _("Pending Packages");
+	Stack stack {
+		Adw.ToolbarView none_pending {
+			[top]
+			Adw.HeaderBar {
+			}
+			Adw.StatusPage {
+				icon-name: "flatpak-symbolic";
+				title: _("Add Packages");
+				description: _("Packages queued to install will show up here");
+			}
+		}
+		Adw.ToolbarView main_view {
+			[top]
+			Adw.HeaderBar {
+			}
+			Adw.PreferencesPage preferences_page {
+			}
+			[bottom]
+			ActionBar pending_action_bar {
+				revealed: true;
+				[center]
+				Button install_button {
+					margin-top: 3;
+					margin-bottom: 3;
+					sensitive: bind pending_action_bar.revealed;
+					styles ["pill", "suggested-action"]
+					Adw.ButtonContent {
+						can-shrink: true;
+						icon-name: "arrow-pointing-at-line-down-symbolic";
+						label: _("Install");
+					}
+				}
+			}
+		}
+	}
 }

@@ -2,106 +2,106 @@ using Gtk 4.0;
 using Adw 1;
 
 template $InstallPage : Adw.BreakpointBin {
-    width-request: 1;
+	width-request: 1;
 	height-request: 1;
 
-    Adw.Breakpoint break_point {
+	Adw.Breakpoint break_point {
 		condition ("max-width: 600")
 
 		setters {
-            multi_view.layout: skinny;
+			multi_view.layout: skinny;
 		}
 	}
 
-    Adw.NavigationPage {
-        title: _("Install Packages");
-        Adw.ToastOverlay toast_overlay {
-            Stack status_stack {
-                Adw.ToolbarView loading_view {
-                    [top]
-                    Adw.HeaderBar {
-                        [start]
-                        $SidebarButton {}
-                    }
-                }
-                Adw.ToolbarView installing_view {
-                    [top]
-                    Adw.HeaderBar {
-                        [start]
-                        $SidebarButton {}
-                    }
-                }
-                Adw.MultiLayoutView multi_view {
-                    Adw.Layout wide {
-                        Adw.NavigationSplitView split_view {
-                            sidebar-width-fraction: 0.5;
-                            max-sidebar-width: 999999999;
-                            sidebar:
-                                Adw.NavigationPage {
-                                    title: _("Select Source");
-                                    Adw.LayoutSlot {
-                                        id: "select_page";
-                                    }
-                                }
-                            ;
-                            content:
-                                Adw.NavigationPage {
-                                    title: _("Pending Packages");
-                                    Adw.LayoutSlot {
-                                        id: "pending_page";
-                                    }
-                                }
-                            ;
-                        }
-                    }
-                    Adw.Layout skinny {
-                        Adw.BottomSheet bottom_sheet {
-                            [content]
-                            Box {
-                                margin-bottom: bind bottom_sheet.bottom-bar-height;
-                                Adw.LayoutSlot {
-                                    id: "select_page";
-                                }
-                            }
-                            [sheet]
-                            Adw.LayoutSlot {
-                                id: "pending_page";
-                            }
-                        }
-                    }
-                    [select_page]
-                    $SelectPage select_page {}
-                    [pending_page]
-                    $PendingPage pending_page {}
-                }
-            }
-        }
-    }
+	Adw.NavigationPage {
+		title: _("Install Packages");
+		Adw.ToastOverlay toast_overlay {
+			Stack status_stack {
+				Adw.ToolbarView loading_view {
+					[top]
+					Adw.HeaderBar {
+						[start]
+						$SidebarButton {}
+					}
+				}
+				Adw.ToolbarView installing_view {
+					[top]
+					Adw.HeaderBar {
+						[start]
+						$SidebarButton {}
+					}
+				}
+				Adw.MultiLayoutView multi_view {
+					Adw.Layout wide {
+						Adw.NavigationSplitView split_view {
+							sidebar-width-fraction: 0.5;
+							max-sidebar-width: 999999999;
+							sidebar:
+								Adw.NavigationPage {
+									title: _("Select Source");
+									Adw.LayoutSlot {
+										id: "select_page";
+									}
+								}
+							;
+							content:
+								Adw.NavigationPage {
+									title: _("Pending Packages");
+									Adw.LayoutSlot {
+										id: "pending_page";
+									}
+								}
+							;
+						}
+					}
+					Adw.Layout skinny {
+						Adw.BottomSheet bottom_sheet {
+							[content]
+							Box {
+								margin-bottom: bind bottom_sheet.bottom-bar-height;
+								Adw.LayoutSlot {
+									id: "select_page";
+								}
+							}
+							[sheet]
+							Adw.LayoutSlot {
+								id: "pending_page";
+							}
+						}
+					}
+					[select_page]
+					$SelectPage select_page {}
+					[pending_page]
+					$PendingPage pending_page {}
+				}
+			}
+		}
+	}
 }
 
 Revealer bottom_child {
-    reveal-child: false;
-    Box {
-        margin-top: 12;
-        margin-bottom: 14;
-        spacing: 12;
-        halign: center;
-        valign: center;
-        styles ["flat"]
-        [start]
-        Image {
-            icon-name: "flatpak-symbolic";
-            icon-size: normal;
-        }
-        [center]
-        Label bottom_label {
-            label: _("Pending Packages");
-            styles ["heading"]
-        }
-        [end]
-        Image {
-            icon-name: "right-large-symbolic";
-            icon-size: normal;
-        }
-    }
+	reveal-child: false;
+	Box {
+		margin-top: 12;
+		margin-bottom: 14;
+		spacing: 12;
+		halign: center;
+		valign: center;
+		styles ["flat"]
+		[start]
+		Image {
+			icon-name: "flatpak-symbolic";
+			icon-size: normal;
+		}
+		[center]
+		Label bottom_label {
+			label: _("Pending Packages");
+			styles ["heading"]
+		}
+		[end]
+		Image {
+			icon-name: "right-large-symbolic";
+			icon-size: normal;
+		}
+	}
 }
