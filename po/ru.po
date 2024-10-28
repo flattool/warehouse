@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-26 15:32-0400\n"
+"POT-Creation-Date: 2024-10-27 23:16-0400\n"
 "PO-Revision-Date: 2024-10-27 17:15+0000\n"
 "Last-Translator: Сергей Ворон <voron.s.a@gmail.com>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
@@ -122,29 +122,29 @@ msgstr ""
 msgid "Install Page in Narrow Window"
 msgstr "Страница установки в небольшом окне"
 
-#: src/main.py:102 src/main.py:108 src/install_page/select_page.py:60
+#: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
 #: src/install_page/select_page.py:67
 msgid "Could not add files"
 msgstr "Не удалось добавить файлы"
 
-#: src/main.py:102
+#: src/main.py:101
 msgid "No files were found"
 msgstr "Файлы не найдены"
 
-#: src/main.py:110
+#: src/main.py:109
 msgid "Flatpaks & Remotes"
 msgstr "Пакеты и репозитории"
 
-#. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
-#: src/main.py:218
+#. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
+#: src/main.py:217
 msgid "translator-credits"
 msgstr "Сергей Ворон <voron@duck.com>"
 
-#: src/main.py:224
+#: src/main.py:223
 msgid "Donate"
 msgstr "Пожертвовать"
 
-#: src/main.py:226
+#: src/main.py:225
 msgid "Contributors"
 msgstr "Участники"
 
@@ -181,7 +181,8 @@ msgstr "В настоящее время идет установка пакет�
 msgid "No packages were requested to be installed."
 msgstr "Не было запрошено ни одного пакета для установки."
 
-#: src/gtk/app_row.blp:14
+#: src/gtk/app_row.blp:14 src/properties_page/properties_page.blp:100
+#: src/properties_page/properties_page.blp:179
 msgid "This package is End Of Life, and will not receive any security updates"
 msgstr ""
 "Этот пакет больше не поддерживается и не будет получать никаких обновлений "
@@ -216,11 +217,11 @@ msgstr "Warehouse попытается установить соответств
 #: src/properties_page/properties_page.py:310
 #: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:122
 #: src/remotes_page/remotes_page.py:189 src/user_data_page/data_box.py:114
-#: src/user_data_page/user_data_page.py:210
+#: src/user_data_page/user_data_page.py:209
 #: src/snapshot_page/new_snapshot_dialog.blp:16
 #: src/snapshot_page/snapshot_box.py:113 src/snapshot_page/snapshot_box.py:155
-#: src/snapshot_page/snapshot_page.py:467
-#: src/snapshot_page/snapshot_page.py:508
+#: src/snapshot_page/snapshot_page.py:479
+#: src/snapshot_page/snapshot_page.py:520
 #: src/install_page/file_install_dialog.blp:13
 msgid "Cancel"
 msgstr "Отмена"
@@ -387,7 +388,7 @@ msgstr "Нет оставшихся данных"
 msgid "Snapshots Page"
 msgstr "Снимок применен"
 
-#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:203
+#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:202
 #, fuzzy
 #| msgid "New Snapshot"
 msgid "New Snapshots"
@@ -459,52 +460,52 @@ msgstr ""
 msgid "Show Sidebar"
 msgstr ""
 
-#: src/main_window/window.blp:24
+#: src/main_window/window.blp:25
 msgid "Drop to Open"
 msgstr ""
 
-#: src/main_window/window.blp:25
+#: src/main_window/window.blp:26
 #, fuzzy
 #| msgid "Installed Remotes"
 msgid "Install Flatpaks or Add a Remote"
 msgstr "Установленные репозитории"
 
-#: src/main_window/window.blp:43
+#: src/main_window/window.blp:44
 msgid "Refresh List"
 msgstr "Обновить список"
 
-#: src/main_window/window.blp:48
+#: src/main_window/window.blp:49
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: src/main_window/window.blp:66 src/packages_page/packages_page.blp:20
+#: src/main_window/window.blp:67 src/packages_page/packages_page.blp:20
 #: src/packages_page/packages_page.blp:55
-#: src/packages_page/packages_page.py:154
-#: src/packages_page/packages_page.py:287
+#: src/packages_page/packages_page.py:155
+#: src/packages_page/packages_page.py:319
 #: src/install_page/file_install_dialog.py:37
 msgid "Packages"
 msgstr ""
 
-#: src/main_window/window.blp:79
+#: src/main_window/window.blp:80
 #, fuzzy
 #| msgid "All Remotes"
 msgid "Remotes"
 msgstr "Все репозитории"
 
-#: src/main_window/window.blp:93 src/properties_page/properties_page.blp:114
+#: src/main_window/window.blp:94 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
 msgid "User Data"
 msgstr "Пользовательские данные"
 
-#: src/main_window/window.blp:106 src/snapshot_page/snapshot_page.blp:18
+#: src/main_window/window.blp:107 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
-#: src/snapshot_page/snapshot_page.py:341
+#: src/snapshot_page/snapshot_page.py:355
 #, fuzzy
 #| msgid "No Snapshots"
 msgid "Snapshots"
 msgstr "Нет снимков"
 
-#: src/main_window/window.blp:119 src/install_page/file_install_dialog.py:34
+#: src/main_window/window.blp:120 src/install_page/file_install_dialog.py:34
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
 #, fuzzy
@@ -512,17 +513,17 @@ msgstr "Нет снимков"
 msgid "Install Packages"
 msgstr "Установка"
 
-#: src/main_window/window.blp:149
+#: src/main_window/window.blp:150
 #, fuzzy
 #| msgid "Set Filters"
 msgid "_Open Files"
 msgstr "Установить фильтры"
 
-#: src/main_window/window.blp:153
+#: src/main_window/window.blp:154
 msgid "_Keyboard Shortcuts"
 msgstr "_Комбинации клавиш"
 
-#: src/main_window/window.blp:157
+#: src/main_window/window.blp:158
 msgid "_About Warehouse"
 msgstr "_О приложении"
 
@@ -723,94 +724,94 @@ msgstr "Копировать ИД"
 msgid "Copy Refs"
 msgstr "Копировать ссылки"
 
-#: src/packages_page/packages_page.py:150
-#: src/user_data_page/data_subpage.py:108
-#: src/snapshot_page/new_snapshot_dialog.py:39
-#: src/snapshot_page/snapshot_page.py:341
+#: src/packages_page/packages_page.py:151
+#: src/user_data_page/data_subpage.py:107
+#: src/snapshot_page/new_snapshot_dialog.py:38
+#: src/snapshot_page/snapshot_page.py:355
 #, fuzzy
 #| msgid "{} selected"
 msgid "{} Selected"
 msgstr "{} Выбрано"
 
-#: src/packages_page/packages_page.py:191
+#: src/packages_page/packages_page.py:192
 msgid "Error getting Flatpak '{}'"
 msgstr ""
 
-#: src/packages_page/packages_page.py:229
+#: src/packages_page/packages_page.py:241
 #, fuzzy
 #| msgid "Name"
 msgid "Names"
 msgstr "Имя"
 
-#: src/packages_page/packages_page.py:232
+#: src/packages_page/packages_page.py:244
 msgid "IDs"
 msgstr ""
 
-#: src/packages_page/packages_page.py:235
+#: src/packages_page/packages_page.py:247
 #, fuzzy
 #| msgid "Copy Refs"
 msgid "Refs"
 msgstr "Копировать ссылки"
 
-#: src/packages_page/packages_page.py:243
+#: src/packages_page/packages_page.py:255
 #: src/properties_page/properties_page.py:272
 msgid "Copied {}"
 msgstr "Скопировано {}"
 
-#: src/packages_page/packages_page.py:245
+#: src/packages_page/packages_page.py:257
 #, fuzzy
 #| msgid "Could not add {}"
 msgid "Could not copy {}"
 msgstr "Не удалось добавить {}"
 
-#: src/packages_page/packages_page.py:277
+#: src/packages_page/packages_page.py:307
 #, fuzzy
-#| msgid "Could not install app"
-msgid "Could not uninstall packages"
-msgstr "Не удалось установить приложение"
+#| msgid "Errors occurred during installation"
+msgid "Errors occurred while uninstalling"
+msgstr "Во время установки возникли ошибки"
 
-#: src/packages_page/packages_page.py:279
+#: src/packages_page/packages_page.py:309
 #, fuzzy
 #| msgid "Uninstalled successfully"
 msgid "Uninstalled Packages"
 msgstr "Успешно удалено"
 
-#: src/packages_page/packages_page.py:335
+#: src/packages_page/packages_page.py:367
 #, fuzzy
 #| msgid "Loading Flatpaks"
 msgid "Loading Packages"
 msgstr "Загрузка пакетов Flatpak"
 
-#: src/packages_page/packages_page.py:335
-#: src/packages_page/packages_page.py:336
+#: src/packages_page/packages_page.py:367
+#: src/packages_page/packages_page.py:368
 #: src/properties_page/properties_page.py:366
 #: src/remotes_page/remotes_page.py:285 src/remotes_page/remotes_page.py:286
-#: src/user_data_page/user_data_page.py:297
-#: src/snapshot_page/snapshot_page.py:546 src/install_page/install_page.py:94
+#: src/user_data_page/user_data_page.py:296
+#: src/snapshot_page/snapshot_page.py:558 src/install_page/install_page.py:96
 #: src/install_page/results_page.py:135
 msgid "This should only take a moment"
 msgstr "Это должно занять всего минуту"
 
-#: src/packages_page/packages_page.py:336
+#: src/packages_page/packages_page.py:368
 #, fuzzy
 #| msgid "Uninstalling"
 msgid "Uninstalling Packages"
 msgstr "Удаление"
 
-#: src/packages_page/packages_page.py:338
+#: src/packages_page/packages_page.py:370
 #, fuzzy
 #| msgid "Uninstalling"
 msgid "Reinstalling Package"
 msgstr "Удаление"
 
-#: src/packages_page/packages_page.py:338
-#: src/packages_page/packages_page.py:340
+#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:372
 #: src/change_version_page/change_version_page.py:119
-#: src/snapshot_page/snapshot_page.py:539 src/install_page/install_page.py:86
+#: src/snapshot_page/snapshot_page.py:551 src/install_page/install_page.py:88
 msgid "This could take a while"
 msgstr "Это может занять некоторое время"
 
-#: src/packages_page/packages_page.py:340
+#: src/packages_page/packages_page.py:372
 #, fuzzy
 #| msgid "Version"
 msgid "Changing Version"
@@ -827,8 +828,10 @@ msgid "Allows restoring app settings and content"
 msgstr "Позволяет восстановить настройки и контент этого приложения"
 
 #: src/packages_page/uninstall_dialog.blp:17
+#: src/user_data_page/user_data_page.blp:109
+#: src/user_data_page/user_data_page.blp:148
 #: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:114
-#: src/snapshot_page/snapshot_page.py:509
+#: src/snapshot_page/snapshot_page.py:521
 msgid "Trash"
 msgstr "Очистить"
 
@@ -877,16 +880,6 @@ msgstr ""
 #: src/properties_page/properties_page.blp:83
 msgid "Open"
 msgstr "Открыть"
-
-#: src/properties_page/properties_page.blp:100
-#: src/properties_page/properties_page.blp:179
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
-msgid "This package is End Of Life, and will not recieve any security updates"
-msgstr ""
-"Срок поддержки приложения {} закончился и оно больше не будет получать "
-"никаких обновлений безопасности"
 
 #: src/properties_page/properties_page.blp:122
 #: src/user_data_page/data_box.blp:62
@@ -1012,7 +1005,7 @@ msgstr "Свойства"
 
 #. Apply again
 #: src/properties_page/properties_page.py:109
-#: src/user_data_page/user_data_page.py:297
+#: src/user_data_page/user_data_page.py:296
 msgid "Loading User Data"
 msgstr "Загрузка пользовательских данных"
 
@@ -1041,8 +1034,8 @@ msgstr "Не удалось открыть папку"
 #: src/properties_page/properties_page.py:183
 #: src/properties_page/properties_page.py:238
 #: src/properties_page/properties_page.py:240 src/user_data_page/data_box.py:99
-#: src/user_data_page/user_data_page.py:184
-#: src/user_data_page/user_data_page.py:198
+#: src/user_data_page/user_data_page.py:183
+#: src/user_data_page/user_data_page.py:197
 #, fuzzy
 #| msgid "Could not trash user data"
 msgid "Could not trash data"
@@ -1125,7 +1118,7 @@ msgstr "Удалить {}?"
 #: src/properties_page/properties_page.py:261
 #, fuzzy
 #| msgid "Opened {}"
-msgid "Openeing {}…"
+msgid "Opening {}…"
 msgstr "Открыто {}"
 
 #: src/properties_page/properties_page.py:266
@@ -1527,7 +1520,7 @@ msgstr "Не удалось открыть папку"
 msgid "Flatpak Repos"
 msgstr "Репозитории Flatpak"
 
-#. Appply
+#. Apply
 #: src/remotes_page/remotes_page.py:285
 msgid "Adding Remote"
 msgstr "Добавление репозитория"
@@ -1566,7 +1559,7 @@ msgstr "Не удалось управление данными"
 msgid "Opened data folder"
 msgstr "Открыть папку данных"
 
-#: src/user_data_page/data_box.py:67 src/snapshot_page/snapshot_page.py:246
+#: src/user_data_page/data_box.py:67 src/snapshot_page/snapshot_page.py:253
 #: src/snapshot_page/snapshots_list_page.py:77
 msgid "Could not open folder"
 msgstr "Не удалось открыть папку"
@@ -1583,8 +1576,8 @@ msgstr "Очистить данные приложения"
 msgid "{}'s data will be sent to the trash"
 msgstr "Эти папки будут очищены."
 
-#: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:211
-#: src/snapshot_page/snapshot_page.py:468
+#: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:210
+#: src/snapshot_page/snapshot_page.py:480
 msgid "Continue"
 msgstr "Продолжить"
 
@@ -1598,13 +1591,13 @@ msgstr ""
 msgid "Loading Size…"
 msgstr "Понижение версии…"
 
-#: src/user_data_page/data_subpage.py:233
+#: src/user_data_page/data_subpage.py:232
 #, fuzzy
 #| msgid "No Leftover Data"
 msgid "No Active Data"
 msgstr "Нет оставшихся данных"
 
-#: src/user_data_page/data_subpage.py:234
+#: src/user_data_page/data_subpage.py:233
 #, fuzzy
 #| msgid ""
 #| "Warehouse cannot see the list of remotes or the system has no remotes "
@@ -1614,11 +1607,11 @@ msgid ""
 "data present"
 msgstr "Warehouse не видит список репозиториев или они не добавлены в системе"
 
-#: src/user_data_page/data_subpage.py:237
+#: src/user_data_page/data_subpage.py:236
 msgid "No Leftover Data"
 msgstr "Нет оставшихся данных"
 
-#: src/user_data_page/data_subpage.py:238
+#: src/user_data_page/data_subpage.py:237
 msgid "There is no leftover user data"
 msgstr "Нет оставшихся пользовательских данных"
 
@@ -1640,11 +1633,6 @@ msgstr "Нет пользовательских данных"
 #| msgid "User Data"
 msgid "Select User Data"
 msgstr "Пользовательские данные"
-
-#: src/user_data_page/user_data_page.blp:109
-#: src/user_data_page/user_data_page.blp:148
-msgid "Move to Trash"
-msgstr ""
 
 #: src/user_data_page/user_data_page.blp:120
 #: src/snapshot_page/snapshot_page.blp:159
@@ -1669,57 +1657,57 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-#: src/user_data_page/user_data_page.py:76
-#: src/user_data_page/user_data_page.py:78
+#: src/user_data_page/user_data_page.py:75
+#: src/user_data_page/user_data_page.py:77
 #, fuzzy
 #| msgid "Loading User Data"
 msgid "Loading Size"
 msgstr "Загрузка пользовательских данных"
 
-#: src/user_data_page/user_data_page.py:152
+#: src/user_data_page/user_data_page.py:151
 #, fuzzy
 #| msgid "Could not apply snapshot"
 msgid "Could not copy paths"
 msgstr "Не удалось применить снимок"
 
-#: src/user_data_page/user_data_page.py:152
-#: src/user_data_page/user_data_page.py:198
+#: src/user_data_page/user_data_page.py:151
+#: src/user_data_page/user_data_page.py:197
 msgid "No boxes were selected"
 msgstr ""
 
-#: src/user_data_page/user_data_page.py:155
+#: src/user_data_page/user_data_page.py:154
 #, fuzzy
 #| msgid "Copied name"
 msgid "Copied paths"
 msgstr "Имя скопировано"
 
-#: src/user_data_page/user_data_page.py:186
+#: src/user_data_page/user_data_page.py:185
 #, fuzzy
 #| msgid "Trashed user data"
 msgid "Trashed data"
 msgstr "Удаленные пользовательские данные"
 
-#: src/user_data_page/user_data_page.py:209
+#: src/user_data_page/user_data_page.py:208
 #, fuzzy
 #| msgid "Trash Data"
 msgid "Trash Data?"
 msgstr "Очистить данные"
 
-#: src/user_data_page/user_data_page.py:209
+#: src/user_data_page/user_data_page.py:208
 #, fuzzy
 #| msgid "These folders will be sent to the trash."
 msgid "Data will be sent to the trash"
 msgstr "Эти папки будут очищены."
 
-#: src/user_data_page/user_data_page.py:247
-#: src/user_data_page/user_data_page.py:270
+#: src/user_data_page/user_data_page.py:246
+#: src/user_data_page/user_data_page.py:269
 #, fuzzy
 #| msgid "Active Commit"
 msgid "Active Data"
 msgstr "Текущий коммит"
 
-#: src/user_data_page/user_data_page.py:248
-#: src/user_data_page/user_data_page.py:276
+#: src/user_data_page/user_data_page.py:247
+#: src/user_data_page/user_data_page.py:275
 #, fuzzy
 #| msgid "No Leftover Data"
 msgid "Leftover Data"
@@ -1736,26 +1724,26 @@ msgstr "Поиск в списке"
 msgid "Create"
 msgstr ""
 
-#: src/snapshot_page/new_snapshot_dialog.py:111
+#: src/snapshot_page/new_snapshot_dialog.py:110
 #, fuzzy
 #| msgid "Creating Snapshots"
 msgid "Creating Snapshot"
 msgstr "Создание снимков"
 
-#: src/snapshot_page/new_snapshot_dialog.py:193
+#: src/snapshot_page/new_snapshot_dialog.py:192
 #, fuzzy
 #| msgid "Create Snapshots"
 msgid "Name these Snapshots"
 msgstr "Создать снимки"
 
-#: src/snapshot_page/new_snapshot_dialog.py:197
+#: src/snapshot_page/new_snapshot_dialog.py:196
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
 msgstr "Новый снимок"
 
-#: src/snapshot_page/new_snapshot_dialog.py:201
+#: src/snapshot_page/new_snapshot_dialog.py:200
 #, fuzzy
 #| msgid "New Snapshot"
 msgid "Name this Snapshot"
@@ -1916,103 +1904,103 @@ msgstr "Применить снимок"
 msgid "Trash Snapshots"
 msgstr "Удалить снимок"
 
-#: src/snapshot_page/snapshot_page.py:100
+#: src/snapshot_page/snapshot_page.py:101
 #, fuzzy
 #| msgid "Could not trash snapshot"
 msgid "Could not load Snapshots"
 msgstr "Не удалось удалить снимок"
 
-#: src/snapshot_page/snapshot_page.py:187
+#: src/snapshot_page/snapshot_page.py:194
 msgid "Showing snapshots for {}"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:191
+#: src/snapshot_page/snapshot_page.py:198
 #, fuzzy
 #| msgid "No Snapshots"
 msgid "No snapshots for {}"
 msgstr "Нет снимков"
 
-#: src/snapshot_page/snapshot_page.py:191
+#: src/snapshot_page/snapshot_page.py:198
 msgid "New"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:235
-#: src/snapshot_page/snapshot_page.py:237
+#: src/snapshot_page/snapshot_page.py:242
+#: src/snapshot_page/snapshot_page.py:244
 #: src/snapshot_page/snapshots_list_page.py:60
 #, fuzzy
 #| msgid "There is no User Data to Snapshot"
 msgid "No Data Found to Snapshot"
 msgstr "Нет пользовательских данных для снимка"
 
-#: src/snapshot_page/snapshot_page.py:244
+#: src/snapshot_page/snapshot_page.py:251
 #: src/snapshot_page/snapshots_list_page.py:75
 #, fuzzy
 #| msgid "Open Snapshots Folder"
 msgid "Opened snapshots folder"
 msgstr "Открыть папку снимков"
 
-#: src/snapshot_page/snapshot_page.py:372
+#: src/snapshot_page/snapshot_page.py:386
 #, fuzzy
 #| msgid "No Snapshots"
 msgid "Copied Snapshot Paths"
 msgstr "Нет снимков"
 
-#: src/snapshot_page/snapshot_page.py:381
+#: src/snapshot_page/snapshot_page.py:395
 msgid "No apps in your selection can be snapshotted"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:457
+#: src/snapshot_page/snapshot_page.py:469
 #, fuzzy
 #| msgid "Applying Snapshot…"
 msgid "Applying Snapshots"
 msgstr "Применение снимка…"
 
-#: src/snapshot_page/snapshot_page.py:463
+#: src/snapshot_page/snapshot_page.py:475
 #, fuzzy
 #| msgid "No Snapshots"
 msgid "No snapshots to extract"
 msgstr "Нет снимков"
 
-#: src/snapshot_page/snapshot_page.py:463
+#: src/snapshot_page/snapshot_page.py:475
 msgid "No snapshots were found to extract"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:466
+#: src/snapshot_page/snapshot_page.py:478
 #, fuzzy
 #| msgid "Apply Snapshot?"
 msgid "Apply These Snapshots?"
 msgstr "Применить снимок?"
 
-#: src/snapshot_page/snapshot_page.py:466
+#: src/snapshot_page/snapshot_page.py:478
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:502
+#: src/snapshot_page/snapshot_page.py:514
 #, fuzzy
 #| msgid "Trash Snapshot"
 msgid "Trashed snapshots"
 msgstr "Удалить снимок"
 
-#: src/snapshot_page/snapshot_page.py:504
+#: src/snapshot_page/snapshot_page.py:516
 #, fuzzy
 #| msgid "Could not trash snapshot"
 msgid "Could not trash snapshots"
 msgstr "Не удалось удалить снимок"
 
-#: src/snapshot_page/snapshot_page.py:507
+#: src/snapshot_page/snapshot_page.py:519
 #, fuzzy
 #| msgid "Trash Snapshot?"
 msgid "Trash Snapshots?"
 msgstr "Удалить снимок?"
 
-#: src/snapshot_page/snapshot_page.py:507
+#: src/snapshot_page/snapshot_page.py:519
 #, fuzzy
 #| msgid "These folders will be sent to the trash."
 msgid "These apps' snapshots will be sent to the trash"
 msgstr "Эти папки будут очищены."
 
-#: src/snapshot_page/snapshot_page.py:546
+#: src/snapshot_page/snapshot_page.py:558
 #, fuzzy
 #| msgid "Creating Snapshots"
 msgid "Loading Snapshots"
@@ -2078,28 +2066,28 @@ msgstr "Выбрать"
 msgid "Pending Packages"
 msgstr ""
 
-#: src/install_page/install_page.py:49
+#: src/install_page/install_page.py:51
 #, fuzzy
 #| msgid "Installed Size"
 msgid "Installed Packages"
 msgstr "Установленный размер"
 
-#: src/install_page/install_page.py:66
+#: src/install_page/install_page.py:68
 msgid "{} Pending Package"
 msgstr ""
 
-#: src/install_page/install_page.py:71
+#: src/install_page/install_page.py:73
 msgid "{} Pending Packages"
 msgstr ""
 
 #. Extra Object Creation
-#: src/install_page/install_page.py:86
+#: src/install_page/install_page.py:88
 #, fuzzy
 #| msgid "Installing"
 msgid "Installing Packages"
 msgstr "Установка"
 
-#: src/install_page/install_page.py:94
+#: src/install_page/install_page.py:96
 #, fuzzy
 #| msgid "Installation"
 msgid "Loading Installation Options"
@@ -2119,19 +2107,19 @@ msgstr ""
 msgid "Remove All"
 msgstr "Удалить"
 
-#: src/install_page/result_row.blp:8 src/install_page/result_row.py:43
+#: src/install_page/result_row.blp:8 src/install_page/result_row.py:42
 msgid "Add Package to Queue"
 msgstr ""
 
-#: src/install_page/result_row.py:47
+#: src/install_page/result_row.py:46
 msgid "Package has been Added to Queue"
 msgstr ""
 
-#: src/install_page/result_row.py:51
+#: src/install_page/result_row.py:50
 msgid "Remove Package from Queue"
 msgstr ""
 
-#: src/install_page/result_row.py:55
+#: src/install_page/result_row.py:54
 msgid "This Package is Already Installed"
 msgstr ""
 
@@ -2217,6 +2205,20 @@ msgstr ""
 #: src/install_page/select_page.py:70
 msgid "Flatpaks"
 msgstr "Пакеты Flatpak"
+
+#, fuzzy
+#~| msgid "Could not install app"
+#~ msgid "Could not uninstall packages"
+#~ msgstr "Не удалось установить приложение"
+
+#, fuzzy
+#~| msgid ""
+#~| "{} has reached its End of Life and will not receive any security updates"
+#~ msgid ""
+#~ "This package is End Of Life, and will not recieve any security updates"
+#~ msgstr ""
+#~ "Срок поддержки приложения {} закончился и оно больше не будет получать "
+#~ "никаких обновлений безопасности"
 
 #~ msgid ""
 #~ "Warehouse is an app that manages installed Flatpaks, their user data, and "
