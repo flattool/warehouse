@@ -67,4 +67,3 @@ class ResultRow(Adw.ActionRow):
         # Apply
         GLib.idle_add(self.idle_stuff)
         self.set_state(package_state)
-
