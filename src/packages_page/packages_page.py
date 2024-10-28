@@ -262,31 +262,49 @@ class PackagesPage(Adw.BreakpointBin):
             
         def on_response(should_trash):
             GLib.idle_add(lambda *_: self.set_status(self.uninstalling))
-            error = [None]
+            error = []
             def thread(*args):
                 HostInfo.main_window.add_refresh_lockout("batch uninstalling packages")
                 cmd = ['flatpak-spawn', '--host', 'flatpak', 'uninstall', '-y']
+                to_uninstall = {} # { <remote><><installation>: [<ref1>, <ref2>, <ref3>, ...], ... }
                 to_trash = []
+                
                 for row in self.selected_rows:
-                    cmd.append(row.package.info["ref"])
+                    key = row.package.info['installation']
+                    if ls := to_uninstall.get(key, False):
+                        ls.append(row.package.info['ref'])
+                    else:
+                        to_uninstall[key] = [row.package.info['ref']]
+                        
                     if should_trash and os.path.exists(row.package.data_path):
                         to_trash.append(row.package.data_path)
                         
-                try:
-                    subprocess.run(cmd, check=True, capture_output=True)
-                    if should_trash and len(to_trash) > 0:
-                        subprocess.run(['gio', 'trash'] + to_trash, check=True, capture_output=True)
-                except subprocess.CalledProcessError as cpe:
-                    error[0] = cpe
-                except Exception as e:
-                    error[0] = e
+                for installation, packages in to_uninstall.items():
+                    suffix = []
+                    if installation == "user" or installation == "system":
+                        suffix.append(f"--{installation}")
+                    else:
+                        suffix.append(f"--installation={installation}")
+                        
+                    try:
+                        subprocess.run(cmd + suffix + packages, check=True, text=True, capture_output=True)
+                    except subprocess.CalledProcessError as cpe:
+                        error.append(str(cpe.stderr))
+                    except Exception as e:
+                        error.append(str(e))
+                        
+                if should_trash and len(to_trash) > 0:
+                    try:
+                        subprocess.run(['gio', 'trash'] + to_trash, check=True, text=True, capture_output=True)
+                    except subprocess.CalledProcessError as cpe:
+                        error.append(cpe)
                     
             def callback(*args):
                 self.main_window.refresh_handler()
                 HostInfo.main_window.remove_refresh_lockout("batch uninstalling packages")
-                if err := error[0]:
-                    details = err.stderr if type(err) == subprocess.CalledProcessError else str(err)
-                    GLib.idle_add(lambda *args: self.packages_toast_overlay.add_toast(ErrorToast(_("Could not uninstall packages"), details).toast))
+                if len(error) > 0:
+                    details = "\n\n".join(error)
+                    GLib.idle_add(lambda *args: self.packages_toast_overlay.add_toast(ErrorToast(_("Errors occurred while uninstalling"), details).toast))
                 else:
                     GLib.idle_add(lambda *args: self.packages_toast_overlay.add_toast(Adw.Toast(title=_("Uninstalled Packages"))))
                     
