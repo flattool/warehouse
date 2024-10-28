@@ -197,7 +197,7 @@ class PropertiesPage(Adw.NavigationPage):
 		def callback(*args):
 			if fail := self.package.failed_mask:
 				response = _("Could not Disable Updates") if state else _("Could not Enable Updates")
-				fail = fail.stderr if type(fail) == subprocess.CalledProcessError else fail
+				fail = fail.stderr if type(fail) is subprocess.CalledProcessError else fail
 				self.toast_overlay.add_toast(ErrorToast(response, str(fail)).toast)
 				GLib.idle_add(lambda *_: self.mask_switch.set_active(not state))
 				GLib.idle_add(lambda *_: self.mask_label.set_visible(not state))
@@ -215,7 +215,7 @@ class PropertiesPage(Adw.NavigationPage):
 		def callback(*args):
 			if fail := self.package.failed_pin:
 				response = _("Could not Disable Autoremoval") if state else _("Could not Enable Autoremoval")
-				fail = fail.stderr if type(fail) == subprocess.CalledProcessError else fail
+				fail = fail.stderr if type(fail) is subprocess.CalledProcessError else fail
 				self.toast_overlay.add_toast(ErrorToast(response, str(fail)).toast)
 				GLib.idle_add(lambda *_: self.pin_switch.set_active(not state))
 			else:
@@ -241,7 +241,7 @@ class PropertiesPage(Adw.NavigationPage):
 					
 		def callback(*args):
 			if fail := self.package.failed_uninstall:
-				fail = fail.stderr if type(fail) == subprocess.CalledProcessError else fail
+				fail = fail.stderr if type(fail) is subprocess.CalledProcessError else fail
 				self.toast_overlay.add_toast(ErrorToast(_("Could not uninstall"), str(fail)).toast)
 				self.packages_page.set_status(self.packages_page.scrolled_window)
 			else:
@@ -262,7 +262,7 @@ class PropertiesPage(Adw.NavigationPage):
 		
 		def callback(*args):
 			if fail := self.package.failed_app_run:
-				fail = fail.stderr if type(fail) == subprocess.CalledProcessError else fail
+				fail = fail.stderr if type(fail) is subprocess.CalledProcessError else fail
 				self.toast_overlay.add_toast(ErrorToast(_("Could not open {}").format(self.package.info["name"]), str(fail)).toast)
 				
 		self.package.open_app(callback)
