@@ -1,0 +1,21 @@
+[tool.ruff]
+line-length = 160
+
+[tool.ruff.format]
+indent-style = "tab"
+
+[tool.ruff.lint]
+ignore = [
+	"E401", # Allow multiple imports on one line.
+	"E402", # Module level import not at top of file (invalid for warehouse because we need gi.require_version above some imports).
+	"E713", # Test for membership does not have to be "not in".
+	"E714", # Test for object identity does not have to be "is not".
+	"F401", # Don't delete unused imports.
+	"F821", # Undefined name (underscore for translations).
+]
+
+[tool.codespell]
+skip = """\
+	CODE_OF_CONDUCT.md,
+	*.po
+"""

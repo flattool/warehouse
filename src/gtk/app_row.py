@@ -1,8 +1,9 @@
 from gi.repository import Adw, Gtk, GLib
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/gtk/app_row.ui")
 class AppRow(Adw.ActionRow):
-	__gtype_name__ = 'AppRow'
+	__gtype_name__ = "AppRow"
 	gtc = Gtk.Template.Child
 	image = gtc()
 	eol_package_package_status_icon = gtc()
@@ -35,7 +36,7 @@ class AppRow(Adw.ActionRow):
 		GLib.idle_add(lambda *_: self.idle_stuff())
 		self.add_controller(self.rclick_gesture)
 		self.add_controller(self.long_press_gesture)
-		if package.info['id'] == "io.github.flattool.Warehouse":
+		if package.info["id"] == "io.github.flattool.Warehouse":
 			self.check_button.set_active = lambda *_: None
 			self.check_button.set_sensitive(False)
 

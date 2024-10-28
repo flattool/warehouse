@@ -1,6 +1,7 @@
 from gi.repository import Adw, Gtk, GLib
 from enum import Enum
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/result_row.ui")
 class ResultRow(Adw.ActionRow):
 	__gtype_name__ = "ResultRow"

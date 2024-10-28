@@ -3,9 +3,10 @@ from .host_info import HostInfo
 from .error_toast import ErrorToast
 import subprocess
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/remotes_page/remote_row.ui")
 class RemoteRow(Adw.ActionRow):
-	__gtype_name__ = 'RemoteRow'
+	__gtype_name__ = "RemoteRow"
 	gtc = Gtk.Template.Child
 
 	suffix_label = gtc()
@@ -25,8 +26,9 @@ class RemoteRow(Adw.ActionRow):
 			return
 
 		has_error = []
+
 		def thread(*args):
-			cmd = ['flatpak-spawn', '--host', 'flatpak', 'remote-modify', '--enable', self.remote.name]
+			cmd = ["flatpak-spawn", "--host", "flatpak", "remote-modify", "--enable", self.remote.name]
 			if self.installation == "user" or self.installation == "system":
 				cmd.append(f"--{self.installation}")
 			else:
@@ -43,7 +45,7 @@ class RemoteRow(Adw.ActionRow):
 			if len(has_error) > 0:
 				GLib.idle_add(lambda *args, cpe=cpe: self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not enable remote"), has_error[0]).toast))
 				return
-				
+
 			self.remove_css_class("warning")
 			self.set_icon_name("")
 			self.set_tooltip_text("")
@@ -60,7 +62,7 @@ class RemoteRow(Adw.ActionRow):
 			if self.parent_page.total_disabled == 0:
 				self.parent_page.show_disabled_button.set_active(False)
 				self.parent_page.show_disabled_button.set_visible(False)
-		
+
 		Gio.Task.new(None, None, callback).run_in_thread(thread)
 
 	def disable_remote_handler(self, *args):
@@ -95,7 +97,7 @@ class RemoteRow(Adw.ActionRow):
 				self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not disable remote"), _("Remote is already disabled")).toast)
 				return
 
-			cmd = ['flatpak-spawn', '--host', 'flatpak', 'remote-modify', '--disable', self.remote.name]
+			cmd = ["flatpak-spawn", "--host", "flatpak", "remote-modify", "--disable", self.remote.name]
 			if self.installation == "user" or self.installation == "system":
 				cmd.append(f"--{self.installation}")
 			else:
@@ -115,10 +117,12 @@ class RemoteRow(Adw.ActionRow):
 		def on_response(_, response):
 			if response != "continue":
 				return
-				
+
 			Gio.Task.new(None, None, callback).run_in_thread(thread)
 
-		dialog = Adw.AlertDialog(heading=_("Disable {}?").format(self.remote.title), body=_("Any installed apps from {} will stop receiving updates").format(self.remote.name))
+		dialog = Adw.AlertDialog(
+			heading=_("Disable {}?").format(self.remote.title), body=_("Any installed apps from {} will stop receiving updates").format(self.remote.name)
+		)
 		dialog.add_response("cancel", _("Cancel"))
 		dialog.add_response("continue", _("Disable"))
 		dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)

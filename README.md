@@ -56,3 +56,18 @@ You're all set! Launch the application by clicking its icon in your app menu or 
 ```shell
 flatpak run io.github.flattool.Warehouse
 ```
+
+## 👥 Contributing
+
+### Compiling from Source
+
+TODO
+
+### Formatting
+
+Warehouse uses [pre-commit](https://pre-commit.com/) for code formatting.
+- Install using `pip install pre-commit`
+- Run `pre-commit install` in the Warehouse repository root to set up pre-commit for this repo.
+- Run `pre-commit run --all-files` to format all files in the repository.
+
+If you run into a situation where pre-commit is broken, you can use `git commit --no-verfiy` to skip the pre-commit checks.

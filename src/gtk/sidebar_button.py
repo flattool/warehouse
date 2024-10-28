@@ -1,12 +1,13 @@
 from gi.repository import Gtk
 from .host_info import HostInfo
 
+
 class SidebarButton(Gtk.Button):
 	__gtype_name__ = "SidebarButton"
 
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
-		
+
 		# Extra Object Creation
 		main_split = HostInfo.main_window.main_split
 
