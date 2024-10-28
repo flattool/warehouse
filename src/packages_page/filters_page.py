@@ -60,7 +60,7 @@ class FiltersPage(Adw.NavigationPage):
 	def app_check_handler(self, *args):
 		self.show_apps = self.app_check.get_active()
 		self.update_gsettings()
-		
+
 	def runtime_check_handler(self, *args):
 		self.show_runtimes = self.runtime_check.get_active()
 		self.update_gsettings()
@@ -76,21 +76,21 @@ class FiltersPage(Adw.NavigationPage):
 				self.remotes_string += f"{row.item.name}<>{row.installation};"
 			elif state:
 				self.remotes_string.replace(f"{row.item.name}<>{row.installation};", "")
-		
+
 		self.update_gsettings()
 
 	def all_runtimes_handler(self, switch, state):
 		self.runtimes_string = ""
 		if not state:
 			self.runtimes_string = "all"
-		
+
 		for row in self.runtime_rows:
 			row.set_visible(state)
 			if state and row.check_button.get_active():
 				self.runtimes_string += f"{row.item};"
 			elif state:
 				self.runtimes_string.replace(f"{row.item};", "")
-		
+
 		self.update_gsettings()
 
 	def remote_row_check_handler(self, row):
@@ -160,7 +160,7 @@ class FiltersPage(Adw.NavigationPage):
 		self.show_runtimes = self.settings.get_boolean("show-runtimes")
 		self.remotes_string = self.settings.get_string("remotes-list")
 		self.runtimes_string = self.settings.get_string("runtimes-list")
-		
+
 		self.app_check.set_active(self.show_apps)
 		self.runtime_check.set_active(self.show_runtimes)
 

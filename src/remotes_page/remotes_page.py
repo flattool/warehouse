@@ -22,7 +22,6 @@ class NewRemoteRow(Adw.ActionRow):
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/remotes_page/remotes_page.ui")
 class RemotesPage(Adw.NavigationPage):
-
 	# Preselected Remotes
 	new_remotes = [
 		{
@@ -92,7 +91,7 @@ class RemotesPage(Adw.NavigationPage):
 	#	This must be set to the created object from within the class's __init__ method
 	instance = None
 	page_name = "remotes"
-	
+
 	def start_loading(self):
 		self.search_button.set_active(False)
 		self.status_stack.set_visible_child(self.loading_view)
@@ -137,7 +136,7 @@ class RemotesPage(Adw.NavigationPage):
 			if row.get_visible():
 				any_visible = True
 				break
-		
+
 		self.none_visible.set_visible(not any_visible)
 
 	def filter_remote(self, row):
@@ -150,7 +149,7 @@ class RemotesPage(Adw.NavigationPage):
 		packages_page.apply_filters()
 		GLib.idle_add(lambda *_: self.main_window.activate_row(self.main_window.packages_row))
 		GLib.idle_add(lambda *args: packages_page.packages_toast_overlay.add_toast(Adw.Toast(title=_("Showing all packages from {}").format(row.remote.title))))
-	
+
 	def remove_remote(self, row):
 		error = [None]
 		def thread(*args):
@@ -182,7 +181,7 @@ class RemotesPage(Adw.NavigationPage):
 		def on_response(_, response):
 			if response != "continue":
 				return
-			
+
 			Gio.Task.new(None, None, callback).run_in_thread(thread)
 
 		dialog = Adw.AlertDialog(heading=_("Remove {}?").format(row.remote.title), body=_("Any installed apps from {} will stop receiving updates").format(row.remote.name))
@@ -196,7 +195,7 @@ class RemotesPage(Adw.NavigationPage):
 		text = entry.get_text().lower()
 		total = 0
 		show_disabled = self.show_disabled_button.get_active()
-		
+
 		for row in self.current_remote_rows:
 			title_match = text in row.get_title().lower()
 			subtitle_match = text in row.get_subtitle().lower()
@@ -209,7 +208,7 @@ class RemotesPage(Adw.NavigationPage):
 			return
 
 		self.stack.set_visible_child(self.content_page if total > 0 else self.no_results)
-		
+
 	def local_file_handler(self, path):
 		try:
 			name = path.split("/")[-1].split(".")[0]
@@ -260,7 +259,7 @@ class RemotesPage(Adw.NavigationPage):
 				total_visible += 1
 
 		self.none_visible.set_visible(total_visible == 0)
-		
+
 	def new_custom_handler(self, *args):
 		AddRemoteDialog(self.main_window, self).present(self.main_window)
 

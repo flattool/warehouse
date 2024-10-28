@@ -14,10 +14,10 @@ class PropertiesPage(Adw.NavigationPage):
 	stack = gtc()
 	error_tbv = gtc()
 	loading_tbv = gtc()
-	
+
 	more_menu = gtc()
 	more_list = gtc()
-	
+
 	nav_view = gtc()
 	inner_nav_page = gtc()
 	toast_overlay = gtc()
@@ -29,7 +29,7 @@ class PropertiesPage(Adw.NavigationPage):
 	eol_box = gtc()
 	open_app_button = gtc()
 	uninstall_button = gtc()
-	
+
 	pin_row = gtc()
 	pin_switch = gtc()
 	data_row = gtc()
@@ -44,30 +44,30 @@ class PropertiesPage(Adw.NavigationPage):
 	installed_size_row = gtc()
 	runtime_row = gtc()
 	eol_package_package_status_icon = gtc()
-	
+
 	id_row = gtc()
 	ref_row = gtc()
 	arch_row = gtc()
 	branch_row = gtc()
 	license_row = gtc()
-	
+
 	sdk_row = gtc()
 	origin_row = gtc()
 	collection_row = gtc()
 	installation_row = gtc()
-	
+
 	commit_row = gtc()
 	parent_row = gtc()
 	subject_row = gtc()
 	date_row = gtc()
-	
+
 	package = None
-	
+
 	def set_properties(self, package, refresh=False):
 		if package == self.package and not refresh:
 			# Do not update the ui if the same app row is clicked
 			return
-			
+
 		self.reinstall_did_error = False
 		self.package = package
 		pkg_name = package.info["name"]
@@ -78,12 +78,12 @@ class PropertiesPage(Adw.NavigationPage):
 		else:
 			self.name.set_visible(False)
 			self.inner_nav_page.set_title(_("Properties"))
-			
+
 		if package.icon_path:
 			GLib.idle_add(lambda *_: self.app_icon.set_from_file(package.icon_path))
 		else:
 			GLib.idle_add(lambda *_: self.app_icon.set_from_icon_name("application-x-executable-symbolic"))
-			
+
 		self.eol_box.set_visible(package.is_eol)
 		self.pin_row.set_visible(package.is_runtime)
 		self.open_app_button.set_visible(package.is_runtime)
@@ -96,29 +96,29 @@ class PropertiesPage(Adw.NavigationPage):
 			has_path = os.path.exists(package.data_path)
 			self.trash_data_button.set_sensitive(has_path and self.package.info['id'] != "io.github.flattool.Warehouse")
 			self.open_data_button.set_sensitive(has_path)
-			
+
 			if not self.package.dependent_runtime is None:
 				self.runtime_row.set_visible(True)
 				self.runtime_row.set_subtitle(self.package.dependent_runtime.info["name"])
 				self.eol_package_package_status_icon.set_visible(self.package.dependent_runtime.is_eol)
-				
+
 			if has_path:
 				self.trash_data_button.set_visible(False)
 				self.open_data_button.set_visible(False)
 				self.data_spinner.set_visible(True)
 				self.data_row.set_subtitle(_("Loading User Data"))
-				
+
 				def callback(size):
 					self.trash_data_button.set_visible(True)
 					self.open_data_button.set_visible(True)
 					self.data_spinner.set_visible(False)
 					self.data_row.set_subtitle(size)
-					
+
 				self.package.get_data_size(lambda size: callback(size))
 			else:
 				self.data_row.set_subtitle(_("No User Data"))
 				self.data_spinner.set_visible(False)
-				
+
 		cli_info = None
 		try:
 			cli_info = package.get_cli_info()
@@ -128,10 +128,10 @@ class PropertiesPage(Adw.NavigationPage):
 		except Exception as e:
 			self.toast_overlay.add_toast(ErrorToast(_("Could not get properties"), str(e)).toast)
 			return
-			
+
 		for key, row in self.info_rows.items():
 			row.set_visible(False)
-			
+
 			try:
 				subtitle = cli_info[key]
 				row.set_subtitle(subtitle)
@@ -144,7 +144,7 @@ class PropertiesPage(Adw.NavigationPage):
 			except Exception as e:
 				self.toast_overlay.add_toast(ErrorToast(_("Could not get properties"), str(e)).toast)
 				continue
-				
+
 		self.mask_label.set_visible(package.is_masked)
 		self.mask_switch.set_active(package.is_masked)
 		self.pin_switch.set_active(package.is_pinned)
@@ -153,14 +153,14 @@ class PropertiesPage(Adw.NavigationPage):
 		if self.open_app_button.get_visible():
 			self.more_list.append(self.view_snapshots)
 			self.more_list.append(self.copy_launch_command)
-			
+
 		self.more_list.append(self.show_details)
 		self.more_list.append(self.reinstall)
-		
+
 	def open_data_handler(self, *args):
 		if error := self.package.open_data():
 			self.toast_overlay.add_toast(ErrorToast(_("Could not open data"), str(error)).toast)
-			
+
 	def trash_data_handler(self, *args):
 		def on_choice(dialog, response):
 			if response != 'continue':
@@ -176,12 +176,12 @@ class PropertiesPage(Adw.NavigationPage):
 				snapshot_list_package = snapshot_list_page.package_or_folder
 				if not snapshot_list_package is None:
 					snapshot_list_page.set_snapshots(snapshot_list_package, True)
-					
+
 			except subprocess.CalledProcessError as cpe:
 				self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), cpe.stderr).toast)
 			except Exception as e:
 				self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(e)).toast)
-				
+
 		dialog = Adw.AlertDialog(
 			heading=_("Send {}'s User Data to the Trash?").format(self.package.info["name"]),
 			body=_("Your settings and data for this app will be sent to the trash")
@@ -191,7 +191,7 @@ class PropertiesPage(Adw.NavigationPage):
 		dialog.connect("response", on_choice)
 		dialog.set_response_appearance('continue', Adw.ResponseAppearance.DESTRUCTIVE)
 		dialog.present(self.main_window)
-		
+
 	def set_mask_handler(self, *args):
 		state = not self.mask_switch.get_active()
 		def callback(*args):
@@ -207,9 +207,9 @@ class PropertiesPage(Adw.NavigationPage):
 				GLib.idle_add(lambda *_: self.mask_switch.set_active(state))
 				GLib.idle_add(lambda *_: self.mask_label.set_visible(state))
 				self.package.app_row.masked_status_icon.set_visible(state)
-				
+
 		self.package.set_mask(state, callback)
-		
+
 	def set_pin_handler(self, *args):
 		state = not self.pin_switch.get_active()
 		def callback(*args):
@@ -223,9 +223,9 @@ class PropertiesPage(Adw.NavigationPage):
 				self.toast_overlay.add_toast(Adw.Toast(title=response))
 				GLib.idle_add(lambda *_: self.pin_switch.set_active(state))
 				self.package.app_row.pinned_status_icon.set_visible(state)
-				
+
 		self.package.set_pin(state, callback)
-		
+
 	def uninstall_handler(self, *args):
 		def on_choice(should_trash):
 			self.packages_page.set_status(self.packages_page.uninstalling)
@@ -238,7 +238,7 @@ class PropertiesPage(Adw.NavigationPage):
 					self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), cpe.stderr).toast)
 				except Exception as e:
 					self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(e)).toast)
-					
+
 		def callback(*args):
 			if fail := self.package.failed_uninstall:
 				fail = fail.stderr if type(fail) is subprocess.CalledProcessError else fail
@@ -247,48 +247,48 @@ class PropertiesPage(Adw.NavigationPage):
 			else:
 				self.main_window.refresh_handler()
 				HostInfo.main_window.toast_overlay.add_toast(Adw.Toast(title=_("Uninstalled {}").format(self.package.info["name"])))
-				
+
 		dialog = UninstallDialog(on_choice, os.path.exists(self.package.data_path), self.package.info["name"])
 		dialog.present(self.main_window)
-		
+
 	def runtime_row_handler(self, *args):
 		new_page = self.__class__()
 		new_page.packages_page = self.packages_page
 		new_page.set_properties(self.package.dependent_runtime)
 		self.nav_view.push(new_page)
-		
+
 	def open_app_handler(self, *args):
 		self.toast_overlay.add_toast(Adw.Toast(title=_("Opening {}…").format(self.package.info["name"])))
-		
+
 		def callback(*args):
 			if fail := self.package.failed_app_run:
 				fail = fail.stderr if type(fail) is subprocess.CalledProcessError else fail
 				self.toast_overlay.add_toast(ErrorToast(_("Could not open {}").format(self.package.info["name"]), str(fail)).toast)
-				
+
 		self.package.open_app(callback)
-		
+
 	def copy_handler(self, row):
 		HostInfo.clipboard.set(row.get_subtitle())
 		self.toast_overlay.add_toast(Adw.Toast(title=_("Copied {}").format(row.get_title())))
-		
+
 	def change_version_handler(self, row):
 		page = ChangeVersionPage(self.packages_page, self.package)
 		self.nav_view.push(page)
-		
+
 	def reinstall_callback(self):
 		HostInfo.main_window.refresh_handler()
 		if not self.reinstall_did_error:
 			HostInfo.main_window.toast_overlay.add_toast(Adw.Toast(title=_("Reinstalled {}").format(self.package.info['name'])))
-			
+
 	def reinstall_error_callback(self, user_facing_label, error_message):
 		self.reinstall_did_error = True
 		GLib.idle_add(lambda *_: HostInfo.main_window.toast_overlay.add_toast(ErrorToast(user_facing_label, error_message).toast))
-		
+
 	def reinstall_handler(self):
 		def on_response(dialog, response):
 			if response != "continue":
 				return
-				
+
 			self.reinstall_did_error = False
 			PackageInstallWorker.install(
 				[{
@@ -302,7 +302,7 @@ class PropertiesPage(Adw.NavigationPage):
 				self.reinstall_error_callback,
 			)
 			self.packages_page.set_status(self.packages_page.reinstalling)
-			
+
 		dialog = Adw.AlertDialog(
 			heading=_("Reinstall {}?").format(self.package.info['name']),
 			body=_("This package will be uninstalled, and then reinstalled from the same remote and installation.")
@@ -312,7 +312,7 @@ class PropertiesPage(Adw.NavigationPage):
 		dialog.set_response_appearance("continue", Adw.ResponseAppearance.SUGGESTED)
 		dialog.connect("response", on_response)
 		dialog.present(HostInfo.main_window)
-		
+
 	def more_menu_handler(self, listbox, row):
 		self.more_menu.popdown()
 		match row.get_child():
@@ -321,43 +321,43 @@ class PropertiesPage(Adw.NavigationPage):
 				snapshots_page = HostInfo.main_window.pages[snapshots_row]
 				HostInfo.main_window.activate_row(snapshots_row)
 				snapshots_page.show_snapshot(self.package)
-				
+
 			case self.copy_launch_command:
 				try:
 					HostInfo.clipboard.set(f"flatpak run {self.package.info['ref']}")
 					self.toast_overlay.add_toast(Adw.Toast.new(_("Copied launch command")))
 				except Exception as e:
 					self.toast_overlay.add_toast(ErrorToast(_("Could not copy launch command"), str(e)).toast)
-					
+
 			case self.show_details:
 				try:
 					Gio.AppInfo.launch_default_for_uri(f"appstream://{self.package.info['id']}", None)
 				except Exception as e:
 					self.toast_overlay.add_toast(ErrorToast(_("Could not show details"), str(e)).toast)
-					
+
 			case self.reinstall:
 				self.reinstall_handler()
-				
+
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
-		
+
 		# Extra Object Creation
 		self.main_window = HostInfo.main_window
 		self.info_rows = {
 			"version": self.version_row,
 			"installed": self.installed_size_row,
-			
+
 			"id": self.id_row,
 			"ref": self.ref_row,
 			"arch": self.arch_row,
 			"branch": self.branch_row,
 			"license": self.license_row,
-			
+
 			"sdk": self.sdk_row,
 			"origin": self.origin_row,
 			"collection": self.collection_row,
 			"installation": self.installation_row,
-			
+
 			"commit": self.commit_row,
 			"parent": self.parent_row,
 			"subject": self.subject_row,
@@ -371,9 +371,9 @@ class PropertiesPage(Adw.NavigationPage):
 		self.show_details = Gtk.Label(halign=Gtk.Align.START, label=_("Show Details"))
 		self.reinstall = Gtk.Label(halign=Gtk.Align.START, label=_("Reinstall"))
 		self.reinstall_did_error = False
-		
+
 		# Apply
-		
+
 		# Connections
 		self.more_list.connect("row-activated", self.more_menu_handler)
 		self.open_data_button.connect("clicked", self.open_data_handler)

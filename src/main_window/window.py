@@ -54,11 +54,11 @@ class WarehouseWindow(Adw.ApplicationWindow):
 		for _, page in self.pages.items():
 			if page.instance:
 				page.instance.end_loading()
-				
+
 		self.refresh_button.set_sensitive(True)
 		self.refresh_requested = False
 		self.remove_refresh_lockout("refresh handler direct")
-		
+
 	def do_refresh(self):
 		self.start_loading()
 		self.refresh_button.set_sensitive(False)
@@ -72,15 +72,15 @@ class WarehouseWindow(Adw.ApplicationWindow):
 			return
 		else:
 			self.refresh_requested = True
-			
+
 	def add_refresh_lockout(self, reason):
 		self.refresh_lockouts.append(reason)
 		self.refresh_button.set_sensitive(False)
-		
+
 	def remove_refresh_lockout(self, reason):
 		if reason in self.refresh_lockouts:
 			self.refresh_lockouts.remove(reason)
-			
+
 		if len(self.refresh_lockouts) == 0:
 			if self.refresh_requested:
 				self.do_refresh()
@@ -116,7 +116,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
 		if not page_found:
 			self.navigation_row_listbox.get_row_at_index(0).activate()
-			
+
 	def on_file_drop(self, drop_target, value, x, y):
 		try:
 			paks = []
@@ -135,7 +135,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 					dialog.add_response("continue", _("OK"))
 					dialog.present(self)
 					return
-					
+
 			if len(remotes) > 0 and len(paks) > 0:
 				dialog = Adw.AlertDialog(
 					heading=_("Mixed Filetypes"),
@@ -145,7 +145,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 				dialog.add_response("continue", _("OK"))
 				dialog.present(self)
 				return
-				
+
 			if len(remotes) > 1:
 				dialog = Adw.AlertDialog(
 					heading=_("Too Many Remotes"),
@@ -154,7 +154,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 				dialog.add_response("continue", _("OK"))
 				dialog.present(self)
 				return
-				
+
 			if len(remotes) == 1:
 				# Adding a remote
 				self.activate_row(self.remotes_row)
@@ -165,22 +165,22 @@ class WarehouseWindow(Adw.ApplicationWindow):
 				self.activate_row(self.install_row)
 				install_page = self.pages[self.install_row]
 				install_page.select_page.file_dialog_handler(paks)
-				
+
 		except Exception as e:
 			self.toast_overlay.add_toast(ErrorToast(_("Could not open files"), str(e)).toast)
-			
+
 	def on_drop_enter(self, *args):
 		self.main_split.add_css_class("blurred")
 		self.file_drop_revealer.set_reveal_child(True)
 		return 1
-		
+
 	def on_drop_leave(self, *args):
 		self.main_split.remove_css_class("blurred")
 		self.file_drop_revealer.set_reveal_child(False)
-		
+
 	def switch_page_shortcut_handler(self, letter):
 		self.activate_row(self.shortcut_to_pages[letter])
-		
+
 	def key_handler(self, controller, keyval, keycode, state):
 		page = self.stack.get_visible_child()
 		if keyval == Gdk.KEY_BackSpace or keyval == Gdk.KEY_Delete:
@@ -194,7 +194,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 				page.on_escape_handler()
 			except AttributeError:
 				pass
-				
+
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
 
@@ -239,7 +239,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 		file_drop.connect("leave", self.on_drop_leave)
 		event_controller.connect("key-pressed", self.key_handler)
 		self.refresh_button.connect("clicked", self.refresh_handler)
-		
+
 		# Apply again
 		self.start_loading()
 		HostInfo.get_flatpaks(callback=self.end_loading)

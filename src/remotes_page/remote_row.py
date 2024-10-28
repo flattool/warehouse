@@ -43,7 +43,7 @@ class RemoteRow(Adw.ActionRow):
 			if len(has_error) > 0:
 				GLib.idle_add(lambda *args, cpe=cpe: self.parent_page.toast_overlay.add_toast(ErrorToast(_("Could not enable remote"), has_error[0]).toast))
 				return
-				
+
 			self.remove_css_class("warning")
 			self.set_icon_name("")
 			self.set_tooltip_text("")
@@ -60,7 +60,7 @@ class RemoteRow(Adw.ActionRow):
 			if self.parent_page.total_disabled == 0:
 				self.parent_page.show_disabled_button.set_active(False)
 				self.parent_page.show_disabled_button.set_visible(False)
-		
+
 		Gio.Task.new(None, None, callback).run_in_thread(thread)
 
 	def disable_remote_handler(self, *args):
@@ -115,7 +115,7 @@ class RemoteRow(Adw.ActionRow):
 		def on_response(_, response):
 			if response != "continue":
 				return
-				
+
 			Gio.Task.new(None, None, callback).run_in_thread(thread)
 
 		dialog = Adw.AlertDialog(heading=_("Disable {}?").format(self.remote.title), body=_("Any installed apps from {} will stop receiving updates").format(self.remote.name))

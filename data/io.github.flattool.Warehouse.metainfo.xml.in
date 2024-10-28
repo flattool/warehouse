@@ -139,7 +139,7 @@
 		  <li>Update to GNOME 46 GTK Technologies</li>
 		  <li>Updated translations</li>
 		</ul>
-		<p>Previous Releases's Bug Fixes</p> 
+		<p>Previous Releases's Bug Fixes</p>
 		<ul>
 		  <li>When an attempt to run an app fails, correct runtime error information is shown</li>
 		  <li>Install From The Web no longer behaves incorrectly on remote installations with options</li>
@@ -158,7 +158,7 @@
 		  <li>Update to GNOME 46 GTK Technologies</li>
 		  <li>Updated translations</li>
 		</ul>
-		<p>Bug Fixes</p> 
+		<p>Bug Fixes</p>
 		<ul>
 		  <li>When an attempt to run an app fails, correct runtime error information is shown</li>
 		  <li>Install From The Web no longer behaves incorrectly on remote installations with options</li>
@@ -168,7 +168,7 @@
 	</release>
 	<release version="1.5.1" date="2024-3-8" timestamp="1709921475">
 	  <description translate="no">
-		<p>Bug Fixes</p> 
+		<p>Bug Fixes</p>
 		<ul>
 		  <li>Main list is no longer scrolled to the bottom on launch</li>
 		  <li>Leftover Data window no longer tries to use a different window for toast messages</li>
@@ -189,7 +189,7 @@
 		  <li>Period, 0 to 9, and underscores are now allowed in new Custom Remote names</li>
 		  <li>Updated translations</li>
 		</ul>
-		<p>Bug Fixes</p> 
+		<p>Bug Fixes</p>
 		<ul>
 		  <li>Hide Show Disabled Remotes button when there aren't any</li>
 		  <li>Fix Batch Snapshots accidentally triggering Select All</li>

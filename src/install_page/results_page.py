@@ -35,7 +35,7 @@ class AddedPackage:
 class ResultsPage(Adw.NavigationPage):
 	__gtype_name__ = "ResultsPage"
 	gtc = Gtk.Template.Child
-	
+
 	search_entry = gtc()
 	results_list = gtc()
 	stack = gtc()
@@ -43,7 +43,7 @@ class ResultsPage(Adw.NavigationPage):
 	too_many = gtc()
 	results_view= gtc()
 	no_results = gtc()
-	
+
 	def show_remote(self, row, remote, installation, nav_view=None):
 		self.remote = remote
 		self.installation = installation
@@ -52,12 +52,12 @@ class ResultsPage(Adw.NavigationPage):
 		self.search_entry.grab_focus()
 		if nav_view:
 			nav_view.push(self)
-			
+
 	def add_package_row(self, row):
 		self.pending_page.add_package_row(row)
 		if not self.install_page is None:
 			self.install_page.package_added()
-			
+
 	def on_search(self, *args):
 		self.packages.clear()
 		self.stack.set_visible_child(self.loading)
@@ -66,14 +66,14 @@ class ResultsPage(Adw.NavigationPage):
 		if search_text == "":
 			self.stack.set_visible_child(self.new_search)
 			return
-			
+
 		def thread(*args):
 			installation = ""
 			if self.installation == "user" or self.installation == "system":
 				installation = f"--{self.installation}"
 			else:
 				installation = f"--installation={self.installation}"
-				
+
 			try:
 				output = subprocess.run(
 					['flatpak-spawn', '--host', 'flatpak', 'search', '--columns=all', installation, self.search_entry.get_text()],
@@ -82,51 +82,51 @@ class ResultsPage(Adw.NavigationPage):
 				if len(output) > 100:
 					GLib.idle_add(lambda *_: self.stack.set_visible_child(self.too_many))
 					return
-					
+
 				for line in output:
 					line = line.strip()
-					
+
 					info = line.split('\t')
 					if len(info) != 6:
 						continue
-						
+
 					remotes = info[5].split(',')
 					if not self.remote.name in remotes:
 						continue
-						
+
 					package = AddedPackage(info[0], info[2], info[4], info[3], self.remote, self.installation)
 					row = ResultRow(package, ResultRow.PackageState.NEW, self.results_list)
 					for item in self.pending_page.added_packages:
 						if package.is_similar(item):
 							row.set_state(ResultRow.PackageState.SELECTED)
-							
+
 					if package.app_id in HostInfo.id_to_flatpak:
 						installed_package = HostInfo.id_to_flatpak[package.app_id]
 						if installed_package.info["id"] == package.app_id and installed_package.info["branch"] == package.branch:
 							row.set_state(ResultRow.PackageState.INSTALLED)
-							
+
 					row.connect("activated", self.add_package_row)
 					self.packages.append(package)
 					GLib.idle_add(lambda *_, _row=row: self.results_list.append(_row))
-					
+
 				if len(self.packages) > 0:
 					GLib.idle_add(lambda *_: self.stack.set_visible_child(self.results_view))
 				else:
 					GLib.idle_add(lambda *_: self.stack.set_visible_child(self.no_results))
-					
+
 			except subprocess.CalledProcessError as cpe:
 				GLib.idle_add(lambda *_, cpe=cpe: HostInfo.main_window.toast_overlay.add_toast(ErrorToast("Could not search for package", cpe.stderr).toast))
 				GLib.idle_add(lambda *_: self.install_page.select_page.nav_view.pop())
-				
+
 		Gio.Task().run_in_thread(thread)
-		
+
 	def on_back(self, *args):
 		self.results_list.remove_all()
 		self.stack.set_visible_child(self.new_search)
-		
+
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
-		
+
 		# Extra Object Creation
 		self.remote = None
 		self.installation = None
@@ -134,9 +134,9 @@ class ResultsPage(Adw.NavigationPage):
 		self.pending_page = None
 		self.loading = LoadingStatus(_("Searching"), _("This should only take a moment"))
 		self.install_page = None
-		
+
 		# Connections
 		self.search_entry.connect("search-changed", self.on_search)
-		
+
 		# Apply
 		self.stack.add_child(self.loading)

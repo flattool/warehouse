@@ -8,7 +8,6 @@ icon_theme.add_search_path(f"{home}/.local/share/flatpak/exports/share/icons")
 direction = Gtk.Image().get_direction()
 
 class Flatpak:
-
 	def open_app(self, callback=None):
 		self.failed_app_run = None
 		def thread(*args):
@@ -58,10 +57,10 @@ class Flatpak:
 				cmd.append(f"--{installation}")
 			else:
 				cmd.append(f"--installation={installation}")
-			
+
 			if not should_mask:
 				cmd.append("--remove")
-			
+
 			try:
 				subprocess.run(cmd, check=True, capture_output=True, text=True)
 				self.is_masked = should_mask
@@ -76,7 +75,7 @@ class Flatpak:
 		self.failed_pin = None
 		if not self.is_runtime:
 			self.failed_pin = "Cannot pin an application"
-		
+
 		def thread(*args):
 			cmd = ['flatpak-spawn', '--host', 'flatpak', 'pin', f"runtime/{self.info['ref']}"]
 			installation = self.info["installation"]
@@ -99,7 +98,7 @@ class Flatpak:
 
 	def uninstall(self, callee_callback=None):
 		self.failed_uninstall = None
-		
+
 		def callback(*args):
 			HostInfo.main_window.remove_refresh_lockout("uninstalling packages")
 			if not callee_callback is None:
@@ -149,16 +148,16 @@ class Flatpak:
 		first = lines.pop(0)
 		if " - " in first:
 			cli_info["description"] = first.split(" - ")[1]
-			
+
 		# Handle descriptions that contain newlines
 		while (line := lines.pop(0)) and not ":" in line:
 			if len(line) > 0:
 				cli_info["description"] += f" {line}"
-		
+
 		for i, word in enumerate(lines):
 			if not ":" in word:
 				continue
-			
+
 			word = word.strip().split(": ", 1)
 			if len(word) < 2:
 				continue
@@ -248,7 +247,7 @@ class HostInfo:
 	lines = output.strip().split("\n")
 	for i in lines:
 		icon_theme.add_search_path(f"{i}/exports/share/icons")
-	
+
 	flatpaks = []
 	id_to_flatpak = {}
 	ref_to_flatpak = {}
@@ -270,7 +269,6 @@ class HostInfo:
 		this.dependent_runtime_refs.clear()
 
 		def thread(task, *args):
-
 			# Remotes
 			def remote_info(installation):
 				cmd = ['flatpak-spawn', '--host',
@@ -353,7 +351,7 @@ class HostInfo:
 					this.flatpaks.append(package)
 					this.id_to_flatpak[package.info["id"]] = package
 					this.ref_to_flatpak[package.info["ref"]] = package
-					
+
 				# Dependent Runtimes
 				output = subprocess.run(
 					['flatpak-spawn', '--host',
@@ -366,19 +364,19 @@ class HostInfo:
 					split_line = line.split("\t")
 					if len(split_line) < 2 or split_line[0] == '':
 						continue
-						
+
 					package = this.flatpaks[index]
 					if package.is_runtime:
 						continue
-						
+
 					runtime = split_line[0]
 					package.dependent_runtime = this.ref_to_flatpak[runtime]
 					if not runtime in this.dependent_runtime_refs:
 						this.dependent_runtime_refs.append(runtime)
-						
+
 			except subprocess.CalledProcessError as cpe:
 				this.main_window.toast_overlay.add_toast(ErrorToast(_("Could not load packages"), cpe.stderr).toast)
 			except Exception as e:
 				this.main_window.toast_overlay.add_toast(ErrorToast(_("Could not load packages"), str(e)).toast)
-				
+
 		Gio.Task.new(None, None, callback).run_in_thread(thread)

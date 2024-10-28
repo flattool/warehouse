@@ -4,35 +4,35 @@ from gi.repository import Adw, Gtk, GLib
 class UninstallDialog(Adw.AlertDialog):
 	__gtype_name__ = "UninstallDialog"
 	gtc = Gtk.Template.Child
-	
+
 	group = gtc()
 	trash = gtc()
 	is_open = False
-	
+
 	def on_response(self, dialog, response):
 		self.__class__.is_open = False
 		if response != "continue":
 			return
-			
+
 		self.continue_callback(self.trash.get_active())
-		
+
 	def present(self, *args, **kwargs):
 		if self.__class__.is_open:
 			return
-			
+
 		self.__class__.is_open = True
 		super().present(*args, **kwargs)
-		
+
 	def __init__(self, continue_callback, show_trash_option, package_name=None, **kwargs):
 		super().__init__(**kwargs)
-		
+
 		if package_name:
 			self.set_heading(GLib.markup_escape_text(_("Uninstall {}?").format(package_name)))
 			self.set_body(GLib.markup_escape_text(_("It will not be possible to use {} after removal").format(package_name)))
 		else:
 			self.set_heading(GLib.markup_escape_text(_("Uninstall Packages?")))
 			self.set_body(GLib.markup_escape_text(_("It will not be possible to use these packages after removal")))
-			
+
 		self.continue_callback = continue_callback
 		self.add_response("cancel", _("Cancel"))
 		self.add_response("continue", _("Uninstall"))

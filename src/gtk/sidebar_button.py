@@ -6,7 +6,7 @@ class SidebarButton(Gtk.Button):
 
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
-		
+
 		# Extra Object Creation
 		main_split = HostInfo.main_window.main_split
 
