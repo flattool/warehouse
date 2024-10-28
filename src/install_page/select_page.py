@@ -87,5 +87,3 @@ class SelectPage(Adw.NavigationPage):
         self.add_remote_row.connect("activated", lambda *_: HostInfo.main_window.activate_row(HostInfo.main_window.remotes_row))
         self.nav_view.connect("popped", self.results_page.on_back)
         self.open_row.connect("activated", self.on_open)
-        
-        # Apply

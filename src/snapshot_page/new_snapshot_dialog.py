@@ -1,6 +1,5 @@
 from gi.repository import Adw, Gtk, GLib
 from .host_info import HostInfo
-from .error_toast import ErrorToast
 from .loading_status import LoadingStatus
 from .app_row import AppRow
 from .tar_worker import TarWorker

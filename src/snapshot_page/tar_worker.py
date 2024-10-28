@@ -1,7 +1,7 @@
 from gi.repository import GLib, Gio
 from .host_info import HostInfo
 from .error_toast import ErrorToast
-import os, tarfile, subprocess, json
+import os, subprocess, json
 
 class TarWorker:
     def compress_thread(self, *args):

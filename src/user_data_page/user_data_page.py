@@ -1,6 +1,5 @@
-from gi.repository import Adw, Gtk, Gio, Gdk
+from gi.repository import Adw, Gtk, Gio
 from .error_toast import ErrorToast
-from .data_box import DataBox
 from .data_subpage import DataSubpage
 from .host_info import HostInfo
 from .sidebar_button import SidebarButton

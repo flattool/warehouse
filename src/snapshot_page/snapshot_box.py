@@ -2,7 +2,7 @@ from gi.repository import Adw, Gtk, GLib, Gio
 from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .tar_worker import TarWorker
-import os, subprocess, json, re
+import os, subprocess, json
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/snapshot_box.ui")
 class SnapshotBox(Gtk.Box):

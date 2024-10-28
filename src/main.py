@@ -26,7 +26,6 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 
 from gi.repository import Gtk, Gio, Adw, GLib
-from .host_info import HostInfo
 from .window import WarehouseWindow
 from .const import Config
 from .error_toast import ErrorToast

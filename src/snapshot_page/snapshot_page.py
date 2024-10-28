@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk, GLib, Gio, Gdk
+from gi.repository import Adw, Gtk, GLib, Gio
 from .host_info import HostInfo
 from .error_toast import ErrorToast
 from .app_row import AppRow
@@ -223,7 +223,6 @@ class SnapshotPage(Adw.BreakpointBin):
                 GLib.idle_add(lambda *_: self.stack.set_visible_child(self.scrolled_window))
                 GLib.idle_add(lambda *_: self.status_stack.set_visible_child(self.split_view))
                 
-            data_path = f"{HostInfo.home}/.var/app"
             data_exists = False
             for package in HostInfo.flatpaks:
                 if package.info['id'] == "io.github.flattool.Warehouse":
@@ -450,12 +449,10 @@ class SnapshotPage(Adw.BreakpointBin):
         id_to_tar = self.get_snapshots_from_entry(app_ids)
         for app_id in id_to_tar:
             biggest = 0
-            biggest_tar = ""
             for tar in id_to_tar[app_id]:
                 epoch = int(tar.split('_')[0])
                 if epoch > biggest:
                     biggest = epoch
-                    biggest_tar = tar
                     
             id_to_tar[app_id] = tar
             

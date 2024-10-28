@@ -1,5 +1,4 @@
 from gi.repository import Gtk, GLib
-from .host_info import HostInfo
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/gtk/loading_status.ui")
 class LoadingStatus(Gtk.ScrolledWindow):

@@ -16,7 +16,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-only
 
-from gi.repository import Adw, Gdk, Gio, GLib, Gtk
+from gi.repository import Adw, Gdk, Gio, Gtk
 from .host_info import HostInfo
 from .packages_page import PackagesPage
 from .remotes_page import RemotesPage
@@ -230,8 +230,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
         self.settings.bind("window-height", self, "default-height", Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind("is-maximized", self, "maximized", Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind("is-fullscreen", self, "fullscreened", Gio.SettingsBindFlags.DEFAULT)
-        # self.scrolled_window.add_controller(file_drop)
-        # self.main_split.set_content(PackagesPage(self))
         if Config.DEVEL:
             self.add_css_class("devel")
 
@@ -240,15 +238,8 @@ class WarehouseWindow(Adw.ApplicationWindow):
         file_drop.connect("enter", self.on_drop_enter)
         file_drop.connect("leave", self.on_drop_leave)
         event_controller.connect("key-pressed", self.key_handler)
-        # file_drop.connect("drop", self.drop_callback)
         self.refresh_button.connect("clicked", self.refresh_handler)
         
-        # self.activate_row(self.user_data_row)
-        # self.main_split.set_show_sidebar(self.settings.get_boolean("sidebar-shown"))
-        # GLib.idle_add(lambda *_: self.main_split.set_show_sidebar(False))
-        # print(self.settings.get_boolean("sidebar-shown"))
-        # self.main_split.connect("notify::show-sidebar", self.save_sidebar_state)
-
+        # Apply again
         self.start_loading()
         HostInfo.get_flatpaks(callback=self.end_loading)
-        # GLib.idle_add(lambda *_: self.main_split.set_show_sidebar(False))

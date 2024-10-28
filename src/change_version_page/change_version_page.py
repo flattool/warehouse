@@ -3,7 +3,7 @@ from .error_toast import ErrorToast
 from .host_info import HostInfo
 from .loading_status import LoadingStatus
 from .change_version_worker import ChangeVersionWorker
-import subprocess, os
+import subprocess
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/change_version_page/change_version_page.ui")
 class ChangeVersionPage(Adw.NavigationPage):

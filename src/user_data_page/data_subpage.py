@@ -1,6 +1,5 @@
 from gi.repository import Gtk, GLib, Gio
 from .host_info import HostInfo
-from .error_toast import ErrorToast
 from .data_box import DataBox
 from .loading_status import LoadingStatus
 
