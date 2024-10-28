@@ -213,7 +213,7 @@ class WarehouseApplication(Adw.Application):
             copyright="© 2023 Heliguy",
             license_type=Gtk.License.GPL_3_0_ONLY,
             debug_info=self.troubleshooting,
-            # Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
+            # Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
             translator_credits=_("translator-credits"),
             debug_info_filename="{}.txt".format(self.get_application_id()),
             website="https://github.com/flattool/warehouse",
@@ -224,7 +224,7 @@ class WarehouseApplication(Adw.Application):
         about.add_credit_section(
             _("Contributors"),
             [
-                # Contributors: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
+                # Contributors: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
                 "Win <winsdominoes2018@gmail.com>",
                 "Óscar Fernández Díaz",
                 "Runar https://github.com/runarcn",
