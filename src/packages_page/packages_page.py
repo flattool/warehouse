@@ -296,6 +296,7 @@ class PackagesPage(Adw.BreakpointBin):
         dialog.present(self.main_window)
         
     def start_loading(self):
+        self.search_button.set_active(False)
         self.last_activated_row = None
         self.packages_navpage.set_title(_("Packages"))
         self.select_button.set_active(False)
