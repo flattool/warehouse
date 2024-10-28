@@ -36,11 +36,11 @@ locale.textdomain('warehouse')
 gettext.install('warehouse', localedir)
 
 if __name__ == '__main__':
-    import gi
+	import gi
 
-    from gi.repository import Gio
-    resource = Gio.Resource.load(os.path.join(pkgdatadir, 'warehouse.gresource'))
-    resource._register()
+	from gi.repository import Gio
+	resource = Gio.Resource.load(os.path.join(pkgdatadir, 'warehouse.gresource'))
+	resource._register()
 
-    from Warehouse import main
-    sys.exit(main.main(VERSION))
+	from Warehouse import main
+	sys.exit(main.main(VERSION))

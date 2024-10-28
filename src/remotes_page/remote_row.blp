@@ -2,56 +2,56 @@ using Gtk 4.0;
 using Adw 1;
 
 template $RemoteRow : Adw.ActionRow {
-    [suffix]
-    Label suffix_label {
-        styles ["subtitle"]
-        margin-end: 6;
-        wrap: true;
-        wrap-mode: word_char;
-        natural-wrap-mode: none;
-        halign: end;
-        hexpand: true;
-        justify: right;
-    }
-    [suffix]
-    Button filter_button {
-        styles ["flat"]
-        valign: center;
-        icon-name: "funnel-symbolic";
-        tooltip-text: _("Set a Filter for this Remote");
-    }
-    [suffix]
-    MenuButton menu_button {
-        styles ["flat"]
-        valign: center;
-        popover: menu_pop;
-        icon-name: "view-more-symbolic";
-        tooltip-text: _("More Actions");
-    }
+	[suffix]
+	Label suffix_label {
+		styles ["subtitle"]
+		margin-end: 6;
+		wrap: true;
+		wrap-mode: word_char;
+		natural-wrap-mode: none;
+		halign: end;
+		hexpand: true;
+		justify: right;
+	}
+	[suffix]
+	Button filter_button {
+		styles ["flat"]
+		valign: center;
+		icon-name: "funnel-symbolic";
+		tooltip-text: _("Set a Filter for this Remote");
+	}
+	[suffix]
+	MenuButton menu_button {
+		styles ["flat"]
+		valign: center;
+		popover: menu_pop;
+		icon-name: "view-more-symbolic";
+		tooltip-text: _("More Actions");
+	}
 }
 
 Popover menu_pop {
-    styles ["menu"]
-    ListBox menu_listbox {
-        Label copy_title {
-            label: _("Copy Title");
-            halign: start;
-        }
-        Label copy_name {
-            label: _("Copy Name");
-            halign: start;
-        }
-        Label enable_remote {
-            label: _("Enable");
-            halign: start;
-        }
-        Label disable_remote {
-            label: _("Disable");
-            halign: start;
-        }
-        Label remove {
-            label: _("Remove");
-            halign: start;
-        }
-    }
+	styles ["menu"]
+	ListBox menu_listbox {
+		Label copy_title {
+			label: _("Copy Title");
+			halign: start;
+		}
+		Label copy_name {
+			label: _("Copy Name");
+			halign: start;
+		}
+		Label enable_remote {
+			label: _("Enable");
+			halign: start;
+		}
+		Label disable_remote {
+			label: _("Disable");
+			halign: start;
+		}
+		Label remove {
+			label: _("Remove");
+			halign: start;
+		}
+	}
 }

@@ -2,245 +2,245 @@ using Gtk 4.0;
 using Adw 1;
 
 template $PropertiesPage : Adw.NavigationPage {
-    title: "Outer Page";
-    Stack stack {
-        Adw.ToolbarView loading_tbv {
-            [top]
-            Adw.HeaderBar {
-                show-title: false;
-            }
-        }
-        Adw.ToolbarView error_tbv {
-            [top]
-            Adw.HeaderBar {
-                show-title: false;
-            }
-            Adw.StatusPage {
-                title: _("Properties Page Unavailable");
-                description: _("Cannot show the properties page at this time");
-                icon-name: "error-symbolic";
-            }
-        }
-        Adw.NavigationView nav_view {
-            Adw.NavigationPage inner_nav_page {
-                title: "Inner Page";
-                Adw.ToastOverlay toast_overlay {
-                    Adw.ToolbarView {
-                        [top]
-                        Adw.HeaderBar header_bar {
-                            show-title: false;
-                            [end]
-                            MenuButton more_menu_button {
-                                icon-name: "view-more-symbolic";
-                                popover: more_menu;
-                            }
-                        }
-                        ScrolledWindow scrolled_window {
-                            Adw.Clamp {
-                                Box {
-                                    margin-start: 12;
-                                    margin-end: 12;
-                                    margin-bottom: 12;
-                                    orientation: vertical;
-                                    halign: fill;
-                                    
-                                    Image app_icon {
-                                        pixel-size: 100;
-                                        margin-top: 6;
-                                        margin-bottom: 18;
-                                        icon-name: "application-x-executable-symbolic";
-                                        styles["icon-dropshadow"]
-                                    }
+	title: "Outer Page";
+	Stack stack {
+		Adw.ToolbarView loading_tbv {
+			[top]
+			Adw.HeaderBar {
+				show-title: false;
+			}
+		}
+		Adw.ToolbarView error_tbv {
+			[top]
+			Adw.HeaderBar {
+				show-title: false;
+			}
+			Adw.StatusPage {
+				title: _("Properties Page Unavailable");
+				description: _("Cannot show the properties page at this time");
+				icon-name: "error-symbolic";
+			}
+		}
+		Adw.NavigationView nav_view {
+			Adw.NavigationPage inner_nav_page {
+				title: "Inner Page";
+				Adw.ToastOverlay toast_overlay {
+					Adw.ToolbarView {
+						[top]
+						Adw.HeaderBar header_bar {
+							show-title: false;
+							[end]
+							MenuButton more_menu_button {
+								icon-name: "view-more-symbolic";
+								popover: more_menu;
+							}
+						}
+						ScrolledWindow scrolled_window {
+							Adw.Clamp {
+								Box {
+									margin-start: 12;
+									margin-end: 12;
+									margin-bottom: 12;
+									orientation: vertical;
+									halign: fill;
+									
+									Image app_icon {
+										pixel-size: 100;
+										margin-top: 6;
+										margin-bottom: 18;
+										icon-name: "application-x-executable-symbolic";
+										styles["icon-dropshadow"]
+									}
 
-                                    Label name {
-                                        styles ["title-1"]
-                                        wrap: true;
-                                        wrap-mode: word_char;
-                                        justify: center;
-                                        margin-bottom: 12;
-                                        margin-start: 6;
-                                        margin-end: 6;
-                                    }
+									Label name {
+										styles ["title-1"]
+										wrap: true;
+										wrap-mode: word_char;
+										justify: center;
+										margin-bottom: 12;
+										margin-start: 6;
+										margin-end: 6;
+									}
 
-                                    Label description {
-                                        styles ["title-4"]
-                                        wrap: true;
-                                        wrap-mode: word_char;
-                                        justify: center;
-                                        margin-start: 6;
-                                        margin-end: 6;
-                                    }
+									Label description {
+										styles ["title-4"]
+										wrap: true;
+										wrap-mode: word_char;
+										justify: center;
+										margin-start: 6;
+										margin-end: 6;
+									}
 
-                                    Box {
-                                        spacing: 6;
-                                        homogeneous: true;
-                                        margin-top: 18;
-                                        margin-bottom: 12;
-                                        halign: center;
-                                        Button open_app_button {
-                                            styles ["suggested-action", "pill"]
-                                            can-shrink: true;
-                                            label: _("Open");
-                                        }
-                                        Button uninstall_button {
-                                            styles ["pill"]
-                                            can-shrink: true;
-                                            label: _("Uninstall");
-                                        }
-                                    }
+									Box {
+										spacing: 6;
+										homogeneous: true;
+										margin-top: 18;
+										margin-bottom: 12;
+										halign: center;
+										Button open_app_button {
+											styles ["suggested-action", "pill"]
+											can-shrink: true;
+											label: _("Open");
+										}
+										Button uninstall_button {
+											styles ["pill"]
+											can-shrink: true;
+											label: _("Uninstall");
+										}
+									}
 
-                                    Box eol_box {
-                                        margin-bottom: 12;
-                                        styles ["card"]
-                                        Label status_label {
-                                            margin-top: 6;
-                                            margin-bottom: 7;
-                                            margin-start: 6;
-                                            margin-end: 6;
-                                            label: _("This package is End Of Life, and will not receive any security updates");
-                                            styles ["heading", "error"]
-                                            halign: center;
-                                            hexpand: true;
-                                            wrap: true;
-                                            justify: center;
-                                        }
-                                    }
+									Box eol_box {
+										margin-bottom: 12;
+										styles ["card"]
+										Label status_label {
+											margin-top: 6;
+											margin-bottom: 7;
+											margin-start: 6;
+											margin-end: 6;
+											label: _("This package is End Of Life, and will not receive any security updates");
+											styles ["heading", "error"]
+											halign: center;
+											hexpand: true;
+											wrap: true;
+											justify: center;
+										}
+									}
 
-                                    Box information {
-                                        orientation: vertical;
-                                        Adw.PreferencesGroup actions {
-                                            margin-bottom: 12;
-                                            Adw.ActionRow data_row {
-                                                title: _("User Data");
-                                                styles["property"]
+									Box information {
+										orientation: vertical;
+										Adw.PreferencesGroup actions {
+											margin-bottom: 12;
+											Adw.ActionRow data_row {
+												title: _("User Data");
+												styles["property"]
 
-                                                [suffix]
-                                                Button open_data_button {
-                                                    styles["flat"]
-                                                    valign: center;
-                                                    icon-name: "folder-open-symbolic";
-                                                    tooltip-text: _("Open User Data");
-                                                }
+												[suffix]
+												Button open_data_button {
+													styles["flat"]
+													valign: center;
+													icon-name: "folder-open-symbolic";
+													tooltip-text: _("Open User Data");
+												}
 
-                                                [suffix]
-                                                Button trash_data_button {
-                                                    styles["flat"]
-                                                    valign: center;
-                                                    icon-name: "user-trash-symbolic";
-                                                    tooltip-text: _("Trash User Data");
-                                                }
+												[suffix]
+												Button trash_data_button {
+													styles["flat"]
+													valign: center;
+													icon-name: "user-trash-symbolic";
+													tooltip-text: _("Trash User Data");
+												}
 
-                                                [suffix]
-                                                Spinner data_spinner {
-                                                    spinning: true;
-                                                }
-                                            }
-                                            Adw.ExpanderRow version_row {
-                                                title: _("Version");
-                                                styles ["property"]
-                                                [suffix]
-                                                Label mask_label {
-                                                    label: _("Updates Disabled");
-                                                    styles["warning"]
-                                                }
-                                                Adw.ActionRow mask_row {
-                                                    title: _("Disable Updates");
-                                                    subtitle: _("Mask this package so it's never updated");
-                                                    activatable: true;
-                                                    Gtk.Switch mask_switch {
-                                                        valign: center;
-                                                        can-focus: false;
-                                                        can-target: false;
-                                                    }
-                                                }
-                                                Adw.ActionRow change_version_row {
-                                                    title: _("Change Version");
-                                                    subtitle: _("Upgrade or downgrade this package");
-                                                    activatable: true;
-                                                    Image {
-                                                        icon-name: "right-large-symbolic";
-                                                    }
-                                                }
-                                            }
-                                            Adw.ActionRow installed_size_row {
-                                                styles ["property"]
-                                                title: _("Installed Size");
-                                                activatable: true;
-                                                Image {
-                                                    icon-name: "copy-symbolic";
-                                                }
-                                            }
-                                            Adw.ActionRow runtime_row {
-                                                styles ["property"]
-                                                title: _("Runtime");
-                                                activatable: true;
-                                                Image eol_package_package_status_icon {
-                                                    icon-name: "error-symbolic";
-                                                    tooltip-text: _("This package is End Of Life, and will not recieve any security updates");
-                                                    margin-end: 6;
-                                                    styles["error"]
-                                                }
-                                                Image {
-                                                    icon-name: "right-large-symbolic";
-                                                }
-                                            }
-                                            Adw.ActionRow pin_row {
-                                                title: _("Disable Automactic Removal");
-                                                subtitle: _("Pin this runtime to keep it installed");
-                                                activatable: true;
-                                                Gtk.Switch pin_switch {
-                                                    valign: center;
-                                                    can-focus: false;
-                                                    can-target: false;
-                                                }
-                                            }
-                                        }
-                                        Adw.PreferencesGroup package_info {
-                                            margin-bottom: 12;
-                                            title: _("Package Information");
-                                            Adw.ActionRow id_row {
-                                                styles ["property"]
-                                                title: _("Application ID");
-                                                activatable: true;
-                                                Image {
-                                                    icon-name: "copy-symbolic";
-                                                }
-                                            }
-                                            Adw.ActionRow ref_row {
-                                                styles ["property"]
-                                                title: "Ref";
-                                                activatable: true;
-                                                Image {
-                                                    icon-name: "copy-symbolic";
-                                                }
-                                            }
-                                            Adw.ActionRow arch_row {
-                                                styles ["property"]
-                                                title: _("Architecture");
-                                                activatable: true;
-                                                Image {
-                                                    icon-name: "copy-symbolic";
-                                                }
-                                            }
-                                            Adw.ActionRow branch_row {
-                                                styles ["property"]
-                                                title: _("Branch");
-                                                activatable: true;
-                                                Image {
-                                                    icon-name: "copy-symbolic";
-                                                }
-                                            }
-                                            Adw.ActionRow license_row {
-                                                styles ["property"]
-                                                title: _("License");
-                                                activatable: true;
-                                                Image {
-                                                    icon-name: "copy-symbolic";
-                                                }
-                                            }
-                                        }
-                                        Adw.PreferencesGroup remote_info {
-                                            margin-bottom: 12;
+												[suffix]
+												Spinner data_spinner {
+													spinning: true;
+												}
+											}
+											Adw.ExpanderRow version_row {
+												title: _("Version");
+												styles ["property"]
+												[suffix]
+												Label mask_label {
+													label: _("Updates Disabled");
+													styles["warning"]
+												}
+												Adw.ActionRow mask_row {
+													title: _("Disable Updates");
+													subtitle: _("Mask this package so it's never updated");
+													activatable: true;
+													Gtk.Switch mask_switch {
+														valign: center;
+														can-focus: false;
+														can-target: false;
+													}
+												}
+												Adw.ActionRow change_version_row {
+													title: _("Change Version");
+													subtitle: _("Upgrade or downgrade this package");
+													activatable: true;
+													Image {
+														icon-name: "right-large-symbolic";
+													}
+												}
+											}
+											Adw.ActionRow installed_size_row {
+												styles ["property"]
+												title: _("Installed Size");
+												activatable: true;
+												Image {
+													icon-name: "copy-symbolic";
+												}
+											}
+											Adw.ActionRow runtime_row {
+												styles ["property"]
+												title: _("Runtime");
+												activatable: true;
+												Image eol_package_package_status_icon {
+													icon-name: "error-symbolic";
+													tooltip-text: _("This package is End Of Life, and will not recieve any security updates");
+													margin-end: 6;
+													styles["error"]
+												}
+												Image {
+													icon-name: "right-large-symbolic";
+												}
+											}
+											Adw.ActionRow pin_row {
+												title: _("Disable Automactic Removal");
+												subtitle: _("Pin this runtime to keep it installed");
+												activatable: true;
+												Gtk.Switch pin_switch {
+													valign: center;
+													can-focus: false;
+													can-target: false;
+												}
+											}
+										}
+										Adw.PreferencesGroup package_info {
+											margin-bottom: 12;
+											title: _("Package Information");
+											Adw.ActionRow id_row {
+												styles ["property"]
+												title: _("Application ID");
+												activatable: true;
+												Image {
+													icon-name: "copy-symbolic";
+												}
+											}
+											Adw.ActionRow ref_row {
+												styles ["property"]
+												title: "Ref";
+												activatable: true;
+												Image {
+													icon-name: "copy-symbolic";
+												}
+											}
+											Adw.ActionRow arch_row {
+												styles ["property"]
+												title: _("Architecture");
+												activatable: true;
+												Image {
+													icon-name: "copy-symbolic";
+												}
+											}
+											Adw.ActionRow branch_row {
+												styles ["property"]
+												title: _("Branch");
+												activatable: true;
+												Image {
+													icon-name: "copy-symbolic";
+												}
+											}
+											Adw.ActionRow license_row {
+												styles ["property"]
+												title: _("License");
+												activatable: true;
+												Image {
+													icon-name: "copy-symbolic";
+												}
+											}
+										}
+										Adw.PreferencesGroup remote_info {
+				                            margin-bottom: 12;
                                             title: _("Installation Information");
                                             Adw.ActionRow sdk_row {
                                                 styles ["property"]

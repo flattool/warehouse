@@ -26,8 +26,8 @@
 
 - Permission management
 - Full fledge package manager / app store
-    - Viewing app icons and screenshots from remotes
-    - Reading and leaving app reviews
-    - Auto updates
+	- Viewing app icons and screenshots from remotes
+	- Reading and leaving app reviews
+	- Auto updates
 - Management of any non Flatpak packages
 - Supporting any repackages (apart from nixpkgs should that arise)
