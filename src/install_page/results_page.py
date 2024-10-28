@@ -5,6 +5,7 @@ from .loading_status import LoadingStatus
 from .error_toast import ErrorToast
 import subprocess
 
+
 class AddedPackage:
 	def __eq__(self, other):
 		return (
@@ -17,11 +18,7 @@ class AddedPackage:
 		)
 
 	def is_similar(self, other):
-		return (
-			self.app_id == other.app_id
-			and self.branch == other.branch
-			and self.version == other.version
-		)
+		return self.app_id == other.app_id and self.branch == other.branch and self.version == other.version
 
 	def __init__(self, name, app_id, branch, version, remote, installation):
 		self.name = name
@@ -30,6 +27,7 @@ class AddedPackage:
 		self.version = version
 		self.remote = remote
 		self.installation = installation
+
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/results_page.ui")
 class ResultsPage(Adw.NavigationPage):
@@ -41,7 +39,7 @@ class ResultsPage(Adw.NavigationPage):
 	stack = gtc()
 	new_search = gtc()
 	too_many = gtc()
-	results_view= gtc()
+	results_view = gtc()
 	no_results = gtc()
 
 	def show_remote(self, row, remote, installation, nav_view=None):
@@ -76,9 +74,11 @@ class ResultsPage(Adw.NavigationPage):
 
 			try:
 				output = subprocess.run(
-					['flatpak-spawn', '--host', 'flatpak', 'search', '--columns=all', installation, self.search_entry.get_text()],
-					check=True, text=True, capture_output=True
-				).stdout.split('\n')
+					["flatpak-spawn", "--host", "flatpak", "search", "--columns=all", installation, self.search_entry.get_text()],
+					check=True,
+					text=True,
+					capture_output=True,
+				).stdout.split("\n")
 				if len(output) > 100:
 					GLib.idle_add(lambda *_: self.stack.set_visible_child(self.too_many))
 					return
@@ -86,11 +86,11 @@ class ResultsPage(Adw.NavigationPage):
 				for line in output:
 					line = line.strip()
 
-					info = line.split('\t')
+					info = line.split("\t")
 					if len(info) != 6:
 						continue
 
-					remotes = info[5].split(',')
+					remotes = info[5].split(",")
 					if not self.remote.name in remotes:
 						continue
 

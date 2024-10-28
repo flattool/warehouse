@@ -2,19 +2,20 @@ from gi.repository import Gio, GLib
 from .host_info import HostInfo
 import subprocess, re
 
+
 class PackageInstallWorker:
-	""" Expect Package Installation Request Data to be Formatted as Such
-		[
-			{
-				"remote": "<remote name>" or "local_file",
-				"installation": "<installation name>",
-				"package_names": ["<pkg id 1>", "<pkg id 2>", ...],
-				"extra_flags": ["<flag 1>", "<flag 2>", ...],
-			},
-			{
-				...
-			},
-		]
+	"""Expect Package Installation Request Data to be Formatted as Such
+	[
+		{
+			"remote": "<remote name>" or "local_file",
+			"installation": "<installation name>",
+			"package_names": ["<pkg id 1>", "<pkg id 2>", ...],
+			"extra_flags": ["<flag 1>", "<flag 2>", ...],
+		},
+		{
+			...
+		},
+	]
 	"""
 
 	groups = None
@@ -46,22 +47,22 @@ class PackageInstallWorker:
 					return
 
 				real_installation = ""
-				installation = group['installation']
+				installation = group["installation"]
 				if installation == "user" or installation == "system":
 					real_installation = f"--{installation}"
 				else:
 					real_installation = f"--installation={installation}"
 
-				cmd = ['flatpak-spawn', '--host', 'flatpak', 'install', '-y']
+				cmd = ["flatpak-spawn", "--host", "flatpak", "install", "-y"]
 
 				# Handle local file installs. They don't have a remote specified
-				if group['remote'] != "local_file":
-					cmd.append(group['remote'])
+				if group["remote"] != "local_file":
+					cmd.append(group["remote"])
 
-				cmd += [real_installation] + group['package_names'] + group['extra_flags']
-				this.process = subprocess.Popen(cmd, stdout=subprocess.PIPE,  stderr=subprocess.PIPE, text=True)
-				percent_pattern = r'\d{1,3}%'
-				amount_pattern = r'(\d+)/(\d+)'
+				cmd += [real_installation] + group["package_names"] + group["extra_flags"]
+				this.process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+				percent_pattern = r"\d{1,3}%"
+				amount_pattern = r"(\d+)/(\d+)"
 				for line in this.process.stdout:
 					line = line.strip()
 					percent_match = re.search(percent_pattern, line)
@@ -69,7 +70,7 @@ class PackageInstallWorker:
 						ratio = int(percent_match.group()[0:-1]) / 100.0
 						amount_match = re.search(amount_pattern, line)
 						if amount_match:
-							amount = amount_match.group().split('/')
+							amount = amount_match.group().split("/")
 							complete = int(amount[0]) - 1
 							total = int(amount[1])
 							this.update_status(index, ratio, complete, total)
@@ -83,7 +84,7 @@ class PackageInstallWorker:
 			if len(errors) > 0:
 				this.on_error(_("Errors occurred during installation"), "\n".join(errors))
 
-		except subprocess.TimeoutExpired as te:
+		except subprocess.TimeoutExpired:
 			this.process.terminate()
 			this.on_error(_("Error occurred during installation"), _("Failed to exit cleanly"))
 

@@ -7,6 +7,7 @@ from .loading_status import LoadingStatus
 from .package_install_worker import PackageInstallWorker
 from .error_toast import ErrorToast
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/install_page.ui")
 class InstallPage(Adw.BreakpointBin):
 	__gtype_name__ = "InstallPage"
@@ -25,8 +26,8 @@ class InstallPage(Adw.BreakpointBin):
 	bottom_label = gtc()
 
 	# Referred to in the main window
-	#	It is used to determine if a new page should be made or not
-	#	This must be set to the created object from within the class's __init__ method
+	# It is used to determine if a new page should be made or not
+	# This must be set to the created object from within the class's __init__ method
 	instance = None
 	page_name = "install"
 

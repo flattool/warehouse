@@ -3,30 +3,30 @@ from .host_info import HostInfo
 from .error_toast import ErrorToast
 import os, subprocess, json
 
+
 class TarWorker:
 	def compress_thread(self, *args):
 		try:
 			if not os.path.exists(self.new_path):
 				os.makedirs(self.new_path)
 
-			self.total = int(subprocess.run(['du', '-s', self.existing_path], check=True, text=True, capture_output=True).stdout.split('\t')[0])
-			self.total /= 2.2 # estimate for space savings
-			self.process = subprocess.Popen(['tar', 'cafv', f'{self.new_path}/{self.file_name}.tar.zst', '-C', self.existing_path, '.'],
-				stdout=subprocess.PIPE,
-				stderr=subprocess.PIPE
+			self.total = int(subprocess.run(["du", "-s", self.existing_path], check=True, text=True, capture_output=True).stdout.split("\t")[0])
+			self.total /= 2.2  # estimate for space savings
+			self.process = subprocess.Popen(
+				["tar", "cafv", f"{self.new_path}/{self.file_name}.tar.zst", "-C", self.existing_path, "."], stdout=subprocess.PIPE, stderr=subprocess.PIPE
 			)
 			stdout, stderr = self.process.communicate()
 			if self.process.returncode != 0:
 				raise subprocess.CalledProcessError(self.process.returncode, self.process.args, output=stdout, stderr=stderr)
 
-			with open(f"{self.new_path}/{self.file_name}.json", 'w') as file:
+			with open(f"{self.new_path}/{self.file_name}.json", "w") as file:
 				data = {
-					'snapshot_version': 1,
-					'name': self.name,
+					"snapshot_version": 1,
+					"name": self.name,
 				}
 				json.dump(data, file, indent=4)
 
-			self.stop = True # tell the check timeout to stop, because we know the file is done being made
+			self.stop = True  # tell the check timeout to stop, because we know the file is done being made
 			HostInfo.main_window.remove_refresh_lockout("managing snapshot")
 
 		except subprocess.CalledProcessError as cpe:
@@ -38,21 +38,20 @@ class TarWorker:
 	def extract_thread(self, *args):
 		try:
 			if os.path.exists(self.new_path):
-				subprocess.run(['gio', 'trash', self.new_path], capture_output=True, check=True) # trash the current user data, because new data will go in its place
+				subprocess.run(
+					["gio", "trash", self.new_path], capture_output=True, check=True
+				)  # trash the current user data, because new data will go in its place
 
-			os.makedirs(self.new_path) # create the new user data path
+			os.makedirs(self.new_path)  # create the new user data path
 
-			self.total = int(subprocess.run(['du', '-s', self.existing_path], check=True, text=True, capture_output=True).stdout.split('\t')[0])
-			self.total *= 2.2 # estimate from space savings
-			self.process = subprocess.Popen(['tar', '--zstd', '-xvf', self.existing_path, '-C',  self.new_path],
-				stdout=subprocess.PIPE,
-				stderr=subprocess.PIPE
-			)
+			self.total = int(subprocess.run(["du", "-s", self.existing_path], check=True, text=True, capture_output=True).stdout.split("\t")[0])
+			self.total *= 2.2  # estimate from space savings
+			self.process = subprocess.Popen(["tar", "--zstd", "-xvf", self.existing_path, "-C", self.new_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			stdout, stderr = self.process.communicate()
 			if self.process.returncode != 0:
 				raise subprocess.CalledProcessError(self.process.returncode, self.process.args, output=stdout, stderr=stderr)
 
-			self.stop = True # tell the check timeout to stop, because we know the file is done being made
+			self.stop = True  # tell the check timeout to stop, because we know the file is done being made
 			HostInfo.main_window.remove_refresh_lockout("managing snapshot")
 
 		except subprocess.CalledProcessError as cpe:
@@ -70,7 +69,7 @@ class TarWorker:
 		self.process.wait()
 		if len(self.files_to_trash_on_cancel) > 0:
 			try:
-				subprocess.run(['gio', 'trash'] + self.files_to_trash_on_cancel, capture_output=True, check=True)
+				subprocess.run(["gio", "trash"] + self.files_to_trash_on_cancel, capture_output=True, check=True)
 
 			except Exception:
 				pass
@@ -82,17 +81,17 @@ class TarWorker:
 
 	def check_size(self, check_path):
 		try:
-			output = subprocess.run(['du', '-s', check_path], check=True, text=True, capture_output=True).stdout.split('\t')[0]
+			output = subprocess.run(["du", "-s", check_path], check=True, text=True, capture_output=True).stdout.split("\t")[0]
 			working_total = float(output)
 			self.fraction = working_total / self.total
 			return not self.stop
 
-		except subprocess.CalledProcessError as cpe:
-			return not self.stop # continue the timeout or stop the timeout
+		except subprocess.CalledProcessError:
+			return not self.stop  # continue the timeout or stop the timeout
 
 	def compress(self):
 		self.stop = False
-		self.files_to_trash_on_cancel = [f'{self.new_path}/{self.file_name}.tar.zst', f'{self.new_path}/{self.file_name}.json']
+		self.files_to_trash_on_cancel = [f"{self.new_path}/{self.file_name}.tar.zst", f"{self.new_path}/{self.file_name}.json"]
 		HostInfo.main_window.add_refresh_lockout("managing snapshot")
 		Gio.Task.new(None, None, None).run_in_thread(self.compress_thread)
 		GLib.timeout_add(200, self.check_size, f"{self.new_path}/{self.file_name}.tar.zst")

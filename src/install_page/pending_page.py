@@ -2,6 +2,7 @@ from gi.repository import Adw, Gtk
 from .host_info import HostInfo
 from .result_row import ResultRow
 
+
 class AddedGroup(Adw.PreferencesGroup):
 	__gtype_name__ = "AddedGroup"
 
@@ -33,11 +34,12 @@ class AddedGroup(Adw.PreferencesGroup):
 				icon_name="list-remove-all-symbolic",
 				label=_("Remove All"),
 			),
-			valign = Gtk.Align.CENTER,
+			valign=Gtk.Align.CENTER,
 		)
 		remove_all.add_css_class("flat")
 		remove_all.connect("clicked", self.remove_all)
 		self.set_header_suffix(remove_all)
+
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/pending_page.ui")
 class PendingPage(Adw.NavigationPage):
@@ -100,7 +102,7 @@ class PendingPage(Adw.NavigationPage):
 				"extra_flags": [],
 			}
 			for row in group.rows:
-				item['package_names'].append(row.package.app_id)
+				item["package_names"].append(row.package.app_id)
 
 			package_requests.append(item)
 
@@ -119,7 +121,7 @@ class PendingPage(Adw.NavigationPage):
 		super().__init__(**kwargs)
 
 		# Extra Object Creation
-		self.groups = {} # remote<>installation: adw.preference_group
+		self.groups = {}  # remote<>installation: adw.preference_group
 		self.added_packages = []
 
 		# Connections

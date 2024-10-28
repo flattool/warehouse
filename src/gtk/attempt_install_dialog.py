@@ -2,6 +2,7 @@ from gi.repository import Adw, Gtk
 from .host_info import HostInfo
 from .error_toast import ErrorToast
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/gtk/attempt_install_dialog.ui")
 class AttemptInstallDialog(Adw.AlertDialog):
 	__gtype_name__ = "AttemptInstallDialog"
@@ -46,12 +47,16 @@ class AttemptInstallDialog(Adw.AlertDialog):
 			install_page = HostInfo.main_window.pages[HostInfo.main_window.install_row]
 			HostInfo.main_window.activate_row(HostInfo.main_window.install_row)
 			self.callback(True)
-			install_page.install_packages([{
-				"remote": row.remote_name,
-				"installation": row.remote_installation,
-				"package_names": self.package_names,
-				"extra_flags": [],
-			}])
+			install_page.install_packages(
+				[
+					{
+						"remote": row.remote_name,
+						"installation": row.remote_installation,
+						"package_names": self.package_names,
+						"extra_flags": [],
+					}
+				]
+			)
 		elif not self.callback is None:
 			self.callback(False)
 

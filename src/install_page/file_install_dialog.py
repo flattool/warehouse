@@ -1,5 +1,6 @@
 from gi.repository import Adw, Gtk
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/file_install_dialog.ui")
 class FileInstallDialog(Adw.Dialog):
 	__gtype_name__ = "FileInstallDialog"

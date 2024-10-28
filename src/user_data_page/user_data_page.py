@@ -7,9 +7,10 @@ from .loading_status import LoadingStatus
 from .attempt_install_dialog import AttemptInstallDialog
 import os, subprocess
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/user_data_page.ui")
 class UserDataPage(Adw.BreakpointBin):
-	__gtype_name__ = 'UserDataPage'
+	__gtype_name__ = "UserDataPage"
 	gtc = Gtk.Template.Child
 
 	bpt = gtc()
@@ -44,8 +45,8 @@ class UserDataPage(Adw.BreakpointBin):
 	more_install = gtc()
 
 	# Referred to in the main window
-	#	It is used to determine if a new page should be made or not
-	#	This must be set to the created object from within the class's __init__ method
+	# It is used to determine if a new page should be made or not
+	# This must be set to the created object from within the class's __init__ method
 	instance = None
 	page_name = "user-data"
 	data_path = f"{HostInfo.home}/.var/app"
@@ -158,7 +159,7 @@ class UserDataPage(Adw.BreakpointBin):
 		child = self.stack.get_visible_child()
 
 		def thread(path):
-			cmd = ['gio', 'trash'] + path
+			cmd = ["gio", "trash"] + path
 			try:
 				subprocess.run(cmd, check=True, capture_output=True, text=True)
 				properties_page = HostInfo.main_window.pages[HostInfo.main_window.packages_row].properties_page

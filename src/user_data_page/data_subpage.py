@@ -3,9 +3,10 @@ from .host_info import HostInfo
 from .data_box import DataBox
 from .loading_status import LoadingStatus
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/data_subpage.ui")
 class DataSubpage(Gtk.Stack):
-	__gtype_name__ = 'DataSubpage'
+	__gtype_name__ = "DataSubpage"
 	gtc = Gtk.Template.Child
 
 	scrolled_window = gtc()
@@ -25,7 +26,7 @@ class DataSubpage(Gtk.Stack):
 
 	def human_readable_size(self):
 		working_size = self.total_size
-		units = ['KB', 'MB', 'GB', 'TB']
+		units = ["KB", "MB", "GB", "TB"]
 		# size *= 1024
 		for unit in units:
 			if working_size < 1024:
@@ -35,6 +36,7 @@ class DataSubpage(Gtk.Stack):
 
 	def sort_func(self, box1, box2):
 		import random
+
 		# print(random.randint(1, 100), self.sort_mode, self.sort_ascend)
 		i1 = None
 		i2 = None
@@ -138,14 +140,34 @@ class DataSubpage(Gtk.Stack):
 		self.should_rclick = True
 		if flatpaks:
 			for i, pak in enumerate(flatpaks):
-				box = DataBox(self, self.parent_page.toast_overlay, False, pak.info["name"], pak.info["id"], pak.data_path, pak.icon_path, self.box_size_callback, self.trash_handler)
+				box = DataBox(
+					self,
+					self.parent_page.toast_overlay,
+					False,
+					pak.info["name"],
+					pak.info["id"],
+					pak.data_path,
+					pak.icon_path,
+					self.box_size_callback,
+					self.trash_handler,
+				)
 				box.check_button.connect("toggled", lambda *_, box=box: self.box_select_handler(box))
 				self.boxes.append(box)
 				self.flow_box.append(box)
 
 		else:
 			for i, folder in enumerate(data):
-				box = DataBox(self, self.parent_page.toast_overlay, True, folder.split('.')[-1], folder, f"{HostInfo.home}/.var/app/{folder}", None, self.box_size_callback, self.trash_handler)
+				box = DataBox(
+					self,
+					self.parent_page.toast_overlay,
+					True,
+					folder.split(".")[-1],
+					folder,
+					f"{HostInfo.home}/.var/app/{folder}",
+					None,
+					self.box_size_callback,
+					self.trash_handler,
+				)
 				box.check_button.connect("toggled", lambda *_, box=box: self.box_select_handler(box))
 				self.flow_box.append(box)
 

@@ -7,9 +7,10 @@ from .loading_status import LoadingStatus
 from .package_install_worker import PackageInstallWorker
 import subprocess, os
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/properties_page/properties_page.ui")
 class PropertiesPage(Adw.NavigationPage):
-	__gtype_name__ = 'PropertiesPage'
+	__gtype_name__ = "PropertiesPage"
 	gtc = Gtk.Template.Child
 	stack = gtc()
 	error_tbv = gtc()
@@ -89,12 +90,12 @@ class PropertiesPage(Adw.NavigationPage):
 		self.open_app_button.set_visible(package.is_runtime)
 		self.open_app_button.set_visible(not package.is_runtime)
 		self.data_row.set_visible(not package.is_runtime)
-		self.uninstall_button.set_sensitive(self.package.info['id'] != "io.github.flattool.Warehouse")
+		self.uninstall_button.set_sensitive(self.package.info["id"] != "io.github.flattool.Warehouse")
 		if package.is_runtime:
 			self.runtime_row.set_visible(False)
 		else:
 			has_path = os.path.exists(package.data_path)
-			self.trash_data_button.set_sensitive(has_path and self.package.info['id'] != "io.github.flattool.Warehouse")
+			self.trash_data_button.set_sensitive(has_path and self.package.info["id"] != "io.github.flattool.Warehouse")
 			self.open_data_button.set_sensitive(has_path)
 
 			if not self.package.dependent_runtime is None:
@@ -163,7 +164,7 @@ class PropertiesPage(Adw.NavigationPage):
 
 	def trash_data_handler(self, *args):
 		def on_choice(dialog, response):
-			if response != 'continue':
+			if response != "continue":
 				return
 			try:
 				self.package.trash_data()
@@ -184,16 +185,17 @@ class PropertiesPage(Adw.NavigationPage):
 
 		dialog = Adw.AlertDialog(
 			heading=_("Send {}'s User Data to the Trash?").format(self.package.info["name"]),
-			body=_("Your settings and data for this app will be sent to the trash")
+			body=_("Your settings and data for this app will be sent to the trash"),
 		)
-		dialog.add_response('cancel', _("Cancel"))
-		dialog.add_response('continue', _("Trash Data"))
+		dialog.add_response("cancel", _("Cancel"))
+		dialog.add_response("continue", _("Trash Data"))
 		dialog.connect("response", on_choice)
-		dialog.set_response_appearance('continue', Adw.ResponseAppearance.DESTRUCTIVE)
+		dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
 		dialog.present(self.main_window)
 
 	def set_mask_handler(self, *args):
 		state = not self.mask_switch.get_active()
+
 		def callback(*args):
 			if fail := self.package.failed_mask:
 				response = _("Could not Disable Updates") if state else _("Could not Enable Updates")
@@ -212,6 +214,7 @@ class PropertiesPage(Adw.NavigationPage):
 
 	def set_pin_handler(self, *args):
 		state = not self.pin_switch.get_active()
+
 		def callback(*args):
 			if fail := self.package.failed_pin:
 				response = _("Could not Disable Autoremoval") if state else _("Could not Enable Autoremoval")
@@ -278,7 +281,7 @@ class PropertiesPage(Adw.NavigationPage):
 	def reinstall_callback(self):
 		HostInfo.main_window.refresh_handler()
 		if not self.reinstall_did_error:
-			HostInfo.main_window.toast_overlay.add_toast(Adw.Toast(title=_("Reinstalled {}").format(self.package.info['name'])))
+			HostInfo.main_window.toast_overlay.add_toast(Adw.Toast(title=_("Reinstalled {}").format(self.package.info["name"])))
 
 	def reinstall_error_callback(self, user_facing_label, error_message):
 		self.reinstall_did_error = True
@@ -291,12 +294,14 @@ class PropertiesPage(Adw.NavigationPage):
 
 			self.reinstall_did_error = False
 			PackageInstallWorker.install(
-				[{
-					"installation": self.package.info['installation'],
-					"remote": self.package.info['origin'],
-					"package_names": [self.package.info['ref']],
-					"extra_flags": ["--reinstall"],
-				}],
+				[
+					{
+						"installation": self.package.info["installation"],
+						"remote": self.package.info["origin"],
+						"package_names": [self.package.info["ref"]],
+						"extra_flags": ["--reinstall"],
+					}
+				],
 				self.packages_page.reinstalling,
 				self.reinstall_callback,
 				self.reinstall_error_callback,
@@ -304,8 +309,8 @@ class PropertiesPage(Adw.NavigationPage):
 			self.packages_page.set_status(self.packages_page.reinstalling)
 
 		dialog = Adw.AlertDialog(
-			heading=_("Reinstall {}?").format(self.package.info['name']),
-			body=_("This package will be uninstalled, and then reinstalled from the same remote and installation.")
+			heading=_("Reinstall {}?").format(self.package.info["name"]),
+			body=_("This package will be uninstalled, and then reinstalled from the same remote and installation."),
 		)
 		dialog.add_response("cancel", _("Cancel"))
 		dialog.add_response("continue", _("Reinstall"))
@@ -346,25 +351,22 @@ class PropertiesPage(Adw.NavigationPage):
 		self.info_rows = {
 			"version": self.version_row,
 			"installed": self.installed_size_row,
-
 			"id": self.id_row,
 			"ref": self.ref_row,
 			"arch": self.arch_row,
 			"branch": self.branch_row,
 			"license": self.license_row,
-
 			"sdk": self.sdk_row,
 			"origin": self.origin_row,
 			"collection": self.collection_row,
 			"installation": self.installation_row,
-
 			"commit": self.commit_row,
 			"parent": self.parent_row,
 			"subject": self.subject_row,
 			"date": self.date_row,
 		}
 		self.loading_tbv.set_content(LoadingStatus(_("Loading Properties"), _("This should only take a moment")))
-		self.packages_page = None # To be set in packages page
+		self.packages_page = None  # To be set in packages page
 		self.__class__.main_window = self.main_window
 		self.view_snapshots = Gtk.Label(halign=Gtk.Align.START, label=_("View Snapshots"))
 		self.copy_launch_command = Gtk.Label(halign=Gtk.Align.START, label=_("Copy Launch Command"))

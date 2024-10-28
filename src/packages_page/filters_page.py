@@ -1,8 +1,10 @@
 from gi.repository import Adw, Gtk, Gio
 from .host_info import HostInfo
 
+
 class FilterRow(Adw.ActionRow):
-	__gtype_name__ = 'FilterRow'
+	__gtype_name__ = "FilterRow"
+
 	def __init__(self, item=None, installation=None, **kwargs):
 		super().__init__(**kwargs)
 		self.item = item
@@ -11,9 +13,10 @@ class FilterRow(Adw.ActionRow):
 		self.add_suffix(self.check_button)
 		self.set_activatable_widget(self.check_button)
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/filters_page.ui")
 class FiltersPage(Adw.NavigationPage):
-	__gtype_name__ = 'FiltersPage'
+	__gtype_name__ = "FiltersPage"
 	gtc = Gtk.Template.Child
 	app_check = gtc()
 	runtime_check = gtc()
@@ -173,7 +176,7 @@ class FiltersPage(Adw.NavigationPage):
 		super().__init__(**kwargs)
 
 		# Extra Objects Creation
-		self.packages_page = None # To be set in packages page
+		self.packages_page = None  # To be set in packages page
 		self.main_window = HostInfo.main_window
 		self.settings = Gio.Settings.new("io.github.flattool.Warehouse.filter")
 		self.is_settings_settable = False

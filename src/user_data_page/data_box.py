@@ -4,9 +4,10 @@ from .error_toast import ErrorToast
 from .attempt_install_dialog import AttemptInstallDialog
 import subprocess
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/data_box.ui")
 class DataBox(Gtk.ListBox):
-	__gtype_name__ = 'DataBox'
+	__gtype_name__ = "DataBox"
 	gtc = Gtk.Template.Child
 
 	row = gtc()
@@ -24,7 +25,7 @@ class DataBox(Gtk.ListBox):
 
 	def human_readable_size(self):
 		working_size = self.size
-		units = ['KB', 'MB', 'GB', 'TB']
+		units = ["KB", "MB", "GB", "TB"]
 		# size *= 1024
 		for unit in units:
 			if working_size < 1024:
@@ -33,7 +34,7 @@ class DataBox(Gtk.ListBox):
 		return f"~ {round(working_size)} PB"
 
 	def get_size(self, *args):
-		self.size = int(subprocess.run(['du', '-s', self.data_path], capture_output=True, text=True).stdout.split("\t")[0])
+		self.size = int(subprocess.run(["du", "-s", self.data_path], capture_output=True, text=True).stdout.split("\t")[0])
 
 	def show_size(self):
 		def callback(*args):
@@ -68,6 +69,7 @@ class DataBox(Gtk.ListBox):
 
 	def install_handler(self, *args):
 		self.parent_page.should_rclick = False
+
 		def why_cant_this_just_be_a_lambda(*args):
 			self.parent_page.should_rclick = True
 
@@ -78,7 +80,7 @@ class DataBox(Gtk.ListBox):
 
 		def thread(*args):
 			try:
-				subprocess.run(['gio', 'trash', self.data_path], check=True, text=True, capture_output=True)
+				subprocess.run(["gio", "trash", self.data_path], check=True, text=True, capture_output=True)
 				properties_page = HostInfo.main_window.pages[HostInfo.main_window.packages_row].properties_page
 				properties_package = properties_page.package
 				if not properties_package is None:

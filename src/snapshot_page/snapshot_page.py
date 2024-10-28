@@ -10,6 +10,7 @@ from .tar_worker import TarWorker
 from .attempt_install_dialog import AttemptInstallDialog
 import os, subprocess
 
+
 class LeftoverSnapshotRow(Adw.ActionRow):
 	__gtype_name__ = "LeftoverSnapshotRow"
 
@@ -37,13 +38,14 @@ class LeftoverSnapshotRow(Adw.ActionRow):
 		self.add_controller(self.rclick_gesture)
 		self.add_controller(self.long_press_gesture)
 		self.check_button.add_css_class("selection-mode")
-		self.name = self.folder.split('.')[-1]
+		self.name = self.folder.split(".")[-1]
 		self.set_activatable(True)
 		GLib.idle_add(lambda *_: self.idle_stuff())
 
 		# Connections
 		self.rclick_gesture.connect("released", self.gesture_handler)
 		self.long_press_gesture.connect("pressed", self.gesture_handler)
+
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/snapshot_page.ui")
 class SnapshotPage(Adw.BreakpointBin):
@@ -82,8 +84,8 @@ class SnapshotPage(Adw.BreakpointBin):
 	trash_snapshots = gtc()
 
 	# Referred to in the main window
-	#	It is used to determine if a new page should be made or not
-	#	This must be set to the created object from within the class's __init__ method
+	# It is used to determine if a new page should be made or not
+	# This must be set to the created object from within the class's __init__ method
 	instance = None
 	page_name = "snapshots"
 	is_trash_dialog_open = False
@@ -102,7 +104,7 @@ class SnapshotPage(Adw.BreakpointBin):
 				return
 
 		for folder in os.listdir(HostInfo.snapshots_path):
-			if folder.count('.') < 2 or ' ' in folder:
+			if folder.count(".") < 2 or " " in folder:
 				bad_folders.append(folder)
 				continue
 
@@ -124,7 +126,7 @@ class SnapshotPage(Adw.BreakpointBin):
 
 		for folder in bad_folders:
 			try:
-				subprocess.run(['gio', 'trash', f'{HostInfo.snapshots_path}{folder}'])
+				subprocess.run(["gio", "trash", f"{HostInfo.snapshots_path}{folder}"])
 			except Exception:
 				pass
 
@@ -191,11 +193,11 @@ class SnapshotPage(Adw.BreakpointBin):
 			if row.package is package:
 				self.active_listbox.select_row(row)
 				self.active_select_handler(None, row, True)
-				self.toast_overlay.add_toast(Adw.Toast(title=_("Showing snapshots for {}").format(package.info['name'])))
+				self.toast_overlay.add_toast(Adw.Toast(title=_("Showing snapshots for {}").format(package.info["name"])))
 				break
 		else:
 			dialog = NewSnapshotDialog(self, self.snapshotting_status, self.refresh, [package])
-			toast = Adw.Toast(title=_("No snapshots for {}").format(package.info['name']), button_label=_("New"))
+			toast = Adw.Toast(title=_("No snapshots for {}").format(package.info["name"]), button_label=_("New"))
 			toast.connect("button-clicked", lambda *_: dialog.present(HostInfo.main_window))
 			self.toast_overlay.add_toast(toast)
 
@@ -225,7 +227,7 @@ class SnapshotPage(Adw.BreakpointBin):
 
 			data_exists = False
 			for package in HostInfo.flatpaks:
-				if package.info['id'] == "io.github.flattool.Warehouse":
+				if package.info["id"] == "io.github.flattool.Warehouse":
 					continue
 
 				if os.path.exists(package.data_path):
@@ -299,7 +301,7 @@ class SnapshotPage(Adw.BreakpointBin):
 
 	def sort_func(self, row1, row2):
 		if type(row1) is AppRow:
-			return row1.package.info['name'].lower() > row2.package.info['name'].lower()
+			return row1.package.info["name"].lower() > row2.package.info["name"].lower()
 		else:
 			return row1.name.lower() > row2.name.lower()
 
@@ -441,7 +443,7 @@ class SnapshotPage(Adw.BreakpointBin):
 
 		app_ids = []
 		for row in self.selected_active_rows:
-			app_ids.append(row.package.info['id'])
+			app_ids.append(row.package.info["id"])
 
 		for row in self.selected_leftover_rows:
 			app_ids.append(row.folder)
@@ -450,7 +452,7 @@ class SnapshotPage(Adw.BreakpointBin):
 		for app_id in id_to_tar:
 			biggest = 0
 			for tar in id_to_tar[app_id]:
-				epoch = int(tar.split('_')[0])
+				epoch = int(tar.split("_")[0])
 				if epoch > biggest:
 					biggest = epoch
 
@@ -489,10 +491,7 @@ class SnapshotPage(Adw.BreakpointBin):
 		AttemptInstallDialog(package_names, lambda is_valid: self.select_button.set_active(not is_valid))
 
 	def selection_trash_handler(self):
-		if (
-			len(self.selected_active_rows) + len(self.selected_leftover_rows) < 1
-			or self.is_trash_dialog_open
-		):
+		if len(self.selected_active_rows) + len(self.selected_leftover_rows) < 1 or self.is_trash_dialog_open:
 			return
 
 		def on_response(dialog, response):
@@ -508,7 +507,7 @@ class SnapshotPage(Adw.BreakpointBin):
 				to_trash.append(f"{HostInfo.snapshots_path}{row.folder}")
 
 			try:
-				subprocess.run(['gio', 'trash'] + to_trash, check=True, text=True, capture_output=True)
+				subprocess.run(["gio", "trash"] + to_trash, check=True, text=True, capture_output=True)
 				self.start_loading()
 				self.end_loading()
 				self.toast_overlay.add_toast(Adw.Toast(title=_("Trashed snapshots")))

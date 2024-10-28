@@ -30,6 +30,7 @@ from .window import WarehouseWindow
 from .const import Config
 from .error_toast import ErrorToast
 
+
 class WarehouseApplication(Adw.Application):
 	"""The main application singleton class."""
 
@@ -55,7 +56,7 @@ class WarehouseApplication(Adw.Application):
 		self.create_action("show-install-page", lambda *_: self.props.active_window.switch_page_shortcut_handler("i"), ["<primary>i"])
 
 		self.create_action("toggle-select-mode", self.on_toggle_select_mode_shortcut, ["<primary>b", "<primary>Return"])
-		self.create_action("toggle-selection-kp-enter", self.on_toggle_select_mode_shortcut, ["<primary>KP_Enter"]) # Doesn't show in the shortcuts window
+		self.create_action("toggle-selection-kp-enter", self.on_toggle_select_mode_shortcut, ["<primary>KP_Enter"])  # Doesn't show in the shortcuts window
 		self.create_action("search-mode", self.on_search_mode_shortcut, ["<primary>f"])
 		self.create_action("filter", self.on_filter_shortcut, ["<primary>t"])
 		self.create_action("new", self.on_new_shortcut, ["<primary>n"])
@@ -64,20 +65,8 @@ class WarehouseApplication(Adw.Application):
 
 		self.is_dialog_open = False
 
-		gtk_version = (
-			str(Gtk.MAJOR_VERSION)
-			+ "."
-			+ str(Gtk.MINOR_VERSION)
-			+ "."
-			+ str(Gtk.MICRO_VERSION)
-		)
-		adw_version = (
-			str(Adw.MAJOR_VERSION)
-			+ "."
-			+ str(Adw.MINOR_VERSION)
-			+ "."
-			+ str(Adw.MICRO_VERSION)
-		)
+		gtk_version = str(Gtk.MAJOR_VERSION) + "." + str(Gtk.MINOR_VERSION) + "." + str(Gtk.MICRO_VERSION)
+		adw_version = str(Adw.MAJOR_VERSION) + "." + str(Adw.MINOR_VERSION) + "." + str(Adw.MICRO_VERSION)
 		os_string = GLib.get_os_info("NAME") + " " + GLib.get_os_info("VERSION")
 		lang = GLib.environ_getenv(GLib.get_environ(), "LANG")
 
@@ -251,6 +240,7 @@ class WarehouseApplication(Adw.Application):
 		self.add_action(action)
 		if shortcuts:
 			self.set_accels_for_action(f"app.{name}", shortcuts)
+
 
 def main(version):
 	"""The application's entry point."""

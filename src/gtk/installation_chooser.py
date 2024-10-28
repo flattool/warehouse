@@ -1,9 +1,10 @@
 from gi.repository import Adw, Gtk
 from .host_info import HostInfo
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/gtk/installation_chooser.ui")
 class InstallationChooser(Adw.PreferencesGroup):
-	__gtype_name__ = 'InstallationChooser'
+	__gtype_name__ = "InstallationChooser"
 	gtc = Gtk.Template.Child
 
 	user_row = gtc()
@@ -20,7 +21,7 @@ class InstallationChooser(Adw.PreferencesGroup):
 			if button.get_active():
 				return func()
 
-		return "" # Case for when no button is active (which shouldn't happen)
+		return ""  # Case for when no button is active (which shouldn't happen)
 
 	def set_content_strings(self, content_name, is_plural):
 		if is_plural:
@@ -36,7 +37,7 @@ class InstallationChooser(Adw.PreferencesGroup):
 		super().__init__(**kwargs)
 
 		self.check_buttons = {
-			self.user_check  : lambda: "user",
+			self.user_check: lambda: "user",
 			self.system_check: lambda: "system",
 			self.single_check: self.single_row.get_title,
 			self.choice_check: lambda: self.choice_row.get_selected_item().get_string(),

@@ -5,6 +5,7 @@ from .results_page import ResultsPage
 from .sidebar_button import SidebarButton
 from .file_install_dialog import FileInstallDialog
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/select_page.ui")
 class SelectPage(Adw.NavigationPage):
 	__gtype_name__ = "SelectPage"
@@ -41,12 +42,14 @@ class SelectPage(Adw.NavigationPage):
 		requests = []
 		for file in file_names:
 			# sadly flatpak doesn't support multiple local installs in one command :(
-			requests.append({
-				"remote": "local_file",
-				"installation": installation,
-				"package_names": [file.get_path()],
-				"extra_flags": [],
-			})
+			requests.append(
+				{
+					"remote": "local_file",
+					"installation": installation,
+					"package_names": [file.get_path()],
+					"extra_flags": [],
+				}
+			)
 
 		install_page.install_packages(requests)
 

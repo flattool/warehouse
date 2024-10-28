@@ -5,6 +5,7 @@ from .app_row import AppRow
 from .tar_worker import TarWorker
 import os, time
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/new_snapshot_dialog.ui")
 class NewSnapshotDialog(Adw.Dialog):
 	__gtype_name__ = "NewSnapshotDialog"
@@ -76,7 +77,7 @@ class NewSnapshotDialog(Adw.Dialog):
 	def valid_checker(self):
 		text = self.name_entry.get_text().strip()
 		something_selected = len(self.selected_rows) > 0
-		text_good = len(text) > 0 and not("/" in text or "\0" in text)
+		text_good = len(text) > 0 and not ("/" in text or "\0" in text)
 		self.create_button.set_sensitive(something_selected and text_good)
 		if text_good:
 			self.name_entry.remove_css_class("error")

@@ -11,9 +11,10 @@ from .package_install_worker import PackageInstallWorker
 from .change_version_worker import ChangeVersionWorker
 import subprocess, os
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/packages_page.ui")
 class PackagesPage(Adw.BreakpointBin):
-	__gtype_name__ = 'PackagesPage'
+	__gtype_name__ = "PackagesPage"
 	gtc = Gtk.Template.Child
 	packages_bpt = gtc()
 	packages_toast_overlay = gtc()
@@ -49,8 +50,8 @@ class PackagesPage(Adw.BreakpointBin):
 	filters_page = gtc()
 
 	# Referred to in the main window
-	#	It is used to determine if a new page should be made or not
-	#	This must be set to the created object from within the class's __init__ method
+	# It is used to determine if a new page should be made or not
+	# This must be set to the created object from within the class's __init__ method
 	instance = None
 	page_name = "packages"
 	last_activated_row = None
@@ -110,7 +111,9 @@ class PackagesPage(Adw.BreakpointBin):
 				visible = False
 			if remotes_list != "all" and not f"{row.package.info['origin']}<>{row.package.info['installation']}" in remotes_list:
 				visible = False
-			if runtimes_list != "all" and (row.package.is_runtime or row.package.dependent_runtime and not row.package.dependent_runtime.info["ref"] in runtimes_list):
+			if runtimes_list != "all" and (
+				row.package.is_runtime or row.package.dependent_runtime and not row.package.dependent_runtime.info["ref"] in runtimes_list
+			):
 				visible = False
 
 			row.set_visible(visible)
@@ -195,7 +198,7 @@ class PackagesPage(Adw.BreakpointBin):
 		self.apply_filters()
 		self.select_first_visible_row()
 
-		self.scrolled_window.set_vadjustment(Gtk.Adjustment.new(0,0,0,0,0,0)) # Scroll list to top
+		self.scrolled_window.set_vadjustment(Gtk.Adjustment.new(0, 0, 0, 0, 0, 0))  # Scroll list to top
 
 	def row_activate_handler(self, list_box, row):
 		if self.select_button.get_active():
@@ -248,7 +251,7 @@ class PackagesPage(Adw.BreakpointBin):
 		to_copy = []
 		for row in self.selected_rows:
 			to_copy.append(row.package.info[info])
-			to_copy += ['\n']
+			to_copy += ["\n"]
 		try:
 			HostInfo.clipboard.set("".join(to_copy[:-1]))
 			self.packages_toast_overlay.add_toast(Adw.Toast(title=_("Copied {}").format(feedback)))
@@ -262,18 +265,19 @@ class PackagesPage(Adw.BreakpointBin):
 		def on_response(should_trash):
 			GLib.idle_add(lambda *_: self.set_status(self.uninstalling))
 			error = []
+
 			def thread(*args):
 				HostInfo.main_window.add_refresh_lockout("batch uninstalling packages")
-				cmd = ['flatpak-spawn', '--host', 'flatpak', 'uninstall', '-y']
-				to_uninstall = {} # { <remote><><installation>: [<ref1>, <ref2>, <ref3>, ...], ... }
+				cmd = ["flatpak-spawn", "--host", "flatpak", "uninstall", "-y"]
+				to_uninstall = {}  # { <remote><><installation>: [<ref1>, <ref2>, <ref3>, ...], ... }
 				to_trash = []
 
 				for row in self.selected_rows:
-					key = row.package.info['installation']
+					key = row.package.info["installation"]
 					if ls := to_uninstall.get(key, False):
-						ls.append(row.package.info['ref'])
+						ls.append(row.package.info["ref"])
 					else:
-						to_uninstall[key] = [row.package.info['ref']]
+						to_uninstall[key] = [row.package.info["ref"]]
 
 					if should_trash and os.path.exists(row.package.data_path):
 						to_trash.append(row.package.data_path)
@@ -294,7 +298,7 @@ class PackagesPage(Adw.BreakpointBin):
 
 				if should_trash and len(to_trash) > 0:
 					try:
-						subprocess.run(['gio', 'trash'] + to_trash, check=True, text=True, capture_output=True)
+						subprocess.run(["gio", "trash"] + to_trash, check=True, text=True, capture_output=True)
 					except subprocess.CalledProcessError as cpe:
 						error.append(cpe)
 

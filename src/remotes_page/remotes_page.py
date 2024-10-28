@@ -6,6 +6,7 @@ from .add_remote_dialog import AddRemoteDialog
 from .loading_status import LoadingStatus
 import subprocess
 
+
 class NewRemoteRow(Adw.ActionRow):
 	__gtype_name__ = "NewRemoteRow"
 
@@ -20,6 +21,7 @@ class NewRemoteRow(Adw.ActionRow):
 		GLib.idle_add(self.idle_stuff)
 		self.set_activatable(True)
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/remotes_page/remotes_page.ui")
 class RemotesPage(Adw.NavigationPage):
 	# Preselected Remotes
@@ -28,7 +30,7 @@ class RemotesPage(Adw.NavigationPage):
 			"title": "AppCenter",
 			"name": "appcenter",
 			"link": "https://flatpak.elementary.io/repo.flatpakrepo",
-			"description": _("The open source, pay-what-you-want app store from elementary")
+			"description": _("The open source, pay-what-you-want app store from elementary"),
 		},
 		{
 			"title": "Flathub",
@@ -59,10 +61,10 @@ class RemotesPage(Adw.NavigationPage):
 			"name": "webkit-sdk",
 			"link": "https://software.igalia.com/flatpak-refs/webkit-sdk.flatpakrepo",
 			"description": _("Central repository of the WebKit Developer and Runtime SDK"),
-		}
+		},
 	]
 
-	__gtype_name__ = 'RemotesPage'
+	__gtype_name__ = "RemotesPage"
 	gtc = Gtk.Template.Child
 
 	search_button = gtc()
@@ -87,8 +89,8 @@ class RemotesPage(Adw.NavigationPage):
 	content_page = gtc()
 
 	# Referred to in the main window
-	#	It is used to determine if a new page should be made or not
-	#	This must be set to the created object from within the class's __init__ method
+	# It is used to determine if a new page should be made or not
+	# This must be set to the created object from within the class's __init__ method
 	instance = None
 	page_name = "remotes"
 
@@ -152,9 +154,10 @@ class RemotesPage(Adw.NavigationPage):
 
 	def remove_remote(self, row):
 		error = [None]
+
 		def thread(*args):
 			install = row.installation
-			cmd = ['flatpak-spawn', '--host', 'flatpak', 'remote-delete', row.remote.name, '--force']
+			cmd = ["flatpak-spawn", "--host", "flatpak", "remote-delete", row.remote.name, "--force"]
 			if install == "user" or install == "system":
 				cmd.append(f"--{install}")
 			else:
@@ -184,7 +187,9 @@ class RemotesPage(Adw.NavigationPage):
 
 			Gio.Task.new(None, None, callback).run_in_thread(thread)
 
-		dialog = Adw.AlertDialog(heading=_("Remove {}?").format(row.remote.title), body=_("Any installed apps from {} will stop receiving updates").format(row.remote.name))
+		dialog = Adw.AlertDialog(
+			heading=_("Remove {}?").format(row.remote.title), body=_("Any installed apps from {} will stop receiving updates").format(row.remote.name)
+		)
 		dialog.add_response("cancel", _("Cancel"))
 		dialog.add_response("continue", _("Remove"))
 		dialog.set_response_appearance("continue", Adw.ResponseAppearance.DESTRUCTIVE)
@@ -250,7 +255,7 @@ class RemotesPage(Adw.NavigationPage):
 		total_visible = 0
 		for row in self.current_remote_rows:
 			if row.remote.disabled:
-				if show_disabled: # show disabled
+				if show_disabled:  # show disabled
 					row.set_visible(True)
 					total_visible += 1
 				else:

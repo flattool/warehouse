@@ -26,6 +26,7 @@ from .install_page import InstallPage
 from .error_toast import ErrorToast
 from .const import Config
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/main_window/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):
 	__gtype_name__ = "WarehouseWindow"

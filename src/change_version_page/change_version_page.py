@@ -1,13 +1,14 @@
-from gi.repository import Adw, Gtk,GLib, Gio
+from gi.repository import Adw, Gtk, GLib, Gio
 from .error_toast import ErrorToast
 from .host_info import HostInfo
 from .loading_status import LoadingStatus
 from .change_version_worker import ChangeVersionWorker
 import subprocess
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/change_version_page/change_version_page.ui")
 class ChangeVersionPage(Adw.NavigationPage):
-	__gtype_name__ = 'ChangeVersionPage'
+	__gtype_name__ = "ChangeVersionPage"
 	gtc = Gtk.Template.Child
 	toast_overlay = gtc()
 	scrolled_window = gtc()
@@ -23,7 +24,7 @@ class ChangeVersionPage(Adw.NavigationPage):
 	failure = None
 
 	def get_commits(self, *args):
-		cmd = ['flatpak-spawn', '--host', 'sh', '-c']
+		cmd = ["flatpak-spawn", "--host", "sh", "-c"]
 		script = f"LC_ALL=C flatpak remote-info --log {self.package.info['origin']} {self.package.info['ref']} "
 		installation = self.package.info["installation"]
 		if installation == "user" or installation == "system":
@@ -35,10 +36,10 @@ class ChangeVersionPage(Adw.NavigationPage):
 
 		commits = []
 		changes = []
-		dates   = []
+		dates = []
 		try:
 			output = subprocess.run(cmd, check=True, capture_output=True, text=True).stdout
-			lines = output.strip().split('\n')
+			lines = output.strip().split("\n")
 			for line in lines:
 				line = line.strip().split(": ", 1)
 				if len(line) < 2:
@@ -62,7 +63,9 @@ class ChangeVersionPage(Adw.NavigationPage):
 
 		def idle(*args):
 			for index, commit in enumerate(commits):
-				row = Adw.ActionRow(title=GLib.markup_escape_text(changes[index]), subtitle=f"{GLib.markup_escape_text(commit)}\n{GLib.markup_escape_text(dates[index])}")
+				row = Adw.ActionRow(
+					title=GLib.markup_escape_text(changes[index]), subtitle=f"{GLib.markup_escape_text(commit)}\n{GLib.markup_escape_text(dates[index])}"
+				)
 				if commit == self.package.cli_info.get("commit", None):
 					row.set_sensitive(False)
 					row.add_prefix(Gtk.Image(icon_name="check-plain-symbolic", margin_start=5, margin_end=5))
@@ -90,7 +93,7 @@ class ChangeVersionPage(Adw.NavigationPage):
 	def callback(self, did_error):
 		HostInfo.main_window.refresh_handler()
 		if not did_error:
-			HostInfo.main_window.toast_overlay.add_toast(Adw.Toast(title=_("Changed {}'s Version").format(self.package.info['name'])))
+			HostInfo.main_window.toast_overlay.add_toast(Adw.Toast(title=_("Changed {}'s Version").format(self.package.info["name"])))
 
 	def error_callback(self, user_facing_label, error_message):
 		HostInfo.main_window.toast_overlay.add_toast(ErrorToast(user_facing_label, error_message).toast)
@@ -98,7 +101,8 @@ class ChangeVersionPage(Adw.NavigationPage):
 	def on_apply(self, *args):
 		if ChangeVersionWorker.change_version(
 			self.mask_row.get_active(),
-			self.package, self.selected_commit,
+			self.package,
+			self.selected_commit,
 			self.packages_page.changing_version,
 			self.callback,
 			self.error_callback,

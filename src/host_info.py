@@ -7,14 +7,16 @@ icon_theme = Gtk.IconTheme.new()
 icon_theme.add_search_path(f"{home}/.local/share/flatpak/exports/share/icons")
 direction = Gtk.Image().get_direction()
 
+
 class Flatpak:
 	def open_app(self, callback=None):
 		self.failed_app_run = None
+
 		def thread(*args):
 			if self.is_runtime:
 				self.failed_app_run = "error: cannot open a runtime"
 			try:
-				subprocess.run(['flatpak-spawn', '--host', 'flatpak', 'run', f"{self.info['ref']}"], capture_output=True, text=True, check=True)
+				subprocess.run(["flatpak-spawn", "--host", "flatpak", "run", f"{self.info['ref']}"], capture_output=True, text=True, check=True)
 			except subprocess.CalledProcessError as cpe:
 				self.failed_app_run = cpe
 			except Exception as e:
@@ -32,17 +34,20 @@ class Flatpak:
 
 	def get_data_size(self, callback=None):
 		size = [None]
+
 		def thread(*args):
 			sed = "sed 's/K/ KB/; s/M/ MB/; s/G/ GB/; s/T/ TB/; s/P/ PB/;'"
-			size[0] = subprocess.run(['sh', '-c', f"du -sh {self.data_path} | {sed}"], capture_output=True, text=True).stdout.split("\t")[0]
+			size[0] = subprocess.run(["sh", "-c", f"du -sh {self.data_path} | {sed}"], capture_output=True, text=True).stdout.split("\t")[0]
+
 		def on_done(*arg):
 			if callback:
 				callback(f"~ {size[0]}")
+
 		Gio.Task.new(None, None, on_done).run_in_thread(thread)
 
 	def trash_data(self, callback=None):
 		try:
-			subprocess.run(['gio', 'trash', self.data_path], capture_output=True, text=True, check=True)
+			subprocess.run(["gio", "trash", self.data_path], capture_output=True, text=True, check=True)
 		except subprocess.CalledProcessError as cpe:
 			raise cpe
 		except Exception as e:
@@ -50,8 +55,9 @@ class Flatpak:
 
 	def set_mask(self, should_mask, callback=None):
 		self.failed_mask = None
+
 		def thread(*args):
-			cmd = ['flatpak-spawn', '--host', 'flatpak', 'mask', self.info["id"]]
+			cmd = ["flatpak-spawn", "--host", "flatpak", "mask", self.info["id"]]
 			installation = self.info["installation"]
 			if installation == "user" or installation == "system":
 				cmd.append(f"--{installation}")
@@ -77,7 +83,7 @@ class Flatpak:
 			self.failed_pin = "Cannot pin an application"
 
 		def thread(*args):
-			cmd = ['flatpak-spawn', '--host', 'flatpak', 'pin', f"runtime/{self.info['ref']}"]
+			cmd = ["flatpak-spawn", "--host", "flatpak", "pin", f"runtime/{self.info['ref']}"]
 			installation = self.info["installation"]
 			if installation == "user" or installation == "system":
 				cmd.append(f"--{installation}")
@@ -106,7 +112,7 @@ class Flatpak:
 
 		def thread(*args):
 			HostInfo.main_window.add_refresh_lockout("uninstalling packages")
-			cmd = ['flatpak-spawn', '--host', 'flatpak', 'uninstall', '-y', self.info["ref"]]
+			cmd = ["flatpak-spawn", "--host", "flatpak", "uninstall", "-y", self.info["ref"]]
 			installation = self.info["installation"]
 			if installation == "system" or installation == "user":
 				cmd.append(f"--{installation}")
@@ -136,10 +142,7 @@ class Flatpak:
 
 		cmd += self.info["ref"]
 		try:
-			output = subprocess.run(
-				['flatpak-spawn', '--host', 'sh', '-c', cmd],
-				text=True, capture_output=True
-			).stdout
+			output = subprocess.run(["flatpak-spawn", "--host", "sh", "-c", cmd], text=True, capture_output=True).stdout
 		except Exception as e:
 			raise e
 
@@ -172,23 +175,23 @@ class Flatpak:
 
 	def __init__(self, columns):
 		self.info = {
-			"name":		   columns[0],
-			"id":			 columns[1],
-			"version":		columns[2],
-			"branch":		 columns[3],
-			"arch":		   columns[4],
-			"origin":		 columns[5],
-			"installation":   columns[6],
-			"ref":			columns[7],
+			"name": columns[0],
+			"id": columns[1],
+			"version": columns[2],
+			"branch": columns[3],
+			"arch": columns[4],
+			"origin": columns[5],
+			"installation": columns[6],
+			"ref": columns[7],
 			"installed_size": columns[8],
-			"options":		columns[9],
+			"options": columns[9],
 		}
 		self.is_runtime = "runtime" in self.info["options"]
 		self.data_path = f"{home}/.var/app/{self.info["id"]}"
 		self.data_size = -1
 		self.cli_info = None
 		installation = self.info["installation"]
-		if len(i := installation.split(' ')) > 1:
+		if len(i := installation.split(" ")) > 1:
 			self.info["installation"] = i[1].replace("(", "").replace(")", "")
 		else:
 			self.info["installation"] = installation
@@ -211,13 +214,7 @@ class Flatpak:
 			self.is_pinned = False
 
 		try:
-			self.icon_path = (
-				icon_theme.lookup_icon(
-					self.info["id"], None, 512, 1, direction, 0
-				)
-				.get_file()
-				.get_path()
-			)
+			self.icon_path = icon_theme.lookup_icon(self.info["id"], None, 512, 1, direction, 0).get_file().get_path()
 		except GLib.GError as e:
 			print(f"Minor error in looking up icon for {self.info['id']}", e)
 			self.icon_path = None
@@ -231,6 +228,7 @@ class Remote:
 		if title == "" or title == "-":
 			self.title = name
 
+
 class HostInfo:
 	home = home
 	clipboard = Gdk.Display.get_default().get_clipboard()
@@ -239,8 +237,7 @@ class HostInfo:
 
 	# Get all possible installation icon theme dirs
 	output = subprocess.run(
-		['flatpak-spawn', '--host',
-		'flatpak', '--installations'],
+		["flatpak-spawn", "--host", "flatpak", "--installations"],
 		text=True,
 		capture_output=True,
 	).stdout
@@ -256,6 +253,7 @@ class HostInfo:
 	masks = {}
 	pins = {}
 	dependent_runtime_refs = []
+
 	@classmethod
 	def get_flatpaks(this, callback=None):
 		# Callback is a function to run after the host flatpaks are found
@@ -271,52 +269,62 @@ class HostInfo:
 		def thread(task, *args):
 			# Remotes
 			def remote_info(installation):
-				cmd = ['flatpak-spawn', '--host',
-				'flatpak', 'remotes', '--columns=name,title,options', '--show-disabled']
+				cmd = ["flatpak-spawn", "--host", "flatpak", "remotes", "--columns=name,title,options", "--show-disabled"]
 				if installation == "user" or installation == "system":
 					cmd.append(f"--{installation}")
 				else:
 					cmd.append(f"--installation={installation}")
 				output = subprocess.run(
-					cmd, text=True,
+					cmd,
+					text=True,
 					capture_output=True,
 				).stdout
 				lines = output.strip().split("\n")
 				remote_list = []
-				if lines[0] != '':
+				if lines[0] != "":
 					for line in lines:
 						line = line.split("\t")
 						remote_list.append(Remote(name=line[0], title=line[1], disabled=(len(line) == 3) and "disabled" in line[2]))
 				this.remotes[installation] = remote_list
 
 				# Masks
-				cmd = ['flatpak-spawn', '--host',
-				'flatpak', 'mask',]
+				cmd = [
+					"flatpak-spawn",
+					"--host",
+					"flatpak",
+					"mask",
+				]
 				if installation == "user" or installation == "system":
 					cmd.append(f"--{installation}")
 				else:
 					cmd.append(f"--installation={installation}")
 				output = subprocess.run(
-					cmd, text=True,
+					cmd,
+					text=True,
 					capture_output=True,
 				).stdout
 				lines = output.strip().replace(" ", "").split("\n")
-				if lines[0] != '':
+				if lines[0] != "":
 					this.masks[installation] = lines
 
 				# Pins
-				cmd = ['flatpak-spawn', '--host',
-				'flatpak', 'pin',]
+				cmd = [
+					"flatpak-spawn",
+					"--host",
+					"flatpak",
+					"pin",
+				]
 				if installation == "user" or installation == "system":
 					cmd.append(f"--{installation}")
 				else:
 					cmd.append(f"--installation={installation}")
 				output = subprocess.run(
-					cmd, text=True,
+					cmd,
+					text=True,
 					capture_output=True,
 				).stdout
 				lines = output.strip().replace(" ", "").split("\n")
-				if lines[0] != '':
+				if lines[0] != "":
 					this.pins[installation] = lines
 
 			try:
@@ -329,7 +337,7 @@ class HostInfo:
 							for line in f:
 								if line.startswith("[Installation"):
 									# Get specifically the installation name itself
-									this.installations.append(line.replace("[Installation \"", "").replace("\"]", "").strip())
+									this.installations.append(line.replace('[Installation "', "").replace('"]', "").strip())
 
 				this.installations.append("user")
 				this.installations.append("system")
@@ -340,9 +348,9 @@ class HostInfo:
 
 				# Packages
 				output = subprocess.run(
-					['flatpak-spawn', '--host', 'flatpak', 'list',
-					'--columns=name,application,version,branch,arch,origin,installation,ref,size,options'],
-					text=True, check=True,
+					["flatpak-spawn", "--host", "flatpak", "list", "--columns=name,application,version,branch,arch,origin,installation,ref,size,options"],
+					text=True,
+					check=True,
 					capture_output=True,
 				).stdout
 				lines = output.strip().split("\n")
@@ -354,15 +362,15 @@ class HostInfo:
 
 				# Dependent Runtimes
 				output = subprocess.run(
-					['flatpak-spawn', '--host',
-					'flatpak', 'list', '--columns=runtime,ref'],
-					text=True, check=True,
+					["flatpak-spawn", "--host", "flatpak", "list", "--columns=runtime,ref"],
+					text=True,
+					check=True,
 					capture_output=True,
 				).stdout
 				lines = output.split("\n")
 				for index, line in enumerate(lines):
 					split_line = line.split("\t")
-					if len(split_line) < 2 or split_line[0] == '':
+					if len(split_line) < 2 or split_line[0] == "":
 						continue
 
 					package = this.flatpaks[index]

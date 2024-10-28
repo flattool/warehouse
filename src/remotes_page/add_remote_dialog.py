@@ -5,6 +5,7 @@ from .loading_status import LoadingStatus
 from .installation_chooser import InstallationChooser
 import subprocess, re
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/remotes_page/add_remote_dialog.ui")
 class AddRemoteDialog(Adw.Dialog):
 	__gtype_name__ = "AddRemoteDialog"
@@ -24,12 +25,15 @@ class AddRemoteDialog(Adw.Dialog):
 		self.parent_page.status_stack.set_visible_child(self.parent_page.adding_view)
 		self.apply_button.set_sensitive(False)
 		error = [None]
+
 		def thread(*args):
 			HostInfo.main_window.add_refresh_lockout("adding remote")
 			cmd = [
-				'flatpak-spawn', '--host',
-				'flatpak', 'remote-add',
-				f'--title={self.title_row.get_text()}',
+				"flatpak-spawn",
+				"--host",
+				"flatpak",
+				"remote-add",
+				f"--title={self.title_row.get_text()}",
 				self.name_row.get_text(),
 				self.url_row.get_text(),
 			]

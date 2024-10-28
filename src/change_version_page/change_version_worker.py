@@ -2,6 +2,7 @@ from gi.repository import GLib, Gio
 from .host_info import HostInfo
 import subprocess, re
 
+
 class ChangeVersionWorker:
 	process = None
 	callback = None
@@ -23,9 +24,9 @@ class ChangeVersionWorker:
 	@classmethod
 	def change_version_thread(this, should_mask, package, commit):
 		try:
-			cmd = ['flatpak-spawn', '--host', 'pkexec', 'sh', '-c']
+			cmd = ["flatpak-spawn", "--host", "pkexec", "sh", "-c"]
 
-			installation = package.info['installation']
+			installation = package.info["installation"]
 			real_installation = ""
 			if installation == "user" or installation == "system":
 				real_installation = f"--{installation}"
@@ -44,9 +45,9 @@ class ChangeVersionWorker:
 				suffix += mask_cmd
 
 			cmd.append(suffix)
-			this.process = subprocess.Popen(cmd, stdout=subprocess.PIPE,  stderr=subprocess.PIPE, text=True)
-			percent_pattern = r'\d{1,3}%'
-			amount_pattern = r'(\d+)/(\d+)'
+			this.process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+			percent_pattern = r"\d{1,3}%"
+			amount_pattern = r"(\d+)/(\d+)"
 			for line in this.process.stdout:
 				line = line.strip()
 				percent_match = re.search(percent_pattern, line)
@@ -54,7 +55,7 @@ class ChangeVersionWorker:
 					ratio = int(percent_match.group()[0:-1]) / 100.0
 					amount_match = re.search(amount_pattern, line)
 					if amount_match:
-						amount = amount_match.group().split('/')
+						amount = amount_match.group().split("/")
 						complete = int(amount[0]) - 1
 						total = int(amount[1])
 						this.update_status(ratio, complete, total)
@@ -65,7 +66,7 @@ class ChangeVersionWorker:
 			if error := this.process.communicate()[1].strip():
 				this.on_error(_("Error occurred while changing version"), error)
 
-		except subprocess.TimeoutExpired as te:
+		except subprocess.TimeoutExpired:
 			this.process.terminate()
 			this.on_error(_("Error occurred while changing version"), _("Failed to exit cleanly"))
 

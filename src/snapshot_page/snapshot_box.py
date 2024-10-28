@@ -4,6 +4,7 @@ from .error_toast import ErrorToast
 from .tar_worker import TarWorker
 import os, subprocess, json
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/snapshot_box.ui")
 class SnapshotBox(Gtk.Box):
 	__gtype_name__ = "SnapshotBox"
@@ -22,10 +23,10 @@ class SnapshotBox(Gtk.Box):
 	def create_json(self):
 		try:
 			data = {
-				'snapshot_version': 1,
-				'name': '',
+				"snapshot_version": 1,
+				"name": "",
 			}
-			with open(self.json_path, 'w') as file:
+			with open(self.json_path, "w") as file:
 				json.dump(data, file, indent=4)
 				return None
 
@@ -34,7 +35,7 @@ class SnapshotBox(Gtk.Box):
 
 	def update_json(self, key, value):
 		try:
-			with open(self.json_path, 'r+') as file:
+			with open(self.json_path, "r+") as file:
 				data = json.load(file)
 				data[key] = value
 				file.seek(0)
@@ -49,9 +50,9 @@ class SnapshotBox(Gtk.Box):
 			self.create_json()
 
 		try:
-			with open(self.json_path, 'r') as file:
+			with open(self.json_path, "r") as file:
 				data = json.load(file)
-				name = data['name']
+				name = data["name"]
 				if name != "":
 					self.title.set_label(GLib.markup_escape_text(name))
 				else:
@@ -64,7 +65,7 @@ class SnapshotBox(Gtk.Box):
 		if not self.valid_checker():
 			return
 
-		self.update_json('name', self.rename_entry.get_text().strip())
+		self.update_json("name", self.rename_entry.get_text().strip())
 		self.load_from_json()
 		self.rename_menu.popdown()
 
@@ -87,7 +88,7 @@ class SnapshotBox(Gtk.Box):
 
 		def thread(*args):
 			try:
-				subprocess.run(['gio', 'trash', path], capture_output=True, text=True, check=True)
+				subprocess.run(["gio", "trash", path], capture_output=True, text=True, check=True)
 			except subprocess.CalledProcessError as cpe:
 				error[0] = cpe.stderr
 			except Exception as e:
@@ -130,9 +131,9 @@ class SnapshotBox(Gtk.Box):
 			if self.worker in self.snapshot_page.workers:
 				self.snapshot_page.workers.remove(self.worker)
 
-			return False # Stop the timeout
+			return False  # Stop the timeout
 		else:
-			return True # Continue the timeout
+			return True  # Continue the timeout
 
 	def on_apply(self, button):
 		def on_response(dialog, response):
@@ -162,14 +163,14 @@ class SnapshotBox(Gtk.Box):
 
 		self.snapshot_page = parent_page.parent_page
 		self.toast_overlay = toast_overlay
-		self.app_id = snapshots_path.split('/')[-2].strip()
+		self.app_id = snapshots_path.split("/")[-2].strip()
 		self.worker = TarWorker(
 			existing_path=f"{snapshots_path}{folder}",
 			new_path=f"{HostInfo.home}/.var/app/{self.app_id}/",
 			toast_overlay=self.toast_overlay,
 		)
 
-		split_folder = folder.split('_')
+		split_folder = folder.split("_")
 		if len(split_folder) < 2:
 			return
 

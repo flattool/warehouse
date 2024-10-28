@@ -1,8 +1,9 @@
 from gi.repository import Gtk, GLib
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/gtk/loading_status.ui")
 class LoadingStatus(Gtk.ScrolledWindow):
-	__gtype_name__ = 'LoadingStatus'
+	__gtype_name__ = "LoadingStatus"
 	gtc = Gtk.Template.Child
 
 	title_label = gtc()
