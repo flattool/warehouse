@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-10-22 21:12+0000\n"
+"PO-Revision-Date: 2024-10-30 12:15+0000\n"
 "Last-Translator: sunniva <turtle@turtle.garden>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.fyralabs.com/projects/"
 "flattool/warehouse/nb_NO/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7.2\n"
+"X-Generator: Weblate 5.8.1\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -38,6 +38,8 @@ msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
+"Warehouse tilbyr et enkelt brukergrensesnitt for å styre avanserte Flatpak-"
+"innstillinger uten å måtte bruke kommandolinjen."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -46,88 +48,88 @@ msgstr "Funksjoner:"
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
 msgstr ""
+"Håndter installerte Flatpak-pakker og vis egenskaper til noen som helst "
+"installert pakke"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
 msgstr ""
+"Bytt versjoner av en Flatpak-pakke for å rulle tilbake uønskede endringer"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
-msgstr ""
+msgstr "Feste runtimer og maskere Flatpak-pakker"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
-msgstr ""
+msgstr "Filtrere pakker og sorter data, for å hjelpe med å finne alt lett"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
+"Se nåværende brukerdata for apper, og rydd opp ubrukte data som ble "
+"etterlatt av avinstallerte apper"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
 msgstr ""
+"Legg til populære Flatpak-fjernservere med noen få klikk, eller legg til "
+"tilpassede fjernservere"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
-msgstr ""
+msgstr "Ta øyeblikksbilder av dine appers brukerdata, og lagre dem"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
 msgstr ""
+"Installer nye pakker fra noen som helst fjernserver eller fra systemet ditt"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:22
 msgid "Responsive UI to fit large and small screen sizes"
-msgstr ""
+msgstr "Lydhør brukergrensesnitt for å passe til både store og små skjerm"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
-msgstr ""
+msgstr "Håndter installerte pakker i trerutersgrensesnittet"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
-msgstr ""
+msgstr "Egenskaper-siden i et smalt vindu"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
-msgstr ""
+msgstr "Håndter installerte fjernservere og legg til nye fjernservere"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:58
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Manage Apps' User Data"
-msgstr "Slett brukerdataene til de valgte appene?"
+msgstr "Håndter appers brukerdata"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:62
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Backup Apps' User Data"
-msgstr "Slett brukerdataene til de valgte appene?"
+msgstr "Sikkerhetskopier appers brukerdata"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
-msgstr ""
+msgstr "Installer nye pakker fra filer eller fjernservere"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
-msgstr ""
+msgstr "Installer-siden i et smalt vindu"
 
 #: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
 #: src/install_page/select_page.py:67
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not add files"
-msgstr "Klarte ikke legge {} til"
+msgstr "Klarte ikke å legge til filer"
 
 #: src/main.py:101
 msgid "No files were found"
-msgstr ""
+msgstr "Ingen filer fant"
 
 #: src/main.py:109
-#, fuzzy
-#| msgid "Add Flatpak Remote"
 msgid "Flatpaks & Remotes"
-msgstr "Legg til Flatpak-fjernserver"
+msgstr "Legg til Flatpak-pakker og fjernservere"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
 #: src/main.py:217
@@ -143,80 +145,64 @@ msgid "Contributors"
 msgstr "Bidragsgivere"
 
 #: src/host_info.py:380 src/host_info.py:382
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not load packages"
-msgstr "Klarte ikke legge {} til"
+msgstr "Klarte ikke å laste inn pakker"
 
 #: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
-msgstr ""
+msgstr "Feil oppsto under installering"
 
 #: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
-msgstr ""
+msgstr "En feil oppsto under installering"
 
 #: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:70
 msgid "Failed to exit cleanly"
-msgstr ""
+msgstr "Mislyktes i å avslutte ordentlig"
 
 #: src/package_install_worker.py:104
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not cancel installation"
-msgstr "Klarte ikke å installere appen"
+msgstr "Klarte ikke å avbryte installeringen"
 
 #: src/package_install_worker.py:125 src/package_install_worker.py:135
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not install packages"
-msgstr "Klarte ikke å installere appen"
+msgstr "Klarte ikke å installere pakker"
 
 #: src/package_install_worker.py:125
 msgid "Packages are currently being installed."
-msgstr ""
+msgstr "Pakker blir installert akkurat nå."
 
 #: src/package_install_worker.py:135
 msgid "No packages were requested to be installed."
-msgstr ""
+msgstr "Ingen pakker som skulle bli installert, ble oppgitt."
 
 #: src/gtk/app_row.blp:14 src/properties_page/properties_page.blp:100
 #: src/properties_page/properties_page.blp:179
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid "This package is End Of Life, and will not receive any security updates"
-msgstr "{} er foreldet og får ikke lenger sikkerhetsoppdateringer"
+msgstr "Denne pakken er foreldet og får ikke lenger sikkerhetsoppdateringer"
 
 #: src/gtk/app_row.blp:21
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid ""
 "This app's runtime is End Of Life, and will not receive any security updates"
-msgstr "{} er foreldet og får ikke lenger sikkerhetsoppdateringer"
+msgstr ""
+"Denne appens runtime er foreldet og får ikke lenger sikkerhetsoppdateringer"
 
 #: src/gtk/app_row.blp:28
 msgid "This runtime will never be automatically removed"
-msgstr ""
+msgstr "Denne runtimen blir aldri automatisk fjernet"
 
 #: src/gtk/app_row.blp:34
 msgid "Updates are disabled for this package"
-msgstr ""
+msgstr "Oppdateringer er skrudd av for denne pakken"
 
 #: src/gtk/attempt_install_dialog.blp:5
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "Attempt an Install?"
-msgstr "Prøv å installere?"
+msgstr "Forsøk å installere?"
 
 #: src/gtk/attempt_install_dialog.blp:6
-#, fuzzy
-#| msgid "Warehouse will attempt to install apps matching the selected data."
 msgid "Warehouse will try to install the matching packages."
-msgstr ""
-"Warehouse skal prøve å installere apper som går med de valgte datarestene."
+msgstr "Warehouse vil forsøke å installere de samsvarende pakkene."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:37
@@ -242,35 +228,31 @@ msgid "Install"
 msgstr "Installer"
 
 #: src/gtk/attempt_install_dialog.blp:12
-#, fuzzy
-#| msgid "Choose a Remote to Search"
 msgid "Choose a Remote"
-msgstr "Velg en fjernserver å søke gjennom"
+msgstr "Velg en fjernserver"
 
 #: src/gtk/attempt_install_dialog.blp:13
 msgid "Select a remote to attempt to install from"
-msgstr ""
+msgstr "Velg en fjernserver for å forsøke å installere fra"
 
 #: src/gtk/attempt_install_dialog.py:18 src/packages_page/filters_page.py:122
 #: src/remotes_page/remote_row.py:148 src/install_page/pending_page.py:29
 #: src/install_page/select_page.py:31
-#, fuzzy
-#| msgid "Install {}?"
 msgid "Installation: {}"
-msgstr "Installer {}?"
+msgstr "Installasjon: {}"
 
 #: src/gtk/attempt_install_dialog.py:71
 msgid "Can't find matching packages"
-msgstr ""
+msgstr "Klarte ikke å finne noen samsvarende pakker"
 
 #: src/gtk/attempt_install_dialog.py:71
 msgid "Your system has no remotes added"
-msgstr ""
+msgstr "Ditt system har ingen fjernservere tillagt"
 
 #. Extra Object Creation
 #: src/gtk/error_toast.py:12
 msgid "Details"
-msgstr ""
+msgstr "Detaljer"
 
 #: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
@@ -292,10 +274,8 @@ msgid "Refresh"
 msgstr "Oppdater"
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Open Files"
-msgstr "Still inn filtre"
+msgstr "Åpne filer"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
@@ -311,115 +291,85 @@ msgstr "Avslutt"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
-msgstr ""
+msgstr "Navigering"
 
 #: src/gtk/help-overlay.blp:34
 msgid "Show Packages Page"
-msgstr ""
+msgstr "Vis pakkesiden"
 
 #: src/gtk/help-overlay.blp:38
-#, fuzzy
-#| msgid "No Remotes Found"
 msgid "Show Remotes Page"
-msgstr "Ingen fjernservere funnet"
+msgstr "Vis fjernserversiden"
 
 #: src/gtk/help-overlay.blp:42
-#, fuzzy
-#| msgid "No User Data"
 msgid "Show User Data Page"
-msgstr "Ingen brukerdata"
+msgstr "Vis brukerdatasiden"
 
 #: src/gtk/help-overlay.blp:46
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Show Snapshots Page"
-msgstr "Ingen øyeblikksbilder"
+msgstr "Vis øyeblikksbildesiden"
 
 #: src/gtk/help-overlay.blp:50
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show Install Page"
-msgstr "Vis avslåtte"
+msgstr "Vis Installer-siden"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Packages Page"
-msgstr ""
+msgstr "Pakkesiden"
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
-#, fuzzy
-#| msgid "Search"
 msgid "Search Mode"
-msgstr "Søk"
+msgstr "Søkemodus"
 
 #: src/gtk/help-overlay.blp:61
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Edit Filters"
-msgstr "Still inn filtre"
+msgstr "Rediger filtre"
 
 #: src/gtk/help-overlay.blp:65 src/gtk/help-overlay.blp:95
 #: src/gtk/help-overlay.blp:114
-#, fuzzy
-#| msgid "Toggle Selection Mode"
 msgid "Selection Mode"
-msgstr "Bytt velgingsmodus"
+msgstr "Velgingsmodus"
 
 #: src/gtk/help-overlay.blp:70
 msgid "Remotes Page"
-msgstr ""
+msgstr "Fjernserversiden"
 
 #: src/gtk/help-overlay.blp:76
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show or Hide Disabled Remotes"
-msgstr "Vis avslåtte"
+msgstr "Vis/skjul avslåtte fjernservere"
 
 #: src/gtk/help-overlay.blp:80
-#, fuzzy
-#| msgid "Add Remote"
 msgid "New Remote"
 msgstr "Legg til fjernserver"
 
 #: src/gtk/help-overlay.blp:85
-#, fuzzy
-#| msgid "User Data"
 msgid "User Data Page"
-msgstr "Brukerdata"
+msgstr "Brukerdatasiden"
 
 #: src/gtk/help-overlay.blp:91
 msgid "Edit Sorting Modes"
-msgstr ""
+msgstr "Rediger sorteringsmoduser"
 
 #: src/gtk/help-overlay.blp:99
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Show Active Data"
-msgstr "Ingen datarester"
+msgstr "Vis aktive data"
 
 #: src/gtk/help-overlay.blp:103
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Show Leftover Data"
-msgstr "Ingen datarester"
+msgstr "Vis datarester"
 
 #: src/gtk/help-overlay.blp:108
-#, fuzzy
-#| msgid "Snapshot applied"
 msgid "Snapshots Page"
-msgstr "Øyeblikksbilde tatt i bruk"
+msgstr "Øyeblikksbildesiden"
 
 #: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:202
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "New Snapshots"
-msgstr "Nytt øyeblikksbilde"
+msgstr "Nye øyeblikksbilder"
 
 #: src/gtk/installation_chooser.blp:5
-#, fuzzy
-#| msgid "Installing"
 msgid "Choose Installation"
-msgstr "Installerer"
+msgstr "Velg installasjon"
 
 #: src/gtk/installation_chooser.blp:11
 msgid "User"
@@ -430,66 +380,52 @@ msgid "System"
 msgstr "System"
 
 #: src/gtk/installation_chooser.blp:28
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Custom installation"
-msgstr "Klarte ikke å installere appen"
+msgstr "Tilpasset installasjon"
 
 #: src/gtk/installation_chooser.blp:37
-#, fuzzy
-#| msgid "Installing"
 msgid "Other Installation"
-msgstr "Installerer"
+msgstr "Andre installasjon"
 
 #: src/gtk/installation_chooser.blp:38
 msgid "Choose a custom installation"
-msgstr ""
+msgstr "Velg en tilpasset installering"
 
 #: src/gtk/installation_chooser.py:27
-#, fuzzy
-#| msgid "The app will be available to only you"
 msgid "These {} will only be available to you"
-msgstr "Appen skal kun være tilgjengelig til deg"
+msgstr "Disse {} vil kun være tilgjengelig til deg"
 
 #: src/gtk/installation_chooser.py:28
-#, fuzzy
-#| msgid "The app will be available to every user on the system"
 msgid "These {} will be available to everyone"
-msgstr "Appen skal være tilgjengelig til alle brukere på systemet"
+msgstr "Disse {} vil være tilgjengelig til alle brukere på systemet"
 
 #: src/gtk/installation_chooser.py:29
 msgid "Choose how these {} will be installed"
-msgstr ""
+msgstr "Velg hvordan disse {} skal installeres"
 
 #: src/gtk/installation_chooser.py:31
-#, fuzzy
-#| msgid "The app will be available to only you"
 msgid "This {} will only be available to you"
-msgstr "Appen skal kun være tilgjengelig til deg"
+msgstr "Denne {} vil kun være tilgjengelig til deg"
 
 #: src/gtk/installation_chooser.py:32
-#, fuzzy
-#| msgid "The app will be available to every user on the system"
 msgid "This {} will be available to everyone"
-msgstr "Appen skal være tilgjengelig til alle brukere på systemet"
+msgstr "Denne {} vil være tilgjengelig til alle brukere på systemet"
 
 #: src/gtk/installation_chooser.py:33
 msgid "Choose how this {} will be installed"
-msgstr ""
+msgstr "Velg hvordan denne {} skal installeres"
 
 #: src/gtk/sidebar_button.py:19
 msgid "Show Sidebar"
-msgstr ""
+msgstr "Vis sidefelt"
 
 #: src/main_window/window.blp:25
 msgid "Drop to Open"
-msgstr ""
+msgstr "Dra og slipp her for å åpne"
 
 #: src/main_window/window.blp:26
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Install Flatpaks or Add a Remote"
-msgstr "Installerte fjernservere"
+msgstr "Installer Flatpak-pakker eller legg til en fjernserver"
 
 #: src/main_window/window.blp:44
 msgid "Refresh List"
@@ -505,13 +441,11 @@ msgstr "Hovedmeny"
 #: src/packages_page/packages_page.py:319
 #: src/install_page/file_install_dialog.py:37
 msgid "Packages"
-msgstr ""
+msgstr "Pakker"
 
 #: src/main_window/window.blp:80
-#, fuzzy
-#| msgid "Remove"
 msgid "Remotes"
-msgstr "Fjern"
+msgstr "Fjernservere"
 
 #: src/main_window/window.blp:94 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
@@ -521,24 +455,18 @@ msgstr "Brukerdata"
 #: src/main_window/window.blp:107 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
 #: src/snapshot_page/snapshot_page.py:355
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Snapshots"
-msgstr "Ingen øyeblikksbilder"
+msgstr "Øyeblikksbilder"
 
 #: src/main_window/window.blp:120 src/install_page/file_install_dialog.py:34
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
-#, fuzzy
-#| msgid "Installing"
 msgid "Install Packages"
-msgstr "Installerer"
+msgstr "Installer pakker"
 
 #: src/main_window/window.blp:150
-#, fuzzy
-#| msgid "Set Filters"
 msgid "_Open Files"
-msgstr "Still inn filtre"
+msgstr "_Åpne filer"
 
 #: src/main_window/window.blp:154
 msgid "_Keyboard Shortcuts"
@@ -550,71 +478,59 @@ msgstr "_Om Warehouse"
 
 #: src/main_window/window.py:132
 msgid "Unsupported Filetype"
-msgstr ""
+msgstr "Ustøttet filtype"
 
 #: src/main_window/window.py:133
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
-msgstr ""
+msgstr "Bare .flatpak-, .flatpakref-, og .flatpakrepo-filer støttes."
 
 #: src/main_window/window.py:141
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Mixed Filetypes"
-msgstr "Still inn filtre"
+msgstr "Blandede filtyper"
 
 #: src/main_window/window.py:142
 msgid "Flatpaks and remotes cannot be installed at the same time."
-msgstr ""
+msgstr "Flatpak-pakker og fjernservere kan ikke installeres samtidig."
 
 #: src/main_window/window.py:151
-#, fuzzy
-#| msgid "Too Many Results"
 msgid "Too Many Remotes"
-msgstr "For mange resultater"
+msgstr "For mange fjernservere"
 
 #: src/main_window/window.py:152
 msgid "Only one remote at a time is supported."
-msgstr ""
+msgstr "Fjernservere kan kun installeres én om gangen."
 
 #: src/main_window/window.py:170
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open files"
-msgstr "Klarte ikke å åpne mappe"
+msgstr "Klarte ikke å åpne filene"
 
 #: src/packages_page/filters_page.blp:5 src/packages_page/packages_page.blp:70
-#, fuzzy
-#| msgid "Filter List"
 msgid "Filter Packages"
-msgstr "Filterliste"
+msgstr "Filtrer pakker"
 
 #: src/packages_page/filters_page.blp:20
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Filter by Package Type"
-msgstr "Filtrer etter fjernservere"
+msgstr "Filtrer etter pakketype"
 
 #: src/packages_page/filters_page.blp:21
 msgid "Show packages of these types"
-msgstr ""
+msgstr "Vis pakker av disse sortene"
 
 #: src/packages_page/filters_page.blp:23
 msgid "Applications"
-msgstr ""
+msgstr "Applikasjoner"
 
 #: src/packages_page/filters_page.blp:24
 msgid "Packages that can be opened"
-msgstr ""
+msgstr "Pakker som kan åpnes"
 
 #: src/packages_page/filters_page.blp:29
-#, fuzzy
-#| msgid "Runtime"
 msgid "Runtimes"
-msgstr "Runtime"
+msgstr "Runtimer"
 
 #: src/packages_page/filters_page.blp:30
 msgid "Packages that applications depend on"
-msgstr ""
+msgstr "Pakker som applikasjoner er avhengig av"
 
 #: src/packages_page/filters_page.blp:37
 msgid "Filter by Remotes"
@@ -622,35 +538,31 @@ msgstr "Filtrer etter fjernservere"
 
 #: src/packages_page/filters_page.blp:38
 msgid "Show packages from selected remotes"
-msgstr ""
+msgstr "Vis pakker fra valgte fjernservere"
 
 #: src/packages_page/filters_page.blp:52
 msgid "Showing packages from all remotes"
-msgstr ""
+msgstr "Viser pakker fra alle fjernservere"
 
 #: src/packages_page/filters_page.blp:58
 msgid "Enable to show packages from selected remotes"
-msgstr ""
+msgstr "Slå på for å vise pakker fra valgte fjernservere"
 
 #: src/packages_page/filters_page.blp:71
 msgid "Filter by Runtimes"
 msgstr "Filtrer etter runtimer"
 
 #: src/packages_page/filters_page.blp:72
-#, fuzzy
-#| msgid "Show Apps Using This Runtime"
 msgid "Show apps using selected runtimes"
-msgstr "Vis apper som bruker denne runtimen"
+msgstr "Vis apper som bruker de valgte runtimene"
 
 #: src/packages_page/filters_page.blp:86
-#, fuzzy
-#| msgid "Show Apps Using This Runtime"
 msgid "Showing apps using any runtime"
-msgstr "Vis apper som bruker denne runtimen"
+msgstr "Viser apper som bruker noen som helst runtime"
 
 #: src/packages_page/filters_page.blp:92
 msgid "Enable to show apps using selected runtimes"
-msgstr ""
+msgstr "Slå på for å vise apper som bruker de valgte runtimene"
 
 #: src/packages_page/filters_page.blp:113
 #: src/packages_page/packages_page.blp:97
@@ -660,47 +572,33 @@ msgstr "Tilbakestill filtre"
 #: src/packages_page/packages_page.blp:65
 #: src/packages_page/packages_page.blp:83 src/remotes_page/remotes_page.blp:30
 #: src/snapshot_page/snapshot_page.blp:35
-#, fuzzy
-#| msgid "Search List"
 msgid "Search Packages"
-msgstr "Søk gjennom liste"
+msgstr "Søk gjennom pakker"
 
 #: src/packages_page/packages_page.blp:75
 #: src/snapshot_page/snapshot_page.blp:45
-#, fuzzy
-#| msgid "Select a Release"
 msgid "Select Packages"
-msgstr "Velg en utgave"
+msgstr "Velg pakker"
 
 #: src/packages_page/packages_page.blp:93
-#, fuzzy
-#| msgid "No Flatpaks Match Filters"
 msgid "No Packages Match Filters"
-msgstr "Ingen Flatpaker oppfyller filtrene"
+msgstr "Ingen pakker oppfyller filtrene"
 
 #: src/packages_page/packages_page.blp:94
-#, fuzzy
-#| msgid "No installed Flatpak matches all of the currently applied filters"
 msgid "No installed package matches all of the currently applied filters"
-msgstr "Ingen installerte Flatpaker oppfyller alle filtre i bruk"
+msgstr "Ingen installerte pakker oppfyller alle filtre i bruk"
 
 #: src/packages_page/packages_page.blp:104
-#, fuzzy
-#| msgid "No Flatpaks Found"
 msgid "No Packages Found"
-msgstr "Ingen Flatpaker funnet"
+msgstr "Ingen pakker funnet"
 
 #: src/packages_page/packages_page.blp:105
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed"
 msgid ""
 "Warehouse cannot see the list of installed packages or your system has no "
 "packages installed"
 msgstr ""
-"Warehouse kan ikke nå listen over installerte Flatpaker, eller systemet har "
-"ingen Flatpaker installerte"
+"Warehouse kan ikke nå listen over installerte pakker, eller systemet har "
+"ingen pakker installerte"
 
 #: src/packages_page/packages_page.blp:109
 #: src/remotes_page/remotes_page.blp:153 src/user_data_page/data_subpage.blp:68
@@ -713,10 +611,8 @@ msgstr "Ingen treff"
 #: src/remotes_page/remotes_page.blp:154 src/user_data_page/data_subpage.blp:69
 #: src/snapshot_page/new_snapshot_dialog.blp:68
 #: src/snapshot_page/snapshot_page.blp:59
-#, fuzzy
-#| msgid "Try a different search term"
 msgid "Try a different search"
-msgstr "Prøv et annet søketerm"
+msgstr "Prøv et annet søk"
 
 #: src/packages_page/packages_page.blp:127
 #: src/user_data_page/user_data_page.blp:81
@@ -747,30 +643,24 @@ msgstr "Kopier ref-er"
 #: src/user_data_page/data_subpage.py:107
 #: src/snapshot_page/new_snapshot_dialog.py:38
 #: src/snapshot_page/snapshot_page.py:355
-#, fuzzy
-#| msgid "{} selected"
 msgid "{} Selected"
 msgstr "{} valgt"
 
 #: src/packages_page/packages_page.py:192
 msgid "Error getting Flatpak '{}'"
-msgstr ""
+msgstr "Klarte ikke å hente Flatpak-pakken «{}»"
 
 #: src/packages_page/packages_page.py:241
-#, fuzzy
-#| msgid "Name"
 msgid "Names"
 msgstr "Navn"
 
 #: src/packages_page/packages_page.py:244
 msgid "IDs"
-msgstr ""
+msgstr "ID-er"
 
 #: src/packages_page/packages_page.py:247
-#, fuzzy
-#| msgid "Copy Refs"
 msgid "Refs"
-msgstr "Kopier ref-er"
+msgstr "Ref-er"
 
 #: src/packages_page/packages_page.py:255
 #: src/properties_page/properties_page.py:272
@@ -778,26 +668,20 @@ msgid "Copied {}"
 msgstr "Kopierte {}"
 
 #: src/packages_page/packages_page.py:257
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not copy {}"
-msgstr "Klarte ikke legge {} til"
+msgstr "Klarte ikke å kopiere {}"
 
 #: src/packages_page/packages_page.py:307
 msgid "Errors occurred while uninstalling"
-msgstr ""
+msgstr "Feil oppsto under avinstallering"
 
 #: src/packages_page/packages_page.py:309
-#, fuzzy
-#| msgid "Uninstalled successfully"
 msgid "Uninstalled Packages"
-msgstr "Avinstallering vellykket"
+msgstr "Avinstallerte pakker"
 
 #: src/packages_page/packages_page.py:367
-#, fuzzy
-#| msgid "Loading Flatpaks"
 msgid "Loading Packages"
-msgstr "Laster inn Flatpaker"
+msgstr "Laster inn pakker"
 
 #: src/packages_page/packages_page.py:367
 #: src/packages_page/packages_page.py:368
@@ -807,19 +691,15 @@ msgstr "Laster inn Flatpaker"
 #: src/snapshot_page/snapshot_page.py:558 src/install_page/install_page.py:96
 #: src/install_page/results_page.py:135
 msgid "This should only take a moment"
-msgstr "Dette bør ikke ta veldig lenge"
+msgstr "Dette tar bare et øyeblikk"
 
 #: src/packages_page/packages_page.py:368
-#, fuzzy
-#| msgid "Uninstalling"
 msgid "Uninstalling Packages"
-msgstr "Avinstallerer"
+msgstr "Avinstallerer pakker"
 
 #: src/packages_page/packages_page.py:370
-#, fuzzy
-#| msgid "Uninstalling"
 msgid "Reinstalling Package"
-msgstr "Avinstallerer"
+msgstr "Installerer pakke på nytt"
 
 #: src/packages_page/packages_page.py:370
 #: src/packages_page/packages_page.py:372
@@ -830,17 +710,15 @@ msgstr "Dette kan ta en god stund"
 
 #: src/packages_page/packages_page.py:372
 msgid "Changing Version"
-msgstr ""
+msgstr "Endrer versjon"
 
 #: src/packages_page/uninstall_dialog.blp:8
 msgid "Keep"
 msgstr "Behold"
 
 #: src/packages_page/uninstall_dialog.blp:9
-#, fuzzy
-#| msgid "Allow restoring this app's settings and content"
 msgid "Allows restoring app settings and content"
-msgstr "Tillat gjenoppretting av denne appens innstillinger og innhold"
+msgstr "Tillater gjenoppretting av appinnstillinger og -innhold"
 
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
@@ -851,46 +729,36 @@ msgid "Trash"
 msgstr "Flytt til papirkurven"
 
 #: src/packages_page/uninstall_dialog.blp:18
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
 msgid "Send data to the trash"
-msgstr "Send {}s brukerdata til papirskurven?"
+msgstr "Send dataene til papirkurven"
 
 #: src/packages_page/uninstall_dialog.py:30
 msgid "Uninstall {}?"
 msgstr "Avinstaller {}?"
 
 #: src/packages_page/uninstall_dialog.py:31
-#, fuzzy
-#| msgid "It will not be possible to use {} after removal."
 msgid "It will not be possible to use {} after removal"
-msgstr "Det vil ikke være mulig å bruke {} etter fjerning."
+msgstr "Det vil ikke være mulig å bruke {} etter avinstallering"
 
 #: src/packages_page/uninstall_dialog.py:33
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstall Packages?"
-msgstr "Avinstaller {}?"
+msgstr "Avinstaller pakker?"
 
 #: src/packages_page/uninstall_dialog.py:34
-#, fuzzy
-#| msgid "It will not be possible to use these apps after removal."
 msgid "It will not be possible to use these packages after removal"
-msgstr "Det vil ikke være mulig å bruke disse appene etter fjerning."
+msgstr "Det vil ikke være mulig å bruke disse pakkene etter avinstallering"
 
 #: src/packages_page/uninstall_dialog.py:41
-#, fuzzy
-#| msgid "App Settings & Data"
 msgid "App Settings & Content"
-msgstr "Appinnstillinger og -data"
+msgstr "Appinnstillinger og -innhold"
 
 #: src/properties_page/properties_page.blp:19
 msgid "Properties Page Unavailable"
-msgstr ""
+msgstr "Egenskaper-siden utilgjengelig"
 
 #: src/properties_page/properties_page.blp:20
 msgid "Cannot show the properties page at this time"
-msgstr ""
+msgstr "Kan ikke vise egenskaper-siden akkurat nå"
 
 #: src/properties_page/properties_page.blp:83
 msgid "Open"
@@ -898,123 +766,111 @@ msgstr "Åpne"
 
 #: src/properties_page/properties_page.blp:122
 #: src/user_data_page/data_box.blp:62
-#, fuzzy
-#| msgid "Open User Data Folder"
 msgid "Open User Data"
-msgstr "Åpne brukerdatamappen"
+msgstr "Åpne brukerdata"
 
 #: src/properties_page/properties_page.blp:130
 #: src/user_data_page/data_box.blp:73
 msgid "Trash User Data"
-msgstr "Slett brukerdata"
+msgstr "Flytt brukerdataene til papirkurven"
 
 #: src/properties_page/properties_page.blp:139
-#, fuzzy
-#| msgid "Version {}"
 msgid "Version"
-msgstr "Utgave {}"
+msgstr "Utgivelse {}"
 
 #: src/properties_page/properties_page.blp:143
 msgid "Updates Disabled"
-msgstr "Oppdateringer avslått"
+msgstr "Oppdateringer skrudd av"
 
 #: src/properties_page/properties_page.blp:147
 #: src/change_version_page/change_version_page.blp:50
 msgid "Disable Updates"
-msgstr "Slå av oppdateringer"
+msgstr "Skru av oppdateringer"
 
 #: src/properties_page/properties_page.blp:148
 msgid "Mask this package so it's never updated"
-msgstr ""
+msgstr "Masker denne pakken, slik at den aldri skal oppdateres"
 
 #: src/properties_page/properties_page.blp:157
 #: src/change_version_page/change_version_page.blp:23
 msgid "Change Version"
-msgstr ""
+msgstr "Endre versjon"
 
 #: src/properties_page/properties_page.blp:158
 msgid "Upgrade or downgrade this package"
-msgstr ""
+msgstr "Oppgrader eller nedgrader denne pakken"
 
 #: src/properties_page/properties_page.blp:167
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Installed Size"
-msgstr "Installerte fjernservere"
+msgstr "Installasjonsstørrelse"
 
 #: src/properties_page/properties_page.blp:175
 msgid "Runtime"
 msgstr "Runtime"
 
 #: src/properties_page/properties_page.blp:188
-#, fuzzy
-#| msgid "Disable Auto Removal"
 msgid "Disable Automactic Removal"
-msgstr "Slå av automatisk fjerning"
+msgstr "Skru av automatisk fjerning"
 
 #: src/properties_page/properties_page.blp:189
 msgid "Pin this runtime to keep it installed"
-msgstr ""
+msgstr "Fest denne runtimen for å sørge for at den forblir installert"
 
 #: src/properties_page/properties_page.blp:200
 msgid "Package Information"
-msgstr ""
+msgstr "Pakkeinformasjon"
 
 #: src/properties_page/properties_page.blp:203
 msgid "Application ID"
-msgstr ""
+msgstr "Applikasjon-ID"
 
 #: src/properties_page/properties_page.blp:219
 msgid "Architecture"
-msgstr ""
+msgstr "Arkitektur"
 
 #: src/properties_page/properties_page.blp:227
 msgid "Branch"
-msgstr ""
+msgstr "Gren"
 
 #: src/properties_page/properties_page.blp:235
 msgid "License"
-msgstr ""
+msgstr "Lisens"
 
 #: src/properties_page/properties_page.blp:244
 msgid "Installation Information"
-msgstr ""
+msgstr "Installasjonsinformasjon"
 
 #: src/properties_page/properties_page.blp:255
 msgid "Origin"
-msgstr ""
+msgstr "Kilde"
 
 #: src/properties_page/properties_page.blp:263
 msgid "Collection"
-msgstr ""
+msgstr "Samling"
 
 #: src/properties_page/properties_page.blp:271
-#, fuzzy
-#| msgid "Installing"
 msgid "Installation"
-msgstr "Installerer"
+msgstr "Installasjon"
 
 #: src/properties_page/properties_page.blp:279
 msgid "Commit Information"
-msgstr ""
+msgstr "Commit-informasjon"
 
 #: src/properties_page/properties_page.blp:290
 msgid "Parent"
-msgstr ""
+msgstr "Forelder"
 
 #: src/properties_page/properties_page.blp:298
 msgid "Subject"
-msgstr ""
+msgstr "Subjekt"
 
 #: src/properties_page/properties_page.blp:306
 msgid "Date"
-msgstr ""
+msgstr "Dato"
 
 #: src/properties_page/properties_page.py:75
-#, fuzzy
-#| msgid "Properties"
 msgid "{} Properties"
-msgstr "Egenskaper"
+msgstr "{}-egenskaper"
 
 #: src/properties_page/properties_page.py:80
 msgid "Properties"
@@ -1032,20 +888,16 @@ msgstr "Ingen brukerdata"
 
 #: src/properties_page/properties_page.py:129
 #: src/properties_page/properties_page.py:145
-#, fuzzy
-#| msgid "Could not show properties"
 msgid "Could not get properties"
-msgstr "Klarte ikke å vise egenskaper"
+msgstr "Klarte ikke å hente egenskaper"
 
 #: src/properties_page/properties_page.py:142
 msgid "No version information found"
-msgstr ""
+msgstr "Ingen versjonsinformasjon fant"
 
 #: src/properties_page/properties_page.py:162
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open data"
-msgstr "Klarte ikke å åpne mappe"
+msgstr "Klarte ikke å åpne dataene"
 
 #: src/properties_page/properties_page.py:181
 #: src/properties_page/properties_page.py:183
@@ -1053,227 +905,177 @@ msgstr "Klarte ikke å åpne mappe"
 #: src/properties_page/properties_page.py:240 src/user_data_page/data_box.py:99
 #: src/user_data_page/user_data_page.py:183
 #: src/user_data_page/user_data_page.py:197
-#, fuzzy
-#| msgid "Could not trash user data"
 msgid "Could not trash data"
-msgstr "Klarte ikke å slette brukerdata"
+msgstr "Klarte ikke å flytte dataene til papirkurven"
 
 #: src/properties_page/properties_page.py:186
 msgid "Send {}'s User Data to the Trash?"
-msgstr "Send {}s brukerdata til papirskurven?"
+msgstr "Send {}s brukerdata til papirkurven?"
 
 #: src/properties_page/properties_page.py:187
-#, fuzzy
-#| msgid "Your files and data for this app will be sent to the trash."
 msgid "Your settings and data for this app will be sent to the trash"
-msgstr "Dine filer og data til denne appen skal sendes til papirkurven."
+msgstr "Dine filer og data for denne appen skal sendes til papirkurven"
 
 #: src/properties_page/properties_page.py:190
 msgid "Trash Data"
-msgstr "Slett data"
+msgstr "Flytt data til papirskurven"
 
 #: src/properties_page/properties_page.py:199
-#, fuzzy
-#| msgid "Could not disable updates for {}"
 msgid "Could not Disable Updates"
-msgstr "Klarte ikke slå av oppdateringer for {}"
+msgstr "Klarte ikke å skru av oppdateringer"
 
 #: src/properties_page/properties_page.py:199
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not Enable Updates"
-msgstr "Klarte ikke å håndtere data"
+msgstr "Klarte ikke å skru på oppdateringer"
 
 #: src/properties_page/properties_page.py:205
-#, fuzzy
-#| msgid "Disable Updates"
 msgid "Disabled Updates"
-msgstr "Slå av oppdateringer"
+msgstr "Skrudde av oppdateringer"
 
 #: src/properties_page/properties_page.py:205
-#, fuzzy
-#| msgid "Enable Updates"
 msgid "Enabled Updates"
-msgstr "Slå på oppdateringer"
+msgstr "Skrudde på oppdateringer"
 
 #: src/properties_page/properties_page.py:217
-#, fuzzy
-#| msgid "Could not disable auto removal"
 msgid "Could not Disable Autoremoval"
-msgstr "Klarte ikke å slå av automatisk fjerning"
+msgstr "Klarte ikke å skru av automatisk fjerning"
 
 #: src/properties_page/properties_page.py:217
-#, fuzzy
-#| msgid "Could not enable auto removal"
 msgid "Could not Enable Autoremoval"
-msgstr "Klarte ikke å slå på automatisk fjerning"
+msgstr "Klarte ikke å skru på automatisk fjerning"
 
 #: src/properties_page/properties_page.py:222
-#, fuzzy
-#| msgid "Disable Auto Removal"
 msgid "Disabled Autoremoval"
-msgstr "Slå av automatisk fjerning"
+msgstr "Skrudde av automatisk fjerning"
 
 #: src/properties_page/properties_page.py:222
-#, fuzzy
-#| msgid "Enable Auto Removal"
 msgid "Enabled Autoremoval"
-msgstr "Slå på automatisk fjerning"
+msgstr "Skrudde på automatisk fjerning"
 
 #: src/properties_page/properties_page.py:245
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not uninstall"
-msgstr "Klarte ikke å installere appen"
+msgstr "Klarte ikke å avinstallere"
 
 #: src/properties_page/properties_page.py:249
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstalled {}"
-msgstr "Avinstaller {}?"
+msgstr "Avinstallerte {}"
 
 #: src/properties_page/properties_page.py:261
-#, fuzzy
-#| msgid "Opened {}"
 msgid "Opening {}…"
-msgstr "Åpnet {}"
+msgstr "Åpner {}…"
 
 #: src/properties_page/properties_page.py:266
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not open {}"
-msgstr "Klarte ikke å fjerne {}"
+msgstr "Klarte ikke å åpne {}"
 
 #: src/properties_page/properties_page.py:281
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstalled {}"
-msgstr "Avinstaller {}?"
+msgstr "Installerte {} på nytt"
 
 #: src/properties_page/properties_page.py:307
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstall {}?"
-msgstr "Avinstaller {}?"
+msgstr "Installer {} på nytt?"
 
 #: src/properties_page/properties_page.py:308
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
 msgstr ""
+"Denne pakken skal avinstalleres, og så installeres igjen fra den samme "
+"fjernserveren og installasjonen."
 
 #: src/properties_page/properties_page.py:311
 #: src/properties_page/properties_page.py:372
-#, fuzzy
-#| msgid "Uninstall"
 msgid "Reinstall"
-msgstr "Avinstaller"
+msgstr "Installer på nytt"
 
 #: src/properties_page/properties_page.py:328
 msgid "Copied launch command"
 msgstr "Kopierte lanseringskommando"
 
 #: src/properties_page/properties_page.py:330
-#, fuzzy
-#| msgid "Copied launch command"
 msgid "Could not copy launch command"
-msgstr "Kopierte lanseringskommando"
+msgstr "Klarte ikke å kopiere lanseringskommando"
 
 #: src/properties_page/properties_page.py:336
 msgid "Could not show details"
 msgstr "Klarte ikke å vise detaljer"
 
 #: src/properties_page/properties_page.py:366
-#, fuzzy
-#| msgid "View Properties"
 msgid "Loading Properties"
-msgstr "Vis egenskaper"
+msgstr "Laster inn egenskaper"
 
 #: src/properties_page/properties_page.py:369
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "View Snapshots"
-msgstr "Nytt øyeblikksbilde"
+msgstr "Vis øyeblikksbilder"
 
 #: src/properties_page/properties_page.py:370
 msgid "Copy Launch Command"
 msgstr "Kopier lanseringskommando"
 
 #: src/properties_page/properties_page.py:371
-#, fuzzy
-#| msgid "Show Details in Store"
 msgid "Show Details"
-msgstr "Vis detaljer i Appsenter"
+msgstr "Vis detaljer"
 
 #: src/change_version_page/change_version_page.blp:5
 msgid "Change Versions"
-msgstr ""
+msgstr "Endre versjoner"
 
 #: src/change_version_page/change_version_page.blp:56
 msgid "Select a Release"
-msgstr "Velg en utgave"
+msgstr "Velg en utgivelse"
 
 #: src/change_version_page/change_version_page.blp:57
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
-"Dette avinstallerer den nåværende utgaven og installerer den valgte utgave i "
-"stedet. NB: Nedgradering kan forårsake feil."
+"Dette avinstallerer den nåværende utgivelsen og installerer den valgte "
+"utgivelsen i stedet. NB: Nedgradering kan forårsake feil."
 
 #: src/change_version_page/change_version_page.py:69
 msgid "Currently Installed Version"
-msgstr ""
+msgstr "Nåværende utgivelse"
 
 #: src/change_version_page/change_version_page.py:86
-#, fuzzy
-#| msgid "Could not create snapshot"
 msgid "Could not get versions"
-msgstr "Klarte ikke å opprette øyeblikksbilde"
+msgstr "Klarte ikke å hente utgivelser"
 
 #: src/change_version_page/change_version_page.py:93
 msgid "Changed {}'s Version"
-msgstr ""
+msgstr "Endret {}s versjon"
 
 #: src/change_version_page/change_version_page.py:117
-#, fuzzy
-#| msgid "Version {}"
 msgid "{} Versions"
-msgstr "Utgave {}"
+msgstr "{} versjoner"
 
 #: src/change_version_page/change_version_page.py:118
 msgid "Ensure that {} will never be updated to a newer version"
-msgstr "Sørg for at {} blir aldri oppdatert til en nyere utgave"
+msgstr "Sørg for at {} blir aldri oppdatert til en nyere utgivelse"
 
 #: src/change_version_page/change_version_page.py:119
 msgid "Fetching Releases"
-msgstr "Henter utgaver"
+msgstr "Henter utgivelser"
 
 #: src/change_version_page/change_version_worker.py:66
 #: src/change_version_page/change_version_worker.py:70
 #: src/change_version_page/change_version_worker.py:74
 msgid "Error occurred while changing version"
-msgstr ""
+msgstr "En feil oppsto under utgivelsesendring"
 
 #: src/change_version_page/change_version_worker.py:85
-#, fuzzy
-#| msgid "Could not create snapshot"
 msgid "Could not cancel version change"
-msgstr "Klarte ikke å opprette øyeblikksbilde"
+msgstr "Klarte ikke å avbryte utgivelsesendring"
 
 #: src/change_version_page/change_version_worker.py:106
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not change version"
-msgstr "Klarte ikke å håndtere data"
+msgstr "Klarte ikke å ende utgivelse"
 
 #: src/change_version_page/change_version_worker.py:106
 msgid "Another package is changing version."
-msgstr ""
+msgstr "En annen pakkes versjon blir endret."
 
 #: src/remotes_page/add_remote_dialog.blp:5 src/install_page/select_page.blp:27
-#, fuzzy
-#| msgid "Add Remote"
 msgid "Add a Remote"
 msgstr "Legg til fjernserver"
 
@@ -1283,7 +1085,7 @@ msgstr "Legg til"
 
 #: src/remotes_page/add_remote_dialog.blp:40
 msgid "Title"
-msgstr ""
+msgstr "Tittel"
 
 #: src/remotes_page/add_remote_dialog.blp:43
 #: src/user_data_page/user_data_page.blp:190
@@ -1292,44 +1094,32 @@ msgstr "Navn"
 
 #: src/remotes_page/add_remote_dialog.blp:46
 msgid "Repo URL"
-msgstr ""
+msgstr "Arkiv-URL"
 
 #: src/remotes_page/add_remote_dialog.py:54
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not add remote"
-msgstr "Klarte ikke legge {} til"
+msgstr "Klarte ikke å legge til fjernserver"
 
 #: src/remotes_page/add_remote_dialog.py:57
-#, fuzzy
-#| msgid "Add {}?"
 msgid "Added {}"
-msgstr "Legg {} til?"
+msgstr "La til {}"
 
 #. Apply
 #: src/remotes_page/add_remote_dialog.py:107
-#, fuzzy
-#| msgid "Add Remote"
 msgid "remote"
-msgstr "Legg til fjernserver"
+msgstr "fjernserver"
 
 #: src/remotes_page/remote_row.blp:21
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Set a Filter for this Remote"
-msgstr "Filtrer etter fjernservere"
+msgstr "Still inn et filter for denne fjernserveren"
 
 #: src/remotes_page/remote_row.blp:29
-#, fuzzy
-#| msgid "More Functions"
 msgid "More Actions"
-msgstr "Flere funksjoner"
+msgstr "Flere handlinger"
 
 #: src/remotes_page/remote_row.blp:37
-#, fuzzy
-#| msgid "Copy Ref"
 msgid "Copy Title"
-msgstr "Kopier ref"
+msgstr "Kopier tittel"
 
 #: src/remotes_page/remote_row.blp:41
 msgid "Copy Name"
@@ -1348,57 +1138,45 @@ msgid "Remove"
 msgstr "Fjern"
 
 #: src/remotes_page/remote_row.py:24 src/remotes_page/remote_row.py:44
-#, fuzzy
-#| msgid "Could not enable {}"
 msgid "Could not enable remote"
-msgstr "Klarte ikke å slå {} på"
+msgstr "Klarte ikke å slå på fjernserver"
 
 #: src/remotes_page/remote_row.py:24
 msgid "Remote is already enabled"
-msgstr ""
+msgstr "Fjernserveren er allerede påslått"
 
 #: src/remotes_page/remote_row.py:51
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Enabled remote"
-msgstr "Installerte fjernservere"
+msgstr "Slo på fjernserver"
 
 #: src/remotes_page/remote_row.py:75 src/remotes_page/remote_row.py:153
-#, fuzzy
-#| msgid "Updates Disabled"
 msgid "Remote is Disabled"
-msgstr "Oppdateringer avslått"
+msgstr "Fjernserveren er avslått"
 
 #: src/remotes_page/remote_row.py:77
-#, fuzzy
-#| msgid "Disabled"
 msgid "Disabled remote"
-msgstr "Avslått"
+msgstr "Slo av fjernserver"
 
 #: src/remotes_page/remote_row.py:95 src/remotes_page/remote_row.py:107
 #: src/remotes_page/remote_row.py:111
-#, fuzzy
-#| msgid "Could not disable {}"
 msgid "Could not disable remote"
-msgstr "Klarte ikke å slå {} av"
+msgstr "Klarte ikke å slå av fjernserver"
 
 #: src/remotes_page/remote_row.py:95
 msgid "Remote is already disabled"
-msgstr ""
+msgstr "Fjernserveren er allerede avslått"
 
 #: src/remotes_page/remote_row.py:121
 msgid "Disable {}?"
-msgstr "Slå {} av?"
+msgstr "Slå av {}?"
 
 #: src/remotes_page/remote_row.py:121 src/remotes_page/remotes_page.py:188
 msgid "Any installed apps from {} will stop receiving updates"
-msgstr "Alle installerte apper fra {} skal ikke få oppdateringer"
+msgstr "Alle installerte apper fra {}, vil ikke få oppdateringer lenger"
 
 #: src/remotes_page/remote_row.py:133
-#, fuzzy
-#| msgid "Copied ref"
 msgid "Copied title"
-msgstr "Kopierte ref"
+msgstr "Kopierte tittel"
 
 #: src/remotes_page/remote_row.py:136
 msgid "Copied name"
@@ -1409,61 +1187,47 @@ msgid "Manage Remotes"
 msgstr "Håndter fjernservere"
 
 #: src/remotes_page/remotes_page.blp:40
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Search Remotes"
-msgstr "Filtrer etter fjernservere"
+msgstr "Søk etter fjernservere"
 
 #: src/remotes_page/remotes_page.blp:47
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Current Remotes"
-msgstr "Installerte fjernservere"
+msgstr "Nåværende fjernservere"
 
 #: src/remotes_page/remotes_page.blp:48
-#, fuzzy
-#| msgid "Remote will be available to every user on the system"
 msgid "Remotes available on your system"
-msgstr "Fjernserveren vil være tilgjengelig for alle brukere på systemet"
+msgstr "Fjernservere tilgjengelige på systemet ditt"
 
 #: src/remotes_page/remotes_page.blp:55
 msgid "Show Disabled"
 msgstr "Vis avslåtte"
 
 #: src/remotes_page/remotes_page.blp:75
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "No Enabled Remotes"
-msgstr "Installerte fjernservere"
+msgstr "Ingen påslåtte fjernservere"
 
 #: src/remotes_page/remotes_page.blp:81
 msgid "You only have disabled remotes on this system"
-msgstr ""
+msgstr "Du har kun avslåtte fjernservere på dette systemet"
 
 #: src/remotes_page/remotes_page.blp:107
 msgid "No Remotes Found"
-msgstr "Ingen fjernservere funnet"
+msgstr "Ingen fjernservere fant"
 
 #: src/remotes_page/remotes_page.blp:113
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed"
 msgid ""
 "Warehouse cannot see the current remotes or your system has no remotes added"
 msgstr ""
-"Warehouse kan ikke nå listen over installerte Flatpaker, eller systemet har "
-"ingen Flatpaker installerte"
+"Warehouse kan ikke nå listen over de nåværende fjernserverne, eller systemet "
+"har ingen fjernservere tillagt"
 
 #: src/remotes_page/remotes_page.blp:126
-#, fuzzy
-#| msgid "Add a Popular Remote"
 msgid "Add Popular Remotes"
-msgstr "Legg til en populær fjernserver"
+msgstr "Legg til populære fjernservere"
 
 #: src/remotes_page/remotes_page.blp:127
 msgid "Add new remotes to get more software"
-msgstr ""
+msgstr "Legg til nye fjernservere for å laste ned flere programvarer"
 
 #: src/remotes_page/remotes_page.blp:131
 msgid "Add Other Remotes"
@@ -1475,7 +1239,7 @@ msgstr "Legg til arkivfil"
 
 #: src/remotes_page/remotes_page.blp:135
 msgid "Open a downloaded repo file to add"
-msgstr ""
+msgstr "Åpne en nedlastet arkivfil for å legge den til"
 
 #: src/remotes_page/remotes_page.blp:143
 msgid "Add a Custom Remote"
@@ -1483,7 +1247,7 @@ msgstr "Legg til tilpasset fjernserver"
 
 #: src/remotes_page/remotes_page.blp:144
 msgid "Manually enter new remote details"
-msgstr ""
+msgstr "Tast inn fjernserveropplysninger for hånd"
 
 #: src/remotes_page/remotes_page.py:32
 msgid "The open source, pay-what-you-want app store from elementary"
@@ -1495,11 +1259,11 @@ msgstr "Sentral arkiv av Flatpak-applikasjoner"
 
 #: src/remotes_page/remotes_page.py:44
 msgid "Beta builds of Flatpak applications"
-msgstr "Beta-utgaver av Flatpak-applikasjoner"
+msgstr "Beta-utgivelser av Flatpak-applikasjoner"
 
 #: src/remotes_page/remotes_page.py:50
 msgid "Flatpaks packaged by Fedora Linux"
-msgstr "Flatpaker fra Fedora Linux"
+msgstr "Flatpak-pakker fra Fedora Linux"
 
 #: src/remotes_page/remotes_page.py:56
 msgid "The latest beta GNOME Apps and Runtimes"
@@ -1511,19 +1275,15 @@ msgstr "Sentral arkiv av WebKit sin utvikler- og runtime-SDK"
 
 #: src/remotes_page/remotes_page.py:152
 msgid "Showing all packages from {}"
-msgstr ""
+msgstr "Viser alle pakker fra {}"
 
 #: src/remotes_page/remotes_page.py:173
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not remove remote"
-msgstr "Klarte ikke å fjerne {}"
+msgstr "Klarte ikke å fjerne fjernservere"
 
 #: src/remotes_page/remotes_page.py:180
-#, fuzzy
-#| msgid "Remove {}?"
 msgid "Removed {}"
-msgstr "Fjern {}?"
+msgstr "Fjernet {}"
 
 #: src/remotes_page/remotes_page.py:188
 msgid "Remove {}?"
@@ -1531,14 +1291,12 @@ msgstr "Fjern {}?"
 
 #: src/remotes_page/remotes_page.py:224 src/remotes_page/remotes_page.py:234
 #: src/remotes_page/remotes_page.py:236
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open file"
-msgstr "Klarte ikke å åpne mappe"
+msgstr "Klarte ikke å åpne fil"
 
 #: src/remotes_page/remotes_page.py:239
 msgid "Flatpak Repos"
-msgstr "Flatpak-arkiv"
+msgstr "Flatpak-arkiver"
 
 #. Apply
 #: src/remotes_page/remotes_page.py:285
@@ -1546,38 +1304,28 @@ msgid "Adding Remote"
 msgstr "Legger til fjernserver"
 
 #: src/remotes_page/remotes_page.py:286
-#, fuzzy
-#| msgid "Adding Remote"
 msgid "Loading Remotes"
-msgstr "Legger til fjernserver"
+msgstr "Laster inn fjernservere"
 
 #: src/user_data_page/data_box.blp:56
-#, fuzzy
-#| msgid "Copy Name"
 msgid "Copy Path"
-msgstr "Kopier navn"
+msgstr "Kopier sti"
 
 #: src/user_data_page/data_box.blp:68
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "Attempt to Install"
-msgstr "Prøv å installere?"
+msgstr "Forsøk å installere"
 
 #: src/user_data_page/data_box.py:58
 msgid "Copied data path"
-msgstr ""
+msgstr "Kopierte datastien"
 
 #: src/user_data_page/data_box.py:60
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not copy data path"
-msgstr "Klarte ikke å håndtere data"
+msgstr "Klarte ikke å kopiere datastien"
 
 #: src/user_data_page/data_box.py:65
-#, fuzzy
-#| msgid "Open Data Folder"
 msgid "Opened data folder"
-msgstr "Åpne datamappen"
+msgstr "Åpnet datamappen"
 
 #: src/user_data_page/data_box.py:67 src/snapshot_page/snapshot_page.py:253
 #: src/snapshot_page/snapshots_list_page.py:77
@@ -1585,16 +1333,12 @@ msgid "Could not open folder"
 msgstr "Klarte ikke å åpne mappe"
 
 #: src/user_data_page/data_box.py:113
-#, fuzzy
-#| msgid "Trash User Data"
 msgid "Trash {}'s Data?"
-msgstr "Slett brukerdata"
+msgstr "Flytt {}s data til papirkurven?"
 
 #: src/user_data_page/data_box.py:113
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "{}'s data will be sent to the trash"
-msgstr "Disse mappene skal sendes til papirkurven."
+msgstr "{}s data skal sendes til papirkurven"
 
 #: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:210
 #: src/snapshot_page/snapshot_page.py:480
@@ -1603,31 +1347,22 @@ msgstr "Fortsett"
 
 #: src/user_data_page/data_subpage.blp:13
 msgid "No Title Set"
-msgstr ""
+msgstr "Ingen tittel oppgitt"
 
 #: src/user_data_page/data_subpage.blp:28
-#, fuzzy
-#| msgid "Downgrading…"
 msgid "Loading Size…"
-msgstr "Nedgraderer…"
+msgstr "Laster inn størrelse…"
 
 #: src/user_data_page/data_subpage.py:232
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "No Active Data"
-msgstr "Ingen datarester"
+msgstr "Ingen aktive data"
 
 #: src/user_data_page/data_subpage.py:233
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed"
 msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
 msgstr ""
-"Warehouse kan ikke nå listen over installerte Flatpaker, eller systemet har "
-"ingen Flatpaker installerte"
+"Warehouse kan ikke se noen aktive data, eller systemet har ingen aktive data"
 
 #: src/user_data_page/data_subpage.py:236
 msgid "No Leftover Data"
@@ -1639,124 +1374,94 @@ msgstr "Det finnes ingen brukerdatarester"
 
 #: src/user_data_page/user_data_page.blp:43
 #: src/user_data_page/user_data_page.blp:64
-#, fuzzy
-#| msgid "Trash User Data"
 msgid "Search User Data"
-msgstr "Slett brukerdata"
+msgstr "Søk gjennom brukerdata"
 
 #: src/user_data_page/user_data_page.blp:49
-#, fuzzy
-#| msgid "No User Data"
 msgid "Sort User Data"
-msgstr "Ingen brukerdata"
+msgstr "Sorter brukerdataene"
 
 #: src/user_data_page/user_data_page.blp:54
-#, fuzzy
-#| msgid "User Data"
 msgid "Select User Data"
-msgstr "Brukerdata"
+msgstr "Velg brukerdata"
 
 #: src/user_data_page/user_data_page.blp:120
 #: src/snapshot_page/snapshot_page.blp:159
-#, fuzzy
-#| msgid "View More"
 msgid "More"
-msgstr "Vis mer"
+msgstr "Mer"
 
 #: src/user_data_page/user_data_page.blp:169
 msgid "Ascending"
-msgstr ""
+msgstr "Stigende"
 
 #: src/user_data_page/user_data_page.blp:177
 msgid "Descending"
-msgstr ""
+msgstr "Fallende"
 
 #: src/user_data_page/user_data_page.blp:198
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: src/user_data_page/user_data_page.blp:206
 msgid "Size"
-msgstr ""
+msgstr "Størrelse"
 
 #: src/user_data_page/user_data_page.py:75
 #: src/user_data_page/user_data_page.py:77
-#, fuzzy
-#| msgid "Loading User Data"
 msgid "Loading Size"
-msgstr "Laster inn brukerdata"
+msgstr "Laster inn størrelse"
 
 #: src/user_data_page/user_data_page.py:151
-#, fuzzy
-#| msgid "Could not apply snapshot"
 msgid "Could not copy paths"
-msgstr "Klarte ikke å ta øyeblikksbilde i bruk"
+msgstr "Klarte ikke å kopiere stiene"
 
 #: src/user_data_page/user_data_page.py:151
 #: src/user_data_page/user_data_page.py:197
 msgid "No boxes were selected"
-msgstr ""
+msgstr "Ingen bokser ble valgt"
 
 #: src/user_data_page/user_data_page.py:154
-#, fuzzy
-#| msgid "Copied name"
 msgid "Copied paths"
-msgstr "Kopierte navn"
+msgstr "Kopierte stier"
 
 #: src/user_data_page/user_data_page.py:185
-#, fuzzy
-#| msgid "Trashed user data"
 msgid "Trashed data"
-msgstr "Slettet brukerdata"
+msgstr "Flyttet dataene til papirkurven"
 
 #: src/user_data_page/user_data_page.py:208
-#, fuzzy
-#| msgid "Trash Data"
 msgid "Trash Data?"
-msgstr "Slett data"
+msgstr "Flytt dataene til papirkurven?"
 
 #: src/user_data_page/user_data_page.py:208
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "Data will be sent to the trash"
-msgstr "Disse mappene skal sendes til papirkurven."
+msgstr "Dataene skal sendes til papirkurven"
 
 #: src/user_data_page/user_data_page.py:246
 #: src/user_data_page/user_data_page.py:269
-#, fuzzy
-#| msgid "User Data"
 msgid "Active Data"
-msgstr "Brukerdata"
+msgstr "Aktive data"
 
 #: src/user_data_page/user_data_page.py:247
 #: src/user_data_page/user_data_page.py:275
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Leftover Data"
-msgstr "Ingen datarester"
+msgstr "Datarester"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
-#, fuzzy
-#| msgid "Search List"
 msgid "Search Apps"
-msgstr "Søk gjennom liste"
+msgstr "Søk gjennom apper"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
-msgstr ""
+msgstr "Opprett"
 
 #: src/snapshot_page/new_snapshot_dialog.py:110
-#, fuzzy
-#| msgid "Creating Snapshots"
 msgid "Creating Snapshot"
-msgstr "Oppretter øyeblikksbilder"
+msgstr "Oppretter øyeblikksbilde"
 
 #: src/snapshot_page/new_snapshot_dialog.py:192
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Name these Snapshots"
-msgstr "Opprette øyeblikksbilder"
+msgstr "Gi disse øyeblikksbildene navn"
 
 #: src/snapshot_page/new_snapshot_dialog.py:196
 #: src/snapshot_page/snapshot_page.blp:40
@@ -1766,127 +1471,93 @@ msgid "New Snapshot"
 msgstr "Nytt øyeblikksbilde"
 
 #: src/snapshot_page/new_snapshot_dialog.py:200
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "Name this Snapshot"
-msgstr "Nytt øyeblikksbilde"
+msgstr "Gi dette øyeblikksbildet et navn"
 
 #: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:58
-#, fuzzy
-#| msgid "Copy Name"
 msgid "No Name Set"
-msgstr "Kopier navn"
+msgstr "Intet navn angitt"
 
 #: src/snapshot_page/snapshot_box.blp:23
-#, fuzzy
-#| msgid "No Remotes Found"
 msgid "No date found"
-msgstr "Ingen fjernservere funnet"
+msgstr "Ingen dato fant"
 
 #: src/snapshot_page/snapshot_box.blp:30
-#, fuzzy
-#| msgid "No Results Found"
 msgid "No version found"
-msgstr "Ingen treff"
+msgstr "Ingen utgivelse fant"
 
 #: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:156
 msgid "Apply"
-msgstr ""
+msgstr "Ta i bruk"
 
 #: src/snapshot_page/snapshot_box.blp:55
 msgid "Rename"
-msgstr ""
+msgstr "Gi nytt navn"
 
 #: src/snapshot_page/snapshot_box.blp:84
-#, fuzzy
-#| msgid "Create Snapshots?"
 msgid "Rename Snapshot?"
-msgstr "Opprett øyeblikksbilder?"
+msgstr "Gi øyeblikksbilde nytt navn?"
 
 #: src/snapshot_page/snapshot_box.blp:94
-#, fuzzy
-#| msgid "Copied name"
 msgid "Confirm Rename"
-msgstr "Kopierte navn"
+msgstr "Bekreft omnavngivning"
 
 #: src/snapshot_page/snapshot_box.py:33 src/snapshot_page/snapshot_box.py:45
 #: src/snapshot_page/snapshot_box.py:61
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not write data"
-msgstr "Klarte ikke å håndtere data"
+msgstr "Klarte ikke å skrive data"
 
 #: src/snapshot_page/snapshot_box.py:98
 msgid "Could not trash snapshot"
-msgstr "Klarte ikke å slette øyeblikksbildet"
+msgstr "Klarte ikke å flytte øyeblikksbildet til papirkurven"
 
 #: src/snapshot_page/snapshot_box.py:102
-#, fuzzy
-#| msgid "Trash Snapshot"
 msgid "Trashed snapshot"
-msgstr "Slett øyeblikksbilde"
+msgstr "Flyttet øyeblikksbilde til papirskurven"
 
 #: src/snapshot_page/snapshot_box.py:112
 msgid "Trash Snapshot?"
-msgstr "Slett øyeblikksbilde?"
+msgstr "Flytt øyeblikksbilde til papirkurven?"
 
 #: src/snapshot_page/snapshot_box.py:112
-#, fuzzy
-#| msgid "This snapshot and its contents will be sent to the trash."
 msgid "This snapshot will be sent to the trash"
-msgstr "Dette øyeblikksbildet og innholdet sitt skal fjernes."
+msgstr "Dette øyeblikksbildet skal sendes til papirkurven."
 
 #: src/snapshot_page/snapshot_box.py:142
-#, fuzzy
-#| msgid "Applying Snapshot…"
 msgid "Applying Snapshot"
-msgstr "Tar øyeblikksbilde i bruk…"
+msgstr "Tar øyeblikksbilde i bruk"
 
 #: src/snapshot_page/snapshot_box.py:152
 msgid "Apply Snapshot?"
 msgstr "Ta øyeblikksbilde i bruk?"
 
 #: src/snapshot_page/snapshot_box.py:153
-#, fuzzy
-#| msgid "Your files and data for this app will be sent to the trash."
 msgid "Any current user data for this app will be trashed"
-msgstr "Dine filer og data til denne appen skal sendes til papirkurven."
+msgstr "Nåværende brukerdata for denne appen skal flyttes til papirkurven"
 
 #: src/snapshot_page/snapshot_box.py:182
-#, fuzzy
-#| msgid "Version {}"
 msgid "Version: {}"
-msgstr "Utgave {}"
+msgstr "Utgivelse {}"
 
 #: src/snapshot_page/snapshot_page.blp:53
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Search Snapshots"
-msgstr "Opprette øyeblikksbilder"
+msgstr "Søk gjennom øyeblikksbilder"
 
 #: src/snapshot_page/snapshot_page.blp:70
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Active Snapshots"
-msgstr "Opprette øyeblikksbilder"
+msgstr "Aktive øyeblikksbilder"
 
 #: src/snapshot_page/snapshot_page.blp:81
-#, fuzzy
-#| msgid "Display properties of installed Flatpaks"
 msgid "Snapshots of installed apps"
-msgstr "Vis egenskaper til installerte Flatpaker"
+msgstr "Øyeblikksbilder for installerte apper"
 
 #: src/snapshot_page/snapshot_page.blp:99
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Leftover Snapshots"
-msgstr "Opprette øyeblikksbilder"
+msgstr "Etterlatte øyeblikksbilder"
 
 #: src/snapshot_page/snapshot_page.blp:110
-#, fuzzy
-#| msgid "Search for Flatpaks that you want to install"
 msgid "Snapshots of apps that are no longer installed"
-msgstr "Søk etter Flatpaker som du vil installere"
+msgstr "Øyeblikksbilder av apper som ikke lenger er installerte"
 
 #: src/snapshot_page/snapshot_page.blp:177
 msgid "Open Snapshots Folder"
@@ -1897,155 +1568,117 @@ msgid "No Snapshots"
 msgstr "Ingen øyeblikksbilder"
 
 #: src/snapshot_page/snapshot_page.blp:183
-#, fuzzy
-#| msgid "Central repository of Flatpak applications"
 msgid "Create a Snapshot to save the state of any Flatpak application"
-msgstr "Sentral arkiv av Flatpak-applikasjoner"
+msgstr ""
+"Opprett et øyeblikksbilde for å lagre tilstanden av noen som helst Flatpak-"
+"applikasjon"
 
 #: src/snapshot_page/snapshot_page.blp:219
-#, fuzzy
-#| msgid "Snapshot applied"
 msgid "Snapshot Apps"
-msgstr "Øyeblikksbilde tatt i bruk"
+msgstr "Øyeblikksbildeapper"
 
 #: src/snapshot_page/snapshot_page.blp:223
-#, fuzzy
-#| msgid "Install"
 msgid "Install Apps"
-msgstr "Installer"
+msgstr "Installer apper"
 
 #: src/snapshot_page/snapshot_page.blp:227
-#, fuzzy
-#| msgid "Apply Snapshot"
 msgid "Apply Snapshots"
-msgstr "Ta øyeblikksbilde i bruk"
+msgstr "Ta øyeblikksbilder i bruk"
 
 #: src/snapshot_page/snapshot_page.blp:231
-#, fuzzy
-#| msgid "Trash Snapshot"
 msgid "Trash Snapshots"
-msgstr "Slett øyeblikksbilde"
+msgstr "Flytt øyeblikksbilder til papirkurven"
 
 #: src/snapshot_page/snapshot_page.py:101
-#, fuzzy
-#| msgid "Could not trash snapshot"
 msgid "Could not load Snapshots"
-msgstr "Klarte ikke å slette øyeblikksbildet"
+msgstr "Klarte ikke å laste inn øyeblikksbilder"
 
 #: src/snapshot_page/snapshot_page.py:194
 msgid "Showing snapshots for {}"
-msgstr ""
+msgstr "Viser øyeblikksbilder for {}"
 
 #: src/snapshot_page/snapshot_page.py:198
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "No snapshots for {}"
-msgstr "Ingen øyeblikksbilder"
+msgstr "Ingen øyeblikksbilder for {}"
 
 #: src/snapshot_page/snapshot_page.py:198
 msgid "New"
-msgstr ""
+msgstr "Nytt"
 
 #: src/snapshot_page/snapshot_page.py:242
 #: src/snapshot_page/snapshot_page.py:244
 #: src/snapshot_page/snapshots_list_page.py:60
-#, fuzzy
-#| msgid "There is no User Data to Snapshot"
 msgid "No Data Found to Snapshot"
-msgstr "Det finnes ingen brukerdata å ta et øyeblikksbilde av"
+msgstr "Ingen data fant som kan lagres i et øyeblikksbilde"
 
 #: src/snapshot_page/snapshot_page.py:251
 #: src/snapshot_page/snapshots_list_page.py:75
-#, fuzzy
-#| msgid "Open Snapshots Folder"
 msgid "Opened snapshots folder"
-msgstr "Åpne øyeblikksbildemappe"
+msgstr "Åpnet øyeblikksbildemappe"
 
 #: src/snapshot_page/snapshot_page.py:386
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Copied Snapshot Paths"
-msgstr "Ingen øyeblikksbilder"
+msgstr "Kopierte øyeblikksbildestier"
 
 #: src/snapshot_page/snapshot_page.py:395
 msgid "No apps in your selection can be snapshotted"
-msgstr ""
+msgstr "Ingen apper i utvalget ditt kan lagres i øyeblikksbilder"
 
 #: src/snapshot_page/snapshot_page.py:469
-#, fuzzy
-#| msgid "Applying Snapshot…"
 msgid "Applying Snapshots"
-msgstr "Tar øyeblikksbilde i bruk…"
+msgstr "Tar øyeblikksbilder i bruk"
 
 #: src/snapshot_page/snapshot_page.py:475
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "No snapshots to extract"
-msgstr "Ingen øyeblikksbilder"
+msgstr "Ingen øyeblikksbilder å ekstrahere"
 
 #: src/snapshot_page/snapshot_page.py:475
 msgid "No snapshots were found to extract"
-msgstr ""
+msgstr "Ingen øyeblikksbilder fant å ekstrahere"
 
 #: src/snapshot_page/snapshot_page.py:478
-#, fuzzy
-#| msgid "Apply Snapshot?"
 msgid "Apply These Snapshots?"
-msgstr "Ta øyeblikksbilde i bruk?"
+msgstr "Ta disse øyeblikksbildene i bruk?"
 
 #: src/snapshot_page/snapshot_page.py:478
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
+"Dette vil flytte appenes brukerdata til papurkurven, og ta deres nyeste "
+"øyeblikksbildene i bruk"
 
 #: src/snapshot_page/snapshot_page.py:514
-#, fuzzy
-#| msgid "Trash Snapshot"
 msgid "Trashed snapshots"
-msgstr "Slett øyeblikksbilde"
+msgstr "Flyttet øyeblikksbilder til papirkurven"
 
 #: src/snapshot_page/snapshot_page.py:516
-#, fuzzy
-#| msgid "Could not trash snapshot"
 msgid "Could not trash snapshots"
-msgstr "Klarte ikke å slette øyeblikksbildet"
+msgstr "Klarte ikke å flytte øyeblikksbilder til papirkurven"
 
 #: src/snapshot_page/snapshot_page.py:519
-#, fuzzy
-#| msgid "Trash Snapshot?"
 msgid "Trash Snapshots?"
-msgstr "Slett øyeblikksbilde?"
+msgstr "Flytt øyeblikksbilder til papirkurven?"
 
 #: src/snapshot_page/snapshot_page.py:519
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "These apps' snapshots will be sent to the trash"
-msgstr "Disse mappene skal sendes til papirkurven."
+msgstr "Disse appenes øyeblikksbilder skal sendes til papirkurven"
 
 #: src/snapshot_page/snapshot_page.py:558
-#, fuzzy
-#| msgid "Creating Snapshots"
 msgid "Loading Snapshots"
-msgstr "Oppretter øyeblikksbilder"
+msgstr "Laster inn øyeblikksbilder"
 
 #: src/snapshot_page/snapshots_list_page.blp:5
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Snapshots List"
-msgstr "Ingen øyeblikksbilder"
+msgstr "Liste over øyeblikksbilder"
 
 #: src/snapshot_page/snapshots_list_page.blp:13
-#, fuzzy
-#| msgid "Open Snapshots Folder"
 msgid "Open Snapshots Folder for this App"
-msgstr "Åpne øyeblikksbildemappe"
+msgstr "Åpne øyeblikksbildemappen for denne appen"
 
 #: src/snapshot_page/snapshots_list_page.py:30
 #: src/snapshot_page/snapshots_list_page.py:51
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "App not Installed"
-msgstr "Prøv å installere?"
+msgstr "Appen ikke installert"
 
 #: src/snapshot_page/snapshots_list_page.py:54
 msgid "{} Snapshots"
@@ -2053,118 +1686,104 @@ msgstr "{} øyeblikksbilder"
 
 #: src/snapshot_page/tar_worker.py:81
 msgid "Error in snapshot handling"
-msgstr ""
+msgstr "Feil under behandling av øyeblikksbilder"
 
 #: src/install_page/file_install_dialog.blp:33
 msgid "Review Selection"
-msgstr ""
+msgstr "Gjennomgå utvalg"
 
 #. self.packages_group.set_title(_("Review Packages"))
 #: src/install_page/file_install_dialog.py:36
 msgid "The following packages will be installed"
-msgstr ""
+msgstr "De følgende pakkene skal installeres"
 
 #: src/install_page/file_install_dialog.py:39
 msgid "Install a Package"
-msgstr ""
+msgstr "Installer en pakke"
 
 #. self.packages_group.set_title(_("Review Package"))
 #: src/install_page/file_install_dialog.py:41
 msgid "The following package will be installed"
-msgstr ""
+msgstr "Den følgende pakken skal installeres"
 
 #: src/install_page/file_install_dialog.py:42
 msgid "package"
-msgstr ""
+msgstr "pakke"
 
 #: src/install_page/install_page.blp:41
-#, fuzzy
-#| msgid "Select"
 msgid "Select Source"
-msgstr "Velg"
+msgstr "Velg kilde"
 
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
 msgid "Pending Packages"
-msgstr ""
+msgstr "Ventende pakker"
 
 #: src/install_page/install_page.py:51
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Installed Packages"
-msgstr "Installerte fjernservere"
+msgstr "Installerte pakker"
 
 #: src/install_page/install_page.py:68
 msgid "{} Pending Package"
-msgstr ""
+msgstr "{} ventende pakke"
 
 #: src/install_page/install_page.py:73
 msgid "{} Pending Packages"
-msgstr ""
+msgstr "{} ventende pakker"
 
 #. Extra Object Creation
 #: src/install_page/install_page.py:88
-#, fuzzy
-#| msgid "Installing"
 msgid "Installing Packages"
-msgstr "Installerer"
+msgstr "Installerer pakker"
 
 #: src/install_page/install_page.py:96
 msgid "Loading Installation Options"
-msgstr ""
+msgstr "Laster inn installeringsalternativer"
 
 #: src/install_page/pending_page.blp:13 src/install_page/select_page.blp:37
 msgid "Add Packages"
-msgstr ""
+msgstr "Legge til pakker"
 
 #: src/install_page/pending_page.blp:14
 msgid "Packages queued to install will show up here"
-msgstr ""
+msgstr "Pakker som venter på å installeres, dukker opp her"
 
 #: src/install_page/pending_page.py:34
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove All"
-msgstr "Fjern"
+msgstr "Fjern alle"
 
 #: src/install_page/result_row.blp:8 src/install_page/result_row.py:42
 msgid "Add Package to Queue"
-msgstr ""
+msgstr "Legg til pakke i køen"
 
 #: src/install_page/result_row.py:46
 msgid "Package has been Added to Queue"
-msgstr ""
+msgstr "Pakken har blitt lagt til i køen"
 
 #: src/install_page/result_row.py:50
 msgid "Remove Package from Queue"
-msgstr ""
+msgstr "Fjern pakke fra køen"
 
 #: src/install_page/result_row.py:54
 msgid "This Package is Already Installed"
-msgstr ""
+msgstr "Denne pakken er allerede installert"
 
 #: src/install_page/results_page.blp:5
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Search a Remote"
-msgstr "Filtrer etter fjernservere"
+msgstr "Søk gjennom en fjernserver"
 
 #. hexpand: true;
 #: src/install_page/results_page.blp:20
-#, fuzzy
-#| msgid "Search for Flatpaks"
 msgid "Search for Packages"
-msgstr "Søk etter Flatpaker"
+msgstr "Søk etter pakker"
 
 #: src/install_page/results_page.blp:26
 msgid "Search for Flatpaks"
-msgstr "Søk etter Flatpaker"
+msgstr "Søk etter Flatpak-pakker"
 
 #: src/install_page/results_page.blp:27
-#, fuzzy
-#| msgid "Search for Flatpaks that you want to install"
 msgid "Search for Flatpaks you want to install"
-msgstr "Søk etter Flatpaker som du vil installere"
+msgstr "Søk etter Flatpak-pakker som du vil installere"
 
 #: src/install_page/results_page.blp:31
 msgid "Too Many Results"
@@ -2172,59 +1791,51 @@ msgstr "For mange resultater"
 
 #: src/install_page/results_page.blp:32
 msgid "Try being more specific with your search"
-msgstr "Prøv et mer spesifikt søketerm"
+msgstr "Prøv et mer spesifikt søk"
 
 #: src/install_page/results_page.blp:50
 msgid "Try a different search term"
-msgstr "Prøv et annet søketerm"
+msgstr "Prøv et annet søk"
 
 #: src/install_page/results_page.py:50
-#, fuzzy
-#| msgid "Search"
 msgid "Search {}"
-msgstr "Søk"
+msgstr "Søk gjennom {}"
 
 #: src/install_page/results_page.py:135
 msgid "Searching"
 msgstr "Søker"
 
 #: src/install_page/select_page.blp:19
-#, fuzzy
-#| msgid "Refresh List of Remotes"
 msgid "Search in a Remote"
-msgstr "Last inn listen over fjernservere på nytt"
+msgstr "Søk gjennom en fjernserver"
 
 #: src/install_page/select_page.blp:20
-#, fuzzy
-#| msgid "Choose a Remote to Search"
 msgid "Choose a remote to search for new packages"
-msgstr "Velg en fjernserver å søke gjennom"
+msgstr "Velg en fjernserver å søke gjennom for nye pakker"
 
 #: src/install_page/select_page.blp:23
-#, fuzzy
-#| msgid "Updates Disabled"
 msgid "Online Searches Disabled"
-msgstr "Oppdateringer avslått"
+msgstr "Internettsøking avslått"
 
 #: src/install_page/select_page.blp:24
 msgid "Your system has no remotes added to search from"
-msgstr ""
+msgstr "Systemet ditt har ingen tillagte fjernservere som kan søkes gjennom"
 
 #: src/install_page/select_page.blp:28
 msgid "Add a remote to your system to enable online searching"
-msgstr ""
+msgstr "Legg til en fjernserver i systemet ditt for å slå på internettsøking"
 
 #: src/install_page/select_page.blp:38
 msgid "Install packages from files on your system"
-msgstr ""
+msgstr "Installer pakker fra filer på systemet ditt"
 
 #: src/install_page/select_page.py:60
 msgid "No files were found to install"
-msgstr ""
+msgstr "Ingen filer som kunne installeres, fant"
 
 #: src/install_page/select_page.py:70
 msgid "Flatpaks"
-msgstr "Flatpaker"
+msgstr "Flatpak-pakker"
 
 #, fuzzy
 #~| msgid "Could not install app"
