@@ -40,7 +40,7 @@
 	<file preprocess="xml-stripblanks" alias="check-plain-symbolic.svg">../data/icons/check-plain-symbolic.svg</file>
 	<file preprocess="xml-stripblanks" alias="paper-filled-symbolic.svg">../data/icons/paper-filled-symbolic.svg</file>
 	<file preprocess="xml-stripblanks" alias="plus-large-symbolic.svg">../data/icons/plus-large-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="funnel-symbolic.svg">../data/icons/funnel-symbolic.svg</file>
+	<file preprocess="xml-stripblanks" alias="funnel-outline-symbolic.svg">../data/icons/funnel-outline-symbolic.svg</file>
 	<file preprocess="xml-stripblanks" alias="flatpak-symbolic.svg">../data/icons/flatpak-symbolic.svg</file>
 	<file preprocess="xml-stripblanks" alias="right-large-symbolic.svg">../data/icons/right-large-symbolic.svg</file>
 	<file preprocess="xml-stripblanks" alias="view-more-symbolic.svg">../data/icons/view-more-symbolic.svg</file>
