@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-10-30 12:15+0000\n"
+"PO-Revision-Date: 2024-10-30 12:36+0000\n"
 "Last-Translator: sunniva <turtle@turtle.garden>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.fyralabs.com/projects/"
 "flattool/warehouse/nb_NO/>\n"
@@ -726,11 +726,11 @@ msgstr "Tillater gjenoppretting av appinnstillinger og -innhold"
 #: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:114
 #: src/snapshot_page/snapshot_page.py:521
 msgid "Trash"
-msgstr "Flytt til papirkurven"
+msgstr "Slett"
 
 #: src/packages_page/uninstall_dialog.blp:18
 msgid "Send data to the trash"
-msgstr "Send dataene til papirkurven"
+msgstr "Slett data"
 
 #: src/packages_page/uninstall_dialog.py:30
 msgid "Uninstall {}?"
@@ -772,11 +772,11 @@ msgstr "Åpne brukerdata"
 #: src/properties_page/properties_page.blp:130
 #: src/user_data_page/data_box.blp:73
 msgid "Trash User Data"
-msgstr "Flytt brukerdataene til papirkurven"
+msgstr "Slett brukerdata"
 
 #: src/properties_page/properties_page.blp:139
 msgid "Version"
-msgstr "Utgivelse {}"
+msgstr "Utgivelse"
 
 #: src/properties_page/properties_page.blp:143
 msgid "Updates Disabled"
@@ -906,19 +906,19 @@ msgstr "Klarte ikke å åpne dataene"
 #: src/user_data_page/user_data_page.py:183
 #: src/user_data_page/user_data_page.py:197
 msgid "Could not trash data"
-msgstr "Klarte ikke å flytte dataene til papirkurven"
+msgstr "Klarte ikke å slette dataene"
 
 #: src/properties_page/properties_page.py:186
 msgid "Send {}'s User Data to the Trash?"
-msgstr "Send {}s brukerdata til papirkurven?"
+msgstr "Slett {}s brukerdata?"
 
 #: src/properties_page/properties_page.py:187
 msgid "Your settings and data for this app will be sent to the trash"
-msgstr "Dine filer og data for denne appen skal sendes til papirkurven"
+msgstr "Dine filer og data for denne appen skal slettes"
 
 #: src/properties_page/properties_page.py:190
 msgid "Trash Data"
-msgstr "Flytt data til papirskurven"
+msgstr "Slett data"
 
 #: src/properties_page/properties_page.py:199
 msgid "Could not Disable Updates"
@@ -1047,7 +1047,7 @@ msgstr "Endret {}s versjon"
 
 #: src/change_version_page/change_version_page.py:117
 msgid "{} Versions"
-msgstr "{} versjoner"
+msgstr "Versjoner av {}"
 
 #: src/change_version_page/change_version_page.py:118
 msgid "Ensure that {} will never be updated to a newer version"
@@ -1334,11 +1334,11 @@ msgstr "Klarte ikke å åpne mappe"
 
 #: src/user_data_page/data_box.py:113
 msgid "Trash {}'s Data?"
-msgstr "Flytt {}s data til papirkurven?"
+msgstr "Slett {}s data?"
 
 #: src/user_data_page/data_box.py:113
 msgid "{}'s data will be sent to the trash"
-msgstr "{}s data skal sendes til papirkurven"
+msgstr "{}s data skal slettes"
 
 #: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:210
 #: src/snapshot_page/snapshot_page.py:480
@@ -1426,15 +1426,15 @@ msgstr "Kopierte stier"
 
 #: src/user_data_page/user_data_page.py:185
 msgid "Trashed data"
-msgstr "Flyttet dataene til papirkurven"
+msgstr "Slettet data"
 
 #: src/user_data_page/user_data_page.py:208
 msgid "Trash Data?"
-msgstr "Flytt dataene til papirkurven?"
+msgstr "Slett data?"
 
 #: src/user_data_page/user_data_page.py:208
 msgid "Data will be sent to the trash"
-msgstr "Dataene skal sendes til papirkurven"
+msgstr "Dataene skal slettes"
 
 #: src/user_data_page/user_data_page.py:246
 #: src/user_data_page/user_data_page.py:269
@@ -1509,19 +1509,19 @@ msgstr "Klarte ikke å skrive data"
 
 #: src/snapshot_page/snapshot_box.py:98
 msgid "Could not trash snapshot"
-msgstr "Klarte ikke å flytte øyeblikksbildet til papirkurven"
+msgstr "Klarte ikke å slette øyeblikksbilde"
 
 #: src/snapshot_page/snapshot_box.py:102
 msgid "Trashed snapshot"
-msgstr "Flyttet øyeblikksbilde til papirskurven"
+msgstr "Slettet øyeblikksbilde"
 
 #: src/snapshot_page/snapshot_box.py:112
 msgid "Trash Snapshot?"
-msgstr "Flytt øyeblikksbilde til papirkurven?"
+msgstr "Slett øyeblikksbilde?"
 
 #: src/snapshot_page/snapshot_box.py:112
 msgid "This snapshot will be sent to the trash"
-msgstr "Dette øyeblikksbildet skal sendes til papirkurven."
+msgstr "Dette øyeblikksbildet skal slettes"
 
 #: src/snapshot_page/snapshot_box.py:142
 msgid "Applying Snapshot"
@@ -1533,7 +1533,7 @@ msgstr "Ta øyeblikksbilde i bruk?"
 
 #: src/snapshot_page/snapshot_box.py:153
 msgid "Any current user data for this app will be trashed"
-msgstr "Nåværende brukerdata for denne appen skal flyttes til papirkurven"
+msgstr "Nåværende brukerdata for denne appen skal slettes"
 
 #: src/snapshot_page/snapshot_box.py:182
 msgid "Version: {}"
@@ -1587,7 +1587,7 @@ msgstr "Ta øyeblikksbilder i bruk"
 
 #: src/snapshot_page/snapshot_page.blp:231
 msgid "Trash Snapshots"
-msgstr "Flytt øyeblikksbilder til papirkurven"
+msgstr "Slett øyeblikksbilder"
 
 #: src/snapshot_page/snapshot_page.py:101
 msgid "Could not load Snapshots"
@@ -1644,24 +1644,24 @@ msgstr "Ta disse øyeblikksbildene i bruk?"
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
-"Dette vil flytte appenes brukerdata til papurkurven, og ta deres nyeste "
-"øyeblikksbildene i bruk"
+"Dette vil slette appenes brukerdata, og ta deres nyeste øyeblikksbildene i "
+"bruk"
 
 #: src/snapshot_page/snapshot_page.py:514
 msgid "Trashed snapshots"
-msgstr "Flyttet øyeblikksbilder til papirkurven"
+msgstr "Slettet øyeblikksbilder"
 
 #: src/snapshot_page/snapshot_page.py:516
 msgid "Could not trash snapshots"
-msgstr "Klarte ikke å flytte øyeblikksbilder til papirkurven"
+msgstr "Klarte ikke å slette øyeblikksbilder"
 
 #: src/snapshot_page/snapshot_page.py:519
 msgid "Trash Snapshots?"
-msgstr "Flytt øyeblikksbilder til papirkurven?"
+msgstr "Slett øyeblikksbilder?"
 
 #: src/snapshot_page/snapshot_page.py:519
 msgid "These apps' snapshots will be sent to the trash"
-msgstr "Disse appenes øyeblikksbilder skal sendes til papirkurven"
+msgstr "Disse appenes øyeblikksbilder skal slettes"
 
 #: src/snapshot_page/snapshot_page.py:558
 msgid "Loading Snapshots"
