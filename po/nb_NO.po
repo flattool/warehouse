@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-10-30 12:36+0000\n"
+"PO-Revision-Date: 2024-10-30 15:32+0000\n"
 "Last-Translator: sunniva <turtle@turtle.garden>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.fyralabs.com/projects/"
 "flattool/warehouse/nb_NO/>\n"
@@ -870,7 +870,7 @@ msgstr "Dato"
 
 #: src/properties_page/properties_page.py:75
 msgid "{} Properties"
-msgstr "{}-egenskaper"
+msgstr "Egenskaper av {}"
 
 #: src/properties_page/properties_page.py:80
 msgid "Properties"
