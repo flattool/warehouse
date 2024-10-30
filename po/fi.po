@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-10-30 12:15+0000\n"
+"PO-Revision-Date: 2024-10-30 12:36+0000\n"
 "Last-Translator: JTi65 <jouko.tiilikainen@gmail.com>\n"
 "Language-Team: Finnish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/fi/>\n"
@@ -969,7 +969,7 @@ msgstr "Poistettu {}"
 
 #: src/properties_page/properties_page.py:261
 msgid "Opening {}…"
-msgstr "Poistettu {}"
+msgstr "Poistettu {}…"
 
 #: src/properties_page/properties_page.py:266
 msgid "Could not open {}"
@@ -1019,7 +1019,7 @@ msgstr "Näytä tilannekuvat"
 
 #: src/properties_page/properties_page.py:370
 msgid "Copy Launch Command"
-msgstr "Näytä tilannekuvat"
+msgstr "Kopioi käynnistyskomento"
 
 #: src/properties_page/properties_page.py:371
 msgid "Show Details"
@@ -1395,7 +1395,7 @@ msgstr "Lajittele käyttäjätiedot"
 
 #: src/user_data_page/user_data_page.blp:54
 msgid "Select User Data"
-msgstr "Lajittele käyttäjätiedot"
+msgstr "Valitse käyttäjätiedot"
 
 #: src/user_data_page/user_data_page.blp:120
 #: src/snapshot_page/snapshot_page.blp:159
@@ -1438,420 +1438,414 @@ msgstr "Kopioidut polut"
 
 #: src/user_data_page/user_data_page.py:185
 msgid "Trashed data"
-msgstr ""
+msgstr "Roskakoriin siirretyt tiedot"
 
 #: src/user_data_page/user_data_page.py:208
 msgid "Trash Data?"
-msgstr ""
+msgstr "Roskakori tiedot?"
 
 #: src/user_data_page/user_data_page.py:208
 msgid "Data will be sent to the trash"
-msgstr ""
+msgstr "Tiedot lähetetään roskakoriin"
 
 #: src/user_data_page/user_data_page.py:246
 #: src/user_data_page/user_data_page.py:269
 msgid "Active Data"
-msgstr ""
+msgstr "Aktiiviset tiedot"
 
 #: src/user_data_page/user_data_page.py:247
 #: src/user_data_page/user_data_page.py:275
 msgid "Leftover Data"
-msgstr ""
+msgstr "Jäljelle jääneet tiedot"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
-#, fuzzy
-#| msgid "Show Apps"
 msgid "Search Apps"
-msgstr "Näytä ohjelmat"
+msgstr "Hae sovelluksia"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
-msgstr ""
+msgstr "Luoda"
 
 #: src/snapshot_page/new_snapshot_dialog.py:110
 msgid "Creating Snapshot"
-msgstr ""
+msgstr "Luodaan tilannekuvaa"
 
 #: src/snapshot_page/new_snapshot_dialog.py:192
 msgid "Name these Snapshots"
-msgstr ""
+msgstr "Nimeä nämä tilannekuvat"
 
 #: src/snapshot_page/new_snapshot_dialog.py:196
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
-msgstr ""
+msgstr "Uusi tilannekuva"
 
 #: src/snapshot_page/new_snapshot_dialog.py:200
 msgid "Name this Snapshot"
-msgstr ""
+msgstr "Nimeä tämä tilannekuva"
 
 #: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:58
 msgid "No Name Set"
-msgstr ""
+msgstr "Ei nimeä asetettu"
 
 #: src/snapshot_page/snapshot_box.blp:23
 msgid "No date found"
-msgstr ""
+msgstr "Päivämäärää ei löytynyt"
 
 #: src/snapshot_page/snapshot_box.blp:30
 msgid "No version found"
-msgstr ""
+msgstr "Versiota ei löytynyt"
 
 #: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:156
 msgid "Apply"
-msgstr ""
+msgstr "Hyväksy"
 
 #: src/snapshot_page/snapshot_box.blp:55
 msgid "Rename"
-msgstr ""
+msgstr "Uudelleen nimeä"
 
 #: src/snapshot_page/snapshot_box.blp:84
 msgid "Rename Snapshot?"
-msgstr ""
+msgstr "Nimetäänkö tilannekuva uudelleen?"
 
 #: src/snapshot_page/snapshot_box.blp:94
 msgid "Confirm Rename"
-msgstr ""
+msgstr "Vahvista Nimeä uudelleen"
 
 #: src/snapshot_page/snapshot_box.py:33 src/snapshot_page/snapshot_box.py:45
 #: src/snapshot_page/snapshot_box.py:61
 msgid "Could not write data"
-msgstr ""
+msgstr "Tietoja ei voitu kirjoittaa"
 
 #: src/snapshot_page/snapshot_box.py:98
 msgid "Could not trash snapshot"
-msgstr ""
+msgstr "Tilannekuvaa ei voitu siirtää roskakoriin"
 
 #: src/snapshot_page/snapshot_box.py:102
 msgid "Trashed snapshot"
-msgstr ""
+msgstr "Roskakoriin siirretty tilannekuva"
 
 #: src/snapshot_page/snapshot_box.py:112
 msgid "Trash Snapshot?"
-msgstr ""
+msgstr "Roskakori tilannekuva?"
 
 #: src/snapshot_page/snapshot_box.py:112
 msgid "This snapshot will be sent to the trash"
-msgstr ""
+msgstr "Tämä tilannekuva lähetetään roskakoriin"
 
 #: src/snapshot_page/snapshot_box.py:142
 msgid "Applying Snapshot"
-msgstr ""
+msgstr "Snapshotin käyttäminen"
 
 #: src/snapshot_page/snapshot_box.py:152
 msgid "Apply Snapshot?"
-msgstr ""
+msgstr "Otetaanko tilannekuva?"
 
 #: src/snapshot_page/snapshot_box.py:153
 msgid "Any current user data for this app will be trashed"
-msgstr ""
+msgstr "Kaikki tämän sovelluksen nykyiset käyttäjätiedot siirretään roskakoriin"
 
 #: src/snapshot_page/snapshot_box.py:182
 msgid "Version: {}"
-msgstr ""
+msgstr "Versio: {}"
 
 #: src/snapshot_page/snapshot_page.blp:53
 msgid "Search Snapshots"
-msgstr ""
+msgstr "Etsi tilannekuvia"
 
 #: src/snapshot_page/snapshot_page.blp:70
 msgid "Active Snapshots"
-msgstr ""
+msgstr "Aktiiviset tilannekuvat"
 
 #: src/snapshot_page/snapshot_page.blp:81
-#, fuzzy
-#| msgid "Display properties of installed Flatpaks"
 msgid "Snapshots of installed apps"
-msgstr "Näytä asennettujen Flatpakkien ominaisuudet"
+msgstr "Kuvia asennetuista sovelluksista"
 
 #: src/snapshot_page/snapshot_page.blp:99
 msgid "Leftover Snapshots"
-msgstr ""
+msgstr "Jäljelle jääneet tilannekuvat"
 
 #: src/snapshot_page/snapshot_page.blp:110
 msgid "Snapshots of apps that are no longer installed"
-msgstr ""
+msgstr "Kuvia sovelluksista, joita ei enää ole asennettu"
 
 #: src/snapshot_page/snapshot_page.blp:177
 msgid "Open Snapshots Folder"
-msgstr ""
+msgstr "Avaa Snapshots-kansio"
 
 #: src/snapshot_page/snapshot_page.blp:182
 msgid "No Snapshots"
-msgstr ""
+msgstr "Ei tilannekuvia"
 
 #: src/snapshot_page/snapshot_page.blp:183
 msgid "Create a Snapshot to save the state of any Flatpak application"
-msgstr ""
+msgstr "Luo tilannekuva tallentaaksesi minkä tahansa Flatpak-sovelluksen tilan"
 
 #: src/snapshot_page/snapshot_page.blp:219
-#, fuzzy
-#| msgid "Show Apps"
 msgid "Snapshot Apps"
-msgstr "Näytä ohjelmat"
+msgstr "Snapshot-sovellukset"
 
 #: src/snapshot_page/snapshot_page.blp:223
 msgid "Install Apps"
-msgstr ""
+msgstr "Asenna sovelluksia"
 
 #: src/snapshot_page/snapshot_page.blp:227
 msgid "Apply Snapshots"
-msgstr ""
+msgstr "Sovelletaan tilannekuvia"
 
 #: src/snapshot_page/snapshot_page.blp:231
 msgid "Trash Snapshots"
-msgstr ""
+msgstr "Roskakori Snapshots"
 
 #: src/snapshot_page/snapshot_page.py:101
 msgid "Could not load Snapshots"
-msgstr ""
+msgstr "Snapshotteja ei voitu ladata"
 
 #: src/snapshot_page/snapshot_page.py:194
 msgid "Showing snapshots for {}"
-msgstr ""
+msgstr "Näytetään tilannekuvat {}"
 
 #: src/snapshot_page/snapshot_page.py:198
 msgid "No snapshots for {}"
-msgstr ""
+msgstr "Ei tilannekuvia {}"
 
 #: src/snapshot_page/snapshot_page.py:198
 msgid "New"
-msgstr ""
+msgstr "Uusi"
 
 #: src/snapshot_page/snapshot_page.py:242
 #: src/snapshot_page/snapshot_page.py:244
 #: src/snapshot_page/snapshots_list_page.py:60
 msgid "No Data Found to Snapshot"
-msgstr ""
+msgstr "Tilannekuvaan ei löytynyt tietoja"
 
 #: src/snapshot_page/snapshot_page.py:251
 #: src/snapshot_page/snapshots_list_page.py:75
 msgid "Opened snapshots folder"
-msgstr ""
+msgstr "Avattu tilannekuvat-kansio"
 
 #: src/snapshot_page/snapshot_page.py:386
 msgid "Copied Snapshot Paths"
-msgstr ""
+msgstr "Kopioidut tilannekuvapolut"
 
 #: src/snapshot_page/snapshot_page.py:395
 msgid "No apps in your selection can be snapshotted"
-msgstr ""
+msgstr "Valikoimassasi olevia sovelluksia ei voi ottaa tilannekuvaksi."
 
 #: src/snapshot_page/snapshot_page.py:469
 msgid "Applying Snapshots"
-msgstr ""
+msgstr "Tilannekuvien soveltaminen"
 
 #: src/snapshot_page/snapshot_page.py:475
 msgid "No snapshots to extract"
-msgstr ""
+msgstr "Ei otettavia tilannekuvia"
 
 #: src/snapshot_page/snapshot_page.py:475
 msgid "No snapshots were found to extract"
-msgstr ""
+msgstr "Mitään tilannekuvia ei löytynyt otettavaksi"
 
 #: src/snapshot_page/snapshot_page.py:478
 msgid "Apply These Snapshots?"
-msgstr ""
+msgstr "Soveltaa näitä tilannekuvia?"
 
 #: src/snapshot_page/snapshot_page.py:478
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
+"Tämä siirtää nykyisten sovellusten käyttäjätiedot roskakoriin ja ottaa "
+"käyttöön niiden uusimman tilannevedoksen"
 
 #: src/snapshot_page/snapshot_page.py:514
 msgid "Trashed snapshots"
-msgstr ""
+msgstr "Poistetut tilannekuvat"
 
 #: src/snapshot_page/snapshot_page.py:516
 msgid "Could not trash snapshots"
-msgstr ""
+msgstr "Väliaikakuvia ei voitu poistaa"
 
 #: src/snapshot_page/snapshot_page.py:519
 msgid "Trash Snapshots?"
-msgstr ""
+msgstr "Roskakoriin tilannekuvia?"
 
 #: src/snapshot_page/snapshot_page.py:519
 msgid "These apps' snapshots will be sent to the trash"
-msgstr ""
+msgstr "Näiden sovellusten tilannekuvat lähetetään roskakoriin"
 
 #: src/snapshot_page/snapshot_page.py:558
 msgid "Loading Snapshots"
-msgstr ""
+msgstr "Tilannekuvien lataaminen"
 
 #: src/snapshot_page/snapshots_list_page.blp:5
 msgid "Snapshots List"
-msgstr ""
+msgstr "Tilannekuvien luettelo"
 
 #: src/snapshot_page/snapshots_list_page.blp:13
 msgid "Open Snapshots Folder for this App"
-msgstr ""
+msgstr "Avaa tämän sovelluksen Snapshots-kansio"
 
 #: src/snapshot_page/snapshots_list_page.py:30
 #: src/snapshot_page/snapshots_list_page.py:51
 msgid "App not Installed"
-msgstr ""
+msgstr "Sovellusta ei ole asennettu"
 
 #: src/snapshot_page/snapshots_list_page.py:54
 msgid "{} Snapshots"
-msgstr ""
+msgstr "{} Tilannekuvia"
 
 #: src/snapshot_page/tar_worker.py:81
 msgid "Error in snapshot handling"
-msgstr ""
+msgstr "Virhe tilannekuvan käsittelyssä"
 
 #: src/install_page/file_install_dialog.blp:33
 msgid "Review Selection"
-msgstr ""
+msgstr "Tarkista valinta"
 
 #. self.packages_group.set_title(_("Review Packages"))
 #: src/install_page/file_install_dialog.py:36
 msgid "The following packages will be installed"
-msgstr ""
+msgstr "Seuraavat paketit asennetaan"
 
 #: src/install_page/file_install_dialog.py:39
 msgid "Install a Package"
-msgstr ""
+msgstr "Asenna paketti"
 
 #. self.packages_group.set_title(_("Review Package"))
 #: src/install_page/file_install_dialog.py:41
 msgid "The following package will be installed"
-msgstr ""
+msgstr "Seuraava paketti asennetaan"
 
 #: src/install_page/file_install_dialog.py:42
 msgid "package"
-msgstr ""
+msgstr "paketti"
 
 #: src/install_page/install_page.blp:41
 msgid "Select Source"
-msgstr ""
+msgstr "Valitse lähde"
 
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
 msgid "Pending Packages"
-msgstr ""
+msgstr "Vireillä olevat paketit"
 
 #: src/install_page/install_page.py:51
 msgid "Installed Packages"
-msgstr ""
+msgstr "Asennetut paketit"
 
 #: src/install_page/install_page.py:68
 msgid "{} Pending Package"
-msgstr ""
+msgstr "{} Odottava paketti"
 
 #: src/install_page/install_page.py:73
 msgid "{} Pending Packages"
-msgstr ""
+msgstr "{} Odottavat paketit"
 
 #. Extra Object Creation
 #: src/install_page/install_page.py:88
 msgid "Installing Packages"
-msgstr ""
+msgstr "Pakettien asentaminen"
 
 #: src/install_page/install_page.py:96
 msgid "Loading Installation Options"
-msgstr ""
+msgstr "Asennusvaihtoehtojen lataaminen"
 
 #: src/install_page/pending_page.blp:13 src/install_page/select_page.blp:37
 msgid "Add Packages"
-msgstr ""
+msgstr "Lisää paketteja"
 
 #: src/install_page/pending_page.blp:14
 msgid "Packages queued to install will show up here"
-msgstr ""
+msgstr "Asennusjonossa olevat paketit näkyvät tässä"
 
 #: src/install_page/pending_page.py:34
 msgid "Remove All"
-msgstr ""
+msgstr "Poista kaikki"
 
 #: src/install_page/result_row.blp:8 src/install_page/result_row.py:42
 msgid "Add Package to Queue"
-msgstr ""
+msgstr "Lisää paketti jonoon"
 
 #: src/install_page/result_row.py:46
 msgid "Package has been Added to Queue"
-msgstr ""
+msgstr "Paketti on lisätty jonoon"
 
 #: src/install_page/result_row.py:50
 msgid "Remove Package from Queue"
-msgstr ""
+msgstr "Poista paketti jonosta"
 
 #: src/install_page/result_row.py:54
 msgid "This Package is Already Installed"
-msgstr ""
+msgstr "Tämä paketti on jo asennettu"
 
 #: src/install_page/results_page.blp:5
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Search a Remote"
-msgstr "Suodata kaukosäätimen mukaan"
+msgstr "Etsi etätyöpöytää"
 
 #. hexpand: true;
 #: src/install_page/results_page.blp:20
 msgid "Search for Packages"
-msgstr ""
+msgstr "Pakettien etsiminen"
 
 #: src/install_page/results_page.blp:26
 msgid "Search for Flatpaks"
-msgstr ""
+msgstr "Flatpaks-haku"
 
 #: src/install_page/results_page.blp:27
 msgid "Search for Flatpaks you want to install"
-msgstr ""
+msgstr "Etsi Flatpaks, jonka haluat asentaa"
 
 #: src/install_page/results_page.blp:31
 msgid "Too Many Results"
-msgstr ""
+msgstr "Liian monta tulosta"
 
 #: src/install_page/results_page.blp:32
 msgid "Try being more specific with your search"
-msgstr ""
+msgstr "Yritä tarkentaa hakua"
 
 #: src/install_page/results_page.blp:50
 msgid "Try a different search term"
-msgstr ""
+msgstr "Kokeile eri hakusanaa"
 
 #: src/install_page/results_page.py:50
 msgid "Search {}"
-msgstr ""
+msgstr "Etsi {}"
 
 #: src/install_page/results_page.py:135
 msgid "Searching"
-msgstr ""
+msgstr "Etsintä"
 
 #: src/install_page/select_page.blp:19
 msgid "Search in a Remote"
-msgstr ""
+msgstr "Haku etätyöpöydästä"
 
 #: src/install_page/select_page.blp:20
 msgid "Choose a remote to search for new packages"
-msgstr ""
+msgstr "Valitse etätyöpöytä uusien pakettien etsimistä varten"
 
 #: src/install_page/select_page.blp:23
 msgid "Online Searches Disabled"
-msgstr ""
+msgstr "Online-haut poistettu käytöstä"
 
 #: src/install_page/select_page.blp:24
 msgid "Your system has no remotes added to search from"
-msgstr ""
+msgstr "Järjestelmääsi ei ole lisätty etätyöpöytä hakua varten"
 
 #: src/install_page/select_page.blp:28
 msgid "Add a remote to your system to enable online searching"
-msgstr ""
+msgstr "Lisää järjestelmään etätyöpöytä, jotta voit tehdä verkkohakuja"
 
 #: src/install_page/select_page.blp:38
 msgid "Install packages from files on your system"
-msgstr ""
+msgstr "Asenna paketteja järjestelmässäsi olevista tiedostoista"
 
 #: src/install_page/select_page.py:60
 msgid "No files were found to install"
-msgstr ""
+msgstr "Asennettavia tiedostoja ei löytynyt"
 
 #: src/install_page/select_page.py:70
 msgid "Flatpaks"
-msgstr ""
+msgstr "Flatpaks"
 
 #~ msgid ""
 #~ "Warehouse is an app that manages installed Flatpaks, their user data, and "
