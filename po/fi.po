@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-10-17 18:34+0000\n"
+"PO-Revision-Date: 2024-10-30 12:15+0000\n"
 "Last-Translator: JTi65 <jouko.tiilikainen@gmail.com>\n"
 "Language-Team: Finnish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/fi/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7.2\n"
+"X-Generator: Weblate 5.8.1\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -873,38 +873,38 @@ msgstr ""
 
 #: src/properties_page/properties_page.blp:306
 msgid "Date"
-msgstr ""
+msgstr "Päiväys"
 
 #: src/properties_page/properties_page.py:75
 msgid "{} Properties"
-msgstr ""
+msgstr "Ominaisuudet"
 
 #: src/properties_page/properties_page.py:80
 msgid "Properties"
-msgstr ""
+msgstr "Ominaisuudet"
 
 #. Apply again
 #: src/properties_page/properties_page.py:109
 #: src/user_data_page/user_data_page.py:296
 msgid "Loading User Data"
-msgstr ""
+msgstr "Ladataan käyttäjätietoja"
 
 #: src/properties_page/properties_page.py:119
 msgid "No User Data"
-msgstr ""
+msgstr "Ei käyttäjätietoja"
 
 #: src/properties_page/properties_page.py:129
 #: src/properties_page/properties_page.py:145
 msgid "Could not get properties"
-msgstr ""
+msgstr "Ominaisuuksia ei voitu saada"
 
 #: src/properties_page/properties_page.py:142
 msgid "No version information found"
-msgstr ""
+msgstr "Versiotietoja ei löytynyt"
 
 #: src/properties_page/properties_page.py:162
 msgid "Could not open data"
-msgstr ""
+msgstr "Tietoja ei voitu avata"
 
 #: src/properties_page/properties_page.py:181
 #: src/properties_page/properties_page.py:183
@@ -913,128 +913,121 @@ msgstr ""
 #: src/user_data_page/user_data_page.py:183
 #: src/user_data_page/user_data_page.py:197
 msgid "Could not trash data"
-msgstr ""
+msgstr "Tietoja ei voitu siirtää roskakoriin"
 
 #: src/properties_page/properties_page.py:186
 msgid "Send {}'s User Data to the Trash?"
-msgstr ""
+msgstr "Lähetetäänkö käyttäjän {} käyttäjätiedot roskakoriin?"
 
 #: src/properties_page/properties_page.py:187
 msgid "Your settings and data for this app will be sent to the trash"
-msgstr ""
+msgstr "Tämän sovelluksen asetuksesi ja tietosi lähetetään roskakoriin"
 
 #: src/properties_page/properties_page.py:190
 msgid "Trash Data"
-msgstr ""
+msgstr "Roskakorin tiedot"
 
 #: src/properties_page/properties_page.py:199
-#, fuzzy
-#| msgid "Disable Updates"
 msgid "Could not Disable Updates"
-msgstr "Poista päivitykset käytöstä"
+msgstr "Päivityksiä ei voitu poistaa käytöstä"
 
 #: src/properties_page/properties_page.py:199
-#, fuzzy
-#| msgid "Disable Updates"
 msgid "Could not Enable Updates"
-msgstr "Poista päivitykset käytöstä"
+msgstr "Päivityksiä ei voitu ottaa käyttöön"
 
 #: src/properties_page/properties_page.py:205
-#, fuzzy
-#| msgid "Disable Updates"
 msgid "Disabled Updates"
-msgstr "Poista päivitykset käytöstä"
+msgstr "Poistetut päivitykset"
 
 #: src/properties_page/properties_page.py:205
-#, fuzzy
-#| msgid "Disable Updates"
 msgid "Enabled Updates"
-msgstr "Poista päivitykset käytöstä"
+msgstr "Päivitykset käytössä"
 
 #: src/properties_page/properties_page.py:217
 msgid "Could not Disable Autoremoval"
-msgstr ""
+msgstr "Automaattista poistoa ei voitu poistaa käytöstä"
 
 #: src/properties_page/properties_page.py:217
 msgid "Could not Enable Autoremoval"
-msgstr ""
+msgstr "Automaattista poistoa ei voitu ottaa käyttöön"
 
 #: src/properties_page/properties_page.py:222
 msgid "Disabled Autoremoval"
-msgstr ""
+msgstr "Automaattinen poisto pois käytöstä"
 
 #: src/properties_page/properties_page.py:222
 msgid "Enabled Autoremoval"
-msgstr ""
+msgstr "Automaattinen poisto käytössä"
 
 #: src/properties_page/properties_page.py:245
 msgid "Could not uninstall"
-msgstr ""
+msgstr "Asennuksen poistaminen epäonnistui"
 
 #: src/properties_page/properties_page.py:249
 msgid "Uninstalled {}"
-msgstr ""
+msgstr "Poistettu {}"
 
 #: src/properties_page/properties_page.py:261
 msgid "Opening {}…"
-msgstr ""
+msgstr "Poistettu {}"
 
 #: src/properties_page/properties_page.py:266
 msgid "Could not open {}"
-msgstr ""
+msgstr "Ei voitu avata {}"
 
 #: src/properties_page/properties_page.py:281
 msgid "Reinstalled {}"
-msgstr ""
+msgstr "Asennettu uudelleen {}"
 
 #: src/properties_page/properties_page.py:307
 msgid "Reinstall {}?"
-msgstr ""
+msgstr "Asennetaanko {} uudelleen?"
 
 #: src/properties_page/properties_page.py:308
+#, fuzzy
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
 msgstr ""
+"Tämä paketti poistetaan ja asennetaan sitten uudelleen samasta  etäpisteestä "
+"ja asennuksesta."
 
 #: src/properties_page/properties_page.py:311
 #: src/properties_page/properties_page.py:372
 msgid "Reinstall"
-msgstr ""
+msgstr "Asenna uudelleen"
 
 #: src/properties_page/properties_page.py:328
 msgid "Copied launch command"
-msgstr ""
+msgstr "Kopioitu käynnistyskomento"
 
 #: src/properties_page/properties_page.py:330
 msgid "Could not copy launch command"
-msgstr ""
+msgstr "Käynnistyskomentoa ei voitu kopioida"
 
 #: src/properties_page/properties_page.py:336
 msgid "Could not show details"
-msgstr ""
+msgstr "Yksityiskohtia ei voitu näyttää"
 
 #: src/properties_page/properties_page.py:366
 msgid "Loading Properties"
-msgstr ""
+msgstr "Ladataan ominaisuuksia"
 
 #: src/properties_page/properties_page.py:369
 msgid "View Snapshots"
-msgstr ""
+msgstr "Näytä tilannekuvat"
 
 #: src/properties_page/properties_page.py:370
 msgid "Copy Launch Command"
-msgstr ""
+msgstr "Näytä tilannekuvat"
 
 #: src/properties_page/properties_page.py:371
-#, fuzzy
-#| msgid "Show Runtimes"
 msgid "Show Details"
-msgstr "Näytä suoritusajat"
+msgstr "Näytä tiedot"
 
 #: src/change_version_page/change_version_page.blp:5
 msgid "Change Versions"
-msgstr ""
+msgstr "Muuta versioita"
 
 #: src/change_version_page/change_version_page.blp:56
 msgid "Select a Release"
@@ -1045,28 +1038,28 @@ msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
-"Tämä poistaa nykyisen julkaisun ja asentaa sen sijaan valitun.  Huomaa, että "
-"alempi versio voi aiheuttaa ongelmia"
+"Tämä poistaa nykyisen julkaisun ja asentaa sen sijaan valitun. Huomaa, että "
+"alempi versio voi aiheuttaa ongelmia."
 
 #: src/change_version_page/change_version_page.py:69
 msgid "Currently Installed Version"
-msgstr ""
+msgstr "Tällä hetkellä asennettu versio"
 
 #: src/change_version_page/change_version_page.py:86
 msgid "Could not get versions"
-msgstr ""
+msgstr "Versioita ei voitu hakea"
 
 #: src/change_version_page/change_version_page.py:93
 msgid "Changed {}'s Version"
-msgstr ""
+msgstr "Käyttäjän {} versio muutettu"
 
 #: src/change_version_page/change_version_page.py:117
 msgid "{} Versions"
-msgstr ""
+msgstr "{} Versiot"
 
 #: src/change_version_page/change_version_page.py:118
 msgid "Ensure that {} will never be updated to a newer version"
-msgstr ""
+msgstr "Varmista, että {} ei koskaan päivitetä uudempaan versioon"
 
 #: src/change_version_page/change_version_page.py:119
 msgid "Fetching Releases"
@@ -1076,373 +1069,372 @@ msgstr "Julkaisujen hakeminen"
 #: src/change_version_page/change_version_worker.py:70
 #: src/change_version_page/change_version_worker.py:74
 msgid "Error occurred while changing version"
-msgstr ""
+msgstr "Versiota vaihdettaessa tapahtui virhe"
 
 #: src/change_version_page/change_version_worker.py:85
 msgid "Could not cancel version change"
-msgstr ""
+msgstr "Version muutosta ei voitu peruuttaa"
 
 #: src/change_version_page/change_version_worker.py:106
 msgid "Could not change version"
-msgstr ""
+msgstr "Versiota ei voitu muuttaa"
 
 #: src/change_version_page/change_version_worker.py:106
 msgid "Another package is changing version."
-msgstr ""
+msgstr "Toinen paketti on muuttumassa."
 
 #: src/remotes_page/add_remote_dialog.blp:5 src/install_page/select_page.blp:27
 msgid "Add a Remote"
-msgstr ""
+msgstr "Lisää etätyöpiste"
 
 #: src/remotes_page/add_remote_dialog.blp:22
 msgid "Add"
-msgstr ""
+msgstr "Lisää"
 
 #: src/remotes_page/add_remote_dialog.blp:40
 msgid "Title"
-msgstr ""
+msgstr "Otsikko"
 
 #: src/remotes_page/add_remote_dialog.blp:43
 #: src/user_data_page/user_data_page.blp:190
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 #: src/remotes_page/add_remote_dialog.blp:46
 msgid "Repo URL"
-msgstr ""
+msgstr "Repo-URL-osoite"
 
 #: src/remotes_page/add_remote_dialog.py:54
 msgid "Could not add remote"
-msgstr ""
+msgstr "Etätyöpistettä ei voitu lisätä"
 
 #: src/remotes_page/add_remote_dialog.py:57
 msgid "Added {}"
-msgstr ""
+msgstr "Lisätty {}"
 
 #. Apply
 #: src/remotes_page/add_remote_dialog.py:107
+#, fuzzy
 msgid "remote"
-msgstr ""
+msgstr "etäinen"
 
 #: src/remotes_page/remote_row.blp:21
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Set a Filter for this Remote"
-msgstr "Suodata kaukosäätimen mukaan"
+msgstr "Aseta suodatin tälle kaukosäätimelle"
 
 #: src/remotes_page/remote_row.blp:29
 msgid "More Actions"
-msgstr ""
+msgstr "Lisää toimintoja"
 
 #: src/remotes_page/remote_row.blp:37
 msgid "Copy Title"
-msgstr ""
+msgstr "Kopioi otsikko"
 
 #: src/remotes_page/remote_row.blp:41
 msgid "Copy Name"
-msgstr ""
+msgstr "Kopioi nimi"
 
 #: src/remotes_page/remote_row.blp:45
 msgid "Enable"
-msgstr ""
+msgstr "Ota käyttöön"
 
 #: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:123
 msgid "Disable"
-msgstr ""
+msgstr "Poista käytöstä"
 
 #: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:190
 msgid "Remove"
-msgstr ""
+msgstr "Poista"
 
 #: src/remotes_page/remote_row.py:24 src/remotes_page/remote_row.py:44
+#, fuzzy
 msgid "Could not enable remote"
-msgstr ""
+msgstr "Etäistä ei voitu ottaa käyttöön"
 
 #: src/remotes_page/remote_row.py:24
+#, fuzzy
 msgid "Remote is already enabled"
-msgstr ""
+msgstr "Etätyöpiste on jo käytössä"
 
 #: src/remotes_page/remote_row.py:51
 msgid "Enabled remote"
-msgstr ""
+msgstr "Kaukainen käytössä"
 
 #: src/remotes_page/remote_row.py:75 src/remotes_page/remote_row.py:153
 msgid "Remote is Disabled"
-msgstr ""
+msgstr "Etätyöpiste on poissa käytöstä"
 
 #: src/remotes_page/remote_row.py:77
-#, fuzzy
-#| msgid "Disable Updates"
 msgid "Disabled remote"
-msgstr "Poista päivitykset käytöstä"
+msgstr "Poistettu etätyöpiste"
 
 #: src/remotes_page/remote_row.py:95 src/remotes_page/remote_row.py:107
 #: src/remotes_page/remote_row.py:111
 msgid "Could not disable remote"
-msgstr ""
+msgstr "Etätyöpistettä ei voitu poistaa käytöstä"
 
 #: src/remotes_page/remote_row.py:95
 msgid "Remote is already disabled"
-msgstr ""
+msgstr "Etätyöpiste on jo poistettu käytöstä"
 
 #: src/remotes_page/remote_row.py:121
 msgid "Disable {}?"
-msgstr ""
+msgstr "Poistetaanko {} käytöstä?"
 
 #: src/remotes_page/remote_row.py:121 src/remotes_page/remotes_page.py:188
 msgid "Any installed apps from {} will stop receiving updates"
-msgstr ""
+msgstr "Kaikki osoitteesta {} asennetut sovellukset eivät enää saa päivityksiä"
 
 #: src/remotes_page/remote_row.py:133
 msgid "Copied title"
-msgstr ""
+msgstr "Kopioitu otsikko"
 
 #: src/remotes_page/remote_row.py:136
 msgid "Copied name"
-msgstr ""
+msgstr "Kopioitu nimi"
 
 #: src/remotes_page/remotes_page.blp:5
 msgid "Manage Remotes"
-msgstr ""
+msgstr "Hallitse etätyöpisteitä"
 
 #: src/remotes_page/remotes_page.blp:40
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Search Remotes"
-msgstr "Suodata kaukosäätimen mukaan"
+msgstr "Etsi etätyöpisteet"
 
 #: src/remotes_page/remotes_page.blp:47
 msgid "Current Remotes"
-msgstr ""
+msgstr "Nykyiset etätyöpisteet"
 
 #: src/remotes_page/remotes_page.blp:48
 msgid "Remotes available on your system"
-msgstr ""
+msgstr "Etätyöpisteet saatavilla järjestelmässäsi"
 
 #: src/remotes_page/remotes_page.blp:55
 msgid "Show Disabled"
-msgstr ""
+msgstr "Näytä poissa käytöstä"
 
 #: src/remotes_page/remotes_page.blp:75
 msgid "No Enabled Remotes"
-msgstr ""
+msgstr "Ei käytössä olevia etätyöpisteitä"
 
 #: src/remotes_page/remotes_page.blp:81
 msgid "You only have disabled remotes on this system"
-msgstr ""
+msgstr "Sinulla on vain pois käytöstä etätyöpisteet tässä järjestelmässä"
 
 #: src/remotes_page/remotes_page.blp:107
 msgid "No Remotes Found"
-msgstr ""
+msgstr "Etättyöpisteitä ei löytynyt"
 
 #: src/remotes_page/remotes_page.blp:113
 msgid ""
 "Warehouse cannot see the current remotes or your system has no remotes added"
 msgstr ""
+"Varasto ei näe nykyisiä kaukosäätimiä tai järjestelmääsi ei ole lisätty "
+"kaukosäätimiä"
 
 #: src/remotes_page/remotes_page.blp:126
 msgid "Add Popular Remotes"
-msgstr ""
+msgstr "Lisää suosittuja etätyöpöytiä"
 
 #: src/remotes_page/remotes_page.blp:127
 msgid "Add new remotes to get more software"
-msgstr ""
+msgstr "Lisää uusia etätyöpöytiä saadaksesi lisää ohjelmistoja"
 
 #: src/remotes_page/remotes_page.blp:131
 msgid "Add Other Remotes"
-msgstr ""
+msgstr "Lisää muita etätyöpöytiä"
 
 #: src/remotes_page/remotes_page.blp:134
 msgid "Add a Repo File"
-msgstr ""
+msgstr "Lisää Repo-tiedosto"
 
 #: src/remotes_page/remotes_page.blp:135
 msgid "Open a downloaded repo file to add"
-msgstr ""
+msgstr "Avaa ladattu repotiedosto lisättäväksi"
 
 #: src/remotes_page/remotes_page.blp:143
 msgid "Add a Custom Remote"
-msgstr ""
+msgstr "Lisää mukautettu kaukosäädin"
 
 #: src/remotes_page/remotes_page.blp:144
 msgid "Manually enter new remote details"
-msgstr ""
+msgstr "Syötä uudet etätyöpöytä tiedot manuaalisesti"
 
 #: src/remotes_page/remotes_page.py:32
 msgid "The open source, pay-what-you-want app store from elementary"
-msgstr ""
+msgstr "Avoimen lähdekoodin, maksa mitä haluat -sovelluskauppa alkeista alkaen"
 
 #: src/remotes_page/remotes_page.py:38
 msgid "Central repository of Flatpak applications"
-msgstr ""
+msgstr "Flatpak-sovellusten keskusvarasto"
 
 #: src/remotes_page/remotes_page.py:44
 msgid "Beta builds of Flatpak applications"
-msgstr ""
+msgstr "Flatpak-sovellusten beta-versiot"
 
 #: src/remotes_page/remotes_page.py:50
 msgid "Flatpaks packaged by Fedora Linux"
-msgstr ""
+msgstr "Fedora Linuxin pakkaamat Flatpaks-paketit"
 
 #: src/remotes_page/remotes_page.py:56
 msgid "The latest beta GNOME Apps and Runtimes"
-msgstr ""
+msgstr "Uusimmat beta GNOME Apps ja Runtimes"
 
 #: src/remotes_page/remotes_page.py:62
 msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr ""
+msgstr "WebKit Developerin ja Runtime SDK:n keskusvarasto"
 
 #: src/remotes_page/remotes_page.py:152
 msgid "Showing all packages from {}"
-msgstr ""
+msgstr "Näytetään kaikki paketit kohteesta {}"
 
 #: src/remotes_page/remotes_page.py:173
-#, fuzzy
-#| msgid "Add and remove Flatpak remotes"
 msgid "Could not remove remote"
-msgstr "Lisää ja poista Flatpak-kaukosäätimet"
+msgstr "Etätyöpöytää ei voitu poistaa"
 
 #: src/remotes_page/remotes_page.py:180
 msgid "Removed {}"
-msgstr ""
+msgstr "Poistettu {}"
 
 #: src/remotes_page/remotes_page.py:188
 msgid "Remove {}?"
-msgstr ""
+msgstr "Poistetaanko {}?"
 
 #: src/remotes_page/remotes_page.py:224 src/remotes_page/remotes_page.py:234
 #: src/remotes_page/remotes_page.py:236
 msgid "Could not open file"
-msgstr ""
+msgstr "Tiedostoa ei voitu avata"
 
 #: src/remotes_page/remotes_page.py:239
 msgid "Flatpak Repos"
-msgstr ""
+msgstr "Flatpak Varastot"
 
 #. Apply
 #: src/remotes_page/remotes_page.py:285
 msgid "Adding Remote"
-msgstr ""
+msgstr "Etätyöpöydän lisääminen"
 
 #: src/remotes_page/remotes_page.py:286
 msgid "Loading Remotes"
-msgstr ""
+msgstr "Ladataan etätyöpöytää"
 
 #: src/user_data_page/data_box.blp:56
 msgid "Copy Path"
-msgstr ""
+msgstr "Kopioi polku"
 
 #: src/user_data_page/data_box.blp:68
 msgid "Attempt to Install"
-msgstr ""
+msgstr "Yritä asentaa"
 
 #: src/user_data_page/data_box.py:58
 msgid "Copied data path"
-msgstr ""
+msgstr "Tietopolku kopioitu"
 
 #: src/user_data_page/data_box.py:60
 msgid "Could not copy data path"
-msgstr ""
+msgstr "Tietopolkua ei voitu kopioida"
 
 #: src/user_data_page/data_box.py:65
 msgid "Opened data folder"
-msgstr ""
+msgstr "Datakansio avattu"
 
 #: src/user_data_page/data_box.py:67 src/snapshot_page/snapshot_page.py:253
 #: src/snapshot_page/snapshots_list_page.py:77
 msgid "Could not open folder"
-msgstr ""
+msgstr "Kansiota ei voitu avata"
 
 #: src/user_data_page/data_box.py:113
 msgid "Trash {}'s Data?"
-msgstr ""
+msgstr "Roskakoriin käyttäjän {} tiedot?"
 
 #: src/user_data_page/data_box.py:113
 msgid "{}'s data will be sent to the trash"
-msgstr ""
+msgstr "Käyttäjän {} tiedot lähetetään roskakoriin"
 
 #: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:210
 #: src/snapshot_page/snapshot_page.py:480
 msgid "Continue"
-msgstr ""
+msgstr "Jatkaa"
 
 #: src/user_data_page/data_subpage.blp:13
 msgid "No Title Set"
-msgstr ""
+msgstr "Ei otsikkoa"
 
 #: src/user_data_page/data_subpage.blp:28
 msgid "Loading Size…"
-msgstr ""
+msgstr "Ladataan kokoa…"
 
 #: src/user_data_page/data_subpage.py:232
 msgid "No Active Data"
-msgstr ""
+msgstr "Ei aktiivisia tietoja"
 
 #: src/user_data_page/data_subpage.py:233
 msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
 msgstr ""
+"Varasto ei näe aktiivisia käyttäjätietoja tai järjestelmässäsi ei ole "
+"aktiivisia käyttäjätietoja"
 
 #: src/user_data_page/data_subpage.py:236
 msgid "No Leftover Data"
-msgstr ""
+msgstr "Ei jäljellä olevia tietoja"
 
 #: src/user_data_page/data_subpage.py:237
 msgid "There is no leftover user data"
-msgstr ""
+msgstr "Käyttäjätietoja ei ole jäljellä"
 
 #: src/user_data_page/user_data_page.blp:43
 #: src/user_data_page/user_data_page.blp:64
 msgid "Search User Data"
-msgstr ""
+msgstr "Hae käyttäjätietoja"
 
 #: src/user_data_page/user_data_page.blp:49
 msgid "Sort User Data"
-msgstr ""
+msgstr "Lajittele käyttäjätiedot"
 
 #: src/user_data_page/user_data_page.blp:54
 msgid "Select User Data"
-msgstr ""
+msgstr "Lajittele käyttäjätiedot"
 
 #: src/user_data_page/user_data_page.blp:120
 #: src/snapshot_page/snapshot_page.blp:159
 msgid "More"
-msgstr ""
+msgstr "Lisää"
 
 #: src/user_data_page/user_data_page.blp:169
 msgid "Ascending"
-msgstr ""
+msgstr "Nouseva"
 
 #: src/user_data_page/user_data_page.blp:177
 msgid "Descending"
-msgstr ""
+msgstr "Laskeva"
 
 #: src/user_data_page/user_data_page.blp:198
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: src/user_data_page/user_data_page.blp:206
 msgid "Size"
-msgstr ""
+msgstr "Koko"
 
 #: src/user_data_page/user_data_page.py:75
 #: src/user_data_page/user_data_page.py:77
 msgid "Loading Size"
-msgstr ""
+msgstr "Latauskoko"
 
 #: src/user_data_page/user_data_page.py:151
 msgid "Could not copy paths"
-msgstr ""
+msgstr "Polkuja ei voitu kopioida"
 
 #: src/user_data_page/user_data_page.py:151
 #: src/user_data_page/user_data_page.py:197
 msgid "No boxes were selected"
-msgstr ""
+msgstr "Yhtään ruutua ei valittu"
 
 #: src/user_data_page/user_data_page.py:154
 msgid "Copied paths"
-msgstr ""
+msgstr "Kopioidut polut"
 
 #: src/user_data_page/user_data_page.py:185
 msgid "Trashed data"
