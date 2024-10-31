@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-10-30 15:32+0000\n"
+"PO-Revision-Date: 2024-10-31 09:35+0000\n"
 "Last-Translator: JTi65 <jouko.tiilikainen@gmail.com>\n"
 "Language-Team: Finnish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/fi/>\n"
@@ -74,12 +74,11 @@ msgstr ""
 "tiedot, jotka ovat jääneet jäljelle"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
-#, fuzzy
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
 msgstr ""
 "Lisää suosittuja Flatpak-etätyöpöytiä muutamalla napsautuksella tai lisää "
-"sen sijaan mukautettuja etätyöpöytiä."
+"sen sijaan mukautettuja etätyöpöytiä"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
@@ -257,12 +256,12 @@ msgstr "Asenna"
 
 #: src/gtk/attempt_install_dialog.blp:12
 msgid "Choose a Remote"
-msgstr "Valitse etätyöpöytä"
+msgstr "Valitse etäyhteys"
 
 #: src/gtk/attempt_install_dialog.blp:13
 #, fuzzy
 msgid "Select a remote to attempt to install from"
-msgstr "Valitse etätyöpöytä, josta asennusta yritetään tehdä"
+msgstr "Valitse etäyhteys, josta asennusta yritetään tehdä"
 
 #: src/gtk/attempt_install_dialog.py:18 src/packages_page/filters_page.py:122
 #: src/remotes_page/remote_row.py:148 src/install_page/pending_page.py:29
@@ -384,7 +383,7 @@ msgstr "Näytä tai piilota käytöstä poistetut etätyöpöydät"
 #: src/gtk/help-overlay.blp:80
 #, fuzzy
 msgid "New Remote"
-msgstr "Uusi etätyöpöytä"
+msgstr "Uusi etäyhteys"
 
 #: src/gtk/help-overlay.blp:85
 msgid "User Data Page"
@@ -472,7 +471,7 @@ msgstr "Pudota avattavaksi"
 
 #: src/main_window/window.blp:26
 msgid "Install Flatpaks or Add a Remote"
-msgstr "Asenna Flatpaks tai lisää etätyöpöytä"
+msgstr "Asenna Flatpaks tai lisää etäyhteys"
 
 #: src/main_window/window.blp:44
 #, fuzzy
@@ -548,7 +547,7 @@ msgstr "Flatpakeja ja kaukosäätimiä ei voi asentaa samanaikaisesti."
 #, fuzzy
 #| msgid "Filter by Remotes"
 msgid "Too Many Remotes"
-msgstr "Liian monta etätyöpöytä"
+msgstr "Liian monta etäyhteys"
 
 #: src/main_window/window.py:152
 #, fuzzy
@@ -619,9 +618,8 @@ msgid "Showing apps using any runtime"
 msgstr "Näytetään sovelluksia, jotka käyttävät mitä tahansa ajoaikaa"
 
 #: src/packages_page/filters_page.blp:92
-#, fuzzy
 msgid "Enable to show apps using selected runtimes"
-msgstr "Näytä sovellukset, jotka käyttävät valittuja suoritusaikoja."
+msgstr "Näytä sovellukset, jotka käyttävät valittuja suoritusaikoja"
 
 #: src/packages_page/filters_page.blp:113
 #: src/packages_page/packages_page.blp:97
@@ -825,9 +823,8 @@ msgid "Uninstall {}?"
 msgstr "Poista {}?"
 
 #: src/packages_page/uninstall_dialog.py:31
-#, fuzzy
 msgid "It will not be possible to use {} after removal"
-msgstr "{} ei ole mahdollista käyttää poiston jälkeen."
+msgstr "{} ei ole mahdollista käyttää poiston jälkeen"
 
 #: src/packages_page/uninstall_dialog.py:33
 #, fuzzy
@@ -835,9 +832,8 @@ msgid "Uninstall Packages?"
 msgstr "Poista paketit?"
 
 #: src/packages_page/uninstall_dialog.py:34
-#, fuzzy
 msgid "It will not be possible to use these packages after removal"
-msgstr "Näitä paketteja ei voi käyttää poistamisen jälkeen."
+msgstr "Näitä paketteja ei voi käyttää poistamisen jälkeen"
 
 #: src/packages_page/uninstall_dialog.py:41
 #, fuzzy
@@ -1030,9 +1026,8 @@ msgid "Send {}'s User Data to the Trash?"
 msgstr "Lähetetäänkö käyttäjän {} käyttäjätiedot roskakoriin?"
 
 #: src/properties_page/properties_page.py:187
-#, fuzzy
 msgid "Your settings and data for this app will be sent to the trash"
-msgstr "Tämän sovelluksen asetukset ja tiedot lähetetään roskakoriin."
+msgstr "Tämän sovelluksen asetukset ja tiedot lähetetään roskakoriin"
 
 #: src/properties_page/properties_page.py:190
 msgid "Trash Data"
@@ -1665,9 +1660,8 @@ msgid "Apply Snapshot?"
 msgstr "Otetaanko tilannekuva?"
 
 #: src/snapshot_page/snapshot_box.py:153
-#, fuzzy
 msgid "Any current user data for this app will be trashed"
-msgstr "Kaikki tämän sovelluksen nykyiset käyttäjätiedot hävitetään."
+msgstr "Kaikki tämän sovelluksen nykyiset käyttäjätiedot hävitetään"
 
 #: src/snapshot_page/snapshot_box.py:182
 msgid "Version: {}"
@@ -1690,9 +1684,8 @@ msgid "Leftover Snapshots"
 msgstr "Jäljelle jääneet tilannekuvat"
 
 #: src/snapshot_page/snapshot_page.blp:110
-#, fuzzy
 msgid "Snapshots of apps that are no longer installed"
-msgstr "Tilannekuvat sovelluksista, joita ei ole enää asennettu."
+msgstr "Tilannekuvat sovelluksista, joita ei ole enää asennettu"
 
 #: src/snapshot_page/snapshot_page.blp:177
 msgid "Open Snapshots Folder"
@@ -1703,10 +1696,8 @@ msgid "No Snapshots"
 msgstr "Ei tilannekuvia"
 
 #: src/snapshot_page/snapshot_page.blp:183
-#, fuzzy
 msgid "Create a Snapshot to save the state of any Flatpak application"
-msgstr ""
-"Luo tilannekuva minkä tahansa Flatpak-sovelluksen tilan tallentamiseksi."
+msgstr "Luo tilannekuva minkä tahansa Flatpak-sovelluksen tilan tallentamiseksi"
 
 #: src/snapshot_page/snapshot_page.blp:219
 msgid "Snapshot Apps"
@@ -1776,12 +1767,11 @@ msgid "Apply These Snapshots?"
 msgstr "Soveltaa näitä tilannekuvia?"
 
 #: src/snapshot_page/snapshot_page.py:478
-#, fuzzy
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
 "Tämä hävittää nykyisten sovellusten käyttäjätiedot ja soveltaa niiden "
-"uusinta tilannekuvaa."
+"uusinta tilannekuvaa"
 
 #: src/snapshot_page/snapshot_page.py:514
 msgid "Trashed snapshots"
