@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-10-31 09:35+0000\n"
+"PO-Revision-Date: 2024-10-31 21:28+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/fr/>\n"
@@ -1640,82 +1640,63 @@ msgstr "Chemins des instantanés copiés"
 #: src/snapshot_page/snapshot_page.py:395
 msgid "No apps in your selection can be snapshotted"
 msgstr ""
+"Il n’est pas possible de prendre des instantanés des applis sélectionnées"
 
 #: src/snapshot_page/snapshot_page.py:469
-#, fuzzy
-#| msgid "Applying Snapshot…"
 msgid "Applying Snapshots"
-msgstr "Application de l’instantané…"
+msgstr "Application des instantanés"
 
 #: src/snapshot_page/snapshot_page.py:475
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "No snapshots to extract"
-msgstr "Aucun instantané"
+msgstr "Aucun instantané à extraire"
 
 #: src/snapshot_page/snapshot_page.py:475
 msgid "No snapshots were found to extract"
-msgstr ""
+msgstr "Aucun instantané trouvé à extraire"
 
 #: src/snapshot_page/snapshot_page.py:478
-#, fuzzy
-#| msgid "Apply Snapshot?"
 msgid "Apply These Snapshots?"
-msgstr "Appliquer l’instantané ?"
+msgstr "Appliquer ces instantanés ?"
 
 #: src/snapshot_page/snapshot_page.py:478
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
+"Ceci mettra les données utilisateur actuelles des applis à la corbeille et "
+"appliquera leur instantané le plus récent"
 
 #: src/snapshot_page/snapshot_page.py:514
-#, fuzzy
-#| msgid "Trash Snapshot"
 msgid "Trashed snapshots"
-msgstr "Mettre l’instantané à la corbeille"
+msgstr "Instantanés mis à la corbeille"
 
 #: src/snapshot_page/snapshot_page.py:516
-#, fuzzy
-#| msgid "Could not trash snapshot"
 msgid "Could not trash snapshots"
-msgstr "Échec de la mise à la corbeille de l’instantané"
+msgstr "Échec de la mise à la corbeille des instantanés"
 
 #: src/snapshot_page/snapshot_page.py:519
-#, fuzzy
-#| msgid "Trash Snapshot?"
 msgid "Trash Snapshots?"
-msgstr "Mettre l’instantané à la corbeille ?"
+msgstr "Mettre les instantanés à la corbeille ?"
 
 #: src/snapshot_page/snapshot_page.py:519
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "These apps' snapshots will be sent to the trash"
-msgstr "Ces dossiers seront mis à la corbeille."
+msgstr "Les instantanés de ces applis seront mis à la corbeille"
 
 #: src/snapshot_page/snapshot_page.py:558
-#, fuzzy
-#| msgid "Creating Snapshots"
 msgid "Loading Snapshots"
-msgstr "Création d’instantanés"
+msgstr "Chargement des instantanés"
 
 #: src/snapshot_page/snapshots_list_page.blp:5
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Snapshots List"
-msgstr "Aucun instantané"
+msgstr "Liste des instantanés"
 
 #: src/snapshot_page/snapshots_list_page.blp:13
-#, fuzzy
-#| msgid "Open Snapshots Folder"
 msgid "Open Snapshots Folder for this App"
-msgstr "Ouvrir le dossier des instantanés"
+msgstr "Ouvrir le dossier des instantanés de cette appli"
 
 #: src/snapshot_page/snapshots_list_page.py:30
 #: src/snapshot_page/snapshots_list_page.py:51
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "App not Installed"
-msgstr "Essayer d’installer ?"
+msgstr "Appli non installée"
 
 #: src/snapshot_page/snapshots_list_page.py:54
 msgid "{} Snapshots"
@@ -1723,118 +1704,102 @@ msgstr "{} instantanés"
 
 #: src/snapshot_page/tar_worker.py:81
 msgid "Error in snapshot handling"
-msgstr ""
+msgstr "Erreur dans la gestion de l’instantané"
 
 #: src/install_page/file_install_dialog.blp:33
 msgid "Review Selection"
-msgstr ""
+msgstr "Revoir la sélection"
 
 #. self.packages_group.set_title(_("Review Packages"))
 #: src/install_page/file_install_dialog.py:36
 msgid "The following packages will be installed"
-msgstr ""
+msgstr "Les paquets suivants seront installés"
 
 #: src/install_page/file_install_dialog.py:39
 msgid "Install a Package"
-msgstr ""
+msgstr "Installer un paquet"
 
 #. self.packages_group.set_title(_("Review Package"))
 #: src/install_page/file_install_dialog.py:41
 msgid "The following package will be installed"
-msgstr ""
+msgstr "Le paquet suivant sera installé"
 
 #: src/install_page/file_install_dialog.py:42
 msgid "package"
-msgstr ""
+msgstr "paquet"
 
 #: src/install_page/install_page.blp:41
-#, fuzzy
-#| msgid "Select"
 msgid "Select Source"
-msgstr "Sélectionner"
+msgstr "Sélectionner une source"
 
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
 msgid "Pending Packages"
-msgstr ""
+msgstr "Paquets en attente"
 
 #: src/install_page/install_page.py:51
-#, fuzzy
-#| msgid "Installed Size"
 msgid "Installed Packages"
-msgstr "Taille installée"
+msgstr "Paquets installés"
 
 #: src/install_page/install_page.py:68
 msgid "{} Pending Package"
-msgstr ""
+msgstr "{} paquet en attente"
 
 #: src/install_page/install_page.py:73
 msgid "{} Pending Packages"
-msgstr ""
+msgstr "{} paquets en attente"
 
 #. Extra Object Creation
 #: src/install_page/install_page.py:88
-#, fuzzy
-#| msgid "Installing"
 msgid "Installing Packages"
-msgstr "Installation"
+msgstr "Installation des paquets"
 
 #: src/install_page/install_page.py:96
-#, fuzzy
-#| msgid "Installation"
 msgid "Loading Installation Options"
-msgstr "Installation"
+msgstr "Chargement des options d’installation"
 
 #: src/install_page/pending_page.blp:13 src/install_page/select_page.blp:37
 msgid "Add Packages"
-msgstr ""
+msgstr "Ajouter des paquets"
 
 #: src/install_page/pending_page.blp:14
 msgid "Packages queued to install will show up here"
-msgstr ""
+msgstr "Les paquets mis en attente s’afficheront ici"
 
 #: src/install_page/pending_page.py:34
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove All"
-msgstr "Supprimer"
+msgstr "Tout supprimer"
 
 #: src/install_page/result_row.blp:8 src/install_page/result_row.py:42
 msgid "Add Package to Queue"
-msgstr ""
+msgstr "Ajouter un paquet à la file d’attente"
 
 #: src/install_page/result_row.py:46
 msgid "Package has been Added to Queue"
-msgstr ""
+msgstr "Le paquet a été ajouté à la file d’attente"
 
 #: src/install_page/result_row.py:50
 msgid "Remove Package from Queue"
-msgstr ""
+msgstr "Retirer le paquet de la file"
 
 #: src/install_page/result_row.py:54
 msgid "This Package is Already Installed"
-msgstr ""
+msgstr "Ce paquet est déjà installé"
 
 #: src/install_page/results_page.blp:5
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Search a Remote"
-msgstr "Filtrer par dépôt"
+msgstr "Rechercher un dépôt"
 
 #. hexpand: true;
 #: src/install_page/results_page.blp:20
-#, fuzzy
-#| msgid "Search for Flatpaks"
 msgid "Search for Packages"
-msgstr "Chercher des Flatpaks"
+msgstr "Chercher des paquets"
 
 #: src/install_page/results_page.blp:26
 msgid "Search for Flatpaks"
 msgstr "Chercher des Flatpaks"
 
 #: src/install_page/results_page.blp:27
-#, fuzzy
-#| msgid "Search for Flatpaks that you want to install"
 msgid "Search for Flatpaks you want to install"
 msgstr "Recherchez des Flatpaks que vous souhaitez installer"
 
@@ -1851,48 +1816,40 @@ msgid "Try a different search term"
 msgstr "Essayez une recherche différente"
 
 #: src/install_page/results_page.py:50
-#, fuzzy
-#| msgid "Search"
 msgid "Search {}"
-msgstr "Rechercher"
+msgstr "Rechercher {}"
 
 #: src/install_page/results_page.py:135
 msgid "Searching"
 msgstr "Recherche"
 
 #: src/install_page/select_page.blp:19
-#, fuzzy
-#| msgid "Refresh List of Remotes"
 msgid "Search in a Remote"
-msgstr "Actualiser la liste des dépôts"
+msgstr "Rechercher dans un dépôt"
 
 #: src/install_page/select_page.blp:20
-#, fuzzy
-#| msgid "Choose a Remote to Search"
 msgid "Choose a remote to search for new packages"
-msgstr "Choisissez un dépôt à rechercher"
+msgstr "Choisissez un dépôt dans lequel chercher de nouveaux paquets"
 
 #: src/install_page/select_page.blp:23
-#, fuzzy
-#| msgid "Updates Disabled"
 msgid "Online Searches Disabled"
-msgstr "Mises à jour désactivées"
+msgstr "Recherches en ligne désactivées"
 
 #: src/install_page/select_page.blp:24
 msgid "Your system has no remotes added to search from"
-msgstr ""
+msgstr "Votre système ne comporte aucun dépôt depuis lequel faire une recherche"
 
 #: src/install_page/select_page.blp:28
 msgid "Add a remote to your system to enable online searching"
-msgstr ""
+msgstr "Ajoutez un dépôt à votre système pour activer la recherche en ligne"
 
 #: src/install_page/select_page.blp:38
 msgid "Install packages from files on your system"
-msgstr ""
+msgstr "Installer des paquets depuis des fichiers sur votre système"
 
 #: src/install_page/select_page.py:60
 msgid "No files were found to install"
-msgstr ""
+msgstr "Aucun fichier trouvé pour installation"
 
 #: src/install_page/select_page.py:70
 msgid "Flatpaks"
