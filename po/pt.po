@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-11-01 21:34+0000\n"
+"Last-Translator: Aragubas <dpaulootavio5@outlook.com>\n"
+"Language-Team: Portuguese <https://weblate.fyralabs.com/projects/flattool/"
+"warehouse/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.8.1\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -28,42 +31,50 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.desktop.in:12
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
-msgstr ""
+msgstr "Gerencia várias coisas de Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
+"Warehouse provê uma simples interface para alterar configurações complexas "
+"do Flatpak, sem a necessidade de usar a linha de comando."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr ""
+msgstr "Aspectos:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
 msgstr ""
+"Gerencia Flatpaks instalados e visualiza propriedades de qualquer pacote"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
 msgstr ""
+"Altera versões de um Flatpak para reverter qualquer atualização não deseja"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
-msgstr ""
+msgstr "Fixa runtime e mascara Flatpaks"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
-msgstr ""
+msgstr "Filtra pacotes e organiza dados, para ajudar entrar tudo facilmente"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
+"Visualiza dados de usuário atuais da aplicação, e limpa qualquer dado "
+"deixado para trás"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
 msgstr ""
+"Adicionar remotos Flatpaks populares com apenas alguns clicks, ou adiciona "
+"remotos personalizados"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
