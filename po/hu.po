@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-09-22 18:18+0000\n"
+"PO-Revision-Date: 2024-11-01 23:25+0000\n"
 "Last-Translator: Benedek Dévényi <rdbende@proton.me>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hu/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7.2\n"
+"X-Generator: Weblate 5.8.1\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -41,7 +41,7 @@ msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr "Funkciók:"
+msgstr "Az alkalmazás funkciói:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
@@ -50,67 +50,68 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
 msgstr ""
+"Flatpakek verzióinak módosítása a nem kívánt frissítések visszaállításához"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
-msgstr ""
+msgstr "Futtatókörnyezetek kitűzése és csomagok maszkolása"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
-msgstr ""
+msgstr "Csomagok szűrése és adatok rendezése, hogy bármit könnyedén megtaláljon"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
+"Az alkalmazás felhasználói adatainak megtekintése, és a hátrahagyott adatok "
+"törlése"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
 msgstr ""
+"Népszerű Flatpak tárolók hozzáadása néhány kattintással, vagy egyéni tárolók "
+"felvétele"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
-msgstr ""
+msgstr "Pillanatképek készítése az alkalmazások felhasználói adatairól"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
-msgstr ""
+msgstr "Csomagok telepítése bármilyen távoli vagy helyi tárolóból"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:22
 msgid "Responsive UI to fit large and small screen sizes"
-msgstr ""
+msgstr "Adaptív felhasználói felület bármilyen képernyőmérethez"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
-msgstr ""
+msgstr "Telepített csomagok kezelése a háromosztatú ablakban"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
-msgstr ""
+msgstr "Tulajdonságok nézet keskeny kijelzőn"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
-msgstr ""
+msgstr "Telepített tárolók kezelése és új távoli tárolók hozzáadása"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:58
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Manage Apps' User Data"
-msgstr "Törli a kijelölt alkalmazások adatait?"
+msgstr "Alkalmazások felhasználói adatainak kezelése"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:62
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Backup Apps' User Data"
-msgstr "Törli a kijelölt alkalmazások adatait?"
+msgstr "Alkalmazások felhasználói adatainak biztonsági mentése"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
-msgstr ""
+msgstr "Csomagok telepítése fájlból vagy távoli tárolóból"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
-msgstr ""
+msgstr "Telepítő nézet keskeny kijelzőn"
 
 #: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
 #: src/install_page/select_page.py:67
@@ -124,17 +125,15 @@ msgid "No files were found"
 msgstr ""
 
 #: src/main.py:109
-#, fuzzy
-#| msgid "Add Flatpak Remote"
 msgid "Flatpaks & Remotes"
-msgstr "Flatpak tároló hozzáadása"
+msgstr "Flatpakek és tárolók"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
 #: src/main.py:217
 msgid "translator-credits"
 msgstr ""
-"kramo <login@kramo.hu>\n"
-"Benedek Dévényi <rdbende@proton.me>"
+"Dévényi Benedek <rdbende@proton.me>\n"
+"kramo <login@kramo.hu>"
 
 #: src/main.py:223
 msgid "Donate"
@@ -192,16 +191,15 @@ msgid "This package is End Of Life, and will not receive any security updates"
 msgstr "A(z) {} elavult és nem fog többé biztonsági frissítéseket kapni"
 
 #: src/gtk/app_row.blp:21
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid ""
 "This app's runtime is End Of Life, and will not receive any security updates"
-msgstr "A(z) {} elavult és nem fog többé biztonsági frissítéseket kapni"
+msgstr ""
+"A(z) {} futtatókörnyezete elavult és nem fog többé biztonsági frissítéseket "
+"kapni"
 
 #: src/gtk/app_row.blp:28
 msgid "This runtime will never be automatically removed"
-msgstr ""
+msgstr "Ez a futtatókörnyezet soha nem lesz automatikusan eltávolítva"
 
 #: src/gtk/app_row.blp:34
 msgid "Updates are disabled for this package"
@@ -2026,16 +2024,12 @@ msgid "Trash Snapshots?"
 msgstr "Törli a pillanatképet?"
 
 #: src/snapshot_page/snapshot_page.py:519
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "These apps' snapshots will be sent to the trash"
-msgstr "A mappák át lesznek helyezve a kukába."
+msgstr "A pillanatképek át lesznek helyezve a kukába"
 
 #: src/snapshot_page/snapshot_page.py:558
-#, fuzzy
-#| msgid "Creating Snapshots"
 msgid "Loading Snapshots"
-msgstr "Pillanatkép létrehozása"
+msgstr "Pillanatképek betöltése"
 
 #: src/snapshot_page/snapshots_list_page.blp:5
 #, fuzzy
@@ -2084,7 +2078,7 @@ msgstr ""
 
 #: src/install_page/file_install_dialog.py:42
 msgid "package"
-msgstr ""
+msgstr "csomag"
 
 #: src/install_page/install_page.blp:41
 #, fuzzy
@@ -2098,10 +2092,8 @@ msgid "Pending Packages"
 msgstr ""
 
 #: src/install_page/install_page.py:51
-#, fuzzy
-#| msgid "Installed Size"
 msgid "Installed Packages"
-msgstr "Telepítés mérete"
+msgstr "Telepített csomagok"
 
 #: src/install_page/install_page.py:68
 msgid "{} Pending Package"
@@ -2133,10 +2125,8 @@ msgid "Packages queued to install will show up here"
 msgstr ""
 
 #: src/install_page/pending_page.py:34
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove All"
-msgstr "Eltávolítás"
+msgstr "Mind eltávolítása"
 
 #: src/install_page/result_row.blp:8 src/install_page/result_row.py:42
 msgid "Add Package to Queue"
@@ -2152,7 +2142,7 @@ msgstr ""
 
 #: src/install_page/result_row.py:54
 msgid "This Package is Already Installed"
-msgstr ""
+msgstr "Ez a csomag már telepítve van"
 
 #: src/install_page/results_page.blp:5
 #, fuzzy
@@ -2172,10 +2162,8 @@ msgid "Search for Flatpaks"
 msgstr "Flatpakek keresése"
 
 #: src/install_page/results_page.blp:27
-#, fuzzy
-#| msgid "Search for Flatpaks that you want to install"
 msgid "Search for Flatpaks you want to install"
-msgstr "Keressen Flatpakeket amiket telepíteni szeretne"
+msgstr "Telepíteni kívánt Flatpak csomagok keresése"
 
 #: src/install_page/results_page.blp:31
 msgid "Too Many Results"
@@ -2212,10 +2200,8 @@ msgid "Choose a remote to search for new packages"
 msgstr "Válasszon egy tárolót a kereséshez"
 
 #: src/install_page/select_page.blp:23
-#, fuzzy
-#| msgid "Updates Disabled"
 msgid "Online Searches Disabled"
-msgstr "Frissítések kikapcsolva"
+msgstr "Online keresés kikapcsolva"
 
 #: src/install_page/select_page.blp:24
 msgid "Your system has no remotes added to search from"
