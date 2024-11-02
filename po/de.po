@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-10-31 09:35+0000\n"
-"Last-Translator: PBMacros <roger.roesch@gmail.com>\n"
+"PO-Revision-Date: 2024-11-02 18:49+0000\n"
+"Last-Translator: Outtay <otti.florian@gmail.com>\n"
 "Language-Team: German <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/de/>\n"
 "Language: de\n"
@@ -38,6 +38,8 @@ msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
+"Warehouse bietet eine einfache Oberfläche um komplexe Flatpak Optionen zu "
+"steuern. All das ohne auf die Kommandozeile zurückgreifen zu müssen."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -94,16 +96,12 @@ msgid "Manage Installed Remotes and Add New Remotes"
 msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:58
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Manage Apps' User Data"
-msgstr "Benutzerdaten der ausgewählten Anwendung löschen?"
+msgstr "Verwalte die Benutzerdaten der ausgewählten Anwendung"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:62
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Backup Apps' User Data"
-msgstr "Benutzerdaten der ausgewählten Anwendung löschen?"
+msgstr "Stell die Benutzerdaten der ausgewählten Anwendung her"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
@@ -122,13 +120,11 @@ msgstr "Konnte {} nicht hinzufügen"
 
 #: src/main.py:101
 msgid "No files were found"
-msgstr ""
+msgstr "Keine Dateien gefunden"
 
 #: src/main.py:109
-#, fuzzy
-#| msgid "Add Flatpak Remote"
 msgid "Flatpaks & Remotes"
-msgstr "Flatpakgegenstelle hinzufügen"
+msgstr "Flatpak & Quellen"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
 #: src/main.py:217
@@ -151,11 +147,11 @@ msgstr "Konnte {} nicht hinzufügen"
 
 #: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
-msgstr ""
+msgstr "Während der Installation sind Fehler aufgetreten"
 
 #: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
-msgstr ""
+msgstr "Während der Installation ist ein Fehler aufgetreten"
 
 #: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:70
