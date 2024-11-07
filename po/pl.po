@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-10-14 17:34+0000\n"
+"PO-Revision-Date: 2024-11-08 01:37+0000\n"
 "Last-Translator: Oskar Kąklewski <oskarkaklewski@gmail.com>\n"
 "Language-Team: Polish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/pl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.7.2\n"
+"X-Generator: Weblate 5.8.1\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -792,7 +792,7 @@ msgstr "Nie można dodać {}"
 
 #: src/packages_page/packages_page.py:307
 msgid "Errors occurred while uninstalling"
-msgstr ""
+msgstr "Podczas odinstalowywania wystąpiły błędy"
 
 #: src/packages_page/packages_page.py:309
 #, fuzzy
@@ -1140,10 +1140,8 @@ msgid "Uninstalled {}"
 msgstr "Odinstalować {}?"
 
 #: src/properties_page/properties_page.py:261
-#, fuzzy
-#| msgid "Opened {}"
 msgid "Opening {}…"
-msgstr "Otwarto {}"
+msgstr "Otwieranie {}…"
 
 #: src/properties_page/properties_page.py:266
 #, fuzzy
