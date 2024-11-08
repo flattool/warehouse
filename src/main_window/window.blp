@@ -7,10 +7,10 @@ template $WarehouseWindow: Adw.ApplicationWindow {
 	default-width: 921;
 	default-height: 450;
 	Adw.Breakpoint main_breakpoint {
-		condition ("min-width: 865")
+		condition ("max-width: 865")
 		setters {
-			main_split.collapsed: false;
-			main_split.max-sidebar-width: 999999999;
+			main_split.collapsed: true;
+			main_split.min-sidebar-width: 0.2;
 		}
 	}
 	content:
@@ -28,9 +28,9 @@ template $WarehouseWindow: Adw.ApplicationWindow {
 					}
 				}
 				Adw.OverlaySplitView main_split {
-					collapsed: true;
+					collapsed: false;
 					show-sidebar: true;
-					sidebar-width-fraction: 0.2;
+					sidebar-width-fraction: 999999999;
 					min-sidebar-width: 250;
 					sidebar:
 						Adw.NavigationPage {

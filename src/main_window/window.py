@@ -89,12 +89,13 @@ class WarehouseWindow(Adw.ApplicationWindow):
 				self.refresh_button.set_sensitive(True)
 
 	def navigation_handler(self, _, row):
+		if self.main_split.get_collapsed():
+			self.main_split.set_show_sidebar(False)
+			
 		row = row.get_child()
 		page = self.pages[row]
 		self.stack.set_visible_child(page)
 		self.settings.set_string("page-shown", page.page_name)
-		if self.main_split.get_collapsed():
-			self.main_split.set_show_sidebar(False)
 
 	def activate_row(self, nav_row):
 		idx = 0
@@ -102,7 +103,6 @@ class WarehouseWindow(Adw.ApplicationWindow):
 			idx += 1
 			if row.get_child() is nav_row:
 				row.activate()
-				nav_row.grab_focus()
 				break
 
 	def show_saved_page(self):
