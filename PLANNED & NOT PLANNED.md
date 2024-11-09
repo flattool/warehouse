@@ -13,7 +13,7 @@
 
 ### Planned features for some update
 
-- Uninstall unused flatpaks 
+- Uninstall unused flatpaks
 - Updating flatpaks
 - Installation and configuration of locales
 
