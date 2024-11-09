@@ -9,7 +9,7 @@
 
 ### Completed features (Ready to ship in next Minor update)
 
-- 
+-
 
 ### Planned features for some update
 
