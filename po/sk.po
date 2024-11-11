@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-10-27 21:30+0000\n"
+"PO-Revision-Date: 2024-10-29 07:39+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
 "Language-Team: Slovak <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/sk/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 5.7.2\n"
+"X-Generator: Weblate 5.8.1\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -675,17 +675,15 @@ msgstr "Ref"
 #: src/packages_page/packages_page.py:255
 #: src/properties_page/properties_page.py:272
 msgid "Copied {}"
-msgstr "Vyberte vzdialený repozitár na vyhľadávanie nových balíkov"
+msgstr "Skopírované {}"
 
 #: src/packages_page/packages_page.py:257
 msgid "Could not copy {}"
 msgstr "Nepodarilo sa skopírovať {}"
 
 #: src/packages_page/packages_page.py:307
-#, fuzzy
-#| msgid "Errors occurred during installation"
 msgid "Errors occurred while uninstalling"
-msgstr "Počas inštalácie sa vyskytli chyby"
+msgstr "Pri odinštalovaní sa vyskytli chyby"
 
 #: src/packages_page/packages_page.py:309
 msgid "Uninstalled Packages"
@@ -973,8 +971,6 @@ msgid "Uninstalled {}"
 msgstr "Odinštalovaný {}"
 
 #: src/properties_page/properties_page.py:261
-#, fuzzy
-#| msgid "Openeing {}…"
 msgid "Opening {}…"
 msgstr "Otváranie {}…"
 
@@ -1137,7 +1133,7 @@ msgstr "Kopírovať názov"
 
 #: src/remotes_page/remote_row.blp:41
 msgid "Copy Name"
-msgstr "Kopírovať názov"
+msgstr "Kopírovať meno"
 
 #: src/remotes_page/remote_row.blp:45
 msgid "Enable"
@@ -1194,7 +1190,7 @@ msgstr "Skopírovaný názov"
 
 #: src/remotes_page/remote_row.py:136
 msgid "Copied name"
-msgstr "Skopírovaný názov"
+msgstr "Skopírované meno"
 
 #: src/remotes_page/remotes_page.blp:5
 msgid "Manage Remotes"
@@ -1493,7 +1489,7 @@ msgstr "Pomenujte tento Snapshot"
 
 #: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:58
 msgid "No Name Set"
-msgstr "Žiadny názov nie je nastavený"
+msgstr "Žiadne meno nie je nastavené"
 
 #: src/snapshot_page/snapshot_box.blp:23
 msgid "No date found"
