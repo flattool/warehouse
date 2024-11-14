@@ -18,4 +18,4 @@ jobs:
       uses: flatpak/flatpak-github-actions/flatpak-builder@v6.1
       with:
         bundle: io.github.flattool.Warehouse.flatpak
-        manifest-path: io.github.flattool.Warehouse.json
+        manifest-path: build-aux/io.github.flattool.Warehouse.json
