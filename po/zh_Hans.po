@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-06-07 02:29+0000\n"
-"Last-Translator: 张鹏 <scbeta@qq.com>\n"
-"Language-Team: Chinese (Simplified) <https://weblate.fyralabs.com/projects/"
-"flattool/warehouse/zh_Hans/>\n"
+"PO-Revision-Date: 2024-11-15 05:34+0000\n"
+"Last-Translator: hnwcg <hnwcg@hotmail.com>\n"
+"Language-Team: Chinese (Simplified Han script) <https://weblate.fyralabs.com/"
+"projects/flattool/warehouse/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.8.1\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
 msgid "Warehouse"
-msgstr "Warehouse"
+msgstr "仓库"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 msgid "flatpak"
@@ -37,7 +37,8 @@ msgstr "管理 Flatpak 的一切"
 msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
-msgstr ""
+msgstr "Warehouse提供了一个简单的用户界面来控制复杂的 Flatpak "
+"选项，而且完全无需借助命令行。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -45,68 +46,64 @@ msgstr "功能："
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
-msgstr ""
+msgstr "管理已安装的 Flatpak，并查看任何软件包的属性"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
-msgstr ""
+msgstr "更改 Flatpak 的版本以回滚任何不需要的更新"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
-msgstr ""
+msgstr "固定运行时环境并且屏蔽 Flatpak 软件包"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
-msgstr ""
+msgstr "筛选软件包并对数据进行排序，以便轻松查找任何内容"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
-msgstr ""
+msgstr "查看当前应用程序的用户数据，并清理任何遗留的未使用数据"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
-msgstr ""
+msgstr "只需点击几下即可添加受欢迎的 Flatpak 远程仓库，或者也可以添加自定义远程仓库"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
-msgstr ""
+msgstr "为你的应用程序用户数据创建快照，以保存数据"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
-msgstr ""
+msgstr "从任何远程仓库或从你的系统中安装新软件包"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:22
 msgid "Responsive UI to fit large and small screen sizes"
-msgstr ""
+msgstr "响应式用户界面，适配各种大小的屏幕尺寸"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
-msgstr ""
+msgstr "在三窗格用户界面中管理已安装的软件包"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
-msgstr ""
+msgstr "窄窗口中的属性页面"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
-msgstr ""
+msgstr "管理已安装的远程仓库并添加新的远程仓库"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:58
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Manage Apps' User Data"
-msgstr "回收选中应用的用户数据？"
+msgstr "管理应用程序的用户数据"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:62
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Backup Apps' User Data"
-msgstr "回收选中应用的用户数据？"
+msgstr "备份应用程序的用户数据"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
-msgstr ""
+msgstr "从文件或远程仓库安装新软件包"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
