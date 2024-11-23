@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-11-23 01:23+0000\n"
-"Last-Translator: Tameno <tamenorias@gmail.com>\n"
+"PO-Revision-Date: 2024-11-23 01:24+0000\n"
+"Last-Translator: Racsu <me@racsu.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
 "Language: es\n"
@@ -67,11 +67,15 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
+"Ver los datos actuales del usuario de la aplicación y eliminar cualquier "
+"dato no utilizado restante"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
 msgstr ""
+"Agregar repositorios Flatpak populares con unos pocos clics o agregar "
+"repositorios personalizados en su lugar"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
