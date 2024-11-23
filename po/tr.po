@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-05-02 17:28+0000\n"
-"Last-Translator: xe1st <dnzkckali@gmail.com>\n"
+"PO-Revision-Date: 2024-11-24 01:34+0000\n"
+"Last-Translator: Ümit Solmaz <solmazumit1@yandex.com>\n"
 "Language-Team: Turkish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/tr/>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.8.1\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -38,6 +38,8 @@ msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
+"Warehouse, karmaşık Flatpak seçeneklerini komut satırına başvurmadan kontrol "
+"etmek için basit bir kullanıcı arayüzü sağlar."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -46,88 +48,90 @@ msgstr "Özellikler:"
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
 msgstr ""
+"Yüklü Flatpak'ları yönetin ve herhangi bir paketin özelliklerini görüntüleyin"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
-msgstr ""
+msgstr "İstenmeyen güncellemeleri geri almak için Flatpak sürümlerini değiştir"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
-msgstr ""
+msgstr "Çalışma zamanlarını sabitleyin ve Flatpakları maskeleyin"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
 msgstr ""
+"Herhangi bir şeyi kolayca bulmaya yardımcı olmak için paketleri süzgeçleyin "
+"ve verileri sıralayın"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
+"Mevcut uygulama kullanıcı verilerini görün ve geride kalan kullanılmayan "
+"verileri temizleyin"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
 msgstr ""
+"Birkaç tıklama ile popüler Flatpak uzaktan kumandaları ekleyin veya bunun "
+"yerine özel uzaktan kumandalar ekleyin"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
 msgstr ""
+"Uygulamalarınızın kullanıcı verilerinin anlık görüntülerini alarak "
+"verilerinizi kaydedin"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
-msgstr ""
+msgstr "Herhangi bir uzaktan veya sisteminizden yeni paketler yükleyin"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:22
 msgid "Responsive UI to fit large and small screen sizes"
 msgstr ""
+"Büyük ve küçük ekran boyutlarına uyacak şekilde duyarlı kullanıcı arayüzü"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
-msgstr ""
+msgstr "Yüklü Paketleri Üç Bölmeli Kullanıcı Arayüzünde Yönetme"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
-msgstr ""
+msgstr "Dar Pencerede Özellikler Sayfası"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
-msgstr ""
+msgstr "Kurulu Uzaktan Kumandaları Yönetme ve Yeni Uzaktan Kumandalar Ekleme"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:58
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Manage Apps' User Data"
-msgstr "Seçilen Uygulamaların Kullanıcı Verileri Çöpe Taşınsın Mı?"
+msgstr "Uygulamaların Kullanıcı Verilerini Yönetme"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:62
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Backup Apps' User Data"
-msgstr "Seçilen Uygulamaların Kullanıcı Verileri Çöpe Taşınsın Mı?"
+msgstr "Uygulamaların Kullanıcı Verilerini Yedekleme"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
-msgstr ""
+msgstr "Dosyalar veya Uzaktan Kumandalardan Yeni Paketler Yükleme"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
-msgstr ""
+msgstr "Sayfayı Dar Pencereye Yükleme"
 
 #: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
 #: src/install_page/select_page.py:67
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not add files"
-msgstr "{} eklenemedi"
+msgstr "Dosya eklenemedi"
 
 #: src/main.py:101
 msgid "No files were found"
-msgstr ""
+msgstr "Hiçbir dosya bulunamadı"
 
 #: src/main.py:109
-#, fuzzy
-#| msgid "Add Flatpak Remote"
 msgid "Flatpaks & Remotes"
-msgstr "Flatpak Uzak Ekle"
+msgstr "Flatpaklar ve Kumandalar"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
 #: src/main.py:217
@@ -143,79 +147,67 @@ msgid "Contributors"
 msgstr "Katkıda Bulunanlar"
 
 #: src/host_info.py:380 src/host_info.py:382
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not load packages"
-msgstr "{} eklenemedi"
+msgstr "Paketler yüklenemedi"
 
 #: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
-msgstr ""
+msgstr "Kurulum sırasında oluşan hatalar"
 
 #: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
-msgstr ""
+msgstr "Kurulum sırasında hata oluştu"
 
 #: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:70
 msgid "Failed to exit cleanly"
-msgstr ""
+msgstr "Temiz bir şekilde çıkılamadı"
 
 #: src/package_install_worker.py:104
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not cancel installation"
-msgstr "Uygulama kurulamadı"
+msgstr "Kurulum iptal edilemedi"
 
 #: src/package_install_worker.py:125 src/package_install_worker.py:135
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not install packages"
-msgstr "Uygulama kurulamadı"
+msgstr "Paketler yüklenemedi"
 
 #: src/package_install_worker.py:125
 msgid "Packages are currently being installed."
-msgstr ""
+msgstr "Paketler şu anda yükleniyor."
 
 #: src/package_install_worker.py:135
 msgid "No packages were requested to be installed."
-msgstr ""
+msgstr "Hiçbir paketin yüklenmesi talep edilmemiştir."
 
 #: src/gtk/app_row.blp:14 src/properties_page/properties_page.blp:100
 #: src/properties_page/properties_page.blp:179
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid "This package is End Of Life, and will not receive any security updates"
-msgstr "{} Kullanım Ömrünün Sonuna Ulaşmış ve güvenlik güncellemesi almayacak"
+msgstr ""
+"Bu paketin kullanım ömrü sona ermiştir ve herhangi bir güvenlik güncellemesi "
+"almayacaktır"
 
 #: src/gtk/app_row.blp:21
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid ""
 "This app's runtime is End Of Life, and will not receive any security updates"
-msgstr "{} Kullanım Ömrünün Sonuna Ulaşmış ve güvenlik güncellemesi almayacak"
+msgstr ""
+"Bu uygulamanın çalışma zamanı Kullanım Ömrünü Tamamlamıştır ve herhangi bir "
+"güvenlik güncellemesi almayacaktır"
 
 #: src/gtk/app_row.blp:28
 msgid "This runtime will never be automatically removed"
-msgstr ""
+msgstr "Bu çalışma zamanı hiçbir zaman otomatik olarak kaldırılmayacaktır"
 
 #: src/gtk/app_row.blp:34
 msgid "Updates are disabled for this package"
-msgstr ""
+msgstr "Bu paket için güncellemeler devre dışı bırakıldı"
 
 #: src/gtk/attempt_install_dialog.blp:5
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "Attempt an Install?"
-msgstr "Kurmayı Deneyelim Mi?"
+msgstr "Bir Kurulum Denemesi mi?"
 
 #: src/gtk/attempt_install_dialog.blp:6
-#, fuzzy
-#| msgid "Warehouse will attempt to install apps matching the selected data."
 msgid "Warehouse will try to install the matching packages."
-msgstr "Warehouse, seçilen verilerle eşleşen uygulamaları kurmayı deneyecek."
+msgstr "Warehouse eşleşen paketleri yüklemeye çalışacaktır."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:37
@@ -241,35 +233,31 @@ msgid "Install"
 msgstr "Kur"
 
 #: src/gtk/attempt_install_dialog.blp:12
-#, fuzzy
-#| msgid "Choose a Remote to Search"
 msgid "Choose a Remote"
-msgstr "Aranacak Uzağı Seç"
+msgstr "Bir Uzaktan Kumanda Seçin"
 
 #: src/gtk/attempt_install_dialog.blp:13
 msgid "Select a remote to attempt to install from"
-msgstr ""
+msgstr "Yüklemeyi denemek için bir uzaktan kumanda seçin"
 
 #: src/gtk/attempt_install_dialog.py:18 src/packages_page/filters_page.py:122
 #: src/remotes_page/remote_row.py:148 src/install_page/pending_page.py:29
 #: src/install_page/select_page.py:31
-#, fuzzy
-#| msgid "Installation"
 msgid "Installation: {}"
-msgstr "Kurulum"
+msgstr "Kurulum: {}"
 
 #: src/gtk/attempt_install_dialog.py:71
 msgid "Can't find matching packages"
-msgstr ""
+msgstr "Eşleşen paketleri bulamıyorum"
 
 #: src/gtk/attempt_install_dialog.py:71
 msgid "Your system has no remotes added"
-msgstr ""
+msgstr "Sisteminize uzaktan kumanda eklenmemiş"
 
 #. Extra Object Creation
 #: src/gtk/error_toast.py:12
 msgid "Details"
-msgstr ""
+msgstr "Detaylar"
 
 #: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
@@ -291,10 +279,8 @@ msgid "Refresh"
 msgstr "Yenile"
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Open Files"
-msgstr "Süzgeçleri Ayarla"
+msgstr "Dosyaları Aç"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
@@ -310,117 +296,85 @@ msgstr "Çık"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
-msgstr ""
+msgstr "Navigasyon"
 
 #: src/gtk/help-overlay.blp:34
 msgid "Show Packages Page"
-msgstr ""
+msgstr "Paketleri Göster Sayfası"
 
 #: src/gtk/help-overlay.blp:38
-#, fuzzy
-#| msgid "No Remotes Found"
 msgid "Show Remotes Page"
-msgstr "Uzak Bulunamadı"
+msgstr "Kumandaları Göster Sayfası"
 
 #: src/gtk/help-overlay.blp:42
-#, fuzzy
-#| msgid "No User Data"
 msgid "Show User Data Page"
-msgstr "Kullanıcı Verisi Yok"
+msgstr "Kullanıcı Verilerini Göster Sayfası"
 
 #: src/gtk/help-overlay.blp:46
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Show Snapshots Page"
-msgstr "Anlık Görüntü Yok"
+msgstr "Anlık Görüntüleri Göster Sayfası"
 
 #: src/gtk/help-overlay.blp:50
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show Install Page"
-msgstr "Devre Dışı Olanları Göster"
+msgstr "Yükleme Sayfasını Göster"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Packages Page"
-msgstr ""
+msgstr "Paketler Sayfası"
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
-#, fuzzy
-#| msgid "Search"
 msgid "Search Mode"
-msgstr "Ara"
+msgstr "Arama Yöntemi"
 
 #: src/gtk/help-overlay.blp:61
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Edit Filters"
-msgstr "Süzgeçleri Ayarla"
+msgstr "Süzgeçleri Düzenle"
 
 #: src/gtk/help-overlay.blp:65 src/gtk/help-overlay.blp:95
 #: src/gtk/help-overlay.blp:114
-#, fuzzy
-#| msgid "Toggle Selection Mode"
 msgid "Selection Mode"
-msgstr "Seçim Kipini Değiştir"
+msgstr "Seçim Yönetimi"
 
 #: src/gtk/help-overlay.blp:70
-#, fuzzy
-#| msgid "All Remotes"
 msgid "Remotes Page"
-msgstr "Tüm Uzaklar"
+msgstr "Kumandalar Sayfası"
 
 #: src/gtk/help-overlay.blp:76
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show or Hide Disabled Remotes"
-msgstr "Devre Dışı Olanları Göster"
+msgstr "Devre Dışı Kumandaları Gösterme veya Gizleme"
 
 #: src/gtk/help-overlay.blp:80
-#, fuzzy
-#| msgid "Add Remote"
 msgid "New Remote"
-msgstr "Uzak Ekle"
+msgstr "Yeni Kumanda"
 
 #: src/gtk/help-overlay.blp:85
-#, fuzzy
-#| msgid "User Data"
 msgid "User Data Page"
-msgstr "Kullanıcı Verisi"
+msgstr "Kullanıcı Veri Sayfası"
 
 #: src/gtk/help-overlay.blp:91
 msgid "Edit Sorting Modes"
-msgstr ""
+msgstr "Sıralama Yönetimini Düzenleme"
 
 #: src/gtk/help-overlay.blp:99
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Show Active Data"
-msgstr "Artık Veri Yok"
+msgstr "Aktif Verileri Göster"
 
 #: src/gtk/help-overlay.blp:103
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Show Leftover Data"
-msgstr "Artık Veri Yok"
+msgstr "Kalan Verileri Göster"
 
 #: src/gtk/help-overlay.blp:108
-#, fuzzy
-#| msgid "Snapshot applied"
 msgid "Snapshots Page"
-msgstr "Anlık görüntü uygulandı"
+msgstr "Anlık Görüntüler Sayfası"
 
 #: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:202
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "New Snapshots"
-msgstr "Yeni Anlık Görüntü"
+msgstr "Yeni Anlık Görüntüler"
 
 #: src/gtk/installation_chooser.blp:5
-#, fuzzy
-#| msgid "Installation"
 msgid "Choose Installation"
-msgstr "Kurulum"
+msgstr "Kurulumu Seçin"
 
 #: src/gtk/installation_chooser.blp:11
 msgid "User"
@@ -431,66 +385,52 @@ msgid "System"
 msgstr "Sistem"
 
 #: src/gtk/installation_chooser.blp:28
-#, fuzzy
-#| msgid "Installation"
 msgid "Custom installation"
-msgstr "Kurulum"
+msgstr "Özel kurulum"
 
 #: src/gtk/installation_chooser.blp:37
-#, fuzzy
-#| msgid "Installation"
 msgid "Other Installation"
-msgstr "Kurulum"
+msgstr "Diğer Kurulum"
 
 #: src/gtk/installation_chooser.blp:38
 msgid "Choose a custom installation"
-msgstr ""
+msgstr "Özel bir kurulum seçin"
 
 #: src/gtk/installation_chooser.py:27
-#, fuzzy
-#| msgid "The app will be available to only you"
 msgid "These {} will only be available to you"
-msgstr "Uygulama sadece sizin kullanımınıza özel olacak"
+msgstr "Bu {} sadece sizin için kullanılabilir olacaktır"
 
 #: src/gtk/installation_chooser.py:28
-#, fuzzy
-#| msgid "The app will be available to every user on the system"
 msgid "These {} will be available to everyone"
-msgstr "Uygulama sistemdeki tüm kullanıcılar tarafından kullanılabilecek"
+msgstr "Bu {} herkese açık olacak"
 
 #: src/gtk/installation_chooser.py:29
 msgid "Choose how these {} will be installed"
-msgstr ""
+msgstr "Bu {}'ların nasıl kurulacağını seçin"
 
 #: src/gtk/installation_chooser.py:31
-#, fuzzy
-#| msgid "The app will be available to only you"
 msgid "This {} will only be available to you"
-msgstr "Uygulama sadece sizin kullanımınıza özel olacak"
+msgstr "Bu {} sadece sizin için kullanılabilir olacaktır"
 
 #: src/gtk/installation_chooser.py:32
-#, fuzzy
-#| msgid "The app will be available to every user on the system"
 msgid "This {} will be available to everyone"
-msgstr "Uygulama sistemdeki tüm kullanıcılar tarafından kullanılabilecek"
+msgstr "Bu {} herkese açık olacak"
 
 #: src/gtk/installation_chooser.py:33
 msgid "Choose how this {} will be installed"
-msgstr ""
+msgstr "Bu {}'in nasıl kurulacağını seçin"
 
 #: src/gtk/sidebar_button.py:19
 msgid "Show Sidebar"
-msgstr ""
+msgstr "Kenar Çubuğunu Göster"
 
 #: src/main_window/window.blp:25
 msgid "Drop to Open"
-msgstr ""
+msgstr "Açmak için Bırak"
 
 #: src/main_window/window.blp:26
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Install Flatpaks or Add a Remote"
-msgstr "Kurulu Uzaklar"
+msgstr "Flatpakları Kurun veya Uzaktan Kumanda Ekleyin"
 
 #: src/main_window/window.blp:44
 msgid "Refresh List"
@@ -506,13 +446,11 @@ msgstr "Ana Menü"
 #: src/packages_page/packages_page.py:319
 #: src/install_page/file_install_dialog.py:37
 msgid "Packages"
-msgstr ""
+msgstr "Paketler"
 
 #: src/main_window/window.blp:80
-#, fuzzy
-#| msgid "All Remotes"
 msgid "Remotes"
-msgstr "Tüm Uzaklar"
+msgstr "Uzaklar"
 
 #: src/main_window/window.blp:94 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
@@ -522,24 +460,18 @@ msgstr "Kullanıcı Verisi"
 #: src/main_window/window.blp:107 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
 #: src/snapshot_page/snapshot_page.py:355
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Snapshots"
-msgstr "Anlık Görüntü Yok"
+msgstr "Anlık Görüntüler"
 
 #: src/main_window/window.blp:120 src/install_page/file_install_dialog.py:34
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
-#, fuzzy
-#| msgid "Installing"
 msgid "Install Packages"
-msgstr "Kuruluyor"
+msgstr "Paketleri Yükleyin"
 
 #: src/main_window/window.blp:150
-#, fuzzy
-#| msgid "Set Filters"
 msgid "_Open Files"
-msgstr "Süzgeçleri Ayarla"
+msgstr "_Dosyaları Aç"
 
 #: src/main_window/window.blp:154
 msgid "_Keyboard Shortcuts"
@@ -551,73 +483,59 @@ msgstr "Warehouse _Hakkında"
 
 #: src/main_window/window.py:132
 msgid "Unsupported Filetype"
-msgstr ""
+msgstr "Desteklenmeyen Dosya Türü"
 
 #: src/main_window/window.py:133
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
-msgstr ""
+msgstr "Yalnızca .flatpak, .flatpakref ve .flatpakrepo dosyaları desteklenir."
 
 #: src/main_window/window.py:141
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Mixed Filetypes"
-msgstr "Süzgeçleri Ayarla"
+msgstr "Karışık Dosya Türleri"
 
 #: src/main_window/window.py:142
 msgid "Flatpaks and remotes cannot be installed at the same time."
-msgstr ""
+msgstr "Flatpaklar ve uzaktan kumandalar aynı anda kurulamaz."
 
 #: src/main_window/window.py:151
-#, fuzzy
-#| msgid "Too Many Results"
 msgid "Too Many Remotes"
-msgstr "Çok Fazla Sonuç"
+msgstr "Çok Fazla Uzaktan Kumanda"
 
 #: src/main_window/window.py:152
 msgid "Only one remote at a time is supported."
-msgstr ""
+msgstr "Aynı anda yalnızca bir uzaktan kumanda desteklenir."
 
 #: src/main_window/window.py:170
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open files"
-msgstr "Klasör açılamadı"
+msgstr "Dosyalar açılamadı"
 
 #: src/packages_page/filters_page.blp:5 src/packages_page/packages_page.blp:70
-#, fuzzy
-#| msgid "Filter List"
 msgid "Filter Packages"
-msgstr "Listeyi Süz"
+msgstr "Paketleri Süz"
 
 #: src/packages_page/filters_page.blp:20
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Filter by Package Type"
-msgstr "Uzaklara Göre Süz"
+msgstr "Paket Türüne Göre Süzgeçle"
 
 #: src/packages_page/filters_page.blp:21
 msgid "Show packages of these types"
-msgstr ""
+msgstr "Bu türden paketleri gösterin"
 
 #: src/packages_page/filters_page.blp:23
-#, fuzzy
-#| msgid "Options"
 msgid "Applications"
-msgstr "Seçenekler"
+msgstr "Uygulamalar"
 
 #: src/packages_page/filters_page.blp:24
 msgid "Packages that can be opened"
-msgstr ""
+msgstr "Açılabilen paketler"
 
 #: src/packages_page/filters_page.blp:29
-#, fuzzy
-#| msgid "Runtime"
 msgid "Runtimes"
-msgstr "Çalışma Zamanı"
+msgstr "Çalışma Zamanları"
 
 #: src/packages_page/filters_page.blp:30
 msgid "Packages that applications depend on"
-msgstr ""
+msgstr "Uygulamaların bağımlı olduğu paketler"
 
 #: src/packages_page/filters_page.blp:37
 msgid "Filter by Remotes"
@@ -625,35 +543,32 @@ msgstr "Uzaklara Göre Süz"
 
 #: src/packages_page/filters_page.blp:38
 msgid "Show packages from selected remotes"
-msgstr ""
+msgstr "Seçili uzaktan kumandalardaki paketleri göster"
 
 #: src/packages_page/filters_page.blp:52
 msgid "Showing packages from all remotes"
-msgstr ""
+msgstr "Tüm uzaktan kumandalardan gelen paketleri gösterme"
 
 #: src/packages_page/filters_page.blp:58
 msgid "Enable to show packages from selected remotes"
-msgstr ""
+msgstr "Seçili uzaktan kumandalardaki paketleri göstermeyi etkinleştirin"
 
 #: src/packages_page/filters_page.blp:71
 msgid "Filter by Runtimes"
 msgstr "Çalışma Zamanlarına Göre Süz"
 
 #: src/packages_page/filters_page.blp:72
-#, fuzzy
-#| msgid "Show Apps Using This Runtime"
 msgid "Show apps using selected runtimes"
-msgstr "Bu Çalışma Zamanını Kullanan Uygulamaları Göster"
+msgstr "Seçili çalışma zamanlarını kullanan uygulamaları göster"
 
 #: src/packages_page/filters_page.blp:86
-#, fuzzy
-#| msgid "Show Apps Using This Runtime"
 msgid "Showing apps using any runtime"
-msgstr "Bu Çalışma Zamanını Kullanan Uygulamaları Göster"
+msgstr "Herhangi bir çalışma zamanı kullanan uygulamaları gösterme"
 
 #: src/packages_page/filters_page.blp:92
 msgid "Enable to show apps using selected runtimes"
 msgstr ""
+"Seçili çalışma zamanlarını kullanan uygulamaları göstermeyi etkinleştirin"
 
 #: src/packages_page/filters_page.blp:113
 #: src/packages_page/packages_page.blp:97
@@ -663,46 +578,32 @@ msgstr "Süzgeçleri Sıfırla"
 #: src/packages_page/packages_page.blp:65
 #: src/packages_page/packages_page.blp:83 src/remotes_page/remotes_page.blp:30
 #: src/snapshot_page/snapshot_page.blp:35
-#, fuzzy
-#| msgid "Search List"
 msgid "Search Packages"
-msgstr "Listede Ara"
+msgstr "Paketleri Ara"
 
 #: src/packages_page/packages_page.blp:75
 #: src/snapshot_page/snapshot_page.blp:45
-#, fuzzy
-#| msgid "Select a Release"
 msgid "Select Packages"
-msgstr "Bir Sürüm Seç"
+msgstr "Paket Seçiniz"
 
 #: src/packages_page/packages_page.blp:93
-#, fuzzy
-#| msgid "No Flatpaks Match Filters"
 msgid "No Packages Match Filters"
-msgstr "Süzgeçlerle Eşleyen Flatpak Yok"
+msgstr "Hiçbir Paket Süzgeçlerle Eşleşmiyor"
 
 #: src/packages_page/packages_page.blp:94
-#, fuzzy
-#| msgid "No installed Flatpak matches all of the currently applied filters"
 msgid "No installed package matches all of the currently applied filters"
-msgstr "Kurulu hiçbir Flatpak geçerli süzgeçlerle eşleşmiyor"
+msgstr "Yüklü hiçbir paket şu anda uygulanan tüm süzgeçlerle eşleşmiyor"
 
 #: src/packages_page/packages_page.blp:104
-#, fuzzy
-#| msgid "No Flatpaks Found"
 msgid "No Packages Found"
-msgstr "Hiç Flatpak Bulunamadı"
+msgstr "Paket Bulunamadı"
 
 #: src/packages_page/packages_page.blp:105
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed"
 msgid ""
 "Warehouse cannot see the list of installed packages or your system has no "
 "packages installed"
 msgstr ""
-"Warehouse, kurulu Flatpak listesini göremiyor ya da sistemde kurulu Flatpak "
+"Warehouse yüklü paketlerin listesini göremiyor veya sisteminizde yüklü paket "
 "yok"
 
 #: src/packages_page/packages_page.blp:109
@@ -716,10 +617,8 @@ msgstr "Sonuç Bulunamadı"
 #: src/remotes_page/remotes_page.blp:154 src/user_data_page/data_subpage.blp:69
 #: src/snapshot_page/new_snapshot_dialog.blp:68
 #: src/snapshot_page/snapshot_page.blp:59
-#, fuzzy
-#| msgid "Try a different search term"
 msgid "Try a different search"
-msgstr "Farklı bir arama terimi deneyin"
+msgstr "Farklı bir arama deneyin"
 
 #: src/packages_page/packages_page.blp:127
 #: src/user_data_page/user_data_page.blp:81
@@ -750,30 +649,24 @@ msgstr "Referansları Kopyala"
 #: src/user_data_page/data_subpage.py:107
 #: src/snapshot_page/new_snapshot_dialog.py:38
 #: src/snapshot_page/snapshot_page.py:355
-#, fuzzy
-#| msgid "{} selected"
 msgid "{} Selected"
-msgstr "{} seçildi"
+msgstr "{} Seçildi"
 
 #: src/packages_page/packages_page.py:192
 msgid "Error getting Flatpak '{}'"
-msgstr ""
+msgstr "Flatpak '{}' alınırken hata oluştu"
 
 #: src/packages_page/packages_page.py:241
-#, fuzzy
-#| msgid "Name"
 msgid "Names"
-msgstr "Ad"
+msgstr "Adlar"
 
 #: src/packages_page/packages_page.py:244
 msgid "IDs"
-msgstr ""
+msgstr "DKler"
 
 #: src/packages_page/packages_page.py:247
-#, fuzzy
-#| msgid "Copy Refs"
 msgid "Refs"
-msgstr "Referansları Kopyala"
+msgstr "Referanslar"
 
 #: src/packages_page/packages_page.py:255
 #: src/properties_page/properties_page.py:272
@@ -781,26 +674,20 @@ msgid "Copied {}"
 msgstr "{} kopyalandı"
 
 #: src/packages_page/packages_page.py:257
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not copy {}"
-msgstr "{} eklenemedi"
+msgstr "Kopyalanamadı {}"
 
 #: src/packages_page/packages_page.py:307
 msgid "Errors occurred while uninstalling"
-msgstr ""
+msgstr "Kaldırma sırasında hatalar oluştu"
 
 #: src/packages_page/packages_page.py:309
-#, fuzzy
-#| msgid "Uninstalled successfully"
 msgid "Uninstalled Packages"
-msgstr "Kaldırıldı"
+msgstr "Kaldırılmış Paketler"
 
 #: src/packages_page/packages_page.py:367
-#, fuzzy
-#| msgid "Loading Flatpaks"
 msgid "Loading Packages"
-msgstr "Flatpak'ler Yükleniyor"
+msgstr "Paketler Yükleniyor"
 
 #: src/packages_page/packages_page.py:367
 #: src/packages_page/packages_page.py:368
@@ -813,16 +700,12 @@ msgid "This should only take a moment"
 msgstr "Bu sadece bir dakikanızı alacaktır"
 
 #: src/packages_page/packages_page.py:368
-#, fuzzy
-#| msgid "Uninstalling"
 msgid "Uninstalling Packages"
-msgstr "Kaldırılıyor"
+msgstr "Paketler Kaldırılıyor"
 
 #: src/packages_page/packages_page.py:370
-#, fuzzy
-#| msgid "Uninstalling"
 msgid "Reinstalling Package"
-msgstr "Kaldırılıyor"
+msgstr "Paketi Yeniden Yükleme"
 
 #: src/packages_page/packages_page.py:370
 #: src/packages_page/packages_page.py:372
@@ -832,20 +715,16 @@ msgid "This could take a while"
 msgstr "Biraz uzun sürebilir"
 
 #: src/packages_page/packages_page.py:372
-#, fuzzy
-#| msgid "Version"
 msgid "Changing Version"
-msgstr "Sürüm"
+msgstr "Değişen Sürüm"
 
 #: src/packages_page/uninstall_dialog.blp:8
 msgid "Keep"
 msgstr "Koru"
 
 #: src/packages_page/uninstall_dialog.blp:9
-#, fuzzy
-#| msgid "Allow restoring this app's settings and content"
 msgid "Allows restoring app settings and content"
-msgstr "Bu uygulamanın ayarlarını ve içeriğini geri yüklemeye izin ver"
+msgstr "Uygulama ayarlarını ve içeriğini geri yüklemeye izin verir"
 
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
@@ -856,46 +735,36 @@ msgid "Trash"
 msgstr "Çöpe Taşı"
 
 #: src/packages_page/uninstall_dialog.blp:18
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
 msgid "Send data to the trash"
-msgstr "{} Kullanıcı Verilerini Çöpe Taşınsın Mı?"
+msgstr "Çöp kutusuna veri gönderme"
 
 #: src/packages_page/uninstall_dialog.py:30
 msgid "Uninstall {}?"
 msgstr "{} Kaldırılsın Mı?"
 
 #: src/packages_page/uninstall_dialog.py:31
-#, fuzzy
-#| msgid "It will not be possible to use {} after removal."
 msgid "It will not be possible to use {} after removal"
-msgstr "{} kaldırıldıktan sonra kullanılamayacak."
+msgstr "Kaldırıldıktan sonra {} kullanmak mümkün olmayacaktır"
 
 #: src/packages_page/uninstall_dialog.py:33
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstall Packages?"
-msgstr "{} Kaldırılsın Mı?"
+msgstr "Paketleri Kaldırmak?"
 
 #: src/packages_page/uninstall_dialog.py:34
-#, fuzzy
-#| msgid "It will not be possible to use these apps after removal."
 msgid "It will not be possible to use these packages after removal"
-msgstr "Kaldırıldıktan sonra bu uygulamalar kullanılamayacak."
+msgstr "Bu paketleri kaldırdıktan sonra kullanmak mümkün olmayacaktır"
 
 #: src/packages_page/uninstall_dialog.py:41
-#, fuzzy
-#| msgid "App Settings & Data"
 msgid "App Settings & Content"
-msgstr "Uygulama Ayarları ve Veriler"
+msgstr "Uygulama Ayarları ve İçerik"
 
 #: src/properties_page/properties_page.blp:19
 msgid "Properties Page Unavailable"
-msgstr ""
+msgstr "Özellikler Sayfası Kullanılamıyor"
 
 #: src/properties_page/properties_page.blp:20
 msgid "Cannot show the properties page at this time"
-msgstr ""
+msgstr "Şu anda özellikler sayfası gösterilemiyor"
 
 #: src/properties_page/properties_page.blp:83
 msgid "Open"
@@ -903,10 +772,8 @@ msgstr "Aç"
 
 #: src/properties_page/properties_page.blp:122
 #: src/user_data_page/data_box.blp:62
-#, fuzzy
-#| msgid "Open User Data Folder"
 msgid "Open User Data"
-msgstr "Kullanıcı Veri Klasörünü Aç"
+msgstr "Açık Kullanıcı Verileri"
 
 #: src/properties_page/properties_page.blp:130
 #: src/user_data_page/data_box.blp:73
@@ -928,18 +795,16 @@ msgstr "Güncellemeleri Devre Dışı Bırak"
 
 #: src/properties_page/properties_page.blp:148
 msgid "Mask this package so it's never updated"
-msgstr ""
+msgstr "Bu paketi maskeleyin, böylece asla güncellenmez"
 
 #: src/properties_page/properties_page.blp:157
 #: src/change_version_page/change_version_page.blp:23
-#, fuzzy
-#| msgid "Version"
 msgid "Change Version"
-msgstr "Sürüm"
+msgstr "Sürümü Değiştir"
 
 #: src/properties_page/properties_page.blp:158
 msgid "Upgrade or downgrade this package"
-msgstr ""
+msgstr "Bu paketi yükseltme veya düşürme"
 
 #: src/properties_page/properties_page.blp:167
 msgid "Installed Size"
@@ -950,26 +815,24 @@ msgid "Runtime"
 msgstr "Çalışma Zamanı"
 
 #: src/properties_page/properties_page.blp:188
-#, fuzzy
-#| msgid "Disable Auto Removal"
 msgid "Disable Automactic Removal"
 msgstr "Otomatik Kaldırmayı Devre Dışı Bırak"
 
 #: src/properties_page/properties_page.blp:189
 msgid "Pin this runtime to keep it installed"
-msgstr ""
+msgstr "Yüklü tutmak için bu çalışma zamanını sabitleyin"
 
 #: src/properties_page/properties_page.blp:200
 msgid "Package Information"
-msgstr ""
+msgstr "Paket Bilgileri"
 
 #: src/properties_page/properties_page.blp:203
 msgid "Application ID"
-msgstr ""
+msgstr "Uygulama Kimliği"
 
 #: src/properties_page/properties_page.blp:219
 msgid "Architecture"
-msgstr ""
+msgstr "Mimari"
 
 #: src/properties_page/properties_page.blp:227
 msgid "Branch"
@@ -977,13 +840,11 @@ msgstr "Dal"
 
 #: src/properties_page/properties_page.blp:235
 msgid "License"
-msgstr ""
+msgstr "Lisans"
 
 #: src/properties_page/properties_page.blp:244
-#, fuzzy
-#| msgid "Installation"
 msgid "Installation Information"
-msgstr "Kurulum"
+msgstr "Kurulum Bilgileri"
 
 #: src/properties_page/properties_page.blp:255
 msgid "Origin"
@@ -991,7 +852,7 @@ msgstr "Köken"
 
 #: src/properties_page/properties_page.blp:263
 msgid "Collection"
-msgstr ""
+msgstr "Koleksiyon"
 
 #: src/properties_page/properties_page.blp:271
 msgid "Installation"
@@ -999,25 +860,23 @@ msgstr "Kurulum"
 
 #: src/properties_page/properties_page.blp:279
 msgid "Commit Information"
-msgstr ""
+msgstr "Taahhüt Bilgileri"
 
 #: src/properties_page/properties_page.blp:290
 msgid "Parent"
-msgstr ""
+msgstr "Üst"
 
 #: src/properties_page/properties_page.blp:298
 msgid "Subject"
-msgstr ""
+msgstr "Konu"
 
 #: src/properties_page/properties_page.blp:306
 msgid "Date"
-msgstr ""
+msgstr "Tarih"
 
 #: src/properties_page/properties_page.py:75
-#, fuzzy
-#| msgid "Properties"
 msgid "{} Properties"
-msgstr "Özellikler"
+msgstr "{} Özellikler"
 
 #: src/properties_page/properties_page.py:80
 msgid "Properties"
@@ -1035,20 +894,16 @@ msgstr "Kullanıcı Verisi Yok"
 
 #: src/properties_page/properties_page.py:129
 #: src/properties_page/properties_page.py:145
-#, fuzzy
-#| msgid "Could not show properties"
 msgid "Could not get properties"
-msgstr "Özellikler gösterilemiyor"
+msgstr "Özellikler alınamadı"
 
 #: src/properties_page/properties_page.py:142
 msgid "No version information found"
-msgstr ""
+msgstr "Sürüm bilgisi bulunamadı"
 
 #: src/properties_page/properties_page.py:162
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open data"
-msgstr "Klasör açılamadı"
+msgstr "Veri dosyası açılamadı"
 
 #: src/properties_page/properties_page.py:181
 #: src/properties_page/properties_page.py:183
@@ -1056,163 +911,122 @@ msgstr "Klasör açılamadı"
 #: src/properties_page/properties_page.py:240 src/user_data_page/data_box.py:99
 #: src/user_data_page/user_data_page.py:183
 #: src/user_data_page/user_data_page.py:197
-#, fuzzy
-#| msgid "Could not trash user data"
 msgid "Could not trash data"
-msgstr "Kullanıcı verileri çöpe taşınamadı"
+msgstr "Veriler çöpe atılamadı"
 
 #: src/properties_page/properties_page.py:186
 msgid "Send {}'s User Data to the Trash?"
 msgstr "{} Kullanıcı Verilerini Çöpe Taşınsın Mı?"
 
 #: src/properties_page/properties_page.py:187
-#, fuzzy
-#| msgid "Your files and data for this app will be sent to the trash."
 msgid "Your settings and data for this app will be sent to the trash"
-msgstr "Bu uygulama için olan dosyalarınız ve verileriniz çöpe taşınacak."
+msgstr ""
+"Bu uygulama için ayarlarınız ve verileriniz çöp kutusuna gönderilecektir"
 
 #: src/properties_page/properties_page.py:190
 msgid "Trash Data"
 msgstr "Çöp Veri"
 
 #: src/properties_page/properties_page.py:199
-#, fuzzy
-#| msgid "Could not disable updates for {}"
 msgid "Could not Disable Updates"
-msgstr "{} için güncellemeler devre dışı bırakılamadı"
+msgstr "Güncellemeler Devre Dışı Bırakılamadı"
 
 #: src/properties_page/properties_page.py:199
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not Enable Updates"
-msgstr "Veriler yönetilemedi"
+msgstr "Güncellemeler Etkinleştirilemedi"
 
 #: src/properties_page/properties_page.py:205
-#, fuzzy
-#| msgid "Disable Updates"
 msgid "Disabled Updates"
-msgstr "Güncellemeleri Devre Dışı Bırak"
+msgstr "Güncellemeler Etkisiz"
 
 #: src/properties_page/properties_page.py:205
-#, fuzzy
-#| msgid "Enable Updates"
 msgid "Enabled Updates"
-msgstr "Güncellemeleri Etkinleştir"
+msgstr "Etkin Güncellemeler"
 
 #: src/properties_page/properties_page.py:217
-#, fuzzy
-#| msgid "Could not disable auto removal"
 msgid "Could not Disable Autoremoval"
-msgstr "Otomatik kaldırma devre dışı bırakılamıyor"
+msgstr "Otomatik Kaldırma Devre Dışı Bırakılamadı"
 
 #: src/properties_page/properties_page.py:217
-#, fuzzy
-#| msgid "Could not enable auto removal"
 msgid "Could not Enable Autoremoval"
-msgstr "Otomatik kaldırma etkinleştirilemiyor"
+msgstr "Otomatik Kaldırma Etkinleştirilemedi"
 
 #: src/properties_page/properties_page.py:222
-#, fuzzy
-#| msgid "Disable Auto Removal"
 msgid "Disabled Autoremoval"
-msgstr "Otomatik Kaldırmayı Devre Dışı Bırak"
+msgstr "Otomatik Kaldırma Devre Dışı"
 
 #: src/properties_page/properties_page.py:222
-#, fuzzy
-#| msgid "Enable Auto Removal"
 msgid "Enabled Autoremoval"
-msgstr "Otomatik Kaldırmayı Etkinleştir"
+msgstr "Etkinleştirilmiş Otomatik Kaldırma"
 
 #: src/properties_page/properties_page.py:245
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not uninstall"
-msgstr "Uygulama kurulamadı"
+msgstr "Uygulama kaldırılamadı"
 
 #: src/properties_page/properties_page.py:249
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstalled {}"
-msgstr "{} Kaldırılsın Mı?"
+msgstr "Kaldırıldı {}"
 
 #: src/properties_page/properties_page.py:261
-#, fuzzy
-#| msgid "Opened {}"
 msgid "Opening {}…"
-msgstr "{} Açıldı"
+msgstr "Açıldı {}…"
 
 #: src/properties_page/properties_page.py:266
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not open {}"
-msgstr "{} kaldırılamadı"
+msgstr "Açılamadı {}"
 
 #: src/properties_page/properties_page.py:281
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstalled {}"
-msgstr "{} Kaldırılsın Mı?"
+msgstr "Yeniden yüklendi {}"
 
 #: src/properties_page/properties_page.py:307
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstall {}?"
-msgstr "{} Kaldırılsın Mı?"
+msgstr "Yeniden yükleyin {}?"
 
 #: src/properties_page/properties_page.py:308
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
 msgstr ""
+"Bu paket kaldırılacak ve ardından aynı uzaktan kumanda ve kurulumdan yeniden "
+"yüklenecektir."
 
 #: src/properties_page/properties_page.py:311
 #: src/properties_page/properties_page.py:372
-#, fuzzy
-#| msgid "Uninstall"
 msgid "Reinstall"
-msgstr "Kaldır"
+msgstr "Yenidenyükle"
 
 #: src/properties_page/properties_page.py:328
 msgid "Copied launch command"
 msgstr "Başlatma komutu kopyalandı"
 
 #: src/properties_page/properties_page.py:330
-#, fuzzy
-#| msgid "Copied launch command"
 msgid "Could not copy launch command"
-msgstr "Başlatma komutu kopyalandı"
+msgstr "Başlatma komutu kopyalanamadı"
 
 #: src/properties_page/properties_page.py:336
 msgid "Could not show details"
 msgstr "Ayrıntılar gösterilemedi"
 
 #: src/properties_page/properties_page.py:366
-#, fuzzy
-#| msgid "View Properties"
 msgid "Loading Properties"
-msgstr "Özellikleri Göster"
+msgstr "Yükleme Özellikleri"
 
 #: src/properties_page/properties_page.py:369
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "View Snapshots"
-msgstr "Yeni Anlık Görüntü"
+msgstr "Anlık Görüntüleri Görüntüle"
 
 #: src/properties_page/properties_page.py:370
 msgid "Copy Launch Command"
 msgstr "Başlatma Komutunu Kopyala"
 
 #: src/properties_page/properties_page.py:371
-#, fuzzy
-#| msgid "Show Details in Store"
 msgid "Show Details"
-msgstr "Ayrıntıları Mağazada Göster"
+msgstr "Detayları Göster"
 
 #: src/change_version_page/change_version_page.blp:5
-#, fuzzy
-#| msgid "Version"
 msgid "Change Versions"
-msgstr "Sürüm"
+msgstr "Sürümleri Değiştir"
 
 #: src/change_version_page/change_version_page.blp:56
 msgid "Select a Release"
@@ -1228,23 +1042,19 @@ msgstr ""
 
 #: src/change_version_page/change_version_page.py:69
 msgid "Currently Installed Version"
-msgstr ""
+msgstr "Şu Anda Yüklü Sürüm"
 
 #: src/change_version_page/change_version_page.py:86
-#, fuzzy
-#| msgid "Could not create snapshot"
 msgid "Could not get versions"
-msgstr "Anlık görüntü oluşturulamadı"
+msgstr "Sürümler alınamadı"
 
 #: src/change_version_page/change_version_page.py:93
 msgid "Changed {}'s Version"
-msgstr ""
+msgstr "{}'in Sürümü Değiştirildi"
 
 #: src/change_version_page/change_version_page.py:117
-#, fuzzy
-#| msgid "Version"
 msgid "{} Versions"
-msgstr "Sürüm"
+msgstr "{} Sürüm"
 
 #: src/change_version_page/change_version_page.py:118
 msgid "Ensure that {} will never be updated to a newer version"
@@ -1258,29 +1068,23 @@ msgstr "Sürümler Getiriliyor"
 #: src/change_version_page/change_version_worker.py:70
 #: src/change_version_page/change_version_worker.py:74
 msgid "Error occurred while changing version"
-msgstr ""
+msgstr "Sürüm değiştirilirken hata oluştu"
 
 #: src/change_version_page/change_version_worker.py:85
-#, fuzzy
-#| msgid "Could not create snapshot"
 msgid "Could not cancel version change"
-msgstr "Anlık görüntü oluşturulamadı"
+msgstr "Sürüm değiştirilirken hata oluştu"
 
 #: src/change_version_page/change_version_worker.py:106
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not change version"
-msgstr "Veriler yönetilemedi"
+msgstr "Sürüm değiştirilemedi"
 
 #: src/change_version_page/change_version_worker.py:106
 msgid "Another package is changing version."
-msgstr ""
+msgstr "Başka bir paket sürümü değiştiriyor."
 
 #: src/remotes_page/add_remote_dialog.blp:5 src/install_page/select_page.blp:27
-#, fuzzy
-#| msgid "Add Remote"
 msgid "Add a Remote"
-msgstr "Uzak Ekle"
+msgstr "Uzaktan Kumanda Ekleme"
 
 #: src/remotes_page/add_remote_dialog.blp:22
 msgid "Add"
@@ -1288,7 +1092,7 @@ msgstr "Ekle"
 
 #: src/remotes_page/add_remote_dialog.blp:40
 msgid "Title"
-msgstr ""
+msgstr "Başlık"
 
 #: src/remotes_page/add_remote_dialog.blp:43
 #: src/user_data_page/user_data_page.blp:190
@@ -1297,44 +1101,32 @@ msgstr "Ad"
 
 #: src/remotes_page/add_remote_dialog.blp:46
 msgid "Repo URL"
-msgstr ""
+msgstr "Depo URL"
 
 #: src/remotes_page/add_remote_dialog.py:54
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not add remote"
-msgstr "{} eklenemedi"
+msgstr "Uzaktan bağlantı eklenemedi"
 
 #: src/remotes_page/add_remote_dialog.py:57
-#, fuzzy
-#| msgid "Add {}?"
 msgid "Added {}"
-msgstr "{} Eklensin Mi?"
+msgstr "Eklenmiş {}"
 
 #. Apply
 #: src/remotes_page/add_remote_dialog.py:107
-#, fuzzy
-#| msgid "Add Remote"
 msgid "remote"
-msgstr "Uzak Ekle"
+msgstr "uzaktan"
 
 #: src/remotes_page/remote_row.blp:21
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Set a Filter for this Remote"
-msgstr "Uzaklara Göre Süz"
+msgstr "Bu uzak bağlantı için bir süzgeç ayarlayın"
 
 #: src/remotes_page/remote_row.blp:29
-#, fuzzy
-#| msgid "More Functions"
 msgid "More Actions"
-msgstr "Daha Fazla İşlev"
+msgstr "Daha Fazla Eylem"
 
 #: src/remotes_page/remote_row.blp:37
-#, fuzzy
-#| msgid "Copy Ref"
 msgid "Copy Title"
-msgstr "Referansı Kopyala"
+msgstr "Başlığı Kopyala"
 
 #: src/remotes_page/remote_row.blp:41
 msgid "Copy Name"
@@ -1353,43 +1145,33 @@ msgid "Remove"
 msgstr "Kaldır"
 
 #: src/remotes_page/remote_row.py:24 src/remotes_page/remote_row.py:44
-#, fuzzy
-#| msgid "Could not enable {}"
 msgid "Could not enable remote"
-msgstr "{} etkinleştirilemedi"
+msgstr "Uzaktan kumanda etkinleştirilemedi"
 
 #: src/remotes_page/remote_row.py:24
 msgid "Remote is already enabled"
-msgstr ""
+msgstr "Uzaktan kumanda zaten etkin"
 
 #: src/remotes_page/remote_row.py:51
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Enabled remote"
-msgstr "Kurulu Uzaklar"
+msgstr "Etkin uzaktan kumanda"
 
 #: src/remotes_page/remote_row.py:75 src/remotes_page/remote_row.py:153
-#, fuzzy
-#| msgid "Updates Disabled"
 msgid "Remote is Disabled"
-msgstr "Güncellemeler Devre Dışı"
+msgstr "Uzaktan Kumanda Devre Dışı"
 
 #: src/remotes_page/remote_row.py:77
-#, fuzzy
-#| msgid "Disabled"
 msgid "Disabled remote"
-msgstr "Devre Dışı"
+msgstr "Devre dışı bırakılmış uzaktan kumanda"
 
 #: src/remotes_page/remote_row.py:95 src/remotes_page/remote_row.py:107
 #: src/remotes_page/remote_row.py:111
-#, fuzzy
-#| msgid "Could not disable {}"
 msgid "Could not disable remote"
-msgstr "{} devre dışı bırakılamadı"
+msgstr "Uzaktan devre dışı bırakılamadı"
 
 #: src/remotes_page/remote_row.py:95
 msgid "Remote is already disabled"
-msgstr ""
+msgstr "Uzaktan kumanda zaten devre dışı"
 
 #: src/remotes_page/remote_row.py:121
 msgid "Disable {}?"
@@ -1400,10 +1182,8 @@ msgid "Any installed apps from {} will stop receiving updates"
 msgstr "{} uzağından kurulan tüm uygulamalar güncelleme almayı durduracak"
 
 #: src/remotes_page/remote_row.py:133
-#, fuzzy
-#| msgid "Copied ref"
 msgid "Copied title"
-msgstr "Referans Kopyalandı"
+msgstr "Kopyalanan başlık"
 
 #: src/remotes_page/remote_row.py:136
 msgid "Copied name"
@@ -1414,61 +1194,47 @@ msgid "Manage Remotes"
 msgstr "Uzakları Yönet"
 
 #: src/remotes_page/remotes_page.blp:40
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Search Remotes"
-msgstr "Uzaklara Göre Süz"
+msgstr "Uzaktan Kumandaları Ara"
 
 #: src/remotes_page/remotes_page.blp:47
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Current Remotes"
-msgstr "Kurulu Uzaklar"
+msgstr "Güncel Kumandalar"
 
 #: src/remotes_page/remotes_page.blp:48
-#, fuzzy
-#| msgid "Remote will be available to every user on the system"
 msgid "Remotes available on your system"
-msgstr "Uzak sistemdeki tüm kullanıcılar tarafından kullanılabilecek"
+msgstr "Sisteminizde bulunan kumandalar"
 
 #: src/remotes_page/remotes_page.blp:55
 msgid "Show Disabled"
 msgstr "Devre Dışı Olanları Göster"
 
 #: src/remotes_page/remotes_page.blp:75
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "No Enabled Remotes"
-msgstr "Kurulu Uzaklar"
+msgstr "Etkin Uzaktan Kumanda Yok"
 
 #: src/remotes_page/remotes_page.blp:81
 msgid "You only have disabled remotes on this system"
-msgstr ""
+msgstr "Bu sistemde yalnızca devre dışı bırakılmış uzaktan kumandalarınız var"
 
 #: src/remotes_page/remotes_page.blp:107
 msgid "No Remotes Found"
 msgstr "Uzak Bulunamadı"
 
 #: src/remotes_page/remotes_page.blp:113
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed"
 msgid ""
 "Warehouse cannot see the current remotes or your system has no remotes added"
 msgstr ""
-"Warehouse, kurulu Flatpak listesini göremiyor ya da sistemde kurulu Flatpak "
-"yok"
+"Warehouse mevcut uzak bağlantıları göremiyor veya sisteminize herhangi bir "
+"uzak bağlantı eklenmemiş"
 
 #: src/remotes_page/remotes_page.blp:126
-#, fuzzy
-#| msgid "Add a Popular Remote"
 msgid "Add Popular Remotes"
-msgstr "Popüler Uzak Ekle"
+msgstr "Popüler Uzak Bağlantıları Ekle"
 
 #: src/remotes_page/remotes_page.blp:127
 msgid "Add new remotes to get more software"
-msgstr ""
+msgstr "Daha fazla yazılım almak için yeni uzaktan kumandalar ekleyin"
 
 #: src/remotes_page/remotes_page.blp:131
 msgid "Add Other Remotes"
@@ -1480,7 +1246,7 @@ msgstr "Depo Dosyası Ekle"
 
 #: src/remotes_page/remotes_page.blp:135
 msgid "Open a downloaded repo file to add"
-msgstr ""
+msgstr "Eklemek için indirilen bir depo dosyasını açın"
 
 #: src/remotes_page/remotes_page.blp:143
 msgid "Add a Custom Remote"
@@ -1488,7 +1254,7 @@ msgstr "Özel Uzak Ekle"
 
 #: src/remotes_page/remotes_page.blp:144
 msgid "Manually enter new remote details"
-msgstr ""
+msgstr "Yeni uzaktan kumanda ayrıntılarını elle girin"
 
 #: src/remotes_page/remotes_page.py:32
 msgid "The open source, pay-what-you-want app store from elementary"
@@ -1518,19 +1284,15 @@ msgstr "WebKit Geliştirici ve Çalışma Zamanı SDK'sının merkezi deposu"
 
 #: src/remotes_page/remotes_page.py:152
 msgid "Showing all packages from {}"
-msgstr ""
+msgstr "{} adresindeki tüm paketler gösteriliyor"
 
 #: src/remotes_page/remotes_page.py:173
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not remove remote"
-msgstr "{} kaldırılamadı"
+msgstr "Uzaktan kumanda kaldırılamadı"
 
 #: src/remotes_page/remotes_page.py:180
-#, fuzzy
-#| msgid "Remove {}?"
 msgid "Removed {}"
-msgstr "{} Kaldırılsın Mı?"
+msgstr "Kaldırıldı {}"
 
 #: src/remotes_page/remotes_page.py:188
 msgid "Remove {}?"
@@ -1538,10 +1300,8 @@ msgstr "{} Kaldırılsın Mı?"
 
 #: src/remotes_page/remotes_page.py:224 src/remotes_page/remotes_page.py:234
 #: src/remotes_page/remotes_page.py:236
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open file"
-msgstr "Klasör açılamadı"
+msgstr "Dosya açılamadı"
 
 #: src/remotes_page/remotes_page.py:239
 msgid "Flatpak Repos"
@@ -1553,38 +1313,28 @@ msgid "Adding Remote"
 msgstr "Uzak Ekleniyor"
 
 #: src/remotes_page/remotes_page.py:286
-#, fuzzy
-#| msgid "Adding Remote"
 msgid "Loading Remotes"
-msgstr "Uzak Ekleniyor"
+msgstr "Kumandaları Yükleme"
 
 #: src/user_data_page/data_box.blp:56
-#, fuzzy
-#| msgid "Copy Name"
 msgid "Copy Path"
-msgstr "Adı Kopyala"
+msgstr "Kopyalama Yolu"
 
 #: src/user_data_page/data_box.blp:68
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "Attempt to Install"
-msgstr "Kurmayı Deneyelim Mi?"
+msgstr "Yükleme Denemesi"
 
 #: src/user_data_page/data_box.py:58
 msgid "Copied data path"
-msgstr ""
+msgstr "Kopyalanan veri yolu"
 
 #: src/user_data_page/data_box.py:60
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not copy data path"
-msgstr "Veriler yönetilemedi"
+msgstr "Veri yolu kopyalanamadı"
 
 #: src/user_data_page/data_box.py:65
-#, fuzzy
-#| msgid "Open Data Folder"
 msgid "Opened data folder"
-msgstr "Veri Klasörünü Aç"
+msgstr "Açılan veri klasörü"
 
 #: src/user_data_page/data_box.py:67 src/snapshot_page/snapshot_page.py:253
 #: src/snapshot_page/snapshots_list_page.py:77
@@ -1592,16 +1342,12 @@ msgid "Could not open folder"
 msgstr "Klasör açılamadı"
 
 #: src/user_data_page/data_box.py:113
-#, fuzzy
-#| msgid "Trash User Data"
 msgid "Trash {}'s Data?"
-msgstr "Kullanıcı Verilerini Çöpe Taşı"
+msgstr "Çöp {}'ün Verileri?"
 
 #: src/user_data_page/data_box.py:113
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "{}'s data will be sent to the trash"
-msgstr "Bu klasörler çöpe taşınacak."
+msgstr "{}'in verileri çöp kutusuna gönderilecek"
 
 #: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:210
 #: src/snapshot_page/snapshot_page.py:480
@@ -1610,31 +1356,23 @@ msgstr "Devam Et"
 
 #: src/user_data_page/data_subpage.blp:13
 msgid "No Title Set"
-msgstr ""
+msgstr "Başlık Seti Yok"
 
 #: src/user_data_page/data_subpage.blp:28
-#, fuzzy
-#| msgid "Downgrading…"
 msgid "Loading Size…"
-msgstr "Sürüm düşürülüyor…"
+msgstr "Boyut Yükleniyor…"
 
 #: src/user_data_page/data_subpage.py:232
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "No Active Data"
-msgstr "Artık Veri Yok"
+msgstr "Etkin Veri Yok"
 
 #: src/user_data_page/data_subpage.py:233
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed"
 msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
 msgstr ""
-"Warehouse, kurulu Flatpak listesini göremiyor ya da sistemde kurulu Flatpak "
-"yok"
+"Warehouse herhangi bir aktif kullanıcı verisi göremiyor veya sisteminizde "
+"aktif kullanıcı verisi mevcut değil"
 
 #: src/user_data_page/data_subpage.py:236
 msgid "No Leftover Data"
@@ -1646,124 +1384,94 @@ msgstr "Artık kullanıcı verisi yok"
 
 #: src/user_data_page/user_data_page.blp:43
 #: src/user_data_page/user_data_page.blp:64
-#, fuzzy
-#| msgid "Trash User Data"
 msgid "Search User Data"
-msgstr "Kullanıcı Verilerini Çöpe Taşı"
+msgstr "Kullanıcı Verilerini Ara"
 
 #: src/user_data_page/user_data_page.blp:49
-#, fuzzy
-#| msgid "No User Data"
 msgid "Sort User Data"
-msgstr "Kullanıcı Verisi Yok"
+msgstr "Kullanıcı Verilerini Sırala"
 
 #: src/user_data_page/user_data_page.blp:54
-#, fuzzy
-#| msgid "User Data"
 msgid "Select User Data"
-msgstr "Kullanıcı Verisi"
+msgstr "Kullanıcı Verilerini Seçin"
 
 #: src/user_data_page/user_data_page.blp:120
 #: src/snapshot_page/snapshot_page.blp:159
-#, fuzzy
-#| msgid "View More"
 msgid "More"
-msgstr "Daha Çoğunu Gör"
+msgstr "Dahası"
 
 #: src/user_data_page/user_data_page.blp:169
 msgid "Ascending"
-msgstr ""
+msgstr "Artan"
 
 #: src/user_data_page/user_data_page.blp:177
 msgid "Descending"
-msgstr ""
+msgstr "Azalan"
 
 #: src/user_data_page/user_data_page.blp:198
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: src/user_data_page/user_data_page.blp:206
 msgid "Size"
-msgstr ""
+msgstr "Boyut"
 
 #: src/user_data_page/user_data_page.py:75
 #: src/user_data_page/user_data_page.py:77
-#, fuzzy
-#| msgid "Loading User Data"
 msgid "Loading Size"
-msgstr "Kullanıcı Verileri Yükleniyor"
+msgstr "Boyutu Yükleniyor"
 
 #: src/user_data_page/user_data_page.py:151
-#, fuzzy
-#| msgid "Could not apply snapshot"
 msgid "Could not copy paths"
-msgstr "Anlık görüntü uygulanamadı"
+msgstr "Yollar kopyalanamadı"
 
 #: src/user_data_page/user_data_page.py:151
 #: src/user_data_page/user_data_page.py:197
 msgid "No boxes were selected"
-msgstr ""
+msgstr "Hiçbir kutu seçilmedi"
 
 #: src/user_data_page/user_data_page.py:154
-#, fuzzy
-#| msgid "Copied name"
 msgid "Copied paths"
-msgstr "Ad kopyalandı"
+msgstr "Kopyalanan yollar"
 
 #: src/user_data_page/user_data_page.py:185
-#, fuzzy
-#| msgid "Trashed user data"
 msgid "Trashed data"
-msgstr "Çöpe taşınan kullanıcı verileri"
+msgstr "Çöpe atılan veriler"
 
 #: src/user_data_page/user_data_page.py:208
-#, fuzzy
-#| msgid "Trash Data"
 msgid "Trash Data?"
-msgstr "Çöp Veri"
+msgstr "Çöp Verileri?"
 
 #: src/user_data_page/user_data_page.py:208
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "Data will be sent to the trash"
-msgstr "Bu klasörler çöpe taşınacak."
+msgstr "Veriler çöp kutusuna gönderilecek"
 
 #: src/user_data_page/user_data_page.py:246
 #: src/user_data_page/user_data_page.py:269
-#, fuzzy
-#| msgid "Active Commit"
 msgid "Active Data"
-msgstr "Etkin İşleme"
+msgstr "Aktif Veri"
 
 #: src/user_data_page/user_data_page.py:247
 #: src/user_data_page/user_data_page.py:275
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Leftover Data"
-msgstr "Artık Veri Yok"
+msgstr "Artık Veriler"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
-#, fuzzy
-#| msgid "Search List"
 msgid "Search Apps"
-msgstr "Listede Ara"
+msgstr "Uygulamaları Ara"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
-msgstr ""
+msgstr "Oluştur"
 
 #: src/snapshot_page/new_snapshot_dialog.py:110
-#, fuzzy
-#| msgid "Creating Snapshots"
 msgid "Creating Snapshot"
-msgstr "Anlık Görüntüler Oluşturuluyor"
+msgstr "Anlık Görüntü Oluştur"
 
 #: src/snapshot_page/new_snapshot_dialog.py:192
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Name these Snapshots"
-msgstr "Anlık Görüntü Oluştur"
+msgstr "Bu Anlık Görüntüleri adlandırın"
 
 #: src/snapshot_page/new_snapshot_dialog.py:196
 #: src/snapshot_page/snapshot_page.blp:40
@@ -1773,28 +1481,20 @@ msgid "New Snapshot"
 msgstr "Yeni Anlık Görüntü"
 
 #: src/snapshot_page/new_snapshot_dialog.py:200
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "Name this Snapshot"
-msgstr "Yeni Anlık Görüntü"
+msgstr "Bu Anlık Görüntüyü Adlandırın"
 
 #: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:58
-#, fuzzy
-#| msgid "Copy Name"
 msgid "No Name Set"
-msgstr "Adı Kopyala"
+msgstr "İsimsiz Set"
 
 #: src/snapshot_page/snapshot_box.blp:23
-#, fuzzy
-#| msgid "No Remotes Found"
 msgid "No date found"
-msgstr "Uzak Bulunamadı"
+msgstr "Tarih bulunamadı"
 
 #: src/snapshot_page/snapshot_box.blp:30
-#, fuzzy
-#| msgid "No Results Found"
 msgid "No version found"
-msgstr "Sonuç Bulunamadı"
+msgstr "Sürüm bulunamadı"
 
 #: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:156
 msgid "Apply"
@@ -1802,98 +1502,72 @@ msgstr "Uygula"
 
 #: src/snapshot_page/snapshot_box.blp:55
 msgid "Rename"
-msgstr ""
+msgstr "Yeniden adlandır"
 
 #: src/snapshot_page/snapshot_box.blp:84
-#, fuzzy
-#| msgid "Create Snapshots?"
 msgid "Rename Snapshot?"
-msgstr "Anlık Görüntü Oluşturulsun Mu?"
+msgstr "Anlık Görüntüyü Yeniden Adlandır?"
 
 #: src/snapshot_page/snapshot_box.blp:94
-#, fuzzy
-#| msgid "Copied name"
 msgid "Confirm Rename"
-msgstr "Ad kopyalandı"
+msgstr "Yeniden Adlandırmayı Onayla"
 
 #: src/snapshot_page/snapshot_box.py:33 src/snapshot_page/snapshot_box.py:45
 #: src/snapshot_page/snapshot_box.py:61
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not write data"
-msgstr "Veriler yönetilemedi"
+msgstr "Veri yazılamadı"
 
 #: src/snapshot_page/snapshot_box.py:98
 msgid "Could not trash snapshot"
 msgstr "Anlık görüntü çöpe taşınamadı"
 
 #: src/snapshot_page/snapshot_box.py:102
-#, fuzzy
-#| msgid "Trash Snapshot"
 msgid "Trashed snapshot"
-msgstr "Anlık Görüntüyü Çöpe Taşı"
+msgstr "Çöpe atılmış anlık görüntü"
 
 #: src/snapshot_page/snapshot_box.py:112
 msgid "Trash Snapshot?"
 msgstr "Anlık Görüntü Çöpe Taşınsın Mı?"
 
 #: src/snapshot_page/snapshot_box.py:112
-#, fuzzy
-#| msgid "This snapshot and its contents will be sent to the trash."
 msgid "This snapshot will be sent to the trash"
-msgstr "Bu anlık görüntü ve içeriği çöpe taşınacak."
+msgstr "Bu anlık görüntü çöp kutusuna gönderilecektir"
 
 #: src/snapshot_page/snapshot_box.py:142
-#, fuzzy
-#| msgid "Applying Snapshot…"
 msgid "Applying Snapshot"
-msgstr "Anlık Görüntü Uygulanıyor…"
+msgstr "Anlık Görüntüyü Uygulama"
 
 #: src/snapshot_page/snapshot_box.py:152
 msgid "Apply Snapshot?"
 msgstr "Anlık Görüntü Uygulansın Mı?"
 
 #: src/snapshot_page/snapshot_box.py:153
-#, fuzzy
-#| msgid "Your files and data for this app will be sent to the trash."
 msgid "Any current user data for this app will be trashed"
-msgstr "Bu uygulama için olan dosyalarınız ve verileriniz çöpe taşınacak."
+msgstr "Bu uygulama için mevcut tüm kullanıcı verileri çöpe atılacaktır"
 
 #: src/snapshot_page/snapshot_box.py:182
-#, fuzzy
-#| msgid "Version {}"
 msgid "Version: {}"
-msgstr "Sürüm {}"
+msgstr "Sürüm: {}"
 
 #: src/snapshot_page/snapshot_page.blp:53
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Search Snapshots"
-msgstr "Anlık Görüntü Oluştur"
+msgstr "Anlık Görüntüleri Ara"
 
 #: src/snapshot_page/snapshot_page.blp:70
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Active Snapshots"
-msgstr "Anlık Görüntü Oluştur"
+msgstr "Aktif Anlık Görüntüler"
 
 #: src/snapshot_page/snapshot_page.blp:81
-#, fuzzy
-#| msgid "Display properties of installed Flatpaks"
 msgid "Snapshots of installed apps"
-msgstr "Kurulu Flatpak'lerin özelliklerini görüntüle"
+msgstr "Yüklü uygulamaların anlık görüntüleri"
 
 #: src/snapshot_page/snapshot_page.blp:99
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Leftover Snapshots"
-msgstr "Anlık Görüntü Oluştur"
+msgstr "Arta Kalan Anlık Görüntüler"
 
 #: src/snapshot_page/snapshot_page.blp:110
-#, fuzzy
-#| msgid "Search for Flatpaks that you want to install"
 msgid "Snapshots of apps that are no longer installed"
-msgstr "Kurmak istediğiniz Flatpak'leri arayın"
+msgstr "Artık yüklü olmayan uygulamaların anlık görüntüleri"
 
 #: src/snapshot_page/snapshot_page.blp:177
 msgid "Open Snapshots Folder"
@@ -1904,155 +1578,117 @@ msgid "No Snapshots"
 msgstr "Anlık Görüntü Yok"
 
 #: src/snapshot_page/snapshot_page.blp:183
-#, fuzzy
-#| msgid "Central repository of Flatpak applications"
 msgid "Create a Snapshot to save the state of any Flatpak application"
-msgstr "Flatpak uygulamalarının merkezi deposu"
+msgstr ""
+"Herhangi bir Flatpak uygulamasının durumunu kaydetmek için bir Anlık Görüntü "
+"oluşturun"
 
 #: src/snapshot_page/snapshot_page.blp:219
-#, fuzzy
-#| msgid "Snapshot applied"
 msgid "Snapshot Apps"
-msgstr "Anlık görüntü uygulandı"
+msgstr "Anlık Görüntü Uygulamaları"
 
 #: src/snapshot_page/snapshot_page.blp:223
-#, fuzzy
-#| msgid "Install"
 msgid "Install Apps"
-msgstr "Kur"
+msgstr "Uygulamaları Kurun"
 
 #: src/snapshot_page/snapshot_page.blp:227
-#, fuzzy
-#| msgid "Apply Snapshot"
 msgid "Apply Snapshots"
-msgstr "Uygula"
+msgstr "Anlık Görüntüler Uygula"
 
 #: src/snapshot_page/snapshot_page.blp:231
-#, fuzzy
-#| msgid "Trash Snapshot"
 msgid "Trash Snapshots"
-msgstr "Anlık Görüntüyü Çöpe Taşı"
+msgstr "Çöp Anlık Görüntüleri"
 
 #: src/snapshot_page/snapshot_page.py:101
-#, fuzzy
-#| msgid "Could not trash snapshot"
 msgid "Could not load Snapshots"
-msgstr "Anlık görüntü çöpe taşınamadı"
+msgstr "Anlık Görüntüler yüklenemedi"
 
 #: src/snapshot_page/snapshot_page.py:194
 msgid "Showing snapshots for {}"
-msgstr ""
+msgstr "{} için anlık görüntüler gösteriliyor"
 
 #: src/snapshot_page/snapshot_page.py:198
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "No snapshots for {}"
-msgstr "Anlık Görüntü Yok"
+msgstr "Anlık Görüntü Yok {}"
 
 #: src/snapshot_page/snapshot_page.py:198
 msgid "New"
-msgstr ""
+msgstr "Yeni"
 
 #: src/snapshot_page/snapshot_page.py:242
 #: src/snapshot_page/snapshot_page.py:244
 #: src/snapshot_page/snapshots_list_page.py:60
-#, fuzzy
-#| msgid "There is no User Data to Snapshot"
 msgid "No Data Found to Snapshot"
-msgstr "Anlık Görüntüsü Oluşturulacak Kullanıcı Verisi Yok"
+msgstr "Anlık Görüntü için Veri Bulunamadı"
 
 #: src/snapshot_page/snapshot_page.py:251
 #: src/snapshot_page/snapshots_list_page.py:75
-#, fuzzy
-#| msgid "Open Snapshots Folder"
 msgid "Opened snapshots folder"
-msgstr "Anlık Görüntüler Klasörünü Aç"
+msgstr "Açılan anlık görüntüler klasörü"
 
 #: src/snapshot_page/snapshot_page.py:386
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Copied Snapshot Paths"
-msgstr "Anlık Görüntü Yok"
+msgstr "Kopyalanan Anlık Görüntü Yolları"
 
 #: src/snapshot_page/snapshot_page.py:395
 msgid "No apps in your selection can be snapshotted"
-msgstr ""
+msgstr "Seçiminizdeki hiçbir uygulamanın anlık görüntüsü alınamaz"
 
 #: src/snapshot_page/snapshot_page.py:469
-#, fuzzy
-#| msgid "Applying Snapshot…"
 msgid "Applying Snapshots"
-msgstr "Anlık Görüntü Uygulanıyor…"
+msgstr "Anlık Görüntüleri Uygulama"
 
 #: src/snapshot_page/snapshot_page.py:475
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "No snapshots to extract"
-msgstr "Anlık Görüntü Yok"
+msgstr "Çıkarılacak anlık görüntü yok"
 
 #: src/snapshot_page/snapshot_page.py:475
 msgid "No snapshots were found to extract"
-msgstr ""
+msgstr "Çıkarılacak anlık görüntü bulunamadı"
 
 #: src/snapshot_page/snapshot_page.py:478
-#, fuzzy
-#| msgid "Apply Snapshot?"
 msgid "Apply These Snapshots?"
-msgstr "Anlık Görüntü Uygulansın Mı?"
+msgstr "Bu Anlık Görüntüleri Uygulayın?"
 
 #: src/snapshot_page/snapshot_page.py:478
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
+"Bu mevcut uygulamaların kullanıcı verilerini, çöpe atacak ve en yeni anlık "
+"görüntülerini uygulayacaktır"
 
 #: src/snapshot_page/snapshot_page.py:514
-#, fuzzy
-#| msgid "Trash Snapshot"
 msgid "Trashed snapshots"
-msgstr "Anlık Görüntüyü Çöpe Taşı"
+msgstr "Çöpe atılan anlık görüntüler"
 
 #: src/snapshot_page/snapshot_page.py:516
-#, fuzzy
-#| msgid "Could not trash snapshot"
 msgid "Could not trash snapshots"
-msgstr "Anlık görüntü çöpe taşınamadı"
+msgstr "Anlık görüntüler çöpe atılamadı"
 
 #: src/snapshot_page/snapshot_page.py:519
-#, fuzzy
-#| msgid "Trash Snapshot?"
 msgid "Trash Snapshots?"
-msgstr "Anlık Görüntü Çöpe Taşınsın Mı?"
+msgstr "Anlık Görüntüler Çöpe Atılsın mı?"
 
 #: src/snapshot_page/snapshot_page.py:519
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "These apps' snapshots will be sent to the trash"
-msgstr "Bu klasörler çöpe taşınacak."
+msgstr "Bu uygulamaların anlık görüntüleri çöp kutusuna gönderilecektir"
 
 #: src/snapshot_page/snapshot_page.py:558
-#, fuzzy
-#| msgid "Creating Snapshots"
 msgid "Loading Snapshots"
-msgstr "Anlık Görüntüler Oluşturuluyor"
+msgstr "Anlık Görüntüler Yükleniyor"
 
 #: src/snapshot_page/snapshots_list_page.blp:5
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Snapshots List"
-msgstr "Anlık Görüntü Yok"
+msgstr "Anlık Görüntüler Listesi"
 
 #: src/snapshot_page/snapshots_list_page.blp:13
-#, fuzzy
-#| msgid "Open Snapshots Folder"
 msgid "Open Snapshots Folder for this App"
-msgstr "Anlık Görüntüler Klasörünü Aç"
+msgstr "Bu Uygulama için Anlık Görüntüler Klasörünü Açın"
 
 #: src/snapshot_page/snapshots_list_page.py:30
 #: src/snapshot_page/snapshots_list_page.py:51
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "App not Installed"
-msgstr "Kurmayı Deneyelim Mi?"
+msgstr "Uygulama Yüklü Değil"
 
 #: src/snapshot_page/snapshots_list_page.py:54
 msgid "{} Snapshots"
@@ -2060,120 +1696,104 @@ msgstr "{} Anlık Görüntü"
 
 #: src/snapshot_page/tar_worker.py:81
 msgid "Error in snapshot handling"
-msgstr ""
+msgstr "Anlık görüntü işleme hatası"
 
 #: src/install_page/file_install_dialog.blp:33
 msgid "Review Selection"
-msgstr ""
+msgstr "İnceleme Seçimi"
 
 #. self.packages_group.set_title(_("Review Packages"))
 #: src/install_page/file_install_dialog.py:36
 msgid "The following packages will be installed"
-msgstr ""
+msgstr "Aşağıdaki paketler yüklenecektir"
 
 #: src/install_page/file_install_dialog.py:39
 msgid "Install a Package"
-msgstr ""
+msgstr "Paket Yükle"
 
 #. self.packages_group.set_title(_("Review Package"))
 #: src/install_page/file_install_dialog.py:41
 msgid "The following package will be installed"
-msgstr ""
+msgstr "Aşağıdaki paket yüklenecektir"
 
 #: src/install_page/file_install_dialog.py:42
 msgid "package"
-msgstr ""
+msgstr "paket"
 
 #: src/install_page/install_page.blp:41
-#, fuzzy
-#| msgid "Select"
 msgid "Select Source"
-msgstr "Seç"
+msgstr "Kaynak Seçiniz"
 
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
 msgid "Pending Packages"
-msgstr ""
+msgstr "Bekleyen Paketler"
 
 #: src/install_page/install_page.py:51
-#, fuzzy
-#| msgid "Installed Size"
 msgid "Installed Packages"
-msgstr "Kurulu Boyut"
+msgstr "Yüklü Paketler"
 
 #: src/install_page/install_page.py:68
 msgid "{} Pending Package"
-msgstr ""
+msgstr "{} Bekleyen Paket"
 
 #: src/install_page/install_page.py:73
 msgid "{} Pending Packages"
-msgstr ""
+msgstr "{} Bekleyen Paketler"
 
 #. Extra Object Creation
 #: src/install_page/install_page.py:88
-#, fuzzy
-#| msgid "Installing"
 msgid "Installing Packages"
-msgstr "Kuruluyor"
+msgstr "Paketler Kuruluyor"
 
 #: src/install_page/install_page.py:96
-#, fuzzy
-#| msgid "Installation"
 msgid "Loading Installation Options"
-msgstr "Kurulum"
+msgstr "Yükleme Seçenekleri"
 
 #: src/install_page/pending_page.blp:13 src/install_page/select_page.blp:37
 msgid "Add Packages"
-msgstr ""
+msgstr "Paket Ekleme"
 
 #: src/install_page/pending_page.blp:14
 msgid "Packages queued to install will show up here"
-msgstr ""
+msgstr "Yüklenmek üzere sıraya alınan paketler burada görünecektir"
 
 #: src/install_page/pending_page.py:34
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove All"
-msgstr "Kaldır"
+msgstr "Tümünü Kaldır"
 
 #: src/install_page/result_row.blp:8 src/install_page/result_row.py:42
 msgid "Add Package to Queue"
-msgstr ""
+msgstr "Paketi Kuyruğa Ekle"
 
 #: src/install_page/result_row.py:46
 msgid "Package has been Added to Queue"
-msgstr ""
+msgstr "Paket Kuyruğa Eklendi"
 
 #: src/install_page/result_row.py:50
 msgid "Remove Package from Queue"
-msgstr ""
+msgstr "Paketi Kuyruktan Kaldır"
 
 #: src/install_page/result_row.py:54
 msgid "This Package is Already Installed"
-msgstr ""
+msgstr "Bu Paket Zaten Yüklü"
 
 #: src/install_page/results_page.blp:5
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Search a Remote"
-msgstr "Uzaklara Göre Süz"
+msgstr "Uzakta Arama"
 
 #. hexpand: true;
 #: src/install_page/results_page.blp:20
-#, fuzzy
-#| msgid "Search for Flatpaks"
 msgid "Search for Packages"
-msgstr "Flatpaks Ara"
+msgstr "Paketleri Arayın"
 
 #: src/install_page/results_page.blp:26
 msgid "Search for Flatpaks"
 msgstr "Flatpaks Ara"
 
 #: src/install_page/results_page.blp:27
-#, fuzzy
-#| msgid "Search for Flatpaks that you want to install"
 msgid "Search for Flatpaks you want to install"
-msgstr "Kurmak istediğiniz Flatpak'leri arayın"
+msgstr "Yüklemek istediğiniz Flatpakları arayın"
 
 #: src/install_page/results_page.blp:31
 msgid "Too Many Results"
@@ -2188,48 +1808,41 @@ msgid "Try a different search term"
 msgstr "Farklı bir arama terimi deneyin"
 
 #: src/install_page/results_page.py:50
-#, fuzzy
-#| msgid "Search"
 msgid "Search {}"
-msgstr "Ara"
+msgstr "Ara {}"
 
 #: src/install_page/results_page.py:135
 msgid "Searching"
 msgstr "Aranıyor"
 
 #: src/install_page/select_page.blp:19
-#, fuzzy
-#| msgid "Refresh List of Remotes"
 msgid "Search in a Remote"
-msgstr "Uzaklar Listesini Yenile"
+msgstr "Uzakta Ara"
 
 #: src/install_page/select_page.blp:20
-#, fuzzy
-#| msgid "Choose a Remote to Search"
 msgid "Choose a remote to search for new packages"
-msgstr "Aranacak Uzağı Seç"
+msgstr "Yeni paketleri aramak için bir uzaktan kumanda seçin"
 
 #: src/install_page/select_page.blp:23
-#, fuzzy
-#| msgid "Updates Disabled"
 msgid "Online Searches Disabled"
-msgstr "Güncellemeler Devre Dışı"
+msgstr "Çevrimiçi Aramalar Devre Dışı"
 
 #: src/install_page/select_page.blp:24
 msgid "Your system has no remotes added to search from"
-msgstr ""
+msgstr "Sisteminizde arama yapmak için eklenmiş uzaktan kumanda yok"
 
 #: src/install_page/select_page.blp:28
 msgid "Add a remote to your system to enable online searching"
 msgstr ""
+"Çevrimiçi aramayı etkinleştirmek için sisteminize bir uzaktan kumanda ekleyin"
 
 #: src/install_page/select_page.blp:38
 msgid "Install packages from files on your system"
-msgstr ""
+msgstr "istemdeki dosyalardan paketleri yükle"
 
 #: src/install_page/select_page.py:60
 msgid "No files were found to install"
-msgstr ""
+msgstr "Yüklenecek dosya bulunamadı"
 
 #: src/install_page/select_page.py:70
 msgid "Flatpaks"
