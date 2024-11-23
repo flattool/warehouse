@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-11-23 01:24+0000\n"
+"PO-Revision-Date: 2024-11-24 01:34+0000\n"
 "Last-Translator: Racsu <me@racsu.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
@@ -80,63 +80,59 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
 msgstr ""
+"Tomar instantáneas de los datos de usuario de tus aplicaciones, guardando tu "
+"información"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
 msgstr ""
+"Instalar nuevos paquetes desde cualquier repositorio remoto o desde tu "
+"sistema"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:22
 msgid "Responsive UI to fit large and small screen sizes"
-msgstr ""
+msgstr "Interfaz adaptable para ajustarse a pantallas grandes y pequeñas"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
-msgstr ""
+msgstr "Gestionar paquetes instalados en una interfaz de tres paneles"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
-msgstr ""
+msgstr "Página de propiedades en ventana estrecha"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
-msgstr ""
+msgstr "Gestionar repositorios remotos instalados y agregar nuevos"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:58
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Manage Apps' User Data"
-msgstr "¿Eliminar los datos de usuario de las aplicaciones seleccionadas?"
+msgstr "Gestionar datos de usuario de las aplicaciones"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:62
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Backup Apps' User Data"
-msgstr "¿Eliminar los datos de usuario de las aplicaciones seleccionadas?"
+msgstr "Copia de seguridad de los datos de usuario de las apps"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
-msgstr ""
+msgstr "Instalar nuevos paquetes desde archivos o repositorios remotos"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
-msgstr ""
+msgstr "Página de instalación en ventana estrecha"
 
 #: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
 #: src/install_page/select_page.py:67
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not add files"
-msgstr "No se ha podido añadir {}"
+msgstr "No se han podido añadir los archivos"
 
 #: src/main.py:101
 msgid "No files were found"
-msgstr ""
+msgstr "No se han encontrado archivos"
 
 #: src/main.py:109
-#, fuzzy
-#| msgid "Add Flatpak Remote"
 msgid "Flatpaks & Remotes"
-msgstr "Añadir repositorio Flatpak"
+msgstr "Flatpaks & Repositorios"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
 #: src/main.py:217
@@ -152,23 +148,21 @@ msgid "Contributors"
 msgstr "Contribuidores"
 
 #: src/host_info.py:380 src/host_info.py:382
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not load packages"
-msgstr "No se ha podido añadir {}"
+msgstr "No se han podido cargar los paquetes"
 
 #: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
-msgstr ""
+msgstr "Ocurrieron errores durante la instalación"
 
 #: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
-msgstr ""
+msgstr "Ocurrió un error durante la instalación"
 
 #: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:70
 msgid "Failed to exit cleanly"
-msgstr ""
+msgstr "No se pudo cerrar correctamente"
 
 #: src/package_install_worker.py:104
 #, fuzzy
