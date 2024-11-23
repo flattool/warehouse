@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
 "PO-Revision-Date: 2024-11-23 01:23+0000\n"
-"Last-Translator: Racsu <me@racsu.com>\n"
+"Last-Translator: Tameno <tamenorias@gmail.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
 "Language: es\n"
@@ -62,6 +62,7 @@ msgstr "Fijar tiempos de ejecución y enmascarar Flatpaks"
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
 msgstr ""
+"Filtra paquetes y organiza datos, para encontrar lo que necesitas fácilmente"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
