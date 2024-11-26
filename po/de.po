@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-11-02 18:49+0000\n"
-"Last-Translator: Outtay <otti.florian@gmail.com>\n"
+"PO-Revision-Date: 2024-11-27 09:53+0000\n"
+"Last-Translator: Fabian Schöppach <fabian.schoeppach@mailbox.org>\n"
 "Language-Team: German <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/de/>\n"
 "Language: de\n"
@@ -56,44 +56,52 @@ msgstr "Ändere eine Flatpak Version um ungewollte Updates rückgängig zu mache
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
-msgstr ""
+msgstr "Laufzeitumgebungen anpinnen und Flatpaks markieren"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
-msgstr ""
+msgstr "Pakete filtern und Daten sortieren, um alles leicht zu finden"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
+"Aktuellen Benutzerdaten der Anwendung anzeigen, und nicht verwendete Daten "
+"bereinigen"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
 msgstr ""
+"Fügen Sie beliebte Flatpak-Repositories mit wenigen Klicks hinzu oder fügen "
+"Sie ein eigenes Repository hinzu"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
 msgstr ""
+"Erstellen Sie Schnappschüsse von den Benutzerdaten Ihrer Anwendungen und "
+"speichern Sie Ihre Daten"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
 msgstr ""
+"Installieren Sie neue Pakete aus einem beliebigen Repository oder von Ihrem "
+"System"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:22
 msgid "Responsive UI to fit large and small screen sizes"
-msgstr ""
+msgstr "Responsive UI, die sich an große und kleine Bildschirmgrößen anpasst"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
-msgstr ""
+msgstr "Verwalten Sie installierte Flatpak-Pakete in einer Benutzeroberfläche"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
-msgstr ""
+msgstr "Eigenschaftsseite in einer schmalen Ansicht"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
-msgstr ""
+msgstr "Verwalten Sie installierte Repositories und fügen Sie neue hinzu"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:58
 msgid "Manage Apps' User Data"
@@ -105,11 +113,11 @@ msgstr "Stell die Benutzerdaten der ausgewählten Anwendung her"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
-msgstr ""
+msgstr "Installieren Sie neue Anwendungen aus Dateien oder Repositories"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
-msgstr ""
+msgstr "Installationsseite in schmaler Ansicht"
 
 #: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
 #: src/install_page/select_page.py:67
@@ -156,7 +164,7 @@ msgstr "Während der Installation ist ein Fehler aufgetreten"
 #: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:70
 msgid "Failed to exit cleanly"
-msgstr ""
+msgstr "Fehler beim sauberen Beenden"
 
 #: src/package_install_worker.py:104
 #, fuzzy
@@ -165,60 +173,46 @@ msgid "Could not cancel installation"
 msgstr "Anwendung konnte nicht installiert werden"
 
 #: src/package_install_worker.py:125 src/package_install_worker.py:135
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not install packages"
-msgstr "Anwendung konnte nicht installiert werden"
+msgstr "Anwendungen konnte nicht installiert werden"
 
 #: src/package_install_worker.py:125
 msgid "Packages are currently being installed."
-msgstr ""
+msgstr "Anwendungen werden gerade installiert."
 
 #: src/package_install_worker.py:135
 msgid "No packages were requested to be installed."
-msgstr ""
+msgstr "Keine Anwendungen zum Installieren ausgewählt."
 
 #: src/gtk/app_row.blp:14 src/properties_page/properties_page.blp:100
 #: src/properties_page/properties_page.blp:179
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid "This package is End Of Life, and will not receive any security updates"
 msgstr ""
-"{} hat das Unterstützungsende erreicht und wird keine "
+"Diese Anwendung hat das Unterstützungsende erreicht und wird keine "
 "Sicherheitsaktualisierungen mehr erhalten"
 
 #: src/gtk/app_row.blp:21
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid ""
 "This app's runtime is End Of Life, and will not receive any security updates"
 msgstr ""
-"{} hat das Unterstützungsende erreicht und wird keine "
-"Sicherheitsaktualisierungen mehr erhalten"
+"Die Runtime dieser Anwendung hat das Unterstützungsende erreicht und wird "
+"keine Sicherheitsaktualisierungen mehr erhalten"
 
 #: src/gtk/app_row.blp:28
 msgid "This runtime will never be automatically removed"
-msgstr ""
+msgstr "Diese Runtime wird niemals automatisch entfernt werden"
 
 #: src/gtk/app_row.blp:34
 msgid "Updates are disabled for this package"
-msgstr ""
+msgstr "Updates für diese Anwendung deaktiviert"
 
 #: src/gtk/attempt_install_dialog.blp:5
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "Attempt an Install?"
 msgstr "Installieren?"
 
 #: src/gtk/attempt_install_dialog.blp:6
-#, fuzzy
-#| msgid "Warehouse will attempt to install apps matching the selected data."
 msgid "Warehouse will try to install the matching packages."
-msgstr ""
-"Warehouse wird versuchen Anwendungen zu installieren die den gewählten Daten "
-"entsprechen."
+msgstr "Warehouse wird versuchen, die passenden Pakete zu installieren."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:37
@@ -244,35 +238,32 @@ msgid "Install"
 msgstr "Installieren"
 
 #: src/gtk/attempt_install_dialog.blp:12
-#, fuzzy
-#| msgid "Choose a Remote to Search"
 msgid "Choose a Remote"
-msgstr "Wählen Sie eine Gegenstelle zum Suchen"
+msgstr "Wählen Sie ein Repository aus"
 
 #: src/gtk/attempt_install_dialog.blp:13
 msgid "Select a remote to attempt to install from"
 msgstr ""
+"Wählen Sie ein Repository aus, von dem die Anwendung installiert werden soll"
 
 #: src/gtk/attempt_install_dialog.py:18 src/packages_page/filters_page.py:122
 #: src/remotes_page/remote_row.py:148 src/install_page/pending_page.py:29
 #: src/install_page/select_page.py:31
-#, fuzzy
-#| msgid "Installation"
 msgid "Installation: {}"
-msgstr "Installation"
+msgstr "Installation: {}"
 
 #: src/gtk/attempt_install_dialog.py:71
 msgid "Can't find matching packages"
-msgstr ""
+msgstr "Kann keine passenden Anwendungen finden"
 
 #: src/gtk/attempt_install_dialog.py:71
 msgid "Your system has no remotes added"
-msgstr ""
+msgstr "Ihr System hat keine Repositories konfiguriert"
 
 #. Extra Object Creation
 #: src/gtk/error_toast.py:12
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
@@ -294,10 +285,8 @@ msgid "Refresh"
 msgstr "Aktualisieren"
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Open Files"
-msgstr "Filter setzen"
+msgstr "Dateien öffnen"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
@@ -313,46 +302,36 @@ msgstr "Schließen"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
-msgstr ""
+msgstr "Navigation"
 
 #: src/gtk/help-overlay.blp:34
 msgid "Show Packages Page"
-msgstr ""
+msgstr "Anwendungsseite anzeigen"
 
 #: src/gtk/help-overlay.blp:38
-#, fuzzy
-#| msgid "No Remotes Found"
 msgid "Show Remotes Page"
-msgstr "Keine Gegenstellen gefunden"
+msgstr "Repository Seite anzeigen"
 
 #: src/gtk/help-overlay.blp:42
-#, fuzzy
-#| msgid "No User Data"
 msgid "Show User Data Page"
-msgstr "Keine Benutzerdaten"
+msgstr "Nutzerdaten anzeigen"
 
 #: src/gtk/help-overlay.blp:46
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Show Snapshots Page"
-msgstr "Keine Snapshots"
+msgstr "Schnappschüsse anzeigen"
 
 #: src/gtk/help-overlay.blp:50
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show Install Page"
-msgstr "Deaktivierte anzeigen"
+msgstr "Installationsseite anzeigen"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Packages Page"
-msgstr ""
+msgstr "Anwendungsseite"
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
-#, fuzzy
-#| msgid "Search"
 msgid "Search Mode"
-msgstr "Suchen"
+msgstr "Such-Modus"
 
 #: src/gtk/help-overlay.blp:61
 #, fuzzy
@@ -362,66 +341,50 @@ msgstr "Filter setzen"
 
 #: src/gtk/help-overlay.blp:65 src/gtk/help-overlay.blp:95
 #: src/gtk/help-overlay.blp:114
-#, fuzzy
-#| msgid "Toggle Selection Mode"
 msgid "Selection Mode"
-msgstr "Auswahlmodus wechseln"
+msgstr "Auswahlmodus"
 
 #: src/gtk/help-overlay.blp:70
 msgid "Remotes Page"
-msgstr ""
+msgstr "Repository-Seite"
 
 #: src/gtk/help-overlay.blp:76
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show or Hide Disabled Remotes"
-msgstr "Deaktivierte anzeigen"
+msgstr "Deaktivierte Repositories anzeigen oder verstecken"
 
 #: src/gtk/help-overlay.blp:80
-#, fuzzy
-#| msgid "Add Remote"
 msgid "New Remote"
-msgstr "Gegenstelle hinzufügen"
+msgstr "Neues Repository hinzufügen"
 
 #: src/gtk/help-overlay.blp:85
-#, fuzzy
-#| msgid "User Data"
 msgid "User Data Page"
 msgstr "Benutzerdaten"
 
 #: src/gtk/help-overlay.blp:91
 msgid "Edit Sorting Modes"
-msgstr ""
+msgstr "Sortierung anpassen"
 
 #: src/gtk/help-overlay.blp:99
 #, fuzzy
 #| msgid "No Leftover Data"
 msgid "Show Active Data"
-msgstr "Keine restlichen Daten"
+msgstr "Aktive Daten anzeigen"
 
 #: src/gtk/help-overlay.blp:103
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Show Leftover Data"
-msgstr "Keine restlichen Daten"
+msgstr "Verbliebene Daten anzeigen"
 
 #: src/gtk/help-overlay.blp:108
-#, fuzzy
-#| msgid "Snapshot applied"
 msgid "Snapshots Page"
-msgstr "Schnappschuss angewendet"
+msgstr "Schnappschuss-Seite"
 
 #: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:202
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "New Snapshots"
-msgstr "Neuer Snapshot"
+msgstr "Neue Schnappschüsse"
 
 #: src/gtk/installation_chooser.blp:5
-#, fuzzy
-#| msgid "Installation"
 msgid "Choose Installation"
-msgstr "Installation"
+msgstr "Installation auswählen"
 
 #: src/gtk/installation_chooser.blp:11
 msgid "User"
@@ -432,66 +395,52 @@ msgid "System"
 msgstr "System"
 
 #: src/gtk/installation_chooser.blp:28
-#, fuzzy
-#| msgid "Installation"
 msgid "Custom installation"
-msgstr "Installation"
+msgstr "Benutzerdefinierte Installation"
 
 #: src/gtk/installation_chooser.blp:37
-#, fuzzy
-#| msgid "Installation"
 msgid "Other Installation"
-msgstr "Installation"
+msgstr "Andere Installation"
 
 #: src/gtk/installation_chooser.blp:38
 msgid "Choose a custom installation"
-msgstr ""
+msgstr "Wählen Sie eine benutzerdefinierte Installation aus"
 
 #: src/gtk/installation_chooser.py:27
-#, fuzzy
-#| msgid "The app will be available to only you"
 msgid "These {} will only be available to you"
-msgstr "Diese Anwendung wird nur für Sie sichtbar sein"
+msgstr "{} werden nur für Sie sichtbar sein"
 
 #: src/gtk/installation_chooser.py:28
-#, fuzzy
-#| msgid "The app will be available to every user on the system"
 msgid "These {} will be available to everyone"
-msgstr "Diese Anwendung wird für alle Benutzer des Systems sichtbar sein"
+msgstr "{} werden für alle Benutzer des Systems sichtbar sein"
 
 #: src/gtk/installation_chooser.py:29
 msgid "Choose how these {} will be installed"
-msgstr ""
+msgstr "Wählen Sie aus, wie {} installiert werden sollen"
 
 #: src/gtk/installation_chooser.py:31
-#, fuzzy
-#| msgid "The app will be available to only you"
 msgid "This {} will only be available to you"
-msgstr "Diese Anwendung wird nur für Sie sichtbar sein"
+msgstr "{} wird nur für Sie sichtbar sein"
 
 #: src/gtk/installation_chooser.py:32
-#, fuzzy
-#| msgid "The app will be available to every user on the system"
 msgid "This {} will be available to everyone"
-msgstr "Diese Anwendung wird für alle Benutzer des Systems sichtbar sein"
+msgstr "{} wird für alle Benutzer des Systems sichtbar sein"
 
 #: src/gtk/installation_chooser.py:33
 msgid "Choose how this {} will be installed"
-msgstr ""
+msgstr "Wählen Sie aus, wie {} installiert werden soll"
 
 #: src/gtk/sidebar_button.py:19
 msgid "Show Sidebar"
-msgstr ""
+msgstr "Seitenleiste anzeigen"
 
 #: src/main_window/window.blp:25
 msgid "Drop to Open"
-msgstr ""
+msgstr "Drag & Drop zum Öffnen"
 
 #: src/main_window/window.blp:26
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Install Flatpaks or Add a Remote"
-msgstr "Installierte Gegenstellen"
+msgstr "Flatpaks installieren oder Repository hinzufügen"
 
 #: src/main_window/window.blp:44
 msgid "Refresh List"
@@ -507,13 +456,11 @@ msgstr "Hauptmenü"
 #: src/packages_page/packages_page.py:319
 #: src/install_page/file_install_dialog.py:37
 msgid "Packages"
-msgstr ""
+msgstr "Anwendungen"
 
 #: src/main_window/window.blp:80
-#, fuzzy
-#| msgid "Remove"
 msgid "Remotes"
-msgstr "Entfernen"
+msgstr "Repositories"
 
 #: src/main_window/window.blp:94 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
@@ -523,24 +470,18 @@ msgstr "Benutzerdaten"
 #: src/main_window/window.blp:107 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
 #: src/snapshot_page/snapshot_page.py:355
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Snapshots"
-msgstr "Keine Snapshots"
+msgstr "Schnappschüsse"
 
 #: src/main_window/window.blp:120 src/install_page/file_install_dialog.py:34
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
-#, fuzzy
-#| msgid "Installing"
 msgid "Install Packages"
-msgstr "Installiere"
+msgstr "Anwendungen installieren"
 
 #: src/main_window/window.blp:150
-#, fuzzy
-#| msgid "Set Filters"
 msgid "_Open Files"
-msgstr "Filter setzen"
+msgstr "_Dateien öffnen"
 
 #: src/main_window/window.blp:154
 msgid "_Keyboard Shortcuts"
@@ -552,73 +493,63 @@ msgstr "_Über Warehouse"
 
 #: src/main_window/window.py:132
 msgid "Unsupported Filetype"
-msgstr ""
+msgstr "Nicht unterstützter Dateityp"
 
 #: src/main_window/window.py:133
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
 msgstr ""
+"Es werden nur .flatpak, .flatpakref und .flatpakrepo Dateien unterstützt."
 
 #: src/main_window/window.py:141
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Mixed Filetypes"
-msgstr "Filter setzen"
+msgstr "Verschiedene Dateitypen"
 
 #: src/main_window/window.py:142
 msgid "Flatpaks and remotes cannot be installed at the same time."
 msgstr ""
+"Flatpak-Pakete und Repositories können nicht gleichzeitig installiert werden."
 
 #: src/main_window/window.py:151
-#, fuzzy
-#| msgid "Too Many Results"
 msgid "Too Many Remotes"
-msgstr "Zu viele Ergebnisse"
+msgstr "Zu viele Repositories"
 
 #: src/main_window/window.py:152
 msgid "Only one remote at a time is supported."
-msgstr ""
+msgstr "Es wird nur ein Repository auf einmal unterstützt."
 
 #: src/main_window/window.py:170
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open files"
-msgstr "Verzeichnis konnte nicht geöffnet werden"
+msgstr "Dateien konnten nicht geöffnet werden"
 
 #: src/packages_page/filters_page.blp:5 src/packages_page/packages_page.blp:70
-#, fuzzy
-#| msgid "Filter List"
 msgid "Filter Packages"
-msgstr "Liste filtern"
+msgstr "Anwendungen filtern"
 
 #: src/packages_page/filters_page.blp:20
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Filter by Package Type"
-msgstr "Nach Gegenstellen filtern"
+msgstr "Nach Anwendungstyp filtern"
 
 #: src/packages_page/filters_page.blp:21
 msgid "Show packages of these types"
-msgstr ""
+msgstr "Pakete dieser Typen anzeigen"
 
 #: src/packages_page/filters_page.blp:23
 #, fuzzy
 #| msgid "Options"
 msgid "Applications"
-msgstr "Optionen"
+msgstr "Anwendungen"
 
 #: src/packages_page/filters_page.blp:24
 msgid "Packages that can be opened"
-msgstr ""
+msgstr "Anwendungen, die geöffnet werden können"
 
 #: src/packages_page/filters_page.blp:29
-#, fuzzy
-#| msgid "Runtime"
 msgid "Runtimes"
-msgstr "Laufzeitumgebung"
+msgstr "Laufzeitumgebungen"
 
 #: src/packages_page/filters_page.blp:30
 msgid "Packages that applications depend on"
-msgstr ""
+msgstr "Pakete, auf die Anwendungen angewiesen sind"
 
 #: src/packages_page/filters_page.blp:37
 msgid "Filter by Remotes"
@@ -626,35 +557,31 @@ msgstr "Nach Gegenstellen filtern"
 
 #: src/packages_page/filters_page.blp:38
 msgid "Show packages from selected remotes"
-msgstr ""
+msgstr "Pakete von ausgewählten Repositories anzeigen"
 
 #: src/packages_page/filters_page.blp:52
 msgid "Showing packages from all remotes"
-msgstr ""
+msgstr "Pakete von allen Repositories anzeigen"
 
 #: src/packages_page/filters_page.blp:58
 msgid "Enable to show packages from selected remotes"
-msgstr ""
+msgstr "Aktivieren, um Pakete von ausgewählten Repository anzuzeigen"
 
 #: src/packages_page/filters_page.blp:71
 msgid "Filter by Runtimes"
 msgstr "Nach Laufzeitumgebung filtern"
 
 #: src/packages_page/filters_page.blp:72
-#, fuzzy
-#| msgid "Show Apps Using This Runtime"
 msgid "Show apps using selected runtimes"
-msgstr "Anwendungen mit dieser Laufzeitumgebung anzeigen"
+msgstr "Anwendungen mit diesen Laufzeitumgebungen anzeigen"
 
 #: src/packages_page/filters_page.blp:86
-#, fuzzy
-#| msgid "Show Apps Using This Runtime"
 msgid "Showing apps using any runtime"
 msgstr "Anwendungen mit dieser Laufzeitumgebung anzeigen"
 
 #: src/packages_page/filters_page.blp:92
 msgid "Enable to show apps using selected runtimes"
-msgstr ""
+msgstr "Aktivieren, um Pakete mit diesen Laufzeitumgebungen anzuzeigen"
 
 #: src/packages_page/filters_page.blp:113
 #: src/packages_page/packages_page.blp:97
@@ -667,44 +594,32 @@ msgstr "Filter zurücksetzen"
 #, fuzzy
 #| msgid "Search List"
 msgid "Search Packages"
-msgstr "Liste durchsuchen"
+msgstr "Pakete durchsuchen"
 
 #: src/packages_page/packages_page.blp:75
 #: src/snapshot_page/snapshot_page.blp:45
-#, fuzzy
-#| msgid "Select a Release"
 msgid "Select Packages"
-msgstr "Wähle Sie eine Veröffentlichung"
+msgstr "Wähle Sie eine Anwendung"
 
 #: src/packages_page/packages_page.blp:93
-#, fuzzy
-#| msgid "No Flatpaks Match Filters"
 msgid "No Packages Match Filters"
-msgstr "Keine Flatpaks passen zu diesen Filtern"
+msgstr "Keine Flatpak-Pakete passen zu diesen Filtern"
 
 #: src/packages_page/packages_page.blp:94
-#, fuzzy
-#| msgid "No installed Flatpak matches all of the currently applied filters"
 msgid "No installed package matches all of the currently applied filters"
-msgstr "Kein Flatpak passt zu den ausgewählten Filtern"
+msgstr "Keine installierte Anwendung passt zu den ausgewählten Filtern"
 
 #: src/packages_page/packages_page.blp:104
-#, fuzzy
-#| msgid "No Flatpaks Found"
 msgid "No Packages Found"
-msgstr "Keine Flatpaks gefunden"
+msgstr "Keine Flatpak-Pakete gefunden"
 
 #: src/packages_page/packages_page.blp:105
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed"
 msgid ""
 "Warehouse cannot see the list of installed packages or your system has no "
 "packages installed"
 msgstr ""
-"Warehouse kann die Liste installierter Flatpaks nicht einsehen oder es sind "
-"auf diesem System keine installiert"
+"Warehouse kann die Liste installierter Flatpak-Anwendungen nicht einsehen "
+"oder es sind keine auf diesem System installiert"
 
 #: src/packages_page/packages_page.blp:109
 #: src/remotes_page/remotes_page.blp:153 src/user_data_page/data_subpage.blp:68
@@ -717,10 +632,8 @@ msgstr "Keine Ergebnisse gefunden"
 #: src/remotes_page/remotes_page.blp:154 src/user_data_page/data_subpage.blp:69
 #: src/snapshot_page/new_snapshot_dialog.blp:68
 #: src/snapshot_page/snapshot_page.blp:59
-#, fuzzy
-#| msgid "Try a different search term"
 msgid "Try a different search"
-msgstr "Andere Suchbegriffe versuchen"
+msgstr "Versuchen Sie andere Suchbegriffe"
 
 #: src/packages_page/packages_page.blp:127
 #: src/user_data_page/user_data_page.blp:81
@@ -751,30 +664,24 @@ msgstr "Referenzen kopieren"
 #: src/user_data_page/data_subpage.py:107
 #: src/snapshot_page/new_snapshot_dialog.py:38
 #: src/snapshot_page/snapshot_page.py:355
-#, fuzzy
-#| msgid "{} selected"
 msgid "{} Selected"
 msgstr "{} ausgewählt"
 
 #: src/packages_page/packages_page.py:192
 msgid "Error getting Flatpak '{}'"
-msgstr ""
+msgstr "Fehler beim Abrufen von Flatpak '{}'"
 
 #: src/packages_page/packages_page.py:241
-#, fuzzy
-#| msgid "Name"
 msgid "Names"
-msgstr "Name"
+msgstr "Namen"
 
 #: src/packages_page/packages_page.py:244
 msgid "IDs"
-msgstr ""
+msgstr "IDs"
 
 #: src/packages_page/packages_page.py:247
-#, fuzzy
-#| msgid "Copy Refs"
 msgid "Refs"
-msgstr "Referenzen kopieren"
+msgstr "Referenzen"
 
 #: src/packages_page/packages_page.py:255
 #: src/properties_page/properties_page.py:272
@@ -782,26 +689,20 @@ msgid "Copied {}"
 msgstr "{} kopiert"
 
 #: src/packages_page/packages_page.py:257
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not copy {}"
-msgstr "Konnte {} nicht hinzufügen"
+msgstr "Konnte {} nicht kopieren"
 
 #: src/packages_page/packages_page.py:307
 msgid "Errors occurred while uninstalling"
-msgstr ""
+msgstr "Fehler beim Deinstallieren aufgetreten"
 
 #: src/packages_page/packages_page.py:309
-#, fuzzy
-#| msgid "Uninstalled successfully"
 msgid "Uninstalled Packages"
-msgstr "Erfolgreich deinstalliert"
+msgstr "Deinstallierte Anwendungen"
 
 #: src/packages_page/packages_page.py:367
-#, fuzzy
-#| msgid "Loading Flatpaks"
 msgid "Loading Packages"
-msgstr "Flatpaks laden"
+msgstr "Flatpak-Pakete laden"
 
 #: src/packages_page/packages_page.py:367
 #: src/packages_page/packages_page.py:368
@@ -814,16 +715,12 @@ msgid "This should only take a moment"
 msgstr "Dies sollte nur einen Augenblick dauern"
 
 #: src/packages_page/packages_page.py:368
-#, fuzzy
-#| msgid "Uninstalling"
 msgid "Uninstalling Packages"
-msgstr "Deinstalliere"
+msgstr "Anwendungen deinstallieren"
 
 #: src/packages_page/packages_page.py:370
-#, fuzzy
-#| msgid "Uninstalling"
 msgid "Reinstalling Package"
-msgstr "Deinstalliere"
+msgstr "Anwendungen reinstallieren"
 
 #: src/packages_page/packages_page.py:370
 #: src/packages_page/packages_page.py:372
@@ -836,18 +733,15 @@ msgstr "Das kann einen Moment dauern"
 #, fuzzy
 #| msgid "Version"
 msgid "Changing Version"
-msgstr "Version"
+msgstr "Geänderte Version"
 
 #: src/packages_page/uninstall_dialog.blp:8
 msgid "Keep"
 msgstr "Behalten"
 
 #: src/packages_page/uninstall_dialog.blp:9
-#, fuzzy
-#| msgid "Allow restoring this app's settings and content"
 msgid "Allows restoring app settings and content"
-msgstr ""
-"Erlaube das Wiederherstellen der Einstellungen und Inhalte dieser Anwendung"
+msgstr "Erlaube das Wiederherstellen der Einstellungen und Inhalte"
 
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
@@ -858,48 +752,38 @@ msgid "Trash"
 msgstr "Müll"
 
 #: src/packages_page/uninstall_dialog.blp:18
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
 msgid "Send data to the trash"
-msgstr "{}'s Benutzerdaten in dem Papierkorb verschieben?"
+msgstr "Daten in dem Papierkorb verschieben"
 
 #: src/packages_page/uninstall_dialog.py:30
 msgid "Uninstall {}?"
 msgstr "Deinstalliere {}?"
 
 #: src/packages_page/uninstall_dialog.py:31
-#, fuzzy
-#| msgid "It will not be possible to use {} after removal."
 msgid "It will not be possible to use {} after removal"
-msgstr ""
-"Es wird nicht mehr möglich sein {} nach der Deinstallation zu verwenden."
+msgstr "Es wird nicht mehr möglich sein {} nach der Deinstallation zu verwenden"
 
 #: src/packages_page/uninstall_dialog.py:33
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstall Packages?"
-msgstr "Deinstalliere {}?"
+msgstr "Anwendungen deinstallieren?"
 
 #: src/packages_page/uninstall_dialog.py:34
-#, fuzzy
-#| msgid "It will not be possible to use these apps after removal."
 msgid "It will not be possible to use these packages after removal"
 msgstr ""
-"Es ist nicht möglich diese Anwendungen nach der Deinstallation zu verwenden."
+"Es wird nicht möglich sein, diese Anwendungen nach der Deinstallation zu "
+"verwenden."
 
 #: src/packages_page/uninstall_dialog.py:41
-#, fuzzy
-#| msgid "App Settings & Data"
 msgid "App Settings & Content"
-msgstr "Anwendungs Einstellungen & Daten"
+msgstr "Anwendungs-Einstellungen & -Daten"
 
 #: src/properties_page/properties_page.blp:19
 msgid "Properties Page Unavailable"
-msgstr ""
+msgstr "Eigenschaften nicht verfügbar"
 
 #: src/properties_page/properties_page.blp:20
 msgid "Cannot show the properties page at this time"
-msgstr ""
+msgstr "Die Eigenschaftsseite kann momentan nicht angezeigt werden"
 
 #: src/properties_page/properties_page.blp:83
 msgid "Open"
@@ -907,10 +791,8 @@ msgstr "Öffnen"
 
 #: src/properties_page/properties_page.blp:122
 #: src/user_data_page/data_box.blp:62
-#, fuzzy
-#| msgid "Open User Data Folder"
 msgid "Open User Data"
-msgstr "Benutzerdatenverzeichnis öffnen"
+msgstr "Benutzerdaten öffnen"
 
 #: src/properties_page/properties_page.blp:130
 #: src/user_data_page/data_box.blp:73
@@ -932,7 +814,7 @@ msgstr "Updates deaktivieren"
 
 #: src/properties_page/properties_page.blp:148
 msgid "Mask this package so it's never updated"
-msgstr ""
+msgstr "Markieren Sie dieses Paket, sodass es nie geupdatet wird"
 
 #: src/properties_page/properties_page.blp:157
 #: src/change_version_page/change_version_page.blp:23
@@ -943,7 +825,7 @@ msgstr "Version"
 
 #: src/properties_page/properties_page.blp:158
 msgid "Upgrade or downgrade this package"
-msgstr ""
+msgstr "Diese Anwendung updaten oder downgraden"
 
 #: src/properties_page/properties_page.blp:167
 msgid "Installed Size"
@@ -954,26 +836,25 @@ msgid "Runtime"
 msgstr "Laufzeitumgebung"
 
 #: src/properties_page/properties_page.blp:188
-#, fuzzy
-#| msgid "Disable Updates for {}?"
 msgid "Disable Automactic Removal"
-msgstr "Aktualisierungen für {} deaktivieren?"
+msgstr "Automatische Entfernung deaktivieren"
 
 #: src/properties_page/properties_page.blp:189
+#, fuzzy
 msgid "Pin this runtime to keep it installed"
-msgstr ""
+msgstr "Diese Laufzeitumgebung anpinnen, sodass sie installiert bleibt"
 
 #: src/properties_page/properties_page.blp:200
 msgid "Package Information"
-msgstr ""
+msgstr "Paketinformation"
 
 #: src/properties_page/properties_page.blp:203
 msgid "Application ID"
-msgstr ""
+msgstr "Anwendungs-ID"
 
 #: src/properties_page/properties_page.blp:219
 msgid "Architecture"
-msgstr ""
+msgstr "Architektur"
 
 #: src/properties_page/properties_page.blp:227
 msgid "Branch"
@@ -981,13 +862,11 @@ msgstr "Branch"
 
 #: src/properties_page/properties_page.blp:235
 msgid "License"
-msgstr ""
+msgstr "Lizenz"
 
 #: src/properties_page/properties_page.blp:244
-#, fuzzy
-#| msgid "Installation"
 msgid "Installation Information"
-msgstr "Installation"
+msgstr "Informationen zur Installation"
 
 #: src/properties_page/properties_page.blp:255
 msgid "Origin"
@@ -995,7 +874,7 @@ msgstr "Herkunft"
 
 #: src/properties_page/properties_page.blp:263
 msgid "Collection"
-msgstr ""
+msgstr "Sammlung"
 
 #: src/properties_page/properties_page.blp:271
 msgid "Installation"
@@ -1003,31 +882,29 @@ msgstr "Installation"
 
 #: src/properties_page/properties_page.blp:279
 msgid "Commit Information"
-msgstr ""
+msgstr "Informationen übermitteln"
 
 #: src/properties_page/properties_page.blp:290
+#, fuzzy
 msgid "Parent"
-msgstr ""
+msgstr "Eltern"
 
 #: src/properties_page/properties_page.blp:298
+#, fuzzy
 msgid "Subject"
-msgstr ""
+msgstr "Thema"
 
 #: src/properties_page/properties_page.blp:306
 msgid "Date"
-msgstr ""
+msgstr "Zeitpunkt"
 
 #: src/properties_page/properties_page.py:75
-#, fuzzy
-#| msgid "{} Properties"
 msgid "{} Properties"
 msgstr "{} Eigenschaften"
 
 #: src/properties_page/properties_page.py:80
-#, fuzzy
-#| msgid "{} Properties"
 msgid "Properties"
-msgstr "{} Eigenschaften"
+msgstr "Eigenschaften"
 
 #. Apply again
 #: src/properties_page/properties_page.py:109
@@ -1041,20 +918,16 @@ msgstr "Keine Benutzerdaten"
 
 #: src/properties_page/properties_page.py:129
 #: src/properties_page/properties_page.py:145
-#, fuzzy
-#| msgid "Could not show details"
 msgid "Could not get properties"
-msgstr "Details konnten nicht angezeigt werden"
+msgstr "Details konnten nicht ermittelt werden"
 
 #: src/properties_page/properties_page.py:142
 msgid "No version information found"
-msgstr ""
+msgstr "Keine Versionsinformation gefunden"
 
 #: src/properties_page/properties_page.py:162
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open data"
-msgstr "Verzeichnis konnte nicht geöffnet werden"
+msgstr "Datei konnte nicht geöffnet werden"
 
 #: src/properties_page/properties_page.py:181
 #: src/properties_page/properties_page.py:183
@@ -1062,164 +935,125 @@ msgstr "Verzeichnis konnte nicht geöffnet werden"
 #: src/properties_page/properties_page.py:240 src/user_data_page/data_box.py:99
 #: src/user_data_page/user_data_page.py:183
 #: src/user_data_page/user_data_page.py:197
-#, fuzzy
-#| msgid "Could not trash user data"
 msgid "Could not trash data"
-msgstr "Benutzerdaten konnten nicht gelöscht werden"
+msgstr "Daten konnten nicht gelöscht werden"
 
 #: src/properties_page/properties_page.py:186
 msgid "Send {}'s User Data to the Trash?"
 msgstr "{}'s Benutzerdaten in dem Papierkorb verschieben?"
 
 #: src/properties_page/properties_page.py:187
-#, fuzzy
-#| msgid "Your files and data for this app will be sent to the trash."
 msgid "Your settings and data for this app will be sent to the trash"
 msgstr ""
-"Ihre Dateien und Daten für diese Anwendungen werden in den Papierkorb gelegt."
+"Ihre Einstellungen und Daten für diese Anwendungen werden in den Papierkorb "
+"verschoben"
 
 #: src/properties_page/properties_page.py:190
 msgid "Trash Data"
 msgstr "Daten löschen"
 
 #: src/properties_page/properties_page.py:199
-#, fuzzy
-#| msgid "Could not disable updates for {}"
 msgid "Could not Disable Updates"
-msgstr "Aktualisierungen für {} konnten nicht deaktiviert werden"
+msgstr "Aktualisierungen konnten nicht deaktiviert werden"
 
 #: src/properties_page/properties_page.py:199
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not Enable Updates"
-msgstr "Daten konnten nicht verwaltet werden"
+msgstr "Aktualisierungen konnten nicht aktiviert werden"
 
 #: src/properties_page/properties_page.py:205
-#, fuzzy
-#| msgid "Disable Updates"
 msgid "Disabled Updates"
-msgstr "Updates deaktivieren"
+msgstr "Deaktivierte Updates"
 
 #: src/properties_page/properties_page.py:205
-#, fuzzy
-#| msgid "Enable Updates"
 msgid "Enabled Updates"
-msgstr "Aktualisierungen aktivieren"
+msgstr "Aktivierte Aktualisierungen"
 
 #: src/properties_page/properties_page.py:217
-#, fuzzy
-#| msgid "Could not disable {}"
 msgid "Could not Disable Autoremoval"
-msgstr "Konnte {} nicht deaktivieren"
+msgstr "Automatische Entfernung konnte nicht deaktiviert werden"
 
 #: src/properties_page/properties_page.py:217
-#, fuzzy
-#| msgid "Could not enable {}"
 msgid "Could not Enable Autoremoval"
-msgstr "Konnte nicht {} aktivieren"
+msgstr "Automatische Entfernung konnte nicht aktiviert werden"
 
 #: src/properties_page/properties_page.py:222
 #, fuzzy
 #| msgid "Could not disable {}"
 msgid "Disabled Autoremoval"
-msgstr "Konnte {} nicht deaktivieren"
+msgstr "Deaktivierte automatische Entfernung"
 
 #: src/properties_page/properties_page.py:222
-#, fuzzy
-#| msgid "Could not enable {}"
 msgid "Enabled Autoremoval"
-msgstr "Konnte nicht {} aktivieren"
+msgstr "Automatisches Entfernen aktivieren"
 
 #: src/properties_page/properties_page.py:245
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not uninstall"
-msgstr "Anwendung konnte nicht installiert werden"
+msgstr "Konnte nicht deinstalliert werden"
 
 #: src/properties_page/properties_page.py:249
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstalled {}"
-msgstr "Deinstalliere {}?"
+msgstr "{} deinstalliert"
 
 #: src/properties_page/properties_page.py:261
-#, fuzzy
-#| msgid "Opened {}"
 msgid "Opening {}…"
-msgstr "Geöffnet {}"
+msgstr "{} öffnen…"
 
 #: src/properties_page/properties_page.py:266
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not open {}"
-msgstr "Konnte {} nicht entfernen"
+msgstr "{} konnte nicht geöffnet werden"
 
 #: src/properties_page/properties_page.py:281
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstalled {}"
-msgstr "Deinstalliere {}?"
+msgstr "{} erneut installiert"
 
 #: src/properties_page/properties_page.py:307
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstall {}?"
-msgstr "Deinstalliere {}?"
+msgstr "{} erneut installieren?"
 
 #: src/properties_page/properties_page.py:308
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
 msgstr ""
+"Diese Anwendung wird deinstalliert und anschließend erneut vom selben "
+"Repository installiert."
 
 #: src/properties_page/properties_page.py:311
 #: src/properties_page/properties_page.py:372
-#, fuzzy
-#| msgid "Uninstall"
 msgid "Reinstall"
-msgstr "Deinstallieren"
+msgstr "Erneut installieren"
 
 #: src/properties_page/properties_page.py:328
 msgid "Copied launch command"
 msgstr "Startbefehl kopiert"
 
 #: src/properties_page/properties_page.py:330
-#, fuzzy
-#| msgid "Copied launch command"
 msgid "Could not copy launch command"
-msgstr "Startbefehl kopiert"
+msgstr "Startbefehl konnte nicht kopiert werden"
 
 #: src/properties_page/properties_page.py:336
 msgid "Could not show details"
 msgstr "Details konnten nicht angezeigt werden"
 
 #: src/properties_page/properties_page.py:366
-#, fuzzy
-#| msgid "View Properties"
 msgid "Loading Properties"
-msgstr "Eigenschaften anzeigen"
+msgstr "Eigenschaften laden"
 
 #: src/properties_page/properties_page.py:369
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "View Snapshots"
-msgstr "Neuer Snapshot"
+msgstr "Schnappschüsse anzeigen"
 
 #: src/properties_page/properties_page.py:370
 msgid "Copy Launch Command"
 msgstr "Startbefehl kopieren"
 
 #: src/properties_page/properties_page.py:371
-#, fuzzy
-#| msgid "Show Details in Store"
 msgid "Show Details"
-msgstr "Details im Shop anzeigen"
+msgstr "Details anzeigen"
 
 #: src/change_version_page/change_version_page.blp:5
-#, fuzzy
-#| msgid "Version"
 msgid "Change Versions"
-msgstr "Version"
+msgstr "Versionen ändern"
 
 #: src/change_version_page/change_version_page.blp:56
 msgid "Select a Release"
@@ -1235,23 +1069,19 @@ msgstr ""
 
 #: src/change_version_page/change_version_page.py:69
 msgid "Currently Installed Version"
-msgstr ""
+msgstr "Derzeit installierte Version"
 
 #: src/change_version_page/change_version_page.py:86
-#, fuzzy
-#| msgid "Could not create snapshot"
 msgid "Could not get versions"
-msgstr "Snapshot konnte nicht erstellt werden"
+msgstr "Versionen konnte nicht ermittelt werden"
 
 #: src/change_version_page/change_version_page.py:93
 msgid "Changed {}'s Version"
-msgstr ""
+msgstr "Version von {} geändert"
 
 #: src/change_version_page/change_version_page.py:117
-#, fuzzy
-#| msgid "Version"
 msgid "{} Versions"
-msgstr "Version"
+msgstr "Versionen von {}"
 
 #: src/change_version_page/change_version_page.py:118
 msgid "Ensure that {} will never be updated to a newer version"
@@ -1265,29 +1095,23 @@ msgstr "Hole Veröffentlichungen"
 #: src/change_version_page/change_version_worker.py:70
 #: src/change_version_page/change_version_worker.py:74
 msgid "Error occurred while changing version"
-msgstr ""
+msgstr "Fehler beim Ändern der Version"
 
 #: src/change_version_page/change_version_worker.py:85
-#, fuzzy
-#| msgid "Could not create snapshot"
 msgid "Could not cancel version change"
-msgstr "Snapshot konnte nicht erstellt werden"
+msgstr "Versionsänderung konnte nicht abgebrochen werden"
 
 #: src/change_version_page/change_version_worker.py:106
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not change version"
-msgstr "Daten konnten nicht verwaltet werden"
+msgstr "Version konnte nicht geändert werden"
 
 #: src/change_version_page/change_version_worker.py:106
 msgid "Another package is changing version."
-msgstr ""
+msgstr "Die Version einer anderen Anwendung wird geändert."
 
 #: src/remotes_page/add_remote_dialog.blp:5 src/install_page/select_page.blp:27
-#, fuzzy
-#| msgid "Add Remote"
 msgid "Add a Remote"
-msgstr "Gegenstelle hinzufügen"
+msgstr "Repository hinzufügen"
 
 #: src/remotes_page/add_remote_dialog.blp:22
 msgid "Add"
@@ -1295,7 +1119,7 @@ msgstr "Hinzufügen"
 
 #: src/remotes_page/add_remote_dialog.blp:40
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: src/remotes_page/add_remote_dialog.blp:43
 #: src/user_data_page/user_data_page.blp:190
@@ -1304,44 +1128,32 @@ msgstr "Name"
 
 #: src/remotes_page/add_remote_dialog.blp:46
 msgid "Repo URL"
-msgstr ""
+msgstr "Repo URL"
 
 #: src/remotes_page/add_remote_dialog.py:54
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not add remote"
-msgstr "Konnte {} nicht hinzufügen"
+msgstr "Repository konnte nicht hinzugefügt werden"
 
 #: src/remotes_page/add_remote_dialog.py:57
-#, fuzzy
-#| msgid "Add {}?"
 msgid "Added {}"
-msgstr "{} hinzufügen?"
+msgstr "{} hinzugefügt"
 
 #. Apply
 #: src/remotes_page/add_remote_dialog.py:107
-#, fuzzy
-#| msgid "Add Remote"
 msgid "remote"
-msgstr "Gegenstelle hinzufügen"
+msgstr "Repository"
 
 #: src/remotes_page/remote_row.blp:21
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Set a Filter for this Remote"
-msgstr "Nach Gegenstellen filtern"
+msgstr "Einen Filter für dieses Repository erstellen"
 
 #: src/remotes_page/remote_row.blp:29
-#, fuzzy
-#| msgid "More Functions"
 msgid "More Actions"
 msgstr "Mehr Funktionen"
 
 #: src/remotes_page/remote_row.blp:37
-#, fuzzy
-#| msgid "Copy Ref"
 msgid "Copy Title"
-msgstr "Referenz kopieren"
+msgstr "Titel kopieren"
 
 #: src/remotes_page/remote_row.blp:41
 msgid "Copy Name"
@@ -1360,43 +1172,33 @@ msgid "Remove"
 msgstr "Entfernen"
 
 #: src/remotes_page/remote_row.py:24 src/remotes_page/remote_row.py:44
-#, fuzzy
-#| msgid "Could not enable {}"
 msgid "Could not enable remote"
-msgstr "Konnte nicht {} aktivieren"
+msgstr "Repository konnte nicht aktiviert werden"
 
 #: src/remotes_page/remote_row.py:24
 msgid "Remote is already enabled"
-msgstr ""
+msgstr "Repository ist bereits aktiviert"
 
 #: src/remotes_page/remote_row.py:51
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Enabled remote"
-msgstr "Installierte Gegenstellen"
+msgstr "Aktivierte Repositories"
 
 #: src/remotes_page/remote_row.py:75 src/remotes_page/remote_row.py:153
-#, fuzzy
-#| msgid "Updates Disabled"
 msgid "Remote is Disabled"
-msgstr "Updates deaktivieren"
+msgstr "Repository ist deaktiviert"
 
 #: src/remotes_page/remote_row.py:77
-#, fuzzy
-#| msgid "Disabled"
 msgid "Disabled remote"
-msgstr "Deaktiviert"
+msgstr "Deaktivierte Repositories"
 
 #: src/remotes_page/remote_row.py:95 src/remotes_page/remote_row.py:107
 #: src/remotes_page/remote_row.py:111
-#, fuzzy
-#| msgid "Could not disable {}"
 msgid "Could not disable remote"
-msgstr "Konnte {} nicht deaktivieren"
+msgstr "Repository konnte nicht deaktiviert werden"
 
 #: src/remotes_page/remote_row.py:95
 msgid "Remote is already disabled"
-msgstr ""
+msgstr "Repository ist bereits deaktiviert"
 
 #: src/remotes_page/remote_row.py:121
 msgid "Disable {}?"
@@ -1409,10 +1211,8 @@ msgstr ""
 "mehr erhalten"
 
 #: src/remotes_page/remote_row.py:133
-#, fuzzy
-#| msgid "Copied ref"
 msgid "Copied title"
-msgstr "Referenz kopiert"
+msgstr "Titel kopiert"
 
 #: src/remotes_page/remote_row.py:136
 msgid "Copied name"
@@ -1426,33 +1226,27 @@ msgstr "Gegenstellen verwalten"
 #, fuzzy
 #| msgid "Filter by Remotes"
 msgid "Search Remotes"
-msgstr "Nach Gegenstellen filtern"
+msgstr "Repositories durchsuchen"
 
 #: src/remotes_page/remotes_page.blp:47
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Current Remotes"
-msgstr "Installierte Gegenstellen"
+msgstr "Derzeitige Repositories"
 
 #: src/remotes_page/remotes_page.blp:48
-#, fuzzy
-#| msgid "Remote will be available to every user on the system"
 msgid "Remotes available on your system"
-msgstr "Gegenstelle wird für alle Benutzer des Systems sichtbar sein"
+msgstr "Auf Ihrem System verfügbare Repositories"
 
 #: src/remotes_page/remotes_page.blp:55
 msgid "Show Disabled"
 msgstr "Deaktivierte anzeigen"
 
 #: src/remotes_page/remotes_page.blp:75
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "No Enabled Remotes"
-msgstr "Installierte Gegenstellen"
+msgstr "Keine aktivierten Repositories"
 
 #: src/remotes_page/remotes_page.blp:81
 msgid "You only have disabled remotes on this system"
-msgstr ""
+msgstr "Sie haben nur deaktivierte Repositories auf Ihrem System"
 
 #: src/remotes_page/remotes_page.blp:107
 msgid "No Remotes Found"
@@ -1477,7 +1271,7 @@ msgstr "Populäre Gegenstelle hinzufügen"
 
 #: src/remotes_page/remotes_page.blp:127
 msgid "Add new remotes to get more software"
-msgstr ""
+msgstr "Fügen Sie ein Repository hinzu, um mehr Anwendungen zu finden"
 
 #: src/remotes_page/remotes_page.blp:131
 msgid "Add Other Remotes"
@@ -1489,7 +1283,7 @@ msgstr "Eine Gegenstellendatei hinzufügen"
 
 #: src/remotes_page/remotes_page.blp:135
 msgid "Open a downloaded repo file to add"
-msgstr ""
+msgstr "Öffnen Sie eine heruntergeladene Repo-Datei, um es hinzu zu fügen"
 
 #: src/remotes_page/remotes_page.blp:143
 msgid "Add a Custom Remote"
@@ -1497,7 +1291,7 @@ msgstr "Benutzerdefinierte Gegenstelle hinzufügen"
 
 #: src/remotes_page/remotes_page.blp:144
 msgid "Manually enter new remote details"
-msgstr ""
+msgstr "Manuelles Eingeben eines neuen Repository"
 
 #: src/remotes_page/remotes_page.py:32
 msgid "The open source, pay-what-you-want app store from elementary"
@@ -1526,7 +1320,7 @@ msgstr "Zentrale Gegenstelle der WebKit Entwicklungs- und Laufzeitumgebung"
 
 #: src/remotes_page/remotes_page.py:152
 msgid "Showing all packages from {}"
-msgstr ""
+msgstr "Alle Anwendungen von {} anzeigen"
 
 #: src/remotes_page/remotes_page.py:173
 #, fuzzy
@@ -1580,19 +1374,15 @@ msgstr "Installieren?"
 
 #: src/user_data_page/data_box.py:58
 msgid "Copied data path"
-msgstr ""
+msgstr "Dateipfad kopiert"
 
 #: src/user_data_page/data_box.py:60
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not copy data path"
-msgstr "Daten konnten nicht verwaltet werden"
+msgstr "Dateipfad konnten nicht kopiert werden"
 
 #: src/user_data_page/data_box.py:65
-#, fuzzy
-#| msgid "Open Data Folder"
 msgid "Opened data folder"
-msgstr "Datenordner öffnen"
+msgstr "Geöffnetes Datenverzeichnis"
 
 #: src/user_data_page/data_box.py:67 src/snapshot_page/snapshot_page.py:253
 #: src/snapshot_page/snapshots_list_page.py:77
@@ -1600,16 +1390,12 @@ msgid "Could not open folder"
 msgstr "Verzeichnis konnte nicht geöffnet werden"
 
 #: src/user_data_page/data_box.py:113
-#, fuzzy
-#| msgid "Trash User Data"
 msgid "Trash {}'s Data?"
-msgstr "Benutzerdaten löschen"
+msgstr "Daten für {} löschen?"
 
 #: src/user_data_page/data_box.py:113
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "{}'s data will be sent to the trash"
-msgstr "Diese Verzeichnisse werden in den Papierkorb gelegt."
+msgstr "Daten von {} werden in den Papierkorb verschoben."
 
 #: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:210
 #: src/snapshot_page/snapshot_page.py:480
@@ -1618,7 +1404,7 @@ msgstr "Fortfahren"
 
 #: src/user_data_page/data_subpage.blp:13
 msgid "No Title Set"
-msgstr ""
+msgstr "Kein Titel erstellt"
 
 #: src/user_data_page/data_subpage.blp:28
 #, fuzzy
@@ -1680,75 +1466,59 @@ msgstr "Mehr anzeigen"
 
 #: src/user_data_page/user_data_page.blp:169
 msgid "Ascending"
-msgstr ""
+msgstr "Aufsteigend"
 
 #: src/user_data_page/user_data_page.blp:177
 msgid "Descending"
-msgstr ""
+msgstr "Absteigend"
 
 #: src/user_data_page/user_data_page.blp:198
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: src/user_data_page/user_data_page.blp:206
 msgid "Size"
-msgstr ""
+msgstr "Größe"
 
 #: src/user_data_page/user_data_page.py:75
 #: src/user_data_page/user_data_page.py:77
-#, fuzzy
-#| msgid "Loading User Data"
 msgid "Loading Size"
-msgstr "Benutzerdaten laden"
+msgstr "Größe laden"
 
 #: src/user_data_page/user_data_page.py:151
-#, fuzzy
-#| msgid "Could not apply snapshot"
 msgid "Could not copy paths"
-msgstr "Schnappschuss konnte nicht angewendet werden"
+msgstr "Pfade konnten nicht kopiert werden"
 
 #: src/user_data_page/user_data_page.py:151
 #: src/user_data_page/user_data_page.py:197
 msgid "No boxes were selected"
-msgstr ""
+msgstr "Nichts aufgewählt"
 
 #: src/user_data_page/user_data_page.py:154
-#, fuzzy
-#| msgid "Copied name"
 msgid "Copied paths"
-msgstr "Name kopiert"
+msgstr "Pfade kopiert"
 
 #: src/user_data_page/user_data_page.py:185
-#, fuzzy
-#| msgid "Trashed user data"
 msgid "Trashed data"
-msgstr "Benutzerdaten gelöscht"
+msgstr "Daten gelöscht"
 
 #: src/user_data_page/user_data_page.py:208
-#, fuzzy
-#| msgid "Trash Data"
 msgid "Trash Data?"
-msgstr "Daten löschen"
+msgstr "Daten löschen?"
 
 #: src/user_data_page/user_data_page.py:208
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "Data will be sent to the trash"
-msgstr "Diese Verzeichnisse werden in den Papierkorb gelegt."
+msgstr "Daten werden in den Papierkorb verschoben"
 
 #: src/user_data_page/user_data_page.py:246
 #: src/user_data_page/user_data_page.py:269
-#, fuzzy
-#| msgid "Active Commit"
 msgid "Active Data"
-msgstr "Aktiver Commit"
+msgstr "Aktive Daten"
 
 #: src/user_data_page/user_data_page.py:247
 #: src/user_data_page/user_data_page.py:275
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Leftover Data"
-msgstr "Keine restlichen Daten"
+msgstr "Verbliebene Daten"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
@@ -1759,87 +1529,67 @@ msgstr "Liste durchsuchen"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
-msgstr ""
+msgstr "Erstellen"
 
 #: src/snapshot_page/new_snapshot_dialog.py:110
-#, fuzzy
-#| msgid "Creating Snapshots"
 msgid "Creating Snapshot"
-msgstr "Schnappschuss anlegen"
+msgstr "Schnappschuss erstellen"
 
 #: src/snapshot_page/new_snapshot_dialog.py:192
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Name these Snapshots"
-msgstr "Schnappschüsse anlegen"
+msgstr "Schnappschüsse benennen"
 
 #: src/snapshot_page/new_snapshot_dialog.py:196
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
-msgstr "Neuer Snapshot"
+msgstr "Neuer Schnappschuss"
 
 #: src/snapshot_page/new_snapshot_dialog.py:200
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "Name this Snapshot"
-msgstr "Neuer Snapshot"
+msgstr "Diesen Schnappschuss benennen"
 
 #: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:58
-#, fuzzy
-#| msgid "Copy Name"
 msgid "No Name Set"
-msgstr "Name kopieren"
+msgstr "Kein Name eingegeben"
 
 #: src/snapshot_page/snapshot_box.blp:23
-#, fuzzy
-#| msgid "No Remotes Found"
 msgid "No date found"
-msgstr "Keine Gegenstellen gefunden"
+msgstr "Kein Zeitpunkt gefunden"
 
 #: src/snapshot_page/snapshot_box.blp:30
-#, fuzzy
-#| msgid "No Results Found"
 msgid "No version found"
-msgstr "Keine Ergebnisse gefunden"
+msgstr "Keine Version gefunden"
 
 #: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:156
 msgid "Apply"
-msgstr "Übernehmen"
+msgstr "Anwenden"
 
 #: src/snapshot_page/snapshot_box.blp:55
 msgid "Rename"
-msgstr ""
+msgstr "Umbenennen"
 
 #: src/snapshot_page/snapshot_box.blp:84
-#, fuzzy
-#| msgid "Create Snapshots?"
 msgid "Rename Snapshot?"
-msgstr "Schnappschuss anlegen?"
+msgstr "Schnappschuss umbenennen?"
 
 #: src/snapshot_page/snapshot_box.blp:94
-#, fuzzy
-#| msgid "Copied name"
 msgid "Confirm Rename"
-msgstr "Name kopiert"
+msgstr "Neuen Namen bestätigen"
 
 #: src/snapshot_page/snapshot_box.py:33 src/snapshot_page/snapshot_box.py:45
 #: src/snapshot_page/snapshot_box.py:61
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not write data"
-msgstr "Daten konnten nicht verwaltet werden"
+msgstr "Daten konnten nicht geschrieben werden"
 
 #: src/snapshot_page/snapshot_box.py:98
 msgid "Could not trash snapshot"
 msgstr "Snapshot konnte nicht gelöscht werden"
 
 #: src/snapshot_page/snapshot_box.py:102
-#, fuzzy
-#| msgid "Trash Snapshot"
 msgid "Trashed snapshot"
-msgstr "Schnappschuss löschen"
+msgstr "Schnappschuss gelöscht"
 
 #: src/snapshot_page/snapshot_box.py:112
 msgid "Trash Snapshot?"
@@ -1950,7 +1700,7 @@ msgstr "Snapshot konnte nicht gelöscht werden"
 
 #: src/snapshot_page/snapshot_page.py:194
 msgid "Showing snapshots for {}"
-msgstr ""
+msgstr "Schnappschüsse für {} anzeigen"
 
 #: src/snapshot_page/snapshot_page.py:198
 #, fuzzy
@@ -1960,7 +1710,7 @@ msgstr "Keine Snapshots"
 
 #: src/snapshot_page/snapshot_page.py:198
 msgid "New"
-msgstr ""
+msgstr "Neu"
 
 #: src/snapshot_page/snapshot_page.py:242
 #: src/snapshot_page/snapshot_page.py:244
@@ -1988,6 +1738,7 @@ msgstr "Keine Snapshots"
 #: src/snapshot_page/snapshot_page.py:395
 msgid "No apps in your selection can be snapshotted"
 msgstr ""
+"Für keine der ausgewählten Anwendungen können Schnappschüsse erstellt werden"
 
 #: src/snapshot_page/snapshot_page.py:469
 #, fuzzy
@@ -2003,7 +1754,7 @@ msgstr "Keine Snapshots"
 
 #: src/snapshot_page/snapshot_page.py:475
 msgid "No snapshots were found to extract"
-msgstr ""
+msgstr "Keine Schnappschüsse zum Extrahieren gefunden"
 
 #: src/snapshot_page/snapshot_page.py:478
 #, fuzzy
@@ -2015,6 +1766,8 @@ msgstr "Schnappschuss anwenden?"
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
+"Hierdurch werden die Benutzerdaten der aktuellen Anwendungen gelöscht und "
+"ihr neuester Schnappschuss angewendet"
 
 #: src/snapshot_page/snapshot_page.py:514
 #, fuzzy
@@ -2071,11 +1824,11 @@ msgstr "{} Schnappschüsse"
 
 #: src/snapshot_page/tar_worker.py:81
 msgid "Error in snapshot handling"
-msgstr ""
+msgstr "Fehler bei der Snapshot-Verwaltung"
 
 #: src/install_page/file_install_dialog.blp:33
 msgid "Review Selection"
-msgstr ""
+msgstr "Auswahl überprüfen"
 
 #. self.packages_group.set_title(_("Review Packages"))
 #: src/install_page/file_install_dialog.py:36
@@ -2084,16 +1837,16 @@ msgstr ""
 
 #: src/install_page/file_install_dialog.py:39
 msgid "Install a Package"
-msgstr ""
+msgstr "Ein Paket installieren"
 
 #. self.packages_group.set_title(_("Review Package"))
 #: src/install_page/file_install_dialog.py:41
 msgid "The following package will be installed"
-msgstr ""
+msgstr "Die folgende Anwendung wird installiert"
 
 #: src/install_page/file_install_dialog.py:42
 msgid "package"
-msgstr ""
+msgstr "Paket"
 
 #: src/install_page/install_page.blp:41
 #, fuzzy
