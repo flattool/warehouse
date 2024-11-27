@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
 "PO-Revision-Date: 2024-11-27 09:53+0000\n"
-"Last-Translator: Fabian Schöppach <fabian.schoeppach@mailbox.org>\n"
+"Last-Translator: Tobias <eidlotht@proton.me>\n"
 "Language-Team: German <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/de/>\n"
 "Language: de\n"
@@ -121,10 +121,8 @@ msgstr "Installationsseite in schmaler Ansicht"
 
 #: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
 #: src/install_page/select_page.py:67
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not add files"
-msgstr "Konnte {} nicht hinzufügen"
+msgstr "Konnte Dateien nicht hinzufügen"
 
 #: src/main.py:101
 msgid "No files were found"
@@ -148,10 +146,8 @@ msgid "Contributors"
 msgstr "Mitwirkende"
 
 #: src/host_info.py:380 src/host_info.py:382
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not load packages"
-msgstr "Konnte {} nicht hinzufügen"
+msgstr "Konnte Pakete nicht laden"
 
 #: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
@@ -167,10 +163,8 @@ msgid "Failed to exit cleanly"
 msgstr "Fehler beim sauberen Beenden"
 
 #: src/package_install_worker.py:104
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not cancel installation"
-msgstr "Anwendung konnte nicht installiert werden"
+msgstr "Installation konnte nicht abgebrochen werden"
 
 #: src/package_install_worker.py:125 src/package_install_worker.py:135
 msgid "Could not install packages"
@@ -334,8 +328,6 @@ msgid "Search Mode"
 msgstr "Such-Modus"
 
 #: src/gtk/help-overlay.blp:61
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Edit Filters"
 msgstr "Filter setzen"
 
@@ -1833,7 +1825,7 @@ msgstr "Auswahl überprüfen"
 #. self.packages_group.set_title(_("Review Packages"))
 #: src/install_page/file_install_dialog.py:36
 msgid "The following packages will be installed"
-msgstr ""
+msgstr "Die folgenden Pakete werden installiert"
 
 #: src/install_page/file_install_dialog.py:39
 msgid "Install a Package"
@@ -1857,7 +1849,7 @@ msgstr "Auswählen"
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
 msgid "Pending Packages"
-msgstr ""
+msgstr "Zu installiernde Pakete"
 
 #: src/install_page/install_page.py:51
 #, fuzzy
