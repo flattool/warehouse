@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
 "PO-Revision-Date: 2024-11-30 19:11+0000\n"
-"Last-Translator: Tobias <73227066+PaperTobi@users.noreply.github.com>\n"
+"Last-Translator: Fabian Schöppach <fabian.schoeppach@mailbox.org>\n"
 "Language-Team: German <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/de/>\n"
 "Language: de\n"
@@ -498,8 +498,7 @@ msgstr "Verschiedene Dateitypen"
 
 #: src/main_window/window.py:142
 msgid "Flatpaks and remotes cannot be installed at the same time."
-msgstr ""
-"Flatpak-Pakete und Repositories können nicht gleichzeitig installiert werden."
+msgstr "Flatpaks und Repositories können nicht gleichzeitig installiert werden."
 
 #: src/main_window/window.py:151
 msgid "Too Many Remotes"
