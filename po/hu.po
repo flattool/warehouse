@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-11-01 23:25+0000\n"
+"PO-Revision-Date: 2024-12-05 16:05+0000\n"
 "Last-Translator: Benedek Dévényi <rdbende@proton.me>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hu/>\n"
@@ -38,6 +38,8 @@ msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
+"A Raktár egyszerű felhasználói felületet biztosít a Flatpak rejtettebb "
+"funkcióihoz, mindezt a parancssor igénybevétele nélkül."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -45,7 +47,7 @@ msgstr "Az alkalmazás funkciói:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
-msgstr ""
+msgstr "Kezelje a telepített Flatpakeket és tekintse át bármely csomag adatait"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
@@ -115,14 +117,13 @@ msgstr "Telepítő nézet keskeny kijelzőn"
 
 #: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
 #: src/install_page/select_page.py:67
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not add files"
-msgstr "A(z) {} tárolót nem lehetett hozzáadni"
+msgstr "A fájlokat nem lehetett hozzáadni"
 
 #: src/main.py:101
+#, fuzzy
 msgid "No files were found"
-msgstr ""
+msgstr "Nem találtunk fájlokat"
 
 #: src/main.py:109
 msgid "Flatpaks & Remotes"
@@ -144,18 +145,16 @@ msgid "Contributors"
 msgstr "Közreműködők"
 
 #: src/host_info.py:380 src/host_info.py:382
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not load packages"
-msgstr "A(z) {} tárolót nem lehetett hozzáadni"
+msgstr "A csomagot nem lehetett betölteni"
 
 #: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
-msgstr ""
+msgstr "Hibák történtek a telepítés során"
 
 #: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
-msgstr ""
+msgstr "Hiba történt a telepítés során"
 
 #: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:70
@@ -163,20 +162,16 @@ msgid "Failed to exit cleanly"
 msgstr ""
 
 #: src/package_install_worker.py:104
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not cancel installation"
-msgstr "Az alkalmazás telepítése sikertelen"
+msgstr "Nem sikerült megszakítani a telepítést"
 
 #: src/package_install_worker.py:125 src/package_install_worker.py:135
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not install packages"
-msgstr "Az alkalmazás telepítése sikertelen"
+msgstr "A csomagok telepítése sikertelen"
 
 #: src/package_install_worker.py:125
 msgid "Packages are currently being installed."
-msgstr ""
+msgstr "A csomagok telepítés alatt vannak."
 
 #: src/package_install_worker.py:135
 msgid "No packages were requested to be installed."
@@ -184,18 +179,15 @@ msgstr ""
 
 #: src/gtk/app_row.blp:14 src/properties_page/properties_page.blp:100
 #: src/properties_page/properties_page.blp:179
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid "This package is End Of Life, and will not receive any security updates"
-msgstr "A(z) {} elavult és nem fog többé biztonsági frissítéseket kapni"
+msgstr "Ez a csomag elavult és nem fog többé biztonsági frissítéseket kapni"
 
 #: src/gtk/app_row.blp:21
 msgid ""
 "This app's runtime is End Of Life, and will not receive any security updates"
 msgstr ""
-"A(z) {} futtatókörnyezete elavult és nem fog többé biztonsági frissítéseket "
-"kapni"
+"Az alkalmazás futtatókörnyezete elavult és nem fog többé biztonsági "
+"frissítéseket kapni"
 
 #: src/gtk/app_row.blp:28
 msgid "This runtime will never be automatically removed"
@@ -203,21 +195,15 @@ msgstr "Ez a futtatókörnyezet soha nem lesz automatikusan eltávolítva"
 
 #: src/gtk/app_row.blp:34
 msgid "Updates are disabled for this package"
-msgstr ""
+msgstr "A frissítések ki vannak kapcsolva ehhez a csomaghoz"
 
 #: src/gtk/attempt_install_dialog.blp:5
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "Attempt an Install?"
 msgstr "Megpróbálja a telepítést?"
 
 #: src/gtk/attempt_install_dialog.blp:6
-#, fuzzy
-#| msgid "Warehouse will attempt to install apps matching the selected data."
 msgid "Warehouse will try to install the matching packages."
-msgstr ""
-"A Raktár megpróbálja telepíteni az alkalmazásokat, amik egyeznek a "
-"kiválasztott adatokkal."
+msgstr "A Raktár megpróbálja telepíteni az egyező csomagokat."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:37
@@ -243,35 +229,32 @@ msgid "Install"
 msgstr "Telepítés"
 
 #: src/gtk/attempt_install_dialog.blp:12
-#, fuzzy
-#| msgid "Choose a Remote to Search"
 msgid "Choose a Remote"
-msgstr "Válasszon egy tárolót a kereséshez"
+msgstr "Válasszon egy tárolót"
 
 #: src/gtk/attempt_install_dialog.blp:13
 msgid "Select a remote to attempt to install from"
-msgstr ""
+msgstr "Válasszon egy tárolót a telepítés megkísérléséhez"
 
 #: src/gtk/attempt_install_dialog.py:18 src/packages_page/filters_page.py:122
 #: src/remotes_page/remote_row.py:148 src/install_page/pending_page.py:29
 #: src/install_page/select_page.py:31
-#, fuzzy
-#| msgid "Installation"
 msgid "Installation: {}"
-msgstr "Telepítés"
+msgstr "Telepítés: {}"
 
 #: src/gtk/attempt_install_dialog.py:71
 msgid "Can't find matching packages"
-msgstr ""
+msgstr "Nincsenek egyező csomagok"
 
 #: src/gtk/attempt_install_dialog.py:71
+#, fuzzy
 msgid "Your system has no remotes added"
-msgstr ""
+msgstr "A rendszeren nincsenek tárolók hozzáadva"
 
 #. Extra Object Creation
 #: src/gtk/error_toast.py:12
 msgid "Details"
-msgstr ""
+msgstr "Részletek"
 
 #: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
@@ -290,13 +273,11 @@ msgstr "Általános"
 
 #: src/gtk/help-overlay.blp:11
 msgid "Refresh"
-msgstr "Frissítés"
+msgstr "Újratöltés"
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Open Files"
-msgstr "Szűrők beállítása"
+msgstr "Fájlok megnyitása"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
@@ -312,7 +293,7 @@ msgstr "Kilépés"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
-msgstr ""
+msgstr "Navigáció"
 
 #: src/gtk/help-overlay.blp:34
 msgid "Show Packages Page"
@@ -348,23 +329,17 @@ msgstr ""
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
-#, fuzzy
-#| msgid "Search"
 msgid "Search Mode"
 msgstr "Keresés"
 
 #: src/gtk/help-overlay.blp:61
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Edit Filters"
-msgstr "Szűrők beállítása"
+msgstr "Szűrők szerkesztése"
 
 #: src/gtk/help-overlay.blp:65 src/gtk/help-overlay.blp:95
 #: src/gtk/help-overlay.blp:114
-#, fuzzy
-#| msgid "Toggle Selection Mode"
 msgid "Selection Mode"
-msgstr "Belépés a kiválasztó módba"
+msgstr "Kiválasztó mód"
 
 #: src/gtk/help-overlay.blp:70
 #, fuzzy
@@ -373,16 +348,12 @@ msgid "Remotes Page"
 msgstr "Nincsenek tárolók"
 
 #: src/gtk/help-overlay.blp:76
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show or Hide Disabled Remotes"
-msgstr "Letiltottak mutatása"
+msgstr "Letiltott tárolók mutatása vagy elrejtése"
 
 #: src/gtk/help-overlay.blp:80
-#, fuzzy
-#| msgid "Add Remote"
 msgid "New Remote"
-msgstr "Tároló hozzáadása"
+msgstr "Új tároló"
 
 #: src/gtk/help-overlay.blp:85
 #, fuzzy
@@ -392,7 +363,7 @@ msgstr "Felhasználói adatok"
 
 #: src/gtk/help-overlay.blp:91
 msgid "Edit Sorting Modes"
-msgstr ""
+msgstr "Rendezési módok szerkesztése"
 
 #: src/gtk/help-overlay.blp:99
 #, fuzzy
@@ -401,10 +372,8 @@ msgid "Show Active Data"
 msgstr "Nincs hátramaradt adat"
 
 #: src/gtk/help-overlay.blp:103
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Show Leftover Data"
-msgstr "Nincs hátramaradt adat"
+msgstr "Hátramaradt adatok mutatása"
 
 #: src/gtk/help-overlay.blp:108
 #, fuzzy
@@ -413,16 +382,12 @@ msgid "Snapshots Page"
 msgstr "Pillanatkép előhívva"
 
 #: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:202
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "New Snapshots"
-msgstr "Új pillanatkép"
+msgstr "Új pillanatképek"
 
 #: src/gtk/installation_chooser.blp:5
-#, fuzzy
-#| msgid "Installation"
 msgid "Choose Installation"
-msgstr "Telepítés"
+msgstr "Telepítés kiválasztása"
 
 #: src/gtk/installation_chooser.blp:11
 msgid "User"
@@ -433,48 +398,36 @@ msgid "System"
 msgstr "Rendszerszintű"
 
 #: src/gtk/installation_chooser.blp:28
-#, fuzzy
-#| msgid "Installation"
 msgid "Custom installation"
-msgstr "Telepítés"
+msgstr "Egyedi telepítés"
 
 #: src/gtk/installation_chooser.blp:37
-#, fuzzy
-#| msgid "Installation"
 msgid "Other Installation"
-msgstr "Telepítés"
+msgstr "Egyéb telepítés"
 
 #: src/gtk/installation_chooser.blp:38
 msgid "Choose a custom installation"
-msgstr ""
+msgstr "Válasszon egy egyedi telepítést"
 
 #: src/gtk/installation_chooser.py:27
-#, fuzzy
-#| msgid "The app will be available to only you"
 msgid "These {} will only be available to you"
-msgstr "Az alkalmazás csak önnek lesz elérhető"
+msgstr "Ezek a(z) {} csak önnek lesznek elérhetőek"
 
 #: src/gtk/installation_chooser.py:28
-#, fuzzy
-#| msgid "The app will be available to every user on the system"
 msgid "These {} will be available to everyone"
-msgstr "Az alkalmazás minden felhasználó számára elérhető lesz"
+msgstr "Ezek a(z) {} minden felhasználó számára elérhetőek lesznek"
 
 #: src/gtk/installation_chooser.py:29
 msgid "Choose how these {} will be installed"
-msgstr ""
+msgstr "Válassza ki hogyan lesznek ezek a(z) {} telepítve"
 
 #: src/gtk/installation_chooser.py:31
-#, fuzzy
-#| msgid "The app will be available to only you"
 msgid "This {} will only be available to you"
-msgstr "Az alkalmazás csak önnek lesz elérhető"
+msgstr "Ez a(z) {} csak önnek lesz elérhető"
 
 #: src/gtk/installation_chooser.py:32
-#, fuzzy
-#| msgid "The app will be available to every user on the system"
 msgid "This {} will be available to everyone"
-msgstr "Az alkalmazás minden felhasználó számára elérhető lesz"
+msgstr "Ez a(z) {} minden felhasználó számára elérhető lesz"
 
 #: src/gtk/installation_chooser.py:33
 msgid "Choose how this {} will be installed"
