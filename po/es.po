@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-12-04 00:46+0000\n"
+"PO-Revision-Date: 2024-12-05 16:05+0000\n"
 "Last-Translator: lmens-lmental <lmenslmental@gmail.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
@@ -188,13 +188,11 @@ msgstr ""
 "actualizaciones de seguridad"
 
 #: src/gtk/app_row.blp:21
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid ""
 "This app's runtime is End Of Life, and will not receive any security updates"
 msgstr ""
-"{} ha llegado al final de su vida y no recibirá actualizaciones de seguridad"
+"El tiempo de ejecución de esta aplicación es el final de su vida útil y no "
+"recibirá ninguna actualización de seguridad"
 
 #: src/gtk/app_row.blp:28
 msgid "This runtime will never be automatically removed"
@@ -205,18 +203,14 @@ msgid "Updates are disabled for this package"
 msgstr "Las actualizaciones están deshabilitadas para este paquete"
 
 #: src/gtk/attempt_install_dialog.blp:5
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "Attempt an Install?"
-msgstr "¿Intentar instalar?"
+msgstr "¿Intentar una instalar?"
 
 #: src/gtk/attempt_install_dialog.blp:6
-#, fuzzy
-#| msgid "Warehouse will attempt to install apps matching the selected data."
 msgid "Warehouse will try to install the matching packages."
 msgstr ""
-"Warehouse intentará instalar aplicaciones que coincidan con los datos "
-"seleccionados."
+"Warehouse intentará instalar aplicaciones que coincidan con los paquetes de "
+"datos seleccionados."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:37
