@@ -35,7 +35,7 @@ class ChangeVersionWorker:
 				real_installation = f"--{installation}"
 			else:
 				real_installation = f"--installation={installation}"
-			
+
 			cmd += ["sh", "-c"]
 
 			suffix = ""
