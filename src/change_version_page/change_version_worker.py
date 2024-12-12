@@ -24,14 +24,19 @@ class ChangeVersionWorker:
 	@classmethod
 	def change_version_thread(this, should_mask, package, commit):
 		try:
-			cmd = ["flatpak-spawn", "--host", "pkexec", "sh", "-c"]
+			cmd = ["flatpak-spawn", "--host"]
 
 			installation = package.info["installation"]
 			real_installation = ""
-			if installation == "user" or installation == "system":
+			if installation == "user":
+				real_installation = f"--{installation}"
+			elif installation == "system":
+				cmd.append("pkexec")
 				real_installation = f"--{installation}"
 			else:
 				real_installation = f"--installation={installation}"
+			
+			cmd += ["sh", "-c"]
 
 			suffix = ""
 			unmask_cmd = f"flatpak mask --remove {real_installation} {package.info['id']} && "
@@ -45,6 +50,7 @@ class ChangeVersionWorker:
 				suffix += mask_cmd
 
 			cmd.append(suffix)
+
 			this.process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 			percent_pattern = r"\d{1,3}%"
 			amount_pattern = r"(\d+)/(\d+)"
