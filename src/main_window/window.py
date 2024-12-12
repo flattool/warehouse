@@ -175,12 +175,14 @@ class WarehouseWindow(Adw.ApplicationWindow):
 
 	def on_drop_enter(self, *args):
 		self.main_split.add_css_class("blurred")
+		self.file_drop_revealer.set_visible(True)
 		self.file_drop_revealer.set_reveal_child(True)
 		return 1
 
 	def on_drop_leave(self, *args):
 		self.main_split.remove_css_class("blurred")
 		self.file_drop_revealer.set_reveal_child(False)
+		self.file_drop_revealer.set_visible(False)
 
 	def switch_page_shortcut_handler(self, letter):
 		self.activate_row(self.shortcut_to_pages[letter])
