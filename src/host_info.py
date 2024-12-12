@@ -343,8 +343,6 @@ class HostInfo:
 				this.installations.append("system")
 				for i in this.installations:
 					remote_info(i)
-				remote_info("user")
-				remote_info("system")
 
 				# Packages
 				output = subprocess.run(
