@@ -119,6 +119,7 @@ class WarehouseWindow(Adw.ApplicationWindow):
 			self.navigation_row_listbox.get_row_at_index(0).activate()
 
 	def on_file_drop(self, drop_target, value, x, y):
+		self.on_drop_leave() # needed for X11
 		try:
 			paks = []
 			remotes = []
