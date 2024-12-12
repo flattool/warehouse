@@ -61,7 +61,21 @@ flatpak run io.github.flattool.Warehouse
 
 ### Compiling from Source
 
-TODO
+Make sure `flatpak` and `git` are installed, then run the following to build from the repo:
+```bash
+# Clone this repo and enter it
+git clone https://github.com/flattool/warehouse
+cd warehouse
+
+# Install build dependencies
+flatpak install org.flatpak.Builder org.gnome.Sdk//47 org.gnome.Platform//47 -y
+
+# Build and install Warehouse
+flatpak run org.flatpak.Builder _build ./build-aux/io.github.flattool.Warehouse.json --install --user --force-clean
+
+# Run Warehouse
+flatpak run io.github.flattool.Warehouse//master
+```
 
 ### Formatting
 
