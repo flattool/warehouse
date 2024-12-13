@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-12-12 21:47+0000\n"
+"PO-Revision-Date: 2024-12-14 09:45+0000\n"
 "Last-Translator: Lumineko <bennokaynak@gmail.com>\n"
 "Language-Team: Finnish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/fi/>\n"
@@ -145,7 +145,6 @@ msgid "translator-credits"
 msgstr "kääntäjä-krediitit"
 
 #: src/main.py:223
-#, fuzzy
 msgid "Donate"
 msgstr "Lahjoita"
 
@@ -239,7 +238,6 @@ msgstr "Varasto yrittää asentaa vastaavat paketit."
 #: src/snapshot_page/snapshot_page.py:479
 #: src/snapshot_page/snapshot_page.py:520
 #: src/install_page/file_install_dialog.blp:13
-#, fuzzy
 msgid "Cancel"
 msgstr "Peruuta"
 
@@ -283,7 +281,6 @@ msgstr "Yksityiskohdat"
 #: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
 #: src/snapshot_page/snapshot_page.blp:149
-#, fuzzy
 msgid "Copy"
 msgstr "Kopioi"
 
@@ -323,7 +320,6 @@ msgid "Quit"
 msgstr "Lopeta"
 
 #: src/gtk/help-overlay.blp:32
-#, fuzzy
 msgid "Navigation"
 msgstr "Navigointi"
 
@@ -346,7 +342,6 @@ msgid "Show Snapshots Page"
 msgstr "Näytä tilannekuvat -sivu"
 
 #: src/gtk/help-overlay.blp:50
-#, fuzzy
 msgid "Show Install Page"
 msgstr "Näytä asennussivu"
 
@@ -356,7 +351,6 @@ msgstr "Paketit sivu"
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
-#, fuzzy
 msgid "Search Mode"
 msgstr "Hakutila"
 
@@ -398,7 +392,6 @@ msgid "Show Active Data"
 msgstr "Näytä aktiiviset tiedot"
 
 #: src/gtk/help-overlay.blp:103
-#, fuzzy
 msgid "Show Leftover Data"
 msgstr "Näytä jäljelle jääneet tiedot"
 
@@ -411,7 +404,6 @@ msgid "New Snapshots"
 msgstr "Uusia tilannekuvia"
 
 #: src/gtk/installation_chooser.blp:5
-#, fuzzy
 msgid "Choose Installation"
 msgstr "Valitse asennus"
 
