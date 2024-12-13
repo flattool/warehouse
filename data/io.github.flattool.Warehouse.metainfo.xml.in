@@ -71,6 +71,18 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="2.0.1" date="2024-12-12" timestamp="1734055200">
+			<p>Bug Fixes and Performance Improvements</p>
+			<ul>
+				<li>The sidebar no longer selects the incorrect page at launch</li>
+				<li>Changing versions of Flatpaks in the user installation no longer asks for your password</li>
+				<li>The drag and drop overlay now properly hides itself when on X11</li>
+				<li>Warehouse opens faster due to removal of redundant system checks</li>
+				<li>Fix various typos</li>
+				<li>Use more consistent iconography</li>
+				<li>Added and updated translations</li>
+			</ul>
+		</release>
 		<release version="2.0.0" date="2024-10-28" timestamp="1730089891">
 			<description translate="no">
 				<p>New Features</p>
