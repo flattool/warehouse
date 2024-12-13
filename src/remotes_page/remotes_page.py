@@ -251,7 +251,11 @@ class RemotesPage(Adw.NavigationPage):
 
 	def show_disabled_handler(self, button):
 		show_disabled = button.get_active()
-		self.show_disabled_button_content.set_icon_name("warehouse:eye-open-negative-filled-symbolic" if show_disabled else "warehouse:eye-not-looking-symbolic")
+		self.show_disabled_button_content.set_icon_name(
+			"warehouse:eye-open-negative-filled-symbolic"
+			if show_disabled else
+			"warehouse:eye-not-looking-symbolic"
+		)
 		total_visible = 0
 		for row in self.current_remote_rows:
 			if row.remote.disabled:
