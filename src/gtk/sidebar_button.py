@@ -16,6 +16,6 @@ class SidebarButton(Gtk.Button):
 		self.connect("clicked", lambda *_: main_split.set_show_sidebar(True))
 
 		# Apply
-		self.set_icon_name("dock-left-symbolic")
+		self.set_icon_name("warehouse:dock-left-symbolic")
 		self.set_tooltip_text(_("Show Sidebar"))
 		self.set_visible(False)

@@ -13,7 +13,7 @@ class NewRemoteRow(Adw.ActionRow):
 	def idle_stuff(self, *args):
 		self.set_title(self.info["title"])
 		self.set_subtitle(self.info["description"])
-		self.add_suffix(Gtk.Image.new_from_icon_name("plus-large-symbolic"))
+		self.add_suffix(Gtk.Image.new_from_icon_name("warehouse:plus-large-symbolic"))
 
 	def __init__(self, info, **kwargs):
 		super().__init__(**kwargs)
@@ -251,7 +251,7 @@ class RemotesPage(Adw.NavigationPage):
 
 	def show_disabled_handler(self, button):
 		show_disabled = button.get_active()
-		self.show_disabled_button_content.set_icon_name("eye-open-negative-filled-symbolic" if show_disabled else "eye-not-looking-symbolic")
+		self.show_disabled_button_content.set_icon_name("warehouse:eye-open-negative-filled-symbolic" if show_disabled else "warehouse:eye-not-looking-symbolic")
 		total_visible = 0
 		for row in self.current_remote_rows:
 			if row.remote.disabled:

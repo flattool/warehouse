@@ -26,7 +26,7 @@ template $RemotesPage : Adw.NavigationPage {
 					$SidebarButton {}
 					[start]
 					ToggleButton search_button {
-						icon-name: "loupe-large-symbolic";
+						icon-name: "warehouse:loupe-large-symbolic";
 						tooltip-text: _("Search Packages");
 					}
 				}
@@ -51,7 +51,7 @@ template $RemotesPage : Adw.NavigationPage {
 									valign: center;
 									styles ["flat"]
 									Adw.ButtonContent show_disabled_button_content {
-										icon-name: "eye-not-looking-symbolic";
+										icon-name: "warehouse:eye-not-looking-symbolic";
 										label: _("Show Disabled");
 									}
 								}
@@ -68,7 +68,7 @@ template $RemotesPage : Adw.NavigationPage {
 											valign: center;
 											margin-top: 7;
 											margin-end: 6;
-											icon-name: "eye-not-looking-symbolic";
+											icon-name: "warehouse:eye-not-looking-symbolic";
 										}
 										Label {
 											margin-top: 7;
@@ -100,7 +100,7 @@ template $RemotesPage : Adw.NavigationPage {
 											valign: center;
 											margin-top: 7;
 											margin-end: 6;
-											icon-name: "error-symbolic";
+											icon-name: "warehouse:error-symbolic";
 										}
 										Label {
 											margin-top: 7;
@@ -135,7 +135,7 @@ template $RemotesPage : Adw.NavigationPage {
 								subtitle: _("Open a downloaded repo file to add");
 								[suffix]
 								Image {
-									icon-name: "plus-large-symbolic";
+									icon-name: "warehouse:plus-large-symbolic";
 								}
 							}
 							Adw.ActionRow custom_remote_row {
@@ -144,7 +144,7 @@ template $RemotesPage : Adw.NavigationPage {
 								subtitle: _("Manually enter new remote details");
 								[suffix]
 								Image {
-									icon-name: "plus-large-symbolic";
+									icon-name: "warehouse:plus-large-symbolic";
 								}
 							}
 						}

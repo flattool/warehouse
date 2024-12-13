@@ -250,11 +250,11 @@ class DataSubpage(Gtk.Stack):
 		self.flow_box.set_filter_func(self.filter_func)
 
 		if is_active:
-			self.no_data.set_icon_name("error-symbolic")
+			self.no_data.set_icon_name("warehouse:error-symbolic")
 			self.no_data.set_title(_("No Active Data"))
 			self.no_data.set_description(_("Warehouse cannot see any active user data or your system has no active user data present"))
 		else:
-			self.no_data.set_icon_name("check-plain-symbolic")
+			self.no_data.set_icon_name("warehouse:check-plain-symbolic")
 			self.no_data.set_title(_("No Leftover Data"))
 			self.no_data.set_description(_("There is no leftover user data"))
 

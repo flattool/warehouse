@@ -16,7 +16,7 @@ template $DataBox : ListBox {
 				Image image {
 					margin-start: 12;
 					margin-end: 12;
-					icon-name: "flatpak-symbolic";
+					icon-name: "warehouse:flatpak-symbolic";
 					icon-size: large;
 				}
 				Box label_box {
@@ -52,24 +52,24 @@ template $DataBox : ListBox {
 					hexpand: true;
 				}
 				Button copy_button {
-					icon-name: "copy-symbolic";
+					icon-name: "warehouse:copy-symbolic";
 					tooltip-text: _("Copy Path");
 					visible: bind check_button.visible inverted;
 					styles ["flat", "circular"]
 				}
 				Button open_button {
-					icon-name: "folder-open-symbolic";
+					icon-name: "warehouse:folder-open-symbolic";
 					tooltip-text: _("Open User Data");
 					visible: bind check_button.visible inverted;
 					styles ["flat", "circular"]
 				}
 				Button install_button {
-					icon-name: "arrow-pointing-at-line-down-symbolic";
+					icon-name: "warehouse:arrow-pointing-at-line-down-symbolic";
 					tooltip-text: _("Attempt to Install");
 					styles ["flat", "circular"]
 				}
 				Button trash_button {
-					icon-name: "user-trash-symbolic";
+					icon-name: "warehouse:user-trash-symbolic";
 					tooltip-text: _("Trash User Data");
 					visible: bind check_button.visible inverted;
 					styles ["flat", "circular"]

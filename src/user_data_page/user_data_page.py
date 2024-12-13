@@ -268,13 +268,13 @@ class UserDataPage(Adw.BreakpointBin):
 			child=self.adp,
 			name="active",
 			title=_("Active Data"),
-			icon_name="file-manager-symbolic",
+			icon_name="warehouse:file-manager-symbolic",
 		)
 		self.stack.add_titled_with_icon(
 			child=self.ldp,
 			name="leftover",
 			title=_("Leftover Data"),
-			icon_name="folder-templates-symbolic",
+			icon_name="warehouse:folder-templates-symbolic",
 		)
 
 		# Connections

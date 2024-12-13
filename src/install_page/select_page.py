@@ -30,7 +30,7 @@ class SelectPage(Adw.NavigationPage):
 					continue
 
 				row = Adw.ActionRow(title=remote.title, subtitle=_("Installation: {}").format(installation), activatable=True)
-				row.add_suffix(Gtk.Image(icon_name="right-large-symbolic"))
+				row.add_suffix(Gtk.Image(icon_name="warehouse:right-large-symbolic"))
 				row.connect("activated", self.results_page.show_remote, remote, installation, self.nav_view)
 				self.remotes_group.add(row)
 				self.remote_rows.append(row)

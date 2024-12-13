@@ -31,7 +31,7 @@ class AddedGroup(Adw.PreferencesGroup):
 
 		remove_all = Gtk.Button(
 			child=Adw.ButtonContent(
-				icon_name="list-remove-all-symbolic",
+				icon_name="warehouse:list-remove-all-symbolic",
 				label=_("Remove All"),
 			),
 			valign=Gtk.Align.CENTER,

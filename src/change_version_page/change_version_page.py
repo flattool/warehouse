@@ -68,7 +68,7 @@ class ChangeVersionPage(Adw.NavigationPage):
 				)
 				if commit == self.package.cli_info.get("commit", None):
 					row.set_sensitive(False)
-					row.add_prefix(Gtk.Image(icon_name="check-plain-symbolic", margin_start=5, margin_end=5))
+					row.add_prefix(Gtk.Image(icon_name="warehouse:check-plain-symbolic", margin_start=5, margin_end=5))
 					row.set_tooltip_text(_("Currently Installed Version"))
 				else:
 					check = Gtk.CheckButton()

@@ -44,7 +44,7 @@ template $SnapshotBox : Gtk.Box {
 		Button apply_button {
 			Adw.ButtonContent {
 				label: _("Apply");
-				icon-name: "check-plain-symbolic";
+				icon-name: "warehouse:check-plain-symbolic";
 				can-shrink: true;
 			}
 			hexpand: true;
@@ -53,7 +53,7 @@ template $SnapshotBox : Gtk.Box {
 		MenuButton rename_button {
 			Adw.ButtonContent {
 				label: _("Rename");
-				icon-name: "edit-symbolic";
+				icon-name: "warehouse:edit-symbolic";
 				can-shrink: true;
 			}
 			hexpand: true;
@@ -63,7 +63,7 @@ template $SnapshotBox : Gtk.Box {
 		Button trash_button {
 			Adw.ButtonContent {
 				label: _("Trash");
-				icon-name: "user-trash-symbolic";
+				icon-name: "warehouse:user-trash-symbolic";
 				can-shrink: true;
 			}
 			hexpand: true;
@@ -90,7 +90,7 @@ Popover rename_menu {
 				text: bind title.label;
 			}
 			Button apply_rename {
-				icon-name: "check-plain-symbolic";
+				icon-name: "warehouse:check-plain-symbolic";
 				tooltip-text: _("Confirm Rename");
 				styles ["circular", "suggested-action"]
 			}

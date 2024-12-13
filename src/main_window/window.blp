@@ -21,7 +21,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
 					can-target: false;
 					transition-type: crossfade;
 					Adw.StatusPage file_drop_view {
-						icon-name: "folder-open-symbolic";
+						icon-name: "warehouse:folder-open-symbolic";
 						title: _("Drop to Open");
 						description: _("Install Flatpaks or Add a Remote");
 						styles ["drag-overlay-status-page"]
@@ -40,7 +40,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
 								Adw.HeaderBar header_bar {
 									[start]
 									Button refresh_button {
-										icon-name: "arrow-circular-top-right-symbolic";
+										icon-name: "warehouse:arrow-circular-top-right-symbolic";
 										tooltip-text: _("Refresh List");
 									}
 									[end]
@@ -61,7 +61,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
 												margin-end: 6;
 												spacing: 12;
 												Image icon {
-													icon-name: "flatpak-symbolic";
+													icon-name: "warehouse:flatpak-symbolic";
 												}
 												Label {
 													label: _("Packages");
@@ -76,7 +76,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
 												margin-end: 6;
 												spacing: 12;
 												Image {
-													icon-name: "server-pick-symbolic";
+													icon-name: "warehouse:server-pick-symbolic";
 												}
 												Label {
 													label: _("Remotes");
@@ -92,7 +92,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
 												margin-end: 6;
 												spacing: 12;
 												Image {
-													icon-name: "file-manager-symbolic";
+													icon-name: "warehouse:file-manager-symbolic";
 												}
 												Label {
 													label: _("User Data");
@@ -107,7 +107,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
 												margin-end: 6;
 												spacing: 12;
 												Image {
-													icon-name: "snapshots-alt-symbolic";
+													icon-name: "warehouse:snapshots-alt-symbolic";
 												}
 												Label {
 													label: _("Snapshots");
@@ -122,7 +122,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
 												margin-end: 6;
 												spacing: 12;
 												Image {
-													icon-name: "arrow-pointing-at-line-down-symbolic";
+													icon-name: "warehouse:arrow-pointing-at-line-down-symbolic";
 												}
 												Label {
 													label: _("Install Packages");

@@ -1,85 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/io/github/flattool/Warehouse">
-	<file alias="style.css">../data/style.css</file>
-	<file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
-	<file preprocess="xml-stripblanks">gtk/loading_status.ui</file>
-	<file preprocess="xml-stripblanks">gtk/app_row.ui</file>
-	<file preprocess="xml-stripblanks">gtk/installation_chooser.ui</file>
-	<file preprocess="xml-stripblanks">gtk/attempt_install_dialog.ui</file>
-	<file preprocess="xml-stripblanks">main_window/window.ui</file>
-	<file preprocess="xml-stripblanks">packages_page/packages_page.ui</file>
-	<file preprocess="xml-stripblanks">packages_page/filters_page.ui</file>
-	<file preprocess="xml-stripblanks">packages_page/uninstall_dialog.ui</file>
-	<file preprocess="xml-stripblanks">properties_page/properties_page.ui</file>
-	<file preprocess="xml-stripblanks">change_version_page/change_version_page.ui</file>
-	<file preprocess="xml-stripblanks">user_data_page/data_box.ui</file>
-	<file preprocess="xml-stripblanks">user_data_page/user_data_page.ui</file>
-	<file preprocess="xml-stripblanks">user_data_page/data_subpage.ui</file>
-	<file preprocess="xml-stripblanks">remotes_page/remotes_page.ui</file>
-	<file preprocess="xml-stripblanks">remotes_page/remote_row.ui</file>
-	<file preprocess="xml-stripblanks">remotes_page/add_remote_dialog.ui</file>
-	<file preprocess="xml-stripblanks">snapshot_page/snapshot_page.ui</file>
-	<file preprocess="xml-stripblanks">snapshot_page/snapshots_list_page.ui</file>
-	<file preprocess="xml-stripblanks">snapshot_page/snapshot_box.ui</file>
-	<file preprocess="xml-stripblanks">snapshot_page/new_snapshot_dialog.ui</file>
-	<file preprocess="xml-stripblanks">install_page/file_install_dialog.ui</file>
-	<file preprocess="xml-stripblanks">install_page/install_page.ui</file>
-	<file preprocess="xml-stripblanks">install_page/result_row.ui</file>
-	<file preprocess="xml-stripblanks">install_page/select_page.ui</file>
-	<file preprocess="xml-stripblanks">install_page/results_page.ui</file>
-	<file preprocess="xml-stripblanks">install_page/pending_page.ui</file>
-	<!-- <file preprocess="xml-stripblanks">../data/io.github.flattool.Warehouse.metainfo.xml.in</file> -->
-  </gresource>
-  <gresource prefix="/io/github/flattool/Warehouse/icons/scalable/actions/">
-	<file preprocess="xml-stripblanks" alias="selection-mode-symbolic.svg">../data/icons/selection-mode-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="error-symbolic.svg">../data/icons/error-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="user-trash-symbolic.svg">../data/icons/user-trash-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="folder-visiting-symbolic.svg">../data/icons/folder-visiting-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="info-symbolic.svg">../data/icons/info-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="check-plain-symbolic.svg">../data/icons/check-plain-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="paper-filled-symbolic.svg">../data/icons/paper-filled-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="plus-large-symbolic.svg">../data/icons/plus-large-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="funnel-outline-symbolic.svg">../data/icons/funnel-outline-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="flatpak-symbolic.svg">../data/icons/flatpak-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="right-large-symbolic.svg">../data/icons/right-large-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="view-more-symbolic.svg">../data/icons/view-more-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="clock-alt-symbolic.svg">../data/icons/clock-alt-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="arrow2-top-right-symbolic.svg">../data/icons/arrow2-top-right-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="software-update-available-symbolic.svg">../data/icons/software-update-available-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="software-update-urgent-symbolic.svg">../data/icons/software-update-urgent-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="cross-filled-symbolic.svg">../data/icons/cross-filled-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="important-small-symbolic.svg">../data/icons/important-small-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="eye-not-looking-symbolic.svg">../data/icons/eye-not-looking-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="eye-open-negative-filled-symbolic.svg">../data/icons/eye-open-negative-filled-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="left-large-symbolic.svg">../data/icons/left-large-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="arrow-turn-left-down-symbolic.svg">../data/icons/arrow-turn-left-down-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="arrow-circular-top-right-symbolic.svg">../data/icons/arrow-circular-top-right-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="dock-left-symbolic.svg">../data/icons/dock-left-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="server-pick-symbolic.svg">../data/icons/server-pick-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="file-manager-symbolic.svg">../data/icons/file-manager-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="snapshots-alt-symbolic.svg">../data/icons/snapshots-alt-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="arrow-pointing-at-line-down-symbolic.svg">../data/icons/arrow-pointing-at-line-down-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="loupe-large-symbolic.svg">../data/icons/loupe-large-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="folder-open-symbolic.svg">../data/icons/folder-open-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="padlock2-symbolic.svg">../data/icons/padlock2-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="pin-symbolic.svg">../data/icons/pin-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="pin-small-symbolic.svg">../data/icons/pin-small-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="error-small-symbolic.svg">../data/icons/error-small-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="copy-symbolic.svg">../data/icons/copy-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="double-ended-arrows-vertical-symbolic.svg">../data/icons/double-ended-arrows-vertical-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="vertical-arrows-long-symbolic.svg">../data/icons/vertical-arrows-long-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="dot-symbolic.svg">../data/icons/dot-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="folder-templates-symbolic.svg">../data/icons/folder-templates-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="view-sort-ascending-symbolic.svg">../data/icons/view-sort-ascending-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="view-sort-descending-symbolic.svg">../data/icons/view-sort-descending-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="font-x-generic-symbolic.svg">../data/icons/font-x-generic-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="tag-outline-symbolic.svg">../data/icons/tag-outline-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="harddisk-symbolic.svg">../data/icons/harddisk-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="arrow-turn-down-right-symbolic.svg">../data/icons/arrow-turn-down-right-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="minus-large-symbolic.svg">../data/icons/minus-large-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="view-list-bullet-symbolic.svg">../data/icons/view-list-bullet-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="list-remove-all-symbolic.svg">../data/icons/list-remove-all-symbolic.svg</file>
-	<file preprocess="xml-stripblanks" alias="edit-symbolic.svg">../data/icons/edit-symbolic.svg</file>
-  </gresource>
+	<gresource prefix="/io/github/flattool/Warehouse">
+		<file alias="style.css">../data/style.css</file>
+		<file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
+		<file preprocess="xml-stripblanks">gtk/loading_status.ui</file>
+		<file preprocess="xml-stripblanks">gtk/app_row.ui</file>
+		<file preprocess="xml-stripblanks">gtk/installation_chooser.ui</file>
+		<file preprocess="xml-stripblanks">gtk/attempt_install_dialog.ui</file>
+		<file preprocess="xml-stripblanks">main_window/window.ui</file>
+		<file preprocess="xml-stripblanks">packages_page/packages_page.ui</file>
+		<file preprocess="xml-stripblanks">packages_page/filters_page.ui</file>
+		<file preprocess="xml-stripblanks">packages_page/uninstall_dialog.ui</file>
+		<file preprocess="xml-stripblanks">properties_page/properties_page.ui</file>
+		<file preprocess="xml-stripblanks">change_version_page/change_version_page.ui</file>
+		<file preprocess="xml-stripblanks">user_data_page/data_box.ui</file>
+		<file preprocess="xml-stripblanks">user_data_page/user_data_page.ui</file>
+		<file preprocess="xml-stripblanks">user_data_page/data_subpage.ui</file>
+		<file preprocess="xml-stripblanks">remotes_page/remotes_page.ui</file>
+		<file preprocess="xml-stripblanks">remotes_page/remote_row.ui</file>
+		<file preprocess="xml-stripblanks">remotes_page/add_remote_dialog.ui</file>
+		<file preprocess="xml-stripblanks">snapshot_page/snapshot_page.ui</file>
+		<file preprocess="xml-stripblanks">snapshot_page/snapshots_list_page.ui</file>
+		<file preprocess="xml-stripblanks">snapshot_page/snapshot_box.ui</file>
+		<file preprocess="xml-stripblanks">snapshot_page/new_snapshot_dialog.ui</file>
+		<file preprocess="xml-stripblanks">install_page/file_install_dialog.ui</file>
+		<file preprocess="xml-stripblanks">install_page/install_page.ui</file>
+		<file preprocess="xml-stripblanks">install_page/result_row.ui</file>
+		<file preprocess="xml-stripblanks">install_page/select_page.ui</file>
+		<file preprocess="xml-stripblanks">install_page/results_page.ui</file>
+		<file preprocess="xml-stripblanks">install_page/pending_page.ui</file>
+		<!-- <file preprocess="xml-stripblanks">../data/io.github.flattool.Warehouse.metainfo.xml.in</file> -->
+	</gresource>
+	<gresource prefix="/io/github/flattool/Warehouse/icons/scalable/actions/">
+		<file preprocess="xml-stripblanks" alias="warehouse:selection-mode-symbolic.svg">../data/icons/selection-mode-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:error-symbolic.svg">../data/icons/error-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:user-trash-symbolic.svg">../data/icons/user-trash-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:check-plain-symbolic.svg">../data/icons/check-plain-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:plus-large-symbolic.svg">../data/icons/plus-large-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:funnel-outline-symbolic.svg">../data/icons/funnel-outline-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:flatpak-symbolic.svg">../data/icons/flatpak-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:right-large-symbolic.svg">../data/icons/right-large-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:view-more-symbolic.svg">../data/icons/view-more-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:software-update-available-symbolic.svg">../data/icons/software-update-available-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:software-update-urgent-symbolic.svg">../data/icons/software-update-urgent-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:eye-not-looking-symbolic.svg">../data/icons/eye-not-looking-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:eye-open-negative-filled-symbolic.svg">../data/icons/eye-open-negative-filled-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:arrow-circular-top-right-symbolic.svg">../data/icons/arrow-circular-top-right-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:dock-left-symbolic.svg">../data/icons/dock-left-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:server-pick-symbolic.svg">../data/icons/server-pick-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:file-manager-symbolic.svg">../data/icons/file-manager-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:snapshots-alt-symbolic.svg">../data/icons/snapshots-alt-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:arrow-pointing-at-line-down-symbolic.svg">../data/icons/arrow-pointing-at-line-down-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:loupe-large-symbolic.svg">../data/icons/loupe-large-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:folder-open-symbolic.svg">../data/icons/folder-open-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:pin-symbolic.svg">../data/icons/pin-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:copy-symbolic.svg">../data/icons/copy-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:double-ended-arrows-vertical-symbolic.svg">../data/icons/double-ended-arrows-vertical-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:vertical-arrows-long-symbolic.svg">../data/icons/vertical-arrows-long-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:folder-templates-symbolic.svg">../data/icons/folder-templates-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:view-sort-ascending-symbolic.svg">../data/icons/view-sort-ascending-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:view-sort-descending-symbolic.svg">../data/icons/view-sort-descending-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:font-x-generic-symbolic.svg">../data/icons/font-x-generic-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:tag-outline-symbolic.svg">../data/icons/tag-outline-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:harddisk-symbolic.svg">../data/icons/harddisk-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:minus-large-symbolic.svg">../data/icons/minus-large-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:list-remove-all-symbolic.svg">../data/icons/list-remove-all-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:edit-symbolic.svg">../data/icons/edit-symbolic.svg</file>
+	</gresource>
 </gresources>

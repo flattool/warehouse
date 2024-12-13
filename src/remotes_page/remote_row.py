@@ -73,7 +73,7 @@ class RemoteRow(Adw.ActionRow):
 				return
 
 			self.add_css_class("warning")
-			self.set_icon_name("error-symbolic")
+			self.set_icon_name("warehouse:error-symbolic")
 			self.set_tooltip_text(_("Remote is Disabled"))
 			self.remote.disabled = True
 			self.parent_page.toast_overlay.add_toast(Adw.Toast(title=_("Disabled remote")))
@@ -152,7 +152,7 @@ class RemoteRow(Adw.ActionRow):
 		self.set_subtitle(_("Installation: {}").format(self.installation))
 		self.suffix_label.set_label(self.remote.name)
 		if self.remote.disabled:
-			self.set_icon_name("error-symbolic")
+			self.set_icon_name("warehouse:error-symbolic")
 			self.add_css_class("warning")
 			self.set_tooltip_text(_("Remote is Disabled"))
 

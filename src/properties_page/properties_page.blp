@@ -18,7 +18,7 @@ template $PropertiesPage : Adw.NavigationPage {
 			Adw.StatusPage {
 				title: _("Properties Page Unavailable");
 				description: _("Cannot show the properties page at this time");
-				icon-name: "error-symbolic";
+				icon-name: "warehouse:error-symbolic";
 			}
 		}
 		Adw.NavigationView nav_view {
@@ -31,7 +31,7 @@ template $PropertiesPage : Adw.NavigationPage {
 							show-title: false;
 							[end]
 							MenuButton more_menu_button {
-								icon-name: "view-more-symbolic";
+								icon-name: "warehouse:view-more-symbolic";
 								popover: more_menu;
 							}
 						}
@@ -118,7 +118,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												Button open_data_button {
 													styles["flat"]
 													valign: center;
-													icon-name: "folder-open-symbolic";
+													icon-name: "warehouse:folder-open-symbolic";
 													tooltip-text: _("Open User Data");
 												}
 
@@ -126,7 +126,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												Button trash_data_button {
 													styles["flat"]
 													valign: center;
-													icon-name: "user-trash-symbolic";
+													icon-name: "warehouse:user-trash-symbolic";
 													tooltip-text: _("Trash User Data");
 												}
 
@@ -158,7 +158,7 @@ template $PropertiesPage : Adw.NavigationPage {
 													subtitle: _("Upgrade or downgrade this package");
 													activatable: true;
 													Image {
-														icon-name: "right-large-symbolic";
+														icon-name: "warehouse:right-large-symbolic";
 													}
 												}
 											}
@@ -167,7 +167,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: _("Installed Size");
 												activatable: true;
 												Image {
-													icon-name: "copy-symbolic";
+													icon-name: "warehouse:copy-symbolic";
 												}
 											}
 											Adw.ActionRow runtime_row {
@@ -175,13 +175,13 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: _("Runtime");
 												activatable: true;
 												Image eol_package_package_status_icon {
-													icon-name: "error-symbolic";
+													icon-name: "warehouse:error-symbolic";
 													tooltip-text: _("This package is End Of Life, and will not receive any security updates");
 													margin-end: 6;
 													styles["error"]
 												}
 												Image {
-													icon-name: "right-large-symbolic";
+													icon-name: "warehouse:right-large-symbolic";
 												}
 											}
 											Adw.ActionRow pin_row {
@@ -203,7 +203,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: _("Application ID");
 												activatable: true;
 												Image {
-													icon-name: "copy-symbolic";
+													icon-name: "warehouse:copy-symbolic";
 												}
 											}
 											Adw.ActionRow ref_row {
@@ -211,7 +211,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: "Ref";
 												activatable: true;
 												Image {
-													icon-name: "copy-symbolic";
+													icon-name: "warehouse:copy-symbolic";
 												}
 											}
 											Adw.ActionRow arch_row {
@@ -219,7 +219,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: _("Architecture");
 												activatable: true;
 												Image {
-													icon-name: "copy-symbolic";
+													icon-name: "warehouse:copy-symbolic";
 												}
 											}
 											Adw.ActionRow branch_row {
@@ -227,7 +227,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: _("Branch");
 												activatable: true;
 												Image {
-													icon-name: "copy-symbolic";
+													icon-name: "warehouse:copy-symbolic";
 												}
 											}
 											Adw.ActionRow license_row {
@@ -235,7 +235,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: _("License");
 												activatable: true;
 												Image {
-													icon-name: "copy-symbolic";
+													icon-name: "warehouse:copy-symbolic";
 												}
 											}
 										}
@@ -247,7 +247,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: "SDK";
 												activatable: true;
 												Image {
-													icon-name: "copy-symbolic";
+													icon-name: "warehouse:copy-symbolic";
 												}
 											}
 											Adw.ActionRow origin_row {
@@ -255,7 +255,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: _("Origin");
 												activatable: true;
 												Image {
-													icon-name: "copy-symbolic";
+													icon-name: "warehouse:copy-symbolic";
 												}
 											}
 											Adw.ActionRow collection_row {
@@ -263,7 +263,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: _("Collection");
 												activatable: true;
 												Image {
-													icon-name: "copy-symbolic";
+													icon-name: "warehouse:copy-symbolic";
 												}
 											}
 											Adw.ActionRow installation_row {
@@ -271,7 +271,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: _("Installation");
 												activatable: true;
 												Image {
-													icon-name: "copy-symbolic";
+													icon-name: "warehouse:copy-symbolic";
 												}
 											}
 										}
@@ -282,7 +282,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: "Commit";
 												activatable: true;
 												Image {
-													icon-name: "copy-symbolic";
+													icon-name: "warehouse:copy-symbolic";
 												}
 											}
 											Adw.ActionRow parent_row {
@@ -290,7 +290,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: _("Parent");
 												activatable: true;
 												Image {
-													icon-name: "copy-symbolic";
+													icon-name: "warehouse:copy-symbolic";
 												}
 											}
 											Adw.ActionRow subject_row {
@@ -298,7 +298,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: _("Subject");
 												activatable: true;
 												Image {
-													icon-name: "copy-symbolic";
+													icon-name: "warehouse:copy-symbolic";
 												}
 											}
 											Adw.ActionRow date_row {
@@ -306,7 +306,7 @@ template $PropertiesPage : Adw.NavigationPage {
 												title: _("Date");
 												activatable: true;
 												Image {
-													icon-name: "copy-symbolic";
+													icon-name: "warehouse:copy-symbolic";
 												}
 											}
 										}

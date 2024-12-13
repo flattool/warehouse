@@ -14,7 +14,7 @@ class FileInstallDialog(Adw.Dialog):
 	def generate_list(self):
 		for file in self.files:
 			row = Adw.ActionRow(title=file.get_basename())
-			row.add_prefix(Gtk.Image(icon_name="flatpak-symbolic"))
+			row.add_prefix(Gtk.Image(icon_name="warehouse:flatpak-symbolic"))
 			self.packages_group.add(row)
 
 	def on_response(self, *args):

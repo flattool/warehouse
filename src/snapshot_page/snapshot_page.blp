@@ -31,17 +31,17 @@ template $SnapshotPage : Adw.BreakpointBin {
 									$SidebarButton {}
 									[start]
 									ToggleButton search_button {
-										icon-name: "loupe-large-symbolic";
+										icon-name: "warehouse:loupe-large-symbolic";
 										tooltip-text: _("Search Packages");
 									}
 									[end]
 									Button new_button {
-										icon-name: "plus-large-symbolic";
+										icon-name: "warehouse:plus-large-symbolic";
 										tooltip-text: _("New Snapshot");
 									}
 									[end]
 									ToggleButton select_button {
-										icon-name: "selection-mode-symbolic";
+										icon-name: "warehouse:selection-mode-symbolic";
 										tooltip-text: _("Select Packages");
 									}
 								}
@@ -136,7 +136,7 @@ template $SnapshotPage : Adw.BreakpointBin {
 										Button select_all_button {
 											styles ["raised"]
 											Adw.ButtonContent {
-												icon-name: "selection-mode-symbolic";
+												icon-name: "warehouse:selection-mode-symbolic";
 												label: _("Select All");
 												can-shrink: true;
 											}
@@ -145,7 +145,7 @@ template $SnapshotPage : Adw.BreakpointBin {
 											sensitive: false;
 											styles ["raised"]
 											Adw.ButtonContent {
-												icon-name: "edit-copy-symbolic";
+												icon-name: "edit-warehouse:copy-symbolic";
 												label: _("Copy");
 												can-shrink: true;
 											}
@@ -155,7 +155,7 @@ template $SnapshotPage : Adw.BreakpointBin {
 											popover: more_popover;
 											styles ["raised"]
 											Adw.ButtonContent {
-												icon-name: "view-more-symbolic";
+												icon-name: "warehouse:view-more-symbolic";
 												label: _("More");
 												can-shrink: true;
 											}
@@ -173,7 +173,7 @@ template $SnapshotPage : Adw.BreakpointBin {
 						$SidebarButton {}
 						[start]
 						Button status_open_button {
-							icon-name: "folder-open-symbolic";
+							icon-name: "warehouse:folder-open-symbolic";
 							tooltip-text: _("Open Snapshots Folder");
 						}
 					}
@@ -181,12 +181,12 @@ template $SnapshotPage : Adw.BreakpointBin {
 						Adw.StatusPage {
 							title: _("No Snapshots");
 							description: _("Create a Snapshot to save the state of any Flatpak application");
-							icon-name: "snapshots-alt-symbolic";
+							icon-name: "warehouse:snapshots-alt-symbolic";
 							Button status_new_button {
 								styles ["suggested-action", "pill"]
 								halign: center;
 								Adw.ButtonContent {
-									icon-name: "plus-large-symbolic";
+									icon-name: "warehouse:plus-large-symbolic";
 									label: _("New Snapshot");
 								}
 							}

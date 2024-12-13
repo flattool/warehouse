@@ -22,12 +22,12 @@ template $ResultsPage : Adw.NavigationPage {
 		}
 		Stack stack {
 			Adw.StatusPage new_search {
-				icon-name: "loupe-large-symbolic";
+				icon-name: "warehouse:loupe-large-symbolic";
 				title: _("Search for Flatpaks");
 				description: _("Search for Flatpaks you want to install");
 			}
 			Adw.StatusPage too_many {
-				icon-name: "error-symbolic";
+				icon-name: "warehouse:error-symbolic";
 				title: _("Too Many Results");
 				description: _("Try being more specific with your search");
 			}
@@ -45,7 +45,7 @@ template $ResultsPage : Adw.NavigationPage {
 				}
 			}
 			Adw.StatusPage no_results {
-				icon-name: "loupe-large-symbolic";
+				icon-name: "warehouse:loupe-large-symbolic";
 				title: _("No Results Found");
 				description: _("Try a different search term");
 			}

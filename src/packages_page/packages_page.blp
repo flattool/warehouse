@@ -61,17 +61,17 @@ template $PackagesPage : Adw.BreakpointBin {
 									$SidebarButton {}
 									[start]
 									ToggleButton search_button {
-										icon-name: "loupe-large-symbolic";
+										icon-name: "warehouse:loupe-large-symbolic";
 										tooltip-text: _("Search Packages");
 									}
 									[end]
 									ToggleButton filter_button {
-										icon-name: "funnel-outline-symbolic";
+										icon-name: "warehouse:funnel-outline-symbolic";
 										tooltip-text: _("Filter Packages");
 									}
 									[end]
 									ToggleButton select_button {
-										icon-name: "selection-mode-symbolic";
+										icon-name: "warehouse:selection-mode-symbolic";
 										tooltip-text: _("Select Packages");
 									}
 								}
@@ -92,7 +92,7 @@ template $PackagesPage : Adw.BreakpointBin {
 									Adw.StatusPage no_filter_results {
 										title: _("No Packages Match Filters");
 										description: _("No installed package matches all of the currently applied filters");
-										icon-name: "funnel-outline-symbolic";
+										icon-name: "warehouse:funnel-outline-symbolic";
 										Button reset_filters_button {
 											label: _("Reset Filters");
 											halign: center;
@@ -103,7 +103,7 @@ template $PackagesPage : Adw.BreakpointBin {
 									Adw.StatusPage no_packages {
 										title: _("No Packages Found");
 										description: _("Warehouse cannot see the list of installed packages or your system has no packages installed");
-										icon-name: "error-symbolic";
+										icon-name: "warehouse:error-symbolic";
 									}
 									Adw.StatusPage no_results {
 										title: _("No Results Found");
@@ -123,7 +123,7 @@ template $PackagesPage : Adw.BreakpointBin {
 										Button select_all_button {
 											styles ["raised"]
 											Adw.ButtonContent {
-												icon-name: "selection-mode-symbolic";
+												icon-name: "warehouse:selection-mode-symbolic";
 												label: _("Select All");
 												can-shrink: true;
 											}
@@ -131,7 +131,7 @@ template $PackagesPage : Adw.BreakpointBin {
 										MenuButton copy_button {
 											styles ["raised"]
 											Adw.ButtonContent {
-												icon-name: "edit-copy-symbolic";
+												icon-name: "edit-warehouse:copy-symbolic";
 												label: _("Copy");
 												can-shrink: true;
 											}
@@ -140,7 +140,7 @@ template $PackagesPage : Adw.BreakpointBin {
 										Button uninstall_button {
 											styles ["raised"]
 											Adw.ButtonContent {
-												icon-name: "user-trash-symbolic";
+												icon-name: "warehouse:user-trash-symbolic";
 												label: _("Uninstall");
 												can-shrink: true;
 											}
