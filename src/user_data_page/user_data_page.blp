@@ -45,12 +45,12 @@ template $UserDataPage : Adw.BreakpointBin {
 					[end]
 					MenuButton sort_button {
 						popover: sort_pop;
-						icon-name: "vertical-arrows-long-symbolic";
+						icon-name: "warehouse:vertical-arrows-long-symbolic";
 						tooltip-text: _("Sort User Data");
 					}
 					[end]
 					ToggleButton select_button {
-						icon-name: "selection-mode-symbolic";
+						icon-name: "warehouse:selection-mode-symbolic";
 						tooltip-text: _("Select User Data");
 					}
 				}
@@ -77,7 +77,7 @@ template $UserDataPage : Adw.BreakpointBin {
 						Button select_all_button {
 							styles ["raised"]
 							Adw.ButtonContent {
-								icon-name: "selection-mode-symbolic";
+								icon-name: "warehouse:selection-mode-symbolic";
 								label: _("Select All");
 								can-shrink: true;
 							}
@@ -86,7 +86,7 @@ template $UserDataPage : Adw.BreakpointBin {
 							sensitive: false;
 							styles ["raised"]
 							Adw.ButtonContent {
-								icon-name: "edit-copy-symbolic";
+								icon-name: "edit-warehouse:copy-symbolic";
 								label: _("Copy");
 								can-shrink: true;
 							}
@@ -96,7 +96,7 @@ template $UserDataPage : Adw.BreakpointBin {
 							sensitive: false;
 							styles ["raised"]
 							Adw.ButtonContent {
-								icon-name: "arrow-pointing-at-line-down-symbolic";
+								icon-name: "warehouse:arrow-pointing-at-line-down-symbolic";
 								label: _("Install");
 								can-shrink: true;
 							}
@@ -105,7 +105,7 @@ template $UserDataPage : Adw.BreakpointBin {
 							sensitive: false;
 							styles ["raised"]
 							Adw.ButtonContent {
-								icon-name: "user-trash-symbolic";
+								icon-name: "warehouse:user-trash-symbolic";
 								label: _("Trash");
 								can-shrink: true;
 							}
@@ -116,7 +116,7 @@ template $UserDataPage : Adw.BreakpointBin {
 							popover: more_popover;
 							styles ["raised"]
 							Adw.ButtonContent {
-								icon-name: "view-more-symbolic";
+								icon-name: "warehouse:view-more-symbolic";
 								label: _("More");
 								can-shrink: true;
 							}
@@ -165,7 +165,7 @@ Popover sort_pop {
 			ToggleButton sort_ascend {
 				styles ["flat"]
 				Adw.ButtonContent {
-					icon-name: "view-sort-ascending-symbolic";
+					icon-name: "warehouse:view-sort-ascending-symbolic";
 					label: _("Ascending");
 				}
 			}
@@ -173,7 +173,7 @@ Popover sort_pop {
 				group: sort_ascend;
 				styles ["flat"]
 				Adw.ButtonContent {
-					icon-name: "view-sort-descending-symbolic";
+					icon-name: "warehouse:view-sort-descending-symbolic";
 					label: _("Descending");
 				}
 			}
@@ -186,7 +186,7 @@ Popover sort_pop {
 			ToggleButton sort_name {
 				styles ["flat"]
 				Adw.ButtonContent {
-					icon-name: "font-x-generic-symbolic";
+					icon-name: "warehouse:font-x-generic-symbolic";
 					label: _("Name");
 				}
 			}
@@ -194,7 +194,7 @@ Popover sort_pop {
 				group: sort_name;
 				styles ["flat"]
 				Adw.ButtonContent {
-					icon-name: "tag-outline-symbolic";
+					icon-name: "warehouse:tag-outline-symbolic";
 					label: _("ID");
 				}
 			}
@@ -202,7 +202,7 @@ Popover sort_pop {
 				group: sort_name;
 				styles ["flat"]
 				Adw.ButtonContent {
-					icon-name: "harddisk-symbolic";
+					icon-name: "warehouse:harddisk-symbolic";
 					label: _("Size");
 				}
 			}
