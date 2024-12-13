@@ -77,7 +77,7 @@
 				<li>The sidebar no longer selects the incorrect page at launch</li>
 				<li>Changing versions of Flatpaks in the user installation no longer asks for your password</li>
 				<li>The drag and drop overlay now properly hides itself when on X11</li>
-				<li>Warehouse opens faster due to removal of redundant system checks</li>
+				<li>Warehouse now opens faster due to removal of redundant system checks</li>
 				<li>Fix various typos</li>
 				<li>Use more consistent iconography</li>
 				<li>Added and updated translations</li>
