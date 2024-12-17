@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-12-16 13:20+0000\n"
+"PO-Revision-Date: 2024-12-17 22:58+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.fyralabs.com/projects/"
 "flattool/warehouse/pt_BR/>\n"
@@ -476,7 +476,7 @@ msgstr "_Abrir Arquivos"
 
 #: src/main_window/window.blp:154
 msgid "_Keyboard Shortcuts"
-msgstr "Atalhos do _teclado"
+msgstr "_Atalhos de teclado"
 
 #: src/main_window/window.blp:158
 msgid "_About Warehouse"
@@ -603,8 +603,8 @@ msgid ""
 "Warehouse cannot see the list of installed packages or your system has no "
 "packages installed"
 msgstr ""
-"O Warehouse não pode ver a lista de pacotes instalados ou o seu sistema não "
-"possui pacotes instalados"
+"Armazém não consegue ver a lista de pacotes instalados no seu sistema não "
+"tem pacotes instalados"
 
 #: src/packages_page/packages_page.blp:109
 #: src/remotes_page/remotes_page.blp:153 src/user_data_page/data_subpage.blp:68
@@ -812,7 +812,7 @@ msgstr "Tamanho instalado"
 
 #: src/properties_page/properties_page.blp:175
 msgid "Runtime"
-msgstr "Runtime"
+msgstr "Tempo de execução"
 
 #: src/properties_page/properties_page.blp:188
 msgid "Disable Automactic Removal"
@@ -965,7 +965,7 @@ msgstr "Não foi possível desinstalar"
 
 #: src/properties_page/properties_page.py:249
 msgid "Uninstalled {}"
-msgstr "{} desinstalado"
+msgstr "Desinstalado {}"
 
 #: src/properties_page/properties_page.py:261
 msgid "Opening {}…"
@@ -1037,8 +1037,8 @@ msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
-"Isso desinstalará a versão atual e instalará a versão escolhida no lugar "
-"dela. Note que reverter para uma versão anterior pode causar problemas."
+"Isso desinstalará a versão atual e instalará a escolhida. Observe que o "
+"downgrade pode causar problemas."
 
 #: src/change_version_page/change_version_page.py:69
 msgid "Currently Installed Version"
@@ -1054,7 +1054,7 @@ msgstr "Versão de {} alterada"
 
 #: src/change_version_page/change_version_page.py:117
 msgid "{} Versions"
-msgstr "Versões {}"
+msgstr "{} Versões"
 
 #: src/change_version_page/change_version_page.py:118
 msgid "Ensure that {} will never be updated to a newer version"
@@ -1109,7 +1109,7 @@ msgstr "Não foi possível adicionar o repositório"
 
 #: src/remotes_page/add_remote_dialog.py:57
 msgid "Added {}"
-msgstr "{} adicionado"
+msgstr "Adicionado {}"
 
 #. Apply
 #: src/remotes_page/add_remote_dialog.py:107
@@ -1292,7 +1292,7 @@ msgstr "Não foi possível remover repositório"
 
 #: src/remotes_page/remotes_page.py:180
 msgid "Removed {}"
-msgstr "{} removido"
+msgstr "Removido {}"
 
 #: src/remotes_page/remotes_page.py:188
 msgid "Remove {}?"
@@ -1611,7 +1611,7 @@ msgstr "Nenhuma snapshot para {}"
 
 #: src/snapshot_page/snapshot_page.py:198
 msgid "New"
-msgstr "Nova"
+msgstr "Novo"
 
 #: src/snapshot_page/snapshot_page.py:242
 #: src/snapshot_page/snapshot_page.py:244
