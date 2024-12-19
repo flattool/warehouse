@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 22:37-0500\n"
-"PO-Revision-Date: 2024-10-29 07:39+0000\n"
+"PO-Revision-Date: 2024-12-20 07:53+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
 "Language-Team: Slovak <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/sk/>\n"
@@ -79,7 +79,7 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
 msgstr ""
-"Vytvárajte snapshots používateľských údajov svojich aplikácií a ukladajte "
+"Vytvárajte snapshoty používateľských údajov svojich aplikácií a ukladajte "
 "svoje údaje"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
@@ -675,7 +675,7 @@ msgstr "Ref"
 #: src/packages_page/packages_page.py:257
 #: src/properties_page/properties_page.py:275
 msgid "Copied {}"
-msgstr "Skopírované {}"
+msgstr "{} skopírované"
 
 #: src/packages_page/packages_page.py:259
 msgid "Could not copy {}"
@@ -777,12 +777,12 @@ msgstr "Otvoriť"
 #: src/properties_page/properties_page.blp:122
 #: src/user_data_page/data_box.blp:62
 msgid "Open User Data"
-msgstr "Otvorené údaje používateľa"
+msgstr "Otvoriť údaje používateľa"
 
 #: src/properties_page/properties_page.blp:130
 #: src/user_data_page/data_box.blp:73
 msgid "Trash User Data"
-msgstr "Zahodiť používateľské údaje"
+msgstr "Zahodiť údaje používateľa"
 
 #: src/properties_page/properties_page.blp:139
 msgid "Version"
@@ -819,10 +819,8 @@ msgid "Runtime"
 msgstr "Runtime"
 
 #: src/properties_page/properties_page.blp:188
-#, fuzzy
-#| msgid "Disable Automactic Removal"
 msgid "Disable Automatic Removal"
-msgstr "Zakázať automatické odstraňovanie"
+msgstr "Zakázať automatické odstránenie"
 
 #: src/properties_page/properties_page.blp:189
 msgid "Pin this runtime to keep it installed"
@@ -1003,7 +1001,7 @@ msgstr "Preinštalovať"
 
 #: src/properties_page/properties_page.py:333
 msgid "Copied launch command"
-msgstr "Skopírovaný príkaz na spustenie"
+msgstr "Príkaz na spustenie bol skopírovaný"
 
 #: src/properties_page/properties_page.py:335
 msgid "Could not copy launch command"
@@ -1019,7 +1017,7 @@ msgstr "Načítavanie vlastností"
 
 #: src/properties_page/properties_page.py:371
 msgid "View Snapshots"
-msgstr "Zobraziť Snapshots"
+msgstr "Zobraziť Snapshoty"
 
 #: src/properties_page/properties_page.py:372
 msgid "Copy Launch Command"
@@ -1188,11 +1186,11 @@ msgstr "Všetky nainštalované aplikácie od {} prestanú dostávať aktualizá
 
 #: src/remotes_page/remote_row.py:137
 msgid "Copied title"
-msgstr "Skopírovaný názov"
+msgstr "Názov bol skopírovaný"
 
 #: src/remotes_page/remote_row.py:140
 msgid "Copied name"
-msgstr "Skopírované meno"
+msgstr "Meno bolo skopírované"
 
 #: src/remotes_page/remotes_page.blp:5
 msgid "Manage Remotes"
@@ -1331,7 +1329,7 @@ msgstr "Pokus o inštaláciu"
 
 #: src/user_data_page/data_box.py:59
 msgid "Copied data path"
-msgstr "Skopírovaná cesta k údajom"
+msgstr "Cesta k údajom bola skopírovaná"
 
 #: src/user_data_page/data_box.py:61
 msgid "Could not copy data path"
@@ -1339,7 +1337,7 @@ msgstr "Nepodarilo sa skopírovať cestu k údajom"
 
 #: src/user_data_page/data_box.py:66
 msgid "Opened data folder"
-msgstr "Otvorený priečinok s údajmi"
+msgstr "Priečinok s údajmi bol otvorený"
 
 #: src/user_data_page/data_box.py:68 src/snapshot_page/snapshot_page.py:255
 #: src/snapshot_page/snapshots_list_page.py:78
@@ -1437,11 +1435,11 @@ msgstr "Neboli vybrané žiadne políčka"
 
 #: src/user_data_page/user_data_page.py:155
 msgid "Copied paths"
-msgstr "Skopírované cesty"
+msgstr "Cesty boli skopírované"
 
 #: src/user_data_page/user_data_page.py:186
 msgid "Trashed data"
-msgstr "Vyhodené údaje"
+msgstr "Údaje boli vyhodené"
 
 #: src/user_data_page/user_data_page.py:209
 msgid "Trash Data?"
@@ -1536,7 +1534,7 @@ msgstr "Vyhodiť Snapshot?"
 
 #: src/snapshot_page/snapshot_box.py:113
 msgid "This snapshot will be sent to the trash"
-msgstr "Tento Vyhodený snapshot sa odošle do koša"
+msgstr "Tento snapshot bude vyhodený do koša"
 
 #: src/snapshot_page/snapshot_box.py:143
 msgid "Applying Snapshot"
@@ -1577,11 +1575,11 @@ msgstr "Snapshoty aplikácií, ktoré už nie sú nainštalované"
 
 #: src/snapshot_page/snapshot_page.blp:177
 msgid "Open Snapshots Folder"
-msgstr "Otvoriť priečinok Snapshots"
+msgstr "Otvoriť priečinok Snapshotov"
 
 #: src/snapshot_page/snapshot_page.blp:182
 msgid "No Snapshots"
-msgstr "Žiadne Snapshots"
+msgstr "Žiadne Snapshoty"
 
 #: src/snapshot_page/snapshot_page.blp:183
 msgid "Create a Snapshot to save the state of any Flatpak application"
@@ -1605,7 +1603,7 @@ msgstr "Vyhodiť Snapshoty"
 
 #: src/snapshot_page/snapshot_page.py:103
 msgid "Could not load Snapshots"
-msgstr "Nepodarilo sa načítať Snapshot-y"
+msgstr "Nepodarilo sa načítať Snapshoty"
 
 #: src/snapshot_page/snapshot_page.py:196
 msgid "Showing snapshots for {}"
@@ -1628,11 +1626,11 @@ msgstr "Nenašli sa žiadne údaje k Snapshotu"
 #: src/snapshot_page/snapshot_page.py:253
 #: src/snapshot_page/snapshots_list_page.py:76
 msgid "Opened snapshots folder"
-msgstr "Otvorený priečinok so snapshotmi"
+msgstr "Priečinok so snapshotmi bol otvorený"
 
 #: src/snapshot_page/snapshot_page.py:388
 msgid "Copied Snapshot Paths"
-msgstr "Skopírované cesty Snapshotov"
+msgstr "Cesty Snapshotov boli skopírované"
 
 #: src/snapshot_page/snapshot_page.py:397
 msgid "No apps in your selection can be snapshotted"
@@ -1687,7 +1685,7 @@ msgstr "Zoznam snapshotov"
 
 #: src/snapshot_page/snapshots_list_page.blp:13
 msgid "Open Snapshots Folder for this App"
-msgstr "Otvoriť priečinok Snapshots pre túto aplikáciu"
+msgstr "Otvoriť priečinok Snapshotov pre túto aplikáciu"
 
 #: src/snapshot_page/snapshots_list_page.py:31
 #: src/snapshot_page/snapshots_list_page.py:52
@@ -1696,7 +1694,7 @@ msgstr "Aplikácia nie je nainštalovaná"
 
 #: src/snapshot_page/snapshots_list_page.py:55
 msgid "{} Snapshots"
-msgstr "{} Snapshots"
+msgstr "{} Snapshoty"
 
 #: src/snapshot_page/tar_worker.py:80
 msgid "Error in snapshot handling"
