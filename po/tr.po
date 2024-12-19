@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 23:16-0400\n"
+"POT-Creation-Date: 2024-12-18 22:37-0500\n"
 "PO-Revision-Date: 2024-11-24 01:34+0000\n"
 "Last-Translator: Ümit Solmaz <solmazumit1@yandex.com>\n"
 "Language-Team: Turkish <https://weblate.fyralabs.com/projects/flattool/"
@@ -120,62 +120,62 @@ msgstr "Dosyalar veya Uzaktan Kumandalardan Yeni Paketler Yükleme"
 msgid "Install Page in Narrow Window"
 msgstr "Sayfayı Dar Pencereye Yükleme"
 
-#: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
-#: src/install_page/select_page.py:67
+#: src/main.py:95 src/main.py:101 src/install_page/select_page.py:63
+#: src/install_page/select_page.py:70
 msgid "Could not add files"
 msgstr "Dosya eklenemedi"
 
-#: src/main.py:101
+#: src/main.py:95
 msgid "No files were found"
 msgstr "Hiçbir dosya bulunamadı"
 
-#: src/main.py:109
+#: src/main.py:103
 msgid "Flatpaks & Remotes"
 msgstr "Flatpaklar ve Kumandalar"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:217
+#: src/main.py:211
 msgid "translator-credits"
 msgstr "Sabri Ünal <libreajans@gmail.com>"
 
-#: src/main.py:223
+#: src/main.py:217
 msgid "Donate"
 msgstr "Bağış Yap"
 
-#: src/main.py:225
+#: src/main.py:219
 msgid "Contributors"
 msgstr "Katkıda Bulunanlar"
 
-#: src/host_info.py:380 src/host_info.py:382
+#: src/host_info.py:384 src/host_info.py:386
 msgid "Could not load packages"
 msgstr "Paketler yüklenemedi"
 
-#: src/package_install_worker.py:84
+#: src/package_install_worker.py:85
 msgid "Errors occurred during installation"
 msgstr "Kurulum sırasında oluşan hatalar"
 
-#: src/package_install_worker.py:88 src/package_install_worker.py:92
+#: src/package_install_worker.py:89 src/package_install_worker.py:93
 msgid "Error occurred during installation"
 msgstr "Kurulum sırasında hata oluştu"
 
-#: src/package_install_worker.py:88
-#: src/change_version_page/change_version_worker.py:70
+#: src/package_install_worker.py:89
+#: src/change_version_page/change_version_worker.py:77
 msgid "Failed to exit cleanly"
 msgstr "Temiz bir şekilde çıkılamadı"
 
-#: src/package_install_worker.py:104
+#: src/package_install_worker.py:105
 msgid "Could not cancel installation"
 msgstr "Kurulum iptal edilemedi"
 
-#: src/package_install_worker.py:125 src/package_install_worker.py:135
+#: src/package_install_worker.py:126 src/package_install_worker.py:136
 msgid "Could not install packages"
 msgstr "Paketler yüklenemedi"
 
-#: src/package_install_worker.py:125
+#: src/package_install_worker.py:126
 msgid "Packages are currently being installed."
 msgstr "Paketler şu anda yükleniyor."
 
-#: src/package_install_worker.py:135
+#: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
 msgstr "Hiçbir paketin yüklenmesi talep edilmemiştir."
 
@@ -210,16 +210,16 @@ msgid "Warehouse will try to install the matching packages."
 msgstr "Warehouse eşleşen paketleri yüklemeye çalışacaktır."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
-#: src/packages_page/uninstall_dialog.py:37
-#: src/properties_page/properties_page.py:189
-#: src/properties_page/properties_page.py:310
-#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:122
-#: src/remotes_page/remotes_page.py:189 src/user_data_page/data_box.py:114
-#: src/user_data_page/user_data_page.py:209
+#: src/packages_page/uninstall_dialog.py:38
+#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:315
+#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:126
+#: src/remotes_page/remotes_page.py:193 src/user_data_page/data_box.py:116
+#: src/user_data_page/user_data_page.py:210
 #: src/snapshot_page/new_snapshot_dialog.blp:16
-#: src/snapshot_page/snapshot_box.py:113 src/snapshot_page/snapshot_box.py:155
-#: src/snapshot_page/snapshot_page.py:479
-#: src/snapshot_page/snapshot_page.py:520
+#: src/snapshot_page/snapshot_box.py:114 src/snapshot_page/snapshot_box.py:156
+#: src/snapshot_page/snapshot_page.py:481
+#: src/snapshot_page/snapshot_page.py:519
 #: src/install_page/file_install_dialog.blp:13
 msgid "Cancel"
 msgstr "İptal"
@@ -240,33 +240,33 @@ msgstr "Bir Uzaktan Kumanda Seçin"
 msgid "Select a remote to attempt to install from"
 msgstr "Yüklemeyi denemek için bir uzaktan kumanda seçin"
 
-#: src/gtk/attempt_install_dialog.py:18 src/packages_page/filters_page.py:122
-#: src/remotes_page/remote_row.py:148 src/install_page/pending_page.py:29
-#: src/install_page/select_page.py:31
+#: src/gtk/attempt_install_dialog.py:19 src/packages_page/filters_page.py:125
+#: src/remotes_page/remote_row.py:152 src/install_page/pending_page.py:30
+#: src/install_page/select_page.py:32
 msgid "Installation: {}"
 msgstr "Kurulum: {}"
 
-#: src/gtk/attempt_install_dialog.py:71
+#: src/gtk/attempt_install_dialog.py:76
 msgid "Can't find matching packages"
 msgstr "Eşleşen paketleri bulamıyorum"
 
-#: src/gtk/attempt_install_dialog.py:71
+#: src/gtk/attempt_install_dialog.py:76
 msgid "Your system has no remotes added"
 msgstr "Sisteminize uzaktan kumanda eklenmemiş"
 
 #. Extra Object Creation
-#: src/gtk/error_toast.py:12
+#: src/gtk/error_toast.py:13
 msgid "Details"
 msgstr "Detaylar"
 
-#: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
+#: src/gtk/error_toast.py:20 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
 #: src/snapshot_page/snapshot_page.blp:149
 msgid "Copy"
 msgstr "Kopyala"
 
-#: src/gtk/error_toast.py:20 src/main_window/window.py:135
-#: src/main_window/window.py:145 src/main_window/window.py:154
+#: src/gtk/error_toast.py:21 src/main_window/window.py:139
+#: src/main_window/window.py:149 src/main_window/window.py:158
 msgid "OK"
 msgstr "Tamam"
 
@@ -368,7 +368,7 @@ msgstr "Kalan Verileri Göster"
 msgid "Snapshots Page"
 msgstr "Anlık Görüntüler Sayfası"
 
-#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:202
+#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:203
 msgid "New Snapshots"
 msgstr "Yeni Anlık Görüntüler"
 
@@ -396,31 +396,31 @@ msgstr "Diğer Kurulum"
 msgid "Choose a custom installation"
 msgstr "Özel bir kurulum seçin"
 
-#: src/gtk/installation_chooser.py:27
+#: src/gtk/installation_chooser.py:28
 msgid "These {} will only be available to you"
 msgstr "Bu {} sadece sizin için kullanılabilir olacaktır"
 
-#: src/gtk/installation_chooser.py:28
+#: src/gtk/installation_chooser.py:29
 msgid "These {} will be available to everyone"
 msgstr "Bu {} herkese açık olacak"
 
-#: src/gtk/installation_chooser.py:29
+#: src/gtk/installation_chooser.py:30
 msgid "Choose how these {} will be installed"
 msgstr "Bu {}'ların nasıl kurulacağını seçin"
 
-#: src/gtk/installation_chooser.py:31
+#: src/gtk/installation_chooser.py:32
 msgid "This {} will only be available to you"
 msgstr "Bu {} sadece sizin için kullanılabilir olacaktır"
 
-#: src/gtk/installation_chooser.py:32
+#: src/gtk/installation_chooser.py:33
 msgid "This {} will be available to everyone"
 msgstr "Bu {} herkese açık olacak"
 
-#: src/gtk/installation_chooser.py:33
+#: src/gtk/installation_chooser.py:34
 msgid "Choose how this {} will be installed"
 msgstr "Bu {}'in nasıl kurulacağını seçin"
 
-#: src/gtk/sidebar_button.py:19
+#: src/gtk/sidebar_button.py:20
 msgid "Show Sidebar"
 msgstr "Kenar Çubuğunu Göster"
 
@@ -442,70 +442,70 @@ msgstr "Ana Menü"
 
 #: src/main_window/window.blp:67 src/packages_page/packages_page.blp:20
 #: src/packages_page/packages_page.blp:55
-#: src/packages_page/packages_page.py:155
-#: src/packages_page/packages_page.py:319
-#: src/install_page/file_install_dialog.py:37
+#: src/packages_page/packages_page.py:157
+#: src/packages_page/packages_page.py:322
+#: src/install_page/file_install_dialog.py:38
 msgid "Packages"
 msgstr "Paketler"
 
-#: src/main_window/window.blp:80
+#: src/main_window/window.blp:82
 msgid "Remotes"
 msgstr "Uzaklar"
 
-#: src/main_window/window.blp:94 src/properties_page/properties_page.blp:114
+#: src/main_window/window.blp:98 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
 msgid "User Data"
 msgstr "Kullanıcı Verisi"
 
-#: src/main_window/window.blp:107 src/snapshot_page/snapshot_page.blp:18
+#: src/main_window/window.blp:113 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
-#: src/snapshot_page/snapshot_page.py:355
+#: src/snapshot_page/snapshot_page.py:357
 msgid "Snapshots"
 msgstr "Anlık Görüntüler"
 
-#: src/main_window/window.blp:120 src/install_page/file_install_dialog.py:34
+#: src/main_window/window.blp:128 src/install_page/file_install_dialog.py:35
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
 msgid "Install Packages"
 msgstr "Paketleri Yükleyin"
 
-#: src/main_window/window.blp:150
+#: src/main_window/window.blp:160
 msgid "_Open Files"
 msgstr "_Dosyaları Aç"
 
-#: src/main_window/window.blp:154
+#: src/main_window/window.blp:164
 msgid "_Keyboard Shortcuts"
 msgstr "Klavye _Kısayolları"
 
-#: src/main_window/window.blp:158
+#: src/main_window/window.blp:168
 msgid "_About Warehouse"
 msgstr "Warehouse _Hakkında"
 
-#: src/main_window/window.py:132
+#: src/main_window/window.py:136
 msgid "Unsupported Filetype"
 msgstr "Desteklenmeyen Dosya Türü"
 
-#: src/main_window/window.py:133
+#: src/main_window/window.py:137
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
 msgstr "Yalnızca .flatpak, .flatpakref ve .flatpakrepo dosyaları desteklenir."
 
-#: src/main_window/window.py:141
+#: src/main_window/window.py:145
 msgid "Mixed Filetypes"
 msgstr "Karışık Dosya Türleri"
 
-#: src/main_window/window.py:142
+#: src/main_window/window.py:146
 msgid "Flatpaks and remotes cannot be installed at the same time."
 msgstr "Flatpaklar ve uzaktan kumandalar aynı anda kurulamaz."
 
-#: src/main_window/window.py:151
+#: src/main_window/window.py:155
 msgid "Too Many Remotes"
 msgstr "Çok Fazla Uzaktan Kumanda"
 
-#: src/main_window/window.py:152
+#: src/main_window/window.py:156
 msgid "Only one remote at a time is supported."
 msgstr "Aynı anda yalnızca bir uzaktan kumanda desteklenir."
 
-#: src/main_window/window.py:170
+#: src/main_window/window.py:174
 msgid "Could not open files"
 msgstr "Dosyalar açılamadı"
 
@@ -628,7 +628,7 @@ msgid "Select All"
 msgstr "Tümünü Seç"
 
 #: src/packages_page/packages_page.blp:144
-#: src/packages_page/uninstall_dialog.py:38
+#: src/packages_page/uninstall_dialog.py:39
 #: src/properties_page/properties_page.blp:88
 msgid "Uninstall"
 msgstr "Kaldır"
@@ -645,76 +645,76 @@ msgstr "Kimlikleri Kopyala"
 msgid "Copy Refs"
 msgstr "Referansları Kopyala"
 
-#: src/packages_page/packages_page.py:151
-#: src/user_data_page/data_subpage.py:107
-#: src/snapshot_page/new_snapshot_dialog.py:38
-#: src/snapshot_page/snapshot_page.py:355
+#: src/packages_page/packages_page.py:153
+#: src/user_data_page/data_subpage.py:109
+#: src/snapshot_page/new_snapshot_dialog.py:39
+#: src/snapshot_page/snapshot_page.py:357
 msgid "{} Selected"
 msgstr "{} Seçildi"
 
-#: src/packages_page/packages_page.py:192
+#: src/packages_page/packages_page.py:194
 msgid "Error getting Flatpak '{}'"
 msgstr "Flatpak '{}' alınırken hata oluştu"
 
-#: src/packages_page/packages_page.py:241
+#: src/packages_page/packages_page.py:243
 msgid "Names"
 msgstr "Adlar"
 
-#: src/packages_page/packages_page.py:244
+#: src/packages_page/packages_page.py:246
 msgid "IDs"
 msgstr "DKler"
 
-#: src/packages_page/packages_page.py:247
+#: src/packages_page/packages_page.py:249
 msgid "Refs"
 msgstr "Referanslar"
 
-#: src/packages_page/packages_page.py:255
-#: src/properties_page/properties_page.py:272
+#: src/packages_page/packages_page.py:257
+#: src/properties_page/properties_page.py:275
 msgid "Copied {}"
 msgstr "{} kopyalandı"
 
-#: src/packages_page/packages_page.py:257
+#: src/packages_page/packages_page.py:259
 msgid "Could not copy {}"
 msgstr "Kopyalanamadı {}"
 
-#: src/packages_page/packages_page.py:307
+#: src/packages_page/packages_page.py:310
 msgid "Errors occurred while uninstalling"
 msgstr "Kaldırma sırasında hatalar oluştu"
 
-#: src/packages_page/packages_page.py:309
+#: src/packages_page/packages_page.py:312
 msgid "Uninstalled Packages"
 msgstr "Kaldırılmış Paketler"
 
-#: src/packages_page/packages_page.py:367
+#: src/packages_page/packages_page.py:370
 msgid "Loading Packages"
 msgstr "Paketler Yükleniyor"
 
-#: src/packages_page/packages_page.py:367
-#: src/packages_page/packages_page.py:368
-#: src/properties_page/properties_page.py:366
-#: src/remotes_page/remotes_page.py:285 src/remotes_page/remotes_page.py:286
-#: src/user_data_page/user_data_page.py:296
-#: src/snapshot_page/snapshot_page.py:558 src/install_page/install_page.py:96
+#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:371
+#: src/properties_page/properties_page.py:368
+#: src/remotes_page/remotes_page.py:291 src/remotes_page/remotes_page.py:292
+#: src/user_data_page/user_data_page.py:297
+#: src/snapshot_page/snapshot_page.py:557 src/install_page/install_page.py:97
 #: src/install_page/results_page.py:135
 msgid "This should only take a moment"
 msgstr "Bu sadece bir dakikanızı alacaktır"
 
-#: src/packages_page/packages_page.py:368
+#: src/packages_page/packages_page.py:371
 msgid "Uninstalling Packages"
 msgstr "Paketler Kaldırılıyor"
 
-#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:373
 msgid "Reinstalling Package"
 msgstr "Paketi Yeniden Yükleme"
 
-#: src/packages_page/packages_page.py:370
-#: src/packages_page/packages_page.py:372
-#: src/change_version_page/change_version_page.py:119
-#: src/snapshot_page/snapshot_page.py:551 src/install_page/install_page.py:88
+#: src/packages_page/packages_page.py:373
+#: src/packages_page/packages_page.py:375
+#: src/change_version_page/change_version_page.py:123
+#: src/snapshot_page/snapshot_page.py:550 src/install_page/install_page.py:89
 msgid "This could take a while"
 msgstr "Biraz uzun sürebilir"
 
-#: src/packages_page/packages_page.py:372
+#: src/packages_page/packages_page.py:375
 msgid "Changing Version"
 msgstr "Değişen Sürüm"
 
@@ -729,8 +729,8 @@ msgstr "Uygulama ayarlarını ve içeriğini geri yüklemeye izin verir"
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
 #: src/user_data_page/user_data_page.blp:148
-#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:114
-#: src/snapshot_page/snapshot_page.py:521
+#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:115
+#: src/snapshot_page/snapshot_page.py:520
 msgid "Trash"
 msgstr "Çöpe Taşı"
 
@@ -738,23 +738,23 @@ msgstr "Çöpe Taşı"
 msgid "Send data to the trash"
 msgstr "Çöp kutusuna veri gönderme"
 
-#: src/packages_page/uninstall_dialog.py:30
+#: src/packages_page/uninstall_dialog.py:31
 msgid "Uninstall {}?"
 msgstr "{} Kaldırılsın Mı?"
 
-#: src/packages_page/uninstall_dialog.py:31
+#: src/packages_page/uninstall_dialog.py:32
 msgid "It will not be possible to use {} after removal"
 msgstr "Kaldırıldıktan sonra {} kullanmak mümkün olmayacaktır"
 
-#: src/packages_page/uninstall_dialog.py:33
+#: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall Packages?"
 msgstr "Paketleri Kaldırmak?"
 
-#: src/packages_page/uninstall_dialog.py:34
+#: src/packages_page/uninstall_dialog.py:35
 msgid "It will not be possible to use these packages after removal"
 msgstr "Bu paketleri kaldırdıktan sonra kullanmak mümkün olmayacaktır"
 
-#: src/packages_page/uninstall_dialog.py:41
+#: src/packages_page/uninstall_dialog.py:42
 msgid "App Settings & Content"
 msgstr "Uygulama Ayarları ve İçerik"
 
@@ -815,7 +815,9 @@ msgid "Runtime"
 msgstr "Çalışma Zamanı"
 
 #: src/properties_page/properties_page.blp:188
-msgid "Disable Automactic Removal"
+#, fuzzy
+#| msgid "Disable Automactic Removal"
+msgid "Disable Automatic Removal"
 msgstr "Otomatik Kaldırmayı Devre Dışı Bırak"
 
 #: src/properties_page/properties_page.blp:189
@@ -874,116 +876,116 @@ msgstr "Konu"
 msgid "Date"
 msgstr "Tarih"
 
-#: src/properties_page/properties_page.py:75
+#: src/properties_page/properties_page.py:76
 msgid "{} Properties"
 msgstr "{} Özellikler"
 
-#: src/properties_page/properties_page.py:80
+#: src/properties_page/properties_page.py:81
 msgid "Properties"
 msgstr "Özellikler"
 
 #. Apply again
-#: src/properties_page/properties_page.py:109
-#: src/user_data_page/user_data_page.py:296
+#: src/properties_page/properties_page.py:110
+#: src/user_data_page/user_data_page.py:297
 msgid "Loading User Data"
 msgstr "Kullanıcı Verileri Yükleniyor"
 
-#: src/properties_page/properties_page.py:119
+#: src/properties_page/properties_page.py:120
 msgid "No User Data"
 msgstr "Kullanıcı Verisi Yok"
 
-#: src/properties_page/properties_page.py:129
-#: src/properties_page/properties_page.py:145
+#: src/properties_page/properties_page.py:130
+#: src/properties_page/properties_page.py:146
 msgid "Could not get properties"
 msgstr "Özellikler alınamadı"
 
-#: src/properties_page/properties_page.py:142
+#: src/properties_page/properties_page.py:143
 msgid "No version information found"
 msgstr "Sürüm bilgisi bulunamadı"
 
-#: src/properties_page/properties_page.py:162
+#: src/properties_page/properties_page.py:163
 msgid "Could not open data"
 msgstr "Veri dosyası açılamadı"
 
-#: src/properties_page/properties_page.py:181
-#: src/properties_page/properties_page.py:183
-#: src/properties_page/properties_page.py:238
-#: src/properties_page/properties_page.py:240 src/user_data_page/data_box.py:99
-#: src/user_data_page/user_data_page.py:183
-#: src/user_data_page/user_data_page.py:197
+#: src/properties_page/properties_page.py:182
+#: src/properties_page/properties_page.py:184
+#: src/properties_page/properties_page.py:241
+#: src/properties_page/properties_page.py:243
+#: src/user_data_page/data_box.py:101 src/user_data_page/user_data_page.py:184
+#: src/user_data_page/user_data_page.py:198
 msgid "Could not trash data"
 msgstr "Veriler çöpe atılamadı"
 
-#: src/properties_page/properties_page.py:186
+#: src/properties_page/properties_page.py:187
 msgid "Send {}'s User Data to the Trash?"
 msgstr "{} Kullanıcı Verilerini Çöpe Taşınsın Mı?"
 
-#: src/properties_page/properties_page.py:187
+#: src/properties_page/properties_page.py:188
 msgid "Your settings and data for this app will be sent to the trash"
 msgstr ""
 "Bu uygulama için ayarlarınız ve verileriniz çöp kutusuna gönderilecektir"
 
-#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:191
 msgid "Trash Data"
 msgstr "Çöp Veri"
 
-#: src/properties_page/properties_page.py:199
+#: src/properties_page/properties_page.py:201
 msgid "Could not Disable Updates"
 msgstr "Güncellemeler Devre Dışı Bırakılamadı"
 
-#: src/properties_page/properties_page.py:199
+#: src/properties_page/properties_page.py:201
 msgid "Could not Enable Updates"
 msgstr "Güncellemeler Etkinleştirilemedi"
 
-#: src/properties_page/properties_page.py:205
+#: src/properties_page/properties_page.py:207
 msgid "Disabled Updates"
 msgstr "Güncellemeler Etkisiz"
 
-#: src/properties_page/properties_page.py:205
+#: src/properties_page/properties_page.py:207
 msgid "Enabled Updates"
 msgstr "Etkin Güncellemeler"
 
-#: src/properties_page/properties_page.py:217
+#: src/properties_page/properties_page.py:220
 msgid "Could not Disable Autoremoval"
 msgstr "Otomatik Kaldırma Devre Dışı Bırakılamadı"
 
-#: src/properties_page/properties_page.py:217
+#: src/properties_page/properties_page.py:220
 msgid "Could not Enable Autoremoval"
 msgstr "Otomatik Kaldırma Etkinleştirilemedi"
 
-#: src/properties_page/properties_page.py:222
+#: src/properties_page/properties_page.py:225
 msgid "Disabled Autoremoval"
 msgstr "Otomatik Kaldırma Devre Dışı"
 
-#: src/properties_page/properties_page.py:222
+#: src/properties_page/properties_page.py:225
 msgid "Enabled Autoremoval"
 msgstr "Etkinleştirilmiş Otomatik Kaldırma"
 
-#: src/properties_page/properties_page.py:245
+#: src/properties_page/properties_page.py:248
 msgid "Could not uninstall"
 msgstr "Uygulama kaldırılamadı"
 
-#: src/properties_page/properties_page.py:249
+#: src/properties_page/properties_page.py:252
 msgid "Uninstalled {}"
 msgstr "Kaldırıldı {}"
 
-#: src/properties_page/properties_page.py:261
+#: src/properties_page/properties_page.py:264
 msgid "Opening {}…"
 msgstr "Açıldı {}…"
 
-#: src/properties_page/properties_page.py:266
+#: src/properties_page/properties_page.py:269
 msgid "Could not open {}"
 msgstr "Açılamadı {}"
 
-#: src/properties_page/properties_page.py:281
+#: src/properties_page/properties_page.py:284
 msgid "Reinstalled {}"
 msgstr "Yeniden yüklendi {}"
 
-#: src/properties_page/properties_page.py:307
+#: src/properties_page/properties_page.py:312
 msgid "Reinstall {}?"
 msgstr "Yeniden yükleyin {}?"
 
-#: src/properties_page/properties_page.py:308
+#: src/properties_page/properties_page.py:313
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
@@ -991,36 +993,36 @@ msgstr ""
 "Bu paket kaldırılacak ve ardından aynı uzaktan kumanda ve kurulumdan yeniden "
 "yüklenecektir."
 
-#: src/properties_page/properties_page.py:311
-#: src/properties_page/properties_page.py:372
+#: src/properties_page/properties_page.py:316
+#: src/properties_page/properties_page.py:374
 msgid "Reinstall"
 msgstr "Yenidenyükle"
 
-#: src/properties_page/properties_page.py:328
+#: src/properties_page/properties_page.py:333
 msgid "Copied launch command"
 msgstr "Başlatma komutu kopyalandı"
 
-#: src/properties_page/properties_page.py:330
+#: src/properties_page/properties_page.py:335
 msgid "Could not copy launch command"
 msgstr "Başlatma komutu kopyalanamadı"
 
-#: src/properties_page/properties_page.py:336
+#: src/properties_page/properties_page.py:341
 msgid "Could not show details"
 msgstr "Ayrıntılar gösterilemedi"
 
-#: src/properties_page/properties_page.py:366
+#: src/properties_page/properties_page.py:368
 msgid "Loading Properties"
 msgstr "Yükleme Özellikleri"
 
-#: src/properties_page/properties_page.py:369
+#: src/properties_page/properties_page.py:371
 msgid "View Snapshots"
 msgstr "Anlık Görüntüleri Görüntüle"
 
-#: src/properties_page/properties_page.py:370
+#: src/properties_page/properties_page.py:372
 msgid "Copy Launch Command"
 msgstr "Başlatma Komutunu Kopyala"
 
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:373
 msgid "Show Details"
 msgstr "Detayları Göster"
 
@@ -1040,45 +1042,45 @@ msgstr ""
 "Bu, geçerli sürümü kaldıracak ve yerine seçilen sürümü kuracaktır. Sürüm "
 "düşürmenin sorunlara neden olabileceğini unutmayın."
 
-#: src/change_version_page/change_version_page.py:69
+#: src/change_version_page/change_version_page.py:72
 msgid "Currently Installed Version"
 msgstr "Şu Anda Yüklü Sürüm"
 
-#: src/change_version_page/change_version_page.py:86
+#: src/change_version_page/change_version_page.py:89
 msgid "Could not get versions"
 msgstr "Sürümler alınamadı"
 
-#: src/change_version_page/change_version_page.py:93
+#: src/change_version_page/change_version_page.py:96
 msgid "Changed {}'s Version"
 msgstr "{}'in Sürümü Değiştirildi"
 
-#: src/change_version_page/change_version_page.py:117
+#: src/change_version_page/change_version_page.py:121
 msgid "{} Versions"
 msgstr "{} Sürüm"
 
-#: src/change_version_page/change_version_page.py:118
+#: src/change_version_page/change_version_page.py:122
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "{} uygulamasının asla daha yeni sürüme güncellenmeyeceğinden emin ol"
 
-#: src/change_version_page/change_version_page.py:119
+#: src/change_version_page/change_version_page.py:123
 msgid "Fetching Releases"
 msgstr "Sürümler Getiriliyor"
 
-#: src/change_version_page/change_version_worker.py:66
-#: src/change_version_page/change_version_worker.py:70
-#: src/change_version_page/change_version_worker.py:74
+#: src/change_version_page/change_version_worker.py:73
+#: src/change_version_page/change_version_worker.py:77
+#: src/change_version_page/change_version_worker.py:81
 msgid "Error occurred while changing version"
 msgstr "Sürüm değiştirilirken hata oluştu"
 
-#: src/change_version_page/change_version_worker.py:85
+#: src/change_version_page/change_version_worker.py:92
 msgid "Could not cancel version change"
 msgstr "Sürüm değiştirilirken hata oluştu"
 
-#: src/change_version_page/change_version_worker.py:106
+#: src/change_version_page/change_version_worker.py:113
 msgid "Could not change version"
 msgstr "Sürüm değiştirilemedi"
 
-#: src/change_version_page/change_version_worker.py:106
+#: src/change_version_page/change_version_worker.py:113
 msgid "Another package is changing version."
 msgstr "Başka bir paket sürümü değiştiriyor."
 
@@ -1103,16 +1105,16 @@ msgstr "Ad"
 msgid "Repo URL"
 msgstr "Depo URL"
 
-#: src/remotes_page/add_remote_dialog.py:54
+#: src/remotes_page/add_remote_dialog.py:58
 msgid "Could not add remote"
 msgstr "Uzaktan bağlantı eklenemedi"
 
-#: src/remotes_page/add_remote_dialog.py:57
+#: src/remotes_page/add_remote_dialog.py:61
 msgid "Added {}"
 msgstr "Eklenmiş {}"
 
 #. Apply
-#: src/remotes_page/add_remote_dialog.py:107
+#: src/remotes_page/add_remote_dialog.py:111
 msgid "remote"
 msgstr "uzaktan"
 
@@ -1136,56 +1138,56 @@ msgstr "Adı Kopyala"
 msgid "Enable"
 msgstr "Etkinleştir"
 
-#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:123
+#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:127
 msgid "Disable"
 msgstr "Devre Dışı"
 
-#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:190
+#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:194
 msgid "Remove"
 msgstr "Kaldır"
 
-#: src/remotes_page/remote_row.py:24 src/remotes_page/remote_row.py:44
+#: src/remotes_page/remote_row.py:25 src/remotes_page/remote_row.py:46
 msgid "Could not enable remote"
 msgstr "Uzaktan kumanda etkinleştirilemedi"
 
-#: src/remotes_page/remote_row.py:24
+#: src/remotes_page/remote_row.py:25
 msgid "Remote is already enabled"
 msgstr "Uzaktan kumanda zaten etkin"
 
-#: src/remotes_page/remote_row.py:51
+#: src/remotes_page/remote_row.py:53
 msgid "Enabled remote"
 msgstr "Etkin uzaktan kumanda"
 
-#: src/remotes_page/remote_row.py:75 src/remotes_page/remote_row.py:153
+#: src/remotes_page/remote_row.py:77 src/remotes_page/remote_row.py:157
 msgid "Remote is Disabled"
 msgstr "Uzaktan Kumanda Devre Dışı"
 
-#: src/remotes_page/remote_row.py:77
+#: src/remotes_page/remote_row.py:79
 msgid "Disabled remote"
 msgstr "Devre dışı bırakılmış uzaktan kumanda"
 
-#: src/remotes_page/remote_row.py:95 src/remotes_page/remote_row.py:107
-#: src/remotes_page/remote_row.py:111
+#: src/remotes_page/remote_row.py:97 src/remotes_page/remote_row.py:109
+#: src/remotes_page/remote_row.py:113
 msgid "Could not disable remote"
 msgstr "Uzaktan devre dışı bırakılamadı"
 
-#: src/remotes_page/remote_row.py:95
+#: src/remotes_page/remote_row.py:97
 msgid "Remote is already disabled"
 msgstr "Uzaktan kumanda zaten devre dışı"
 
-#: src/remotes_page/remote_row.py:121
+#: src/remotes_page/remote_row.py:124
 msgid "Disable {}?"
 msgstr "{} Devre Dışı Bırakılsın Mı?"
 
-#: src/remotes_page/remote_row.py:121 src/remotes_page/remotes_page.py:188
+#: src/remotes_page/remote_row.py:124 src/remotes_page/remotes_page.py:191
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr "{} uzağından kurulan tüm uygulamalar güncelleme almayı durduracak"
 
-#: src/remotes_page/remote_row.py:133
+#: src/remotes_page/remote_row.py:137
 msgid "Copied title"
 msgstr "Kopyalanan başlık"
 
-#: src/remotes_page/remote_row.py:136
+#: src/remotes_page/remote_row.py:140
 msgid "Copied name"
 msgstr "Ad kopyalandı"
 
@@ -1256,63 +1258,63 @@ msgstr "Özel Uzak Ekle"
 msgid "Manually enter new remote details"
 msgstr "Yeni uzaktan kumanda ayrıntılarını elle girin"
 
-#: src/remotes_page/remotes_page.py:32
+#: src/remotes_page/remotes_page.py:33
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr ""
 "Elementary dağıtımı tarafından sağlanan, açık kaynak kodlu, istediğin kadar "
 "öde uygulama mağazası"
 
-#: src/remotes_page/remotes_page.py:38
+#: src/remotes_page/remotes_page.py:39
 msgid "Central repository of Flatpak applications"
 msgstr "Flatpak uygulamalarının merkezi deposu"
 
-#: src/remotes_page/remotes_page.py:44
+#: src/remotes_page/remotes_page.py:45
 msgid "Beta builds of Flatpak applications"
 msgstr "Flatpak uygulamalarının beta sürümleri"
 
-#: src/remotes_page/remotes_page.py:50
+#: src/remotes_page/remotes_page.py:51
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "Fedora Linux tarafından paketlenmiş Flatpak'ler"
 
-#: src/remotes_page/remotes_page.py:56
+#: src/remotes_page/remotes_page.py:57
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "GNOME Uygulamaları ve Çalışma Zamanlarının güncel Beta sürümleri"
 
-#: src/remotes_page/remotes_page.py:62
+#: src/remotes_page/remotes_page.py:63
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr "WebKit Geliştirici ve Çalışma Zamanı SDK'sının merkezi deposu"
 
-#: src/remotes_page/remotes_page.py:152
+#: src/remotes_page/remotes_page.py:153
 msgid "Showing all packages from {}"
 msgstr "{} adresindeki tüm paketler gösteriliyor"
 
-#: src/remotes_page/remotes_page.py:173
+#: src/remotes_page/remotes_page.py:175
 msgid "Could not remove remote"
 msgstr "Uzaktan kumanda kaldırılamadı"
 
-#: src/remotes_page/remotes_page.py:180
+#: src/remotes_page/remotes_page.py:182
 msgid "Removed {}"
 msgstr "Kaldırıldı {}"
 
-#: src/remotes_page/remotes_page.py:188
+#: src/remotes_page/remotes_page.py:191
 msgid "Remove {}?"
 msgstr "{} Kaldırılsın Mı?"
 
-#: src/remotes_page/remotes_page.py:224 src/remotes_page/remotes_page.py:234
-#: src/remotes_page/remotes_page.py:236
+#: src/remotes_page/remotes_page.py:228 src/remotes_page/remotes_page.py:238
+#: src/remotes_page/remotes_page.py:240
 msgid "Could not open file"
 msgstr "Dosya açılamadı"
 
-#: src/remotes_page/remotes_page.py:239
+#: src/remotes_page/remotes_page.py:243
 msgid "Flatpak Repos"
 msgstr "Flatpak Depoları"
 
 #. Apply
-#: src/remotes_page/remotes_page.py:285
+#: src/remotes_page/remotes_page.py:291
 msgid "Adding Remote"
 msgstr "Uzak Ekleniyor"
 
-#: src/remotes_page/remotes_page.py:286
+#: src/remotes_page/remotes_page.py:292
 msgid "Loading Remotes"
 msgstr "Kumandaları Yükleme"
 
@@ -1324,33 +1326,33 @@ msgstr "Kopyalama Yolu"
 msgid "Attempt to Install"
 msgstr "Yükleme Denemesi"
 
-#: src/user_data_page/data_box.py:58
+#: src/user_data_page/data_box.py:59
 msgid "Copied data path"
 msgstr "Kopyalanan veri yolu"
 
-#: src/user_data_page/data_box.py:60
+#: src/user_data_page/data_box.py:61
 msgid "Could not copy data path"
 msgstr "Veri yolu kopyalanamadı"
 
-#: src/user_data_page/data_box.py:65
+#: src/user_data_page/data_box.py:66
 msgid "Opened data folder"
 msgstr "Açılan veri klasörü"
 
-#: src/user_data_page/data_box.py:67 src/snapshot_page/snapshot_page.py:253
-#: src/snapshot_page/snapshots_list_page.py:77
+#: src/user_data_page/data_box.py:68 src/snapshot_page/snapshot_page.py:255
+#: src/snapshot_page/snapshots_list_page.py:78
 msgid "Could not open folder"
 msgstr "Klasör açılamadı"
 
-#: src/user_data_page/data_box.py:113
+#: src/user_data_page/data_box.py:115
 msgid "Trash {}'s Data?"
 msgstr "Çöp {}'ün Verileri?"
 
-#: src/user_data_page/data_box.py:113
+#: src/user_data_page/data_box.py:115
 msgid "{}'s data will be sent to the trash"
 msgstr "{}'in verileri çöp kutusuna gönderilecek"
 
-#: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:210
-#: src/snapshot_page/snapshot_page.py:480
+#: src/user_data_page/data_box.py:117 src/user_data_page/user_data_page.py:211
+#: src/snapshot_page/snapshot_page.py:482
 msgid "Continue"
 msgstr "Devam Et"
 
@@ -1362,11 +1364,11 @@ msgstr "Başlık Seti Yok"
 msgid "Loading Size…"
 msgstr "Boyut Yükleniyor…"
 
-#: src/user_data_page/data_subpage.py:232
+#: src/user_data_page/data_subpage.py:254
 msgid "No Active Data"
 msgstr "Etkin Veri Yok"
 
-#: src/user_data_page/data_subpage.py:233
+#: src/user_data_page/data_subpage.py:255
 msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
@@ -1374,11 +1376,11 @@ msgstr ""
 "Warehouse herhangi bir aktif kullanıcı verisi göremiyor veya sisteminizde "
 "aktif kullanıcı verisi mevcut değil"
 
-#: src/user_data_page/data_subpage.py:236
+#: src/user_data_page/data_subpage.py:258
 msgid "No Leftover Data"
 msgstr "Artık Veri Yok"
 
-#: src/user_data_page/data_subpage.py:237
+#: src/user_data_page/data_subpage.py:259
 msgid "There is no leftover user data"
 msgstr "Artık kullanıcı verisi yok"
 
@@ -1416,43 +1418,43 @@ msgstr "ID"
 msgid "Size"
 msgstr "Boyut"
 
-#: src/user_data_page/user_data_page.py:75
-#: src/user_data_page/user_data_page.py:77
+#: src/user_data_page/user_data_page.py:76
+#: src/user_data_page/user_data_page.py:78
 msgid "Loading Size"
 msgstr "Boyutu Yükleniyor"
 
-#: src/user_data_page/user_data_page.py:151
+#: src/user_data_page/user_data_page.py:152
 msgid "Could not copy paths"
 msgstr "Yollar kopyalanamadı"
 
-#: src/user_data_page/user_data_page.py:151
-#: src/user_data_page/user_data_page.py:197
+#: src/user_data_page/user_data_page.py:152
+#: src/user_data_page/user_data_page.py:198
 msgid "No boxes were selected"
 msgstr "Hiçbir kutu seçilmedi"
 
-#: src/user_data_page/user_data_page.py:154
+#: src/user_data_page/user_data_page.py:155
 msgid "Copied paths"
 msgstr "Kopyalanan yollar"
 
-#: src/user_data_page/user_data_page.py:185
+#: src/user_data_page/user_data_page.py:186
 msgid "Trashed data"
 msgstr "Çöpe atılan veriler"
 
-#: src/user_data_page/user_data_page.py:208
+#: src/user_data_page/user_data_page.py:209
 msgid "Trash Data?"
 msgstr "Çöp Verileri?"
 
-#: src/user_data_page/user_data_page.py:208
+#: src/user_data_page/user_data_page.py:209
 msgid "Data will be sent to the trash"
 msgstr "Veriler çöp kutusuna gönderilecek"
 
-#: src/user_data_page/user_data_page.py:246
-#: src/user_data_page/user_data_page.py:269
+#: src/user_data_page/user_data_page.py:247
+#: src/user_data_page/user_data_page.py:270
 msgid "Active Data"
 msgstr "Aktif Veri"
 
-#: src/user_data_page/user_data_page.py:247
-#: src/user_data_page/user_data_page.py:275
+#: src/user_data_page/user_data_page.py:248
+#: src/user_data_page/user_data_page.py:276
 msgid "Leftover Data"
 msgstr "Artık Veriler"
 
@@ -1465,26 +1467,26 @@ msgstr "Uygulamaları Ara"
 msgid "Create"
 msgstr "Oluştur"
 
-#: src/snapshot_page/new_snapshot_dialog.py:110
+#: src/snapshot_page/new_snapshot_dialog.py:111
 msgid "Creating Snapshot"
 msgstr "Anlık Görüntü Oluştur"
 
-#: src/snapshot_page/new_snapshot_dialog.py:192
+#: src/snapshot_page/new_snapshot_dialog.py:193
 msgid "Name these Snapshots"
 msgstr "Bu Anlık Görüntüleri adlandırın"
 
-#: src/snapshot_page/new_snapshot_dialog.py:196
+#: src/snapshot_page/new_snapshot_dialog.py:197
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
 msgstr "Yeni Anlık Görüntü"
 
-#: src/snapshot_page/new_snapshot_dialog.py:200
+#: src/snapshot_page/new_snapshot_dialog.py:201
 msgid "Name this Snapshot"
 msgstr "Bu Anlık Görüntüyü Adlandırın"
 
-#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:58
+#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:59
 msgid "No Name Set"
 msgstr "İsimsiz Set"
 
@@ -1496,7 +1498,7 @@ msgstr "Tarih bulunamadı"
 msgid "No version found"
 msgstr "Sürüm bulunamadı"
 
-#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:156
+#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:157
 msgid "Apply"
 msgstr "Uygula"
 
@@ -1512,40 +1514,40 @@ msgstr "Anlık Görüntüyü Yeniden Adlandır?"
 msgid "Confirm Rename"
 msgstr "Yeniden Adlandırmayı Onayla"
 
-#: src/snapshot_page/snapshot_box.py:33 src/snapshot_page/snapshot_box.py:45
-#: src/snapshot_page/snapshot_box.py:61
+#: src/snapshot_page/snapshot_box.py:34 src/snapshot_page/snapshot_box.py:46
+#: src/snapshot_page/snapshot_box.py:62
 msgid "Could not write data"
 msgstr "Veri yazılamadı"
 
-#: src/snapshot_page/snapshot_box.py:98
+#: src/snapshot_page/snapshot_box.py:99
 msgid "Could not trash snapshot"
 msgstr "Anlık görüntü çöpe taşınamadı"
 
-#: src/snapshot_page/snapshot_box.py:102
+#: src/snapshot_page/snapshot_box.py:103
 msgid "Trashed snapshot"
 msgstr "Çöpe atılmış anlık görüntü"
 
-#: src/snapshot_page/snapshot_box.py:112
+#: src/snapshot_page/snapshot_box.py:113
 msgid "Trash Snapshot?"
 msgstr "Anlık Görüntü Çöpe Taşınsın Mı?"
 
-#: src/snapshot_page/snapshot_box.py:112
+#: src/snapshot_page/snapshot_box.py:113
 msgid "This snapshot will be sent to the trash"
 msgstr "Bu anlık görüntü çöp kutusuna gönderilecektir"
 
-#: src/snapshot_page/snapshot_box.py:142
+#: src/snapshot_page/snapshot_box.py:143
 msgid "Applying Snapshot"
 msgstr "Anlık Görüntüyü Uygulama"
 
-#: src/snapshot_page/snapshot_box.py:152
+#: src/snapshot_page/snapshot_box.py:153
 msgid "Apply Snapshot?"
 msgstr "Anlık Görüntü Uygulansın Mı?"
 
-#: src/snapshot_page/snapshot_box.py:153
+#: src/snapshot_page/snapshot_box.py:154
 msgid "Any current user data for this app will be trashed"
 msgstr "Bu uygulama için mevcut tüm kullanıcı verileri çöpe atılacaktır"
 
-#: src/snapshot_page/snapshot_box.py:182
+#: src/snapshot_page/snapshot_box.py:183
 msgid "Version: {}"
 msgstr "Sürüm: {}"
 
@@ -1599,81 +1601,81 @@ msgstr "Anlık Görüntüler Uygula"
 msgid "Trash Snapshots"
 msgstr "Çöp Anlık Görüntüleri"
 
-#: src/snapshot_page/snapshot_page.py:101
+#: src/snapshot_page/snapshot_page.py:103
 msgid "Could not load Snapshots"
 msgstr "Anlık Görüntüler yüklenemedi"
 
-#: src/snapshot_page/snapshot_page.py:194
+#: src/snapshot_page/snapshot_page.py:196
 msgid "Showing snapshots for {}"
 msgstr "{} için anlık görüntüler gösteriliyor"
 
-#: src/snapshot_page/snapshot_page.py:198
+#: src/snapshot_page/snapshot_page.py:200
 msgid "No snapshots for {}"
 msgstr "Anlık Görüntü Yok {}"
 
-#: src/snapshot_page/snapshot_page.py:198
+#: src/snapshot_page/snapshot_page.py:200
 msgid "New"
 msgstr "Yeni"
 
-#: src/snapshot_page/snapshot_page.py:242
 #: src/snapshot_page/snapshot_page.py:244
-#: src/snapshot_page/snapshots_list_page.py:60
+#: src/snapshot_page/snapshot_page.py:246
+#: src/snapshot_page/snapshots_list_page.py:61
 msgid "No Data Found to Snapshot"
 msgstr "Anlık Görüntü için Veri Bulunamadı"
 
-#: src/snapshot_page/snapshot_page.py:251
-#: src/snapshot_page/snapshots_list_page.py:75
+#: src/snapshot_page/snapshot_page.py:253
+#: src/snapshot_page/snapshots_list_page.py:76
 msgid "Opened snapshots folder"
 msgstr "Açılan anlık görüntüler klasörü"
 
-#: src/snapshot_page/snapshot_page.py:386
+#: src/snapshot_page/snapshot_page.py:388
 msgid "Copied Snapshot Paths"
 msgstr "Kopyalanan Anlık Görüntü Yolları"
 
-#: src/snapshot_page/snapshot_page.py:395
+#: src/snapshot_page/snapshot_page.py:397
 msgid "No apps in your selection can be snapshotted"
 msgstr "Seçiminizdeki hiçbir uygulamanın anlık görüntüsü alınamaz"
 
-#: src/snapshot_page/snapshot_page.py:469
+#: src/snapshot_page/snapshot_page.py:471
 msgid "Applying Snapshots"
 msgstr "Anlık Görüntüleri Uygulama"
 
-#: src/snapshot_page/snapshot_page.py:475
+#: src/snapshot_page/snapshot_page.py:477
 msgid "No snapshots to extract"
 msgstr "Çıkarılacak anlık görüntü yok"
 
-#: src/snapshot_page/snapshot_page.py:475
+#: src/snapshot_page/snapshot_page.py:477
 msgid "No snapshots were found to extract"
 msgstr "Çıkarılacak anlık görüntü bulunamadı"
 
-#: src/snapshot_page/snapshot_page.py:478
+#: src/snapshot_page/snapshot_page.py:480
 msgid "Apply These Snapshots?"
 msgstr "Bu Anlık Görüntüleri Uygulayın?"
 
-#: src/snapshot_page/snapshot_page.py:478
+#: src/snapshot_page/snapshot_page.py:480
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
 "Bu mevcut uygulamaların kullanıcı verilerini, çöpe atacak ve en yeni anlık "
 "görüntülerini uygulayacaktır"
 
-#: src/snapshot_page/snapshot_page.py:514
+#: src/snapshot_page/snapshot_page.py:513
 msgid "Trashed snapshots"
 msgstr "Çöpe atılan anlık görüntüler"
 
-#: src/snapshot_page/snapshot_page.py:516
+#: src/snapshot_page/snapshot_page.py:515
 msgid "Could not trash snapshots"
 msgstr "Anlık görüntüler çöpe atılamadı"
 
-#: src/snapshot_page/snapshot_page.py:519
+#: src/snapshot_page/snapshot_page.py:518
 msgid "Trash Snapshots?"
 msgstr "Anlık Görüntüler Çöpe Atılsın mı?"
 
-#: src/snapshot_page/snapshot_page.py:519
+#: src/snapshot_page/snapshot_page.py:518
 msgid "These apps' snapshots will be sent to the trash"
 msgstr "Bu uygulamaların anlık görüntüleri çöp kutusuna gönderilecektir"
 
-#: src/snapshot_page/snapshot_page.py:558
+#: src/snapshot_page/snapshot_page.py:557
 msgid "Loading Snapshots"
 msgstr "Anlık Görüntüler Yükleniyor"
 
@@ -1685,16 +1687,16 @@ msgstr "Anlık Görüntüler Listesi"
 msgid "Open Snapshots Folder for this App"
 msgstr "Bu Uygulama için Anlık Görüntüler Klasörünü Açın"
 
-#: src/snapshot_page/snapshots_list_page.py:30
-#: src/snapshot_page/snapshots_list_page.py:51
+#: src/snapshot_page/snapshots_list_page.py:31
+#: src/snapshot_page/snapshots_list_page.py:52
 msgid "App not Installed"
 msgstr "Uygulama Yüklü Değil"
 
-#: src/snapshot_page/snapshots_list_page.py:54
+#: src/snapshot_page/snapshots_list_page.py:55
 msgid "{} Snapshots"
 msgstr "{} Anlık Görüntü"
 
-#: src/snapshot_page/tar_worker.py:81
+#: src/snapshot_page/tar_worker.py:80
 msgid "Error in snapshot handling"
 msgstr "Anlık görüntü işleme hatası"
 
@@ -1703,20 +1705,20 @@ msgid "Review Selection"
 msgstr "İnceleme Seçimi"
 
 #. self.packages_group.set_title(_("Review Packages"))
-#: src/install_page/file_install_dialog.py:36
+#: src/install_page/file_install_dialog.py:37
 msgid "The following packages will be installed"
 msgstr "Aşağıdaki paketler yüklenecektir"
 
-#: src/install_page/file_install_dialog.py:39
+#: src/install_page/file_install_dialog.py:40
 msgid "Install a Package"
 msgstr "Paket Yükle"
 
 #. self.packages_group.set_title(_("Review Package"))
-#: src/install_page/file_install_dialog.py:41
+#: src/install_page/file_install_dialog.py:42
 msgid "The following package will be installed"
 msgstr "Aşağıdaki paket yüklenecektir"
 
-#: src/install_page/file_install_dialog.py:42
+#: src/install_page/file_install_dialog.py:43
 msgid "package"
 msgstr "paket"
 
@@ -1729,24 +1731,24 @@ msgstr "Kaynak Seçiniz"
 msgid "Pending Packages"
 msgstr "Bekleyen Paketler"
 
-#: src/install_page/install_page.py:51
+#: src/install_page/install_page.py:52
 msgid "Installed Packages"
 msgstr "Yüklü Paketler"
 
-#: src/install_page/install_page.py:68
+#: src/install_page/install_page.py:69
 msgid "{} Pending Package"
 msgstr "{} Bekleyen Paket"
 
-#: src/install_page/install_page.py:73
+#: src/install_page/install_page.py:74
 msgid "{} Pending Packages"
 msgstr "{} Bekleyen Paketler"
 
 #. Extra Object Creation
-#: src/install_page/install_page.py:88
+#: src/install_page/install_page.py:89
 msgid "Installing Packages"
 msgstr "Paketler Kuruluyor"
 
-#: src/install_page/install_page.py:96
+#: src/install_page/install_page.py:97
 msgid "Loading Installation Options"
 msgstr "Yükleme Seçenekleri"
 
@@ -1758,23 +1760,23 @@ msgstr "Paket Ekleme"
 msgid "Packages queued to install will show up here"
 msgstr "Yüklenmek üzere sıraya alınan paketler burada görünecektir"
 
-#: src/install_page/pending_page.py:34
+#: src/install_page/pending_page.py:35
 msgid "Remove All"
 msgstr "Tümünü Kaldır"
 
-#: src/install_page/result_row.blp:8 src/install_page/result_row.py:42
+#: src/install_page/result_row.blp:8 src/install_page/result_row.py:43
 msgid "Add Package to Queue"
 msgstr "Paketi Kuyruğa Ekle"
 
-#: src/install_page/result_row.py:46
+#: src/install_page/result_row.py:47
 msgid "Package has been Added to Queue"
 msgstr "Paket Kuyruğa Eklendi"
 
-#: src/install_page/result_row.py:50
+#: src/install_page/result_row.py:51
 msgid "Remove Package from Queue"
 msgstr "Paketi Kuyruktan Kaldır"
 
-#: src/install_page/result_row.py:54
+#: src/install_page/result_row.py:55
 msgid "This Package is Already Installed"
 msgstr "Bu Paket Zaten Yüklü"
 
@@ -1807,7 +1809,7 @@ msgstr "Aramanızda daha spesifik olmayı deneyin"
 msgid "Try a different search term"
 msgstr "Farklı bir arama terimi deneyin"
 
-#: src/install_page/results_page.py:50
+#: src/install_page/results_page.py:48
 msgid "Search {}"
 msgstr "Ara {}"
 
@@ -1840,11 +1842,11 @@ msgstr ""
 msgid "Install packages from files on your system"
 msgstr "istemdeki dosyalardan paketleri yükle"
 
-#: src/install_page/select_page.py:60
+#: src/install_page/select_page.py:63
 msgid "No files were found to install"
 msgstr "Yüklenecek dosya bulunamadı"
 
-#: src/install_page/select_page.py:70
+#: src/install_page/select_page.py:73
 msgid "Flatpaks"
 msgstr "Flatpak'ler"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 23:16-0400\n"
+"POT-Creation-Date: 2024-12-18 22:37-0500\n"
 "PO-Revision-Date: 2024-11-10 10:57+0000\n"
 "Last-Translator: Lordus Kordus <lorduskordus@gmail.com>\n"
 "Language-Team: Czech <https://weblate.fyralabs.com/projects/flattool/"
@@ -116,62 +116,62 @@ msgstr "Instalovat Nové Balíčky ze Souborů nebo Repozitářů"
 msgid "Install Page in Narrow Window"
 msgstr "Stránka Instalace v Úzkém Okně"
 
-#: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
-#: src/install_page/select_page.py:67
+#: src/main.py:95 src/main.py:101 src/install_page/select_page.py:63
+#: src/install_page/select_page.py:70
 msgid "Could not add files"
 msgstr "Nebylo možné přidat soubory"
 
-#: src/main.py:101
+#: src/main.py:95
 msgid "No files were found"
 msgstr "Nenalezeny žádné soubory"
 
-#: src/main.py:109
+#: src/main.py:103
 msgid "Flatpaks & Remotes"
 msgstr "Flatpaky & Repozitáře"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:217
+#: src/main.py:211
 msgid "translator-credits"
 msgstr "lorduskordus <lorduskordus@gmail.com>"
 
-#: src/main.py:223
+#: src/main.py:217
 msgid "Donate"
 msgstr "Přispět"
 
-#: src/main.py:225
+#: src/main.py:219
 msgid "Contributors"
 msgstr "Přispěvatelé"
 
-#: src/host_info.py:380 src/host_info.py:382
+#: src/host_info.py:384 src/host_info.py:386
 msgid "Could not load packages"
 msgstr "Nebylo možné načíst balíčky"
 
-#: src/package_install_worker.py:84
+#: src/package_install_worker.py:85
 msgid "Errors occurred during installation"
 msgstr "Došlo k chybám během instalace"
 
-#: src/package_install_worker.py:88 src/package_install_worker.py:92
+#: src/package_install_worker.py:89 src/package_install_worker.py:93
 msgid "Error occurred during installation"
 msgstr "Došlo k chybě během instalace"
 
-#: src/package_install_worker.py:88
-#: src/change_version_page/change_version_worker.py:70
+#: src/package_install_worker.py:89
+#: src/change_version_page/change_version_worker.py:77
 msgid "Failed to exit cleanly"
 msgstr "Nepodařilo se správně skončit"
 
-#: src/package_install_worker.py:104
+#: src/package_install_worker.py:105
 msgid "Could not cancel installation"
 msgstr "Nebylo možné zrušit instalaci"
 
-#: src/package_install_worker.py:125 src/package_install_worker.py:135
+#: src/package_install_worker.py:126 src/package_install_worker.py:136
 msgid "Could not install packages"
 msgstr "Nebylo možné nainstalovat balíčky"
 
-#: src/package_install_worker.py:125
+#: src/package_install_worker.py:126
 msgid "Packages are currently being installed."
 msgstr "Balíčky se nyní instalují."
 
-#: src/package_install_worker.py:135
+#: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
 msgstr "Nebyly vyžádány žádné balíčky pro instalaci."
 
@@ -206,16 +206,16 @@ msgid "Warehouse will try to install the matching packages."
 msgstr "Warehouse se pokusí nainstalovat odpovídající balíčky."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
-#: src/packages_page/uninstall_dialog.py:37
-#: src/properties_page/properties_page.py:189
-#: src/properties_page/properties_page.py:310
-#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:122
-#: src/remotes_page/remotes_page.py:189 src/user_data_page/data_box.py:114
-#: src/user_data_page/user_data_page.py:209
+#: src/packages_page/uninstall_dialog.py:38
+#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:315
+#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:126
+#: src/remotes_page/remotes_page.py:193 src/user_data_page/data_box.py:116
+#: src/user_data_page/user_data_page.py:210
 #: src/snapshot_page/new_snapshot_dialog.blp:16
-#: src/snapshot_page/snapshot_box.py:113 src/snapshot_page/snapshot_box.py:155
-#: src/snapshot_page/snapshot_page.py:479
-#: src/snapshot_page/snapshot_page.py:520
+#: src/snapshot_page/snapshot_box.py:114 src/snapshot_page/snapshot_box.py:156
+#: src/snapshot_page/snapshot_page.py:481
+#: src/snapshot_page/snapshot_page.py:519
 #: src/install_page/file_install_dialog.blp:13
 msgid "Cancel"
 msgstr "Zrušit"
@@ -236,33 +236,33 @@ msgstr "Vybrat Repozitář"
 msgid "Select a remote to attempt to install from"
 msgstr "Vybrat repozitář k pokusu o instalaci"
 
-#: src/gtk/attempt_install_dialog.py:18 src/packages_page/filters_page.py:122
-#: src/remotes_page/remote_row.py:148 src/install_page/pending_page.py:29
-#: src/install_page/select_page.py:31
+#: src/gtk/attempt_install_dialog.py:19 src/packages_page/filters_page.py:125
+#: src/remotes_page/remote_row.py:152 src/install_page/pending_page.py:30
+#: src/install_page/select_page.py:32
 msgid "Installation: {}"
 msgstr "Instalace: {}"
 
-#: src/gtk/attempt_install_dialog.py:71
+#: src/gtk/attempt_install_dialog.py:76
 msgid "Can't find matching packages"
 msgstr "Nelze nalézt odpovídající balíčky"
 
-#: src/gtk/attempt_install_dialog.py:71
+#: src/gtk/attempt_install_dialog.py:76
 msgid "Your system has no remotes added"
 msgstr "Váš systém nemá přidány žádné repozitáře"
 
 #. Extra Object Creation
-#: src/gtk/error_toast.py:12
+#: src/gtk/error_toast.py:13
 msgid "Details"
 msgstr "Detaily"
 
-#: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
+#: src/gtk/error_toast.py:20 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
 #: src/snapshot_page/snapshot_page.blp:149
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: src/gtk/error_toast.py:20 src/main_window/window.py:135
-#: src/main_window/window.py:145 src/main_window/window.py:154
+#: src/gtk/error_toast.py:21 src/main_window/window.py:139
+#: src/main_window/window.py:149 src/main_window/window.py:158
 msgid "OK"
 msgstr "OK"
 
@@ -364,7 +364,7 @@ msgstr "Zobrazit Zbylá Data"
 msgid "Snapshots Page"
 msgstr "Stránka Snímků"
 
-#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:202
+#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:203
 msgid "New Snapshots"
 msgstr "Nové Snímky"
 
@@ -392,31 +392,31 @@ msgstr "Jiná Instalace"
 msgid "Choose a custom installation"
 msgstr "Zvolit vlastní instalaci"
 
-#: src/gtk/installation_chooser.py:27
+#: src/gtk/installation_chooser.py:28
 msgid "These {} will only be available to you"
 msgstr "Tyto {} budou dostupné pouze vám"
 
-#: src/gtk/installation_chooser.py:28
+#: src/gtk/installation_chooser.py:29
 msgid "These {} will be available to everyone"
 msgstr "Tyto {} budou dostupné všem"
 
-#: src/gtk/installation_chooser.py:29
+#: src/gtk/installation_chooser.py:30
 msgid "Choose how these {} will be installed"
 msgstr "Zvolit, jak budou tyto {} nainstalované"
 
-#: src/gtk/installation_chooser.py:31
+#: src/gtk/installation_chooser.py:32
 msgid "This {} will only be available to you"
 msgstr "Tato {} bude dostupná pouze vám"
 
-#: src/gtk/installation_chooser.py:32
+#: src/gtk/installation_chooser.py:33
 msgid "This {} will be available to everyone"
 msgstr "Tato {} bude dostupná všem"
 
-#: src/gtk/installation_chooser.py:33
+#: src/gtk/installation_chooser.py:34
 msgid "Choose how this {} will be installed"
 msgstr "Zvolit, jak bude tento {} nainstalován"
 
-#: src/gtk/sidebar_button.py:19
+#: src/gtk/sidebar_button.py:20
 msgid "Show Sidebar"
 msgstr "Zobrazit Boční panel"
 
@@ -438,70 +438,70 @@ msgstr "Hlavní Menu"
 
 #: src/main_window/window.blp:67 src/packages_page/packages_page.blp:20
 #: src/packages_page/packages_page.blp:55
-#: src/packages_page/packages_page.py:155
-#: src/packages_page/packages_page.py:319
-#: src/install_page/file_install_dialog.py:37
+#: src/packages_page/packages_page.py:157
+#: src/packages_page/packages_page.py:322
+#: src/install_page/file_install_dialog.py:38
 msgid "Packages"
 msgstr "Balíčky"
 
-#: src/main_window/window.blp:80
+#: src/main_window/window.blp:82
 msgid "Remotes"
 msgstr "Repozitáře"
 
-#: src/main_window/window.blp:94 src/properties_page/properties_page.blp:114
+#: src/main_window/window.blp:98 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
 msgid "User Data"
 msgstr "Uživatelská Data"
 
-#: src/main_window/window.blp:107 src/snapshot_page/snapshot_page.blp:18
+#: src/main_window/window.blp:113 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
-#: src/snapshot_page/snapshot_page.py:355
+#: src/snapshot_page/snapshot_page.py:357
 msgid "Snapshots"
 msgstr "Snímky"
 
-#: src/main_window/window.blp:120 src/install_page/file_install_dialog.py:34
+#: src/main_window/window.blp:128 src/install_page/file_install_dialog.py:35
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
 msgid "Install Packages"
 msgstr "Instalovat Balíčky"
 
-#: src/main_window/window.blp:150
+#: src/main_window/window.blp:160
 msgid "_Open Files"
 msgstr "_Otevřít Soubory"
 
-#: src/main_window/window.blp:154
+#: src/main_window/window.blp:164
 msgid "_Keyboard Shortcuts"
 msgstr "_Klávesové Zkratky"
 
-#: src/main_window/window.blp:158
+#: src/main_window/window.blp:168
 msgid "_About Warehouse"
 msgstr "_O Aplikaci Warehouse"
 
-#: src/main_window/window.py:132
+#: src/main_window/window.py:136
 msgid "Unsupported Filetype"
 msgstr "Nepodporovaný Typ souboru"
 
-#: src/main_window/window.py:133
+#: src/main_window/window.py:137
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
 msgstr "Jsou podporovány pouze .flatpak, .flatpakref. a .flatpakrepo soubory."
 
-#: src/main_window/window.py:141
+#: src/main_window/window.py:145
 msgid "Mixed Filetypes"
 msgstr "Smíšené Typy souborů"
 
-#: src/main_window/window.py:142
+#: src/main_window/window.py:146
 msgid "Flatpaks and remotes cannot be installed at the same time."
 msgstr "Flatpaky a repozitáře nemohou být instalovány ve stejný čas."
 
-#: src/main_window/window.py:151
+#: src/main_window/window.py:155
 msgid "Too Many Remotes"
 msgstr "Příliš Mnoho Repozitářů"
 
-#: src/main_window/window.py:152
+#: src/main_window/window.py:156
 msgid "Only one remote at a time is supported."
 msgstr "Je podporován pouze jeden repozitář v jeden moment."
 
-#: src/main_window/window.py:170
+#: src/main_window/window.py:174
 msgid "Could not open files"
 msgstr "Nebylo možné otevřít soubory"
 
@@ -624,7 +624,7 @@ msgid "Select All"
 msgstr "Vybrat Vše"
 
 #: src/packages_page/packages_page.blp:144
-#: src/packages_page/uninstall_dialog.py:38
+#: src/packages_page/uninstall_dialog.py:39
 #: src/properties_page/properties_page.blp:88
 msgid "Uninstall"
 msgstr "Odinstalovat"
@@ -641,76 +641,76 @@ msgstr "Kopírovat více ID"
 msgid "Copy Refs"
 msgstr "Kopírovat Reference"
 
-#: src/packages_page/packages_page.py:151
-#: src/user_data_page/data_subpage.py:107
-#: src/snapshot_page/new_snapshot_dialog.py:38
-#: src/snapshot_page/snapshot_page.py:355
+#: src/packages_page/packages_page.py:153
+#: src/user_data_page/data_subpage.py:109
+#: src/snapshot_page/new_snapshot_dialog.py:39
+#: src/snapshot_page/snapshot_page.py:357
 msgid "{} Selected"
 msgstr "{} Vybráno"
 
-#: src/packages_page/packages_page.py:192
+#: src/packages_page/packages_page.py:194
 msgid "Error getting Flatpak '{}'"
 msgstr "Došlo k chybě při získávání Flatpaku '{}'"
 
-#: src/packages_page/packages_page.py:241
+#: src/packages_page/packages_page.py:243
 msgid "Names"
 msgstr "Jména"
 
-#: src/packages_page/packages_page.py:244
+#: src/packages_page/packages_page.py:246
 msgid "IDs"
 msgstr "ID"
 
-#: src/packages_page/packages_page.py:247
+#: src/packages_page/packages_page.py:249
 msgid "Refs"
 msgstr "Reference"
 
-#: src/packages_page/packages_page.py:255
-#: src/properties_page/properties_page.py:272
+#: src/packages_page/packages_page.py:257
+#: src/properties_page/properties_page.py:275
 msgid "Copied {}"
 msgstr "Zkopírováno {}"
 
-#: src/packages_page/packages_page.py:257
+#: src/packages_page/packages_page.py:259
 msgid "Could not copy {}"
 msgstr "Nebylo možné zkopírovat {}"
 
-#: src/packages_page/packages_page.py:307
+#: src/packages_page/packages_page.py:310
 msgid "Errors occurred while uninstalling"
 msgstr "Došlo k chybám během odinstalace"
 
-#: src/packages_page/packages_page.py:309
+#: src/packages_page/packages_page.py:312
 msgid "Uninstalled Packages"
 msgstr "Odinstalovány Balíčky"
 
-#: src/packages_page/packages_page.py:367
+#: src/packages_page/packages_page.py:370
 msgid "Loading Packages"
 msgstr "Načítám Balíčky"
 
-#: src/packages_page/packages_page.py:367
-#: src/packages_page/packages_page.py:368
-#: src/properties_page/properties_page.py:366
-#: src/remotes_page/remotes_page.py:285 src/remotes_page/remotes_page.py:286
-#: src/user_data_page/user_data_page.py:296
-#: src/snapshot_page/snapshot_page.py:558 src/install_page/install_page.py:96
+#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:371
+#: src/properties_page/properties_page.py:368
+#: src/remotes_page/remotes_page.py:291 src/remotes_page/remotes_page.py:292
+#: src/user_data_page/user_data_page.py:297
+#: src/snapshot_page/snapshot_page.py:557 src/install_page/install_page.py:97
 #: src/install_page/results_page.py:135
 msgid "This should only take a moment"
 msgstr "Tohle by mělo trvat jen chvíli"
 
-#: src/packages_page/packages_page.py:368
+#: src/packages_page/packages_page.py:371
 msgid "Uninstalling Packages"
 msgstr "Odinstaluji Balíčky"
 
-#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:373
 msgid "Reinstalling Package"
 msgstr "Přeinstalovávám Balíček"
 
-#: src/packages_page/packages_page.py:370
-#: src/packages_page/packages_page.py:372
-#: src/change_version_page/change_version_page.py:119
-#: src/snapshot_page/snapshot_page.py:551 src/install_page/install_page.py:88
+#: src/packages_page/packages_page.py:373
+#: src/packages_page/packages_page.py:375
+#: src/change_version_page/change_version_page.py:123
+#: src/snapshot_page/snapshot_page.py:550 src/install_page/install_page.py:89
 msgid "This could take a while"
 msgstr "Tohle může chvíli trvat"
 
-#: src/packages_page/packages_page.py:372
+#: src/packages_page/packages_page.py:375
 msgid "Changing Version"
 msgstr "Měním Verzi"
 
@@ -725,8 +725,8 @@ msgstr "Umožňuje obnovit nastavení a obsah aplikace"
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
 #: src/user_data_page/user_data_page.blp:148
-#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:114
-#: src/snapshot_page/snapshot_page.py:521
+#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:115
+#: src/snapshot_page/snapshot_page.py:520
 msgid "Trash"
 msgstr "Přesunout do koše"
 
@@ -734,23 +734,23 @@ msgstr "Přesunout do koše"
 msgid "Send data to the trash"
 msgstr "Přesunout data do koše"
 
-#: src/packages_page/uninstall_dialog.py:30
+#: src/packages_page/uninstall_dialog.py:31
 msgid "Uninstall {}?"
 msgstr "Odinstalovat {}?"
 
-#: src/packages_page/uninstall_dialog.py:31
+#: src/packages_page/uninstall_dialog.py:32
 msgid "It will not be possible to use {} after removal"
 msgstr "Po odstranění nebude možné používat {}"
 
-#: src/packages_page/uninstall_dialog.py:33
+#: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall Packages?"
 msgstr "Odinstalovat Balíčky?"
 
-#: src/packages_page/uninstall_dialog.py:34
+#: src/packages_page/uninstall_dialog.py:35
 msgid "It will not be possible to use these packages after removal"
 msgstr "Po odstranění nebude možné používat tyto balíčky"
 
-#: src/packages_page/uninstall_dialog.py:41
+#: src/packages_page/uninstall_dialog.py:42
 msgid "App Settings & Content"
 msgstr "Nastavení & Obsah Aplikace"
 
@@ -811,7 +811,9 @@ msgid "Runtime"
 msgstr "Běhové prostředí"
 
 #: src/properties_page/properties_page.blp:188
-msgid "Disable Automactic Removal"
+#, fuzzy
+#| msgid "Disable Automactic Removal"
+msgid "Disable Automatic Removal"
 msgstr "Zakázat Automatické Odstraňování"
 
 #: src/properties_page/properties_page.blp:189
@@ -870,115 +872,115 @@ msgstr "Subjekt"
 msgid "Date"
 msgstr "Datum"
 
-#: src/properties_page/properties_page.py:75
+#: src/properties_page/properties_page.py:76
 msgid "{} Properties"
 msgstr "{} Vlastností"
 
-#: src/properties_page/properties_page.py:80
+#: src/properties_page/properties_page.py:81
 msgid "Properties"
 msgstr "Vlastnosti"
 
 #. Apply again
-#: src/properties_page/properties_page.py:109
-#: src/user_data_page/user_data_page.py:296
+#: src/properties_page/properties_page.py:110
+#: src/user_data_page/user_data_page.py:297
 msgid "Loading User Data"
 msgstr "Načítám Uživatelská Data"
 
-#: src/properties_page/properties_page.py:119
+#: src/properties_page/properties_page.py:120
 msgid "No User Data"
 msgstr "Žádná Uživatelská Data"
 
-#: src/properties_page/properties_page.py:129
-#: src/properties_page/properties_page.py:145
+#: src/properties_page/properties_page.py:130
+#: src/properties_page/properties_page.py:146
 msgid "Could not get properties"
 msgstr "Nebylo možné získat vlastnosti"
 
-#: src/properties_page/properties_page.py:142
+#: src/properties_page/properties_page.py:143
 msgid "No version information found"
 msgstr "Nenalezeny žádné informace o verzi"
 
-#: src/properties_page/properties_page.py:162
+#: src/properties_page/properties_page.py:163
 msgid "Could not open data"
 msgstr "Nebylo možné otevřít data"
 
-#: src/properties_page/properties_page.py:181
-#: src/properties_page/properties_page.py:183
-#: src/properties_page/properties_page.py:238
-#: src/properties_page/properties_page.py:240 src/user_data_page/data_box.py:99
-#: src/user_data_page/user_data_page.py:183
-#: src/user_data_page/user_data_page.py:197
+#: src/properties_page/properties_page.py:182
+#: src/properties_page/properties_page.py:184
+#: src/properties_page/properties_page.py:241
+#: src/properties_page/properties_page.py:243
+#: src/user_data_page/data_box.py:101 src/user_data_page/user_data_page.py:184
+#: src/user_data_page/user_data_page.py:198
 msgid "Could not trash data"
 msgstr "Nebylo možné přesunout data do koše"
 
-#: src/properties_page/properties_page.py:186
+#: src/properties_page/properties_page.py:187
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Přesunout Uživatelská Data {} do Koše?"
 
-#: src/properties_page/properties_page.py:187
+#: src/properties_page/properties_page.py:188
 msgid "Your settings and data for this app will be sent to the trash"
 msgstr "Vaše nastavení a data pro tuto aplikaci budou přesunuta do koše"
 
-#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:191
 msgid "Trash Data"
 msgstr "Přesunout Data do koše"
 
-#: src/properties_page/properties_page.py:199
+#: src/properties_page/properties_page.py:201
 msgid "Could not Disable Updates"
 msgstr "Nebylo možné Zakázat Aktualizace"
 
-#: src/properties_page/properties_page.py:199
+#: src/properties_page/properties_page.py:201
 msgid "Could not Enable Updates"
 msgstr "Nebylo možné Povolit Aktualizace"
 
-#: src/properties_page/properties_page.py:205
+#: src/properties_page/properties_page.py:207
 msgid "Disabled Updates"
 msgstr "Zakázány Aktualizace"
 
-#: src/properties_page/properties_page.py:205
+#: src/properties_page/properties_page.py:207
 msgid "Enabled Updates"
 msgstr "Povoleny Aktualizace"
 
-#: src/properties_page/properties_page.py:217
+#: src/properties_page/properties_page.py:220
 msgid "Could not Disable Autoremoval"
 msgstr "Nebylo možné Zakázat Automatické odstraňování"
 
-#: src/properties_page/properties_page.py:217
+#: src/properties_page/properties_page.py:220
 msgid "Could not Enable Autoremoval"
 msgstr "Nebylo možné Povolit Automatické odstraňování"
 
-#: src/properties_page/properties_page.py:222
+#: src/properties_page/properties_page.py:225
 msgid "Disabled Autoremoval"
 msgstr "Zakázáno Automatické Odstraňování"
 
-#: src/properties_page/properties_page.py:222
+#: src/properties_page/properties_page.py:225
 msgid "Enabled Autoremoval"
 msgstr "Povoleno Automatické odstraňování"
 
-#: src/properties_page/properties_page.py:245
+#: src/properties_page/properties_page.py:248
 msgid "Could not uninstall"
 msgstr "Nebylo možné odinstalovat"
 
-#: src/properties_page/properties_page.py:249
+#: src/properties_page/properties_page.py:252
 msgid "Uninstalled {}"
 msgstr "Odinstalován {}"
 
-#: src/properties_page/properties_page.py:261
+#: src/properties_page/properties_page.py:264
 msgid "Opening {}…"
 msgstr "Otevírám {}…"
 
-#: src/properties_page/properties_page.py:266
+#: src/properties_page/properties_page.py:269
 msgid "Could not open {}"
 msgstr "Nebylo možné otevřít {}"
 
-#: src/properties_page/properties_page.py:281
+#: src/properties_page/properties_page.py:284
 msgid "Reinstalled {}"
 msgstr "Přeinstalován {}"
 
-#: src/properties_page/properties_page.py:307
+#: src/properties_page/properties_page.py:312
 msgid "Reinstall {}?"
 msgstr "Přeinstalovat {}?"
 
-#: src/properties_page/properties_page.py:308
+#: src/properties_page/properties_page.py:313
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
@@ -986,36 +988,36 @@ msgstr ""
 "Tento balíček bude odinstalován a pak přeinstalován ze stejného repozitáře a "
 "instalace."
 
-#: src/properties_page/properties_page.py:311
-#: src/properties_page/properties_page.py:372
+#: src/properties_page/properties_page.py:316
+#: src/properties_page/properties_page.py:374
 msgid "Reinstall"
 msgstr "Přeinstalovat"
 
-#: src/properties_page/properties_page.py:328
+#: src/properties_page/properties_page.py:333
 msgid "Copied launch command"
 msgstr "Zkopírován příkaz spuštění"
 
-#: src/properties_page/properties_page.py:330
+#: src/properties_page/properties_page.py:335
 msgid "Could not copy launch command"
 msgstr "Nebylo možné zkopírovat příkaz spuštění"
 
-#: src/properties_page/properties_page.py:336
+#: src/properties_page/properties_page.py:341
 msgid "Could not show details"
 msgstr "Nebylo možné zobrazit detaily"
 
-#: src/properties_page/properties_page.py:366
+#: src/properties_page/properties_page.py:368
 msgid "Loading Properties"
 msgstr "Načítám Vlastnosti"
 
-#: src/properties_page/properties_page.py:369
+#: src/properties_page/properties_page.py:371
 msgid "View Snapshots"
 msgstr "Zobrazit Snímky"
 
-#: src/properties_page/properties_page.py:370
+#: src/properties_page/properties_page.py:372
 msgid "Copy Launch Command"
 msgstr "Kopírovat Příkaz Spuštění"
 
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:373
 msgid "Show Details"
 msgstr "Zobrazit Detaily"
 
@@ -1035,45 +1037,45 @@ msgstr ""
 "Tohle odinstaluje současné vydání a nainstaluje vybrané. Pozor, downgrade "
 "může způsobit potíže."
 
-#: src/change_version_page/change_version_page.py:69
+#: src/change_version_page/change_version_page.py:72
 msgid "Currently Installed Version"
 msgstr "Aktuálně Nainstalovaná Verze"
 
-#: src/change_version_page/change_version_page.py:86
+#: src/change_version_page/change_version_page.py:89
 msgid "Could not get versions"
 msgstr "Nebylo možné získat verze"
 
-#: src/change_version_page/change_version_page.py:93
+#: src/change_version_page/change_version_page.py:96
 msgid "Changed {}'s Version"
 msgstr "Změněna Verze {}"
 
-#: src/change_version_page/change_version_page.py:117
+#: src/change_version_page/change_version_page.py:121
 msgid "{} Versions"
 msgstr "{} Verzí"
 
-#: src/change_version_page/change_version_page.py:118
+#: src/change_version_page/change_version_page.py:122
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Ujistit se, že {} nikdy nebude aktualizován na novější verzi"
 
-#: src/change_version_page/change_version_page.py:119
+#: src/change_version_page/change_version_page.py:123
 msgid "Fetching Releases"
 msgstr "Získávám Vydání"
 
-#: src/change_version_page/change_version_worker.py:66
-#: src/change_version_page/change_version_worker.py:70
-#: src/change_version_page/change_version_worker.py:74
+#: src/change_version_page/change_version_worker.py:73
+#: src/change_version_page/change_version_worker.py:77
+#: src/change_version_page/change_version_worker.py:81
 msgid "Error occurred while changing version"
 msgstr "Došlo k chybě během změny verze"
 
-#: src/change_version_page/change_version_worker.py:85
+#: src/change_version_page/change_version_worker.py:92
 msgid "Could not cancel version change"
 msgstr "Nebylo možné zrušit změnu verze"
 
-#: src/change_version_page/change_version_worker.py:106
+#: src/change_version_page/change_version_worker.py:113
 msgid "Could not change version"
 msgstr "Nebylo možné změnit verzi"
 
-#: src/change_version_page/change_version_worker.py:106
+#: src/change_version_page/change_version_worker.py:113
 msgid "Another package is changing version."
 msgstr "Jiný balíček mění verzi."
 
@@ -1098,16 +1100,16 @@ msgstr "Jméno"
 msgid "Repo URL"
 msgstr "URL Repozitáře"
 
-#: src/remotes_page/add_remote_dialog.py:54
+#: src/remotes_page/add_remote_dialog.py:58
 msgid "Could not add remote"
 msgstr "Nebylo možné přidat repozitář"
 
-#: src/remotes_page/add_remote_dialog.py:57
+#: src/remotes_page/add_remote_dialog.py:61
 msgid "Added {}"
 msgstr "Přidán {}"
 
 #. Apply
-#: src/remotes_page/add_remote_dialog.py:107
+#: src/remotes_page/add_remote_dialog.py:111
 msgid "remote"
 msgstr "repozitář"
 
@@ -1131,56 +1133,56 @@ msgstr "Kopírovat Název"
 msgid "Enable"
 msgstr "Povolit"
 
-#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:123
+#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:127
 msgid "Disable"
 msgstr "Zakázat"
 
-#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:190
+#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:194
 msgid "Remove"
 msgstr "Odstranit"
 
-#: src/remotes_page/remote_row.py:24 src/remotes_page/remote_row.py:44
+#: src/remotes_page/remote_row.py:25 src/remotes_page/remote_row.py:46
 msgid "Could not enable remote"
 msgstr "Nebylo možné povolit repozitář"
 
-#: src/remotes_page/remote_row.py:24
+#: src/remotes_page/remote_row.py:25
 msgid "Remote is already enabled"
 msgstr "Repozitář je již povolen"
 
-#: src/remotes_page/remote_row.py:51
+#: src/remotes_page/remote_row.py:53
 msgid "Enabled remote"
 msgstr "Povolen repozitář"
 
-#: src/remotes_page/remote_row.py:75 src/remotes_page/remote_row.py:153
+#: src/remotes_page/remote_row.py:77 src/remotes_page/remote_row.py:157
 msgid "Remote is Disabled"
 msgstr "Repozitář je Zakázán"
 
-#: src/remotes_page/remote_row.py:77
+#: src/remotes_page/remote_row.py:79
 msgid "Disabled remote"
 msgstr "Zakázán repozitář"
 
-#: src/remotes_page/remote_row.py:95 src/remotes_page/remote_row.py:107
-#: src/remotes_page/remote_row.py:111
+#: src/remotes_page/remote_row.py:97 src/remotes_page/remote_row.py:109
+#: src/remotes_page/remote_row.py:113
 msgid "Could not disable remote"
 msgstr "Nebylo možné zakázat repozitář"
 
-#: src/remotes_page/remote_row.py:95
+#: src/remotes_page/remote_row.py:97
 msgid "Remote is already disabled"
 msgstr "Repozitář je již zakázán"
 
-#: src/remotes_page/remote_row.py:121
+#: src/remotes_page/remote_row.py:124
 msgid "Disable {}?"
 msgstr "Zakázat {}?"
 
-#: src/remotes_page/remote_row.py:121 src/remotes_page/remotes_page.py:188
+#: src/remotes_page/remote_row.py:124 src/remotes_page/remotes_page.py:191
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr "Jakékoliv nainstalované aplikace z {} přestanou dostávat aktualizace"
 
-#: src/remotes_page/remote_row.py:133
+#: src/remotes_page/remote_row.py:137
 msgid "Copied title"
 msgstr "Zkopírován titulek"
 
-#: src/remotes_page/remote_row.py:136
+#: src/remotes_page/remote_row.py:140
 msgid "Copied name"
 msgstr "Zkopírováno jméno"
 
@@ -1251,61 +1253,61 @@ msgstr "Přidat Vlastní Repozitář"
 msgid "Manually enter new remote details"
 msgstr "Manuálně vložit detaily nového repozitáře"
 
-#: src/remotes_page/remotes_page.py:32
+#: src/remotes_page/remotes_page.py:33
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr "Open source, zaplať-kolik-chceš obchod s aplikacemi od elementary"
 
-#: src/remotes_page/remotes_page.py:38
+#: src/remotes_page/remotes_page.py:39
 msgid "Central repository of Flatpak applications"
 msgstr "Centrální repozitář Flatpak aplikací"
 
-#: src/remotes_page/remotes_page.py:44
+#: src/remotes_page/remotes_page.py:45
 msgid "Beta builds of Flatpak applications"
 msgstr "Beta verze Flatpak aplikací"
 
-#: src/remotes_page/remotes_page.py:50
+#: src/remotes_page/remotes_page.py:51
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "Flatpaky zabaleny týmem Fedora Linux"
 
-#: src/remotes_page/remotes_page.py:56
+#: src/remotes_page/remotes_page.py:57
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "Nejnovější beta GNOME Aplikace a Běhová Prostředí"
 
-#: src/remotes_page/remotes_page.py:62
+#: src/remotes_page/remotes_page.py:63
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr "Centrální repozitář Vývojářského a Běhového prostředí SDK pro WebKit"
 
-#: src/remotes_page/remotes_page.py:152
+#: src/remotes_page/remotes_page.py:153
 msgid "Showing all packages from {}"
 msgstr "Zobrazuji všechny balíčky z {}"
 
-#: src/remotes_page/remotes_page.py:173
+#: src/remotes_page/remotes_page.py:175
 msgid "Could not remove remote"
 msgstr "Nebylo možné odstranit repozitář"
 
-#: src/remotes_page/remotes_page.py:180
+#: src/remotes_page/remotes_page.py:182
 msgid "Removed {}"
 msgstr "Odstraněn {}"
 
-#: src/remotes_page/remotes_page.py:188
+#: src/remotes_page/remotes_page.py:191
 msgid "Remove {}?"
 msgstr "Odstranit {}?"
 
-#: src/remotes_page/remotes_page.py:224 src/remotes_page/remotes_page.py:234
-#: src/remotes_page/remotes_page.py:236
+#: src/remotes_page/remotes_page.py:228 src/remotes_page/remotes_page.py:238
+#: src/remotes_page/remotes_page.py:240
 msgid "Could not open file"
 msgstr "Nebylo možné otevřít soubor"
 
-#: src/remotes_page/remotes_page.py:239
+#: src/remotes_page/remotes_page.py:243
 msgid "Flatpak Repos"
 msgstr "Flatpak Repozitáře"
 
 #. Apply
-#: src/remotes_page/remotes_page.py:285
+#: src/remotes_page/remotes_page.py:291
 msgid "Adding Remote"
 msgstr "Přidávám Repozitář"
 
-#: src/remotes_page/remotes_page.py:286
+#: src/remotes_page/remotes_page.py:292
 msgid "Loading Remotes"
 msgstr "Načítám Repozitáře"
 
@@ -1317,33 +1319,33 @@ msgstr "Kopírovat Cestu"
 msgid "Attempt to Install"
 msgstr "Zkusit Nainstalovat"
 
-#: src/user_data_page/data_box.py:58
+#: src/user_data_page/data_box.py:59
 msgid "Copied data path"
 msgstr "Zkopírována cesta k datům"
 
-#: src/user_data_page/data_box.py:60
+#: src/user_data_page/data_box.py:61
 msgid "Could not copy data path"
 msgstr "Nebylo možné zkopírovat cestu k datům"
 
-#: src/user_data_page/data_box.py:65
+#: src/user_data_page/data_box.py:66
 msgid "Opened data folder"
 msgstr "Otevřena složka s daty"
 
-#: src/user_data_page/data_box.py:67 src/snapshot_page/snapshot_page.py:253
-#: src/snapshot_page/snapshots_list_page.py:77
+#: src/user_data_page/data_box.py:68 src/snapshot_page/snapshot_page.py:255
+#: src/snapshot_page/snapshots_list_page.py:78
 msgid "Could not open folder"
 msgstr "Nebylo možné otevřít složku"
 
-#: src/user_data_page/data_box.py:113
+#: src/user_data_page/data_box.py:115
 msgid "Trash {}'s Data?"
 msgstr "Přesunout Data {} do koše ?"
 
-#: src/user_data_page/data_box.py:113
+#: src/user_data_page/data_box.py:115
 msgid "{}'s data will be sent to the trash"
 msgstr "Data {} budou přesunuta do koše"
 
-#: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:210
-#: src/snapshot_page/snapshot_page.py:480
+#: src/user_data_page/data_box.py:117 src/user_data_page/user_data_page.py:211
+#: src/snapshot_page/snapshot_page.py:482
 msgid "Continue"
 msgstr "Pokračovat"
 
@@ -1355,11 +1357,11 @@ msgstr "Nenastaven žádný Titulek"
 msgid "Loading Size…"
 msgstr "Načítám Velikost…"
 
-#: src/user_data_page/data_subpage.py:232
+#: src/user_data_page/data_subpage.py:254
 msgid "No Active Data"
 msgstr "Žádná Aktivní Data"
 
-#: src/user_data_page/data_subpage.py:233
+#: src/user_data_page/data_subpage.py:255
 msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
@@ -1367,11 +1369,11 @@ msgstr ""
 "Warehouse nevidí žádná aktivní uživatelská data nebo váš systém aktivní "
 "uživatelská data neobsahuje"
 
-#: src/user_data_page/data_subpage.py:236
+#: src/user_data_page/data_subpage.py:258
 msgid "No Leftover Data"
 msgstr "Žádná Zbylá Data"
 
-#: src/user_data_page/data_subpage.py:237
+#: src/user_data_page/data_subpage.py:259
 msgid "There is no leftover user data"
 msgstr "Neexistují žádná zbylá uživatelská data"
 
@@ -1409,43 +1411,43 @@ msgstr "ID"
 msgid "Size"
 msgstr "Velikost"
 
-#: src/user_data_page/user_data_page.py:75
-#: src/user_data_page/user_data_page.py:77
+#: src/user_data_page/user_data_page.py:76
+#: src/user_data_page/user_data_page.py:78
 msgid "Loading Size"
 msgstr "Načítám Velikost"
 
-#: src/user_data_page/user_data_page.py:151
+#: src/user_data_page/user_data_page.py:152
 msgid "Could not copy paths"
 msgstr "Nebylo možné zkopírovat cesty"
 
-#: src/user_data_page/user_data_page.py:151
-#: src/user_data_page/user_data_page.py:197
+#: src/user_data_page/user_data_page.py:152
+#: src/user_data_page/user_data_page.py:198
 msgid "No boxes were selected"
 msgstr "Nebyla vybrána žádná políčka"
 
-#: src/user_data_page/user_data_page.py:154
+#: src/user_data_page/user_data_page.py:155
 msgid "Copied paths"
 msgstr "Zkopírovány cesty"
 
-#: src/user_data_page/user_data_page.py:185
+#: src/user_data_page/user_data_page.py:186
 msgid "Trashed data"
 msgstr "Data přesunuta do koše"
 
-#: src/user_data_page/user_data_page.py:208
+#: src/user_data_page/user_data_page.py:209
 msgid "Trash Data?"
 msgstr "Přesunout Data do koše?"
 
-#: src/user_data_page/user_data_page.py:208
+#: src/user_data_page/user_data_page.py:209
 msgid "Data will be sent to the trash"
 msgstr "Data budou přesunuta do koše"
 
-#: src/user_data_page/user_data_page.py:246
-#: src/user_data_page/user_data_page.py:269
+#: src/user_data_page/user_data_page.py:247
+#: src/user_data_page/user_data_page.py:270
 msgid "Active Data"
 msgstr "Aktivní Data"
 
-#: src/user_data_page/user_data_page.py:247
-#: src/user_data_page/user_data_page.py:275
+#: src/user_data_page/user_data_page.py:248
+#: src/user_data_page/user_data_page.py:276
 msgid "Leftover Data"
 msgstr "Zbylá Data"
 
@@ -1458,26 +1460,26 @@ msgstr "Hledat Aplikace"
 msgid "Create"
 msgstr "Vytvořit"
 
-#: src/snapshot_page/new_snapshot_dialog.py:110
+#: src/snapshot_page/new_snapshot_dialog.py:111
 msgid "Creating Snapshot"
 msgstr "Vytvářím Snímek"
 
-#: src/snapshot_page/new_snapshot_dialog.py:192
+#: src/snapshot_page/new_snapshot_dialog.py:193
 msgid "Name these Snapshots"
 msgstr "Pojmenovat tyto Snímky"
 
-#: src/snapshot_page/new_snapshot_dialog.py:196
+#: src/snapshot_page/new_snapshot_dialog.py:197
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
 msgstr "Nový Snímek"
 
-#: src/snapshot_page/new_snapshot_dialog.py:200
+#: src/snapshot_page/new_snapshot_dialog.py:201
 msgid "Name this Snapshot"
 msgstr "Pojmenovat tento Snímek"
 
-#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:58
+#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:59
 msgid "No Name Set"
 msgstr "Nenastaveno žádné Jméno"
 
@@ -1489,7 +1491,7 @@ msgstr "Nenalezen datum"
 msgid "No version found"
 msgstr "Nenalezena žádná verze"
 
-#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:156
+#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:157
 msgid "Apply"
 msgstr "Aplikovat"
 
@@ -1505,41 +1507,41 @@ msgstr "Přejmenovat Snímek?"
 msgid "Confirm Rename"
 msgstr "Potvrdit Přejmenování"
 
-#: src/snapshot_page/snapshot_box.py:33 src/snapshot_page/snapshot_box.py:45
-#: src/snapshot_page/snapshot_box.py:61
+#: src/snapshot_page/snapshot_box.py:34 src/snapshot_page/snapshot_box.py:46
+#: src/snapshot_page/snapshot_box.py:62
 msgid "Could not write data"
 msgstr "Nebylo možné zapsat data"
 
-#: src/snapshot_page/snapshot_box.py:98
+#: src/snapshot_page/snapshot_box.py:99
 msgid "Could not trash snapshot"
 msgstr "Nebylo možné přesunout snímek do koše"
 
-#: src/snapshot_page/snapshot_box.py:102
+#: src/snapshot_page/snapshot_box.py:103
 msgid "Trashed snapshot"
 msgstr "Snímek přesunut do koše"
 
-#: src/snapshot_page/snapshot_box.py:112
+#: src/snapshot_page/snapshot_box.py:113
 msgid "Trash Snapshot?"
 msgstr "Přesunout Snímek do koše?"
 
-#: src/snapshot_page/snapshot_box.py:112
+#: src/snapshot_page/snapshot_box.py:113
 msgid "This snapshot will be sent to the trash"
 msgstr "Tento snímek bude přesunut do koše"
 
-#: src/snapshot_page/snapshot_box.py:142
+#: src/snapshot_page/snapshot_box.py:143
 msgid "Applying Snapshot"
 msgstr "Aplikuji Snímek"
 
-#: src/snapshot_page/snapshot_box.py:152
+#: src/snapshot_page/snapshot_box.py:153
 msgid "Apply Snapshot?"
 msgstr "Aplikovat Snímek?"
 
-#: src/snapshot_page/snapshot_box.py:153
+#: src/snapshot_page/snapshot_box.py:154
 msgid "Any current user data for this app will be trashed"
 msgstr ""
 "Jakákoliv aktuální uživatelská data pro tuto aplikaci budou přesunuta do koše"
 
-#: src/snapshot_page/snapshot_box.py:182
+#: src/snapshot_page/snapshot_box.py:183
 msgid "Version: {}"
 msgstr "Verze: {}"
 
@@ -1591,81 +1593,81 @@ msgstr "Aplikovat Snímky"
 msgid "Trash Snapshots"
 msgstr "Přesunout Snímky do koše"
 
-#: src/snapshot_page/snapshot_page.py:101
+#: src/snapshot_page/snapshot_page.py:103
 msgid "Could not load Snapshots"
 msgstr "Nebylo možné načíst Snímky"
 
-#: src/snapshot_page/snapshot_page.py:194
+#: src/snapshot_page/snapshot_page.py:196
 msgid "Showing snapshots for {}"
 msgstr "Zobrazuji snímky pro {}"
 
-#: src/snapshot_page/snapshot_page.py:198
+#: src/snapshot_page/snapshot_page.py:200
 msgid "No snapshots for {}"
 msgstr "Žádné snímky pro {}"
 
-#: src/snapshot_page/snapshot_page.py:198
+#: src/snapshot_page/snapshot_page.py:200
 msgid "New"
 msgstr "Nový"
 
-#: src/snapshot_page/snapshot_page.py:242
 #: src/snapshot_page/snapshot_page.py:244
-#: src/snapshot_page/snapshots_list_page.py:60
+#: src/snapshot_page/snapshot_page.py:246
+#: src/snapshot_page/snapshots_list_page.py:61
 msgid "No Data Found to Snapshot"
 msgstr "Nenalezena žádná Data pro vytvoření Snímku"
 
-#: src/snapshot_page/snapshot_page.py:251
-#: src/snapshot_page/snapshots_list_page.py:75
+#: src/snapshot_page/snapshot_page.py:253
+#: src/snapshot_page/snapshots_list_page.py:76
 msgid "Opened snapshots folder"
 msgstr "Otevřena složka se snímky"
 
-#: src/snapshot_page/snapshot_page.py:386
+#: src/snapshot_page/snapshot_page.py:388
 msgid "Copied Snapshot Paths"
 msgstr "Zkopírovány Cesty Snímků"
 
-#: src/snapshot_page/snapshot_page.py:395
+#: src/snapshot_page/snapshot_page.py:397
 msgid "No apps in your selection can be snapshotted"
 msgstr "Nelze vytvořit snímky pro žádné aplikace z vašeho výběru"
 
-#: src/snapshot_page/snapshot_page.py:469
+#: src/snapshot_page/snapshot_page.py:471
 msgid "Applying Snapshots"
 msgstr "Aplikuji Snímky"
 
-#: src/snapshot_page/snapshot_page.py:475
+#: src/snapshot_page/snapshot_page.py:477
 msgid "No snapshots to extract"
 msgstr "Žádné snímky pro extrakci"
 
-#: src/snapshot_page/snapshot_page.py:475
+#: src/snapshot_page/snapshot_page.py:477
 msgid "No snapshots were found to extract"
 msgstr "Nenalezeny žádné snímky pro extrakci"
 
-#: src/snapshot_page/snapshot_page.py:478
+#: src/snapshot_page/snapshot_page.py:480
 msgid "Apply These Snapshots?"
 msgstr "Aplikovat Tyto Snímky?"
 
-#: src/snapshot_page/snapshot_page.py:478
+#: src/snapshot_page/snapshot_page.py:480
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
 "Toto přesune aktuální uživatelská data aplikací do koše a aplikuje jejich "
 "nejnovější snímek"
 
-#: src/snapshot_page/snapshot_page.py:514
+#: src/snapshot_page/snapshot_page.py:513
 msgid "Trashed snapshots"
 msgstr "Snímky přesunuty do koše"
 
-#: src/snapshot_page/snapshot_page.py:516
+#: src/snapshot_page/snapshot_page.py:515
 msgid "Could not trash snapshots"
 msgstr "Nebylo možné přesunout snímky do koše"
 
-#: src/snapshot_page/snapshot_page.py:519
+#: src/snapshot_page/snapshot_page.py:518
 msgid "Trash Snapshots?"
 msgstr "Přesunout Snímky do koše?"
 
-#: src/snapshot_page/snapshot_page.py:519
+#: src/snapshot_page/snapshot_page.py:518
 msgid "These apps' snapshots will be sent to the trash"
 msgstr "Snímky těchto aplikací budou přesunuty do koše"
 
-#: src/snapshot_page/snapshot_page.py:558
+#: src/snapshot_page/snapshot_page.py:557
 msgid "Loading Snapshots"
 msgstr "Načítám Snímky"
 
@@ -1677,16 +1679,16 @@ msgstr "Seznam Snímků"
 msgid "Open Snapshots Folder for this App"
 msgstr "Otevřít Složku se Snímky pro tuto Aplikaci"
 
-#: src/snapshot_page/snapshots_list_page.py:30
-#: src/snapshot_page/snapshots_list_page.py:51
+#: src/snapshot_page/snapshots_list_page.py:31
+#: src/snapshot_page/snapshots_list_page.py:52
 msgid "App not Installed"
 msgstr "Aplikace není Nainstalovaná"
 
-#: src/snapshot_page/snapshots_list_page.py:54
+#: src/snapshot_page/snapshots_list_page.py:55
 msgid "{} Snapshots"
 msgstr "{} Snímků"
 
-#: src/snapshot_page/tar_worker.py:81
+#: src/snapshot_page/tar_worker.py:80
 msgid "Error in snapshot handling"
 msgstr "Došlo k chybě při práci se snímkem"
 
@@ -1695,20 +1697,20 @@ msgid "Review Selection"
 msgstr "Zkontrolovat Výběr"
 
 #. self.packages_group.set_title(_("Review Packages"))
-#: src/install_page/file_install_dialog.py:36
+#: src/install_page/file_install_dialog.py:37
 msgid "The following packages will be installed"
 msgstr "Následující balíčky budou nainstalovány"
 
-#: src/install_page/file_install_dialog.py:39
+#: src/install_page/file_install_dialog.py:40
 msgid "Install a Package"
 msgstr "Instalovat Balíček"
 
 #. self.packages_group.set_title(_("Review Package"))
-#: src/install_page/file_install_dialog.py:41
+#: src/install_page/file_install_dialog.py:42
 msgid "The following package will be installed"
 msgstr "Následující balíček bude nainstalován"
 
-#: src/install_page/file_install_dialog.py:42
+#: src/install_page/file_install_dialog.py:43
 msgid "package"
 msgstr "balíček"
 
@@ -1721,24 +1723,24 @@ msgstr "Vybrat Zdroj"
 msgid "Pending Packages"
 msgstr "Čekající Balíčky"
 
-#: src/install_page/install_page.py:51
+#: src/install_page/install_page.py:52
 msgid "Installed Packages"
 msgstr "Nainstalované Balíčky"
 
-#: src/install_page/install_page.py:68
+#: src/install_page/install_page.py:69
 msgid "{} Pending Package"
 msgstr "{} Čekající Balíček"
 
-#: src/install_page/install_page.py:73
+#: src/install_page/install_page.py:74
 msgid "{} Pending Packages"
 msgstr "{} Čekajících Balíčků"
 
 #. Extra Object Creation
-#: src/install_page/install_page.py:88
+#: src/install_page/install_page.py:89
 msgid "Installing Packages"
 msgstr "Instaluji Balíčky"
 
-#: src/install_page/install_page.py:96
+#: src/install_page/install_page.py:97
 msgid "Loading Installation Options"
 msgstr "Načítám Možnosti Instalace"
 
@@ -1750,23 +1752,23 @@ msgstr "Přidat Balíčky"
 msgid "Packages queued to install will show up here"
 msgstr "Balíčky ve frontě pro instalaci se zobrazí zde"
 
-#: src/install_page/pending_page.py:34
+#: src/install_page/pending_page.py:35
 msgid "Remove All"
 msgstr "Odstranit Všechny"
 
-#: src/install_page/result_row.blp:8 src/install_page/result_row.py:42
+#: src/install_page/result_row.blp:8 src/install_page/result_row.py:43
 msgid "Add Package to Queue"
 msgstr "Přidat Balíček do Fronty"
 
-#: src/install_page/result_row.py:46
+#: src/install_page/result_row.py:47
 msgid "Package has been Added to Queue"
 msgstr "Balíček byl Přidán do Fronty"
 
-#: src/install_page/result_row.py:50
+#: src/install_page/result_row.py:51
 msgid "Remove Package from Queue"
 msgstr "Odstranit Balíček z Fronty"
 
-#: src/install_page/result_row.py:54
+#: src/install_page/result_row.py:55
 msgid "This Package is Already Installed"
 msgstr "Tento Balíček již je nainstalován"
 
@@ -1799,7 +1801,7 @@ msgstr "Zkuste být více specifičtí při vyhledávání"
 msgid "Try a different search term"
 msgstr "Zkuste jiný termín vyhledávání"
 
-#: src/install_page/results_page.py:50
+#: src/install_page/results_page.py:48
 msgid "Search {}"
 msgstr "Hledat {}"
 
@@ -1831,11 +1833,11 @@ msgstr "Přidat repozitář do systému a umožnit online vyhledávání"
 msgid "Install packages from files on your system"
 msgstr "Instalovat balíčky ze souborů na vašem systému"
 
-#: src/install_page/select_page.py:60
+#: src/install_page/select_page.py:63
 msgid "No files were found to install"
 msgstr "Nenalezeny žádné soubory pro instalaci"
 
-#: src/install_page/select_page.py:70
+#: src/install_page/select_page.py:73
 msgid "Flatpaks"
 msgstr "Flatpaky"
 

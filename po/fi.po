@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 23:16-0400\n"
-"PO-Revision-Date: 2024-12-12 21:47+0000\n"
+"POT-Creation-Date: 2024-12-18 22:37-0500\n"
+"PO-Revision-Date: 2024-12-14 09:45+0000\n"
 "Last-Translator: Lumineko <bennokaynak@gmail.com>\n"
 "Language-Team: Finnish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/fi/>\n"
@@ -126,71 +126,70 @@ msgstr "Uusien pakettien asentaminen tiedostoista tai etätyöpöydistä"
 msgid "Install Page in Narrow Window"
 msgstr "Asenna sivu kapeaan ikkunaan"
 
-#: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
-#: src/install_page/select_page.py:67
+#: src/main.py:95 src/main.py:101 src/install_page/select_page.py:63
+#: src/install_page/select_page.py:70
 msgid "Could not add files"
 msgstr "Tiedostoja ei voitu lisätä"
 
-#: src/main.py:101
+#: src/main.py:95
 msgid "No files were found"
 msgstr "Tiedostoja ei löytynyt"
 
-#: src/main.py:109
+#: src/main.py:103
 msgid "Flatpaks & Remotes"
 msgstr "Flatpak-pakkaukset ja etätyöpöydät"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:217
+#: src/main.py:211
 msgid "translator-credits"
 msgstr "kääntäjä-krediitit"
 
-#: src/main.py:223
-#, fuzzy
+#: src/main.py:217
 msgid "Donate"
 msgstr "Lahjoita"
 
-#: src/main.py:225
+#: src/main.py:219
 #, fuzzy
 msgid "Contributors"
 msgstr "Avustajat"
 
-#: src/host_info.py:380 src/host_info.py:382
+#: src/host_info.py:384 src/host_info.py:386
 #, fuzzy
 msgid "Could not load packages"
 msgstr "Paketteja ei voitu ladata"
 
-#: src/package_install_worker.py:84
+#: src/package_install_worker.py:85
 #, fuzzy
 msgid "Errors occurred during installation"
 msgstr "Asennuksen aikana ilmeni virheitä"
 
-#: src/package_install_worker.py:88 src/package_install_worker.py:92
+#: src/package_install_worker.py:89 src/package_install_worker.py:93
 #, fuzzy
 msgid "Error occurred during installation"
 msgstr "Asennuksen aikana ilmeni virhe"
 
-#: src/package_install_worker.py:88
-#: src/change_version_page/change_version_worker.py:70
+#: src/package_install_worker.py:89
+#: src/change_version_page/change_version_worker.py:77
 #, fuzzy
 msgid "Failed to exit cleanly"
 msgstr "Epäonnistuin poistumaan siististi"
 
-#: src/package_install_worker.py:104
+#: src/package_install_worker.py:105
 #, fuzzy
 msgid "Could not cancel installation"
 msgstr "Asennusta ei voitu peruuttaa"
 
-#: src/package_install_worker.py:125 src/package_install_worker.py:135
+#: src/package_install_worker.py:126 src/package_install_worker.py:136
 #, fuzzy
 msgid "Could not install packages"
 msgstr "Paketteja ei voitu asentaa"
 
-#: src/package_install_worker.py:125
+#: src/package_install_worker.py:126
 #, fuzzy
 msgid "Packages are currently being installed."
 msgstr "Paketteja asennetaan parhaillaan."
 
-#: src/package_install_worker.py:135
+#: src/package_install_worker.py:136
 #, fuzzy
 msgid "No packages were requested to be installed."
 msgstr "Mitään paketteja ei pyydetty asennettavaksi."
@@ -228,18 +227,17 @@ msgid "Warehouse will try to install the matching packages."
 msgstr "Varasto yrittää asentaa vastaavat paketit."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
-#: src/packages_page/uninstall_dialog.py:37
-#: src/properties_page/properties_page.py:189
-#: src/properties_page/properties_page.py:310
-#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:122
-#: src/remotes_page/remotes_page.py:189 src/user_data_page/data_box.py:114
-#: src/user_data_page/user_data_page.py:209
+#: src/packages_page/uninstall_dialog.py:38
+#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:315
+#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:126
+#: src/remotes_page/remotes_page.py:193 src/user_data_page/data_box.py:116
+#: src/user_data_page/user_data_page.py:210
 #: src/snapshot_page/new_snapshot_dialog.blp:16
-#: src/snapshot_page/snapshot_box.py:113 src/snapshot_page/snapshot_box.py:155
-#: src/snapshot_page/snapshot_page.py:479
-#: src/snapshot_page/snapshot_page.py:520
+#: src/snapshot_page/snapshot_box.py:114 src/snapshot_page/snapshot_box.py:156
+#: src/snapshot_page/snapshot_page.py:481
+#: src/snapshot_page/snapshot_page.py:519
 #: src/install_page/file_install_dialog.blp:13
-#, fuzzy
 msgid "Cancel"
 msgstr "Peruuta"
 
@@ -261,34 +259,33 @@ msgstr "Valitse etäyhteys"
 msgid "Select a remote to attempt to install from"
 msgstr "Valitse etäyhteys, josta asennusta yritetään tehdä"
 
-#: src/gtk/attempt_install_dialog.py:18 src/packages_page/filters_page.py:122
-#: src/remotes_page/remote_row.py:148 src/install_page/pending_page.py:29
-#: src/install_page/select_page.py:31
+#: src/gtk/attempt_install_dialog.py:19 src/packages_page/filters_page.py:125
+#: src/remotes_page/remote_row.py:152 src/install_page/pending_page.py:30
+#: src/install_page/select_page.py:32
 msgid "Installation: {}"
 msgstr "Asennus: {}"
 
-#: src/gtk/attempt_install_dialog.py:71
+#: src/gtk/attempt_install_dialog.py:76
 msgid "Can't find matching packages"
 msgstr "Ei löydy vastaavia paketteja"
 
-#: src/gtk/attempt_install_dialog.py:71
+#: src/gtk/attempt_install_dialog.py:76
 msgid "Your system has no remotes added"
 msgstr "Järjestelmääsi ei ole lisätty etätyöpöytiä"
 
 #. Extra Object Creation
-#: src/gtk/error_toast.py:12
+#: src/gtk/error_toast.py:13
 msgid "Details"
 msgstr "Yksityiskohdat"
 
-#: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
+#: src/gtk/error_toast.py:20 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
 #: src/snapshot_page/snapshot_page.blp:149
-#, fuzzy
 msgid "Copy"
 msgstr "Kopioi"
 
-#: src/gtk/error_toast.py:20 src/main_window/window.py:135
-#: src/main_window/window.py:145 src/main_window/window.py:154
+#: src/gtk/error_toast.py:21 src/main_window/window.py:139
+#: src/main_window/window.py:149 src/main_window/window.py:158
 #, fuzzy
 msgid "OK"
 msgstr "OK"
@@ -323,7 +320,6 @@ msgid "Quit"
 msgstr "Lopeta"
 
 #: src/gtk/help-overlay.blp:32
-#, fuzzy
 msgid "Navigation"
 msgstr "Navigointi"
 
@@ -346,7 +342,6 @@ msgid "Show Snapshots Page"
 msgstr "Näytä tilannekuvat -sivu"
 
 #: src/gtk/help-overlay.blp:50
-#, fuzzy
 msgid "Show Install Page"
 msgstr "Näytä asennussivu"
 
@@ -356,7 +351,6 @@ msgstr "Paketit sivu"
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
-#, fuzzy
 msgid "Search Mode"
 msgstr "Hakutila"
 
@@ -398,7 +392,6 @@ msgid "Show Active Data"
 msgstr "Näytä aktiiviset tiedot"
 
 #: src/gtk/help-overlay.blp:103
-#, fuzzy
 msgid "Show Leftover Data"
 msgstr "Näytä jäljelle jääneet tiedot"
 
@@ -406,12 +399,11 @@ msgstr "Näytä jäljelle jääneet tiedot"
 msgid "Snapshots Page"
 msgstr "Tilannekuvat sivu"
 
-#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:202
+#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:203
 msgid "New Snapshots"
 msgstr "Uusia tilannekuvia"
 
 #: src/gtk/installation_chooser.blp:5
-#, fuzzy
 msgid "Choose Installation"
 msgstr "Valitse asennus"
 
@@ -435,31 +427,31 @@ msgstr "Muu asennus"
 msgid "Choose a custom installation"
 msgstr "Valitse mukautettu asennus"
 
-#: src/gtk/installation_chooser.py:27
+#: src/gtk/installation_chooser.py:28
 msgid "These {} will only be available to you"
 msgstr "Nämä {} ovat vain sinun käytettävissäsi"
 
-#: src/gtk/installation_chooser.py:28
+#: src/gtk/installation_chooser.py:29
 msgid "These {} will be available to everyone"
 msgstr "Nämä {} ovat kaikkien saatavilla"
 
-#: src/gtk/installation_chooser.py:29
+#: src/gtk/installation_chooser.py:30
 msgid "Choose how these {} will be installed"
 msgstr "Valitse, miten nämä {} asennetaan"
 
-#: src/gtk/installation_chooser.py:31
+#: src/gtk/installation_chooser.py:32
 msgid "This {} will only be available to you"
 msgstr "Tämä {} on vain sinun käytettävissäsi"
 
-#: src/gtk/installation_chooser.py:32
+#: src/gtk/installation_chooser.py:33
 msgid "This {} will be available to everyone"
 msgstr "Tämä {} on kaikkien saatavilla"
 
-#: src/gtk/installation_chooser.py:33
+#: src/gtk/installation_chooser.py:34
 msgid "Choose how this {} will be installed"
 msgstr "Valitse, miten tämä {} asennetaan"
 
-#: src/gtk/sidebar_button.py:19
+#: src/gtk/sidebar_button.py:20
 msgid "Show Sidebar"
 msgstr "Näytä sivupalkki"
 
@@ -483,76 +475,76 @@ msgstr "Päävalikko"
 
 #: src/main_window/window.blp:67 src/packages_page/packages_page.blp:20
 #: src/packages_page/packages_page.blp:55
-#: src/packages_page/packages_page.py:155
-#: src/packages_page/packages_page.py:319
-#: src/install_page/file_install_dialog.py:37
+#: src/packages_page/packages_page.py:157
+#: src/packages_page/packages_page.py:322
+#: src/install_page/file_install_dialog.py:38
 #, fuzzy
 msgid "Packages"
 msgstr "Paketit"
 
-#: src/main_window/window.blp:80
+#: src/main_window/window.blp:82
 #, fuzzy
 msgid "Remotes"
 msgstr "Etätyöpöytä"
 
-#: src/main_window/window.blp:94 src/properties_page/properties_page.blp:114
+#: src/main_window/window.blp:98 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
 msgid "User Data"
 msgstr "Käyttäjätiedot"
 
-#: src/main_window/window.blp:107 src/snapshot_page/snapshot_page.blp:18
+#: src/main_window/window.blp:113 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
-#: src/snapshot_page/snapshot_page.py:355
+#: src/snapshot_page/snapshot_page.py:357
 msgid "Snapshots"
 msgstr "Tilannekuvat"
 
-#: src/main_window/window.blp:120 src/install_page/file_install_dialog.py:34
+#: src/main_window/window.blp:128 src/install_page/file_install_dialog.py:35
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
 msgid "Install Packages"
 msgstr "Asenna paketit"
 
-#: src/main_window/window.blp:150
+#: src/main_window/window.blp:160
 msgid "_Open Files"
 msgstr "_Avaa tiedostot"
 
-#: src/main_window/window.blp:154
+#: src/main_window/window.blp:164
 msgid "_Keyboard Shortcuts"
 msgstr "_Näppäimistön pikavalinnat"
 
-#: src/main_window/window.blp:158
+#: src/main_window/window.blp:168
 msgid "_About Warehouse"
 msgstr "_Tietoja Warehouse"
 
-#: src/main_window/window.py:132
+#: src/main_window/window.py:136
 msgid "Unsupported Filetype"
 msgstr "Ei tuettu tiedostotyyppi"
 
-#: src/main_window/window.py:133
+#: src/main_window/window.py:137
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
 msgstr "Vain .flatpak-, .flatpakref- ja .flatpakrepo -tiedostoja tuetaan."
 
-#: src/main_window/window.py:141
+#: src/main_window/window.py:145
 msgid "Mixed Filetypes"
 msgstr "Sekalaiset tiedostotyypit"
 
-#: src/main_window/window.py:142
+#: src/main_window/window.py:146
 #, fuzzy
 msgid "Flatpaks and remotes cannot be installed at the same time."
 msgstr "Flatpakeja ja kaukosäätimiä ei voi asentaa samanaikaisesti."
 
-#: src/main_window/window.py:151
+#: src/main_window/window.py:155
 #, fuzzy
 #| msgid "Filter by Remotes"
 msgid "Too Many Remotes"
 msgstr "Liian monta etäyhteys"
 
-#: src/main_window/window.py:152
+#: src/main_window/window.py:156
 #, fuzzy
 msgid "Only one remote at a time is supported."
 msgstr "Vain yksi kaukosäädin kerrallaan on tuettu."
 
-#: src/main_window/window.py:170
+#: src/main_window/window.py:174
 msgid "Could not open files"
 msgstr "Tiedostoja ei voitu avata"
 
@@ -684,7 +676,7 @@ msgid "Select All"
 msgstr "Valitse kaikki"
 
 #: src/packages_page/packages_page.blp:144
-#: src/packages_page/uninstall_dialog.py:38
+#: src/packages_page/uninstall_dialog.py:39
 #: src/properties_page/properties_page.blp:88
 msgid "Uninstall"
 msgstr "Poista asennus"
@@ -704,90 +696,90 @@ msgstr "Kopioi tunnukset"
 msgid "Copy Refs"
 msgstr "Kopioi viitteet"
 
-#: src/packages_page/packages_page.py:151
-#: src/user_data_page/data_subpage.py:107
-#: src/snapshot_page/new_snapshot_dialog.py:38
-#: src/snapshot_page/snapshot_page.py:355
+#: src/packages_page/packages_page.py:153
+#: src/user_data_page/data_subpage.py:109
+#: src/snapshot_page/new_snapshot_dialog.py:39
+#: src/snapshot_page/snapshot_page.py:357
 #, fuzzy
 msgid "{} Selected"
 msgstr "{} Valittu"
 
-#: src/packages_page/packages_page.py:192
+#: src/packages_page/packages_page.py:194
 #, fuzzy
 msgid "Error getting Flatpak '{}'"
 msgstr "Virhe Flatpak '{}'"
 
-#: src/packages_page/packages_page.py:241
+#: src/packages_page/packages_page.py:243
 #, fuzzy
 msgid "Names"
 msgstr "Nimet"
 
-#: src/packages_page/packages_page.py:244
+#: src/packages_page/packages_page.py:246
 #, fuzzy
 msgid "IDs"
 msgstr "Tunnukset"
 
-#: src/packages_page/packages_page.py:247
+#: src/packages_page/packages_page.py:249
 #, fuzzy
 msgid "Refs"
 msgstr "Viitteet"
 
-#: src/packages_page/packages_page.py:255
-#: src/properties_page/properties_page.py:272
+#: src/packages_page/packages_page.py:257
+#: src/properties_page/properties_page.py:275
 #, fuzzy
 msgid "Copied {}"
 msgstr "Kopioitu {}"
 
-#: src/packages_page/packages_page.py:257
+#: src/packages_page/packages_page.py:259
 #, fuzzy
 msgid "Could not copy {}"
 msgstr "Ei voitu kopioida {}"
 
-#: src/packages_page/packages_page.py:307
+#: src/packages_page/packages_page.py:310
 #, fuzzy
 msgid "Errors occurred while uninstalling"
 msgstr "Virheitä ilmeni asennuksen poiston aikana"
 
-#: src/packages_page/packages_page.py:309
+#: src/packages_page/packages_page.py:312
 #, fuzzy
 msgid "Uninstalled Packages"
 msgstr "Asennuksettomat paketit"
 
-#: src/packages_page/packages_page.py:367
+#: src/packages_page/packages_page.py:370
 #, fuzzy
 msgid "Loading Packages"
 msgstr "Pakettien lataaminen"
 
-#: src/packages_page/packages_page.py:367
-#: src/packages_page/packages_page.py:368
-#: src/properties_page/properties_page.py:366
-#: src/remotes_page/remotes_page.py:285 src/remotes_page/remotes_page.py:286
-#: src/user_data_page/user_data_page.py:296
-#: src/snapshot_page/snapshot_page.py:558 src/install_page/install_page.py:96
+#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:371
+#: src/properties_page/properties_page.py:368
+#: src/remotes_page/remotes_page.py:291 src/remotes_page/remotes_page.py:292
+#: src/user_data_page/user_data_page.py:297
+#: src/snapshot_page/snapshot_page.py:557 src/install_page/install_page.py:97
 #: src/install_page/results_page.py:135
 #, fuzzy
 msgid "This should only take a moment"
 msgstr "Tämä vie vain hetken"
 
-#: src/packages_page/packages_page.py:368
+#: src/packages_page/packages_page.py:371
 #, fuzzy
 msgid "Uninstalling Packages"
 msgstr "Pakettien poistaminen"
 
-#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:373
 #, fuzzy
 msgid "Reinstalling Package"
 msgstr "Paketin uudelleenasennus"
 
-#: src/packages_page/packages_page.py:370
-#: src/packages_page/packages_page.py:372
-#: src/change_version_page/change_version_page.py:119
-#: src/snapshot_page/snapshot_page.py:551 src/install_page/install_page.py:88
+#: src/packages_page/packages_page.py:373
+#: src/packages_page/packages_page.py:375
+#: src/change_version_page/change_version_page.py:123
+#: src/snapshot_page/snapshot_page.py:550 src/install_page/install_page.py:89
 #, fuzzy
 msgid "This could take a while"
 msgstr "Tämä voi kestää jonkin aikaa"
 
-#: src/packages_page/packages_page.py:372
+#: src/packages_page/packages_page.py:375
 #, fuzzy
 msgid "Changing Version"
 msgstr "Muuttuva versio"
@@ -805,8 +797,8 @@ msgstr "Mahdollistaa sovelluksen asetusten ja sisällön palauttamisen"
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
 #: src/user_data_page/user_data_page.blp:148
-#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:114
-#: src/snapshot_page/snapshot_page.py:521
+#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:115
+#: src/snapshot_page/snapshot_page.py:520
 msgid "Trash"
 msgstr "Roskakori"
 
@@ -815,25 +807,25 @@ msgstr "Roskakori"
 msgid "Send data to the trash"
 msgstr "Lähetä tiedot roskakoriin"
 
-#: src/packages_page/uninstall_dialog.py:30
+#: src/packages_page/uninstall_dialog.py:31
 #, fuzzy
 msgid "Uninstall {}?"
 msgstr "Poista {}?"
 
-#: src/packages_page/uninstall_dialog.py:31
+#: src/packages_page/uninstall_dialog.py:32
 msgid "It will not be possible to use {} after removal"
 msgstr "{} ei ole mahdollista käyttää poiston jälkeen"
 
-#: src/packages_page/uninstall_dialog.py:33
+#: src/packages_page/uninstall_dialog.py:34
 #, fuzzy
 msgid "Uninstall Packages?"
 msgstr "Poista paketit?"
 
-#: src/packages_page/uninstall_dialog.py:34
+#: src/packages_page/uninstall_dialog.py:35
 msgid "It will not be possible to use these packages after removal"
 msgstr "Näitä paketteja ei voi käyttää poistamisen jälkeen"
 
-#: src/packages_page/uninstall_dialog.py:41
+#: src/packages_page/uninstall_dialog.py:42
 #, fuzzy
 msgid "App Settings & Content"
 msgstr "Sovelluksen asetukset & sisältö"
@@ -906,7 +898,7 @@ msgstr "Suoritusaika"
 
 #: src/properties_page/properties_page.blp:188
 #, fuzzy
-msgid "Disable Automactic Removal"
+msgid "Disable Automatic Removal"
 msgstr "Poista automaattinen poisto käytöstä"
 
 #: src/properties_page/properties_page.blp:189
@@ -979,117 +971,117 @@ msgstr "Aihe"
 msgid "Date"
 msgstr "Päivämäärä"
 
-#: src/properties_page/properties_page.py:75
+#: src/properties_page/properties_page.py:76
 msgid "{} Properties"
 msgstr "Ominaisuudet"
 
-#: src/properties_page/properties_page.py:80
+#: src/properties_page/properties_page.py:81
 msgid "Properties"
 msgstr "Ominaisuudet"
 
 #. Apply again
-#: src/properties_page/properties_page.py:109
-#: src/user_data_page/user_data_page.py:296
+#: src/properties_page/properties_page.py:110
+#: src/user_data_page/user_data_page.py:297
 msgid "Loading User Data"
 msgstr "Ladataan käyttäjätietoja"
 
-#: src/properties_page/properties_page.py:119
+#: src/properties_page/properties_page.py:120
 msgid "No User Data"
 msgstr "Ei käyttäjätietoja"
 
-#: src/properties_page/properties_page.py:129
-#: src/properties_page/properties_page.py:145
+#: src/properties_page/properties_page.py:130
+#: src/properties_page/properties_page.py:146
 msgid "Could not get properties"
 msgstr "Ominaisuuksia ei voitu saada"
 
-#: src/properties_page/properties_page.py:142
+#: src/properties_page/properties_page.py:143
 msgid "No version information found"
 msgstr "Versiotietoja ei löytynyt"
 
-#: src/properties_page/properties_page.py:162
+#: src/properties_page/properties_page.py:163
 msgid "Could not open data"
 msgstr "Tietoja ei voitu avata"
 
-#: src/properties_page/properties_page.py:181
-#: src/properties_page/properties_page.py:183
-#: src/properties_page/properties_page.py:238
-#: src/properties_page/properties_page.py:240 src/user_data_page/data_box.py:99
-#: src/user_data_page/user_data_page.py:183
-#: src/user_data_page/user_data_page.py:197
+#: src/properties_page/properties_page.py:182
+#: src/properties_page/properties_page.py:184
+#: src/properties_page/properties_page.py:241
+#: src/properties_page/properties_page.py:243
+#: src/user_data_page/data_box.py:101 src/user_data_page/user_data_page.py:184
+#: src/user_data_page/user_data_page.py:198
 msgid "Could not trash data"
 msgstr "Tietoja ei voitu siirtää roskakoriin"
 
-#: src/properties_page/properties_page.py:186
+#: src/properties_page/properties_page.py:187
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Lähetetäänkö käyttäjän {} käyttäjätiedot roskakoriin?"
 
-#: src/properties_page/properties_page.py:187
+#: src/properties_page/properties_page.py:188
 msgid "Your settings and data for this app will be sent to the trash"
 msgstr "Tämän sovelluksen asetukset ja tiedot lähetetään roskakoriin"
 
-#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:191
 msgid "Trash Data"
 msgstr "Roskakorin tiedot"
 
-#: src/properties_page/properties_page.py:199
+#: src/properties_page/properties_page.py:201
 msgid "Could not Disable Updates"
 msgstr "Päivityksiä ei voitu poistaa käytöstä"
 
-#: src/properties_page/properties_page.py:199
+#: src/properties_page/properties_page.py:201
 msgid "Could not Enable Updates"
 msgstr "Päivityksiä ei voitu ottaa käyttöön"
 
-#: src/properties_page/properties_page.py:205
+#: src/properties_page/properties_page.py:207
 #, fuzzy
 msgid "Disabled Updates"
 msgstr "Päivitykset pois käytöstä"
 
-#: src/properties_page/properties_page.py:205
+#: src/properties_page/properties_page.py:207
 msgid "Enabled Updates"
 msgstr "Päivitykset käytössä"
 
-#: src/properties_page/properties_page.py:217
+#: src/properties_page/properties_page.py:220
 msgid "Could not Disable Autoremoval"
 msgstr "Automaattista poistoa ei voitu poistaa käytöstä"
 
-#: src/properties_page/properties_page.py:217
+#: src/properties_page/properties_page.py:220
 msgid "Could not Enable Autoremoval"
 msgstr "Automaattista poistoa ei voitu ottaa käyttöön"
 
-#: src/properties_page/properties_page.py:222
+#: src/properties_page/properties_page.py:225
 msgid "Disabled Autoremoval"
 msgstr "Automaattinen poisto pois käytöstä"
 
-#: src/properties_page/properties_page.py:222
+#: src/properties_page/properties_page.py:225
 msgid "Enabled Autoremoval"
 msgstr "Automaattinen poisto käytössä"
 
-#: src/properties_page/properties_page.py:245
+#: src/properties_page/properties_page.py:248
 msgid "Could not uninstall"
 msgstr "Asennuksen poistaminen epäonnistui"
 
-#: src/properties_page/properties_page.py:249
+#: src/properties_page/properties_page.py:252
 msgid "Uninstalled {}"
 msgstr "Poistettu {}"
 
-#: src/properties_page/properties_page.py:261
+#: src/properties_page/properties_page.py:264
 #, fuzzy
 msgid "Opening {}…"
 msgstr "Avaaminen {}…"
 
-#: src/properties_page/properties_page.py:266
+#: src/properties_page/properties_page.py:269
 msgid "Could not open {}"
 msgstr "Ei voitu avata {}"
 
-#: src/properties_page/properties_page.py:281
+#: src/properties_page/properties_page.py:284
 msgid "Reinstalled {}"
 msgstr "Asennettu uudelleen {}"
 
-#: src/properties_page/properties_page.py:307
+#: src/properties_page/properties_page.py:312
 msgid "Reinstall {}?"
 msgstr "Asennetaanko {} uudelleen?"
 
-#: src/properties_page/properties_page.py:308
+#: src/properties_page/properties_page.py:313
 #, fuzzy
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
@@ -1098,36 +1090,36 @@ msgstr ""
 "Tämä paketti poistetaan ja asennetaan uudelleen samasta etäyhteydestä ja "
 "samasta asennuksesta."
 
-#: src/properties_page/properties_page.py:311
-#: src/properties_page/properties_page.py:372
+#: src/properties_page/properties_page.py:316
+#: src/properties_page/properties_page.py:374
 msgid "Reinstall"
 msgstr "Asenna uudelleen"
 
-#: src/properties_page/properties_page.py:328
+#: src/properties_page/properties_page.py:333
 msgid "Copied launch command"
 msgstr "Kopioitu käynnistyskomento"
 
-#: src/properties_page/properties_page.py:330
+#: src/properties_page/properties_page.py:335
 msgid "Could not copy launch command"
 msgstr "Käynnistyskomentoa ei voitu kopioida"
 
-#: src/properties_page/properties_page.py:336
+#: src/properties_page/properties_page.py:341
 msgid "Could not show details"
 msgstr "Yksityiskohtia ei voitu näyttää"
 
-#: src/properties_page/properties_page.py:366
+#: src/properties_page/properties_page.py:368
 msgid "Loading Properties"
 msgstr "Ladataan ominaisuuksia"
 
-#: src/properties_page/properties_page.py:369
+#: src/properties_page/properties_page.py:371
 msgid "View Snapshots"
 msgstr "Näytä tilannekuvat"
 
-#: src/properties_page/properties_page.py:370
+#: src/properties_page/properties_page.py:372
 msgid "Copy Launch Command"
 msgstr "Kopioi käynnistyskomento"
 
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:373
 msgid "Show Details"
 msgstr "Näytä tiedot"
 
@@ -1147,46 +1139,46 @@ msgstr ""
 "Tämä poistaa nykyisen julkaisun ja asentaa sen sijaan valitun. Huomaa, että "
 "alempi versio voi aiheuttaa ongelmia."
 
-#: src/change_version_page/change_version_page.py:69
+#: src/change_version_page/change_version_page.py:72
 msgid "Currently Installed Version"
 msgstr "Tällä hetkellä asennettu versio"
 
-#: src/change_version_page/change_version_page.py:86
+#: src/change_version_page/change_version_page.py:89
 msgid "Could not get versions"
 msgstr "Versioita ei voitu hakea"
 
-#: src/change_version_page/change_version_page.py:93
+#: src/change_version_page/change_version_page.py:96
 msgid "Changed {}'s Version"
 msgstr "Käyttäjän {} versio muutettu"
 
-#: src/change_version_page/change_version_page.py:117
+#: src/change_version_page/change_version_page.py:121
 msgid "{} Versions"
 msgstr "{} Versiot"
 
-#: src/change_version_page/change_version_page.py:118
+#: src/change_version_page/change_version_page.py:122
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Varmista, että {} ei koskaan päivitetä uudempaan versioon"
 
-#: src/change_version_page/change_version_page.py:119
+#: src/change_version_page/change_version_page.py:123
 msgid "Fetching Releases"
 msgstr "Julkaisujen hakeminen"
 
-#: src/change_version_page/change_version_worker.py:66
-#: src/change_version_page/change_version_worker.py:70
-#: src/change_version_page/change_version_worker.py:74
+#: src/change_version_page/change_version_worker.py:73
+#: src/change_version_page/change_version_worker.py:77
+#: src/change_version_page/change_version_worker.py:81
 #, fuzzy
 msgid "Error occurred while changing version"
 msgstr "Versiota muutettaessa tapahtui virhe"
 
-#: src/change_version_page/change_version_worker.py:85
+#: src/change_version_page/change_version_worker.py:92
 msgid "Could not cancel version change"
 msgstr "Version muutosta ei voitu peruuttaa"
 
-#: src/change_version_page/change_version_worker.py:106
+#: src/change_version_page/change_version_worker.py:113
 msgid "Could not change version"
 msgstr "Versiota ei voitu muuttaa"
 
-#: src/change_version_page/change_version_worker.py:106
+#: src/change_version_page/change_version_worker.py:113
 msgid "Another package is changing version."
 msgstr "Toinen paketti on muuttumassa."
 
@@ -1211,17 +1203,17 @@ msgstr "Nimi"
 msgid "Repo URL"
 msgstr "Repo-URL-osoite"
 
-#: src/remotes_page/add_remote_dialog.py:54
+#: src/remotes_page/add_remote_dialog.py:58
 #, fuzzy
 msgid "Could not add remote"
 msgstr "Etäyhteyttä ei voitu lisätä"
 
-#: src/remotes_page/add_remote_dialog.py:57
+#: src/remotes_page/add_remote_dialog.py:61
 msgid "Added {}"
 msgstr "Lisätty {}"
 
 #. Apply
-#: src/remotes_page/add_remote_dialog.py:107
+#: src/remotes_page/add_remote_dialog.py:111
 #, fuzzy
 msgid "remote"
 msgstr "etäyhteys"
@@ -1246,57 +1238,57 @@ msgstr "Kopioi nimi"
 msgid "Enable"
 msgstr "Ota käyttöön"
 
-#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:123
+#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:127
 msgid "Disable"
 msgstr "Poista käytöstä"
 
-#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:190
+#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:194
 msgid "Remove"
 msgstr "Poista"
 
-#: src/remotes_page/remote_row.py:24 src/remotes_page/remote_row.py:44
+#: src/remotes_page/remote_row.py:25 src/remotes_page/remote_row.py:46
 #, fuzzy
 msgid "Could not enable remote"
 msgstr "Etäyhteyttä ei voitu ottaa käyttöön"
 
-#: src/remotes_page/remote_row.py:24
+#: src/remotes_page/remote_row.py:25
 msgid "Remote is already enabled"
 msgstr "Etäyhteys on jo käytössä"
 
-#: src/remotes_page/remote_row.py:51
+#: src/remotes_page/remote_row.py:53
 msgid "Enabled remote"
 msgstr "Etäyhteys käytössä"
 
-#: src/remotes_page/remote_row.py:75 src/remotes_page/remote_row.py:153
+#: src/remotes_page/remote_row.py:77 src/remotes_page/remote_row.py:157
 msgid "Remote is Disabled"
 msgstr "Etäyhteys on poissa käytöstä"
 
-#: src/remotes_page/remote_row.py:77
+#: src/remotes_page/remote_row.py:79
 msgid "Disabled remote"
 msgstr "Poistettu etäyhteys"
 
-#: src/remotes_page/remote_row.py:95 src/remotes_page/remote_row.py:107
-#: src/remotes_page/remote_row.py:111
+#: src/remotes_page/remote_row.py:97 src/remotes_page/remote_row.py:109
+#: src/remotes_page/remote_row.py:113
 msgid "Could not disable remote"
 msgstr "Etäyhteyttä voitu poistaa käytöstä"
 
-#: src/remotes_page/remote_row.py:95
+#: src/remotes_page/remote_row.py:97
 msgid "Remote is already disabled"
 msgstr "Etäyhteys on jo poistettu käytöstä"
 
-#: src/remotes_page/remote_row.py:121
+#: src/remotes_page/remote_row.py:124
 msgid "Disable {}?"
 msgstr "Poistetaanko {} käytöstä?"
 
-#: src/remotes_page/remote_row.py:121 src/remotes_page/remotes_page.py:188
+#: src/remotes_page/remote_row.py:124 src/remotes_page/remotes_page.py:191
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr "Kaikki osoitteesta {} asennetut sovellukset eivät enää saa päivityksiä"
 
-#: src/remotes_page/remote_row.py:133
+#: src/remotes_page/remote_row.py:137
 msgid "Copied title"
 msgstr "Kopioitu otsikko"
 
-#: src/remotes_page/remote_row.py:136
+#: src/remotes_page/remote_row.py:140
 msgid "Copied name"
 msgstr "Kopioitu nimi"
 
@@ -1368,61 +1360,61 @@ msgstr "Lisää mukautettu etäyhteys"
 msgid "Manually enter new remote details"
 msgstr "Syötä uuden etäyhteyden tiedot manuaalisesti"
 
-#: src/remotes_page/remotes_page.py:32
+#: src/remotes_page/remotes_page.py:33
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr "Avoimen lähdekoodin, maksa mitä haluat -sovelluskauppa alkeista alkaen"
 
-#: src/remotes_page/remotes_page.py:38
+#: src/remotes_page/remotes_page.py:39
 msgid "Central repository of Flatpak applications"
 msgstr "Flatpak-sovellusten keskusvarasto"
 
-#: src/remotes_page/remotes_page.py:44
+#: src/remotes_page/remotes_page.py:45
 msgid "Beta builds of Flatpak applications"
 msgstr "Flatpak-sovellusten beta-versiot"
 
-#: src/remotes_page/remotes_page.py:50
+#: src/remotes_page/remotes_page.py:51
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "Fedora Linuxin pakkaamat Flatpaks-paketit"
 
-#: src/remotes_page/remotes_page.py:56
+#: src/remotes_page/remotes_page.py:57
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "Uusimmat beta GNOME Apps ja Runtimes"
 
-#: src/remotes_page/remotes_page.py:62
+#: src/remotes_page/remotes_page.py:63
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr "WebKit Developerin ja Runtime SDK:n keskusvarasto"
 
-#: src/remotes_page/remotes_page.py:152
+#: src/remotes_page/remotes_page.py:153
 msgid "Showing all packages from {}"
 msgstr "Näytetään kaikki paketit kohteesta {}"
 
-#: src/remotes_page/remotes_page.py:173
+#: src/remotes_page/remotes_page.py:175
 msgid "Could not remove remote"
 msgstr "Etäyhteyttä ei voitu poistaa"
 
-#: src/remotes_page/remotes_page.py:180
+#: src/remotes_page/remotes_page.py:182
 msgid "Removed {}"
 msgstr "Poistettu {}"
 
-#: src/remotes_page/remotes_page.py:188
+#: src/remotes_page/remotes_page.py:191
 msgid "Remove {}?"
 msgstr "Poistetaanko {}?"
 
-#: src/remotes_page/remotes_page.py:224 src/remotes_page/remotes_page.py:234
-#: src/remotes_page/remotes_page.py:236
+#: src/remotes_page/remotes_page.py:228 src/remotes_page/remotes_page.py:238
+#: src/remotes_page/remotes_page.py:240
 msgid "Could not open file"
 msgstr "Tiedostoa ei voitu avata"
 
-#: src/remotes_page/remotes_page.py:239
+#: src/remotes_page/remotes_page.py:243
 msgid "Flatpak Repos"
 msgstr "Flatpak Varastot"
 
 #. Apply
-#: src/remotes_page/remotes_page.py:285
+#: src/remotes_page/remotes_page.py:291
 msgid "Adding Remote"
 msgstr "Etäyhteyden lisääminen"
 
-#: src/remotes_page/remotes_page.py:286
+#: src/remotes_page/remotes_page.py:292
 msgid "Loading Remotes"
 msgstr "Ladataan etäyhteyttä"
 
@@ -1434,33 +1426,33 @@ msgstr "Kopioi polku"
 msgid "Attempt to Install"
 msgstr "Yritä asentaa"
 
-#: src/user_data_page/data_box.py:58
+#: src/user_data_page/data_box.py:59
 msgid "Copied data path"
 msgstr "Tietopolku kopioitu"
 
-#: src/user_data_page/data_box.py:60
+#: src/user_data_page/data_box.py:61
 msgid "Could not copy data path"
 msgstr "Tietopolkua ei voitu kopioida"
 
-#: src/user_data_page/data_box.py:65
+#: src/user_data_page/data_box.py:66
 msgid "Opened data folder"
 msgstr "Datakansio avattu"
 
-#: src/user_data_page/data_box.py:67 src/snapshot_page/snapshot_page.py:253
-#: src/snapshot_page/snapshots_list_page.py:77
+#: src/user_data_page/data_box.py:68 src/snapshot_page/snapshot_page.py:255
+#: src/snapshot_page/snapshots_list_page.py:78
 msgid "Could not open folder"
 msgstr "Kansiota ei voitu avata"
 
-#: src/user_data_page/data_box.py:113
+#: src/user_data_page/data_box.py:115
 msgid "Trash {}'s Data?"
 msgstr "Roskakoriin käyttäjän {} tiedot?"
 
-#: src/user_data_page/data_box.py:113
+#: src/user_data_page/data_box.py:115
 msgid "{}'s data will be sent to the trash"
 msgstr "Käyttäjän {} tiedot lähetetään roskakoriin"
 
-#: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:210
-#: src/snapshot_page/snapshot_page.py:480
+#: src/user_data_page/data_box.py:117 src/user_data_page/user_data_page.py:211
+#: src/snapshot_page/snapshot_page.py:482
 msgid "Continue"
 msgstr "Jatka"
 
@@ -1472,11 +1464,11 @@ msgstr "Ei otsikkoa"
 msgid "Loading Size…"
 msgstr "Ladataan kokoa…"
 
-#: src/user_data_page/data_subpage.py:232
+#: src/user_data_page/data_subpage.py:254
 msgid "No Active Data"
 msgstr "Ei aktiivisia tietoja"
 
-#: src/user_data_page/data_subpage.py:233
+#: src/user_data_page/data_subpage.py:255
 msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
@@ -1484,11 +1476,11 @@ msgstr ""
 "Varasto ei näe aktiivisia käyttäjätietoja tai järjestelmässäsi ei ole "
 "aktiivisia käyttäjätietoja"
 
-#: src/user_data_page/data_subpage.py:236
+#: src/user_data_page/data_subpage.py:258
 msgid "No Leftover Data"
 msgstr "Ei jäljellä olevia tietoja"
 
-#: src/user_data_page/data_subpage.py:237
+#: src/user_data_page/data_subpage.py:259
 msgid "There is no leftover user data"
 msgstr "Käyttäjätietoja ei ole jäljellä"
 
@@ -1527,44 +1519,44 @@ msgstr "ID"
 msgid "Size"
 msgstr "Koko"
 
-#: src/user_data_page/user_data_page.py:75
-#: src/user_data_page/user_data_page.py:77
+#: src/user_data_page/user_data_page.py:76
+#: src/user_data_page/user_data_page.py:78
 msgid "Loading Size"
 msgstr "Latauskoko"
 
-#: src/user_data_page/user_data_page.py:151
+#: src/user_data_page/user_data_page.py:152
 msgid "Could not copy paths"
 msgstr "Polkuja ei voitu kopioida"
 
-#: src/user_data_page/user_data_page.py:151
-#: src/user_data_page/user_data_page.py:197
+#: src/user_data_page/user_data_page.py:152
+#: src/user_data_page/user_data_page.py:198
 #, fuzzy
 msgid "No boxes were selected"
 msgstr "Laatikoita ei valittu"
 
-#: src/user_data_page/user_data_page.py:154
+#: src/user_data_page/user_data_page.py:155
 msgid "Copied paths"
 msgstr "Kopioidut polut"
 
-#: src/user_data_page/user_data_page.py:185
+#: src/user_data_page/user_data_page.py:186
 msgid "Trashed data"
 msgstr "Roskakoriin siirretyt tiedot"
 
-#: src/user_data_page/user_data_page.py:208
+#: src/user_data_page/user_data_page.py:209
 msgid "Trash Data?"
 msgstr "Roskakori tiedot?"
 
-#: src/user_data_page/user_data_page.py:208
+#: src/user_data_page/user_data_page.py:209
 msgid "Data will be sent to the trash"
 msgstr "Tiedot lähetetään roskakoriin"
 
-#: src/user_data_page/user_data_page.py:246
-#: src/user_data_page/user_data_page.py:269
+#: src/user_data_page/user_data_page.py:247
+#: src/user_data_page/user_data_page.py:270
 msgid "Active Data"
 msgstr "Aktiiviset tiedot"
 
-#: src/user_data_page/user_data_page.py:247
-#: src/user_data_page/user_data_page.py:275
+#: src/user_data_page/user_data_page.py:248
+#: src/user_data_page/user_data_page.py:276
 msgid "Leftover Data"
 msgstr "Jäljelle jääneet tiedot"
 
@@ -1577,27 +1569,27 @@ msgstr "Hae sovelluksia"
 msgid "Create"
 msgstr "Luo"
 
-#: src/snapshot_page/new_snapshot_dialog.py:110
+#: src/snapshot_page/new_snapshot_dialog.py:111
 #, fuzzy
 msgid "Creating Snapshot"
 msgstr "Tilannekuvan luominen"
 
-#: src/snapshot_page/new_snapshot_dialog.py:192
+#: src/snapshot_page/new_snapshot_dialog.py:193
 msgid "Name these Snapshots"
 msgstr "Nimeä nämä tilannekuvat"
 
-#: src/snapshot_page/new_snapshot_dialog.py:196
+#: src/snapshot_page/new_snapshot_dialog.py:197
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
 msgstr "Uusi tilannekuva"
 
-#: src/snapshot_page/new_snapshot_dialog.py:200
+#: src/snapshot_page/new_snapshot_dialog.py:201
 msgid "Name this Snapshot"
 msgstr "Nimeä tämä tilannekuva"
 
-#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:58
+#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:59
 msgid "No Name Set"
 msgstr "Ei nimeä asetettu"
 
@@ -1609,7 +1601,7 @@ msgstr "Päivämäärää ei löytynyt"
 msgid "No version found"
 msgstr "Versiota ei löytynyt"
 
-#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:156
+#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:157
 msgid "Apply"
 msgstr "Hyväksy"
 
@@ -1628,40 +1620,40 @@ msgstr "Nimeä tilannekuva uudelleen?"
 msgid "Confirm Rename"
 msgstr "Vahvista uudelleennimeäminen"
 
-#: src/snapshot_page/snapshot_box.py:33 src/snapshot_page/snapshot_box.py:45
-#: src/snapshot_page/snapshot_box.py:61
+#: src/snapshot_page/snapshot_box.py:34 src/snapshot_page/snapshot_box.py:46
+#: src/snapshot_page/snapshot_box.py:62
 msgid "Could not write data"
 msgstr "Tietoja ei voitu kirjoittaa"
 
-#: src/snapshot_page/snapshot_box.py:98
+#: src/snapshot_page/snapshot_box.py:99
 msgid "Could not trash snapshot"
 msgstr "Tilannekuvaa ei voitu siirtää roskakoriin"
 
-#: src/snapshot_page/snapshot_box.py:102
+#: src/snapshot_page/snapshot_box.py:103
 msgid "Trashed snapshot"
 msgstr "Roskakoriin siirretty tilannekuva"
 
-#: src/snapshot_page/snapshot_box.py:112
+#: src/snapshot_page/snapshot_box.py:113
 msgid "Trash Snapshot?"
 msgstr "Roskakorin tilannekuva?"
 
-#: src/snapshot_page/snapshot_box.py:112
+#: src/snapshot_page/snapshot_box.py:113
 msgid "This snapshot will be sent to the trash"
 msgstr "Tämä tilannekuva lähetetään roskakoriin"
 
-#: src/snapshot_page/snapshot_box.py:142
+#: src/snapshot_page/snapshot_box.py:143
 msgid "Applying Snapshot"
 msgstr "Snapshotin käyttäminen"
 
-#: src/snapshot_page/snapshot_box.py:152
+#: src/snapshot_page/snapshot_box.py:153
 msgid "Apply Snapshot?"
 msgstr "Otetaanko tilannekuva?"
 
-#: src/snapshot_page/snapshot_box.py:153
+#: src/snapshot_page/snapshot_box.py:154
 msgid "Any current user data for this app will be trashed"
 msgstr "Kaikki tämän sovelluksen nykyiset käyttäjätiedot hävitetään"
 
-#: src/snapshot_page/snapshot_box.py:182
+#: src/snapshot_page/snapshot_box.py:183
 msgid "Version: {}"
 msgstr "Versio: {}"
 
@@ -1695,7 +1687,8 @@ msgstr "Ei tilannekuvia"
 
 #: src/snapshot_page/snapshot_page.blp:183
 msgid "Create a Snapshot to save the state of any Flatpak application"
-msgstr "Luo tilannekuva minkä tahansa Flatpak-sovelluksen tilan tallentamiseksi"
+msgstr ""
+"Luo tilannekuva minkä tahansa Flatpak-sovelluksen tilan tallentamiseksi"
 
 #: src/snapshot_page/snapshot_page.blp:219
 msgid "Snapshot Apps"
@@ -1713,81 +1706,81 @@ msgstr "Sovelletaan tilannekuvia"
 msgid "Trash Snapshots"
 msgstr "Roskakori Snapshots"
 
-#: src/snapshot_page/snapshot_page.py:101
+#: src/snapshot_page/snapshot_page.py:103
 msgid "Could not load Snapshots"
 msgstr "Snapshotteja ei voitu ladata"
 
-#: src/snapshot_page/snapshot_page.py:194
+#: src/snapshot_page/snapshot_page.py:196
 msgid "Showing snapshots for {}"
 msgstr "Näytetään tilannekuvat {}"
 
-#: src/snapshot_page/snapshot_page.py:198
+#: src/snapshot_page/snapshot_page.py:200
 msgid "No snapshots for {}"
 msgstr "Ei tilannekuvia {}"
 
-#: src/snapshot_page/snapshot_page.py:198
+#: src/snapshot_page/snapshot_page.py:200
 msgid "New"
 msgstr "Uusi"
 
-#: src/snapshot_page/snapshot_page.py:242
 #: src/snapshot_page/snapshot_page.py:244
-#: src/snapshot_page/snapshots_list_page.py:60
+#: src/snapshot_page/snapshot_page.py:246
+#: src/snapshot_page/snapshots_list_page.py:61
 msgid "No Data Found to Snapshot"
 msgstr "Tilannekuvaan ei löytynyt tietoja"
 
-#: src/snapshot_page/snapshot_page.py:251
-#: src/snapshot_page/snapshots_list_page.py:75
+#: src/snapshot_page/snapshot_page.py:253
+#: src/snapshot_page/snapshots_list_page.py:76
 msgid "Opened snapshots folder"
 msgstr "Avattu tilannekuvat-kansio"
 
-#: src/snapshot_page/snapshot_page.py:386
+#: src/snapshot_page/snapshot_page.py:388
 msgid "Copied Snapshot Paths"
 msgstr "Kopioidut tilannekuvapolut"
 
-#: src/snapshot_page/snapshot_page.py:395
+#: src/snapshot_page/snapshot_page.py:397
 msgid "No apps in your selection can be snapshotted"
 msgstr "Valikoimassasi olevia sovelluksia ei voi ottaa tilannekuvaksi"
 
-#: src/snapshot_page/snapshot_page.py:469
+#: src/snapshot_page/snapshot_page.py:471
 msgid "Applying Snapshots"
 msgstr "Tilannekuvien soveltaminen"
 
-#: src/snapshot_page/snapshot_page.py:475
+#: src/snapshot_page/snapshot_page.py:477
 msgid "No snapshots to extract"
 msgstr "Ei otettavia tilannekuvia"
 
-#: src/snapshot_page/snapshot_page.py:475
+#: src/snapshot_page/snapshot_page.py:477
 msgid "No snapshots were found to extract"
 msgstr "Mitään tilannekuvia ei löytynyt otettavaksi"
 
-#: src/snapshot_page/snapshot_page.py:478
+#: src/snapshot_page/snapshot_page.py:480
 msgid "Apply These Snapshots?"
 msgstr "Soveltaa näitä tilannekuvia?"
 
-#: src/snapshot_page/snapshot_page.py:478
+#: src/snapshot_page/snapshot_page.py:480
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
 "Tämä hävittää nykyisten sovellusten käyttäjätiedot ja soveltaa niiden "
 "uusinta tilannekuvaa"
 
-#: src/snapshot_page/snapshot_page.py:514
+#: src/snapshot_page/snapshot_page.py:513
 msgid "Trashed snapshots"
 msgstr "Poistetut tilannekuvat"
 
-#: src/snapshot_page/snapshot_page.py:516
+#: src/snapshot_page/snapshot_page.py:515
 msgid "Could not trash snapshots"
 msgstr "Väliaikakuvia ei voitu poistaa"
 
-#: src/snapshot_page/snapshot_page.py:519
+#: src/snapshot_page/snapshot_page.py:518
 msgid "Trash Snapshots?"
 msgstr "Roskakoriin tilannekuvia?"
 
-#: src/snapshot_page/snapshot_page.py:519
+#: src/snapshot_page/snapshot_page.py:518
 msgid "These apps' snapshots will be sent to the trash"
 msgstr "Näiden sovellusten tilannekuvat lähetetään roskakoriin"
 
-#: src/snapshot_page/snapshot_page.py:558
+#: src/snapshot_page/snapshot_page.py:557
 msgid "Loading Snapshots"
 msgstr "Tilannekuvien lataaminen"
 
@@ -1799,16 +1792,16 @@ msgstr "Tilannekuvien luettelo"
 msgid "Open Snapshots Folder for this App"
 msgstr "Avaa tämän sovelluksen Snapshots-kansio"
 
-#: src/snapshot_page/snapshots_list_page.py:30
-#: src/snapshot_page/snapshots_list_page.py:51
+#: src/snapshot_page/snapshots_list_page.py:31
+#: src/snapshot_page/snapshots_list_page.py:52
 msgid "App not Installed"
 msgstr "Sovellusta ei ole asennettu"
 
-#: src/snapshot_page/snapshots_list_page.py:54
+#: src/snapshot_page/snapshots_list_page.py:55
 msgid "{} Snapshots"
 msgstr "{} Tilannekuvia"
 
-#: src/snapshot_page/tar_worker.py:81
+#: src/snapshot_page/tar_worker.py:80
 msgid "Error in snapshot handling"
 msgstr "Virhe tilannekuvan käsittelyssä"
 
@@ -1817,20 +1810,20 @@ msgid "Review Selection"
 msgstr "Tarkista valinta"
 
 #. self.packages_group.set_title(_("Review Packages"))
-#: src/install_page/file_install_dialog.py:36
+#: src/install_page/file_install_dialog.py:37
 msgid "The following packages will be installed"
 msgstr "Seuraavat paketit asennetaan"
 
-#: src/install_page/file_install_dialog.py:39
+#: src/install_page/file_install_dialog.py:40
 msgid "Install a Package"
 msgstr "Asenna paketti"
 
 #. self.packages_group.set_title(_("Review Package"))
-#: src/install_page/file_install_dialog.py:41
+#: src/install_page/file_install_dialog.py:42
 msgid "The following package will be installed"
 msgstr "Seuraava paketti asennetaan"
 
-#: src/install_page/file_install_dialog.py:42
+#: src/install_page/file_install_dialog.py:43
 msgid "package"
 msgstr "paketti"
 
@@ -1843,24 +1836,24 @@ msgstr "Valitse lähde"
 msgid "Pending Packages"
 msgstr "Vireillä olevat paketit"
 
-#: src/install_page/install_page.py:51
+#: src/install_page/install_page.py:52
 msgid "Installed Packages"
 msgstr "Asennetut paketit"
 
-#: src/install_page/install_page.py:68
+#: src/install_page/install_page.py:69
 msgid "{} Pending Package"
 msgstr "{} Odottava paketti"
 
-#: src/install_page/install_page.py:73
+#: src/install_page/install_page.py:74
 msgid "{} Pending Packages"
 msgstr "{} Odottavat paketit"
 
 #. Extra Object Creation
-#: src/install_page/install_page.py:88
+#: src/install_page/install_page.py:89
 msgid "Installing Packages"
 msgstr "Pakettien asentaminen"
 
-#: src/install_page/install_page.py:96
+#: src/install_page/install_page.py:97
 msgid "Loading Installation Options"
 msgstr "Asennusvaihtoehtojen lataaminen"
 
@@ -1872,23 +1865,23 @@ msgstr "Lisää paketteja"
 msgid "Packages queued to install will show up here"
 msgstr "Asennusjonossa olevat paketit näkyvät tässä"
 
-#: src/install_page/pending_page.py:34
+#: src/install_page/pending_page.py:35
 msgid "Remove All"
 msgstr "Poista kaikki"
 
-#: src/install_page/result_row.blp:8 src/install_page/result_row.py:42
+#: src/install_page/result_row.blp:8 src/install_page/result_row.py:43
 msgid "Add Package to Queue"
 msgstr "Lisää paketti jonoon"
 
-#: src/install_page/result_row.py:46
+#: src/install_page/result_row.py:47
 msgid "Package has been Added to Queue"
 msgstr "Paketti on lisätty jonoon"
 
-#: src/install_page/result_row.py:50
+#: src/install_page/result_row.py:51
 msgid "Remove Package from Queue"
 msgstr "Poista paketti jonosta"
 
-#: src/install_page/result_row.py:54
+#: src/install_page/result_row.py:55
 msgid "This Package is Already Installed"
 msgstr "Tämä paketti on jo asennettu"
 
@@ -1921,7 +1914,7 @@ msgstr "Yritä tarkentaa hakua"
 msgid "Try a different search term"
 msgstr "Kokeile eri hakusanaa"
 
-#: src/install_page/results_page.py:50
+#: src/install_page/results_page.py:48
 msgid "Search {}"
 msgstr "Etsi {}"
 
@@ -1953,11 +1946,11 @@ msgstr "Lisää järjestelmään etäyhteys, jotta voit tehdä verkkohakuja"
 msgid "Install packages from files on your system"
 msgstr "Asenna paketteja järjestelmässäsi olevista tiedostoista"
 
-#: src/install_page/select_page.py:60
+#: src/install_page/select_page.py:63
 msgid "No files were found to install"
 msgstr "Asennettavia tiedostoja ei löytynyt"
 
-#: src/install_page/select_page.py:70
+#: src/install_page/select_page.py:73
 msgid "Flatpaks"
 msgstr "Flatpaks"
 

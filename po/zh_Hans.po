@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 23:16-0400\n"
+"POT-Creation-Date: 2024-12-18 22:37-0500\n"
 "PO-Revision-Date: 2024-11-15 05:34+0000\n"
 "Last-Translator: hnwcg <hnwcg@hotmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://weblate.fyralabs.com/"
@@ -37,8 +37,9 @@ msgstr "管理 Flatpak 的一切"
 msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
-msgstr "Warehouse提供了一个简单的用户界面来控制复杂的 Flatpak "
-"选项，而且完全无需借助命令行。"
+msgstr ""
+"Warehouse提供了一个简单的用户界面来控制复杂的 Flatpak 选项，而且完全无需借助"
+"命令行。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -67,7 +68,8 @@ msgstr "查看当前应用程序的用户数据，并清理任何遗留的未使
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
-msgstr "只需点击几下即可添加受欢迎的 Flatpak 远程仓库，或者也可以添加自定义远程仓库"
+msgstr ""
+"只需点击几下即可添加受欢迎的 Flatpak 远程仓库，或者也可以添加自定义远程仓库"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
@@ -109,72 +111,72 @@ msgstr "从文件或远程仓库安装新软件包"
 msgid "Install Page in Narrow Window"
 msgstr ""
 
-#: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
-#: src/install_page/select_page.py:67
+#: src/main.py:95 src/main.py:101 src/install_page/select_page.py:63
+#: src/install_page/select_page.py:70
 #, fuzzy
 #| msgid "Could not add {}"
 msgid "Could not add files"
 msgstr "无法添加 {}"
 
-#: src/main.py:101
+#: src/main.py:95
 msgid "No files were found"
 msgstr ""
 
-#: src/main.py:109
+#: src/main.py:103
 #, fuzzy
 #| msgid "Add Flatpak Remote"
 msgid "Flatpaks & Remotes"
 msgstr "添加Flatpak远程仓库"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:217
+#: src/main.py:211
 msgid "translator-credits"
 msgstr "张鹏 <scbeta@qq.com>"
 
-#: src/main.py:223
+#: src/main.py:217
 msgid "Donate"
 msgstr "捐助"
 
-#: src/main.py:225
+#: src/main.py:219
 msgid "Contributors"
 msgstr "贡献者"
 
-#: src/host_info.py:380 src/host_info.py:382
+#: src/host_info.py:384 src/host_info.py:386
 #, fuzzy
 #| msgid "Could not add {}"
 msgid "Could not load packages"
 msgstr "无法添加 {}"
 
-#: src/package_install_worker.py:84
+#: src/package_install_worker.py:85
 msgid "Errors occurred during installation"
 msgstr ""
 
-#: src/package_install_worker.py:88 src/package_install_worker.py:92
+#: src/package_install_worker.py:89 src/package_install_worker.py:93
 msgid "Error occurred during installation"
 msgstr ""
 
-#: src/package_install_worker.py:88
-#: src/change_version_page/change_version_worker.py:70
+#: src/package_install_worker.py:89
+#: src/change_version_page/change_version_worker.py:77
 msgid "Failed to exit cleanly"
 msgstr ""
 
-#: src/package_install_worker.py:104
+#: src/package_install_worker.py:105
 #, fuzzy
 #| msgid "Could not install app"
 msgid "Could not cancel installation"
 msgstr "无法安装应用"
 
-#: src/package_install_worker.py:125 src/package_install_worker.py:135
+#: src/package_install_worker.py:126 src/package_install_worker.py:136
 #, fuzzy
 #| msgid "Could not install app"
 msgid "Could not install packages"
 msgstr "无法安装应用"
 
-#: src/package_install_worker.py:125
+#: src/package_install_worker.py:126
 msgid "Packages are currently being installed."
 msgstr ""
 
-#: src/package_install_worker.py:135
+#: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
 msgstr ""
 
@@ -215,16 +217,16 @@ msgid "Warehouse will try to install the matching packages."
 msgstr "Warehouse 将尝试安装与所选数据匹配的应用。"
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
-#: src/packages_page/uninstall_dialog.py:37
-#: src/properties_page/properties_page.py:189
-#: src/properties_page/properties_page.py:310
-#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:122
-#: src/remotes_page/remotes_page.py:189 src/user_data_page/data_box.py:114
-#: src/user_data_page/user_data_page.py:209
+#: src/packages_page/uninstall_dialog.py:38
+#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:315
+#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:126
+#: src/remotes_page/remotes_page.py:193 src/user_data_page/data_box.py:116
+#: src/user_data_page/user_data_page.py:210
 #: src/snapshot_page/new_snapshot_dialog.blp:16
-#: src/snapshot_page/snapshot_box.py:113 src/snapshot_page/snapshot_box.py:155
-#: src/snapshot_page/snapshot_page.py:479
-#: src/snapshot_page/snapshot_page.py:520
+#: src/snapshot_page/snapshot_box.py:114 src/snapshot_page/snapshot_box.py:156
+#: src/snapshot_page/snapshot_page.py:481
+#: src/snapshot_page/snapshot_page.py:519
 #: src/install_page/file_install_dialog.blp:13
 msgid "Cancel"
 msgstr "关闭"
@@ -247,35 +249,35 @@ msgstr "选择要搜索的远程仓库"
 msgid "Select a remote to attempt to install from"
 msgstr ""
 
-#: src/gtk/attempt_install_dialog.py:18 src/packages_page/filters_page.py:122
-#: src/remotes_page/remote_row.py:148 src/install_page/pending_page.py:29
-#: src/install_page/select_page.py:31
+#: src/gtk/attempt_install_dialog.py:19 src/packages_page/filters_page.py:125
+#: src/remotes_page/remote_row.py:152 src/install_page/pending_page.py:30
+#: src/install_page/select_page.py:32
 #, fuzzy
 #| msgid "Install {}?"
 msgid "Installation: {}"
 msgstr "安装 {}？"
 
-#: src/gtk/attempt_install_dialog.py:71
+#: src/gtk/attempt_install_dialog.py:76
 msgid "Can't find matching packages"
 msgstr ""
 
-#: src/gtk/attempt_install_dialog.py:71
+#: src/gtk/attempt_install_dialog.py:76
 msgid "Your system has no remotes added"
 msgstr ""
 
 #. Extra Object Creation
-#: src/gtk/error_toast.py:12
+#: src/gtk/error_toast.py:13
 msgid "Details"
 msgstr ""
 
-#: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
+#: src/gtk/error_toast.py:20 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
 #: src/snapshot_page/snapshot_page.blp:149
 msgid "Copy"
 msgstr "复制"
 
-#: src/gtk/error_toast.py:20 src/main_window/window.py:135
-#: src/main_window/window.py:145 src/main_window/window.py:154
+#: src/gtk/error_toast.py:21 src/main_window/window.py:139
+#: src/main_window/window.py:149 src/main_window/window.py:158
 msgid "OK"
 msgstr "好的"
 
@@ -405,7 +407,7 @@ msgstr "没有残留数据"
 msgid "Snapshots Page"
 msgstr "快照已应用"
 
-#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:202
+#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:203
 #, fuzzy
 #| msgid "New Snapshot"
 msgid "New Snapshots"
@@ -441,39 +443,39 @@ msgstr "正在安装"
 msgid "Choose a custom installation"
 msgstr ""
 
-#: src/gtk/installation_chooser.py:27
+#: src/gtk/installation_chooser.py:28
 #, fuzzy
 #| msgid "The app will be available to only you"
 msgid "These {} will only be available to you"
 msgstr "该应用程序将仅供您使用"
 
-#: src/gtk/installation_chooser.py:28
+#: src/gtk/installation_chooser.py:29
 #, fuzzy
 #| msgid "The app will be available to every user on the system"
 msgid "These {} will be available to everyone"
 msgstr "该应用程序将可供系统上的每个用户使用"
 
-#: src/gtk/installation_chooser.py:29
+#: src/gtk/installation_chooser.py:30
 msgid "Choose how these {} will be installed"
 msgstr ""
 
-#: src/gtk/installation_chooser.py:31
+#: src/gtk/installation_chooser.py:32
 #, fuzzy
 #| msgid "The app will be available to only you"
 msgid "This {} will only be available to you"
 msgstr "该应用程序将仅供您使用"
 
-#: src/gtk/installation_chooser.py:32
+#: src/gtk/installation_chooser.py:33
 #, fuzzy
 #| msgid "The app will be available to every user on the system"
 msgid "This {} will be available to everyone"
 msgstr "该应用程序将可供系统上的每个用户使用"
 
-#: src/gtk/installation_chooser.py:33
+#: src/gtk/installation_chooser.py:34
 msgid "Choose how this {} will be installed"
 msgstr ""
 
-#: src/gtk/sidebar_button.py:19
+#: src/gtk/sidebar_button.py:20
 msgid "Show Sidebar"
 msgstr ""
 
@@ -497,32 +499,32 @@ msgstr "主菜单"
 
 #: src/main_window/window.blp:67 src/packages_page/packages_page.blp:20
 #: src/packages_page/packages_page.blp:55
-#: src/packages_page/packages_page.py:155
-#: src/packages_page/packages_page.py:319
-#: src/install_page/file_install_dialog.py:37
+#: src/packages_page/packages_page.py:157
+#: src/packages_page/packages_page.py:322
+#: src/install_page/file_install_dialog.py:38
 msgid "Packages"
 msgstr ""
 
-#: src/main_window/window.blp:80
+#: src/main_window/window.blp:82
 #, fuzzy
 #| msgid "Remove"
 msgid "Remotes"
 msgstr "移除"
 
-#: src/main_window/window.blp:94 src/properties_page/properties_page.blp:114
+#: src/main_window/window.blp:98 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
 msgid "User Data"
 msgstr "用户数据"
 
-#: src/main_window/window.blp:107 src/snapshot_page/snapshot_page.blp:18
+#: src/main_window/window.blp:113 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
-#: src/snapshot_page/snapshot_page.py:355
+#: src/snapshot_page/snapshot_page.py:357
 #, fuzzy
 #| msgid "No Snapshots"
 msgid "Snapshots"
 msgstr "没有快照"
 
-#: src/main_window/window.blp:120 src/install_page/file_install_dialog.py:34
+#: src/main_window/window.blp:128 src/install_page/file_install_dialog.py:35
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
 #, fuzzy
@@ -530,49 +532,49 @@ msgstr "没有快照"
 msgid "Install Packages"
 msgstr "正在安装"
 
-#: src/main_window/window.blp:150
+#: src/main_window/window.blp:160
 #, fuzzy
 #| msgid "Set Filters"
 msgid "_Open Files"
 msgstr "设置过滤器"
 
-#: src/main_window/window.blp:154
+#: src/main_window/window.blp:164
 msgid "_Keyboard Shortcuts"
 msgstr "键盘快捷键(_K)"
 
-#: src/main_window/window.blp:158
+#: src/main_window/window.blp:168
 msgid "_About Warehouse"
 msgstr "关于Warehouse(_A)"
 
-#: src/main_window/window.py:132
+#: src/main_window/window.py:136
 msgid "Unsupported Filetype"
 msgstr ""
 
-#: src/main_window/window.py:133
+#: src/main_window/window.py:137
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
 msgstr ""
 
-#: src/main_window/window.py:141
+#: src/main_window/window.py:145
 #, fuzzy
 #| msgid "Set Filters"
 msgid "Mixed Filetypes"
 msgstr "设置过滤器"
 
-#: src/main_window/window.py:142
+#: src/main_window/window.py:146
 msgid "Flatpaks and remotes cannot be installed at the same time."
 msgstr ""
 
-#: src/main_window/window.py:151
+#: src/main_window/window.py:155
 #, fuzzy
 #| msgid "Too Many Results"
 msgid "Too Many Remotes"
 msgstr "结果太多了"
 
-#: src/main_window/window.py:152
+#: src/main_window/window.py:156
 msgid "Only one remote at a time is supported."
 msgstr ""
 
-#: src/main_window/window.py:170
+#: src/main_window/window.py:174
 #, fuzzy
 #| msgid "Could not open folder"
 msgid "Could not open files"
@@ -720,7 +722,7 @@ msgid "Select All"
 msgstr "选择全部"
 
 #: src/packages_page/packages_page.blp:144
-#: src/packages_page/uninstall_dialog.py:38
+#: src/packages_page/uninstall_dialog.py:39
 #: src/properties_page/properties_page.blp:88
 msgid "Uninstall"
 msgstr "卸载"
@@ -737,92 +739,92 @@ msgstr "复制ID"
 msgid "Copy Refs"
 msgstr "复制引用"
 
-#: src/packages_page/packages_page.py:151
-#: src/user_data_page/data_subpage.py:107
-#: src/snapshot_page/new_snapshot_dialog.py:38
-#: src/snapshot_page/snapshot_page.py:355
+#: src/packages_page/packages_page.py:153
+#: src/user_data_page/data_subpage.py:109
+#: src/snapshot_page/new_snapshot_dialog.py:39
+#: src/snapshot_page/snapshot_page.py:357
 #, fuzzy
 #| msgid "{} selected"
 msgid "{} Selected"
 msgstr "已选择 {} 项"
 
-#: src/packages_page/packages_page.py:192
+#: src/packages_page/packages_page.py:194
 msgid "Error getting Flatpak '{}'"
 msgstr ""
 
-#: src/packages_page/packages_page.py:241
+#: src/packages_page/packages_page.py:243
 #, fuzzy
 #| msgid "Name"
 msgid "Names"
 msgstr "名称"
 
-#: src/packages_page/packages_page.py:244
+#: src/packages_page/packages_page.py:246
 msgid "IDs"
 msgstr ""
 
-#: src/packages_page/packages_page.py:247
+#: src/packages_page/packages_page.py:249
 #, fuzzy
 #| msgid "Copy Refs"
 msgid "Refs"
 msgstr "复制引用"
 
-#: src/packages_page/packages_page.py:255
-#: src/properties_page/properties_page.py:272
+#: src/packages_page/packages_page.py:257
+#: src/properties_page/properties_page.py:275
 msgid "Copied {}"
 msgstr "已复制 {} 项"
 
-#: src/packages_page/packages_page.py:257
+#: src/packages_page/packages_page.py:259
 #, fuzzy
 #| msgid "Could not add {}"
 msgid "Could not copy {}"
 msgstr "无法添加 {}"
 
-#: src/packages_page/packages_page.py:307
+#: src/packages_page/packages_page.py:310
 msgid "Errors occurred while uninstalling"
 msgstr ""
 
-#: src/packages_page/packages_page.py:309
+#: src/packages_page/packages_page.py:312
 #, fuzzy
 #| msgid "Uninstalled successfully"
 msgid "Uninstalled Packages"
 msgstr "卸载成功"
 
-#: src/packages_page/packages_page.py:367
+#: src/packages_page/packages_page.py:370
 #, fuzzy
 #| msgid "Loading Flatpaks"
 msgid "Loading Packages"
 msgstr "正在加载Flatpak应用"
 
-#: src/packages_page/packages_page.py:367
-#: src/packages_page/packages_page.py:368
-#: src/properties_page/properties_page.py:366
-#: src/remotes_page/remotes_page.py:285 src/remotes_page/remotes_page.py:286
-#: src/user_data_page/user_data_page.py:296
-#: src/snapshot_page/snapshot_page.py:558 src/install_page/install_page.py:96
+#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:371
+#: src/properties_page/properties_page.py:368
+#: src/remotes_page/remotes_page.py:291 src/remotes_page/remotes_page.py:292
+#: src/user_data_page/user_data_page.py:297
+#: src/snapshot_page/snapshot_page.py:557 src/install_page/install_page.py:97
 #: src/install_page/results_page.py:135
 msgid "This should only take a moment"
 msgstr "这应该只需要一点时间"
 
-#: src/packages_page/packages_page.py:368
+#: src/packages_page/packages_page.py:371
 #, fuzzy
 #| msgid "Uninstalling"
 msgid "Uninstalling Packages"
 msgstr "正在卸载"
 
-#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:373
 #, fuzzy
 #| msgid "Uninstalling"
 msgid "Reinstalling Package"
 msgstr "正在卸载"
 
-#: src/packages_page/packages_page.py:370
-#: src/packages_page/packages_page.py:372
-#: src/change_version_page/change_version_page.py:119
-#: src/snapshot_page/snapshot_page.py:551 src/install_page/install_page.py:88
+#: src/packages_page/packages_page.py:373
+#: src/packages_page/packages_page.py:375
+#: src/change_version_page/change_version_page.py:123
+#: src/snapshot_page/snapshot_page.py:550 src/install_page/install_page.py:89
 msgid "This could take a while"
 msgstr "这可能需要一段时间"
 
-#: src/packages_page/packages_page.py:372
+#: src/packages_page/packages_page.py:375
 msgid "Changing Version"
 msgstr ""
 
@@ -839,8 +841,8 @@ msgstr "允许恢复这些应用的设置和内容"
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
 #: src/user_data_page/user_data_page.blp:148
-#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:114
-#: src/snapshot_page/snapshot_page.py:521
+#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:115
+#: src/snapshot_page/snapshot_page.py:520
 msgid "Trash"
 msgstr "回收"
 
@@ -850,29 +852,29 @@ msgstr "回收"
 msgid "Send data to the trash"
 msgstr "发送 {} 的用户数据到回收站？"
 
-#: src/packages_page/uninstall_dialog.py:30
+#: src/packages_page/uninstall_dialog.py:31
 msgid "Uninstall {}?"
 msgstr "是否卸载 {}?"
 
-#: src/packages_page/uninstall_dialog.py:31
+#: src/packages_page/uninstall_dialog.py:32
 #, fuzzy
 #| msgid "It will not be possible to use {} after removal."
 msgid "It will not be possible to use {} after removal"
 msgstr "删除后将无法使用 {}。"
 
-#: src/packages_page/uninstall_dialog.py:33
+#: src/packages_page/uninstall_dialog.py:34
 #, fuzzy
 #| msgid "Uninstall {}?"
 msgid "Uninstall Packages?"
 msgstr "是否卸载 {}?"
 
-#: src/packages_page/uninstall_dialog.py:34
+#: src/packages_page/uninstall_dialog.py:35
 #, fuzzy
 #| msgid "It will not be possible to use these apps after removal."
 msgid "It will not be possible to use these packages after removal"
 msgstr "删除后将无法使用这些应用程序。"
 
-#: src/packages_page/uninstall_dialog.py:41
+#: src/packages_page/uninstall_dialog.py:42
 #, fuzzy
 #| msgid "App Settings & Data"
 msgid "App Settings & Content"
@@ -943,7 +945,7 @@ msgstr "运行库"
 #: src/properties_page/properties_page.blp:188
 #, fuzzy
 #| msgid "Disable Auto Removal"
-msgid "Disable Automactic Removal"
+msgid "Disable Automatic Removal"
 msgstr "禁用自动移除"
 
 #: src/properties_page/properties_page.blp:189
@@ -1004,196 +1006,196 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: src/properties_page/properties_page.py:75
+#: src/properties_page/properties_page.py:76
 #, fuzzy
 #| msgid "Properties"
 msgid "{} Properties"
 msgstr "属性"
 
-#: src/properties_page/properties_page.py:80
+#: src/properties_page/properties_page.py:81
 msgid "Properties"
 msgstr "属性"
 
 #. Apply again
-#: src/properties_page/properties_page.py:109
-#: src/user_data_page/user_data_page.py:296
+#: src/properties_page/properties_page.py:110
+#: src/user_data_page/user_data_page.py:297
 msgid "Loading User Data"
 msgstr "正在加载用户数据"
 
-#: src/properties_page/properties_page.py:119
+#: src/properties_page/properties_page.py:120
 msgid "No User Data"
 msgstr "没有用户数据"
 
-#: src/properties_page/properties_page.py:129
-#: src/properties_page/properties_page.py:145
+#: src/properties_page/properties_page.py:130
+#: src/properties_page/properties_page.py:146
 #, fuzzy
 #| msgid "Could not show properties"
 msgid "Could not get properties"
 msgstr "无法显示属性"
 
-#: src/properties_page/properties_page.py:142
+#: src/properties_page/properties_page.py:143
 msgid "No version information found"
 msgstr ""
 
-#: src/properties_page/properties_page.py:162
+#: src/properties_page/properties_page.py:163
 #, fuzzy
 #| msgid "Could not open folder"
 msgid "Could not open data"
 msgstr "无法打开目录"
 
-#: src/properties_page/properties_page.py:181
-#: src/properties_page/properties_page.py:183
-#: src/properties_page/properties_page.py:238
-#: src/properties_page/properties_page.py:240 src/user_data_page/data_box.py:99
-#: src/user_data_page/user_data_page.py:183
-#: src/user_data_page/user_data_page.py:197
+#: src/properties_page/properties_page.py:182
+#: src/properties_page/properties_page.py:184
+#: src/properties_page/properties_page.py:241
+#: src/properties_page/properties_page.py:243
+#: src/user_data_page/data_box.py:101 src/user_data_page/user_data_page.py:184
+#: src/user_data_page/user_data_page.py:198
 #, fuzzy
 #| msgid "Could not trash user data"
 msgid "Could not trash data"
 msgstr "无法回收用户数据"
 
-#: src/properties_page/properties_page.py:186
+#: src/properties_page/properties_page.py:187
 msgid "Send {}'s User Data to the Trash?"
 msgstr "发送 {} 的用户数据到回收站？"
 
-#: src/properties_page/properties_page.py:187
+#: src/properties_page/properties_page.py:188
 #, fuzzy
 #| msgid "Your files and data for this app will be sent to the trash."
 msgid "Your settings and data for this app will be sent to the trash"
 msgstr "此应用程序的文件和数据将被发送到回收站。"
 
-#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:191
 msgid "Trash Data"
 msgstr "回收数据"
 
-#: src/properties_page/properties_page.py:199
+#: src/properties_page/properties_page.py:201
 #, fuzzy
 #| msgid "Could not disable updates for {}"
 msgid "Could not Disable Updates"
 msgstr "无法对 {} 禁用更新"
 
-#: src/properties_page/properties_page.py:199
+#: src/properties_page/properties_page.py:201
 #, fuzzy
 #| msgid "Could not manage data"
 msgid "Could not Enable Updates"
 msgstr "无法管理数据"
 
-#: src/properties_page/properties_page.py:205
+#: src/properties_page/properties_page.py:207
 #, fuzzy
 #| msgid "Disable Updates"
 msgid "Disabled Updates"
 msgstr "禁用更新"
 
-#: src/properties_page/properties_page.py:205
+#: src/properties_page/properties_page.py:207
 #, fuzzy
 #| msgid "Enable Updates"
 msgid "Enabled Updates"
 msgstr "启用更新"
 
-#: src/properties_page/properties_page.py:217
+#: src/properties_page/properties_page.py:220
 #, fuzzy
 #| msgid "Could not disable auto removal"
 msgid "Could not Disable Autoremoval"
 msgstr "无法禁用自动删除"
 
-#: src/properties_page/properties_page.py:217
+#: src/properties_page/properties_page.py:220
 #, fuzzy
 #| msgid "Could not enable auto removal"
 msgid "Could not Enable Autoremoval"
 msgstr "无法启用自动移除"
 
-#: src/properties_page/properties_page.py:222
+#: src/properties_page/properties_page.py:225
 #, fuzzy
 #| msgid "Disable Auto Removal"
 msgid "Disabled Autoremoval"
 msgstr "禁用自动移除"
 
-#: src/properties_page/properties_page.py:222
+#: src/properties_page/properties_page.py:225
 #, fuzzy
 #| msgid "Enable Auto Removal"
 msgid "Enabled Autoremoval"
 msgstr "启用自动移除"
 
-#: src/properties_page/properties_page.py:245
+#: src/properties_page/properties_page.py:248
 #, fuzzy
 #| msgid "Could not install app"
 msgid "Could not uninstall"
 msgstr "无法安装应用"
 
-#: src/properties_page/properties_page.py:249
+#: src/properties_page/properties_page.py:252
 #, fuzzy
 #| msgid "Uninstall {}?"
 msgid "Uninstalled {}"
 msgstr "是否卸载 {}?"
 
-#: src/properties_page/properties_page.py:261
+#: src/properties_page/properties_page.py:264
 #, fuzzy
 #| msgid "Opened {}"
 msgid "Opening {}…"
 msgstr "已打开 {}"
 
-#: src/properties_page/properties_page.py:266
+#: src/properties_page/properties_page.py:269
 #, fuzzy
 #| msgid "Could not remove {}"
 msgid "Could not open {}"
 msgstr "无法移除 {}"
 
-#: src/properties_page/properties_page.py:281
+#: src/properties_page/properties_page.py:284
 #, fuzzy
 #| msgid "Uninstall {}?"
 msgid "Reinstalled {}"
 msgstr "是否卸载 {}?"
 
-#: src/properties_page/properties_page.py:307
+#: src/properties_page/properties_page.py:312
 #, fuzzy
 #| msgid "Uninstall {}?"
 msgid "Reinstall {}?"
 msgstr "是否卸载 {}?"
 
-#: src/properties_page/properties_page.py:308
+#: src/properties_page/properties_page.py:313
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
 msgstr ""
 
-#: src/properties_page/properties_page.py:311
-#: src/properties_page/properties_page.py:372
+#: src/properties_page/properties_page.py:316
+#: src/properties_page/properties_page.py:374
 #, fuzzy
 #| msgid "Uninstall"
 msgid "Reinstall"
 msgstr "卸载"
 
-#: src/properties_page/properties_page.py:328
+#: src/properties_page/properties_page.py:333
 msgid "Copied launch command"
 msgstr "已复制启动命令"
 
-#: src/properties_page/properties_page.py:330
+#: src/properties_page/properties_page.py:335
 #, fuzzy
 #| msgid "Copied launch command"
 msgid "Could not copy launch command"
 msgstr "已复制启动命令"
 
-#: src/properties_page/properties_page.py:336
+#: src/properties_page/properties_page.py:341
 msgid "Could not show details"
 msgstr "无法显示详情"
 
-#: src/properties_page/properties_page.py:366
+#: src/properties_page/properties_page.py:368
 #, fuzzy
 #| msgid "View Properties"
 msgid "Loading Properties"
 msgstr "查看属性"
 
-#: src/properties_page/properties_page.py:369
+#: src/properties_page/properties_page.py:371
 #, fuzzy
 #| msgid "New Snapshot"
 msgid "View Snapshots"
 msgstr "新快照"
 
-#: src/properties_page/properties_page.py:370
+#: src/properties_page/properties_page.py:372
 msgid "Copy Launch Command"
 msgstr "复制启动命令"
 
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:373
 #, fuzzy
 #| msgid "Show Details in Store"
 msgid "Show Details"
@@ -1213,53 +1215,53 @@ msgid ""
 "Note that downgrading can cause issues."
 msgstr "这将卸载当前版本并安装所选版本。请注意，降级可能会导致问题。"
 
-#: src/change_version_page/change_version_page.py:69
+#: src/change_version_page/change_version_page.py:72
 msgid "Currently Installed Version"
 msgstr ""
 
-#: src/change_version_page/change_version_page.py:86
+#: src/change_version_page/change_version_page.py:89
 #, fuzzy
 #| msgid "Could not create snapshot"
 msgid "Could not get versions"
 msgstr "无法创建快照"
 
-#: src/change_version_page/change_version_page.py:93
+#: src/change_version_page/change_version_page.py:96
 msgid "Changed {}'s Version"
 msgstr ""
 
-#: src/change_version_page/change_version_page.py:117
+#: src/change_version_page/change_version_page.py:121
 #, fuzzy
 #| msgid "Version {}"
 msgid "{} Versions"
 msgstr "版本 {}"
 
-#: src/change_version_page/change_version_page.py:118
+#: src/change_version_page/change_version_page.py:122
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "确保 {} 永远不会更新到更新版本"
 
-#: src/change_version_page/change_version_page.py:119
+#: src/change_version_page/change_version_page.py:123
 msgid "Fetching Releases"
 msgstr "正在获取发布版本"
 
-#: src/change_version_page/change_version_worker.py:66
-#: src/change_version_page/change_version_worker.py:70
-#: src/change_version_page/change_version_worker.py:74
+#: src/change_version_page/change_version_worker.py:73
+#: src/change_version_page/change_version_worker.py:77
+#: src/change_version_page/change_version_worker.py:81
 msgid "Error occurred while changing version"
 msgstr ""
 
-#: src/change_version_page/change_version_worker.py:85
+#: src/change_version_page/change_version_worker.py:92
 #, fuzzy
 #| msgid "Could not create snapshot"
 msgid "Could not cancel version change"
 msgstr "无法创建快照"
 
-#: src/change_version_page/change_version_worker.py:106
+#: src/change_version_page/change_version_worker.py:113
 #, fuzzy
 #| msgid "Could not manage data"
 msgid "Could not change version"
 msgstr "无法管理数据"
 
-#: src/change_version_page/change_version_worker.py:106
+#: src/change_version_page/change_version_worker.py:113
 msgid "Another package is changing version."
 msgstr ""
 
@@ -1286,20 +1288,20 @@ msgstr "名称"
 msgid "Repo URL"
 msgstr ""
 
-#: src/remotes_page/add_remote_dialog.py:54
+#: src/remotes_page/add_remote_dialog.py:58
 #, fuzzy
 #| msgid "Could not add {}"
 msgid "Could not add remote"
 msgstr "无法添加 {}"
 
-#: src/remotes_page/add_remote_dialog.py:57
+#: src/remotes_page/add_remote_dialog.py:61
 #, fuzzy
 #| msgid "Add {}?"
 msgid "Added {}"
 msgstr "添加 {}？"
 
 #. Apply
-#: src/remotes_page/add_remote_dialog.py:107
+#: src/remotes_page/add_remote_dialog.py:111
 #, fuzzy
 #| msgid "Add Remote"
 msgid "remote"
@@ -1331,68 +1333,68 @@ msgstr "复制名称"
 msgid "Enable"
 msgstr "启用"
 
-#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:123
+#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:127
 msgid "Disable"
 msgstr "禁用"
 
-#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:190
+#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:194
 msgid "Remove"
 msgstr "移除"
 
-#: src/remotes_page/remote_row.py:24 src/remotes_page/remote_row.py:44
+#: src/remotes_page/remote_row.py:25 src/remotes_page/remote_row.py:46
 #, fuzzy
 #| msgid "Could not enable {}"
 msgid "Could not enable remote"
 msgstr "无法启用 {}"
 
-#: src/remotes_page/remote_row.py:24
+#: src/remotes_page/remote_row.py:25
 msgid "Remote is already enabled"
 msgstr ""
 
-#: src/remotes_page/remote_row.py:51
+#: src/remotes_page/remote_row.py:53
 #, fuzzy
 #| msgid "Installed Remotes"
 msgid "Enabled remote"
 msgstr "已安装的远程仓库"
 
-#: src/remotes_page/remote_row.py:75 src/remotes_page/remote_row.py:153
+#: src/remotes_page/remote_row.py:77 src/remotes_page/remote_row.py:157
 #, fuzzy
 #| msgid "Updates Disabled"
 msgid "Remote is Disabled"
 msgstr "更新已禁用"
 
-#: src/remotes_page/remote_row.py:77
+#: src/remotes_page/remote_row.py:79
 #, fuzzy
 #| msgid "Disabled"
 msgid "Disabled remote"
 msgstr "已禁用"
 
-#: src/remotes_page/remote_row.py:95 src/remotes_page/remote_row.py:107
-#: src/remotes_page/remote_row.py:111
+#: src/remotes_page/remote_row.py:97 src/remotes_page/remote_row.py:109
+#: src/remotes_page/remote_row.py:113
 #, fuzzy
 #| msgid "Could not disable {}"
 msgid "Could not disable remote"
 msgstr "无法禁用 {}"
 
-#: src/remotes_page/remote_row.py:95
+#: src/remotes_page/remote_row.py:97
 msgid "Remote is already disabled"
 msgstr ""
 
-#: src/remotes_page/remote_row.py:121
+#: src/remotes_page/remote_row.py:124
 msgid "Disable {}?"
 msgstr "禁用 {}?"
 
-#: src/remotes_page/remote_row.py:121 src/remotes_page/remotes_page.py:188
+#: src/remotes_page/remote_row.py:124 src/remotes_page/remotes_page.py:191
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr "从 {} 中安装的应用都将停止接收更新"
 
-#: src/remotes_page/remote_row.py:133
+#: src/remotes_page/remote_row.py:137
 #, fuzzy
 #| msgid "Copied ref"
 msgid "Copied title"
 msgstr "引用已复制"
 
-#: src/remotes_page/remote_row.py:136
+#: src/remotes_page/remote_row.py:140
 msgid "Copied name"
 msgstr "复制的名称"
 
@@ -1475,67 +1477,67 @@ msgstr "添加一个自定义远程仓库"
 msgid "Manually enter new remote details"
 msgstr ""
 
-#: src/remotes_page/remotes_page.py:32
+#: src/remotes_page/remotes_page.py:33
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr "开源、按需付费、来自于elementary的应用商店"
 
-#: src/remotes_page/remotes_page.py:38
+#: src/remotes_page/remotes_page.py:39
 msgid "Central repository of Flatpak applications"
 msgstr "Flatpak应用程序的中央存储库"
 
-#: src/remotes_page/remotes_page.py:44
+#: src/remotes_page/remotes_page.py:45
 msgid "Beta builds of Flatpak applications"
 msgstr "Flatpak应用程序的Beta测试版本"
 
-#: src/remotes_page/remotes_page.py:50
+#: src/remotes_page/remotes_page.py:51
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "Fedora Linux打包的Flatpak应用"
 
-#: src/remotes_page/remotes_page.py:56
+#: src/remotes_page/remotes_page.py:57
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "最新的GNOME应用程序和运行库测试版"
 
-#: src/remotes_page/remotes_page.py:62
+#: src/remotes_page/remotes_page.py:63
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr "WebKit Developer 和 Runtime SDK 的中央存储库"
 
-#: src/remotes_page/remotes_page.py:152
+#: src/remotes_page/remotes_page.py:153
 msgid "Showing all packages from {}"
 msgstr ""
 
-#: src/remotes_page/remotes_page.py:173
+#: src/remotes_page/remotes_page.py:175
 #, fuzzy
 #| msgid "Could not remove {}"
 msgid "Could not remove remote"
 msgstr "无法移除 {}"
 
-#: src/remotes_page/remotes_page.py:180
+#: src/remotes_page/remotes_page.py:182
 #, fuzzy
 #| msgid "Remove {}?"
 msgid "Removed {}"
 msgstr "移除 {}?"
 
-#: src/remotes_page/remotes_page.py:188
+#: src/remotes_page/remotes_page.py:191
 msgid "Remove {}?"
 msgstr "移除 {}?"
 
-#: src/remotes_page/remotes_page.py:224 src/remotes_page/remotes_page.py:234
-#: src/remotes_page/remotes_page.py:236
+#: src/remotes_page/remotes_page.py:228 src/remotes_page/remotes_page.py:238
+#: src/remotes_page/remotes_page.py:240
 #, fuzzy
 #| msgid "Could not open folder"
 msgid "Could not open file"
 msgstr "无法打开目录"
 
-#: src/remotes_page/remotes_page.py:239
+#: src/remotes_page/remotes_page.py:243
 msgid "Flatpak Repos"
 msgstr "Flatpak仓库"
 
 #. Apply
-#: src/remotes_page/remotes_page.py:285
+#: src/remotes_page/remotes_page.py:291
 msgid "Adding Remote"
 msgstr "正在添加远程仓库"
 
-#: src/remotes_page/remotes_page.py:286
+#: src/remotes_page/remotes_page.py:292
 #, fuzzy
 #| msgid "Adding Remote"
 msgid "Loading Remotes"
@@ -1553,41 +1555,41 @@ msgstr "复制名称"
 msgid "Attempt to Install"
 msgstr "尝试安装？"
 
-#: src/user_data_page/data_box.py:58
+#: src/user_data_page/data_box.py:59
 msgid "Copied data path"
 msgstr ""
 
-#: src/user_data_page/data_box.py:60
+#: src/user_data_page/data_box.py:61
 #, fuzzy
 #| msgid "Could not manage data"
 msgid "Could not copy data path"
 msgstr "无法管理数据"
 
-#: src/user_data_page/data_box.py:65
+#: src/user_data_page/data_box.py:66
 #, fuzzy
 #| msgid "Open Data Folder"
 msgid "Opened data folder"
 msgstr "打开数据文件夹"
 
-#: src/user_data_page/data_box.py:67 src/snapshot_page/snapshot_page.py:253
-#: src/snapshot_page/snapshots_list_page.py:77
+#: src/user_data_page/data_box.py:68 src/snapshot_page/snapshot_page.py:255
+#: src/snapshot_page/snapshots_list_page.py:78
 msgid "Could not open folder"
 msgstr "无法打开目录"
 
-#: src/user_data_page/data_box.py:113
+#: src/user_data_page/data_box.py:115
 #, fuzzy
 #| msgid "Trash User Data"
 msgid "Trash {}'s Data?"
 msgstr "回收用户数据"
 
-#: src/user_data_page/data_box.py:113
+#: src/user_data_page/data_box.py:115
 #, fuzzy
 #| msgid "These folders will be sent to the trash."
 msgid "{}'s data will be sent to the trash"
 msgstr "这些文件夹将会被移动到回收站。"
 
-#: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:210
-#: src/snapshot_page/snapshot_page.py:480
+#: src/user_data_page/data_box.py:117 src/user_data_page/user_data_page.py:211
+#: src/snapshot_page/snapshot_page.py:482
 msgid "Continue"
 msgstr "继续"
 
@@ -1601,13 +1603,13 @@ msgstr ""
 msgid "Loading Size…"
 msgstr "降级中…"
 
-#: src/user_data_page/data_subpage.py:232
+#: src/user_data_page/data_subpage.py:254
 #, fuzzy
 #| msgid "No Leftover Data"
 msgid "No Active Data"
 msgstr "没有残留数据"
 
-#: src/user_data_page/data_subpage.py:233
+#: src/user_data_page/data_subpage.py:255
 #, fuzzy
 #| msgid ""
 #| "Warehouse cannot see the list of installed Flatpaks or the system has no "
@@ -1617,11 +1619,11 @@ msgid ""
 "data present"
 msgstr "Warehouse无法找到已安装Flatpak应用的列表或者系统中没有安装Flatpak应用"
 
-#: src/user_data_page/data_subpage.py:236
+#: src/user_data_page/data_subpage.py:258
 msgid "No Leftover Data"
 msgstr "没有残留数据"
 
-#: src/user_data_page/data_subpage.py:237
+#: src/user_data_page/data_subpage.py:259
 msgid "There is no leftover user data"
 msgstr "没有残留的用户数据"
 
@@ -1667,57 +1669,57 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-#: src/user_data_page/user_data_page.py:75
-#: src/user_data_page/user_data_page.py:77
+#: src/user_data_page/user_data_page.py:76
+#: src/user_data_page/user_data_page.py:78
 #, fuzzy
 #| msgid "Loading User Data"
 msgid "Loading Size"
 msgstr "正在加载用户数据"
 
-#: src/user_data_page/user_data_page.py:151
+#: src/user_data_page/user_data_page.py:152
 #, fuzzy
 #| msgid "Could not apply snapshot"
 msgid "Could not copy paths"
 msgstr "无法应用快照"
 
-#: src/user_data_page/user_data_page.py:151
-#: src/user_data_page/user_data_page.py:197
+#: src/user_data_page/user_data_page.py:152
+#: src/user_data_page/user_data_page.py:198
 msgid "No boxes were selected"
 msgstr ""
 
-#: src/user_data_page/user_data_page.py:154
+#: src/user_data_page/user_data_page.py:155
 #, fuzzy
 #| msgid "Copied name"
 msgid "Copied paths"
 msgstr "复制的名称"
 
-#: src/user_data_page/user_data_page.py:185
+#: src/user_data_page/user_data_page.py:186
 #, fuzzy
 #| msgid "Trashed user data"
 msgid "Trashed data"
 msgstr "用户数据已回收"
 
-#: src/user_data_page/user_data_page.py:208
+#: src/user_data_page/user_data_page.py:209
 #, fuzzy
 #| msgid "Trash Data"
 msgid "Trash Data?"
 msgstr "回收数据"
 
-#: src/user_data_page/user_data_page.py:208
+#: src/user_data_page/user_data_page.py:209
 #, fuzzy
 #| msgid "These folders will be sent to the trash."
 msgid "Data will be sent to the trash"
 msgstr "这些文件夹将会被移动到回收站。"
 
-#: src/user_data_page/user_data_page.py:246
-#: src/user_data_page/user_data_page.py:269
+#: src/user_data_page/user_data_page.py:247
+#: src/user_data_page/user_data_page.py:270
 #, fuzzy
 #| msgid "User Data"
 msgid "Active Data"
 msgstr "用户数据"
 
-#: src/user_data_page/user_data_page.py:247
-#: src/user_data_page/user_data_page.py:275
+#: src/user_data_page/user_data_page.py:248
+#: src/user_data_page/user_data_page.py:276
 #, fuzzy
 #| msgid "No Leftover Data"
 msgid "Leftover Data"
@@ -1734,32 +1736,32 @@ msgstr "搜索列表"
 msgid "Create"
 msgstr ""
 
-#: src/snapshot_page/new_snapshot_dialog.py:110
+#: src/snapshot_page/new_snapshot_dialog.py:111
 #, fuzzy
 #| msgid "Creating Snapshots"
 msgid "Creating Snapshot"
 msgstr "正在创建快照"
 
-#: src/snapshot_page/new_snapshot_dialog.py:192
+#: src/snapshot_page/new_snapshot_dialog.py:193
 #, fuzzy
 #| msgid "Create Snapshots"
 msgid "Name these Snapshots"
 msgstr "创建快照"
 
-#: src/snapshot_page/new_snapshot_dialog.py:196
+#: src/snapshot_page/new_snapshot_dialog.py:197
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
 msgstr "新快照"
 
-#: src/snapshot_page/new_snapshot_dialog.py:200
+#: src/snapshot_page/new_snapshot_dialog.py:201
 #, fuzzy
 #| msgid "New Snapshot"
 msgid "Name this Snapshot"
 msgstr "新快照"
 
-#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:58
+#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:59
 #, fuzzy
 #| msgid "Copy Name"
 msgid "No Name Set"
@@ -1777,7 +1779,7 @@ msgstr "未找到远程仓库"
 msgid "No version found"
 msgstr "没有找到结果"
 
-#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:156
+#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:157
 msgid "Apply"
 msgstr ""
 
@@ -1797,50 +1799,50 @@ msgstr "创建快照？"
 msgid "Confirm Rename"
 msgstr "复制的名称"
 
-#: src/snapshot_page/snapshot_box.py:33 src/snapshot_page/snapshot_box.py:45
-#: src/snapshot_page/snapshot_box.py:61
+#: src/snapshot_page/snapshot_box.py:34 src/snapshot_page/snapshot_box.py:46
+#: src/snapshot_page/snapshot_box.py:62
 #, fuzzy
 #| msgid "Could not manage data"
 msgid "Could not write data"
 msgstr "无法管理数据"
 
-#: src/snapshot_page/snapshot_box.py:98
+#: src/snapshot_page/snapshot_box.py:99
 msgid "Could not trash snapshot"
 msgstr "无法回收快照"
 
-#: src/snapshot_page/snapshot_box.py:102
+#: src/snapshot_page/snapshot_box.py:103
 #, fuzzy
 #| msgid "Trash Snapshot"
 msgid "Trashed snapshot"
 msgstr "回收快照"
 
-#: src/snapshot_page/snapshot_box.py:112
+#: src/snapshot_page/snapshot_box.py:113
 msgid "Trash Snapshot?"
 msgstr "回收快照？"
 
-#: src/snapshot_page/snapshot_box.py:112
+#: src/snapshot_page/snapshot_box.py:113
 #, fuzzy
 #| msgid "This snapshot and its contents will be sent to the trash."
 msgid "This snapshot will be sent to the trash"
 msgstr "此快照和其中的内容将会被发送到回收站。"
 
-#: src/snapshot_page/snapshot_box.py:142
+#: src/snapshot_page/snapshot_box.py:143
 #, fuzzy
 #| msgid "Applying Snapshot…"
 msgid "Applying Snapshot"
 msgstr "正在应用快照…"
 
-#: src/snapshot_page/snapshot_box.py:152
+#: src/snapshot_page/snapshot_box.py:153
 msgid "Apply Snapshot?"
 msgstr "应用快照？"
 
-#: src/snapshot_page/snapshot_box.py:153
+#: src/snapshot_page/snapshot_box.py:154
 #, fuzzy
 #| msgid "Your files and data for this app will be sent to the trash."
 msgid "Any current user data for this app will be trashed"
 msgstr "此应用程序的文件和数据将被发送到回收站。"
 
-#: src/snapshot_page/snapshot_box.py:182
+#: src/snapshot_page/snapshot_box.py:183
 #, fuzzy
 #| msgid "Version {}"
 msgid "Version: {}"
@@ -1914,103 +1916,103 @@ msgstr "应用快照"
 msgid "Trash Snapshots"
 msgstr "回收快照"
 
-#: src/snapshot_page/snapshot_page.py:101
+#: src/snapshot_page/snapshot_page.py:103
 #, fuzzy
 #| msgid "Could not trash snapshot"
 msgid "Could not load Snapshots"
 msgstr "无法回收快照"
 
-#: src/snapshot_page/snapshot_page.py:194
+#: src/snapshot_page/snapshot_page.py:196
 msgid "Showing snapshots for {}"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:198
+#: src/snapshot_page/snapshot_page.py:200
 #, fuzzy
 #| msgid "No Snapshots"
 msgid "No snapshots for {}"
 msgstr "没有快照"
 
-#: src/snapshot_page/snapshot_page.py:198
+#: src/snapshot_page/snapshot_page.py:200
 msgid "New"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:242
 #: src/snapshot_page/snapshot_page.py:244
-#: src/snapshot_page/snapshots_list_page.py:60
+#: src/snapshot_page/snapshot_page.py:246
+#: src/snapshot_page/snapshots_list_page.py:61
 #, fuzzy
 #| msgid "There is no User Data to Snapshot"
 msgid "No Data Found to Snapshot"
 msgstr "没有用户数据以创建快照"
 
-#: src/snapshot_page/snapshot_page.py:251
-#: src/snapshot_page/snapshots_list_page.py:75
+#: src/snapshot_page/snapshot_page.py:253
+#: src/snapshot_page/snapshots_list_page.py:76
 #, fuzzy
 #| msgid "Open Snapshots Folder"
 msgid "Opened snapshots folder"
 msgstr "打开快照文件夹"
 
-#: src/snapshot_page/snapshot_page.py:386
+#: src/snapshot_page/snapshot_page.py:388
 #, fuzzy
 #| msgid "No Snapshots"
 msgid "Copied Snapshot Paths"
 msgstr "没有快照"
 
-#: src/snapshot_page/snapshot_page.py:395
+#: src/snapshot_page/snapshot_page.py:397
 msgid "No apps in your selection can be snapshotted"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:469
+#: src/snapshot_page/snapshot_page.py:471
 #, fuzzy
 #| msgid "Applying Snapshot…"
 msgid "Applying Snapshots"
 msgstr "正在应用快照…"
 
-#: src/snapshot_page/snapshot_page.py:475
+#: src/snapshot_page/snapshot_page.py:477
 #, fuzzy
 #| msgid "No Snapshots"
 msgid "No snapshots to extract"
 msgstr "没有快照"
 
-#: src/snapshot_page/snapshot_page.py:475
+#: src/snapshot_page/snapshot_page.py:477
 msgid "No snapshots were found to extract"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:478
+#: src/snapshot_page/snapshot_page.py:480
 #, fuzzy
 #| msgid "Apply Snapshot?"
 msgid "Apply These Snapshots?"
 msgstr "应用快照？"
 
-#: src/snapshot_page/snapshot_page.py:478
+#: src/snapshot_page/snapshot_page.py:480
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
 
-#: src/snapshot_page/snapshot_page.py:514
+#: src/snapshot_page/snapshot_page.py:513
 #, fuzzy
 #| msgid "Trash Snapshot"
 msgid "Trashed snapshots"
 msgstr "回收快照"
 
-#: src/snapshot_page/snapshot_page.py:516
+#: src/snapshot_page/snapshot_page.py:515
 #, fuzzy
 #| msgid "Could not trash snapshot"
 msgid "Could not trash snapshots"
 msgstr "无法回收快照"
 
-#: src/snapshot_page/snapshot_page.py:519
+#: src/snapshot_page/snapshot_page.py:518
 #, fuzzy
 #| msgid "Trash Snapshot?"
 msgid "Trash Snapshots?"
 msgstr "回收快照？"
 
-#: src/snapshot_page/snapshot_page.py:519
+#: src/snapshot_page/snapshot_page.py:518
 #, fuzzy
 #| msgid "These folders will be sent to the trash."
 msgid "These apps' snapshots will be sent to the trash"
 msgstr "这些文件夹将会被移动到回收站。"
 
-#: src/snapshot_page/snapshot_page.py:558
+#: src/snapshot_page/snapshot_page.py:557
 #, fuzzy
 #| msgid "Creating Snapshots"
 msgid "Loading Snapshots"
@@ -2028,18 +2030,18 @@ msgstr "没有快照"
 msgid "Open Snapshots Folder for this App"
 msgstr "打开快照文件夹"
 
-#: src/snapshot_page/snapshots_list_page.py:30
-#: src/snapshot_page/snapshots_list_page.py:51
+#: src/snapshot_page/snapshots_list_page.py:31
+#: src/snapshot_page/snapshots_list_page.py:52
 #, fuzzy
 #| msgid "Attempt to Install?"
 msgid "App not Installed"
 msgstr "尝试安装？"
 
-#: src/snapshot_page/snapshots_list_page.py:54
+#: src/snapshot_page/snapshots_list_page.py:55
 msgid "{} Snapshots"
 msgstr "{} 项快照"
 
-#: src/snapshot_page/tar_worker.py:81
+#: src/snapshot_page/tar_worker.py:80
 msgid "Error in snapshot handling"
 msgstr ""
 
@@ -2048,20 +2050,20 @@ msgid "Review Selection"
 msgstr ""
 
 #. self.packages_group.set_title(_("Review Packages"))
-#: src/install_page/file_install_dialog.py:36
+#: src/install_page/file_install_dialog.py:37
 msgid "The following packages will be installed"
 msgstr ""
 
-#: src/install_page/file_install_dialog.py:39
+#: src/install_page/file_install_dialog.py:40
 msgid "Install a Package"
 msgstr ""
 
 #. self.packages_group.set_title(_("Review Package"))
-#: src/install_page/file_install_dialog.py:41
+#: src/install_page/file_install_dialog.py:42
 msgid "The following package will be installed"
 msgstr ""
 
-#: src/install_page/file_install_dialog.py:42
+#: src/install_page/file_install_dialog.py:43
 msgid "package"
 msgstr ""
 
@@ -2076,28 +2078,28 @@ msgstr "选择"
 msgid "Pending Packages"
 msgstr ""
 
-#: src/install_page/install_page.py:51
+#: src/install_page/install_page.py:52
 #, fuzzy
 #| msgid "Installed Remotes"
 msgid "Installed Packages"
 msgstr "已安装的远程仓库"
 
-#: src/install_page/install_page.py:68
+#: src/install_page/install_page.py:69
 msgid "{} Pending Package"
 msgstr ""
 
-#: src/install_page/install_page.py:73
+#: src/install_page/install_page.py:74
 msgid "{} Pending Packages"
 msgstr ""
 
 #. Extra Object Creation
-#: src/install_page/install_page.py:88
+#: src/install_page/install_page.py:89
 #, fuzzy
 #| msgid "Installing"
 msgid "Installing Packages"
 msgstr "正在安装"
 
-#: src/install_page/install_page.py:96
+#: src/install_page/install_page.py:97
 msgid "Loading Installation Options"
 msgstr ""
 
@@ -2109,25 +2111,25 @@ msgstr ""
 msgid "Packages queued to install will show up here"
 msgstr ""
 
-#: src/install_page/pending_page.py:34
+#: src/install_page/pending_page.py:35
 #, fuzzy
 #| msgid "Remove"
 msgid "Remove All"
 msgstr "移除"
 
-#: src/install_page/result_row.blp:8 src/install_page/result_row.py:42
+#: src/install_page/result_row.blp:8 src/install_page/result_row.py:43
 msgid "Add Package to Queue"
 msgstr ""
 
-#: src/install_page/result_row.py:46
+#: src/install_page/result_row.py:47
 msgid "Package has been Added to Queue"
 msgstr ""
 
-#: src/install_page/result_row.py:50
+#: src/install_page/result_row.py:51
 msgid "Remove Package from Queue"
 msgstr ""
 
-#: src/install_page/result_row.py:54
+#: src/install_page/result_row.py:55
 msgid "This Package is Already Installed"
 msgstr ""
 
@@ -2166,7 +2168,7 @@ msgstr "尝试在搜索中更具体"
 msgid "Try a different search term"
 msgstr "尝试其他搜索词"
 
-#: src/install_page/results_page.py:50
+#: src/install_page/results_page.py:48
 #, fuzzy
 #| msgid "Search"
 msgid "Search {}"
@@ -2206,11 +2208,11 @@ msgstr ""
 msgid "Install packages from files on your system"
 msgstr ""
 
-#: src/install_page/select_page.py:60
+#: src/install_page/select_page.py:63
 msgid "No files were found to install"
 msgstr ""
 
-#: src/install_page/select_page.py:70
+#: src/install_page/select_page.py:73
 msgid "Flatpaks"
 msgstr "Flatpak 应用"
 
