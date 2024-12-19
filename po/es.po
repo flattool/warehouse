@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 23:16-0400\n"
+"POT-Creation-Date: 2024-12-18 22:37-0500\n"
 "PO-Revision-Date: 2024-12-05 16:05+0000\n"
 "Last-Translator: lmens-lmental <lmenslmental@gmail.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
@@ -47,7 +47,8 @@ msgstr "Características:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
-msgstr "Gestiona tus Flatpaks intsalados y las propiedades de qualquier paquete"
+msgstr ""
+"Gestiona tus Flatpaks intsalados y las propiedades de qualquier paquete"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
@@ -121,62 +122,62 @@ msgstr "Instalar nuevos paquetes desde archivos o repositorios remotos"
 msgid "Install Page in Narrow Window"
 msgstr "Página de instalación en ventana estrecha"
 
-#: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
-#: src/install_page/select_page.py:67
+#: src/main.py:95 src/main.py:101 src/install_page/select_page.py:63
+#: src/install_page/select_page.py:70
 msgid "Could not add files"
 msgstr "No se han podido añadir los archivos"
 
-#: src/main.py:101
+#: src/main.py:95
 msgid "No files were found"
 msgstr "No se han encontrado archivos"
 
-#: src/main.py:109
+#: src/main.py:103
 msgid "Flatpaks & Remotes"
 msgstr "Flatpaks & Repositorios"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:217
+#: src/main.py:211
 msgid "translator-credits"
 msgstr "Racsu <me@racsu.com>"
 
-#: src/main.py:223
+#: src/main.py:217
 msgid "Donate"
 msgstr "Donar"
 
-#: src/main.py:225
+#: src/main.py:219
 msgid "Contributors"
 msgstr "Contribuidores"
 
-#: src/host_info.py:380 src/host_info.py:382
+#: src/host_info.py:384 src/host_info.py:386
 msgid "Could not load packages"
 msgstr "No se han podido cargar los paquetes"
 
-#: src/package_install_worker.py:84
+#: src/package_install_worker.py:85
 msgid "Errors occurred during installation"
 msgstr "Ocurrieron errores durante la instalación"
 
-#: src/package_install_worker.py:88 src/package_install_worker.py:92
+#: src/package_install_worker.py:89 src/package_install_worker.py:93
 msgid "Error occurred during installation"
 msgstr "Ocurrió un error durante la instalación"
 
-#: src/package_install_worker.py:88
-#: src/change_version_page/change_version_worker.py:70
+#: src/package_install_worker.py:89
+#: src/change_version_page/change_version_worker.py:77
 msgid "Failed to exit cleanly"
 msgstr "No se pudo cerrar correctamente"
 
-#: src/package_install_worker.py:104
+#: src/package_install_worker.py:105
 msgid "Could not cancel installation"
 msgstr "No se pudo cancelar la instalación"
 
-#: src/package_install_worker.py:125 src/package_install_worker.py:135
+#: src/package_install_worker.py:126 src/package_install_worker.py:136
 msgid "Could not install packages"
 msgstr "No se pueden instalar los paquetes"
 
-#: src/package_install_worker.py:125
+#: src/package_install_worker.py:126
 msgid "Packages are currently being installed."
 msgstr "Actualmente se están instalando paquetes."
 
-#: src/package_install_worker.py:135
+#: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
 msgstr "No se ha solicitado la instalación de paquetes."
 
@@ -213,16 +214,16 @@ msgstr ""
 "datos seleccionados."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
-#: src/packages_page/uninstall_dialog.py:37
-#: src/properties_page/properties_page.py:189
-#: src/properties_page/properties_page.py:310
-#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:122
-#: src/remotes_page/remotes_page.py:189 src/user_data_page/data_box.py:114
-#: src/user_data_page/user_data_page.py:209
+#: src/packages_page/uninstall_dialog.py:38
+#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:315
+#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:126
+#: src/remotes_page/remotes_page.py:193 src/user_data_page/data_box.py:116
+#: src/user_data_page/user_data_page.py:210
 #: src/snapshot_page/new_snapshot_dialog.blp:16
-#: src/snapshot_page/snapshot_box.py:113 src/snapshot_page/snapshot_box.py:155
-#: src/snapshot_page/snapshot_page.py:479
-#: src/snapshot_page/snapshot_page.py:520
+#: src/snapshot_page/snapshot_box.py:114 src/snapshot_page/snapshot_box.py:156
+#: src/snapshot_page/snapshot_page.py:481
+#: src/snapshot_page/snapshot_page.py:519
 #: src/install_page/file_install_dialog.blp:13
 msgid "Cancel"
 msgstr "Cancelar"
@@ -245,35 +246,35 @@ msgstr "Elige un remoto a buscar"
 msgid "Select a remote to attempt to install from"
 msgstr "Seleccione un control remoto para intentar la instalación"
 
-#: src/gtk/attempt_install_dialog.py:18 src/packages_page/filters_page.py:122
-#: src/remotes_page/remote_row.py:148 src/install_page/pending_page.py:29
-#: src/install_page/select_page.py:31
+#: src/gtk/attempt_install_dialog.py:19 src/packages_page/filters_page.py:125
+#: src/remotes_page/remote_row.py:152 src/install_page/pending_page.py:30
+#: src/install_page/select_page.py:32
 #, fuzzy
 #| msgid "Installation"
 msgid "Installation: {}"
 msgstr "Instalación"
 
-#: src/gtk/attempt_install_dialog.py:71
+#: src/gtk/attempt_install_dialog.py:76
 msgid "Can't find matching packages"
 msgstr "No se encuentran paquetes compatibles"
 
-#: src/gtk/attempt_install_dialog.py:71
+#: src/gtk/attempt_install_dialog.py:76
 msgid "Your system has no remotes added"
 msgstr "Su sistema no tiene controles remotos agregados"
 
 #. Extra Object Creation
-#: src/gtk/error_toast.py:12
+#: src/gtk/error_toast.py:13
 msgid "Details"
 msgstr "Detalles"
 
-#: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
+#: src/gtk/error_toast.py:20 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
 #: src/snapshot_page/snapshot_page.blp:149
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/gtk/error_toast.py:20 src/main_window/window.py:135
-#: src/main_window/window.py:145 src/main_window/window.py:154
+#: src/gtk/error_toast.py:21 src/main_window/window.py:139
+#: src/main_window/window.py:149 src/main_window/window.py:158
 msgid "OK"
 msgstr "De acuerdo"
 
@@ -403,7 +404,7 @@ msgstr "No hay datos sobrantes"
 msgid "Snapshots Page"
 msgstr "Instantánea aplicada"
 
-#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:202
+#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:203
 #, fuzzy
 #| msgid "New Snapshot"
 msgid "New Snapshots"
@@ -439,39 +440,39 @@ msgstr "Instalación"
 msgid "Choose a custom installation"
 msgstr "Elija una instalación personalizada"
 
-#: src/gtk/installation_chooser.py:27
+#: src/gtk/installation_chooser.py:28
 #, fuzzy
 #| msgid "The app will be available to only you"
 msgid "These {} will only be available to you"
 msgstr "La aplicación solo estará disponible para usted"
 
-#: src/gtk/installation_chooser.py:28
+#: src/gtk/installation_chooser.py:29
 #, fuzzy
 #| msgid "The app will be available to every user on the system"
 msgid "These {} will be available to everyone"
 msgstr "La aplicación estará disponible para todos los usuarios del sistema"
 
-#: src/gtk/installation_chooser.py:29
+#: src/gtk/installation_chooser.py:30
 msgid "Choose how these {} will be installed"
 msgstr "Elija cómo estos {} se instalarán"
 
-#: src/gtk/installation_chooser.py:31
+#: src/gtk/installation_chooser.py:32
 #, fuzzy
 #| msgid "The app will be available to only you"
 msgid "This {} will only be available to you"
 msgstr "La aplicación solo estará disponible para usted"
 
-#: src/gtk/installation_chooser.py:32
+#: src/gtk/installation_chooser.py:33
 #, fuzzy
 #| msgid "The app will be available to every user on the system"
 msgid "This {} will be available to everyone"
 msgstr "La aplicación estará disponible para todos los usuarios del sistema"
 
-#: src/gtk/installation_chooser.py:33
+#: src/gtk/installation_chooser.py:34
 msgid "Choose how this {} will be installed"
 msgstr "Eliga comó estos {} se instalaran"
 
-#: src/gtk/sidebar_button.py:19
+#: src/gtk/sidebar_button.py:20
 msgid "Show Sidebar"
 msgstr "Mostrar barra lateral"
 
@@ -495,32 +496,32 @@ msgstr "Menú principal"
 
 #: src/main_window/window.blp:67 src/packages_page/packages_page.blp:20
 #: src/packages_page/packages_page.blp:55
-#: src/packages_page/packages_page.py:155
-#: src/packages_page/packages_page.py:319
-#: src/install_page/file_install_dialog.py:37
+#: src/packages_page/packages_page.py:157
+#: src/packages_page/packages_page.py:322
+#: src/install_page/file_install_dialog.py:38
 msgid "Packages"
 msgstr "Paquetes"
 
-#: src/main_window/window.blp:80
+#: src/main_window/window.blp:82
 #, fuzzy
 #| msgid "All Remotes"
 msgid "Remotes"
 msgstr "Todos los remotos"
 
-#: src/main_window/window.blp:94 src/properties_page/properties_page.blp:114
+#: src/main_window/window.blp:98 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
 msgid "User Data"
 msgstr "Datos del usuario"
 
-#: src/main_window/window.blp:107 src/snapshot_page/snapshot_page.blp:18
+#: src/main_window/window.blp:113 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
-#: src/snapshot_page/snapshot_page.py:355
+#: src/snapshot_page/snapshot_page.py:357
 #, fuzzy
 #| msgid "No Snapshots"
 msgid "Snapshots"
 msgstr "No hay instantáneas"
 
-#: src/main_window/window.blp:120 src/install_page/file_install_dialog.py:34
+#: src/main_window/window.blp:128 src/install_page/file_install_dialog.py:35
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
 #, fuzzy
@@ -528,50 +529,50 @@ msgstr "No hay instantáneas"
 msgid "Install Packages"
 msgstr "Instalando"
 
-#: src/main_window/window.blp:150
+#: src/main_window/window.blp:160
 #, fuzzy
 #| msgid "Set Filters"
 msgid "_Open Files"
 msgstr "Establecer filtros"
 
-#: src/main_window/window.blp:154
+#: src/main_window/window.blp:164
 msgid "_Keyboard Shortcuts"
 msgstr "Atajos del _teclado"
 
-#: src/main_window/window.blp:158
+#: src/main_window/window.blp:168
 msgid "_About Warehouse"
 msgstr "_Acerca de Warehouse"
 
-#: src/main_window/window.py:132
+#: src/main_window/window.py:136
 msgid "Unsupported Filetype"
 msgstr "Tipo de archivo no soportado"
 
-#: src/main_window/window.py:133
+#: src/main_window/window.py:137
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
 msgstr "Solo se admiten los archivos .flatpak, .flatpakref y .flatpakrepo."
 
-#: src/main_window/window.py:141
+#: src/main_window/window.py:145
 #, fuzzy
 #| msgid "Set Filters"
 msgid "Mixed Filetypes"
 msgstr "Establecer filtros"
 
-#: src/main_window/window.py:142
+#: src/main_window/window.py:146
 msgid "Flatpaks and remotes cannot be installed at the same time."
 msgstr ""
 "Los flatpaks y los controles remotos no se pueden instalar al mismo tiempo."
 
-#: src/main_window/window.py:151
+#: src/main_window/window.py:155
 #, fuzzy
 #| msgid "Too Many Results"
 msgid "Too Many Remotes"
 msgstr "Demasiados resultados"
 
-#: src/main_window/window.py:152
+#: src/main_window/window.py:156
 msgid "Only one remote at a time is supported."
 msgstr "Solo se admite un control remoto a la vez."
 
-#: src/main_window/window.py:170
+#: src/main_window/window.py:174
 #, fuzzy
 #| msgid "Could not open folder"
 msgid "Could not open files"
@@ -725,7 +726,7 @@ msgid "Select All"
 msgstr "Seleccionar todo"
 
 #: src/packages_page/packages_page.blp:144
-#: src/packages_page/uninstall_dialog.py:38
+#: src/packages_page/uninstall_dialog.py:39
 #: src/properties_page/properties_page.blp:88
 msgid "Uninstall"
 msgstr "Desinstalar"
@@ -742,90 +743,90 @@ msgstr "Copiar IDs"
 msgid "Copy Refs"
 msgstr "Copiar refs"
 
-#: src/packages_page/packages_page.py:151
-#: src/user_data_page/data_subpage.py:107
-#: src/snapshot_page/new_snapshot_dialog.py:38
-#: src/snapshot_page/snapshot_page.py:355
+#: src/packages_page/packages_page.py:153
+#: src/user_data_page/data_subpage.py:109
+#: src/snapshot_page/new_snapshot_dialog.py:39
+#: src/snapshot_page/snapshot_page.py:357
 #, fuzzy
 #| msgid "{} selected"
 msgid "{} Selected"
 msgstr "{} seleccionado"
 
-#: src/packages_page/packages_page.py:192
+#: src/packages_page/packages_page.py:194
 msgid "Error getting Flatpak '{}'"
 msgstr "Error al obtener Flatpak '{}'"
 
-#: src/packages_page/packages_page.py:241
+#: src/packages_page/packages_page.py:243
 msgid "Names"
 msgstr "Nombres"
 
-#: src/packages_page/packages_page.py:244
+#: src/packages_page/packages_page.py:246
 msgid "IDs"
 msgstr "IDs"
 
-#: src/packages_page/packages_page.py:247
+#: src/packages_page/packages_page.py:249
 #, fuzzy
 #| msgid "Copy Refs"
 msgid "Refs"
 msgstr "Copiar refs"
 
-#: src/packages_page/packages_page.py:255
-#: src/properties_page/properties_page.py:272
+#: src/packages_page/packages_page.py:257
+#: src/properties_page/properties_page.py:275
 msgid "Copied {}"
 msgstr "Copiado {}"
 
-#: src/packages_page/packages_page.py:257
+#: src/packages_page/packages_page.py:259
 #, fuzzy
 #| msgid "Could not add {}"
 msgid "Could not copy {}"
 msgstr "No se ha podido añadir {}"
 
-#: src/packages_page/packages_page.py:307
+#: src/packages_page/packages_page.py:310
 msgid "Errors occurred while uninstalling"
 msgstr "Se han producido errores al desinstalar"
 
-#: src/packages_page/packages_page.py:309
+#: src/packages_page/packages_page.py:312
 #, fuzzy
 #| msgid "Uninstalled successfully"
 msgid "Uninstalled Packages"
 msgstr "Desinstalado correctamente"
 
-#: src/packages_page/packages_page.py:367
+#: src/packages_page/packages_page.py:370
 #, fuzzy
 #| msgid "Loading Flatpaks"
 msgid "Loading Packages"
 msgstr "Cargando Flatpaks"
 
-#: src/packages_page/packages_page.py:367
-#: src/packages_page/packages_page.py:368
-#: src/properties_page/properties_page.py:366
-#: src/remotes_page/remotes_page.py:285 src/remotes_page/remotes_page.py:286
-#: src/user_data_page/user_data_page.py:296
-#: src/snapshot_page/snapshot_page.py:558 src/install_page/install_page.py:96
+#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:371
+#: src/properties_page/properties_page.py:368
+#: src/remotes_page/remotes_page.py:291 src/remotes_page/remotes_page.py:292
+#: src/user_data_page/user_data_page.py:297
+#: src/snapshot_page/snapshot_page.py:557 src/install_page/install_page.py:97
 #: src/install_page/results_page.py:135
 msgid "This should only take a moment"
 msgstr "Esto solo debería llevar un momento"
 
-#: src/packages_page/packages_page.py:368
+#: src/packages_page/packages_page.py:371
 #, fuzzy
 #| msgid "Uninstalling"
 msgid "Uninstalling Packages"
 msgstr "Desinstalando"
 
-#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:373
 #, fuzzy
 #| msgid "Uninstalling"
 msgid "Reinstalling Package"
 msgstr "Desinstalando"
 
-#: src/packages_page/packages_page.py:370
-#: src/packages_page/packages_page.py:372
-#: src/change_version_page/change_version_page.py:119
-#: src/snapshot_page/snapshot_page.py:551 src/install_page/install_page.py:88
+#: src/packages_page/packages_page.py:373
+#: src/packages_page/packages_page.py:375
+#: src/change_version_page/change_version_page.py:123
+#: src/snapshot_page/snapshot_page.py:550 src/install_page/install_page.py:89
 msgid "This could take a while"
 msgstr "Esto podría tardar un poco"
 
-#: src/packages_page/packages_page.py:372
+#: src/packages_page/packages_page.py:375
 #, fuzzy
 #| msgid "Version"
 msgid "Changing Version"
@@ -844,8 +845,8 @@ msgstr "Permitir restaurar la configuración y el contenido de esta aplicación"
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
 #: src/user_data_page/user_data_page.blp:148
-#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:114
-#: src/snapshot_page/snapshot_page.py:521
+#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:115
+#: src/snapshot_page/snapshot_page.py:520
 msgid "Trash"
 msgstr "Borrar"
 
@@ -854,29 +855,29 @@ msgstr "Borrar"
 msgid "Send data to the trash"
 msgstr "¿Enviar los datos de usuario de {} a la papelera?"
 
-#: src/packages_page/uninstall_dialog.py:30
+#: src/packages_page/uninstall_dialog.py:31
 msgid "Uninstall {}?"
 msgstr "¿Desinstalar {}?"
 
-#: src/packages_page/uninstall_dialog.py:31
+#: src/packages_page/uninstall_dialog.py:32
 #, fuzzy
 #| msgid "It will not be possible to use {} after removal."
 msgid "It will not be possible to use {} after removal"
 msgstr "No será posible usar {} después de la eliminación."
 
-#: src/packages_page/uninstall_dialog.py:33
+#: src/packages_page/uninstall_dialog.py:34
 #, fuzzy
 #| msgid "Uninstall {}?"
 msgid "Uninstall Packages?"
 msgstr "¿Desinstalar {}?"
 
-#: src/packages_page/uninstall_dialog.py:34
+#: src/packages_page/uninstall_dialog.py:35
 #, fuzzy
 #| msgid "It will not be possible to use these apps after removal."
 msgid "It will not be possible to use these packages after removal"
 msgstr "No será posible usar estas aplicaciones después de la eliminación."
 
-#: src/packages_page/uninstall_dialog.py:41
+#: src/packages_page/uninstall_dialog.py:42
 #, fuzzy
 #| msgid "App Settings & Data"
 msgid "App Settings & Content"
@@ -943,7 +944,7 @@ msgstr "Entorno de ejecución"
 #: src/properties_page/properties_page.blp:188
 #, fuzzy
 #| msgid "Disable Auto Removal"
-msgid "Disable Automactic Removal"
+msgid "Disable Automatic Removal"
 msgstr "Desactivar la eliminación automática"
 
 #: src/properties_page/properties_page.blp:189
@@ -1002,153 +1003,153 @@ msgstr "Asunto"
 msgid "Date"
 msgstr "Fecha"
 
-#: src/properties_page/properties_page.py:75
+#: src/properties_page/properties_page.py:76
 #, fuzzy
 #| msgid "Properties"
 msgid "{} Properties"
 msgstr "Propiedades"
 
-#: src/properties_page/properties_page.py:80
+#: src/properties_page/properties_page.py:81
 msgid "Properties"
 msgstr "Propiedades"
 
 #. Apply again
-#: src/properties_page/properties_page.py:109
-#: src/user_data_page/user_data_page.py:296
+#: src/properties_page/properties_page.py:110
+#: src/user_data_page/user_data_page.py:297
 msgid "Loading User Data"
 msgstr "Cargando datos del usuario"
 
-#: src/properties_page/properties_page.py:119
+#: src/properties_page/properties_page.py:120
 msgid "No User Data"
 msgstr "No hay datos del usuario"
 
-#: src/properties_page/properties_page.py:129
-#: src/properties_page/properties_page.py:145
+#: src/properties_page/properties_page.py:130
+#: src/properties_page/properties_page.py:146
 #, fuzzy
 #| msgid "Could not show properties"
 msgid "Could not get properties"
 msgstr "No se pudieron mostrar las propiedades"
 
-#: src/properties_page/properties_page.py:142
+#: src/properties_page/properties_page.py:143
 msgid "No version information found"
 msgstr "No se encuentra información de la versión"
 
-#: src/properties_page/properties_page.py:162
+#: src/properties_page/properties_page.py:163
 #, fuzzy
 #| msgid "Could not open folder"
 msgid "Could not open data"
 msgstr "No se ha podido abrir la carpeta"
 
-#: src/properties_page/properties_page.py:181
-#: src/properties_page/properties_page.py:183
-#: src/properties_page/properties_page.py:238
-#: src/properties_page/properties_page.py:240 src/user_data_page/data_box.py:99
-#: src/user_data_page/user_data_page.py:183
-#: src/user_data_page/user_data_page.py:197
+#: src/properties_page/properties_page.py:182
+#: src/properties_page/properties_page.py:184
+#: src/properties_page/properties_page.py:241
+#: src/properties_page/properties_page.py:243
+#: src/user_data_page/data_box.py:101 src/user_data_page/user_data_page.py:184
+#: src/user_data_page/user_data_page.py:198
 #, fuzzy
 #| msgid "Could not trash user data"
 msgid "Could not trash data"
 msgstr "No se han podido borrar los datos del usuario"
 
-#: src/properties_page/properties_page.py:186
+#: src/properties_page/properties_page.py:187
 msgid "Send {}'s User Data to the Trash?"
 msgstr "¿Enviar los datos de usuario de {} a la papelera?"
 
-#: src/properties_page/properties_page.py:187
+#: src/properties_page/properties_page.py:188
 #, fuzzy
 #| msgid "Your files and data for this app will be sent to the trash."
 msgid "Your settings and data for this app will be sent to the trash"
 msgstr "Sus archivos y datos de esta aplicación se enviarán a la papelera."
 
-#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:191
 msgid "Trash Data"
 msgstr "Borrar datos"
 
-#: src/properties_page/properties_page.py:199
+#: src/properties_page/properties_page.py:201
 #, fuzzy
 #| msgid "Could not disable updates for {}"
 msgid "Could not Disable Updates"
 msgstr "No se han podido desactivar las actualizaciones para {}"
 
-#: src/properties_page/properties_page.py:199
+#: src/properties_page/properties_page.py:201
 #, fuzzy
 #| msgid "Could not manage data"
 msgid "Could not Enable Updates"
 msgstr "No se pueden gestionar los datos"
 
-#: src/properties_page/properties_page.py:205
+#: src/properties_page/properties_page.py:207
 #, fuzzy
 #| msgid "Disable Updates"
 msgid "Disabled Updates"
 msgstr "Desactivar actualizaciones"
 
-#: src/properties_page/properties_page.py:205
+#: src/properties_page/properties_page.py:207
 #, fuzzy
 #| msgid "Enable Updates"
 msgid "Enabled Updates"
 msgstr "Activar actualizaciones"
 
-#: src/properties_page/properties_page.py:217
+#: src/properties_page/properties_page.py:220
 #, fuzzy
 #| msgid "Could not disable auto removal"
 msgid "Could not Disable Autoremoval"
 msgstr "No se ha podido desactivar la eliminación automática"
 
-#: src/properties_page/properties_page.py:217
+#: src/properties_page/properties_page.py:220
 #, fuzzy
 #| msgid "Could not enable auto removal"
 msgid "Could not Enable Autoremoval"
 msgstr "No se ha podido activar la eliminación automática"
 
-#: src/properties_page/properties_page.py:222
+#: src/properties_page/properties_page.py:225
 #, fuzzy
 #| msgid "Disable Auto Removal"
 msgid "Disabled Autoremoval"
 msgstr "Desactivar la eliminación automática"
 
-#: src/properties_page/properties_page.py:222
+#: src/properties_page/properties_page.py:225
 #, fuzzy
 #| msgid "Enable Auto Removal"
 msgid "Enabled Autoremoval"
 msgstr "Activar la eliminación automática"
 
-#: src/properties_page/properties_page.py:245
+#: src/properties_page/properties_page.py:248
 #, fuzzy
 #| msgid "Could not install app"
 msgid "Could not uninstall"
 msgstr "No se ha podido instalar la aplicación"
 
-#: src/properties_page/properties_page.py:249
+#: src/properties_page/properties_page.py:252
 #, fuzzy
 #| msgid "Uninstall {}?"
 msgid "Uninstalled {}"
 msgstr "¿Desinstalar {}?"
 
-#: src/properties_page/properties_page.py:261
+#: src/properties_page/properties_page.py:264
 #, fuzzy
 #| msgid "Opened {}"
 msgid "Opening {}…"
 msgstr "Abierto {}"
 
-#: src/properties_page/properties_page.py:266
+#: src/properties_page/properties_page.py:269
 #, fuzzy
 #| msgid "Could not remove {}"
 msgid "Could not open {}"
 msgstr "No se ha podido eliminar {}"
 
-#: src/properties_page/properties_page.py:281
+#: src/properties_page/properties_page.py:284
 #, fuzzy
 #| msgid "Uninstall {}?"
 msgid "Reinstalled {}"
 msgstr "¿Desinstalar {}?"
 
-#: src/properties_page/properties_page.py:307
+#: src/properties_page/properties_page.py:312
 #, fuzzy
 #| msgid "Uninstall {}?"
 msgid "Reinstall {}?"
 msgstr "¿Desinstalar {}?"
 
-#: src/properties_page/properties_page.py:308
+#: src/properties_page/properties_page.py:313
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
@@ -1156,42 +1157,42 @@ msgstr ""
 "Este paquete se desinstalará y luego se volverá a instalar desde el mismo "
 "control remoto e instalación."
 
-#: src/properties_page/properties_page.py:311
-#: src/properties_page/properties_page.py:372
+#: src/properties_page/properties_page.py:316
+#: src/properties_page/properties_page.py:374
 msgid "Reinstall"
 msgstr "Reinstalar"
 
-#: src/properties_page/properties_page.py:328
+#: src/properties_page/properties_page.py:333
 msgid "Copied launch command"
 msgstr "Comando de lanzamiento copiado"
 
-#: src/properties_page/properties_page.py:330
+#: src/properties_page/properties_page.py:335
 #, fuzzy
 #| msgid "Copied launch command"
 msgid "Could not copy launch command"
 msgstr "Comando de lanzamiento copiado"
 
-#: src/properties_page/properties_page.py:336
+#: src/properties_page/properties_page.py:341
 msgid "Could not show details"
 msgstr "No se pueden mostrar los detalles"
 
-#: src/properties_page/properties_page.py:366
+#: src/properties_page/properties_page.py:368
 #, fuzzy
 #| msgid "View Properties"
 msgid "Loading Properties"
 msgstr "Ver propiedades"
 
-#: src/properties_page/properties_page.py:369
+#: src/properties_page/properties_page.py:371
 #, fuzzy
 #| msgid "New Snapshot"
 msgid "View Snapshots"
 msgstr "Instantánea nueva"
 
-#: src/properties_page/properties_page.py:370
+#: src/properties_page/properties_page.py:372
 msgid "Copy Launch Command"
 msgstr "Copiar comando de lanzamiento"
 
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:373
 #, fuzzy
 #| msgid "Show Details in Store"
 msgid "Show Details"
@@ -1215,53 +1216,53 @@ msgstr ""
 "Esto desinstalará la versión actual e instalará la elegida en su lugar. "
 "Tenga en cuenta que la desinstalación puede causar problemas."
 
-#: src/change_version_page/change_version_page.py:69
+#: src/change_version_page/change_version_page.py:72
 msgid "Currently Installed Version"
 msgstr "Versión instalada actualmente"
 
-#: src/change_version_page/change_version_page.py:86
+#: src/change_version_page/change_version_page.py:89
 #, fuzzy
 #| msgid "Could not create snapshot"
 msgid "Could not get versions"
 msgstr "No se ha podido crear la instantánea"
 
-#: src/change_version_page/change_version_page.py:93
+#: src/change_version_page/change_version_page.py:96
 msgid "Changed {}'s Version"
 msgstr "Cambiada la versión de {}"
 
-#: src/change_version_page/change_version_page.py:117
+#: src/change_version_page/change_version_page.py:121
 #, fuzzy
 #| msgid "Version"
 msgid "{} Versions"
 msgstr "Versión"
 
-#: src/change_version_page/change_version_page.py:118
+#: src/change_version_page/change_version_page.py:122
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Garantizar que nunca se actualizará a una versión más reciente"
 
-#: src/change_version_page/change_version_page.py:119
+#: src/change_version_page/change_version_page.py:123
 msgid "Fetching Releases"
 msgstr "Obteniendo versiones"
 
-#: src/change_version_page/change_version_worker.py:66
-#: src/change_version_page/change_version_worker.py:70
-#: src/change_version_page/change_version_worker.py:74
+#: src/change_version_page/change_version_worker.py:73
+#: src/change_version_page/change_version_worker.py:77
+#: src/change_version_page/change_version_worker.py:81
 msgid "Error occurred while changing version"
 msgstr "Se ha producido un error al cambiar de versión"
 
-#: src/change_version_page/change_version_worker.py:85
+#: src/change_version_page/change_version_worker.py:92
 #, fuzzy
 #| msgid "Could not create snapshot"
 msgid "Could not cancel version change"
 msgstr "No se ha podido crear la instantánea"
 
-#: src/change_version_page/change_version_worker.py:106
+#: src/change_version_page/change_version_worker.py:113
 #, fuzzy
 #| msgid "Could not manage data"
 msgid "Could not change version"
 msgstr "No se pueden gestionar los datos"
 
-#: src/change_version_page/change_version_worker.py:106
+#: src/change_version_page/change_version_worker.py:113
 msgid "Another package is changing version."
 msgstr "Otro paquete está cambiando de versión."
 
@@ -1286,20 +1287,20 @@ msgstr "Nombre"
 msgid "Repo URL"
 msgstr "URL de repositorio"
 
-#: src/remotes_page/add_remote_dialog.py:54
+#: src/remotes_page/add_remote_dialog.py:58
 #, fuzzy
 #| msgid "Could not add {}"
 msgid "Could not add remote"
 msgstr "No se ha podido añadir {}"
 
-#: src/remotes_page/add_remote_dialog.py:57
+#: src/remotes_page/add_remote_dialog.py:61
 #, fuzzy
 #| msgid "Add {}?"
 msgid "Added {}"
 msgstr "¿Añadir {}?"
 
 #. Apply
-#: src/remotes_page/add_remote_dialog.py:107
+#: src/remotes_page/add_remote_dialog.py:111
 #, fuzzy
 #| msgid "Add Remote"
 msgid "remote"
@@ -1331,68 +1332,68 @@ msgstr "Copiar nombre"
 msgid "Enable"
 msgstr "Activar"
 
-#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:123
+#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:127
 msgid "Disable"
 msgstr "Desactivar"
 
-#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:190
+#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:194
 msgid "Remove"
 msgstr "Eliminar"
 
-#: src/remotes_page/remote_row.py:24 src/remotes_page/remote_row.py:44
+#: src/remotes_page/remote_row.py:25 src/remotes_page/remote_row.py:46
 #, fuzzy
 #| msgid "Could not enable {}"
 msgid "Could not enable remote"
 msgstr "No se ha podido activar {}"
 
-#: src/remotes_page/remote_row.py:24
+#: src/remotes_page/remote_row.py:25
 msgid "Remote is already enabled"
 msgstr "Otro paquete está cambiando de versión"
 
-#: src/remotes_page/remote_row.py:51
+#: src/remotes_page/remote_row.py:53
 #, fuzzy
 #| msgid "Installed Remotes"
 msgid "Enabled remote"
 msgstr "Remotos instalados"
 
-#: src/remotes_page/remote_row.py:75 src/remotes_page/remote_row.py:153
+#: src/remotes_page/remote_row.py:77 src/remotes_page/remote_row.py:157
 #, fuzzy
 #| msgid "Updates Disabled"
 msgid "Remote is Disabled"
 msgstr "Actualizaciones desactivadas"
 
-#: src/remotes_page/remote_row.py:77
+#: src/remotes_page/remote_row.py:79
 #, fuzzy
 #| msgid "Disabled"
 msgid "Disabled remote"
 msgstr "Desactivado"
 
-#: src/remotes_page/remote_row.py:95 src/remotes_page/remote_row.py:107
-#: src/remotes_page/remote_row.py:111
+#: src/remotes_page/remote_row.py:97 src/remotes_page/remote_row.py:109
+#: src/remotes_page/remote_row.py:113
 #, fuzzy
 #| msgid "Could not disable {}"
 msgid "Could not disable remote"
 msgstr "No se ha podido desactivar {}"
 
-#: src/remotes_page/remote_row.py:95
+#: src/remotes_page/remote_row.py:97
 msgid "Remote is already disabled"
 msgstr "El control remoto ya está deshabilitado"
 
-#: src/remotes_page/remote_row.py:121
+#: src/remotes_page/remote_row.py:124
 msgid "Disable {}?"
 msgstr "¿Desactivar {}?"
 
-#: src/remotes_page/remote_row.py:121 src/remotes_page/remotes_page.py:188
+#: src/remotes_page/remote_row.py:124 src/remotes_page/remotes_page.py:191
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr "Las aplicaciones instaladas de {} dejarán de recibir actualizaciones"
 
-#: src/remotes_page/remote_row.py:133
+#: src/remotes_page/remote_row.py:137
 #, fuzzy
 #| msgid "Copied ref"
 msgid "Copied title"
 msgstr "Ref copiada"
 
-#: src/remotes_page/remote_row.py:136
+#: src/remotes_page/remote_row.py:140
 msgid "Copied name"
 msgstr "Nombre copiado"
 
@@ -1477,71 +1478,71 @@ msgstr "Añadir un repositorio personalizado"
 msgid "Manually enter new remote details"
 msgstr "Introducir manualmente nuevos detalles del mando a distancia"
 
-#: src/remotes_page/remotes_page.py:32
+#: src/remotes_page/remotes_page.py:33
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr ""
 "La tienda de aplicaciones de código abierto y \"paga lo que quieras\" de "
 "elementary"
 
-#: src/remotes_page/remotes_page.py:38
+#: src/remotes_page/remotes_page.py:39
 msgid "Central repository of Flatpak applications"
 msgstr "Repositorio central de aplicaciones Flatpak"
 
-#: src/remotes_page/remotes_page.py:44
+#: src/remotes_page/remotes_page.py:45
 msgid "Beta builds of Flatpak applications"
 msgstr "Versiones beta de aplicaciones Flatpak"
 
-#: src/remotes_page/remotes_page.py:50
+#: src/remotes_page/remotes_page.py:51
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "Flatpaks empaquetadas por Fedora Linux"
 
-#: src/remotes_page/remotes_page.py:56
+#: src/remotes_page/remotes_page.py:57
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr ""
 "La última versión beta de las aplicaciones y tiempos de ejecución de GNOME"
 
-#: src/remotes_page/remotes_page.py:62
+#: src/remotes_page/remotes_page.py:63
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr ""
 "Repositorio central del SDK de desarrollo y tiempo de ejecución de WebKit"
 
-#: src/remotes_page/remotes_page.py:152
+#: src/remotes_page/remotes_page.py:153
 msgid "Showing all packages from {}"
 msgstr "Mostrando todos los paquetes de {}"
 
-#: src/remotes_page/remotes_page.py:173
+#: src/remotes_page/remotes_page.py:175
 #, fuzzy
 #| msgid "Could not remove {}"
 msgid "Could not remove remote"
 msgstr "No se ha podido eliminar {}"
 
-#: src/remotes_page/remotes_page.py:180
+#: src/remotes_page/remotes_page.py:182
 #, fuzzy
 #| msgid "Remove {}"
 msgid "Removed {}"
 msgstr "Eliminar {}"
 
-#: src/remotes_page/remotes_page.py:188
+#: src/remotes_page/remotes_page.py:191
 msgid "Remove {}?"
 msgstr "¿Eliminar {}?"
 
-#: src/remotes_page/remotes_page.py:224 src/remotes_page/remotes_page.py:234
-#: src/remotes_page/remotes_page.py:236
+#: src/remotes_page/remotes_page.py:228 src/remotes_page/remotes_page.py:238
+#: src/remotes_page/remotes_page.py:240
 #, fuzzy
 #| msgid "Could not open folder"
 msgid "Could not open file"
 msgstr "No se ha podido abrir la carpeta"
 
-#: src/remotes_page/remotes_page.py:239
+#: src/remotes_page/remotes_page.py:243
 msgid "Flatpak Repos"
 msgstr "Repositorios Flatpak"
 
 #. Apply
-#: src/remotes_page/remotes_page.py:285
+#: src/remotes_page/remotes_page.py:291
 msgid "Adding Remote"
 msgstr "Añadiendo remoto"
 
-#: src/remotes_page/remotes_page.py:286
+#: src/remotes_page/remotes_page.py:292
 #, fuzzy
 #| msgid "Adding Remote"
 msgid "Loading Remotes"
@@ -1559,41 +1560,41 @@ msgstr "Copiar nombre"
 msgid "Attempt to Install"
 msgstr "¿Intentar instalar?"
 
-#: src/user_data_page/data_box.py:58
+#: src/user_data_page/data_box.py:59
 msgid "Copied data path"
 msgstr "Ruta de datos copiada"
 
-#: src/user_data_page/data_box.py:60
+#: src/user_data_page/data_box.py:61
 #, fuzzy
 #| msgid "Could not manage data"
 msgid "Could not copy data path"
 msgstr "No se pueden gestionar los datos"
 
-#: src/user_data_page/data_box.py:65
+#: src/user_data_page/data_box.py:66
 #, fuzzy
 #| msgid "Open Data Folder"
 msgid "Opened data folder"
 msgstr "Abrir carpeta de datos"
 
-#: src/user_data_page/data_box.py:67 src/snapshot_page/snapshot_page.py:253
-#: src/snapshot_page/snapshots_list_page.py:77
+#: src/user_data_page/data_box.py:68 src/snapshot_page/snapshot_page.py:255
+#: src/snapshot_page/snapshots_list_page.py:78
 msgid "Could not open folder"
 msgstr "No se ha podido abrir la carpeta"
 
-#: src/user_data_page/data_box.py:113
+#: src/user_data_page/data_box.py:115
 #, fuzzy
 #| msgid "Trash User Data"
 msgid "Trash {}'s Data?"
 msgstr "Eliminar datos de usuario"
 
-#: src/user_data_page/data_box.py:113
+#: src/user_data_page/data_box.py:115
 #, fuzzy
 #| msgid "These folders will be sent to the trash."
 msgid "{}'s data will be sent to the trash"
 msgstr "Estas carpetas se enviarán a la papelera."
 
-#: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:210
-#: src/snapshot_page/snapshot_page.py:480
+#: src/user_data_page/data_box.py:117 src/user_data_page/user_data_page.py:211
+#: src/snapshot_page/snapshot_page.py:482
 msgid "Continue"
 msgstr "Continuar"
 
@@ -1607,13 +1608,13 @@ msgstr "Titulo no establecido"
 msgid "Loading Size…"
 msgstr "Revirtiendo…"
 
-#: src/user_data_page/data_subpage.py:232
+#: src/user_data_page/data_subpage.py:254
 #, fuzzy
 #| msgid "No Leftover Data"
 msgid "No Active Data"
 msgstr "No hay datos sobrantes"
 
-#: src/user_data_page/data_subpage.py:233
+#: src/user_data_page/data_subpage.py:255
 #, fuzzy
 #| msgid ""
 #| "Warehouse cannot see the list of remotes or the system has no remotes "
@@ -1625,11 +1626,11 @@ msgstr ""
 "Warehouse no puede ver la lista de repositorios o el sistema no tiene "
 "repositorios añadidos"
 
-#: src/user_data_page/data_subpage.py:236
+#: src/user_data_page/data_subpage.py:258
 msgid "No Leftover Data"
 msgstr "No hay datos sobrantes"
 
-#: src/user_data_page/data_subpage.py:237
+#: src/user_data_page/data_subpage.py:259
 msgid "There is no leftover user data"
 msgstr "No hay datos de usuario sobrantes"
 
@@ -1675,57 +1676,57 @@ msgstr "ID"
 msgid "Size"
 msgstr "Tamaño"
 
-#: src/user_data_page/user_data_page.py:75
-#: src/user_data_page/user_data_page.py:77
+#: src/user_data_page/user_data_page.py:76
+#: src/user_data_page/user_data_page.py:78
 #, fuzzy
 #| msgid "Loading User Data"
 msgid "Loading Size"
 msgstr "Cargando datos del usuario"
 
-#: src/user_data_page/user_data_page.py:151
+#: src/user_data_page/user_data_page.py:152
 #, fuzzy
 #| msgid "Could not apply snapshot"
 msgid "Could not copy paths"
 msgstr "No se ha podido aplicar la instantánea"
 
-#: src/user_data_page/user_data_page.py:151
-#: src/user_data_page/user_data_page.py:197
+#: src/user_data_page/user_data_page.py:152
+#: src/user_data_page/user_data_page.py:198
 msgid "No boxes were selected"
 msgstr "No se seleccionaron cajas"
 
-#: src/user_data_page/user_data_page.py:154
+#: src/user_data_page/user_data_page.py:155
 #, fuzzy
 #| msgid "Copied name"
 msgid "Copied paths"
 msgstr "Nombre copiado"
 
-#: src/user_data_page/user_data_page.py:185
+#: src/user_data_page/user_data_page.py:186
 #, fuzzy
 #| msgid "Trashed user data"
 msgid "Trashed data"
 msgstr "Datos de usuario borrados"
 
-#: src/user_data_page/user_data_page.py:208
+#: src/user_data_page/user_data_page.py:209
 #, fuzzy
 #| msgid "Trash Data"
 msgid "Trash Data?"
 msgstr "Borrar datos"
 
-#: src/user_data_page/user_data_page.py:208
+#: src/user_data_page/user_data_page.py:209
 #, fuzzy
 #| msgid "These folders will be sent to the trash."
 msgid "Data will be sent to the trash"
 msgstr "Estas carpetas se enviarán a la papelera."
 
-#: src/user_data_page/user_data_page.py:246
-#: src/user_data_page/user_data_page.py:269
+#: src/user_data_page/user_data_page.py:247
+#: src/user_data_page/user_data_page.py:270
 #, fuzzy
 #| msgid "Active Commit"
 msgid "Active Data"
 msgstr "Versión en uso"
 
-#: src/user_data_page/user_data_page.py:247
-#: src/user_data_page/user_data_page.py:275
+#: src/user_data_page/user_data_page.py:248
+#: src/user_data_page/user_data_page.py:276
 #, fuzzy
 #| msgid "No Leftover Data"
 msgid "Leftover Data"
@@ -1742,32 +1743,32 @@ msgstr "Buscar en la lista"
 msgid "Create"
 msgstr "Crear"
 
-#: src/snapshot_page/new_snapshot_dialog.py:110
+#: src/snapshot_page/new_snapshot_dialog.py:111
 #, fuzzy
 #| msgid "Creating Snapshots"
 msgid "Creating Snapshot"
 msgstr "Creando instantáneas"
 
-#: src/snapshot_page/new_snapshot_dialog.py:192
+#: src/snapshot_page/new_snapshot_dialog.py:193
 #, fuzzy
 #| msgid "Create Snapshots"
 msgid "Name these Snapshots"
 msgstr "Crear instantáneas"
 
-#: src/snapshot_page/new_snapshot_dialog.py:196
+#: src/snapshot_page/new_snapshot_dialog.py:197
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
 msgstr "Instantánea nueva"
 
-#: src/snapshot_page/new_snapshot_dialog.py:200
+#: src/snapshot_page/new_snapshot_dialog.py:201
 #, fuzzy
 #| msgid "New Snapshot"
 msgid "Name this Snapshot"
 msgstr "Instantánea nueva"
 
-#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:58
+#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:59
 #, fuzzy
 #| msgid "Copy Name"
 msgid "No Name Set"
@@ -1785,7 +1786,7 @@ msgstr "No se han encontrado remotos"
 msgid "No version found"
 msgstr "No se han encontrado resultados"
 
-#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:156
+#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:157
 msgid "Apply"
 msgstr "Aplicar"
 
@@ -1805,50 +1806,50 @@ msgstr "¿Crear instantáneas?"
 msgid "Confirm Rename"
 msgstr "Nombre copiado"
 
-#: src/snapshot_page/snapshot_box.py:33 src/snapshot_page/snapshot_box.py:45
-#: src/snapshot_page/snapshot_box.py:61
+#: src/snapshot_page/snapshot_box.py:34 src/snapshot_page/snapshot_box.py:46
+#: src/snapshot_page/snapshot_box.py:62
 #, fuzzy
 #| msgid "Could not manage data"
 msgid "Could not write data"
 msgstr "No se pueden gestionar los datos"
 
-#: src/snapshot_page/snapshot_box.py:98
+#: src/snapshot_page/snapshot_box.py:99
 msgid "Could not trash snapshot"
 msgstr "No se ha podido eliminar la instantánea"
 
-#: src/snapshot_page/snapshot_box.py:102
+#: src/snapshot_page/snapshot_box.py:103
 #, fuzzy
 #| msgid "Trash Snapshot"
 msgid "Trashed snapshot"
 msgstr "Eliminar la instantánea"
 
-#: src/snapshot_page/snapshot_box.py:112
+#: src/snapshot_page/snapshot_box.py:113
 msgid "Trash Snapshot?"
 msgstr "¿Eliminar la instantánea?"
 
-#: src/snapshot_page/snapshot_box.py:112
+#: src/snapshot_page/snapshot_box.py:113
 #, fuzzy
 #| msgid "This snapshot and its contents will be sent to the trash."
 msgid "This snapshot will be sent to the trash"
 msgstr "Esta instantánea y su contenido se enviarán a la papelera."
 
-#: src/snapshot_page/snapshot_box.py:142
+#: src/snapshot_page/snapshot_box.py:143
 #, fuzzy
 #| msgid "Applying Snapshot…"
 msgid "Applying Snapshot"
 msgstr "Aplicando instantánea…"
 
-#: src/snapshot_page/snapshot_box.py:152
+#: src/snapshot_page/snapshot_box.py:153
 msgid "Apply Snapshot?"
 msgstr "¿Aplicar instantánea?"
 
-#: src/snapshot_page/snapshot_box.py:153
+#: src/snapshot_page/snapshot_box.py:154
 #, fuzzy
 #| msgid "Your files and data for this app will be sent to the trash."
 msgid "Any current user data for this app will be trashed"
 msgstr "Sus archivos y datos de esta aplicación se enviarán a la papelera."
 
-#: src/snapshot_page/snapshot_box.py:182
+#: src/snapshot_page/snapshot_box.py:183
 #, fuzzy
 #| msgid "Version {}"
 msgid "Version: {}"
@@ -1922,105 +1923,106 @@ msgstr "Aplicar instantánea"
 msgid "Trash Snapshots"
 msgstr "Eliminar la instantánea"
 
-#: src/snapshot_page/snapshot_page.py:101
+#: src/snapshot_page/snapshot_page.py:103
 #, fuzzy
 #| msgid "Could not trash snapshot"
 msgid "Could not load Snapshots"
 msgstr "No se ha podido eliminar la instantánea"
 
-#: src/snapshot_page/snapshot_page.py:194
+#: src/snapshot_page/snapshot_page.py:196
 msgid "Showing snapshots for {}"
 msgstr "Mostrando instantáneas para {}"
 
-#: src/snapshot_page/snapshot_page.py:198
+#: src/snapshot_page/snapshot_page.py:200
 #, fuzzy
 #| msgid "No Snapshots"
 msgid "No snapshots for {}"
 msgstr "No hay instantáneas"
 
-#: src/snapshot_page/snapshot_page.py:198
+#: src/snapshot_page/snapshot_page.py:200
 msgid "New"
 msgstr "Nuevo"
 
-#: src/snapshot_page/snapshot_page.py:242
 #: src/snapshot_page/snapshot_page.py:244
-#: src/snapshot_page/snapshots_list_page.py:60
+#: src/snapshot_page/snapshot_page.py:246
+#: src/snapshot_page/snapshots_list_page.py:61
 #, fuzzy
 #| msgid "There is no User Data to Snapshot"
 msgid "No Data Found to Snapshot"
 msgstr "No hay datos de usuario para la instantánea"
 
-#: src/snapshot_page/snapshot_page.py:251
-#: src/snapshot_page/snapshots_list_page.py:75
+#: src/snapshot_page/snapshot_page.py:253
+#: src/snapshot_page/snapshots_list_page.py:76
 #, fuzzy
 #| msgid "Open Snapshots Folder"
 msgid "Opened snapshots folder"
 msgstr "Abrir carpeta de instantáneas"
 
-#: src/snapshot_page/snapshot_page.py:386
+#: src/snapshot_page/snapshot_page.py:388
 #, fuzzy
 #| msgid "No Snapshots"
 msgid "Copied Snapshot Paths"
 msgstr "No hay instantáneas"
 
-#: src/snapshot_page/snapshot_page.py:395
+#: src/snapshot_page/snapshot_page.py:397
 msgid "No apps in your selection can be snapshotted"
-msgstr "No se puede crear una instantánea de ninguna aplicación de la selección"
+msgstr ""
+"No se puede crear una instantánea de ninguna aplicación de la selección"
 
-#: src/snapshot_page/snapshot_page.py:469
+#: src/snapshot_page/snapshot_page.py:471
 #, fuzzy
 #| msgid "Applying Snapshot…"
 msgid "Applying Snapshots"
 msgstr "Aplicando instantánea…"
 
-#: src/snapshot_page/snapshot_page.py:475
+#: src/snapshot_page/snapshot_page.py:477
 #, fuzzy
 #| msgid "No Snapshots"
 msgid "No snapshots to extract"
 msgstr "No hay instantáneas"
 
-#: src/snapshot_page/snapshot_page.py:475
+#: src/snapshot_page/snapshot_page.py:477
 msgid "No snapshots were found to extract"
 msgstr "No se encontraron instantáneas para extraer"
 
-#: src/snapshot_page/snapshot_page.py:478
+#: src/snapshot_page/snapshot_page.py:480
 #, fuzzy
 #| msgid "Apply Snapshot?"
 msgid "Apply These Snapshots?"
 msgstr "¿Aplicar instantánea?"
 
-#: src/snapshot_page/snapshot_page.py:478
+#: src/snapshot_page/snapshot_page.py:480
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
 "Esto eliminará los datos de usuario de las aplicaciones actuales y aplicará "
 "su instantánea más reciente"
 
-#: src/snapshot_page/snapshot_page.py:514
+#: src/snapshot_page/snapshot_page.py:513
 #, fuzzy
 #| msgid "Trash Snapshot"
 msgid "Trashed snapshots"
 msgstr "Eliminar la instantánea"
 
-#: src/snapshot_page/snapshot_page.py:516
+#: src/snapshot_page/snapshot_page.py:515
 #, fuzzy
 #| msgid "Could not trash snapshot"
 msgid "Could not trash snapshots"
 msgstr "No se ha podido eliminar la instantánea"
 
-#: src/snapshot_page/snapshot_page.py:519
+#: src/snapshot_page/snapshot_page.py:518
 #, fuzzy
 #| msgid "Trash Snapshot?"
 msgid "Trash Snapshots?"
 msgstr "¿Eliminar la instantánea?"
 
-#: src/snapshot_page/snapshot_page.py:519
+#: src/snapshot_page/snapshot_page.py:518
 #, fuzzy
 #| msgid "These folders will be sent to the trash."
 msgid "These apps' snapshots will be sent to the trash"
 msgstr "Estas carpetas se enviarán a la papelera."
 
-#: src/snapshot_page/snapshot_page.py:558
+#: src/snapshot_page/snapshot_page.py:557
 #, fuzzy
 #| msgid "Creating Snapshots"
 msgid "Loading Snapshots"
@@ -2038,18 +2040,18 @@ msgstr "No hay instantáneas"
 msgid "Open Snapshots Folder for this App"
 msgstr "Abrir carpeta de instantáneas"
 
-#: src/snapshot_page/snapshots_list_page.py:30
-#: src/snapshot_page/snapshots_list_page.py:51
+#: src/snapshot_page/snapshots_list_page.py:31
+#: src/snapshot_page/snapshots_list_page.py:52
 #, fuzzy
 #| msgid "Attempt to Install?"
 msgid "App not Installed"
 msgstr "¿Intentar instalar?"
 
-#: src/snapshot_page/snapshots_list_page.py:54
+#: src/snapshot_page/snapshots_list_page.py:55
 msgid "{} Snapshots"
 msgstr "{} instantáneas"
 
-#: src/snapshot_page/tar_worker.py:81
+#: src/snapshot_page/tar_worker.py:80
 msgid "Error in snapshot handling"
 msgstr "Error en el manejo de instantáneas"
 
@@ -2058,20 +2060,20 @@ msgid "Review Selection"
 msgstr "Selección de reseñas"
 
 #. self.packages_group.set_title(_("Review Packages"))
-#: src/install_page/file_install_dialog.py:36
+#: src/install_page/file_install_dialog.py:37
 msgid "The following packages will be installed"
 msgstr "Se instalarán los siguientes paquetes:"
 
-#: src/install_page/file_install_dialog.py:39
+#: src/install_page/file_install_dialog.py:40
 msgid "Install a Package"
 msgstr "Instalar un paquete"
 
 #. self.packages_group.set_title(_("Review Package"))
-#: src/install_page/file_install_dialog.py:41
+#: src/install_page/file_install_dialog.py:42
 msgid "The following package will be installed"
 msgstr "Se instalará el siguiente paquete:"
 
-#: src/install_page/file_install_dialog.py:42
+#: src/install_page/file_install_dialog.py:43
 msgid "package"
 msgstr "paquete"
 
@@ -2084,26 +2086,26 @@ msgstr "Seleccionar fuente"
 msgid "Pending Packages"
 msgstr "Paquetes pendientes"
 
-#: src/install_page/install_page.py:51
+#: src/install_page/install_page.py:52
 #, fuzzy
 #| msgid "Installed Size"
 msgid "Installed Packages"
 msgstr "Tamaño de instalación"
 
-#: src/install_page/install_page.py:68
+#: src/install_page/install_page.py:69
 msgid "{} Pending Package"
 msgstr "{} Paquete pendiente"
 
-#: src/install_page/install_page.py:73
+#: src/install_page/install_page.py:74
 msgid "{} Pending Packages"
 msgstr "{} Paquetes pendientes"
 
 #. Extra Object Creation
-#: src/install_page/install_page.py:88
+#: src/install_page/install_page.py:89
 msgid "Installing Packages"
 msgstr "Instalando paquetes"
 
-#: src/install_page/install_page.py:96
+#: src/install_page/install_page.py:97
 msgid "Loading Installation Options"
 msgstr "Cargando Opciones de instalación"
 
@@ -2115,23 +2117,23 @@ msgstr "Agregar paquetes"
 msgid "Packages queued to install will show up here"
 msgstr "Los paquetes en cola para instalar aparecerán aquí"
 
-#: src/install_page/pending_page.py:34
+#: src/install_page/pending_page.py:35
 msgid "Remove All"
 msgstr "Eliminar todo"
 
-#: src/install_page/result_row.blp:8 src/install_page/result_row.py:42
+#: src/install_page/result_row.blp:8 src/install_page/result_row.py:43
 msgid "Add Package to Queue"
 msgstr "Agregar paquete a la cola"
 
-#: src/install_page/result_row.py:46
+#: src/install_page/result_row.py:47
 msgid "Package has been Added to Queue"
 msgstr "El paquete se ha agregado a la cola"
 
-#: src/install_page/result_row.py:50
+#: src/install_page/result_row.py:51
 msgid "Remove Package from Queue"
 msgstr "Eliminar paquete de la cola"
 
-#: src/install_page/result_row.py:54
+#: src/install_page/result_row.py:55
 msgid "This Package is Already Installed"
 msgstr "Este paquete ya está instalado"
 
@@ -2170,7 +2172,7 @@ msgstr "Intente ser más específico en su búsqueda"
 msgid "Try a different search term"
 msgstr "Pruebe con un término de búsqueda diferente"
 
-#: src/install_page/results_page.py:50
+#: src/install_page/results_page.py:48
 #, fuzzy
 #| msgid "Search"
 msgid "Search {}"
@@ -2211,11 +2213,11 @@ msgstr ""
 msgid "Install packages from files on your system"
 msgstr "Instale paquetes desde archivos en su sistema"
 
-#: src/install_page/select_page.py:60
+#: src/install_page/select_page.py:63
 msgid "No files were found to install"
 msgstr "No se encontraron archivos para instalar"
 
-#: src/install_page/select_page.py:70
+#: src/install_page/select_page.py:73
 msgid "Flatpaks"
 msgstr "Flatpaks"
 

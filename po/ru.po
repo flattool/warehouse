@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 23:16-0400\n"
+"POT-Creation-Date: 2024-12-18 22:37-0500\n"
 "PO-Revision-Date: 2024-11-30 19:11+0000\n"
 "Last-Translator: Степан Наумов <st250492@yandex.ru>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
@@ -124,62 +124,62 @@ msgstr "Установка новых пакетов из файлов или у
 msgid "Install Page in Narrow Window"
 msgstr "Установка страницы в узком окне"
 
-#: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
-#: src/install_page/select_page.py:67
+#: src/main.py:95 src/main.py:101 src/install_page/select_page.py:63
+#: src/install_page/select_page.py:70
 msgid "Could not add files"
 msgstr "Не удалось добавить файлы"
 
-#: src/main.py:101
+#: src/main.py:95
 msgid "No files were found"
 msgstr "Файлы не найдены"
 
-#: src/main.py:109
+#: src/main.py:103
 msgid "Flatpaks & Remotes"
 msgstr "Пакеты и репозитории"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:217
+#: src/main.py:211
 msgid "translator-credits"
 msgstr "Сергей Ворон <voron@duck.com>"
 
-#: src/main.py:223
+#: src/main.py:217
 msgid "Donate"
 msgstr "Пожертвовать"
 
-#: src/main.py:225
+#: src/main.py:219
 msgid "Contributors"
 msgstr "Участники"
 
-#: src/host_info.py:380 src/host_info.py:382
+#: src/host_info.py:384 src/host_info.py:386
 msgid "Could not load packages"
 msgstr "Не удалось загрузить пакеты"
 
-#: src/package_install_worker.py:84
+#: src/package_install_worker.py:85
 msgid "Errors occurred during installation"
 msgstr "Ошибки, возникшие во время установки"
 
-#: src/package_install_worker.py:88 src/package_install_worker.py:92
+#: src/package_install_worker.py:89 src/package_install_worker.py:93
 msgid "Error occurred during installation"
 msgstr "Возникла ошибка при установке"
 
-#: src/package_install_worker.py:88
-#: src/change_version_page/change_version_worker.py:70
+#: src/package_install_worker.py:89
+#: src/change_version_page/change_version_worker.py:77
 msgid "Failed to exit cleanly"
 msgstr "Не удалось завершить работу"
 
-#: src/package_install_worker.py:104
+#: src/package_install_worker.py:105
 msgid "Could not cancel installation"
 msgstr "Не удалось отменить установку"
 
-#: src/package_install_worker.py:125 src/package_install_worker.py:135
+#: src/package_install_worker.py:126 src/package_install_worker.py:136
 msgid "Could not install packages"
 msgstr "Не удалось установить пакеты"
 
-#: src/package_install_worker.py:125
+#: src/package_install_worker.py:126
 msgid "Packages are currently being installed."
 msgstr "Пакеты находятся в процессе установки."
 
-#: src/package_install_worker.py:135
+#: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
 msgstr "Не было запрошено никаких пакетов для установки."
 
@@ -213,16 +213,16 @@ msgid "Warehouse will try to install the matching packages."
 msgstr "Warehouse попытается установить соответствующие пакеты."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
-#: src/packages_page/uninstall_dialog.py:37
-#: src/properties_page/properties_page.py:189
-#: src/properties_page/properties_page.py:310
-#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:122
-#: src/remotes_page/remotes_page.py:189 src/user_data_page/data_box.py:114
-#: src/user_data_page/user_data_page.py:209
+#: src/packages_page/uninstall_dialog.py:38
+#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:315
+#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:126
+#: src/remotes_page/remotes_page.py:193 src/user_data_page/data_box.py:116
+#: src/user_data_page/user_data_page.py:210
 #: src/snapshot_page/new_snapshot_dialog.blp:16
-#: src/snapshot_page/snapshot_box.py:113 src/snapshot_page/snapshot_box.py:155
-#: src/snapshot_page/snapshot_page.py:479
-#: src/snapshot_page/snapshot_page.py:520
+#: src/snapshot_page/snapshot_box.py:114 src/snapshot_page/snapshot_box.py:156
+#: src/snapshot_page/snapshot_page.py:481
+#: src/snapshot_page/snapshot_page.py:519
 #: src/install_page/file_install_dialog.blp:13
 msgid "Cancel"
 msgstr "Отмена"
@@ -243,33 +243,33 @@ msgstr "Выбрать репозиторий"
 msgid "Select a remote to attempt to install from"
 msgstr "Выбрать репозиторий, с которого будет выполнена установка"
 
-#: src/gtk/attempt_install_dialog.py:18 src/packages_page/filters_page.py:122
-#: src/remotes_page/remote_row.py:148 src/install_page/pending_page.py:29
-#: src/install_page/select_page.py:31
+#: src/gtk/attempt_install_dialog.py:19 src/packages_page/filters_page.py:125
+#: src/remotes_page/remote_row.py:152 src/install_page/pending_page.py:30
+#: src/install_page/select_page.py:32
 msgid "Installation: {}"
 msgstr "Установка: {}"
 
-#: src/gtk/attempt_install_dialog.py:71
+#: src/gtk/attempt_install_dialog.py:76
 msgid "Can't find matching packages"
 msgstr "Не удается найти подходящие пакеты"
 
-#: src/gtk/attempt_install_dialog.py:71
+#: src/gtk/attempt_install_dialog.py:76
 msgid "Your system has no remotes added"
 msgstr "В вашей системе нет добавленных репозиториев"
 
 #. Extra Object Creation
-#: src/gtk/error_toast.py:12
+#: src/gtk/error_toast.py:13
 msgid "Details"
 msgstr "Подробности"
 
-#: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
+#: src/gtk/error_toast.py:20 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
 #: src/snapshot_page/snapshot_page.blp:149
 msgid "Copy"
 msgstr "Копировать"
 
-#: src/gtk/error_toast.py:20 src/main_window/window.py:135
-#: src/main_window/window.py:145 src/main_window/window.py:154
+#: src/gtk/error_toast.py:21 src/main_window/window.py:139
+#: src/main_window/window.py:149 src/main_window/window.py:158
 msgid "OK"
 msgstr "OK"
 
@@ -371,7 +371,7 @@ msgstr "Показать оставшиеся данные"
 msgid "Snapshots Page"
 msgstr "Страница снимков"
 
-#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:202
+#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:203
 msgid "New Snapshots"
 msgstr "Новые снимки"
 
@@ -399,31 +399,31 @@ msgstr "Другая установка"
 msgid "Choose a custom installation"
 msgstr "Выберите пользовательскую установку"
 
-#: src/gtk/installation_chooser.py:27
+#: src/gtk/installation_chooser.py:28
 msgid "These {} will only be available to you"
 msgstr "Эти {} будут доступны только вам"
 
-#: src/gtk/installation_chooser.py:28
+#: src/gtk/installation_chooser.py:29
 msgid "These {} will be available to everyone"
 msgstr "Эти {} будут доступны всем"
 
-#: src/gtk/installation_chooser.py:29
+#: src/gtk/installation_chooser.py:30
 msgid "Choose how these {} will be installed"
 msgstr "Выберите способ установки этих {}"
 
-#: src/gtk/installation_chooser.py:31
+#: src/gtk/installation_chooser.py:32
 msgid "This {} will only be available to you"
 msgstr "Эта {} будет доступна только вам"
 
-#: src/gtk/installation_chooser.py:32
+#: src/gtk/installation_chooser.py:33
 msgid "This {} will be available to everyone"
 msgstr "Это {} будет доступно всем"
 
-#: src/gtk/installation_chooser.py:33
+#: src/gtk/installation_chooser.py:34
 msgid "Choose how this {} will be installed"
 msgstr "Выберите способ установки этого {}"
 
-#: src/gtk/sidebar_button.py:19
+#: src/gtk/sidebar_button.py:20
 msgid "Show Sidebar"
 msgstr "Показать боковую панель"
 
@@ -445,71 +445,71 @@ msgstr "Главное меню"
 
 #: src/main_window/window.blp:67 src/packages_page/packages_page.blp:20
 #: src/packages_page/packages_page.blp:55
-#: src/packages_page/packages_page.py:155
-#: src/packages_page/packages_page.py:319
-#: src/install_page/file_install_dialog.py:37
+#: src/packages_page/packages_page.py:157
+#: src/packages_page/packages_page.py:322
+#: src/install_page/file_install_dialog.py:38
 msgid "Packages"
 msgstr "Пакеты"
 
-#: src/main_window/window.blp:80
+#: src/main_window/window.blp:82
 msgid "Remotes"
 msgstr "Репозитории"
 
-#: src/main_window/window.blp:94 src/properties_page/properties_page.blp:114
+#: src/main_window/window.blp:98 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
 msgid "User Data"
 msgstr "Пользовательские данные"
 
-#: src/main_window/window.blp:107 src/snapshot_page/snapshot_page.blp:18
+#: src/main_window/window.blp:113 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
-#: src/snapshot_page/snapshot_page.py:355
+#: src/snapshot_page/snapshot_page.py:357
 msgid "Snapshots"
 msgstr "Снимки"
 
-#: src/main_window/window.blp:120 src/install_page/file_install_dialog.py:34
+#: src/main_window/window.blp:128 src/install_page/file_install_dialog.py:35
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
 msgid "Install Packages"
 msgstr "Установить пакеты"
 
-#: src/main_window/window.blp:150
+#: src/main_window/window.blp:160
 msgid "_Open Files"
 msgstr "_Открыть файлы"
 
-#: src/main_window/window.blp:154
+#: src/main_window/window.blp:164
 msgid "_Keyboard Shortcuts"
 msgstr "_Комбинации клавиш"
 
-#: src/main_window/window.blp:158
+#: src/main_window/window.blp:168
 msgid "_About Warehouse"
 msgstr "_О приложении"
 
-#: src/main_window/window.py:132
+#: src/main_window/window.py:136
 msgid "Unsupported Filetype"
 msgstr "Неподдерживаемый тип файла"
 
-#: src/main_window/window.py:133
+#: src/main_window/window.py:137
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
 msgstr "Поддерживаются только файлы .flatpak, .flatpakref и .flatpakrepo."
 
-#: src/main_window/window.py:141
+#: src/main_window/window.py:145
 msgid "Mixed Filetypes"
 msgstr "Смешанные типы файлов"
 
-#: src/main_window/window.py:142
+#: src/main_window/window.py:146
 msgid "Flatpaks and remotes cannot be installed at the same time."
 msgstr ""
 "Flatpaks и удалённые репозитории не могут быть установлены одновременно."
 
-#: src/main_window/window.py:151
+#: src/main_window/window.py:155
 msgid "Too Many Remotes"
 msgstr "Слишком много репозиториев"
 
-#: src/main_window/window.py:152
+#: src/main_window/window.py:156
 msgid "Only one remote at a time is supported."
 msgstr "Одновременно поддерживается только один репозиторий."
 
-#: src/main_window/window.py:170
+#: src/main_window/window.py:174
 msgid "Could not open files"
 msgstr "Не удалось открыть файлы"
 
@@ -634,7 +634,7 @@ msgid "Select All"
 msgstr "Выбрать все"
 
 #: src/packages_page/packages_page.blp:144
-#: src/packages_page/uninstall_dialog.py:38
+#: src/packages_page/uninstall_dialog.py:39
 #: src/properties_page/properties_page.blp:88
 msgid "Uninstall"
 msgstr "Удалить"
@@ -651,76 +651,76 @@ msgstr "Копирование идентификаторов"
 msgid "Copy Refs"
 msgstr "Копирование ссылок"
 
-#: src/packages_page/packages_page.py:151
-#: src/user_data_page/data_subpage.py:107
-#: src/snapshot_page/new_snapshot_dialog.py:38
-#: src/snapshot_page/snapshot_page.py:355
+#: src/packages_page/packages_page.py:153
+#: src/user_data_page/data_subpage.py:109
+#: src/snapshot_page/new_snapshot_dialog.py:39
+#: src/snapshot_page/snapshot_page.py:357
 msgid "{} Selected"
 msgstr "{} Выбранный"
 
-#: src/packages_page/packages_page.py:192
+#: src/packages_page/packages_page.py:194
 msgid "Error getting Flatpak '{}'"
 msgstr "Ошибка при получении Flatpak '{}'"
 
-#: src/packages_page/packages_page.py:241
+#: src/packages_page/packages_page.py:243
 msgid "Names"
 msgstr "Имена"
 
-#: src/packages_page/packages_page.py:244
+#: src/packages_page/packages_page.py:246
 msgid "IDs"
 msgstr "Идентификаторы"
 
-#: src/packages_page/packages_page.py:247
+#: src/packages_page/packages_page.py:249
 msgid "Refs"
 msgstr "Ссылка"
 
-#: src/packages_page/packages_page.py:255
-#: src/properties_page/properties_page.py:272
+#: src/packages_page/packages_page.py:257
+#: src/properties_page/properties_page.py:275
 msgid "Copied {}"
 msgstr "Скопировано {}"
 
-#: src/packages_page/packages_page.py:257
+#: src/packages_page/packages_page.py:259
 msgid "Could not copy {}"
 msgstr "Не удалось скопировать {}"
 
-#: src/packages_page/packages_page.py:307
+#: src/packages_page/packages_page.py:310
 msgid "Errors occurred while uninstalling"
 msgstr "Возникли ошибки при деинсталляции"
 
-#: src/packages_page/packages_page.py:309
+#: src/packages_page/packages_page.py:312
 msgid "Uninstalled Packages"
 msgstr "Неустановленные пакеты"
 
-#: src/packages_page/packages_page.py:367
+#: src/packages_page/packages_page.py:370
 msgid "Loading Packages"
 msgstr "Загрузка пакетов"
 
-#: src/packages_page/packages_page.py:367
-#: src/packages_page/packages_page.py:368
-#: src/properties_page/properties_page.py:366
-#: src/remotes_page/remotes_page.py:285 src/remotes_page/remotes_page.py:286
-#: src/user_data_page/user_data_page.py:296
-#: src/snapshot_page/snapshot_page.py:558 src/install_page/install_page.py:96
+#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:371
+#: src/properties_page/properties_page.py:368
+#: src/remotes_page/remotes_page.py:291 src/remotes_page/remotes_page.py:292
+#: src/user_data_page/user_data_page.py:297
+#: src/snapshot_page/snapshot_page.py:557 src/install_page/install_page.py:97
 #: src/install_page/results_page.py:135
 msgid "This should only take a moment"
 msgstr "Это займет всего несколько минут"
 
-#: src/packages_page/packages_page.py:368
+#: src/packages_page/packages_page.py:371
 msgid "Uninstalling Packages"
 msgstr "Деинсталляция пакетов"
 
-#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:373
 msgid "Reinstalling Package"
 msgstr "Переустановка пакета"
 
-#: src/packages_page/packages_page.py:370
-#: src/packages_page/packages_page.py:372
-#: src/change_version_page/change_version_page.py:119
-#: src/snapshot_page/snapshot_page.py:551 src/install_page/install_page.py:88
+#: src/packages_page/packages_page.py:373
+#: src/packages_page/packages_page.py:375
+#: src/change_version_page/change_version_page.py:123
+#: src/snapshot_page/snapshot_page.py:550 src/install_page/install_page.py:89
 msgid "This could take a while"
 msgstr "Это может занять некоторое время"
 
-#: src/packages_page/packages_page.py:372
+#: src/packages_page/packages_page.py:375
 msgid "Changing Version"
 msgstr "Изменение версии"
 
@@ -735,8 +735,8 @@ msgstr "Позволяет восстанавливать настройки и 
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
 #: src/user_data_page/user_data_page.blp:148
-#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:114
-#: src/snapshot_page/snapshot_page.py:521
+#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:115
+#: src/snapshot_page/snapshot_page.py:520
 msgid "Trash"
 msgstr "Мусор"
 
@@ -744,23 +744,23 @@ msgstr "Мусор"
 msgid "Send data to the trash"
 msgstr "Отправьте данные в корзину"
 
-#: src/packages_page/uninstall_dialog.py:30
+#: src/packages_page/uninstall_dialog.py:31
 msgid "Uninstall {}?"
 msgstr "Удалить {}?"
 
-#: src/packages_page/uninstall_dialog.py:31
+#: src/packages_page/uninstall_dialog.py:32
 msgid "It will not be possible to use {} after removal"
 msgstr "После удаления использовать {} будет невозможно"
 
-#: src/packages_page/uninstall_dialog.py:33
+#: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall Packages?"
 msgstr "Удалить пакеты?"
 
-#: src/packages_page/uninstall_dialog.py:34
+#: src/packages_page/uninstall_dialog.py:35
 msgid "It will not be possible to use these packages after removal"
 msgstr "После удаления использовать эти пакеты будет невозможно"
 
-#: src/packages_page/uninstall_dialog.py:41
+#: src/packages_page/uninstall_dialog.py:42
 msgid "App Settings & Content"
 msgstr "Настройки и содержимое приложения"
 
@@ -821,7 +821,9 @@ msgid "Runtime"
 msgstr "Среда выполнения"
 
 #: src/properties_page/properties_page.blp:188
-msgid "Disable Automactic Removal"
+#, fuzzy
+#| msgid "Disable Automactic Removal"
+msgid "Disable Automatic Removal"
 msgstr "Отключить автоматическое удаление"
 
 #: src/properties_page/properties_page.blp:189
@@ -880,115 +882,116 @@ msgstr "Субъект"
 msgid "Date"
 msgstr "Дата"
 
-#: src/properties_page/properties_page.py:75
+#: src/properties_page/properties_page.py:76
 msgid "{} Properties"
 msgstr "{} Свойства"
 
-#: src/properties_page/properties_page.py:80
+#: src/properties_page/properties_page.py:81
 msgid "Properties"
 msgstr "Свойства"
 
 #. Apply again
-#: src/properties_page/properties_page.py:109
-#: src/user_data_page/user_data_page.py:296
+#: src/properties_page/properties_page.py:110
+#: src/user_data_page/user_data_page.py:297
 msgid "Loading User Data"
 msgstr "Загрузка пользовательских данных"
 
-#: src/properties_page/properties_page.py:119
+#: src/properties_page/properties_page.py:120
 msgid "No User Data"
 msgstr "Нет данных пользователя"
 
-#: src/properties_page/properties_page.py:129
-#: src/properties_page/properties_page.py:145
+#: src/properties_page/properties_page.py:130
+#: src/properties_page/properties_page.py:146
 msgid "Could not get properties"
 msgstr "Не удалось получить свойства"
 
-#: src/properties_page/properties_page.py:142
+#: src/properties_page/properties_page.py:143
 msgid "No version information found"
 msgstr "Информация о версии не найдена"
 
-#: src/properties_page/properties_page.py:162
+#: src/properties_page/properties_page.py:163
 msgid "Could not open data"
 msgstr "Не удалось открыть данные"
 
-#: src/properties_page/properties_page.py:181
-#: src/properties_page/properties_page.py:183
-#: src/properties_page/properties_page.py:238
-#: src/properties_page/properties_page.py:240 src/user_data_page/data_box.py:99
-#: src/user_data_page/user_data_page.py:183
-#: src/user_data_page/user_data_page.py:197
+#: src/properties_page/properties_page.py:182
+#: src/properties_page/properties_page.py:184
+#: src/properties_page/properties_page.py:241
+#: src/properties_page/properties_page.py:243
+#: src/user_data_page/data_box.py:101 src/user_data_page/user_data_page.py:184
+#: src/user_data_page/user_data_page.py:198
 msgid "Could not trash data"
 msgstr "Не удалось удалить данные"
 
-#: src/properties_page/properties_page.py:186
+#: src/properties_page/properties_page.py:187
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Отправить пользовательские данные {} в мусорную корзину?"
 
-#: src/properties_page/properties_page.py:187
+#: src/properties_page/properties_page.py:188
 msgid "Your settings and data for this app will be sent to the trash"
-msgstr "Ваши настройки и данные для этого приложения будут отправлены в корзину"
+msgstr ""
+"Ваши настройки и данные для этого приложения будут отправлены в корзину"
 
-#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:191
 msgid "Trash Data"
 msgstr "Данные о мусоре"
 
-#: src/properties_page/properties_page.py:199
+#: src/properties_page/properties_page.py:201
 msgid "Could not Disable Updates"
 msgstr "Не удалось отключить обновления"
 
-#: src/properties_page/properties_page.py:199
+#: src/properties_page/properties_page.py:201
 msgid "Could not Enable Updates"
 msgstr "Не удалось включить обновления"
 
-#: src/properties_page/properties_page.py:205
+#: src/properties_page/properties_page.py:207
 msgid "Disabled Updates"
 msgstr "Отключенные обновления"
 
-#: src/properties_page/properties_page.py:205
+#: src/properties_page/properties_page.py:207
 msgid "Enabled Updates"
 msgstr "Включенные обновления"
 
-#: src/properties_page/properties_page.py:217
+#: src/properties_page/properties_page.py:220
 msgid "Could not Disable Autoremoval"
 msgstr "Не удалось отключить автоудаление"
 
-#: src/properties_page/properties_page.py:217
+#: src/properties_page/properties_page.py:220
 msgid "Could not Enable Autoremoval"
 msgstr "Не удалось включить автоудаление"
 
-#: src/properties_page/properties_page.py:222
+#: src/properties_page/properties_page.py:225
 msgid "Disabled Autoremoval"
 msgstr "Отключено автоудаление"
 
-#: src/properties_page/properties_page.py:222
+#: src/properties_page/properties_page.py:225
 msgid "Enabled Autoremoval"
 msgstr "Включено автоудаление"
 
-#: src/properties_page/properties_page.py:245
+#: src/properties_page/properties_page.py:248
 msgid "Could not uninstall"
 msgstr "Не удалось удалить"
 
-#: src/properties_page/properties_page.py:249
+#: src/properties_page/properties_page.py:252
 msgid "Uninstalled {}"
 msgstr "Деинсталлировано {}"
 
-#: src/properties_page/properties_page.py:261
+#: src/properties_page/properties_page.py:264
 msgid "Opening {}…"
 msgstr "Открываем {}…"
 
-#: src/properties_page/properties_page.py:266
+#: src/properties_page/properties_page.py:269
 msgid "Could not open {}"
 msgstr "Не удалось открыть {}"
 
-#: src/properties_page/properties_page.py:281
+#: src/properties_page/properties_page.py:284
 msgid "Reinstalled {}"
 msgstr "Переустановите {}"
 
-#: src/properties_page/properties_page.py:307
+#: src/properties_page/properties_page.py:312
 msgid "Reinstall {}?"
 msgstr "Переустановить {}?"
 
-#: src/properties_page/properties_page.py:308
+#: src/properties_page/properties_page.py:313
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
@@ -996,36 +999,36 @@ msgstr ""
 "Этот пакет будет удален, а затем переустановлен с того же репозитория и "
 "установки."
 
-#: src/properties_page/properties_page.py:311
-#: src/properties_page/properties_page.py:372
+#: src/properties_page/properties_page.py:316
+#: src/properties_page/properties_page.py:374
 msgid "Reinstall"
 msgstr "Переустановите"
 
-#: src/properties_page/properties_page.py:328
+#: src/properties_page/properties_page.py:333
 msgid "Copied launch command"
 msgstr "Команда запуска скопирована"
 
-#: src/properties_page/properties_page.py:330
+#: src/properties_page/properties_page.py:335
 msgid "Could not copy launch command"
 msgstr "Не удалось скопировать команду запуска"
 
-#: src/properties_page/properties_page.py:336
+#: src/properties_page/properties_page.py:341
 msgid "Could not show details"
 msgstr "Не удалось показать детали"
 
-#: src/properties_page/properties_page.py:366
+#: src/properties_page/properties_page.py:368
 msgid "Loading Properties"
 msgstr "Свойства загрузки"
 
-#: src/properties_page/properties_page.py:369
+#: src/properties_page/properties_page.py:371
 msgid "View Snapshots"
 msgstr "Просмотр снимков"
 
-#: src/properties_page/properties_page.py:370
+#: src/properties_page/properties_page.py:372
 msgid "Copy Launch Command"
 msgstr "Копирование команды запуска"
 
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:373
 msgid "Show Details"
 msgstr "Показать детали"
 
@@ -1045,45 +1048,45 @@ msgstr ""
 "Это приведет к удалению текущего выпуска и установке вместо него выбранного. "
 "Обратите внимание, что понижение версии может вызвать проблемы."
 
-#: src/change_version_page/change_version_page.py:69
+#: src/change_version_page/change_version_page.py:72
 msgid "Currently Installed Version"
 msgstr "Текущая установленная версия"
 
-#: src/change_version_page/change_version_page.py:86
+#: src/change_version_page/change_version_page.py:89
 msgid "Could not get versions"
 msgstr "Не удалось получить версии"
 
-#: src/change_version_page/change_version_page.py:93
+#: src/change_version_page/change_version_page.py:96
 msgid "Changed {}'s Version"
 msgstr "Изменена версия {}"
 
-#: src/change_version_page/change_version_page.py:117
+#: src/change_version_page/change_version_page.py:121
 msgid "{} Versions"
 msgstr "{} Версии"
 
-#: src/change_version_page/change_version_page.py:118
+#: src/change_version_page/change_version_page.py:122
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Убедитесь, что {} никогда не будет обновляться до более новой версии"
 
-#: src/change_version_page/change_version_page.py:119
+#: src/change_version_page/change_version_page.py:123
 msgid "Fetching Releases"
 msgstr "Получение релизов"
 
-#: src/change_version_page/change_version_worker.py:66
-#: src/change_version_page/change_version_worker.py:70
-#: src/change_version_page/change_version_worker.py:74
+#: src/change_version_page/change_version_worker.py:73
+#: src/change_version_page/change_version_worker.py:77
+#: src/change_version_page/change_version_worker.py:81
 msgid "Error occurred while changing version"
 msgstr "Возникла ошибка при смене версии"
 
-#: src/change_version_page/change_version_worker.py:85
+#: src/change_version_page/change_version_worker.py:92
 msgid "Could not cancel version change"
 msgstr "Не удалось отменить изменение версии"
 
-#: src/change_version_page/change_version_worker.py:106
+#: src/change_version_page/change_version_worker.py:113
 msgid "Could not change version"
 msgstr "Не удалось изменить версию"
 
-#: src/change_version_page/change_version_worker.py:106
+#: src/change_version_page/change_version_worker.py:113
 msgid "Another package is changing version."
 msgstr "Другой пакет меняет версию."
 
@@ -1108,16 +1111,16 @@ msgstr "Имя"
 msgid "Repo URL"
 msgstr "Репо URL"
 
-#: src/remotes_page/add_remote_dialog.py:54
+#: src/remotes_page/add_remote_dialog.py:58
 msgid "Could not add remote"
 msgstr "Не удалось добавить репозиторий"
 
-#: src/remotes_page/add_remote_dialog.py:57
+#: src/remotes_page/add_remote_dialog.py:61
 msgid "Added {}"
 msgstr "Добавлено {}"
 
 #. Apply
-#: src/remotes_page/add_remote_dialog.py:107
+#: src/remotes_page/add_remote_dialog.py:111
 msgid "remote"
 msgstr "репозиторий"
 
@@ -1141,56 +1144,56 @@ msgstr "Копировать имя"
 msgid "Enable"
 msgstr "Включить"
 
-#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:123
+#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:127
 msgid "Disable"
 msgstr "Отключить"
 
-#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:190
+#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:194
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/remotes_page/remote_row.py:24 src/remotes_page/remote_row.py:44
+#: src/remotes_page/remote_row.py:25 src/remotes_page/remote_row.py:46
 msgid "Could not enable remote"
 msgstr "Не удалось включить репозиторий"
 
-#: src/remotes_page/remote_row.py:24
+#: src/remotes_page/remote_row.py:25
 msgid "Remote is already enabled"
 msgstr "Репозиторий уже включен"
 
-#: src/remotes_page/remote_row.py:51
+#: src/remotes_page/remote_row.py:53
 msgid "Enabled remote"
 msgstr "Включенный репозиторий"
 
-#: src/remotes_page/remote_row.py:75 src/remotes_page/remote_row.py:153
+#: src/remotes_page/remote_row.py:77 src/remotes_page/remote_row.py:157
 msgid "Remote is Disabled"
 msgstr "Репозиторий отключен"
 
-#: src/remotes_page/remote_row.py:77
+#: src/remotes_page/remote_row.py:79
 msgid "Disabled remote"
 msgstr "Отключенный репозиторий"
 
-#: src/remotes_page/remote_row.py:95 src/remotes_page/remote_row.py:107
-#: src/remotes_page/remote_row.py:111
+#: src/remotes_page/remote_row.py:97 src/remotes_page/remote_row.py:109
+#: src/remotes_page/remote_row.py:113
 msgid "Could not disable remote"
 msgstr "Не удалось отключить репозиторий"
 
-#: src/remotes_page/remote_row.py:95
+#: src/remotes_page/remote_row.py:97
 msgid "Remote is already disabled"
 msgstr "Удалённый репозиторий уже отключен"
 
-#: src/remotes_page/remote_row.py:121
+#: src/remotes_page/remote_row.py:124
 msgid "Disable {}?"
 msgstr "Отключить {}?"
 
-#: src/remotes_page/remote_row.py:121 src/remotes_page/remotes_page.py:188
+#: src/remotes_page/remote_row.py:124 src/remotes_page/remotes_page.py:191
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr "Все установленные приложения из {} перестанут получать обновления"
 
-#: src/remotes_page/remote_row.py:133
+#: src/remotes_page/remote_row.py:137
 msgid "Copied title"
 msgstr "Скопированный заголовок"
 
-#: src/remotes_page/remote_row.py:136
+#: src/remotes_page/remote_row.py:140
 msgid "Copied name"
 msgstr "Имя скопировано"
 
@@ -1261,63 +1264,63 @@ msgstr "Добавьте пользовательский репозиторий
 msgid "Manually enter new remote details"
 msgstr "Ручной ввод новых удаленных данных"
 
-#: src/remotes_page/remotes_page.py:32
+#: src/remotes_page/remotes_page.py:33
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr ""
 "Магазин приложений с открытым исходным кодом и оплатой по желанию от "
 "elementary"
 
-#: src/remotes_page/remotes_page.py:38
+#: src/remotes_page/remotes_page.py:39
 msgid "Central repository of Flatpak applications"
 msgstr "Центральное хранилище приложений Flatpak"
 
-#: src/remotes_page/remotes_page.py:44
+#: src/remotes_page/remotes_page.py:45
 msgid "Beta builds of Flatpak applications"
 msgstr "Бета-сборки приложений Flatpak"
 
-#: src/remotes_page/remotes_page.py:50
+#: src/remotes_page/remotes_page.py:51
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "Flatpaks упакован в Fedora Linux"
 
-#: src/remotes_page/remotes_page.py:56
+#: src/remotes_page/remotes_page.py:57
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "Последняя бета-версия приложений и сред выполнения GNOME"
 
-#: src/remotes_page/remotes_page.py:62
+#: src/remotes_page/remotes_page.py:63
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr "Центральное хранилище WebKit Developer и Runtime SDK"
 
-#: src/remotes_page/remotes_page.py:152
+#: src/remotes_page/remotes_page.py:153
 msgid "Showing all packages from {}"
 msgstr "Показать все пакеты из {}"
 
-#: src/remotes_page/remotes_page.py:173
+#: src/remotes_page/remotes_page.py:175
 msgid "Could not remove remote"
 msgstr "Не удалось удалить репозиторий"
 
-#: src/remotes_page/remotes_page.py:180
+#: src/remotes_page/remotes_page.py:182
 msgid "Removed {}"
 msgstr "Удалено {}"
 
-#: src/remotes_page/remotes_page.py:188
+#: src/remotes_page/remotes_page.py:191
 msgid "Remove {}?"
 msgstr "Удалить {}?"
 
-#: src/remotes_page/remotes_page.py:224 src/remotes_page/remotes_page.py:234
-#: src/remotes_page/remotes_page.py:236
+#: src/remotes_page/remotes_page.py:228 src/remotes_page/remotes_page.py:238
+#: src/remotes_page/remotes_page.py:240
 msgid "Could not open file"
 msgstr "Не удалось открыть файл"
 
-#: src/remotes_page/remotes_page.py:239
+#: src/remotes_page/remotes_page.py:243
 msgid "Flatpak Repos"
 msgstr "Репозитории Flatpak"
 
 #. Apply
-#: src/remotes_page/remotes_page.py:285
+#: src/remotes_page/remotes_page.py:291
 msgid "Adding Remote"
 msgstr "Добавление репозитория"
 
-#: src/remotes_page/remotes_page.py:286
+#: src/remotes_page/remotes_page.py:292
 msgid "Loading Remotes"
 msgstr "Загрузка репозиториев"
 
@@ -1329,33 +1332,33 @@ msgstr "Путь копирования"
 msgid "Attempt to Install"
 msgstr "Попытка установки"
 
-#: src/user_data_page/data_box.py:58
+#: src/user_data_page/data_box.py:59
 msgid "Copied data path"
 msgstr "Путь к скопированным данным"
 
-#: src/user_data_page/data_box.py:60
+#: src/user_data_page/data_box.py:61
 msgid "Could not copy data path"
 msgstr "Не удалось скопировать путь к данным"
 
-#: src/user_data_page/data_box.py:65
+#: src/user_data_page/data_box.py:66
 msgid "Opened data folder"
 msgstr "Открытая папка с данными"
 
-#: src/user_data_page/data_box.py:67 src/snapshot_page/snapshot_page.py:253
-#: src/snapshot_page/snapshots_list_page.py:77
+#: src/user_data_page/data_box.py:68 src/snapshot_page/snapshot_page.py:255
+#: src/snapshot_page/snapshots_list_page.py:78
 msgid "Could not open folder"
 msgstr "Не удалось открыть папку"
 
-#: src/user_data_page/data_box.py:113
+#: src/user_data_page/data_box.py:115
 msgid "Trash {}'s Data?"
 msgstr "Удалить данные из {}?"
 
-#: src/user_data_page/data_box.py:113
+#: src/user_data_page/data_box.py:115
 msgid "{}'s data will be sent to the trash"
 msgstr "Данные {} будут отправлены в корзину"
 
-#: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:210
-#: src/snapshot_page/snapshot_page.py:480
+#: src/user_data_page/data_box.py:117 src/user_data_page/user_data_page.py:211
+#: src/snapshot_page/snapshot_page.py:482
 msgid "Continue"
 msgstr "Продолжить"
 
@@ -1367,11 +1370,11 @@ msgstr "Название не установлено"
 msgid "Loading Size…"
 msgstr "Размер загрузки…"
 
-#: src/user_data_page/data_subpage.py:232
+#: src/user_data_page/data_subpage.py:254
 msgid "No Active Data"
 msgstr "Нет активных данных"
 
-#: src/user_data_page/data_subpage.py:233
+#: src/user_data_page/data_subpage.py:255
 msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
@@ -1379,11 +1382,11 @@ msgstr ""
 "Warehouse не может видеть никаких данных активного пользователя, или в вашей "
 "системе отсутствуют данные активного пользователя"
 
-#: src/user_data_page/data_subpage.py:236
+#: src/user_data_page/data_subpage.py:258
 msgid "No Leftover Data"
 msgstr "Нет оставшихся данных"
 
-#: src/user_data_page/data_subpage.py:237
+#: src/user_data_page/data_subpage.py:259
 msgid "There is no leftover user data"
 msgstr "Нет оставшихся пользовательских данных"
 
@@ -1421,43 +1424,43 @@ msgstr "ID"
 msgid "Size"
 msgstr "Размер"
 
-#: src/user_data_page/user_data_page.py:75
-#: src/user_data_page/user_data_page.py:77
+#: src/user_data_page/user_data_page.py:76
+#: src/user_data_page/user_data_page.py:78
 msgid "Loading Size"
 msgstr "Размер загрузки"
 
-#: src/user_data_page/user_data_page.py:151
+#: src/user_data_page/user_data_page.py:152
 msgid "Could not copy paths"
 msgstr "Не удалось скопировать пути"
 
-#: src/user_data_page/user_data_page.py:151
-#: src/user_data_page/user_data_page.py:197
+#: src/user_data_page/user_data_page.py:152
+#: src/user_data_page/user_data_page.py:198
 msgid "No boxes were selected"
 msgstr "Ни одна коробка не была выбрана"
 
-#: src/user_data_page/user_data_page.py:154
+#: src/user_data_page/user_data_page.py:155
 msgid "Copied paths"
 msgstr "Скопированные пути"
 
-#: src/user_data_page/user_data_page.py:185
+#: src/user_data_page/user_data_page.py:186
 msgid "Trashed data"
 msgstr "Удаленные данные"
 
-#: src/user_data_page/user_data_page.py:208
+#: src/user_data_page/user_data_page.py:209
 msgid "Trash Data?"
 msgstr "Мусорные данные?"
 
-#: src/user_data_page/user_data_page.py:208
+#: src/user_data_page/user_data_page.py:209
 msgid "Data will be sent to the trash"
 msgstr "Данные будут отправлены в мусорную корзину"
 
-#: src/user_data_page/user_data_page.py:246
-#: src/user_data_page/user_data_page.py:269
+#: src/user_data_page/user_data_page.py:247
+#: src/user_data_page/user_data_page.py:270
 msgid "Active Data"
 msgstr "Активные данные"
 
-#: src/user_data_page/user_data_page.py:247
-#: src/user_data_page/user_data_page.py:275
+#: src/user_data_page/user_data_page.py:248
+#: src/user_data_page/user_data_page.py:276
 msgid "Leftover Data"
 msgstr "Остатки данных"
 
@@ -1470,26 +1473,26 @@ msgstr "Поиск приложений"
 msgid "Create"
 msgstr "Создать"
 
-#: src/snapshot_page/new_snapshot_dialog.py:110
+#: src/snapshot_page/new_snapshot_dialog.py:111
 msgid "Creating Snapshot"
 msgstr "Создание моментального снимка"
 
-#: src/snapshot_page/new_snapshot_dialog.py:192
+#: src/snapshot_page/new_snapshot_dialog.py:193
 msgid "Name these Snapshots"
 msgstr "Назовите эти снимки"
 
-#: src/snapshot_page/new_snapshot_dialog.py:196
+#: src/snapshot_page/new_snapshot_dialog.py:197
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
 msgstr "Новый снимок"
 
-#: src/snapshot_page/new_snapshot_dialog.py:200
+#: src/snapshot_page/new_snapshot_dialog.py:201
 msgid "Name this Snapshot"
 msgstr "Назовите этот снимок"
 
-#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:58
+#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:59
 msgid "No Name Set"
 msgstr "Набор без имени"
 
@@ -1501,7 +1504,7 @@ msgstr "Дата не найдена"
 msgid "No version found"
 msgstr "Версия не найдена"
 
-#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:156
+#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:157
 msgid "Apply"
 msgstr "Применить"
 
@@ -1517,40 +1520,40 @@ msgstr "Переименовать снимок?"
 msgid "Confirm Rename"
 msgstr "Подтвердить переименование"
 
-#: src/snapshot_page/snapshot_box.py:33 src/snapshot_page/snapshot_box.py:45
-#: src/snapshot_page/snapshot_box.py:61
+#: src/snapshot_page/snapshot_box.py:34 src/snapshot_page/snapshot_box.py:46
+#: src/snapshot_page/snapshot_box.py:62
 msgid "Could not write data"
 msgstr "Не удалось записать данные"
 
-#: src/snapshot_page/snapshot_box.py:98
+#: src/snapshot_page/snapshot_box.py:99
 msgid "Could not trash snapshot"
 msgstr "Не удалось удалить снимок"
 
-#: src/snapshot_page/snapshot_box.py:102
+#: src/snapshot_page/snapshot_box.py:103
 msgid "Trashed snapshot"
 msgstr "Удаленный снимок"
 
-#: src/snapshot_page/snapshot_box.py:112
+#: src/snapshot_page/snapshot_box.py:113
 msgid "Trash Snapshot?"
 msgstr "Снимок из мусорной корзины?"
 
-#: src/snapshot_page/snapshot_box.py:112
+#: src/snapshot_page/snapshot_box.py:113
 msgid "This snapshot will be sent to the trash"
 msgstr "Этот снимок будет отправлен в мусорную корзину"
 
-#: src/snapshot_page/snapshot_box.py:142
+#: src/snapshot_page/snapshot_box.py:143
 msgid "Applying Snapshot"
 msgstr "Применение моментального снимка"
 
-#: src/snapshot_page/snapshot_box.py:152
+#: src/snapshot_page/snapshot_box.py:153
 msgid "Apply Snapshot?"
 msgstr "Применить снимок?"
 
-#: src/snapshot_page/snapshot_box.py:153
+#: src/snapshot_page/snapshot_box.py:154
 msgid "Any current user data for this app will be trashed"
 msgstr "Все текущие пользовательские данные этого приложения будут уничтожены"
 
-#: src/snapshot_page/snapshot_box.py:182
+#: src/snapshot_page/snapshot_box.py:183
 msgid "Version: {}"
 msgstr "Версия: {}"
 
@@ -1604,81 +1607,81 @@ msgstr "Применять моментальные снимки"
 msgid "Trash Snapshots"
 msgstr "Снимки мусора"
 
-#: src/snapshot_page/snapshot_page.py:101
+#: src/snapshot_page/snapshot_page.py:103
 msgid "Could not load Snapshots"
 msgstr "Не удалось загрузить моментальные снимки"
 
-#: src/snapshot_page/snapshot_page.py:194
+#: src/snapshot_page/snapshot_page.py:196
 msgid "Showing snapshots for {}"
 msgstr "Показывать снимки для {}"
 
-#: src/snapshot_page/snapshot_page.py:198
+#: src/snapshot_page/snapshot_page.py:200
 msgid "No snapshots for {}"
 msgstr "Нет снимков для {}"
 
-#: src/snapshot_page/snapshot_page.py:198
+#: src/snapshot_page/snapshot_page.py:200
 msgid "New"
 msgstr "Новый"
 
-#: src/snapshot_page/snapshot_page.py:242
 #: src/snapshot_page/snapshot_page.py:244
-#: src/snapshot_page/snapshots_list_page.py:60
+#: src/snapshot_page/snapshot_page.py:246
+#: src/snapshot_page/snapshots_list_page.py:61
 msgid "No Data Found to Snapshot"
 msgstr "Не найдено данных для моментального снимка"
 
-#: src/snapshot_page/snapshot_page.py:251
-#: src/snapshot_page/snapshots_list_page.py:75
+#: src/snapshot_page/snapshot_page.py:253
+#: src/snapshot_page/snapshots_list_page.py:76
 msgid "Opened snapshots folder"
 msgstr "Открытая папка моментальных снимков"
 
-#: src/snapshot_page/snapshot_page.py:386
+#: src/snapshot_page/snapshot_page.py:388
 msgid "Copied Snapshot Paths"
 msgstr "Скопированные пути моментальных снимков"
 
-#: src/snapshot_page/snapshot_page.py:395
+#: src/snapshot_page/snapshot_page.py:397
 msgid "No apps in your selection can be snapshotted"
 msgstr "Ни одно из выбранных приложений не может быть сфотографировано"
 
-#: src/snapshot_page/snapshot_page.py:469
+#: src/snapshot_page/snapshot_page.py:471
 msgid "Applying Snapshots"
 msgstr "Применение снимков"
 
-#: src/snapshot_page/snapshot_page.py:475
+#: src/snapshot_page/snapshot_page.py:477
 msgid "No snapshots to extract"
 msgstr "Нет снимков для извлечения"
 
-#: src/snapshot_page/snapshot_page.py:475
+#: src/snapshot_page/snapshot_page.py:477
 msgid "No snapshots were found to extract"
 msgstr "Не было найдено ни одного снимка для извлечения"
 
-#: src/snapshot_page/snapshot_page.py:478
+#: src/snapshot_page/snapshot_page.py:480
 msgid "Apply These Snapshots?"
 msgstr "Применять эти снимки?"
 
-#: src/snapshot_page/snapshot_page.py:478
+#: src/snapshot_page/snapshot_page.py:480
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
 "Это приведет к удалению пользовательских данных текущих приложений и "
 "применению их новейших снимков"
 
-#: src/snapshot_page/snapshot_page.py:514
+#: src/snapshot_page/snapshot_page.py:513
 msgid "Trashed snapshots"
 msgstr "Удаленные снимки"
 
-#: src/snapshot_page/snapshot_page.py:516
+#: src/snapshot_page/snapshot_page.py:515
 msgid "Could not trash snapshots"
 msgstr "Не удалось уничтожить моментальные снимки"
 
-#: src/snapshot_page/snapshot_page.py:519
+#: src/snapshot_page/snapshot_page.py:518
 msgid "Trash Snapshots?"
 msgstr "Выбрасывать снимки?"
 
-#: src/snapshot_page/snapshot_page.py:519
+#: src/snapshot_page/snapshot_page.py:518
 msgid "These apps' snapshots will be sent to the trash"
 msgstr "Снимки этих приложений будут отправлены в корзину"
 
-#: src/snapshot_page/snapshot_page.py:558
+#: src/snapshot_page/snapshot_page.py:557
 msgid "Loading Snapshots"
 msgstr "Загрузка моментальных снимков"
 
@@ -1690,16 +1693,16 @@ msgstr "Список снимков"
 msgid "Open Snapshots Folder for this App"
 msgstr "Откройте папку \"Снимки\" для этого приложения"
 
-#: src/snapshot_page/snapshots_list_page.py:30
-#: src/snapshot_page/snapshots_list_page.py:51
+#: src/snapshot_page/snapshots_list_page.py:31
+#: src/snapshot_page/snapshots_list_page.py:52
 msgid "App not Installed"
 msgstr "Приложение не установлено"
 
-#: src/snapshot_page/snapshots_list_page.py:54
+#: src/snapshot_page/snapshots_list_page.py:55
 msgid "{} Snapshots"
 msgstr "{} Снимки"
 
-#: src/snapshot_page/tar_worker.py:81
+#: src/snapshot_page/tar_worker.py:80
 msgid "Error in snapshot handling"
 msgstr "Ошибка при обработке моментальных снимков"
 
@@ -1708,20 +1711,20 @@ msgid "Review Selection"
 msgstr "Выбор рецензии"
 
 #. self.packages_group.set_title(_("Review Packages"))
-#: src/install_page/file_install_dialog.py:36
+#: src/install_page/file_install_dialog.py:37
 msgid "The following packages will be installed"
 msgstr "Будут установлены следующие пакеты"
 
-#: src/install_page/file_install_dialog.py:39
+#: src/install_page/file_install_dialog.py:40
 msgid "Install a Package"
 msgstr "Установить пакет"
 
 #. self.packages_group.set_title(_("Review Package"))
-#: src/install_page/file_install_dialog.py:41
+#: src/install_page/file_install_dialog.py:42
 msgid "The following package will be installed"
 msgstr "Будет установлен следующий пакет"
 
-#: src/install_page/file_install_dialog.py:42
+#: src/install_page/file_install_dialog.py:43
 msgid "package"
 msgstr "пакет"
 
@@ -1734,24 +1737,24 @@ msgstr "Выберите источник"
 msgid "Pending Packages"
 msgstr "Отложенные пакеты"
 
-#: src/install_page/install_page.py:51
+#: src/install_page/install_page.py:52
 msgid "Installed Packages"
 msgstr "Установленные пакеты"
 
-#: src/install_page/install_page.py:68
+#: src/install_page/install_page.py:69
 msgid "{} Pending Package"
 msgstr "{} Отложенный пакет"
 
-#: src/install_page/install_page.py:73
+#: src/install_page/install_page.py:74
 msgid "{} Pending Packages"
 msgstr "{} Отложенные пакеты"
 
 #. Extra Object Creation
-#: src/install_page/install_page.py:88
+#: src/install_page/install_page.py:89
 msgid "Installing Packages"
 msgstr "Установка пакетов"
 
-#: src/install_page/install_page.py:96
+#: src/install_page/install_page.py:97
 msgid "Loading Installation Options"
 msgstr "Варианты установки загрузки"
 
@@ -1763,23 +1766,23 @@ msgstr "Добавить пакеты"
 msgid "Packages queued to install will show up here"
 msgstr "Пакеты, поставленные в очередь на установку, будут отображаться здесь"
 
-#: src/install_page/pending_page.py:34
+#: src/install_page/pending_page.py:35
 msgid "Remove All"
 msgstr "Удалить все"
 
-#: src/install_page/result_row.blp:8 src/install_page/result_row.py:42
+#: src/install_page/result_row.blp:8 src/install_page/result_row.py:43
 msgid "Add Package to Queue"
 msgstr "Добавить пакет в очередь"
 
-#: src/install_page/result_row.py:46
+#: src/install_page/result_row.py:47
 msgid "Package has been Added to Queue"
 msgstr "Пакет добавлен в очередь"
 
-#: src/install_page/result_row.py:50
+#: src/install_page/result_row.py:51
 msgid "Remove Package from Queue"
 msgstr "Удалить пакет из очереди"
 
-#: src/install_page/result_row.py:54
+#: src/install_page/result_row.py:55
 msgid "This Package is Already Installed"
 msgstr "Этот пакет уже установлен"
 
@@ -1812,7 +1815,7 @@ msgstr "Попробуйте уточнить запрос"
 msgid "Try a different search term"
 msgstr "Попробуйте использовать другой поисковый запрос"
 
-#: src/install_page/results_page.py:50
+#: src/install_page/results_page.py:48
 msgid "Search {}"
 msgstr "Поиск {}"
 
@@ -1844,11 +1847,11 @@ msgstr "Добавьте репозиторий в свою систему, чт
 msgid "Install packages from files on your system"
 msgstr "Установка пакетов из файлов в вашей системе"
 
-#: src/install_page/select_page.py:60
+#: src/install_page/select_page.py:63
 msgid "No files were found to install"
 msgstr "Не найдено ни одного файла для установки"
 
-#: src/install_page/select_page.py:70
+#: src/install_page/select_page.py:73
 msgid "Flatpaks"
 msgstr "Пакеты Flatpak"
 

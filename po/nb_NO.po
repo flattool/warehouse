@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 23:16-0400\n"
+"POT-Creation-Date: 2024-12-18 22:37-0500\n"
 "PO-Revision-Date: 2024-10-30 15:32+0000\n"
 "Last-Translator: sunniva <turtle@turtle.garden>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.fyralabs.com/projects/"
@@ -118,62 +118,62 @@ msgstr "Installer nye pakker fra filer eller fjernservere"
 msgid "Install Page in Narrow Window"
 msgstr "Installer-siden i et smalt vindu"
 
-#: src/main.py:101 src/main.py:107 src/install_page/select_page.py:60
-#: src/install_page/select_page.py:67
+#: src/main.py:95 src/main.py:101 src/install_page/select_page.py:63
+#: src/install_page/select_page.py:70
 msgid "Could not add files"
 msgstr "Klarte ikke å legge til filer"
 
-#: src/main.py:101
+#: src/main.py:95
 msgid "No files were found"
 msgstr "Ingen filer fant"
 
-#: src/main.py:109
+#: src/main.py:103
 msgid "Flatpaks & Remotes"
 msgstr "Legg til Flatpak-pakker og fjernservere"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:217
+#: src/main.py:211
 msgid "translator-credits"
 msgstr "Sunniva Løvstad <warehouse@turtle.garden>"
 
-#: src/main.py:223
+#: src/main.py:217
 msgid "Donate"
 msgstr "Doner"
 
-#: src/main.py:225
+#: src/main.py:219
 msgid "Contributors"
 msgstr "Bidragsgivere"
 
-#: src/host_info.py:380 src/host_info.py:382
+#: src/host_info.py:384 src/host_info.py:386
 msgid "Could not load packages"
 msgstr "Klarte ikke å laste inn pakker"
 
-#: src/package_install_worker.py:84
+#: src/package_install_worker.py:85
 msgid "Errors occurred during installation"
 msgstr "Feil oppsto under installering"
 
-#: src/package_install_worker.py:88 src/package_install_worker.py:92
+#: src/package_install_worker.py:89 src/package_install_worker.py:93
 msgid "Error occurred during installation"
 msgstr "En feil oppsto under installering"
 
-#: src/package_install_worker.py:88
-#: src/change_version_page/change_version_worker.py:70
+#: src/package_install_worker.py:89
+#: src/change_version_page/change_version_worker.py:77
 msgid "Failed to exit cleanly"
 msgstr "Mislyktes i å avslutte ordentlig"
 
-#: src/package_install_worker.py:104
+#: src/package_install_worker.py:105
 msgid "Could not cancel installation"
 msgstr "Klarte ikke å avbryte installeringen"
 
-#: src/package_install_worker.py:125 src/package_install_worker.py:135
+#: src/package_install_worker.py:126 src/package_install_worker.py:136
 msgid "Could not install packages"
 msgstr "Klarte ikke å installere pakker"
 
-#: src/package_install_worker.py:125
+#: src/package_install_worker.py:126
 msgid "Packages are currently being installed."
 msgstr "Pakker blir installert akkurat nå."
 
-#: src/package_install_worker.py:135
+#: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
 msgstr "Ingen pakker som skulle bli installert, ble oppgitt."
 
@@ -205,16 +205,16 @@ msgid "Warehouse will try to install the matching packages."
 msgstr "Warehouse vil forsøke å installere de samsvarende pakkene."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
-#: src/packages_page/uninstall_dialog.py:37
-#: src/properties_page/properties_page.py:189
-#: src/properties_page/properties_page.py:310
-#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:122
-#: src/remotes_page/remotes_page.py:189 src/user_data_page/data_box.py:114
-#: src/user_data_page/user_data_page.py:209
+#: src/packages_page/uninstall_dialog.py:38
+#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:315
+#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:126
+#: src/remotes_page/remotes_page.py:193 src/user_data_page/data_box.py:116
+#: src/user_data_page/user_data_page.py:210
 #: src/snapshot_page/new_snapshot_dialog.blp:16
-#: src/snapshot_page/snapshot_box.py:113 src/snapshot_page/snapshot_box.py:155
-#: src/snapshot_page/snapshot_page.py:479
-#: src/snapshot_page/snapshot_page.py:520
+#: src/snapshot_page/snapshot_box.py:114 src/snapshot_page/snapshot_box.py:156
+#: src/snapshot_page/snapshot_page.py:481
+#: src/snapshot_page/snapshot_page.py:519
 #: src/install_page/file_install_dialog.blp:13
 msgid "Cancel"
 msgstr "Avbryt"
@@ -235,33 +235,33 @@ msgstr "Velg en fjernserver"
 msgid "Select a remote to attempt to install from"
 msgstr "Velg en fjernserver for å forsøke å installere fra"
 
-#: src/gtk/attempt_install_dialog.py:18 src/packages_page/filters_page.py:122
-#: src/remotes_page/remote_row.py:148 src/install_page/pending_page.py:29
-#: src/install_page/select_page.py:31
+#: src/gtk/attempt_install_dialog.py:19 src/packages_page/filters_page.py:125
+#: src/remotes_page/remote_row.py:152 src/install_page/pending_page.py:30
+#: src/install_page/select_page.py:32
 msgid "Installation: {}"
 msgstr "Installasjon: {}"
 
-#: src/gtk/attempt_install_dialog.py:71
+#: src/gtk/attempt_install_dialog.py:76
 msgid "Can't find matching packages"
 msgstr "Klarte ikke å finne noen samsvarende pakker"
 
-#: src/gtk/attempt_install_dialog.py:71
+#: src/gtk/attempt_install_dialog.py:76
 msgid "Your system has no remotes added"
 msgstr "Ditt system har ingen fjernservere tillagt"
 
 #. Extra Object Creation
-#: src/gtk/error_toast.py:12
+#: src/gtk/error_toast.py:13
 msgid "Details"
 msgstr "Detaljer"
 
-#: src/gtk/error_toast.py:19 src/packages_page/packages_page.blp:135
+#: src/gtk/error_toast.py:20 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
 #: src/snapshot_page/snapshot_page.blp:149
 msgid "Copy"
 msgstr "Kopier"
 
-#: src/gtk/error_toast.py:20 src/main_window/window.py:135
-#: src/main_window/window.py:145 src/main_window/window.py:154
+#: src/gtk/error_toast.py:21 src/main_window/window.py:139
+#: src/main_window/window.py:149 src/main_window/window.py:158
 msgid "OK"
 msgstr "OK"
 
@@ -363,7 +363,7 @@ msgstr "Vis datarester"
 msgid "Snapshots Page"
 msgstr "Øyeblikksbildesiden"
 
-#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:202
+#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:203
 msgid "New Snapshots"
 msgstr "Nye øyeblikksbilder"
 
@@ -391,31 +391,31 @@ msgstr "Andre installasjon"
 msgid "Choose a custom installation"
 msgstr "Velg en tilpasset installering"
 
-#: src/gtk/installation_chooser.py:27
+#: src/gtk/installation_chooser.py:28
 msgid "These {} will only be available to you"
 msgstr "Disse {} vil kun være tilgjengelig til deg"
 
-#: src/gtk/installation_chooser.py:28
+#: src/gtk/installation_chooser.py:29
 msgid "These {} will be available to everyone"
 msgstr "Disse {} vil være tilgjengelig til alle brukere på systemet"
 
-#: src/gtk/installation_chooser.py:29
+#: src/gtk/installation_chooser.py:30
 msgid "Choose how these {} will be installed"
 msgstr "Velg hvordan disse {} skal installeres"
 
-#: src/gtk/installation_chooser.py:31
+#: src/gtk/installation_chooser.py:32
 msgid "This {} will only be available to you"
 msgstr "Denne {} vil kun være tilgjengelig til deg"
 
-#: src/gtk/installation_chooser.py:32
+#: src/gtk/installation_chooser.py:33
 msgid "This {} will be available to everyone"
 msgstr "Denne {} vil være tilgjengelig til alle brukere på systemet"
 
-#: src/gtk/installation_chooser.py:33
+#: src/gtk/installation_chooser.py:34
 msgid "Choose how this {} will be installed"
 msgstr "Velg hvordan denne {} skal installeres"
 
-#: src/gtk/sidebar_button.py:19
+#: src/gtk/sidebar_button.py:20
 msgid "Show Sidebar"
 msgstr "Vis sidefelt"
 
@@ -437,70 +437,70 @@ msgstr "Hovedmeny"
 
 #: src/main_window/window.blp:67 src/packages_page/packages_page.blp:20
 #: src/packages_page/packages_page.blp:55
-#: src/packages_page/packages_page.py:155
-#: src/packages_page/packages_page.py:319
-#: src/install_page/file_install_dialog.py:37
+#: src/packages_page/packages_page.py:157
+#: src/packages_page/packages_page.py:322
+#: src/install_page/file_install_dialog.py:38
 msgid "Packages"
 msgstr "Pakker"
 
-#: src/main_window/window.blp:80
+#: src/main_window/window.blp:82
 msgid "Remotes"
 msgstr "Fjernservere"
 
-#: src/main_window/window.blp:94 src/properties_page/properties_page.blp:114
+#: src/main_window/window.blp:98 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
 msgid "User Data"
 msgstr "Brukerdata"
 
-#: src/main_window/window.blp:107 src/snapshot_page/snapshot_page.blp:18
+#: src/main_window/window.blp:113 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
-#: src/snapshot_page/snapshot_page.py:355
+#: src/snapshot_page/snapshot_page.py:357
 msgid "Snapshots"
 msgstr "Øyeblikksbilder"
 
-#: src/main_window/window.blp:120 src/install_page/file_install_dialog.py:34
+#: src/main_window/window.blp:128 src/install_page/file_install_dialog.py:35
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
 msgid "Install Packages"
 msgstr "Installer pakker"
 
-#: src/main_window/window.blp:150
+#: src/main_window/window.blp:160
 msgid "_Open Files"
 msgstr "_Åpne filer"
 
-#: src/main_window/window.blp:154
+#: src/main_window/window.blp:164
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastatursnarveier"
 
-#: src/main_window/window.blp:158
+#: src/main_window/window.blp:168
 msgid "_About Warehouse"
 msgstr "_Om Warehouse"
 
-#: src/main_window/window.py:132
+#: src/main_window/window.py:136
 msgid "Unsupported Filetype"
 msgstr "Ustøttet filtype"
 
-#: src/main_window/window.py:133
+#: src/main_window/window.py:137
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
 msgstr "Bare .flatpak-, .flatpakref-, og .flatpakrepo-filer støttes."
 
-#: src/main_window/window.py:141
+#: src/main_window/window.py:145
 msgid "Mixed Filetypes"
 msgstr "Blandede filtyper"
 
-#: src/main_window/window.py:142
+#: src/main_window/window.py:146
 msgid "Flatpaks and remotes cannot be installed at the same time."
 msgstr "Flatpak-pakker og fjernservere kan ikke installeres samtidig."
 
-#: src/main_window/window.py:151
+#: src/main_window/window.py:155
 msgid "Too Many Remotes"
 msgstr "For mange fjernservere"
 
-#: src/main_window/window.py:152
+#: src/main_window/window.py:156
 msgid "Only one remote at a time is supported."
 msgstr "Fjernservere kan kun installeres én om gangen."
 
-#: src/main_window/window.py:170
+#: src/main_window/window.py:174
 msgid "Could not open files"
 msgstr "Klarte ikke å åpne filene"
 
@@ -622,7 +622,7 @@ msgid "Select All"
 msgstr "Velg alle"
 
 #: src/packages_page/packages_page.blp:144
-#: src/packages_page/uninstall_dialog.py:38
+#: src/packages_page/uninstall_dialog.py:39
 #: src/properties_page/properties_page.blp:88
 msgid "Uninstall"
 msgstr "Avinstaller"
@@ -639,76 +639,76 @@ msgstr "Kopier ID-er"
 msgid "Copy Refs"
 msgstr "Kopier ref-er"
 
-#: src/packages_page/packages_page.py:151
-#: src/user_data_page/data_subpage.py:107
-#: src/snapshot_page/new_snapshot_dialog.py:38
-#: src/snapshot_page/snapshot_page.py:355
+#: src/packages_page/packages_page.py:153
+#: src/user_data_page/data_subpage.py:109
+#: src/snapshot_page/new_snapshot_dialog.py:39
+#: src/snapshot_page/snapshot_page.py:357
 msgid "{} Selected"
 msgstr "{} valgt"
 
-#: src/packages_page/packages_page.py:192
+#: src/packages_page/packages_page.py:194
 msgid "Error getting Flatpak '{}'"
 msgstr "Klarte ikke å hente Flatpak-pakken «{}»"
 
-#: src/packages_page/packages_page.py:241
+#: src/packages_page/packages_page.py:243
 msgid "Names"
 msgstr "Navn"
 
-#: src/packages_page/packages_page.py:244
+#: src/packages_page/packages_page.py:246
 msgid "IDs"
 msgstr "ID-er"
 
-#: src/packages_page/packages_page.py:247
+#: src/packages_page/packages_page.py:249
 msgid "Refs"
 msgstr "Ref-er"
 
-#: src/packages_page/packages_page.py:255
-#: src/properties_page/properties_page.py:272
+#: src/packages_page/packages_page.py:257
+#: src/properties_page/properties_page.py:275
 msgid "Copied {}"
 msgstr "Kopierte {}"
 
-#: src/packages_page/packages_page.py:257
+#: src/packages_page/packages_page.py:259
 msgid "Could not copy {}"
 msgstr "Klarte ikke å kopiere {}"
 
-#: src/packages_page/packages_page.py:307
+#: src/packages_page/packages_page.py:310
 msgid "Errors occurred while uninstalling"
 msgstr "Feil oppsto under avinstallering"
 
-#: src/packages_page/packages_page.py:309
+#: src/packages_page/packages_page.py:312
 msgid "Uninstalled Packages"
 msgstr "Avinstallerte pakker"
 
-#: src/packages_page/packages_page.py:367
+#: src/packages_page/packages_page.py:370
 msgid "Loading Packages"
 msgstr "Laster inn pakker"
 
-#: src/packages_page/packages_page.py:367
-#: src/packages_page/packages_page.py:368
-#: src/properties_page/properties_page.py:366
-#: src/remotes_page/remotes_page.py:285 src/remotes_page/remotes_page.py:286
-#: src/user_data_page/user_data_page.py:296
-#: src/snapshot_page/snapshot_page.py:558 src/install_page/install_page.py:96
+#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:371
+#: src/properties_page/properties_page.py:368
+#: src/remotes_page/remotes_page.py:291 src/remotes_page/remotes_page.py:292
+#: src/user_data_page/user_data_page.py:297
+#: src/snapshot_page/snapshot_page.py:557 src/install_page/install_page.py:97
 #: src/install_page/results_page.py:135
 msgid "This should only take a moment"
 msgstr "Dette tar bare et øyeblikk"
 
-#: src/packages_page/packages_page.py:368
+#: src/packages_page/packages_page.py:371
 msgid "Uninstalling Packages"
 msgstr "Avinstallerer pakker"
 
-#: src/packages_page/packages_page.py:370
+#: src/packages_page/packages_page.py:373
 msgid "Reinstalling Package"
 msgstr "Installerer pakke på nytt"
 
-#: src/packages_page/packages_page.py:370
-#: src/packages_page/packages_page.py:372
-#: src/change_version_page/change_version_page.py:119
-#: src/snapshot_page/snapshot_page.py:551 src/install_page/install_page.py:88
+#: src/packages_page/packages_page.py:373
+#: src/packages_page/packages_page.py:375
+#: src/change_version_page/change_version_page.py:123
+#: src/snapshot_page/snapshot_page.py:550 src/install_page/install_page.py:89
 msgid "This could take a while"
 msgstr "Dette kan ta en god stund"
 
-#: src/packages_page/packages_page.py:372
+#: src/packages_page/packages_page.py:375
 msgid "Changing Version"
 msgstr "Endrer versjon"
 
@@ -723,8 +723,8 @@ msgstr "Tillater gjenoppretting av appinnstillinger og -innhold"
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
 #: src/user_data_page/user_data_page.blp:148
-#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:114
-#: src/snapshot_page/snapshot_page.py:521
+#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:115
+#: src/snapshot_page/snapshot_page.py:520
 msgid "Trash"
 msgstr "Slett"
 
@@ -732,23 +732,23 @@ msgstr "Slett"
 msgid "Send data to the trash"
 msgstr "Slett data"
 
-#: src/packages_page/uninstall_dialog.py:30
+#: src/packages_page/uninstall_dialog.py:31
 msgid "Uninstall {}?"
 msgstr "Avinstaller {}?"
 
-#: src/packages_page/uninstall_dialog.py:31
+#: src/packages_page/uninstall_dialog.py:32
 msgid "It will not be possible to use {} after removal"
 msgstr "Det vil ikke være mulig å bruke {} etter avinstallering"
 
-#: src/packages_page/uninstall_dialog.py:33
+#: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall Packages?"
 msgstr "Avinstaller pakker?"
 
-#: src/packages_page/uninstall_dialog.py:34
+#: src/packages_page/uninstall_dialog.py:35
 msgid "It will not be possible to use these packages after removal"
 msgstr "Det vil ikke være mulig å bruke disse pakkene etter avinstallering"
 
-#: src/packages_page/uninstall_dialog.py:41
+#: src/packages_page/uninstall_dialog.py:42
 msgid "App Settings & Content"
 msgstr "Appinnstillinger og -innhold"
 
@@ -809,7 +809,9 @@ msgid "Runtime"
 msgstr "Runtime"
 
 #: src/properties_page/properties_page.blp:188
-msgid "Disable Automactic Removal"
+#, fuzzy
+#| msgid "Disable Automactic Removal"
+msgid "Disable Automatic Removal"
 msgstr "Skru av automatisk fjerning"
 
 #: src/properties_page/properties_page.blp:189
@@ -868,115 +870,115 @@ msgstr "Subjekt"
 msgid "Date"
 msgstr "Dato"
 
-#: src/properties_page/properties_page.py:75
+#: src/properties_page/properties_page.py:76
 msgid "{} Properties"
 msgstr "Egenskaper av {}"
 
-#: src/properties_page/properties_page.py:80
+#: src/properties_page/properties_page.py:81
 msgid "Properties"
 msgstr "Egenskaper"
 
 #. Apply again
-#: src/properties_page/properties_page.py:109
-#: src/user_data_page/user_data_page.py:296
+#: src/properties_page/properties_page.py:110
+#: src/user_data_page/user_data_page.py:297
 msgid "Loading User Data"
 msgstr "Laster inn brukerdata"
 
-#: src/properties_page/properties_page.py:119
+#: src/properties_page/properties_page.py:120
 msgid "No User Data"
 msgstr "Ingen brukerdata"
 
-#: src/properties_page/properties_page.py:129
-#: src/properties_page/properties_page.py:145
+#: src/properties_page/properties_page.py:130
+#: src/properties_page/properties_page.py:146
 msgid "Could not get properties"
 msgstr "Klarte ikke å hente egenskaper"
 
-#: src/properties_page/properties_page.py:142
+#: src/properties_page/properties_page.py:143
 msgid "No version information found"
 msgstr "Ingen versjonsinformasjon fant"
 
-#: src/properties_page/properties_page.py:162
+#: src/properties_page/properties_page.py:163
 msgid "Could not open data"
 msgstr "Klarte ikke å åpne dataene"
 
-#: src/properties_page/properties_page.py:181
-#: src/properties_page/properties_page.py:183
-#: src/properties_page/properties_page.py:238
-#: src/properties_page/properties_page.py:240 src/user_data_page/data_box.py:99
-#: src/user_data_page/user_data_page.py:183
-#: src/user_data_page/user_data_page.py:197
+#: src/properties_page/properties_page.py:182
+#: src/properties_page/properties_page.py:184
+#: src/properties_page/properties_page.py:241
+#: src/properties_page/properties_page.py:243
+#: src/user_data_page/data_box.py:101 src/user_data_page/user_data_page.py:184
+#: src/user_data_page/user_data_page.py:198
 msgid "Could not trash data"
 msgstr "Klarte ikke å slette dataene"
 
-#: src/properties_page/properties_page.py:186
+#: src/properties_page/properties_page.py:187
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Slett {}s brukerdata?"
 
-#: src/properties_page/properties_page.py:187
+#: src/properties_page/properties_page.py:188
 msgid "Your settings and data for this app will be sent to the trash"
 msgstr "Dine filer og data for denne appen skal slettes"
 
-#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:191
 msgid "Trash Data"
 msgstr "Slett data"
 
-#: src/properties_page/properties_page.py:199
+#: src/properties_page/properties_page.py:201
 msgid "Could not Disable Updates"
 msgstr "Klarte ikke å skru av oppdateringer"
 
-#: src/properties_page/properties_page.py:199
+#: src/properties_page/properties_page.py:201
 msgid "Could not Enable Updates"
 msgstr "Klarte ikke å skru på oppdateringer"
 
-#: src/properties_page/properties_page.py:205
+#: src/properties_page/properties_page.py:207
 msgid "Disabled Updates"
 msgstr "Skrudde av oppdateringer"
 
-#: src/properties_page/properties_page.py:205
+#: src/properties_page/properties_page.py:207
 msgid "Enabled Updates"
 msgstr "Skrudde på oppdateringer"
 
-#: src/properties_page/properties_page.py:217
+#: src/properties_page/properties_page.py:220
 msgid "Could not Disable Autoremoval"
 msgstr "Klarte ikke å skru av automatisk fjerning"
 
-#: src/properties_page/properties_page.py:217
+#: src/properties_page/properties_page.py:220
 msgid "Could not Enable Autoremoval"
 msgstr "Klarte ikke å skru på automatisk fjerning"
 
-#: src/properties_page/properties_page.py:222
+#: src/properties_page/properties_page.py:225
 msgid "Disabled Autoremoval"
 msgstr "Skrudde av automatisk fjerning"
 
-#: src/properties_page/properties_page.py:222
+#: src/properties_page/properties_page.py:225
 msgid "Enabled Autoremoval"
 msgstr "Skrudde på automatisk fjerning"
 
-#: src/properties_page/properties_page.py:245
+#: src/properties_page/properties_page.py:248
 msgid "Could not uninstall"
 msgstr "Klarte ikke å avinstallere"
 
-#: src/properties_page/properties_page.py:249
+#: src/properties_page/properties_page.py:252
 msgid "Uninstalled {}"
 msgstr "Avinstallerte {}"
 
-#: src/properties_page/properties_page.py:261
+#: src/properties_page/properties_page.py:264
 msgid "Opening {}…"
 msgstr "Åpner {}…"
 
-#: src/properties_page/properties_page.py:266
+#: src/properties_page/properties_page.py:269
 msgid "Could not open {}"
 msgstr "Klarte ikke å åpne {}"
 
-#: src/properties_page/properties_page.py:281
+#: src/properties_page/properties_page.py:284
 msgid "Reinstalled {}"
 msgstr "Installerte {} på nytt"
 
-#: src/properties_page/properties_page.py:307
+#: src/properties_page/properties_page.py:312
 msgid "Reinstall {}?"
 msgstr "Installer {} på nytt?"
 
-#: src/properties_page/properties_page.py:308
+#: src/properties_page/properties_page.py:313
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
@@ -984,36 +986,36 @@ msgstr ""
 "Denne pakken skal avinstalleres, og så installeres igjen fra den samme "
 "fjernserveren og installasjonen."
 
-#: src/properties_page/properties_page.py:311
-#: src/properties_page/properties_page.py:372
+#: src/properties_page/properties_page.py:316
+#: src/properties_page/properties_page.py:374
 msgid "Reinstall"
 msgstr "Installer på nytt"
 
-#: src/properties_page/properties_page.py:328
+#: src/properties_page/properties_page.py:333
 msgid "Copied launch command"
 msgstr "Kopierte lanseringskommando"
 
-#: src/properties_page/properties_page.py:330
+#: src/properties_page/properties_page.py:335
 msgid "Could not copy launch command"
 msgstr "Klarte ikke å kopiere lanseringskommando"
 
-#: src/properties_page/properties_page.py:336
+#: src/properties_page/properties_page.py:341
 msgid "Could not show details"
 msgstr "Klarte ikke å vise detaljer"
 
-#: src/properties_page/properties_page.py:366
+#: src/properties_page/properties_page.py:368
 msgid "Loading Properties"
 msgstr "Laster inn egenskaper"
 
-#: src/properties_page/properties_page.py:369
+#: src/properties_page/properties_page.py:371
 msgid "View Snapshots"
 msgstr "Vis øyeblikksbilder"
 
-#: src/properties_page/properties_page.py:370
+#: src/properties_page/properties_page.py:372
 msgid "Copy Launch Command"
 msgstr "Kopier lanseringskommando"
 
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:373
 msgid "Show Details"
 msgstr "Vis detaljer"
 
@@ -1033,45 +1035,45 @@ msgstr ""
 "Dette avinstallerer den nåværende utgivelsen og installerer den valgte "
 "utgivelsen i stedet. NB: Nedgradering kan forårsake feil."
 
-#: src/change_version_page/change_version_page.py:69
+#: src/change_version_page/change_version_page.py:72
 msgid "Currently Installed Version"
 msgstr "Nåværende utgivelse"
 
-#: src/change_version_page/change_version_page.py:86
+#: src/change_version_page/change_version_page.py:89
 msgid "Could not get versions"
 msgstr "Klarte ikke å hente utgivelser"
 
-#: src/change_version_page/change_version_page.py:93
+#: src/change_version_page/change_version_page.py:96
 msgid "Changed {}'s Version"
 msgstr "Endret {}s versjon"
 
-#: src/change_version_page/change_version_page.py:117
+#: src/change_version_page/change_version_page.py:121
 msgid "{} Versions"
 msgstr "Versjoner av {}"
 
-#: src/change_version_page/change_version_page.py:118
+#: src/change_version_page/change_version_page.py:122
 msgid "Ensure that {} will never be updated to a newer version"
 msgstr "Sørg for at {} blir aldri oppdatert til en nyere utgivelse"
 
-#: src/change_version_page/change_version_page.py:119
+#: src/change_version_page/change_version_page.py:123
 msgid "Fetching Releases"
 msgstr "Henter utgivelser"
 
-#: src/change_version_page/change_version_worker.py:66
-#: src/change_version_page/change_version_worker.py:70
-#: src/change_version_page/change_version_worker.py:74
+#: src/change_version_page/change_version_worker.py:73
+#: src/change_version_page/change_version_worker.py:77
+#: src/change_version_page/change_version_worker.py:81
 msgid "Error occurred while changing version"
 msgstr "En feil oppsto under utgivelsesendring"
 
-#: src/change_version_page/change_version_worker.py:85
+#: src/change_version_page/change_version_worker.py:92
 msgid "Could not cancel version change"
 msgstr "Klarte ikke å avbryte utgivelsesendring"
 
-#: src/change_version_page/change_version_worker.py:106
+#: src/change_version_page/change_version_worker.py:113
 msgid "Could not change version"
 msgstr "Klarte ikke å ende utgivelse"
 
-#: src/change_version_page/change_version_worker.py:106
+#: src/change_version_page/change_version_worker.py:113
 msgid "Another package is changing version."
 msgstr "En annen pakkes versjon blir endret."
 
@@ -1096,16 +1098,16 @@ msgstr "Navn"
 msgid "Repo URL"
 msgstr "Arkiv-URL"
 
-#: src/remotes_page/add_remote_dialog.py:54
+#: src/remotes_page/add_remote_dialog.py:58
 msgid "Could not add remote"
 msgstr "Klarte ikke å legge til fjernserver"
 
-#: src/remotes_page/add_remote_dialog.py:57
+#: src/remotes_page/add_remote_dialog.py:61
 msgid "Added {}"
 msgstr "La til {}"
 
 #. Apply
-#: src/remotes_page/add_remote_dialog.py:107
+#: src/remotes_page/add_remote_dialog.py:111
 msgid "remote"
 msgstr "fjernserver"
 
@@ -1129,56 +1131,56 @@ msgstr "Kopier navn"
 msgid "Enable"
 msgstr "Slå på"
 
-#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:123
+#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:127
 msgid "Disable"
 msgstr "Slå av"
 
-#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:190
+#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:194
 msgid "Remove"
 msgstr "Fjern"
 
-#: src/remotes_page/remote_row.py:24 src/remotes_page/remote_row.py:44
+#: src/remotes_page/remote_row.py:25 src/remotes_page/remote_row.py:46
 msgid "Could not enable remote"
 msgstr "Klarte ikke å slå på fjernserver"
 
-#: src/remotes_page/remote_row.py:24
+#: src/remotes_page/remote_row.py:25
 msgid "Remote is already enabled"
 msgstr "Fjernserveren er allerede påslått"
 
-#: src/remotes_page/remote_row.py:51
+#: src/remotes_page/remote_row.py:53
 msgid "Enabled remote"
 msgstr "Slo på fjernserver"
 
-#: src/remotes_page/remote_row.py:75 src/remotes_page/remote_row.py:153
+#: src/remotes_page/remote_row.py:77 src/remotes_page/remote_row.py:157
 msgid "Remote is Disabled"
 msgstr "Fjernserveren er avslått"
 
-#: src/remotes_page/remote_row.py:77
+#: src/remotes_page/remote_row.py:79
 msgid "Disabled remote"
 msgstr "Slo av fjernserver"
 
-#: src/remotes_page/remote_row.py:95 src/remotes_page/remote_row.py:107
-#: src/remotes_page/remote_row.py:111
+#: src/remotes_page/remote_row.py:97 src/remotes_page/remote_row.py:109
+#: src/remotes_page/remote_row.py:113
 msgid "Could not disable remote"
 msgstr "Klarte ikke å slå av fjernserver"
 
-#: src/remotes_page/remote_row.py:95
+#: src/remotes_page/remote_row.py:97
 msgid "Remote is already disabled"
 msgstr "Fjernserveren er allerede avslått"
 
-#: src/remotes_page/remote_row.py:121
+#: src/remotes_page/remote_row.py:124
 msgid "Disable {}?"
 msgstr "Slå av {}?"
 
-#: src/remotes_page/remote_row.py:121 src/remotes_page/remotes_page.py:188
+#: src/remotes_page/remote_row.py:124 src/remotes_page/remotes_page.py:191
 msgid "Any installed apps from {} will stop receiving updates"
 msgstr "Alle installerte apper fra {}, vil ikke få oppdateringer lenger"
 
-#: src/remotes_page/remote_row.py:133
+#: src/remotes_page/remote_row.py:137
 msgid "Copied title"
 msgstr "Kopierte tittel"
 
-#: src/remotes_page/remote_row.py:136
+#: src/remotes_page/remote_row.py:140
 msgid "Copied name"
 msgstr "Kopierte navn"
 
@@ -1249,61 +1251,61 @@ msgstr "Legg til tilpasset fjernserver"
 msgid "Manually enter new remote details"
 msgstr "Tast inn fjernserveropplysninger for hånd"
 
-#: src/remotes_page/remotes_page.py:32
+#: src/remotes_page/remotes_page.py:33
 msgid "The open source, pay-what-you-want app store from elementary"
 msgstr "Den åpen-kildekode- og betal-hva-du-vil-appbutikken fra elementary"
 
-#: src/remotes_page/remotes_page.py:38
+#: src/remotes_page/remotes_page.py:39
 msgid "Central repository of Flatpak applications"
 msgstr "Sentral arkiv av Flatpak-applikasjoner"
 
-#: src/remotes_page/remotes_page.py:44
+#: src/remotes_page/remotes_page.py:45
 msgid "Beta builds of Flatpak applications"
 msgstr "Beta-utgivelser av Flatpak-applikasjoner"
 
-#: src/remotes_page/remotes_page.py:50
+#: src/remotes_page/remotes_page.py:51
 msgid "Flatpaks packaged by Fedora Linux"
 msgstr "Flatpak-pakker fra Fedora Linux"
 
-#: src/remotes_page/remotes_page.py:56
+#: src/remotes_page/remotes_page.py:57
 msgid "The latest beta GNOME Apps and Runtimes"
 msgstr "De nyeste beta-apper og -runtimer fra GNOME"
 
-#: src/remotes_page/remotes_page.py:62
+#: src/remotes_page/remotes_page.py:63
 msgid "Central repository of the WebKit Developer and Runtime SDK"
 msgstr "Sentral arkiv av WebKit sin utvikler- og runtime-SDK"
 
-#: src/remotes_page/remotes_page.py:152
+#: src/remotes_page/remotes_page.py:153
 msgid "Showing all packages from {}"
 msgstr "Viser alle pakker fra {}"
 
-#: src/remotes_page/remotes_page.py:173
+#: src/remotes_page/remotes_page.py:175
 msgid "Could not remove remote"
 msgstr "Klarte ikke å fjerne fjernservere"
 
-#: src/remotes_page/remotes_page.py:180
+#: src/remotes_page/remotes_page.py:182
 msgid "Removed {}"
 msgstr "Fjernet {}"
 
-#: src/remotes_page/remotes_page.py:188
+#: src/remotes_page/remotes_page.py:191
 msgid "Remove {}?"
 msgstr "Fjern {}?"
 
-#: src/remotes_page/remotes_page.py:224 src/remotes_page/remotes_page.py:234
-#: src/remotes_page/remotes_page.py:236
+#: src/remotes_page/remotes_page.py:228 src/remotes_page/remotes_page.py:238
+#: src/remotes_page/remotes_page.py:240
 msgid "Could not open file"
 msgstr "Klarte ikke å åpne fil"
 
-#: src/remotes_page/remotes_page.py:239
+#: src/remotes_page/remotes_page.py:243
 msgid "Flatpak Repos"
 msgstr "Flatpak-arkiver"
 
 #. Apply
-#: src/remotes_page/remotes_page.py:285
+#: src/remotes_page/remotes_page.py:291
 msgid "Adding Remote"
 msgstr "Legger til fjernserver"
 
-#: src/remotes_page/remotes_page.py:286
+#: src/remotes_page/remotes_page.py:292
 msgid "Loading Remotes"
 msgstr "Laster inn fjernservere"
 
@@ -1315,33 +1317,33 @@ msgstr "Kopier sti"
 msgid "Attempt to Install"
 msgstr "Forsøk å installere"
 
-#: src/user_data_page/data_box.py:58
+#: src/user_data_page/data_box.py:59
 msgid "Copied data path"
 msgstr "Kopierte datastien"
 
-#: src/user_data_page/data_box.py:60
+#: src/user_data_page/data_box.py:61
 msgid "Could not copy data path"
 msgstr "Klarte ikke å kopiere datastien"
 
-#: src/user_data_page/data_box.py:65
+#: src/user_data_page/data_box.py:66
 msgid "Opened data folder"
 msgstr "Åpnet datamappen"
 
-#: src/user_data_page/data_box.py:67 src/snapshot_page/snapshot_page.py:253
-#: src/snapshot_page/snapshots_list_page.py:77
+#: src/user_data_page/data_box.py:68 src/snapshot_page/snapshot_page.py:255
+#: src/snapshot_page/snapshots_list_page.py:78
 msgid "Could not open folder"
 msgstr "Klarte ikke å åpne mappe"
 
-#: src/user_data_page/data_box.py:113
+#: src/user_data_page/data_box.py:115
 msgid "Trash {}'s Data?"
 msgstr "Slett {}s data?"
 
-#: src/user_data_page/data_box.py:113
+#: src/user_data_page/data_box.py:115
 msgid "{}'s data will be sent to the trash"
 msgstr "{}s data skal slettes"
 
-#: src/user_data_page/data_box.py:115 src/user_data_page/user_data_page.py:210
-#: src/snapshot_page/snapshot_page.py:480
+#: src/user_data_page/data_box.py:117 src/user_data_page/user_data_page.py:211
+#: src/snapshot_page/snapshot_page.py:482
 msgid "Continue"
 msgstr "Fortsett"
 
@@ -1353,22 +1355,22 @@ msgstr "Ingen tittel oppgitt"
 msgid "Loading Size…"
 msgstr "Laster inn størrelse…"
 
-#: src/user_data_page/data_subpage.py:232
+#: src/user_data_page/data_subpage.py:254
 msgid "No Active Data"
 msgstr "Ingen aktive data"
 
-#: src/user_data_page/data_subpage.py:233
+#: src/user_data_page/data_subpage.py:255
 msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
 msgstr ""
 "Warehouse kan ikke se noen aktive data, eller systemet har ingen aktive data"
 
-#: src/user_data_page/data_subpage.py:236
+#: src/user_data_page/data_subpage.py:258
 msgid "No Leftover Data"
 msgstr "Ingen datarester"
 
-#: src/user_data_page/data_subpage.py:237
+#: src/user_data_page/data_subpage.py:259
 msgid "There is no leftover user data"
 msgstr "Det finnes ingen brukerdatarester"
 
@@ -1406,43 +1408,43 @@ msgstr "ID"
 msgid "Size"
 msgstr "Størrelse"
 
-#: src/user_data_page/user_data_page.py:75
-#: src/user_data_page/user_data_page.py:77
+#: src/user_data_page/user_data_page.py:76
+#: src/user_data_page/user_data_page.py:78
 msgid "Loading Size"
 msgstr "Laster inn størrelse"
 
-#: src/user_data_page/user_data_page.py:151
+#: src/user_data_page/user_data_page.py:152
 msgid "Could not copy paths"
 msgstr "Klarte ikke å kopiere stiene"
 
-#: src/user_data_page/user_data_page.py:151
-#: src/user_data_page/user_data_page.py:197
+#: src/user_data_page/user_data_page.py:152
+#: src/user_data_page/user_data_page.py:198
 msgid "No boxes were selected"
 msgstr "Ingen bokser ble valgt"
 
-#: src/user_data_page/user_data_page.py:154
+#: src/user_data_page/user_data_page.py:155
 msgid "Copied paths"
 msgstr "Kopierte stier"
 
-#: src/user_data_page/user_data_page.py:185
+#: src/user_data_page/user_data_page.py:186
 msgid "Trashed data"
 msgstr "Slettet data"
 
-#: src/user_data_page/user_data_page.py:208
+#: src/user_data_page/user_data_page.py:209
 msgid "Trash Data?"
 msgstr "Slett data?"
 
-#: src/user_data_page/user_data_page.py:208
+#: src/user_data_page/user_data_page.py:209
 msgid "Data will be sent to the trash"
 msgstr "Dataene skal slettes"
 
-#: src/user_data_page/user_data_page.py:246
-#: src/user_data_page/user_data_page.py:269
+#: src/user_data_page/user_data_page.py:247
+#: src/user_data_page/user_data_page.py:270
 msgid "Active Data"
 msgstr "Aktive data"
 
-#: src/user_data_page/user_data_page.py:247
-#: src/user_data_page/user_data_page.py:275
+#: src/user_data_page/user_data_page.py:248
+#: src/user_data_page/user_data_page.py:276
 msgid "Leftover Data"
 msgstr "Datarester"
 
@@ -1455,26 +1457,26 @@ msgstr "Søk gjennom apper"
 msgid "Create"
 msgstr "Opprett"
 
-#: src/snapshot_page/new_snapshot_dialog.py:110
+#: src/snapshot_page/new_snapshot_dialog.py:111
 msgid "Creating Snapshot"
 msgstr "Oppretter øyeblikksbilde"
 
-#: src/snapshot_page/new_snapshot_dialog.py:192
+#: src/snapshot_page/new_snapshot_dialog.py:193
 msgid "Name these Snapshots"
 msgstr "Gi disse øyeblikksbildene navn"
 
-#: src/snapshot_page/new_snapshot_dialog.py:196
+#: src/snapshot_page/new_snapshot_dialog.py:197
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
 msgstr "Nytt øyeblikksbilde"
 
-#: src/snapshot_page/new_snapshot_dialog.py:200
+#: src/snapshot_page/new_snapshot_dialog.py:201
 msgid "Name this Snapshot"
 msgstr "Gi dette øyeblikksbildet et navn"
 
-#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:58
+#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:59
 msgid "No Name Set"
 msgstr "Intet navn angitt"
 
@@ -1486,7 +1488,7 @@ msgstr "Ingen dato fant"
 msgid "No version found"
 msgstr "Ingen utgivelse fant"
 
-#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:156
+#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:157
 msgid "Apply"
 msgstr "Ta i bruk"
 
@@ -1502,40 +1504,40 @@ msgstr "Gi øyeblikksbilde nytt navn?"
 msgid "Confirm Rename"
 msgstr "Bekreft omnavngivning"
 
-#: src/snapshot_page/snapshot_box.py:33 src/snapshot_page/snapshot_box.py:45
-#: src/snapshot_page/snapshot_box.py:61
+#: src/snapshot_page/snapshot_box.py:34 src/snapshot_page/snapshot_box.py:46
+#: src/snapshot_page/snapshot_box.py:62
 msgid "Could not write data"
 msgstr "Klarte ikke å skrive data"
 
-#: src/snapshot_page/snapshot_box.py:98
+#: src/snapshot_page/snapshot_box.py:99
 msgid "Could not trash snapshot"
 msgstr "Klarte ikke å slette øyeblikksbilde"
 
-#: src/snapshot_page/snapshot_box.py:102
+#: src/snapshot_page/snapshot_box.py:103
 msgid "Trashed snapshot"
 msgstr "Slettet øyeblikksbilde"
 
-#: src/snapshot_page/snapshot_box.py:112
+#: src/snapshot_page/snapshot_box.py:113
 msgid "Trash Snapshot?"
 msgstr "Slett øyeblikksbilde?"
 
-#: src/snapshot_page/snapshot_box.py:112
+#: src/snapshot_page/snapshot_box.py:113
 msgid "This snapshot will be sent to the trash"
 msgstr "Dette øyeblikksbildet skal slettes"
 
-#: src/snapshot_page/snapshot_box.py:142
+#: src/snapshot_page/snapshot_box.py:143
 msgid "Applying Snapshot"
 msgstr "Tar øyeblikksbilde i bruk"
 
-#: src/snapshot_page/snapshot_box.py:152
+#: src/snapshot_page/snapshot_box.py:153
 msgid "Apply Snapshot?"
 msgstr "Ta øyeblikksbilde i bruk?"
 
-#: src/snapshot_page/snapshot_box.py:153
+#: src/snapshot_page/snapshot_box.py:154
 msgid "Any current user data for this app will be trashed"
 msgstr "Nåværende brukerdata for denne appen skal slettes"
 
-#: src/snapshot_page/snapshot_box.py:182
+#: src/snapshot_page/snapshot_box.py:183
 msgid "Version: {}"
 msgstr "Utgivelse {}"
 
@@ -1589,81 +1591,81 @@ msgstr "Ta øyeblikksbilder i bruk"
 msgid "Trash Snapshots"
 msgstr "Slett øyeblikksbilder"
 
-#: src/snapshot_page/snapshot_page.py:101
+#: src/snapshot_page/snapshot_page.py:103
 msgid "Could not load Snapshots"
 msgstr "Klarte ikke å laste inn øyeblikksbilder"
 
-#: src/snapshot_page/snapshot_page.py:194
+#: src/snapshot_page/snapshot_page.py:196
 msgid "Showing snapshots for {}"
 msgstr "Viser øyeblikksbilder for {}"
 
-#: src/snapshot_page/snapshot_page.py:198
+#: src/snapshot_page/snapshot_page.py:200
 msgid "No snapshots for {}"
 msgstr "Ingen øyeblikksbilder for {}"
 
-#: src/snapshot_page/snapshot_page.py:198
+#: src/snapshot_page/snapshot_page.py:200
 msgid "New"
 msgstr "Nytt"
 
-#: src/snapshot_page/snapshot_page.py:242
 #: src/snapshot_page/snapshot_page.py:244
-#: src/snapshot_page/snapshots_list_page.py:60
+#: src/snapshot_page/snapshot_page.py:246
+#: src/snapshot_page/snapshots_list_page.py:61
 msgid "No Data Found to Snapshot"
 msgstr "Ingen data fant som kan lagres i et øyeblikksbilde"
 
-#: src/snapshot_page/snapshot_page.py:251
-#: src/snapshot_page/snapshots_list_page.py:75
+#: src/snapshot_page/snapshot_page.py:253
+#: src/snapshot_page/snapshots_list_page.py:76
 msgid "Opened snapshots folder"
 msgstr "Åpnet øyeblikksbildemappe"
 
-#: src/snapshot_page/snapshot_page.py:386
+#: src/snapshot_page/snapshot_page.py:388
 msgid "Copied Snapshot Paths"
 msgstr "Kopierte øyeblikksbildestier"
 
-#: src/snapshot_page/snapshot_page.py:395
+#: src/snapshot_page/snapshot_page.py:397
 msgid "No apps in your selection can be snapshotted"
 msgstr "Ingen apper i utvalget ditt kan lagres i øyeblikksbilder"
 
-#: src/snapshot_page/snapshot_page.py:469
+#: src/snapshot_page/snapshot_page.py:471
 msgid "Applying Snapshots"
 msgstr "Tar øyeblikksbilder i bruk"
 
-#: src/snapshot_page/snapshot_page.py:475
+#: src/snapshot_page/snapshot_page.py:477
 msgid "No snapshots to extract"
 msgstr "Ingen øyeblikksbilder å ekstrahere"
 
-#: src/snapshot_page/snapshot_page.py:475
+#: src/snapshot_page/snapshot_page.py:477
 msgid "No snapshots were found to extract"
 msgstr "Ingen øyeblikksbilder fant å ekstrahere"
 
-#: src/snapshot_page/snapshot_page.py:478
+#: src/snapshot_page/snapshot_page.py:480
 msgid "Apply These Snapshots?"
 msgstr "Ta disse øyeblikksbildene i bruk?"
 
-#: src/snapshot_page/snapshot_page.py:478
+#: src/snapshot_page/snapshot_page.py:480
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
 "Dette vil slette appenes brukerdata, og ta deres nyeste øyeblikksbildene i "
 "bruk"
 
-#: src/snapshot_page/snapshot_page.py:514
+#: src/snapshot_page/snapshot_page.py:513
 msgid "Trashed snapshots"
 msgstr "Slettet øyeblikksbilder"
 
-#: src/snapshot_page/snapshot_page.py:516
+#: src/snapshot_page/snapshot_page.py:515
 msgid "Could not trash snapshots"
 msgstr "Klarte ikke å slette øyeblikksbilder"
 
-#: src/snapshot_page/snapshot_page.py:519
+#: src/snapshot_page/snapshot_page.py:518
 msgid "Trash Snapshots?"
 msgstr "Slett øyeblikksbilder?"
 
-#: src/snapshot_page/snapshot_page.py:519
+#: src/snapshot_page/snapshot_page.py:518
 msgid "These apps' snapshots will be sent to the trash"
 msgstr "Disse appenes øyeblikksbilder skal slettes"
 
-#: src/snapshot_page/snapshot_page.py:558
+#: src/snapshot_page/snapshot_page.py:557
 msgid "Loading Snapshots"
 msgstr "Laster inn øyeblikksbilder"
 
@@ -1675,16 +1677,16 @@ msgstr "Liste over øyeblikksbilder"
 msgid "Open Snapshots Folder for this App"
 msgstr "Åpne øyeblikksbildemappen for denne appen"
 
-#: src/snapshot_page/snapshots_list_page.py:30
-#: src/snapshot_page/snapshots_list_page.py:51
+#: src/snapshot_page/snapshots_list_page.py:31
+#: src/snapshot_page/snapshots_list_page.py:52
 msgid "App not Installed"
 msgstr "Appen ikke installert"
 
-#: src/snapshot_page/snapshots_list_page.py:54
+#: src/snapshot_page/snapshots_list_page.py:55
 msgid "{} Snapshots"
 msgstr "{} øyeblikksbilder"
 
-#: src/snapshot_page/tar_worker.py:81
+#: src/snapshot_page/tar_worker.py:80
 msgid "Error in snapshot handling"
 msgstr "Feil under behandling av øyeblikksbilder"
 
@@ -1693,20 +1695,20 @@ msgid "Review Selection"
 msgstr "Gjennomgå utvalg"
 
 #. self.packages_group.set_title(_("Review Packages"))
-#: src/install_page/file_install_dialog.py:36
+#: src/install_page/file_install_dialog.py:37
 msgid "The following packages will be installed"
 msgstr "De følgende pakkene skal installeres"
 
-#: src/install_page/file_install_dialog.py:39
+#: src/install_page/file_install_dialog.py:40
 msgid "Install a Package"
 msgstr "Installer en pakke"
 
 #. self.packages_group.set_title(_("Review Package"))
-#: src/install_page/file_install_dialog.py:41
+#: src/install_page/file_install_dialog.py:42
 msgid "The following package will be installed"
 msgstr "Den følgende pakken skal installeres"
 
-#: src/install_page/file_install_dialog.py:42
+#: src/install_page/file_install_dialog.py:43
 msgid "package"
 msgstr "pakke"
 
@@ -1719,24 +1721,24 @@ msgstr "Velg kilde"
 msgid "Pending Packages"
 msgstr "Ventende pakker"
 
-#: src/install_page/install_page.py:51
+#: src/install_page/install_page.py:52
 msgid "Installed Packages"
 msgstr "Installerte pakker"
 
-#: src/install_page/install_page.py:68
+#: src/install_page/install_page.py:69
 msgid "{} Pending Package"
 msgstr "{} ventende pakke"
 
-#: src/install_page/install_page.py:73
+#: src/install_page/install_page.py:74
 msgid "{} Pending Packages"
 msgstr "{} ventende pakker"
 
 #. Extra Object Creation
-#: src/install_page/install_page.py:88
+#: src/install_page/install_page.py:89
 msgid "Installing Packages"
 msgstr "Installerer pakker"
 
-#: src/install_page/install_page.py:96
+#: src/install_page/install_page.py:97
 msgid "Loading Installation Options"
 msgstr "Laster inn installeringsalternativer"
 
@@ -1748,23 +1750,23 @@ msgstr "Legge til pakker"
 msgid "Packages queued to install will show up here"
 msgstr "Pakker som venter på å installeres, dukker opp her"
 
-#: src/install_page/pending_page.py:34
+#: src/install_page/pending_page.py:35
 msgid "Remove All"
 msgstr "Fjern alle"
 
-#: src/install_page/result_row.blp:8 src/install_page/result_row.py:42
+#: src/install_page/result_row.blp:8 src/install_page/result_row.py:43
 msgid "Add Package to Queue"
 msgstr "Legg til pakke i køen"
 
-#: src/install_page/result_row.py:46
+#: src/install_page/result_row.py:47
 msgid "Package has been Added to Queue"
 msgstr "Pakken har blitt lagt til i køen"
 
-#: src/install_page/result_row.py:50
+#: src/install_page/result_row.py:51
 msgid "Remove Package from Queue"
 msgstr "Fjern pakke fra køen"
 
-#: src/install_page/result_row.py:54
+#: src/install_page/result_row.py:55
 msgid "This Package is Already Installed"
 msgstr "Denne pakken er allerede installert"
 
@@ -1797,7 +1799,7 @@ msgstr "Prøv et mer spesifikt søk"
 msgid "Try a different search term"
 msgstr "Prøv et annet søk"
 
-#: src/install_page/results_page.py:50
+#: src/install_page/results_page.py:48
 msgid "Search {}"
 msgstr "Søk gjennom {}"
 
@@ -1829,11 +1831,11 @@ msgstr "Legg til en fjernserver i systemet ditt for å slå på internettsøking
 msgid "Install packages from files on your system"
 msgstr "Installer pakker fra filer på systemet ditt"
 
-#: src/install_page/select_page.py:60
+#: src/install_page/select_page.py:63
 msgid "No files were found to install"
 msgstr "Ingen filer som kunne installeres, fant"
 
-#: src/install_page/select_page.py:70
+#: src/install_page/select_page.py:73
 msgid "Flatpaks"
 msgstr "Flatpak-pakker"
 
