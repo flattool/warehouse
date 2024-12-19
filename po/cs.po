@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 22:37-0500\n"
-"PO-Revision-Date: 2024-11-10 10:57+0000\n"
+"PO-Revision-Date: 2024-12-20 07:53+0000\n"
 "Last-Translator: Lordus Kordus <lorduskordus@gmail.com>\n"
 "Language-Team: Czech <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/cs/>\n"
@@ -811,8 +811,6 @@ msgid "Runtime"
 msgstr "Běhové prostředí"
 
 #: src/properties_page/properties_page.blp:188
-#, fuzzy
-#| msgid "Disable Automactic Removal"
 msgid "Disable Automatic Removal"
 msgstr "Zakázat Automatické Odstraňování"
 
