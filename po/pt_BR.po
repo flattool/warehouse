@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 22:37-0500\n"
-"PO-Revision-Date: 2024-12-17 22:58+0000\n"
+"PO-Revision-Date: 2024-12-21 17:45+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.fyralabs.com/projects/"
 "flattool/warehouse/pt_BR/>\n"
@@ -293,7 +293,7 @@ msgstr "Mostrar atalhos do teclado"
 
 #: src/gtk/help-overlay.blp:27
 msgid "Quit"
-msgstr "Fechar"
+msgstr "Desistir"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
@@ -651,7 +651,7 @@ msgstr "Copiar refs"
 #: src/snapshot_page/new_snapshot_dialog.py:39
 #: src/snapshot_page/snapshot_page.py:357
 msgid "{} Selected"
-msgstr "{} selecionado(s)"
+msgstr "selecionado(s) {}"
 
 #: src/packages_page/packages_page.py:194
 msgid "Error getting Flatpak '{}'"
@@ -672,7 +672,7 @@ msgstr "Referências"
 #: src/packages_page/packages_page.py:257
 #: src/properties_page/properties_page.py:275
 msgid "Copied {}"
-msgstr "{} copiado"
+msgstr "copiado {}"
 
 #: src/packages_page/packages_page.py:259
 msgid "Could not copy {}"
@@ -816,10 +816,8 @@ msgid "Runtime"
 msgstr "Tempo de execução"
 
 #: src/properties_page/properties_page.blp:188
-#, fuzzy
-#| msgid "Disable Automactic Removal"
 msgid "Disable Automatic Removal"
-msgstr "Desativar Remoção Automática"
+msgstr "Desativar remoção automática"
 
 #: src/properties_page/properties_page.blp:189
 msgid "Pin this runtime to keep it installed"
@@ -919,7 +917,7 @@ msgstr "Não foi possível excluir os dados"
 
 #: src/properties_page/properties_page.py:187
 msgid "Send {}'s User Data to the Trash?"
-msgstr "Excluir dados de usuário de {}?"
+msgstr "Enviar os dados do usuário {} para a lixeira?"
 
 #: src/properties_page/properties_page.py:188
 msgid "Your settings and data for this app will be sent to the trash"
@@ -980,7 +978,7 @@ msgstr "Não foi possível abrir {}"
 
 #: src/properties_page/properties_page.py:284
 msgid "Reinstalled {}"
-msgstr "{} reinstalado"
+msgstr "Reinstalado {}"
 
 #: src/properties_page/properties_page.py:312
 msgid "Reinstall {}?"
@@ -991,8 +989,8 @@ msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
 msgstr ""
-"Este pacote será desinstalado, e então reinstalado do mesmo repositório e "
-"instalação."
+"Este pacote será desinstalado e reinstalado a partir do mesmo controle "
+"remoto e instalação."
 
 #: src/properties_page/properties_page.py:316
 #: src/properties_page/properties_page.py:374
