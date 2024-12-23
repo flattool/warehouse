@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 22:37-0500\n"
-"PO-Revision-Date: 2024-12-21 17:45+0000\n"
+"PO-Revision-Date: 2024-12-23 03:55+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.fyralabs.com/projects/"
 "flattool/warehouse/pt_BR/>\n"
@@ -38,8 +38,8 @@ msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
-"O Warehouse fornece uma interface de usuário simples para controlar opções "
-"complexas do Flatpak, tudo sem recorrer à linha de comando."
+"O Armazém oferece uma interface simples para controlar opções complexas do "
+"Flatpak, tudo isso sem recorrer à linha de comando."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -208,7 +208,7 @@ msgstr "Tentar uma instalação?"
 
 #: src/gtk/attempt_install_dialog.blp:6
 msgid "Warehouse will try to install the matching packages."
-msgstr "O Warehouse tentará instalar os pacotes correspondentes."
+msgstr "O Armazém tentará instalar os pacotes correspondentes."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:38
@@ -480,7 +480,7 @@ msgstr "_Atalhos de teclado"
 
 #: src/main_window/window.blp:168
 msgid "_About Warehouse"
-msgstr "_Sobre o Warehouse"
+msgstr "_Sobre o Armazém"
 
 #: src/main_window/window.py:136
 msgid "Unsupported Filetype"
@@ -604,8 +604,8 @@ msgid ""
 "Warehouse cannot see the list of installed packages or your system has no "
 "packages installed"
 msgstr ""
-"Armazém não consegue ver a lista de pacotes instalados no seu sistema não "
-"tem pacotes instalados"
+"O Armazém não consegue ver a lista de pacotes instalados ou seu sistema não "
+"possui pacotes instalados"
 
 #: src/packages_page/packages_page.blp:109
 #: src/remotes_page/remotes_page.blp:153 src/user_data_page/data_subpage.blp:68
@@ -821,7 +821,7 @@ msgstr "Desativar remoção automática"
 
 #: src/properties_page/properties_page.blp:189
 msgid "Pin this runtime to keep it installed"
-msgstr "Fixe este runtime para mantê-lo instalado"
+msgstr "Fixe este tempo de execução para mantê-lo instalado"
 
 #: src/properties_page/properties_page.blp:200
 msgid "Package Information"
@@ -1227,7 +1227,7 @@ msgstr "Nenhum repositório remoto encontrado"
 msgid ""
 "Warehouse cannot see the current remotes or your system has no remotes added"
 msgstr ""
-"O Warehouse não pode ver os repositórios atuais ou o seu sistema não tem "
+"O Armazém não consegue ver os repositórios atuais ou seu sistema não possui "
 "repositórios adicionados"
 
 #: src/remotes_page/remotes_page.blp:126
@@ -1372,8 +1372,8 @@ msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
 msgstr ""
-"O Warehouse não pode ver nenhum dado de usuário ou o seu sistema não tem "
-"nenhum dado"
+"O Armazém não consegue ver nenhum dado de usuário ativo ou seu sistema não "
+"possui dados de usuário ativos"
 
 #: src/user_data_page/data_subpage.py:258
 msgid "No Leftover Data"
