@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 22:37-0500\n"
-"PO-Revision-Date: 2024-12-05 16:05+0000\n"
-"Last-Translator: lmens-lmental <lmenslmental@gmail.com>\n"
+"PO-Revision-Date: 2025-01-06 19:49+0000\n"
+"Last-Translator: PolGZ <polgz@tutanota.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.1\n"
+"X-Generator: Weblate 5.9.2\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -237,10 +237,8 @@ msgid "Install"
 msgstr "Instalar"
 
 #: src/gtk/attempt_install_dialog.blp:12
-#, fuzzy
-#| msgid "Choose a Remote to Search"
 msgid "Choose a Remote"
-msgstr "Elige un remoto a buscar"
+msgstr "Elige un repositorio remoto"
 
 #: src/gtk/attempt_install_dialog.blp:13
 msgid "Select a remote to attempt to install from"
@@ -249,10 +247,8 @@ msgstr "Seleccione un control remoto para intentar la instalación"
 #: src/gtk/attempt_install_dialog.py:19 src/packages_page/filters_page.py:125
 #: src/remotes_page/remote_row.py:152 src/install_page/pending_page.py:30
 #: src/install_page/select_page.py:32
-#, fuzzy
-#| msgid "Installation"
 msgid "Installation: {}"
-msgstr "Instalación"
+msgstr "Instalación: {}"
 
 #: src/gtk/attempt_install_dialog.py:76
 msgid "Can't find matching packages"
@@ -287,10 +283,8 @@ msgid "Refresh"
 msgstr "Refrescar"
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Open Files"
-msgstr "Establecer filtros"
+msgstr "Abrir archivos"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
@@ -313,16 +307,12 @@ msgid "Show Packages Page"
 msgstr "Mostrar página de paquetes"
 
 #: src/gtk/help-overlay.blp:38
-#, fuzzy
-#| msgid "No Remotes Found"
 msgid "Show Remotes Page"
-msgstr "No se han encontrado remotos"
+msgstr "Mostrar la página de repositorios remotos"
 
 #: src/gtk/help-overlay.blp:42
-#, fuzzy
-#| msgid "No User Data"
 msgid "Show User Data Page"
-msgstr "No hay datos del usuario"
+msgstr "Mostrar la página de datos de usuario"
 
 #: src/gtk/help-overlay.blp:46
 #, fuzzy
@@ -331,10 +321,8 @@ msgid "Show Snapshots Page"
 msgstr "No hay instantáneas"
 
 #: src/gtk/help-overlay.blp:50
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show Install Page"
-msgstr "Mostrar desactivados"
+msgstr "Mostrar la página de instalación"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Packages Page"
@@ -342,23 +330,17 @@ msgstr "Pagina de paquetes"
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
-#, fuzzy
-#| msgid "Search"
 msgid "Search Mode"
-msgstr "Buscar"
+msgstr "Modo de búsqueda"
 
 #: src/gtk/help-overlay.blp:61
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Edit Filters"
-msgstr "Establecer filtros"
+msgstr "Editar filtros"
 
 #: src/gtk/help-overlay.blp:65 src/gtk/help-overlay.blp:95
 #: src/gtk/help-overlay.blp:114
-#, fuzzy
-#| msgid "Toggle Selection Mode"
 msgid "Selection Mode"
-msgstr "Conmutar modo de selección"
+msgstr "Modo de selección"
 
 #: src/gtk/help-overlay.blp:70
 #, fuzzy
