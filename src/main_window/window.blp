@@ -20,6 +20,7 @@ template $WarehouseWindow: Adw.ApplicationWindow {
 				Revealer file_drop_revealer {
 					can-target: false;
 					transition-type: crossfade;
+					visible: false;
 					Adw.StatusPage file_drop_view {
 						icon-name: "warehouse:folder-open-symbolic";
 						title: _("Drop to Open");
