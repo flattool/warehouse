@@ -66,5 +66,6 @@
 		<file preprocess="xml-stripblanks" alias="warehouse:minus-large-symbolic.svg">../data/icons/minus-large-symbolic.svg</file>
 		<file preprocess="xml-stripblanks" alias="warehouse:list-remove-all-symbolic.svg">../data/icons/list-remove-all-symbolic.svg</file>
 		<file preprocess="xml-stripblanks" alias="warehouse:edit-symbolic.svg">../data/icons/edit-symbolic.svg</file>
+		<file preprocess="xml-stripblanks" alias="warehouse:open-menu-symbolic.svg">../data/icons/open-menu-symbolic.svg</file>
 	</gresource>
 </gresources>
