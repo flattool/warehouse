@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 22:37-0500\n"
-"PO-Revision-Date: 2024-11-30 19:11+0000\n"
+"PO-Revision-Date: 2024-12-20 07:53+0000\n"
 "Last-Translator: Степан Наумов <st250492@yandex.ru>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ru/>\n"
@@ -515,7 +515,7 @@ msgstr "Не удалось открыть файлы"
 
 #: src/packages_page/filters_page.blp:5 src/packages_page/packages_page.blp:70
 msgid "Filter Packages"
-msgstr "Пакеты фильтров"
+msgstr "Фильтр пакетов"
 
 #: src/packages_page/filters_page.blp:20
 msgid "Filter by Package Type"
@@ -583,7 +583,7 @@ msgstr "Сбросить фильтры"
 #: src/packages_page/packages_page.blp:83 src/remotes_page/remotes_page.blp:30
 #: src/snapshot_page/snapshot_page.blp:35
 msgid "Search Packages"
-msgstr "Поисковые пакеты"
+msgstr "Поиск пакета"
 
 #: src/packages_page/packages_page.blp:75
 #: src/snapshot_page/snapshot_page.blp:45
@@ -672,7 +672,7 @@ msgstr "Идентификаторы"
 
 #: src/packages_page/packages_page.py:249
 msgid "Refs"
-msgstr "Ссылка"
+msgstr "Ссылки"
 
 #: src/packages_page/packages_page.py:257
 #: src/properties_page/properties_page.py:275
@@ -779,12 +779,12 @@ msgstr "Открыть"
 #: src/properties_page/properties_page.blp:122
 #: src/user_data_page/data_box.blp:62
 msgid "Open User Data"
-msgstr "Открытые пользовательские данные"
+msgstr "Открыть пользовательские данные"
 
 #: src/properties_page/properties_page.blp:130
 #: src/user_data_page/data_box.blp:73
 msgid "Trash User Data"
-msgstr "Корзина данных пользователя"
+msgstr "Очистить данные пользователя"
 
 #: src/properties_page/properties_page.blp:139
 msgid "Version"
@@ -814,15 +814,13 @@ msgstr "Обновление или понижение версии этого �
 
 #: src/properties_page/properties_page.blp:167
 msgid "Installed Size"
-msgstr "Установленный размер"
+msgstr "Размер установки"
 
 #: src/properties_page/properties_page.blp:175
 msgid "Runtime"
 msgstr "Среда выполнения"
 
 #: src/properties_page/properties_page.blp:188
-#, fuzzy
-#| msgid "Disable Automactic Removal"
 msgid "Disable Automatic Removal"
 msgstr "Отключить автоматическое удаление"
 
@@ -1326,7 +1324,7 @@ msgstr "Загрузка репозиториев"
 
 #: src/user_data_page/data_box.blp:56
 msgid "Copy Path"
-msgstr "Путь копирования"
+msgstr "Копировать путь"
 
 #: src/user_data_page/data_box.blp:68
 msgid "Attempt to Install"
@@ -1334,7 +1332,7 @@ msgstr "Попытка установки"
 
 #: src/user_data_page/data_box.py:59
 msgid "Copied data path"
-msgstr "Путь к скопированным данным"
+msgstr "Копирован путь к данным"
 
 #: src/user_data_page/data_box.py:61
 msgid "Could not copy data path"
@@ -1825,7 +1823,7 @@ msgstr "Поиск"
 
 #: src/install_page/select_page.blp:19
 msgid "Search in a Remote"
-msgstr "Поиск в удаленном месте"
+msgstr "Поиск в репозитории"
 
 #: src/install_page/select_page.blp:20
 msgid "Choose a remote to search for new packages"

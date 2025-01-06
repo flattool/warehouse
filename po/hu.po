@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 22:37-0500\n"
-"PO-Revision-Date: 2024-12-05 16:05+0000\n"
+"PO-Revision-Date: 2024-12-25 19:45+0000\n"
 "Last-Translator: Benedek Dévényi <rdbende@proton.me>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hu/>\n"
@@ -1705,7 +1705,7 @@ msgstr "Keresés a listában"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
-msgstr ""
+msgstr "Létrehozás"
 
 #: src/snapshot_page/new_snapshot_dialog.py:111
 #, fuzzy
@@ -1905,7 +1905,7 @@ msgstr "Nincsenek pillanatképek"
 
 #: src/snapshot_page/snapshot_page.py:200
 msgid "New"
-msgstr ""
+msgstr "Új"
 
 #: src/snapshot_page/snapshot_page.py:244
 #: src/snapshot_page/snapshot_page.py:246
