@@ -1,7 +1,9 @@
 from gi.repository import Gio, Gtk, GLib, Gdk
 from src.gtk.error_toast import ErrorToast
 import subprocess, os, pathlib
+import gettext
 
+_ = gettext.gettext
 home = f"{pathlib.Path.home()}"
 icon_theme = Gtk.IconTheme.new()
 icon_theme.add_search_path(f"{home}/.local/share/flatpak/exports/share/icons")

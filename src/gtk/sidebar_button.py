@@ -1,5 +1,8 @@
 from gi.repository import Gtk
 from src.host_info import HostInfo
+import gettext
+
+_ = gettext.gettext
 
 
 class SidebarButton(Gtk.Button):

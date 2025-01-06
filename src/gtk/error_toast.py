@@ -1,4 +1,7 @@
 from gi.repository import Adw, Gtk, Gdk, GLib
+import gettext
+
+_ = gettext.gettext
 
 
 class ErrorToast:

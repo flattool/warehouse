@@ -2,6 +2,9 @@ from gi.repository import Adw, Gtk, GLib, Gio
 from src.host_info import HostInfo
 from src.gtk.error_toast import ErrorToast
 import subprocess
+import gettext
+
+_ = gettext.gettext
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/remotes_page/remote_row.ui")

@@ -1,6 +1,9 @@
 from gi.repository import GLib, Gio
 from src.host_info import HostInfo
 import subprocess, re
+import gettext
+
+_ = gettext.gettext
 
 
 class ChangeVersionWorker:

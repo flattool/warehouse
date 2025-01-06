@@ -6,6 +6,9 @@ from src.gtk.sidebar_button import SidebarButton
 from src.gtk.loading_status import LoadingStatus
 from src.gtk.attempt_install_dialog import AttemptInstallDialog
 import os, subprocess
+import gettext
+
+_ = gettext.gettext
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/user_data_page.ui")

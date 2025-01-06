@@ -6,7 +6,9 @@ from src.packages_page.uninstall_dialog import UninstallDialog
 from src.gtk.loading_status import LoadingStatus
 from src.package_install_worker import PackageInstallWorker
 import subprocess, os
+import gettext
 
+_ = gettext.gettext
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/properties_page/properties_page.ui")
 class PropertiesPage(Adw.NavigationPage):

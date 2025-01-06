@@ -3,7 +3,9 @@ from src.host_info import HostInfo
 from src.gtk.error_toast import ErrorToast
 from src.snapshot_page.tar_worker import TarWorker
 import os, subprocess, json
+import gettext
 
+_ = gettext.gettext
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/snapshot_box.ui")
 class SnapshotBox(Gtk.Box):

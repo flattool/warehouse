@@ -4,6 +4,9 @@ from src.install_page.result_row import ResultRow
 from src.gtk.loading_status import LoadingStatus
 from src.gtk.error_toast import ErrorToast
 import subprocess
+import gettext
+
+_ = gettext.gettext
 
 
 class AddedPackage:

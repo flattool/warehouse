@@ -1,4 +1,7 @@
 from gi.repository import Adw, Gtk
+import gettext
+
+_ = gettext.gettext
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/file_install_dialog.ui")

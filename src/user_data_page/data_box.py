@@ -3,7 +3,9 @@ from src.host_info import HostInfo
 from src.gtk.error_toast import ErrorToast
 from src.gtk.attempt_install_dialog import AttemptInstallDialog
 import subprocess
+import gettext
 
+_ = gettext.gettext
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/data_box.ui")
 class DataBox(Gtk.ListBox):

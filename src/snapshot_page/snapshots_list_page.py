@@ -5,7 +5,9 @@ from src.snapshot_page.snapshot_box import SnapshotBox
 from src.gtk.loading_status import LoadingStatus
 from .new_snapshot_dialog import NewSnapshotDialog
 import os
+import gettext
 
+_ = gettext.gettext
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/snapshots_list_page.ui")
 class SnapshotsListPage(Adw.NavigationPage):

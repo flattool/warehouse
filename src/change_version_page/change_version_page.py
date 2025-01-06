@@ -4,6 +4,9 @@ from src.host_info import HostInfo
 from src.gtk.loading_status import LoadingStatus
 from src.change_version_page.change_version_worker import ChangeVersionWorker
 import subprocess
+import gettext
+
+_ = gettext.gettext
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/change_version_page/change_version_page.ui")

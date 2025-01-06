@@ -10,7 +10,9 @@ from src.gtk.loading_status import LoadingStatus
 from src.package_install_worker import PackageInstallWorker
 from src.change_version_page.change_version_worker import ChangeVersionWorker
 import subprocess, os
+import gettext
 
+_ = gettext.gettext
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/packages_page.ui")
 class PackagesPage(Adw.BreakpointBin):

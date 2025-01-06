@@ -1,5 +1,7 @@
 from gi.repository import Adw, Gtk, GLib
+import gettext
 
+_ = gettext.gettext
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/uninstall_dialog.ui")
 class UninstallDialog(Adw.AlertDialog):

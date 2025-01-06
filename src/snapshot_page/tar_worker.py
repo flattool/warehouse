@@ -2,7 +2,9 @@ from gi.repository import GLib, Gio
 from src.host_info import HostInfo
 from src.gtk.error_toast import ErrorToast
 import os, subprocess, json
+import gettext
 
+_ = gettext.gettext
 
 class TarWorker:
 	def compress_thread(self, *args):

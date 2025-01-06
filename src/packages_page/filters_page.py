@@ -1,6 +1,8 @@
 from gi.repository import Adw, Gtk, Gio
 from src.host_info import HostInfo
+import gettext
 
+_ = gettext.gettext
 
 class FilterRow(Adw.ActionRow):
 	__gtype_name__ = "FilterRow"

@@ -4,7 +4,9 @@ from src.gtk.loading_status import LoadingStatus
 from src.gtk.app_row import AppRow
 from src.snapshot_page.tar_worker import TarWorker
 import os, time
+import gettext
 
+_ = gettext.gettext
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/new_snapshot_dialog.ui")
 class NewSnapshotDialog(Adw.Dialog):

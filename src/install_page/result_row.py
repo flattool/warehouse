@@ -1,5 +1,8 @@
 from gi.repository import Adw, Gtk, GLib
 from enum import Enum
+import gettext
+
+_ = gettext.gettext
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/result_row.ui")

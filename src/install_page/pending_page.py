@@ -1,6 +1,9 @@
 from gi.repository import Adw, Gtk
 from src.host_info import HostInfo
 from src.install_page.result_row import ResultRow
+import gettext
+
+_ = gettext.gettext
 
 
 class AddedGroup(Adw.PreferencesGroup):

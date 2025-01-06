@@ -1,6 +1,9 @@
 from gi.repository import Adw, Gtk
 from src.host_info import HostInfo
 from src.gtk.error_toast import ErrorToast
+import gettext
+
+_ = gettext.gettext
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/gtk/attempt_install_dialog.ui")

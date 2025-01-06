@@ -20,8 +20,6 @@
 import sys
 import gi
 
-# import subprocess
-
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 gi.require_version("Flatpak", "1.0")
@@ -30,7 +28,9 @@ from gi.repository import Gtk, Gio, Adw, GLib, Flatpak
 from src.main_window.window import WarehouseWindow
 from src.const import Config
 from src.gtk.error_toast import ErrorToast
+import gettext
 
+_ = gettext.gettext
 
 class WarehouseApplication(Adw.Application):
 	"""The main application singleton class."""

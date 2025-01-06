@@ -9,7 +9,9 @@ from src.snapshot_page.new_snapshot_dialog import NewSnapshotDialog
 from src.snapshot_page.tar_worker import TarWorker
 from src.gtk.attempt_install_dialog import AttemptInstallDialog
 import os, subprocess
+import gettext
 
+_ = gettext.gettext
 
 class LeftoverSnapshotRow(Adw.ActionRow):
 	__gtype_name__ = "LeftoverSnapshotRow"

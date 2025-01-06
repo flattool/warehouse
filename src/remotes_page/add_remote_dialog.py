@@ -4,6 +4,9 @@ from src.gtk.error_toast import ErrorToast
 from src.gtk.loading_status import LoadingStatus
 from src.gtk.installation_chooser import InstallationChooser
 import subprocess, re
+import gettext
+
+_ = gettext.gettext
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/remotes_page/add_remote_dialog.ui")

@@ -25,7 +25,9 @@ from src.snapshot_page.snapshot_page import SnapshotPage
 from src.install_page.install_page import InstallPage
 from src.gtk.error_toast import ErrorToast
 from src.const import Config
+import gettext
 
+_ = gettext.gettext
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/main_window/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):

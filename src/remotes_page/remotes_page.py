@@ -5,6 +5,9 @@ from src.remotes_page.remote_row import RemoteRow
 from src.remotes_page.add_remote_dialog import AddRemoteDialog
 from src.gtk.loading_status import LoadingStatus
 import subprocess
+import gettext
+
+_ = gettext.gettext
 
 
 class NewRemoteRow(Adw.ActionRow):
