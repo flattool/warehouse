@@ -1,6 +1,6 @@
 from gi.repository import Adw, Gtk
-from .host_info import HostInfo
-from .result_row import ResultRow
+from src.host_info import HostInfo
+from src.install_page.result_row import ResultRow
 
 
 class AddedGroup(Adw.PreferencesGroup):

@@ -1,7 +1,7 @@
 from gi.repository import Adw, Gtk, GLib, Gio
-from .host_info import HostInfo
-from .error_toast import ErrorToast
-from .attempt_install_dialog import AttemptInstallDialog
+from src.host_info import HostInfo
+from src.gtk.error_toast import ErrorToast
+from src.gtk.attempt_install_dialog import AttemptInstallDialog
 import subprocess
 
 

@@ -1,5 +1,5 @@
 from gi.repository import GLib, Gio
-from .host_info import HostInfo
+from src.host_info import HostInfo
 import subprocess, re
 
 

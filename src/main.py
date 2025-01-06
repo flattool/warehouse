@@ -27,9 +27,9 @@ gi.require_version("Adw", "1")
 gi.require_version("Flatpak", "1.0")
 
 from gi.repository import Gtk, Gio, Adw, GLib, Flatpak
-from .window import WarehouseWindow
-from .const import Config
-from .error_toast import ErrorToast
+from src.main_window.window import WarehouseWindow
+from src.const import Config
+from src.gtk.error_toast import ErrorToast
 
 
 class WarehouseApplication(Adw.Application):

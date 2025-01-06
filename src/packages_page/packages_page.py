@@ -1,14 +1,14 @@
 from gi.repository import Adw, Gtk, GLib, Gio
-from .host_info import HostInfo
-from .app_row import AppRow
-from .error_toast import ErrorToast
-from .properties_page import PropertiesPage
-from .filters_page import FiltersPage
-from .sidebar_button import SidebarButton
+from src.host_info import HostInfo
+from src.gtk.app_row import AppRow
+from src.gtk.error_toast import ErrorToast
+from src.properties_page.properties_page import PropertiesPage
+from src.packages_page.filters_page import FiltersPage
+from src.gtk.sidebar_button import SidebarButton
 from .uninstall_dialog import UninstallDialog
-from .loading_status import LoadingStatus
-from .package_install_worker import PackageInstallWorker
-from .change_version_worker import ChangeVersionWorker
+from src.gtk.loading_status import LoadingStatus
+from src.package_install_worker import PackageInstallWorker
+from src.change_version_page.change_version_worker import ChangeVersionWorker
 import subprocess, os
 
 

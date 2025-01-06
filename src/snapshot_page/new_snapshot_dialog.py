@@ -1,8 +1,8 @@
 from gi.repository import Adw, Gtk, GLib
-from .host_info import HostInfo
-from .loading_status import LoadingStatus
-from .app_row import AppRow
-from .tar_worker import TarWorker
+from src.host_info import HostInfo
+from src.gtk.loading_status import LoadingStatus
+from src.gtk.app_row import AppRow
+from src.snapshot_page.tar_worker import TarWorker
 import os, time
 
 

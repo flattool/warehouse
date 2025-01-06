@@ -1,10 +1,10 @@
 from gi.repository import Adw, Gtk, Gio
-from .error_toast import ErrorToast
-from .data_subpage import DataSubpage
-from .host_info import HostInfo
-from .sidebar_button import SidebarButton
-from .loading_status import LoadingStatus
-from .attempt_install_dialog import AttemptInstallDialog
+from src.gtk.error_toast import ErrorToast
+from src.user_data_page.data_subpage import DataSubpage
+from src.host_info import HostInfo
+from src.gtk.sidebar_button import SidebarButton
+from src.gtk.loading_status import LoadingStatus
+from src.gtk.attempt_install_dialog import AttemptInstallDialog
 import os, subprocess
 
 

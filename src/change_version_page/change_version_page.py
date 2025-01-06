@@ -1,8 +1,8 @@
 from gi.repository import Adw, Gtk, GLib, Gio
-from .error_toast import ErrorToast
-from .host_info import HostInfo
-from .loading_status import LoadingStatus
-from .change_version_worker import ChangeVersionWorker
+from src.gtk.error_toast import ErrorToast
+from src.host_info import HostInfo
+from src.gtk.loading_status import LoadingStatus
+from src.change_version_page.change_version_worker import ChangeVersionWorker
 import subprocess
 
 

@@ -1,7 +1,7 @@
 from gi.repository import Gtk, GLib, Gio
-from .host_info import HostInfo
-from .data_box import DataBox
-from .loading_status import LoadingStatus
+from src.host_info import HostInfo
+from src.user_data_page.data_box import DataBox
+from src.gtk.loading_status import LoadingStatus
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/data_subpage.ui")

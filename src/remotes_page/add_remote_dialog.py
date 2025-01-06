@@ -1,8 +1,8 @@
 from gi.repository import Adw, Gtk, Gio
-from .host_info import HostInfo
-from .error_toast import ErrorToast
-from .loading_status import LoadingStatus
-from .installation_chooser import InstallationChooser
+from src.host_info import HostInfo
+from src.gtk.error_toast import ErrorToast
+from src.gtk.loading_status import LoadingStatus
+from src.gtk.installation_chooser import InstallationChooser
 import subprocess, re
 
 

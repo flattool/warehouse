@@ -1,9 +1,9 @@
 from gi.repository import Adw, Gtk, GLib, Gio
-from .host_info import HostInfo
-from .error_toast import ErrorToast
-from .results_page import ResultsPage
-from .sidebar_button import SidebarButton
-from .file_install_dialog import FileInstallDialog
+from src.host_info import HostInfo
+from src.gtk.error_toast import ErrorToast
+from src.install_page.results_page import ResultsPage
+from src.gtk.sidebar_button import SidebarButton
+from src.install_page.file_install_dialog import FileInstallDialog
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/select_page.ui")

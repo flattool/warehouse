@@ -17,14 +17,14 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
 from gi.repository import Adw, Gdk, Gio, Gtk
-from .host_info import HostInfo
-from .packages_page import PackagesPage
-from .remotes_page import RemotesPage
-from .user_data_page import UserDataPage
-from .snapshot_page import SnapshotPage
-from .install_page import InstallPage
-from .error_toast import ErrorToast
-from .const import Config
+from src.host_info import HostInfo
+from src.packages_page.packages_page import PackagesPage
+from src.remotes_page.remotes_page import RemotesPage
+from src.user_data_page.user_data_page import UserDataPage
+from src.snapshot_page.snapshot_page import SnapshotPage
+from src.install_page.install_page import InstallPage
+from src.gtk.error_toast import ErrorToast
+from src.const import Config
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/main_window/window.ui")

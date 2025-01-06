@@ -1,13 +1,13 @@
 from gi.repository import Adw, Gtk, GLib, Gio
-from .host_info import HostInfo
-from .error_toast import ErrorToast
-from .app_row import AppRow
-from .snapshots_list_page import SnapshotsListPage
-from .sidebar_button import SidebarButton
-from .loading_status import LoadingStatus
-from .new_snapshot_dialog import NewSnapshotDialog
-from .tar_worker import TarWorker
-from .attempt_install_dialog import AttemptInstallDialog
+from src.host_info import HostInfo
+from src.gtk.error_toast import ErrorToast
+from src.gtk.app_row import AppRow
+from src.snapshot_page.snapshots_list_page import SnapshotsListPage
+from src.gtk.sidebar_button import SidebarButton
+from src.gtk.loading_status import LoadingStatus
+from src.snapshot_page.new_snapshot_dialog import NewSnapshotDialog
+from src.snapshot_page.tar_worker import TarWorker
+from src.gtk.attempt_install_dialog import AttemptInstallDialog
 import os, subprocess
 
 

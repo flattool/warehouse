@@ -42,5 +42,5 @@ if __name__ == '__main__':
 	resource = Gio.Resource.load(os.path.join(pkgdatadir, 'warehouse.gresource'))
 	resource._register()
 
-	from Warehouse import main
+	from src import main
 	sys.exit(main.main(VERSION))

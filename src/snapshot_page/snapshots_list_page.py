@@ -1,8 +1,8 @@
 from gi.repository import Adw, Gtk, Gio
-from .host_info import HostInfo
-from .error_toast import ErrorToast
-from .snapshot_box import SnapshotBox
-from .loading_status import LoadingStatus
+from src.host_info import HostInfo
+from src.gtk.error_toast import ErrorToast
+from src.snapshot_page.snapshot_box import SnapshotBox
+from src.gtk.loading_status import LoadingStatus
 from .new_snapshot_dialog import NewSnapshotDialog
 import os
 

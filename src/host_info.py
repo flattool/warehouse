@@ -1,5 +1,5 @@
 from gi.repository import Gio, Gtk, GLib, Gdk
-from .error_toast import ErrorToast
+from src.gtk.error_toast import ErrorToast
 import subprocess, os, pathlib
 
 home = f"{pathlib.Path.home()}"

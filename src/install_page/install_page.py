@@ -1,11 +1,11 @@
 from gi.repository import Adw, Gtk, GLib
-from .host_info import HostInfo
-from .select_page import SelectPage
-from .pending_page import PendingPage
-from .sidebar_button import SidebarButton
-from .loading_status import LoadingStatus
-from .package_install_worker import PackageInstallWorker
-from .error_toast import ErrorToast
+from src.host_info import HostInfo
+from src.install_page.select_page import SelectPage
+from src.install_page.pending_page import PendingPage
+from src.gtk.sidebar_button import SidebarButton
+from src.gtk.loading_status import LoadingStatus
+from src.package_install_worker import PackageInstallWorker
+from src.gtk.error_toast import ErrorToast
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/install_page/install_page.ui")

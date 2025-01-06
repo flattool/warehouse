@@ -1,10 +1,10 @@
 from gi.repository import Adw, Gtk, GLib, Gio
-from .error_toast import ErrorToast
-from .host_info import HostInfo
-from .change_version_page import ChangeVersionPage
-from .uninstall_dialog import UninstallDialog
-from .loading_status import LoadingStatus
-from .package_install_worker import PackageInstallWorker
+from src.gtk.error_toast import ErrorToast
+from src.host_info import HostInfo
+from src.change_version_page.change_version_page import ChangeVersionPage
+from src.packages_page.uninstall_dialog import UninstallDialog
+from src.gtk.loading_status import LoadingStatus
+from src.package_install_worker import PackageInstallWorker
 import subprocess, os
 
 

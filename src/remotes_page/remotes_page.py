@@ -1,9 +1,9 @@
 from gi.repository import Adw, Gtk, GLib, Gio
-from .host_info import HostInfo
-from .error_toast import ErrorToast
-from .remote_row import RemoteRow
-from .add_remote_dialog import AddRemoteDialog
-from .loading_status import LoadingStatus
+from src.host_info import HostInfo
+from src.gtk.error_toast import ErrorToast
+from src.remotes_page.remote_row import RemoteRow
+from src.remotes_page.add_remote_dialog import AddRemoteDialog
+from src.gtk.loading_status import LoadingStatus
 import subprocess
 
 

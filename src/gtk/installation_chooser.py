@@ -1,5 +1,5 @@
 from gi.repository import Adw, Gtk
-from .host_info import HostInfo
+from src.host_info import HostInfo
 
 
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/gtk/installation_chooser.ui")

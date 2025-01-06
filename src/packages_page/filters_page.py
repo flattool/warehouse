@@ -1,5 +1,5 @@
 from gi.repository import Adw, Gtk, Gio
-from .host_info import HostInfo
+from src.host_info import HostInfo
 
 
 class FilterRow(Adw.ActionRow):

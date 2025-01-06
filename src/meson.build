@@ -1,5 +1,5 @@
 pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
-moduledir = join_paths(pkgdatadir, 'Warehouse')
+moduledir = join_paths(pkgdatadir, 'src')
 gnome = import('gnome')
 
 blueprints = custom_target('blueprints',
@@ -61,12 +61,21 @@ conf.set('localedir', join_paths(get_option('prefix'), get_option('localedir')))
 conf.set('pkgdatadir', pkgdatadir)
 
 configure_file(
-  input: 'warehouse.in',
+  input: 'warehouse.py',
   output: 'warehouse',
   configuration: conf,
   install: true,
   install_dir: get_option('bindir'),
   install_mode: 'r-xr--r--'
+)
+
+configure_file(
+  input: 'const.py',
+  output: 'const.py',
+  configuration: conf,
+  install: true,
+  install_dir: moduledir,
+  install_mode: 'r-xr--r--',
 )
 
 warehouse_sources = [
@@ -107,13 +116,4 @@ warehouse_sources = [
   '../data/style.css',
 ]
 
-configure_file(
-  input: 'const.py.in',
-  output: 'const.py',
-  configuration: conf,
-  install: true,
-  install_dir: moduledir,
-  install_mode: 'r-xr--r--',
-)
-
-install_data(warehouse_sources, install_dir: moduledir)
+install_data(warehouse_sources, install_dir: moduledir, preserve_path: true)

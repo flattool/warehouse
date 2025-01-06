@@ -1,6 +1,6 @@
 from gi.repository import GLib, Gio
-from .host_info import HostInfo
-from .error_toast import ErrorToast
+from src.host_info import HostInfo
+from src.gtk.error_toast import ErrorToast
 import os, subprocess, json
 
 
