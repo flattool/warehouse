@@ -32,6 +32,7 @@ import gettext
 
 _ = gettext.gettext
 
+
 class WarehouseApplication(Adw.Application):
 	"""The main application singleton class."""
 

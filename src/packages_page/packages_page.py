@@ -14,6 +14,7 @@ import gettext
 
 _ = gettext.gettext
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/packages_page.ui")
 class PackagesPage(Adw.BreakpointBin):
 	__gtype_name__ = "PackagesPage"

@@ -7,6 +7,7 @@ import gettext
 
 _ = gettext.gettext
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/snapshot_box.ui")
 class SnapshotBox(Gtk.Box):
 	__gtype_name__ = "SnapshotBox"

@@ -7,6 +7,7 @@ import gettext
 
 _ = gettext.gettext
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/user_data_page/data_box.ui")
 class DataBox(Gtk.ListBox):
 	__gtype_name__ = "DataBox"

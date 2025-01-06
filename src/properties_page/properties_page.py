@@ -10,6 +10,7 @@ import gettext
 
 _ = gettext.gettext
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/properties_page/properties_page.ui")
 class PropertiesPage(Adw.NavigationPage):
 	__gtype_name__ = "PropertiesPage"

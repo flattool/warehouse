@@ -4,6 +4,7 @@ import gettext
 
 _ = gettext.gettext
 
+
 class FilterRow(Adw.ActionRow):
 	__gtype_name__ = "FilterRow"
 

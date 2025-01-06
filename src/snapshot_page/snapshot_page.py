@@ -13,6 +13,7 @@ import gettext
 
 _ = gettext.gettext
 
+
 class LeftoverSnapshotRow(Adw.ActionRow):
 	__gtype_name__ = "LeftoverSnapshotRow"
 

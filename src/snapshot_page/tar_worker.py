@@ -6,6 +6,7 @@ import gettext
 
 _ = gettext.gettext
 
+
 class TarWorker:
 	def compress_thread(self, *args):
 		try:

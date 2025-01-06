@@ -25,22 +25,24 @@ import signal
 import locale
 import gettext
 
-VERSION = '@VERSION@'
-pkgdatadir = '@pkgdatadir@'
-localedir = '@localedir@'
+VERSION = "@VERSION@"
+pkgdatadir = "@pkgdatadir@"
+localedir = "@localedir@"
 
 sys.path.insert(1, pkgdatadir)
 signal.signal(signal.SIGINT, signal.SIG_DFL)
-locale.bindtextdomain('warehouse', localedir)
-locale.textdomain('warehouse')
-gettext.install('warehouse', localedir)
+locale.bindtextdomain("warehouse", localedir)
+locale.textdomain("warehouse")
+gettext.install("warehouse", localedir)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 	import gi
 
 	from gi.repository import Gio
-	resource = Gio.Resource.load(os.path.join(pkgdatadir, 'warehouse.gresource'))
+
+	resource = Gio.Resource.load(os.path.join(pkgdatadir, "warehouse.gresource"))
 	resource._register()
 
 	from src import main
+
 	sys.exit(main.main(VERSION))

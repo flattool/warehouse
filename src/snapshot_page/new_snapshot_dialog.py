@@ -8,6 +8,7 @@ import gettext
 
 _ = gettext.gettext
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/snapshot_page/new_snapshot_dialog.ui")
 class NewSnapshotDialog(Adw.Dialog):
 	__gtype_name__ = "NewSnapshotDialog"

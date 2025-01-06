@@ -29,6 +29,7 @@ import gettext
 
 _ = gettext.gettext
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/main_window/window.ui")
 class WarehouseWindow(Adw.ApplicationWindow):
 	__gtype_name__ = "WarehouseWindow"

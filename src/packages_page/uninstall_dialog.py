@@ -3,6 +3,7 @@ import gettext
 
 _ = gettext.gettext
 
+
 @Gtk.Template(resource_path="/io/github/flattool/Warehouse/packages_page/uninstall_dialog.ui")
 class UninstallDialog(Adw.AlertDialog):
 	__gtype_name__ = "UninstallDialog"
