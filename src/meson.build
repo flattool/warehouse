@@ -79,7 +79,6 @@ configure_file(
 )
 
 warehouse_sources = [
-  '__init__.py',
   'main.py',
   'host_info.py',
   'gtk/error_toast.py',
