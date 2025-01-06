@@ -1,6 +1,6 @@
 root = true
 [*]
-indent_style = tabs
+indent_style = tab
 indent_size = 4
 max_line_length = 160
 trim_trailing_whitespace = true
