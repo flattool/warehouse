@@ -12,7 +12,7 @@ jobs:
       options: --privileged
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Flatpak Builder
       uses: flatpak/flatpak-github-actions/flatpak-builder@v6.1
