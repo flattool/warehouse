@@ -8,45 +8,49 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-06 14:44-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-01-22 10:59+0000\n"
+"Last-Translator: 캬루애호가 <amane12@outlook.kr>\n"
+"Language-Team: Korean <https://weblate.fyralabs.com/projects/flattool/"
+"warehouse/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.9.2\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
 msgid "Warehouse"
-msgstr ""
+msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 msgid "flatpak"
-msgstr ""
+msgstr "flatpak"
 
 #: data/io.github.flattool.Warehouse.desktop.in:12
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
-msgstr ""
+msgstr "Flatpak을 관리하세요"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
-msgstr ""
+msgstr "Warehouse는 CLI에 의존하지 않고, 복잡한 Flatpak의 옵션들을 제어할 수 있는 "
+"간단한 UI를 제공합니다."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr ""
+msgstr "기능들:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
-msgstr ""
+msgstr "설치된 Flatpak 관리 및 패키지 속성 보기"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
-msgstr ""
+msgstr "원치 않는 업데이트를 롤백하도록 Flatpak의 버전 변경"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
