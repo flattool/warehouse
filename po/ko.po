@@ -1,0 +1,1811 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Heliguy
+# This file is distributed under the same license as the io.github.flattool.heliguy.Warehouse package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-06 14:44-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Translators: Do not translate the application name
+#: data/io.github.flattool.Warehouse.desktop.in:4
+msgid "Warehouse"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.desktop.in:11
+msgid "flatpak"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.desktop.in:12
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:9
+msgid "Manage all things Flatpak"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:11
+msgid ""
+"Warehouse provides a simple UI to control complex Flatpak options, all "
+"without resorting to the command line."
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:12
+msgid "Features:"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:14
+msgid "Manage installed Flatpaks and view properties of any package"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:15
+msgid "Change versions of a Flatpak to rollback any unwanted updates"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:16
+msgid "Pin runtimes and mask Flatpaks"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:17
+msgid "Filter packages and sort data, to help find anything easily"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:18
+msgid "See current app user data, and cleanup any unused data left behind"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:19
+msgid ""
+"Add popular Flatpak remotes with a few clicks or add custom remotes instead"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:20
+msgid "Take snapshots of your apps' user data, saving your data"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:21
+msgid "Install new packages from any remote, or from your system"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:22
+msgid "Responsive UI to fit large and small screen sizes"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
+msgid "Manage Installed Packages in Three Pane UI"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
+msgid "Properties Page in Narrow Window"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
+msgid "Manage Installed Remotes and Add New Remotes"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
+msgid "Manage Apps' User Data"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
+msgid "Backup Apps' User Data"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
+msgid "Install New Packages from Files or Remotes"
+msgstr ""
+
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
+msgid "Install Page in Narrow Window"
+msgstr ""
+
+#: src/main.py:96 src/main.py:102 src/install_page/select_page.py:66
+#: src/install_page/select_page.py:73
+msgid "Could not add files"
+msgstr ""
+
+#: src/main.py:96
+msgid "No files were found"
+msgstr ""
+
+#: src/main.py:104
+msgid "Flatpaks & Remotes"
+msgstr ""
+
+#. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
+#: src/main.py:212
+msgid "translator-credits"
+msgstr ""
+
+#: src/main.py:218
+msgid "Donate"
+msgstr ""
+
+#: src/main.py:220
+msgid "Contributors"
+msgstr ""
+
+#: src/host_info.py:386 src/host_info.py:388
+msgid "Could not load packages"
+msgstr ""
+
+#: src/package_install_worker.py:88
+msgid "Errors occurred during installation"
+msgstr ""
+
+#: src/package_install_worker.py:92 src/package_install_worker.py:96
+msgid "Error occurred during installation"
+msgstr ""
+
+#: src/package_install_worker.py:92
+#: src/change_version_page/change_version_worker.py:80
+msgid "Failed to exit cleanly"
+msgstr ""
+
+#: src/package_install_worker.py:108
+msgid "Could not cancel installation"
+msgstr ""
+
+#: src/package_install_worker.py:129 src/package_install_worker.py:139
+msgid "Could not install packages"
+msgstr ""
+
+#: src/package_install_worker.py:129
+msgid "Packages are currently being installed."
+msgstr ""
+
+#: src/package_install_worker.py:139
+msgid "No packages were requested to be installed."
+msgstr ""
+
+#: src/gtk/app_row.blp:14 src/properties_page/properties_page.blp:100
+#: src/properties_page/properties_page.blp:179
+msgid "This package is End Of Life, and will not receive any security updates"
+msgstr ""
+
+#: src/gtk/app_row.blp:21
+msgid ""
+"This app's runtime is End Of Life, and will not receive any security updates"
+msgstr ""
+
+#: src/gtk/app_row.blp:28
+msgid "This runtime will never be automatically removed"
+msgstr ""
+
+#: src/gtk/app_row.blp:34
+msgid "Updates are disabled for this package"
+msgstr ""
+
+#: src/gtk/attempt_install_dialog.blp:5
+msgid "Attempt an Install?"
+msgstr ""
+
+#: src/gtk/attempt_install_dialog.blp:6
+msgid "Warehouse will try to install the matching packages."
+msgstr ""
+
+#: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
+#: src/packages_page/uninstall_dialog.py:41
+#: src/properties_page/properties_page.py:193
+#: src/properties_page/properties_page.py:318
+#: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:129
+#: src/remotes_page/remotes_page.py:196 src/user_data_page/data_box.py:119
+#: src/user_data_page/user_data_page.py:213
+#: src/snapshot_page/new_snapshot_dialog.blp:16
+#: src/snapshot_page/snapshot_box.py:117 src/snapshot_page/snapshot_box.py:159
+#: src/snapshot_page/snapshot_page.py:484
+#: src/snapshot_page/snapshot_page.py:522
+#: src/install_page/file_install_dialog.blp:13
+msgid "Cancel"
+msgstr ""
+
+#: src/gtk/attempt_install_dialog.blp:9
+#: src/user_data_page/user_data_page.blp:100
+#: src/user_data_page/user_data_page.blp:144
+#: src/install_page/file_install_dialog.blp:18
+#: src/install_page/pending_page.blp:35
+msgid "Install"
+msgstr ""
+
+#: src/gtk/attempt_install_dialog.blp:12
+msgid "Choose a Remote"
+msgstr ""
+
+#: src/gtk/attempt_install_dialog.blp:13
+msgid "Select a remote to attempt to install from"
+msgstr ""
+
+#: src/gtk/attempt_install_dialog.py:22 src/packages_page/filters_page.py:128
+#: src/remotes_page/remote_row.py:155 src/install_page/pending_page.py:33
+#: src/install_page/select_page.py:35
+msgid "Installation: {}"
+msgstr ""
+
+#: src/gtk/attempt_install_dialog.py:79
+msgid "Can't find matching packages"
+msgstr ""
+
+#: src/gtk/attempt_install_dialog.py:79
+msgid "Your system has no remotes added"
+msgstr ""
+
+#. Extra Object Creation
+#: src/gtk/error_toast.py:16
+msgid "Details"
+msgstr ""
+
+#: src/gtk/error_toast.py:23 src/packages_page/packages_page.blp:135
+#: src/user_data_page/user_data_page.blp:90
+#: src/snapshot_page/snapshot_page.blp:149
+msgid "Copy"
+msgstr ""
+
+#: src/gtk/error_toast.py:24 src/main_window/window.py:142
+#: src/main_window/window.py:152 src/main_window/window.py:161
+msgid "OK"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:9
+msgid "General"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:11
+msgid "Refresh"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
+msgid "Open Files"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:19
+msgid "Open Menu"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:23
+msgid "Show Shortcuts"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:27
+msgid "Quit"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:32
+msgid "Navigation"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:34
+msgid "Show Packages Page"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:38
+msgid "Show Remotes Page"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:42
+msgid "Show User Data Page"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:46
+msgid "Show Snapshots Page"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:50
+msgid "Show Install Page"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:55
+msgid "Packages Page"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
+#: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
+msgid "Search Mode"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:61
+msgid "Edit Filters"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:65 src/gtk/help-overlay.blp:95
+#: src/gtk/help-overlay.blp:114
+msgid "Selection Mode"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:70
+msgid "Remotes Page"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:76
+msgid "Show or Hide Disabled Remotes"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:80
+msgid "New Remote"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:85
+msgid "User Data Page"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:91
+msgid "Edit Sorting Modes"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:99
+msgid "Show Active Data"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:103
+msgid "Show Leftover Data"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:108
+msgid "Snapshots Page"
+msgstr ""
+
+#: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:206
+msgid "New Snapshots"
+msgstr ""
+
+#: src/gtk/installation_chooser.blp:5
+msgid "Choose Installation"
+msgstr ""
+
+#: src/gtk/installation_chooser.blp:11
+msgid "User"
+msgstr ""
+
+#: src/gtk/installation_chooser.blp:19
+msgid "System"
+msgstr ""
+
+#: src/gtk/installation_chooser.blp:28
+msgid "Custom installation"
+msgstr ""
+
+#: src/gtk/installation_chooser.blp:37
+msgid "Other Installation"
+msgstr ""
+
+#: src/gtk/installation_chooser.blp:38
+msgid "Choose a custom installation"
+msgstr ""
+
+#: src/gtk/installation_chooser.py:31
+msgid "These {} will only be available to you"
+msgstr ""
+
+#: src/gtk/installation_chooser.py:32
+msgid "These {} will be available to everyone"
+msgstr ""
+
+#: src/gtk/installation_chooser.py:33
+msgid "Choose how these {} will be installed"
+msgstr ""
+
+#: src/gtk/installation_chooser.py:35
+msgid "This {} will only be available to you"
+msgstr ""
+
+#: src/gtk/installation_chooser.py:36
+msgid "This {} will be available to everyone"
+msgstr ""
+
+#: src/gtk/installation_chooser.py:37
+msgid "Choose how this {} will be installed"
+msgstr ""
+
+#: src/gtk/sidebar_button.py:23
+msgid "Show Sidebar"
+msgstr ""
+
+#: src/main_window/window.blp:26
+msgid "Drop to Open"
+msgstr ""
+
+#: src/main_window/window.blp:27
+msgid "Install Flatpaks or Add a Remote"
+msgstr ""
+
+#: src/main_window/window.blp:45
+msgid "Refresh List"
+msgstr ""
+
+#: src/main_window/window.blp:50
+msgid "Main Menu"
+msgstr ""
+
+#: src/main_window/window.blp:68 src/packages_page/packages_page.blp:20
+#: src/packages_page/packages_page.blp:55
+#: src/packages_page/packages_page.py:160
+#: src/packages_page/packages_page.py:325
+#: src/install_page/file_install_dialog.py:41
+msgid "Packages"
+msgstr ""
+
+#: src/main_window/window.blp:83
+msgid "Remotes"
+msgstr ""
+
+#: src/main_window/window.blp:99 src/properties_page/properties_page.blp:114
+#: src/user_data_page/user_data_page.blp:20
+msgid "User Data"
+msgstr ""
+
+#: src/main_window/window.blp:114 src/snapshot_page/snapshot_page.blp:18
+#: src/snapshot_page/snapshot_page.blp:26
+#: src/snapshot_page/snapshot_page.py:360
+msgid "Snapshots"
+msgstr ""
+
+#: src/main_window/window.blp:129 src/install_page/file_install_dialog.py:38
+#: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
+#: src/install_page/select_page.blp:10
+msgid "Install Packages"
+msgstr ""
+
+#: src/main_window/window.blp:161
+msgid "_Open Files"
+msgstr ""
+
+#: src/main_window/window.blp:165
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: src/main_window/window.blp:169
+msgid "_About Warehouse"
+msgstr ""
+
+#: src/main_window/window.py:139
+msgid "Unsupported Filetype"
+msgstr ""
+
+#: src/main_window/window.py:140
+msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
+msgstr ""
+
+#: src/main_window/window.py:148
+msgid "Mixed Filetypes"
+msgstr ""
+
+#: src/main_window/window.py:149
+msgid "Flatpaks and remotes cannot be installed at the same time."
+msgstr ""
+
+#: src/main_window/window.py:158
+msgid "Too Many Remotes"
+msgstr ""
+
+#: src/main_window/window.py:159
+msgid "Only one remote at a time is supported."
+msgstr ""
+
+#: src/main_window/window.py:177
+msgid "Could not open files"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:5 src/packages_page/packages_page.blp:70
+msgid "Filter Packages"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:20
+msgid "Filter by Package Type"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:21
+msgid "Show packages of these types"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:23
+msgid "Applications"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:24
+msgid "Packages that can be opened"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:29
+msgid "Runtimes"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:30
+msgid "Packages that applications depend on"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:37
+msgid "Filter by Remotes"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:38
+msgid "Show packages from selected remotes"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:52
+msgid "Showing packages from all remotes"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:58
+msgid "Enable to show packages from selected remotes"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:71
+msgid "Filter by Runtimes"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:72
+msgid "Show apps using selected runtimes"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:86
+msgid "Showing apps using any runtime"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:92
+msgid "Enable to show apps using selected runtimes"
+msgstr ""
+
+#: src/packages_page/filters_page.blp:113
+#: src/packages_page/packages_page.blp:97
+msgid "Reset Filters"
+msgstr ""
+
+#: src/packages_page/packages_page.blp:65
+#: src/packages_page/packages_page.blp:83 src/remotes_page/remotes_page.blp:30
+#: src/snapshot_page/snapshot_page.blp:35
+msgid "Search Packages"
+msgstr ""
+
+#: src/packages_page/packages_page.blp:75
+#: src/snapshot_page/snapshot_page.blp:45
+msgid "Select Packages"
+msgstr ""
+
+#: src/packages_page/packages_page.blp:93
+msgid "No Packages Match Filters"
+msgstr ""
+
+#: src/packages_page/packages_page.blp:94
+msgid "No installed package matches all of the currently applied filters"
+msgstr ""
+
+#: src/packages_page/packages_page.blp:104
+msgid "No Packages Found"
+msgstr ""
+
+#: src/packages_page/packages_page.blp:105
+msgid ""
+"Warehouse cannot see the list of installed packages or your system has no "
+"packages installed"
+msgstr ""
+
+#: src/packages_page/packages_page.blp:109
+#: src/remotes_page/remotes_page.blp:153 src/user_data_page/data_subpage.blp:68
+#: src/snapshot_page/new_snapshot_dialog.blp:67
+#: src/snapshot_page/snapshot_page.blp:58 src/install_page/results_page.blp:49
+msgid "No Results Found"
+msgstr ""
+
+#: src/packages_page/packages_page.blp:110
+#: src/remotes_page/remotes_page.blp:154 src/user_data_page/data_subpage.blp:69
+#: src/snapshot_page/new_snapshot_dialog.blp:68
+#: src/snapshot_page/snapshot_page.blp:59
+msgid "Try a different search"
+msgstr ""
+
+#: src/packages_page/packages_page.blp:127
+#: src/user_data_page/user_data_page.blp:81
+#: src/snapshot_page/new_snapshot_dialog.blp:79
+#: src/snapshot_page/snapshot_page.blp:140
+msgid "Select All"
+msgstr ""
+
+#: src/packages_page/packages_page.blp:144
+#: src/packages_page/uninstall_dialog.py:42
+#: src/properties_page/properties_page.blp:88
+msgid "Uninstall"
+msgstr ""
+
+#: src/packages_page/packages_page.blp:173
+msgid "Copy Names"
+msgstr ""
+
+#: src/packages_page/packages_page.blp:177
+msgid "Copy IDs"
+msgstr ""
+
+#: src/packages_page/packages_page.blp:181
+msgid "Copy Refs"
+msgstr ""
+
+#: src/packages_page/packages_page.py:156
+#: src/user_data_page/data_subpage.py:112
+#: src/snapshot_page/new_snapshot_dialog.py:42
+#: src/snapshot_page/snapshot_page.py:360
+msgid "{} Selected"
+msgstr ""
+
+#: src/packages_page/packages_page.py:197
+msgid "Error getting Flatpak '{}'"
+msgstr ""
+
+#: src/packages_page/packages_page.py:246
+msgid "Names"
+msgstr ""
+
+#: src/packages_page/packages_page.py:249
+msgid "IDs"
+msgstr ""
+
+#: src/packages_page/packages_page.py:252
+msgid "Refs"
+msgstr ""
+
+#: src/packages_page/packages_page.py:260
+#: src/properties_page/properties_page.py:278
+msgid "Copied {}"
+msgstr ""
+
+#: src/packages_page/packages_page.py:262
+msgid "Could not copy {}"
+msgstr ""
+
+#: src/packages_page/packages_page.py:313
+msgid "Errors occurred while uninstalling"
+msgstr ""
+
+#: src/packages_page/packages_page.py:315
+msgid "Uninstalled Packages"
+msgstr ""
+
+#: src/packages_page/packages_page.py:373
+msgid "Loading Packages"
+msgstr ""
+
+#: src/packages_page/packages_page.py:373
+#: src/packages_page/packages_page.py:374
+#: src/properties_page/properties_page.py:371
+#: src/remotes_page/remotes_page.py:294 src/remotes_page/remotes_page.py:295
+#: src/user_data_page/user_data_page.py:300
+#: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:100
+#: src/install_page/results_page.py:138
+msgid "This should only take a moment"
+msgstr ""
+
+#: src/packages_page/packages_page.py:374
+msgid "Uninstalling Packages"
+msgstr ""
+
+#: src/packages_page/packages_page.py:376
+msgid "Reinstalling Package"
+msgstr ""
+
+#: src/packages_page/packages_page.py:376
+#: src/packages_page/packages_page.py:378
+#: src/change_version_page/change_version_page.py:126
+#: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:92
+msgid "This could take a while"
+msgstr ""
+
+#: src/packages_page/packages_page.py:378
+msgid "Changing Version"
+msgstr ""
+
+#: src/packages_page/uninstall_dialog.blp:8
+msgid "Keep"
+msgstr ""
+
+#: src/packages_page/uninstall_dialog.blp:9
+msgid "Allows restoring app settings and content"
+msgstr ""
+
+#: src/packages_page/uninstall_dialog.blp:17
+#: src/user_data_page/user_data_page.blp:109
+#: src/user_data_page/user_data_page.blp:148
+#: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:118
+#: src/snapshot_page/snapshot_page.py:523
+msgid "Trash"
+msgstr ""
+
+#: src/packages_page/uninstall_dialog.blp:18
+msgid "Send data to the trash"
+msgstr ""
+
+#: src/packages_page/uninstall_dialog.py:34
+msgid "Uninstall {}?"
+msgstr ""
+
+#: src/packages_page/uninstall_dialog.py:35
+msgid "It will not be possible to use {} after removal"
+msgstr ""
+
+#: src/packages_page/uninstall_dialog.py:37
+msgid "Uninstall Packages?"
+msgstr ""
+
+#: src/packages_page/uninstall_dialog.py:38
+msgid "It will not be possible to use these packages after removal"
+msgstr ""
+
+#: src/packages_page/uninstall_dialog.py:45
+msgid "App Settings & Content"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:19
+msgid "Properties Page Unavailable"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:20
+msgid "Cannot show the properties page at this time"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:83
+msgid "Open"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:122
+#: src/user_data_page/data_box.blp:62
+msgid "Open User Data"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:130
+#: src/user_data_page/data_box.blp:73
+msgid "Trash User Data"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:139
+msgid "Version"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:143
+msgid "Updates Disabled"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:147
+#: src/change_version_page/change_version_page.blp:50
+msgid "Disable Updates"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:148
+msgid "Mask this package so it's never updated"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:157
+#: src/change_version_page/change_version_page.blp:23
+msgid "Change Version"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:158
+msgid "Upgrade or downgrade this package"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:167
+msgid "Installed Size"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:175
+msgid "Runtime"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:188
+msgid "Disable Automatic Removal"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:189
+msgid "Pin this runtime to keep it installed"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:200
+msgid "Package Information"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:203
+msgid "Application ID"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:219
+msgid "Architecture"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:227
+msgid "Branch"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:235
+msgid "License"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:244
+msgid "Installation Information"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:255
+msgid "Origin"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:263
+msgid "Collection"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:271
+msgid "Installation"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:279
+msgid "Commit Information"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:290
+msgid "Parent"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:298
+msgid "Subject"
+msgstr ""
+
+#: src/properties_page/properties_page.blp:306
+msgid "Date"
+msgstr ""
+
+#: src/properties_page/properties_page.py:79
+msgid "{} Properties"
+msgstr ""
+
+#: src/properties_page/properties_page.py:84
+msgid "Properties"
+msgstr ""
+
+#. Apply again
+#: src/properties_page/properties_page.py:113
+#: src/user_data_page/user_data_page.py:300
+msgid "Loading User Data"
+msgstr ""
+
+#: src/properties_page/properties_page.py:123
+msgid "No User Data"
+msgstr ""
+
+#: src/properties_page/properties_page.py:133
+#: src/properties_page/properties_page.py:149
+msgid "Could not get properties"
+msgstr ""
+
+#: src/properties_page/properties_page.py:146
+msgid "No version information found"
+msgstr ""
+
+#: src/properties_page/properties_page.py:166
+msgid "Could not open data"
+msgstr ""
+
+#: src/properties_page/properties_page.py:185
+#: src/properties_page/properties_page.py:187
+#: src/properties_page/properties_page.py:244
+#: src/properties_page/properties_page.py:246
+#: src/user_data_page/data_box.py:104 src/user_data_page/user_data_page.py:187
+#: src/user_data_page/user_data_page.py:201
+msgid "Could not trash data"
+msgstr ""
+
+#: src/properties_page/properties_page.py:190
+msgid "Send {}'s User Data to the Trash?"
+msgstr ""
+
+#: src/properties_page/properties_page.py:191
+msgid "Your settings and data for this app will be sent to the trash"
+msgstr ""
+
+#: src/properties_page/properties_page.py:194
+msgid "Trash Data"
+msgstr ""
+
+#: src/properties_page/properties_page.py:204
+msgid "Could not Disable Updates"
+msgstr ""
+
+#: src/properties_page/properties_page.py:204
+msgid "Could not Enable Updates"
+msgstr ""
+
+#: src/properties_page/properties_page.py:210
+msgid "Disabled Updates"
+msgstr ""
+
+#: src/properties_page/properties_page.py:210
+msgid "Enabled Updates"
+msgstr ""
+
+#: src/properties_page/properties_page.py:223
+msgid "Could not Disable Autoremoval"
+msgstr ""
+
+#: src/properties_page/properties_page.py:223
+msgid "Could not Enable Autoremoval"
+msgstr ""
+
+#: src/properties_page/properties_page.py:228
+msgid "Disabled Autoremoval"
+msgstr ""
+
+#: src/properties_page/properties_page.py:228
+msgid "Enabled Autoremoval"
+msgstr ""
+
+#: src/properties_page/properties_page.py:251
+msgid "Could not uninstall"
+msgstr ""
+
+#: src/properties_page/properties_page.py:255
+msgid "Uninstalled {}"
+msgstr ""
+
+#: src/properties_page/properties_page.py:267
+msgid "Opening {}…"
+msgstr ""
+
+#: src/properties_page/properties_page.py:272
+msgid "Could not open {}"
+msgstr ""
+
+#: src/properties_page/properties_page.py:287
+msgid "Reinstalled {}"
+msgstr ""
+
+#: src/properties_page/properties_page.py:315
+msgid "Reinstall {}?"
+msgstr ""
+
+#: src/properties_page/properties_page.py:316
+msgid ""
+"This package will be uninstalled, and then reinstalled from the same remote "
+"and installation."
+msgstr ""
+
+#: src/properties_page/properties_page.py:319
+#: src/properties_page/properties_page.py:377
+msgid "Reinstall"
+msgstr ""
+
+#: src/properties_page/properties_page.py:336
+msgid "Copied launch command"
+msgstr ""
+
+#: src/properties_page/properties_page.py:338
+msgid "Could not copy launch command"
+msgstr ""
+
+#: src/properties_page/properties_page.py:344
+msgid "Could not show details"
+msgstr ""
+
+#: src/properties_page/properties_page.py:371
+msgid "Loading Properties"
+msgstr ""
+
+#: src/properties_page/properties_page.py:374
+msgid "View Snapshots"
+msgstr ""
+
+#: src/properties_page/properties_page.py:375
+msgid "Copy Launch Command"
+msgstr ""
+
+#: src/properties_page/properties_page.py:376
+msgid "Show Details"
+msgstr ""
+
+#: src/change_version_page/change_version_page.blp:5
+msgid "Change Versions"
+msgstr ""
+
+#: src/change_version_page/change_version_page.blp:56
+msgid "Select a Release"
+msgstr ""
+
+#: src/change_version_page/change_version_page.blp:57
+msgid ""
+"This will uninstall the current release and install the chosen one instead. "
+"Note that downgrading can cause issues."
+msgstr ""
+
+#: src/change_version_page/change_version_page.py:75
+msgid "Currently Installed Version"
+msgstr ""
+
+#: src/change_version_page/change_version_page.py:92
+msgid "Could not get versions"
+msgstr ""
+
+#: src/change_version_page/change_version_page.py:99
+msgid "Changed {}'s Version"
+msgstr ""
+
+#: src/change_version_page/change_version_page.py:124
+msgid "{} Versions"
+msgstr ""
+
+#: src/change_version_page/change_version_page.py:125
+msgid "Ensure that {} will never be updated to a newer version"
+msgstr ""
+
+#: src/change_version_page/change_version_page.py:126
+msgid "Fetching Releases"
+msgstr ""
+
+#: src/change_version_page/change_version_worker.py:76
+#: src/change_version_page/change_version_worker.py:80
+#: src/change_version_page/change_version_worker.py:84
+msgid "Error occurred while changing version"
+msgstr ""
+
+#: src/change_version_page/change_version_worker.py:95
+msgid "Could not cancel version change"
+msgstr ""
+
+#: src/change_version_page/change_version_worker.py:116
+msgid "Could not change version"
+msgstr ""
+
+#: src/change_version_page/change_version_worker.py:116
+msgid "Another package is changing version."
+msgstr ""
+
+#: src/remotes_page/add_remote_dialog.blp:5 src/install_page/select_page.blp:27
+msgid "Add a Remote"
+msgstr ""
+
+#: src/remotes_page/add_remote_dialog.blp:22
+msgid "Add"
+msgstr ""
+
+#: src/remotes_page/add_remote_dialog.blp:40
+msgid "Title"
+msgstr ""
+
+#: src/remotes_page/add_remote_dialog.blp:43
+#: src/user_data_page/user_data_page.blp:190
+msgid "Name"
+msgstr ""
+
+#: src/remotes_page/add_remote_dialog.blp:46
+msgid "Repo URL"
+msgstr ""
+
+#: src/remotes_page/add_remote_dialog.py:61
+msgid "Could not add remote"
+msgstr ""
+
+#: src/remotes_page/add_remote_dialog.py:64
+msgid "Added {}"
+msgstr ""
+
+#. Apply
+#: src/remotes_page/add_remote_dialog.py:114
+msgid "remote"
+msgstr ""
+
+#: src/remotes_page/remote_row.blp:21
+msgid "Set a Filter for this Remote"
+msgstr ""
+
+#: src/remotes_page/remote_row.blp:29
+msgid "More Actions"
+msgstr ""
+
+#: src/remotes_page/remote_row.blp:37
+msgid "Copy Title"
+msgstr ""
+
+#: src/remotes_page/remote_row.blp:41
+msgid "Copy Name"
+msgstr ""
+
+#: src/remotes_page/remote_row.blp:45
+msgid "Enable"
+msgstr ""
+
+#: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:130
+msgid "Disable"
+msgstr ""
+
+#: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:197
+msgid "Remove"
+msgstr ""
+
+#: src/remotes_page/remote_row.py:28 src/remotes_page/remote_row.py:49
+msgid "Could not enable remote"
+msgstr ""
+
+#: src/remotes_page/remote_row.py:28
+msgid "Remote is already enabled"
+msgstr ""
+
+#: src/remotes_page/remote_row.py:56
+msgid "Enabled remote"
+msgstr ""
+
+#: src/remotes_page/remote_row.py:80 src/remotes_page/remote_row.py:160
+msgid "Remote is Disabled"
+msgstr ""
+
+#: src/remotes_page/remote_row.py:82
+msgid "Disabled remote"
+msgstr ""
+
+#: src/remotes_page/remote_row.py:100 src/remotes_page/remote_row.py:112
+#: src/remotes_page/remote_row.py:116
+msgid "Could not disable remote"
+msgstr ""
+
+#: src/remotes_page/remote_row.py:100
+msgid "Remote is already disabled"
+msgstr ""
+
+#: src/remotes_page/remote_row.py:127
+msgid "Disable {}?"
+msgstr ""
+
+#: src/remotes_page/remote_row.py:127 src/remotes_page/remotes_page.py:194
+msgid "Any installed apps from {} will stop receiving updates"
+msgstr ""
+
+#: src/remotes_page/remote_row.py:140
+msgid "Copied title"
+msgstr ""
+
+#: src/remotes_page/remote_row.py:143
+msgid "Copied name"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:5
+msgid "Manage Remotes"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:40
+msgid "Search Remotes"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:47
+msgid "Current Remotes"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:48
+msgid "Remotes available on your system"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:55
+msgid "Show Disabled"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:75
+msgid "No Enabled Remotes"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:81
+msgid "You only have disabled remotes on this system"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:107
+msgid "No Remotes Found"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:113
+msgid ""
+"Warehouse cannot see the current remotes or your system has no remotes added"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:126
+msgid "Add Popular Remotes"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:127
+msgid "Add new remotes to get more software"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:131
+msgid "Add Other Remotes"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:134
+msgid "Add a Repo File"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:135
+msgid "Open a downloaded repo file to add"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:143
+msgid "Add a Custom Remote"
+msgstr ""
+
+#: src/remotes_page/remotes_page.blp:144
+msgid "Manually enter new remote details"
+msgstr ""
+
+#: src/remotes_page/remotes_page.py:36
+msgid "The open source, pay-what-you-want app store from elementary"
+msgstr ""
+
+#: src/remotes_page/remotes_page.py:42
+msgid "Central repository of Flatpak applications"
+msgstr ""
+
+#: src/remotes_page/remotes_page.py:48
+msgid "Beta builds of Flatpak applications"
+msgstr ""
+
+#: src/remotes_page/remotes_page.py:54
+msgid "Flatpaks packaged by Fedora Linux"
+msgstr ""
+
+#: src/remotes_page/remotes_page.py:60
+msgid "The latest beta GNOME Apps and Runtimes"
+msgstr ""
+
+#: src/remotes_page/remotes_page.py:66
+msgid "Central repository of the WebKit Developer and Runtime SDK"
+msgstr ""
+
+#: src/remotes_page/remotes_page.py:156
+msgid "Showing all packages from {}"
+msgstr ""
+
+#: src/remotes_page/remotes_page.py:178
+msgid "Could not remove remote"
+msgstr ""
+
+#: src/remotes_page/remotes_page.py:185
+msgid "Removed {}"
+msgstr ""
+
+#: src/remotes_page/remotes_page.py:194
+msgid "Remove {}?"
+msgstr ""
+
+#: src/remotes_page/remotes_page.py:231 src/remotes_page/remotes_page.py:241
+#: src/remotes_page/remotes_page.py:243
+msgid "Could not open file"
+msgstr ""
+
+#: src/remotes_page/remotes_page.py:246
+msgid "Flatpak Repos"
+msgstr ""
+
+#. Apply
+#: src/remotes_page/remotes_page.py:294
+msgid "Adding Remote"
+msgstr ""
+
+#: src/remotes_page/remotes_page.py:295
+msgid "Loading Remotes"
+msgstr ""
+
+#: src/user_data_page/data_box.blp:56
+msgid "Copy Path"
+msgstr ""
+
+#: src/user_data_page/data_box.blp:68
+msgid "Attempt to Install"
+msgstr ""
+
+#: src/user_data_page/data_box.py:62
+msgid "Copied data path"
+msgstr ""
+
+#: src/user_data_page/data_box.py:64
+msgid "Could not copy data path"
+msgstr ""
+
+#: src/user_data_page/data_box.py:69
+msgid "Opened data folder"
+msgstr ""
+
+#: src/user_data_page/data_box.py:71 src/snapshot_page/snapshot_page.py:258
+#: src/snapshot_page/snapshots_list_page.py:81
+msgid "Could not open folder"
+msgstr ""
+
+#: src/user_data_page/data_box.py:118
+msgid "Trash {}'s Data?"
+msgstr ""
+
+#: src/user_data_page/data_box.py:118
+msgid "{}'s data will be sent to the trash"
+msgstr ""
+
+#: src/user_data_page/data_box.py:120 src/user_data_page/user_data_page.py:214
+#: src/snapshot_page/snapshot_page.py:485
+msgid "Continue"
+msgstr ""
+
+#: src/user_data_page/data_subpage.blp:13
+msgid "No Title Set"
+msgstr ""
+
+#: src/user_data_page/data_subpage.blp:28
+msgid "Loading Size…"
+msgstr ""
+
+#: src/user_data_page/data_subpage.py:257
+msgid "No Active Data"
+msgstr ""
+
+#: src/user_data_page/data_subpage.py:258
+msgid ""
+"Warehouse cannot see any active user data or your system has no active user "
+"data present"
+msgstr ""
+
+#: src/user_data_page/data_subpage.py:261
+msgid "No Leftover Data"
+msgstr ""
+
+#: src/user_data_page/data_subpage.py:262
+msgid "There is no leftover user data"
+msgstr ""
+
+#: src/user_data_page/user_data_page.blp:43
+#: src/user_data_page/user_data_page.blp:64
+msgid "Search User Data"
+msgstr ""
+
+#: src/user_data_page/user_data_page.blp:49
+msgid "Sort User Data"
+msgstr ""
+
+#: src/user_data_page/user_data_page.blp:54
+msgid "Select User Data"
+msgstr ""
+
+#: src/user_data_page/user_data_page.blp:120
+#: src/snapshot_page/snapshot_page.blp:159
+msgid "More"
+msgstr ""
+
+#: src/user_data_page/user_data_page.blp:169
+msgid "Ascending"
+msgstr ""
+
+#: src/user_data_page/user_data_page.blp:177
+msgid "Descending"
+msgstr ""
+
+#: src/user_data_page/user_data_page.blp:198
+msgid "ID"
+msgstr ""
+
+#: src/user_data_page/user_data_page.blp:206
+msgid "Size"
+msgstr ""
+
+#: src/user_data_page/user_data_page.py:79
+#: src/user_data_page/user_data_page.py:81
+msgid "Loading Size"
+msgstr ""
+
+#: src/user_data_page/user_data_page.py:155
+msgid "Could not copy paths"
+msgstr ""
+
+#: src/user_data_page/user_data_page.py:155
+#: src/user_data_page/user_data_page.py:201
+msgid "No boxes were selected"
+msgstr ""
+
+#: src/user_data_page/user_data_page.py:158
+msgid "Copied paths"
+msgstr ""
+
+#: src/user_data_page/user_data_page.py:189
+msgid "Trashed data"
+msgstr ""
+
+#: src/user_data_page/user_data_page.py:212
+msgid "Trash Data?"
+msgstr ""
+
+#: src/user_data_page/user_data_page.py:212
+msgid "Data will be sent to the trash"
+msgstr ""
+
+#: src/user_data_page/user_data_page.py:250
+#: src/user_data_page/user_data_page.py:273
+msgid "Active Data"
+msgstr ""
+
+#: src/user_data_page/user_data_page.py:251
+#: src/user_data_page/user_data_page.py:279
+msgid "Leftover Data"
+msgstr ""
+
+#: src/snapshot_page/new_snapshot_dialog.blp:21
+#: src/snapshot_page/new_snapshot_dialog.blp:37
+msgid "Search Apps"
+msgstr ""
+
+#: src/snapshot_page/new_snapshot_dialog.blp:26
+msgid "Create"
+msgstr ""
+
+#: src/snapshot_page/new_snapshot_dialog.py:114
+msgid "Creating Snapshot"
+msgstr ""
+
+#: src/snapshot_page/new_snapshot_dialog.py:196
+msgid "Name these Snapshots"
+msgstr ""
+
+#: src/snapshot_page/new_snapshot_dialog.py:200
+#: src/snapshot_page/snapshot_page.blp:40
+#: src/snapshot_page/snapshot_page.blp:190
+#: src/snapshot_page/snapshots_list_page.blp:41
+msgid "New Snapshot"
+msgstr ""
+
+#: src/snapshot_page/new_snapshot_dialog.py:204
+msgid "Name this Snapshot"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:62
+msgid "No Name Set"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.blp:23
+msgid "No date found"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.blp:30
+msgid "No version found"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:160
+msgid "Apply"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.blp:55
+msgid "Rename"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.blp:84
+msgid "Rename Snapshot?"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.blp:94
+msgid "Confirm Rename"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.py:37 src/snapshot_page/snapshot_box.py:49
+#: src/snapshot_page/snapshot_box.py:65
+msgid "Could not write data"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.py:102
+msgid "Could not trash snapshot"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.py:106
+msgid "Trashed snapshot"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.py:116
+msgid "Trash Snapshot?"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.py:116
+msgid "This snapshot will be sent to the trash"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.py:146
+msgid "Applying Snapshot"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.py:156
+msgid "Apply Snapshot?"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.py:157
+msgid "Any current user data for this app will be trashed"
+msgstr ""
+
+#: src/snapshot_page/snapshot_box.py:186
+msgid "Version: {}"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.blp:53
+msgid "Search Snapshots"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.blp:70
+msgid "Active Snapshots"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.blp:81
+msgid "Snapshots of installed apps"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.blp:99
+msgid "Leftover Snapshots"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.blp:110
+msgid "Snapshots of apps that are no longer installed"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.blp:177
+msgid "Open Snapshots Folder"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.blp:182
+msgid "No Snapshots"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.blp:183
+msgid "Create a Snapshot to save the state of any Flatpak application"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.blp:219
+msgid "Snapshot Apps"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.blp:223
+msgid "Install Apps"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.blp:227
+msgid "Apply Snapshots"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.blp:231
+msgid "Trash Snapshots"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:106
+msgid "Could not load Snapshots"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:199
+msgid "Showing snapshots for {}"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:203
+msgid "No snapshots for {}"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:203
+msgid "New"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:247
+#: src/snapshot_page/snapshot_page.py:249
+#: src/snapshot_page/snapshots_list_page.py:64
+msgid "No Data Found to Snapshot"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:256
+#: src/snapshot_page/snapshots_list_page.py:79
+msgid "Opened snapshots folder"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:391
+msgid "Copied Snapshot Paths"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:400
+msgid "No apps in your selection can be snapshotted"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:474
+msgid "Applying Snapshots"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:480
+msgid "No snapshots to extract"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:480
+msgid "No snapshots were found to extract"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:483
+msgid "Apply These Snapshots?"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:483
+msgid ""
+"This will trash the current apps' user data, and apply their newest snapshot"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:516
+msgid "Trashed snapshots"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:518
+msgid "Could not trash snapshots"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:521
+msgid "Trash Snapshots?"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:521
+msgid "These apps' snapshots will be sent to the trash"
+msgstr ""
+
+#: src/snapshot_page/snapshot_page.py:560
+msgid "Loading Snapshots"
+msgstr ""
+
+#: src/snapshot_page/snapshots_list_page.blp:5
+msgid "Snapshots List"
+msgstr ""
+
+#: src/snapshot_page/snapshots_list_page.blp:13
+msgid "Open Snapshots Folder for this App"
+msgstr ""
+
+#: src/snapshot_page/snapshots_list_page.py:34
+#: src/snapshot_page/snapshots_list_page.py:55
+msgid "App not Installed"
+msgstr ""
+
+#: src/snapshot_page/snapshots_list_page.py:58
+msgid "{} Snapshots"
+msgstr ""
+
+#: src/snapshot_page/tar_worker.py:83
+msgid "Error in snapshot handling"
+msgstr ""
+
+#: src/install_page/file_install_dialog.blp:33
+msgid "Review Selection"
+msgstr ""
+
+#. self.packages_group.set_title(_("Review Packages"))
+#: src/install_page/file_install_dialog.py:40
+msgid "The following packages will be installed"
+msgstr ""
+
+#: src/install_page/file_install_dialog.py:43
+msgid "Install a Package"
+msgstr ""
+
+#. self.packages_group.set_title(_("Review Package"))
+#: src/install_page/file_install_dialog.py:45
+msgid "The following package will be installed"
+msgstr ""
+
+#: src/install_page/file_install_dialog.py:46
+msgid "package"
+msgstr ""
+
+#: src/install_page/install_page.blp:41
+msgid "Select Source"
+msgstr ""
+
+#: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
+#: src/install_page/pending_page.blp:5
+msgid "Pending Packages"
+msgstr ""
+
+#: src/install_page/install_page.py:55
+msgid "Installed Packages"
+msgstr ""
+
+#: src/install_page/install_page.py:72
+msgid "{} Pending Package"
+msgstr ""
+
+#: src/install_page/install_page.py:77
+msgid "{} Pending Packages"
+msgstr ""
+
+#. Extra Object Creation
+#: src/install_page/install_page.py:92
+msgid "Installing Packages"
+msgstr ""
+
+#: src/install_page/install_page.py:100
+msgid "Loading Installation Options"
+msgstr ""
+
+#: src/install_page/pending_page.blp:13 src/install_page/select_page.blp:37
+msgid "Add Packages"
+msgstr ""
+
+#: src/install_page/pending_page.blp:14
+msgid "Packages queued to install will show up here"
+msgstr ""
+
+#: src/install_page/pending_page.py:38
+msgid "Remove All"
+msgstr ""
+
+#: src/install_page/result_row.blp:8 src/install_page/result_row.py:46
+msgid "Add Package to Queue"
+msgstr ""
+
+#: src/install_page/result_row.py:50
+msgid "Package has been Added to Queue"
+msgstr ""
+
+#: src/install_page/result_row.py:54
+msgid "Remove Package from Queue"
+msgstr ""
+
+#: src/install_page/result_row.py:58
+msgid "This Package is Already Installed"
+msgstr ""
+
+#: src/install_page/results_page.blp:5
+msgid "Search a Remote"
+msgstr ""
+
+#. hexpand: true;
+#: src/install_page/results_page.blp:20
+msgid "Search for Packages"
+msgstr ""
+
+#: src/install_page/results_page.blp:26
+msgid "Search for Flatpaks"
+msgstr ""
+
+#: src/install_page/results_page.blp:27
+msgid "Search for Flatpaks you want to install"
+msgstr ""
+
+#: src/install_page/results_page.blp:31
+msgid "Too Many Results"
+msgstr ""
+
+#: src/install_page/results_page.blp:32
+msgid "Try being more specific with your search"
+msgstr ""
+
+#: src/install_page/results_page.blp:50
+msgid "Try a different search term"
+msgstr ""
+
+#: src/install_page/results_page.py:51
+msgid "Search {}"
+msgstr ""
+
+#: src/install_page/results_page.py:138
+msgid "Searching"
+msgstr ""
+
+#: src/install_page/select_page.blp:19
+msgid "Search in a Remote"
+msgstr ""
+
+#: src/install_page/select_page.blp:20
+msgid "Choose a remote to search for new packages"
+msgstr ""
+
+#: src/install_page/select_page.blp:23
+msgid "Online Searches Disabled"
+msgstr ""
+
+#: src/install_page/select_page.blp:24
+msgid "Your system has no remotes added to search from"
+msgstr ""
+
+#: src/install_page/select_page.blp:28
+msgid "Add a remote to your system to enable online searching"
+msgstr ""
+
+#: src/install_page/select_page.blp:38
+msgid "Install packages from files on your system"
+msgstr ""
+
+#: src/install_page/select_page.py:66
+msgid "No files were found to install"
+msgstr ""
+
+#: src/install_page/select_page.py:76
+msgid "Flatpaks"
+msgstr ""
