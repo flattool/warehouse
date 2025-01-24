@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-06 14:44-0500\n"
-"PO-Revision-Date: 2025-01-23 11:45+0000\n"
+"PO-Revision-Date: 2025-01-24 12:34+0000\n"
 "Last-Translator: ぺー☆ <nextnewstar@users.noreply.weblate.fyralabs.com>\n"
 "Language-Team: Japanese <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ja/>\n"
@@ -415,11 +415,11 @@ msgstr "サイドバーを表示する"
 
 #: src/main_window/window.blp:26
 msgid "Drop to Open"
-msgstr ""
+msgstr "ドロップして開く"
 
 #: src/main_window/window.blp:27
 msgid "Install Flatpaks or Add a Remote"
-msgstr ""
+msgstr "Flatpaksのインストールまたはリモートの追加"
 
 #: src/main_window/window.blp:45
 msgid "Refresh List"
@@ -427,7 +427,7 @@ msgstr ""
 
 #: src/main_window/window.blp:50
 msgid "Main Menu"
-msgstr ""
+msgstr "メインメニュー"
 
 #: src/main_window/window.blp:68 src/packages_page/packages_page.blp:20
 #: src/packages_page/packages_page.blp:55
@@ -435,201 +435,203 @@ msgstr ""
 #: src/packages_page/packages_page.py:325
 #: src/install_page/file_install_dialog.py:41
 msgid "Packages"
-msgstr ""
+msgstr "パッケージ"
 
 #: src/main_window/window.blp:83
 msgid "Remotes"
-msgstr ""
+msgstr "リモート"
 
 #: src/main_window/window.blp:99 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
 msgid "User Data"
-msgstr ""
+msgstr "ユーザーデータ"
 
 #: src/main_window/window.blp:114 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
 #: src/snapshot_page/snapshot_page.py:360
 msgid "Snapshots"
-msgstr ""
+msgstr "スナップショット"
 
 #: src/main_window/window.blp:129 src/install_page/file_install_dialog.py:38
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
 msgid "Install Packages"
-msgstr ""
+msgstr "パッケージのインストール"
 
 #: src/main_window/window.blp:161
 msgid "_Open Files"
-msgstr ""
+msgstr "ファイルを開く"
 
 #: src/main_window/window.blp:165
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "キーボードショートカット"
 
 #: src/main_window/window.blp:169
 msgid "_About Warehouse"
-msgstr ""
+msgstr "Warehouseについて"
 
 #: src/main_window/window.py:139
 msgid "Unsupported Filetype"
-msgstr ""
+msgstr "サポートされていないファイルタイプ"
 
 #: src/main_window/window.py:140
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
-msgstr ""
+msgstr ".flatpak、.flatpakref、.flatpakrepo ファイルのみがサポートされています。"
 
 #: src/main_window/window.py:148
 msgid "Mixed Filetypes"
-msgstr ""
+msgstr "混合ファイルタイプ"
 
 #: src/main_window/window.py:149
 msgid "Flatpaks and remotes cannot be installed at the same time."
-msgstr ""
+msgstr "Flatpakとリモートを同時に取り付けることはできません。"
 
 #: src/main_window/window.py:158
 msgid "Too Many Remotes"
-msgstr ""
+msgstr "リモートが多すぎます"
 
 #: src/main_window/window.py:159
 msgid "Only one remote at a time is supported."
-msgstr ""
+msgstr "一度にサポートされるリモートは1つだけです。"
 
 #: src/main_window/window.py:177
 msgid "Could not open files"
-msgstr ""
+msgstr "ファイルを開けませんでした"
 
 #: src/packages_page/filters_page.blp:5 src/packages_page/packages_page.blp:70
 msgid "Filter Packages"
-msgstr ""
+msgstr "パッケージを絞り込む"
 
 #: src/packages_page/filters_page.blp:20
 msgid "Filter by Package Type"
-msgstr ""
+msgstr "パッケージタイプで絞り込む"
 
 #: src/packages_page/filters_page.blp:21
 msgid "Show packages of these types"
-msgstr ""
+msgstr "これらのタイプのパッケージを表示する"
 
 #: src/packages_page/filters_page.blp:23
 msgid "Applications"
-msgstr ""
+msgstr "アプリケーション"
 
 #: src/packages_page/filters_page.blp:24
 msgid "Packages that can be opened"
-msgstr ""
+msgstr "開封可能なパッケージ"
 
 #: src/packages_page/filters_page.blp:29
 msgid "Runtimes"
-msgstr ""
+msgstr "ランタイム"
 
 #: src/packages_page/filters_page.blp:30
 msgid "Packages that applications depend on"
-msgstr ""
+msgstr "アプリケーションが依存するパッケージ"
 
 #: src/packages_page/filters_page.blp:37
 msgid "Filter by Remotes"
-msgstr ""
+msgstr "リモートで絞り込む"
 
 #: src/packages_page/filters_page.blp:38
 msgid "Show packages from selected remotes"
-msgstr ""
+msgstr "選択したリモートのパッケージを表示"
 
 #: src/packages_page/filters_page.blp:52
 msgid "Showing packages from all remotes"
-msgstr ""
+msgstr "すべてのリモコンからパッケージを表示"
 
 #: src/packages_page/filters_page.blp:58
 msgid "Enable to show packages from selected remotes"
-msgstr ""
+msgstr "選択したリモートのパッケージを表示できるようにする"
 
 #: src/packages_page/filters_page.blp:71
 msgid "Filter by Runtimes"
-msgstr ""
+msgstr "ランタイムで絞り込む"
 
 #: src/packages_page/filters_page.blp:72
 msgid "Show apps using selected runtimes"
-msgstr ""
+msgstr "選択したランタイムを使用しているアプリを表示する"
 
 #: src/packages_page/filters_page.blp:86
 msgid "Showing apps using any runtime"
-msgstr ""
+msgstr "任意のランタイムを使用するアプリの表示"
 
 #: src/packages_page/filters_page.blp:92
 msgid "Enable to show apps using selected runtimes"
-msgstr ""
+msgstr "選択したランタイムを使用しているアプリを表示できるようにする"
 
 #: src/packages_page/filters_page.blp:113
 #: src/packages_page/packages_page.blp:97
 msgid "Reset Filters"
-msgstr ""
+msgstr "フィルターをリセット"
 
 #: src/packages_page/packages_page.blp:65
 #: src/packages_page/packages_page.blp:83 src/remotes_page/remotes_page.blp:30
 #: src/snapshot_page/snapshot_page.blp:35
 msgid "Search Packages"
-msgstr ""
+msgstr "パッケージを検索"
 
 #: src/packages_page/packages_page.blp:75
 #: src/snapshot_page/snapshot_page.blp:45
 msgid "Select Packages"
-msgstr ""
+msgstr "パッケージの選択"
 
 #: src/packages_page/packages_page.blp:93
 msgid "No Packages Match Filters"
-msgstr ""
+msgstr "フィルターに一致するパッケージがない"
 
 #: src/packages_page/packages_page.blp:94
 msgid "No installed package matches all of the currently applied filters"
-msgstr ""
+msgstr "現在適用されているすべてのフィルタに一致するインストール済みパッケージはあり"
+"ません"
 
 #: src/packages_page/packages_page.blp:104
 msgid "No Packages Found"
-msgstr ""
+msgstr "パッケージが見つかりません"
 
 #: src/packages_page/packages_page.blp:105
 msgid ""
 "Warehouse cannot see the list of installed packages or your system has no "
 "packages installed"
-msgstr ""
+msgstr "Warehouseにインストールされているパッケージのリストが表示されない、またはシス"
+"テムにパッケージがインストールされていない。"
 
 #: src/packages_page/packages_page.blp:109
 #: src/remotes_page/remotes_page.blp:153 src/user_data_page/data_subpage.blp:68
 #: src/snapshot_page/new_snapshot_dialog.blp:67
 #: src/snapshot_page/snapshot_page.blp:58 src/install_page/results_page.blp:49
 msgid "No Results Found"
-msgstr ""
+msgstr "結果が見つかりません"
 
 #: src/packages_page/packages_page.blp:110
 #: src/remotes_page/remotes_page.blp:154 src/user_data_page/data_subpage.blp:69
 #: src/snapshot_page/new_snapshot_dialog.blp:68
 #: src/snapshot_page/snapshot_page.blp:59
 msgid "Try a different search"
-msgstr ""
+msgstr "別の検索を試して下さい"
 
 #: src/packages_page/packages_page.blp:127
 #: src/user_data_page/user_data_page.blp:81
 #: src/snapshot_page/new_snapshot_dialog.blp:79
 #: src/snapshot_page/snapshot_page.blp:140
 msgid "Select All"
-msgstr ""
+msgstr "すべて選択"
 
 #: src/packages_page/packages_page.blp:144
 #: src/packages_page/uninstall_dialog.py:42
 #: src/properties_page/properties_page.blp:88
 msgid "Uninstall"
-msgstr ""
+msgstr "アンインストール"
 
 #: src/packages_page/packages_page.blp:173
 msgid "Copy Names"
-msgstr ""
+msgstr "名前をコピー"
 
 #: src/packages_page/packages_page.blp:177
 msgid "Copy IDs"
-msgstr ""
+msgstr "IDをコピー"
 
 #: src/packages_page/packages_page.blp:181
 msgid "Copy Refs"
-msgstr ""
+msgstr "Refsをコピー"
 
 #: src/packages_page/packages_page.py:156
 #: src/user_data_page/data_subpage.py:112
@@ -644,11 +646,11 @@ msgstr ""
 
 #: src/packages_page/packages_page.py:246
 msgid "Names"
-msgstr ""
+msgstr "名前"
 
 #: src/packages_page/packages_page.py:249
 msgid "IDs"
-msgstr ""
+msgstr "ID"
 
 #: src/packages_page/packages_page.py:252
 msgid "Refs"
@@ -665,15 +667,15 @@ msgstr ""
 
 #: src/packages_page/packages_page.py:313
 msgid "Errors occurred while uninstalling"
-msgstr ""
+msgstr "アンインストール中にエラーが発生しました"
 
 #: src/packages_page/packages_page.py:315
 msgid "Uninstalled Packages"
-msgstr ""
+msgstr "アンインストールされたパッケージ"
 
 #: src/packages_page/packages_page.py:373
 msgid "Loading Packages"
-msgstr ""
+msgstr "パッケージを読み込み中"
 
 #: src/packages_page/packages_page.py:373
 #: src/packages_page/packages_page.py:374
@@ -683,34 +685,34 @@ msgstr ""
 #: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:100
 #: src/install_page/results_page.py:138
 msgid "This should only take a moment"
-msgstr ""
+msgstr "これは一瞬で終わるはずだ"
 
 #: src/packages_page/packages_page.py:374
 msgid "Uninstalling Packages"
-msgstr ""
+msgstr "パッケージのアンインストール"
 
 #: src/packages_page/packages_page.py:376
 msgid "Reinstalling Package"
-msgstr ""
+msgstr "パッケージの再インストール"
 
 #: src/packages_page/packages_page.py:376
 #: src/packages_page/packages_page.py:378
 #: src/change_version_page/change_version_page.py:126
 #: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:92
 msgid "This could take a while"
-msgstr ""
+msgstr "しばらく時間がかかるかもしれない"
 
 #: src/packages_page/packages_page.py:378
 msgid "Changing Version"
-msgstr ""
+msgstr "バージョン変更"
 
 #: src/packages_page/uninstall_dialog.blp:8
 msgid "Keep"
-msgstr ""
+msgstr "キープ"
 
 #: src/packages_page/uninstall_dialog.blp:9
 msgid "Allows restoring app settings and content"
-msgstr ""
+msgstr "アプリの設定やコンテンツの復元が可能"
 
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
@@ -718,11 +720,11 @@ msgstr ""
 #: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:118
 #: src/snapshot_page/snapshot_page.py:523
 msgid "Trash"
-msgstr ""
+msgstr "ゴミ"
 
 #: src/packages_page/uninstall_dialog.blp:18
 msgid "Send data to the trash"
-msgstr ""
+msgstr "ゴミ箱にデータを送る"
 
 #: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall {}?"
@@ -734,103 +736,103 @@ msgstr ""
 
 #: src/packages_page/uninstall_dialog.py:37
 msgid "Uninstall Packages?"
-msgstr ""
+msgstr "パッケージをアンインストールしますか?"
 
 #: src/packages_page/uninstall_dialog.py:38
 msgid "It will not be possible to use these packages after removal"
-msgstr ""
+msgstr "これらのパッケージを削除すると、使用できなくなります。"
 
 #: src/packages_page/uninstall_dialog.py:45
 msgid "App Settings & Content"
-msgstr ""
+msgstr "アプリの設定とコンテンツ"
 
 #: src/properties_page/properties_page.blp:19
 msgid "Properties Page Unavailable"
-msgstr ""
+msgstr "プロパティページが利用できません"
 
 #: src/properties_page/properties_page.blp:20
 msgid "Cannot show the properties page at this time"
-msgstr ""
+msgstr "現在、プロパティページを表示できません"
 
 #: src/properties_page/properties_page.blp:83
 msgid "Open"
-msgstr ""
+msgstr "開く"
 
 #: src/properties_page/properties_page.blp:122
 #: src/user_data_page/data_box.blp:62
 msgid "Open User Data"
-msgstr ""
+msgstr "ユーザーデータを開く"
 
 #: src/properties_page/properties_page.blp:130
 #: src/user_data_page/data_box.blp:73
 msgid "Trash User Data"
-msgstr ""
+msgstr "ユーザーデータをゴミ箱へ"
 
 #: src/properties_page/properties_page.blp:139
 msgid "Version"
-msgstr ""
+msgstr "バージョン"
 
 #: src/properties_page/properties_page.blp:143
 msgid "Updates Disabled"
-msgstr ""
+msgstr "アップデートは無効"
 
 #: src/properties_page/properties_page.blp:147
 #: src/change_version_page/change_version_page.blp:50
 msgid "Disable Updates"
-msgstr ""
+msgstr "アップデートを無効にする"
 
 #: src/properties_page/properties_page.blp:148
 msgid "Mask this package so it's never updated"
-msgstr ""
+msgstr "このパッケージをマスクし、更新されないようにする。"
 
 #: src/properties_page/properties_page.blp:157
 #: src/change_version_page/change_version_page.blp:23
 msgid "Change Version"
-msgstr ""
+msgstr "バージョン変更"
 
 #: src/properties_page/properties_page.blp:158
 msgid "Upgrade or downgrade this package"
-msgstr ""
+msgstr "本パッケージのアップグレードまたはダウングレード"
 
 #: src/properties_page/properties_page.blp:167
 msgid "Installed Size"
-msgstr ""
+msgstr "インストールされたサイズ"
 
 #: src/properties_page/properties_page.blp:175
 msgid "Runtime"
-msgstr ""
+msgstr "ランタイム"
 
 #: src/properties_page/properties_page.blp:188
 msgid "Disable Automatic Removal"
-msgstr ""
+msgstr "自動削除を無効にする"
 
 #: src/properties_page/properties_page.blp:189
 msgid "Pin this runtime to keep it installed"
-msgstr ""
+msgstr "このランタイムをピン留めして、インストールしたままにする"
 
 #: src/properties_page/properties_page.blp:200
 msgid "Package Information"
-msgstr ""
+msgstr "パッケージ情報"
 
 #: src/properties_page/properties_page.blp:203
 msgid "Application ID"
-msgstr ""
+msgstr "アプリケーションID"
 
 #: src/properties_page/properties_page.blp:219
 msgid "Architecture"
-msgstr ""
+msgstr "アーキテクチャー"
 
 #: src/properties_page/properties_page.blp:227
 msgid "Branch"
-msgstr ""
+msgstr "ブランチ"
 
 #: src/properties_page/properties_page.blp:235
 msgid "License"
-msgstr ""
+msgstr "ライセンス"
 
 #: src/properties_page/properties_page.blp:244
 msgid "Installation Information"
-msgstr ""
+msgstr "インストール情報"
 
 #: src/properties_page/properties_page.blp:255
 msgid "Origin"
@@ -838,19 +840,19 @@ msgstr ""
 
 #: src/properties_page/properties_page.blp:263
 msgid "Collection"
-msgstr ""
+msgstr "コレクション"
 
 #: src/properties_page/properties_page.blp:271
 msgid "Installation"
-msgstr ""
+msgstr "インストール"
 
 #: src/properties_page/properties_page.blp:279
 msgid "Commit Information"
-msgstr ""
+msgstr "コミット情報"
 
 #: src/properties_page/properties_page.blp:290
 msgid "Parent"
-msgstr ""
+msgstr "親"
 
 #: src/properties_page/properties_page.blp:298
 msgid "Subject"
@@ -858,7 +860,7 @@ msgstr ""
 
 #: src/properties_page/properties_page.blp:306
 msgid "Date"
-msgstr ""
+msgstr "日付"
 
 #: src/properties_page/properties_page.py:79
 msgid "{} Properties"
@@ -866,30 +868,30 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:84
 msgid "Properties"
-msgstr ""
+msgstr "プロパティ"
 
 #. Apply again
 #: src/properties_page/properties_page.py:113
 #: src/user_data_page/user_data_page.py:300
 msgid "Loading User Data"
-msgstr ""
+msgstr "ユーザーデータのロード"
 
 #: src/properties_page/properties_page.py:123
 msgid "No User Data"
-msgstr ""
+msgstr "ユーザーデータなし"
 
 #: src/properties_page/properties_page.py:133
 #: src/properties_page/properties_page.py:149
 msgid "Could not get properties"
-msgstr ""
+msgstr "プロパティを取得できませんでした"
 
 #: src/properties_page/properties_page.py:146
 msgid "No version information found"
-msgstr ""
+msgstr "バージョン情報が見つかりません"
 
 #: src/properties_page/properties_page.py:166
 msgid "Could not open data"
-msgstr ""
+msgstr "データを開くことができなかった"
 
 #: src/properties_page/properties_page.py:185
 #: src/properties_page/properties_page.py:187
@@ -898,43 +900,43 @@ msgstr ""
 #: src/user_data_page/data_box.py:104 src/user_data_page/user_data_page.py:187
 #: src/user_data_page/user_data_page.py:201
 msgid "Could not trash data"
-msgstr ""
+msgstr "データをゴミ箱に入れられなかった"
 
 #: src/properties_page/properties_page.py:190
 msgid "Send {}'s User Data to the Trash?"
-msgstr ""
+msgstr "ゴミ箱に{}のユーザーデータを送りますか？"
 
 #: src/properties_page/properties_page.py:191
 msgid "Your settings and data for this app will be sent to the trash"
-msgstr ""
+msgstr "このアプリの設定とデータはゴミ箱に送られます。"
 
 #: src/properties_page/properties_page.py:194
 msgid "Trash Data"
-msgstr ""
+msgstr "データをゴミ箱へ"
 
 #: src/properties_page/properties_page.py:204
 msgid "Could not Disable Updates"
-msgstr ""
+msgstr "アップデートを無効にできませんでした"
 
 #: src/properties_page/properties_page.py:204
 msgid "Could not Enable Updates"
-msgstr ""
+msgstr "アップデートを有効にできませんでした"
 
 #: src/properties_page/properties_page.py:210
 msgid "Disabled Updates"
-msgstr ""
+msgstr "無効化されたアップデート"
 
 #: src/properties_page/properties_page.py:210
 msgid "Enabled Updates"
-msgstr ""
+msgstr "有効化されたアップデート"
 
 #: src/properties_page/properties_page.py:223
 msgid "Could not Disable Autoremoval"
-msgstr ""
+msgstr "自動削除を無効にできませんでした"
 
 #: src/properties_page/properties_page.py:223
 msgid "Could not Enable Autoremoval"
-msgstr ""
+msgstr "自動削除を有効にできませんでした"
 
 #: src/properties_page/properties_page.py:228
 msgid "Disabled Autoremoval"
@@ -946,7 +948,7 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:251
 msgid "Could not uninstall"
-msgstr ""
+msgstr "アンインストールできませんでした"
 
 #: src/properties_page/properties_page.py:255
 msgid "Uninstalled {}"
@@ -972,12 +974,13 @@ msgstr ""
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
-msgstr ""
+msgstr "このパッケージはアンインストールされ、同じリモートおよびインストールから再イ"
+"ンストールされます。"
 
 #: src/properties_page/properties_page.py:319
 #: src/properties_page/properties_page.py:377
 msgid "Reinstall"
-msgstr ""
+msgstr "再インストール"
 
 #: src/properties_page/properties_page.py:336
 msgid "Copied launch command"
@@ -989,15 +992,15 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:344
 msgid "Could not show details"
-msgstr ""
+msgstr "詳細を表示できませんでした"
 
 #: src/properties_page/properties_page.py:371
 msgid "Loading Properties"
-msgstr ""
+msgstr "プロパティを読み込み中"
 
 #: src/properties_page/properties_page.py:374
 msgid "View Snapshots"
-msgstr ""
+msgstr "スナップショットを見る"
 
 #: src/properties_page/properties_page.py:375
 msgid "Copy Launch Command"
@@ -1005,15 +1008,15 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:376
 msgid "Show Details"
-msgstr ""
+msgstr "詳細を表示"
 
 #: src/change_version_page/change_version_page.blp:5
 msgid "Change Versions"
-msgstr ""
+msgstr "バージョンの変更"
 
 #: src/change_version_page/change_version_page.blp:56
 msgid "Select a Release"
-msgstr ""
+msgstr "リリースを選択"
 
 #: src/change_version_page/change_version_page.blp:57
 msgid ""
