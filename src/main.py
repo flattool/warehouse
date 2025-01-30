@@ -44,7 +44,7 @@ class WarehouseApplication(Adw.Application):
 	def __init__(self):
 		super().__init__(
 			application_id="io.github.flattool.Warehouse",
-			flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
+			flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE | Gio.ApplicationFlags.HANDLES_OPEN,
 		)
 		self.create_action("about", self.on_about_action)
 		self.create_action("preferences", self.on_preferences_action)
@@ -187,6 +187,40 @@ class WarehouseApplication(Adw.Application):
 		if not win:
 			win = WarehouseWindow(application=self)
 		win.present()
+
+	def do_open(self, files, _n_files, _hint):
+		"""Handle files opened from file manager or command line"""
+		win = self.props.active_window
+		if not win:
+			win = WarehouseWindow(application=self)
+		win.present()
+
+		# Convert GFiles to file paths
+		file_list = []
+		for gfile in files:
+			file_list.append(gfile)
+
+		# Use existing file drop handler
+		win.on_file_drop(None, file_list, None, None)
+
+	def do_command_line(self, command_line):
+		"""Handle command line arguments"""
+		args = command_line.get_arguments()
+
+		if len(args) > 1:  # First arg is program name
+			files = []
+			for path in args[1:]:
+				gfile = Gio.File.new_for_path(path)
+				if gfile.query_exists():
+					files.append(gfile)
+
+			if files:
+				self.open(files, "")
+				return 0
+
+		# No valid files, just activate normally
+		self.activate()
+		return 0
 
 	def on_about_action(self, widget, _a):
 		"""Callback for the app.about action."""

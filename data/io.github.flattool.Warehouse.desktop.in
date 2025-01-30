@@ -1,7 +1,7 @@
 [Desktop Entry]
 # Translators: Do not translate the application name
 Name=Warehouse
-Exec=warehouse
+Exec=warehouse %F
 Icon=io.github.flattool.Warehouse
 Terminal=false
 Type=Application
@@ -10,3 +10,4 @@ StartupNotify=true
 Keywords=flatpak
 Comment=Manage all things Flatpak
 X-Purism-FormFactor=Workstation;Mobile;
+MimeType=application/vnd.flatpak.ref;application/vnd.flatpak;x-scheme-handler/flatpak;
