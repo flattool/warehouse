@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-06 14:44-0500\n"
-"PO-Revision-Date: 2025-01-24 12:34+0000\n"
+"PO-Revision-Date: 2025-02-08 00:45+0000\n"
 "Last-Translator: ぺー☆ <nextnewstar@users.noreply.weblate.fyralabs.com>\n"
 "Language-Team: Japanese <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ja/>\n"
@@ -50,7 +50,7 @@ msgstr "インストールされたFlatpaksを管理し、任意のパッケー�
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
-msgstr ""
+msgstr "Flatpakのバージョンを変更し、不要なアップデートをロールバックする。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
@@ -1023,22 +1023,25 @@ msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
+"これにより、現在のリリースがアンインストールされ、代わりに選択したリリースが"
+"インストールされます。ダウングレードは問題を引き起こす可能性があることに注意"
+"してください。"
 
 #: src/change_version_page/change_version_page.py:75
 msgid "Currently Installed Version"
-msgstr ""
+msgstr "現在インストールされているバージョン"
 
 #: src/change_version_page/change_version_page.py:92
 msgid "Could not get versions"
-msgstr ""
+msgstr "バージョンを取得できませんでした"
 
 #: src/change_version_page/change_version_page.py:99
 msgid "Changed {}'s Version"
-msgstr ""
+msgstr "{}のバージョンを変更"
 
 #: src/change_version_page/change_version_page.py:124
 msgid "{} Versions"
-msgstr ""
+msgstr "バージョン {}"
 
 #: src/change_version_page/change_version_page.py:125
 msgid "Ensure that {} will never be updated to a newer version"
@@ -1046,177 +1049,178 @@ msgstr ""
 
 #: src/change_version_page/change_version_page.py:126
 msgid "Fetching Releases"
-msgstr ""
+msgstr "リリースをフェッチ"
 
 #: src/change_version_page/change_version_worker.py:76
 #: src/change_version_page/change_version_worker.py:80
 #: src/change_version_page/change_version_worker.py:84
 msgid "Error occurred while changing version"
-msgstr ""
+msgstr "バージョン変更中にエラーが発生しました"
 
 #: src/change_version_page/change_version_worker.py:95
 msgid "Could not cancel version change"
-msgstr ""
+msgstr "バージョン変更をキャンセルできませんでした"
 
 #: src/change_version_page/change_version_worker.py:116
 msgid "Could not change version"
-msgstr ""
+msgstr "バージョンを変更できませんでした"
 
 #: src/change_version_page/change_version_worker.py:116
 msgid "Another package is changing version."
-msgstr ""
+msgstr "もう1つのパッケージはバージョンが変わっている。"
 
 #: src/remotes_page/add_remote_dialog.blp:5 src/install_page/select_page.blp:27
 msgid "Add a Remote"
-msgstr ""
+msgstr "リモートを追加"
 
 #: src/remotes_page/add_remote_dialog.blp:22
 msgid "Add"
-msgstr ""
+msgstr "追加"
 
 #: src/remotes_page/add_remote_dialog.blp:40
 msgid "Title"
-msgstr ""
+msgstr "タイトル"
 
 #: src/remotes_page/add_remote_dialog.blp:43
 #: src/user_data_page/user_data_page.blp:190
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: src/remotes_page/add_remote_dialog.blp:46
 msgid "Repo URL"
-msgstr ""
+msgstr "リポジトリのURL"
 
 #: src/remotes_page/add_remote_dialog.py:61
 msgid "Could not add remote"
-msgstr ""
+msgstr "リモートを追加できませんでした"
 
 #: src/remotes_page/add_remote_dialog.py:64
 msgid "Added {}"
-msgstr ""
+msgstr "{} を追加した"
 
 #. Apply
 #: src/remotes_page/add_remote_dialog.py:114
 msgid "remote"
-msgstr ""
+msgstr "リモート"
 
 #: src/remotes_page/remote_row.blp:21
 msgid "Set a Filter for this Remote"
-msgstr ""
+msgstr "このリモートにフィルタを設定する"
 
 #: src/remotes_page/remote_row.blp:29
 msgid "More Actions"
-msgstr ""
+msgstr "その他のアクション"
 
 #: src/remotes_page/remote_row.blp:37
 msgid "Copy Title"
-msgstr ""
+msgstr "タイトルをコピー"
 
 #: src/remotes_page/remote_row.blp:41
 msgid "Copy Name"
-msgstr ""
+msgstr "名称をコピー"
 
 #: src/remotes_page/remote_row.blp:45
 msgid "Enable"
-msgstr ""
+msgstr "有効にする"
 
 #: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:130
 msgid "Disable"
-msgstr ""
+msgstr "無効"
 
 #: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:197
 msgid "Remove"
-msgstr ""
+msgstr "削除"
 
 #: src/remotes_page/remote_row.py:28 src/remotes_page/remote_row.py:49
 msgid "Could not enable remote"
-msgstr ""
+msgstr "リモートを有効にできませんでした"
 
 #: src/remotes_page/remote_row.py:28
 msgid "Remote is already enabled"
-msgstr ""
+msgstr "リモートはすでに有効です"
 
 #: src/remotes_page/remote_row.py:56
 msgid "Enabled remote"
-msgstr ""
+msgstr "有効なリモート"
 
 #: src/remotes_page/remote_row.py:80 src/remotes_page/remote_row.py:160
 msgid "Remote is Disabled"
-msgstr ""
+msgstr "リモートは無効です"
 
 #: src/remotes_page/remote_row.py:82
 msgid "Disabled remote"
-msgstr ""
+msgstr "無効なリモート"
 
 #: src/remotes_page/remote_row.py:100 src/remotes_page/remote_row.py:112
 #: src/remotes_page/remote_row.py:116
 msgid "Could not disable remote"
-msgstr ""
+msgstr "リモートを無効にできませんでした"
 
 #: src/remotes_page/remote_row.py:100
 msgid "Remote is already disabled"
-msgstr ""
+msgstr "リモートはすでに無効です"
 
 #: src/remotes_page/remote_row.py:127
 msgid "Disable {}?"
-msgstr ""
+msgstr "{} を無効にしますか？"
 
 #: src/remotes_page/remote_row.py:127 src/remotes_page/remotes_page.py:194
 msgid "Any installed apps from {} will stop receiving updates"
-msgstr ""
+msgstr "{} からインストールされたアプリは、アップデートの受信を停止します。"
 
 #: src/remotes_page/remote_row.py:140
 msgid "Copied title"
-msgstr ""
+msgstr "コピーされたタイトル"
 
 #: src/remotes_page/remote_row.py:143
 msgid "Copied name"
-msgstr ""
+msgstr "コピーされた名称"
 
 #: src/remotes_page/remotes_page.blp:5
 msgid "Manage Remotes"
-msgstr ""
+msgstr "リモートの管理"
 
 #: src/remotes_page/remotes_page.blp:40
 msgid "Search Remotes"
-msgstr ""
+msgstr "リモートを検索"
 
 #: src/remotes_page/remotes_page.blp:47
 msgid "Current Remotes"
-msgstr ""
+msgstr "現在のリモート"
 
 #: src/remotes_page/remotes_page.blp:48
 msgid "Remotes available on your system"
-msgstr ""
+msgstr "お使いのシステムで使用可能なリモート"
 
 #: src/remotes_page/remotes_page.blp:55
 msgid "Show Disabled"
-msgstr ""
+msgstr "表示不可"
 
 #: src/remotes_page/remotes_page.blp:75
 msgid "No Enabled Remotes"
-msgstr ""
+msgstr "有効なリモートはありません"
 
 #: src/remotes_page/remotes_page.blp:81
 msgid "You only have disabled remotes on this system"
-msgstr ""
+msgstr "このシステムには無効なリモートしかありません"
 
 #: src/remotes_page/remotes_page.blp:107
 msgid "No Remotes Found"
-msgstr ""
+msgstr "リモートが見つかりません"
 
 #: src/remotes_page/remotes_page.blp:113
 msgid ""
 "Warehouse cannot see the current remotes or your system has no remotes added"
-msgstr ""
+msgstr "Warehouseには現在のリモートが表示されないか、システムにリモートが追加されてい"
+"ません。"
 
 #: src/remotes_page/remotes_page.blp:126
 msgid "Add Popular Remotes"
-msgstr ""
+msgstr "人気のリモートを追加"
 
 #: src/remotes_page/remotes_page.blp:127
 msgid "Add new remotes to get more software"
-msgstr ""
+msgstr "新しいリモートを追加して、より多くのソフトウェアを入手する"
 
 #: src/remotes_page/remotes_page.blp:131
 msgid "Add Other Remotes"
