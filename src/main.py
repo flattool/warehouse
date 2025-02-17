@@ -22,9 +22,8 @@ import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-gi.require_version("Flatpak", "1.0")
 
-from gi.repository import Gtk, Gio, Adw, GLib, Flatpak
+from gi.repository import Gtk, Gio, Adw, GLib
 from src.main_window.window import WarehouseWindow
 from src.const import Config
 from src.gtk.error_toast import ErrorToast
@@ -37,7 +36,7 @@ class WarehouseApplication(Adw.Application):
 	"""The main application singleton class."""
 
 	troubleshooting = (
-		"OS: {os}\nWarehouse version: {wv}\nlibflatpak: {libflatpak}\nGTK: {gtk}\nlibadwaita: {adw}\nApp ID: {app_id}\nProfile: {profile}\nLanguage: {lang}"
+		"OS: {os}\nWarehouse version: {wv}\nGTK: {gtk}\nlibadwaita: {adw}\nApp ID: {app_id}\nProfile: {profile}\nLanguage: {lang}"
 	)
 	version = Config.VERSION
 
@@ -69,7 +68,6 @@ class WarehouseApplication(Adw.Application):
 
 		self.is_dialog_open = False
 
-		libflatpak_version = str(Flatpak.MAJOR_VERSION) + "." + str(Flatpak.MINOR_VERSION) + "." + str(Flatpak.MICRO_VERSION)
 		gtk_version = str(Gtk.MAJOR_VERSION) + "." + str(Gtk.MINOR_VERSION) + "." + str(Gtk.MICRO_VERSION)
 		adw_version = str(Adw.MAJOR_VERSION) + "." + str(Adw.MINOR_VERSION) + "." + str(Adw.MICRO_VERSION)
 		os_string = GLib.get_os_info("NAME") + " " + GLib.get_os_info("VERSION")
@@ -78,7 +76,6 @@ class WarehouseApplication(Adw.Application):
 		self.troubleshooting = self.troubleshooting.format(
 			os=os_string,
 			wv=self.version,
-			libflatpak=libflatpak_version,
 			gtk=gtk_version,
 			adw=adw_version,
 			profile=Config.PROFILE,
