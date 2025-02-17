@@ -202,7 +202,7 @@ class WarehouseApplication(Adw.Application):
 				"Amy https://github.com/AtiusAmy",
 				"eryn https://github.com/hericiumvevo",
 			],
-			copyright="© 2023 Heliguy",
+			copyright="© 2023 - 2025 Mitchell Winkelman",
 			license_type=Gtk.License.GPL_3_0_ONLY,
 			debug_info=self.troubleshooting,
 			# Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
