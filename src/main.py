@@ -35,9 +35,7 @@ _ = gettext.gettext
 class WarehouseApplication(Adw.Application):
 	"""The main application singleton class."""
 
-	troubleshooting = (
-		"OS: {os}\nWarehouse version: {wv}\nGTK: {gtk}\nlibadwaita: {adw}\nApp ID: {app_id}\nProfile: {profile}\nLanguage: {lang}"
-	)
+	troubleshooting = "OS: {os}\nWarehouse version: {wv}\nGTK: {gtk}\nlibadwaita: {adw}\nApp ID: {app_id}\nProfile: {profile}\nLanguage: {lang}"
 	version = Config.VERSION
 
 	def __init__(self):
