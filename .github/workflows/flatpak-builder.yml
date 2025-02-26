@@ -5,17 +5,15 @@ on:
 name: Flatpak Builder
 jobs:
   build:
-    name: Build
+    name: "Flatpak"
     runs-on: ubuntu-latest
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-44
+      image: bilelmoussaoui/flatpak-github-actions:gnome-47
       options: --privileged
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-
-    - name: Flatpak Builder
-      uses: flatpak/flatpak-github-actions/flatpak-builder@v6.1
+    - uses: actions/checkout@v4
+    - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.1
       with:
         bundle: io.github.flattool.Warehouse.flatpak
         manifest-path: build-aux/io.github.flattool.Warehouse.json
+        cache-key: flatpak-builder-${{ github.sha }}
