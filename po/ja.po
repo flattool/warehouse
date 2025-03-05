@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-26 02:09-0500\n"
-"PO-Revision-Date: 2024-06-07 02:29+0000\n"
-"Last-Translator: 张鹏 <scbeta@qq.com>\n"
-"Language-Team: Occitan <https://weblate.fyralabs.com/projects/flattool/"
-"warehouse/oc/>\n"
-"Language: oc\n"
+"PO-Revision-Date: 2025-02-08 00:45+0000\n"
+"Last-Translator: ぺー☆ <nextnewstar@users.noreply.weblate.fyralabs.com>\n"
+"Language-Team: Japanese <https://weblate.fyralabs.com/projects/flattool/"
+"warehouse/ja/>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.9.2\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
 msgid "Warehouse"
-msgstr "Entrepaus"
+msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 msgid "flatpak"
@@ -31,25 +31,28 @@ msgstr "flatpak"
 #: data/io.github.flattool.Warehouse.desktop.in:12
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
-msgstr "Gerir tot çò de Flatpak"
+msgstr "Flatpakの全ての事柄を管理する"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
+"Warehouseはコマンドラインに頼ることなく、複雑なFlatpakのオプションをコント"
+"ロールするためのシンプルなUIを提供します。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr "Foncionalitats :"
+msgstr "特徴"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
 msgstr ""
+"インストールされたFlatpaksを管理し、任意のパッケージのプロパティを表示する"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
-msgstr ""
+msgstr "Flatpakのバージョンを変更し、不要なアップデートをロールバックする。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
@@ -58,10 +61,14 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
 msgstr ""
+"パッケージのフィルタリングとデータの並べ替えで、何でも簡単に見つけることがで"
+"きます。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
+"現在のアプリのユーザーデータを確認し、残っている未使用のデータをクリーンアッ"
+"プする。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
@@ -70,132 +77,132 @@ msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
-msgstr ""
+msgstr "アプリのユーザーデータのスナップショットを取り、データを保存します。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
-msgstr ""
+msgstr "リモートまたは自分のシステムから新しいパッケージをインストールする"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:22
 msgid "Responsive UI to fit large and small screen sizes"
-msgstr ""
+msgstr "大小の画面サイズにフィットするレスポンシブUI"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
-msgstr ""
+msgstr "Three Pane UIでインストール済みパッケージを管理する"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
-msgstr ""
+msgstr "狭いウィンドウのプロパティページ"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
-msgstr ""
+msgstr "インストールされているリモートの管理と新しいリモートの追加"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:58
-#, fuzzy
 msgid "Manage Apps' User Data"
-msgstr "Utilizaire"
+msgstr "アプリのユーザーデータの管理"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:62
-#, fuzzy
 msgid "Backup Apps' User Data"
-msgstr "Utilizaire"
+msgstr "アプリのユーザーデータをバックアップする"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
-msgstr ""
+msgstr "ファイルまたはリモートから新しいパッケージをインストールする"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
-msgstr ""
+msgstr "狭いウィンドウにページをインストールする"
 
 #: src/main.py:93 src/main.py:99 src/install_page/select_page.py:66
 #: src/install_page/select_page.py:73
 msgid "Could not add files"
-msgstr ""
+msgstr "ファイルを追加できませんでした"
 
 #: src/main.py:93
 msgid "No files were found"
-msgstr ""
+msgstr "ファイルが見つかりませんでした"
 
 #: src/main.py:101
-#, fuzzy
 msgid "Flatpaks & Remotes"
-msgstr "Apondre un depaus distant"
+msgstr "Flatpaks & リモート"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
 #: src/main.py:209
 msgid "translator-credits"
-msgstr ""
+msgstr "翻訳者クレジット"
 
 #: src/main.py:215
 msgid "Donate"
-msgstr ""
+msgstr "寄付する"
 
 #: src/main.py:217
-#, fuzzy
 msgid "Contributors"
-msgstr "Contunhar"
+msgstr "貢献者"
 
 #: src/host_info.py:386 src/host_info.py:388
 msgid "Could not load packages"
-msgstr ""
+msgstr "パッケージをロードできませんでした"
 
 #: src/package_install_worker.py:88
 msgid "Errors occurred during installation"
-msgstr ""
+msgstr "インストール中にエラーが発生しました"
 
 #: src/package_install_worker.py:92 src/package_install_worker.py:96
 msgid "Error occurred during installation"
-msgstr ""
+msgstr "インストール中にエラーが発生しました"
 
 #: src/package_install_worker.py:92
 #: src/change_version_page/change_version_worker.py:80
 msgid "Failed to exit cleanly"
-msgstr ""
+msgstr "クリーンな終了に失敗しました"
 
 #: src/package_install_worker.py:108
 msgid "Could not cancel installation"
-msgstr ""
+msgstr "インストールをキャンセルできませんでした"
 
 #: src/package_install_worker.py:129 src/package_install_worker.py:139
 msgid "Could not install packages"
-msgstr ""
+msgstr "パッケージをインストールできませんでした"
 
 #: src/package_install_worker.py:129
 msgid "Packages are currently being installed."
-msgstr ""
+msgstr "パッケージは現在インストール中です。"
 
 #: src/package_install_worker.py:139
 msgid "No packages were requested to be installed."
-msgstr ""
+msgstr "インストールを要求されたパッケージはありませんでした。"
 
 #: src/gtk/app_row.blp:14 src/properties_page/properties_page.blp:100
 #: src/properties_page/properties_page.blp:179
 msgid "This package is End Of Life, and will not receive any security updates"
 msgstr ""
+"このパッケージはサポート終了のため、セキュリティアップデートは提供されませ"
+"ん。"
 
 #: src/gtk/app_row.blp:21
 msgid ""
 "This app's runtime is End Of Life, and will not receive any security updates"
 msgstr ""
+"このアプリのランタイムはサポート終了であり、セキュリティアップデートは提供さ"
+"れません。"
 
 #: src/gtk/app_row.blp:28
 msgid "This runtime will never be automatically removed"
-msgstr ""
+msgstr "このランタイムが自動的に削除されることはありません"
 
 #: src/gtk/app_row.blp:34
 msgid "Updates are disabled for this package"
-msgstr ""
+msgstr "このパッケージのアップデートは無効です。"
 
 #: src/gtk/attempt_install_dialog.blp:5
 msgid "Attempt an Install?"
-msgstr ""
+msgstr "インストールを試みますか？"
 
 #: src/gtk/attempt_install_dialog.blp:6
 msgid "Warehouse will try to install the matching packages."
-msgstr ""
+msgstr "Warehouseは一致するパッケージのインストールを試みます。"
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:41
@@ -210,7 +217,7 @@ msgstr ""
 #: src/snapshot_page/snapshot_page.py:522
 #: src/install_page/file_install_dialog.blp:13
 msgid "Cancel"
-msgstr "Anullar"
+msgstr "キャンセル"
 
 #: src/gtk/attempt_install_dialog.blp:9
 #: src/user_data_page/user_data_page.blp:100
@@ -218,239 +225,215 @@ msgstr "Anullar"
 #: src/install_page/file_install_dialog.blp:18
 #: src/install_page/pending_page.blp:35
 msgid "Install"
-msgstr "installar"
+msgstr "インストール"
 
 #: src/gtk/attempt_install_dialog.blp:12
 msgid "Choose a Remote"
-msgstr ""
+msgstr "リモートの選択"
 
 #: src/gtk/attempt_install_dialog.blp:13
 msgid "Select a remote to attempt to install from"
-msgstr ""
+msgstr "インストール先のリモートを選択します。"
 
 #: src/gtk/attempt_install_dialog.py:22 src/packages_page/filters_page.py:128
 #: src/remotes_page/remote_row.py:155 src/install_page/pending_page.py:33
 #: src/install_page/select_page.py:35
-#, fuzzy
-#| msgid "Installation"
 msgid "Installation: {}"
-msgstr "Installacion"
+msgstr ""
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Can't find matching packages"
-msgstr ""
+msgstr "マッチするパッケージが見つかりません"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Your system has no remotes added"
-msgstr ""
+msgstr "システムにリモートが追加されていません"
 
 #. Extra Object Creation
 #: src/gtk/error_toast.py:16
 msgid "Details"
-msgstr ""
+msgstr "詳細"
 
 #: src/gtk/error_toast.py:23 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
 #: src/snapshot_page/snapshot_page.blp:149
 msgid "Copy"
-msgstr "Copiar"
+msgstr "コピー"
 
 #: src/gtk/error_toast.py:24 src/main_window/window.py:142
 #: src/main_window/window.py:152 src/main_window/window.py:161
 msgid "OK"
-msgstr "D’ACÒRDI"
+msgstr "OK"
 
 #: src/gtk/help-overlay.blp:9
 msgid "General"
-msgstr "General"
+msgstr "一般"
 
 #: src/gtk/help-overlay.blp:11
 msgid "Refresh"
-msgstr "Refrescar"
+msgstr "リフレッシュ"
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
-#, fuzzy
-#| msgid "Open Menu"
 msgid "Open Files"
-msgstr "Dobrir lo menú"
+msgstr "ファイルを開く"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
-msgstr "Dobrir lo menú"
+msgstr "メニューを開く"
 
 #: src/gtk/help-overlay.blp:23
 msgid "Show Shortcuts"
-msgstr "Afichar los acorchis"
+msgstr "ショートカットを表示する"
 
 #: src/gtk/help-overlay.blp:27
 msgid "Quit"
-msgstr "Quitar"
+msgstr "やめる"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
-msgstr ""
+msgstr "ナビゲーション"
 
 #: src/gtk/help-overlay.blp:34
 msgid "Show Packages Page"
-msgstr ""
+msgstr "パッケージのページを表示"
 
 #: src/gtk/help-overlay.blp:38
-#, fuzzy
 msgid "Show Remotes Page"
-msgstr "Cap de Flatpak pas trobat"
+msgstr "リモートのページを表示"
 
 #: src/gtk/help-overlay.blp:42
-#, fuzzy
 msgid "Show User Data Page"
-msgstr "Utilizaire"
+msgstr "ユーザーデータページの表示"
 
 #: src/gtk/help-overlay.blp:46
-#, fuzzy
-#| msgid "Show Shortcuts"
 msgid "Show Snapshots Page"
-msgstr "Afichar los acorchis"
+msgstr "スナップショットページを表示"
 
 #: src/gtk/help-overlay.blp:50
 msgid "Show Install Page"
-msgstr ""
+msgstr "インストールページの表示"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Packages Page"
-msgstr ""
+msgstr "パッケージのページ"
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
-#, fuzzy
-#| msgid "Search"
 msgid "Search Mode"
-msgstr "Recercar"
+msgstr "検索モード"
 
 #: src/gtk/help-overlay.blp:61
 msgid "Edit Filters"
-msgstr ""
+msgstr "フィルターの編集"
 
 #: src/gtk/help-overlay.blp:65 src/gtk/help-overlay.blp:95
 #: src/gtk/help-overlay.blp:114
-#, fuzzy
-#| msgid "Select All"
 msgid "Selection Mode"
-msgstr "Tot seleccionar"
+msgstr "選択モード"
 
 #: src/gtk/help-overlay.blp:70
-#, fuzzy
-#| msgid "Add Remote"
 msgid "Remotes Page"
-msgstr "Apondre un depaus distant"
+msgstr "リモート ページ"
 
 #: src/gtk/help-overlay.blp:76
 msgid "Show or Hide Disabled Remotes"
-msgstr ""
+msgstr "無効なリモートを表示もしくは非表示"
 
 #: src/gtk/help-overlay.blp:80
-#, fuzzy
-#| msgid "Add Remote"
 msgid "New Remote"
-msgstr "Apondre un depaus distant"
+msgstr "新しいリモート"
 
 #: src/gtk/help-overlay.blp:85
-#, fuzzy
 msgid "User Data Page"
-msgstr "Utilizaire"
+msgstr "ユーザーデータページ"
 
 #: src/gtk/help-overlay.blp:91
 msgid "Edit Sorting Modes"
-msgstr ""
+msgstr "並べ替えモードの編集"
 
 #: src/gtk/help-overlay.blp:99
 msgid "Show Active Data"
-msgstr ""
+msgstr "アクティブデータの表示"
 
 #: src/gtk/help-overlay.blp:103
 msgid "Show Leftover Data"
-msgstr ""
+msgstr "残りデータの表示"
 
 #: src/gtk/help-overlay.blp:108
 msgid "Snapshots Page"
-msgstr ""
+msgstr "スナップショットのページ"
 
 #: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:206
 msgid "New Snapshots"
-msgstr ""
+msgstr "新しいスナップショット"
 
 #: src/gtk/installation_chooser.blp:5
-#, fuzzy
-#| msgid "Installation"
 msgid "Choose Installation"
-msgstr "Installacion"
+msgstr "インストールの選択"
 
 #: src/gtk/installation_chooser.blp:11
 msgid "User"
-msgstr "Utilizaire"
+msgstr "ユーザー"
 
 #: src/gtk/installation_chooser.blp:19
 msgid "System"
-msgstr "Sistèma"
+msgstr "システム"
 
 #: src/gtk/installation_chooser.blp:28
-#, fuzzy
-#| msgid "Installation"
 msgid "Custom installation"
-msgstr "Installacion"
+msgstr "カスタムインストール"
 
 #: src/gtk/installation_chooser.blp:37
-#, fuzzy
-#| msgid "Installation"
 msgid "Other Installation"
-msgstr "Installacion"
+msgstr "その他のインストール"
 
 #: src/gtk/installation_chooser.blp:38
 msgid "Choose a custom installation"
-msgstr ""
+msgstr "カスタムインストールを選択する"
 
 #: src/gtk/installation_chooser.py:31
 msgid "These {} will only be available to you"
-msgstr ""
+msgstr "これらの{}はあなただけが利用できる"
 
 #: src/gtk/installation_chooser.py:32
 msgid "These {} will be available to everyone"
-msgstr ""
+msgstr "これらの{}は誰でも利用できる"
 
 #: src/gtk/installation_chooser.py:33
 msgid "Choose how these {} will be installed"
-msgstr ""
+msgstr "これらの{}をどのようにインストールするかを選択する"
 
 #: src/gtk/installation_chooser.py:35
 msgid "This {} will only be available to you"
-msgstr ""
+msgstr "この{}はあなただけが利用できる"
 
 #: src/gtk/installation_chooser.py:36
 msgid "This {} will be available to everyone"
-msgstr ""
+msgstr "この{}は誰でも利用できる"
 
 #: src/gtk/installation_chooser.py:37
 msgid "Choose how this {} will be installed"
-msgstr ""
+msgstr "この{}をどのようにインストールするかを選択する"
 
 #: src/gtk/sidebar_button.py:23
 msgid "Show Sidebar"
-msgstr ""
+msgstr "サイドバーを表示する"
 
 #: src/main_window/window.blp:26
 msgid "Drop to Open"
-msgstr ""
+msgstr "ドロップして開く"
 
 #: src/main_window/window.blp:27
-#, fuzzy
 msgid "Install Flatpaks or Add a Remote"
-msgstr "Talha installada"
+msgstr "Flatpaksのインストールまたはリモートの追加"
 
 #: src/main_window/window.blp:45
 msgid "Refresh List"
-msgstr "Refrescar la lista"
+msgstr ""
 
 #: src/main_window/window.blp:50
 msgid "Main Menu"
-msgstr "Menú principal"
+msgstr "メインメニュー"
 
 #: src/main_window/window.blp:68 src/packages_page/packages_page.blp:20
 #: src/packages_page/packages_page.blp:55
@@ -458,252 +441,229 @@ msgstr "Menú principal"
 #: src/packages_page/packages_page.py:325
 #: src/install_page/file_install_dialog.py:41
 msgid "Packages"
-msgstr ""
+msgstr "パッケージ"
 
 #: src/main_window/window.blp:83
-#, fuzzy
-#| msgid "Add Remote"
 msgid "Remotes"
-msgstr "Apondre un depaus distant"
+msgstr "リモート"
 
 #: src/main_window/window.blp:99 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
-#, fuzzy
 msgid "User Data"
-msgstr "Utilizaire"
+msgstr "ユーザーデータ"
 
 #: src/main_window/window.blp:114 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
 #: src/snapshot_page/snapshot_page.py:360
 msgid "Snapshots"
-msgstr ""
+msgstr "スナップショット"
 
 #: src/main_window/window.blp:129 src/install_page/file_install_dialog.py:38
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
-#, fuzzy
 msgid "Install Packages"
-msgstr "Installacion"
+msgstr "パッケージのインストール"
 
 #: src/main_window/window.blp:161
-#, fuzzy
-#| msgid "Open Menu"
 msgid "_Open Files"
-msgstr "Dobrir lo menú"
+msgstr "ファイルを開く"
 
 #: src/main_window/window.blp:165
 msgid "_Keyboard Shortcuts"
-msgstr "_Acorchis de clavièr"
+msgstr "キーボードショートカット"
 
 #: src/main_window/window.blp:169
 msgid "_About Warehouse"
-msgstr "_A prepaus d’Entrepaus"
+msgstr "Warehouseについて"
 
 #: src/main_window/window.py:139
 msgid "Unsupported Filetype"
-msgstr ""
+msgstr "サポートされていないファイルタイプ"
 
 #: src/main_window/window.py:140
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
 msgstr ""
+".flatpak、.flatpakref、.flatpakrepo ファイルのみがサポートされています。"
 
 #: src/main_window/window.py:148
 msgid "Mixed Filetypes"
-msgstr ""
+msgstr "混合ファイルタイプ"
 
 #: src/main_window/window.py:149
 msgid "Flatpaks and remotes cannot be installed at the same time."
-msgstr ""
+msgstr "Flatpakとリモートを同時に取り付けることはできません。"
 
 #: src/main_window/window.py:158
-#, fuzzy
 msgid "Too Many Remotes"
-msgstr "Apondre un depaus distant"
+msgstr "リモートが多すぎます"
 
 #: src/main_window/window.py:159
 msgid "Only one remote at a time is supported."
-msgstr ""
+msgstr "一度にサポートされるリモートは1つだけです。"
 
 #: src/main_window/window.py:177
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not open files"
-msgstr "无法移除 {}"
+msgstr "ファイルを開けませんでした"
 
 #: src/packages_page/filters_page.blp:5 src/packages_page/packages_page.blp:70
 msgid "Filter Packages"
-msgstr ""
+msgstr "パッケージを絞り込む"
 
 #: src/packages_page/filters_page.blp:20
-#, fuzzy
 msgid "Filter by Package Type"
-msgstr "Apondre un depaus distant"
+msgstr "パッケージタイプで絞り込む"
 
 #: src/packages_page/filters_page.blp:21
 msgid "Show packages of these types"
-msgstr ""
+msgstr "これらのタイプのパッケージを表示する"
 
 #: src/packages_page/filters_page.blp:23
-#, fuzzy
-#| msgid "Options"
 msgid "Applications"
-msgstr "Opcions"
+msgstr "アプリケーション"
 
 #: src/packages_page/filters_page.blp:24
 msgid "Packages that can be opened"
-msgstr ""
+msgstr "開封可能なパッケージ"
 
 #: src/packages_page/filters_page.blp:29
-#, fuzzy
-#| msgid "Runtime"
 msgid "Runtimes"
-msgstr "Environament d’execucion"
+msgstr "ランタイム"
 
 #: src/packages_page/filters_page.blp:30
 msgid "Packages that applications depend on"
-msgstr ""
+msgstr "アプリケーションが依存するパッケージ"
 
 #: src/packages_page/filters_page.blp:37
-#, fuzzy
 msgid "Filter by Remotes"
-msgstr "Apondre un depaus distant"
+msgstr "リモートで絞り込む"
 
 #: src/packages_page/filters_page.blp:38
 msgid "Show packages from selected remotes"
-msgstr ""
+msgstr "選択したリモートのパッケージを表示"
 
 #: src/packages_page/filters_page.blp:52
 msgid "Showing packages from all remotes"
-msgstr ""
+msgstr "すべてのリモコンからパッケージを表示"
 
 #: src/packages_page/filters_page.blp:58
 msgid "Enable to show packages from selected remotes"
-msgstr ""
+msgstr "選択したリモートのパッケージを表示できるようにする"
 
 #: src/packages_page/filters_page.blp:71
 msgid "Filter by Runtimes"
-msgstr ""
+msgstr "ランタイムで絞り込む"
 
 #: src/packages_page/filters_page.blp:72
 msgid "Show apps using selected runtimes"
-msgstr ""
+msgstr "選択したランタイムを使用しているアプリを表示する"
 
 #: src/packages_page/filters_page.blp:86
 msgid "Showing apps using any runtime"
-msgstr ""
+msgstr "任意のランタイムを使用するアプリの表示"
 
 #: src/packages_page/filters_page.blp:92
 msgid "Enable to show apps using selected runtimes"
-msgstr ""
+msgstr "選択したランタイムを使用しているアプリを表示できるようにする"
 
 #: src/packages_page/filters_page.blp:113
 #: src/packages_page/packages_page.blp:97
 msgid "Reset Filters"
-msgstr ""
+msgstr "フィルターをリセット"
 
 #: src/packages_page/packages_page.blp:65
 #: src/packages_page/packages_page.blp:83 src/remotes_page/remotes_page.blp:30
 #: src/snapshot_page/snapshot_page.blp:35
 msgid "Search Packages"
-msgstr ""
+msgstr "パッケージを検索"
 
 #: src/packages_page/packages_page.blp:75
 #: src/snapshot_page/snapshot_page.blp:45
 msgid "Select Packages"
-msgstr ""
+msgstr "パッケージの選択"
 
 #: src/packages_page/packages_page.blp:93
-#, fuzzy
 msgid "No Packages Match Filters"
-msgstr "Cap de Flatpak pas trobat"
+msgstr "フィルターに一致するパッケージがない"
 
 #: src/packages_page/packages_page.blp:94
 msgid "No installed package matches all of the currently applied filters"
 msgstr ""
+"現在適用されているすべてのフィルタに一致するインストール済みパッケージはあり"
+"ません"
 
 #: src/packages_page/packages_page.blp:104
-#, fuzzy
-#| msgid "No Flatpaks Found"
 msgid "No Packages Found"
-msgstr "Cap de Flatpak pas trobat"
+msgstr "パッケージが見つかりません"
 
 #: src/packages_page/packages_page.blp:105
-#, fuzzy
 msgid ""
 "Warehouse cannot see the list of installed packages or your system has no "
 "packages installed"
 msgstr ""
-"Entrepaus es una aplicacion que gerís los Flatpaks installats, lors donadas "
-"d’utilizaire e los depauses distants."
+"Warehouseにインストールされているパッケージのリストが表示されない、またはシス"
+"テムにパッケージがインストールされていない。"
 
 #: src/packages_page/packages_page.blp:109
 #: src/remotes_page/remotes_page.blp:153 src/user_data_page/data_subpage.blp:68
 #: src/snapshot_page/new_snapshot_dialog.blp:67
 #: src/snapshot_page/snapshot_page.blp:58 src/install_page/results_page.blp:49
-#, fuzzy
 msgid "No Results Found"
-msgstr "Cap de Flatpak pas trobat"
+msgstr "結果が見つかりません"
 
 #: src/packages_page/packages_page.blp:110
 #: src/remotes_page/remotes_page.blp:154 src/user_data_page/data_subpage.blp:69
 #: src/snapshot_page/new_snapshot_dialog.blp:68
 #: src/snapshot_page/snapshot_page.blp:59
 msgid "Try a different search"
-msgstr ""
+msgstr "別の検索を試して下さい"
 
 #: src/packages_page/packages_page.blp:127
 #: src/user_data_page/user_data_page.blp:81
 #: src/snapshot_page/new_snapshot_dialog.blp:79
 #: src/snapshot_page/snapshot_page.blp:140
 msgid "Select All"
-msgstr "Tot seleccionar"
+msgstr "すべて選択"
 
 #: src/packages_page/packages_page.blp:144
 #: src/packages_page/uninstall_dialog.py:42
 #: src/properties_page/properties_page.blp:88
 msgid "Uninstall"
-msgstr "Desinstallar"
+msgstr "アンインストール"
 
 #: src/packages_page/packages_page.blp:173
 msgid "Copy Names"
-msgstr "Copiar los noms"
+msgstr "名前をコピー"
 
 #: src/packages_page/packages_page.blp:177
 msgid "Copy IDs"
-msgstr "Copiar los identificants"
+msgstr "IDをコピー"
 
 #: src/packages_page/packages_page.blp:181
 msgid "Copy Refs"
-msgstr "Copiar las referéncias"
+msgstr "Refsをコピー"
 
 #: src/packages_page/packages_page.py:156
 #: src/user_data_page/data_subpage.py:112
 #: src/snapshot_page/new_snapshot_dialog.py:42
 #: src/snapshot_page/snapshot_page.py:360
-#, fuzzy
-#| msgid "Select All"
 msgid "{} Selected"
-msgstr "Tot seleccionar"
+msgstr ""
 
 #: src/packages_page/packages_page.py:197
 msgid "Error getting Flatpak '{}'"
 msgstr ""
 
 #: src/packages_page/packages_page.py:246
-#, fuzzy
-#| msgid "Name"
 msgid "Names"
-msgstr "Nom"
+msgstr "名前"
 
 #: src/packages_page/packages_page.py:249
 msgid "IDs"
-msgstr ""
+msgstr "ID"
 
 #: src/packages_page/packages_page.py:252
-#, fuzzy
-#| msgid "Copy Refs"
 msgid "Refs"
-msgstr "Copiar las referéncias"
+msgstr ""
 
 #: src/packages_page/packages_page.py:260
 #: src/properties_page/properties_page.py:278
@@ -711,26 +671,20 @@ msgid "Copied {}"
 msgstr ""
 
 #: src/packages_page/packages_page.py:262
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not copy {}"
-msgstr "无法移除 {}"
+msgstr ""
 
 #: src/packages_page/packages_page.py:313
 msgid "Errors occurred while uninstalling"
-msgstr ""
+msgstr "アンインストール中にエラーが発生しました"
 
 #: src/packages_page/packages_page.py:315
-#, fuzzy
-#| msgid "Uninstalled successfully"
 msgid "Uninstalled Packages"
-msgstr "Desinstallacion amb succès"
+msgstr "アンインストールされたパッケージ"
 
 #: src/packages_page/packages_page.py:373
-#, fuzzy
-#| msgid "Flatpaks"
 msgid "Loading Packages"
-msgstr "Flatpaks"
+msgstr "パッケージを読み込み中"
 
 #: src/packages_page/packages_page.py:373
 #: src/packages_page/packages_page.py:374
@@ -740,38 +694,34 @@ msgstr "Flatpaks"
 #: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:100
 #: src/install_page/results_page.py:138
 msgid "This should only take a moment"
-msgstr ""
+msgstr "これは一瞬で終わるはずだ"
 
 #: src/packages_page/packages_page.py:374
-#, fuzzy
 msgid "Uninstalling Packages"
-msgstr "Desinstallar"
+msgstr "パッケージのアンインストール"
 
 #: src/packages_page/packages_page.py:376
-#, fuzzy
 msgid "Reinstalling Package"
-msgstr "Desinstallar"
+msgstr "パッケージの再インストール"
 
 #: src/packages_page/packages_page.py:376
 #: src/packages_page/packages_page.py:378
 #: src/change_version_page/change_version_page.py:126
 #: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:92
 msgid "This could take a while"
-msgstr ""
+msgstr "しばらく時間がかかるかもしれない"
 
 #: src/packages_page/packages_page.py:378
-#, fuzzy
-#| msgid "Version"
 msgid "Changing Version"
-msgstr "Version"
+msgstr "バージョン変更"
 
 #: src/packages_page/uninstall_dialog.blp:8
 msgid "Keep"
-msgstr "Gardar"
+msgstr "キープ"
 
 #: src/packages_page/uninstall_dialog.blp:9
 msgid "Allows restoring app settings and content"
-msgstr ""
+msgstr "アプリの設定やコンテンツの復元が可能"
 
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
@@ -779,151 +729,139 @@ msgstr ""
 #: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:118
 #: src/snapshot_page/snapshot_page.py:523
 msgid "Trash"
-msgstr "Bordilhièr"
+msgstr "ゴミ"
 
 #: src/packages_page/uninstall_dialog.blp:18
 msgid "Send data to the trash"
-msgstr ""
+msgstr "ゴミ箱にデータを送る"
 
 #: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall {}?"
-msgstr "Desinstallar {} ?"
+msgstr ""
 
 #: src/packages_page/uninstall_dialog.py:35
 msgid "It will not be possible to use {} after removal"
 msgstr ""
 
 #: src/packages_page/uninstall_dialog.py:37
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstall Packages?"
-msgstr "Desinstallar {} ?"
+msgstr "パッケージをアンインストールしますか?"
 
 #: src/packages_page/uninstall_dialog.py:38
 msgid "It will not be possible to use these packages after removal"
-msgstr ""
+msgstr "これらのパッケージを削除すると、使用できなくなります。"
 
 #: src/packages_page/uninstall_dialog.py:45
-#, fuzzy
-#| msgid "App Settings & Data"
 msgid "App Settings & Content"
-msgstr "Donadas e paramètres de l'aplicacion"
+msgstr "アプリの設定とコンテンツ"
 
 #: src/properties_page/properties_page.blp:19
 msgid "Properties Page Unavailable"
-msgstr ""
+msgstr "プロパティページが利用できません"
 
 #: src/properties_page/properties_page.blp:20
 msgid "Cannot show the properties page at this time"
-msgstr ""
+msgstr "現在、プロパティページを表示できません"
 
 #: src/properties_page/properties_page.blp:83
 msgid "Open"
-msgstr "Dobrir"
+msgstr "開く"
 
 #: src/properties_page/properties_page.blp:122
 #: src/user_data_page/data_box.blp:62
-#, fuzzy
 msgid "Open User Data"
-msgstr "Utilizaire"
+msgstr "ユーザーデータを開く"
 
 #: src/properties_page/properties_page.blp:130
 #: src/user_data_page/data_box.blp:73
-#, fuzzy
 msgid "Trash User Data"
-msgstr "Utilizaire"
+msgstr "ユーザーデータをゴミ箱へ"
 
 #: src/properties_page/properties_page.blp:139
 msgid "Version"
-msgstr "Version"
+msgstr "バージョン"
 
 #: src/properties_page/properties_page.blp:143
 msgid "Updates Disabled"
-msgstr ""
+msgstr "アップデートは無効"
 
 #: src/properties_page/properties_page.blp:147
 #: src/change_version_page/change_version_page.blp:50
 msgid "Disable Updates"
-msgstr ""
+msgstr "アップデートを無効にする"
 
 #: src/properties_page/properties_page.blp:148
 msgid "Mask this package so it's never updated"
-msgstr ""
+msgstr "このパッケージをマスクし、更新されないようにする。"
 
 #: src/properties_page/properties_page.blp:157
 #: src/change_version_page/change_version_page.blp:23
-#, fuzzy
-#| msgid "Version"
 msgid "Change Version"
-msgstr "Version"
+msgstr "バージョン変更"
 
 #: src/properties_page/properties_page.blp:158
 msgid "Upgrade or downgrade this package"
-msgstr ""
+msgstr "本パッケージのアップグレードまたはダウングレード"
 
 #: src/properties_page/properties_page.blp:167
 msgid "Installed Size"
-msgstr "Talha installada"
+msgstr "インストールされたサイズ"
 
 #: src/properties_page/properties_page.blp:175
 msgid "Runtime"
-msgstr "Environament d’execucion"
+msgstr "ランタイム"
 
 #: src/properties_page/properties_page.blp:188
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Disable Automatic Removal"
-msgstr "无法移除 {}"
+msgstr "自動削除を無効にする"
 
 #: src/properties_page/properties_page.blp:189
 msgid "Pin this runtime to keep it installed"
-msgstr ""
+msgstr "このランタイムをピン留めして、インストールしたままにする"
 
 #: src/properties_page/properties_page.blp:200
 msgid "Package Information"
-msgstr ""
+msgstr "パッケージ情報"
 
 #: src/properties_page/properties_page.blp:203
 msgid "Application ID"
-msgstr ""
+msgstr "アプリケーションID"
 
 #: src/properties_page/properties_page.blp:219
 msgid "Architecture"
-msgstr ""
+msgstr "アーキテクチャー"
 
 #: src/properties_page/properties_page.blp:227
 msgid "Branch"
-msgstr "Branca"
+msgstr "ブランチ"
 
 #: src/properties_page/properties_page.blp:235
 msgid "License"
-msgstr ""
+msgstr "ライセンス"
 
 #: src/properties_page/properties_page.blp:244
-#, fuzzy
-#| msgid "Installation"
 msgid "Installation Information"
-msgstr "Installacion"
+msgstr "インストール情報"
 
 #: src/properties_page/properties_page.blp:255
 msgid "Origin"
-msgstr "Origina"
+msgstr ""
 
 #: src/properties_page/properties_page.blp:263
 msgid "Collection"
-msgstr ""
+msgstr "コレクション"
 
 #: src/properties_page/properties_page.blp:271
 msgid "Installation"
-msgstr "Installacion"
+msgstr "インストール"
 
 #: src/properties_page/properties_page.blp:279
 msgid "Commit Information"
-msgstr ""
+msgstr "コミット情報"
 
 #: src/properties_page/properties_page.blp:290
 msgid "Parent"
-msgstr ""
+msgstr "親"
 
 #: src/properties_page/properties_page.blp:298
 msgid "Subject"
@@ -931,7 +869,7 @@ msgstr ""
 
 #: src/properties_page/properties_page.blp:306
 msgid "Date"
-msgstr ""
+msgstr "日付"
 
 #: src/properties_page/properties_page.py:79
 msgid "{} Properties"
@@ -939,35 +877,30 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:84
 msgid "Properties"
-msgstr ""
+msgstr "プロパティ"
 
 #. Apply again
 #: src/properties_page/properties_page.py:113
 #: src/user_data_page/user_data_page.py:300
-#, fuzzy
 msgid "Loading User Data"
-msgstr "Utilizaire"
+msgstr "ユーザーデータのロード"
 
 #: src/properties_page/properties_page.py:123
 msgid "No User Data"
-msgstr ""
+msgstr "ユーザーデータなし"
 
 #: src/properties_page/properties_page.py:133
 #: src/properties_page/properties_page.py:149
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not get properties"
-msgstr "无法移除 {}"
+msgstr "プロパティを取得できませんでした"
 
 #: src/properties_page/properties_page.py:146
 msgid "No version information found"
-msgstr ""
+msgstr "バージョン情報が見つかりません"
 
 #: src/properties_page/properties_page.py:166
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not open data"
-msgstr "无法移除 {}"
+msgstr "データを開くことができなかった"
 
 #: src/properties_page/properties_page.py:185
 #: src/properties_page/properties_page.py:187
@@ -975,50 +908,44 @@ msgstr "无法移除 {}"
 #: src/properties_page/properties_page.py:246
 #: src/user_data_page/data_box.py:104 src/user_data_page/user_data_page.py:187
 #: src/user_data_page/user_data_page.py:201
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not trash data"
-msgstr "无法移除 {}"
+msgstr "データをゴミ箱に入れられなかった"
 
 #: src/properties_page/properties_page.py:190
 msgid "Send {}'s User Data to the Trash?"
-msgstr ""
+msgstr "ゴミ箱に{}のユーザーデータを送りますか？"
 
 #: src/properties_page/properties_page.py:191
 msgid "Your settings and data for this app will be sent to the trash"
-msgstr ""
+msgstr "このアプリの設定とデータはゴミ箱に送られます。"
 
 #: src/properties_page/properties_page.py:194
 msgid "Trash Data"
-msgstr ""
+msgstr "データをゴミ箱へ"
 
 #: src/properties_page/properties_page.py:204
 msgid "Could not Disable Updates"
-msgstr ""
+msgstr "アップデートを無効にできませんでした"
 
 #: src/properties_page/properties_page.py:204
 msgid "Could not Enable Updates"
-msgstr ""
+msgstr "アップデートを有効にできませんでした"
 
 #: src/properties_page/properties_page.py:210
 msgid "Disabled Updates"
-msgstr ""
+msgstr "無効化されたアップデート"
 
 #: src/properties_page/properties_page.py:210
 msgid "Enabled Updates"
-msgstr ""
+msgstr "有効化されたアップデート"
 
 #: src/properties_page/properties_page.py:223
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not Disable Autoremoval"
-msgstr "无法移除 {}"
+msgstr "自動削除を無効にできませんでした"
 
 #: src/properties_page/properties_page.py:223
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not Enable Autoremoval"
-msgstr "无法移除 {}"
+msgstr "自動削除を有効にできませんでした"
 
 #: src/properties_page/properties_page.py:228
 msgid "Disabled Autoremoval"
@@ -1030,50 +957,40 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:251
 msgid "Could not uninstall"
-msgstr ""
+msgstr "アンインストールできませんでした"
 
 #: src/properties_page/properties_page.py:255
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstalled {}"
-msgstr "Desinstallar {} ?"
+msgstr ""
 
 #: src/properties_page/properties_page.py:267
-#, fuzzy
-#| msgid "Open"
 msgid "Opening {}…"
-msgstr "Dobrir"
+msgstr ""
 
 #: src/properties_page/properties_page.py:272
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not open {}"
-msgstr "无法移除 {}"
+msgstr ""
 
 #: src/properties_page/properties_page.py:287
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstalled {}"
-msgstr "Desinstallar {} ?"
+msgstr ""
 
 #: src/properties_page/properties_page.py:315
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstall {}?"
-msgstr "Desinstallar {} ?"
+msgstr ""
 
 #: src/properties_page/properties_page.py:316
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
 msgstr ""
+"このパッケージはアンインストールされ、同じリモートおよびインストールから再イ"
+"ンストールされます。"
 
 #: src/properties_page/properties_page.py:319
 #: src/properties_page/properties_page.py:377
-#, fuzzy
-#| msgid "Uninstall"
 msgid "Reinstall"
-msgstr "Desinstallar"
+msgstr "再インストール"
 
 #: src/properties_page/properties_page.py:336
 msgid "Copied launch command"
@@ -1085,62 +1002,56 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:344
 msgid "Could not show details"
-msgstr ""
+msgstr "詳細を表示できませんでした"
 
 #: src/properties_page/properties_page.py:371
-#, fuzzy
 msgid "Loading Properties"
-msgstr "Utilizaire"
+msgstr "プロパティを読み込み中"
 
 #: src/properties_page/properties_page.py:374
 msgid "View Snapshots"
-msgstr ""
+msgstr "スナップショットを見る"
 
 #: src/properties_page/properties_page.py:375
 msgid "Copy Launch Command"
 msgstr ""
 
 #: src/properties_page/properties_page.py:376
-#, fuzzy
-#| msgid "Show Runtimes"
 msgid "Show Details"
-msgstr "Afichar los environaments d’execucion"
+msgstr "詳細を表示"
 
 #: src/change_version_page/change_version_page.blp:5
-#, fuzzy
-#| msgid "Version"
 msgid "Change Versions"
-msgstr "Version"
+msgstr "バージョンの変更"
 
 #: src/change_version_page/change_version_page.blp:56
 msgid "Select a Release"
-msgstr ""
+msgstr "リリースを選択"
 
 #: src/change_version_page/change_version_page.blp:57
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
+"これにより、現在のリリースがアンインストールされ、代わりに選択したリリースが"
+"インストールされます。ダウングレードは問題を引き起こす可能性があることに注意"
+"してください。"
 
 #: src/change_version_page/change_version_page.py:75
 msgid "Currently Installed Version"
-msgstr ""
+msgstr "現在インストールされているバージョン"
 
 #: src/change_version_page/change_version_page.py:92
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not get versions"
-msgstr "无法移除 {}"
+msgstr "バージョンを取得できませんでした"
 
 #: src/change_version_page/change_version_page.py:99
 msgid "Changed {}'s Version"
-msgstr ""
+msgstr "{}のバージョンを変更"
 
 #: src/change_version_page/change_version_page.py:124
-#, fuzzy
-#| msgid "Version"
 msgid "{} Versions"
-msgstr "Version"
+msgstr "バージョン {}"
 
 #: src/change_version_page/change_version_page.py:125
 msgid "Ensure that {} will never be updated to a newer version"
@@ -1148,211 +1059,183 @@ msgstr ""
 
 #: src/change_version_page/change_version_page.py:126
 msgid "Fetching Releases"
-msgstr ""
+msgstr "リリースをフェッチ"
 
 #: src/change_version_page/change_version_worker.py:76
 #: src/change_version_page/change_version_worker.py:80
 #: src/change_version_page/change_version_worker.py:84
 msgid "Error occurred while changing version"
-msgstr ""
+msgstr "バージョン変更中にエラーが発生しました"
 
 #: src/change_version_page/change_version_worker.py:95
 msgid "Could not cancel version change"
-msgstr ""
+msgstr "バージョン変更をキャンセルできませんでした"
 
 #: src/change_version_page/change_version_worker.py:116
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not change version"
-msgstr "无法移除 {}"
+msgstr "バージョンを変更できませんでした"
 
 #: src/change_version_page/change_version_worker.py:116
 msgid "Another package is changing version."
-msgstr ""
+msgstr "もう1つのパッケージはバージョンが変わっている。"
 
 #: src/remotes_page/add_remote_dialog.blp:5 src/install_page/select_page.blp:27
-#, fuzzy
-#| msgid "Add Remote"
 msgid "Add a Remote"
-msgstr "Apondre un depaus distant"
+msgstr "リモートを追加"
 
 #: src/remotes_page/add_remote_dialog.blp:22
 msgid "Add"
-msgstr "Apondre"
+msgstr "追加"
 
 #: src/remotes_page/add_remote_dialog.blp:40
 msgid "Title"
-msgstr ""
+msgstr "タイトル"
 
 #: src/remotes_page/add_remote_dialog.blp:43
 #: src/user_data_page/user_data_page.blp:190
 msgid "Name"
-msgstr "Nom"
+msgstr "名称"
 
 #: src/remotes_page/add_remote_dialog.blp:46
 msgid "Repo URL"
-msgstr ""
+msgstr "リポジトリのURL"
 
 #: src/remotes_page/add_remote_dialog.py:61
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not add remote"
-msgstr "无法移除 {}"
+msgstr "リモートを追加できませんでした"
 
 #: src/remotes_page/add_remote_dialog.py:64
 msgid "Added {}"
-msgstr ""
+msgstr "{} を追加した"
 
 #. Apply
 #: src/remotes_page/add_remote_dialog.py:114
-#, fuzzy
-#| msgid "Add Remote"
 msgid "remote"
-msgstr "Apondre un depaus distant"
+msgstr "リモート"
 
 #: src/remotes_page/remote_row.blp:21
-#, fuzzy
 msgid "Set a Filter for this Remote"
-msgstr "Apondre un depaus distant"
+msgstr "このリモートにフィルタを設定する"
 
 #: src/remotes_page/remote_row.blp:29
-#, fuzzy
-#| msgid "More Functions"
 msgid "More Actions"
-msgstr "Mai de foncions"
+msgstr "その他のアクション"
 
 #: src/remotes_page/remote_row.blp:37
-#, fuzzy
-#| msgid "Copy Refs"
 msgid "Copy Title"
-msgstr "Copiar las referéncias"
+msgstr "タイトルをコピー"
 
 #: src/remotes_page/remote_row.blp:41
 msgid "Copy Name"
-msgstr "Copiar lo nom"
+msgstr "名称をコピー"
 
 #: src/remotes_page/remote_row.blp:45
 msgid "Enable"
-msgstr ""
+msgstr "有効にする"
 
 #: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:130
 msgid "Disable"
-msgstr ""
+msgstr "無効"
 
 #: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:197
 msgid "Remove"
-msgstr "Suprimir"
+msgstr "削除"
 
 #: src/remotes_page/remote_row.py:28 src/remotes_page/remote_row.py:49
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not enable remote"
-msgstr "无法移除 {}"
+msgstr "リモートを有効にできませんでした"
 
 #: src/remotes_page/remote_row.py:28
 msgid "Remote is already enabled"
-msgstr ""
+msgstr "リモートはすでに有効です"
 
 #: src/remotes_page/remote_row.py:56
-#, fuzzy
 msgid "Enabled remote"
-msgstr "Talha installada"
+msgstr "有効なリモート"
 
 #: src/remotes_page/remote_row.py:80 src/remotes_page/remote_row.py:160
 msgid "Remote is Disabled"
-msgstr ""
+msgstr "リモートは無効です"
 
 #: src/remotes_page/remote_row.py:82
-#, fuzzy
 msgid "Disabled remote"
-msgstr "Talha installada"
+msgstr "無効なリモート"
 
 #: src/remotes_page/remote_row.py:100 src/remotes_page/remote_row.py:112
 #: src/remotes_page/remote_row.py:116
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not disable remote"
-msgstr "无法移除 {}"
+msgstr "リモートを無効にできませんでした"
 
 #: src/remotes_page/remote_row.py:100
 msgid "Remote is already disabled"
-msgstr ""
+msgstr "リモートはすでに無効です"
 
 #: src/remotes_page/remote_row.py:127
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Disable {}?"
-msgstr "Desinstallar {} ?"
+msgstr "{} を無効にしますか？"
 
 #: src/remotes_page/remote_row.py:127 src/remotes_page/remotes_page.py:194
 msgid "Any installed apps from {} will stop receiving updates"
-msgstr ""
+msgstr "{} からインストールされたアプリは、アップデートの受信を停止します。"
 
 #: src/remotes_page/remote_row.py:140
 msgid "Copied title"
-msgstr ""
+msgstr "コピーされたタイトル"
 
 #: src/remotes_page/remote_row.py:143
 msgid "Copied name"
-msgstr ""
+msgstr "コピーされた名称"
 
 #: src/remotes_page/remotes_page.blp:5
 msgid "Manage Remotes"
-msgstr ""
+msgstr "リモートの管理"
 
 #: src/remotes_page/remotes_page.blp:40
-#, fuzzy
 msgid "Search Remotes"
-msgstr "Apondre un depaus distant"
+msgstr "リモートを検索"
 
 #: src/remotes_page/remotes_page.blp:47
-#, fuzzy
 msgid "Current Remotes"
-msgstr "Talha installada"
+msgstr "現在のリモート"
 
 #: src/remotes_page/remotes_page.blp:48
 msgid "Remotes available on your system"
-msgstr ""
+msgstr "お使いのシステムで使用可能なリモート"
 
 #: src/remotes_page/remotes_page.blp:55
 msgid "Show Disabled"
-msgstr ""
+msgstr "表示不可"
 
 #: src/remotes_page/remotes_page.blp:75
-#, fuzzy
 msgid "No Enabled Remotes"
-msgstr "Talha installada"
+msgstr "有効なリモートはありません"
 
 #: src/remotes_page/remotes_page.blp:81
 msgid "You only have disabled remotes on this system"
-msgstr ""
+msgstr "このシステムには無効なリモートしかありません"
 
 #: src/remotes_page/remotes_page.blp:107
-#, fuzzy
 msgid "No Remotes Found"
-msgstr "Cap de Flatpak pas trobat"
+msgstr "リモートが見つかりません"
 
 #: src/remotes_page/remotes_page.blp:113
-#, fuzzy
 msgid ""
 "Warehouse cannot see the current remotes or your system has no remotes added"
 msgstr ""
-"Entrepaus es una aplicacion que gerís los Flatpaks installats, lors donadas "
-"d’utilizaire e los depauses distants."
+"Warehouseには現在のリモートが表示されないか、システムにリモートが追加されてい"
+"ません。"
 
 #: src/remotes_page/remotes_page.blp:126
-#, fuzzy
 msgid "Add Popular Remotes"
-msgstr "Apondre un depaus distant"
+msgstr "人気のリモートを追加"
 
 #: src/remotes_page/remotes_page.blp:127
 msgid "Add new remotes to get more software"
-msgstr ""
+msgstr "新しいリモートを追加して、より多くのソフトウェアを入手する"
 
 #: src/remotes_page/remotes_page.blp:131
-#, fuzzy
 msgid "Add Other Remotes"
-msgstr "Apondre un depaus distant"
+msgstr ""
 
 #: src/remotes_page/remotes_page.blp:134
 msgid "Add a Repo File"
@@ -1399,16 +1282,12 @@ msgid "Showing all packages from {}"
 msgstr ""
 
 #: src/remotes_page/remotes_page.py:178
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not remove remote"
-msgstr "无法移除 {}"
+msgstr ""
 
 #: src/remotes_page/remotes_page.py:185
-#, fuzzy
-#| msgid "Remove"
 msgid "Removed {}"
-msgstr "Suprimir"
+msgstr ""
 
 #: src/remotes_page/remotes_page.py:194
 msgid "Remove {}?"
@@ -1416,10 +1295,8 @@ msgstr ""
 
 #: src/remotes_page/remotes_page.py:231 src/remotes_page/remotes_page.py:241
 #: src/remotes_page/remotes_page.py:243
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not open file"
-msgstr "无法移除 {}"
+msgstr ""
 
 #: src/remotes_page/remotes_page.py:246
 msgid "Flatpak Repos"
@@ -1427,20 +1304,16 @@ msgstr ""
 
 #. Apply
 #: src/remotes_page/remotes_page.py:294
-#, fuzzy
 msgid "Adding Remote"
-msgstr "Apondre un depaus distant"
+msgstr ""
 
 #: src/remotes_page/remotes_page.py:295
-#, fuzzy
 msgid "Loading Remotes"
-msgstr "Apondre un depaus distant"
+msgstr ""
 
 #: src/user_data_page/data_box.blp:56
-#, fuzzy
-#| msgid "Copy Name"
 msgid "Copy Path"
-msgstr "Copiar lo nom"
+msgstr ""
 
 #: src/user_data_page/data_box.blp:68
 msgid "Attempt to Install"
@@ -1464,9 +1337,8 @@ msgid "Could not open folder"
 msgstr ""
 
 #: src/user_data_page/data_box.py:118
-#, fuzzy
 msgid "Trash {}'s Data?"
-msgstr "Utilizaire"
+msgstr ""
 
 #: src/user_data_page/data_box.py:118
 msgid "{}'s data will be sent to the trash"
@@ -1475,7 +1347,7 @@ msgstr ""
 #: src/user_data_page/data_box.py:120 src/user_data_page/user_data_page.py:214
 #: src/snapshot_page/snapshot_page.py:485
 msgid "Continue"
-msgstr "Contunhar"
+msgstr ""
 
 #: src/user_data_page/data_subpage.blp:13
 msgid "No Title Set"
@@ -1490,13 +1362,10 @@ msgid "No Active Data"
 msgstr ""
 
 #: src/user_data_page/data_subpage.py:258
-#, fuzzy
 msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
 msgstr ""
-"Entrepaus es una aplicacion que gerís los Flatpaks installats, lors donadas "
-"d’utilizaire e los depauses distants."
 
 #: src/user_data_page/data_subpage.py:261
 msgid "No Leftover Data"
@@ -1508,19 +1377,16 @@ msgstr ""
 
 #: src/user_data_page/user_data_page.blp:43
 #: src/user_data_page/user_data_page.blp:64
-#, fuzzy
 msgid "Search User Data"
-msgstr "Utilizaire"
+msgstr ""
 
 #: src/user_data_page/user_data_page.blp:49
-#, fuzzy
 msgid "Sort User Data"
-msgstr "Utilizaire"
+msgstr ""
 
 #: src/user_data_page/user_data_page.blp:54
-#, fuzzy
 msgid "Select User Data"
-msgstr "Utilizaire"
+msgstr ""
 
 #: src/user_data_page/user_data_page.blp:120
 #: src/snapshot_page/snapshot_page.blp:159
@@ -1545,15 +1411,12 @@ msgstr ""
 
 #: src/user_data_page/user_data_page.py:79
 #: src/user_data_page/user_data_page.py:81
-#, fuzzy
 msgid "Loading Size"
-msgstr "Utilizaire"
+msgstr ""
 
 #: src/user_data_page/user_data_page.py:155
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not copy paths"
-msgstr "无法移除 {}"
+msgstr ""
 
 #: src/user_data_page/user_data_page.py:155
 #: src/user_data_page/user_data_page.py:201
@@ -1565,14 +1428,12 @@ msgid "Copied paths"
 msgstr ""
 
 #: src/user_data_page/user_data_page.py:189
-#, fuzzy
 msgid "Trashed data"
-msgstr "Utilizaire"
+msgstr ""
 
 #: src/user_data_page/user_data_page.py:212
-#, fuzzy
 msgid "Trash Data?"
-msgstr "Utilizaire"
+msgstr ""
 
 #: src/user_data_page/user_data_page.py:212
 msgid "Data will be sent to the trash"
@@ -1580,22 +1441,18 @@ msgstr ""
 
 #: src/user_data_page/user_data_page.py:250
 #: src/user_data_page/user_data_page.py:273
-#, fuzzy
 msgid "Active Data"
-msgstr "Utilizaire"
+msgstr ""
 
 #: src/user_data_page/user_data_page.py:251
 #: src/user_data_page/user_data_page.py:279
-#, fuzzy
 msgid "Leftover Data"
-msgstr "Utilizaire"
+msgstr ""
 
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
-#, fuzzy
-#| msgid "Search"
 msgid "Search Apps"
-msgstr "Recercar"
+msgstr ""
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
@@ -1621,24 +1478,20 @@ msgid "Name this Snapshot"
 msgstr ""
 
 #: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:62
-#, fuzzy
-#| msgid "Copy Name"
 msgid "No Name Set"
-msgstr "Copiar lo nom"
+msgstr ""
 
 #: src/snapshot_page/snapshot_box.blp:23
-#, fuzzy
 msgid "No date found"
-msgstr "Cap de Flatpak pas trobat"
+msgstr ""
 
 #: src/snapshot_page/snapshot_box.blp:30
-#, fuzzy
 msgid "No version found"
-msgstr "Cap de Flatpak pas trobat"
+msgstr ""
 
 #: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:160
 msgid "Apply"
-msgstr "Aplicar"
+msgstr ""
 
 #: src/snapshot_page/snapshot_box.blp:55
 msgid "Rename"
@@ -1654,10 +1507,8 @@ msgstr ""
 
 #: src/snapshot_page/snapshot_box.py:37 src/snapshot_page/snapshot_box.py:49
 #: src/snapshot_page/snapshot_box.py:65
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not write data"
-msgstr "无法移除 {}"
+msgstr ""
 
 #: src/snapshot_page/snapshot_box.py:102
 msgid "Could not trash snapshot"
@@ -1688,10 +1539,8 @@ msgid "Any current user data for this app will be trashed"
 msgstr ""
 
 #: src/snapshot_page/snapshot_box.py:186
-#, fuzzy
-#| msgid "Version"
 msgid "Version: {}"
-msgstr "Version"
+msgstr ""
 
 #: src/snapshot_page/snapshot_page.blp:53
 msgid "Search Snapshots"
@@ -1702,10 +1551,8 @@ msgid "Active Snapshots"
 msgstr ""
 
 #: src/snapshot_page/snapshot_page.blp:81
-#, fuzzy
-#| msgid "Display properties of installed Flatpaks"
 msgid "Snapshots of installed apps"
-msgstr "Afichar las proprietats dels Flatpaks installats"
+msgstr ""
 
 #: src/snapshot_page/snapshot_page.blp:99
 msgid "Leftover Snapshots"
@@ -1728,16 +1575,12 @@ msgid "Create a Snapshot to save the state of any Flatpak application"
 msgstr ""
 
 #: src/snapshot_page/snapshot_page.blp:219
-#, fuzzy
-#| msgid "Show Apps"
 msgid "Snapshot Apps"
-msgstr "Afichar las aplicacions"
+msgstr ""
 
 #: src/snapshot_page/snapshot_page.blp:223
-#, fuzzy
-#| msgid "Install"
 msgid "Install Apps"
-msgstr "installar"
+msgstr ""
 
 #: src/snapshot_page/snapshot_page.blp:227
 msgid "Apply Snapshots"
@@ -1820,10 +1663,8 @@ msgid "These apps' snapshots will be sent to the trash"
 msgstr ""
 
 #: src/snapshot_page/snapshot_page.py:560
-#, fuzzy
-#| msgid "Flatpaks"
 msgid "Loading Snapshots"
-msgstr "Flatpaks"
+msgstr ""
 
 #: src/snapshot_page/snapshots_list_page.blp:5
 msgid "Snapshots List"
@@ -1869,10 +1710,8 @@ msgid "package"
 msgstr ""
 
 #: src/install_page/install_page.blp:41
-#, fuzzy
-#| msgid "Select All"
 msgid "Select Source"
-msgstr "Tot seleccionar"
+msgstr ""
 
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
@@ -1880,10 +1719,8 @@ msgid "Pending Packages"
 msgstr ""
 
 #: src/install_page/install_page.py:55
-#, fuzzy
-#| msgid "Installed Size"
 msgid "Installed Packages"
-msgstr "Talha installada"
+msgstr ""
 
 #: src/install_page/install_page.py:72
 msgid "{} Pending Package"
@@ -1895,15 +1732,12 @@ msgstr ""
 
 #. Extra Object Creation
 #: src/install_page/install_page.py:92
-#, fuzzy
 msgid "Installing Packages"
-msgstr "Installacion"
+msgstr ""
 
 #: src/install_page/install_page.py:100
-#, fuzzy
-#| msgid "Installation"
 msgid "Loading Installation Options"
-msgstr "Installacion"
+msgstr ""
 
 #: src/install_page/pending_page.blp:13 src/install_page/select_page.blp:37
 msgid "Add Packages"
@@ -1914,10 +1748,8 @@ msgid "Packages queued to install will show up here"
 msgstr ""
 
 #: src/install_page/pending_page.py:38
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove All"
-msgstr "Suprimir"
+msgstr ""
 
 #: src/install_page/result_row.blp:8 src/install_page/result_row.py:46
 msgid "Add Package to Queue"
@@ -1936,9 +1768,8 @@ msgid "This Package is Already Installed"
 msgstr ""
 
 #: src/install_page/results_page.blp:5
-#, fuzzy
 msgid "Search a Remote"
-msgstr "Apondre un depaus distant"
+msgstr ""
 
 #. hexpand: true;
 #: src/install_page/results_page.blp:20
@@ -1966,22 +1797,16 @@ msgid "Try a different search term"
 msgstr ""
 
 #: src/install_page/results_page.py:51
-#, fuzzy
-#| msgid "Search"
 msgid "Search {}"
-msgstr "Recercar"
+msgstr ""
 
 #: src/install_page/results_page.py:138
-#, fuzzy
-#| msgid "Search"
 msgid "Searching"
-msgstr "Recercar"
+msgstr ""
 
 #: src/install_page/select_page.blp:19
-#, fuzzy
-#| msgid "Refresh List"
 msgid "Search in a Remote"
-msgstr "Refrescar la lista"
+msgstr ""
 
 #: src/install_page/select_page.blp:20
 msgid "Choose a remote to search for new packages"
@@ -2009,93 +1834,4 @@ msgstr ""
 
 #: src/install_page/select_page.py:76
 msgid "Flatpaks"
-msgstr "Flatpaks"
-
-#~ msgid ""
-#~ "Warehouse is an app that manages installed Flatpaks, their user data, and "
-#~ "Flatpak remotes."
-#~ msgstr ""
-#~ "Entrepaus es una aplicacion que gerís los Flatpaks installats, lors "
-#~ "donadas d’utilizaire e los depauses distants."
-
-#~ msgid "Manage large groups of Flatpaks at once"
-#~ msgstr "Gerir un grand nombre de Flatpaks a l’encòp"
-
-#~ msgid "Add and remove Flatpak remotes"
-#~ msgstr "Apondre o levar de depauses Flatpak"
-
-#~ msgid "Downgrade"
-#~ msgstr "Installar una version anteriora"
-
-#, fuzzy
-#~ msgid "Results"
-#~ msgstr "Cap de Flatpak pas trobat"
-
-#, fuzzy
-#~| msgid "Search"
-#~ msgid "Start Search"
-#~ msgstr "Recercar"
-
-#, fuzzy
-#~| msgid "Refresh List"
-#~ msgid "Refreshing List"
-#~ msgstr "Refrescar la lista"
-
-#, fuzzy
-#~| msgid "App ID"
-#~ msgid "App EOL"
-#~ msgstr "Identificant de l’aplicacion"
-
-#, fuzzy
-#~| msgid "Runtime"
-#~ msgid "Runtime EOL"
-#~ msgstr "Environament d’execucion"
-
-#, fuzzy
-#~| msgid "Copy IDs"
-#~ msgid "Copy ID"
-#~ msgstr "Copiar los identificants"
-
-#, fuzzy
-#~| msgid "User"
-#~ msgid "User wide"
-#~ msgstr "Utilizaire"
-
-#, fuzzy
-#~| msgid "System"
-#~ msgid "System wide"
-#~ msgstr "Sistèma"
-
-#, fuzzy
-#~| msgid "Uninstall"
-#~ msgid "Unknown install type"
-#~ msgstr "Desinstallar"
-
-#~ msgid "App Management"
-#~ msgstr "Gestion de l’aplicacion"
-
-#~ msgid "Description"
-#~ msgstr "Descripcion"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgid "Install {}?"
-#~ msgstr "Installar {} ?"
-
-#~ msgid "App ID"
-#~ msgstr "Identificant de l’aplicacion"
-
-#~ msgid "Arch"
-#~ msgstr "Arq."
-
-#~ msgid "Ref"
-#~ msgstr "Referéncia"
-
-#, fuzzy
-#~| msgid "Open app"
-#~ msgid "Open App"
-#~ msgstr "Dobrir l’aplicacion"
-
-#~ msgid "Copy {}"
-#~ msgstr "Copiar {}"
+msgstr ""
