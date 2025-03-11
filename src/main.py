@@ -118,6 +118,8 @@ class WarehouseApplication(Adw.Application):
 		try:
 			button = self.props.active_window.stack.get_visible_child().search_button
 			button.set_active(True)
+			entry = self.props.active_window.stack.get_visible_child().search_entry
+			entry.grab_focus()
 		except AttributeError:
 			pass
 
