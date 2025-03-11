@@ -51,7 +51,9 @@ class InstallPage(Adw.BreakpointBin):
 
 	def install_callback(self):
 		HostInfo.main_window.refresh_handler()
-		if not self.did_error:
+		if self.did_error:
+			return
+		if not PackageInstallWorker.cancelled:
 			HostInfo.main_window.toast_overlay.add_toast(Adw.Toast(title=_("Installed Packages")))
 
 	def install_error_callback(self, user_facing_label, error_message):

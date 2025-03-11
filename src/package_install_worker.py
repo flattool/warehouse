@@ -34,10 +34,6 @@ class PackageInstallWorker:
 		group_ratio = (package_ratio + complete) / (total or 1)
 		final_ratio = (group_ratio + index) / (this.total_groups or 1)
 
-		print(f"gr: {(package_ratio + complete) / (total or 1):.2f}, fr: {((package_ratio + complete) / (total or 1) + index) / (this.total_groups or 1):.2f}")
-		print("i:", index, ", g:", this.total_groups, ", r:", package_ratio, ", c:", complete, ", t:", total)
-		print("=======================================")
-
 		if not this.loading_status is None:
 			GLib.idle_add(lambda *_: this.loading_status.progress_bar.set_fraction(final_ratio))
 
@@ -110,13 +106,14 @@ class PackageInstallWorker:
 	@classmethod
 	def on_done(this, *args):
 		this.process = None
-		this.cancelled = False
 		HostInfo.main_window.remove_refresh_lockout("installing packages")
 		if not this.loading_status is None:
 			this.loading_status.progress_bar.set_fraction(0.0)
 
 		if not this.callback is None:
 			this.callback()
+
+		this.cancelled = False
 
 	@classmethod
 	def on_error(this, user_facing_label, error_message):
