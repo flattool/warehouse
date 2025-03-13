@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2025-02-08 00:45+0000\n"
+"PO-Revision-Date: 2025-03-14 09:46+0000\n"
 "Last-Translator: ぺー☆ <nextnewstar@users.noreply.weblate.fyralabs.com>\n"
 "Language-Team: Japanese <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ja/>\n"
@@ -1235,47 +1235,47 @@ msgstr "新しいリモートを追加して、より多くのソフトウェア
 
 #: src/remotes_page/remotes_page.blp:131
 msgid "Add Other Remotes"
-msgstr ""
+msgstr "他のリモートを追加"
 
 #: src/remotes_page/remotes_page.blp:134
 msgid "Add a Repo File"
-msgstr ""
+msgstr "リポジトリファイルの追加"
 
 #: src/remotes_page/remotes_page.blp:135
 msgid "Open a downloaded repo file to add"
-msgstr ""
+msgstr "追加するのにダウンロードしたリポジトリファイルを開く"
 
 #: src/remotes_page/remotes_page.blp:143
 msgid "Add a Custom Remote"
-msgstr ""
+msgstr "カスタムリモートの追加"
 
 #: src/remotes_page/remotes_page.blp:144
 msgid "Manually enter new remote details"
-msgstr ""
+msgstr "新しいリモートの詳細を手動で入力する"
 
 #: src/remotes_page/remotes_page.py:36
 msgid "The open source, pay-what-you-want app store from elementary"
-msgstr ""
+msgstr "初歩的なオープンソースのpay-what-you-wantアプリストア"
 
 #: src/remotes_page/remotes_page.py:42
 msgid "Central repository of Flatpak applications"
-msgstr ""
+msgstr "Flatpakアプリケーションのセントラルリポジトリ"
 
 #: src/remotes_page/remotes_page.py:48
 msgid "Beta builds of Flatpak applications"
-msgstr ""
+msgstr "Flatpakアプリケーションのベータビルド"
 
 #: src/remotes_page/remotes_page.py:54
 msgid "Flatpaks packaged by Fedora Linux"
-msgstr ""
+msgstr "Fedora LinuxのFlatpakパッケージ"
 
 #: src/remotes_page/remotes_page.py:60
 msgid "The latest beta GNOME Apps and Runtimes"
-msgstr ""
+msgstr "最新のベータ版 GNOME アプリとランタイム"
 
 #: src/remotes_page/remotes_page.py:66
 msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr ""
+msgstr "WebKitデベロッパーおよびランタイムSDKのセントラルリポジトリ"
 
 #: src/remotes_page/remotes_page.py:156
 msgid "Showing all packages from {}"
