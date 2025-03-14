@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2025-03-14 09:46+0000\n"
+"PO-Revision-Date: 2025-03-15 10:46+0000\n"
 "Last-Translator: ぺー☆ <nextnewstar@users.noreply.weblate.fyralabs.com>\n"
 "Language-Team: Japanese <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ja/>\n"
@@ -1325,51 +1325,52 @@ msgstr ""
 
 #: src/user_data_page/data_box.py:64
 msgid "Could not copy data path"
-msgstr ""
+msgstr "データパスをコピーできませんでした"
 
 #: src/user_data_page/data_box.py:69
 msgid "Opened data folder"
-msgstr ""
+msgstr "開いたデータフォルダ"
 
 #: src/user_data_page/data_box.py:71 src/snapshot_page/snapshot_page.py:258
 #: src/snapshot_page/snapshots_list_page.py:81
 msgid "Could not open folder"
-msgstr ""
+msgstr "フォルダを開けませんでした。"
 
 #: src/user_data_page/data_box.py:118
 msgid "Trash {}'s Data?"
-msgstr ""
+msgstr "{}のデータをゴミ箱へ？"
 
 #: src/user_data_page/data_box.py:118
 msgid "{}'s data will be sent to the trash"
-msgstr ""
+msgstr "{}のデータはゴミ箱に送られる。"
 
 #: src/user_data_page/data_box.py:120 src/user_data_page/user_data_page.py:214
 #: src/snapshot_page/snapshot_page.py:485
 msgid "Continue"
-msgstr ""
+msgstr "続ける"
 
 #: src/user_data_page/data_subpage.blp:13
 msgid "No Title Set"
-msgstr ""
+msgstr "タイトルなし"
 
 #: src/user_data_page/data_subpage.blp:28
 msgid "Loading Size…"
-msgstr ""
+msgstr "ローディングサイズ…"
 
 #: src/user_data_page/data_subpage.py:257
 msgid "No Active Data"
-msgstr ""
+msgstr "アクティブデータなし"
 
 #: src/user_data_page/data_subpage.py:258
 msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
-msgstr ""
+msgstr "Warehouseにアクティブユーザーデータが表示されない、またはシステムにアクティブ"
+"ユーザーデータが存在しない。"
 
 #: src/user_data_page/data_subpage.py:261
 msgid "No Leftover Data"
-msgstr ""
+msgstr "残存データなし"
 
 #: src/user_data_page/data_subpage.py:262
 msgid "There is no leftover user data"
