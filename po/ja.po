@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2025-03-15 10:46+0000\n"
+"PO-Revision-Date: 2025-03-17 00:46+0000\n"
 "Last-Translator: ぺー☆ <nextnewstar@users.noreply.weblate.fyralabs.com>\n"
 "Language-Team: Japanese <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ja/>\n"
@@ -1417,123 +1417,123 @@ msgstr ""
 
 #: src/user_data_page/user_data_page.py:155
 msgid "Could not copy paths"
-msgstr ""
+msgstr "パスをコピーできませんでした"
 
 #: src/user_data_page/user_data_page.py:155
 #: src/user_data_page/user_data_page.py:201
 msgid "No boxes were selected"
-msgstr ""
+msgstr "ボックスは選択されなかった"
 
 #: src/user_data_page/user_data_page.py:158
 msgid "Copied paths"
-msgstr ""
+msgstr "コピーされたパス"
 
 #: src/user_data_page/user_data_page.py:189
 msgid "Trashed data"
-msgstr ""
+msgstr "ゴミ箱のデータ"
 
 #: src/user_data_page/user_data_page.py:212
 msgid "Trash Data?"
-msgstr ""
+msgstr "データをゴミ箱へ?"
 
 #: src/user_data_page/user_data_page.py:212
 msgid "Data will be sent to the trash"
-msgstr ""
+msgstr "データはゴミ箱に送られます"
 
 #: src/user_data_page/user_data_page.py:250
 #: src/user_data_page/user_data_page.py:273
 msgid "Active Data"
-msgstr ""
+msgstr "アクティブデータ"
 
 #: src/user_data_page/user_data_page.py:251
 #: src/user_data_page/user_data_page.py:279
 msgid "Leftover Data"
-msgstr ""
+msgstr "残存データ"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
 msgid "Search Apps"
-msgstr ""
+msgstr "アプリを検索"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
-msgstr ""
+msgstr "作成"
 
 #: src/snapshot_page/new_snapshot_dialog.py:114
 msgid "Creating Snapshot"
-msgstr ""
+msgstr "スナップショットの作成"
 
 #: src/snapshot_page/new_snapshot_dialog.py:196
 msgid "Name these Snapshots"
-msgstr ""
+msgstr "これらのスナップショットに名前を付ける"
 
 #: src/snapshot_page/new_snapshot_dialog.py:200
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
-msgstr ""
+msgstr "新しいスナップショット"
 
 #: src/snapshot_page/new_snapshot_dialog.py:204
 msgid "Name this Snapshot"
-msgstr ""
+msgstr "このスナップショットに名前を付ける"
 
 #: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:62
 msgid "No Name Set"
-msgstr ""
+msgstr "名前がセットされていない"
 
 #: src/snapshot_page/snapshot_box.blp:23
 msgid "No date found"
-msgstr ""
+msgstr "日付が見つかりません"
 
 #: src/snapshot_page/snapshot_box.blp:30
 msgid "No version found"
-msgstr ""
+msgstr "バージョンが見つかりません"
 
 #: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:160
 msgid "Apply"
-msgstr ""
+msgstr "適用する"
 
 #: src/snapshot_page/snapshot_box.blp:55
 msgid "Rename"
-msgstr ""
+msgstr "名称変更"
 
 #: src/snapshot_page/snapshot_box.blp:84
 msgid "Rename Snapshot?"
-msgstr ""
+msgstr "スナップショットの名前を変更しますか？"
 
 #: src/snapshot_page/snapshot_box.blp:94
 msgid "Confirm Rename"
-msgstr ""
+msgstr "リネームの確認"
 
 #: src/snapshot_page/snapshot_box.py:37 src/snapshot_page/snapshot_box.py:49
 #: src/snapshot_page/snapshot_box.py:65
 msgid "Could not write data"
-msgstr ""
+msgstr "データを書き込めなかった"
 
 #: src/snapshot_page/snapshot_box.py:102
 msgid "Could not trash snapshot"
-msgstr ""
+msgstr "スナップショットをゴミ箱に入れられなかった"
 
 #: src/snapshot_page/snapshot_box.py:106
 msgid "Trashed snapshot"
-msgstr ""
+msgstr "ゴミ箱のスナップショット"
 
 #: src/snapshot_page/snapshot_box.py:116
 msgid "Trash Snapshot?"
-msgstr ""
+msgstr "スナップショットをゴミ箱に送りますか?"
 
 #: src/snapshot_page/snapshot_box.py:116
 msgid "This snapshot will be sent to the trash"
-msgstr ""
+msgstr "このスナップショットはゴミ箱に送られる"
 
 #: src/snapshot_page/snapshot_box.py:146
 msgid "Applying Snapshot"
-msgstr ""
+msgstr "スナップショットの適用"
 
 #: src/snapshot_page/snapshot_box.py:156
 msgid "Apply Snapshot?"
-msgstr ""
+msgstr "スナップショットを適用しますか？"
 
 #: src/snapshot_page/snapshot_box.py:157
 msgid "Any current user data for this app will be trashed"
