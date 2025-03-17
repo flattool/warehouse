@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2025-03-17 00:46+0000\n"
+"PO-Revision-Date: 2025-03-18 08:46+0000\n"
 "Last-Translator: ぺー☆ <nextnewstar@users.noreply.weblate.fyralabs.com>\n"
 "Language-Team: Japanese <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ja/>\n"
@@ -1653,66 +1653,66 @@ msgstr ""
 
 #: src/snapshot_page/snapshot_page.py:518
 msgid "Could not trash snapshots"
-msgstr ""
+msgstr "スナップショットをゴミ箱に送れませんでした"
 
 #: src/snapshot_page/snapshot_page.py:521
 msgid "Trash Snapshots?"
-msgstr ""
+msgstr "スナップショットをゴミ箱へ?"
 
 #: src/snapshot_page/snapshot_page.py:521
 msgid "These apps' snapshots will be sent to the trash"
-msgstr ""
+msgstr "これらのアプリのスナップショットはゴミ箱に送られます。"
 
 #: src/snapshot_page/snapshot_page.py:560
 msgid "Loading Snapshots"
-msgstr ""
+msgstr "スナップショットの読み込み"
 
 #: src/snapshot_page/snapshots_list_page.blp:5
 msgid "Snapshots List"
-msgstr ""
+msgstr "スナップショットの一覧"
 
 #: src/snapshot_page/snapshots_list_page.blp:13
 msgid "Open Snapshots Folder for this App"
-msgstr ""
+msgstr "このアプリのスナップショットのフォルダを開く"
 
 #: src/snapshot_page/snapshots_list_page.py:34
 #: src/snapshot_page/snapshots_list_page.py:55
 msgid "App not Installed"
-msgstr ""
+msgstr "アプリがインストールされていない"
 
 #: src/snapshot_page/snapshots_list_page.py:58
 msgid "{} Snapshots"
-msgstr ""
+msgstr "{}スナップショット"
 
 #: src/snapshot_page/tar_worker.py:83
 msgid "Error in snapshot handling"
-msgstr ""
+msgstr "スナップショット処理のエラー"
 
 #: src/install_page/file_install_dialog.blp:33
 msgid "Review Selection"
-msgstr ""
+msgstr "セレクションのレビュー"
 
 #. self.packages_group.set_title(_("Review Packages"))
 #: src/install_page/file_install_dialog.py:40
 msgid "The following packages will be installed"
-msgstr ""
+msgstr "以下のパッケージがインストールされる。"
 
 #: src/install_page/file_install_dialog.py:43
 msgid "Install a Package"
-msgstr ""
+msgstr "パッケージをインストールする"
 
 #. self.packages_group.set_title(_("Review Package"))
 #: src/install_page/file_install_dialog.py:45
 msgid "The following package will be installed"
-msgstr ""
+msgstr "以下のパッケージがインストールされる。"
 
 #: src/install_page/file_install_dialog.py:46
 msgid "package"
-msgstr ""
+msgstr "パッケージ"
 
 #: src/install_page/install_page.blp:41
 msgid "Select Source"
-msgstr ""
+msgstr "ソースを選択"
 
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
