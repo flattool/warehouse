@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2024-03-08 04:31+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Chinese (Traditional) <https://weblate.fyralabs.com/projects/"
-"flattool/warehouse/zh_Hant/>\n"
+"PO-Revision-Date: 2025-03-18 08:46+0000\n"
+"Last-Translator: D0735 <fropadd1981@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://"
+"weblate.fyralabs.com/projects/flattool/warehouse/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.4.2\n"
+"X-Generator: Weblate 5.9.2\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -26,7 +26,7 @@ msgstr "倉庫"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 msgid "flatpak"
-msgstr ""
+msgstr "flatpak"
 
 #: data/io.github.flattool.Warehouse.desktop.in:12
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
@@ -37,7 +37,7 @@ msgstr "管理所有 Flatpak"
 msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
-msgstr ""
+msgstr "Warehouse提供了一個簡單的UI來控制複製的Flatpak指令，無需藉助指令列。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -45,15 +45,15 @@ msgstr "功能："
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
-msgstr ""
+msgstr "管理已安裝的Flatpaks並查看任何套件的屬性"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
-msgstr ""
+msgstr "更改Flatpak的版本以回滾任何不需要的更新"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
-msgstr ""
+msgstr "釘選執行時期環境且遮罩Flatpak軟體"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
@@ -776,10 +776,8 @@ msgid "Trash"
 msgstr "回收"
 
 #: src/packages_page/uninstall_dialog.blp:18
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
 msgid "Send data to the trash"
-msgstr "確定回收 {} 的用戶數據？"
+msgstr "將數據發送到垃圾桶"
 
 #: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall {}?"
@@ -1056,16 +1054,12 @@ msgid "Could not uninstall"
 msgstr "無法卸載一些應用"
 
 #: src/properties_page/properties_page.py:255
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstalled {}"
-msgstr "確定卸載 {}？"
+msgstr "已卸載 {}"
 
 #: src/properties_page/properties_page.py:267
-#, fuzzy
-#| msgid "Opened {}"
 msgid "Opening {}…"
-msgstr "已開啟 {}"
+msgstr "正在開啟 {}…"
 
 #: src/properties_page/properties_page.py:272
 #, fuzzy
@@ -1074,10 +1068,8 @@ msgid "Could not open {}"
 msgstr "無法打開文件夾"
 
 #: src/properties_page/properties_page.py:287
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstalled {}"
-msgstr "確定卸載 {}？"
+msgstr "已重新安裝 {}"
 
 #: src/properties_page/properties_page.py:315
 #, fuzzy
@@ -1302,9 +1294,8 @@ msgid "Remote is already disabled"
 msgstr ""
 
 #: src/remotes_page/remote_row.py:127
-#, fuzzy
 msgid "Disable {}?"
-msgstr "停止更新"
+msgstr "停用{}？"
 
 #: src/remotes_page/remote_row.py:127 src/remotes_page/remotes_page.py:194
 msgid "Any installed apps from {} will stop receiving updates"
@@ -1489,10 +1480,8 @@ msgid "Could not open folder"
 msgstr "無法打開文件夾"
 
 #: src/user_data_page/data_box.py:118
-#, fuzzy
-#| msgid "Trash User Data"
 msgid "Trash {}'s Data?"
-msgstr "回收使用者資料"
+msgstr "回收{}的資料？"
 
 #: src/user_data_page/data_box.py:118
 #, fuzzy
@@ -1604,10 +1593,8 @@ msgid "Trashed data"
 msgstr "已回收用戶資料"
 
 #: src/user_data_page/user_data_page.py:212
-#, fuzzy
-#| msgid "Trash Data"
 msgid "Trash Data?"
-msgstr "回收數據"
+msgstr "回收數據？"
 
 #: src/user_data_page/user_data_page.py:212
 #, fuzzy
@@ -1682,9 +1669,8 @@ msgid "Rename"
 msgstr ""
 
 #: src/snapshot_page/snapshot_box.blp:84
-#, fuzzy
 msgid "Rename Snapshot?"
-msgstr "管理快照"
+msgstr "重新命名快照？"
 
 #: src/snapshot_page/snapshot_box.blp:94
 #, fuzzy
@@ -1711,9 +1697,8 @@ msgid "Trashed snapshot"
 msgstr "管理快照"
 
 #: src/snapshot_page/snapshot_box.py:116
-#, fuzzy
 msgid "Trash Snapshot?"
-msgstr "管理快照"
+msgstr "回收快照？"
 
 #: src/snapshot_page/snapshot_box.py:116
 #, fuzzy
@@ -1727,9 +1712,8 @@ msgid "Applying Snapshot"
 msgstr "管理快照"
 
 #: src/snapshot_page/snapshot_box.py:156
-#, fuzzy
 msgid "Apply Snapshot?"
-msgstr "管理快照"
+msgstr "應用快照？"
 
 #: src/snapshot_page/snapshot_box.py:157
 #, fuzzy
@@ -1824,10 +1808,8 @@ msgstr ""
 #: src/snapshot_page/snapshot_page.py:247
 #: src/snapshot_page/snapshot_page.py:249
 #: src/snapshot_page/snapshots_list_page.py:64
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
 msgid "No Data Found to Snapshot"
-msgstr "確定回收 {} 的用戶數據？"
+msgstr "沒有找到要快照的數據"
 
 #: src/snapshot_page/snapshot_page.py:256
 #: src/snapshot_page/snapshots_list_page.py:79
@@ -1860,9 +1842,8 @@ msgid "No snapshots were found to extract"
 msgstr ""
 
 #: src/snapshot_page/snapshot_page.py:483
-#, fuzzy
 msgid "Apply These Snapshots?"
-msgstr "管理快照"
+msgstr "應用這些快照？"
 
 #: src/snapshot_page/snapshot_page.py:483
 msgid ""
@@ -1881,9 +1862,8 @@ msgid "Could not trash snapshots"
 msgstr "無法回收用戶資料"
 
 #: src/snapshot_page/snapshot_page.py:521
-#, fuzzy
 msgid "Trash Snapshots?"
-msgstr "管理快照"
+msgstr "回收快照？"
 
 #: src/snapshot_page/snapshot_page.py:521
 #, fuzzy
