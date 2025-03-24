@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2025-03-18 08:46+0000\n"
+"PO-Revision-Date: 2025-03-24 21:46+0000\n"
 "Last-Translator: ぺー☆ <nextnewstar@users.noreply.weblate.fyralabs.com>\n"
 "Language-Team: Japanese <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ja/>\n"
@@ -1779,43 +1779,43 @@ msgstr ""
 
 #: src/install_page/results_page.blp:26
 msgid "Search for Flatpaks"
-msgstr ""
+msgstr "Flatpakを探す"
 
 #: src/install_page/results_page.blp:27
 msgid "Search for Flatpaks you want to install"
-msgstr ""
+msgstr "インストールしたいFlatpakを探す"
 
 #: src/install_page/results_page.blp:31
 msgid "Too Many Results"
-msgstr ""
+msgstr "多すぎる結果"
 
 #: src/install_page/results_page.blp:32
 msgid "Try being more specific with your search"
-msgstr ""
+msgstr "もっと具体的に検索してみよう"
 
 #: src/install_page/results_page.blp:50
 msgid "Try a different search term"
-msgstr ""
+msgstr "別の検索語を試す"
 
 #: src/install_page/results_page.py:51
 msgid "Search {}"
-msgstr ""
+msgstr "検索 {}"
 
 #: src/install_page/results_page.py:138
 msgid "Searching"
-msgstr ""
+msgstr "検索"
 
 #: src/install_page/select_page.blp:19
 msgid "Search in a Remote"
-msgstr ""
+msgstr "リモートを検索"
 
 #: src/install_page/select_page.blp:20
 msgid "Choose a remote to search for new packages"
-msgstr ""
+msgstr "新しいパッケージを検索するリモートを選択する"
 
 #: src/install_page/select_page.blp:23
 msgid "Online Searches Disabled"
-msgstr ""
+msgstr "オンライン検索不可"
 
 #: src/install_page/select_page.blp:24
 msgid "Your system has no remotes added to search from"
