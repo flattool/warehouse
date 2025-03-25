@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2025-03-24 21:46+0000\n"
+"PO-Revision-Date: 2025-03-26 12:46+0000\n"
 "Last-Translator: ぺー☆ <nextnewstar@users.noreply.weblate.fyralabs.com>\n"
 "Language-Team: Japanese <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ja/>\n"
@@ -43,7 +43,7 @@ msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr "特徴"
+msgstr "特徴:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
@@ -52,11 +52,11 @@ msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
-msgstr "Flatpakのバージョンを変更し、不要なアップデートをロールバックする。"
+msgstr "不要なアップデートをロールバックするために、Flatpakのバージョンを変更する。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
-msgstr ""
+msgstr "ランタイムをピン止めし、Flatpakを隠す。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
@@ -73,7 +73,8 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
-msgstr ""
+msgstr "数回のクリックで人気のリモートのFlatpakを追加したり、代わりにリモートのカスタ"
+"ムのものを追加することができます。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
@@ -239,7 +240,7 @@ msgstr "インストール先のリモートを選択します。"
 #: src/remotes_page/remote_row.py:155 src/install_page/pending_page.py:33
 #: src/install_page/select_page.py:35
 msgid "Installation: {}"
-msgstr ""
+msgstr "インストレーション: {}"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Can't find matching packages"
@@ -429,7 +430,7 @@ msgstr "Flatpaksのインストールまたはリモートの追加"
 
 #: src/main_window/window.blp:45
 msgid "Refresh List"
-msgstr ""
+msgstr "リストをリフレッシュ"
 
 #: src/main_window/window.blp:50
 msgid "Main Menu"
@@ -647,11 +648,11 @@ msgstr "Refsをコピー"
 #: src/snapshot_page/new_snapshot_dialog.py:42
 #: src/snapshot_page/snapshot_page.py:360
 msgid "{} Selected"
-msgstr ""
+msgstr "{} 選択された"
 
 #: src/packages_page/packages_page.py:197
 msgid "Error getting Flatpak '{}'"
-msgstr ""
+msgstr "Flatpak取得エラー '{}'"
 
 #: src/packages_page/packages_page.py:246
 msgid "Names"
@@ -663,16 +664,16 @@ msgstr "ID"
 
 #: src/packages_page/packages_page.py:252
 msgid "Refs"
-msgstr ""
+msgstr "Refs"
 
 #: src/packages_page/packages_page.py:260
 #: src/properties_page/properties_page.py:278
 msgid "Copied {}"
-msgstr ""
+msgstr "コピー済 {}"
 
 #: src/packages_page/packages_page.py:262
 msgid "Could not copy {}"
-msgstr ""
+msgstr "コピーできなかった {}"
 
 #: src/packages_page/packages_page.py:313
 msgid "Errors occurred while uninstalling"
@@ -737,11 +738,11 @@ msgstr "ゴミ箱にデータを送る"
 
 #: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall {}?"
-msgstr ""
+msgstr "アンインストール {}?"
 
 #: src/packages_page/uninstall_dialog.py:35
 msgid "It will not be possible to use {} after removal"
-msgstr ""
+msgstr "使うことはできないでしょう {} 取り外し後"
 
 #: src/packages_page/uninstall_dialog.py:37
 msgid "Uninstall Packages?"
@@ -845,7 +846,7 @@ msgstr "インストール情報"
 
 #: src/properties_page/properties_page.blp:255
 msgid "Origin"
-msgstr ""
+msgstr "オリジン"
 
 #: src/properties_page/properties_page.blp:263
 msgid "Collection"
@@ -865,7 +866,7 @@ msgstr "親"
 
 #: src/properties_page/properties_page.blp:298
 msgid "Subject"
-msgstr ""
+msgstr "テーマ"
 
 #: src/properties_page/properties_page.blp:306
 msgid "Date"
@@ -873,7 +874,7 @@ msgstr "日付"
 
 #: src/properties_page/properties_page.py:79
 msgid "{} Properties"
-msgstr ""
+msgstr "{} プロパティ"
 
 #: src/properties_page/properties_page.py:84
 msgid "Properties"
@@ -949,11 +950,11 @@ msgstr "自動削除を有効にできませんでした"
 
 #: src/properties_page/properties_page.py:228
 msgid "Disabled Autoremoval"
-msgstr ""
+msgstr "無効化された自動解除"
 
 #: src/properties_page/properties_page.py:228
 msgid "Enabled Autoremoval"
-msgstr ""
+msgstr "有効化された自動解除"
 
 #: src/properties_page/properties_page.py:251
 msgid "Could not uninstall"
@@ -961,23 +962,24 @@ msgstr "アンインストールできませんでした"
 
 #: src/properties_page/properties_page.py:255
 msgid "Uninstalled {}"
-msgstr ""
+msgstr "アンインストールされた {}"
 
 #: src/properties_page/properties_page.py:267
+#, fuzzy
 msgid "Opening {}…"
-msgstr ""
+msgstr "開く {}…"
 
 #: src/properties_page/properties_page.py:272
 msgid "Could not open {}"
-msgstr ""
+msgstr "開けませんでした {}"
 
 #: src/properties_page/properties_page.py:287
 msgid "Reinstalled {}"
-msgstr ""
+msgstr "再インストールされた {}"
 
 #: src/properties_page/properties_page.py:315
 msgid "Reinstall {}?"
-msgstr ""
+msgstr "再インストール {}?"
 
 #: src/properties_page/properties_page.py:316
 msgid ""
@@ -994,11 +996,11 @@ msgstr "再インストール"
 
 #: src/properties_page/properties_page.py:336
 msgid "Copied launch command"
-msgstr ""
+msgstr "コピーされたランチコマンド"
 
 #: src/properties_page/properties_page.py:338
 msgid "Could not copy launch command"
-msgstr ""
+msgstr "ランチコマンドをコピーできませんでした"
 
 #: src/properties_page/properties_page.py:344
 msgid "Could not show details"
@@ -1014,7 +1016,7 @@ msgstr "スナップショットを見る"
 
 #: src/properties_page/properties_page.py:375
 msgid "Copy Launch Command"
-msgstr ""
+msgstr "ランチコマンドをコピー"
 
 #: src/properties_page/properties_page.py:376
 msgid "Show Details"
@@ -1055,7 +1057,7 @@ msgstr "バージョン {}"
 
 #: src/change_version_page/change_version_page.py:125
 msgid "Ensure that {} will never be updated to a newer version"
-msgstr ""
+msgstr "{} は新しいバージョンにアップデートされないようにする。"
 
 #: src/change_version_page/change_version_page.py:126
 msgid "Fetching Releases"
