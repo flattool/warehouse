@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2025-03-26 12:46+0000\n"
+"PO-Revision-Date: 2025-03-27 13:46+0000\n"
 "Last-Translator: ぺー☆ <nextnewstar@users.noreply.weblate.fyralabs.com>\n"
 "Language-Team: Japanese <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ja/>\n"
@@ -1281,49 +1281,49 @@ msgstr "WebKitデベロッパーおよびランタイムSDKのセントラルリ
 
 #: src/remotes_page/remotes_page.py:156
 msgid "Showing all packages from {}"
-msgstr ""
+msgstr "{} からのすべてのパッケージを表示"
 
 #: src/remotes_page/remotes_page.py:178
 msgid "Could not remove remote"
-msgstr ""
+msgstr "リモートを削除できませんでした"
 
 #: src/remotes_page/remotes_page.py:185
 msgid "Removed {}"
-msgstr ""
+msgstr "削除された {}"
 
 #: src/remotes_page/remotes_page.py:194
 msgid "Remove {}?"
-msgstr ""
+msgstr "{} を削除しますか?"
 
 #: src/remotes_page/remotes_page.py:231 src/remotes_page/remotes_page.py:241
 #: src/remotes_page/remotes_page.py:243
 msgid "Could not open file"
-msgstr ""
+msgstr "ファイルを開くことができませんでした。"
 
 #: src/remotes_page/remotes_page.py:246
 msgid "Flatpak Repos"
-msgstr ""
+msgstr "Flatpakリポジトリ"
 
 #. Apply
 #: src/remotes_page/remotes_page.py:294
 msgid "Adding Remote"
-msgstr ""
+msgstr "リモートの追加"
 
 #: src/remotes_page/remotes_page.py:295
 msgid "Loading Remotes"
-msgstr ""
+msgstr "リモコンの読み込み"
 
 #: src/user_data_page/data_box.blp:56
 msgid "Copy Path"
-msgstr ""
+msgstr "パスをコピー"
 
 #: src/user_data_page/data_box.blp:68
 msgid "Attempt to Install"
-msgstr ""
+msgstr "インストールを試みる"
 
 #: src/user_data_page/data_box.py:62
 msgid "Copied data path"
-msgstr ""
+msgstr "コピーされたデータパス"
 
 #: src/user_data_page/data_box.py:64
 msgid "Could not copy data path"
@@ -1376,46 +1376,47 @@ msgstr "残存データなし"
 
 #: src/user_data_page/data_subpage.py:262
 msgid "There is no leftover user data"
-msgstr ""
+msgstr "ユーザーデータは残らない"
 
 #: src/user_data_page/user_data_page.blp:43
 #: src/user_data_page/user_data_page.blp:64
 msgid "Search User Data"
-msgstr ""
+msgstr "ユーザーデータの検索"
 
 #: src/user_data_page/user_data_page.blp:49
 msgid "Sort User Data"
-msgstr ""
+msgstr "ユーザーデータの並べ替え"
 
 #: src/user_data_page/user_data_page.blp:54
 msgid "Select User Data"
-msgstr ""
+msgstr "ユーザーデータを選択"
 
 #: src/user_data_page/user_data_page.blp:120
 #: src/snapshot_page/snapshot_page.blp:159
 msgid "More"
-msgstr ""
+msgstr "もっと見る"
 
 #: src/user_data_page/user_data_page.blp:169
 msgid "Ascending"
-msgstr ""
+msgstr "昇順"
 
 #: src/user_data_page/user_data_page.blp:177
 msgid "Descending"
-msgstr ""
+msgstr "降順"
 
 #: src/user_data_page/user_data_page.blp:198
+#, fuzzy
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: src/user_data_page/user_data_page.blp:206
 msgid "Size"
-msgstr ""
+msgstr "サイズ"
 
 #: src/user_data_page/user_data_page.py:79
 #: src/user_data_page/user_data_page.py:81
 msgid "Loading Size"
-msgstr ""
+msgstr "読み込みサイズ"
 
 #: src/user_data_page/user_data_page.py:155
 msgid "Could not copy paths"
@@ -1539,27 +1540,27 @@ msgstr "スナップショットを適用しますか？"
 
 #: src/snapshot_page/snapshot_box.py:157
 msgid "Any current user data for this app will be trashed"
-msgstr ""
+msgstr "このアプリの現在のユーザーデータはすべてゴミ箱に捨てられます。"
 
 #: src/snapshot_page/snapshot_box.py:186
 msgid "Version: {}"
-msgstr ""
+msgstr "バージョン: {}"
 
 #: src/snapshot_page/snapshot_page.blp:53
 msgid "Search Snapshots"
-msgstr ""
+msgstr "スナップショットを検索"
 
 #: src/snapshot_page/snapshot_page.blp:70
 msgid "Active Snapshots"
-msgstr ""
+msgstr "アクティブなスナップショット"
 
 #: src/snapshot_page/snapshot_page.blp:81
 msgid "Snapshots of installed apps"
-msgstr ""
+msgstr "インストールされているアプリのスナップショット"
 
 #: src/snapshot_page/snapshot_page.blp:99
 msgid "Leftover Snapshots"
-msgstr ""
+msgstr "残されたスナップショット"
 
 #: src/snapshot_page/snapshot_page.blp:110
 msgid "Snapshots of apps that are no longer installed"
