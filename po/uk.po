@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2024-12-25 19:45+0000\n"
-"Last-Translator: Vovkiv <generalvolkov2@gmail.com>\n"
+"PO-Revision-Date: 2025-03-28 20:46+0000\n"
+"Last-Translator: Simon <orisim@proton.me>\n"
 "Language-Team: Ukrainian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/uk/>\n"
 "Language: uk\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.8.1\n"
+"X-Generator: Weblate 5.9.2\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:4
@@ -39,6 +39,8 @@ msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
+"Warehouse надає простий інтерфейс користувача для керування складними "
+"параметрами Flatpak, без необхідності використовувати консоль."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -47,88 +49,88 @@ msgstr "Можливості:"
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
 msgstr ""
+"Керуйте встановленими Flatpak і переглядайте властивості будь-якого пакета"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
-msgstr ""
+msgstr "Змінюйте версії Flatpak, щоб скасувати небажані оновлення"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
-msgstr ""
+msgstr "Закріплюйте середовища виконання та приховуйте Flatpak"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
-msgstr ""
+msgstr "Фільтруйте пакети та сортуйте дані, щоб легко знаходити потрібне"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
+"Переглядайте дані користувача додатків і очищуйте невикористані залишкові "
+"дані"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
 msgstr ""
+"Додавайте популярні Flatpak-репозиторії в кілька кліків або налаштовуйте "
+"власні"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
 msgstr ""
+"Створюйте знімки даних користувача ваших додатків, зберігаючи важливу "
+"інформацію"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
-msgstr ""
+msgstr "Встановлюйте нові пакети з будь-якого репозиторію або з вашої системи"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:22
 msgid "Responsive UI to fit large and small screen sizes"
-msgstr ""
+msgstr "Адаптивний інтерфейс для зручної роботи на великих і малих екранах"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
 msgstr ""
+"Керуйте встановленими пакетами за допомогою інтерфейсу з трьома панелями"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
-msgstr ""
+msgstr "Сторінка властивостей у вузькому вікні"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
-msgstr ""
+msgstr "Керуйте встановленими репозиторіями та додавайте нові"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:58
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Manage Apps' User Data"
-msgstr "Відправити у Смітник дані користувача обраних додатків?"
+msgstr "Керуйте даними користувача додатків"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:62
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Backup Apps' User Data"
-msgstr "Відправити у Смітник дані користувача обраних додатків?"
+msgstr "Резервне копіювання даних користувача додатків"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
-msgstr ""
+msgstr "Встановлюйте нові пакети з файлів або репозиторіїв"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
-msgstr ""
+msgstr "Сторінка встановлення у вузькому вікні"
 
 #: src/main.py:91 src/main.py:97 src/install_page/select_page.py:66
 #: src/install_page/select_page.py:73
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not add files"
-msgstr "Не вдалося додати {}"
+msgstr "Не вдалося додати файли"
 
 #: src/main.py:91
 msgid "No files were found"
-msgstr ""
+msgstr "Файли не знайдені"
 
 #: src/main.py:99
-#, fuzzy
-#| msgid "Add Flatpak Remote"
 msgid "Flatpaks & Remotes"
-msgstr "Додати віддалене сховище Flatpak"
+msgstr "Flatpaks та репозиторії"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
 #: src/main.py:207
@@ -144,83 +146,65 @@ msgid "Contributors"
 msgstr "Спільнота"
 
 #: src/host_info.py:386 src/host_info.py:388
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not load packages"
-msgstr "Не вдалося додати {}"
+msgstr "Не вдалося завантажити пакети"
 
 #: src/package_install_worker.py:88
 msgid "Errors occurred during installation"
-msgstr ""
+msgstr "Помилки, що виникли під час встановлення"
 
 #: src/package_install_worker.py:92 src/package_install_worker.py:96
 msgid "Error occurred during installation"
-msgstr ""
+msgstr "Виникла помилка під час встановлення"
 
 #: src/package_install_worker.py:92
 #: src/change_version_page/change_version_worker.py:80
 msgid "Failed to exit cleanly"
-msgstr ""
+msgstr "Не вдалося завершити роботу коректно"
 
 #: src/package_install_worker.py:108
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not cancel installation"
-msgstr "Не вдалося встановити додаток"
+msgstr "Не вдалося скасувати встановлення"
 
 #: src/package_install_worker.py:129 src/package_install_worker.py:139
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not install packages"
-msgstr "Не вдалося встановити додаток"
+msgstr "Не вдалося встановити пакети"
 
 #: src/package_install_worker.py:129
 msgid "Packages are currently being installed."
-msgstr ""
+msgstr "Пакети зараз встановлюються."
 
 #: src/package_install_worker.py:139
 msgid "No packages were requested to be installed."
-msgstr ""
+msgstr "Не було вибрано жодного пакета для встановлення."
 
 #: src/gtk/app_row.blp:14 src/properties_page/properties_page.blp:100
 #: src/properties_page/properties_page.blp:179
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid "This package is End Of Life, and will not receive any security updates"
-msgstr ""
-"Додаток {} досягнув End Of Life (Кінець життя) стану і він більше не буде "
-"отримувати жодних оновлень безпеки"
+msgstr "Цей пакет застарів і більше не отримуватиме оновлень безпеки"
 
 #: src/gtk/app_row.blp:21
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid ""
 "This app's runtime is End Of Life, and will not receive any security updates"
 msgstr ""
-"Додаток {} досягнув End Of Life (Кінець життя) стану і він більше не буде "
-"отримувати жодних оновлень безпеки"
+"Середовище виконання цього додатка застаріло і більше не отримуватиме "
+"оновлень безпеки"
 
 #: src/gtk/app_row.blp:28
 msgid "This runtime will never be automatically removed"
-msgstr ""
+msgstr "Це середовище виконання ніколи не буде автоматично видалено"
 
 #: src/gtk/app_row.blp:34
 msgid "Updates are disabled for this package"
-msgstr ""
+msgstr "Оновлення для цього пакета вимкнені"
 
 #: src/gtk/attempt_install_dialog.blp:5
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "Attempt an Install?"
 msgstr "Спробувати встановити?"
 
 #: src/gtk/attempt_install_dialog.blp:6
-#, fuzzy
-#| msgid "Warehouse will attempt to install apps matching the selected data."
 msgid "Warehouse will try to install the matching packages."
-msgstr "Warehouse спробує встановити додатки які збігаються з обраними даними."
+msgstr "Warehouse спробує встановити відповідні пакети."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:41
@@ -246,30 +230,26 @@ msgid "Install"
 msgstr "Встановити"
 
 #: src/gtk/attempt_install_dialog.blp:12
-#, fuzzy
-#| msgid "Choose a Remote to Search"
 msgid "Choose a Remote"
-msgstr "Обрати віддалене сховище для пошуку"
+msgstr "Виберіть репозиторій"
 
 #: src/gtk/attempt_install_dialog.blp:13
 msgid "Select a remote to attempt to install from"
-msgstr ""
+msgstr "Виберіть репозиторій, з якого слід спробувати встановити"
 
 #: src/gtk/attempt_install_dialog.py:22 src/packages_page/filters_page.py:128
 #: src/remotes_page/remote_row.py:155 src/install_page/pending_page.py:33
 #: src/install_page/select_page.py:35
-#, fuzzy
-#| msgid "Installation"
 msgid "Installation: {}"
-msgstr "Встановлення"
+msgstr "Встановлення: {}"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Can't find matching packages"
-msgstr ""
+msgstr "Не вдалося знайти відповідні пакети"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Your system has no remotes added"
-msgstr ""
+msgstr "У вашій системі не додано жодного репозиторію"
 
 #. Extra Object Creation
 #: src/gtk/error_toast.py:16
@@ -296,10 +276,8 @@ msgid "Refresh"
 msgstr "Оновити"
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Open Files"
-msgstr "Встановити фільтри"
+msgstr "Відкрити файли"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
@@ -315,117 +293,85 @@ msgstr "Вийти"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
-msgstr ""
+msgstr "Навігація"
 
 #: src/gtk/help-overlay.blp:34
 msgid "Show Packages Page"
-msgstr ""
+msgstr "Показати сторінку пакетів"
 
 #: src/gtk/help-overlay.blp:38
-#, fuzzy
-#| msgid "No Remotes Found"
 msgid "Show Remotes Page"
-msgstr "Не знайдено жодного віддаленого сховища"
+msgstr "Показати сторінку репозиторіїв"
 
 #: src/gtk/help-overlay.blp:42
-#, fuzzy
-#| msgid "No User Data"
 msgid "Show User Data Page"
-msgstr "Немає даних користувача"
+msgstr "Показати сторінку даних користувача"
 
 #: src/gtk/help-overlay.blp:46
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Show Snapshots Page"
-msgstr "Немає снапшотів"
+msgstr "Показати сторінку знімків"
 
 #: src/gtk/help-overlay.blp:50
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show Install Page"
-msgstr "Показати вимкнені"
+msgstr "Показати сторінку встановлення"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Packages Page"
-msgstr ""
+msgstr "Сторінка пакетів"
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
-#, fuzzy
-#| msgid "Search"
 msgid "Search Mode"
-msgstr "Шукати"
+msgstr "Режим пошуку"
 
 #: src/gtk/help-overlay.blp:61
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Edit Filters"
-msgstr "Встановити фільтри"
+msgstr "Редагувати фільтри"
 
 #: src/gtk/help-overlay.blp:65 src/gtk/help-overlay.blp:95
 #: src/gtk/help-overlay.blp:114
-#, fuzzy
-#| msgid "Toggle Selection Mode"
 msgid "Selection Mode"
-msgstr "Перемкнути режим вибору"
+msgstr "Режим вибору"
 
 #: src/gtk/help-overlay.blp:70
-#, fuzzy
-#| msgid "No Remotes"
 msgid "Remotes Page"
-msgstr "Немає віддалених сховищ"
+msgstr "Сторінка репозиторіїв"
 
 #: src/gtk/help-overlay.blp:76
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show or Hide Disabled Remotes"
-msgstr "Показати вимкнені"
+msgstr "Показати або приховати вимкнені репозиторії"
 
 #: src/gtk/help-overlay.blp:80
-#, fuzzy
-#| msgid "Add Remote"
 msgid "New Remote"
-msgstr "Додати віддалене сховище"
+msgstr "Новий репозиторій"
 
 #: src/gtk/help-overlay.blp:85
-#, fuzzy
-#| msgid "User Data"
 msgid "User Data Page"
-msgstr "Дані користувача"
+msgstr "Сторінка даних користувача"
 
 #: src/gtk/help-overlay.blp:91
 msgid "Edit Sorting Modes"
-msgstr ""
+msgstr "Редагувати режими сортування"
 
 #: src/gtk/help-overlay.blp:99
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Show Active Data"
-msgstr "Немає залишків даних"
+msgstr "Показати активні дані"
 
 #: src/gtk/help-overlay.blp:103
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Show Leftover Data"
-msgstr "Немає залишків даних"
+msgstr "Показати залишкові дані"
 
 #: src/gtk/help-overlay.blp:108
-#, fuzzy
-#| msgid "Snapshot applied"
 msgid "Snapshots Page"
-msgstr "Снапшот застосовано"
+msgstr "Сторінка знімків"
 
 #: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:206
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "New Snapshots"
-msgstr "Новий снапшот"
+msgstr "Нові знімки"
 
 #: src/gtk/installation_chooser.blp:5
-#, fuzzy
-#| msgid "Installation"
 msgid "Choose Installation"
-msgstr "Встановлення"
+msgstr "Виберіть установку"
 
 #: src/gtk/installation_chooser.blp:11
 msgid "User"
@@ -436,66 +382,52 @@ msgid "System"
 msgstr "Система"
 
 #: src/gtk/installation_chooser.blp:28
-#, fuzzy
-#| msgid "Installation"
 msgid "Custom installation"
-msgstr "Встановлення"
+msgstr "Користувацька установка"
 
 #: src/gtk/installation_chooser.blp:37
-#, fuzzy
-#| msgid "Installation"
 msgid "Other Installation"
-msgstr "Встановлення"
+msgstr "Інша установка"
 
 #: src/gtk/installation_chooser.blp:38
 msgid "Choose a custom installation"
-msgstr ""
+msgstr "Виберіть користувацьку установку"
 
 #: src/gtk/installation_chooser.py:31
-#, fuzzy
-#| msgid "The app will be available to only you"
 msgid "These {} will only be available to you"
-msgstr "Цей додаток буде доступний лише вам"
+msgstr "Ці {} будуть доступні лише вам"
 
 #: src/gtk/installation_chooser.py:32
-#, fuzzy
-#| msgid "The app will be available to every user on the system"
 msgid "These {} will be available to everyone"
-msgstr "Додаток буде доступний усім користувачам у системі"
+msgstr "Ці {} будуть доступні всім"
 
 #: src/gtk/installation_chooser.py:33
 msgid "Choose how these {} will be installed"
-msgstr ""
+msgstr "Виберіть, як ці {} будуть встановлені"
 
 #: src/gtk/installation_chooser.py:35
-#, fuzzy
-#| msgid "The app will be available to only you"
 msgid "This {} will only be available to you"
-msgstr "Цей додаток буде доступний лише вам"
+msgstr "Цей {} буде доступний лише вам"
 
 #: src/gtk/installation_chooser.py:36
-#, fuzzy
-#| msgid "The app will be available to every user on the system"
 msgid "This {} will be available to everyone"
-msgstr "Додаток буде доступний усім користувачам у системі"
+msgstr "Цей {} буде доступний усім"
 
 #: src/gtk/installation_chooser.py:37
 msgid "Choose how this {} will be installed"
-msgstr ""
+msgstr "Виберіть, як цей {} буде встановлено"
 
 #: src/gtk/sidebar_button.py:23
 msgid "Show Sidebar"
-msgstr ""
+msgstr "Показати бічну панель"
 
 #: src/main_window/window.blp:26
 msgid "Drop to Open"
-msgstr ""
+msgstr "Перетягніть для відкриття"
 
 #: src/main_window/window.blp:27
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Install Flatpaks or Add a Remote"
-msgstr "Встановлені віддалені сховища"
+msgstr "Встановіть Flatpak або додайте репозиторій"
 
 #: src/main_window/window.blp:45
 msgid "Refresh List"
@@ -511,13 +443,11 @@ msgstr "Головне меню"
 #: src/packages_page/packages_page.py:325
 #: src/install_page/file_install_dialog.py:41
 msgid "Packages"
-msgstr ""
+msgstr "Пакети"
 
 #: src/main_window/window.blp:83
-#, fuzzy
-#| msgid "No Remotes"
 msgid "Remotes"
-msgstr "Немає віддалених сховищ"
+msgstr "Репозиторії"
 
 #: src/main_window/window.blp:99 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
@@ -527,24 +457,18 @@ msgstr "Дані користувача"
 #: src/main_window/window.blp:114 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
 #: src/snapshot_page/snapshot_page.py:360
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Snapshots"
-msgstr "Немає снапшотів"
+msgstr "Знімки"
 
 #: src/main_window/window.blp:129 src/install_page/file_install_dialog.py:38
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
-#, fuzzy
-#| msgid "Installing"
 msgid "Install Packages"
-msgstr "Встановлюємо"
+msgstr "Встановити пакети"
 
 #: src/main_window/window.blp:161
-#, fuzzy
-#| msgid "Set Filters"
 msgid "_Open Files"
-msgstr "Встановити фільтри"
+msgstr "_Відкрити файли"
 
 #: src/main_window/window.blp:165
 msgid "_Keyboard Shortcuts"
@@ -556,73 +480,59 @@ msgstr "_Про Warehouse"
 
 #: src/main_window/window.py:139
 msgid "Unsupported Filetype"
-msgstr ""
+msgstr "Непідтримуваний тип файлу"
 
 #: src/main_window/window.py:140
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
-msgstr ""
+msgstr "Підтримуються лише файли .flatpak, .flatpakref та .flatpakrepo."
 
 #: src/main_window/window.py:148
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Mixed Filetypes"
-msgstr "Встановити фільтри"
+msgstr "Змішані типи файлів"
 
 #: src/main_window/window.py:149
 msgid "Flatpaks and remotes cannot be installed at the same time."
-msgstr ""
+msgstr "Flatpak та репозиторії не можна встановлювати одночасно."
 
 #: src/main_window/window.py:158
-#, fuzzy
-#| msgid "Too Many Results"
 msgid "Too Many Remotes"
-msgstr "Занадто багато результатів"
+msgstr "Занадто багато репозиторіїв"
 
 #: src/main_window/window.py:159
 msgid "Only one remote at a time is supported."
-msgstr ""
+msgstr "Підтримується лише один репозиторій одночасно."
 
 #: src/main_window/window.py:177
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open files"
-msgstr "Не вдалося відкрити теку"
+msgstr "Не вдалося відкрити файли"
 
 #: src/packages_page/filters_page.blp:5 src/packages_page/packages_page.blp:70
-#, fuzzy
-#| msgid "Filter List"
 msgid "Filter Packages"
-msgstr "Фільтрувати список"
+msgstr "Фільтрувати пакети"
 
 #: src/packages_page/filters_page.blp:20
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Filter by Package Type"
-msgstr "Фільтрувати додатки за віддаленими сховищами"
+msgstr "Фільтрувати за типом пакета"
 
 #: src/packages_page/filters_page.blp:21
 msgid "Show packages of these types"
-msgstr ""
+msgstr "Показати пакети цих типів"
 
 #: src/packages_page/filters_page.blp:23
-#, fuzzy
-#| msgid "Options"
 msgid "Applications"
-msgstr "Властивості"
+msgstr "Додатки"
 
 #: src/packages_page/filters_page.blp:24
 msgid "Packages that can be opened"
-msgstr ""
+msgstr "Пакети, які можна відкрити"
 
 #: src/packages_page/filters_page.blp:29
-#, fuzzy
-#| msgid "Runtime"
 msgid "Runtimes"
-msgstr "Середовище виконання більше не підтримується"
+msgstr "Середовища виконання"
 
 #: src/packages_page/filters_page.blp:30
 msgid "Packages that applications depend on"
-msgstr ""
+msgstr "Пакети, від яких залежать додатки"
 
 #: src/packages_page/filters_page.blp:37
 msgid "Filter by Remotes"
@@ -630,35 +540,33 @@ msgstr "Фільтрувати додатки за віддаленими схо
 
 #: src/packages_page/filters_page.blp:38
 msgid "Show packages from selected remotes"
-msgstr ""
+msgstr "Показати пакети з вибраних репозиторіїв"
 
 #: src/packages_page/filters_page.blp:52
 msgid "Showing packages from all remotes"
-msgstr ""
+msgstr "Показано пакети з усіх репозиторіїв"
 
 #: src/packages_page/filters_page.blp:58
 msgid "Enable to show packages from selected remotes"
-msgstr ""
+msgstr "Увімкніть, щоб показати пакети з вибраних репозиторіїв"
 
 #: src/packages_page/filters_page.blp:71
 msgid "Filter by Runtimes"
 msgstr "Фільтрувати додатки за середовищами виконання"
 
 #: src/packages_page/filters_page.blp:72
-#, fuzzy
-#| msgid "Show Apps Using This Runtime"
 msgid "Show apps using selected runtimes"
-msgstr "Показати додатки які використовують це середовище виконання"
+msgstr "Показати додатки, що використовують вибрані середовища виконання"
 
 #: src/packages_page/filters_page.blp:86
-#, fuzzy
-#| msgid "Show Apps Using This Runtime"
 msgid "Showing apps using any runtime"
-msgstr "Показати додатки які використовують це середовище виконання"
+msgstr "Показано додатки, що використовують будь-яке середовище виконання"
 
 #: src/packages_page/filters_page.blp:92
 msgid "Enable to show apps using selected runtimes"
 msgstr ""
+"Увімкніть, щоб показати додатки, що використовують вибрані середовища "
+"виконання"
 
 #: src/packages_page/filters_page.blp:113
 #: src/packages_page/packages_page.blp:97
@@ -668,48 +576,33 @@ msgstr "Скинути фільтри"
 #: src/packages_page/packages_page.blp:65
 #: src/packages_page/packages_page.blp:83 src/remotes_page/remotes_page.blp:30
 #: src/snapshot_page/snapshot_page.blp:35
-#, fuzzy
-#| msgid "Search List"
 msgid "Search Packages"
-msgstr "Шукати у списку"
+msgstr "Шукати пакети"
 
 #: src/packages_page/packages_page.blp:75
 #: src/snapshot_page/snapshot_page.blp:45
-#, fuzzy
-#| msgid "Select a Release"
 msgid "Select Packages"
-msgstr "Обрати реліз"
+msgstr "Вибрати пакети"
 
 #: src/packages_page/packages_page.blp:93
-#, fuzzy
-#| msgid "No Flatpaks Match Filters"
 msgid "No Packages Match Filters"
-msgstr "Не знайдено жодного Flatpak пакунку який відповідає параметрам пошуку"
+msgstr "Немає пакетів, що відповідають фільтрам"
 
 #: src/packages_page/packages_page.blp:94
-#, fuzzy
-#| msgid "No installed Flatpak matches all of the currently applied filters"
 msgid "No installed package matches all of the currently applied filters"
-msgstr ""
-"Не знайдено жодного Flatpak пакунку який відповідає поточним фільтрам пошуку"
+msgstr "Жоден встановлений пакет не відповідає всім поточним фільтрам"
 
 #: src/packages_page/packages_page.blp:104
-#, fuzzy
-#| msgid "No Flatpaks Found"
 msgid "No Packages Found"
-msgstr "Не знайдено жодного Flatpak пакунку"
+msgstr "Пакети не знайдено"
 
 #: src/packages_page/packages_page.blp:105
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed"
 msgid ""
 "Warehouse cannot see the list of installed packages or your system has no "
 "packages installed"
 msgstr ""
-"Warehouse не може побачити список установлених Flatpak пакунків або у "
-"системі немає встановлених Flatpak пакунків"
+"Warehouse не може побачити список встановлених пакетів або на вашій системі "
+"немає встановлених пакетів"
 
 #: src/packages_page/packages_page.blp:109
 #: src/remotes_page/remotes_page.blp:153 src/user_data_page/data_subpage.blp:68
@@ -722,10 +615,8 @@ msgstr "Не знайдено жодного результату"
 #: src/remotes_page/remotes_page.blp:154 src/user_data_page/data_subpage.blp:69
 #: src/snapshot_page/new_snapshot_dialog.blp:68
 #: src/snapshot_page/snapshot_page.blp:59
-#, fuzzy
-#| msgid "Try a different search term"
 msgid "Try a different search"
-msgstr "Спробуйте використати інші пошукові терміни"
+msgstr "Спробуйте інший пошук"
 
 #: src/packages_page/packages_page.blp:127
 #: src/user_data_page/user_data_page.blp:81
@@ -756,30 +647,24 @@ msgstr "Скопіювати референси"
 #: src/user_data_page/data_subpage.py:112
 #: src/snapshot_page/new_snapshot_dialog.py:42
 #: src/snapshot_page/snapshot_page.py:360
-#, fuzzy
-#| msgid "{} selected"
 msgid "{} Selected"
-msgstr "{} обрано"
+msgstr "{} Обрано"
 
 #: src/packages_page/packages_page.py:197
 msgid "Error getting Flatpak '{}'"
-msgstr ""
+msgstr "Помилка при отриманні Flatpak '{}'"
 
 #: src/packages_page/packages_page.py:246
-#, fuzzy
-#| msgid "Name"
 msgid "Names"
-msgstr "Назва"
+msgstr "Назви"
 
 #: src/packages_page/packages_page.py:249
 msgid "IDs"
-msgstr ""
+msgstr "Ідентифікатори"
 
 #: src/packages_page/packages_page.py:252
-#, fuzzy
-#| msgid "Copy Refs"
 msgid "Refs"
-msgstr "Скопіювати референси"
+msgstr "Посилання"
 
 #: src/packages_page/packages_page.py:260
 #: src/properties_page/properties_page.py:278
@@ -787,26 +672,20 @@ msgid "Copied {}"
 msgstr "Скопійовано {}"
 
 #: src/packages_page/packages_page.py:262
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not copy {}"
-msgstr "Не вдалося додати {}"
+msgstr "Не вдалося скопіювати {}"
 
 #: src/packages_page/packages_page.py:313
 msgid "Errors occurred while uninstalling"
-msgstr ""
+msgstr "Під час видалення виникли помилки"
 
 #: src/packages_page/packages_page.py:315
-#, fuzzy
-#| msgid "Uninstalled successfully"
 msgid "Uninstalled Packages"
-msgstr "Успішно видалено"
+msgstr "Видалені пакети"
 
 #: src/packages_page/packages_page.py:373
-#, fuzzy
-#| msgid "Loading Flatpaks"
 msgid "Loading Packages"
-msgstr "Завантажуємо Flatpak пакунки"
+msgstr "Завантаження пакетів"
 
 #: src/packages_page/packages_page.py:373
 #: src/packages_page/packages_page.py:374
@@ -819,16 +698,12 @@ msgid "This should only take a moment"
 msgstr "Це не займе багато часу"
 
 #: src/packages_page/packages_page.py:374
-#, fuzzy
-#| msgid "Uninstalling"
 msgid "Uninstalling Packages"
-msgstr "Видаляємо"
+msgstr "Видалення пакетів"
 
 #: src/packages_page/packages_page.py:376
-#, fuzzy
-#| msgid "Uninstalling"
 msgid "Reinstalling Package"
-msgstr "Видаляємо"
+msgstr "Перевстановлення пакета"
 
 #: src/packages_page/packages_page.py:376
 #: src/packages_page/packages_page.py:378
@@ -838,20 +713,16 @@ msgid "This could take a while"
 msgstr "Це може зайняти певний час"
 
 #: src/packages_page/packages_page.py:378
-#, fuzzy
-#| msgid "Version"
 msgid "Changing Version"
-msgstr "Версія"
+msgstr "Зміна версії"
 
 #: src/packages_page/uninstall_dialog.blp:8
 msgid "Keep"
 msgstr "Зберегти"
 
 #: src/packages_page/uninstall_dialog.blp:9
-#, fuzzy
-#| msgid "Allow restoring this app's settings and content"
 msgid "Allows restoring app settings and content"
-msgstr "Дозволити відновлення налаштувань та вмісту цього додатку"
+msgstr "Дозволяє відновити налаштування додатків та вміст"
 
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
@@ -862,46 +733,36 @@ msgid "Trash"
 msgstr "Видалити"
 
 #: src/packages_page/uninstall_dialog.blp:18
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
 msgid "Send data to the trash"
-msgstr "Відправити дані користувача додатку {} у Смітник?"
+msgstr "Відправити дані до смітника"
 
 #: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall {}?"
 msgstr "Видалити {}?"
 
 #: src/packages_page/uninstall_dialog.py:35
-#, fuzzy
-#| msgid "It will not be possible to use {} after removal."
 msgid "It will not be possible to use {} after removal"
-msgstr "Неможливо буде використовувати {} після видалення."
+msgstr "Після видалення використання {} буде неможливим"
 
 #: src/packages_page/uninstall_dialog.py:37
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstall Packages?"
-msgstr "Видалити {}?"
+msgstr "Видалити пакети?"
 
 #: src/packages_page/uninstall_dialog.py:38
-#, fuzzy
-#| msgid "It will not be possible to use these apps after removal."
 msgid "It will not be possible to use these packages after removal"
-msgstr "Неможливо буде використовувати ці додатки після їхнього видалення."
+msgstr "Після видалення ці пакети не будуть доступні для використання"
 
 #: src/packages_page/uninstall_dialog.py:45
-#, fuzzy
-#| msgid "App Settings & Data"
 msgid "App Settings & Content"
-msgstr "Налаштування та дані додатку"
+msgstr "Налаштування додатків та вміст"
 
 #: src/properties_page/properties_page.blp:19
 msgid "Properties Page Unavailable"
-msgstr ""
+msgstr "Сторінка властивостей недоступна"
 
 #: src/properties_page/properties_page.blp:20
 msgid "Cannot show the properties page at this time"
-msgstr ""
+msgstr "Не вдалося показати сторінку властивостей на даний момент"
 
 #: src/properties_page/properties_page.blp:83
 msgid "Open"
@@ -909,10 +770,8 @@ msgstr "Відкрити"
 
 #: src/properties_page/properties_page.blp:122
 #: src/user_data_page/data_box.blp:62
-#, fuzzy
-#| msgid "Open User Data Folder"
 msgid "Open User Data"
-msgstr "Відкрити таку з даними користувача"
+msgstr "Відкрити дані користувача"
 
 #: src/properties_page/properties_page.blp:130
 #: src/user_data_page/data_box.blp:73
@@ -934,18 +793,16 @@ msgstr "Вимкнути оновлення"
 
 #: src/properties_page/properties_page.blp:148
 msgid "Mask this package so it's never updated"
-msgstr ""
+msgstr "Сховати цей пакет, щоб він ніколи не оновлювався"
 
 #: src/properties_page/properties_page.blp:157
 #: src/change_version_page/change_version_page.blp:23
-#, fuzzy
-#| msgid "Version"
 msgid "Change Version"
-msgstr "Версія"
+msgstr "Змінити версію"
 
 #: src/properties_page/properties_page.blp:158
 msgid "Upgrade or downgrade this package"
-msgstr ""
+msgstr "Оновити або знизити версію цього пакета"
 
 #: src/properties_page/properties_page.blp:167
 msgid "Installed Size"
@@ -956,26 +813,24 @@ msgid "Runtime"
 msgstr "Середовище виконання більше не підтримується"
 
 #: src/properties_page/properties_page.blp:188
-#, fuzzy
-#| msgid "Disable Auto Removal"
 msgid "Disable Automatic Removal"
 msgstr "Вимкнути автоматичне видалення"
 
 #: src/properties_page/properties_page.blp:189
 msgid "Pin this runtime to keep it installed"
-msgstr ""
+msgstr "Закріпіть це середовище виконання, щоб зберегти його встановленим"
 
 #: src/properties_page/properties_page.blp:200
 msgid "Package Information"
-msgstr ""
+msgstr "Інформація про пакет"
 
 #: src/properties_page/properties_page.blp:203
 msgid "Application ID"
-msgstr ""
+msgstr "Ідентифікатор додатка"
 
 #: src/properties_page/properties_page.blp:219
 msgid "Architecture"
-msgstr ""
+msgstr "Архітектура"
 
 #: src/properties_page/properties_page.blp:227
 msgid "Branch"
@@ -983,13 +838,11 @@ msgstr "Гілка"
 
 #: src/properties_page/properties_page.blp:235
 msgid "License"
-msgstr ""
+msgstr "Ліцензія"
 
 #: src/properties_page/properties_page.blp:244
-#, fuzzy
-#| msgid "Installation"
 msgid "Installation Information"
-msgstr "Встановлення"
+msgstr "Інформація про установку"
 
 #: src/properties_page/properties_page.blp:255
 msgid "Origin"
@@ -997,7 +850,7 @@ msgstr "Походження"
 
 #: src/properties_page/properties_page.blp:263
 msgid "Collection"
-msgstr ""
+msgstr "Колекція"
 
 #: src/properties_page/properties_page.blp:271
 msgid "Installation"
@@ -1005,25 +858,23 @@ msgstr "Встановлення"
 
 #: src/properties_page/properties_page.blp:279
 msgid "Commit Information"
-msgstr ""
+msgstr "Інформація про коміт"
 
 #: src/properties_page/properties_page.blp:290
 msgid "Parent"
-msgstr ""
+msgstr "Батьківський пакет"
 
 #: src/properties_page/properties_page.blp:298
 msgid "Subject"
-msgstr ""
+msgstr "Суб'єкт"
 
 #: src/properties_page/properties_page.blp:306
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #: src/properties_page/properties_page.py:79
-#, fuzzy
-#| msgid "Properties"
 msgid "{} Properties"
-msgstr "Властивості"
+msgstr "{} Властивості"
 
 #: src/properties_page/properties_page.py:84
 msgid "Properties"
@@ -1041,20 +892,16 @@ msgstr "Немає даних користувача"
 
 #: src/properties_page/properties_page.py:133
 #: src/properties_page/properties_page.py:149
-#, fuzzy
-#| msgid "Could not show properties"
 msgid "Could not get properties"
-msgstr "Не вдалося показати властивості"
+msgstr "Не вдалося отримати властивості"
 
 #: src/properties_page/properties_page.py:146
 msgid "No version information found"
-msgstr ""
+msgstr "Інформація про версію не знайдена"
 
 #: src/properties_page/properties_page.py:166
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open data"
-msgstr "Не вдалося відкрити теку"
+msgstr "Не вдалося відкрити дані"
 
 #: src/properties_page/properties_page.py:185
 #: src/properties_page/properties_page.py:187
@@ -1062,163 +909,122 @@ msgstr "Не вдалося відкрити теку"
 #: src/properties_page/properties_page.py:246
 #: src/user_data_page/data_box.py:104 src/user_data_page/user_data_page.py:187
 #: src/user_data_page/user_data_page.py:201
-#, fuzzy
-#| msgid "Could not trash user data"
 msgid "Could not trash data"
-msgstr "Не вдалося видалити дані користувача"
+msgstr "Не вдалося видалити дані"
 
 #: src/properties_page/properties_page.py:190
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Відправити дані користувача додатку {} у Смітник?"
 
 #: src/properties_page/properties_page.py:191
-#, fuzzy
-#| msgid "Your files and data for this app will be sent to the trash."
 msgid "Your settings and data for this app will be sent to the trash"
-msgstr "Ваші файли та дані для цього додатку будуть відправлені у Смітник."
+msgstr ""
+"Ваші налаштування та дані для цієї програми будуть відправлені в Смітник"
 
 #: src/properties_page/properties_page.py:194
 msgid "Trash Data"
 msgstr "В Смітник"
 
 #: src/properties_page/properties_page.py:204
-#, fuzzy
-#| msgid "Could not disable updates for {}"
 msgid "Could not Disable Updates"
-msgstr "Не вдалося вимкнути оновлення для {}"
+msgstr "Не вдалося вимкнути оновлення"
 
 #: src/properties_page/properties_page.py:204
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not Enable Updates"
-msgstr "Не вдалося вправитися з даними"
+msgstr "Не вдалося увімкнути оновлення"
 
 #: src/properties_page/properties_page.py:210
-#, fuzzy
-#| msgid "Disable Updates"
 msgid "Disabled Updates"
-msgstr "Вимкнути оновлення"
+msgstr "Вимкнуті оновлення"
 
 #: src/properties_page/properties_page.py:210
-#, fuzzy
-#| msgid "Enable Updates"
 msgid "Enabled Updates"
-msgstr "Ввімкнути оновлення"
+msgstr "Ввімкнуті оновлення"
 
 #: src/properties_page/properties_page.py:223
-#, fuzzy
-#| msgid "Could not disable auto removal"
 msgid "Could not Disable Autoremoval"
-msgstr "Не вдалося вимкнути автоматичне видалення"
+msgstr "Не вдалося вимкнути автовидалення"
 
 #: src/properties_page/properties_page.py:223
-#, fuzzy
-#| msgid "Could not enable auto removal"
 msgid "Could not Enable Autoremoval"
-msgstr "Не вдалося ввімкнути автоматичне вмдалення"
+msgstr "Не вдалося ввімкнути автовидалення"
 
 #: src/properties_page/properties_page.py:228
-#, fuzzy
-#| msgid "Disable Auto Removal"
 msgid "Disabled Autoremoval"
-msgstr "Вимкнути автоматичне видалення"
+msgstr "Автовидалення вимкнено"
 
 #: src/properties_page/properties_page.py:228
-#, fuzzy
-#| msgid "Enable Auto Removal"
 msgid "Enabled Autoremoval"
-msgstr "Ввімкнути автоматичне видалення"
+msgstr "Ввімкнено автовидалення"
 
 #: src/properties_page/properties_page.py:251
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not uninstall"
-msgstr "Не вдалося встановити додаток"
+msgstr "Не вдалося видалити"
 
 #: src/properties_page/properties_page.py:255
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstalled {}"
-msgstr "Видалити {}?"
+msgstr "Видалено {}"
 
 #: src/properties_page/properties_page.py:267
-#, fuzzy
-#| msgid "Opened {}"
 msgid "Opening {}…"
-msgstr "Відкрито {}"
+msgstr "Відкриваємо {}…"
 
 #: src/properties_page/properties_page.py:272
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not open {}"
-msgstr "Не вдається видалити {}"
+msgstr "Не вдалося відкрити {}"
 
 #: src/properties_page/properties_page.py:287
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstalled {}"
-msgstr "Видалити {}?"
+msgstr "Перевстановлено {}"
 
 #: src/properties_page/properties_page.py:315
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstall {}?"
-msgstr "Видалити {}?"
+msgstr "Перевстановити {}?"
 
 #: src/properties_page/properties_page.py:316
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
 msgstr ""
+"Цей пакет буде видалений, а потім перевстановлений з того ж віддаленого "
+"джерела та інсталяції."
 
 #: src/properties_page/properties_page.py:319
 #: src/properties_page/properties_page.py:377
-#, fuzzy
-#| msgid "Uninstall"
 msgid "Reinstall"
-msgstr "Видалити"
+msgstr "Перевстановити"
 
 #: src/properties_page/properties_page.py:336
 msgid "Copied launch command"
 msgstr "Скопійовано параметри запуску"
 
 #: src/properties_page/properties_page.py:338
-#, fuzzy
-#| msgid "Copied launch command"
 msgid "Could not copy launch command"
-msgstr "Скопійовано параметри запуску"
+msgstr "Не вдалося скопіювати команду запуску"
 
 #: src/properties_page/properties_page.py:344
 msgid "Could not show details"
 msgstr "Не вдалося показати подробиці"
 
 #: src/properties_page/properties_page.py:371
-#, fuzzy
-#| msgid "View Properties"
 msgid "Loading Properties"
-msgstr "Переглянути властивості"
+msgstr "Завантаження властивостей"
 
 #: src/properties_page/properties_page.py:374
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "View Snapshots"
-msgstr "Новий снапшот"
+msgstr "Переглянути знімки"
 
 #: src/properties_page/properties_page.py:375
 msgid "Copy Launch Command"
 msgstr "Скопіювати параметри запуску"
 
 #: src/properties_page/properties_page.py:376
-#, fuzzy
-#| msgid "Show Details in Store"
 msgid "Show Details"
-msgstr "Показати подробиці у 'Програми'"
+msgstr "Показати деталі"
 
 #: src/change_version_page/change_version_page.blp:5
-#, fuzzy
-#| msgid "Version"
 msgid "Change Versions"
-msgstr "Версія"
+msgstr "Змінити версії"
 
 #: src/change_version_page/change_version_page.blp:56
 msgid "Select a Release"
@@ -1234,23 +1040,19 @@ msgstr ""
 
 #: src/change_version_page/change_version_page.py:75
 msgid "Currently Installed Version"
-msgstr ""
+msgstr "Наразі встановлена версія"
 
 #: src/change_version_page/change_version_page.py:92
-#, fuzzy
-#| msgid "Could not create snapshot"
 msgid "Could not get versions"
-msgstr "Не вдалося створити снапшот"
+msgstr "Не вдалося отримати версії"
 
 #: src/change_version_page/change_version_page.py:99
 msgid "Changed {}'s Version"
-msgstr ""
+msgstr "Змінено версію {}"
 
 #: src/change_version_page/change_version_page.py:124
-#, fuzzy
-#| msgid "Version"
 msgid "{} Versions"
-msgstr "Версія"
+msgstr "{} Версії"
 
 #: src/change_version_page/change_version_page.py:125
 msgid "Ensure that {} will never be updated to a newer version"
@@ -1264,29 +1066,23 @@ msgstr "Отримуємо дані про випуски"
 #: src/change_version_page/change_version_worker.py:80
 #: src/change_version_page/change_version_worker.py:84
 msgid "Error occurred while changing version"
-msgstr ""
+msgstr "Сталася помилка під час зміни версії"
 
 #: src/change_version_page/change_version_worker.py:95
-#, fuzzy
-#| msgid "Could not create snapshot"
 msgid "Could not cancel version change"
-msgstr "Не вдалося створити снапшот"
+msgstr "Не вдалося скасувати зміну версії"
 
 #: src/change_version_page/change_version_worker.py:116
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not change version"
-msgstr "Не вдалося вправитися з даними"
+msgstr "Не вдалося змінити версію"
 
 #: src/change_version_page/change_version_worker.py:116
 msgid "Another package is changing version."
-msgstr ""
+msgstr "Інший пакет змінює версію."
 
 #: src/remotes_page/add_remote_dialog.blp:5 src/install_page/select_page.blp:27
-#, fuzzy
-#| msgid "Add Remote"
 msgid "Add a Remote"
-msgstr "Додати віддалене сховище"
+msgstr "Додати репозиторій"
 
 #: src/remotes_page/add_remote_dialog.blp:22
 msgid "Add"
@@ -1294,7 +1090,7 @@ msgstr "Додати"
 
 #: src/remotes_page/add_remote_dialog.blp:40
 msgid "Title"
-msgstr ""
+msgstr "Заголовок"
 
 #: src/remotes_page/add_remote_dialog.blp:43
 #: src/user_data_page/user_data_page.blp:190
@@ -1303,44 +1099,32 @@ msgstr "Назва"
 
 #: src/remotes_page/add_remote_dialog.blp:46
 msgid "Repo URL"
-msgstr ""
+msgstr "Репо URL"
 
 #: src/remotes_page/add_remote_dialog.py:61
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not add remote"
-msgstr "Не вдалося додати {}"
+msgstr "Не вдалося додати репозиторій"
 
 #: src/remotes_page/add_remote_dialog.py:64
-#, fuzzy
-#| msgid "Add {}?"
 msgid "Added {}"
-msgstr "Додати {}?"
+msgstr "Додано {}"
 
 #. Apply
 #: src/remotes_page/add_remote_dialog.py:114
-#, fuzzy
-#| msgid "Add Remote"
 msgid "remote"
-msgstr "Додати віддалене сховище"
+msgstr "репозиторій"
 
 #: src/remotes_page/remote_row.blp:21
-#, fuzzy
-#| msgid "View apps from this remote"
 msgid "Set a Filter for this Remote"
-msgstr "Переглянути додатки із цього віддаленого сховища"
+msgstr "Встановіть фільтр для цього репозиторію"
 
 #: src/remotes_page/remote_row.blp:29
-#, fuzzy
-#| msgid "More Functions"
 msgid "More Actions"
-msgstr "Більше функцій"
+msgstr "Більше дій"
 
 #: src/remotes_page/remote_row.blp:37
-#, fuzzy
-#| msgid "Copy Ref"
 msgid "Copy Title"
-msgstr "Скопіювати референс"
+msgstr "Копіювати заголовок"
 
 #: src/remotes_page/remote_row.blp:41
 msgid "Copy Name"
@@ -1359,43 +1143,33 @@ msgid "Remove"
 msgstr "Видалити"
 
 #: src/remotes_page/remote_row.py:28 src/remotes_page/remote_row.py:49
-#, fuzzy
-#| msgid "Could not enable {}"
 msgid "Could not enable remote"
-msgstr "Не вдалося ввімкнути {}"
+msgstr "Не вдалося увімкнути репозиторій"
 
 #: src/remotes_page/remote_row.py:28
 msgid "Remote is already enabled"
-msgstr ""
+msgstr "Репозиторій вже увімкнено"
 
 #: src/remotes_page/remote_row.py:56
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Enabled remote"
-msgstr "Встановлені віддалені сховища"
+msgstr "Репозиторій увімкнено"
 
 #: src/remotes_page/remote_row.py:80 src/remotes_page/remote_row.py:160
-#, fuzzy
-#| msgid "Updates Disabled"
 msgid "Remote is Disabled"
-msgstr "Оновлення вимкнені"
+msgstr "Репозиторій вимкнено"
 
 #: src/remotes_page/remote_row.py:82
-#, fuzzy
-#| msgid "Disabled"
 msgid "Disabled remote"
-msgstr "Вимкнено"
+msgstr "Репозиторій вимкнений"
 
 #: src/remotes_page/remote_row.py:100 src/remotes_page/remote_row.py:112
 #: src/remotes_page/remote_row.py:116
-#, fuzzy
-#| msgid "Could not disable {}"
 msgid "Could not disable remote"
-msgstr "Не вдалося вимкнути {}"
+msgstr "Не вдалося вимкнути репозиторій"
 
 #: src/remotes_page/remote_row.py:100
 msgid "Remote is already disabled"
-msgstr ""
+msgstr "Репозиторій вже вимкнено"
 
 #: src/remotes_page/remote_row.py:127
 msgid "Disable {}?"
@@ -1407,10 +1181,8 @@ msgstr ""
 "Усі додатки які встановлені із {} більше не будуть отримувати жодних оновлень"
 
 #: src/remotes_page/remote_row.py:140
-#, fuzzy
-#| msgid "Copied ref"
 msgid "Copied title"
-msgstr "Скопійовано референс"
+msgstr "Заголовок скопійовано"
 
 #: src/remotes_page/remote_row.py:143
 msgid "Copied name"
@@ -1421,61 +1193,46 @@ msgid "Manage Remotes"
 msgstr "Керувати віддаленими сховищами"
 
 #: src/remotes_page/remotes_page.blp:40
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Search Remotes"
-msgstr "Фільтрувати додатки за віддаленими сховищами"
+msgstr "Шукати репозиторії"
 
 #: src/remotes_page/remotes_page.blp:47
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Current Remotes"
-msgstr "Встановлені віддалені сховища"
+msgstr "Поточні репозиторії"
 
 #: src/remotes_page/remotes_page.blp:48
-#, fuzzy
-#| msgid "Remote will be available to every user on the system"
 msgid "Remotes available on your system"
-msgstr "Віддалене сховище буде доступно кожному користувачу у цій системі"
+msgstr "Репозиторії, доступні на вашій системі"
 
 #: src/remotes_page/remotes_page.blp:55
 msgid "Show Disabled"
 msgstr "Показати вимкнені"
 
 #: src/remotes_page/remotes_page.blp:75
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "No Enabled Remotes"
-msgstr "Встановлені віддалені сховища"
+msgstr "Немає увімкнених репозиторіїв"
 
 #: src/remotes_page/remotes_page.blp:81
 msgid "You only have disabled remotes on this system"
-msgstr ""
+msgstr "У вас є лише вимкнені репозиторії на цій системі"
 
 #: src/remotes_page/remotes_page.blp:107
 msgid "No Remotes Found"
 msgstr "Не знайдено жодного віддаленого сховища"
 
 #: src/remotes_page/remotes_page.blp:113
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of remotes or the system has no remotes "
-#| "added"
 msgid ""
 "Warehouse cannot see the current remotes or your system has no remotes added"
 msgstr ""
-"Warehouse не може побачити список віддалених сховищ або в системі не "
-"встановлено жодних віддалених сховищ"
+"Warehouse не може побачити поточні репозиторії, або ваша система не має їх"
 
 #: src/remotes_page/remotes_page.blp:126
-#, fuzzy
-#| msgid "Add a Popular Remote"
 msgid "Add Popular Remotes"
-msgstr "Додати популярне віддалене сховище"
+msgstr "Додати популярні репозиторії"
 
 #: src/remotes_page/remotes_page.blp:127
 msgid "Add new remotes to get more software"
-msgstr ""
+msgstr "Додайте нові репозиторії, щоб отримати більше програмного забезпечення"
 
 #: src/remotes_page/remotes_page.blp:131
 msgid "Add Other Remotes"
@@ -1487,7 +1244,7 @@ msgstr "Додати файл репозиторію"
 
 #: src/remotes_page/remotes_page.blp:135
 msgid "Open a downloaded repo file to add"
-msgstr ""
+msgstr "Відкрийте завантажений файл репозиторію, щоб додати його"
 
 #: src/remotes_page/remotes_page.blp:143
 msgid "Add a Custom Remote"
@@ -1495,7 +1252,7 @@ msgstr "Додати власне віддалене сховище"
 
 #: src/remotes_page/remotes_page.blp:144
 msgid "Manually enter new remote details"
-msgstr ""
+msgstr "Введіть деталі нового репозиторію вручну"
 
 #: src/remotes_page/remotes_page.py:36
 msgid "The open source, pay-what-you-want app store from elementary"
@@ -1525,19 +1282,15 @@ msgstr "Центральний репозиторій розробників Web
 
 #: src/remotes_page/remotes_page.py:156
 msgid "Showing all packages from {}"
-msgstr ""
+msgstr "Показано всі пакети з {}"
 
 #: src/remotes_page/remotes_page.py:178
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not remove remote"
-msgstr "Не вдається видалити {}"
+msgstr "Не вдалося видалити репозиторій"
 
 #: src/remotes_page/remotes_page.py:185
-#, fuzzy
-#| msgid "Remove {}"
 msgid "Removed {}"
-msgstr "Видалити {}"
+msgstr "Видалено {}"
 
 #: src/remotes_page/remotes_page.py:194
 msgid "Remove {}?"
@@ -1545,10 +1298,8 @@ msgstr "Видалити {}?"
 
 #: src/remotes_page/remotes_page.py:231 src/remotes_page/remotes_page.py:241
 #: src/remotes_page/remotes_page.py:243
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open file"
-msgstr "Не вдалося відкрити теку"
+msgstr "Не вдалося відкрити файл"
 
 #: src/remotes_page/remotes_page.py:246
 msgid "Flatpak Repos"
@@ -1560,38 +1311,28 @@ msgid "Adding Remote"
 msgstr "Додаємо віддалене сховище"
 
 #: src/remotes_page/remotes_page.py:295
-#, fuzzy
-#| msgid "Adding Remote"
 msgid "Loading Remotes"
-msgstr "Додаємо віддалене сховище"
+msgstr "Завантаження репозиторіїв"
 
 #: src/user_data_page/data_box.blp:56
-#, fuzzy
-#| msgid "Copy Name"
 msgid "Copy Path"
-msgstr "Скопіювати назву"
+msgstr "Копіювати шлях"
 
 #: src/user_data_page/data_box.blp:68
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "Attempt to Install"
-msgstr "Спробувати встановити?"
+msgstr "Спроба встановити"
 
 #: src/user_data_page/data_box.py:62
 msgid "Copied data path"
-msgstr ""
+msgstr "Шлях до даних скопійовано"
 
 #: src/user_data_page/data_box.py:64
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not copy data path"
-msgstr "Не вдалося вправитися з даними"
+msgstr "Не вдалося скопіювати шлях до даних"
 
 #: src/user_data_page/data_box.py:69
-#, fuzzy
-#| msgid "Open Data Folder"
 msgid "Opened data folder"
-msgstr "Відкрити теку даних"
+msgstr "Відкрито папку з даними"
 
 #: src/user_data_page/data_box.py:71 src/snapshot_page/snapshot_page.py:258
 #: src/snapshot_page/snapshots_list_page.py:81
