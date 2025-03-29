@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2025-03-28 20:46+0000\n"
+"PO-Revision-Date: 2025-03-30 09:46+0000\n"
 "Last-Translator: Simon <orisim@proton.me>\n"
 "Language-Team: Ukrainian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/uk/>\n"
@@ -1332,7 +1332,7 @@ msgstr "Не вдалося скопіювати шлях до даних"
 
 #: src/user_data_page/data_box.py:69
 msgid "Opened data folder"
-msgstr "Відкрито папку з даними"
+msgstr "Відкрито теку з даними"
 
 #: src/user_data_page/data_box.py:71 src/snapshot_page/snapshot_page.py:258
 #: src/snapshot_page/snapshots_list_page.py:81
@@ -1340,16 +1340,12 @@ msgid "Could not open folder"
 msgstr "Не вдалося відкрити теку"
 
 #: src/user_data_page/data_box.py:118
-#, fuzzy
-#| msgid "Trash User Data"
 msgid "Trash {}'s Data?"
-msgstr "Відправити дані користувача у Смітник"
+msgstr "Видалити дані з {}?"
 
 #: src/user_data_page/data_box.py:118
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "{}'s data will be sent to the trash"
-msgstr "Ця тека буде відправлена в Смітник."
+msgstr "Дані {} будуть відправлені в смітник"
 
 #: src/user_data_page/data_box.py:120 src/user_data_page/user_data_page.py:214
 #: src/snapshot_page/snapshot_page.py:485
@@ -1358,31 +1354,23 @@ msgstr "Продовжити"
 
 #: src/user_data_page/data_subpage.blp:13
 msgid "No Title Set"
-msgstr ""
+msgstr "Не встановлено заголовок"
 
 #: src/user_data_page/data_subpage.blp:28
-#, fuzzy
-#| msgid "Downgrading…"
 msgid "Loading Size…"
-msgstr "Даунгрейдинг…"
+msgstr "Розмір завантаження…"
 
 #: src/user_data_page/data_subpage.py:257
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "No Active Data"
-msgstr "Немає залишків даних"
+msgstr "Немає активних даних"
 
 #: src/user_data_page/data_subpage.py:258
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of remotes or the system has no remotes "
-#| "added"
 msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
 msgstr ""
-"Warehouse не може побачити список віддалених сховищ або в системі не "
-"встановлено жодних віддалених сховищ"
+"Warehouse не може побачити жодних активних даних користувача, або ваша "
+"система не має активних даних користувача"
 
 #: src/user_data_page/data_subpage.py:261
 msgid "No Leftover Data"
@@ -1394,153 +1382,117 @@ msgstr "Немає залишків даних користувача"
 
 #: src/user_data_page/user_data_page.blp:43
 #: src/user_data_page/user_data_page.blp:64
-#, fuzzy
-#| msgid "Trash User Data"
 msgid "Search User Data"
-msgstr "Відправити дані користувача у Смітник"
+msgstr "Шукати дані користувача"
 
 #: src/user_data_page/user_data_page.blp:49
-#, fuzzy
-#| msgid "No User Data"
 msgid "Sort User Data"
-msgstr "Немає даних користувача"
+msgstr "Сортувати дані користувача"
 
 #: src/user_data_page/user_data_page.blp:54
-#, fuzzy
-#| msgid "User Data"
 msgid "Select User Data"
-msgstr "Дані користувача"
+msgstr "Вибрати дані користувача"
 
 #: src/user_data_page/user_data_page.blp:120
 #: src/snapshot_page/snapshot_page.blp:159
-#, fuzzy
-#| msgid "View More"
 msgid "More"
-msgstr "Переглянути більше"
+msgstr "Більше"
 
 #: src/user_data_page/user_data_page.blp:169
 msgid "Ascending"
-msgstr ""
+msgstr "По зростанню"
 
 #: src/user_data_page/user_data_page.blp:177
 msgid "Descending"
-msgstr ""
+msgstr "По спаданню"
 
 #: src/user_data_page/user_data_page.blp:198
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: src/user_data_page/user_data_page.blp:206
 msgid "Size"
-msgstr ""
+msgstr "Розмір"
 
 #: src/user_data_page/user_data_page.py:79
 #: src/user_data_page/user_data_page.py:81
-#, fuzzy
-#| msgid "Loading User Data"
 msgid "Loading Size"
-msgstr "Завантажуємо дані користувача"
+msgstr "Розмір завантаження"
 
 #: src/user_data_page/user_data_page.py:155
-#, fuzzy
-#| msgid "Could not apply snapshot"
 msgid "Could not copy paths"
-msgstr "Не вдалося застосувати снапшот"
+msgstr "Не вдалося скопіювати шляхи"
 
 #: src/user_data_page/user_data_page.py:155
 #: src/user_data_page/user_data_page.py:201
 msgid "No boxes were selected"
-msgstr ""
+msgstr "Жодна коробка не була вибрана"
 
 #: src/user_data_page/user_data_page.py:158
-#, fuzzy
-#| msgid "Copied name"
 msgid "Copied paths"
-msgstr "Скопійовано назву"
+msgstr "Скопійовані шляхи"
 
 #: src/user_data_page/user_data_page.py:189
-#, fuzzy
-#| msgid "Trashed user data"
 msgid "Trashed data"
-msgstr "Дані користувача у Смітнику"
+msgstr "Дані викинуті в смітник"
 
 #: src/user_data_page/user_data_page.py:212
-#, fuzzy
-#| msgid "Trash Data"
 msgid "Trash Data?"
-msgstr "В Смітник"
+msgstr "Викинути дані?"
 
 #: src/user_data_page/user_data_page.py:212
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "Data will be sent to the trash"
-msgstr "Ця тека буде відправлена в Смітник."
+msgstr "Дані будуть відправлені в смітник"
 
 #: src/user_data_page/user_data_page.py:250
 #: src/user_data_page/user_data_page.py:273
-#, fuzzy
-#| msgid "Active Commit"
 msgid "Active Data"
-msgstr "Активний коміт"
+msgstr "Активні дані"
 
 #: src/user_data_page/user_data_page.py:251
 #: src/user_data_page/user_data_page.py:279
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Leftover Data"
-msgstr "Немає залишків даних"
+msgstr "Залишкові дані"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
-#, fuzzy
-#| msgid "Search List"
 msgid "Search Apps"
-msgstr "Шукати у списку"
+msgstr "Шукати додатки"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
 msgstr "Створити"
 
 #: src/snapshot_page/new_snapshot_dialog.py:114
-#, fuzzy
-#| msgid "Creating Snapshots"
 msgid "Creating Snapshot"
-msgstr "Створюємо снапшоти"
+msgstr "Створення знімка"
 
 #: src/snapshot_page/new_snapshot_dialog.py:196
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Name these Snapshots"
-msgstr "Створити снапшоти"
+msgstr "Назвіть ці знімки"
 
 #: src/snapshot_page/new_snapshot_dialog.py:200
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
-msgstr "Новий снапшот"
+msgstr "Новий знімок"
 
 #: src/snapshot_page/new_snapshot_dialog.py:204
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "Name this Snapshot"
-msgstr "Новий снапшот"
+msgstr "Назвати цей знімок"
 
 #: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:62
 msgid "No Name Set"
 msgstr "Назва не встановлена"
 
 #: src/snapshot_page/snapshot_box.blp:23
-#, fuzzy
-#| msgid "No Remotes Found"
 msgid "No date found"
-msgstr "Не знайдено жодного віддаленого сховища"
+msgstr "Дата не знайдена"
 
 #: src/snapshot_page/snapshot_box.blp:30
-#, fuzzy
-#| msgid "No Results Found"
 msgid "No version found"
-msgstr "Не знайдено жодного результату"
+msgstr "Версія не знайдена"
 
 #: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:160
 msgid "Apply"
@@ -1548,152 +1500,113 @@ msgstr "Застосувати"
 
 #: src/snapshot_page/snapshot_box.blp:55
 msgid "Rename"
-msgstr ""
+msgstr "Перейменувати"
 
 #: src/snapshot_page/snapshot_box.blp:84
-#, fuzzy
-#| msgid "Create Snapshots?"
 msgid "Rename Snapshot?"
-msgstr "Створити снапшоти?"
+msgstr "Перейменувати знімок?"
 
 #: src/snapshot_page/snapshot_box.blp:94
-#, fuzzy
-#| msgid "Copied name"
 msgid "Confirm Rename"
-msgstr "Скопійовано назву"
+msgstr "Підтвердити перейменування"
 
 #: src/snapshot_page/snapshot_box.py:37 src/snapshot_page/snapshot_box.py:49
 #: src/snapshot_page/snapshot_box.py:65
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not write data"
-msgstr "Не вдалося вправитися з даними"
+msgstr "Не вдалося записати дані"
 
 #: src/snapshot_page/snapshot_box.py:102
 msgid "Could not trash snapshot"
-msgstr "Не вдалося видалити снапшот"
+msgstr "Не вдалося видалити знімок"
 
 #: src/snapshot_page/snapshot_box.py:106
-#, fuzzy
-#| msgid "Trash Snapshot"
 msgid "Trashed snapshot"
-msgstr "Видалити снапшот"
+msgstr "Знімок відправлений у смітник"
 
 #: src/snapshot_page/snapshot_box.py:116
 msgid "Trash Snapshot?"
-msgstr "Видалити снапшот?"
+msgstr "Викинути знімок?"
 
 #: src/snapshot_page/snapshot_box.py:116
-#, fuzzy
-#| msgid "This snapshot and its contents will be sent to the trash."
 msgid "This snapshot will be sent to the trash"
-msgstr "Цей снапшот та його вміст будуть надіслані до 'Смітник'."
+msgstr "Цей знімок буде відправлений у смітник"
 
 #: src/snapshot_page/snapshot_box.py:146
-#, fuzzy
-#| msgid "Applying Snapshot…"
 msgid "Applying Snapshot"
-msgstr "Застосовуємо снапшот…"
+msgstr "Застосування знімка"
 
 #: src/snapshot_page/snapshot_box.py:156
 msgid "Apply Snapshot?"
-msgstr "Застосувати снапшот?"
+msgstr "Застосувати знімок?"
 
 #: src/snapshot_page/snapshot_box.py:157
-#, fuzzy
-#| msgid "Your files and data for this app will be sent to the trash."
 msgid "Any current user data for this app will be trashed"
-msgstr "Ваші файли та дані для цього додатку будуть відправлені у Смітник."
+msgstr ""
+"Будь-які поточні дані користувача для цього додатку будуть викинуті в смітник"
 
 #: src/snapshot_page/snapshot_box.py:186
-#, fuzzy
-#| msgid "Version {}"
 msgid "Version: {}"
-msgstr "Версія {}"
+msgstr "Версія: {}"
 
 #: src/snapshot_page/snapshot_page.blp:53
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Search Snapshots"
-msgstr "Створити снапшоти"
+msgstr "Шукати знімки"
 
 #: src/snapshot_page/snapshot_page.blp:70
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Active Snapshots"
-msgstr "Створити снапшоти"
+msgstr "Активні знімки"
 
 #: src/snapshot_page/snapshot_page.blp:81
-#, fuzzy
-#| msgid "Display properties of installed Flatpaks"
 msgid "Snapshots of installed apps"
-msgstr "Відображення властивостей встановлених Flatpak пакунків"
+msgstr "Знімки встановлених додатків"
 
 #: src/snapshot_page/snapshot_page.blp:99
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Leftover Snapshots"
-msgstr "Створити снапшоти"
+msgstr "Залишкові знімки"
 
 #: src/snapshot_page/snapshot_page.blp:110
-#, fuzzy
-#| msgid "Search for Flatpaks that you want to install"
 msgid "Snapshots of apps that are no longer installed"
-msgstr "Шукайте Flatpak пакунки які бажаєте встановити"
+msgstr "Знімки додатків, які більше не встановлені"
 
 #: src/snapshot_page/snapshot_page.blp:177
 msgid "Open Snapshots Folder"
-msgstr "Відкрити теку снапшотів"
+msgstr "Відкрити теку знімків"
 
 #: src/snapshot_page/snapshot_page.blp:182
 msgid "No Snapshots"
-msgstr "Немає снапшотів"
+msgstr "Немає знімків"
 
 #: src/snapshot_page/snapshot_page.blp:183
-#, fuzzy
-#| msgid "Central repository of Flatpak applications"
 msgid "Create a Snapshot to save the state of any Flatpak application"
-msgstr "Центральний репозиторій Flatpak додатків"
+msgstr "Створіть знімок, щоб зберегти стан будь-якого додатку Flatpak"
 
 #: src/snapshot_page/snapshot_page.blp:219
-#, fuzzy
-#| msgid "Snapshot applied"
 msgid "Snapshot Apps"
-msgstr "Снапшот застосовано"
+msgstr "Знімок додатків"
 
 #: src/snapshot_page/snapshot_page.blp:223
-#, fuzzy
-#| msgid "Install"
 msgid "Install Apps"
-msgstr "Встановити"
+msgstr "Встановити додатки"
 
 #: src/snapshot_page/snapshot_page.blp:227
-#, fuzzy
-#| msgid "Apply Snapshot"
 msgid "Apply Snapshots"
-msgstr "Застосувати снапшот"
+msgstr "Застосувати знімки"
 
 #: src/snapshot_page/snapshot_page.blp:231
-#, fuzzy
-#| msgid "Trash Snapshot"
 msgid "Trash Snapshots"
-msgstr "Видалити снапшот"
+msgstr "ВиВикинути знімки в смітник"
 
 #: src/snapshot_page/snapshot_page.py:106
-#, fuzzy
-#| msgid "Could not trash snapshot"
 msgid "Could not load Snapshots"
-msgstr "Не вдалося видалити снапшот"
+msgstr "Не вдалося завантажити знімки"
 
 #: src/snapshot_page/snapshot_page.py:199
 msgid "Showing snapshots for {}"
-msgstr ""
+msgstr "Показуються знімки для {}"
 
 #: src/snapshot_page/snapshot_page.py:203
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "No snapshots for {}"
-msgstr "Немає снапшотів"
+msgstr "Немає знімків для {}"
 
 #: src/snapshot_page/snapshot_page.py:203
 msgid "New"
@@ -1702,224 +1615,183 @@ msgstr "Новий"
 #: src/snapshot_page/snapshot_page.py:247
 #: src/snapshot_page/snapshot_page.py:249
 #: src/snapshot_page/snapshots_list_page.py:64
-#, fuzzy
-#| msgid "There is no User Data to Snapshot"
 msgid "No Data Found to Snapshot"
-msgstr "Немає даних користувача для створення снапшоту"
+msgstr "Дані для знімка не знайдені"
 
 #: src/snapshot_page/snapshot_page.py:256
 #: src/snapshot_page/snapshots_list_page.py:79
-#, fuzzy
-#| msgid "Open Snapshots Folder"
 msgid "Opened snapshots folder"
-msgstr "Відкрити теку снапшотів"
+msgstr "Відкрито теку знімків"
 
 #: src/snapshot_page/snapshot_page.py:391
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Copied Snapshot Paths"
-msgstr "Немає снапшотів"
+msgstr "Скопійовані шляхи знімків"
 
 #: src/snapshot_page/snapshot_page.py:400
 msgid "No apps in your selection can be snapshotted"
 msgstr ""
+"Жоден з додатків у вашому виборі не може бути збережений у вигляді знімка"
 
 #: src/snapshot_page/snapshot_page.py:474
-#, fuzzy
-#| msgid "Applying Snapshot…"
 msgid "Applying Snapshots"
-msgstr "Застосовуємо снапшот…"
+msgstr "Застосування знімків"
 
 #: src/snapshot_page/snapshot_page.py:480
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "No snapshots to extract"
-msgstr "Немає снапшотів"
+msgstr "Немає знімків для вилучення"
 
 #: src/snapshot_page/snapshot_page.py:480
 msgid "No snapshots were found to extract"
-msgstr ""
+msgstr "Знімки для вилучення не знайдено"
 
 #: src/snapshot_page/snapshot_page.py:483
-#, fuzzy
-#| msgid "Apply Snapshot?"
 msgid "Apply These Snapshots?"
-msgstr "Застосувати снапшот?"
+msgstr "Застосувати ці знімки?"
 
 #: src/snapshot_page/snapshot_page.py:483
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
+"Це призведе до видалення поточних даних користувача додатків і застосування "
+"їх найновішого знімка"
 
 #: src/snapshot_page/snapshot_page.py:516
-#, fuzzy
-#| msgid "Trash Snapshot"
 msgid "Trashed snapshots"
-msgstr "Видалити снапшот"
+msgstr "Знімки відправлені в смітник"
 
 #: src/snapshot_page/snapshot_page.py:518
-#, fuzzy
-#| msgid "Could not trash snapshot"
 msgid "Could not trash snapshots"
-msgstr "Не вдалося видалити снапшот"
+msgstr "Не вдалося викинути знімки в смітник"
 
 #: src/snapshot_page/snapshot_page.py:521
-#, fuzzy
-#| msgid "Trash Snapshot?"
 msgid "Trash Snapshots?"
-msgstr "Видалити снапшот?"
+msgstr "Викинути знімки в смітник?"
 
 #: src/snapshot_page/snapshot_page.py:521
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "These apps' snapshots will be sent to the trash"
-msgstr "Ця тека буде відправлена в Смітник."
+msgstr "Знімки цих додатків будуть відправлені в смітник"
 
 #: src/snapshot_page/snapshot_page.py:560
-#, fuzzy
-#| msgid "Creating Snapshots"
 msgid "Loading Snapshots"
-msgstr "Створюємо снапшоти"
+msgstr "Завантаження знімків"
 
 #: src/snapshot_page/snapshots_list_page.blp:5
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Snapshots List"
-msgstr "Немає снапшотів"
+msgstr "Список знімків"
 
 #: src/snapshot_page/snapshots_list_page.blp:13
-#, fuzzy
-#| msgid "Open Snapshots Folder"
 msgid "Open Snapshots Folder for this App"
-msgstr "Відкрити теку снапшотів"
+msgstr "Відкрити теку знімків для цього додатку"
 
 #: src/snapshot_page/snapshots_list_page.py:34
 #: src/snapshot_page/snapshots_list_page.py:55
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "App not Installed"
-msgstr "Спробувати встановити?"
+msgstr "Додаток не встановлений"
 
 #: src/snapshot_page/snapshots_list_page.py:58
 msgid "{} Snapshots"
-msgstr "Снапшоти {}"
+msgstr "{} Знімки"
 
 #: src/snapshot_page/tar_worker.py:83
 msgid "Error in snapshot handling"
-msgstr ""
+msgstr "Помилка при обробці знімків"
 
 #: src/install_page/file_install_dialog.blp:33
 msgid "Review Selection"
-msgstr ""
+msgstr "Переглянути вибір"
 
 #. self.packages_group.set_title(_("Review Packages"))
 #: src/install_page/file_install_dialog.py:40
 msgid "The following packages will be installed"
-msgstr ""
+msgstr "Наступні пакети будуть встановлені"
 
 #: src/install_page/file_install_dialog.py:43
 msgid "Install a Package"
-msgstr ""
+msgstr "Встановити пакет"
 
 #. self.packages_group.set_title(_("Review Package"))
 #: src/install_page/file_install_dialog.py:45
 msgid "The following package will be installed"
-msgstr ""
+msgstr "Наступний пакет буде встановлений"
 
 #: src/install_page/file_install_dialog.py:46
 msgid "package"
-msgstr ""
+msgstr "пакет"
 
 #: src/install_page/install_page.blp:41
-#, fuzzy
-#| msgid "Select"
 msgid "Select Source"
-msgstr "Обрати"
+msgstr "Вибрати джерело"
 
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
 msgid "Pending Packages"
-msgstr ""
+msgstr "Очікуючі пакети"
 
 #: src/install_page/install_page.py:55
-#, fuzzy
-#| msgid "Installed Size"
 msgid "Installed Packages"
-msgstr "Розмір встановлених файлів"
+msgstr "Встановлені пакети"
 
 #: src/install_page/install_page.py:72
 msgid "{} Pending Package"
-msgstr ""
+msgstr "{} Очікуючий пакет"
 
 #: src/install_page/install_page.py:77
 msgid "{} Pending Packages"
-msgstr ""
+msgstr "{} Очікуючі пакети"
 
 #. Extra Object Creation
 #: src/install_page/install_page.py:92
-#, fuzzy
-#| msgid "Installing"
 msgid "Installing Packages"
-msgstr "Встановлюємо"
+msgstr "Встановлення пакетів"
 
 #: src/install_page/install_page.py:100
-#, fuzzy
-#| msgid "Installation"
 msgid "Loading Installation Options"
-msgstr "Встановлення"
+msgstr "Завантаження параметрів встановлення"
 
 #: src/install_page/pending_page.blp:13 src/install_page/select_page.blp:37
 msgid "Add Packages"
-msgstr ""
+msgstr "Додати пакети"
 
 #: src/install_page/pending_page.blp:14
 msgid "Packages queued to install will show up here"
-msgstr ""
+msgstr "Пакети, які очікують на встановлення, з'являться тут"
 
 #: src/install_page/pending_page.py:38
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove All"
-msgstr "Видалити"
+msgstr "Видалити усе"
 
 #: src/install_page/result_row.blp:8 src/install_page/result_row.py:46
 msgid "Add Package to Queue"
-msgstr ""
+msgstr "Додати пакет до черги"
 
 #: src/install_page/result_row.py:50
 msgid "Package has been Added to Queue"
-msgstr ""
+msgstr "Пакет був доданий до черги"
 
 #: src/install_page/result_row.py:54
 msgid "Remove Package from Queue"
-msgstr ""
+msgstr "Видалити пакет з черги"
 
 #: src/install_page/result_row.py:58
 msgid "This Package is Already Installed"
-msgstr ""
+msgstr "Цей пакет вже встановлений"
 
 #: src/install_page/results_page.blp:5
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Search a Remote"
-msgstr "Фільтрувати додатки за віддаленими сховищами"
+msgstr "Шукати репозиторій"
 
 #. hexpand: true;
 #: src/install_page/results_page.blp:20
-#, fuzzy
-#| msgid "Search for Flatpaks"
 msgid "Search for Packages"
-msgstr "Шукати Flatpak пакунки"
+msgstr "Пошук пакетів"
 
 #: src/install_page/results_page.blp:26
 msgid "Search for Flatpaks"
 msgstr "Шукати Flatpak пакунки"
 
 #: src/install_page/results_page.blp:27
-#, fuzzy
-#| msgid "Search for Flatpaks that you want to install"
 msgid "Search for Flatpaks you want to install"
-msgstr "Шукайте Flatpak пакунки які бажаєте встановити"
+msgstr "Шукати Flatpak-пакети, які ви хочете встановити"
 
 #: src/install_page/results_page.blp:31
 msgid "Too Many Results"
@@ -1934,48 +1806,40 @@ msgid "Try a different search term"
 msgstr "Спробуйте використати інші пошукові терміни"
 
 #: src/install_page/results_page.py:51
-#, fuzzy
-#| msgid "Search"
 msgid "Search {}"
-msgstr "Шукати"
+msgstr "Шукати {}"
 
 #: src/install_page/results_page.py:138
 msgid "Searching"
 msgstr "Шукаємо"
 
 #: src/install_page/select_page.blp:19
-#, fuzzy
-#| msgid "Refresh List of Remotes"
 msgid "Search in a Remote"
-msgstr "Оновити список віддалених сховищ"
+msgstr "Шукати в репозиторії"
 
 #: src/install_page/select_page.blp:20
-#, fuzzy
-#| msgid "Choose a Remote to Search"
 msgid "Choose a remote to search for new packages"
-msgstr "Обрати віддалене сховище для пошуку"
+msgstr "Виберіть репозиторій для пошуку нових пакетів"
 
 #: src/install_page/select_page.blp:23
-#, fuzzy
-#| msgid "Updates Disabled"
 msgid "Online Searches Disabled"
-msgstr "Оновлення вимкнені"
+msgstr "Онлайн пошук вимкнено"
 
 #: src/install_page/select_page.blp:24
 msgid "Your system has no remotes added to search from"
-msgstr ""
+msgstr "У вашій системі не додано жодних репозиторіїв для пошуку"
 
 #: src/install_page/select_page.blp:28
 msgid "Add a remote to your system to enable online searching"
-msgstr ""
+msgstr "Додайте репозиторій до вашої системи, щоб увімкнути онлайн пошук"
 
 #: src/install_page/select_page.blp:38
 msgid "Install packages from files on your system"
-msgstr ""
+msgstr "Встановити пакети з файлів на вашій системі"
 
 #: src/install_page/select_page.py:66
 msgid "No files were found to install"
-msgstr ""
+msgstr "Файли для встановлення не знайдено"
 
 #: src/install_page/select_page.py:76
 msgid "Flatpaks"
