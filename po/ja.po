@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2025-04-03 09:46+0000\n"
+"PO-Revision-Date: 2025-04-05 13:46+0000\n"
 "Last-Translator: ぺー☆ <nextnewstar@users.noreply.weblate.fyralabs.com>\n"
 "Language-Team: Japanese <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ja/>\n"
@@ -793,7 +793,7 @@ msgstr "アップデートを無効にする"
 
 #: src/properties_page/properties_page.blp:148
 msgid "Mask this package so it's never updated"
-msgstr "このパッケージをマスクし、更新されないようにする。"
+msgstr "更新されないのでこのパッケージを隠す"
 
 #: src/properties_page/properties_page.blp:157
 #: src/change_version_page/change_version_page.blp:23
@@ -966,19 +966,19 @@ msgstr "アンインストールされた {}"
 
 #: src/properties_page/properties_page.py:267
 msgid "Opening {}…"
-msgstr "Opening {}…"
+msgstr "開いています {}…"
 
 #: src/properties_page/properties_page.py:272
 msgid "Could not open {}"
-msgstr "Could not open {}"
+msgstr "{} を開くことができませんでした"
 
 #: src/properties_page/properties_page.py:287
 msgid "Reinstalled {}"
-msgstr "Reinstalled {}"
+msgstr "再インストールされた {}"
 
 #: src/properties_page/properties_page.py:315
 msgid "Reinstall {}?"
-msgstr "Reinstall {}?"
+msgstr "{} を再インストールしますか?"
 
 #: src/properties_page/properties_page.py:316
 msgid ""
@@ -1343,7 +1343,7 @@ msgstr "{}のデータをゴミ箱へ？"
 
 #: src/user_data_page/data_box.py:118
 msgid "{}'s data will be sent to the trash"
-msgstr "{}のデータはゴミ箱に送られる。"
+msgstr "{} のデータはゴミ箱に送られる。"
 
 #: src/user_data_page/data_box.py:120 src/user_data_page/user_data_page.py:214
 #: src/snapshot_page/snapshot_page.py:485
@@ -1562,95 +1562,96 @@ msgstr "残されたスナップショット"
 
 #: src/snapshot_page/snapshot_page.blp:110
 msgid "Snapshots of apps that are no longer installed"
-msgstr ""
+msgstr "インストールされなくなったアプリのスナップショット"
 
 #: src/snapshot_page/snapshot_page.blp:177
 msgid "Open Snapshots Folder"
-msgstr ""
+msgstr "スナップショットのフォルダを開く"
 
 #: src/snapshot_page/snapshot_page.blp:182
 msgid "No Snapshots"
-msgstr ""
+msgstr "スナップショットなし"
 
 #: src/snapshot_page/snapshot_page.blp:183
 msgid "Create a Snapshot to save the state of any Flatpak application"
-msgstr ""
+msgstr "スナップショットを作成し、Flatpakアプリケーションの状態を保存する。"
 
 #: src/snapshot_page/snapshot_page.blp:219
 msgid "Snapshot Apps"
-msgstr ""
+msgstr "スナップショットアプリ"
 
 #: src/snapshot_page/snapshot_page.blp:223
 msgid "Install Apps"
-msgstr ""
+msgstr "アプリのインストール"
 
 #: src/snapshot_page/snapshot_page.blp:227
 msgid "Apply Snapshots"
-msgstr ""
+msgstr "スナップショットを適用する"
 
 #: src/snapshot_page/snapshot_page.blp:231
 msgid "Trash Snapshots"
-msgstr ""
+msgstr "スナップショットをゴミ箱へ移す"
 
 #: src/snapshot_page/snapshot_page.py:106
 msgid "Could not load Snapshots"
-msgstr ""
+msgstr "スナップショットをロードできませんでした"
 
 #: src/snapshot_page/snapshot_page.py:199
 msgid "Showing snapshots for {}"
-msgstr ""
+msgstr "{} のスナップショットを表示"
 
 #: src/snapshot_page/snapshot_page.py:203
 msgid "No snapshots for {}"
-msgstr ""
+msgstr "{} のスナップショットなし"
 
 #: src/snapshot_page/snapshot_page.py:203
 msgid "New"
-msgstr ""
+msgstr "新しい"
 
 #: src/snapshot_page/snapshot_page.py:247
 #: src/snapshot_page/snapshot_page.py:249
 #: src/snapshot_page/snapshots_list_page.py:64
 msgid "No Data Found to Snapshot"
-msgstr ""
+msgstr "スナップショットにデータが見つからない"
 
 #: src/snapshot_page/snapshot_page.py:256
 #: src/snapshot_page/snapshots_list_page.py:79
 msgid "Opened snapshots folder"
-msgstr ""
+msgstr "開いたスナップショットフォルダ"
 
 #: src/snapshot_page/snapshot_page.py:391
 msgid "Copied Snapshot Paths"
-msgstr ""
+msgstr "コピーされたスナップショットのパス"
 
 #: src/snapshot_page/snapshot_page.py:400
 msgid "No apps in your selection can be snapshotted"
-msgstr ""
+msgstr "選択したアプリはスナップショットできません。"
 
 #: src/snapshot_page/snapshot_page.py:474
 msgid "Applying Snapshots"
-msgstr ""
+msgstr "スナップショットの適用"
 
 #: src/snapshot_page/snapshot_page.py:480
 msgid "No snapshots to extract"
-msgstr ""
+msgstr "抽出するスナップショットがない"
 
 #: src/snapshot_page/snapshot_page.py:480
 msgid "No snapshots were found to extract"
-msgstr ""
+msgstr "抽出するスナップショットは見つからなかった"
 
 #: src/snapshot_page/snapshot_page.py:483
 msgid "Apply These Snapshots?"
-msgstr ""
+msgstr "これらのスナップショットを適用しますか？"
 
 #: src/snapshot_page/snapshot_page.py:483
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
-msgstr ""
+msgstr "現在のアプリのユーザーデータはゴミ箱に移され、最新のスナップショットが適用さ"
+"れます。"
 
 #: src/snapshot_page/snapshot_page.py:516
 msgid "Trashed snapshots"
-msgstr ""
+msgstr "ゴミ箱に移されたスナップショット"
 
 #: src/snapshot_page/snapshot_page.py:518
 msgid "Could not trash snapshots"
@@ -1718,19 +1719,19 @@ msgstr "ソースを選択"
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
 msgid "Pending Packages"
-msgstr ""
+msgstr "保留中のパッケージ"
 
 #: src/install_page/install_page.py:55
 msgid "Installed Packages"
-msgstr ""
+msgstr "インストールされているパッケージ"
 
 #: src/install_page/install_page.py:72
 msgid "{} Pending Package"
-msgstr ""
+msgstr "{} 保留中のパッケージ"
 
 #: src/install_page/install_page.py:77
 msgid "{} Pending Packages"
-msgstr ""
+msgstr "{} 保留中のパッケージ"
 
 #. Extra Object Creation
 #: src/install_page/install_page.py:92
