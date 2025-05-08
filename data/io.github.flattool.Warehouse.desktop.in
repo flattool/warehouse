@@ -7,6 +7,6 @@ Terminal=false
 Type=Application
 Categories=GTK;System;Utility;
 StartupNotify=true
-Keywords=flatpak
+Keywords=flatpak;packages;apps;remotes;snapshots;
 Comment=Manage all things Flatpak
 X-Purism-FormFactor=Workstation;Mobile;
