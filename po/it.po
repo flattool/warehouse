@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2025-05-09 21:46+0000\n"
-"Last-Translator: nocchino <niccolosut@gmail.com>\n"
+"PO-Revision-Date: 2025-05-16 16:46+0000\n"
+"Last-Translator: Mattia Borda <mattiagiovanni.borda@icloud.com>\n"
 "Language-Team: Italian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/it/>\n"
 "Language: it\n"
@@ -718,7 +718,7 @@ msgstr ""
 #: src/snapshot_page/new_snapshot_dialog.blp:67
 #: src/snapshot_page/snapshot_page.blp:58 src/install_page/results_page.blp:49
 msgid "No Results Found"
-msgstr "Nessun risultato"
+msgstr "Nessun risultato trovato"
 
 #: src/packages_page/packages_page.blp:110
 #: src/remotes_page/remotes_page.blp:154 src/user_data_page/data_subpage.blp:69
@@ -1762,7 +1762,7 @@ msgstr "Lista ricerca"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
-msgstr ""
+msgstr "Crea"
 
 #: src/snapshot_page/new_snapshot_dialog.py:114
 #, fuzzy
@@ -1964,7 +1964,7 @@ msgstr "Nessuno snapshot"
 
 #: src/snapshot_page/snapshot_page.py:203
 msgid "New"
-msgstr "Nuovo"
+msgstr "Nuova"
 
 #: src/snapshot_page/snapshot_page.py:247
 #: src/snapshot_page/snapshot_page.py:249
