@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2025-05-16 16:46+0000\n"
+"PO-Revision-Date: 2025-05-18 04:46+0000\n"
 "Last-Translator: carpinchitu <maycoemanuelportillo@gmail.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
@@ -929,10 +929,8 @@ msgid "Send {}'s User Data to the Trash?"
 msgstr "¿Enviar los datos de usuario de {} a la papelera?"
 
 #: src/properties_page/properties_page.py:191
-#, fuzzy
-#| msgid "Your files and data for this app will be sent to the trash."
 msgid "Your settings and data for this app will be sent to the trash"
-msgstr "Sus archivos y datos de esta aplicación se enviarán a la papelera."
+msgstr "Sus archivos y datos de esta aplicación se enviarán a la papelera"
 
 #: src/properties_page/properties_page.py:194
 msgid "Trash Data"
@@ -993,16 +991,12 @@ msgid "Could not uninstall"
 msgstr "No se ha podido instalar la aplicación"
 
 #: src/properties_page/properties_page.py:255
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstalled {}"
-msgstr "¿Desinstalar {}?"
+msgstr "Desinstalado {}"
 
 #: src/properties_page/properties_page.py:267
-#, fuzzy
-#| msgid "Opened {}"
 msgid "Opening {}…"
-msgstr "Abierto {}"
+msgstr "Abriendo {}…"
 
 #: src/properties_page/properties_page.py:272
 #, fuzzy
@@ -1011,10 +1005,8 @@ msgid "Could not open {}"
 msgstr "No se ha podido eliminar {}"
 
 #: src/properties_page/properties_page.py:287
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstalled {}"
-msgstr "¿Desinstalar {}?"
+msgstr "Reinstalado {}"
 
 #: src/properties_page/properties_page.py:315
 #, fuzzy
@@ -1167,10 +1159,8 @@ msgid "Could not add remote"
 msgstr "No se ha podido añadir {}"
 
 #: src/remotes_page/add_remote_dialog.py:64
-#, fuzzy
-#| msgid "Add {}?"
 msgid "Added {}"
-msgstr "¿Añadir {}?"
+msgstr "Añadido {}"
 
 #. Apply
 #: src/remotes_page/add_remote_dialog.py:114
@@ -1428,10 +1418,8 @@ msgid "Copy Path"
 msgstr "Copiar nombre"
 
 #: src/user_data_page/data_box.blp:68
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "Attempt to Install"
-msgstr "¿Intentar instalar?"
+msgstr "Intentar instalar"
 
 #: src/user_data_page/data_box.py:62
 msgid "Copied data path"
@@ -1455,16 +1443,12 @@ msgid "Could not open folder"
 msgstr "No se ha podido abrir la carpeta"
 
 #: src/user_data_page/data_box.py:118
-#, fuzzy
-#| msgid "Trash User Data"
 msgid "Trash {}'s Data?"
-msgstr "Eliminar datos de usuario"
+msgstr "¿Eliminar datos de {}?"
 
 #: src/user_data_page/data_box.py:118
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "{}'s data will be sent to the trash"
-msgstr "Estas carpetas se enviarán a la papelera."
+msgstr "Los datos de {} se enviarán a la papelera"
 
 #: src/user_data_page/data_box.py:120 src/user_data_page/user_data_page.py:214
 #: src/snapshot_page/snapshot_page.py:485
@@ -1580,16 +1564,12 @@ msgid "Trashed data"
 msgstr "Datos de usuario borrados"
 
 #: src/user_data_page/user_data_page.py:212
-#, fuzzy
-#| msgid "Trash Data"
 msgid "Trash Data?"
-msgstr "Borrar datos"
+msgstr "¿Borrar datos?"
 
 #: src/user_data_page/user_data_page.py:212
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "Data will be sent to the trash"
-msgstr "Estas carpetas se enviarán a la papelera."
+msgstr "Los datos se enviarán a la papelera"
 
 #: src/user_data_page/user_data_page.py:250
 #: src/user_data_page/user_data_page.py:273
@@ -1699,26 +1679,22 @@ msgid "Trash Snapshot?"
 msgstr "¿Eliminar la instantánea?"
 
 #: src/snapshot_page/snapshot_box.py:116
-#, fuzzy
-#| msgid "This snapshot and its contents will be sent to the trash."
 msgid "This snapshot will be sent to the trash"
-msgstr "Esta instantánea y su contenido se enviarán a la papelera."
+msgstr "Esta instantánea se enviará a la papelera"
 
 #: src/snapshot_page/snapshot_box.py:146
-#, fuzzy
-#| msgid "Applying Snapshot…"
 msgid "Applying Snapshot"
-msgstr "Aplicando instantánea…"
+msgstr "Aplicando instantánea"
 
 #: src/snapshot_page/snapshot_box.py:156
 msgid "Apply Snapshot?"
 msgstr "¿Aplicar instantánea?"
 
 #: src/snapshot_page/snapshot_box.py:157
-#, fuzzy
-#| msgid "Your files and data for this app will be sent to the trash."
 msgid "Any current user data for this app will be trashed"
-msgstr "Sus archivos y datos de esta aplicación se enviarán a la papelera."
+msgstr ""
+"Cualquier dato actual del usuario de esta aplicación será enviado a la "
+"papelera"
 
 #: src/snapshot_page/snapshot_box.py:186
 #, fuzzy
@@ -1841,10 +1817,8 @@ msgstr ""
 "No se puede crear una instantánea de ninguna aplicación de la selección"
 
 #: src/snapshot_page/snapshot_page.py:474
-#, fuzzy
-#| msgid "Applying Snapshot…"
 msgid "Applying Snapshots"
-msgstr "Aplicando instantánea…"
+msgstr "Aplicando instantáneas"
 
 #: src/snapshot_page/snapshot_page.py:480
 #, fuzzy
@@ -1888,10 +1862,8 @@ msgid "Trash Snapshots?"
 msgstr "¿Eliminar la instantánea?"
 
 #: src/snapshot_page/snapshot_page.py:521
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "These apps' snapshots will be sent to the trash"
-msgstr "Estas carpetas se enviarán a la papelera."
+msgstr "Las instantáneas de estas aplicaciones se enviarán a la papelera"
 
 #: src/snapshot_page/snapshot_page.py:560
 #, fuzzy
@@ -1913,10 +1885,8 @@ msgstr "Abrir carpeta de instantáneas"
 
 #: src/snapshot_page/snapshots_list_page.py:34
 #: src/snapshot_page/snapshots_list_page.py:55
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "App not Installed"
-msgstr "¿Intentar instalar?"
+msgstr "Aplicación no instalada"
 
 #: src/snapshot_page/snapshots_list_page.py:58
 msgid "{} Snapshots"
