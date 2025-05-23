@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2025-05-18 04:46+0000\n"
+"PO-Revision-Date: 2025-05-24 19:46+0000\n"
 "Last-Translator: carpinchitu <maycoemanuelportillo@gmail.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
@@ -563,10 +563,8 @@ msgid "Filter by Runtimes"
 msgstr "Filtrar por tiempos de ejecución"
 
 #: src/packages_page/filters_page.blp:72
-#, fuzzy
-#| msgid "Show Apps Using This Runtime"
 msgid "Show apps using selected runtimes"
-msgstr "Mostrar aplicaciones que usan este entorno de ejecución"
+msgstr "Mostrar aplicaciones que usan los entornos de ejecución seleccionados"
 
 #: src/packages_page/filters_page.blp:86
 msgid "Showing apps using any runtime"
@@ -937,58 +935,40 @@ msgid "Trash Data"
 msgstr "Borrar datos"
 
 #: src/properties_page/properties_page.py:204
-#, fuzzy
-#| msgid "Could not disable updates for {}"
 msgid "Could not Disable Updates"
-msgstr "No se han podido desactivar las actualizaciones para {}"
+msgstr "No fue posible deshabilitar las actualizaciones"
 
 #: src/properties_page/properties_page.py:204
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not Enable Updates"
-msgstr "No se pueden gestionar los datos"
+msgstr "No fue posible habilitar las actualizaciones"
 
 #: src/properties_page/properties_page.py:210
-#, fuzzy
-#| msgid "Disable Updates"
 msgid "Disabled Updates"
-msgstr "Desactivar actualizaciones"
+msgstr "Actualizaciones deshabilitadas"
 
 #: src/properties_page/properties_page.py:210
-#, fuzzy
-#| msgid "Enable Updates"
 msgid "Enabled Updates"
-msgstr "Activar actualizaciones"
+msgstr "Actualizaciones habilitadas"
 
 #: src/properties_page/properties_page.py:223
-#, fuzzy
-#| msgid "Could not disable auto removal"
 msgid "Could not Disable Autoremoval"
-msgstr "No se ha podido desactivar la eliminación automática"
+msgstr "No fue posible deshabilitar la eliminación automática"
 
 #: src/properties_page/properties_page.py:223
-#, fuzzy
-#| msgid "Could not enable auto removal"
 msgid "Could not Enable Autoremoval"
-msgstr "No se ha podido activar la eliminación automática"
+msgstr "No fue posible habilitar la eliminación automática"
 
 #: src/properties_page/properties_page.py:228
-#, fuzzy
-#| msgid "Disable Auto Removal"
 msgid "Disabled Autoremoval"
-msgstr "Desactivar la eliminación automática"
+msgstr "Eliminación automática deshabilitada"
 
 #: src/properties_page/properties_page.py:228
-#, fuzzy
-#| msgid "Enable Auto Removal"
 msgid "Enabled Autoremoval"
-msgstr "Activar la eliminación automática"
+msgstr "Eliminación automática habilitada"
 
 #: src/properties_page/properties_page.py:251
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not uninstall"
-msgstr "No se ha podido instalar la aplicación"
+msgstr "No fue posible desinstalar"
 
 #: src/properties_page/properties_page.py:255
 msgid "Uninstalled {}"
@@ -999,20 +979,16 @@ msgid "Opening {}…"
 msgstr "Abriendo {}…"
 
 #: src/properties_page/properties_page.py:272
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not open {}"
-msgstr "No se ha podido eliminar {}"
+msgstr "No fue posible abrir {}"
 
 #: src/properties_page/properties_page.py:287
 msgid "Reinstalled {}"
 msgstr "Reinstalado {}"
 
 #: src/properties_page/properties_page.py:315
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstall {}?"
-msgstr "¿Desinstalar {}?"
+msgstr "¿Resinstalar {}?"
 
 #: src/properties_page/properties_page.py:316
 msgid ""
@@ -1032,42 +1008,32 @@ msgid "Copied launch command"
 msgstr "Comando de lanzamiento copiado"
 
 #: src/properties_page/properties_page.py:338
-#, fuzzy
-#| msgid "Copied launch command"
 msgid "Could not copy launch command"
-msgstr "Comando de lanzamiento copiado"
+msgstr "No fue posible copiar el comando de lanzamiento"
 
 #: src/properties_page/properties_page.py:344
 msgid "Could not show details"
 msgstr "No se pueden mostrar los detalles"
 
 #: src/properties_page/properties_page.py:371
-#, fuzzy
-#| msgid "View Properties"
 msgid "Loading Properties"
-msgstr "Ver propiedades"
+msgstr "Cargando propiedades"
 
 #: src/properties_page/properties_page.py:374
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "View Snapshots"
-msgstr "Instantánea nueva"
+msgstr "Ver instantáneas"
 
 #: src/properties_page/properties_page.py:375
 msgid "Copy Launch Command"
 msgstr "Copiar comando de lanzamiento"
 
 #: src/properties_page/properties_page.py:376
-#, fuzzy
-#| msgid "Show Details in Store"
 msgid "Show Details"
-msgstr "Mostrar detalles en la tienda"
+msgstr "Mostrar detalles"
 
 #: src/change_version_page/change_version_page.blp:5
-#, fuzzy
-#| msgid "Version"
 msgid "Change Versions"
-msgstr "Versión"
+msgstr "Cambiar versión"
 
 #: src/change_version_page/change_version_page.blp:56
 msgid "Select a Release"
