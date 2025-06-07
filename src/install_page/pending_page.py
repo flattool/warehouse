@@ -105,7 +105,7 @@ class PendingPage(Adw.NavigationPage):
 				"extra_flags": [],
 			}
 			for row in group.rows:
-				item["package_names"].append(row.package.app_id)
+				item["package_names"].append(f"{row.package.app_id}//{row.package.branch}")
 
 			package_requests.append(item)
 
