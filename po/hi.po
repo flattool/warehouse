@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-04 22:09-0500\n"
+"POT-Creation-Date: 2025-06-06 23:38-0400\n"
 "PO-Revision-Date: 2024-05-05 18:20+0000\n"
 "Last-Translator: Scrambled777 <Scrambled777@users.noreply.weblate.fyralabs."
 "com>\n"
@@ -21,15 +21,15 @@ msgstr ""
 "X-Generator: Weblate 5.5\n"
 
 #. Translators: Do not translate the application name
-#: data/io.github.flattool.Warehouse.desktop.in:4
+#: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
 msgstr "Warehouse"
 
-#: data/io.github.flattool.Warehouse.desktop.in:11
-msgid "flatpak"
-msgstr "flatpak"
+#: data/io.github.flattool.Warehouse.desktop.in:10
+msgid "flatpak;packages;apps;remotes;snapshots;"
+msgstr ""
 
-#: data/io.github.flattool.Warehouse.desktop.in:12
+#: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
 msgstr "Flatpak संबंधित सभी चीज़ों का प्रबंधन करें"
@@ -131,54 +131,54 @@ msgid "Flatpaks & Remotes"
 msgstr "Flatpak रिमोट जोड़ें"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:207
+#: src/main.py:209
 msgid "translator-credits"
 msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
 
-#: src/main.py:213
+#: src/main.py:215
 msgid "Donate"
 msgstr "दान करें"
 
-#: src/main.py:215
+#: src/main.py:217
 msgid "Contributors"
 msgstr "योगदानकर्ता"
 
-#: src/host_info.py:386 src/host_info.py:388
+#: src/host_info.py:389 src/host_info.py:391
 #, fuzzy
 #| msgid "Could not add {}"
 msgid "Could not load packages"
 msgstr "{} जोड़ा नहीं जा सका"
 
-#: src/package_install_worker.py:88
+#: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
 msgstr ""
 
-#: src/package_install_worker.py:92 src/package_install_worker.py:96
+#: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
 msgstr ""
 
-#: src/package_install_worker.py:92
+#: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:80
 msgid "Failed to exit cleanly"
 msgstr ""
 
-#: src/package_install_worker.py:108
+#: src/package_install_worker.py:104
 #, fuzzy
 #| msgid "Could not install app"
 msgid "Could not cancel installation"
 msgstr "ऐप स्थापित नहीं किया जा सका"
 
-#: src/package_install_worker.py:129 src/package_install_worker.py:139
+#: src/package_install_worker.py:126 src/package_install_worker.py:136
 #, fuzzy
 #| msgid "Could not install app"
 msgid "Could not install packages"
 msgstr "ऐप स्थापित नहीं किया जा सका"
 
-#: src/package_install_worker.py:129
+#: src/package_install_worker.py:126
 msgid "Packages are currently being installed."
 msgstr ""
 
-#: src/package_install_worker.py:139
+#: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
 msgstr ""
 
@@ -220,8 +220,8 @@ msgstr "Warehouse चयनित डेटा से मेल खाने व
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:41
-#: src/properties_page/properties_page.py:193
-#: src/properties_page/properties_page.py:318
+#: src/properties_page/properties_page.py:208
+#: src/properties_page/properties_page.py:333
 #: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:129
 #: src/remotes_page/remotes_page.py:196 src/user_data_page/data_box.py:119
 #: src/user_data_page/user_data_page.py:213
@@ -775,7 +775,7 @@ msgid "Refs"
 msgstr "संदर्भ कॉपी करें"
 
 #: src/packages_page/packages_page.py:260
-#: src/properties_page/properties_page.py:278
+#: src/properties_page/properties_page.py:293
 msgid "Copied {}"
 msgstr "कॉपी किया गया {}"
 
@@ -803,10 +803,10 @@ msgstr "Flatpaks लोड हो रहे हैं"
 
 #: src/packages_page/packages_page.py:373
 #: src/packages_page/packages_page.py:374
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:386
 #: src/remotes_page/remotes_page.py:294 src/remotes_page/remotes_page.py:295
 #: src/user_data_page/user_data_page.py:300
-#: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:100
+#: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:102
 #: src/install_page/results_page.py:138
 msgid "This should only take a moment"
 msgstr "इसमें केवल एक क्षण लगना चाहिए"
@@ -826,7 +826,7 @@ msgstr "स्थापना रद्द की जा रही है"
 #: src/packages_page/packages_page.py:376
 #: src/packages_page/packages_page.py:378
 #: src/change_version_page/change_version_page.py:126
-#: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:92
+#: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:94
 msgid "This could take a while"
 msgstr "इसमें कुछ समय लग सकता है"
 
@@ -1012,47 +1012,47 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: src/properties_page/properties_page.py:79
+#: src/properties_page/properties_page.py:83
 #, fuzzy
 #| msgid "Properties"
 msgid "{} Properties"
 msgstr "प्रॉपर्टी"
 
-#: src/properties_page/properties_page.py:84
+#: src/properties_page/properties_page.py:87
 msgid "Properties"
 msgstr "प्रॉपर्टी"
 
 #. Apply again
-#: src/properties_page/properties_page.py:113
+#: src/properties_page/properties_page.py:124
 #: src/user_data_page/user_data_page.py:300
 msgid "Loading User Data"
 msgstr "उपयोक्ता डेटा लोड हो रहा है"
 
-#: src/properties_page/properties_page.py:123
+#: src/properties_page/properties_page.py:134
 msgid "No User Data"
 msgstr "कोई उपयोक्ता डेटा नहीं"
 
-#: src/properties_page/properties_page.py:133
-#: src/properties_page/properties_page.py:149
+#: src/properties_page/properties_page.py:144
+#: src/properties_page/properties_page.py:164
 #, fuzzy
 #| msgid "Could not show properties"
 msgid "Could not get properties"
 msgstr "प्रॉपर्टी नहीं दिखाए जा सकी"
 
-#: src/properties_page/properties_page.py:146
+#: src/properties_page/properties_page.py:156
 msgid "No version information found"
 msgstr ""
 
-#: src/properties_page/properties_page.py:166
+#: src/properties_page/properties_page.py:181
 #, fuzzy
 #| msgid "Could not open folder"
 msgid "Could not open data"
 msgstr "फोल्डर नहीं खोला जा सका"
 
-#: src/properties_page/properties_page.py:185
-#: src/properties_page/properties_page.py:187
-#: src/properties_page/properties_page.py:244
-#: src/properties_page/properties_page.py:246
+#: src/properties_page/properties_page.py:200
+#: src/properties_page/properties_page.py:202
+#: src/properties_page/properties_page.py:259
+#: src/properties_page/properties_page.py:261
 #: src/user_data_page/data_box.py:104 src/user_data_page/user_data_page.py:187
 #: src/user_data_page/user_data_page.py:201
 #, fuzzy
@@ -1060,148 +1060,148 @@ msgstr "फोल्डर नहीं खोला जा सका"
 msgid "Could not trash data"
 msgstr "उपयोक्ता डेटा को रद्दी में नहीं डाला जा सका"
 
-#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:205
 msgid "Send {}'s User Data to the Trash?"
 msgstr "{} का उपयोक्ता डेटा रद्दी में भेजें?"
 
-#: src/properties_page/properties_page.py:191
+#: src/properties_page/properties_page.py:206
 #, fuzzy
 #| msgid "Your files and data for this app will be sent to the trash."
 msgid "Your settings and data for this app will be sent to the trash"
 msgstr "इस ऐप के लिए आपकी फाइलें और डेटा रद्दी में भेज दिए जाएंगे।"
 
-#: src/properties_page/properties_page.py:194
+#: src/properties_page/properties_page.py:209
 msgid "Trash Data"
 msgstr "डेटा रद्दी करें"
 
-#: src/properties_page/properties_page.py:204
+#: src/properties_page/properties_page.py:219
 #, fuzzy
 #| msgid "Could not disable updates for {}"
 msgid "Could not Disable Updates"
 msgstr "{} के लिए अद्यतन अक्षम नहीं किया जा सका"
 
-#: src/properties_page/properties_page.py:204
+#: src/properties_page/properties_page.py:219
 #, fuzzy
 #| msgid "Could not manage data"
 msgid "Could not Enable Updates"
 msgstr "डेटा प्रबंधित नहीं किया जा सका"
 
-#: src/properties_page/properties_page.py:210
+#: src/properties_page/properties_page.py:225
 #, fuzzy
 #| msgid "Disable Updates"
 msgid "Disabled Updates"
 msgstr "अद्यतन अक्षम करें"
 
-#: src/properties_page/properties_page.py:210
+#: src/properties_page/properties_page.py:225
 #, fuzzy
 #| msgid "Enable Updates"
 msgid "Enabled Updates"
 msgstr "अद्यतन सक्षम करें"
 
-#: src/properties_page/properties_page.py:223
+#: src/properties_page/properties_page.py:238
 #, fuzzy
 #| msgid "Could not disable auto removal"
 msgid "Could not Disable Autoremoval"
 msgstr "स्वतः निष्कासन अक्षम नहीं किया जा सका"
 
-#: src/properties_page/properties_page.py:223
+#: src/properties_page/properties_page.py:238
 #, fuzzy
 #| msgid "Could not enable auto removal"
 msgid "Could not Enable Autoremoval"
 msgstr "स्वतः निष्कासन सक्षम नहीं किया जा सका"
 
-#: src/properties_page/properties_page.py:228
+#: src/properties_page/properties_page.py:243
 #, fuzzy
 #| msgid "Disable Auto Removal"
 msgid "Disabled Autoremoval"
 msgstr "स्वतः निष्कासन अक्षम करें"
 
-#: src/properties_page/properties_page.py:228
+#: src/properties_page/properties_page.py:243
 #, fuzzy
 #| msgid "Enable Auto Removal"
 msgid "Enabled Autoremoval"
 msgstr "स्वतः निष्कासन सक्षम करें"
 
-#: src/properties_page/properties_page.py:251
+#: src/properties_page/properties_page.py:266
 #, fuzzy
 #| msgid "Could not install app"
 msgid "Could not uninstall"
 msgstr "ऐप स्थापित नहीं किया जा सका"
 
-#: src/properties_page/properties_page.py:255
+#: src/properties_page/properties_page.py:270
 #, fuzzy
 #| msgid "Uninstall {}?"
 msgid "Uninstalled {}"
 msgstr "अस्थापित करें {}?"
 
-#: src/properties_page/properties_page.py:267
+#: src/properties_page/properties_page.py:282
 #, fuzzy
 #| msgid "Opened {}"
 msgid "Opening {}…"
 msgstr "{} खोला गया"
 
-#: src/properties_page/properties_page.py:272
+#: src/properties_page/properties_page.py:287
 #, fuzzy
 #| msgid "Could not remove {}"
 msgid "Could not open {}"
 msgstr "{} को हटाया नहीं जा सका"
 
-#: src/properties_page/properties_page.py:287
+#: src/properties_page/properties_page.py:302
 #, fuzzy
 #| msgid "Uninstall {}?"
 msgid "Reinstalled {}"
 msgstr "अस्थापित करें {}?"
 
-#: src/properties_page/properties_page.py:315
+#: src/properties_page/properties_page.py:330
 #, fuzzy
 #| msgid "Uninstall {}?"
 msgid "Reinstall {}?"
 msgstr "अस्थापित करें {}?"
 
-#: src/properties_page/properties_page.py:316
+#: src/properties_page/properties_page.py:331
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
 msgstr ""
 
-#: src/properties_page/properties_page.py:319
-#: src/properties_page/properties_page.py:377
+#: src/properties_page/properties_page.py:334
+#: src/properties_page/properties_page.py:392
 #, fuzzy
 #| msgid "Uninstall"
 msgid "Reinstall"
 msgstr "स्थापना रद्द करें"
 
-#: src/properties_page/properties_page.py:336
+#: src/properties_page/properties_page.py:351
 msgid "Copied launch command"
 msgstr "लॉन्च कमांड कॉपी किया गया"
 
-#: src/properties_page/properties_page.py:338
+#: src/properties_page/properties_page.py:353
 #, fuzzy
 #| msgid "Copied launch command"
 msgid "Could not copy launch command"
 msgstr "लॉन्च कमांड कॉपी किया गया"
 
-#: src/properties_page/properties_page.py:344
+#: src/properties_page/properties_page.py:359
 msgid "Could not show details"
 msgstr "विवरण नहीं दिखा सके"
 
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:386
 #, fuzzy
 #| msgid "View Properties"
 msgid "Loading Properties"
 msgstr "प्रॉपर्टी देखें"
 
-#: src/properties_page/properties_page.py:374
+#: src/properties_page/properties_page.py:389
 #, fuzzy
 #| msgid "New Snapshot"
 msgid "View Snapshots"
 msgstr "नया स्नैपशॉट"
 
-#: src/properties_page/properties_page.py:375
+#: src/properties_page/properties_page.py:390
 msgid "Copy Launch Command"
 msgstr "लॉन्च कमांड कॉपी करें"
 
-#: src/properties_page/properties_page.py:376
+#: src/properties_page/properties_page.py:391
 #, fuzzy
 #| msgid "Show Details in Store"
 msgid "Show Details"
@@ -2092,28 +2092,28 @@ msgstr "चुनें"
 msgid "Pending Packages"
 msgstr ""
 
-#: src/install_page/install_page.py:55
+#: src/install_page/install_page.py:57
 #, fuzzy
 #| msgid "Installed Size"
 msgid "Installed Packages"
 msgstr "इन्स्टॉल्ड आकार"
 
-#: src/install_page/install_page.py:72
+#: src/install_page/install_page.py:74
 msgid "{} Pending Package"
 msgstr ""
 
-#: src/install_page/install_page.py:77
+#: src/install_page/install_page.py:79
 msgid "{} Pending Packages"
 msgstr ""
 
 #. Extra Object Creation
-#: src/install_page/install_page.py:92
+#: src/install_page/install_page.py:94
 #, fuzzy
 #| msgid "Installing"
 msgid "Installing Packages"
 msgstr "स्थापित किया जा रहा है"
 
-#: src/install_page/install_page.py:100
+#: src/install_page/install_page.py:102
 #, fuzzy
 #| msgid "Installation"
 msgid "Loading Installation Options"
@@ -2231,6 +2231,9 @@ msgstr ""
 #: src/install_page/select_page.py:76
 msgid "Flatpaks"
 msgstr "Flatpaks"
+
+#~ msgid "flatpak"
+#~ msgstr "flatpak"
 
 #, fuzzy
 #~| msgid "Could not install app"

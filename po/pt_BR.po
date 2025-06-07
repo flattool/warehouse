@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-04 22:09-0500\n"
-"PO-Revision-Date: 2024-12-26 21:45+0000\n"
-"Last-Translator: Tiago Lucas Flach <tiagolucas9830@gmail.com>\n"
+"POT-Creation-Date: 2025-06-06 23:38-0400\n"
+"PO-Revision-Date: 2025-05-09 21:46+0000\n"
+"Last-Translator: lucasmz <git@lucasmz.dev>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.fyralabs.com/projects/"
 "flattool/warehouse/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -17,18 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.8.1\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. Translators: Do not translate the application name
-#: data/io.github.flattool.Warehouse.desktop.in:4
+#: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
-msgstr "Armazém"
+msgstr "Warehouse"
+
+#: data/io.github.flattool.Warehouse.desktop.in:10
+msgid "flatpak;packages;apps;remotes;snapshots;"
+msgstr ""
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
-msgid "flatpak"
-msgstr "flatpak"
-
-#: data/io.github.flattool.Warehouse.desktop.in:12
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
 msgstr "Gerencie tudo relacionado a Flatpak"
@@ -38,7 +38,7 @@ msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
-"O Armazém oferece uma interface simples para controlar opções complexas do "
+"O Warehouse oferece uma interface simples para controlar opções complexas do "
 "Flatpak, tudo isso sem recorrer à linha de comando."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
@@ -132,7 +132,7 @@ msgid "Flatpaks & Remotes"
 msgstr "Flatpaks & Repositórios"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:207
+#: src/main.py:209
 msgid "translator-credits"
 msgstr ""
 "Filipe Motta <luizfilipemotta@gmail.com>\n"
@@ -140,44 +140,44 @@ msgstr ""
 "A. Bento <kyweehz@pm.me>\n"
 "Paulo Otávio de Lima, https://aragubas.com"
 
-#: src/main.py:213
+#: src/main.py:215
 msgid "Donate"
 msgstr "Doar"
 
-#: src/main.py:215
+#: src/main.py:217
 msgid "Contributors"
 msgstr "Contribuidores"
 
-#: src/host_info.py:386 src/host_info.py:388
+#: src/host_info.py:389 src/host_info.py:391
 msgid "Could not load packages"
 msgstr "Não foi possível carregar os pacotes"
 
-#: src/package_install_worker.py:88
+#: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
 msgstr "Ocorreram erros durante a instalação"
 
-#: src/package_install_worker.py:92 src/package_install_worker.py:96
+#: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
 msgstr "Ocorreu um erro durante a instalação"
 
-#: src/package_install_worker.py:92
+#: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:80
 msgid "Failed to exit cleanly"
 msgstr "Falha ao sair corretamente"
 
-#: src/package_install_worker.py:108
+#: src/package_install_worker.py:104
 msgid "Could not cancel installation"
 msgstr "Não foi possível cancelar a instalação"
 
-#: src/package_install_worker.py:129 src/package_install_worker.py:139
+#: src/package_install_worker.py:126 src/package_install_worker.py:136
 msgid "Could not install packages"
 msgstr "Não foi possível instalar os pacotes"
 
-#: src/package_install_worker.py:129
+#: src/package_install_worker.py:126
 msgid "Packages are currently being installed."
 msgstr "Pacotes estão sendo instalados no momento."
 
-#: src/package_install_worker.py:139
+#: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
 msgstr "Nenhum pacote foi solicitado para instalação."
 
@@ -208,12 +208,12 @@ msgstr "Tentar uma instalação?"
 
 #: src/gtk/attempt_install_dialog.blp:6
 msgid "Warehouse will try to install the matching packages."
-msgstr "O Armazém tentará instalar os pacotes correspondentes."
+msgstr "O Warehouse tentará instalar os pacotes correspondentes."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:41
-#: src/properties_page/properties_page.py:193
-#: src/properties_page/properties_page.py:318
+#: src/properties_page/properties_page.py:208
+#: src/properties_page/properties_page.py:333
 #: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:129
 #: src/remotes_page/remotes_page.py:196 src/user_data_page/data_box.py:119
 #: src/user_data_page/user_data_page.py:213
@@ -480,7 +480,7 @@ msgstr "_Atalhos de teclado"
 
 #: src/main_window/window.blp:169
 msgid "_About Warehouse"
-msgstr "_Sobre o Armazém"
+msgstr "_Sobre o Warehouse"
 
 #: src/main_window/window.py:139
 msgid "Unsupported Filetype"
@@ -604,15 +604,15 @@ msgid ""
 "Warehouse cannot see the list of installed packages or your system has no "
 "packages installed"
 msgstr ""
-"O Armazém não consegue ver a lista de pacotes instalados ou seu sistema não "
-"possui pacotes instalados"
+"O Warehouse não consegue ver a lista de pacotes instalados ou seu sistema "
+"não possui pacotes instalados"
 
 #: src/packages_page/packages_page.blp:109
 #: src/remotes_page/remotes_page.blp:153 src/user_data_page/data_subpage.blp:68
 #: src/snapshot_page/new_snapshot_dialog.blp:67
 #: src/snapshot_page/snapshot_page.blp:58 src/install_page/results_page.blp:49
 msgid "No Results Found"
-msgstr "Nenhum Resultado Encontrado"
+msgstr "Nenhum resultado encontrado"
 
 #: src/packages_page/packages_page.blp:110
 #: src/remotes_page/remotes_page.blp:154 src/user_data_page/data_subpage.blp:69
@@ -670,7 +670,7 @@ msgid "Refs"
 msgstr "Referências"
 
 #: src/packages_page/packages_page.py:260
-#: src/properties_page/properties_page.py:278
+#: src/properties_page/properties_page.py:293
 msgid "Copied {}"
 msgstr "copiado {}"
 
@@ -692,10 +692,10 @@ msgstr "Carregando pacotes"
 
 #: src/packages_page/packages_page.py:373
 #: src/packages_page/packages_page.py:374
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:386
 #: src/remotes_page/remotes_page.py:294 src/remotes_page/remotes_page.py:295
 #: src/user_data_page/user_data_page.py:300
-#: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:100
+#: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:102
 #: src/install_page/results_page.py:138
 msgid "This should only take a moment"
 msgstr "Isso deve levar apenas um momento"
@@ -711,7 +711,7 @@ msgstr "Reinstalando pacote"
 #: src/packages_page/packages_page.py:376
 #: src/packages_page/packages_page.py:378
 #: src/change_version_page/change_version_page.py:126
-#: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:92
+#: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:94
 msgid "This could take a while"
 msgstr "Isso pode demorar um pouco"
 
@@ -733,7 +733,7 @@ msgstr "Permite restaurar configurações e dados de aplicativos"
 #: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:118
 #: src/snapshot_page/snapshot_page.py:523
 msgid "Trash"
-msgstr "Excluir"
+msgstr "Lixeira"
 
 #: src/packages_page/uninstall_dialog.blp:18
 msgid "Send data to the trash"
@@ -875,116 +875,116 @@ msgstr "Sujeito"
 msgid "Date"
 msgstr "Data"
 
-#: src/properties_page/properties_page.py:79
+#: src/properties_page/properties_page.py:83
 msgid "{} Properties"
 msgstr "Propriedades de {}"
 
-#: src/properties_page/properties_page.py:84
+#: src/properties_page/properties_page.py:87
 msgid "Properties"
 msgstr "Propriedades"
 
 #. Apply again
-#: src/properties_page/properties_page.py:113
+#: src/properties_page/properties_page.py:124
 #: src/user_data_page/user_data_page.py:300
 msgid "Loading User Data"
 msgstr "Carregando dados de usuário"
 
-#: src/properties_page/properties_page.py:123
+#: src/properties_page/properties_page.py:134
 msgid "No User Data"
 msgstr "Não há dados de usuário"
 
-#: src/properties_page/properties_page.py:133
-#: src/properties_page/properties_page.py:149
+#: src/properties_page/properties_page.py:144
+#: src/properties_page/properties_page.py:164
 msgid "Could not get properties"
 msgstr "Não foi possível obter as propriedades"
 
-#: src/properties_page/properties_page.py:146
+#: src/properties_page/properties_page.py:156
 msgid "No version information found"
 msgstr "Nenhuma informação de versão encontrada"
 
-#: src/properties_page/properties_page.py:166
+#: src/properties_page/properties_page.py:181
 msgid "Could not open data"
 msgstr "Não foi possível abrir os dados"
 
-#: src/properties_page/properties_page.py:185
-#: src/properties_page/properties_page.py:187
-#: src/properties_page/properties_page.py:244
-#: src/properties_page/properties_page.py:246
+#: src/properties_page/properties_page.py:200
+#: src/properties_page/properties_page.py:202
+#: src/properties_page/properties_page.py:259
+#: src/properties_page/properties_page.py:261
 #: src/user_data_page/data_box.py:104 src/user_data_page/user_data_page.py:187
 #: src/user_data_page/user_data_page.py:201
 msgid "Could not trash data"
 msgstr "Não foi possível excluir os dados"
 
-#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:205
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Enviar os dados do usuário {} para a lixeira?"
 
-#: src/properties_page/properties_page.py:191
+#: src/properties_page/properties_page.py:206
 msgid "Your settings and data for this app will be sent to the trash"
 msgstr ""
 "Suas configurações e dados deste aplicativo serão enviados para a lixeira"
 
-#: src/properties_page/properties_page.py:194
+#: src/properties_page/properties_page.py:209
 msgid "Trash Data"
 msgstr "Excluir dados"
 
-#: src/properties_page/properties_page.py:204
+#: src/properties_page/properties_page.py:219
 msgid "Could not Disable Updates"
 msgstr "Não foi possível desativar as atualizações"
 
-#: src/properties_page/properties_page.py:204
+#: src/properties_page/properties_page.py:219
 msgid "Could not Enable Updates"
 msgstr "Não foi possível ativar atualizações"
 
-#: src/properties_page/properties_page.py:210
+#: src/properties_page/properties_page.py:225
 msgid "Disabled Updates"
 msgstr "Atualizações Desativadas"
 
-#: src/properties_page/properties_page.py:210
+#: src/properties_page/properties_page.py:225
 msgid "Enabled Updates"
 msgstr "Atualizações Ativadas"
 
-#: src/properties_page/properties_page.py:223
+#: src/properties_page/properties_page.py:238
 msgid "Could not Disable Autoremoval"
 msgstr "Não foi possível desativar a Remoção Automática"
 
-#: src/properties_page/properties_page.py:223
+#: src/properties_page/properties_page.py:238
 msgid "Could not Enable Autoremoval"
 msgstr "Não foi possível ativar a Remoção Automática"
 
-#: src/properties_page/properties_page.py:228
+#: src/properties_page/properties_page.py:243
 msgid "Disabled Autoremoval"
 msgstr "Remoção Automática Desativada"
 
-#: src/properties_page/properties_page.py:228
+#: src/properties_page/properties_page.py:243
 msgid "Enabled Autoremoval"
 msgstr "Remoção Automática Ativada"
 
-#: src/properties_page/properties_page.py:251
+#: src/properties_page/properties_page.py:266
 msgid "Could not uninstall"
 msgstr "Não foi possível desinstalar"
 
-#: src/properties_page/properties_page.py:255
+#: src/properties_page/properties_page.py:270
 msgid "Uninstalled {}"
 msgstr "Desinstalado {}"
 
-#: src/properties_page/properties_page.py:267
+#: src/properties_page/properties_page.py:282
 msgid "Opening {}…"
 msgstr "Abrindo {}…"
 
-#: src/properties_page/properties_page.py:272
+#: src/properties_page/properties_page.py:287
 msgid "Could not open {}"
 msgstr "Não foi possível abrir {}"
 
-#: src/properties_page/properties_page.py:287
+#: src/properties_page/properties_page.py:302
 msgid "Reinstalled {}"
 msgstr "Reinstalado {}"
 
-#: src/properties_page/properties_page.py:315
+#: src/properties_page/properties_page.py:330
 msgid "Reinstall {}?"
 msgstr "Reinstalar {}?"
 
-#: src/properties_page/properties_page.py:316
+#: src/properties_page/properties_page.py:331
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
@@ -992,36 +992,36 @@ msgstr ""
 "Este pacote será desinstalado e reinstalado a partir do mesmo controle "
 "remoto e instalação."
 
-#: src/properties_page/properties_page.py:319
-#: src/properties_page/properties_page.py:377
+#: src/properties_page/properties_page.py:334
+#: src/properties_page/properties_page.py:392
 msgid "Reinstall"
 msgstr "Reinstalar"
 
-#: src/properties_page/properties_page.py:336
+#: src/properties_page/properties_page.py:351
 msgid "Copied launch command"
 msgstr "Comando de execução copiado"
 
-#: src/properties_page/properties_page.py:338
+#: src/properties_page/properties_page.py:353
 msgid "Could not copy launch command"
 msgstr "Não foi possível copiar o comando de execução"
 
-#: src/properties_page/properties_page.py:344
+#: src/properties_page/properties_page.py:359
 msgid "Could not show details"
 msgstr "Não foi possível mostrar os detalhes"
 
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:386
 msgid "Loading Properties"
 msgstr "Carregando Propriedades"
 
-#: src/properties_page/properties_page.py:374
+#: src/properties_page/properties_page.py:389
 msgid "View Snapshots"
 msgstr "Visualizar Snapshots"
 
-#: src/properties_page/properties_page.py:375
+#: src/properties_page/properties_page.py:390
 msgid "Copy Launch Command"
 msgstr "Copiar comando de execução"
 
-#: src/properties_page/properties_page.py:376
+#: src/properties_page/properties_page.py:391
 msgid "Show Details"
 msgstr "Mostrar Detalhes"
 
@@ -1227,8 +1227,8 @@ msgstr "Nenhum repositório remoto encontrado"
 msgid ""
 "Warehouse cannot see the current remotes or your system has no remotes added"
 msgstr ""
-"O Armazém não consegue ver os repositórios atuais ou seu sistema não possui "
-"repositórios adicionados"
+"O Warehouse não consegue ver os repositórios atuais ou seu sistema não "
+"possui repositórios adicionados"
 
 #: src/remotes_page/remotes_page.blp:126
 msgid "Add Popular Remotes"
@@ -1372,7 +1372,7 @@ msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
 msgstr ""
-"O Armazém não consegue ver nenhum dado de usuário ativo ou seu sistema não "
+"O Warehouse não consegue ver nenhum dado de usuário ativo ou seu sistema não "
 "possui dados de usuário ativos"
 
 #: src/user_data_page/data_subpage.py:261
@@ -1726,24 +1726,24 @@ msgstr "Selecionar Fonte"
 msgid "Pending Packages"
 msgstr "Pacotes Pendentes"
 
-#: src/install_page/install_page.py:55
+#: src/install_page/install_page.py:57
 msgid "Installed Packages"
 msgstr "Pacotes Instalados"
 
-#: src/install_page/install_page.py:72
+#: src/install_page/install_page.py:74
 msgid "{} Pending Package"
 msgstr "{} Pacote Pendente"
 
-#: src/install_page/install_page.py:77
+#: src/install_page/install_page.py:79
 msgid "{} Pending Packages"
 msgstr "{} Pacotes Pendentes"
 
 #. Extra Object Creation
-#: src/install_page/install_page.py:92
+#: src/install_page/install_page.py:94
 msgid "Installing Packages"
 msgstr "Instalando Pacotes"
 
-#: src/install_page/install_page.py:100
+#: src/install_page/install_page.py:102
 msgid "Loading Installation Options"
 msgstr "Carregando Opções de Instalação"
 
@@ -1843,6 +1843,9 @@ msgstr "Nenhum arquivo foi encontrado para instalar"
 #: src/install_page/select_page.py:76
 msgid "Flatpaks"
 msgstr "Flatpaks"
+
+#~ msgid "flatpak"
+#~ msgstr "flatpak"
 
 #, fuzzy
 #~| msgid "Could not install app"
