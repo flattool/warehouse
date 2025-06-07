@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-11 15:32-0400\n"
+"POT-Creation-Date: 2025-06-06 23:38-0400\n"
 "PO-Revision-Date: 2025-04-14 20:32+0000\n"
 "Last-Translator: Lam Bui Bao <lambuibao@outlook.com>\n"
 "Language-Team: Vietnamese <https://weblate.fyralabs.com/projects/flattool/"
@@ -25,8 +25,8 @@ msgid "Warehouse"
 msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
-msgid "flatpak"
-msgstr "flatpak"
+msgid "flatpak;packages;apps;remotes;snapshots;"
+msgstr ""
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
@@ -149,7 +149,7 @@ msgstr "Ủng hộ đội developer"
 msgid "Contributors"
 msgstr "Những người đóng góp"
 
-#: src/host_info.py:386 src/host_info.py:388
+#: src/host_info.py:389 src/host_info.py:391
 msgid "Could not load packages"
 msgstr "Không thể tải các gói ứng dụng"
 
@@ -1835,3 +1835,6 @@ msgstr ""
 #: src/install_page/select_page.py:76
 msgid "Flatpaks"
 msgstr ""
+
+#~ msgid "flatpak"
+#~ msgstr "flatpak"

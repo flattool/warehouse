@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-11 15:32-0400\n"
+"POT-Creation-Date: 2025-06-06 23:38-0400\n"
 "PO-Revision-Date: 2025-03-24 21:46+0000\n"
 "Last-Translator: Pascal Dietrich <pascal.1.dietrich@hotmail.com>\n"
 "Language-Team: German <https://weblate.fyralabs.com/projects/flattool/"
@@ -25,8 +25,8 @@ msgid "Warehouse"
 msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
-msgid "flatpak"
-msgstr "Flatpak"
+msgid "flatpak;packages;apps;remotes;snapshots;"
+msgstr ""
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
@@ -147,7 +147,7 @@ msgstr "Spenden"
 msgid "Contributors"
 msgstr "Mitwirkende"
 
-#: src/host_info.py:386 src/host_info.py:388
+#: src/host_info.py:389 src/host_info.py:391
 msgid "Could not load packages"
 msgstr "Konnte Pakete nicht laden"
 
@@ -1854,6 +1854,9 @@ msgstr "Keine Dateien zum Installieren gefunden"
 #: src/install_page/select_page.py:76
 msgid "Flatpaks"
 msgstr "Flatpaks"
+
+#~ msgid "flatpak"
+#~ msgstr "Flatpak"
 
 #, fuzzy
 #~| msgid "Could not install app"

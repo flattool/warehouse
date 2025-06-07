@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-11 15:32-0400\n"
+"POT-Creation-Date: 2025-06-06 23:38-0400\n"
 "PO-Revision-Date: 2024-12-12 17:45+0000\n"
 "Last-Translator: Karol Tomaszewski <karoltomaszewskimusic@gmail.com>\n"
 "Language-Team: Polish <https://weblate.fyralabs.com/projects/flattool/"
@@ -26,8 +26,8 @@ msgid "Warehouse"
 msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
-msgid "flatpak"
-msgstr "flatpak"
+msgid "flatpak;packages;apps;remotes;snapshots;"
+msgstr ""
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
@@ -144,7 +144,7 @@ msgstr "Darowizna"
 msgid "Contributors"
 msgstr "Współtwórcy"
 
-#: src/host_info.py:386 src/host_info.py:388
+#: src/host_info.py:389 src/host_info.py:391
 msgid "Could not load packages"
 msgstr "Nie można załadować pakietów"
 
@@ -1845,6 +1845,9 @@ msgstr "Nie znaleziono plików do instalacji"
 #: src/install_page/select_page.py:76
 msgid "Flatpaks"
 msgstr "Flatpaki"
+
+#~ msgid "flatpak"
+#~ msgstr "flatpak"
 
 #, fuzzy
 #~| msgid "Could not install app"
