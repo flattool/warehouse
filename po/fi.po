@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-04 22:09-0500\n"
+"POT-Creation-Date: 2025-03-11 15:32-0400\n"
 "PO-Revision-Date: 2024-12-24 06:45+0000\n"
 "Last-Translator: JTi65 <jouko.tiilikainen@gmail.com>\n"
 "Language-Team: Finnish <https://weblate.fyralabs.com/projects/flattool/"
@@ -20,15 +20,15 @@ msgstr ""
 "X-Generator: Weblate 5.8.1\n"
 
 #. Translators: Do not translate the application name
-#: data/io.github.flattool.Warehouse.desktop.in:4
+#: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
 msgstr "Varasto"
 
-#: data/io.github.flattool.Warehouse.desktop.in:11
+#: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak"
 msgstr "flatpak"
 
-#: data/io.github.flattool.Warehouse.desktop.in:12
+#: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
 msgstr "Hallitse kaikkea Flatpakissä"
@@ -140,15 +140,15 @@ msgid "Flatpaks & Remotes"
 msgstr "Flatpak-pakkaukset ja etätyöpöydät"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:207
+#: src/main.py:209
 msgid "translator-credits"
 msgstr "kääntäjä-krediitit"
 
-#: src/main.py:213
+#: src/main.py:215
 msgid "Donate"
 msgstr "Lahjoita"
 
-#: src/main.py:215
+#: src/main.py:217
 #, fuzzy
 msgid "Contributors"
 msgstr "Avustajat"
@@ -158,38 +158,38 @@ msgstr "Avustajat"
 msgid "Could not load packages"
 msgstr "Paketteja ei voitu ladata"
 
-#: src/package_install_worker.py:88
+#: src/package_install_worker.py:84
 #, fuzzy
 msgid "Errors occurred during installation"
 msgstr "Asennuksen aikana ilmeni virheitä"
 
-#: src/package_install_worker.py:92 src/package_install_worker.py:96
+#: src/package_install_worker.py:88 src/package_install_worker.py:92
 #, fuzzy
 msgid "Error occurred during installation"
 msgstr "Asennuksen aikana ilmeni virhe"
 
-#: src/package_install_worker.py:92
+#: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:80
 #, fuzzy
 msgid "Failed to exit cleanly"
 msgstr "Epäonnistuin poistumaan siististi"
 
-#: src/package_install_worker.py:108
+#: src/package_install_worker.py:104
 #, fuzzy
 msgid "Could not cancel installation"
 msgstr "Asennusta ei voitu peruuttaa"
 
-#: src/package_install_worker.py:129 src/package_install_worker.py:139
+#: src/package_install_worker.py:126 src/package_install_worker.py:136
 #, fuzzy
 msgid "Could not install packages"
 msgstr "Paketteja ei voitu asentaa"
 
-#: src/package_install_worker.py:129
+#: src/package_install_worker.py:126
 #, fuzzy
 msgid "Packages are currently being installed."
 msgstr "Paketteja asennetaan parhaillaan."
 
-#: src/package_install_worker.py:139
+#: src/package_install_worker.py:136
 #, fuzzy
 msgid "No packages were requested to be installed."
 msgstr "Mitään paketteja ei pyydetty asennettavaksi."
@@ -228,8 +228,8 @@ msgstr "Varasto yrittää asentaa vastaavat paketit."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:41
-#: src/properties_page/properties_page.py:193
-#: src/properties_page/properties_page.py:318
+#: src/properties_page/properties_page.py:208
+#: src/properties_page/properties_page.py:333
 #: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:129
 #: src/remotes_page/remotes_page.py:196 src/user_data_page/data_box.py:119
 #: src/user_data_page/user_data_page.py:213
@@ -725,7 +725,7 @@ msgid "Refs"
 msgstr "Viitteet"
 
 #: src/packages_page/packages_page.py:260
-#: src/properties_page/properties_page.py:278
+#: src/properties_page/properties_page.py:293
 #, fuzzy
 msgid "Copied {}"
 msgstr "Kopioitu {}"
@@ -752,10 +752,10 @@ msgstr "Pakettien lataaminen"
 
 #: src/packages_page/packages_page.py:373
 #: src/packages_page/packages_page.py:374
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:386
 #: src/remotes_page/remotes_page.py:294 src/remotes_page/remotes_page.py:295
 #: src/user_data_page/user_data_page.py:300
-#: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:100
+#: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:102
 #: src/install_page/results_page.py:138
 #, fuzzy
 msgid "This should only take a moment"
@@ -774,7 +774,7 @@ msgstr "Paketin uudelleenasennus"
 #: src/packages_page/packages_page.py:376
 #: src/packages_page/packages_page.py:378
 #: src/change_version_page/change_version_page.py:126
-#: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:92
+#: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:94
 #, fuzzy
 msgid "This could take a while"
 msgstr "Tämä voi kestää jonkin aikaa"
@@ -968,117 +968,117 @@ msgstr "Aihe"
 msgid "Date"
 msgstr "Päivämäärä"
 
-#: src/properties_page/properties_page.py:79
+#: src/properties_page/properties_page.py:83
 msgid "{} Properties"
 msgstr "Ominaisuudet"
 
-#: src/properties_page/properties_page.py:84
+#: src/properties_page/properties_page.py:87
 msgid "Properties"
 msgstr "Ominaisuudet"
 
 #. Apply again
-#: src/properties_page/properties_page.py:113
+#: src/properties_page/properties_page.py:124
 #: src/user_data_page/user_data_page.py:300
 msgid "Loading User Data"
 msgstr "Ladataan käyttäjätietoja"
 
-#: src/properties_page/properties_page.py:123
+#: src/properties_page/properties_page.py:134
 msgid "No User Data"
 msgstr "Ei käyttäjätietoja"
 
-#: src/properties_page/properties_page.py:133
-#: src/properties_page/properties_page.py:149
+#: src/properties_page/properties_page.py:144
+#: src/properties_page/properties_page.py:164
 msgid "Could not get properties"
 msgstr "Ominaisuuksia ei voitu saada"
 
-#: src/properties_page/properties_page.py:146
+#: src/properties_page/properties_page.py:156
 msgid "No version information found"
 msgstr "Versiotietoja ei löytynyt"
 
-#: src/properties_page/properties_page.py:166
+#: src/properties_page/properties_page.py:181
 msgid "Could not open data"
 msgstr "Tietoja ei voitu avata"
 
-#: src/properties_page/properties_page.py:185
-#: src/properties_page/properties_page.py:187
-#: src/properties_page/properties_page.py:244
-#: src/properties_page/properties_page.py:246
+#: src/properties_page/properties_page.py:200
+#: src/properties_page/properties_page.py:202
+#: src/properties_page/properties_page.py:259
+#: src/properties_page/properties_page.py:261
 #: src/user_data_page/data_box.py:104 src/user_data_page/user_data_page.py:187
 #: src/user_data_page/user_data_page.py:201
 msgid "Could not trash data"
 msgstr "Tietoja ei voitu siirtää roskakoriin"
 
-#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:205
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Lähetetäänkö käyttäjän {} käyttäjätiedot roskakoriin?"
 
-#: src/properties_page/properties_page.py:191
+#: src/properties_page/properties_page.py:206
 msgid "Your settings and data for this app will be sent to the trash"
 msgstr "Tämän sovelluksen asetukset ja tiedot lähetetään roskakoriin"
 
-#: src/properties_page/properties_page.py:194
+#: src/properties_page/properties_page.py:209
 msgid "Trash Data"
 msgstr "Roskakorin tiedot"
 
-#: src/properties_page/properties_page.py:204
+#: src/properties_page/properties_page.py:219
 msgid "Could not Disable Updates"
 msgstr "Päivityksiä ei voitu poistaa käytöstä"
 
-#: src/properties_page/properties_page.py:204
+#: src/properties_page/properties_page.py:219
 msgid "Could not Enable Updates"
 msgstr "Päivityksiä ei voitu ottaa käyttöön"
 
-#: src/properties_page/properties_page.py:210
+#: src/properties_page/properties_page.py:225
 #, fuzzy
 msgid "Disabled Updates"
 msgstr "Päivitykset pois käytöstä"
 
-#: src/properties_page/properties_page.py:210
+#: src/properties_page/properties_page.py:225
 msgid "Enabled Updates"
 msgstr "Päivitykset käytössä"
 
-#: src/properties_page/properties_page.py:223
+#: src/properties_page/properties_page.py:238
 msgid "Could not Disable Autoremoval"
 msgstr "Automaattista poistoa ei voitu poistaa käytöstä"
 
-#: src/properties_page/properties_page.py:223
+#: src/properties_page/properties_page.py:238
 msgid "Could not Enable Autoremoval"
 msgstr "Automaattista poistoa ei voitu ottaa käyttöön"
 
-#: src/properties_page/properties_page.py:228
+#: src/properties_page/properties_page.py:243
 msgid "Disabled Autoremoval"
 msgstr "Automaattinen poisto pois käytöstä"
 
-#: src/properties_page/properties_page.py:228
+#: src/properties_page/properties_page.py:243
 msgid "Enabled Autoremoval"
 msgstr "Automaattinen poisto käytössä"
 
-#: src/properties_page/properties_page.py:251
+#: src/properties_page/properties_page.py:266
 msgid "Could not uninstall"
 msgstr "Asennuksen poistaminen epäonnistui"
 
-#: src/properties_page/properties_page.py:255
+#: src/properties_page/properties_page.py:270
 msgid "Uninstalled {}"
 msgstr "Poistettu {}"
 
-#: src/properties_page/properties_page.py:267
+#: src/properties_page/properties_page.py:282
 #, fuzzy
 msgid "Opening {}…"
 msgstr "Avaaminen {}…"
 
-#: src/properties_page/properties_page.py:272
+#: src/properties_page/properties_page.py:287
 msgid "Could not open {}"
 msgstr "Ei voitu avata {}"
 
-#: src/properties_page/properties_page.py:287
+#: src/properties_page/properties_page.py:302
 msgid "Reinstalled {}"
 msgstr "Asennettu uudelleen {}"
 
-#: src/properties_page/properties_page.py:315
+#: src/properties_page/properties_page.py:330
 msgid "Reinstall {}?"
 msgstr "Asennetaanko {} uudelleen?"
 
-#: src/properties_page/properties_page.py:316
+#: src/properties_page/properties_page.py:331
 #, fuzzy
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
@@ -1087,36 +1087,36 @@ msgstr ""
 "Tämä paketti poistetaan ja asennetaan uudelleen samasta etäyhteydestä ja "
 "samasta asennuksesta."
 
-#: src/properties_page/properties_page.py:319
-#: src/properties_page/properties_page.py:377
+#: src/properties_page/properties_page.py:334
+#: src/properties_page/properties_page.py:392
 msgid "Reinstall"
 msgstr "Asenna uudelleen"
 
-#: src/properties_page/properties_page.py:336
+#: src/properties_page/properties_page.py:351
 msgid "Copied launch command"
 msgstr "Kopioitu käynnistyskomento"
 
-#: src/properties_page/properties_page.py:338
+#: src/properties_page/properties_page.py:353
 msgid "Could not copy launch command"
 msgstr "Käynnistyskomentoa ei voitu kopioida"
 
-#: src/properties_page/properties_page.py:344
+#: src/properties_page/properties_page.py:359
 msgid "Could not show details"
 msgstr "Yksityiskohtia ei voitu näyttää"
 
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:386
 msgid "Loading Properties"
 msgstr "Ladataan ominaisuuksia"
 
-#: src/properties_page/properties_page.py:374
+#: src/properties_page/properties_page.py:389
 msgid "View Snapshots"
 msgstr "Näytä tilannekuvat"
 
-#: src/properties_page/properties_page.py:375
+#: src/properties_page/properties_page.py:390
 msgid "Copy Launch Command"
 msgstr "Kopioi käynnistyskomento"
 
-#: src/properties_page/properties_page.py:376
+#: src/properties_page/properties_page.py:391
 msgid "Show Details"
 msgstr "Näytä tiedot"
 
@@ -1833,24 +1833,24 @@ msgstr "Valitse lähde"
 msgid "Pending Packages"
 msgstr "Vireillä olevat paketit"
 
-#: src/install_page/install_page.py:55
+#: src/install_page/install_page.py:57
 msgid "Installed Packages"
 msgstr "Asennetut paketit"
 
-#: src/install_page/install_page.py:72
+#: src/install_page/install_page.py:74
 msgid "{} Pending Package"
 msgstr "{} Odottava paketti"
 
-#: src/install_page/install_page.py:77
+#: src/install_page/install_page.py:79
 msgid "{} Pending Packages"
 msgstr "{} Odottavat paketit"
 
 #. Extra Object Creation
-#: src/install_page/install_page.py:92
+#: src/install_page/install_page.py:94
 msgid "Installing Packages"
 msgstr "Pakettien asentaminen"
 
-#: src/install_page/install_page.py:100
+#: src/install_page/install_page.py:102
 msgid "Loading Installation Options"
 msgstr "Asennusvaihtoehtojen lataaminen"
 

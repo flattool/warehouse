@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-04 22:09-0500\n"
+"POT-Creation-Date: 2025-03-11 15:32-0400\n"
 "PO-Revision-Date: 2025-01-05 18:45+0000\n"
 "Last-Translator: EmmanuelVer <emverigos@icloud.com>\n"
 "Language-Team: Greek <https://weblate.fyralabs.com/projects/flattool/"
@@ -20,15 +20,15 @@ msgstr ""
 "X-Generator: Weblate 5.9.2\n"
 
 #. Translators: Do not translate the application name
-#: data/io.github.flattool.Warehouse.desktop.in:4
+#: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
 msgstr "Αποθήκη"
 
-#: data/io.github.flattool.Warehouse.desktop.in:11
+#: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak"
 msgstr "flatpak"
 
-#: data/io.github.flattool.Warehouse.desktop.in:12
+#: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
 msgstr "Διαχείριση όλων των ζητημάτων Flatpak"
@@ -134,15 +134,15 @@ msgid "Flatpaks & Remotes"
 msgstr "Flatpak & Αποθετήρια"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:207
+#: src/main.py:209
 msgid "translator-credits"
 msgstr "EmmVer<emverigos@geodev.gr>"
 
-#: src/main.py:213
+#: src/main.py:215
 msgid "Donate"
 msgstr "Συνεισφορά"
 
-#: src/main.py:215
+#: src/main.py:217
 msgid "Contributors"
 msgstr "Συνεισφέροντες"
 
@@ -150,34 +150,34 @@ msgstr "Συνεισφέροντες"
 msgid "Could not load packages"
 msgstr "Δεν ήταν δυνατή η φόρτωση των packages"
 
-#: src/package_install_worker.py:88
+#: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
 msgstr "Παρουσιάστηκαν σφάλματα κατά τη διάρκεια της εγκατάστασης"
 
-#: src/package_install_worker.py:92 src/package_install_worker.py:96
+#: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
 msgstr "Παρουσιάστηκε σφάλμα κατά τη διάρκεια της εγκατάστασης"
 
-#: src/package_install_worker.py:92
+#: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:80
 msgid "Failed to exit cleanly"
 msgstr "Αποτυχία καθαρής εξόδου"
 
-#: src/package_install_worker.py:108
+#: src/package_install_worker.py:104
 msgid "Could not cancel installation"
 msgstr "Δεν ήταν δυνατή η ακύρωση της εγκατάστασης"
 
-#: src/package_install_worker.py:129 src/package_install_worker.py:139
+#: src/package_install_worker.py:126 src/package_install_worker.py:136
 #, fuzzy
 #| msgid "Could not install app"
 msgid "Could not install packages"
 msgstr "Δεν ήταν δυνατή η εγκατάσταση της εφαρμογής"
 
-#: src/package_install_worker.py:129
+#: src/package_install_worker.py:126
 msgid "Packages are currently being installed."
 msgstr "Τα πακέτα εγκαθίστανται επί του παρόντος."
 
-#: src/package_install_worker.py:139
+#: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
 msgstr "Δεν ζητήθηκαν πακέτα για εγκατάσταση."
 
@@ -213,8 +213,8 @@ msgstr "Η Warehouse θα προσπαθήσει να εγκαταστήσει �
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:41
-#: src/properties_page/properties_page.py:193
-#: src/properties_page/properties_page.py:318
+#: src/properties_page/properties_page.py:208
+#: src/properties_page/properties_page.py:333
 #: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:129
 #: src/remotes_page/remotes_page.py:196 src/user_data_page/data_box.py:119
 #: src/user_data_page/user_data_page.py:213
@@ -720,7 +720,7 @@ msgid "Refs"
 msgstr "Αντιγραφή Αναφορών"
 
 #: src/packages_page/packages_page.py:260
-#: src/properties_page/properties_page.py:278
+#: src/properties_page/properties_page.py:293
 msgid "Copied {}"
 msgstr "Αντιγράφηκε {}"
 
@@ -748,10 +748,10 @@ msgstr "Φόρτωση Flatpaks"
 
 #: src/packages_page/packages_page.py:373
 #: src/packages_page/packages_page.py:374
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:386
 #: src/remotes_page/remotes_page.py:294 src/remotes_page/remotes_page.py:295
 #: src/user_data_page/user_data_page.py:300
-#: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:100
+#: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:102
 #: src/install_page/results_page.py:138
 msgid "This should only take a moment"
 msgstr ""
@@ -771,7 +771,7 @@ msgstr "Απεγκατάσταση"
 #: src/packages_page/packages_page.py:376
 #: src/packages_page/packages_page.py:378
 #: src/change_version_page/change_version_page.py:126
-#: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:92
+#: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:94
 msgid "This could take a while"
 msgstr "Αυτό μπορεί να πάρει λίγο χρόνο"
 
@@ -959,45 +959,45 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: src/properties_page/properties_page.py:79
+#: src/properties_page/properties_page.py:83
 msgid "{} Properties"
 msgstr ""
 
-#: src/properties_page/properties_page.py:84
+#: src/properties_page/properties_page.py:87
 msgid "Properties"
 msgstr ""
 
 #. Apply again
-#: src/properties_page/properties_page.py:113
+#: src/properties_page/properties_page.py:124
 #: src/user_data_page/user_data_page.py:300
 msgid "Loading User Data"
 msgstr ""
 
-#: src/properties_page/properties_page.py:123
+#: src/properties_page/properties_page.py:134
 msgid "No User Data"
 msgstr "Δεν υπάρχουν Δεδομένα Χρήστη"
 
-#: src/properties_page/properties_page.py:133
-#: src/properties_page/properties_page.py:149
+#: src/properties_page/properties_page.py:144
+#: src/properties_page/properties_page.py:164
 #, fuzzy
 #| msgid "Could not show properties"
 msgid "Could not get properties"
 msgstr "Δεν ήταν δυνατή η εμφάνιση ιδιοτήτων"
 
-#: src/properties_page/properties_page.py:146
+#: src/properties_page/properties_page.py:156
 msgid "No version information found"
 msgstr ""
 
-#: src/properties_page/properties_page.py:166
+#: src/properties_page/properties_page.py:181
 #, fuzzy
 #| msgid "Could not open folder"
 msgid "Could not open data"
 msgstr "Δεν μπόρεσε να γίνει άνοιγμα φακέλου"
 
-#: src/properties_page/properties_page.py:185
-#: src/properties_page/properties_page.py:187
-#: src/properties_page/properties_page.py:244
-#: src/properties_page/properties_page.py:246
+#: src/properties_page/properties_page.py:200
+#: src/properties_page/properties_page.py:202
+#: src/properties_page/properties_page.py:259
+#: src/properties_page/properties_page.py:261
 #: src/user_data_page/data_box.py:104 src/user_data_page/user_data_page.py:187
 #: src/user_data_page/user_data_page.py:201
 #, fuzzy
@@ -1005,11 +1005,11 @@ msgstr "Δεν μπόρεσε να γίνει άνοιγμα φακέλου"
 msgid "Could not trash data"
 msgstr "Δεν ήταν δυνατή η απόρριψη δεδομένων χρήστη"
 
-#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:205
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Αποστολή δεδομένων χρήστη {} στον κάδο απορριμμάτων;"
 
-#: src/properties_page/properties_page.py:191
+#: src/properties_page/properties_page.py:206
 #, fuzzy
 #| msgid "Your files and data for this app will be sent to the trash."
 msgid "Your settings and data for this app will be sent to the trash"
@@ -1017,136 +1017,136 @@ msgstr ""
 "Τα αρχεία και τα δεδομένα σας για αυτή την εφαρμογή θα σταλούν στον κάδο "
 "απορριμμάτων."
 
-#: src/properties_page/properties_page.py:194
+#: src/properties_page/properties_page.py:209
 msgid "Trash Data"
 msgstr "Δεδομένα Απορριμμάτων"
 
-#: src/properties_page/properties_page.py:204
+#: src/properties_page/properties_page.py:219
 #, fuzzy
 #| msgid "Could not disable updates for {}"
 msgid "Could not Disable Updates"
 msgstr "Δεν ήταν δυνατή η απενεργοποίηση των ενημερώσεων για {}"
 
-#: src/properties_page/properties_page.py:204
+#: src/properties_page/properties_page.py:219
 #, fuzzy
 #| msgid "Could not manage data"
 msgid "Could not Enable Updates"
 msgstr "Δεν μπόρεσε να γίνει διαχείριση δεδομένων"
 
-#: src/properties_page/properties_page.py:210
+#: src/properties_page/properties_page.py:225
 #, fuzzy
 #| msgid "Disable Updates"
 msgid "Disabled Updates"
 msgstr "Απενεργοποίηση Ενημερώσεων"
 
-#: src/properties_page/properties_page.py:210
+#: src/properties_page/properties_page.py:225
 #, fuzzy
 #| msgid "Disable Updates"
 msgid "Enabled Updates"
 msgstr "Απενεργοποίηση Ενημερώσεων"
 
-#: src/properties_page/properties_page.py:223
+#: src/properties_page/properties_page.py:238
 #, fuzzy
 #| msgid "Could not disable auto removal"
 msgid "Could not Disable Autoremoval"
 msgstr "Δεν ήταν δυνατή η απενεργοποίηση της αυτόματης αφαίρεσης"
 
-#: src/properties_page/properties_page.py:223
+#: src/properties_page/properties_page.py:238
 #, fuzzy
 #| msgid "Could not enable auto removal"
 msgid "Could not Enable Autoremoval"
 msgstr "Δεν ήταν δυνατή η ενεργοποίηση της αυτόματης αφαίρεσης"
 
-#: src/properties_page/properties_page.py:228
+#: src/properties_page/properties_page.py:243
 #, fuzzy
 #| msgid "Could not disable auto removal"
 msgid "Disabled Autoremoval"
 msgstr "Δεν ήταν δυνατή η απενεργοποίηση της αυτόματης αφαίρεσης"
 
-#: src/properties_page/properties_page.py:228
+#: src/properties_page/properties_page.py:243
 #, fuzzy
 #| msgid "Could not enable auto removal"
 msgid "Enabled Autoremoval"
 msgstr "Δεν ήταν δυνατή η ενεργοποίηση της αυτόματης αφαίρεσης"
 
-#: src/properties_page/properties_page.py:251
+#: src/properties_page/properties_page.py:266
 #, fuzzy
 #| msgid "Could not install app"
 msgid "Could not uninstall"
 msgstr "Δεν ήταν δυνατή η εγκατάσταση της εφαρμογής"
 
-#: src/properties_page/properties_page.py:255
+#: src/properties_page/properties_page.py:270
 #, fuzzy
 #| msgid "Uninstall {}?"
 msgid "Uninstalled {}"
 msgstr "Απεγκατάσταση {};"
 
-#: src/properties_page/properties_page.py:267
+#: src/properties_page/properties_page.py:282
 msgid "Opening {}…"
 msgstr ""
 
-#: src/properties_page/properties_page.py:272
+#: src/properties_page/properties_page.py:287
 #, fuzzy
 #| msgid "Could not remove {}"
 msgid "Could not open {}"
 msgstr "Δεν ήταν δυνατή η αφαίρεση {}"
 
-#: src/properties_page/properties_page.py:287
+#: src/properties_page/properties_page.py:302
 #, fuzzy
 #| msgid "Uninstall {}?"
 msgid "Reinstalled {}"
 msgstr "Απεγκατάσταση {};"
 
-#: src/properties_page/properties_page.py:315
+#: src/properties_page/properties_page.py:330
 #, fuzzy
 #| msgid "Uninstall {}?"
 msgid "Reinstall {}?"
 msgstr "Απεγκατάσταση {};"
 
-#: src/properties_page/properties_page.py:316
+#: src/properties_page/properties_page.py:331
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
 msgstr ""
 
-#: src/properties_page/properties_page.py:319
-#: src/properties_page/properties_page.py:377
+#: src/properties_page/properties_page.py:334
+#: src/properties_page/properties_page.py:392
 #, fuzzy
 #| msgid "Install"
 msgid "Reinstall"
 msgstr "Εγκατάσταση"
 
-#: src/properties_page/properties_page.py:336
+#: src/properties_page/properties_page.py:351
 msgid "Copied launch command"
 msgstr ""
 
-#: src/properties_page/properties_page.py:338
+#: src/properties_page/properties_page.py:353
 #, fuzzy
 #| msgid "Could not open folder"
 msgid "Could not copy launch command"
 msgstr "Δεν μπόρεσε να γίνει άνοιγμα φακέλου"
 
-#: src/properties_page/properties_page.py:344
+#: src/properties_page/properties_page.py:359
 msgid "Could not show details"
 msgstr "Δεν ήταν δυνατή η εμφάνιση λεπτομερειών"
 
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:386
 #, fuzzy
 #| msgid "Could not show properties"
 msgid "Loading Properties"
 msgstr "Δεν ήταν δυνατή η εμφάνιση ιδιοτήτων"
 
-#: src/properties_page/properties_page.py:374
+#: src/properties_page/properties_page.py:389
 #, fuzzy
 #| msgid "{} Snapshots"
 msgid "View Snapshots"
 msgstr "{} Στιγμιότυπα"
 
-#: src/properties_page/properties_page.py:375
+#: src/properties_page/properties_page.py:390
 msgid "Copy Launch Command"
 msgstr ""
 
-#: src/properties_page/properties_page.py:376
+#: src/properties_page/properties_page.py:391
 #, fuzzy
 #| msgid "Show Runtimes"
 msgid "Show Details"
@@ -2017,26 +2017,26 @@ msgstr "Επιλογή"
 msgid "Pending Packages"
 msgstr ""
 
-#: src/install_page/install_page.py:55
+#: src/install_page/install_page.py:57
 msgid "Installed Packages"
 msgstr ""
 
-#: src/install_page/install_page.py:72
+#: src/install_page/install_page.py:74
 msgid "{} Pending Package"
 msgstr ""
 
-#: src/install_page/install_page.py:77
+#: src/install_page/install_page.py:79
 msgid "{} Pending Packages"
 msgstr ""
 
 #. Extra Object Creation
-#: src/install_page/install_page.py:92
+#: src/install_page/install_page.py:94
 #, fuzzy
 #| msgid "Installing"
 msgid "Installing Packages"
 msgstr "Εγκατάσταση"
 
-#: src/install_page/install_page.py:100
+#: src/install_page/install_page.py:102
 msgid "Loading Installation Options"
 msgstr ""
 

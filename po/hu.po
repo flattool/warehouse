@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-04 22:09-0500\n"
+"POT-Creation-Date: 2025-03-11 15:32-0400\n"
 "PO-Revision-Date: 2025-03-26 12:46+0000\n"
 "Last-Translator: Benedek Dévényi <rdbende@proton.me>\n"
 "Language-Team: Hungarian <https://weblate.fyralabs.com/projects/flattool/"
@@ -20,15 +20,15 @@ msgstr ""
 "X-Generator: Weblate 5.9.2\n"
 
 #. Translators: Do not translate the application name
-#: data/io.github.flattool.Warehouse.desktop.in:4
+#: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
 msgstr "Raktár"
 
-#: data/io.github.flattool.Warehouse.desktop.in:11
+#: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak"
 msgstr "flatpak"
 
-#: data/io.github.flattool.Warehouse.desktop.in:12
+#: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
 msgstr "Flatpak ügyek kezelése"
@@ -130,17 +130,17 @@ msgid "Flatpaks & Remotes"
 msgstr "Flatpakek és tárolók"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:207
+#: src/main.py:209
 msgid "translator-credits"
 msgstr ""
 "Dévényi Benedek <rdbende@proton.me>\n"
 "kramo <login@kramo.hu>"
 
-#: src/main.py:213
+#: src/main.py:215
 msgid "Donate"
 msgstr "Adományozás"
 
-#: src/main.py:215
+#: src/main.py:217
 msgid "Contributors"
 msgstr "Közreműködők"
 
@@ -148,32 +148,32 @@ msgstr "Közreműködők"
 msgid "Could not load packages"
 msgstr "A csomagot nem lehetett betölteni"
 
-#: src/package_install_worker.py:88
+#: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
 msgstr "Hibák történtek a telepítés során"
 
-#: src/package_install_worker.py:92 src/package_install_worker.py:96
+#: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
 msgstr "Hiba történt a telepítés során"
 
-#: src/package_install_worker.py:92
+#: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:80
 msgid "Failed to exit cleanly"
 msgstr "Nem sikerült menetrendszerűen kilépni"
 
-#: src/package_install_worker.py:108
+#: src/package_install_worker.py:104
 msgid "Could not cancel installation"
 msgstr "Nem sikerült megszakítani a telepítést"
 
-#: src/package_install_worker.py:129 src/package_install_worker.py:139
+#: src/package_install_worker.py:126 src/package_install_worker.py:136
 msgid "Could not install packages"
 msgstr "A csomagok telepítése sikertelen"
 
-#: src/package_install_worker.py:129
+#: src/package_install_worker.py:126
 msgid "Packages are currently being installed."
 msgstr "A csomagok telepítés alatt vannak."
 
-#: src/package_install_worker.py:139
+#: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
 msgstr "Nincsenek telepítésre jelölt csomagok."
 
@@ -207,8 +207,8 @@ msgstr "A Raktár megpróbálja telepíteni az egyező csomagokat."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:41
-#: src/properties_page/properties_page.py:193
-#: src/properties_page/properties_page.py:318
+#: src/properties_page/properties_page.py:208
+#: src/properties_page/properties_page.py:333
 #: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:129
 #: src/remotes_page/remotes_page.py:196 src/user_data_page/data_box.py:119
 #: src/user_data_page/user_data_page.py:213
@@ -664,7 +664,7 @@ msgid "Refs"
 msgstr "Hivatkozások"
 
 #: src/packages_page/packages_page.py:260
-#: src/properties_page/properties_page.py:278
+#: src/properties_page/properties_page.py:293
 msgid "Copied {}"
 msgstr "{} másolva"
 
@@ -686,10 +686,10 @@ msgstr "Csomagok betöltése"
 
 #: src/packages_page/packages_page.py:373
 #: src/packages_page/packages_page.py:374
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:386
 #: src/remotes_page/remotes_page.py:294 src/remotes_page/remotes_page.py:295
 #: src/user_data_page/user_data_page.py:300
-#: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:100
+#: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:102
 #: src/install_page/results_page.py:138
 msgid "This should only take a moment"
 msgstr "Ez csak egy pillanatba telik"
@@ -705,7 +705,7 @@ msgstr "Csomagok újratelepítése"
 #: src/packages_page/packages_page.py:376
 #: src/packages_page/packages_page.py:378
 #: src/change_version_page/change_version_page.py:126
-#: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:92
+#: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:94
 msgid "This could take a while"
 msgstr "Ez eltarthat egy ideig"
 
@@ -870,151 +870,151 @@ msgstr "Tárgy"
 msgid "Date"
 msgstr "Dátum"
 
-#: src/properties_page/properties_page.py:79
+#: src/properties_page/properties_page.py:83
 msgid "{} Properties"
 msgstr "{} tulajdonság"
 
-#: src/properties_page/properties_page.py:84
+#: src/properties_page/properties_page.py:87
 msgid "Properties"
 msgstr "Tulajdonságok"
 
 #. Apply again
-#: src/properties_page/properties_page.py:113
+#: src/properties_page/properties_page.py:124
 #: src/user_data_page/user_data_page.py:300
 msgid "Loading User Data"
 msgstr "Felhasználói adatok betöltése"
 
-#: src/properties_page/properties_page.py:123
+#: src/properties_page/properties_page.py:134
 msgid "No User Data"
 msgstr "Nincsenek felhasználói adatok"
 
-#: src/properties_page/properties_page.py:133
-#: src/properties_page/properties_page.py:149
+#: src/properties_page/properties_page.py:144
+#: src/properties_page/properties_page.py:164
 msgid "Could not get properties"
 msgstr "Tulajdonságok lekérése sikertelen"
 
-#: src/properties_page/properties_page.py:146
+#: src/properties_page/properties_page.py:156
 msgid "No version information found"
 msgstr "Nincs verzió információ"
 
-#: src/properties_page/properties_page.py:166
+#: src/properties_page/properties_page.py:181
 msgid "Could not open data"
 msgstr "Az adatok megnyitása sikertelen"
 
-#: src/properties_page/properties_page.py:185
-#: src/properties_page/properties_page.py:187
-#: src/properties_page/properties_page.py:244
-#: src/properties_page/properties_page.py:246
+#: src/properties_page/properties_page.py:200
+#: src/properties_page/properties_page.py:202
+#: src/properties_page/properties_page.py:259
+#: src/properties_page/properties_page.py:261
 #: src/user_data_page/data_box.py:104 src/user_data_page/user_data_page.py:187
 #: src/user_data_page/user_data_page.py:201
 msgid "Could not trash data"
 msgstr "Az adatok törlése sikertelen"
 
-#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:205
 msgid "Send {}'s User Data to the Trash?"
 msgstr "Törli a(z) {} adatait?"
 
-#: src/properties_page/properties_page.py:191
+#: src/properties_page/properties_page.py:206
 msgid "Your settings and data for this app will be sent to the trash"
 msgstr "Az alkalmazás beállításai és adatai a kukába lesznek helyezve"
 
-#: src/properties_page/properties_page.py:194
+#: src/properties_page/properties_page.py:209
 msgid "Trash Data"
 msgstr "Adatok törlése"
 
-#: src/properties_page/properties_page.py:204
+#: src/properties_page/properties_page.py:219
 msgid "Could not Disable Updates"
 msgstr "A frissítések kikapcsolása sikertelen"
 
-#: src/properties_page/properties_page.py:204
+#: src/properties_page/properties_page.py:219
 msgid "Could not Enable Updates"
 msgstr "A frissítések engedélyezése sikertelen"
 
-#: src/properties_page/properties_page.py:210
+#: src/properties_page/properties_page.py:225
 msgid "Disabled Updates"
 msgstr "Frissítések kikapcsolva"
 
-#: src/properties_page/properties_page.py:210
+#: src/properties_page/properties_page.py:225
 msgid "Enabled Updates"
 msgstr "Frissítések engedélyezve"
 
-#: src/properties_page/properties_page.py:223
+#: src/properties_page/properties_page.py:238
 msgid "Could not Disable Autoremoval"
 msgstr "Az automatikus eltávolítás kikapcsolása sikertelen"
 
-#: src/properties_page/properties_page.py:223
+#: src/properties_page/properties_page.py:238
 msgid "Could not Enable Autoremoval"
 msgstr "Az automatikus eltávolítás bekapcsolása sikertelen"
 
-#: src/properties_page/properties_page.py:228
+#: src/properties_page/properties_page.py:243
 msgid "Disabled Autoremoval"
 msgstr "Automatikus eltávolítás kikapcsolva"
 
-#: src/properties_page/properties_page.py:228
+#: src/properties_page/properties_page.py:243
 msgid "Enabled Autoremoval"
 msgstr "Automatikus eltávolítás bekapcsolva"
 
-#: src/properties_page/properties_page.py:251
+#: src/properties_page/properties_page.py:266
 msgid "Could not uninstall"
 msgstr "Az eltávolítás sikertelen"
 
-#: src/properties_page/properties_page.py:255
+#: src/properties_page/properties_page.py:270
 msgid "Uninstalled {}"
 msgstr "{} eltávolítva"
 
-#: src/properties_page/properties_page.py:267
+#: src/properties_page/properties_page.py:282
 msgid "Opening {}…"
 msgstr "{} indítása…"
 
-#: src/properties_page/properties_page.py:272
+#: src/properties_page/properties_page.py:287
 msgid "Could not open {}"
 msgstr "{} indítása sikertelen"
 
-#: src/properties_page/properties_page.py:287
+#: src/properties_page/properties_page.py:302
 msgid "Reinstalled {}"
 msgstr "{} újratelepíteve"
 
-#: src/properties_page/properties_page.py:315
+#: src/properties_page/properties_page.py:330
 msgid "Reinstall {}?"
 msgstr "Újratelepíti ezt: {}?"
 
-#: src/properties_page/properties_page.py:316
+#: src/properties_page/properties_page.py:331
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
 msgstr ""
 "Ez a csomagok el lesz távolítva, majd újból telepítve ugyanabból a tárolóból."
 
-#: src/properties_page/properties_page.py:319
-#: src/properties_page/properties_page.py:377
+#: src/properties_page/properties_page.py:334
+#: src/properties_page/properties_page.py:392
 msgid "Reinstall"
 msgstr "Újratelepítés"
 
-#: src/properties_page/properties_page.py:336
+#: src/properties_page/properties_page.py:351
 msgid "Copied launch command"
 msgstr "Indítási parancs másolva"
 
-#: src/properties_page/properties_page.py:338
+#: src/properties_page/properties_page.py:353
 msgid "Could not copy launch command"
 msgstr "Indítási parancs másolása sikertelen"
 
-#: src/properties_page/properties_page.py:344
+#: src/properties_page/properties_page.py:359
 msgid "Could not show details"
 msgstr "Részletek megjelenítése sikertelen"
 
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:386
 msgid "Loading Properties"
 msgstr "Tulajdonságok betöltése"
 
-#: src/properties_page/properties_page.py:374
+#: src/properties_page/properties_page.py:389
 msgid "View Snapshots"
 msgstr "Pillanatkép megtekintése"
 
-#: src/properties_page/properties_page.py:375
+#: src/properties_page/properties_page.py:390
 msgid "Copy Launch Command"
 msgstr "Indítási parancs másolása"
 
-#: src/properties_page/properties_page.py:376
+#: src/properties_page/properties_page.py:391
 msgid "Show Details"
 msgstr "Részletek megjelenítése"
 
@@ -1724,24 +1724,24 @@ msgstr "Forrás kiválasztása"
 msgid "Pending Packages"
 msgstr "Telepítendő csomagok"
 
-#: src/install_page/install_page.py:55
+#: src/install_page/install_page.py:57
 msgid "Installed Packages"
 msgstr "Telepített csomagok"
 
-#: src/install_page/install_page.py:72
+#: src/install_page/install_page.py:74
 msgid "{} Pending Package"
 msgstr "{} telepítendő csomag"
 
-#: src/install_page/install_page.py:77
+#: src/install_page/install_page.py:79
 msgid "{} Pending Packages"
 msgstr "{} telepítendő csomag"
 
 #. Extra Object Creation
-#: src/install_page/install_page.py:92
+#: src/install_page/install_page.py:94
 msgid "Installing Packages"
 msgstr "Csomagok telepítése"
 
-#: src/install_page/install_page.py:100
+#: src/install_page/install_page.py:102
 msgid "Loading Installation Options"
 msgstr "Telepítési lehetőségek betöltése"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-04 22:09-0500\n"
+"POT-Creation-Date: 2025-03-11 15:32-0400\n"
 "PO-Revision-Date: 2025-04-05 13:46+0000\n"
 "Last-Translator: ぺー☆ <nextnewstar@users.noreply.weblate.fyralabs.com>\n"
 "Language-Team: Japanese <https://weblate.fyralabs.com/projects/flattool/"
@@ -20,15 +20,15 @@ msgstr ""
 "X-Generator: Weblate 5.9.2\n"
 
 #. Translators: Do not translate the application name
-#: data/io.github.flattool.Warehouse.desktop.in:4
+#: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
 msgstr "Warehouse"
 
-#: data/io.github.flattool.Warehouse.desktop.in:11
+#: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak"
 msgstr "flatpak"
 
-#: data/io.github.flattool.Warehouse.desktop.in:12
+#: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
 msgstr "Flatpakの全ての事柄を管理する"
@@ -52,7 +52,8 @@ msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
-msgstr "不要なアップデートをロールバックするために、Flatpakのバージョンを変更する。"
+msgstr ""
+"不要なアップデートをロールバックするために、Flatpakのバージョンを変更する。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
@@ -73,7 +74,8 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
-msgstr "数回のクリックで人気のリモートのFlatpakを追加したり、代わりにリモートのカスタ"
+msgstr ""
+"数回のクリックで人気のリモートのFlatpakを追加したり、代わりにリモートのカスタ"
 "ムのものを追加することができます。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
@@ -130,15 +132,15 @@ msgid "Flatpaks & Remotes"
 msgstr "Flatpaks & リモート"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:207
+#: src/main.py:209
 msgid "translator-credits"
 msgstr "翻訳者クレジット"
 
-#: src/main.py:213
+#: src/main.py:215
 msgid "Donate"
 msgstr "寄付する"
 
-#: src/main.py:215
+#: src/main.py:217
 msgid "Contributors"
 msgstr "貢献者"
 
@@ -146,32 +148,32 @@ msgstr "貢献者"
 msgid "Could not load packages"
 msgstr "パッケージをロードできませんでした"
 
-#: src/package_install_worker.py:88
+#: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
 msgstr "インストール中にエラーが発生しました"
 
-#: src/package_install_worker.py:92 src/package_install_worker.py:96
+#: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
 msgstr "インストール中にエラーが発生しました"
 
-#: src/package_install_worker.py:92
+#: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:80
 msgid "Failed to exit cleanly"
 msgstr "クリーンな終了に失敗しました"
 
-#: src/package_install_worker.py:108
+#: src/package_install_worker.py:104
 msgid "Could not cancel installation"
 msgstr "インストールをキャンセルできませんでした"
 
-#: src/package_install_worker.py:129 src/package_install_worker.py:139
+#: src/package_install_worker.py:126 src/package_install_worker.py:136
 msgid "Could not install packages"
 msgstr "パッケージをインストールできませんでした"
 
-#: src/package_install_worker.py:129
+#: src/package_install_worker.py:126
 msgid "Packages are currently being installed."
 msgstr "パッケージは現在インストール中です。"
 
-#: src/package_install_worker.py:139
+#: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
 msgstr "インストールを要求されたパッケージはありませんでした。"
 
@@ -207,8 +209,8 @@ msgstr "Warehouseは一致するパッケージのインストールを試みま
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:41
-#: src/properties_page/properties_page.py:193
-#: src/properties_page/properties_page.py:318
+#: src/properties_page/properties_page.py:208
+#: src/properties_page/properties_page.py:333
 #: src/remotes_page/add_remote_dialog.blp:17 src/remotes_page/remote_row.py:129
 #: src/remotes_page/remotes_page.py:196 src/user_data_page/data_box.py:119
 #: src/user_data_page/user_data_page.py:213
@@ -667,7 +669,7 @@ msgid "Refs"
 msgstr "Refs"
 
 #: src/packages_page/packages_page.py:260
-#: src/properties_page/properties_page.py:278
+#: src/properties_page/properties_page.py:293
 msgid "Copied {}"
 msgstr "コピー済 {}"
 
@@ -689,10 +691,10 @@ msgstr "パッケージを読み込み中"
 
 #: src/packages_page/packages_page.py:373
 #: src/packages_page/packages_page.py:374
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:386
 #: src/remotes_page/remotes_page.py:294 src/remotes_page/remotes_page.py:295
 #: src/user_data_page/user_data_page.py:300
-#: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:100
+#: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:102
 #: src/install_page/results_page.py:138
 msgid "This should only take a moment"
 msgstr "これは一瞬で終わるはずだ"
@@ -708,7 +710,7 @@ msgstr "パッケージの再インストール"
 #: src/packages_page/packages_page.py:376
 #: src/packages_page/packages_page.py:378
 #: src/change_version_page/change_version_page.py:126
-#: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:92
+#: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:94
 msgid "This could take a while"
 msgstr "しばらく時間がかかるかもしれない"
 
@@ -872,115 +874,115 @@ msgstr "テーマ"
 msgid "Date"
 msgstr "日付"
 
-#: src/properties_page/properties_page.py:79
+#: src/properties_page/properties_page.py:83
 msgid "{} Properties"
 msgstr "{} プロパティ"
 
-#: src/properties_page/properties_page.py:84
+#: src/properties_page/properties_page.py:87
 msgid "Properties"
 msgstr "プロパティ"
 
 #. Apply again
-#: src/properties_page/properties_page.py:113
+#: src/properties_page/properties_page.py:124
 #: src/user_data_page/user_data_page.py:300
 msgid "Loading User Data"
 msgstr "ユーザーデータのロード"
 
-#: src/properties_page/properties_page.py:123
+#: src/properties_page/properties_page.py:134
 msgid "No User Data"
 msgstr "ユーザーデータなし"
 
-#: src/properties_page/properties_page.py:133
-#: src/properties_page/properties_page.py:149
+#: src/properties_page/properties_page.py:144
+#: src/properties_page/properties_page.py:164
 msgid "Could not get properties"
 msgstr "プロパティを取得できませんでした"
 
-#: src/properties_page/properties_page.py:146
+#: src/properties_page/properties_page.py:156
 msgid "No version information found"
 msgstr "バージョン情報が見つかりません"
 
-#: src/properties_page/properties_page.py:166
+#: src/properties_page/properties_page.py:181
 msgid "Could not open data"
 msgstr "データを開くことができなかった"
 
-#: src/properties_page/properties_page.py:185
-#: src/properties_page/properties_page.py:187
-#: src/properties_page/properties_page.py:244
-#: src/properties_page/properties_page.py:246
+#: src/properties_page/properties_page.py:200
+#: src/properties_page/properties_page.py:202
+#: src/properties_page/properties_page.py:259
+#: src/properties_page/properties_page.py:261
 #: src/user_data_page/data_box.py:104 src/user_data_page/user_data_page.py:187
 #: src/user_data_page/user_data_page.py:201
 msgid "Could not trash data"
 msgstr "データをゴミ箱に入れられなかった"
 
-#: src/properties_page/properties_page.py:190
+#: src/properties_page/properties_page.py:205
 msgid "Send {}'s User Data to the Trash?"
 msgstr "ゴミ箱に{}のユーザーデータを送りますか？"
 
-#: src/properties_page/properties_page.py:191
+#: src/properties_page/properties_page.py:206
 msgid "Your settings and data for this app will be sent to the trash"
 msgstr "このアプリの設定とデータはゴミ箱に送られます。"
 
-#: src/properties_page/properties_page.py:194
+#: src/properties_page/properties_page.py:209
 msgid "Trash Data"
 msgstr "データをゴミ箱へ"
 
-#: src/properties_page/properties_page.py:204
+#: src/properties_page/properties_page.py:219
 msgid "Could not Disable Updates"
 msgstr "アップデートを無効にできませんでした"
 
-#: src/properties_page/properties_page.py:204
+#: src/properties_page/properties_page.py:219
 msgid "Could not Enable Updates"
 msgstr "アップデートを有効にできませんでした"
 
-#: src/properties_page/properties_page.py:210
+#: src/properties_page/properties_page.py:225
 msgid "Disabled Updates"
 msgstr "無効化されたアップデート"
 
-#: src/properties_page/properties_page.py:210
+#: src/properties_page/properties_page.py:225
 msgid "Enabled Updates"
 msgstr "有効化されたアップデート"
 
-#: src/properties_page/properties_page.py:223
+#: src/properties_page/properties_page.py:238
 msgid "Could not Disable Autoremoval"
 msgstr "自動削除を無効にできませんでした"
 
-#: src/properties_page/properties_page.py:223
+#: src/properties_page/properties_page.py:238
 msgid "Could not Enable Autoremoval"
 msgstr "自動削除を有効にできませんでした"
 
-#: src/properties_page/properties_page.py:228
+#: src/properties_page/properties_page.py:243
 msgid "Disabled Autoremoval"
 msgstr "無効化された自動解除"
 
-#: src/properties_page/properties_page.py:228
+#: src/properties_page/properties_page.py:243
 msgid "Enabled Autoremoval"
 msgstr "有効化された自動解除"
 
-#: src/properties_page/properties_page.py:251
+#: src/properties_page/properties_page.py:266
 msgid "Could not uninstall"
 msgstr "アンインストールできませんでした"
 
-#: src/properties_page/properties_page.py:255
+#: src/properties_page/properties_page.py:270
 msgid "Uninstalled {}"
 msgstr "アンインストールされた {}"
 
-#: src/properties_page/properties_page.py:267
+#: src/properties_page/properties_page.py:282
 msgid "Opening {}…"
 msgstr "開いています {}…"
 
-#: src/properties_page/properties_page.py:272
+#: src/properties_page/properties_page.py:287
 msgid "Could not open {}"
 msgstr "{} を開くことができませんでした"
 
-#: src/properties_page/properties_page.py:287
+#: src/properties_page/properties_page.py:302
 msgid "Reinstalled {}"
 msgstr "再インストールされた {}"
 
-#: src/properties_page/properties_page.py:315
+#: src/properties_page/properties_page.py:330
 msgid "Reinstall {}?"
 msgstr "{} を再インストールしますか?"
 
-#: src/properties_page/properties_page.py:316
+#: src/properties_page/properties_page.py:331
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
@@ -988,36 +990,36 @@ msgstr ""
 "このパッケージはアンインストールされ、同じリモートおよびインストールから再イ"
 "ンストールされます。"
 
-#: src/properties_page/properties_page.py:319
-#: src/properties_page/properties_page.py:377
+#: src/properties_page/properties_page.py:334
+#: src/properties_page/properties_page.py:392
 msgid "Reinstall"
 msgstr "再インストール"
 
-#: src/properties_page/properties_page.py:336
+#: src/properties_page/properties_page.py:351
 msgid "Copied launch command"
 msgstr "コピーされたランチコマンド"
 
-#: src/properties_page/properties_page.py:338
+#: src/properties_page/properties_page.py:353
 msgid "Could not copy launch command"
 msgstr "ランチコマンドをコピーできませんでした"
 
-#: src/properties_page/properties_page.py:344
+#: src/properties_page/properties_page.py:359
 msgid "Could not show details"
 msgstr "詳細を表示できませんでした"
 
-#: src/properties_page/properties_page.py:371
+#: src/properties_page/properties_page.py:386
 msgid "Loading Properties"
 msgstr "プロパティを読み込み中"
 
-#: src/properties_page/properties_page.py:374
+#: src/properties_page/properties_page.py:389
 msgid "View Snapshots"
 msgstr "スナップショットを見る"
 
-#: src/properties_page/properties_page.py:375
+#: src/properties_page/properties_page.py:390
 msgid "Copy Launch Command"
 msgstr "ランチコマンドをコピー"
 
-#: src/properties_page/properties_page.py:376
+#: src/properties_page/properties_page.py:391
 msgid "Show Details"
 msgstr "詳細を表示"
 
@@ -1366,7 +1368,8 @@ msgstr "アクティブデータなし"
 msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
-msgstr "Warehouseにアクティブユーザーデータが表示されない、またはシステムにアクティブ"
+msgstr ""
+"Warehouseにアクティブユーザーデータが表示されない、またはシステムにアクティブ"
 "ユーザーデータが存在しない。"
 
 #: src/user_data_page/data_subpage.py:261
@@ -1646,7 +1649,8 @@ msgstr "これらのスナップショットを適用しますか？"
 #: src/snapshot_page/snapshot_page.py:483
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
-msgstr "現在のアプリのユーザーデータはゴミ箱に移され、最新のスナップショットが適用さ"
+msgstr ""
+"現在のアプリのユーザーデータはゴミ箱に移され、最新のスナップショットが適用さ"
 "れます。"
 
 #: src/snapshot_page/snapshot_page.py:516
@@ -1721,24 +1725,24 @@ msgstr "ソースを選択"
 msgid "Pending Packages"
 msgstr "保留中のパッケージ"
 
-#: src/install_page/install_page.py:55
+#: src/install_page/install_page.py:57
 msgid "Installed Packages"
 msgstr "インストールされているパッケージ"
 
-#: src/install_page/install_page.py:72
+#: src/install_page/install_page.py:74
 msgid "{} Pending Package"
 msgstr "{} 保留中のパッケージ"
 
-#: src/install_page/install_page.py:77
+#: src/install_page/install_page.py:79
 msgid "{} Pending Packages"
 msgstr "{} 保留中のパッケージ"
 
 #. Extra Object Creation
-#: src/install_page/install_page.py:92
+#: src/install_page/install_page.py:94
 msgid "Installing Packages"
 msgstr "パッケージのインストール"
 
-#: src/install_page/install_page.py:100
+#: src/install_page/install_page.py:102
 msgid "Loading Installation Options"
 msgstr "インストールオプションを読み込み中"
 
