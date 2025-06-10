@@ -32,6 +32,7 @@
 		<control>touch</control>
 		<mime>application/vnd.flatpak.ref</mime>
 		<mime>application/vnd.flatpak</mime>
+		<mime>application/vnd.flatpak.repo</mime>
 	</supports>
 	<requires>
 		<display_length compare="ge">330</display_length>

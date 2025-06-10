@@ -10,4 +10,4 @@ StartupNotify=true
 Keywords=flatpak;packages;apps;remotes;snapshots;
 Comment=Manage all things Flatpak
 X-Purism-FormFactor=Workstation;Mobile;
-MimeType=application/vnd.flatpak.ref;application/vnd.flatpak;x-scheme-handler/flatpak;
+MimeType=application/vnd.flatpak.ref;application/vnd.flatpak;x-scheme-handler/flatpak;application/vnd.flatpak.repo
