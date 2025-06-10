@@ -1,6 +1,6 @@
 project('warehouse',
-          version: '2.0.2',
-    meson_version: '>= 0.62.0',
+          version: '2.1.0',
+    meson_version: '>= 0.64.0',
   default_options: [ 'warning_level=2', 'werror=false', ],
 )
 

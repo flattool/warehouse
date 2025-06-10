@@ -5,6 +5,7 @@ from src.change_version_page.change_version_page import ChangeVersionPage
 from src.packages_page.uninstall_dialog import UninstallDialog
 from src.gtk.loading_status import LoadingStatus
 from src.package_install_worker import PackageInstallWorker
+from src.const import Config
 import subprocess, os
 import gettext
 
@@ -74,31 +75,41 @@ class PropertiesPage(Adw.NavigationPage):
 
 		self.reinstall_did_error = False
 		self.package = package
+		package_is_not_this_app = package.info["id"] != Config.APP_ID
+
+		# Show Package Name
 		pkg_name = package.info["name"]
 		if pkg_name != "":
-			self.inner_nav_page.set_title(_("{} Properties").format(package.info["name"]))
-			self.name.set_visible(True)
+			self.inner_nav_page.set_title(_("{} Properties").format(pkg_name))
 			self.name.set_label(pkg_name)
+			self.name.set_visible(True)
 		else:
-			self.name.set_visible(False)
 			self.inner_nav_page.set_title(_("Properties"))
+			self.name.set_visible(False)
 
+		# Show Package Icon
 		if package.icon_path:
 			GLib.idle_add(lambda *_: self.app_icon.set_from_file(package.icon_path))
 		else:
 			GLib.idle_add(lambda *_: self.app_icon.set_from_icon_name("application-x-executable-symbolic"))
 
+		# Toggle UI Items for Package State
 		self.eol_box.set_visible(package.is_eol)
 		self.pin_row.set_visible(package.is_runtime)
-		self.open_app_button.set_visible(package.is_runtime)
 		self.open_app_button.set_visible(not package.is_runtime)
 		self.data_row.set_visible(not package.is_runtime)
-		self.uninstall_button.set_sensitive(self.package.info["id"] != "io.github.flattool.Warehouse")
+		self.uninstall_button.set_sensitive(package_is_not_this_app)
+		self.open_app_button.set_sensitive(package_is_not_this_app)
+		self.mask_label.set_visible(package.is_masked)
+		self.mask_switch.set_active(package.is_masked)
+		self.pin_switch.set_active(package.is_pinned)
+
+		# Runtime Specific Logic
 		if package.is_runtime:
 			self.runtime_row.set_visible(False)
 		else:
 			has_path = os.path.exists(package.data_path)
-			self.trash_data_button.set_sensitive(has_path and self.package.info["id"] != "io.github.flattool.Warehouse")
+			self.trash_data_button.set_sensitive(has_path and package_is_not_this_app)
 			self.open_data_button.set_sensitive(has_path)
 
 			if not self.package.dependent_runtime is None:
@@ -133,33 +144,37 @@ class PropertiesPage(Adw.NavigationPage):
 			self.toast_overlay.add_toast(ErrorToast(_("Could not get properties"), str(e)).toast)
 			return
 
+		failure = None
 		for key, row in self.info_rows.items():
-			row.set_visible(False)
+			should_be_visible = False
 
 			try:
-				subtitle = cli_info[key]
-				row.set_subtitle(subtitle)
-				row.set_visible(True)
+				row.set_subtitle(cli_info[key])
+				should_be_visible = True
 			except KeyError:
 				if key == "version":
-					row.set_visible(True)
 					row.set_subtitle(_("No version information found"))
-				continue
+					should_be_visible = True
 			except Exception as e:
-				self.toast_overlay.add_toast(ErrorToast(_("Could not get properties"), str(e)).toast)
-				continue
+				failure = str(e)
 
-		self.mask_label.set_visible(package.is_masked)
-		self.mask_switch.set_active(package.is_masked)
-		self.pin_switch.set_active(package.is_pinned)
+			row.set_visible(should_be_visible)
+
+		if not failure is None:
+			self.toast_overlay.add_toast(ErrorToast(_("Could not get properties"), str(e)).toast)
+
 		GLib.idle_add(lambda *_: self.stack.set_visible_child(self.nav_view))
+
 		self.more_list.remove_all()
 		if self.open_app_button.get_visible():
-			self.more_list.append(self.view_snapshots)
+			if self.package.info["id"] != Config.APP_ID:
+				self.more_list.append(self.view_snapshots)
 			self.more_list.append(self.copy_launch_command)
 
 		self.more_list.append(self.show_details)
-		self.more_list.append(self.reinstall)
+
+		if self.package.info["id"] != Config.APP_ID:
+			self.more_list.append(self.reinstall)
 
 	def open_data_handler(self, *args):
 		if error := self.package.open_data():

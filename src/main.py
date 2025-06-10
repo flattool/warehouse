@@ -22,9 +22,8 @@ import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-gi.require_version("Flatpak", "1.0")
 
-from gi.repository import Gtk, Gio, Adw, GLib, Flatpak
+from gi.repository import Gtk, Gio, Adw, GLib
 from src.main_window.window import WarehouseWindow
 from src.const import Config
 from src.gtk.error_toast import ErrorToast
@@ -36,9 +35,7 @@ _ = gettext.gettext
 class WarehouseApplication(Adw.Application):
 	"""The main application singleton class."""
 
-	troubleshooting = (
-		"OS: {os}\nWarehouse version: {wv}\nlibflatpak: {libflatpak}\nGTK: {gtk}\nlibadwaita: {adw}\nApp ID: {app_id}\nProfile: {profile}\nLanguage: {lang}"
-	)
+	troubleshooting = "OS: {os}\nWarehouse version: {wv}\nGTK: {gtk}\nlibadwaita: {adw}\nApp ID: {app_id}\nProfile: {profile}\nLanguage: {lang}"
 	version = Config.VERSION
 
 	def __init__(self):
@@ -69,7 +66,6 @@ class WarehouseApplication(Adw.Application):
 
 		self.is_dialog_open = False
 
-		libflatpak_version = str(Flatpak.MAJOR_VERSION) + "." + str(Flatpak.MINOR_VERSION) + "." + str(Flatpak.MICRO_VERSION)
 		gtk_version = str(Gtk.MAJOR_VERSION) + "." + str(Gtk.MINOR_VERSION) + "." + str(Gtk.MICRO_VERSION)
 		adw_version = str(Adw.MAJOR_VERSION) + "." + str(Adw.MINOR_VERSION) + "." + str(Adw.MICRO_VERSION)
 		os_string = GLib.get_os_info("NAME") + " " + GLib.get_os_info("VERSION")
@@ -78,7 +74,6 @@ class WarehouseApplication(Adw.Application):
 		self.troubleshooting = self.troubleshooting.format(
 			os=os_string,
 			wv=self.version,
-			libflatpak=libflatpak_version,
 			gtk=gtk_version,
 			adw=adw_version,
 			profile=Config.PROFILE,
@@ -123,6 +118,8 @@ class WarehouseApplication(Adw.Application):
 		try:
 			button = self.props.active_window.stack.get_visible_child().search_button
 			button.set_active(True)
+			entry = self.props.active_window.stack.get_visible_child().search_entry
+			entry.grab_focus()
 		except AttributeError:
 			pass
 
@@ -239,7 +236,7 @@ class WarehouseApplication(Adw.Application):
 				"Amy https://github.com/AtiusAmy",
 				"eryn https://github.com/hericiumvevo",
 			],
-			copyright="© 2023 Heliguy",
+			copyright="© 2023 - 2025 Mitchell Winkelman",
 			license_type=Gtk.License.GPL_3_0_ONLY,
 			debug_info=self.troubleshooting,
 			# Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website

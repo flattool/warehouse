@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-06 23:38-0400\n"
-"PO-Revision-Date: 2025-01-05 18:45+0000\n"
-"Last-Translator: EmmanuelVer <emverigos@icloud.com>\n"
-"Language-Team: Greek <https://weblate.fyralabs.com/projects/flattool/"
-"warehouse/el/>\n"
-"Language: el\n"
+"PO-Revision-Date: 2025-04-05 13:46+0000\n"
+"Last-Translator: ぺー☆ <nextnewstar@users.noreply.weblate.fyralabs.com>\n"
+"Language-Team: Japanese <https://weblate.fyralabs.com/projects/flattool/"
+"warehouse/ja/>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.9.2\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
-msgstr "Αποθήκη"
+msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak;packages;apps;remotes;snapshots;"
@@ -31,185 +31,181 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
-msgstr "Διαχείριση όλων των ζητημάτων Flatpak"
+msgstr "Flatpakの全ての事柄を管理する"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
+"Warehouseはコマンドラインに頼ることなく、複雑なFlatpakのオプションをコント"
+"ロールするためのシンプルなUIを提供します。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
-msgstr "Χαρακτηριστικά:"
+msgstr "特徴:"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
 msgstr ""
-"Διαχειρίσου εγκατεστημένα Flatpaks και δες ιδιότητες οποιουδήποτε πακέτου"
+"インストールされたFlatpaksを管理し、任意のパッケージのプロパティを表示する"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
 msgstr ""
-"Άλλαξε την έκδοση ενός Flatpak για επαναφορά από οποιαδήποτε ανεπιθύμητη "
-"αναβάθμιση"
+"不要なアップデートをロールバックするために、Flatpakのバージョンを変更する。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
-msgstr ""
+msgstr "ランタイムをピン止めし、Flatpakを隠す。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
 msgstr ""
-"Φιλτράρισε πακέτα και ταξινόμησε δεδομένα, για την εύκολη εύρεση σε οτιδήποτε"
+"パッケージのフィルタリングとデータの並べ替えで、何でも簡単に見つけることがで"
+"きます。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
-"Δείτε τα τρέχοντα δεδομένα χρήστη της εφαρμογής και καθαρίστε τυχόν μη "
-"χρησιμοποιημένα δεδομένα που απομένουν"
+"現在のアプリのユーザーデータを確認し、残っている未使用のデータをクリーンアッ"
+"プする。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
 msgstr ""
+"数回のクリックで人気のリモートのFlatpakを追加したり、代わりにリモートのカスタ"
+"ムのものを追加することができます。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
-msgstr ""
-"Πάρτε στιγμιότυπα των δεδομένων χρήστη των εφαρμογών σας, αποθηκεύοντας τα "
-"δεδομένα σας"
+msgstr "アプリのユーザーデータのスナップショットを取り、データを保存します。"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
-msgstr ""
-"Εγκαταστήστε νέα πακέτα από οποιοδήποτε απομακρυσμένο αποθετήριο ή από το "
-"σύστημά σας"
+msgstr "リモートまたは自分のシステムから新しいパッケージをインストールする"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:22
 msgid "Responsive UI to fit large and small screen sizes"
-msgstr "Προσαρμοζόμενο UI για να ταιριάζει σε μεγάλα και μικρά μεγέθη οθόνης"
+msgstr "大小の画面サイズにフィットするレスポンシブUI"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
-msgstr "Διαχείριση εγκατεστημένων πακέτων σε τρία παράθυρα UI"
+msgstr "Three Pane UIでインストール済みパッケージを管理する"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
-msgstr "Σελίδα ιδιοτήτων σε στενό παράθυρο"
+msgstr "狭いウィンドウのプロパティページ"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
-msgstr ""
-"Διαχειριστείτε τα εγκατεστημένα απομακρυσμένα αποθετήρια και προσθέστε νέα "
-"αποθετήρια"
+msgstr "インストールされているリモートの管理と新しいリモートの追加"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:58
 msgid "Manage Apps' User Data"
-msgstr "Διαχείριση δεδομένων χρήστη εφαρμογών"
+msgstr "アプリのユーザーデータの管理"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:62
 msgid "Backup Apps' User Data"
-msgstr "Δημιουργία αντιγράφων ασφαλείας δεδομένων χρήστη"
+msgstr "アプリのユーザーデータをバックアップする"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
-msgstr "Εγκαταστήστε νέα πακέτα από αρχεία ή απομακρυσμένα αποθετήρια"
+msgstr "ファイルまたはリモートから新しいパッケージをインストールする"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
-msgstr "Σελίδα εγκατάστασης σε στενό παράθυρο"
+msgstr "狭いウィンドウにページをインストールする"
 
 #: src/main.py:91 src/main.py:97 src/install_page/select_page.py:66
 #: src/install_page/select_page.py:73
 msgid "Could not add files"
-msgstr "Δεν ήταν δυνατή η προσθήκη αρχείων"
+msgstr "ファイルを追加できませんでした"
 
 #: src/main.py:91
 msgid "No files were found"
-msgstr "Δεν βρέθηκαν αρχεία"
+msgstr "ファイルが見つかりませんでした"
 
 #: src/main.py:99
 msgid "Flatpaks & Remotes"
-msgstr "Flatpak & Αποθετήρια"
+msgstr "Flatpaks & リモート"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
 #: src/main.py:209
 msgid "translator-credits"
-msgstr "EmmVer<emverigos@geodev.gr>"
+msgstr "翻訳者クレジット"
 
 #: src/main.py:215
 msgid "Donate"
-msgstr "Συνεισφορά"
+msgstr "寄付する"
 
 #: src/main.py:217
 msgid "Contributors"
-msgstr "Συνεισφέροντες"
+msgstr "貢献者"
 
 #: src/host_info.py:389 src/host_info.py:391
 msgid "Could not load packages"
-msgstr "Δεν ήταν δυνατή η φόρτωση των packages"
+msgstr "パッケージをロードできませんでした"
 
 #: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
-msgstr "Παρουσιάστηκαν σφάλματα κατά τη διάρκεια της εγκατάστασης"
+msgstr "インストール中にエラーが発生しました"
 
 #: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
-msgstr "Παρουσιάστηκε σφάλμα κατά τη διάρκεια της εγκατάστασης"
+msgstr "インストール中にエラーが発生しました"
 
 #: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:80
 msgid "Failed to exit cleanly"
-msgstr "Αποτυχία καθαρής εξόδου"
+msgstr "クリーンな終了に失敗しました"
 
 #: src/package_install_worker.py:104
 msgid "Could not cancel installation"
-msgstr "Δεν ήταν δυνατή η ακύρωση της εγκατάστασης"
+msgstr "インストールをキャンセルできませんでした"
 
 #: src/package_install_worker.py:126 src/package_install_worker.py:136
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not install packages"
-msgstr "Δεν ήταν δυνατή η εγκατάσταση της εφαρμογής"
+msgstr "パッケージをインストールできませんでした"
 
 #: src/package_install_worker.py:126
 msgid "Packages are currently being installed."
-msgstr "Τα πακέτα εγκαθίστανται επί του παρόντος."
+msgstr "パッケージは現在インストール中です。"
 
 #: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
-msgstr "Δεν ζητήθηκαν πακέτα για εγκατάσταση."
+msgstr "インストールを要求されたパッケージはありませんでした。"
 
 #: src/gtk/app_row.blp:14 src/properties_page/properties_page.blp:100
 #: src/properties_page/properties_page.blp:179
 msgid "This package is End Of Life, and will not receive any security updates"
 msgstr ""
-"Αυτό το πακέτο έχει φτάσει στο τέλος της ζωής και δεν θα λάβει ενημερώσεις "
-"ασφαλείας"
+"このパッケージはサポート終了のため、セキュリティアップデートは提供されませ"
+"ん。"
 
 #: src/gtk/app_row.blp:21
 msgid ""
 "This app's runtime is End Of Life, and will not receive any security updates"
 msgstr ""
-"Αυτή η εφαρμογή έχει φτάσει στο τέλος της διάρκειας ζωής της και δεν θα "
-"λαμβάνει ενημερώσεις ασφαλείας"
+"このアプリのランタイムはサポート終了であり、セキュリティアップデートは提供さ"
+"れません。"
 
 #: src/gtk/app_row.blp:28
 msgid "This runtime will never be automatically removed"
-msgstr "Αυτός ο χρόνος εκτέλεσης δεν θα αφαιρεθεί αυτόματα"
+msgstr "このランタイムが自動的に削除されることはありません"
 
 #: src/gtk/app_row.blp:34
 msgid "Updates are disabled for this package"
-msgstr "Οι ενημερώσεις είναι απενεργοποιημένες για αυτό το πακέτο"
+msgstr "このパッケージのアップデートは無効です。"
 
 #: src/gtk/attempt_install_dialog.blp:5
 msgid "Attempt an Install?"
-msgstr "Προσπαθείτε να εγκαταστήσετε;"
+msgstr "インストールを試みますか？"
 
 #: src/gtk/attempt_install_dialog.blp:6
 msgid "Warehouse will try to install the matching packages."
-msgstr "Η Warehouse θα προσπαθήσει να εγκαταστήσει τα αντίστοιχα πακέτα."
+msgstr "Warehouseは一致するパッケージのインストールを試みます。"
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:41
@@ -224,7 +220,7 @@ msgstr "Η Warehouse θα προσπαθήσει να εγκαταστήσει �
 #: src/snapshot_page/snapshot_page.py:522
 #: src/install_page/file_install_dialog.blp:13
 msgid "Cancel"
-msgstr "Ακύρωση"
+msgstr "キャンセル"
 
 #: src/gtk/attempt_install_dialog.blp:9
 #: src/user_data_page/user_data_page.blp:100
@@ -232,237 +228,215 @@ msgstr "Ακύρωση"
 #: src/install_page/file_install_dialog.blp:18
 #: src/install_page/pending_page.blp:35
 msgid "Install"
-msgstr "Εγκατάσταση"
+msgstr "インストール"
 
 #: src/gtk/attempt_install_dialog.blp:12
 msgid "Choose a Remote"
-msgstr "Διάλεξε απομακρυσμένο διακομιστή"
+msgstr "リモートの選択"
 
 #: src/gtk/attempt_install_dialog.blp:13
 msgid "Select a remote to attempt to install from"
-msgstr "Διάλεξε απομακρυσμένο διακομιστή από όπου θα γίνει η εγκατάσταση"
+msgstr "インストール先のリモートを選択します。"
 
 #: src/gtk/attempt_install_dialog.py:22 src/packages_page/filters_page.py:128
 #: src/remotes_page/remote_row.py:155 src/install_page/pending_page.py:33
 #: src/install_page/select_page.py:35
-#, fuzzy
-#| msgid "Install {}?"
 msgid "Installation: {}"
-msgstr "Εγκατάσταση {};"
+msgstr "インストレーション: {}"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Can't find matching packages"
-msgstr "Δεν είναι δυνατή η εύρεση πακέτων αντιστοίχισης"
+msgstr "マッチするパッケージが見つかりません"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Your system has no remotes added"
-msgstr "Στο σύστημα σας δεν έχουν προστεθεί απομακρυσμένοι διακομιστές"
+msgstr "システムにリモートが追加されていません"
 
 #. Extra Object Creation
 #: src/gtk/error_toast.py:16
 msgid "Details"
-msgstr "Λεπτομέρειες"
+msgstr "詳細"
 
 #: src/gtk/error_toast.py:23 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
 #: src/snapshot_page/snapshot_page.blp:149
 msgid "Copy"
-msgstr "Αντιγραφή"
+msgstr "コピー"
 
 #: src/gtk/error_toast.py:24 src/main_window/window.py:142
 #: src/main_window/window.py:152 src/main_window/window.py:161
 msgid "OK"
-msgstr "ΕΝΤΆΞΕΙ"
+msgstr "OK"
 
 #: src/gtk/help-overlay.blp:9
 msgid "General"
-msgstr "Γενικά"
+msgstr "一般"
 
 #: src/gtk/help-overlay.blp:11
 msgid "Refresh"
-msgstr "Ανανέωση"
+msgstr "リフレッシュ"
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
 msgid "Open Files"
-msgstr "Ανοίξτε τα αρχεία"
+msgstr "ファイルを開く"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
-msgstr "Μενού"
+msgstr "メニューを開く"
 
 #: src/gtk/help-overlay.blp:23
 msgid "Show Shortcuts"
-msgstr "Εμφάνιση συντομεύσεων"
+msgstr "ショートカットを表示する"
 
 #: src/gtk/help-overlay.blp:27
 msgid "Quit"
-msgstr "Έξοδος"
+msgstr "やめる"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
-msgstr "Πλοήγηση"
+msgstr "ナビゲーション"
 
 #: src/gtk/help-overlay.blp:34
 msgid "Show Packages Page"
-msgstr "Εμφάνιση σελίδας πακέτων"
+msgstr "パッケージのページを表示"
 
 #: src/gtk/help-overlay.blp:38
 msgid "Show Remotes Page"
-msgstr "Εμφάνιση απομακρυσμένων αποθετηρίων"
+msgstr "リモートのページを表示"
 
 #: src/gtk/help-overlay.blp:42
 msgid "Show User Data Page"
-msgstr "Εμφάνιση σελίδας δεδομένων χρήστη"
+msgstr "ユーザーデータページの表示"
 
 #: src/gtk/help-overlay.blp:46
 msgid "Show Snapshots Page"
-msgstr "Εμφάνιση σελίδας στιγμιότυπων"
+msgstr "スナップショットページを表示"
 
 #: src/gtk/help-overlay.blp:50
 msgid "Show Install Page"
-msgstr "Εμφάνιση σελίδας εγκατάστασης"
+msgstr "インストールページの表示"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Packages Page"
-msgstr "Σελίδα πακέτων"
+msgstr "パッケージのページ"
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
 msgid "Search Mode"
-msgstr "Λειτουργία αναζήτησης"
+msgstr "検索モード"
 
 #: src/gtk/help-overlay.blp:61
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Edit Filters"
-msgstr "Ορισμός φίλτρων"
+msgstr "フィルターの編集"
 
 #: src/gtk/help-overlay.blp:65 src/gtk/help-overlay.blp:95
 #: src/gtk/help-overlay.blp:114
-#, fuzzy
-#| msgid "Select"
 msgid "Selection Mode"
-msgstr "Επιλογή"
+msgstr "選択モード"
 
 #: src/gtk/help-overlay.blp:70
 msgid "Remotes Page"
-msgstr "Απομακρυσμένες Σελίδες"
+msgstr "リモート ページ"
 
 #: src/gtk/help-overlay.blp:76
 msgid "Show or Hide Disabled Remotes"
-msgstr "Εμφάνιση ή απόκρυψη απομακρυσμένων διακομιστών"
+msgstr "無効なリモートを表示もしくは非表示"
 
 #: src/gtk/help-overlay.blp:80
-#, fuzzy
-#| msgid "Add Remote"
 msgid "New Remote"
-msgstr "Προσθήκη Αποθετηρίου"
+msgstr "新しいリモート"
 
 #: src/gtk/help-overlay.blp:85
-#, fuzzy
-#| msgid "User Data"
 msgid "User Data Page"
-msgstr "Δεδομένα Χρήστη"
+msgstr "ユーザーデータページ"
 
 #: src/gtk/help-overlay.blp:91
 msgid "Edit Sorting Modes"
-msgstr "Επεξεργασία λειτουργιών ταξινόμησης"
+msgstr "並べ替えモードの編集"
 
 #: src/gtk/help-overlay.blp:99
 msgid "Show Active Data"
-msgstr "Εμφάνιση ενεργών δεδομένων"
+msgstr "アクティブデータの表示"
 
 #: src/gtk/help-overlay.blp:103
 msgid "Show Leftover Data"
-msgstr "Εμφάνιση υπολοίπων δεδομένων"
+msgstr "残りデータの表示"
 
 #: src/gtk/help-overlay.blp:108
-#, fuzzy
-#| msgid "Snapshot applied"
 msgid "Snapshots Page"
-msgstr "Εφαρμογή Στιγμιότυπου"
+msgstr "スナップショットのページ"
 
 #: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:206
-#, fuzzy
-#| msgid "{} Snapshots"
 msgid "New Snapshots"
-msgstr "{} Στιγμιότυπα"
+msgstr "新しいスナップショット"
 
 #: src/gtk/installation_chooser.blp:5
 msgid "Choose Installation"
-msgstr "Επέλεξε Εγκατάσταση"
+msgstr "インストールの選択"
 
 #: src/gtk/installation_chooser.blp:11
 msgid "User"
-msgstr "Χρήστης"
+msgstr "ユーザー"
 
 #: src/gtk/installation_chooser.blp:19
 msgid "System"
-msgstr "Σύστημα"
+msgstr "システム"
 
 #: src/gtk/installation_chooser.blp:28
 msgid "Custom installation"
-msgstr "Προσαρμοσμένη εγκατάσταση"
+msgstr "カスタムインストール"
 
 #: src/gtk/installation_chooser.blp:37
 msgid "Other Installation"
-msgstr "Άλλη Εγκατάσταση"
+msgstr "その他のインストール"
 
 #: src/gtk/installation_chooser.blp:38
 msgid "Choose a custom installation"
-msgstr "Επέλεξε Προσαρμοσμένη εγκατάσταση"
+msgstr "カスタムインストールを選択する"
 
 #: src/gtk/installation_chooser.py:31
-#, fuzzy
-#| msgid "The app will be available to only you"
 msgid "These {} will only be available to you"
-msgstr "Η εφαρμογή θα είναι διαθέσιμη μόνο σε εσάς"
+msgstr "これらの{}はあなただけが利用できる"
 
 #: src/gtk/installation_chooser.py:32
-#, fuzzy
-#| msgid "The app will be available to every user on the system"
 msgid "These {} will be available to everyone"
-msgstr "Η εφαρμογή θα είναι διαθέσιμη σε κάθε χρήστη του συστήματος"
+msgstr "これらの{}は誰でも利用できる"
 
 #: src/gtk/installation_chooser.py:33
 msgid "Choose how these {} will be installed"
-msgstr "Επιλέξτε πώς θα εγκατασταθούν {} αυτά"
+msgstr "これらの{}をどのようにインストールするかを選択する"
 
 #: src/gtk/installation_chooser.py:35
-#, fuzzy
-#| msgid "The app will be available to only you"
 msgid "This {} will only be available to you"
-msgstr "Η εφαρμογή θα είναι διαθέσιμη μόνο σε εσάς"
+msgstr "この{}はあなただけが利用できる"
 
 #: src/gtk/installation_chooser.py:36
-#, fuzzy
-#| msgid "The app will be available to every user on the system"
 msgid "This {} will be available to everyone"
-msgstr "Η εφαρμογή θα είναι διαθέσιμη σε κάθε χρήστη του συστήματος"
+msgstr "この{}は誰でも利用できる"
 
 #: src/gtk/installation_chooser.py:37
 msgid "Choose how this {} will be installed"
-msgstr "Επιλέξτε πώς θα εγκατασταθεί {} αυτό"
+msgstr "この{}をどのようにインストールするかを選択する"
 
 #: src/gtk/sidebar_button.py:23
 msgid "Show Sidebar"
-msgstr "Εμφάνιση πλευρικής μπάρας"
+msgstr "サイドバーを表示する"
 
 #: src/main_window/window.blp:26
 msgid "Drop to Open"
-msgstr "Πτώση για άνοιγμα"
+msgstr "ドロップして開く"
 
 #: src/main_window/window.blp:27
 msgid "Install Flatpaks or Add a Remote"
-msgstr "Εγκατέστησε Flatpaks ή πρόσθεσε απομακρυσμένο αποθετήριο"
+msgstr "Flatpaksのインストールまたはリモートの追加"
 
 #: src/main_window/window.blp:45
 msgid "Refresh List"
-msgstr "Ανανέωση Λίστας"
+msgstr "リストをリフレッシュ"
 
 #: src/main_window/window.blp:50
 msgid "Main Menu"
-msgstr "Κύριο Μενού"
+msgstr "メインメニュー"
 
 #: src/main_window/window.blp:68 src/packages_page/packages_page.blp:20
 #: src/packages_page/packages_page.blp:55
@@ -470,281 +444,250 @@ msgstr "Κύριο Μενού"
 #: src/packages_page/packages_page.py:325
 #: src/install_page/file_install_dialog.py:41
 msgid "Packages"
-msgstr "Πακέτα"
+msgstr "パッケージ"
 
 #: src/main_window/window.blp:83
 msgid "Remotes"
-msgstr "Απομακρυσμένα αποθετήρια"
+msgstr "リモート"
 
 #: src/main_window/window.blp:99 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
 msgid "User Data"
-msgstr "Δεδομένα Χρήστη"
+msgstr "ユーザーデータ"
 
 #: src/main_window/window.blp:114 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
 #: src/snapshot_page/snapshot_page.py:360
-#, fuzzy
-#| msgid "{} Snapshots"
 msgid "Snapshots"
-msgstr "{} Στιγμιότυπα"
+msgstr "スナップショット"
 
 #: src/main_window/window.blp:129 src/install_page/file_install_dialog.py:38
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
 msgid "Install Packages"
-msgstr "Εγκατάσταση πακέτων"
+msgstr "パッケージのインストール"
 
 #: src/main_window/window.blp:161
 msgid "_Open Files"
-msgstr "Άνοιγμα αρχείων"
+msgstr "ファイルを開く"
 
 #: src/main_window/window.blp:165
 msgid "_Keyboard Shortcuts"
-msgstr "_Συντομεύσεις πληκτρολογίου"
+msgstr "キーボードショートカット"
 
 #: src/main_window/window.blp:169
 msgid "_About Warehouse"
-msgstr "_Περί Αποθήκης"
+msgstr "Warehouseについて"
 
 #: src/main_window/window.py:139
 msgid "Unsupported Filetype"
-msgstr "Μη υποστηριζόμενο αρχείο"
+msgstr "サポートされていないファイルタイプ"
 
 #: src/main_window/window.py:140
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
-msgstr "Μόνο .flatpak, .flatpakref και .flatpakrepo αρχεία υποστηρίζονται"
+msgstr ""
+".flatpak、.flatpakref、.flatpakrepo ファイルのみがサポートされています。"
 
 #: src/main_window/window.py:148
 msgid "Mixed Filetypes"
-msgstr "Μικτοί τύποι αρχείων"
+msgstr "混合ファイルタイプ"
 
 #: src/main_window/window.py:149
 msgid "Flatpaks and remotes cannot be installed at the same time."
-msgstr ""
-"Flatpaks και Απομακρυσμένα αποθετήρια δεν μπορούν να εγκατασταθούν "
-"ταυτόχρονα."
+msgstr "Flatpakとリモートを同時に取り付けることはできません。"
 
 #: src/main_window/window.py:158
 msgid "Too Many Remotes"
-msgstr "Πάρα πολλά απομακρυσμένα αποθετήρια"
+msgstr "リモートが多すぎます"
 
 #: src/main_window/window.py:159
 msgid "Only one remote at a time is supported."
-msgstr "Υποστηρίζεται μόνο ένα απομακρυσμένο κάθε φορά."
+msgstr "一度にサポートされるリモートは1つだけです。"
 
 #: src/main_window/window.py:177
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open files"
-msgstr "Δεν μπόρεσε να γίνει άνοιγμα φακέλου"
+msgstr "ファイルを開けませんでした"
 
 #: src/packages_page/filters_page.blp:5 src/packages_page/packages_page.blp:70
 msgid "Filter Packages"
-msgstr "φιλτράρισμα πακέτων"
+msgstr "パッケージを絞り込む"
 
 #: src/packages_page/filters_page.blp:20
 msgid "Filter by Package Type"
-msgstr "Φίλτρο ανά τύπο πακέτου"
+msgstr "パッケージタイプで絞り込む"
 
 #: src/packages_page/filters_page.blp:21
 msgid "Show packages of these types"
-msgstr "Εμφάνιση πακέτων αυτών των τύπων"
+msgstr "これらのタイプのパッケージを表示する"
 
 #: src/packages_page/filters_page.blp:23
 msgid "Applications"
-msgstr "Εφαρμογές"
+msgstr "アプリケーション"
 
 #: src/packages_page/filters_page.blp:24
 msgid "Packages that can be opened"
-msgstr "Πακέτα που μπορούν να ανοίξουν"
+msgstr "開封可能なパッケージ"
 
 #: src/packages_page/filters_page.blp:29
 msgid "Runtimes"
-msgstr "Χρονικές στιγμές"
+msgstr "ランタイム"
 
 #: src/packages_page/filters_page.blp:30
 msgid "Packages that applications depend on"
-msgstr "Πακέτα που εξαρτώνται από τις εφαρμογές"
+msgstr "アプリケーションが依存するパッケージ"
 
 #: src/packages_page/filters_page.blp:37
 msgid "Filter by Remotes"
-msgstr "Φίλτρο ανά Αποθετήριο"
+msgstr "リモートで絞り込む"
 
 #: src/packages_page/filters_page.blp:38
 msgid "Show packages from selected remotes"
-msgstr "Εμφάνιση πακέτων από επιλεγμένα αποθετήρια"
+msgstr "選択したリモートのパッケージを表示"
 
 #: src/packages_page/filters_page.blp:52
 msgid "Showing packages from all remotes"
-msgstr "Εμφάνιση πακέτων από όλα τα αποθετήρια"
+msgstr "すべてのリモコンからパッケージを表示"
 
 #: src/packages_page/filters_page.blp:58
 msgid "Enable to show packages from selected remotes"
-msgstr "Ενεργοποιήστε την εμφάνιση πακέτων από επιλεγμένα αποθετήρια"
+msgstr "選択したリモートのパッケージを表示できるようにする"
 
 #: src/packages_page/filters_page.blp:71
 msgid "Filter by Runtimes"
-msgstr "Φίλτρο ανά Βιβλιοθήκη"
+msgstr "ランタイムで絞り込む"
 
 #: src/packages_page/filters_page.blp:72
 msgid "Show apps using selected runtimes"
-msgstr ""
+msgstr "選択したランタイムを使用しているアプリを表示する"
 
 #: src/packages_page/filters_page.blp:86
 msgid "Showing apps using any runtime"
-msgstr ""
+msgstr "任意のランタイムを使用するアプリの表示"
 
 #: src/packages_page/filters_page.blp:92
 msgid "Enable to show apps using selected runtimes"
-msgstr ""
+msgstr "選択したランタイムを使用しているアプリを表示できるようにする"
 
 #: src/packages_page/filters_page.blp:113
 #: src/packages_page/packages_page.blp:97
 msgid "Reset Filters"
-msgstr "Επαναφορά Φίλτρων"
+msgstr "フィルターをリセット"
 
 #: src/packages_page/packages_page.blp:65
 #: src/packages_page/packages_page.blp:83 src/remotes_page/remotes_page.blp:30
 #: src/snapshot_page/snapshot_page.blp:35
-#, fuzzy
-#| msgid "Search List"
 msgid "Search Packages"
-msgstr "Κατάλογος Αναζήτησης"
+msgstr "パッケージを検索"
 
 #: src/packages_page/packages_page.blp:75
 #: src/snapshot_page/snapshot_page.blp:45
-#, fuzzy
-#| msgid "Select a Release"
 msgid "Select Packages"
-msgstr "Επιλέξτε μια έκδοση"
+msgstr "パッケージの選択"
 
 #: src/packages_page/packages_page.blp:93
-#, fuzzy
-#| msgid "No Flatpaks Match Filters"
 msgid "No Packages Match Filters"
-msgstr "Δεν υπάρχουν φίλτρα αντιστοιχίας με Flatpaks"
+msgstr "フィルターに一致するパッケージがない"
 
 #: src/packages_page/packages_page.blp:94
-#, fuzzy
-#| msgid "No installed Flatpak matches all of the currently applied filters"
 msgid "No installed package matches all of the currently applied filters"
-msgstr "Κανένα εγκατεστημένο Flatpak δεν ταιριάζει με όλα τα τρέχοντα φίλτρα"
+msgstr ""
+"現在適用されているすべてのフィルタに一致するインストール済みパッケージはあり"
+"ません"
 
 #: src/packages_page/packages_page.blp:104
-#, fuzzy
-#| msgid "No Flatpaks Found"
 msgid "No Packages Found"
-msgstr "Δεν Βρέθηκαν Flatpaks"
+msgstr "パッケージが見つかりません"
 
 #: src/packages_page/packages_page.blp:105
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed"
 msgid ""
 "Warehouse cannot see the list of installed packages or your system has no "
 "packages installed"
 msgstr ""
-"Η αποθήκη δεν μπορεί να δει τη λίστα των εγκατεστημένων Flatpaks ή το "
-"σύστημα δεν έχει εγκατεστημένα Flatpaks"
+"Warehouseにインストールされているパッケージのリストが表示されない、またはシス"
+"テムにパッケージがインストールされていない。"
 
 #: src/packages_page/packages_page.blp:109
 #: src/remotes_page/remotes_page.blp:153 src/user_data_page/data_subpage.blp:68
 #: src/snapshot_page/new_snapshot_dialog.blp:67
 #: src/snapshot_page/snapshot_page.blp:58 src/install_page/results_page.blp:49
 msgid "No Results Found"
-msgstr "Δεν Βρέθηκαν Αποτελέσματα"
+msgstr "結果が見つかりません"
 
 #: src/packages_page/packages_page.blp:110
 #: src/remotes_page/remotes_page.blp:154 src/user_data_page/data_subpage.blp:69
 #: src/snapshot_page/new_snapshot_dialog.blp:68
 #: src/snapshot_page/snapshot_page.blp:59
-#, fuzzy
-#| msgid "Try a different search term"
 msgid "Try a different search"
-msgstr "Δοκιμάστε έναν διαφορετικό όρο αναζήτησης"
+msgstr "別の検索を試して下さい"
 
 #: src/packages_page/packages_page.blp:127
 #: src/user_data_page/user_data_page.blp:81
 #: src/snapshot_page/new_snapshot_dialog.blp:79
 #: src/snapshot_page/snapshot_page.blp:140
 msgid "Select All"
-msgstr "Επιλογή Όλων"
+msgstr "すべて選択"
 
 #: src/packages_page/packages_page.blp:144
 #: src/packages_page/uninstall_dialog.py:42
 #: src/properties_page/properties_page.blp:88
 msgid "Uninstall"
-msgstr ""
+msgstr "アンインストール"
 
 #: src/packages_page/packages_page.blp:173
 msgid "Copy Names"
-msgstr "Αντιγραφή Ονομάτων"
+msgstr "名前をコピー"
 
 #: src/packages_page/packages_page.blp:177
 msgid "Copy IDs"
-msgstr "Αντιγραφή Αναγνωριστικών"
+msgstr "IDをコピー"
 
 #: src/packages_page/packages_page.blp:181
 msgid "Copy Refs"
-msgstr "Αντιγραφή Αναφορών"
+msgstr "Refsをコピー"
 
 #: src/packages_page/packages_page.py:156
 #: src/user_data_page/data_subpage.py:112
 #: src/snapshot_page/new_snapshot_dialog.py:42
 #: src/snapshot_page/snapshot_page.py:360
-#, fuzzy
-#| msgid "Select"
 msgid "{} Selected"
-msgstr "Επιλογή"
+msgstr "{} 選択された"
 
 #: src/packages_page/packages_page.py:197
 msgid "Error getting Flatpak '{}'"
-msgstr ""
+msgstr "Flatpak取得エラー '{}'"
 
 #: src/packages_page/packages_page.py:246
-#, fuzzy
-#| msgid "Copy Names"
 msgid "Names"
-msgstr "Αντιγραφή Ονομάτων"
+msgstr "名前"
 
 #: src/packages_page/packages_page.py:249
 msgid "IDs"
-msgstr ""
+msgstr "ID"
 
 #: src/packages_page/packages_page.py:252
-#, fuzzy
-#| msgid "Copy Refs"
 msgid "Refs"
-msgstr "Αντιγραφή Αναφορών"
+msgstr "Refs"
 
 #: src/packages_page/packages_page.py:260
 #: src/properties_page/properties_page.py:293
 msgid "Copied {}"
-msgstr "Αντιγράφηκε {}"
+msgstr "コピー済 {}"
 
 #: src/packages_page/packages_page.py:262
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not copy {}"
-msgstr "Δεν ήταν δυνατή η αφαίρεση {}"
+msgstr "コピーできなかった {}"
 
 #: src/packages_page/packages_page.py:313
 msgid "Errors occurred while uninstalling"
-msgstr ""
+msgstr "アンインストール中にエラーが発生しました"
 
 #: src/packages_page/packages_page.py:315
-#, fuzzy
-#| msgid "Uninstalled successfully"
 msgid "Uninstalled Packages"
-msgstr "Απεγκαταστάθηκε με επιτυχία"
+msgstr "アンインストールされたパッケージ"
 
 #: src/packages_page/packages_page.py:373
-#, fuzzy
-#| msgid "Loading Flatpaks"
 msgid "Loading Packages"
-msgstr "Φόρτωση Flatpaks"
+msgstr "パッケージを読み込み中"
 
 #: src/packages_page/packages_page.py:373
 #: src/packages_page/packages_page.py:374
@@ -754,42 +697,34 @@ msgstr "Φόρτωση Flatpaks"
 #: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:102
 #: src/install_page/results_page.py:138
 msgid "This should only take a moment"
-msgstr ""
+msgstr "これは一瞬で終わるはずだ"
 
 #: src/packages_page/packages_page.py:374
-#, fuzzy
-#| msgid "Uninstalling"
 msgid "Uninstalling Packages"
-msgstr "Απεγκατάσταση"
+msgstr "パッケージのアンインストール"
 
 #: src/packages_page/packages_page.py:376
-#, fuzzy
-#| msgid "Uninstalling"
 msgid "Reinstalling Package"
-msgstr "Απεγκατάσταση"
+msgstr "パッケージの再インストール"
 
 #: src/packages_page/packages_page.py:376
 #: src/packages_page/packages_page.py:378
 #: src/change_version_page/change_version_page.py:126
 #: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:94
 msgid "This could take a while"
-msgstr "Αυτό μπορεί να πάρει λίγο χρόνο"
+msgstr "しばらく時間がかかるかもしれない"
 
 #: src/packages_page/packages_page.py:378
 msgid "Changing Version"
-msgstr ""
+msgstr "バージョン変更"
 
 #: src/packages_page/uninstall_dialog.blp:8
 msgid "Keep"
-msgstr "Διατηρήστε το"
+msgstr "キープ"
 
 #: src/packages_page/uninstall_dialog.blp:9
-#, fuzzy
-#| msgid "Allow restoring this app's settings and content"
 msgid "Allows restoring app settings and content"
-msgstr ""
-"Επιτρέψτε την επαναφορά των ρυθμίσεων και του περιεχομένου αυτής της "
-"εφαρμογής"
+msgstr "アプリの設定やコンテンツの復元が可能"
 
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
@@ -797,202 +732,178 @@ msgstr ""
 #: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:118
 #: src/snapshot_page/snapshot_page.py:523
 msgid "Trash"
-msgstr "Απορρίμματα"
+msgstr "ゴミ"
 
 #: src/packages_page/uninstall_dialog.blp:18
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
 msgid "Send data to the trash"
-msgstr "Αποστολή δεδομένων χρήστη {} στον κάδο απορριμμάτων;"
+msgstr "ゴミ箱にデータを送る"
 
 #: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall {}?"
-msgstr "Απεγκατάσταση {};"
+msgstr "アンインストール {}?"
 
 #: src/packages_page/uninstall_dialog.py:35
-#, fuzzy
-#| msgid "It will not be possible to use {} after removal."
 msgid "It will not be possible to use {} after removal"
-msgstr "Δεν θα είναι δυνατή η χρήση του {} μετά την αφαίρεση."
+msgstr "使うことはできないでしょう {} 取り外し後"
 
 #: src/packages_page/uninstall_dialog.py:37
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstall Packages?"
-msgstr "Απεγκατάσταση {};"
+msgstr "パッケージをアンインストールしますか?"
 
 #: src/packages_page/uninstall_dialog.py:38
-#, fuzzy
-#| msgid "It will not be possible to use these apps after removal."
 msgid "It will not be possible to use these packages after removal"
-msgstr "Δεν θα είναι δυνατή η χρήση αυτών των εφαρμογών μετά την αφαίρεση."
+msgstr "これらのパッケージを削除すると、使用できなくなります。"
 
 #: src/packages_page/uninstall_dialog.py:45
-#, fuzzy
-#| msgid "App Settings & Data"
 msgid "App Settings & Content"
-msgstr "Ρυθμίσεις & Δεδομένα Εφαρμογής"
+msgstr "アプリの設定とコンテンツ"
 
 #: src/properties_page/properties_page.blp:19
 msgid "Properties Page Unavailable"
-msgstr ""
+msgstr "プロパティページが利用できません"
 
 #: src/properties_page/properties_page.blp:20
 msgid "Cannot show the properties page at this time"
-msgstr ""
+msgstr "現在、プロパティページを表示できません"
 
 #: src/properties_page/properties_page.blp:83
 msgid "Open"
-msgstr ""
+msgstr "開く"
 
 #: src/properties_page/properties_page.blp:122
 #: src/user_data_page/data_box.blp:62
-#, fuzzy
-#| msgid "User Data"
 msgid "Open User Data"
-msgstr "Δεδομένα Χρήστη"
+msgstr "ユーザーデータを開く"
 
 #: src/properties_page/properties_page.blp:130
 #: src/user_data_page/data_box.blp:73
 msgid "Trash User Data"
-msgstr ""
+msgstr "ユーザーデータをゴミ箱へ"
 
 #: src/properties_page/properties_page.blp:139
-#, fuzzy
-#| msgid "Version {}"
 msgid "Version"
-msgstr "Έκδοση {}"
+msgstr "バージョン"
 
 #: src/properties_page/properties_page.blp:143
 msgid "Updates Disabled"
-msgstr "Απενεργοποιημένες Ενημερώσεις"
+msgstr "アップデートは無効"
 
 #: src/properties_page/properties_page.blp:147
 #: src/change_version_page/change_version_page.blp:50
 msgid "Disable Updates"
-msgstr "Απενεργοποίηση Ενημερώσεων"
+msgstr "アップデートを無効にする"
 
 #: src/properties_page/properties_page.blp:148
 msgid "Mask this package so it's never updated"
-msgstr ""
+msgstr "更新されないのでこのパッケージを隠す"
 
 #: src/properties_page/properties_page.blp:157
 #: src/change_version_page/change_version_page.blp:23
 msgid "Change Version"
-msgstr ""
+msgstr "バージョン変更"
 
 #: src/properties_page/properties_page.blp:158
 msgid "Upgrade or downgrade this package"
-msgstr ""
+msgstr "本パッケージのアップグレードまたはダウングレード"
 
 #: src/properties_page/properties_page.blp:167
-#, fuzzy
-#| msgid "Installing"
 msgid "Installed Size"
-msgstr "Εγκατάσταση"
+msgstr "インストールされたサイズ"
 
 #: src/properties_page/properties_page.blp:175
 msgid "Runtime"
-msgstr ""
+msgstr "ランタイム"
 
 #: src/properties_page/properties_page.blp:188
-#, fuzzy
-#| msgid "Disable Automatic Removal for {}?"
 msgid "Disable Automatic Removal"
-msgstr "Απενεργοποίηση αυτόματης αφαίρεσης για {};"
+msgstr "自動削除を無効にする"
 
 #: src/properties_page/properties_page.blp:189
 msgid "Pin this runtime to keep it installed"
-msgstr ""
+msgstr "このランタイムをピン留めして、インストールしたままにする"
 
 #: src/properties_page/properties_page.blp:200
 msgid "Package Information"
-msgstr ""
+msgstr "パッケージ情報"
 
 #: src/properties_page/properties_page.blp:203
 msgid "Application ID"
-msgstr ""
+msgstr "アプリケーションID"
 
 #: src/properties_page/properties_page.blp:219
 msgid "Architecture"
-msgstr ""
+msgstr "アーキテクチャー"
 
 #: src/properties_page/properties_page.blp:227
 msgid "Branch"
-msgstr ""
+msgstr "ブランチ"
 
 #: src/properties_page/properties_page.blp:235
 msgid "License"
-msgstr ""
+msgstr "ライセンス"
 
 #: src/properties_page/properties_page.blp:244
 msgid "Installation Information"
-msgstr ""
+msgstr "インストール情報"
 
 #: src/properties_page/properties_page.blp:255
 msgid "Origin"
-msgstr ""
+msgstr "Origin"
 
 #: src/properties_page/properties_page.blp:263
 msgid "Collection"
-msgstr ""
+msgstr "コレクション"
 
 #: src/properties_page/properties_page.blp:271
-#, fuzzy
-#| msgid "Installing"
 msgid "Installation"
-msgstr "Εγκατάσταση"
+msgstr "インストール"
 
 #: src/properties_page/properties_page.blp:279
 msgid "Commit Information"
-msgstr ""
+msgstr "コミット情報"
 
 #: src/properties_page/properties_page.blp:290
 msgid "Parent"
-msgstr ""
+msgstr "親"
 
 #: src/properties_page/properties_page.blp:298
 msgid "Subject"
-msgstr ""
+msgstr "テーマ"
 
 #: src/properties_page/properties_page.blp:306
 msgid "Date"
-msgstr ""
+msgstr "日付"
 
 #: src/properties_page/properties_page.py:83
 msgid "{} Properties"
-msgstr ""
+msgstr "{} プロパティ"
 
 #: src/properties_page/properties_page.py:87
 msgid "Properties"
-msgstr ""
+msgstr "プロパティ"
 
 #. Apply again
 #: src/properties_page/properties_page.py:124
 #: src/user_data_page/user_data_page.py:300
 msgid "Loading User Data"
-msgstr ""
+msgstr "ユーザーデータのロード"
 
 #: src/properties_page/properties_page.py:134
 msgid "No User Data"
-msgstr "Δεν υπάρχουν Δεδομένα Χρήστη"
+msgstr "ユーザーデータなし"
 
 #: src/properties_page/properties_page.py:144
 #: src/properties_page/properties_page.py:164
-#, fuzzy
-#| msgid "Could not show properties"
 msgid "Could not get properties"
-msgstr "Δεν ήταν δυνατή η εμφάνιση ιδιοτήτων"
+msgstr "プロパティを取得できませんでした"
 
 #: src/properties_page/properties_page.py:156
 msgid "No version information found"
-msgstr ""
+msgstr "バージョン情報が見つかりません"
 
 #: src/properties_page/properties_page.py:181
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open data"
-msgstr "Δεν μπόρεσε να γίνει άνοιγμα φακέλου"
+msgstr "データを開くことができなかった"
 
 #: src/properties_page/properties_page.py:200
 #: src/properties_page/properties_page.py:202
@@ -1000,1350 +911,937 @@ msgstr "Δεν μπόρεσε να γίνει άνοιγμα φακέλου"
 #: src/properties_page/properties_page.py:261
 #: src/user_data_page/data_box.py:104 src/user_data_page/user_data_page.py:187
 #: src/user_data_page/user_data_page.py:201
-#, fuzzy
-#| msgid "Could not trash user data"
 msgid "Could not trash data"
-msgstr "Δεν ήταν δυνατή η απόρριψη δεδομένων χρήστη"
+msgstr "データをゴミ箱に入れられなかった"
 
 #: src/properties_page/properties_page.py:205
 msgid "Send {}'s User Data to the Trash?"
-msgstr "Αποστολή δεδομένων χρήστη {} στον κάδο απορριμμάτων;"
+msgstr "ゴミ箱に{}のユーザーデータを送りますか？"
 
 #: src/properties_page/properties_page.py:206
-#, fuzzy
-#| msgid "Your files and data for this app will be sent to the trash."
 msgid "Your settings and data for this app will be sent to the trash"
-msgstr ""
-"Τα αρχεία και τα δεδομένα σας για αυτή την εφαρμογή θα σταλούν στον κάδο "
-"απορριμμάτων."
+msgstr "このアプリの設定とデータはゴミ箱に送られます。"
 
 #: src/properties_page/properties_page.py:209
 msgid "Trash Data"
-msgstr "Δεδομένα Απορριμμάτων"
+msgstr "データをゴミ箱へ"
 
 #: src/properties_page/properties_page.py:219
-#, fuzzy
-#| msgid "Could not disable updates for {}"
 msgid "Could not Disable Updates"
-msgstr "Δεν ήταν δυνατή η απενεργοποίηση των ενημερώσεων για {}"
+msgstr "アップデートを無効にできませんでした"
 
 #: src/properties_page/properties_page.py:219
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not Enable Updates"
-msgstr "Δεν μπόρεσε να γίνει διαχείριση δεδομένων"
+msgstr "アップデートを有効にできませんでした"
 
 #: src/properties_page/properties_page.py:225
-#, fuzzy
-#| msgid "Disable Updates"
 msgid "Disabled Updates"
-msgstr "Απενεργοποίηση Ενημερώσεων"
+msgstr "無効化されたアップデート"
 
 #: src/properties_page/properties_page.py:225
-#, fuzzy
-#| msgid "Disable Updates"
 msgid "Enabled Updates"
-msgstr "Απενεργοποίηση Ενημερώσεων"
+msgstr "有効化されたアップデート"
 
 #: src/properties_page/properties_page.py:238
-#, fuzzy
-#| msgid "Could not disable auto removal"
 msgid "Could not Disable Autoremoval"
-msgstr "Δεν ήταν δυνατή η απενεργοποίηση της αυτόματης αφαίρεσης"
+msgstr "自動削除を無効にできませんでした"
 
 #: src/properties_page/properties_page.py:238
-#, fuzzy
-#| msgid "Could not enable auto removal"
 msgid "Could not Enable Autoremoval"
-msgstr "Δεν ήταν δυνατή η ενεργοποίηση της αυτόματης αφαίρεσης"
+msgstr "自動削除を有効にできませんでした"
 
 #: src/properties_page/properties_page.py:243
-#, fuzzy
-#| msgid "Could not disable auto removal"
 msgid "Disabled Autoremoval"
-msgstr "Δεν ήταν δυνατή η απενεργοποίηση της αυτόματης αφαίρεσης"
+msgstr "無効化された自動解除"
 
 #: src/properties_page/properties_page.py:243
-#, fuzzy
-#| msgid "Could not enable auto removal"
 msgid "Enabled Autoremoval"
-msgstr "Δεν ήταν δυνατή η ενεργοποίηση της αυτόματης αφαίρεσης"
+msgstr "有効化された自動解除"
 
 #: src/properties_page/properties_page.py:266
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not uninstall"
-msgstr "Δεν ήταν δυνατή η εγκατάσταση της εφαρμογής"
+msgstr "アンインストールできませんでした"
 
 #: src/properties_page/properties_page.py:270
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstalled {}"
-msgstr "Απεγκατάσταση {};"
+msgstr "アンインストールされた {}"
 
 #: src/properties_page/properties_page.py:282
 msgid "Opening {}…"
-msgstr ""
+msgstr "開いています {}…"
 
 #: src/properties_page/properties_page.py:287
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not open {}"
-msgstr "Δεν ήταν δυνατή η αφαίρεση {}"
+msgstr "{} を開くことができませんでした"
 
 #: src/properties_page/properties_page.py:302
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstalled {}"
-msgstr "Απεγκατάσταση {};"
+msgstr "再インストールされた {}"
 
 #: src/properties_page/properties_page.py:330
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstall {}?"
-msgstr "Απεγκατάσταση {};"
+msgstr "{} を再インストールしますか?"
 
 #: src/properties_page/properties_page.py:331
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
 msgstr ""
+"このパッケージはアンインストールされ、同じリモートおよびインストールから再イ"
+"ンストールされます。"
 
 #: src/properties_page/properties_page.py:334
 #: src/properties_page/properties_page.py:392
-#, fuzzy
-#| msgid "Install"
 msgid "Reinstall"
-msgstr "Εγκατάσταση"
+msgstr "再インストール"
 
 #: src/properties_page/properties_page.py:351
 msgid "Copied launch command"
-msgstr ""
+msgstr "コピーされたランチコマンド"
 
 #: src/properties_page/properties_page.py:353
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not copy launch command"
-msgstr "Δεν μπόρεσε να γίνει άνοιγμα φακέλου"
+msgstr "ランチコマンドをコピーできませんでした"
 
 #: src/properties_page/properties_page.py:359
 msgid "Could not show details"
-msgstr "Δεν ήταν δυνατή η εμφάνιση λεπτομερειών"
+msgstr "詳細を表示できませんでした"
 
 #: src/properties_page/properties_page.py:386
-#, fuzzy
-#| msgid "Could not show properties"
 msgid "Loading Properties"
-msgstr "Δεν ήταν δυνατή η εμφάνιση ιδιοτήτων"
+msgstr "プロパティを読み込み中"
 
 #: src/properties_page/properties_page.py:389
-#, fuzzy
-#| msgid "{} Snapshots"
 msgid "View Snapshots"
-msgstr "{} Στιγμιότυπα"
+msgstr "スナップショットを見る"
 
 #: src/properties_page/properties_page.py:390
 msgid "Copy Launch Command"
-msgstr ""
+msgstr "ランチコマンドをコピー"
 
 #: src/properties_page/properties_page.py:391
-#, fuzzy
-#| msgid "Show Runtimes"
 msgid "Show Details"
-msgstr "Εμφάνιση Βιβλιοθηκών"
+msgstr "詳細を表示"
 
 #: src/change_version_page/change_version_page.blp:5
 msgid "Change Versions"
-msgstr ""
+msgstr "バージョンの変更"
 
 #: src/change_version_page/change_version_page.blp:56
 msgid "Select a Release"
-msgstr "Επιλέξτε μια έκδοση"
+msgstr "リリースを選択"
 
 #: src/change_version_page/change_version_page.blp:57
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
 msgstr ""
-"Αυτό θα απεγκαταστήσει την τρέχουσα έκδοση και θα εγκαταστήσει την "
-"επιλεγμένη. Σημειώστε ότι η αναβάθμιση μπορεί να προκαλέσει προβλήματα."
+"これにより、現在のリリースがアンインストールされ、代わりに選択したリリースが"
+"インストールされます。ダウングレードは問題を引き起こす可能性があることに注意"
+"してください。"
 
 #: src/change_version_page/change_version_page.py:75
 msgid "Currently Installed Version"
-msgstr ""
+msgstr "現在インストールされているバージョン"
 
 #: src/change_version_page/change_version_page.py:92
-#, fuzzy
-#| msgid "Could not create snapshot"
 msgid "Could not get versions"
-msgstr "Δεν ήταν δυνατή η δημιουργία στιγμιότυπου"
+msgstr "バージョンを取得できませんでした"
 
 #: src/change_version_page/change_version_page.py:99
 msgid "Changed {}'s Version"
-msgstr ""
+msgstr "{}のバージョンを変更"
 
 #: src/change_version_page/change_version_page.py:124
-#, fuzzy
-#| msgid "Version {}"
 msgid "{} Versions"
-msgstr "Έκδοση {}"
+msgstr "バージョン {}"
 
 #: src/change_version_page/change_version_page.py:125
 msgid "Ensure that {} will never be updated to a newer version"
-msgstr ""
+msgstr "{} は新しいバージョンにアップデートされないようにする。"
 
 #: src/change_version_page/change_version_page.py:126
 msgid "Fetching Releases"
-msgstr "Ανάκτηση Εκδόσεων"
+msgstr "リリースをフェッチ"
 
 #: src/change_version_page/change_version_worker.py:76
 #: src/change_version_page/change_version_worker.py:80
 #: src/change_version_page/change_version_worker.py:84
 msgid "Error occurred while changing version"
-msgstr ""
+msgstr "バージョン変更中にエラーが発生しました"
 
 #: src/change_version_page/change_version_worker.py:95
-#, fuzzy
-#| msgid "Could not create snapshot"
 msgid "Could not cancel version change"
-msgstr "Δεν ήταν δυνατή η δημιουργία στιγμιότυπου"
+msgstr "バージョン変更をキャンセルできませんでした"
 
 #: src/change_version_page/change_version_worker.py:116
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not change version"
-msgstr "Δεν μπόρεσε να γίνει διαχείριση δεδομένων"
+msgstr "バージョンを変更できませんでした"
 
 #: src/change_version_page/change_version_worker.py:116
 msgid "Another package is changing version."
-msgstr ""
+msgstr "もう1つのパッケージはバージョンが変わっている。"
 
 #: src/remotes_page/add_remote_dialog.blp:5 src/install_page/select_page.blp:27
-#, fuzzy
-#| msgid "Add Remote"
 msgid "Add a Remote"
-msgstr "Προσθήκη Αποθετηρίου"
+msgstr "リモートを追加"
 
 #: src/remotes_page/add_remote_dialog.blp:22
 msgid "Add"
-msgstr ""
+msgstr "追加"
 
 #: src/remotes_page/add_remote_dialog.blp:40
 msgid "Title"
-msgstr ""
+msgstr "タイトル"
 
 #: src/remotes_page/add_remote_dialog.blp:43
 #: src/user_data_page/user_data_page.blp:190
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: src/remotes_page/add_remote_dialog.blp:46
 msgid "Repo URL"
-msgstr ""
+msgstr "リポジトリのURL"
 
 #: src/remotes_page/add_remote_dialog.py:61
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not add remote"
-msgstr "Δεν ήταν δυνατή η αφαίρεση {}"
+msgstr "リモートを追加できませんでした"
 
 #: src/remotes_page/add_remote_dialog.py:64
-#, fuzzy
-#| msgid "Add {}?"
 msgid "Added {}"
-msgstr "Προσθήκη {};"
+msgstr "{} を追加した"
 
 #. Apply
 #: src/remotes_page/add_remote_dialog.py:114
-#, fuzzy
-#| msgid "Add Remote"
 msgid "remote"
-msgstr "Προσθήκη Αποθετηρίου"
+msgstr "リモート"
 
 #: src/remotes_page/remote_row.blp:21
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Set a Filter for this Remote"
-msgstr "Φίλτρο ανά Αποθετήριο"
+msgstr "このリモートにフィルタを設定する"
 
 #: src/remotes_page/remote_row.blp:29
 msgid "More Actions"
-msgstr ""
+msgstr "その他のアクション"
 
 #: src/remotes_page/remote_row.blp:37
-#, fuzzy
-#| msgid "Copy Refs"
 msgid "Copy Title"
-msgstr "Αντιγραφή Αναφορών"
+msgstr "タイトルをコピー"
 
 #: src/remotes_page/remote_row.blp:41
 msgid "Copy Name"
-msgstr "Αντιγραφή Ονόματος"
+msgstr "名称をコピー"
 
 #: src/remotes_page/remote_row.blp:45
 msgid "Enable"
-msgstr ""
+msgstr "有効にする"
 
 #: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:130
 msgid "Disable"
-msgstr ""
+msgstr "無効"
 
 #: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:197
 msgid "Remove"
-msgstr "Αφαίρεση"
+msgstr "削除"
 
 #: src/remotes_page/remote_row.py:28 src/remotes_page/remote_row.py:49
-#, fuzzy
-#| msgid "Could not enable {}"
 msgid "Could not enable remote"
-msgstr "Δεν ήταν δυνατή η ενεργοποίηση {}"
+msgstr "リモートを有効にできませんでした"
 
 #: src/remotes_page/remote_row.py:28
 msgid "Remote is already enabled"
-msgstr ""
+msgstr "リモートはすでに有効です"
 
 #: src/remotes_page/remote_row.py:56
 msgid "Enabled remote"
-msgstr ""
+msgstr "有効なリモート"
 
 #: src/remotes_page/remote_row.py:80 src/remotes_page/remote_row.py:160
-#, fuzzy
-#| msgid "Updates Disabled"
 msgid "Remote is Disabled"
-msgstr "Απενεργοποιημένες Ενημερώσεις"
+msgstr "リモートは無効です"
 
 #: src/remotes_page/remote_row.py:82
-#, fuzzy
-#| msgid "Disable Updates"
 msgid "Disabled remote"
-msgstr "Απενεργοποίηση Ενημερώσεων"
+msgstr "無効なリモート"
 
 #: src/remotes_page/remote_row.py:100 src/remotes_page/remote_row.py:112
 #: src/remotes_page/remote_row.py:116
-#, fuzzy
-#| msgid "Could not disable {}"
 msgid "Could not disable remote"
-msgstr "Δεν ήταν δυνατή η απενεργοποίηση {}"
+msgstr "リモートを無効にできませんでした"
 
 #: src/remotes_page/remote_row.py:100
 msgid "Remote is already disabled"
-msgstr ""
+msgstr "リモートはすでに無効です"
 
 #: src/remotes_page/remote_row.py:127
 msgid "Disable {}?"
-msgstr "Απενεργοποίηση {};"
+msgstr "{} を無効にしますか？"
 
 #: src/remotes_page/remote_row.py:127 src/remotes_page/remotes_page.py:194
 msgid "Any installed apps from {} will stop receiving updates"
-msgstr ""
-"Όλες οι εγκατεστημένες εφαρμογές από {} θα σταματήσουν να λαμβάνουν "
-"ενημερώσεις"
+msgstr "{} からインストールされたアプリは、アップデートの受信を停止します。"
 
 #: src/remotes_page/remote_row.py:140
-#, fuzzy
-#| msgid "Copied ref"
 msgid "Copied title"
-msgstr "Αντιγραμμένη Αναφορά"
+msgstr "コピーされたタイトル"
 
 #: src/remotes_page/remote_row.py:143
 msgid "Copied name"
-msgstr "Αντιγραμμένο Όνομα"
+msgstr "コピーされた名称"
 
 #: src/remotes_page/remotes_page.blp:5
 msgid "Manage Remotes"
-msgstr ""
+msgstr "リモートの管理"
 
 #: src/remotes_page/remotes_page.blp:40
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Search Remotes"
-msgstr "Φίλτρο ανά Αποθετήριο"
+msgstr "リモートを検索"
 
 #: src/remotes_page/remotes_page.blp:47
 msgid "Current Remotes"
-msgstr ""
+msgstr "現在のリモート"
 
 #: src/remotes_page/remotes_page.blp:48
 msgid "Remotes available on your system"
-msgstr ""
+msgstr "お使いのシステムで使用可能なリモート"
 
 #: src/remotes_page/remotes_page.blp:55
 msgid "Show Disabled"
-msgstr ""
+msgstr "表示不可"
 
 #: src/remotes_page/remotes_page.blp:75
-#, fuzzy
-#| msgid "Manage Remotes…"
 msgid "No Enabled Remotes"
-msgstr "Διαχείριση αποθετηρίων…"
+msgstr "有効なリモートはありません"
 
 #: src/remotes_page/remotes_page.blp:81
 msgid "You only have disabled remotes on this system"
-msgstr ""
+msgstr "このシステムには無効なリモートしかありません"
 
 #: src/remotes_page/remotes_page.blp:107
 msgid "No Remotes Found"
-msgstr ""
+msgstr "リモートが見つかりません"
 
 #: src/remotes_page/remotes_page.blp:113
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed"
 msgid ""
 "Warehouse cannot see the current remotes or your system has no remotes added"
 msgstr ""
-"Η αποθήκη δεν μπορεί να δει τη λίστα των εγκατεστημένων Flatpaks ή το "
-"σύστημα δεν έχει εγκατεστημένα Flatpaks"
+"Warehouseには現在のリモートが表示されないか、システムにリモートが追加されてい"
+"ません。"
 
 #: src/remotes_page/remotes_page.blp:126
-#, fuzzy
-#| msgid "Add Remote"
 msgid "Add Popular Remotes"
-msgstr "Προσθήκη Αποθετηρίου"
+msgstr "人気のリモートを追加"
 
 #: src/remotes_page/remotes_page.blp:127
 msgid "Add new remotes to get more software"
-msgstr ""
+msgstr "新しいリモートを追加して、より多くのソフトウェアを入手する"
 
 #: src/remotes_page/remotes_page.blp:131
 msgid "Add Other Remotes"
-msgstr ""
+msgstr "他のリモートを追加"
 
 #: src/remotes_page/remotes_page.blp:134
 msgid "Add a Repo File"
-msgstr "Προσθήκη Αρχείου Αποθετηρίου"
+msgstr "リポジトリファイルの追加"
 
 #: src/remotes_page/remotes_page.blp:135
 msgid "Open a downloaded repo file to add"
-msgstr ""
+msgstr "追加するのにダウンロードしたリポジトリファイルを開く"
 
 #: src/remotes_page/remotes_page.blp:143
 msgid "Add a Custom Remote"
-msgstr "Προσθήκη Προσαρμοσμένου Αποθετηρίου"
+msgstr "カスタムリモートの追加"
 
 #: src/remotes_page/remotes_page.blp:144
 msgid "Manually enter new remote details"
-msgstr ""
+msgstr "新しいリモートの詳細を手動で入力する"
 
 #: src/remotes_page/remotes_page.py:36
 msgid "The open source, pay-what-you-want app store from elementary"
-msgstr ""
+msgstr "初歩的なオープンソースのpay-what-you-wantアプリストア"
 
 #: src/remotes_page/remotes_page.py:42
 msgid "Central repository of Flatpak applications"
-msgstr ""
+msgstr "Flatpakアプリケーションのセントラルリポジトリ"
 
 #: src/remotes_page/remotes_page.py:48
 msgid "Beta builds of Flatpak applications"
-msgstr ""
+msgstr "Flatpakアプリケーションのベータビルド"
 
 #: src/remotes_page/remotes_page.py:54
 msgid "Flatpaks packaged by Fedora Linux"
-msgstr ""
+msgstr "Fedora LinuxのFlatpakパッケージ"
 
 #: src/remotes_page/remotes_page.py:60
 msgid "The latest beta GNOME Apps and Runtimes"
-msgstr ""
+msgstr "最新のベータ版 GNOME アプリとランタイム"
 
 #: src/remotes_page/remotes_page.py:66
 msgid "Central repository of the WebKit Developer and Runtime SDK"
-msgstr ""
+msgstr "WebKitデベロッパーおよびランタイムSDKのセントラルリポジトリ"
 
 #: src/remotes_page/remotes_page.py:156
 msgid "Showing all packages from {}"
-msgstr ""
+msgstr "{} からのすべてのパッケージを表示"
 
 #: src/remotes_page/remotes_page.py:178
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not remove remote"
-msgstr "Δεν ήταν δυνατή η αφαίρεση {}"
+msgstr "リモートを削除できませんでした"
 
 #: src/remotes_page/remotes_page.py:185
-#, fuzzy
-#| msgid "Remove {}?"
 msgid "Removed {}"
-msgstr "Αφαίρεση {};"
+msgstr "削除された {}"
 
 #: src/remotes_page/remotes_page.py:194
 msgid "Remove {}?"
-msgstr "Αφαίρεση {};"
+msgstr "{} を削除しますか?"
 
 #: src/remotes_page/remotes_page.py:231 src/remotes_page/remotes_page.py:241
 #: src/remotes_page/remotes_page.py:243
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open file"
-msgstr "Δεν μπόρεσε να γίνει άνοιγμα φακέλου"
+msgstr "ファイルを開くことができませんでした。"
 
 #: src/remotes_page/remotes_page.py:246
 msgid "Flatpak Repos"
-msgstr "Flatpak Αποθετήρια"
+msgstr "Flatpakリポジトリ"
 
 #. Apply
 #: src/remotes_page/remotes_page.py:294
 msgid "Adding Remote"
-msgstr ""
+msgstr "リモートの追加"
 
 #: src/remotes_page/remotes_page.py:295
-#, fuzzy
-#| msgid "Manage Remotes…"
 msgid "Loading Remotes"
-msgstr "Διαχείριση αποθετηρίων…"
+msgstr "リモコンの読み込み"
 
 #: src/user_data_page/data_box.blp:56
-#, fuzzy
-#| msgid "Copy Name"
 msgid "Copy Path"
-msgstr "Αντιγραφή Ονόματος"
+msgstr "パスをコピー"
 
 #: src/user_data_page/data_box.blp:68
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "Attempt to Install"
-msgstr "Προσπάθεια εγκατάστασης?"
+msgstr "インストールを試みる"
 
 #: src/user_data_page/data_box.py:62
 msgid "Copied data path"
-msgstr ""
+msgstr "コピーされたデータパス"
 
 #: src/user_data_page/data_box.py:64
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not copy data path"
-msgstr "Δεν μπόρεσε να γίνει διαχείριση δεδομένων"
+msgstr "データパスをコピーできませんでした"
 
 #: src/user_data_page/data_box.py:69
-#, fuzzy
-#| msgid "Open Data Folder"
 msgid "Opened data folder"
-msgstr "Άνοιγμα Φακέλου Δεδομένων"
+msgstr "開いたデータフォルダ"
 
 #: src/user_data_page/data_box.py:71 src/snapshot_page/snapshot_page.py:258
 #: src/snapshot_page/snapshots_list_page.py:81
 msgid "Could not open folder"
-msgstr "Δεν μπόρεσε να γίνει άνοιγμα φακέλου"
+msgstr "フォルダを開けませんでした。"
 
 #: src/user_data_page/data_box.py:118
-#, fuzzy
-#| msgid "Trash Data"
 msgid "Trash {}'s Data?"
-msgstr "Δεδομένα Απορριμμάτων"
+msgstr "{}のデータをゴミ箱へ？"
 
 #: src/user_data_page/data_box.py:118
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "{}'s data will be sent to the trash"
-msgstr "Αυτοί οι φάκελοι θα σταλούν στα σκουπίδια."
+msgstr "{} のデータはゴミ箱に送られる。"
 
 #: src/user_data_page/data_box.py:120 src/user_data_page/user_data_page.py:214
 #: src/snapshot_page/snapshot_page.py:485
 msgid "Continue"
-msgstr "Συνέχεια"
+msgstr "続ける"
 
 #: src/user_data_page/data_subpage.blp:13
 msgid "No Title Set"
-msgstr ""
+msgstr "タイトルなし"
 
 #: src/user_data_page/data_subpage.blp:28
 msgid "Loading Size…"
-msgstr ""
+msgstr "ローディングサイズ…"
 
 #: src/user_data_page/data_subpage.py:257
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "No Active Data"
-msgstr "Χωρίς Εναπομείναντα Δεδομένα"
+msgstr "アクティブデータなし"
 
 #: src/user_data_page/data_subpage.py:258
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of installed Flatpaks or the system has no "
-#| "Flatpaks installed"
 msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
 msgstr ""
-"Η αποθήκη δεν μπορεί να δει τη λίστα των εγκατεστημένων Flatpaks ή το "
-"σύστημα δεν έχει εγκατεστημένα Flatpaks"
+"Warehouseにアクティブユーザーデータが表示されない、またはシステムにアクティブ"
+"ユーザーデータが存在しない。"
 
 #: src/user_data_page/data_subpage.py:261
 msgid "No Leftover Data"
-msgstr "Χωρίς Εναπομείναντα Δεδομένα"
+msgstr "残存データなし"
 
 #: src/user_data_page/data_subpage.py:262
 msgid "There is no leftover user data"
-msgstr "Δεν περισσεύουν δεδομένα χρήστη"
+msgstr "ユーザーデータは残らない"
 
 #: src/user_data_page/user_data_page.blp:43
 #: src/user_data_page/user_data_page.blp:64
-#, fuzzy
-#| msgid "User Data"
 msgid "Search User Data"
-msgstr "Δεδομένα Χρήστη"
+msgstr "ユーザーデータの検索"
 
 #: src/user_data_page/user_data_page.blp:49
-#, fuzzy
-#| msgid "No User Data"
 msgid "Sort User Data"
-msgstr "Δεν υπάρχουν Δεδομένα Χρήστη"
+msgstr "ユーザーデータの並べ替え"
 
 #: src/user_data_page/user_data_page.blp:54
-#, fuzzy
-#| msgid "User Data"
 msgid "Select User Data"
-msgstr "Δεδομένα Χρήστη"
+msgstr "ユーザーデータを選択"
 
 #: src/user_data_page/user_data_page.blp:120
 #: src/snapshot_page/snapshot_page.blp:159
-#, fuzzy
-#| msgid "View More"
 msgid "More"
-msgstr "Προβολή Περισσότερων"
+msgstr "もっと見る"
 
 #: src/user_data_page/user_data_page.blp:169
 msgid "Ascending"
-msgstr ""
+msgstr "昇順"
 
 #: src/user_data_page/user_data_page.blp:177
 msgid "Descending"
-msgstr ""
+msgstr "降順"
 
 #: src/user_data_page/user_data_page.blp:198
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: src/user_data_page/user_data_page.blp:206
 msgid "Size"
-msgstr ""
+msgstr "サイズ"
 
 #: src/user_data_page/user_data_page.py:79
 #: src/user_data_page/user_data_page.py:81
 msgid "Loading Size"
-msgstr ""
+msgstr "読み込みサイズ"
 
 #: src/user_data_page/user_data_page.py:155
-#, fuzzy
-#| msgid "Could not apply snapshot"
 msgid "Could not copy paths"
-msgstr "Δεν ήταν δυνατή η εφαρμογή στιγμιότυπου"
+msgstr "パスをコピーできませんでした"
 
 #: src/user_data_page/user_data_page.py:155
 #: src/user_data_page/user_data_page.py:201
 msgid "No boxes were selected"
-msgstr ""
+msgstr "ボックスは選択されなかった"
 
 #: src/user_data_page/user_data_page.py:158
-#, fuzzy
-#| msgid "Copied name"
 msgid "Copied paths"
-msgstr "Αντιγραμμένο Όνομα"
+msgstr "コピーされたパス"
 
 #: src/user_data_page/user_data_page.py:189
-#, fuzzy
-#| msgid "Trashed user data"
 msgid "Trashed data"
-msgstr "Απορρίφθηκαν τα Δεδομένα Χρήστη"
+msgstr "ゴミ箱のデータ"
 
 #: src/user_data_page/user_data_page.py:212
-#, fuzzy
-#| msgid "Trash Data"
 msgid "Trash Data?"
-msgstr "Δεδομένα Απορριμμάτων"
+msgstr "データをゴミ箱へ?"
 
 #: src/user_data_page/user_data_page.py:212
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "Data will be sent to the trash"
-msgstr "Αυτοί οι φάκελοι θα σταλούν στα σκουπίδια."
+msgstr "データはゴミ箱に送られます"
 
 #: src/user_data_page/user_data_page.py:250
 #: src/user_data_page/user_data_page.py:273
-#, fuzzy
-#| msgid "User Data"
 msgid "Active Data"
-msgstr "Δεδομένα Χρήστη"
+msgstr "アクティブデータ"
 
 #: src/user_data_page/user_data_page.py:251
 #: src/user_data_page/user_data_page.py:279
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Leftover Data"
-msgstr "Χωρίς Εναπομείναντα Δεδομένα"
+msgstr "残存データ"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
-#, fuzzy
-#| msgid "Search List"
 msgid "Search Apps"
-msgstr "Κατάλογος Αναζήτησης"
+msgstr "アプリを検索"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
-msgstr ""
+msgstr "作成"
 
 #: src/snapshot_page/new_snapshot_dialog.py:114
-#, fuzzy
-#| msgid "Creating Snapshots"
 msgid "Creating Snapshot"
-msgstr "Δημιουργία Στιγμιότυπων"
+msgstr "スナップショットの作成"
 
 #: src/snapshot_page/new_snapshot_dialog.py:196
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Name these Snapshots"
-msgstr "Δημιουργία Στιγμιότυπων"
+msgstr "これらのスナップショットに名前を付ける"
 
 #: src/snapshot_page/new_snapshot_dialog.py:200
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
-msgstr ""
+msgstr "新しいスナップショット"
 
 #: src/snapshot_page/new_snapshot_dialog.py:204
-#, fuzzy
-#| msgid "Creating Snapshots"
 msgid "Name this Snapshot"
-msgstr "Δημιουργία Στιγμιότυπων"
+msgstr "このスナップショットに名前を付ける"
 
 #: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:62
-#, fuzzy
-#| msgid "Copy Name"
 msgid "No Name Set"
-msgstr "Αντιγραφή Ονόματος"
+msgstr "名前がセットされていない"
 
 #: src/snapshot_page/snapshot_box.blp:23
-#, fuzzy
-#| msgid "No Flatpaks Found"
 msgid "No date found"
-msgstr "Δεν Βρέθηκαν Flatpaks"
+msgstr "日付が見つかりません"
 
 #: src/snapshot_page/snapshot_box.blp:30
-#, fuzzy
-#| msgid "No Results Found"
 msgid "No version found"
-msgstr "Δεν Βρέθηκαν Αποτελέσματα"
+msgstr "バージョンが見つかりません"
 
 #: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:160
 msgid "Apply"
-msgstr ""
+msgstr "適用する"
 
 #: src/snapshot_page/snapshot_box.blp:55
 msgid "Rename"
-msgstr ""
+msgstr "名称変更"
 
 #: src/snapshot_page/snapshot_box.blp:84
-#, fuzzy
-#| msgid "Create Snapshots?"
 msgid "Rename Snapshot?"
-msgstr "Δημιουργία Στιγμιότυπων;"
+msgstr "スナップショットの名前を変更しますか？"
 
 #: src/snapshot_page/snapshot_box.blp:94
-#, fuzzy
-#| msgid "Copied name"
 msgid "Confirm Rename"
-msgstr "Αντιγραμμένο Όνομα"
+msgstr "リネームの確認"
 
 #: src/snapshot_page/snapshot_box.py:37 src/snapshot_page/snapshot_box.py:49
 #: src/snapshot_page/snapshot_box.py:65
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not write data"
-msgstr "Δεν μπόρεσε να γίνει διαχείριση δεδομένων"
+msgstr "データを書き込めなかった"
 
 #: src/snapshot_page/snapshot_box.py:102
 msgid "Could not trash snapshot"
-msgstr ""
+msgstr "スナップショットをゴミ箱に入れられなかった"
 
 #: src/snapshot_page/snapshot_box.py:106
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Trashed snapshot"
-msgstr "Δημιουργία Στιγμιότυπων"
+msgstr "ゴミ箱のスナップショット"
 
 #: src/snapshot_page/snapshot_box.py:116
 msgid "Trash Snapshot?"
-msgstr ""
+msgstr "スナップショットをゴミ箱に送りますか?"
 
 #: src/snapshot_page/snapshot_box.py:116
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "This snapshot will be sent to the trash"
-msgstr "Αυτοί οι φάκελοι θα σταλούν στα σκουπίδια."
+msgstr "このスナップショットはゴミ箱に送られる"
 
 #: src/snapshot_page/snapshot_box.py:146
-#, fuzzy
-#| msgid "Applying Snapshot…"
 msgid "Applying Snapshot"
-msgstr "Εφαρμογή Στιγμιότυπου…"
+msgstr "スナップショットの適用"
 
 #: src/snapshot_page/snapshot_box.py:156
 msgid "Apply Snapshot?"
-msgstr "Εφαρμογή Στιγμιότυπου;"
+msgstr "スナップショットを適用しますか？"
 
 #: src/snapshot_page/snapshot_box.py:157
-#, fuzzy
-#| msgid "Your files and data for this app will be sent to the trash."
 msgid "Any current user data for this app will be trashed"
-msgstr ""
-"Τα αρχεία και τα δεδομένα σας για αυτή την εφαρμογή θα σταλούν στον κάδο "
-"απορριμμάτων."
+msgstr "このアプリの現在のユーザーデータはすべてゴミ箱に捨てられます。"
 
 #: src/snapshot_page/snapshot_box.py:186
-#, fuzzy
-#| msgid "Version {}"
 msgid "Version: {}"
-msgstr "Έκδοση {}"
+msgstr "バージョン: {}"
 
 #: src/snapshot_page/snapshot_page.blp:53
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Search Snapshots"
-msgstr "Δημιουργία Στιγμιότυπων"
+msgstr "スナップショットを検索"
 
 #: src/snapshot_page/snapshot_page.blp:70
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Active Snapshots"
-msgstr "Δημιουργία Στιγμιότυπων"
+msgstr "アクティブなスナップショット"
 
 #: src/snapshot_page/snapshot_page.blp:81
-#, fuzzy
-#| msgid "Display properties of installed Flatpaks"
 msgid "Snapshots of installed apps"
-msgstr "Εμφάνιση των ιδιοτήτων των εγκατεστημένων Flatpaks"
+msgstr "インストールされているアプリのスナップショット"
 
 #: src/snapshot_page/snapshot_page.blp:99
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Leftover Snapshots"
-msgstr "Δημιουργία Στιγμιότυπων"
+msgstr "残されたスナップショット"
 
 #: src/snapshot_page/snapshot_page.blp:110
 msgid "Snapshots of apps that are no longer installed"
-msgstr ""
+msgstr "インストールされなくなったアプリのスナップショット"
 
 #: src/snapshot_page/snapshot_page.blp:177
 msgid "Open Snapshots Folder"
-msgstr ""
+msgstr "スナップショットのフォルダを開く"
 
 #: src/snapshot_page/snapshot_page.blp:182
 msgid "No Snapshots"
-msgstr ""
+msgstr "スナップショットなし"
 
 #: src/snapshot_page/snapshot_page.blp:183
 msgid "Create a Snapshot to save the state of any Flatpak application"
-msgstr ""
+msgstr "スナップショットを作成し、Flatpakアプリケーションの状態を保存する。"
 
 #: src/snapshot_page/snapshot_page.blp:219
-#, fuzzy
-#| msgid "Snapshot applied"
 msgid "Snapshot Apps"
-msgstr "Εφαρμογή Στιγμιότυπου"
+msgstr "スナップショットアプリ"
 
 #: src/snapshot_page/snapshot_page.blp:223
-#, fuzzy
-#| msgid "Install"
 msgid "Install Apps"
-msgstr "Εγκατάσταση"
+msgstr "アプリのインストール"
 
 #: src/snapshot_page/snapshot_page.blp:227
-#, fuzzy
-#| msgid "Apply Snapshot?"
 msgid "Apply Snapshots"
-msgstr "Εφαρμογή Στιγμιότυπου;"
+msgstr "スナップショットを適用する"
 
 #: src/snapshot_page/snapshot_page.blp:231
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Trash Snapshots"
-msgstr "Δημιουργία Στιγμιότυπων"
+msgstr "スナップショットをゴミ箱へ移す"
 
 #: src/snapshot_page/snapshot_page.py:106
-#, fuzzy
-#| msgid "Could not apply snapshot"
 msgid "Could not load Snapshots"
-msgstr "Δεν ήταν δυνατή η εφαρμογή στιγμιότυπου"
+msgstr "スナップショットをロードできませんでした"
 
 #: src/snapshot_page/snapshot_page.py:199
 msgid "Showing snapshots for {}"
-msgstr ""
+msgstr "{} のスナップショットを表示"
 
 #: src/snapshot_page/snapshot_page.py:203
 msgid "No snapshots for {}"
-msgstr ""
+msgstr "{} のスナップショットなし"
 
 #: src/snapshot_page/snapshot_page.py:203
 msgid "New"
-msgstr ""
+msgstr "新しい"
 
 #: src/snapshot_page/snapshot_page.py:247
 #: src/snapshot_page/snapshot_page.py:249
 #: src/snapshot_page/snapshots_list_page.py:64
-#, fuzzy
-#| msgid "There is no User Data to Snapshot"
 msgid "No Data Found to Snapshot"
-msgstr "Δεν υπάρχουν δεδομένα χρήστη για τη δημιουργία στιγμιότυπου"
+msgstr "スナップショットにデータが見つからない"
 
 #: src/snapshot_page/snapshot_page.py:256
 #: src/snapshot_page/snapshots_list_page.py:79
-#, fuzzy
-#| msgid "Open Data Folder"
 msgid "Opened snapshots folder"
-msgstr "Άνοιγμα Φακέλου Δεδομένων"
+msgstr "開いたスナップショットフォルダ"
 
 #: src/snapshot_page/snapshot_page.py:391
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Copied Snapshot Paths"
-msgstr "Δημιουργία Στιγμιότυπων"
+msgstr "コピーされたスナップショットのパス"
 
 #: src/snapshot_page/snapshot_page.py:400
 msgid "No apps in your selection can be snapshotted"
-msgstr ""
+msgstr "選択したアプリはスナップショットできません。"
 
 #: src/snapshot_page/snapshot_page.py:474
-#, fuzzy
-#| msgid "Applying Snapshot…"
 msgid "Applying Snapshots"
-msgstr "Εφαρμογή Στιγμιότυπου…"
+msgstr "スナップショットの適用"
 
 #: src/snapshot_page/snapshot_page.py:480
 msgid "No snapshots to extract"
-msgstr ""
+msgstr "抽出するスナップショットがない"
 
 #: src/snapshot_page/snapshot_page.py:480
 msgid "No snapshots were found to extract"
-msgstr ""
+msgstr "抽出するスナップショットは見つからなかった"
 
 #: src/snapshot_page/snapshot_page.py:483
-#, fuzzy
-#| msgid "Apply Snapshot?"
 msgid "Apply These Snapshots?"
-msgstr "Εφαρμογή Στιγμιότυπου;"
+msgstr "これらのスナップショットを適用しますか？"
 
 #: src/snapshot_page/snapshot_page.py:483
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
+"現在のアプリのユーザーデータはゴミ箱に移され、最新のスナップショットが適用さ"
+"れます。"
 
 #: src/snapshot_page/snapshot_page.py:516
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Trashed snapshots"
-msgstr "Δημιουργία Στιγμιότυπων"
+msgstr "ゴミ箱に移されたスナップショット"
 
 #: src/snapshot_page/snapshot_page.py:518
-#, fuzzy
-#| msgid "Could not create snapshot"
 msgid "Could not trash snapshots"
-msgstr "Δεν ήταν δυνατή η δημιουργία στιγμιότυπου"
+msgstr "スナップショットをゴミ箱に送れませんでした"
 
 #: src/snapshot_page/snapshot_page.py:521
-#, fuzzy
-#| msgid "Create Snapshots?"
 msgid "Trash Snapshots?"
-msgstr "Δημιουργία Στιγμιότυπων;"
+msgstr "スナップショットをゴミ箱へ?"
 
 #: src/snapshot_page/snapshot_page.py:521
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "These apps' snapshots will be sent to the trash"
-msgstr "Αυτοί οι φάκελοι θα σταλούν στα σκουπίδια."
+msgstr "これらのアプリのスナップショットはゴミ箱に送られます。"
 
 #: src/snapshot_page/snapshot_page.py:560
-#, fuzzy
-#| msgid "Creating Snapshots"
 msgid "Loading Snapshots"
-msgstr "Δημιουργία Στιγμιότυπων"
+msgstr "スナップショットの読み込み"
 
 #: src/snapshot_page/snapshots_list_page.blp:5
-#, fuzzy
-#| msgid "{} Snapshots"
 msgid "Snapshots List"
-msgstr "{} Στιγμιότυπα"
+msgstr "スナップショットの一覧"
 
 #: src/snapshot_page/snapshots_list_page.blp:13
 msgid "Open Snapshots Folder for this App"
-msgstr ""
+msgstr "このアプリのスナップショットのフォルダを開く"
 
 #: src/snapshot_page/snapshots_list_page.py:34
 #: src/snapshot_page/snapshots_list_page.py:55
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "App not Installed"
-msgstr "Προσπάθεια εγκατάστασης?"
+msgstr "アプリがインストールされていない"
 
 #: src/snapshot_page/snapshots_list_page.py:58
 msgid "{} Snapshots"
-msgstr "{} Στιγμιότυπα"
+msgstr "{}スナップショット"
 
 #: src/snapshot_page/tar_worker.py:83
 msgid "Error in snapshot handling"
-msgstr ""
+msgstr "スナップショット処理のエラー"
 
 #: src/install_page/file_install_dialog.blp:33
 msgid "Review Selection"
-msgstr ""
+msgstr "セレクションのレビュー"
 
 #. self.packages_group.set_title(_("Review Packages"))
 #: src/install_page/file_install_dialog.py:40
 msgid "The following packages will be installed"
-msgstr ""
+msgstr "以下のパッケージがインストールされる。"
 
 #: src/install_page/file_install_dialog.py:43
 msgid "Install a Package"
-msgstr ""
+msgstr "パッケージをインストールする"
 
 #. self.packages_group.set_title(_("Review Package"))
 #: src/install_page/file_install_dialog.py:45
 msgid "The following package will be installed"
-msgstr ""
+msgstr "以下のパッケージがインストールされる。"
 
 #: src/install_page/file_install_dialog.py:46
 msgid "package"
-msgstr ""
+msgstr "パッケージ"
 
 #: src/install_page/install_page.blp:41
-#, fuzzy
-#| msgid "Select"
 msgid "Select Source"
-msgstr "Επιλογή"
+msgstr "ソースを選択"
 
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
 msgid "Pending Packages"
-msgstr ""
+msgstr "保留中のパッケージ"
 
 #: src/install_page/install_page.py:57
 msgid "Installed Packages"
-msgstr ""
+msgstr "インストールされているパッケージ"
 
 #: src/install_page/install_page.py:74
 msgid "{} Pending Package"
-msgstr ""
+msgstr "{} 保留中のパッケージ"
 
 #: src/install_page/install_page.py:79
 msgid "{} Pending Packages"
-msgstr ""
+msgstr "{} 保留中のパッケージ"
 
 #. Extra Object Creation
 #: src/install_page/install_page.py:94
-#, fuzzy
-#| msgid "Installing"
 msgid "Installing Packages"
-msgstr "Εγκατάσταση"
+msgstr "パッケージのインストール"
 
 #: src/install_page/install_page.py:102
 msgid "Loading Installation Options"
-msgstr ""
+msgstr "インストールオプションを読み込み中"
 
 #: src/install_page/pending_page.blp:13 src/install_page/select_page.blp:37
 msgid "Add Packages"
-msgstr ""
+msgstr "パッケージの追加"
 
 #: src/install_page/pending_page.blp:14
 msgid "Packages queued to install will show up here"
-msgstr ""
+msgstr "インストール待ちのパッケージはここに表示されます。"
 
 #: src/install_page/pending_page.py:38
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove All"
-msgstr "Αφαίρεση"
+msgstr "すべて削除"
 
 #: src/install_page/result_row.blp:8 src/install_page/result_row.py:46
 msgid "Add Package to Queue"
-msgstr ""
+msgstr "パッケージをキューに追加する"
 
 #: src/install_page/result_row.py:50
 msgid "Package has been Added to Queue"
-msgstr ""
+msgstr "パッケージがキューに追加されました"
 
 #: src/install_page/result_row.py:54
 msgid "Remove Package from Queue"
-msgstr ""
+msgstr "キューからパッケージを削除する"
 
 #: src/install_page/result_row.py:58
 msgid "This Package is Already Installed"
-msgstr ""
+msgstr "このパッケージは既にインストールされています"
 
 #: src/install_page/results_page.blp:5
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Search a Remote"
-msgstr "Φίλτρο ανά Αποθετήριο"
+msgstr "リモートを検索"
 
 #. hexpand: true;
 #: src/install_page/results_page.blp:20
 msgid "Search for Packages"
-msgstr ""
+msgstr "パッケージを検索"
 
 #: src/install_page/results_page.blp:26
 msgid "Search for Flatpaks"
-msgstr ""
+msgstr "Flatpakを探す"
 
 #: src/install_page/results_page.blp:27
 msgid "Search for Flatpaks you want to install"
-msgstr ""
+msgstr "インストールしたいFlatpakを探す"
 
 #: src/install_page/results_page.blp:31
 msgid "Too Many Results"
-msgstr ""
+msgstr "多すぎる結果"
 
 #: src/install_page/results_page.blp:32
 msgid "Try being more specific with your search"
-msgstr ""
+msgstr "もっと具体的に検索してみよう"
 
 #: src/install_page/results_page.blp:50
 msgid "Try a different search term"
-msgstr "Δοκιμάστε έναν διαφορετικό όρο αναζήτησης"
+msgstr "別の検索語を試す"
 
 #: src/install_page/results_page.py:51
-#, fuzzy
-#| msgid "Search List"
 msgid "Search {}"
-msgstr "Κατάλογος Αναζήτησης"
+msgstr "検索 {}"
 
 #: src/install_page/results_page.py:138
 msgid "Searching"
-msgstr ""
+msgstr "検索"
 
 #: src/install_page/select_page.blp:19
-#, fuzzy
-#| msgid "Search List"
 msgid "Search in a Remote"
-msgstr "Κατάλογος Αναζήτησης"
+msgstr "リモートを検索"
 
 #: src/install_page/select_page.blp:20
 msgid "Choose a remote to search for new packages"
-msgstr ""
+msgstr "新しいパッケージを検索するリモートを選択する"
 
 #: src/install_page/select_page.blp:23
-#, fuzzy
-#| msgid "Updates Disabled"
 msgid "Online Searches Disabled"
-msgstr "Απενεργοποιημένες Ενημερώσεις"
+msgstr "オンライン検索不可"
 
 #: src/install_page/select_page.blp:24
 msgid "Your system has no remotes added to search from"
-msgstr ""
+msgstr "お使いのシステムには検索するためのリモートが追加されていません。"
 
 #: src/install_page/select_page.blp:28
 msgid "Add a remote to your system to enable online searching"
-msgstr ""
+msgstr "オンライン検索を可能にするためにリモートをシステムに追加"
 
 #: src/install_page/select_page.blp:38
 msgid "Install packages from files on your system"
-msgstr ""
+msgstr "システム上のファイルからパッケージをインストールする"
 
 #: src/install_page/select_page.py:66
 msgid "No files were found to install"
-msgstr ""
+msgstr "インストールするファイルが見つかりませんでした"
 
 #: src/install_page/select_page.py:76
 msgid "Flatpaks"
-msgstr ""
+msgstr "Flatpak"
 
 #~ msgid "flatpak"
 #~ msgstr "flatpak"
-
-#, fuzzy
-#~| msgid "Could not install app"
-#~ msgid "Could not uninstall packages"
-#~ msgstr "Δεν ήταν δυνατή η εγκατάσταση της εφαρμογής"
-
-#, fuzzy
-#~| msgid ""
-#~| "{} has reached its End of Life and will not receive any security updates"
-#~ msgid ""
-#~ "This package is End Of Life, and will not recieve any security updates"
-#~ msgstr ""
-#~ "{} έχει φτάσει στο τέλος της διάρκειας ζωής του και δεν θα λαμβάνει "
-#~ "ενημερώσεις ασφαλείας"
-
-#~ msgid ""
-#~ "Warehouse is an app that manages installed Flatpaks, their user data, and "
-#~ "Flatpak remotes."
-#~ msgstr ""
-#~ "Το Αποθήκη είναι μια εφαρμογή που διαχειρίζεται τα εγκατεστημένα "
-#~ "Flatpaks, τα δεδομένα των χρηστών τους και τα αποθετήρια Flatpak."
-
-#~ msgid "Show and filter the list of installed Flatpaks"
-#~ msgstr "Εμφάνιση και φιλτράρισμα της λίστας των εγκατεστημένων Flatpaks"
-
-#~ msgid "Manage large groups of Flatpaks at once"
-#~ msgstr "Διαχείριση μεγάλων ομάδων Flatpaks ταυτόχρονα"
-
-#~ msgid "Add and remove Flatpak remotes"
-#~ msgstr "Προσθήκη και αφαίρεση αποθετηρίων Flatpak"
-
-#~ msgid "Find and trash leftover user data"
-#~ msgstr "Εύρεση και απόρριψη περισσευούμενων δεδομένων χρήστη"
-
-#~ msgid "Reinstall apps that have leftover data"
-#~ msgstr "Επανεγκαταστήστε εφαρμογές που έχουν εναπομείνει δεδομένα"
-
-#~ msgid "Downgrade"
-#~ msgstr "Υποβάθμιση"
-
-#~ msgid "Show Apps"
-#~ msgstr "Εμφάνιση Εφαρμογών"
-
-#~ msgid "Choose from a list of popular remotes or add a new one"
-#~ msgstr "Επιλέξτε από μια λίστα δημοφιλών Αποθετηρίων ή προσθέστε ένα νέο"
-
-#~ msgid "Refreshing List"
-#~ msgstr "Ανανέωση λίστας"
-
-#~ msgid "Uninstall Selected Apps"
-#~ msgstr "Απεγκατάσταση επιλεγμένων εφαρμογών"
-
-#~ msgid "Send Selected Apps' Data to the Trash"
-#~ msgstr "Αποστολή δεδομένων επιλεγμένων εφαρμογών στον κάδο απορριμμάτων"
-
-#~ msgid "Open Copy Menu"
-#~ msgstr "Άνοιγμα μενού αντιγραφής"
-
-#~ msgid "Snapshot Selected Apps' Data"
-#~ msgstr "Στιγμιότυπο δεδομένων επιλεγμένων εφαρμογών"
-
-#~ msgid "Manage Leftover Data…"
-#~ msgstr "Διαχειριστείτε τα εναπομείναντα δεδομένα…"
-
-#~ msgid "Install From File…"
-#~ msgstr "Εγκατάσταση από αρχείο…"
-
-#~ msgid "Install From The Web…"
-#~ msgstr "Εγκατάσταση από το διαδίκτυο…"
-
-#~ msgid "{} is masked and will not be updated"
-#~ msgstr "{} αποκρύπτεται και δεν θα ενημερωθεί"
-
-#~ msgid "Auto Removal Disabled"
-#~ msgstr "Αυτόματη Αφαίρεση Απενεργοποιημένη"
-
-#~ msgid ""
-#~ "{} is pinned and will not be auto removed even when it's required by no "
-#~ "app"
-#~ msgstr ""
-#~ "{} είναι καρφιτσωμένο και δεν θα αφαιρεθεί αυτόματα ακόμα και όταν δεν "
-#~ "απαιτείται από καμία εφαρμογή"
-
-#~ msgid "App EOL"
-#~ msgstr "Εφαρμογή Τέλους Βίου"
-
-#~ msgid "Runtime EOL"
-#~ msgstr "Βιβλιοθήκη Τέλους βίου"
-
-#~ msgid ""
-#~ "{}'s runtime has reached its End of Life and will not receive any "
-#~ "security updates"
-#~ msgstr ""
-#~ "Η βιβλιοθήκη του {} έχει φτάσει στο τέλος της ζωής του και δεν θα "
-#~ "λαμβάνει ενημερώσεις ασφαλείας"
-
-#~ msgid "Copied ID"
-#~ msgstr "Αντιγραμμένο Αναγνωριστικό"
-
-#~ msgid "Copy ID"
-#~ msgstr "Αντιγραφή Αναγνωριστικού"
-
-#~ msgid "Could not install some apps"
-#~ msgstr "Δεν ήταν δυνατή η εγκατάσταση ορισμένων εφαρμογών"
-
-#~ msgid "Trash folders?"
-#~ msgstr "Απόθεση φακέλων στα απορρίμματα;"
-
-#~ msgid "Description"
-#~ msgstr "Περιγραφή"
-
-#~ msgid "{} successfully added"
-#~ msgstr "{} προστέθηκε επιτυχώς"
-
-#~ msgid "Creating Snapshot…"
-#~ msgstr "Δημιουργία Στιγμιότυπου…"
-
-#~ msgid "Applying this snapshot will trash any current user data for {}."
-#~ msgstr ""
-#~ "Η εφαρμογή αυτού του στιγμιότυπου θα καταστρέψει όλα τα τρέχοντα δεδομένα "
-#~ "χρήστη για {}."
-
-#~ msgid "Could not uninstall some apps"
-#~ msgstr "Δεν ήταν δυνατή η απεγκατάσταση ορισμένων εφαρμογών"
-
-#~ msgid "Uninstall Selected Apps?"
-#~ msgstr "Απεγκατάσταση Επιλεγμένων Εφαρμογών;"
-
-#~ msgid "Allow restoring these apps' settings and content"
-#~ msgstr ""
-#~ "Επιτρέψτε την επαναφορά των ρυθμίσεων και του περιεχομένου αυτών των "
-#~ "εφαρμογών"
-
-#~ msgid "Send these apps' settings and content to the trash"
-#~ msgstr ""
-#~ "Στείλτε τις ρυθμίσεις και το περιεχόμενο αυτών των εφαρμογών στον κάδο "
-#~ "απορριμμάτων"
-
-#~ msgid "Cannot uninstall while already uninstalling"
-#~ msgstr "Δεν είναι δυνατή η απεγκατάσταση ενώ ήδη γίνεται απεγκατάσταση"
-
-#~ msgid "Send this app's settings and content to the trash"
-#~ msgstr ""
-#~ "Στείλτε τις ρυθμίσεις και το περιεχόμενο αυτής της εφαρμογής στα σκουπίδια"
-
-#~ msgid "Disable Updates for {}?"
-#~ msgstr "Απενεργοποίηση ενημερώσεων για {};"
-
-#~ msgid ""
-#~ "This will mask {} ensuring it will never recieve any feature or security "
-#~ "updates."
-#~ msgstr ""
-#~ "Αυτό θα αποκρύψει το {} εξασφαλίζοντας ότι δεν θα λάβει ποτέ καμία "
-#~ "ενημέρωση χαρακτηριστικών ή ασφαλείας."
-
-#~ msgid ""
-#~ "This will pin {} ensuring it well never be removed automatically, even if "
-#~ "no app depends on it."
-#~ msgstr ""
-#~ "Αυτό θα καρφιτσώσει το {} εξασφαλίζοντας ότι δεν θα αφαιρεθεί ποτέ "
-#~ "αυτόματα, ακόμη και αν καμία εφαρμογή δεν εξαρτάται από αυτό."
-
-#~ msgid "Could not Run App"
-#~ msgstr "Δεν ήταν δυνατή η εκτέλεση της εφαρμογής"
-
-#~ msgid "{} has no data to trash"
-#~ msgstr "{} δεν έχει δεδομένα για απόρριψη"
-
-#~ msgid "Could not trash {}'s data"
-#~ msgstr "Δεν μπόρεσε να απορρίψει τα δεδομένα του {}"
-
-#~ msgid "Your files and data for these apps will be sent to the trash."
-#~ msgstr ""
-#~ "Τα αρχεία και τα δεδομένα σας για αυτές τις εφαρμογές θα σταλούν στον "
-#~ "κάδο απορριμμάτων."
-
-#~ msgid "Could not snapshot some apps"
-#~ msgstr "Δεν ήταν δυνατή η λήψη στιγμιότυπων ορισμένων εφαρμογών"
-
-#~ msgid ""
-#~ "Snapshots are backups of the app's user data. They can be reapplied at "
-#~ "any time. This could take a while."
-#~ msgstr ""
-#~ "Τα στιγμιότυπα είναι αντίγραφα ασφαλείας των δεδομένων χρήστη της "
-#~ "εφαρμογής. Μπορούν να εφαρμοστούν ξανά ανά πάσα στιγμή. Αυτό μπορεί να "
-#~ "πάρει λίγο χρόνο."
-
-#~ msgid "Copied selected app names"
-#~ msgstr "Αντιγραφή επιλεγμένων ονομάτων εφαρμογών"
-
-#~ msgid "Copied selected app IDs"
-#~ msgstr "Αντιγραφή επιλεγμένων αναγνωριστικών εφαρμογών"
-
-#~ msgid "Copied selected app refs"
-#~ msgstr "Αντιγραφή επιλεγμένων αναφορών εφαρμογών"
-
-#~ msgid "File type not supported"
-#~ msgstr "Ο τύπος αρχείου δεν υποστηρίζεται"

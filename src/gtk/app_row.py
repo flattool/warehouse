@@ -31,8 +31,8 @@ class AppRow(Adw.ActionRow):
 		self.long_press_gesture = Gtk.GestureLongPress()
 
 		# Apply
-		GLib.idle_add(lambda *_: self.set_title(package.info["name"]))
-		GLib.idle_add(lambda *_: self.set_subtitle(package.info["id"]))
+		GLib.idle_add(lambda *_: self.set_title(GLib.markup_escape_text(package.info["name"])))
+		GLib.idle_add(lambda *_: self.set_subtitle(GLib.markup_escape_text(package.info["id"])))
 		GLib.idle_add(lambda *_: self.idle_stuff())
 		self.add_controller(self.rclick_gesture)
 		self.add_controller(self.long_press_gesture)

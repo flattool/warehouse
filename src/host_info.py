@@ -382,6 +382,9 @@ class HostInfo:
 					if not runtime in this.dependent_runtime_refs:
 						this.dependent_runtime_refs.append(runtime)
 
+				# store runtimes in sorted order
+				this.dependent_runtime_refs = sorted(this.dependent_runtime_refs)
+
 			except subprocess.CalledProcessError as cpe:
 				this.main_window.toast_overlay.add_toast(ErrorToast(_("Could not load packages"), cpe.stderr).toast)
 			except Exception as e:
