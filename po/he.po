@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-06 23:38-0400\n"
+"POT-Creation-Date: 2025-06-10 15:04-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -77,31 +77,31 @@ msgstr ""
 msgid "Responsive UI to fit large and small screen sizes"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:48
 msgid "Manage Installed Packages in Three Pane UI"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:52
 msgid "Properties Page in Narrow Window"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:56
 msgid "Manage Installed Remotes and Add New Remotes"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:60
 msgid "Manage Apps' User Data"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:64
 msgid "Backup Apps' User Data"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:68
 msgid "Install New Packages from Files or Remotes"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:72
 msgid "Install Page in Narrow Window"
 msgstr ""
 
@@ -119,15 +119,15 @@ msgid "Flatpaks & Remotes"
 msgstr ""
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:209
+#: src/main.py:243
 msgid "translator-credits"
 msgstr ""
 
-#: src/main.py:215
+#: src/main.py:249
 msgid "Donate"
 msgstr ""
 
-#: src/main.py:217
+#: src/main.py:251
 msgid "Contributors"
 msgstr ""
 

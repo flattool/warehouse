@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-06 23:38-0400\n"
+"POT-Creation-Date: 2025-06-10 15:04-0400\n"
 "PO-Revision-Date: 2025-06-09 12:36+0000\n"
 "Last-Translator: Léane GRASSER <leane.grasser@proton.me>\n"
 "Language-Team: French <https://weblate.fyralabs.com/projects/flattool/"
@@ -27,8 +27,8 @@ msgstr "Warehouse"
 #: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak;packages;apps;remotes;snapshots;"
 msgstr ""
-"flatpak;paquets;apps;applis;applications;remotes;distants;snapshots;instantanés;"
-""
+"flatpak;paquets;apps;applis;applications;remotes;distants;snapshots;"
+"instantanés;"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
@@ -97,31 +97,31 @@ msgstr ""
 msgid "Responsive UI to fit large and small screen sizes"
 msgstr "Une interface réactive adaptée à toutes les tailles d’écrans"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:48
 msgid "Manage Installed Packages in Three Pane UI"
 msgstr "Gérer les paquets installés dans une interface en trois volets"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:52
 msgid "Properties Page in Narrow Window"
 msgstr "Page des propriétés en fenêtre étroite"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:56
 msgid "Manage Installed Remotes and Add New Remotes"
 msgstr "Gérer les dépôts installés et ajouter de nouveaux dépôts"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:60
 msgid "Manage Apps' User Data"
 msgstr "Gérer les données utilisateur des applications"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:64
 msgid "Backup Apps' User Data"
 msgstr "Sauvegarder les données utilisateur des applications"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:68
 msgid "Install New Packages from Files or Remotes"
 msgstr "Installer de nouveaux paquets depuis des fichiers ou des dépôts"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:72
 msgid "Install Page in Narrow Window"
 msgstr "Page d’installation en fenêtre étroite"
 
@@ -139,15 +139,15 @@ msgid "Flatpaks & Remotes"
 msgstr "Flatpaks et dépôts distants"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:209
+#: src/main.py:243
 msgid "translator-credits"
 msgstr "Irénée THIRION <irenee.thirion@e.email>"
 
-#: src/main.py:215
+#: src/main.py:249
 msgid "Donate"
 msgstr "Faire un don"
 
-#: src/main.py:217
+#: src/main.py:251
 msgid "Contributors"
 msgstr "Contributeurs"
 
