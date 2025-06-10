@@ -74,6 +74,23 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="2.1.0" date="2025-6-10">
+			<description translate="no">
+				<p>New Features and Changes</p>
+				<ul>
+					<li>Flatpak Bundles and Flatpakref files can now be opened with Warehouse</li>
+					<li>Flatpak Repo files can now be opened with Warehouse</li>
+					<li>Updated to GNOME 48 GTK Technologies</li>
+					<li>Warehouse can now be found in your app menu by searching for "packages", "apps", "remotes", and "snapshots"</li>
+					<li>Added and updated translations</li>
+				</ul>
+				<p>Bug Fixes</p>
+				<ul>
+					<li>Ampersands no longer cause improper text rendering in the Properties Page</li>
+					<li>Installing Runtimes from the Install Page no longer errors on Runtimes that specify via branches</li>
+				</ul>
+			</description>
+		</release>
 		<release version="2.0.2" date="2025-1-6">
 			<description translate="no">
 				<p>Changes</p>
