@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-06 23:38-0400\n"
+"POT-Creation-Date: 2025-06-10 15:04-0400\n"
 "PO-Revision-Date: 2024-11-24 01:34+0000\n"
 "Last-Translator: Ümit Solmaz <solmazumit1@yandex.com>\n"
 "Language-Team: Turkish <https://weblate.fyralabs.com/projects/flattool/"
@@ -92,31 +92,31 @@ msgid "Responsive UI to fit large and small screen sizes"
 msgstr ""
 "Büyük ve küçük ekran boyutlarına uyacak şekilde duyarlı kullanıcı arayüzü"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:48
 msgid "Manage Installed Packages in Three Pane UI"
 msgstr "Yüklü Paketleri Üç Bölmeli Kullanıcı Arayüzünde Yönetme"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:52
 msgid "Properties Page in Narrow Window"
 msgstr "Dar Pencerede Özellikler Sayfası"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:56
 msgid "Manage Installed Remotes and Add New Remotes"
 msgstr "Kurulu Uzaktan Kumandaları Yönetme ve Yeni Uzaktan Kumandalar Ekleme"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:60
 msgid "Manage Apps' User Data"
 msgstr "Uygulamaların Kullanıcı Verilerini Yönetme"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:64
 msgid "Backup Apps' User Data"
 msgstr "Uygulamaların Kullanıcı Verilerini Yedekleme"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:68
 msgid "Install New Packages from Files or Remotes"
 msgstr "Dosyalar veya Uzaktan Kumandalardan Yeni Paketler Yükleme"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:72
 msgid "Install Page in Narrow Window"
 msgstr "Sayfayı Dar Pencereye Yükleme"
 
@@ -134,15 +134,15 @@ msgid "Flatpaks & Remotes"
 msgstr "Flatpaklar ve Kumandalar"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:209
+#: src/main.py:243
 msgid "translator-credits"
 msgstr "Sabri Ünal <libreajans@gmail.com>"
 
-#: src/main.py:215
+#: src/main.py:249
 msgid "Donate"
 msgstr "Bağış Yap"
 
-#: src/main.py:217
+#: src/main.py:251
 msgid "Contributors"
 msgstr "Katkıda Bulunanlar"
 

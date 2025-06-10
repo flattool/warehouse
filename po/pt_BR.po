@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-06 23:38-0400\n"
+"POT-Creation-Date: 2025-06-10 15:04-0400\n"
 "PO-Revision-Date: 2025-05-09 21:46+0000\n"
 "Last-Translator: lucasmz <git@lucasmz.dev>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.fyralabs.com/projects/"
@@ -90,31 +90,31 @@ msgstr "Instale novos pacotes de qualquer repositório ou do seu sistema"
 msgid "Responsive UI to fit large and small screen sizes"
 msgstr "Interface responsiva para se ajustar a telas grandes e pequenas"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:48
 msgid "Manage Installed Packages in Three Pane UI"
 msgstr "Gerencie pacotes instalados em uma interface de três painéis"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:52
 msgid "Properties Page in Narrow Window"
 msgstr "Página de propriedades em janela pequena"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:56
 msgid "Manage Installed Remotes and Add New Remotes"
 msgstr "Gerencie repositórios instalados e adicione novos repositórios"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:60
 msgid "Manage Apps' User Data"
 msgstr "Gerencie os dados de usuário dos aplicativos"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:64
 msgid "Backup Apps' User Data"
 msgstr "Backup dos dados de usuário dos aplicativos"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:68
 msgid "Install New Packages from Files or Remotes"
 msgstr "Instale novos pacotes a partir de arquivos ou do repositório"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:72
 msgid "Install Page in Narrow Window"
 msgstr "Página de Instalação em uma Janela Estreita"
 
@@ -132,7 +132,7 @@ msgid "Flatpaks & Remotes"
 msgstr "Flatpaks & Repositórios"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
-#: src/main.py:209
+#: src/main.py:243
 msgid "translator-credits"
 msgstr ""
 "Filipe Motta <luizfilipemotta@gmail.com>\n"
@@ -140,11 +140,11 @@ msgstr ""
 "A. Bento <kyweehz@pm.me>\n"
 "Paulo Otávio de Lima, https://aragubas.com"
 
-#: src/main.py:215
+#: src/main.py:249
 msgid "Donate"
 msgstr "Doar"
 
-#: src/main.py:217
+#: src/main.py:251
 msgid "Contributors"
 msgstr "Contribuidores"
 
