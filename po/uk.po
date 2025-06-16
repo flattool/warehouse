@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-06-12 08:46+0000\n"
-"Last-Translator: Andrii Serbovets <serbovets.translation@gmail.com>\n"
+"PO-Revision-Date: 2025-06-17 06:46+0000\n"
+"Last-Translator: Herbatka <viktor.beskorovainyi@gmail.com>\n"
 "Language-Team: Ukrainian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/uk/>\n"
 "Language: uk\n"
@@ -254,7 +254,7 @@ msgstr "У вашій системі не додано жодного репоз
 #. Extra Object Creation
 #: src/gtk/error_toast.py:16
 msgid "Details"
-msgstr "Докладно"
+msgstr "подробиці"
 
 #: src/gtk/error_toast.py:23 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
