@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-06-10 14:46+0000\n"
-"Last-Translator: magnogna <gabrielecasagrande@ik.me>\n"
+"PO-Revision-Date: 2025-06-21 08:46+0000\n"
+"Last-Translator: ales-ro <bianaless6@gmail.com>\n"
 "Language-Team: Italian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/it/>\n"
 "Language: it\n"
@@ -48,7 +48,7 @@ msgstr "Funzionalità:"
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
 msgstr ""
-"Gestisci le applicazioni Flatpak installate e visualizza le proprietarie dei "
+"Gestisci le applicazioni Flatpak installate e visualizza le proprietà dei "
 "pacchetti"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
@@ -157,11 +157,11 @@ msgstr "Non è stato possibile aggiungere {}"
 
 #: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
-msgstr ""
+msgstr "Si sono verificati errori durante l'installazione"
 
 #: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
-msgstr ""
+msgstr "Si è verificato un errore durante l'installazione"
 
 #: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:80
@@ -175,14 +175,12 @@ msgid "Could not cancel installation"
 msgstr "Non è stato possibile installare l'applicazione"
 
 #: src/package_install_worker.py:126 src/package_install_worker.py:136
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not install packages"
-msgstr "Non è stato possibile installare l'applicazione"
+msgstr "Non è stato possibile installare i pacchetti"
 
 #: src/package_install_worker.py:126
 msgid "Packages are currently being installed."
-msgstr ""
+msgstr "Installazione dei pacchetti in corso."
 
 #: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
@@ -517,7 +515,7 @@ msgstr "Menu principale"
 #: src/packages_page/packages_page.py:325
 #: src/install_page/file_install_dialog.py:41
 msgid "Packages"
-msgstr ""
+msgstr "Pacchetti"
 
 #: src/main_window/window.blp:83
 #, fuzzy
@@ -541,10 +539,8 @@ msgstr "Nessuno snapshot"
 #: src/main_window/window.blp:129 src/install_page/file_install_dialog.py:38
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
-#, fuzzy
-#| msgid "Installing"
 msgid "Install Packages"
-msgstr "Installazione"
+msgstr "Installa Pacchetti"
 
 #: src/main_window/window.blp:161
 #, fuzzy
@@ -595,10 +591,8 @@ msgid "Could not open files"
 msgstr "Non è possibile aprire la cartella/percorso"
 
 #: src/packages_page/filters_page.blp:5 src/packages_page/packages_page.blp:70
-#, fuzzy
-#| msgid "Filter List"
 msgid "Filter Packages"
-msgstr "Lista filtri"
+msgstr "Filtra i pacchetti"
 
 #: src/packages_page/filters_page.blp:20
 #, fuzzy
@@ -608,7 +602,7 @@ msgstr "Filtra per repository"
 
 #: src/packages_page/filters_page.blp:21
 msgid "Show packages of these types"
-msgstr ""
+msgstr "Mostra pacchetti di queste tipologie"
 
 #: src/packages_page/filters_page.blp:23
 msgid "Applications"
@@ -616,7 +610,7 @@ msgstr ""
 
 #: src/packages_page/filters_page.blp:24
 msgid "Packages that can be opened"
-msgstr ""
+msgstr "Pacchetti che possono essere avviati"
 
 #: src/packages_page/filters_page.blp:29
 #, fuzzy
@@ -626,7 +620,7 @@ msgstr "Runtime"
 
 #: src/packages_page/filters_page.blp:30
 msgid "Packages that applications depend on"
-msgstr ""
+msgstr "Pacchetti da cui dipendono le applicazioni"
 
 #: src/packages_page/filters_page.blp:37
 msgid "Filter by Remotes"
@@ -672,23 +666,17 @@ msgstr "Reimposta filtri"
 #: src/packages_page/packages_page.blp:65
 #: src/packages_page/packages_page.blp:83 src/remotes_page/remotes_page.blp:30
 #: src/snapshot_page/snapshot_page.blp:35
-#, fuzzy
-#| msgid "Search List"
 msgid "Search Packages"
-msgstr "Lista ricerca"
+msgstr "Ricerca pacchetti"
 
 #: src/packages_page/packages_page.blp:75
 #: src/snapshot_page/snapshot_page.blp:45
-#, fuzzy
-#| msgid "Select a Release"
 msgid "Select Packages"
-msgstr "Seleziona un rilascio"
+msgstr "Seleziona pacchetti"
 
 #: src/packages_page/packages_page.blp:93
-#, fuzzy
-#| msgid "No Flatpaks Match Filters"
 msgid "No Packages Match Filters"
-msgstr "Nessun Flatpak corrispondente ai filtri"
+msgstr "Nessun pacchetto corrispondente ai filtri"
 
 #: src/packages_page/packages_page.blp:94
 #, fuzzy
@@ -698,10 +686,8 @@ msgstr ""
 "Nessun Flatpak installato corrisponde a tutti i filtri attualmente applicati"
 
 #: src/packages_page/packages_page.blp:104
-#, fuzzy
-#| msgid "No Flatpaks Found"
 msgid "No Packages Found"
-msgstr "Nessun Flatpak trovato"
+msgstr "Nessun pacchetto trovato"
 
 #: src/packages_page/packages_page.blp:105
 #, fuzzy
@@ -742,7 +728,7 @@ msgstr "Seleziona tutti"
 #: src/packages_page/uninstall_dialog.py:42
 #: src/properties_page/properties_page.blp:88
 msgid "Uninstall"
-msgstr "Disinstalla"
+msgstr "Disinstallare"
 
 #: src/packages_page/packages_page.blp:173
 msgid "Copy Names"
@@ -850,11 +836,8 @@ msgid "Keep"
 msgstr "Mantieni"
 
 #: src/packages_page/uninstall_dialog.blp:9
-#, fuzzy
-#| msgid "Allow restoring this app's settings and content"
 msgid "Allows restoring app settings and content"
-msgstr ""
-"Permetti il ripristino delle impostazioni e dei dati per questa applicazione"
+msgstr "Permette il ripristino delle impostazioni e dei dati dell'applicazione"
 
 #: src/packages_page/uninstall_dialog.blp:17
 #: src/user_data_page/user_data_page.blp:109
@@ -865,10 +848,8 @@ msgid "Trash"
 msgstr "Cestino"
 
 #: src/packages_page/uninstall_dialog.blp:18
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
 msgid "Send data to the trash"
-msgstr "Vuoi spostare i dati utente di {} nel cestino?"
+msgstr "Sposta i dati utente nel cestino"
 
 #: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall {}?"
@@ -893,10 +874,8 @@ msgid "It will not be possible to use these packages after removal"
 msgstr "Non sarà possibile utilizzare queste applicazioni dopo la rimozione."
 
 #: src/packages_page/uninstall_dialog.py:45
-#, fuzzy
-#| msgid "App Settings & Data"
 msgid "App Settings & Content"
-msgstr "Impostazioni applicazione"
+msgstr "Impostazioni e dati dell'applicazione"
 
 #: src/properties_page/properties_page.blp:19
 msgid "Properties Page Unavailable"
@@ -923,10 +902,8 @@ msgid "Trash User Data"
 msgstr "Cestina dati utente"
 
 #: src/properties_page/properties_page.blp:139
-#, fuzzy
-#| msgid "Version {}"
 msgid "Version"
-msgstr "Versione {}"
+msgstr "Versione"
 
 #: src/properties_page/properties_page.blp:143
 msgid "Updates Disabled"
@@ -951,10 +928,8 @@ msgid "Upgrade or downgrade this package"
 msgstr ""
 
 #: src/properties_page/properties_page.blp:167
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Installed Size"
-msgstr "Repository installati"
+msgstr "Dimensione installata"
 
 #: src/properties_page/properties_page.blp:175
 msgid "Runtime"
@@ -972,7 +947,7 @@ msgstr ""
 
 #: src/properties_page/properties_page.blp:200
 msgid "Package Information"
-msgstr ""
+msgstr "Informazioni sul pacchetto"
 
 #: src/properties_page/properties_page.blp:203
 msgid "Application ID"
@@ -980,23 +955,23 @@ msgstr ""
 
 #: src/properties_page/properties_page.blp:219
 msgid "Architecture"
-msgstr ""
+msgstr "Architettura"
 
 #: src/properties_page/properties_page.blp:227
 msgid "Branch"
-msgstr ""
+msgstr "Ramo"
 
 #: src/properties_page/properties_page.blp:235
 msgid "License"
-msgstr ""
+msgstr "Licenza"
 
 #: src/properties_page/properties_page.blp:244
 msgid "Installation Information"
-msgstr ""
+msgstr "Informazioni sull'installazione"
 
 #: src/properties_page/properties_page.blp:255
 msgid "Origin"
-msgstr ""
+msgstr "Origine"
 
 #: src/properties_page/properties_page.blp:263
 msgid "Collection"
@@ -1167,10 +1142,8 @@ msgid "Reinstalled {}"
 msgstr "Vuoi disinstallare {}?"
 
 #: src/properties_page/properties_page.py:330
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstall {}?"
-msgstr "Vuoi disinstallare {}?"
+msgstr "Reinstallare {}?"
 
 #: src/properties_page/properties_page.py:331
 msgid ""
@@ -1180,10 +1153,8 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:334
 #: src/properties_page/properties_page.py:392
-#, fuzzy
-#| msgid "Uninstall"
 msgid "Reinstall"
-msgstr "Disinstalla"
+msgstr "Reinstalla"
 
 #: src/properties_page/properties_page.py:351
 msgid "Copied launch command"
@@ -1216,10 +1187,8 @@ msgid "Copy Launch Command"
 msgstr "Copia il comando d'avvio"
 
 #: src/properties_page/properties_page.py:391
-#, fuzzy
-#| msgid "Show Details in Store"
 msgid "Show Details"
-msgstr "Mostra dettagli nello store"
+msgstr "Mostra dettagli"
 
 #: src/change_version_page/change_version_page.blp:5
 msgid "Change Versions"
