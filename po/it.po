@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-06-21 17:03+0000\n"
+"PO-Revision-Date: 2025-06-23 08:46+0000\n"
 "Last-Translator: ales-ro <bianaless6@gmail.com>\n"
 "Language-Team: Italian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/it/>\n"
@@ -163,10 +163,8 @@ msgid "Failed to exit cleanly"
 msgstr ""
 
 #: src/package_install_worker.py:104
-#, fuzzy
-#| msgid "Could not install app"
 msgid "Could not cancel installation"
-msgstr "Non è stato possibile installare l'applicazione"
+msgstr "Non è stato possibile annullare l'installazione"
 
 #: src/package_install_worker.py:126 src/package_install_worker.py:136
 msgid "Could not install packages"
@@ -196,7 +194,7 @@ msgstr ""
 
 #: src/gtk/app_row.blp:28
 msgid "This runtime will never be automatically removed"
-msgstr ""
+msgstr "Questo runtime non sarà mai rimosso automaticamente"
 
 #: src/gtk/app_row.blp:34
 msgid "Updates are disabled for this package"
@@ -249,7 +247,7 @@ msgstr "Installazione: {}"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Can't find matching packages"
-msgstr ""
+msgstr "Impossibile trovare pacchetti corrispondenti"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Your system has no remotes added"
@@ -258,7 +256,7 @@ msgstr "Il sistema non ha repository aggiunti"
 #. Extra Object Creation
 #: src/gtk/error_toast.py:16
 msgid "Details"
-msgstr ""
+msgstr "Dettagli"
 
 #: src/gtk/error_toast.py:23 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
@@ -297,7 +295,7 @@ msgstr "Chiudi"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
-msgstr ""
+msgstr "Navigazione"
 
 #: src/gtk/help-overlay.blp:34
 msgid "Show Packages Page"
@@ -312,10 +310,8 @@ msgid "Show User Data Page"
 msgstr "Mostra la pagina dei dati utente"
 
 #: src/gtk/help-overlay.blp:46
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Show Snapshots Page"
-msgstr "Nessuno snapshot"
+msgstr "Mostra la pagina delle istantanee"
 
 #: src/gtk/help-overlay.blp:50
 msgid "Show Install Page"
@@ -357,7 +353,7 @@ msgstr "Pagina Dati utente"
 
 #: src/gtk/help-overlay.blp:91
 msgid "Edit Sorting Modes"
-msgstr ""
+msgstr "Modifica l'ordinamento"
 
 #: src/gtk/help-overlay.blp:99
 msgid "Show Active Data"
@@ -377,7 +373,7 @@ msgstr "Nuove istantanee"
 
 #: src/gtk/installation_chooser.blp:5
 msgid "Choose Installation"
-msgstr "Scegli installazione"
+msgstr "Scegliere installazione"
 
 #: src/gtk/installation_chooser.blp:11
 msgid "User"
@@ -397,7 +393,7 @@ msgstr "Altra installazione"
 
 #: src/gtk/installation_chooser.blp:38
 msgid "Choose a custom installation"
-msgstr ""
+msgstr "Scegli un'installazione personalizzata"
 
 #: src/gtk/installation_chooser.py:31
 msgid "These {} will only be available to you"
@@ -409,7 +405,7 @@ msgstr "Queste {} saranno disponibili a tutti"
 
 #: src/gtk/installation_chooser.py:33
 msgid "Choose how these {} will be installed"
-msgstr ""
+msgstr "Scegli come installare questi {}"
 
 #: src/gtk/installation_chooser.py:35
 msgid "This {} will only be available to you"
@@ -421,7 +417,7 @@ msgstr "Questa {} sarà disponibile a tutti"
 
 #: src/gtk/installation_chooser.py:37
 msgid "Choose how this {} will be installed"
-msgstr ""
+msgstr "Scegli come installare questo {}"
 
 #: src/gtk/sidebar_button.py:23
 msgid "Show Sidebar"
@@ -429,7 +425,7 @@ msgstr "Mostra barra laterale"
 
 #: src/main_window/window.blp:26
 msgid "Drop to Open"
-msgstr ""
+msgstr "Rilascia per aprire"
 
 #: src/main_window/window.blp:27
 msgid "Install Flatpaks or Add a Remote"
@@ -486,11 +482,11 @@ msgstr "_Informazioni su Warehouse"
 
 #: src/main_window/window.py:139
 msgid "Unsupported Filetype"
-msgstr ""
+msgstr "Tipologia di file non supportata"
 
 #: src/main_window/window.py:140
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
-msgstr ""
+msgstr "Solo i file .flatpak, .flatpakref e .flatpakrepo sono supportati."
 
 #: src/main_window/window.py:148
 msgid "Mixed Filetypes"
@@ -526,7 +522,7 @@ msgstr "Mostra pacchetti di queste tipologie"
 
 #: src/packages_page/filters_page.blp:23
 msgid "Applications"
-msgstr ""
+msgstr "Applicazioni"
 
 #: src/packages_page/filters_page.blp:24
 msgid "Packages that can be opened"
@@ -570,7 +566,7 @@ msgstr "Mostra le applicazioni che usano qualunque runtime"
 
 #: src/packages_page/filters_page.blp:92
 msgid "Enable to show apps using selected runtimes"
-msgstr ""
+msgstr "Abilita per mostrare le app che usano i runtime selezionati"
 
 #: src/packages_page/filters_page.blp:113
 #: src/packages_page/packages_page.blp:97
@@ -635,7 +631,7 @@ msgstr "Seleziona tutti"
 #: src/packages_page/uninstall_dialog.py:42
 #: src/properties_page/properties_page.blp:88
 msgid "Uninstall"
-msgstr "Disinstallare"
+msgstr "Disinstalla"
 
 #: src/packages_page/packages_page.blp:173
 msgid "Copy Names"
@@ -658,7 +654,7 @@ msgstr "{} Selezionato"
 
 #: src/packages_page/packages_page.py:197
 msgid "Error getting Flatpak '{}'"
-msgstr ""
+msgstr "Errore nell'ottenere il Flatpak '{}'"
 
 #: src/packages_page/packages_page.py:246
 msgid "Names"
@@ -666,7 +662,7 @@ msgstr "Nomi"
 
 #: src/packages_page/packages_page.py:249
 msgid "IDs"
-msgstr ""
+msgstr "ID"
 
 #: src/packages_page/packages_page.py:252
 #, fuzzy
@@ -685,7 +681,7 @@ msgstr "Non è stato possibile copiare {}"
 
 #: src/packages_page/packages_page.py:313
 msgid "Errors occurred while uninstalling"
-msgstr ""
+msgstr "Sono accaduti degli errori durante la disinstallazione"
 
 #: src/packages_page/packages_page.py:315
 msgid "Uninstalled Packages"
@@ -722,7 +718,7 @@ msgstr "Potrebbe volerci un po'"
 
 #: src/packages_page/packages_page.py:378
 msgid "Changing Version"
-msgstr ""
+msgstr "Cambio versione in corso"
 
 #: src/packages_page/uninstall_dialog.blp:8
 msgid "Keep"
@@ -766,11 +762,11 @@ msgstr "Impostazioni e dati dell'applicazione"
 
 #: src/properties_page/properties_page.blp:19
 msgid "Properties Page Unavailable"
-msgstr ""
+msgstr "Pagina delle proprietà non disponibile"
 
 #: src/properties_page/properties_page.blp:20
 msgid "Cannot show the properties page at this time"
-msgstr ""
+msgstr "Impossibile mostrare la pagina delle proprietà in questo momento"
 
 #: src/properties_page/properties_page.blp:83
 msgid "Open"
@@ -858,7 +854,7 @@ msgstr "Origine"
 
 #: src/properties_page/properties_page.blp:263
 msgid "Collection"
-msgstr ""
+msgstr "Collezione"
 
 #: src/properties_page/properties_page.blp:271
 msgid "Installation"
@@ -866,19 +862,19 @@ msgstr "Installazione"
 
 #: src/properties_page/properties_page.blp:279
 msgid "Commit Information"
-msgstr ""
+msgstr "Informazione sul commit"
 
 #: src/properties_page/properties_page.blp:290
 msgid "Parent"
-msgstr ""
+msgstr "Genitore"
 
 #: src/properties_page/properties_page.blp:298
 msgid "Subject"
-msgstr ""
+msgstr "Oggetto"
 
 #: src/properties_page/properties_page.blp:306
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #: src/properties_page/properties_page.py:83
 msgid "{} Properties"
@@ -927,8 +923,7 @@ msgstr "Spostare i dati utente di {} nel cestino?"
 #: src/properties_page/properties_page.py:206
 msgid "Your settings and data for this app will be sent to the trash"
 msgstr ""
-"Le impostazioni e i dati utente di questa applicazione saranno spostati nel "
-"cestino."
+"Le impostazioni e i dati di questa applicazione saranno spostati nel cestino"
 
 #: src/properties_page/properties_page.py:209
 msgid "Trash Data"
@@ -1055,7 +1050,7 @@ msgstr "Non è stato possibile ottenere le versioni"
 
 #: src/change_version_page/change_version_page.py:99
 msgid "Changed {}'s Version"
-msgstr ""
+msgstr "Versione di {} cambiata"
 
 #: src/change_version_page/change_version_page.py:124
 msgid "{} Versions"
@@ -1073,7 +1068,7 @@ msgstr "Recupero rilasci"
 #: src/change_version_page/change_version_worker.py:80
 #: src/change_version_page/change_version_worker.py:84
 msgid "Error occurred while changing version"
-msgstr ""
+msgstr "È accaduto un errore durante il cambio di versione"
 
 #: src/change_version_page/change_version_worker.py:95
 msgid "Could not cancel version change"
@@ -1085,7 +1080,7 @@ msgstr "Non è stato possibile cambiare versione"
 
 #: src/change_version_page/change_version_worker.py:116
 msgid "Another package is changing version."
-msgstr ""
+msgstr "Un altro pacchetto sta cambiando versione."
 
 #: src/remotes_page/add_remote_dialog.blp:5 src/install_page/select_page.blp:27
 msgid "Add a Remote"
@@ -1097,7 +1092,7 @@ msgstr "Aggiungi"
 
 #: src/remotes_page/add_remote_dialog.blp:40
 msgid "Title"
-msgstr ""
+msgstr "Titolo"
 
 #: src/remotes_page/add_remote_dialog.blp:43
 #: src/user_data_page/user_data_page.blp:190
@@ -1106,7 +1101,7 @@ msgstr "Nome"
 
 #: src/remotes_page/add_remote_dialog.blp:46
 msgid "Repo URL"
-msgstr ""
+msgstr "URL del repository"
 
 #: src/remotes_page/add_remote_dialog.py:61
 msgid "Could not add remote"
@@ -1235,7 +1230,7 @@ msgstr ""
 
 #: src/remotes_page/remotes_page.blp:126
 msgid "Add Popular Remotes"
-msgstr "Aggiungi repository popolari"
+msgstr "Aggiungere repository popolari"
 
 #: src/remotes_page/remotes_page.blp:127
 msgid "Add new remotes to get more software"
@@ -1243,23 +1238,23 @@ msgstr "Aggiungi nuovi repository per ottenere più software"
 
 #: src/remotes_page/remotes_page.blp:131
 msgid "Add Other Remotes"
-msgstr "Aggiungi altri repository"
+msgstr "Aggiungere altri repository"
 
 #: src/remotes_page/remotes_page.blp:134
 msgid "Add a Repo File"
-msgstr "Aggiungi un file repo"
+msgstr "Aggiungere un file repo"
 
 #: src/remotes_page/remotes_page.blp:135
 msgid "Open a downloaded repo file to add"
-msgstr ""
+msgstr "Aprire un file repository scaricato per aggiungerlo"
 
 #: src/remotes_page/remotes_page.blp:143
 msgid "Add a Custom Remote"
-msgstr "Aggiungi un repository personalizzato"
+msgstr "Aggiungere un repository personalizzato"
 
 #: src/remotes_page/remotes_page.blp:144
 msgid "Manually enter new remote details"
-msgstr "Inserisci manualmente i dettagli del nuovo repository"
+msgstr "Inserire manualmente i dettagli del nuovo repository"
 
 #: src/remotes_page/remotes_page.py:36
 msgid "The open source, pay-what-you-want app store from elementary"
@@ -1291,7 +1286,7 @@ msgstr "Repository principale del Runtime SDK e del Developer SDK di WebKit"
 
 #: src/remotes_page/remotes_page.py:156
 msgid "Showing all packages from {}"
-msgstr ""
+msgstr "Visualizzazione dei pacchetti provenienti da {}"
 
 #: src/remotes_page/remotes_page.py:178
 msgid "Could not remove remote"
@@ -1346,7 +1341,7 @@ msgstr "Cartella dei dati aperta"
 #: src/user_data_page/data_box.py:71 src/snapshot_page/snapshot_page.py:258
 #: src/snapshot_page/snapshots_list_page.py:81
 msgid "Could not open folder"
-msgstr "Non è possibile aprire la cartella/percorso"
+msgstr "Non è stato possibile aprire la cartella"
 
 #: src/user_data_page/data_box.py:118
 msgid "Trash {}'s Data?"
@@ -1363,7 +1358,7 @@ msgstr "Continua"
 
 #: src/user_data_page/data_subpage.blp:13
 msgid "No Title Set"
-msgstr ""
+msgstr "Nessun titolo impostato"
 
 #: src/user_data_page/data_subpage.blp:28
 msgid "Loading Size…"
@@ -1421,7 +1416,7 @@ msgstr "ID"
 
 #: src/user_data_page/user_data_page.blp:206
 msgid "Size"
-msgstr ""
+msgstr "Dimensione"
 
 #: src/user_data_page/user_data_page.py:79
 #: src/user_data_page/user_data_page.py:81
@@ -1435,7 +1430,7 @@ msgstr "Non è stato possibile copiare i percorsi"
 #: src/user_data_page/user_data_page.py:155
 #: src/user_data_page/user_data_page.py:201
 msgid "No boxes were selected"
-msgstr ""
+msgstr "Nessuna casella selezionata"
 
 #: src/user_data_page/user_data_page.py:158
 msgid "Copied paths"
@@ -1485,7 +1480,7 @@ msgstr "Denomina queste istantanee"
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
-msgstr "Nuovo snapshot"
+msgstr "Nuova istantanea"
 
 #: src/snapshot_page/new_snapshot_dialog.py:204
 msgid "Name this Snapshot"
@@ -1505,7 +1500,7 @@ msgstr "Nessuna versione trovata"
 
 #: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:160
 msgid "Apply"
-msgstr ""
+msgstr "Applica"
 
 #: src/snapshot_page/snapshot_box.blp:55
 msgid "Rename"
@@ -1526,7 +1521,7 @@ msgstr "Non è stato possibile scrivere i dati"
 
 #: src/snapshot_page/snapshot_box.py:102
 msgid "Could not trash snapshot"
-msgstr "Non è stato possibile eliminare lo snapshot"
+msgstr "Non è stato possibile eliminare l'istantanea"
 
 #: src/snapshot_page/snapshot_box.py:106
 msgid "Trashed snapshot"
@@ -1579,11 +1574,11 @@ msgstr "Istantanee di app non più installate"
 
 #: src/snapshot_page/snapshot_page.blp:177
 msgid "Open Snapshots Folder"
-msgstr "Apri cartella degli snapshot"
+msgstr "Apri cartella delle istantanee"
 
 #: src/snapshot_page/snapshot_page.blp:182
 msgid "No Snapshots"
-msgstr "Nessuno snapshot"
+msgstr "Nessuna istantanea"
 
 #: src/snapshot_page/snapshot_page.blp:183
 msgid "Create a Snapshot to save the state of any Flatpak application"
@@ -1611,7 +1606,7 @@ msgstr "Non è stato possibile caricare le istantanee"
 
 #: src/snapshot_page/snapshot_page.py:199
 msgid "Showing snapshots for {}"
-msgstr ""
+msgstr "Visualizzazione delle istantanee di {}"
 
 #: src/snapshot_page/snapshot_page.py:203
 msgid "No snapshots for {}"
@@ -1698,7 +1693,7 @@ msgstr "App non installata"
 
 #: src/snapshot_page/snapshots_list_page.py:58
 msgid "{} Snapshots"
-msgstr "Gli snapshot di {}"
+msgstr "Le istantanee di {}"
 
 #: src/snapshot_page/tar_worker.py:83
 msgid "Error in snapshot handling"
@@ -1706,7 +1701,7 @@ msgstr "Errore nella gestione delle istantanee"
 
 #: src/install_page/file_install_dialog.blp:33
 msgid "Review Selection"
-msgstr ""
+msgstr "Esaminare la selezione"
 
 #. self.packages_group.set_title(_("Review Packages"))
 #: src/install_page/file_install_dialog.py:40
@@ -1720,11 +1715,11 @@ msgstr "Installa un Pacchetto"
 #. self.packages_group.set_title(_("Review Package"))
 #: src/install_page/file_install_dialog.py:45
 msgid "The following package will be installed"
-msgstr ""
+msgstr "Sarà installato il seguente pacchetto"
 
 #: src/install_page/file_install_dialog.py:46
 msgid "package"
-msgstr ""
+msgstr "pacchetto"
 
 #: src/install_page/install_page.blp:41
 msgid "Select Source"
@@ -1733,7 +1728,7 @@ msgstr "Seleziona sorgente"
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
 msgid "Pending Packages"
-msgstr ""
+msgstr "Pacchetti in sospeso"
 
 #: src/install_page/install_page.py:57
 msgid "Installed Packages"
@@ -1741,11 +1736,11 @@ msgstr "Pacchetti installati"
 
 #: src/install_page/install_page.py:74
 msgid "{} Pending Package"
-msgstr ""
+msgstr "{} pacchetto in sospeso"
 
 #: src/install_page/install_page.py:79
 msgid "{} Pending Packages"
-msgstr ""
+msgstr "{} pacchetti in sospeso"
 
 #. Extra Object Creation
 #: src/install_page/install_page.py:94
@@ -1754,15 +1749,15 @@ msgstr "Installazione dei pacchetti in corso"
 
 #: src/install_page/install_page.py:102
 msgid "Loading Installation Options"
-msgstr ""
+msgstr "Caricamento delle opzioni di installazione in corso"
 
 #: src/install_page/pending_page.blp:13 src/install_page/select_page.blp:37
 msgid "Add Packages"
-msgstr ""
+msgstr "Aggiungere pacchetti"
 
 #: src/install_page/pending_page.blp:14
 msgid "Packages queued to install will show up here"
-msgstr ""
+msgstr "Qui appariranno i pacchetti in coda di installazione"
 
 #: src/install_page/pending_page.py:38
 msgid "Remove All"
@@ -1770,19 +1765,19 @@ msgstr "Rimuovi tutti"
 
 #: src/install_page/result_row.blp:8 src/install_page/result_row.py:46
 msgid "Add Package to Queue"
-msgstr ""
+msgstr "Aggiungi pacchetto alla coda"
 
 #: src/install_page/result_row.py:50
 msgid "Package has been Added to Queue"
-msgstr ""
+msgstr "Il pacchetto è stato aggiunto alla coda"
 
 #: src/install_page/result_row.py:54
 msgid "Remove Package from Queue"
-msgstr ""
+msgstr "Rimuovi pacchetto dalla coda"
 
 #: src/install_page/result_row.py:58
 msgid "This Package is Already Installed"
-msgstr ""
+msgstr "Questo pacchetto è già installato"
 
 #: src/install_page/results_page.blp:5
 msgid "Search a Remote"
@@ -1843,11 +1838,11 @@ msgstr "Aggiungi un repository al sistema per abilitare la ricerca online"
 
 #: src/install_page/select_page.blp:38
 msgid "Install packages from files on your system"
-msgstr ""
+msgstr "Installa pacchetti da file nel sistema"
 
 #: src/install_page/select_page.py:66
 msgid "No files were found to install"
-msgstr ""
+msgstr "Nessun file trovato per l'installazione"
 
 #: src/install_page/select_page.py:76
 msgid "Flatpaks"
