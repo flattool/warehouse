@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
 "PO-Revision-Date: 2025-06-23 08:46+0000\n"
-"Last-Translator: ales-ro <bianaless6@gmail.com>\n"
+"Last-Translator: magnogna <gabrielecasagrande@ik.me>\n"
 "Language-Team: Italian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/it/>\n"
 "Language: it\n"
@@ -64,10 +64,14 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
 msgstr ""
+"Filtra i pacchetti e ordina i dati, per aiutarti a trovare ciò che cerchi "
+"facilmente"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
+"Visualizza I dati utente correnti e pulisci i dati lasciati da pacchetti "
+"rimossi"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
@@ -79,6 +83,8 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
 msgstr ""
+"Salva istantanee dei dati utente delle tue applicazioni, salvando le tue "
+"informazioni"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
@@ -91,7 +97,7 @@ msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:48
 msgid "Manage Installed Packages in Three Pane UI"
-msgstr ""
+msgstr "Gestisci i Pacchetti installati in una UI a tre pannelli"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:52
 msgid "Properties Page in Narrow Window"
@@ -106,10 +112,8 @@ msgid "Manage Apps' User Data"
 msgstr "Gestisci i dati utente delle app"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:64
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Backup Apps' User Data"
-msgstr "Vuoi eliminare i dati utente delle applicazioni selezionate?"
+msgstr "Backup dei dati utente dell'applicazione"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:68
 msgid "Install New Packages from Files or Remotes"
@@ -176,7 +180,7 @@ msgstr "Installazione dei pacchetti in corso."
 
 #: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
-msgstr ""
+msgstr "Nessun pacchetto è stato selezionato per l'installazione."
 
 #: src/gtk/app_row.blp:14 src/properties_page/properties_page.blp:100
 #: src/properties_page/properties_page.blp:179
@@ -806,7 +810,7 @@ msgstr "Cambia Versione"
 
 #: src/properties_page/properties_page.blp:158
 msgid "Upgrade or downgrade this package"
-msgstr ""
+msgstr "Effettua l'aggiornamento o il downgrade di questo pacchetto"
 
 #: src/properties_page/properties_page.blp:167
 msgid "Installed Size"
@@ -822,7 +826,7 @@ msgstr "Disabilita la disinstallazione automatica"
 
 #: src/properties_page/properties_page.blp:189
 msgid "Pin this runtime to keep it installed"
-msgstr ""
+msgstr "Fissa questo runtime per mantenerlo installato"
 
 #: src/properties_page/properties_page.blp:200
 msgid "Package Information"
@@ -830,7 +834,7 @@ msgstr "Informazioni sul pacchetto"
 
 #: src/properties_page/properties_page.blp:203
 msgid "Application ID"
-msgstr ""
+msgstr "ID dell'applicazione"
 
 #: src/properties_page/properties_page.blp:219
 msgid "Architecture"
@@ -990,6 +994,8 @@ msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
 msgstr ""
+"Questo pacchetto verrà disinstallato e poi reinstallato dallo stesso remote "
+"e nella stessa posizione."
 
 #: src/properties_page/properties_page.py:334
 #: src/properties_page/properties_page.py:392
@@ -1633,7 +1639,7 @@ msgstr "Percorsi delle istantanee copiati"
 
 #: src/snapshot_page/snapshot_page.py:400
 msgid "No apps in your selection can be snapshotted"
-msgstr ""
+msgstr "Per nessuna applicazione seleziona può essere creata un'istantanea"
 
 #: src/snapshot_page/snapshot_page.py:474
 msgid "Applying Snapshots"
