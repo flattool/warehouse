@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-07-10 14:46+0000\n"
+"PO-Revision-Date: 2025-07-12 16:46+0000\n"
 "Last-Translator: Léane GRASSER <leane.grasser@proton.me>\n"
 "Language-Team: French <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/fr/>\n"
@@ -1800,11 +1800,11 @@ msgstr "Rechercher un dépôt"
 #. hexpand: true;
 #: src/install_page/results_page.blp:20
 msgid "Search for Packages"
-msgstr "Chercher des paquets"
+msgstr "Rechercher des paquets"
 
 #: src/install_page/results_page.blp:26
 msgid "Search for Flatpaks"
-msgstr "Chercher des Flatpaks"
+msgstr "Rechercher des Flatpaks"
 
 #: src/install_page/results_page.blp:27
 msgid "Search for Flatpaks you want to install"
@@ -1816,7 +1816,7 @@ msgstr "Trop de résultats"
 
 #: src/install_page/results_page.blp:32
 msgid "Try being more specific with your search"
-msgstr "Spécifiez votre recherche"
+msgstr "Essayez de préciser votre recherche"
 
 #: src/install_page/results_page.blp:50
 msgid "Try a different search term"
@@ -1836,7 +1836,7 @@ msgstr "Rechercher dans un dépôt"
 
 #: src/install_page/select_page.blp:20
 msgid "Choose a remote to search for new packages"
-msgstr "Choisissez un dépôt dans lequel chercher de nouveaux paquets"
+msgstr "Choisissez un dépôt où rechercher de nouveaux paquets"
 
 #: src/install_page/select_page.blp:23
 msgid "Online Searches Disabled"
