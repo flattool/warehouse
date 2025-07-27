@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-06-13 14:46+0000\n"
-"Last-Translator: carpinchitu <maycoemanuelportillo@gmail.com>\n"
+"PO-Revision-Date: 2025-07-28 17:46+0000\n"
+"Last-Translator: Fuan200 <juandiazfdez1992@gmail.com>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
 "Language: es\n"
@@ -1052,20 +1052,16 @@ msgid "Currently Installed Version"
 msgstr "Versión instalada actualmente"
 
 #: src/change_version_page/change_version_page.py:92
-#, fuzzy
-#| msgid "Could not create snapshot"
 msgid "Could not get versions"
-msgstr "No se ha podido crear la instantánea"
+msgstr "No se han podido obtener versiones"
 
 #: src/change_version_page/change_version_page.py:99
 msgid "Changed {}'s Version"
 msgstr "Cambiada la versión de {}"
 
 #: src/change_version_page/change_version_page.py:124
-#, fuzzy
-#| msgid "Version"
 msgid "{} Versions"
-msgstr "Versión"
+msgstr "{} Versiones"
 
 #: src/change_version_page/change_version_page.py:125
 msgid "Ensure that {} will never be updated to a newer version"
@@ -1082,16 +1078,12 @@ msgid "Error occurred while changing version"
 msgstr "Se ha producido un error al cambiar de versión"
 
 #: src/change_version_page/change_version_worker.py:95
-#, fuzzy
-#| msgid "Could not create snapshot"
 msgid "Could not cancel version change"
-msgstr "No se ha podido crear la instantánea"
+msgstr "No se ha podido cancelar el cambio de versión"
 
 #: src/change_version_page/change_version_worker.py:116
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not change version"
-msgstr "No se pueden gestionar los datos"
+msgstr "No se ha podido cambiar de versión"
 
 #: src/change_version_page/change_version_worker.py:116
 msgid "Another package is changing version."
@@ -1119,10 +1111,8 @@ msgid "Repo URL"
 msgstr "URL de repositorio"
 
 #: src/remotes_page/add_remote_dialog.py:61
-#, fuzzy
-#| msgid "Could not add {}"
 msgid "Could not add remote"
-msgstr "No se ha podido añadir {}"
+msgstr "No se ha podido añadir el repositorio"
 
 #: src/remotes_page/add_remote_dialog.py:64
 msgid "Added {}"
@@ -1130,28 +1120,22 @@ msgstr "Añadido {}"
 
 #. Apply
 #: src/remotes_page/add_remote_dialog.py:114
-#, fuzzy
-#| msgid "Add Remote"
 msgid "remote"
-msgstr "Agregar repositorio"
+msgstr "repositorio"
 
 #: src/remotes_page/remote_row.blp:21
 #, fuzzy
 #| msgid "Filter by Remotes"
 msgid "Set a Filter for this Remote"
-msgstr "Filtrar por repositorios"
+msgstr "Establecer un filtro para este repositorio"
 
 #: src/remotes_page/remote_row.blp:29
-#, fuzzy
-#| msgid "More Functions"
 msgid "More Actions"
-msgstr "Más funciones"
+msgstr "Más Funciones"
 
 #: src/remotes_page/remote_row.blp:37
-#, fuzzy
-#| msgid "Copy Ref"
 msgid "Copy Title"
-msgstr "Copiar Ref"
+msgstr "Copiar Título"
 
 #: src/remotes_page/remote_row.blp:41
 msgid "Copy Name"
@@ -1173,7 +1157,7 @@ msgstr "Eliminar"
 #, fuzzy
 #| msgid "Could not enable {}"
 msgid "Could not enable remote"
-msgstr "No se ha podido activar {}"
+msgstr "No se ha podido activar el repositorio remoto"
 
 #: src/remotes_page/remote_row.py:28
 msgid "Remote is already enabled"
@@ -1183,26 +1167,20 @@ msgstr "Otro paquete está cambiando de versión"
 #, fuzzy
 #| msgid "Installed Remotes"
 msgid "Enabled remote"
-msgstr "Remotos instalados"
+msgstr "Repositorio remoto habilitado"
 
 #: src/remotes_page/remote_row.py:80 src/remotes_page/remote_row.py:160
-#, fuzzy
-#| msgid "Updates Disabled"
 msgid "Remote is Disabled"
-msgstr "Actualizaciones desactivadas"
+msgstr "Repositorio remoto deshabilitado"
 
 #: src/remotes_page/remote_row.py:82
-#, fuzzy
-#| msgid "Disabled"
 msgid "Disabled remote"
-msgstr "Desactivado"
+msgstr "Repositorio remoto deshabilitado"
 
 #: src/remotes_page/remote_row.py:100 src/remotes_page/remote_row.py:112
 #: src/remotes_page/remote_row.py:116
-#, fuzzy
-#| msgid "Could not disable {}"
 msgid "Could not disable remote"
-msgstr "No se ha podido desactivar {}"
+msgstr "No se ha podido deshabilitar el escritorio remoto"
 
 #: src/remotes_page/remote_row.py:100
 msgid "Remote is already disabled"
@@ -1217,10 +1195,8 @@ msgid "Any installed apps from {} will stop receiving updates"
 msgstr "Las aplicaciones instaladas de {} dejarán de recibir actualizaciones"
 
 #: src/remotes_page/remote_row.py:140
-#, fuzzy
-#| msgid "Copied ref"
 msgid "Copied title"
-msgstr "Ref copiada"
+msgstr "Titulo copiado"
 
 #: src/remotes_page/remote_row.py:143
 msgid "Copied name"
@@ -1231,32 +1207,26 @@ msgid "Manage Remotes"
 msgstr "Gestionar los repositorios remotos"
 
 #: src/remotes_page/remotes_page.blp:40
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Search Remotes"
-msgstr "Filtrar por repositorios"
+msgstr "Buscar repositorios remotos"
 
 #: src/remotes_page/remotes_page.blp:47
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Current Remotes"
-msgstr "Remotos instalados"
+msgstr "Repositorios remotos instalados"
 
 #: src/remotes_page/remotes_page.blp:48
 #, fuzzy
 #| msgid "Remote will be available to every user on the system"
 msgid "Remotes available on your system"
-msgstr "El repositorio estará disponible para todos los usuarios del sistema"
+msgstr "Repositorios remotos disponibles en tu sistema"
 
 #: src/remotes_page/remotes_page.blp:55
 msgid "Show Disabled"
 msgstr "Mostrar desactivados"
 
 #: src/remotes_page/remotes_page.blp:75
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "No Enabled Remotes"
-msgstr "Remotos instalados"
+msgstr "No hay repositorios remotos habilitados"
 
 #: src/remotes_page/remotes_page.blp:81
 msgid "You only have disabled remotes on this system"
@@ -1267,21 +1237,15 @@ msgid "No Remotes Found"
 msgstr "No se han encontrado remotos"
 
 #: src/remotes_page/remotes_page.blp:113
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of remotes or the system has no remotes "
-#| "added"
 msgid ""
 "Warehouse cannot see the current remotes or your system has no remotes added"
 msgstr ""
-"Warehouse no puede ver la lista de repositorios o el sistema no tiene "
-"repositorios añadidos"
+"Warehouse no puede ver los repositorios o tú sistema no tiene repositorios "
+"añadidos"
 
 #: src/remotes_page/remotes_page.blp:126
-#, fuzzy
-#| msgid "Add a Popular Remote"
 msgid "Add Popular Remotes"
-msgstr "Añadir un remoto popular"
+msgstr "Añadir Repositorios Populares"
 
 #: src/remotes_page/remotes_page.blp:127
 msgid "Add new remotes to get more software"
@@ -1340,16 +1304,12 @@ msgid "Showing all packages from {}"
 msgstr "Mostrando todos los paquetes de {}"
 
 #: src/remotes_page/remotes_page.py:178
-#, fuzzy
-#| msgid "Could not remove {}"
 msgid "Could not remove remote"
-msgstr "No se ha podido eliminar {}"
+msgstr "No se ha podido eliminar el repositorio"
 
 #: src/remotes_page/remotes_page.py:185
-#, fuzzy
-#| msgid "Remove {}"
 msgid "Removed {}"
-msgstr "Eliminar {}"
+msgstr "Eliminado {}"
 
 #: src/remotes_page/remotes_page.py:194
 msgid "Remove {}?"
@@ -1357,10 +1317,8 @@ msgstr "¿Eliminar {}?"
 
 #: src/remotes_page/remotes_page.py:231 src/remotes_page/remotes_page.py:241
 #: src/remotes_page/remotes_page.py:243
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open file"
-msgstr "No se ha podido abrir la carpeta"
+msgstr "No se ha podido abrir el archivo"
 
 #: src/remotes_page/remotes_page.py:246
 msgid "Flatpak Repos"
@@ -1372,16 +1330,14 @@ msgid "Adding Remote"
 msgstr "Añadiendo remoto"
 
 #: src/remotes_page/remotes_page.py:295
-#, fuzzy
-#| msgid "Adding Remote"
 msgid "Loading Remotes"
-msgstr "Añadiendo remoto"
+msgstr "Cargando repositorios"
 
 #: src/user_data_page/data_box.blp:56
 #, fuzzy
 #| msgid "Copy Name"
 msgid "Copy Path"
-msgstr "Copiar nombre"
+msgstr "Copiar ruta del archivo"
 
 #: src/user_data_page/data_box.blp:68
 msgid "Attempt to Install"
