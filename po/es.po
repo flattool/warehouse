@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-07-30 13:46+0000\n"
+"PO-Revision-Date: 2025-07-31 07:48+0000\n"
 "Last-Translator: Jose Daniel Rodriguez <jdrodriguez653@soy.sena.edu.co>\n"
 "Language-Team: Spanish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/es/>\n"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
-msgstr "Fijar entornos de ejecución y enmascarar Flatpaks"
+msgstr "Fijar entornos de ejecución y marcar Flatpaks"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
@@ -66,7 +66,7 @@ msgstr ""
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
-"Ver los datos actuales del usuario de la aplicación y limpiar cualquier dato "
+"Ver los datos actuales de usuario de la aplicación y limpiar cualquier dato "
 "no utilizado que haya quedado"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
@@ -136,7 +136,7 @@ msgstr "Flatpaks & Orígenes"
 #: src/main.py:243
 msgid "translator-credits"
 msgstr ""
-"Racsu <me@racsu.com> \n"
+"Racsu <me@racsu.com>\n"
 "Jarvisbot01 <camiseta80@gmail.com>"
 
 #: src/main.py:249
@@ -347,7 +347,7 @@ msgstr "Mostrar u Ocultar Orígenes Desactivados"
 
 #: src/gtk/help-overlay.blp:80
 msgid "New Remote"
-msgstr "Nuevo Origen"
+msgstr "Origen Nuevo"
 
 #: src/gtk/help-overlay.blp:85
 msgid "User Data Page"
@@ -371,7 +371,7 @@ msgstr "Página de Instantáneas"
 
 #: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:206
 msgid "New Snapshots"
-msgstr "Nueva Instantánea"
+msgstr "Instantáneas Nuevas"
 
 #: src/gtk/installation_chooser.blp:5
 msgid "Choose Installation"
@@ -456,7 +456,7 @@ msgstr "Orígenes"
 #: src/main_window/window.blp:99 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
 msgid "User Data"
-msgstr "Datos del Usuario"
+msgstr "Datos de Usuario"
 
 #: src/main_window/window.blp:114 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
@@ -782,7 +782,7 @@ msgstr "Abrir Datos de Usuario"
 #: src/properties_page/properties_page.blp:130
 #: src/user_data_page/data_box.blp:73
 msgid "Trash User Data"
-msgstr "Eliminar Datos de Usuario"
+msgstr "Enviar Datos de Usuario a la Papelera"
 
 #: src/properties_page/properties_page.blp:139
 msgid "Version"
@@ -890,11 +890,11 @@ msgstr "Propiedades"
 #: src/properties_page/properties_page.py:124
 #: src/user_data_page/user_data_page.py:300
 msgid "Loading User Data"
-msgstr "Cargando Datos del Usuario"
+msgstr "Cargando Datos de Usuario"
 
 #: src/properties_page/properties_page.py:134
 msgid "No User Data"
-msgstr "No hay Datos del Usuario"
+msgstr "No hay Datos de Usuario"
 
 #: src/properties_page/properties_page.py:144
 #: src/properties_page/properties_page.py:164
@@ -916,7 +916,7 @@ msgstr "No se pudieron abrir los datos"
 #: src/user_data_page/data_box.py:104 src/user_data_page/user_data_page.py:187
 #: src/user_data_page/user_data_page.py:201
 msgid "Could not trash data"
-msgstr "No se pudieron eliminar los datos"
+msgstr "No se pudo enviar los datos a la papelera"
 
 #: src/properties_page/properties_page.py:205
 msgid "Send {}'s User Data to the Trash?"
@@ -929,7 +929,7 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:209
 msgid "Trash Data"
-msgstr "Enviar a la Papelera"
+msgstr "Enviar Datos a la Papelera"
 
 #: src/properties_page/properties_page.py:219
 msgid "Could not Disable Updates"
@@ -1050,7 +1050,7 @@ msgstr "Versión Instalada Actualmente"
 
 #: src/change_version_page/change_version_page.py:92
 msgid "Could not get versions"
-msgstr "No se han podido obtener versiones"
+msgstr "No se pudo obtener las versiones"
 
 #: src/change_version_page/change_version_page.py:99
 msgid "Changed {}'s Version"
@@ -1338,10 +1338,8 @@ msgid "Could not copy data path"
 msgstr "No se pudo copiar la ruta de los datos"
 
 #: src/user_data_page/data_box.py:69
-#, fuzzy
-#| msgid "Open Data Folder"
 msgid "Opened data folder"
-msgstr "Abrir carpeta de datos"
+msgstr "Carpeta de Archivos Abierta"
 
 #: src/user_data_page/data_box.py:71 src/snapshot_page/snapshot_page.py:258
 #: src/snapshot_page/snapshots_list_page.py:81
@@ -1350,7 +1348,7 @@ msgstr "No se pudo abrir la carpeta"
 
 #: src/user_data_page/data_box.py:118
 msgid "Trash {}'s Data?"
-msgstr "¿Eliminar datos de {}?"
+msgstr "¿Enviar Datos de {} a la Papelera?"
 
 #: src/user_data_page/data_box.py:118
 msgid "{}'s data will be sent to the trash"
@@ -1363,35 +1361,27 @@ msgstr "Continuar"
 
 #: src/user_data_page/data_subpage.blp:13
 msgid "No Title Set"
-msgstr "Titulo no establecido"
+msgstr "No hay Título Asignado"
 
 #: src/user_data_page/data_subpage.blp:28
-#, fuzzy
-#| msgid "Downgrading…"
 msgid "Loading Size…"
-msgstr "Revirtiendo…"
+msgstr "Cargando Tamaño…"
 
 #: src/user_data_page/data_subpage.py:257
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "No Active Data"
-msgstr "No hay datos sobrantes"
+msgstr "No hay Datos Activos"
 
 #: src/user_data_page/data_subpage.py:258
-#, fuzzy
-#| msgid ""
-#| "Warehouse cannot see the list of remotes or the system has no remotes "
-#| "added"
 msgid ""
 "Warehouse cannot see any active user data or your system has no active user "
 "data present"
 msgstr ""
-"Warehouse no puede ver la lista de repositorios o el sistema no tiene "
-"repositorios añadidos"
+"Warehouse no puede ver ningún dato de usuario activo o tu sistema no "
+"contiene datos de usuario activos"
 
 #: src/user_data_page/data_subpage.py:261
 msgid "No Leftover Data"
-msgstr "No hay datos sobrantes"
+msgstr "No hay Datos Sobrantes"
 
 #: src/user_data_page/data_subpage.py:262
 msgid "There is no leftover user data"
@@ -1399,37 +1389,29 @@ msgstr "No hay datos de usuario sobrantes"
 
 #: src/user_data_page/user_data_page.blp:43
 #: src/user_data_page/user_data_page.blp:64
-#, fuzzy
-#| msgid "Trash User Data"
 msgid "Search User Data"
-msgstr "Eliminar datos de usuario"
+msgstr "Buscar Datos de Usuario"
 
 #: src/user_data_page/user_data_page.blp:49
-#, fuzzy
-#| msgid "No User Data"
 msgid "Sort User Data"
-msgstr "No hay datos del usuario"
+msgstr "Ordenar Datos de Usuario"
 
 #: src/user_data_page/user_data_page.blp:54
-#, fuzzy
-#| msgid "User Data"
 msgid "Select User Data"
-msgstr "Datos del usuario"
+msgstr "Seleccionar Datos de Usuario"
 
 #: src/user_data_page/user_data_page.blp:120
 #: src/snapshot_page/snapshot_page.blp:159
-#, fuzzy
-#| msgid "View More"
 msgid "More"
-msgstr "Ver más"
+msgstr "Más"
 
 #: src/user_data_page/user_data_page.blp:169
 msgid "Ascending"
-msgstr "Ascendiendo"
+msgstr "Ascendente"
 
 #: src/user_data_page/user_data_page.blp:177
 msgid "Descending"
-msgstr "Descendiendo"
+msgstr "Descendente"
 
 #: src/user_data_page/user_data_page.blp:198
 msgid "ID"
@@ -1441,37 +1423,29 @@ msgstr "Tamaño"
 
 #: src/user_data_page/user_data_page.py:79
 #: src/user_data_page/user_data_page.py:81
-#, fuzzy
-#| msgid "Loading User Data"
 msgid "Loading Size"
-msgstr "Cargando datos del usuario"
+msgstr "Cargando Tamaño"
 
 #: src/user_data_page/user_data_page.py:155
-#, fuzzy
-#| msgid "Could not apply snapshot"
 msgid "Could not copy paths"
-msgstr "No se ha podido aplicar la instantánea"
+msgstr "No se pudo copiar las rutas"
 
 #: src/user_data_page/user_data_page.py:155
 #: src/user_data_page/user_data_page.py:201
 msgid "No boxes were selected"
-msgstr "No se seleccionaron cajas"
+msgstr "No se seleccionaron casillas"
 
 #: src/user_data_page/user_data_page.py:158
-#, fuzzy
-#| msgid "Copied name"
 msgid "Copied paths"
-msgstr "Nombre copiado"
+msgstr "Rutas Copiadas"
 
 #: src/user_data_page/user_data_page.py:189
-#, fuzzy
-#| msgid "Trashed user data"
 msgid "Trashed data"
-msgstr "Datos de usuario borrados"
+msgstr "Datos enviados a la papelera"
 
 #: src/user_data_page/user_data_page.py:212
 msgid "Trash Data?"
-msgstr "¿Borrar datos?"
+msgstr "¿Enviar Datos a la Papelera?"
 
 #: src/user_data_page/user_data_page.py:212
 msgid "Data will be sent to the trash"
@@ -1479,17 +1453,13 @@ msgstr "Los datos se enviarán a la papelera"
 
 #: src/user_data_page/user_data_page.py:250
 #: src/user_data_page/user_data_page.py:273
-#, fuzzy
-#| msgid "Active Commit"
 msgid "Active Data"
-msgstr "Versión en uso"
+msgstr "Datos Activos"
 
 #: src/user_data_page/user_data_page.py:251
 #: src/user_data_page/user_data_page.py:279
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Leftover Data"
-msgstr "No hay datos sobrantes"
+msgstr "No hay Datos Sobrantes"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
@@ -1501,45 +1471,35 @@ msgid "Create"
 msgstr "Crear"
 
 #: src/snapshot_page/new_snapshot_dialog.py:114
-#, fuzzy
-#| msgid "Creating Snapshots"
 msgid "Creating Snapshot"
-msgstr "Creando instantáneas"
+msgstr "Creando Instantáneas"
 
 #: src/snapshot_page/new_snapshot_dialog.py:196
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Name these Snapshots"
-msgstr "Crear instantáneas"
+msgstr "Nombrar estás Instantáneas"
 
 #: src/snapshot_page/new_snapshot_dialog.py:200
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
-msgstr "Instantánea nueva"
+msgstr "Instantánea Nueva"
 
 #: src/snapshot_page/new_snapshot_dialog.py:204
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "Name this Snapshot"
-msgstr "Instantánea nueva"
+msgstr "Nombrar está instantánea"
 
 #: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:62
 msgid "No Name Set"
-msgstr "Sin nombre asignado"
+msgstr "No hay Nombre Asignado"
 
 #: src/snapshot_page/snapshot_box.blp:23
-#, fuzzy
-#| msgid "No Remotes Found"
 msgid "No date found"
-msgstr "No se han encontrado remotos"
+msgstr "Fecha no encontrada"
 
 #: src/snapshot_page/snapshot_box.blp:30
-#, fuzzy
-#| msgid "No Results Found"
 msgid "No version found"
-msgstr "No se han encontrado resultados"
+msgstr "Versión no encontrada"
 
 #: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:160
 msgid "Apply"
@@ -1547,40 +1507,32 @@ msgstr "Aplicar"
 
 #: src/snapshot_page/snapshot_box.blp:55
 msgid "Rename"
-msgstr "Renombrar"
+msgstr "Cambiar Nombre"
 
 #: src/snapshot_page/snapshot_box.blp:84
-#, fuzzy
-#| msgid "Create Snapshots?"
 msgid "Rename Snapshot?"
-msgstr "¿Crear instantáneas?"
+msgstr "¿Cambiar Nombre de instantánea?"
 
 #: src/snapshot_page/snapshot_box.blp:94
-#, fuzzy
-#| msgid "Copied name"
 msgid "Confirm Rename"
-msgstr "Nombre copiado"
+msgstr "Confirmar Cambio de Nombre"
 
 #: src/snapshot_page/snapshot_box.py:37 src/snapshot_page/snapshot_box.py:49
 #: src/snapshot_page/snapshot_box.py:65
-#, fuzzy
-#| msgid "Could not manage data"
 msgid "Could not write data"
-msgstr "No se pueden gestionar los datos"
+msgstr "No se pudo escribir los datos"
 
 #: src/snapshot_page/snapshot_box.py:102
 msgid "Could not trash snapshot"
-msgstr "No se ha podido eliminar la instantánea"
+msgstr "No se pudo enviar la instantánea a la papelera"
 
 #: src/snapshot_page/snapshot_box.py:106
-#, fuzzy
-#| msgid "Trash Snapshot"
 msgid "Trashed snapshot"
-msgstr "Eliminar la instantánea"
+msgstr "Instantánea enviada a la papelera"
 
 #: src/snapshot_page/snapshot_box.py:116
 msgid "Trash Snapshot?"
-msgstr "¿Eliminar la instantánea?"
+msgstr "¿Enviar la instantánea a la papelera?"
 
 #: src/snapshot_page/snapshot_box.py:116
 msgid "This snapshot will be sent to the trash"
@@ -1588,107 +1540,82 @@ msgstr "Esta instantánea se enviará a la papelera"
 
 #: src/snapshot_page/snapshot_box.py:146
 msgid "Applying Snapshot"
-msgstr "Aplicando instantánea"
+msgstr "Aplicando Instantánea"
 
 #: src/snapshot_page/snapshot_box.py:156
 msgid "Apply Snapshot?"
-msgstr "¿Aplicar instantánea?"
+msgstr "¿Aplicar Instantánea?"
 
 #: src/snapshot_page/snapshot_box.py:157
 msgid "Any current user data for this app will be trashed"
 msgstr ""
-"Cualquier dato actual del usuario de esta aplicación será enviado a la "
+"Cualquier dato actual de usuario de esta aplicación será enviado a la "
 "papelera"
 
 #: src/snapshot_page/snapshot_box.py:186
-#, fuzzy
-#| msgid "Version {}"
 msgid "Version: {}"
-msgstr "Versión {}"
+msgstr "Versión: {}"
 
 #: src/snapshot_page/snapshot_page.blp:53
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Search Snapshots"
-msgstr "Crear instantáneas"
+msgstr "Buscar Instantáneas"
 
 #: src/snapshot_page/snapshot_page.blp:70
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Active Snapshots"
-msgstr "Crear instantáneas"
+msgstr "Instantáneas Activas"
 
 #: src/snapshot_page/snapshot_page.blp:81
-#, fuzzy
-#| msgid "Display properties of installed Flatpaks"
 msgid "Snapshots of installed apps"
-msgstr "Mostrar las propiedades de las Flatpaks instaladas"
+msgstr "Instantáneas de las aplicaciones instaladas"
 
 #: src/snapshot_page/snapshot_page.blp:99
-#, fuzzy
-#| msgid "Create Snapshots"
 msgid "Leftover Snapshots"
-msgstr "Crear instantáneas"
+msgstr "Instantáneas Sobrantes"
 
 #: src/snapshot_page/snapshot_page.blp:110
-#, fuzzy
-#| msgid "Search for Flatpaks that you want to install"
 msgid "Snapshots of apps that are no longer installed"
-msgstr "Busque los Flatpaks que desee instalar"
+msgstr "Instantáneas de aplicaciones que ya no están instaladas"
 
 #: src/snapshot_page/snapshot_page.blp:177
 msgid "Open Snapshots Folder"
-msgstr "Abrir carpeta de instantáneas"
+msgstr "Abrir Carpeta de Instantáneas"
 
 #: src/snapshot_page/snapshot_page.blp:182
 msgid "No Snapshots"
-msgstr "Sin instantáneas"
+msgstr "No hay Instantáneas"
 
 #: src/snapshot_page/snapshot_page.blp:183
-#, fuzzy
-#| msgid "Central repository of Flatpak applications"
 msgid "Create a Snapshot to save the state of any Flatpak application"
-msgstr "Repositorio central de aplicaciones Flatpak"
+msgstr ""
+"Crea una instantánea para guardar el estado de cualquier aplicación Flatpak"
 
 #: src/snapshot_page/snapshot_page.blp:219
-#, fuzzy
-#| msgid "Snapshot applied"
 msgid "Snapshot Apps"
-msgstr "Instantánea aplicada"
+msgstr "Aplicaciones con Instantáneas"
 
 #: src/snapshot_page/snapshot_page.blp:223
-#, fuzzy
-#| msgid "Install"
 msgid "Install Apps"
-msgstr "Instalar"
+msgstr "Instalar Aplicaciones"
 
 #: src/snapshot_page/snapshot_page.blp:227
-#, fuzzy
-#| msgid "Apply Snapshot"
 msgid "Apply Snapshots"
-msgstr "Aplicar instantánea"
+msgstr "Aplicar Instantáneas"
 
 #: src/snapshot_page/snapshot_page.blp:231
-#, fuzzy
-#| msgid "Trash Snapshot"
 msgid "Trash Snapshots"
-msgstr "Eliminar la instantánea"
+msgstr "Enviar las Instantáneas a la Papelera"
 
 #: src/snapshot_page/snapshot_page.py:106
-#, fuzzy
-#| msgid "Could not trash snapshot"
 msgid "Could not load Snapshots"
-msgstr "No se ha podido eliminar la instantánea"
+msgstr "No se Pudo Cargar las Instantáneas"
 
 #: src/snapshot_page/snapshot_page.py:199
 msgid "Showing snapshots for {}"
 msgstr "Mostrando instantáneas para {}"
 
 #: src/snapshot_page/snapshot_page.py:203
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "No snapshots for {}"
-msgstr "No hay instantáneas"
+msgstr "No hay instantáneas para {}"
 
 #: src/snapshot_page/snapshot_page.py:203
 msgid "New"
@@ -1697,126 +1624,103 @@ msgstr "Nuevo"
 #: src/snapshot_page/snapshot_page.py:247
 #: src/snapshot_page/snapshot_page.py:249
 #: src/snapshot_page/snapshots_list_page.py:64
-#, fuzzy
-#| msgid "There is no User Data to Snapshot"
 msgid "No Data Found to Snapshot"
-msgstr "No hay datos de usuario para la instantánea"
+msgstr "No se Encontraron Datos para Crear la Instantánea"
 
 #: src/snapshot_page/snapshot_page.py:256
 #: src/snapshot_page/snapshots_list_page.py:79
-#, fuzzy
-#| msgid "Open Snapshots Folder"
 msgid "Opened snapshots folder"
-msgstr "Abrir carpeta de instantáneas"
+msgstr "Carpeta de instantáneas abierta"
 
 #: src/snapshot_page/snapshot_page.py:391
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Copied Snapshot Paths"
-msgstr "No hay instantáneas"
+msgstr "Rutas de las Instantáneas Copiadas"
 
 #: src/snapshot_page/snapshot_page.py:400
 msgid "No apps in your selection can be snapshotted"
-msgstr ""
-"No se puede crear una instantánea de ninguna aplicación de la selección"
+msgstr "No se puede crear una instantánea para las aplicaciones seleccionadas"
 
 #: src/snapshot_page/snapshot_page.py:474
 msgid "Applying Snapshots"
-msgstr "Aplicando instantáneas"
+msgstr "Aplicando Instantáneas"
 
 #: src/snapshot_page/snapshot_page.py:480
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "No snapshots to extract"
-msgstr "No hay instantáneas"
+msgstr "No hay Instantáneas para extraer"
 
 #: src/snapshot_page/snapshot_page.py:480
 msgid "No snapshots were found to extract"
 msgstr "No se encontraron instantáneas para extraer"
 
 #: src/snapshot_page/snapshot_page.py:483
-#, fuzzy
-#| msgid "Apply Snapshot?"
 msgid "Apply These Snapshots?"
-msgstr "¿Aplicar instantánea?"
+msgstr "¿Aplicar Estás Instantáneas?"
 
 #: src/snapshot_page/snapshot_page.py:483
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
 msgstr ""
-"Esto eliminará los datos de usuario de las aplicaciones actuales y aplicará "
-"su instantánea más reciente"
+"Esto enviará los datos actuales de usuario de las aplicaciones a la papelera "
+"y aplicará la instantánea más reciente"
 
 #: src/snapshot_page/snapshot_page.py:516
-#, fuzzy
-#| msgid "Trash Snapshot"
 msgid "Trashed snapshots"
-msgstr "Eliminar la instantánea"
+msgstr "Instantáneas enviadas a la papelera"
 
 #: src/snapshot_page/snapshot_page.py:518
-#, fuzzy
-#| msgid "Could not trash snapshot"
 msgid "Could not trash snapshots"
-msgstr "No se ha podido eliminar la instantánea"
+msgstr "No se pudo enviar las instantáneas a la papelera"
 
 #: src/snapshot_page/snapshot_page.py:521
-#, fuzzy
-#| msgid "Trash Snapshot?"
 msgid "Trash Snapshots?"
-msgstr "¿Eliminar la instantánea?"
+msgstr "¿Enviar las instantáneas a la papelera?"
 
 #: src/snapshot_page/snapshot_page.py:521
 msgid "These apps' snapshots will be sent to the trash"
 msgstr "Las instantáneas de estas aplicaciones se enviarán a la papelera"
 
 #: src/snapshot_page/snapshot_page.py:560
-#, fuzzy
-#| msgid "Creating Snapshots"
 msgid "Loading Snapshots"
-msgstr "Creando instantáneas"
+msgstr "Cargando Instantáneas"
 
 #: src/snapshot_page/snapshots_list_page.blp:5
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Snapshots List"
-msgstr "No hay instantáneas"
+msgstr "Lista de Instantáneas"
 
 #: src/snapshot_page/snapshots_list_page.blp:13
-#, fuzzy
-#| msgid "Open Snapshots Folder"
 msgid "Open Snapshots Folder for this App"
-msgstr "Abrir carpeta de instantáneas"
+msgstr "Abrir Carpeta de Instantáneas para esta Aplicación"
 
 #: src/snapshot_page/snapshots_list_page.py:34
 #: src/snapshot_page/snapshots_list_page.py:55
 msgid "App not Installed"
-msgstr "Aplicación no instalada"
+msgstr "Aplicación no Instalada"
 
 #: src/snapshot_page/snapshots_list_page.py:58
 msgid "{} Snapshots"
-msgstr "{} instantáneas"
+msgstr "{} Instantáneas"
 
 #: src/snapshot_page/tar_worker.py:83
 msgid "Error in snapshot handling"
-msgstr "Error en el manejo de instantáneas"
+msgstr "Error al gestionar la instantánea"
 
 #: src/install_page/file_install_dialog.blp:33
 msgid "Review Selection"
-msgstr "Selección de reseñas"
+msgstr "Revisar Selección"
 
 #. self.packages_group.set_title(_("Review Packages"))
 #: src/install_page/file_install_dialog.py:40
 msgid "The following packages will be installed"
-msgstr "Se instalarán los siguientes paquetes"
+msgstr "Los paquetes siguientes serán instalados"
 
 #: src/install_page/file_install_dialog.py:43
 msgid "Install a Package"
-msgstr "Instalar un paquete"
+msgstr "Instalar un Paquete"
 
 #. self.packages_group.set_title(_("Review Package"))
 #: src/install_page/file_install_dialog.py:45
 msgid "The following package will be installed"
-msgstr "Se instalará el siguiente paquete"
+msgstr "Este paquete será instalado"
 
 #: src/install_page/file_install_dialog.py:46
 msgid "package"
@@ -1824,90 +1728,82 @@ msgstr "paquete"
 
 #: src/install_page/install_page.blp:41
 msgid "Select Source"
-msgstr "Seleccionar fuente"
+msgstr "Seleccionar Origen"
 
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
 msgid "Pending Packages"
-msgstr "Paquetes pendientes"
+msgstr "Paquetes Pendientes"
 
 #: src/install_page/install_page.py:57
-#, fuzzy
-#| msgid "Installed Size"
 msgid "Installed Packages"
-msgstr "Tamaño de instalación"
+msgstr "Paquetes Instalados"
 
 #: src/install_page/install_page.py:74
 msgid "{} Pending Package"
-msgstr "{} Paquete pendiente"
+msgstr "{} Paquete Pendiente"
 
 #: src/install_page/install_page.py:79
 msgid "{} Pending Packages"
-msgstr "{} Paquetes pendientes"
+msgstr "{} Paquetes Pendientes"
 
 #. Extra Object Creation
 #: src/install_page/install_page.py:94
 msgid "Installing Packages"
-msgstr "Instalando paquetes"
+msgstr "Instalando Paquetes"
 
 #: src/install_page/install_page.py:102
 msgid "Loading Installation Options"
-msgstr "Cargando Opciones de instalación"
+msgstr "Cargando Opciones de Instalación"
 
 #: src/install_page/pending_page.blp:13 src/install_page/select_page.blp:37
 msgid "Add Packages"
-msgstr "Agregar paquetes"
+msgstr "Agregar Paquetes"
 
 #: src/install_page/pending_page.blp:14
 msgid "Packages queued to install will show up here"
-msgstr "Los paquetes en cola para instalar aparecerán aquí"
+msgstr "Los paquetes en espera de Instalación aparecerán aquí"
 
 #: src/install_page/pending_page.py:38
 msgid "Remove All"
-msgstr "Eliminar todo"
+msgstr "Eliminar Todo"
 
 #: src/install_page/result_row.blp:8 src/install_page/result_row.py:46
 msgid "Add Package to Queue"
-msgstr "Agregar paquete a la cola"
+msgstr "Agregar Paquete a la Cola"
 
 #: src/install_page/result_row.py:50
 msgid "Package has been Added to Queue"
-msgstr "El paquete se ha agregado a la cola"
+msgstr "El paquete se ha Agregado a la Cola"
 
 #: src/install_page/result_row.py:54
 msgid "Remove Package from Queue"
-msgstr "Eliminar paquete de la cola"
+msgstr "Eliminar Paquete de la Cola"
 
 #: src/install_page/result_row.py:58
 msgid "This Package is Already Installed"
-msgstr "Este paquete ya está instalado"
+msgstr "Este Paquete ya está Instalado"
 
 #: src/install_page/results_page.blp:5
-#, fuzzy
-#| msgid "Add a Remote"
 msgid "Search a Remote"
-msgstr "Añadir un remoto"
+msgstr "Buscar un Origen"
 
 #. hexpand: true;
 #: src/install_page/results_page.blp:20
-#, fuzzy
-#| msgid "Search for Flatpaks"
 msgid "Search for Packages"
-msgstr "Buscar Flatpaks"
+msgstr "Buscar Paquetes"
 
 #: src/install_page/results_page.blp:26
 msgid "Search for Flatpaks"
 msgstr "Buscar Flatpaks"
 
 #: src/install_page/results_page.blp:27
-#, fuzzy
-#| msgid "Search for Flatpaks that you want to install"
 msgid "Search for Flatpaks you want to install"
-msgstr "Busque los Flatpaks que desee instalar"
+msgstr "Busque los Flatpaks que desea instalar"
 
 #: src/install_page/results_page.blp:31
 msgid "Too Many Results"
-msgstr "Demasiados resultados"
+msgstr "Demasiados Resultados"
 
 #: src/install_page/results_page.blp:32
 msgid "Try being more specific with your search"
@@ -1915,44 +1811,35 @@ msgstr "Intente ser más específico en su búsqueda"
 
 #: src/install_page/results_page.blp:50
 msgid "Try a different search term"
-msgstr "Pruebe con un término de búsqueda diferente"
+msgstr "Intente con un término de búsqueda diferente"
 
 #: src/install_page/results_page.py:51
-#, fuzzy
-#| msgid "Search"
 msgid "Search {}"
-msgstr "Buscar"
+msgstr "Buscar {}"
 
 #: src/install_page/results_page.py:138
 msgid "Searching"
 msgstr "Buscando"
 
 #: src/install_page/select_page.blp:19
-#, fuzzy
-#| msgid "Refresh List of Remotes"
 msgid "Search in a Remote"
-msgstr "Actualizar la lista de remotos"
+msgstr "Buscar en un Origen"
 
 #: src/install_page/select_page.blp:20
-#, fuzzy
-#| msgid "Choose a Remote to Search"
 msgid "Choose a remote to search for new packages"
-msgstr "Elige un remoto a buscar"
+msgstr "Elija un origen para buscar nuevos paquetes"
 
 #: src/install_page/select_page.blp:23
-#, fuzzy
-#| msgid "Updates Disabled"
 msgid "Online Searches Disabled"
-msgstr "Actualizaciones desactivadas"
+msgstr "Búsquedas en línea desactivadas"
 
 #: src/install_page/select_page.blp:24
 msgid "Your system has no remotes added to search from"
-msgstr "Su sistema no tiene controles remotos agregados para buscar desde"
+msgstr "Su sistema no tiene orígenes agregados para realizar la búsqueda"
 
 #: src/install_page/select_page.blp:28
 msgid "Add a remote to your system to enable online searching"
-msgstr ""
-"Agregue un control remoto a su sistema para habilitar la búsqueda en línea"
+msgstr "Agregue un origen a su sistema para activar la búsqueda en línea"
 
 #: src/install_page/select_page.blp:38
 msgid "Install packages from files on your system"
