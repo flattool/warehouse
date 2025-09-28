@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-09-28 11:22+0000\n"
+"PO-Revision-Date: 2025-09-28 11:47+0000\n"
 "Last-Translator: ChesterTsai <tsaichester71@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
 "weblate.fyralabs.com/projects/flattool/warehouse/zh_Hant/>\n"
@@ -266,7 +266,7 @@ msgstr "重新整理"
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
 msgid "Open Files"
-msgstr "開啟文件"
+msgstr "開啟檔案"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
@@ -412,19 +412,19 @@ msgstr "顯示側邊欄"
 
 #: src/main_window/window.blp:26
 msgid "Drop to Open"
-msgstr ""
+msgstr "拖放以開啟"
 
 #: src/main_window/window.blp:27
 msgid "Install Flatpaks or Add a Remote"
-msgstr ""
+msgstr "安裝 Flatpak 或是添加一個遠端倉庫"
 
 #: src/main_window/window.blp:45
 msgid "Refresh List"
-msgstr ""
+msgstr "重新整理列表"
 
 #: src/main_window/window.blp:50
 msgid "Main Menu"
-msgstr ""
+msgstr "主選單"
 
 #: src/main_window/window.blp:68 src/packages_page/packages_page.blp:20
 #: src/packages_page/packages_page.blp:55
@@ -432,7 +432,7 @@ msgstr ""
 #: src/packages_page/packages_page.py:325
 #: src/install_page/file_install_dialog.py:41
 msgid "Packages"
-msgstr ""
+msgstr "軟體包"
 
 #: src/main_window/window.blp:83
 msgid "Remotes"
@@ -441,7 +441,7 @@ msgstr "Flatpak 遠程"
 #: src/main_window/window.blp:99 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
 msgid "User Data"
-msgstr ""
+msgstr "使用者資料"
 
 #: src/main_window/window.blp:114 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
@@ -457,31 +457,31 @@ msgstr "安裝軟體包"
 
 #: src/main_window/window.blp:161
 msgid "_Open Files"
-msgstr ""
+msgstr "開啟檔案 (_O)"
 
 #: src/main_window/window.blp:165
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "快捷鍵 (_K)"
 
 #: src/main_window/window.blp:169
 msgid "_About Warehouse"
-msgstr ""
+msgstr "關於Warehouse (_A)"
 
 #: src/main_window/window.py:139
 msgid "Unsupported Filetype"
-msgstr ""
+msgstr "不支援的檔案類型"
 
 #: src/main_window/window.py:140
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
-msgstr ""
+msgstr "只支援 .flatpak 、 .flatpakref 及 .flatpakrepo 的檔案。"
 
 #: src/main_window/window.py:148
 msgid "Mixed Filetypes"
-msgstr ""
+msgstr "混和的檔案類型"
 
 #: src/main_window/window.py:149
 msgid "Flatpaks and remotes cannot be installed at the same time."
-msgstr ""
+msgstr "Flatpak 和遠端倉庫無法同時安裝。"
 
 #: src/main_window/window.py:158
 msgid "Too Many Remotes"
@@ -489,15 +489,15 @@ msgstr "過多的 Flatpak 遠程"
 
 #: src/main_window/window.py:159
 msgid "Only one remote at a time is supported."
-msgstr ""
+msgstr "一次只支援一個遠端倉庫。"
 
 #: src/main_window/window.py:177
 msgid "Could not open files"
-msgstr "無法打開文件"
+msgstr "無法打開檔案"
 
 #: src/packages_page/filters_page.blp:5 src/packages_page/packages_page.blp:70
 msgid "Filter Packages"
-msgstr ""
+msgstr "篩選軟體包"
 
 #: src/packages_page/filters_page.blp:20
 msgid "Filter by Package Type"
@@ -505,15 +505,15 @@ msgstr "按軟體包類型篩選"
 
 #: src/packages_page/filters_page.blp:21
 msgid "Show packages of these types"
-msgstr ""
+msgstr "顯示這些類型的軟體包"
 
 #: src/packages_page/filters_page.blp:23
 msgid "Applications"
-msgstr ""
+msgstr "軟體"
 
 #: src/packages_page/filters_page.blp:24
 msgid "Packages that can be opened"
-msgstr ""
+msgstr "那些可以被開啟的軟體包"
 
 #: src/packages_page/filters_page.blp:29
 msgid "Runtimes"
@@ -521,7 +521,7 @@ msgstr "運行時"
 
 #: src/packages_page/filters_page.blp:30
 msgid "Packages that applications depend on"
-msgstr ""
+msgstr "軟體依賴的軟體包"
 
 #: src/packages_page/filters_page.blp:37
 msgid "Filter by Remotes"
@@ -529,11 +529,11 @@ msgstr "按 Flatpak 遠程篩選"
 
 #: src/packages_page/filters_page.blp:38
 msgid "Show packages from selected remotes"
-msgstr ""
+msgstr "顯示選定遠端倉庫的軟體包"
 
 #: src/packages_page/filters_page.blp:52
 msgid "Showing packages from all remotes"
-msgstr ""
+msgstr "顯示所有遠程倉庫的軟體包"
 
 #: src/packages_page/filters_page.blp:58
 msgid "Enable to show packages from selected remotes"
@@ -1295,11 +1295,11 @@ msgstr ""
 
 #: src/remotes_page/remotes_page.blp:134
 msgid "Add a Repo File"
-msgstr ""
+msgstr "添加一個倉庫檔案"
 
 #: src/remotes_page/remotes_page.blp:135
 msgid "Open a downloaded repo file to add"
-msgstr ""
+msgstr "開啟一個已下載的倉庫檔案以添加"
 
 #: src/remotes_page/remotes_page.blp:143
 msgid "Add a Custom Remote"
@@ -1355,10 +1355,8 @@ msgstr ""
 
 #: src/remotes_page/remotes_page.py:231 src/remotes_page/remotes_page.py:241
 #: src/remotes_page/remotes_page.py:243
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open file"
-msgstr "無法打開文件夾"
+msgstr "無法打開檔案"
 
 #: src/remotes_page/remotes_page.py:246
 msgid "Flatpak Repos"
@@ -1959,11 +1957,11 @@ msgstr ""
 
 #: src/install_page/select_page.blp:38
 msgid "Install packages from files on your system"
-msgstr ""
+msgstr "從您系統上的檔案安裝軟體包"
 
 #: src/install_page/select_page.py:66
 msgid "No files were found to install"
-msgstr ""
+msgstr "未找到可安裝的檔案"
 
 #: src/install_page/select_page.py:76
 msgid "Flatpaks"
