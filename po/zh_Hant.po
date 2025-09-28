@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-09-28 02:16+0000\n"
+"PO-Revision-Date: 2025-09-28 07:03+0000\n"
 "Last-Translator: ChesterTsai <tsaichester71@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
 "weblate.fyralabs.com/projects/flattool/warehouse/zh_Hant/>\n"
@@ -66,7 +66,7 @@ msgstr "查看目前軟體的使用者資料，並清理任何遺留的無使用
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
-msgstr ""
+msgstr "只需點擊幾下即可添加受歡迎的 Flatpak 遠程，或是添加自訂的遠程"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
