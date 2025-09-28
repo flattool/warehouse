@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-09-28 10:35+0000\n"
+"PO-Revision-Date: 2025-09-28 11:22+0000\n"
 "Last-Translator: ChesterTsai <tsaichester71@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
 "weblate.fyralabs.com/projects/flattool/warehouse/zh_Hant/>\n"
@@ -234,7 +234,7 @@ msgstr "安裝: {}"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Can't find matching packages"
-msgstr ""
+msgstr "無法找到匹配的軟體包"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Your system has no remotes added"
@@ -243,7 +243,7 @@ msgstr "您的系統沒有已加入的遠端倉庫"
 #. Extra Object Creation
 #: src/gtk/error_toast.py:16
 msgid "Details"
-msgstr ""
+msgstr "詳述"
 
 #: src/gtk/error_toast.py:23 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
@@ -254,39 +254,39 @@ msgstr "複製"
 #: src/gtk/error_toast.py:24 src/main_window/window.py:142
 #: src/main_window/window.py:152 src/main_window/window.py:161
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/gtk/help-overlay.blp:9
 msgid "General"
-msgstr ""
+msgstr "一般"
 
 #: src/gtk/help-overlay.blp:11
 msgid "Refresh"
-msgstr ""
+msgstr "重新整理"
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
 msgid "Open Files"
-msgstr ""
+msgstr "開啟文件"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
-msgstr ""
+msgstr "開啟選單"
 
 #: src/gtk/help-overlay.blp:23
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "顯示快捷鍵"
 
 #: src/gtk/help-overlay.blp:27
 msgid "Quit"
-msgstr ""
+msgstr "離開"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
-msgstr ""
+msgstr "導航"
 
 #: src/gtk/help-overlay.blp:34
 msgid "Show Packages Page"
-msgstr ""
+msgstr "顯示軟體包頁"
 
 #: src/gtk/help-overlay.blp:38
 msgid "Show Remotes Page"
@@ -306,21 +306,21 @@ msgstr "顯示更新頁"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Packages Page"
-msgstr ""
+msgstr "軟體包頁"
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
 msgid "Search Mode"
-msgstr ""
+msgstr "搜尋模式"
 
 #: src/gtk/help-overlay.blp:61
 msgid "Edit Filters"
-msgstr ""
+msgstr "編輯篩選器"
 
 #: src/gtk/help-overlay.blp:65 src/gtk/help-overlay.blp:95
 #: src/gtk/help-overlay.blp:114
 msgid "Selection Mode"
-msgstr ""
+msgstr "選擇模式"
 
 #: src/gtk/help-overlay.blp:70
 msgid "Remotes Page"
@@ -340,15 +340,15 @@ msgstr "使用者資料頁"
 
 #: src/gtk/help-overlay.blp:91
 msgid "Edit Sorting Modes"
-msgstr ""
+msgstr "編輯排序模式"
 
 #: src/gtk/help-overlay.blp:99
 msgid "Show Active Data"
-msgstr ""
+msgstr "顯示活動資料"
 
 #: src/gtk/help-overlay.blp:103
 msgid "Show Leftover Data"
-msgstr ""
+msgstr "顯示殘留資料"
 
 #: src/gtk/help-overlay.blp:108
 msgid "Snapshots Page"
@@ -364,15 +364,15 @@ msgstr "選擇安裝"
 
 #: src/gtk/installation_chooser.blp:11
 msgid "User"
-msgstr ""
+msgstr "使用者"
 
 #: src/gtk/installation_chooser.blp:19
 msgid "System"
-msgstr ""
+msgstr "系統"
 
 #: src/gtk/installation_chooser.blp:28
 msgid "Custom installation"
-msgstr ""
+msgstr "自定義安裝"
 
 #: src/gtk/installation_chooser.blp:37
 msgid "Other Installation"
@@ -380,35 +380,35 @@ msgstr "其他安裝"
 
 #: src/gtk/installation_chooser.blp:38
 msgid "Choose a custom installation"
-msgstr ""
+msgstr "選擇一個自定義安裝"
 
 #: src/gtk/installation_chooser.py:31
 msgid "These {} will only be available to you"
-msgstr ""
+msgstr "這些 {} 僅對您可用"
 
 #: src/gtk/installation_chooser.py:32
 msgid "These {} will be available to everyone"
-msgstr ""
+msgstr "這些 {} 對所有人可用"
 
 #: src/gtk/installation_chooser.py:33
 msgid "Choose how these {} will be installed"
-msgstr ""
+msgstr "選擇這些 {} 該如何被安裝"
 
 #: src/gtk/installation_chooser.py:35
 msgid "This {} will only be available to you"
-msgstr ""
+msgstr "這個 {} 僅對您可用"
 
 #: src/gtk/installation_chooser.py:36
 msgid "This {} will be available to everyone"
-msgstr ""
+msgstr "這個 {} 對所有人可用"
 
 #: src/gtk/installation_chooser.py:37
 msgid "Choose how this {} will be installed"
-msgstr ""
+msgstr "選擇這個 {} 該如何被安裝"
 
 #: src/gtk/sidebar_button.py:23
 msgid "Show Sidebar"
-msgstr ""
+msgstr "顯示側邊欄"
 
 #: src/main_window/window.blp:26
 msgid "Drop to Open"
@@ -1428,7 +1428,7 @@ msgstr ""
 
 #: src/user_data_page/data_subpage.py:257
 msgid "No Active Data"
-msgstr ""
+msgstr "沒有活動資料"
 
 #: src/user_data_page/data_subpage.py:258
 msgid ""
@@ -1526,7 +1526,7 @@ msgstr "資料將會被回收"
 #: src/user_data_page/user_data_page.py:250
 #: src/user_data_page/user_data_page.py:273
 msgid "Active Data"
-msgstr ""
+msgstr "活動資料"
 
 #: src/user_data_page/user_data_page.py:251
 #: src/user_data_page/user_data_page.py:279
@@ -1648,9 +1648,8 @@ msgid "Search Snapshots"
 msgstr "管理快照"
 
 #: src/snapshot_page/snapshot_page.blp:70
-#, fuzzy
 msgid "Active Snapshots"
-msgstr "管理快照"
+msgstr "活動快照"
 
 #: src/snapshot_page/snapshot_page.blp:81
 #, fuzzy
