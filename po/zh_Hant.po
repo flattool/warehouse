@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-09-28 12:30+0000\n"
+"PO-Revision-Date: 2025-09-28 12:49+0000\n"
 "Last-Translator: ChesterTsai <tsaichester71@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
 "weblate.fyralabs.com/projects/flattool/warehouse/zh_Hant/>\n"
@@ -614,7 +614,7 @@ msgstr "全選"
 #: src/packages_page/uninstall_dialog.py:42
 #: src/properties_page/properties_page.blp:88
 msgid "Uninstall"
-msgstr "卸載"
+msgstr "解除安裝"
 
 #: src/packages_page/packages_page.blp:173
 msgid "Copy Names"
@@ -649,7 +649,7 @@ msgstr "ID"
 
 #: src/packages_page/packages_page.py:252
 msgid "Refs"
-msgstr ""
+msgstr "引用"
 
 #: src/packages_page/packages_page.py:260
 #: src/properties_page/properties_page.py:293
@@ -662,11 +662,11 @@ msgstr "無法複製 {}"
 
 #: src/packages_page/packages_page.py:313
 msgid "Errors occurred while uninstalling"
-msgstr ""
+msgstr "解除安裝時發生錯誤"
 
 #: src/packages_page/packages_page.py:315
 msgid "Uninstalled Packages"
-msgstr "卸載軟體包"
+msgstr "解除安裝軟體包"
 
 #: src/packages_page/packages_page.py:373
 msgid "Loading Packages"
@@ -680,11 +680,11 @@ msgstr "加載軟體包"
 #: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:102
 #: src/install_page/results_page.py:138
 msgid "This should only take a moment"
-msgstr ""
+msgstr "這應該只需要一下下"
 
 #: src/packages_page/packages_page.py:374
 msgid "Uninstalling Packages"
-msgstr "正在卸載軟體包"
+msgstr "正在解除安裝軟體包"
 
 #: src/packages_page/packages_page.py:376
 msgid "Reinstalling Package"
@@ -695,11 +695,11 @@ msgstr "正在重新安裝軟體包"
 #: src/change_version_page/change_version_page.py:126
 #: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:94
 msgid "This could take a while"
-msgstr ""
+msgstr "這應該會需要一些時間"
 
 #: src/packages_page/packages_page.py:378
 msgid "Changing Version"
-msgstr ""
+msgstr "正在變更版本"
 
 #: src/packages_page/uninstall_dialog.blp:8
 msgid "Keep"
@@ -723,35 +723,31 @@ msgstr "將數據發送到垃圾桶"
 
 #: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall {}?"
-msgstr "確定卸載 {}？"
+msgstr "確定解除安裝 {}？"
 
 #: src/packages_page/uninstall_dialog.py:35
 msgid "It will not be possible to use {} after removal"
 msgstr "刪除後將無法使用 {}"
 
 #: src/packages_page/uninstall_dialog.py:37
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstall Packages?"
-msgstr "確定卸載 {}？"
+msgstr "確定解除安裝軟體包？"
 
 #: src/packages_page/uninstall_dialog.py:38
 msgid "It will not be possible to use these packages after removal"
 msgstr "移除後將無法使用這些軟體"
 
 #: src/packages_page/uninstall_dialog.py:45
-#, fuzzy
-#| msgid "App Settings & Data"
 msgid "App Settings & Content"
-msgstr "應用設定與數據"
+msgstr "軟體設定與內容"
 
 #: src/properties_page/properties_page.blp:19
 msgid "Properties Page Unavailable"
-msgstr ""
+msgstr "屬性頁面不可用"
 
 #: src/properties_page/properties_page.blp:20
 msgid "Cannot show the properties page at this time"
-msgstr ""
+msgstr "現在無法顯示屬性頁面"
 
 #: src/properties_page/properties_page.blp:83
 msgid "Open"
@@ -769,7 +765,7 @@ msgstr "回收使用者資料"
 
 #: src/properties_page/properties_page.blp:139
 msgid "Version"
-msgstr ""
+msgstr "版本"
 
 #: src/properties_page/properties_page.blp:143
 msgid "Updates Disabled"
@@ -782,16 +778,16 @@ msgstr "停止更新"
 
 #: src/properties_page/properties_page.blp:148
 msgid "Mask this package so it's never updated"
-msgstr ""
+msgstr "將此軟體包設為隱藏，並永不更新"
 
 #: src/properties_page/properties_page.blp:157
 #: src/change_version_page/change_version_page.blp:23
 msgid "Change Version"
-msgstr ""
+msgstr "更換版本"
 
 #: src/properties_page/properties_page.blp:158
 msgid "Upgrade or downgrade this package"
-msgstr ""
+msgstr "升級或降級此軟體包"
 
 #: src/properties_page/properties_page.blp:167
 msgid "Installed Size"
@@ -802,46 +798,44 @@ msgid "Runtime"
 msgstr "運行時"
 
 #: src/properties_page/properties_page.blp:188
-#, fuzzy
-#| msgid "Could not uninstall some apps"
 msgid "Disable Automatic Removal"
-msgstr "無法卸載一些應用"
+msgstr "禁用自動移除"
 
 #: src/properties_page/properties_page.blp:189
 msgid "Pin this runtime to keep it installed"
-msgstr ""
+msgstr "釘選此運行時以保持其已安裝狀態"
 
 #: src/properties_page/properties_page.blp:200
 msgid "Package Information"
-msgstr ""
+msgstr "軟體包資訊"
 
 #: src/properties_page/properties_page.blp:203
 msgid "Application ID"
-msgstr ""
+msgstr "軟體ID"
 
 #: src/properties_page/properties_page.blp:219
 msgid "Architecture"
-msgstr ""
+msgstr "架構"
 
 #: src/properties_page/properties_page.blp:227
 msgid "Branch"
-msgstr ""
+msgstr "分支"
 
 #: src/properties_page/properties_page.blp:235
 msgid "License"
-msgstr ""
+msgstr "授權"
 
 #: src/properties_page/properties_page.blp:244
 msgid "Installation Information"
-msgstr ""
+msgstr "安裝資訊"
 
 #: src/properties_page/properties_page.blp:255
 msgid "Origin"
-msgstr ""
+msgstr "來源"
 
 #: src/properties_page/properties_page.blp:263
 msgid "Collection"
-msgstr ""
+msgstr "集合"
 
 #: src/properties_page/properties_page.blp:271
 msgid "Installation"
@@ -849,39 +843,33 @@ msgstr "安裝"
 
 #: src/properties_page/properties_page.blp:279
 msgid "Commit Information"
-msgstr ""
+msgstr "提交資訊"
 
 #: src/properties_page/properties_page.blp:290
 msgid "Parent"
-msgstr ""
+msgstr "父級"
 
 #: src/properties_page/properties_page.blp:298
 msgid "Subject"
-msgstr ""
+msgstr "主題"
 
 #: src/properties_page/properties_page.blp:306
 msgid "Date"
-msgstr ""
+msgstr "日期"
 
 #: src/properties_page/properties_page.py:83
-#, fuzzy
-#| msgid "View Properties"
 msgid "{} Properties"
-msgstr "查看屬性"
+msgstr "{} 屬性"
 
 #: src/properties_page/properties_page.py:87
-#, fuzzy
-#| msgid "View Properties"
 msgid "Properties"
-msgstr "查看屬性"
+msgstr "屬性"
 
 #. Apply again
 #: src/properties_page/properties_page.py:124
 #: src/user_data_page/user_data_page.py:300
-#, fuzzy
-#| msgid "Trash User Data"
 msgid "Loading User Data"
-msgstr "回收使用者資料"
+msgstr "加載使用者資料"
 
 #: src/properties_page/properties_page.py:134
 msgid "No User Data"
@@ -976,14 +964,12 @@ msgid "Enabled Autoremoval"
 msgstr "無法打開文件夾"
 
 #: src/properties_page/properties_page.py:266
-#, fuzzy
-#| msgid "Could not uninstall some apps"
 msgid "Could not uninstall"
-msgstr "無法卸載一些應用"
+msgstr "無法解除安裝"
 
 #: src/properties_page/properties_page.py:270
 msgid "Uninstalled {}"
-msgstr "已卸載 {}"
+msgstr "已解除安裝 {}"
 
 #: src/properties_page/properties_page.py:282
 msgid "Opening {}…"
@@ -1009,7 +995,7 @@ msgstr "確定卸載 {}？"
 msgid ""
 "This package will be uninstalled, and then reinstalled from the same remote "
 "and installation."
-msgstr ""
+msgstr "此軟體包將會被解除安裝，並且從同樣的遠程倉庫和安裝位置中重新安裝。"
 
 #: src/properties_page/properties_page.py:334
 #: src/properties_page/properties_page.py:392
@@ -1064,7 +1050,7 @@ msgstr ""
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
-msgstr ""
+msgstr "這將會解除安裝當前版本並安裝所選的版本。請注意安裝先前的版本可能造成問題。"
 
 #: src/change_version_page/change_version_page.py:75
 msgid "Currently Installed Version"
