@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-09-28 07:31+0000\n"
+"PO-Revision-Date: 2025-09-28 10:35+0000\n"
 "Last-Translator: ChesterTsai <tsaichester71@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
 "weblate.fyralabs.com/projects/flattool/warehouse/zh_Hant/>\n"
@@ -26,7 +26,7 @@ msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak;packages;apps;remotes;snapshots;"
-msgstr "flatpak;軟體包;軟體;遠程;快照;"
+msgstr "flatpak;軟體包;軟體;遠端倉庫;快照;"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
@@ -66,7 +66,7 @@ msgstr "查看目前軟體的使用者資料，並清理任何遺留的無使用
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
-msgstr "只需點擊幾下即可添加受歡迎的 Flatpak 遠程，或是添加自訂的遠程"
+msgstr "只需點擊幾下即可添加受歡迎的 Flatpak 遠端倉庫，或是添加自訂的遠端倉庫"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
@@ -74,7 +74,7 @@ msgstr "為您的軟體使用者資料創建快照，以儲存您的資料"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
-msgstr "從任何遠端或是您的系統安裝新的軟體包"
+msgstr "從任何遠端倉庫或是您的系統安裝新的軟體包"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:22
 msgid "Responsive UI to fit large and small screen sizes"
@@ -90,7 +90,7 @@ msgstr "窄視窗下的屬性頁"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:56
 msgid "Manage Installed Remotes and Add New Remotes"
-msgstr "管理已安裝的 Flatpak 遠端及添加新的遠端"
+msgstr "管理已安裝的遠端倉庫及添加新的遠端倉庫"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:60
 msgid "Manage Apps' User Data"
@@ -102,7 +102,7 @@ msgstr "備份使用者資料"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:68
 msgid "Install New Packages from Files or Remotes"
-msgstr "從檔案或遠端中安裝新的軟體包"
+msgstr "從檔案或遠端倉庫中安裝新的軟體包"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:72
 msgid "Install Page in Narrow Window"
@@ -119,7 +119,7 @@ msgstr "未找到檔案"
 
 #: src/main.py:99
 msgid "Flatpaks & Remotes"
-msgstr "Flatpak 及遠程"
+msgstr "Flatpak 及遠端倉庫"
 
 #. Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://your.website
 #: src/main.py:243
@@ -189,11 +189,11 @@ msgstr "此軟體包的更新已被禁用"
 
 #: src/gtk/attempt_install_dialog.blp:5
 msgid "Attempt an Install?"
-msgstr ""
+msgstr "嘗試安裝？"
 
 #: src/gtk/attempt_install_dialog.blp:6
 msgid "Warehouse will try to install the matching packages."
-msgstr ""
+msgstr "Warehouse 將會嘗試安裝對應的軟體包。"
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:41
@@ -216,15 +216,15 @@ msgstr "取消"
 #: src/install_page/file_install_dialog.blp:18
 #: src/install_page/pending_page.blp:35
 msgid "Install"
-msgstr ""
+msgstr "安裝"
 
 #: src/gtk/attempt_install_dialog.blp:12
 msgid "Choose a Remote"
-msgstr ""
+msgstr "選擇一個遠端倉庫"
 
 #: src/gtk/attempt_install_dialog.blp:13
 msgid "Select a remote to attempt to install from"
-msgstr ""
+msgstr "選擇一個遠端倉庫並嘗試從中安裝"
 
 #: src/gtk/attempt_install_dialog.py:22 src/packages_page/filters_page.py:128
 #: src/remotes_page/remote_row.py:155 src/install_page/pending_page.py:33
@@ -238,7 +238,7 @@ msgstr ""
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Your system has no remotes added"
-msgstr ""
+msgstr "您的系統沒有已加入的遠端倉庫"
 
 #. Extra Object Creation
 #: src/gtk/error_toast.py:16
@@ -290,7 +290,7 @@ msgstr ""
 
 #: src/gtk/help-overlay.blp:38
 msgid "Show Remotes Page"
-msgstr ""
+msgstr "顯示遠端倉庫頁"
 
 #: src/gtk/help-overlay.blp:42
 msgid "Show User Data Page"
@@ -324,11 +324,11 @@ msgstr ""
 
 #: src/gtk/help-overlay.blp:70
 msgid "Remotes Page"
-msgstr "Flatpak 遠程頁"
+msgstr "遠端倉庫頁"
 
 #: src/gtk/help-overlay.blp:76
 msgid "Show or Hide Disabled Remotes"
-msgstr "顯示或隱藏 Flatpak 遠程"
+msgstr "顯示或隱藏遠端倉庫"
 
 #: src/gtk/help-overlay.blp:80
 msgid "New Remote"
