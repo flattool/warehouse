@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-09-29 04:10+0000\n"
+"PO-Revision-Date: 2025-09-29 10:42+0000\n"
 "Last-Translator: ChesterTsai <tsaichester71@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
 "weblate.fyralabs.com/projects/flattool/warehouse/zh_Hant/>\n"
@@ -1032,7 +1032,7 @@ msgstr "已更改 {} 的版本"
 
 #: src/change_version_page/change_version_page.py:124
 msgid "{} Versions"
-msgstr "版本 {}"
+msgstr "{} 版本"
 
 #: src/change_version_page/change_version_page.py:125
 msgid "Ensure that {} will never be updated to a newer version"
@@ -1234,7 +1234,7 @@ msgstr "自行輸入新遠端倉庫的細節"
 
 #: src/remotes_page/remotes_page.py:36
 msgid "The open source, pay-what-you-want app store from elementary"
-msgstr ""
+msgstr "來自 ElementaryOS 的開源、按需求付費的應用商店"
 
 #: src/remotes_page/remotes_page.py:42
 msgid "Central repository of Flatpak applications"
@@ -1623,7 +1623,7 @@ msgstr "應用這些快照？"
 #: src/snapshot_page/snapshot_page.py:483
 msgid ""
 "This will trash the current apps' user data, and apply their newest snapshot"
-msgstr ""
+msgstr "這會回收當前軟體的使用者資料，並套用到最新快照"
 
 #: src/snapshot_page/snapshot_page.py:516
 msgid "Trashed snapshots"
@@ -1650,106 +1650,101 @@ msgid "Snapshots List"
 msgstr "快照列表"
 
 #: src/snapshot_page/snapshots_list_page.blp:13
-#, fuzzy
-#| msgid "Open User Data Folder"
 msgid "Open Snapshots Folder for this App"
-msgstr "開啟用戶資料文件夾"
+msgstr "開啟此軟體的快照資料夾"
 
 #: src/snapshot_page/snapshots_list_page.py:34
 #: src/snapshot_page/snapshots_list_page.py:55
 msgid "App not Installed"
-msgstr ""
+msgstr "軟體未被安裝"
 
 #: src/snapshot_page/snapshots_list_page.py:58
-#, fuzzy
 msgid "{} Snapshots"
-msgstr "管理快照"
+msgstr "{} 項快照"
 
 #: src/snapshot_page/tar_worker.py:83
 msgid "Error in snapshot handling"
-msgstr ""
+msgstr "處理快照時發生錯誤"
 
 #: src/install_page/file_install_dialog.blp:33
 msgid "Review Selection"
-msgstr ""
+msgstr "檢視選項"
 
 #. self.packages_group.set_title(_("Review Packages"))
 #: src/install_page/file_install_dialog.py:40
 msgid "The following packages will be installed"
-msgstr ""
+msgstr "下列軟體包將被安裝"
 
 #: src/install_page/file_install_dialog.py:43
 msgid "Install a Package"
-msgstr ""
+msgstr "安裝一個軟體包"
 
 #. self.packages_group.set_title(_("Review Package"))
 #: src/install_page/file_install_dialog.py:45
 msgid "The following package will be installed"
-msgstr ""
+msgstr "下列軟體包將被安裝"
 
 #: src/install_page/file_install_dialog.py:46
 msgid "package"
-msgstr ""
+msgstr "軟體包"
 
 #: src/install_page/install_page.blp:41
 msgid "Select Source"
-msgstr ""
+msgstr "選擇一個來源"
 
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
 msgid "Pending Packages"
-msgstr ""
+msgstr "待處理軟體包"
 
 #: src/install_page/install_page.py:57
 msgid "Installed Packages"
-msgstr ""
+msgstr "已安裝軟體包"
 
 #: src/install_page/install_page.py:74
 msgid "{} Pending Package"
-msgstr ""
+msgstr "{} 待處理軟體包"
 
 #: src/install_page/install_page.py:79
 msgid "{} Pending Packages"
-msgstr ""
+msgstr "{} 待處理軟體包"
 
 #. Extra Object Creation
 #: src/install_page/install_page.py:94
-#, fuzzy
-#| msgid "Uninstall"
 msgid "Installing Packages"
-msgstr "卸載"
+msgstr "安裝軟體包"
 
 #: src/install_page/install_page.py:102
 msgid "Loading Installation Options"
-msgstr ""
+msgstr "正在加載安裝選項"
 
 #: src/install_page/pending_page.blp:13 src/install_page/select_page.blp:37
 msgid "Add Packages"
-msgstr ""
+msgstr "添加軟體包"
 
 #: src/install_page/pending_page.blp:14
 msgid "Packages queued to install will show up here"
-msgstr ""
+msgstr "在列隊中等待安裝的軟體包會顯示在這裡"
 
 #: src/install_page/pending_page.py:38
 msgid "Remove All"
-msgstr ""
+msgstr "移除所有"
 
 #: src/install_page/result_row.blp:8 src/install_page/result_row.py:46
 msgid "Add Package to Queue"
-msgstr ""
+msgstr "新增一個軟體包到列隊"
 
 #: src/install_page/result_row.py:50
 msgid "Package has been Added to Queue"
-msgstr ""
+msgstr "軟體包已被加至列隊"
 
 #: src/install_page/result_row.py:54
 msgid "Remove Package from Queue"
-msgstr ""
+msgstr "從列隊移除軟體包"
 
 #: src/install_page/result_row.py:58
 msgid "This Package is Already Installed"
-msgstr ""
+msgstr "此軟體包已被安裝"
 
 #: src/install_page/results_page.blp:5
 msgid "Search a Remote"
@@ -1758,35 +1753,35 @@ msgstr "搜尋一個遠端倉庫"
 #. hexpand: true;
 #: src/install_page/results_page.blp:20
 msgid "Search for Packages"
-msgstr ""
+msgstr "搜尋軟體包"
 
 #: src/install_page/results_page.blp:26
 msgid "Search for Flatpaks"
-msgstr ""
+msgstr "搜尋 Flatpak"
 
 #: src/install_page/results_page.blp:27
 msgid "Search for Flatpaks you want to install"
-msgstr ""
+msgstr "搜尋想安裝的 Flatpak"
 
 #: src/install_page/results_page.blp:31
 msgid "Too Many Results"
-msgstr ""
+msgstr "過多結果"
 
 #: src/install_page/results_page.blp:32
 msgid "Try being more specific with your search"
-msgstr ""
+msgstr "試試看更精確的搜尋"
 
 #: src/install_page/results_page.blp:50
 msgid "Try a different search term"
-msgstr ""
+msgstr "嘗試不同的搜尋字眼"
 
 #: src/install_page/results_page.py:51
 msgid "Search {}"
-msgstr ""
+msgstr "搜尋 {}"
 
 #: src/install_page/results_page.py:138
 msgid "Searching"
-msgstr ""
+msgstr "正在搜尋"
 
 #: src/install_page/select_page.blp:19
 msgid "Search in a Remote"
@@ -1797,10 +1792,8 @@ msgid "Choose a remote to search for new packages"
 msgstr "選擇一個遠端倉庫以搜尋新軟體"
 
 #: src/install_page/select_page.blp:23
-#, fuzzy
-#| msgid "Updates Disabled"
 msgid "Online Searches Disabled"
-msgstr "更新已禁用"
+msgstr "線上搜尋已禁用"
 
 #: src/install_page/select_page.blp:24
 msgid "Your system has no remotes added to search from"
