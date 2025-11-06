@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-10-24 09:29+0000\n"
+"PO-Revision-Date: 2025-11-06 17:20+0000\n"
 "Last-Translator: alevtina-karashokova <karashokovaaa@basealt.ru>\n"
 "Language-Team: Russian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ru/>\n"
@@ -275,7 +275,7 @@ msgstr "OK"
 
 #: src/gtk/help-overlay.blp:9
 msgid "General"
-msgstr "Общие сведения"
+msgstr "Общие"
 
 #: src/gtk/help-overlay.blp:11
 msgid "Refresh"
