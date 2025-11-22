@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-10-30 08:03+0000\n"
-"Last-Translator: KaeTuuN <KaeTuuN@mailbox.org>\n"
+"PO-Revision-Date: 2025-11-22 18:02+0000\n"
+"Last-Translator: Ryke <jonashoell@outlook.de>\n"
 "Language-Team: German <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/de/>\n"
 "Language: de\n"
@@ -289,8 +289,9 @@ msgid "Open Menu"
 msgstr "Menü öffnen"
 
 #: src/gtk/help-overlay.blp:23
+#, fuzzy
 msgid "Show Shortcuts"
-msgstr "Verknüpfungen anzeigen"
+msgstr "Tastenkürzel anzeigen"
 
 #: src/gtk/help-overlay.blp:27
 msgid "Quit"
