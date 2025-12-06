@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2024-07-30 16:34+0000\n"
+"PO-Revision-Date: 2025-12-06 19:03+0000\n"
 "Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
 "Language-Team: Swedish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/sv/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.14.3\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:3
@@ -121,7 +121,7 @@ msgstr "Kunde inte lägga till {}"
 
 #: src/main.py:91
 msgid "No files were found"
-msgstr ""
+msgstr "Inga filer hittades inte"
 
 #: src/main.py:99
 #, fuzzy
@@ -152,11 +152,11 @@ msgstr "Kunde inte lägga till {}"
 
 #: src/package_install_worker.py:84
 msgid "Errors occurred during installation"
-msgstr ""
+msgstr "Fel inträffade under installationen"
 
 #: src/package_install_worker.py:88 src/package_install_worker.py:92
 msgid "Error occurred during installation"
-msgstr ""
+msgstr "Fel inträffade under installationen"
 
 #: src/package_install_worker.py:88
 #: src/change_version_page/change_version_worker.py:80
@@ -177,7 +177,7 @@ msgstr "Kunde inte installera app"
 
 #: src/package_install_worker.py:126
 msgid "Packages are currently being installed."
-msgstr ""
+msgstr "Paket installeras för närvarande."
 
 #: src/package_install_worker.py:136
 msgid "No packages were requested to be installed."
@@ -264,7 +264,7 @@ msgstr "Installation"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Can't find matching packages"
-msgstr ""
+msgstr "Kan inte hitta matchande paket"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Your system has no remotes added"
@@ -273,7 +273,7 @@ msgstr ""
 #. Extra Object Creation
 #: src/gtk/error_toast.py:16
 msgid "Details"
-msgstr ""
+msgstr "Detaljer"
 
 #: src/gtk/error_toast.py:23 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
@@ -314,7 +314,7 @@ msgstr "Avsluta"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
-msgstr ""
+msgstr "Navigering"
 
 #: src/gtk/help-overlay.blp:34
 msgid "Show Packages Page"
@@ -394,7 +394,7 @@ msgstr "Användardata"
 
 #: src/gtk/help-overlay.blp:91
 msgid "Edit Sorting Modes"
-msgstr ""
+msgstr "Redigera sorteringslägen"
 
 #: src/gtk/help-overlay.blp:99
 #, fuzzy
@@ -448,7 +448,7 @@ msgstr "Installation"
 
 #: src/gtk/installation_chooser.blp:38
 msgid "Choose a custom installation"
-msgstr ""
+msgstr "Välj en anpassad installation"
 
 #: src/gtk/installation_chooser.py:31
 #, fuzzy
@@ -484,11 +484,11 @@ msgstr ""
 
 #: src/gtk/sidebar_button.py:23
 msgid "Show Sidebar"
-msgstr ""
+msgstr "Visa sidofält"
 
 #: src/main_window/window.blp:26
 msgid "Drop to Open"
-msgstr ""
+msgstr "Släpp för att öppna"
 
 #: src/main_window/window.blp:27
 #, fuzzy
@@ -510,7 +510,7 @@ msgstr "Huvudmeny"
 #: src/packages_page/packages_page.py:325
 #: src/install_page/file_install_dialog.py:41
 msgid "Packages"
-msgstr ""
+msgstr "Paket"
 
 #: src/main_window/window.blp:83
 #, fuzzy
@@ -601,7 +601,7 @@ msgstr "Filtrera efter Fjärrkontroller"
 
 #: src/packages_page/filters_page.blp:21
 msgid "Show packages of these types"
-msgstr ""
+msgstr "Visa paket av dessa typer"
 
 #: src/packages_page/filters_page.blp:23
 #, fuzzy
@@ -771,7 +771,7 @@ msgstr "Namn"
 
 #: src/packages_page/packages_page.py:249
 msgid "IDs"
-msgstr ""
+msgstr "ID:er"
 
 #: src/packages_page/packages_page.py:252
 #, fuzzy
@@ -792,7 +792,7 @@ msgstr "Kunde inte lägga till {}"
 
 #: src/packages_page/packages_page.py:313
 msgid "Errors occurred while uninstalling"
-msgstr ""
+msgstr "Fel inträffade under avinstallationen"
 
 #: src/packages_page/packages_page.py:315
 #, fuzzy
@@ -970,11 +970,11 @@ msgstr ""
 
 #: src/properties_page/properties_page.blp:203
 msgid "Application ID"
-msgstr ""
+msgstr "Applikations-ID"
 
 #: src/properties_page/properties_page.blp:219
 msgid "Architecture"
-msgstr ""
+msgstr "Arkitektur"
 
 #: src/properties_page/properties_page.blp:227
 msgid "Branch"
@@ -982,7 +982,7 @@ msgstr "Gren"
 
 #: src/properties_page/properties_page.blp:235
 msgid "License"
-msgstr ""
+msgstr "Licens"
 
 #: src/properties_page/properties_page.blp:244
 #, fuzzy
@@ -996,7 +996,7 @@ msgstr "Fjärrkontroll"
 
 #: src/properties_page/properties_page.blp:263
 msgid "Collection"
-msgstr ""
+msgstr "Samling"
 
 #: src/properties_page/properties_page.blp:271
 msgid "Installation"
@@ -1008,15 +1008,15 @@ msgstr ""
 
 #: src/properties_page/properties_page.blp:290
 msgid "Parent"
-msgstr ""
+msgstr "Förälder"
 
 #: src/properties_page/properties_page.blp:298
 msgid "Subject"
-msgstr ""
+msgstr "Ämne"
 
 #: src/properties_page/properties_page.blp:306
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: src/properties_page/properties_page.py:83
 #, fuzzy
@@ -1047,7 +1047,7 @@ msgstr "Kunde inte visa egenskaper"
 
 #: src/properties_page/properties_page.py:156
 msgid "No version information found"
-msgstr ""
+msgstr "Ingen information om versionen hittades"
 
 #: src/properties_page/properties_page.py:181
 #, fuzzy
@@ -1235,7 +1235,7 @@ msgstr ""
 
 #: src/change_version_page/change_version_page.py:75
 msgid "Currently Installed Version"
-msgstr ""
+msgstr "Aktuell installerad version"
 
 #: src/change_version_page/change_version_page.py:92
 #, fuzzy
@@ -1295,7 +1295,7 @@ msgstr "Lägg till"
 
 #: src/remotes_page/add_remote_dialog.blp:40
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: src/remotes_page/add_remote_dialog.blp:43
 #: src/user_data_page/user_data_page.blp:190
@@ -1367,7 +1367,7 @@ msgstr "Kunde inte aktivera {}"
 
 #: src/remotes_page/remote_row.py:28
 msgid "Remote is already enabled"
-msgstr ""
+msgstr "Fjärrstyrning är redan aktiverad"
 
 #: src/remotes_page/remote_row.py:56
 #, fuzzy
@@ -1396,7 +1396,7 @@ msgstr "Kunde inte inaktivera {}"
 
 #: src/remotes_page/remote_row.py:100
 msgid "Remote is already disabled"
-msgstr ""
+msgstr "Fjärrstyrning är redan avstängt"
 
 #: src/remotes_page/remote_row.py:127
 msgid "Disable {}?"
@@ -1617,7 +1617,7 @@ msgstr "Fortsätt"
 
 #: src/user_data_page/data_subpage.blp:13
 msgid "No Title Set"
-msgstr ""
+msgstr "Ingen titel inställd"
 
 #: src/user_data_page/data_subpage.blp:28
 #, fuzzy
@@ -1687,11 +1687,11 @@ msgstr ""
 
 #: src/user_data_page/user_data_page.blp:198
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: src/user_data_page/user_data_page.blp:206
 msgid "Size"
-msgstr ""
+msgstr "Storlek"
 
 #: src/user_data_page/user_data_page.py:79
 #: src/user_data_page/user_data_page.py:81
@@ -1709,7 +1709,7 @@ msgstr "Kunde inte verkställa ögonblicksbilden"
 #: src/user_data_page/user_data_page.py:155
 #: src/user_data_page/user_data_page.py:201
 msgid "No boxes were selected"
-msgstr ""
+msgstr "Inga rutor valdes"
 
 #: src/user_data_page/user_data_page.py:158
 #, fuzzy
@@ -1758,7 +1758,7 @@ msgstr "Söka Genom Listan"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
-msgstr ""
+msgstr "Skapa"
 
 #: src/snapshot_page/new_snapshot_dialog.py:114
 #, fuzzy
@@ -1809,7 +1809,7 @@ msgstr "Tillämpa"
 
 #: src/snapshot_page/snapshot_box.blp:55
 msgid "Rename"
-msgstr ""
+msgstr "Döp om"
 
 #: src/snapshot_page/snapshot_box.blp:84
 #, fuzzy
@@ -1950,7 +1950,7 @@ msgstr "Kunde inte kasta bort ögonblicksbilden"
 
 #: src/snapshot_page/snapshot_page.py:199
 msgid "Showing snapshots for {}"
-msgstr ""
+msgstr "Visar ögonblicksbilder för {}"
 
 #: src/snapshot_page/snapshot_page.py:203
 #, fuzzy
@@ -2081,7 +2081,7 @@ msgstr ""
 
 #: src/install_page/file_install_dialog.py:43
 msgid "Install a Package"
-msgstr ""
+msgstr "Installera ett paket"
 
 #. self.packages_group.set_title(_("Review Package"))
 #: src/install_page/file_install_dialog.py:45
@@ -2090,7 +2090,7 @@ msgstr ""
 
 #: src/install_page/file_install_dialog.py:46
 msgid "package"
-msgstr ""
+msgstr "paket"
 
 #: src/install_page/install_page.blp:41
 #, fuzzy
@@ -2101,7 +2101,7 @@ msgstr "Välj"
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
 msgid "Pending Packages"
-msgstr ""
+msgstr "Avvaktande paket"
 
 #: src/install_page/install_page.py:57
 #, fuzzy
@@ -2111,7 +2111,7 @@ msgstr "Installerad storlek"
 
 #: src/install_page/install_page.py:74
 msgid "{} Pending Package"
-msgstr ""
+msgstr "{} Avvaktande paket"
 
 #: src/install_page/install_page.py:79
 msgid "{} Pending Packages"
@@ -2132,7 +2132,7 @@ msgstr "Installation"
 
 #: src/install_page/pending_page.blp:13 src/install_page/select_page.blp:37
 msgid "Add Packages"
-msgstr ""
+msgstr "Lägg till paket"
 
 #: src/install_page/pending_page.blp:14
 msgid "Packages queued to install will show up here"
