@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-12-14 14:19+0000\n"
+"PO-Revision-Date: 2025-12-15 18:18+0000\n"
 "Last-Translator: Ibai Oihanguren Sala <ibai@oihanguren.com>\n"
 "Language-Team: Basque <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/eu/>\n"
@@ -1177,43 +1177,43 @@ msgstr ""
 
 #: src/remotes_page/remote_row.py:140
 msgid "Copied title"
-msgstr ""
+msgstr "Izenburua kopiatu da"
 
 #: src/remotes_page/remote_row.py:143
 msgid "Copied name"
-msgstr ""
+msgstr "Izena kopiatu da"
 
 #: src/remotes_page/remotes_page.blp:5
 msgid "Manage Remotes"
-msgstr ""
+msgstr "Kudeatu urrunekoak"
 
 #: src/remotes_page/remotes_page.blp:40
 msgid "Search Remotes"
-msgstr ""
+msgstr "Bilatu urrunekoak"
 
 #: src/remotes_page/remotes_page.blp:47
 msgid "Current Remotes"
-msgstr ""
+msgstr "Uneko urrunekoak"
 
 #: src/remotes_page/remotes_page.blp:48
 msgid "Remotes available on your system"
-msgstr ""
+msgstr "Sisteman erabilgarri dauden urrunekoak"
 
 #: src/remotes_page/remotes_page.blp:55
 msgid "Show Disabled"
-msgstr ""
+msgstr "Erakutsi ezgaitutakoak"
 
 #: src/remotes_page/remotes_page.blp:75
 msgid "No Enabled Remotes"
-msgstr ""
+msgstr "Ez dago gaitutako urrunekorik"
 
 #: src/remotes_page/remotes_page.blp:81
 msgid "You only have disabled remotes on this system"
-msgstr ""
+msgstr "Sistema honetan ezgaitutako urrunekoak soilik dituzu"
 
 #: src/remotes_page/remotes_page.blp:107
 msgid "No Remotes Found"
-msgstr ""
+msgstr "Ez da urrunekorik aurkitu"
 
 #: src/remotes_page/remotes_page.blp:113
 msgid ""
@@ -1300,61 +1300,61 @@ msgstr ""
 #. Apply
 #: src/remotes_page/remotes_page.py:294
 msgid "Adding Remote"
-msgstr ""
+msgstr "Urrunekoa gehitzen"
 
 #: src/remotes_page/remotes_page.py:295
 msgid "Loading Remotes"
-msgstr ""
+msgstr "Urrunekoak kargatzen"
 
 #: src/user_data_page/data_box.blp:56
 msgid "Copy Path"
-msgstr ""
+msgstr "Kopiatu bidea"
 
 #: src/user_data_page/data_box.blp:68
 msgid "Attempt to Install"
-msgstr ""
+msgstr "Saiatu instalatzen"
 
 #: src/user_data_page/data_box.py:62
 msgid "Copied data path"
-msgstr ""
+msgstr "Datuen bidea kopiatu da"
 
 #: src/user_data_page/data_box.py:64
 msgid "Could not copy data path"
-msgstr ""
+msgstr "Ezin izan da datuen bidea kopiatu"
 
 #: src/user_data_page/data_box.py:69
 msgid "Opened data folder"
-msgstr ""
+msgstr "Datuen karpeta ireki da"
 
 #: src/user_data_page/data_box.py:71 src/snapshot_page/snapshot_page.py:258
 #: src/snapshot_page/snapshots_list_page.py:81
 msgid "Could not open folder"
-msgstr ""
+msgstr "Ezin izan da karpeta ireki"
 
 #: src/user_data_page/data_box.py:118
 msgid "Trash {}'s Data?"
-msgstr ""
+msgstr "{}(e)ko datuak zakarrontzira bota?"
 
 #: src/user_data_page/data_box.py:118
 msgid "{}'s data will be sent to the trash"
-msgstr ""
+msgstr "{}(e)ko datuak zakarrontzira botako dira"
 
 #: src/user_data_page/data_box.py:120 src/user_data_page/user_data_page.py:214
 #: src/snapshot_page/snapshot_page.py:485
 msgid "Continue"
-msgstr ""
+msgstr "Jarraitu"
 
 #: src/user_data_page/data_subpage.blp:13
 msgid "No Title Set"
-msgstr ""
+msgstr "Ez da izenbururik ezarri"
 
 #: src/user_data_page/data_subpage.blp:28
 msgid "Loading Size…"
-msgstr ""
+msgstr "Tamaina kargatzen…"
 
 #: src/user_data_page/data_subpage.py:257
 msgid "No Active Data"
-msgstr ""
+msgstr "Datu aktiborik ez"
 
 #: src/user_data_page/data_subpage.py:258
 msgid ""
@@ -1386,32 +1386,32 @@ msgstr ""
 #: src/user_data_page/user_data_page.blp:120
 #: src/snapshot_page/snapshot_page.blp:159
 msgid "More"
-msgstr ""
+msgstr "Gehiago"
 
 #: src/user_data_page/user_data_page.blp:169
 msgid "Ascending"
-msgstr ""
+msgstr "Gorantz"
 
 #: src/user_data_page/user_data_page.blp:177
 msgid "Descending"
-msgstr ""
+msgstr "Beherantz"
 
 #: src/user_data_page/user_data_page.blp:198
 msgid "ID"
-msgstr ""
+msgstr "IDa"
 
 #: src/user_data_page/user_data_page.blp:206
 msgid "Size"
-msgstr ""
+msgstr "Tamaina"
 
 #: src/user_data_page/user_data_page.py:79
 #: src/user_data_page/user_data_page.py:81
 msgid "Loading Size"
-msgstr ""
+msgstr "Tamaina kargatzen"
 
 #: src/user_data_page/user_data_page.py:155
 msgid "Could not copy paths"
-msgstr ""
+msgstr "Ezin izan dira bideak kopiatu"
 
 #: src/user_data_page/user_data_page.py:155
 #: src/user_data_page/user_data_page.py:201
@@ -1420,114 +1420,114 @@ msgstr ""
 
 #: src/user_data_page/user_data_page.py:158
 msgid "Copied paths"
-msgstr ""
+msgstr "Bideak kopiatu dira"
 
 #: src/user_data_page/user_data_page.py:189
 msgid "Trashed data"
-msgstr ""
+msgstr "Datuak zakarrontzira bota dira"
 
 #: src/user_data_page/user_data_page.py:212
 msgid "Trash Data?"
-msgstr ""
+msgstr "Datuak zakarrontzira bota?"
 
 #: src/user_data_page/user_data_page.py:212
 msgid "Data will be sent to the trash"
-msgstr ""
+msgstr "Datuak zakarrontzira botako dira"
 
 #: src/user_data_page/user_data_page.py:250
 #: src/user_data_page/user_data_page.py:273
 msgid "Active Data"
-msgstr ""
+msgstr "Datu aktiboak"
 
 #: src/user_data_page/user_data_page.py:251
 #: src/user_data_page/user_data_page.py:279
 msgid "Leftover Data"
-msgstr ""
+msgstr "Atzean utzitako datuak"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
 msgid "Search Apps"
-msgstr ""
+msgstr "Bilatu aplikazioak"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
-msgstr ""
+msgstr "Sortu"
 
 #: src/snapshot_page/new_snapshot_dialog.py:114
 msgid "Creating Snapshot"
-msgstr ""
+msgstr "Egoera-argazkia sortzen"
 
 #: src/snapshot_page/new_snapshot_dialog.py:196
 msgid "Name these Snapshots"
-msgstr ""
+msgstr "Izendatu egoera-argazki hauek"
 
 #: src/snapshot_page/new_snapshot_dialog.py:200
 #: src/snapshot_page/snapshot_page.blp:40
 #: src/snapshot_page/snapshot_page.blp:190
 #: src/snapshot_page/snapshots_list_page.blp:41
 msgid "New Snapshot"
-msgstr ""
+msgstr "Egoera-argazki berria"
 
 #: src/snapshot_page/new_snapshot_dialog.py:204
 msgid "Name this Snapshot"
-msgstr ""
+msgstr "Izendatu egoera-argazki hau"
 
 #: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:62
 msgid "No Name Set"
-msgstr ""
+msgstr "Ez da izenik ezarri"
 
 #: src/snapshot_page/snapshot_box.blp:23
 msgid "No date found"
-msgstr ""
+msgstr "Ez da datarik aurkitu"
 
 #: src/snapshot_page/snapshot_box.blp:30
 msgid "No version found"
-msgstr ""
+msgstr "Ez da bertsiorik aurkitu"
 
 #: src/snapshot_page/snapshot_box.blp:46 src/snapshot_page/snapshot_box.py:160
 msgid "Apply"
-msgstr ""
+msgstr "Aplikatu"
 
 #: src/snapshot_page/snapshot_box.blp:55
 msgid "Rename"
-msgstr ""
+msgstr "Berrizendatu"
 
 #: src/snapshot_page/snapshot_box.blp:84
 msgid "Rename Snapshot?"
-msgstr ""
+msgstr "Egoera-argazkia berrizendatu?"
 
 #: src/snapshot_page/snapshot_box.blp:94
 msgid "Confirm Rename"
-msgstr ""
+msgstr "Berretsi izen aldaketa"
 
 #: src/snapshot_page/snapshot_box.py:37 src/snapshot_page/snapshot_box.py:49
 #: src/snapshot_page/snapshot_box.py:65
 msgid "Could not write data"
-msgstr ""
+msgstr "Ezin izan dira datuak idatzi"
 
 #: src/snapshot_page/snapshot_box.py:102
 msgid "Could not trash snapshot"
-msgstr ""
+msgstr "Ezin izan da egoera-argazkia zakarrontzira bota"
 
 #: src/snapshot_page/snapshot_box.py:106
 msgid "Trashed snapshot"
-msgstr ""
+msgstr "Egoera-argazkia zakarrontzira bota da"
 
 #: src/snapshot_page/snapshot_box.py:116
 msgid "Trash Snapshot?"
-msgstr ""
+msgstr "Egoera-argazkia zakarrontzira bota?"
 
 #: src/snapshot_page/snapshot_box.py:116
 msgid "This snapshot will be sent to the trash"
-msgstr ""
+msgstr "Egoera-argazki hau zakarrontzira botako da"
 
 #: src/snapshot_page/snapshot_box.py:146
 msgid "Applying Snapshot"
-msgstr ""
+msgstr "Egoera-argazkia aplikatzen"
 
 #: src/snapshot_page/snapshot_box.py:156
 msgid "Apply Snapshot?"
-msgstr ""
+msgstr "Egoera-argazkia aplikatu?"
 
 #: src/snapshot_page/snapshot_box.py:157
 msgid "Any current user data for this app will be trashed"
@@ -1535,35 +1535,35 @@ msgstr ""
 
 #: src/snapshot_page/snapshot_box.py:186
 msgid "Version: {}"
-msgstr ""
+msgstr "Bertsioa: {}"
 
 #: src/snapshot_page/snapshot_page.blp:53
 msgid "Search Snapshots"
-msgstr ""
+msgstr "Bilatu egoera-argazkiak"
 
 #: src/snapshot_page/snapshot_page.blp:70
 msgid "Active Snapshots"
-msgstr ""
+msgstr "Egoera-argazki aktiboak"
 
 #: src/snapshot_page/snapshot_page.blp:81
 msgid "Snapshots of installed apps"
-msgstr ""
+msgstr "Instalatutako aplikazioen egoera-argazkiak"
 
 #: src/snapshot_page/snapshot_page.blp:99
 msgid "Leftover Snapshots"
-msgstr ""
+msgstr "Atzean utzitako egoera-argazkiak"
 
 #: src/snapshot_page/snapshot_page.blp:110
 msgid "Snapshots of apps that are no longer installed"
-msgstr ""
+msgstr "Dagoeneko instalatuta ez dauden aplikazioen egoera-argazkiak"
 
 #: src/snapshot_page/snapshot_page.blp:177
 msgid "Open Snapshots Folder"
-msgstr ""
+msgstr "Ireki egoera-argazkien karpeta"
 
 #: src/snapshot_page/snapshot_page.blp:182
 msgid "No Snapshots"
-msgstr ""
+msgstr "Ez dago egoera-argazkirik"
 
 #: src/snapshot_page/snapshot_page.blp:183
 msgid "Create a Snapshot to save the state of any Flatpak application"
@@ -1571,23 +1571,23 @@ msgstr ""
 
 #: src/snapshot_page/snapshot_page.blp:219
 msgid "Snapshot Apps"
-msgstr ""
+msgstr "Sortu aplikazioen egoera-argazkiak"
 
 #: src/snapshot_page/snapshot_page.blp:223
 msgid "Install Apps"
-msgstr ""
+msgstr "Instalatu aplikazioak"
 
 #: src/snapshot_page/snapshot_page.blp:227
 msgid "Apply Snapshots"
-msgstr ""
+msgstr "Aplikatu egoera-argazkiak"
 
 #: src/snapshot_page/snapshot_page.blp:231
 msgid "Trash Snapshots"
-msgstr ""
+msgstr "Bota egoera-argazkiak zakarrontzira"
 
 #: src/snapshot_page/snapshot_page.py:106
 msgid "Could not load Snapshots"
-msgstr ""
+msgstr "Ezin izan dira egoera-argazkiak kargatu"
 
 #: src/snapshot_page/snapshot_page.py:199
 msgid "Showing snapshots for {}"
@@ -1599,7 +1599,7 @@ msgstr ""
 
 #: src/snapshot_page/snapshot_page.py:203
 msgid "New"
-msgstr ""
+msgstr "Berria"
 
 #: src/snapshot_page/snapshot_page.py:247
 #: src/snapshot_page/snapshot_page.py:249
@@ -1622,7 +1622,7 @@ msgstr ""
 
 #: src/snapshot_page/snapshot_page.py:474
 msgid "Applying Snapshots"
-msgstr ""
+msgstr "Egoera-argazkiak aplikatzen"
 
 #: src/snapshot_page/snapshot_page.py:480
 msgid "No snapshots to extract"
@@ -1693,42 +1693,42 @@ msgstr ""
 
 #: src/install_page/file_install_dialog.py:43
 msgid "Install a Package"
-msgstr ""
+msgstr "Instalatu pakete bat"
 
 #. self.packages_group.set_title(_("Review Package"))
 #: src/install_page/file_install_dialog.py:45
 msgid "The following package will be installed"
-msgstr ""
+msgstr "Ondorengo paketea instalatuko da"
 
 #: src/install_page/file_install_dialog.py:46
 msgid "package"
-msgstr ""
+msgstr "paketea"
 
 #: src/install_page/install_page.blp:41
 msgid "Select Source"
-msgstr ""
+msgstr "Hautatu jatorria"
 
 #: src/install_page/install_page.blp:49 src/install_page/install_page.blp:98
 #: src/install_page/pending_page.blp:5
 msgid "Pending Packages"
-msgstr ""
+msgstr "Zain dauden paketeak"
 
 #: src/install_page/install_page.py:57
 msgid "Installed Packages"
-msgstr ""
+msgstr "Instalatutako paketeak"
 
 #: src/install_page/install_page.py:74
 msgid "{} Pending Package"
-msgstr ""
+msgstr "Pakete {} zain"
 
 #: src/install_page/install_page.py:79
 msgid "{} Pending Packages"
-msgstr ""
+msgstr "{} pakete zain"
 
 #. Extra Object Creation
 #: src/install_page/install_page.py:94
 msgid "Installing Packages"
-msgstr ""
+msgstr "Paketeak instalatzen"
 
 #: src/install_page/install_page.py:102
 msgid "Loading Installation Options"
@@ -1736,7 +1736,7 @@ msgstr ""
 
 #: src/install_page/pending_page.blp:13 src/install_page/select_page.blp:37
 msgid "Add Packages"
-msgstr ""
+msgstr "Gehitu paketeak"
 
 #: src/install_page/pending_page.blp:14
 msgid "Packages queued to install will show up here"
@@ -1744,19 +1744,19 @@ msgstr ""
 
 #: src/install_page/pending_page.py:38
 msgid "Remove All"
-msgstr ""
+msgstr "Kendu guztiak"
 
 #: src/install_page/result_row.blp:8 src/install_page/result_row.py:46
 msgid "Add Package to Queue"
-msgstr ""
+msgstr "Gehitu paketea ilarara"
 
 #: src/install_page/result_row.py:50
 msgid "Package has been Added to Queue"
-msgstr ""
+msgstr "Paketea ilarara gehitu da"
 
 #: src/install_page/result_row.py:54
 msgid "Remove Package from Queue"
-msgstr ""
+msgstr "Paketea ilaratik kendu da"
 
 #: src/install_page/result_row.py:58
 msgid "This Package is Already Installed"
