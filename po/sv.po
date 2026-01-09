@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-12-06 19:03+0000\n"
+"PO-Revision-Date: 2026-01-09 23:20+0000\n"
 "Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
 "Language-Team: Swedish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/sv/>\n"
@@ -22,11 +22,11 @@ msgstr ""
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
-msgstr "Lagerhus"
+msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak;packages;apps;remotes;snapshots;"
-msgstr ""
+msgstr "flatpak;paket;program;fjärrarkiv;ögonblicksbilder;"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
@@ -38,6 +38,8 @@ msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
+"Warehouse tillhandahåller ett enkelt användargränssnitt för att kontrollera "
+"Flatpak-alternativ, allt utan att behöva använda kommandoraden."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -93,16 +95,12 @@ msgid "Manage Installed Remotes and Add New Remotes"
 msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:60
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Manage Apps' User Data"
-msgstr "Trasha Utvalda Appars Användardata?"
+msgstr "Hantera appens Användar-data"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:64
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Backup Apps' User Data"
-msgstr "Trasha Utvalda Appars Användardata?"
+msgstr "Säkerhetskopiera appens Användar-data"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:68
 msgid "Install New Packages from Files or Remotes"
@@ -257,10 +255,8 @@ msgstr ""
 #: src/gtk/attempt_install_dialog.py:22 src/packages_page/filters_page.py:128
 #: src/remotes_page/remote_row.py:155 src/install_page/pending_page.py:33
 #: src/install_page/select_page.py:35
-#, fuzzy
-#| msgid "Installation"
 msgid "Installation: {}"
-msgstr "Installation"
+msgstr "Installation: {}"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Can't find matching packages"
@@ -284,7 +280,7 @@ msgstr "Kopiera"
 #: src/gtk/error_toast.py:24 src/main_window/window.py:142
 #: src/main_window/window.py:152 src/main_window/window.py:161
 msgid "OK"
-msgstr "Okej"
+msgstr "OK"
 
 #: src/gtk/help-overlay.blp:9
 msgid "General"
@@ -295,10 +291,8 @@ msgid "Refresh"
 msgstr "Ladda om"
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Open Files"
-msgstr "Ställ in filtrar"
+msgstr "Öppna filer"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
@@ -306,7 +300,7 @@ msgstr "Öppna meny"
 
 #: src/gtk/help-overlay.blp:23
 msgid "Show Shortcuts"
-msgstr "Visa tangentbordsgenvägar"
+msgstr "Visa genvägar"
 
 #: src/gtk/help-overlay.blp:27
 msgid "Quit"
@@ -346,27 +340,21 @@ msgstr "Visa avaktiverade"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Packages Page"
-msgstr ""
+msgstr "Paket-sidan"
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
-#, fuzzy
-#| msgid "Search"
 msgid "Search Mode"
-msgstr "Sök"
+msgstr "Sökläge"
 
 #: src/gtk/help-overlay.blp:61
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Edit Filters"
-msgstr "Ställ in filtrar"
+msgstr "Redigera filter"
 
 #: src/gtk/help-overlay.blp:65 src/gtk/help-overlay.blp:95
 #: src/gtk/help-overlay.blp:114
-#, fuzzy
-#| msgid "Toggle Selection Mode"
 msgid "Selection Mode"
-msgstr "Växla urvalsläge"
+msgstr "Urvalsäge"
 
 #: src/gtk/help-overlay.blp:70
 #, fuzzy
@@ -409,22 +397,16 @@ msgid "Show Leftover Data"
 msgstr "Ingen överbliven data"
 
 #: src/gtk/help-overlay.blp:108
-#, fuzzy
-#| msgid "Snapshot applied"
 msgid "Snapshots Page"
-msgstr "Ögonblicksbilden verkställdes"
+msgstr "Sidan för ögonblicksbilder"
 
 #: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:206
-#, fuzzy
-#| msgid "New Snapshot"
 msgid "New Snapshots"
-msgstr "Ny snapshot"
+msgstr "Nya ögonblicksbilder"
 
 #: src/gtk/installation_chooser.blp:5
-#, fuzzy
-#| msgid "Installation"
 msgid "Choose Installation"
-msgstr "Installation"
+msgstr "Välj installation"
 
 #: src/gtk/installation_chooser.blp:11
 msgid "User"
@@ -435,16 +417,12 @@ msgid "System"
 msgstr "System"
 
 #: src/gtk/installation_chooser.blp:28
-#, fuzzy
-#| msgid "Installation"
 msgid "Custom installation"
-msgstr "Installation"
+msgstr "Anpassad installation"
 
 #: src/gtk/installation_chooser.blp:37
-#, fuzzy
-#| msgid "Installation"
 msgid "Other Installation"
-msgstr "Installation"
+msgstr "Annan installation"
 
 #: src/gtk/installation_chooser.blp:38
 msgid "Choose a custom installation"
@@ -513,10 +491,8 @@ msgid "Packages"
 msgstr "Paket"
 
 #: src/main_window/window.blp:83
-#, fuzzy
-#| msgid "All Remotes"
 msgid "Remotes"
-msgstr "Alla fjärrar"
+msgstr "Fjärrarkiv"
 
 #: src/main_window/window.blp:99 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
@@ -540,10 +516,8 @@ msgid "Install Packages"
 msgstr "Installerar"
 
 #: src/main_window/window.blp:161
-#, fuzzy
-#| msgid "Set Filters"
 msgid "_Open Files"
-msgstr "Ställ in filtrar"
+msgstr "_Öppna filer"
 
 #: src/main_window/window.blp:165
 msgid "_Keyboard Shortcuts"
@@ -562,10 +536,8 @@ msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
 msgstr ""
 
 #: src/main_window/window.py:148
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Mixed Filetypes"
-msgstr "Ställ in filtrar"
+msgstr "Blandade filtyper"
 
 #: src/main_window/window.py:149
 msgid "Flatpaks and remotes cannot be installed at the same time."
@@ -604,10 +576,8 @@ msgid "Show packages of these types"
 msgstr "Visa paket av dessa typer"
 
 #: src/packages_page/filters_page.blp:23
-#, fuzzy
-#| msgid "Options"
 msgid "Applications"
-msgstr "Inställningar"
+msgstr "Applikationer"
 
 #: src/packages_page/filters_page.blp:24
 msgid "Packages that can be opened"
@@ -667,17 +637,13 @@ msgstr "Återställ filter"
 #: src/packages_page/packages_page.blp:65
 #: src/packages_page/packages_page.blp:83 src/remotes_page/remotes_page.blp:30
 #: src/snapshot_page/snapshot_page.blp:35
-#, fuzzy
-#| msgid "Search List"
 msgid "Search Packages"
-msgstr "Söka Genom Listan"
+msgstr "Sök efter paket"
 
 #: src/packages_page/packages_page.blp:75
 #: src/snapshot_page/snapshot_page.blp:45
-#, fuzzy
-#| msgid "Select a Release"
 msgid "Select Packages"
-msgstr "Välj en utgåva"
+msgstr "Välj paket"
 
 #: src/packages_page/packages_page.blp:93
 #, fuzzy
@@ -740,7 +706,7 @@ msgstr "Avinstallera"
 
 #: src/packages_page/packages_page.blp:173
 msgid "Copy Names"
-msgstr "Kopiera namn"
+msgstr "Kopiera namnen"
 
 #: src/packages_page/packages_page.blp:177
 msgid "Copy IDs"
@@ -777,7 +743,7 @@ msgstr "ID:er"
 #, fuzzy
 #| msgid "Copy Refs"
 msgid "Refs"
-msgstr "Kopiera ref:ar"
+msgstr "Ref"
 
 #: src/packages_page/packages_page.py:260
 #: src/properties_page/properties_page.py:293
@@ -857,23 +823,19 @@ msgstr "Tillåt återställning av denna apps inställningar och innehåll"
 #: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:118
 #: src/snapshot_page/snapshot_page.py:523
 msgid "Trash"
-msgstr "Trasha"
+msgstr "Ta bort"
 
 #: src/packages_page/uninstall_dialog.blp:18
-#, fuzzy
-#| msgid "Send {}'s User Data to the Trash?"
 msgid "Send data to the trash"
-msgstr "Skicka {}s användardata till papperskorgen?"
+msgstr "Skicka data till skräpkorgen"
 
 #: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall {}?"
 msgstr "Avinstallera {}?"
 
 #: src/packages_page/uninstall_dialog.py:35
-#, fuzzy
-#| msgid "It will not be possible to use {} after removal."
 msgid "It will not be possible to use {} after removal"
-msgstr "Efter borttagning kommer det inte att vara möjligt att använda {}."
+msgstr "Det kommer inte att vara möjligt att använda {} efter borttagning"
 
 #: src/packages_page/uninstall_dialog.py:37
 #, fuzzy
@@ -882,11 +844,8 @@ msgid "Uninstall Packages?"
 msgstr "Avinstallera {}?"
 
 #: src/packages_page/uninstall_dialog.py:38
-#, fuzzy
-#| msgid "It will not be possible to use these apps after removal."
 msgid "It will not be possible to use these packages after removal"
-msgstr ""
-"Efter borttagning kommer det inte att vara möjligt att använda dessa appar."
+msgstr "Det kommer inte vara möjligt att använda dessa paket efter borttagning"
 
 #: src/packages_page/uninstall_dialog.py:45
 #, fuzzy
@@ -952,7 +911,7 @@ msgstr "Installerad storlek"
 
 #: src/properties_page/properties_page.blp:175
 msgid "Runtime"
-msgstr "Exekveringsmiljö"
+msgstr "Körtid"
 
 #: src/properties_page/properties_page.blp:188
 #, fuzzy
@@ -1071,12 +1030,10 @@ msgid "Send {}'s User Data to the Trash?"
 msgstr "Skicka {}s användardata till papperskorgen?"
 
 #: src/properties_page/properties_page.py:206
-#, fuzzy
-#| msgid "Your files and data for this app will be sent to the trash."
 msgid "Your settings and data for this app will be sent to the trash"
 msgstr ""
-"Dina filer och användardata för denna app kommer att skickas till "
-"papperskorgen."
+"Din inställningar och data för den här appen kommer att skickas till "
+"skräpkorgen"
 
 #: src/properties_page/properties_page.py:209
 msgid "Trash Data"
@@ -1137,16 +1094,12 @@ msgid "Could not uninstall"
 msgstr "Kunde inte installera app"
 
 #: src/properties_page/properties_page.py:270
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Uninstalled {}"
-msgstr "Avinstallera {}?"
+msgstr "Avinstallerade {}"
 
 #: src/properties_page/properties_page.py:282
-#, fuzzy
-#| msgid "Opened {}"
 msgid "Opening {}…"
-msgstr "Öppnade {}"
+msgstr "Öppnar {}…"
 
 #: src/properties_page/properties_page.py:287
 #, fuzzy
@@ -1155,10 +1108,8 @@ msgid "Could not open {}"
 msgstr "Kunde inte radera {}"
 
 #: src/properties_page/properties_page.py:302
-#, fuzzy
-#| msgid "Uninstall {}?"
 msgid "Reinstalled {}"
-msgstr "Avinstallera {}?"
+msgstr "Ominstallerade {}"
 
 #: src/properties_page/properties_page.py:330
 #, fuzzy
@@ -1174,10 +1125,8 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:334
 #: src/properties_page/properties_page.py:392
-#, fuzzy
-#| msgid "Uninstall"
 msgid "Reinstall"
-msgstr "Avinstallera"
+msgstr "Ominstallera"
 
 #: src/properties_page/properties_page.py:351
 msgid "Copied launch command"
@@ -1313,17 +1262,15 @@ msgid "Could not add remote"
 msgstr "Kunde inte lägga till {}"
 
 #: src/remotes_page/add_remote_dialog.py:64
-#, fuzzy
-#| msgid "Add {}?"
 msgid "Added {}"
-msgstr "Lägg till {}?"
+msgstr "Lade till {}"
 
 #. Apply
 #: src/remotes_page/add_remote_dialog.py:114
 #, fuzzy
 #| msgid "Add Remote"
 msgid "remote"
-msgstr "Lägg till fjärrkontroll"
+msgstr "fjärrstyr"
 
 #: src/remotes_page/remote_row.blp:21
 #, fuzzy
@@ -1345,7 +1292,7 @@ msgstr "Kopiera Ref"
 
 #: src/remotes_page/remote_row.blp:41
 msgid "Copy Name"
-msgstr "Kopiera namn"
+msgstr "Kopiera namnet"
 
 #: src/remotes_page/remote_row.blp:45
 msgid "Enable"
@@ -1572,10 +1519,8 @@ msgid "Copy Path"
 msgstr "Kopiera namn"
 
 #: src/user_data_page/data_box.blp:68
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "Attempt to Install"
-msgstr "Försök att installera?"
+msgstr "Installationsförsök"
 
 #: src/user_data_page/data_box.py:62
 msgid "Copied data path"
@@ -1599,16 +1544,12 @@ msgid "Could not open folder"
 msgstr "Kunde inte öppna mappen"
 
 #: src/user_data_page/data_box.py:118
-#, fuzzy
-#| msgid "Trash User Data"
 msgid "Trash {}'s Data?"
-msgstr "Trasha användardata"
+msgstr "Ta bort {}'s Data?"
 
 #: src/user_data_page/data_box.py:118
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "{}'s data will be sent to the trash"
-msgstr "Dessa mappar kommer att skickas till papperskorgen."
+msgstr "{}'s data kommer att skickas till skräpkorgen"
 
 #: src/user_data_page/data_box.py:120 src/user_data_page/user_data_page.py:214
 #: src/snapshot_page/snapshot_page.py:485
@@ -1672,18 +1613,16 @@ msgstr "Användardata"
 
 #: src/user_data_page/user_data_page.blp:120
 #: src/snapshot_page/snapshot_page.blp:159
-#, fuzzy
-#| msgid "View More"
 msgid "More"
-msgstr "Visa mer"
+msgstr "Mer"
 
 #: src/user_data_page/user_data_page.blp:169
 msgid "Ascending"
-msgstr ""
+msgstr "Stigande"
 
 #: src/user_data_page/user_data_page.blp:177
 msgid "Descending"
-msgstr ""
+msgstr "Sjunkande"
 
 #: src/user_data_page/user_data_page.blp:198
 msgid "ID"
@@ -1724,16 +1663,12 @@ msgid "Trashed data"
 msgstr "Trashade användardata"
 
 #: src/user_data_page/user_data_page.py:212
-#, fuzzy
-#| msgid "Trash Data"
 msgid "Trash Data?"
-msgstr "Trasha"
+msgstr "Kasta bort data?"
 
 #: src/user_data_page/user_data_page.py:212
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "Data will be sent to the trash"
-msgstr "Dessa mappar kommer att skickas till papperskorgen."
+msgstr "Datan kommer att skickas till skräpkorgen"
 
 #: src/user_data_page/user_data_page.py:250
 #: src/user_data_page/user_data_page.py:273
@@ -1751,10 +1686,8 @@ msgstr "Ingen överbliven data"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
-#, fuzzy
-#| msgid "Search List"
 msgid "Search Apps"
-msgstr "Söka Genom Listan"
+msgstr "Sök efter appar"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
@@ -1786,10 +1719,8 @@ msgid "Name this Snapshot"
 msgstr "Ny snapshot"
 
 #: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:62
-#, fuzzy
-#| msgid "Copy Name"
 msgid "No Name Set"
-msgstr "Kopiera namn"
+msgstr "Inget namn är inställt"
 
 #: src/snapshot_page/snapshot_box.blp:23
 #, fuzzy
@@ -1844,30 +1775,20 @@ msgid "Trash Snapshot?"
 msgstr "Kasta bort ögonblicksbild?"
 
 #: src/snapshot_page/snapshot_box.py:116
-#, fuzzy
-#| msgid "This snapshot and its contents will be sent to the trash."
 msgid "This snapshot will be sent to the trash"
-msgstr ""
-"Den här ögonblicksbilden och dess innehåll kommer att skickas till "
-"papperskorgen."
+msgstr "Den här ögonblicksbilden kommer att skickas till skräpkorgen"
 
 #: src/snapshot_page/snapshot_box.py:146
-#, fuzzy
-#| msgid "Applying Snapshot…"
 msgid "Applying Snapshot"
-msgstr "Verkställer ögonblicksbilden…"
+msgstr "Verkställer ögonblicksbild"
 
 #: src/snapshot_page/snapshot_box.py:156
 msgid "Apply Snapshot?"
 msgstr "Verkställ ögonblicksbilden?"
 
 #: src/snapshot_page/snapshot_box.py:157
-#, fuzzy
-#| msgid "Your files and data for this app will be sent to the trash."
 msgid "Any current user data for this app will be trashed"
-msgstr ""
-"Dina filer och användardata för denna app kommer att skickas till "
-"papperskorgen."
+msgstr "All nuvarande användar-data för den här appen kommer att kastas bort"
 
 #: src/snapshot_page/snapshot_box.py:186
 #, fuzzy
@@ -1988,10 +1909,8 @@ msgid "No apps in your selection can be snapshotted"
 msgstr ""
 
 #: src/snapshot_page/snapshot_page.py:474
-#, fuzzy
-#| msgid "Applying Snapshot…"
 msgid "Applying Snapshots"
-msgstr "Verkställer ögonblicksbilden…"
+msgstr "Verkställer ögonblicksbilder"
 
 #: src/snapshot_page/snapshot_page.py:480
 #, fuzzy
@@ -2032,10 +1951,9 @@ msgid "Trash Snapshots?"
 msgstr "Kasta bort ögonblicksbild?"
 
 #: src/snapshot_page/snapshot_page.py:521
-#, fuzzy
-#| msgid "These folders will be sent to the trash."
 msgid "These apps' snapshots will be sent to the trash"
-msgstr "Dessa mappar kommer att skickas till papperskorgen."
+msgstr ""
+"Ögonblicksbilderna för dessa appar kommer att skickas till papperskorgen"
 
 #: src/snapshot_page/snapshot_page.py:560
 #, fuzzy
@@ -2057,10 +1975,8 @@ msgstr "Öppna snapshotmapp"
 
 #: src/snapshot_page/snapshots_list_page.py:34
 #: src/snapshot_page/snapshots_list_page.py:55
-#, fuzzy
-#| msgid "Attempt to Install?"
 msgid "App not Installed"
-msgstr "Försök att installera?"
+msgstr "Appen är inte installerad"
 
 #: src/snapshot_page/snapshots_list_page.py:58
 msgid "{} Snapshots"
