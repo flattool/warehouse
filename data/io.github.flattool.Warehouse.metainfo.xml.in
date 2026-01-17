@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <component type="desktop">
 	<id>io.github.flattool.Warehouse.desktop</id>
 	<launchable type="desktop-id">io.github.flattool.Warehouse.desktop</launchable>
@@ -34,7 +34,7 @@
 	<requires>
 		<display_length compare="ge">330</display_length>
 	</requires>
-	<content_rating type="oars-1.1"/>
+	<content_rating type="oars-1.1" />
 	<url type="homepage">https://github.com/flattool/warehouse</url>
 	<url type="bugtracker">https://github.com/flattool/warehouse/issues</url>
 	<url type="vcs-browser">https://github.com/flattool/warehouse</url>
@@ -71,6 +71,16 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="2.2.0" date="2026-1-17">
+			<description translate="no">
+				<p>Changes</p>
+				<ul>
+					<li>Updated to GNOME 49 GTK Technologies</li>
+					<li>Changed to new Shortcuts UI</li>
+					<li>Added and updated translations</li>
+				</ul>
+			</description>
+		</release>
 		<release version="2.1.0" date="2025-6-10">
 			<description translate="no">
 				<p>New Features and Changes</p>
