@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-10 15:04-0400\n"
+"POT-Creation-Date: 2025-06-10 16:52-0400\n"
 "PO-Revision-Date: 2025-06-12 08:46+0000\n"
 "Last-Translator: Mie <miesiva@tutanota.com>\n"
 "Language-Team: Indonesian <https://weblate.fyralabs.com/projects/flattool/"
@@ -90,31 +90,31 @@ msgstr "Instal paket baru dari remote mana pun, atau dari sistem Anda"
 msgid "Responsive UI to fit large and small screen sizes"
 msgstr "UI yang responsif agar sesuai dengan ukuran layar besar dan kecil"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:48
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
 msgstr "Mengelola Paket Terinstal dalam UI Tiga Panel"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:52
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
 msgstr "Halaman Properti di Jendela Sempit"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:56
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
 msgstr "Mengelola Remote yang Terpasang dan Menambahkan Remote Baru"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:60
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
 msgid "Manage Apps' User Data"
 msgstr "Mengelola Data Pengguna Aplikasi"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:64
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
 msgid "Backup Apps' User Data"
 msgstr "Mencadangkan Data Pengguna Aplikasi"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:68
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
 msgstr "Instal Paket Baru dari File atau Remote"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:72
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
 msgstr "Halaman Instalasi di Jendela Sempit"
 

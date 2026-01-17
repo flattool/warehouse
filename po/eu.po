@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-10 15:04-0400\n"
+"POT-Creation-Date: 2025-06-10 16:52-0400\n"
 "PO-Revision-Date: 2025-12-15 18:18+0000\n"
 "Last-Translator: Ibai Oihanguren Sala <ibai@oihanguren.com>\n"
 "Language-Team: Basque <https://weblate.fyralabs.com/projects/flattool/"
@@ -96,31 +96,31 @@ msgstr ""
 "Erabiltzaile-interfaze moldagarria, pantaila handi nahiz txikietara "
 "egokitzeko"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:48
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
 msgstr "Kudeatu instalatutako paketeak hiru paneldun interfazean"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:52
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
 msgstr "Propietateen orria leiho estuan"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:56
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
 msgstr "Kudeatu instalatutako urrunekoak eta gehitu urruneko berriak"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:60
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
 msgid "Manage Apps' User Data"
 msgstr "Kudeatu aplikazioen erabiltzaile-datuak"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:64
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
 msgid "Backup Apps' User Data"
 msgstr "Egin aplikazioetako erabiltzaile-datuen babes-kopiak"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:68
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
 msgstr "Instalatu pakete berriak fitxategietatik edo urrunekoetatik"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:72
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
 msgstr "Instalatzeko orria leiho estuan"
 

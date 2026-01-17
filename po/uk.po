@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-10 15:04-0400\n"
+"POT-Creation-Date: 2025-06-10 16:52-0400\n"
 "PO-Revision-Date: 2025-11-06 17:20+0000\n"
 "Last-Translator: Andrii Serbovets <serbovets.translation@gmail.com>\n"
 "Language-Team: Ukrainian <https://weblate.fyralabs.com/projects/flattool/"
@@ -27,9 +27,7 @@ msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak;packages;apps;remotes;snapshots;"
-msgstr ""
-"flatpak;packages;apps;remotes;snapshots;флатпак;пакунок;пакунки;програми;програма;додаток;додатки;застосунок;застосунки;снапшоти;сховища;віддалені;"
-""
+msgstr "flatpak;packages;apps;remotes;snapshots;флатпак;пакунок;пакунки;програми;програма;додаток;додатки;застосунок;застосунки;снапшоти;сховища;віддалені;"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
@@ -92,32 +90,32 @@ msgstr "Встановлюйте нові пакети з будь-якого р
 msgid "Responsive UI to fit large and small screen sizes"
 msgstr "Адаптивний інтерфейс для зручної роботи на великих і малих екранах"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:48
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
 msgstr ""
 "Керуйте встановленими пакетами за допомогою інтерфейсу з трьома панелями"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:52
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
 msgstr "Сторінка властивостей у вузькому вікні"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:56
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
 msgstr "Керуйте встановленими репозиторіями та додавайте нові"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:60
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
 msgid "Manage Apps' User Data"
 msgstr "Керуйте даними користувача додатків"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:64
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
 msgid "Backup Apps' User Data"
 msgstr "Резервне копіювання даних користувача додатків"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:68
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
 msgstr "Встановлюйте нові пакети з файлів або репозиторіїв"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:72
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
 msgstr "Сторінка встановлення у вузькому вікні"
 

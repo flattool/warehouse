@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-10 15:04-0400\n"
+"POT-Creation-Date: 2025-06-10 16:52-0400\n"
 "PO-Revision-Date: 2025-10-31 19:31+0000\n"
 "Last-Translator: voorjaarman <voorjaarman@gmail.com>\n"
 "Language-Team: Polish <https://weblate.fyralabs.com/projects/flattool/"
@@ -88,33 +88,33 @@ msgstr ""
 msgid "Responsive UI to fit large and small screen sizes"
 msgstr "Responsywny interfejs dla ekranów dużego i małego rozmiaru"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:48
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
 msgstr ""
 "Zarządzaj zainstalowanymi pakietami w interfejsie użytkownika z trzema "
 "panelami"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:52
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
 msgstr "Właściwości w wąskim oknie"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:56
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
 msgstr "Zarządzaj źródłami i dodawaj nowe"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:60
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
 msgid "Manage Apps' User Data"
 msgstr "Zarządzaj danymi użytkowników w aplikacjach"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:64
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
 msgid "Backup Apps' User Data"
 msgstr "Rób kopie zapasowe danych użytkowników z aplikacji"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:68
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
 msgstr "Instaluj nowe zdalne lub lokalne pakiety"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:72
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
 msgstr "Instaluj w wąskim oknie"
 

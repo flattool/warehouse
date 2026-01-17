@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-10 15:04-0400\n"
+"POT-Creation-Date: 2025-06-10 16:52-0400\n"
 "PO-Revision-Date: 2025-09-29 10:42+0000\n"
 "Last-Translator: ChesterTsai <tsaichester71@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
@@ -80,31 +80,31 @@ msgstr "從任何遠端倉庫或是您的系統安裝新的軟體包"
 msgid "Responsive UI to fit large and small screen sizes"
 msgstr "響應式使用者介面，適配各種大小的螢幕尺寸"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:48
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
 msgstr "在三窗格介面中管理已安裝的軟體包"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:52
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
 msgstr "窄視窗下的屬性頁"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:56
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
 msgstr "管理已安裝的遠端倉庫及添加新的遠端倉庫"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:60
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
 msgid "Manage Apps' User Data"
 msgstr "管理使用者資料"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:64
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
 msgid "Backup Apps' User Data"
 msgstr "備份使用者資料"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:68
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
 msgstr "從檔案或遠端倉庫中安裝新的軟體包"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:72
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
 msgstr "窄視窗中下的安裝頁"
 
@@ -1016,7 +1016,8 @@ msgstr "選擇一個版本"
 msgid ""
 "This will uninstall the current release and install the chosen one instead. "
 "Note that downgrading can cause issues."
-msgstr "這將會解除安裝當前版本並安裝所選的版本。請注意安裝先前的版本可能造成問題。"
+msgstr ""
+"這將會解除安裝當前版本並安裝所選的版本。請注意安裝先前的版本可能造成問題。"
 
 #: src/change_version_page/change_version_page.py:75
 msgid "Currently Installed Version"
