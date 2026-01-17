@@ -7,28 +7,34 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2025-06-10 16:52-0400\n"
+"PO-Revision-Date: 2025-07-08 02:46+0000\n"
+"Last-Translator: x9a <iramosu@protonmail.com>\n"
+"Language-Team: Arabic <https://weblate.fyralabs.com/projects/flattool/"
+"warehouse/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:3
 msgid "Warehouse"
-msgstr ""
+msgstr "ويرهاوس"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak;packages;apps;remotes;snapshots;"
 msgstr ""
+"فلاتباك;الحزم;التطبيقات;المتحكمات;التحكمات;اللقطات;التقاطات;warehouse; "
+"flatpak;packages;apps;remotes;snapshots;"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
 msgid "Manage all things Flatpak"
-msgstr ""
+msgstr "أدِر كل ما يتعلق بفلاتباك"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:11
 msgid ""
@@ -77,31 +83,31 @@ msgstr ""
 msgid "Responsive UI to fit large and small screen sizes"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:48
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:52
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:56
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:60
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
 msgid "Manage Apps' User Data"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:64
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
 msgid "Backup Apps' User Data"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:68
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:72
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
 msgstr ""
 
@@ -125,7 +131,7 @@ msgstr ""
 
 #: src/main.py:249
 msgid "Donate"
-msgstr ""
+msgstr "تبرَّع"
 
 #: src/main.py:251
 msgid "Contributors"
@@ -203,7 +209,7 @@ msgstr ""
 #: src/snapshot_page/snapshot_page.py:522
 #: src/install_page/file_install_dialog.blp:13
 msgid "Cancel"
-msgstr ""
+msgstr "ألغِ"
 
 #: src/gtk/attempt_install_dialog.blp:9
 #: src/user_data_page/user_data_page.blp:100
@@ -238,18 +244,18 @@ msgstr ""
 #. Extra Object Creation
 #: src/gtk/error_toast.py:16
 msgid "Details"
-msgstr ""
+msgstr "التفاصيل"
 
 #: src/gtk/error_toast.py:23 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
 #: src/snapshot_page/snapshot_page.blp:149
 msgid "Copy"
-msgstr ""
+msgstr "انسخ"
 
 #: src/gtk/error_toast.py:24 src/main_window/window.py:142
 #: src/main_window/window.py:152 src/main_window/window.py:161
 msgid "OK"
-msgstr ""
+msgstr "حسنًا"
 
 #: src/gtk/help-overlay.blp:9
 msgid "General"
@@ -419,7 +425,7 @@ msgstr ""
 
 #: src/main_window/window.blp:50
 msgid "Main Menu"
-msgstr ""
+msgstr "القائمة الرئيسة"
 
 #: src/main_window/window.blp:68 src/packages_page/packages_page.blp:20
 #: src/packages_page/packages_page.blp:55
@@ -456,7 +462,7 @@ msgstr ""
 
 #: src/main_window/window.blp:165
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "ا_ختصارات لوحة المفاتيح"
 
 #: src/main_window/window.blp:169
 msgid "_About Warehouse"
@@ -589,7 +595,7 @@ msgstr ""
 #: src/snapshot_page/new_snapshot_dialog.blp:67
 #: src/snapshot_page/snapshot_page.blp:58 src/install_page/results_page.blp:49
 msgid "No Results Found"
-msgstr ""
+msgstr "لم يُعثر على نتائج"
 
 #: src/packages_page/packages_page.blp:110
 #: src/remotes_page/remotes_page.blp:154 src/user_data_page/data_subpage.blp:69
@@ -710,7 +716,7 @@ msgstr ""
 #: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:118
 #: src/snapshot_page/snapshot_page.py:523
 msgid "Trash"
-msgstr ""
+msgstr "انقل للمهملات"
 
 #: src/packages_page/uninstall_dialog.blp:18
 msgid "Send data to the trash"
@@ -1070,7 +1076,7 @@ msgstr ""
 #: src/remotes_page/add_remote_dialog.blp:43
 #: src/user_data_page/user_data_page.blp:190
 msgid "Name"
-msgstr ""
+msgstr "الاسم"
 
 #: src/remotes_page/add_remote_dialog.blp:46
 msgid "Repo URL"
@@ -1107,7 +1113,7 @@ msgstr ""
 
 #: src/remotes_page/remote_row.blp:45
 msgid "Enable"
-msgstr ""
+msgstr "فعِّل"
 
 #: src/remotes_page/remote_row.blp:49 src/remotes_page/remote_row.py:130
 msgid "Disable"
@@ -1308,7 +1314,7 @@ msgstr ""
 #: src/user_data_page/data_box.py:71 src/snapshot_page/snapshot_page.py:258
 #: src/snapshot_page/snapshots_list_page.py:81
 msgid "Could not open folder"
-msgstr ""
+msgstr "تعذَّر فتح المجلد"
 
 #: src/user_data_page/data_box.py:118
 msgid "Trash {}'s Data?"
@@ -1430,7 +1436,7 @@ msgstr ""
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
-msgstr ""
+msgstr "أنشئ"
 
 #: src/snapshot_page/new_snapshot_dialog.py:114
 msgid "Creating Snapshot"
@@ -1453,7 +1459,7 @@ msgstr ""
 
 #: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:62
 msgid "No Name Set"
-msgstr ""
+msgstr "لم يُعيَّن اسم"
 
 #: src/snapshot_page/snapshot_box.blp:23
 msgid "No date found"
@@ -1578,7 +1584,7 @@ msgstr ""
 
 #: src/snapshot_page/snapshot_page.py:203
 msgid "New"
-msgstr ""
+msgstr "جديد"
 
 #: src/snapshot_page/snapshot_page.py:247
 #: src/snapshot_page/snapshot_page.py:249

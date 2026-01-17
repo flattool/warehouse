@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2025-03-24 21:46+0000\n"
-"Last-Translator: Pascal Dietrich <pascal.1.dietrich@hotmail.com>\n"
+"POT-Creation-Date: 2025-06-10 16:52-0400\n"
+"PO-Revision-Date: 2025-11-22 18:02+0000\n"
+"Last-Translator: Ryke <jonashoell@outlook.de>\n"
 "Language-Team: German <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/de/>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.13\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:3
@@ -26,7 +26,7 @@ msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak;packages;apps;remotes;snapshots;"
-msgstr ""
+msgstr "flatpak;Pakete;Apps;Quellen;Snapshots;"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
@@ -38,7 +38,7 @@ msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
-"Warehouse bietet eine simple Oberfläche um komplexe Flatpak Optionen zu "
+"Warehouse bietet eine einfache Oberfläche um komplexe Flatpak Optionen zu "
 "nutzen, ganz ohne die Kommandozeile."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
@@ -93,31 +93,31 @@ msgstr ""
 "Responsive Benutzeroberfläche, die sich an große und kleine Bildschirmgrößen "
 "anpasst"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:48
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
 msgstr "Verwalten Sie installierte Pakete in einer einzigen Benutzeroberfläche"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:52
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
 msgstr "Eigenschaften-Seite in einem schmalen Fenster"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:56
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
 msgstr "Verwalten Sie installierte Repositories und fügen Sie neue hinzu"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:60
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
 msgid "Manage Apps' User Data"
 msgstr "Verwalte die Benutzerdaten der ausgewählten Anwendung"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:64
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
 msgid "Backup Apps' User Data"
 msgstr "Stell die Benutzerdaten der ausgewählten Anwendung her"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:68
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
 msgstr "Installieren Sie neue Pakete aus Dateien oder Repositories"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:72
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
 msgstr "Installations-Seite in einem schmalen Fenster"
 
@@ -289,8 +289,9 @@ msgid "Open Menu"
 msgstr "Menü öffnen"
 
 #: src/gtk/help-overlay.blp:23
+#, fuzzy
 msgid "Show Shortcuts"
-msgstr "Verknüpfungen anzeigen"
+msgstr "Tastenkürzel anzeigen"
 
 #: src/gtk/help-overlay.blp:27
 msgid "Quit"
@@ -735,7 +736,7 @@ msgstr "Erlaube das Wiederherstellen der Einstellungen und Inhalte"
 #: src/snapshot_page/snapshot_box.blp:65 src/snapshot_page/snapshot_box.py:118
 #: src/snapshot_page/snapshot_page.py:523
 msgid "Trash"
-msgstr "Müll"
+msgstr "Mülleimer"
 
 #: src/packages_page/uninstall_dialog.blp:18
 msgid "Send data to the trash"
@@ -1465,7 +1466,7 @@ msgstr "Verbliebene Daten"
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
 msgid "Search Apps"
-msgstr "Apps durchsuchen"
+msgstr "Anwendungen suchen"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"

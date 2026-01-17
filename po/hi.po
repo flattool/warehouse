@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-10 15:04-0400\n"
+"POT-Creation-Date: 2025-06-10 16:52-0400\n"
 "PO-Revision-Date: 2024-05-05 18:20+0000\n"
-"Last-Translator: Scrambled777 <Scrambled777@users.noreply.weblate.fyralabs."
-"com>\n"
+"Last-Translator: Scrambled777 "
+"<Scrambled777@users.noreply.weblate.fyralabs.com>\n"
 "Language-Team: Hindi <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/hi/>\n"
 "Language: hi\n"
@@ -81,35 +81,35 @@ msgstr ""
 msgid "Responsive UI to fit large and small screen sizes"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:48
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:52
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:56
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:60
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
 #, fuzzy
 #| msgid "Trash Selected Apps' User Data?"
 msgid "Manage Apps' User Data"
 msgstr "चयनित ऐप्स का उपयोक्ता डेटा रद्दी करें?"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:64
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
 #, fuzzy
 #| msgid "Trash Selected Apps' User Data?"
 msgid "Backup Apps' User Data"
 msgstr "चयनित ऐप्स का उपयोक्ता डेटा रद्दी करें?"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:68
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
 msgstr ""
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:72
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
 msgstr ""
 

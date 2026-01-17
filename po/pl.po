@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warehouse\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-10 15:04-0400\n"
-"PO-Revision-Date: 2024-12-12 17:45+0000\n"
-"Last-Translator: Karol Tomaszewski <karoltomaszewskimusic@gmail.com>\n"
+"POT-Creation-Date: 2025-06-10 16:52-0400\n"
+"PO-Revision-Date: 2025-10-31 19:31+0000\n"
+"Last-Translator: voorjaarman <voorjaarman@gmail.com>\n"
 "Language-Team: Polish <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/pl/>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.8.1\n"
+"X-Generator: Weblate 5.13\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:3
@@ -27,7 +27,7 @@ msgstr "Warehouse"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak;packages;apps;remotes;snapshots;"
-msgstr ""
+msgstr "flatpak;pakiety;aplikacje;źródła;migawki;"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
@@ -88,33 +88,33 @@ msgstr ""
 msgid "Responsive UI to fit large and small screen sizes"
 msgstr "Responsywny interfejs dla ekranów dużego i małego rozmiaru"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:48
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
 msgstr ""
 "Zarządzaj zainstalowanymi pakietami w interfejsie użytkownika z trzema "
 "panelami"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:52
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
 msgstr "Właściwości w wąskim oknie"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:56
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
 msgstr "Zarządzaj źródłami i dodawaj nowe"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:60
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:58
 msgid "Manage Apps' User Data"
 msgstr "Zarządzaj danymi użytkowników w aplikacjach"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:64
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:62
 msgid "Backup Apps' User Data"
 msgstr "Rób kopie zapasowe danych użytkowników z aplikacji"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:68
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
 msgstr "Instaluj nowe zdalne lub lokalne pakiety"
 
-#: data/io.github.flattool.Warehouse.metainfo.xml.in:72
+#: data/io.github.flattool.Warehouse.metainfo.xml.in:70
 msgid "Install Page in Narrow Window"
 msgstr "Instaluj w wąskim oknie"
 
@@ -138,7 +138,7 @@ msgstr "kaklewski<oskarkaklewski@gmail.com>"
 
 #: src/main.py:249
 msgid "Donate"
-msgstr "Darowizna"
+msgstr "Dorzuć się"
 
 #: src/main.py:251
 msgid "Contributors"
@@ -267,7 +267,7 @@ msgstr "Kopiuj"
 #: src/gtk/error_toast.py:24 src/main_window/window.py:142
 #: src/main_window/window.py:152 src/main_window/window.py:161
 msgid "OK"
-msgstr "OK"
+msgstr "Okej"
 
 #: src/gtk/help-overlay.blp:9
 msgid "General"
@@ -287,7 +287,7 @@ msgstr "Otwórz Menu"
 
 #: src/gtk/help-overlay.blp:23
 msgid "Show Shortcuts"
-msgstr "Pokaż Skróty"
+msgstr "Pokaż skróty"
 
 #: src/gtk/help-overlay.blp:27
 msgid "Quit"
@@ -474,7 +474,7 @@ msgstr "_Otwórz Pliki"
 
 #: src/main_window/window.blp:165
 msgid "_Keyboard Shortcuts"
-msgstr "_Skróty klawiszowe"
+msgstr "_Skróty klawiaturowe"
 
 #: src/main_window/window.blp:169
 msgid "_About Warehouse"
@@ -816,8 +816,6 @@ msgid "Runtime"
 msgstr "Środowisko uruchomieniowe"
 
 #: src/properties_page/properties_page.blp:188
-#, fuzzy
-#| msgid "Disable Automactic Removal"
 msgid "Disable Automatic Removal"
 msgstr "Wyłącz automatyczne usuwanie"
 
@@ -1094,7 +1092,7 @@ msgstr "Dodaj"
 
 #: src/remotes_page/add_remote_dialog.blp:40
 msgid "Title"
-msgstr "Nazwa"
+msgstr "Tytuł"
 
 #: src/remotes_page/add_remote_dialog.blp:43
 #: src/user_data_page/user_data_page.blp:190
@@ -1460,7 +1458,7 @@ msgstr "Pozostałe dane"
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
 msgid "Search Apps"
-msgstr "Przeszukaj aplikacje"
+msgstr "Wyszukaj aplikacje"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
@@ -1487,7 +1485,7 @@ msgstr "Nazwij ten zrzut"
 
 #: src/snapshot_page/snapshot_box.blp:15 src/snapshot_page/snapshot_box.py:62
 msgid "No Name Set"
-msgstr "Nie ustawiono nazwy"
+msgstr "Brak nazwy"
 
 #: src/snapshot_page/snapshot_box.blp:23
 msgid "No date found"
