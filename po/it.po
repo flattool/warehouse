@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 16:52-0400\n"
-"PO-Revision-Date: 2025-06-24 09:46+0000\n"
-"Last-Translator: ales-ro <bianaless6@gmail.com>\n"
+"PO-Revision-Date: 2026-01-21 09:04+0000\n"
+"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/it/>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.14.3\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:3
@@ -275,7 +275,7 @@ msgstr "OK"
 
 #: src/gtk/help-overlay.blp:9
 msgid "General"
-msgstr "Generali"
+msgstr "Generale"
 
 #: src/gtk/help-overlay.blp:11
 msgid "Refresh"
@@ -291,11 +291,11 @@ msgstr "Apri il menù"
 
 #: src/gtk/help-overlay.blp:23
 msgid "Show Shortcuts"
-msgstr "Mostra le scorciatoie"
+msgstr "Mostra scorciatoie"
 
 #: src/gtk/help-overlay.blp:27
 msgid "Quit"
-msgstr "Chiudi"
+msgstr "Esci"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
@@ -703,7 +703,7 @@ msgstr "Caricamento pacchetti in corso"
 #: src/snapshot_page/snapshot_page.py:560 src/install_page/install_page.py:102
 #: src/install_page/results_page.py:138
 msgid "This should only take a moment"
-msgstr "Questa operazione dovrebbe richiedere pochi instanti"
+msgstr "Dovrebbe richiedere solo un momento"
 
 #: src/packages_page/packages_page.py:374
 msgid "Uninstalling Packages"
@@ -1467,7 +1467,7 @@ msgstr "Dati rimasti"
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
 msgid "Search Apps"
-msgstr "Cerca applicazioni"
+msgstr "Cerca App"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
