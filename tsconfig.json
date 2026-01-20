@@ -1,0 +1,32 @@
+{
+	"compilerOptions": {
+		// <!!> REQUIRED FOR THE APP TO FUNCTION <!!>
+		"target": "ES2022",
+		"module": "ES2022",
+		"lib": ["ES2022"],
+		"allowJs": true,
+		"outDir": "_build/tsc-out",
+		"moduleResolution": "node",
+		"baseUrl": ".",
+		"paths": {
+			"*": ["*", "types/*", "gi-types/*", "tests/sources/*"]
+		},
+		"typeRoots": ["gi-types"],
+		"forceConsistentCasingInFileNames": true,
+
+		// Optional Flags
+		"allowUnreachableCode": false,
+		"allowUnusedLabels": false,
+		"exactOptionalPropertyTypes": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedParameters": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"verbatimModuleSyntax": true
+	},
+	"include": ["gi-types/gi.d.ts", "types/ambient.d.ts", "src/","tests/sources/*"]
+}

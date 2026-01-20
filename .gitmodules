@@ -1,0 +1,8 @@
+[submodule "src/gobjectify"]
+	path = src/gobjectify
+	url = https://github.com/flattool/gobjectify.git
+	branch = sdk-v49
+[submodule "gi-types"]
+	path = gi-types
+	url = https://github.com/flattool/gir-ts-types.git
+	branch = sdk-v49

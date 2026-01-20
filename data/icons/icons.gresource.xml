@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gresources>
+	<gresource prefix="/io/github/flattool/Warehouse/icons/scalable/actions/">
+		<!-- These contents will be auto-populated by meson_icon_compile.py, called in data/icons/meson.build -->
+	</gresource>
+</gresources>

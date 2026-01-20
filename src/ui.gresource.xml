@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gresources>
+	<gresource prefix="/io/github/flattool/Warehouse">
+		<!-- These contents will be auto-populated by meson_blueprint_compile.py, called in src/meson.build -->
+	</gresource>
+</gresources>

@@ -1,9 +1,14 @@
 option(
-  'profile',
-  type: 'combo',
-  choices: [
-    'default',
-    'development'
-  ],
-  value: 'default'
+	'profile',
+	type: 'combo',
+	choices: [
+		'default',
+		'development'
+	],
+	value: 'default',
+)
+option('tests',
+  type: 'boolean',
+  value: true,
+  description: 'Enable tests'
 )

@@ -1,7 +1,9 @@
-/subprojects/blueprint-compiler
 .DS_Store
 .flatpak
 .flatpak-builder
-.idea/
-.ruff_cache/
 .vscode
+.zed
+__pycache__
+_build
+node_modules
+package-lock.json

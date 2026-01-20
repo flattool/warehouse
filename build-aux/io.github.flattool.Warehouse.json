@@ -3,7 +3,14 @@
 	"runtime": "org.gnome.Platform",
 	"runtime-version": "49",
 	"sdk": "org.gnome.Sdk",
-	"command": "warehouse",
+	"sdk-extensions": [
+		"org.freedesktop.Sdk.Extension.typescript",
+		"org.freedesktop.Sdk.Extension.node22"
+	],
+	"build-options": {
+		"append-path": "/usr/lib/sdk/node22/bin:/usr/lib/sdk/typescript/bin"
+	},
+	"command": "io.github.flattool.Warehouse",
 	"finish-args": [
 		"--share=ipc",
 		"--socket=fallback-x11",
@@ -28,13 +35,13 @@
 	],
 	"modules": [
 		{
-			"name": "blueprint-compiler",
+			"name": "jasmine-gjs",
 			"buildsystem": "meson",
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-					"tag": "v0.18.0"
+					"url": "https://github.com/ptomato/jasmine-gjs.git",
+					"branch": "master"
 				}
 			],
 			"cleanup": ["*"]
@@ -49,7 +56,9 @@
 					"type": "dir",
 					"path": ".."
 				}
-			]
+			],
+			"run-tests": true,
+			"test-rule": "test"
 		}
 	]
 }

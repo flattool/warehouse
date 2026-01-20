@@ -1,0 +1,33 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MainWindow: Adw.ApplicationWindow {
+	title: _("Warehouse");
+
+	content: Adw.ToolbarView toolbar_view {
+		[top]
+		Adw.HeaderBar header_bar {
+			[end]
+			MenuButton {
+				primary: true;
+				icon-name: "open-menu-symbolic";
+				tooltip-text: _("Main Menu");
+				menu-model: primary_menu;
+			}
+		}
+
+		content: Adw.StatusPage status_page {
+			icon-name: "io.github.flattool.Warehouse";
+			title: bind template.title;
+			description: _("Flattool template default description");
+		};
+	};
+}
+
+menu primary_menu {
+	section {
+		item (_("_Preferences"), "app.preferences")
+		item (_("Keyboard Shortcuts"), "app.shortcuts")
+		item (_("_About Warehouse"), "app.about")
+	}
+}
