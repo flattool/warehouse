@@ -7,6 +7,7 @@ import { Installation, get_installations } from "../flatpak.js"
 import { SidebarRow } from "./sidebar_row.js"
 import { BasePage } from "../pages/base_page.js"
 
+import "../pages/packages_page.js"
 import "../pages/remotes_page.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/window/main_window.ui" })

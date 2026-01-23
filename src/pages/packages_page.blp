@@ -1,0 +1,18 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PackagesPage: $BasePage {
+	title: _("Manage Packages");
+	sidebar_title: _("Packages");
+	icon_name: "warehouse:flatpak-symbolic";
+
+	child: Adw.ToolbarView {
+		[top]
+		Adw.HeaderBar {}
+
+		content: Adw.StatusPage {
+			title: _("Packages");
+			description: _("Manage your packages teehee colon three");
+		};
+	};
+}

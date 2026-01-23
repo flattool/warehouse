@@ -33,6 +33,10 @@ template $MainWindow: Adw.ApplicationWindow {
 		};
 
 		content: Adw.ViewStack view_stack {
+			$PackagesPage packages_page {
+				installations: installations;
+			}
+
 			$RemotesPage remotes_page {
 				installations: installations;
 			}
@@ -47,21 +51,3 @@ menu primary_menu {
 		item (_("_About Warehouse"), "app.about")
 	}
 }
-
-// content: Adw.ToolbarView toolbar_view {
-// 	[top]
-// 	Adw.HeaderBar header_bar {
-// 		[end]
-// 		MenuButton {
-// 			primary: true;
-// 			icon-name: "open-menu-symbolic";
-// 			tooltip-text: _("Main Menu");
-// 			menu-model: primary_menu;
-// 		}
-// 	}
-// 	content: Adw.StatusPage status_page {
-// 		icon-name: "io.github.flattool.Warehouse";
-// 		title: bind template.title;
-// 		description: _("Flattool template default description");
-// 	};
-// };
