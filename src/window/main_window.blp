@@ -1,25 +1,47 @@
 using Gtk 4.0;
 using Adw 1;
+using Gio 2.0;
+
+Gio.ListStore installations {
+	item-type: typeof<$Installation>;
+}
 
 template $MainWindow: Adw.ApplicationWindow {
 	title: _("Warehouse");
 
-	content: Adw.ToolbarView toolbar_view {
-		[top]
-		Adw.HeaderBar header_bar {
-			[end]
-			MenuButton {
-				primary: true;
-				icon-name: "open-menu-symbolic";
-				tooltip-text: _("Main Menu");
-				menu-model: primary_menu;
+	content: Adw.OverlaySplitView split_view {
+		sidebar: Adw.ToolbarView {
+			[top]
+			Adw.HeaderBar header_bar {
+				[end]
+				MenuButton {
+					primary: true;
+					icon-name: "open-menu-symbolic";
+					tooltip-text: _("Main Menu");
+					menu-model: primary_menu;
+				}
 			}
-		}
 
-		content: Adw.StatusPage status_page {
-			icon-name: "io.github.flattool.Warehouse";
-			title: bind template.title;
-			description: _("Flattool template default description");
+			content: ListBox sidebar_list {
+				selection-mode: single;
+				row-selected => $_on_row_selected();
+
+				styles [
+					"navigation-sidebar",
+				]
+			};
+		};
+
+		content: Adw.ViewStack view_stack {
+			$ContentPage {
+				title: _("Page One");
+				installations: installations;
+			}
+
+			$ContentPage {
+				title: _("Page Two");
+				installations: installations;
+			}
 		};
 	};
 }
@@ -31,3 +53,21 @@ menu primary_menu {
 		item (_("_About Warehouse"), "app.about")
 	}
 }
+
+// content: Adw.ToolbarView toolbar_view {
+// 	[top]
+// 	Adw.HeaderBar header_bar {
+// 		[end]
+// 		MenuButton {
+// 			primary: true;
+// 			icon-name: "open-menu-symbolic";
+// 			tooltip-text: _("Main Menu");
+// 			menu-model: primary_menu;
+// 		}
+// 	}
+// 	content: Adw.StatusPage status_page {
+// 		icon-name: "io.github.flattool.Warehouse";
+// 		title: bind template.title;
+// 		description: _("Flattool template default description");
+// 	};
+// };

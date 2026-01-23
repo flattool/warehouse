@@ -1,0 +1,240 @@
+// This frustratingly must be one file due to circular imports
+
+import GObject from "gi://GObject?version=2.0"
+import GLib from "gi://GLib?version=2.0"
+import Gio from "gi://Gio?version=2.0"
+
+import { GClass, Property, next_idle, from } from "./gobjectify/gobjectify.js"
+import { run_command_async } from "./utils/helper_funcs.js"
+import { SharedVars } from "./utils/shared_vars.js"
+
+const CUSTOM_INSTALLATIONS_DIR = Gio.File.new_for_path("/run/host/etc/flatpak/installations.d")
+const REMOTES_LIST_COLUMN_ITEMS = {
+	columns: ["title", "comment", "description", "options", "name"] as const,
+	index_of(item: (typeof this.columns)[number]): number {
+		return this.columns.indexOf(item)
+	},
+} as const
+const PACK_LIST_COLUMN_ITEMS = {
+	columns: [
+		"description",
+		"application",
+		"version",
+		"branch",
+		"arch",
+		"runtime",
+		"origin",
+		"ref",
+		"active",
+		"latest",
+		"size",
+		"options",
+		"name",
+	] as const,
+	index_of(item: (typeof this.columns)[number]): number {
+		return this.columns.indexOf(item)
+	},
+} as const
+
+@GClass()
+export class Installation extends from(GObject.Object, {
+	name: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	title: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	location_tag: Property.string({ flags: "CONSTRUCT_ONLY", default: "system" }).as<"system" | "user" | "other">(),
+	location_path: Property.string({ flags: "CONSTRUCT_ONLY" }),
+}) {
+	readonly remotes = new Gio.ListStore<Remote>({ item_type: Remote.$gtype })
+	readonly packages = new Gio.ListStore<Package>({ item_type: Package.$gtype })
+
+	get command_syntax(): string {
+		return this.location_tag === "other" ? `--installation=${this.name}` : `--${this.name}`
+	}
+
+	async load_remotes(): Promise<void> {
+		return await get_remotes(this, this.remotes)
+	}
+
+	async load_packages(): Promise<void> {
+		return await get_packages(this, this.packages)
+	}
+}
+
+export async function get_installations(list: Gio.ListStore): Promise<void> {
+	list.remove_all()
+	const raw_installations = new Set(
+		(await run_command_async(["flatpak", "--installations"], { run_on_host: true })).split("\n"),
+	)
+	if (CUSTOM_INSTALLATIONS_DIR.query_exists(null)) {
+		for (const file_info of CUSTOM_INSTALLATIONS_DIR.enumerate_children(
+			"standard::*",
+			Gio.FileQueryInfoFlags.NONE,
+			null,
+		)) {
+			const path: string = `${CUSTOM_INSTALLATIONS_DIR.get_path()}/${file_info.get_name()}`
+			const keyfile = new GLib.KeyFile()
+			try {
+				keyfile.load_from_file(path, GLib.KeyFileFlags.NONE)
+			} catch (error) {
+				print(error)
+				continue
+			}
+			const groups: string[] = keyfile.get_groups()[0]
+			for (const group of groups) {
+				await next_idle()
+				const name = group.replace('Installation "', "").replace('"', "")
+				let title: string
+				try {
+					title = keyfile.get_string(group, "DisplayName")
+				} catch {
+					title = name
+				}
+				let inst_path: string
+				try {
+					inst_path = keyfile.get_string(group, "Path")
+				} catch (error) {
+					print(error)
+					continue
+				}
+				const installation = new Installation({
+					name,
+					title,
+					location_tag: "other",
+					location_path: inst_path,
+				})
+				if (inst_path && raw_installations.has(inst_path)) {
+					raw_installations.delete(inst_path)
+				}
+				list.append(installation)
+			}
+		}
+	}
+	if (raw_installations.size === 1) {
+		const system_raw: string = [...raw_installations.values()][0]!
+		list.append(new Installation({
+			name: "system",
+			title: _("System"),
+			location_tag: "system",
+			location_path: system_raw,
+		}))
+	}
+	list.append(new Installation({
+		name: "user",
+		title: _("User"),
+		location_tag: "user",
+		location_path: `${SharedVars.local_share_path}/flatpak`,
+	}))
+}
+
+const BaseRemote = from(GObject.Object, {
+	name: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	title: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	comment: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	description: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	options: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	installation: Property.gobject(Installation, { flags: "CONSTRUCT_ONLY" }),
+	disabled: Property.bool(),
+})
+
+@GClass()
+export class Remote extends BaseRemote {
+	constructor(...params: ConstructorParameters<typeof BaseRemote>) {
+		super(...params)
+		this.disabled = this.options.includes("disabled")
+	}
+}
+
+async function get_remotes(
+	installation: Installation,
+	list: Gio.ListStore<Remote>,
+): Promise<void> {
+	list.remove_all()
+	const columns: string = REMOTES_LIST_COLUMN_ITEMS.columns.join(",")
+	const raw_remotes: string[] = (
+		await run_command_async(
+			["flatpak", "remotes", installation.command_syntax, `--columns=${columns}`, "--show-disabled"],
+			{ run_on_host: true },
+		)
+	).split("\n")
+	for (const row of raw_remotes) {
+		await next_idle()
+		const info: string[] = row.trim().split("\t")
+		if (info.length !== REMOTES_LIST_COLUMN_ITEMS.columns.length) continue
+		const remote = new Remote({
+			name: info[REMOTES_LIST_COLUMN_ITEMS.index_of("name")] ?? "",
+			title: info[REMOTES_LIST_COLUMN_ITEMS.index_of("title")] ?? "",
+			comment: info[REMOTES_LIST_COLUMN_ITEMS.index_of("comment")] ?? "",
+			description: info[REMOTES_LIST_COLUMN_ITEMS.index_of("description")] ?? "",
+			options: info[REMOTES_LIST_COLUMN_ITEMS.index_of("options")] ?? "",
+			installation,
+		})
+		list.append(remote)
+	}
+}
+
+const BasePackage = from(GObject.Object, {
+	title: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	description: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	application: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	version: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	branch: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	arch: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	runtime: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	origin: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	app_ref: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	active: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	latest: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	size: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	options: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	installation: Property.gobject(Installation, { flags: "CONSTRUCT_ONLY" }),
+	data_dir: Property.gobject(Gio.File),
+	is_runtime: Property.bool(),
+})
+
+@GClass()
+export class Package extends BasePackage {
+	static readonly user_data_dir = Gio.File.new_for_path(GLib.get_home_dir() + "/.var/app")
+
+	constructor(...params: ConstructorParameters<typeof BasePackage>) {
+		super(...params)
+		this.is_runtime = this.options.includes("runtime")
+		if (!this.is_runtime) {
+			this.data_dir = Gio.File.new_for_path(`${Package.user_data_dir.get_path()}/${this.application}`)
+		}
+	}
+}
+
+async function get_packages(
+	installation: Installation,
+	list: Gio.ListStore<Package>,
+): Promise<void> {
+	list.remove_all()
+	const columns: string = PACK_LIST_COLUMN_ITEMS.columns.join(",")
+	const raw_packs: string[] = (
+		await run_command_async(
+			["flatpak", "list", installation.command_syntax, `--columns=${columns}`],
+			{ run_on_host: true },
+		)
+	).split("\n")
+	for (const row of raw_packs) {
+		await next_idle()
+		const info: string[] = row.trim().split("\t")
+		if (info.length !== PACK_LIST_COLUMN_ITEMS.columns.length) continue
+		const pack = new Package({
+			title: info[PACK_LIST_COLUMN_ITEMS.index_of("name")] ?? "",
+			description: info[PACK_LIST_COLUMN_ITEMS.index_of("description")] ?? "",
+			application: info[PACK_LIST_COLUMN_ITEMS.index_of("application")] ?? "",
+			version: info[PACK_LIST_COLUMN_ITEMS.index_of("version")] ?? "",
+			branch: info[PACK_LIST_COLUMN_ITEMS.index_of("branch")] ?? "",
+			arch: info[PACK_LIST_COLUMN_ITEMS.index_of("arch")] ?? "",
+			runtime: info[PACK_LIST_COLUMN_ITEMS.index_of("runtime")] ?? "",
+			origin: info[PACK_LIST_COLUMN_ITEMS.index_of("origin")] ?? "",
+			app_ref: info[PACK_LIST_COLUMN_ITEMS.index_of("ref")] ?? "",
+			active: info[PACK_LIST_COLUMN_ITEMS.index_of("active")] ?? "",
+			latest: info[PACK_LIST_COLUMN_ITEMS.index_of("latest")] ?? "",
+			size: info[PACK_LIST_COLUMN_ITEMS.index_of("size")] ?? "",
+			options: info[PACK_LIST_COLUMN_ITEMS.index_of("options")] ?? "",
+			installation,
+		})
+		list.append(pack)
+	}
+}
