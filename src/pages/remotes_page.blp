@@ -1,0 +1,18 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $RemotesPage: $BasePage {
+	title: _("Manage Remotes");
+	sidebar_title: _("Remotes");
+	icon_name: "warehouse:server-pick-symbolic";
+
+	child: Adw.ToolbarView {
+		[top]
+		Adw.HeaderBar {}
+
+		content: Adw.StatusPage {
+			title: "Hello";
+			description: _("Hello World");
+		};
+	};
+}

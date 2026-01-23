@@ -4,8 +4,10 @@ import Gio from "gi://Gio?version=2.0"
 
 import { GClass, Child, Property, from } from "../gobjectify/gobjectify.js"
 import { Installation, get_installations } from "../flatpak.js"
+import { SidebarRow } from "./sidebar_row.js"
+import { BasePage } from "../pages/base_page.js"
 
-import { ContentPage } from "../widgets/content_page.js"
+import "../pages/remotes_page.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/window/main_window.ui" })
 export class MainWindow extends from(Adw.ApplicationWindow, {
@@ -32,7 +34,10 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 		const base_list: Gtk.SelectionModel<Adw.ViewStackPage> = this._view_stack.pages
 		this._sidebar_list.bind_model(
 			base_list,
-			(item) => new Gtk.Label({ label: ((item as Adw.ViewStackPage).child as ContentPage).title }),
+			(item) => new SidebarRow({
+				icon_name: ((item as Adw.ViewStackPage).child as BasePage).icon_name,
+				text: ((item as Adw.ViewStackPage).child as BasePage).sidebar_title,
+			}),
 		)
 	}
 

@@ -5,8 +5,8 @@ import { GClass, Property, from } from "../gobjectify/gobjectify.js"
 import { Installation } from "../flatpak.js"
 
 @GClass()
-export class ContentPage extends from(Adw.Bin, {
-	title: Property.string(),
-	icon: Property.string(),
+export class BasePage extends from(Adw.NavigationPage, {
 	installations: Property.gobject(Gio.ListStore, { flags: "CONSTRUCT_ONLY" }).as<Gio.ListStore<Installation>>(),
+	sidebar_title: Property.string(),
+	icon_name: Property.string(),
 }) {}

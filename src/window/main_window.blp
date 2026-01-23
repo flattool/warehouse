@@ -33,13 +33,7 @@ template $MainWindow: Adw.ApplicationWindow {
 		};
 
 		content: Adw.ViewStack view_stack {
-			$ContentPage {
-				title: _("Page One");
-				installations: installations;
-			}
-
-			$ContentPage {
-				title: _("Page Two");
+			$RemotesPage remotes_page {
 				installations: installations;
 			}
 		};

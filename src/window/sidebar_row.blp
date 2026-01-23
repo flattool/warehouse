@@ -1,0 +1,19 @@
+using Gtk 4.0;
+
+template $SidebarRow: Box {
+	margin-start: 6;
+	margin-end: 6;
+	margin-top: 12;
+	margin-bottom: 12;
+	spacing: 12;
+
+	Image {
+		icon-name: bind template.icon_name;
+	}
+
+	Label {
+		label: bind template.text;
+		wrap: true;
+		wrap-mode: word_char;
+	}
+}
