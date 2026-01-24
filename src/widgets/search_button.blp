@@ -1,0 +1,14 @@
+using Gtk 4.0;
+
+template $SearchButton: ToggleButton {
+	icon-name: "search";
+
+	ShortcutController {
+		scope: managed;
+
+		Shortcut {
+			trigger: bind $_get_trigger(template.keyboard_shortcut) as <Gtk.ShortcutTrigger>;
+			action: "signal(start-searching)";
+		}
+	}
+}

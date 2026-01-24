@@ -1,0 +1,26 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $SearchGroup: Adw.Bin {
+	child: Stack {
+		visible-child-name: bind $_get_visible_page(template.no_results) as <string>;
+
+		StackPage {
+			name: "no_results_page";
+
+			child: Adw.StatusPage {
+				icon-name: "ignition:system-search-symbolic";
+				title: _("No Results Found");
+				description: _("Try a different search.");
+			};
+		}
+
+		StackPage {
+			name: "content_page";
+
+			child: Adw.Bin {
+				child: bind template.content;
+			};
+		}
+	};
+}

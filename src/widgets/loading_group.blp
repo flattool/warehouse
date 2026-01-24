@@ -1,0 +1,29 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $LoadingGroup: Adw.Bin {
+	child: Stack {
+		visible-child-name: bind $_get_visible_page(template.is_loading) as <string>;
+
+		StackPage {
+			name: "loading_page";
+
+			child: Adw.StatusPage {
+				paintable: Adw.SpinnerPaintable {
+					widget: template;
+				};
+
+				title: bind template.title;
+				description: bind template.description;
+			};
+		}
+
+		StackPage {
+			name: "content_page";
+
+			child: Adw.Bin {
+				child: bind template.content;
+			};
+		}
+	};
+}

@@ -5,10 +5,10 @@ import Gio from "gi://Gio?version=2.0"
 import { GClass, Child, Property, from } from "../gobjectify/gobjectify.js"
 import { Installation, get_installations } from "../flatpak.js"
 import { SidebarRow } from "./sidebar_row.js"
-import { BasePage } from "../pages/base_page.js"
+import type { BasePage } from "../widgets/base_page.js"
 
-import "../pages/packages_page.js"
-import "../pages/remotes_page.js"
+import "../packages_page/packages_page.js"
+import "../remotes_page/remotes_page.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/window/main_window.ui" })
 export class MainWindow extends from(Adw.ApplicationWindow, {

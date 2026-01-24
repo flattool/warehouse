@@ -1,0 +1,53 @@
+using Gtk 4.0;
+using Adw 1;
+
+MapListModel map_model {
+	model: bind template.installations;
+}
+
+template $RemotesPage: Adw.NavigationPage {
+	title: _("Manage Remotes");
+	sidebar_title: _("Remotes");
+	icon_name: "warehouse:server-pick-symbolic";
+
+	child: $LoadingGroup {
+		content: $SearchGroup {
+			[top]
+			Adw.HeaderBar {
+				[start]
+				$SearchButton {
+					search_bar: search_bar;
+				}
+			}
+
+			[top]
+			Adw.Clamp {
+				child: SearchBar search_bar {
+					child: SearchEntry {
+						placeholder-text: _("Search Remotes");
+					};
+				};
+			}
+
+			content: $SearchGroup {
+				content: Adw.PreferencesPage {
+					Adw.PreferencesGroup current_group {
+						title: _("Current Remotes");
+						description: _("Remotes available on your system");
+
+						header-suffix: ToggleButton show_disabled_button {
+							child: Adw.ButtonContent {
+								icon-name: "eye-not-looking-symbolic";
+								label: _("Show Disabled");
+							};
+
+							styles [
+								"flat",
+							]
+						};
+					}
+				};
+			};
+		};
+	};
+}
