@@ -1,0 +1,23 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $RemoteRow: Adw.ActionRow {
+	title: bind template.remote as <$Remote>.title;
+	subtitle: bind $_get_subtitle(template.remote as <$Remote>.installation as <$Installation>.title) as <string>;
+
+	[suffix]
+	Label {
+		label: bind template.remote as <$Remote>.name;
+		margin-end: 6;
+		wrap: true;
+		wrap-mode: word_char;
+		natural-wrap-mode: none;
+		halign: end;
+		hexpand: true;
+		justify: right;
+
+		styles [
+			"subtitle",
+		]
+	}
+}

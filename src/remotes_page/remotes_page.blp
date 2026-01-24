@@ -1,8 +1,20 @@
 using Gtk 4.0;
 using Adw 1;
 
-MapListModel map_model {
-	model: bind template.installations;
+SortListModel remotes_list {
+	sorter: StringSorter {
+		expression: expr item as <$Installation>.title;
+	};
+
+	model: FilterListModel {
+		filter: CustomFilter only_remotes_filter {};
+
+		model: FlattenListModel {
+			model: MapListModel map_model {
+				model: bind template.installations;
+			};
+		};
+	};
 }
 
 template $RemotesPage: Adw.NavigationPage {
@@ -11,7 +23,7 @@ template $RemotesPage: Adw.NavigationPage {
 	icon_name: "warehouse:server-pick-symbolic";
 
 	child: $LoadingGroup {
-		content: $SearchGroup {
+		content: Adw.ToolbarView {
 			[top]
 			Adw.HeaderBar {
 				[start]
@@ -36,6 +48,8 @@ template $RemotesPage: Adw.NavigationPage {
 						description: _("Remotes available on your system");
 
 						header-suffix: ToggleButton show_disabled_button {
+							valign: center;
+
 							child: Adw.ButtonContent {
 								icon-name: "eye-not-looking-symbolic";
 								label: _("Show Disabled");
