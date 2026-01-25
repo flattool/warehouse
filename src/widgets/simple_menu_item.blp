@@ -1,0 +1,8 @@
+using Gtk 4.0;
+
+template $SimpleMenuItem: ListBoxRow {
+	child: Label {
+		label: bind template.label;
+		halign: start;
+	};
+}

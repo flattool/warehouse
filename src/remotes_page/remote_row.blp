@@ -20,4 +20,24 @@ template $RemoteRow: Adw.ActionRow {
 			"subtitle",
 		]
 	}
+
+	[suffix]
+	MenuButton more_menu {
+		valign: center;
+		icon-name: "warehouse:view-more-symbolic";
+		tooltip-text: _("More Actions");
+
+		styles [
+			"flat",
+		]
+	}
+}
+
+$SimpleMenu {
+	menu_button: more_menu;
+
+	$SimpleMenuItem {
+		label: "Example";
+		chosen => $_example_chosen();
+	}
 }
