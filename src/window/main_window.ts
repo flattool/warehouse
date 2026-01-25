@@ -5,7 +5,7 @@ import Gio from "gi://Gio?version=2.0"
 import { GClass, Child, Property, from } from "../gobjectify/gobjectify.js"
 import { Installation, get_installations } from "../flatpak.js"
 import { SidebarRow } from "./sidebar_row.js"
-import type { BasePage } from "../widgets/base_page.js"
+import { BasePage } from "../widgets/base_page.js"
 
 import "../packages_page/packages_page.js"
 import "../remotes_page/remotes_page.js"
