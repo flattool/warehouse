@@ -2,6 +2,7 @@ import Adw from "gi://Adw?version=1"
 
 import { GClass, Property, from } from "../gobjectify/gobjectify.js"
 import { Remote } from "../flatpak.js"
+import { SharedVars } from "../utils/shared_vars.js"
 
 import "../widgets/simple_menu.js"
 import "../widgets/simple_menu_item.js"
@@ -14,7 +15,33 @@ export class RemoteRow extends from(Adw.ActionRow, {
 		return _("Installation: %s").format(inst_title)
 	}
 
-	protected _example_chosen(): void {
-		print("WOAH!!!")
+	protected _copy_title(): void {
+		if (this.remote) {
+			const title: string = this.remote.title
+			SharedVars.fancy_copy(_("Copied %s").format(title), title)
+		} else {
+			SharedVars.main_window?.add_error_toast(_("Could not copy title"), "Remote is null")
+		}
+	}
+
+	protected _copy_name(): void {
+		if (this.remote) {
+			const name: string = this.remote.name
+			SharedVars.fancy_copy(_("Copied %s").format(name), name)
+		} else {
+			SharedVars.main_window?.add_error_toast(_("Could not copy name"), "Remote is null")
+		}
+	}
+
+	protected _enable(): void {
+		print("enable")
+	}
+
+	protected _disable(): void {
+		print("disable")
+	}
+
+	protected _remove(): void {
+		print("remove")
 	}
 }

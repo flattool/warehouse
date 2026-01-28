@@ -27,7 +27,7 @@ template $RemotesPage: $BasePage {
 			[top]
 			Adw.HeaderBar {
 				[start]
-				$SearchButton {
+				$SearchButton search_button {
 					search_bar: search_bar;
 				}
 			}
@@ -35,7 +35,11 @@ template $RemotesPage: $BasePage {
 			[top]
 			Adw.Clamp {
 				child: SearchBar search_bar {
+					search-mode-enabled: bind search_button.active bidirectional;
+					key-capture-widget: template;
+
 					child: SearchEntry {
+						hexpand: true;
 						placeholder-text: _("Search Remotes");
 					};
 				};

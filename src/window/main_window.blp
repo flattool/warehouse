@@ -9,37 +9,39 @@ Gio.ListStore installations {
 template $MainWindow: Adw.ApplicationWindow {
 	title: _("Warehouse");
 
-	content: Adw.OverlaySplitView split_view {
-		sidebar: Adw.ToolbarView {
-			[top]
-			Adw.HeaderBar header_bar {
-				[end]
-				MenuButton {
-					primary: true;
-					icon-name: "open-menu-symbolic";
-					tooltip-text: _("Main Menu");
-					menu-model: primary_menu;
+	content: Adw.ToastOverlay toast_overlay {
+		child: Adw.OverlaySplitView split_view {
+			sidebar: Adw.ToolbarView {
+				[top]
+				Adw.HeaderBar header_bar {
+					[end]
+					MenuButton {
+						primary: true;
+						icon-name: "open-menu-symbolic";
+						tooltip-text: _("Main Menu");
+						menu-model: primary_menu;
+					}
 				}
-			}
 
-			content: ListBox sidebar_list {
-				selection-mode: single;
-				row-selected => $_on_row_selected();
+				content: ListBox sidebar_list {
+					selection-mode: single;
+					row-selected => $_on_row_selected();
 
-				styles [
-					"navigation-sidebar",
-				]
+					styles [
+						"navigation-sidebar",
+					]
+				};
 			};
-		};
 
-		content: Adw.ViewStack view_stack {
-			$PackagesPage packages_page {
-				installations: installations;
-			}
+			content: Adw.ViewStack view_stack {
+				$PackagesPage packages_page {
+					installations: installations;
+				}
 
-			$RemotesPage remotes_page {
-				installations: installations;
-			}
+				$RemotesPage remotes_page {
+					installations: installations;
+				}
+			};
 		};
 	};
 }

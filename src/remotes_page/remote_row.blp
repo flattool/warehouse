@@ -37,7 +37,29 @@ $SimpleMenu {
 	menu_button: more_menu;
 
 	$SimpleMenuItem {
-		label: "Example";
-		chosen => $_example_chosen();
+		label: _("Copy Title");
+		chosen => $_copy_title();
+	}
+
+	$SimpleMenuItem {
+		label: _("Copy Name");
+		chosen => $_copy_name();
+	}
+
+	$SimpleMenuItem enable_item {
+		label: _("Enable");
+		visible: bind template.remote as <$Remote>.disabled;
+		chosen => $_enable();
+	}
+
+	$SimpleMenuItem {
+		label: _("Disable");
+		visible: bind enable_item.visible inverted;
+		chosen => $_disable();
+	}
+
+	$SimpleMenuItem {
+		label: _("Remove");
+		chosen => $_remove();
 	}
 }

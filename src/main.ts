@@ -5,16 +5,18 @@ import Adw from "gi://Adw?version=1"
 
 import { GClass, SimpleAction, OnSimpleAction, from, dedent } from "./gobjectify/gobjectify.js"
 import { MainWindow } from "./window/main_window.js"
+import { SharedVars } from "./utils/shared_vars.js"
+
+import "./mixins.js"
 
 @GClass({ manual_gtype_name: "Gjs_Application" })
 export class Application extends from(Adw.Application, {
 	_quit: SimpleAction({ accels: ["<primary>q"] }),
 	about: SimpleAction(),
 }) {
-	#main_window?: MainWindow
-
 	override vfunc_activate(): void {
-		(this.#main_window ??= new MainWindow({ application: this })).present()
+		SharedVars.main_window ??= new MainWindow({ application: this })
+		SharedVars.main_window.present()
 	}
 
 	_ready(): void {
