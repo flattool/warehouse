@@ -33,12 +33,28 @@ export class RemoteRow extends from(Adw.ActionRow, {
 		}
 	}
 
-	protected _enable(): void {
-		print("enable")
+	protected async _enable(): Promise<void> {
+		if (!this.remote) {
+			SharedVars.main_window?.add_error_toast(_("Could not enable remote"), "Remote is null")
+			return
+		}
+		try {
+			await this.remote.enable(true)
+		} catch (error) {
+			SharedVars.main_window?.add_error_toast(_("Could not enable remote"), `${error}`)
+		}
 	}
 
-	protected _disable(): void {
-		print("disable")
+	protected async _disable(): Promise<void> {
+		if (!this.remote) {
+			SharedVars.main_window?.add_error_toast(_("Could not enable remote"), "Remote is null")
+			return
+		}
+		try {
+			await this.remote.enable(false)
+		} catch (error) {
+			SharedVars.main_window?.add_error_toast(_("Could not enable remote"), `${error}`)
+		}
 	}
 
 	protected _remove(): void {

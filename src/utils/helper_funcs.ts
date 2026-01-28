@@ -3,19 +3,16 @@ import GLib from "gi://GLib"
 
 import { SharedVars } from "./shared_vars.js"
 
-type RequireAtLeastOne<T> = (T extends any
-	? { [K in keyof T]-?: Required<Pick<T, K>> & Partial<Omit<T, K>> }[keyof T]
-	: never
-)
+type RunCommandConfig = {
+	run_on_host?: boolean,
+	cancellable?: Gio.Cancellable,
+	on_stdout_line?: (line: string) => void,
+	on_stderr_line?: (line: string) => void,
+}
 
 export async function run_command_async(
 	command: string[],
-	config?: RequireAtLeastOne<{
-		run_on_host?: boolean,
-		cancellable?: Gio.Cancellable,
-		on_stdout_line?: (line: string) => void,
-		on_stderr_line?: (line: string) => void,
-	}>,
+	config?: RunCommandConfig,
 ): Promise<string> {
 	const { run_on_host, cancellable, on_stdout_line, on_stderr_line } = config ?? {}
 	const prefix = run_on_host && SharedVars.is_flatpak ? ["flatpak-spawn", "--host"] : []
@@ -111,4 +108,15 @@ export async function run_command_async(
 	})
 
 	return stdout
+}
+
+export async function run_command_async_pkexec_on_fail(
+	command: string[],
+	config?: RunCommandConfig,
+): Promise<string> {
+	try {
+		return await run_command_async(command, config)
+	} catch (error) {
+		return await run_command_async(["pkexec", ...command], config)
+	}
 }

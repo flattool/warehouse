@@ -5,7 +5,7 @@ import GLib from "gi://GLib?version=2.0"
 import Gio from "gi://Gio?version=2.0"
 
 import { GClass, Property, next_idle, from } from "./gobjectify/gobjectify.js"
-import { run_command_async } from "./utils/helper_funcs.js"
+import { run_command_async, run_command_async_pkexec_on_fail } from "./utils/helper_funcs.js"
 import { SharedVars } from "./utils/shared_vars.js"
 
 const CUSTOM_INSTALLATIONS_DIR = Gio.File.new_for_path("/run/host/etc/flatpak/installations.d")
@@ -125,7 +125,8 @@ export async function get_installations(list: Gio.ListStore): Promise<void> {
 	}))
 }
 
-const BaseRemote = from(GObject.Object, {
+@GClass()
+export class Remote extends from(GObject.Object, {
 	name: Property.string({ flags: "CONSTRUCT_ONLY" }),
 	title: Property.string({ flags: "CONSTRUCT_ONLY" }),
 	comment: Property.string({ flags: "CONSTRUCT_ONLY" }),
@@ -133,13 +134,24 @@ const BaseRemote = from(GObject.Object, {
 	options: Property.string({ flags: "CONSTRUCT_ONLY" }),
 	installation: Property.gobject(Installation, { flags: "CONSTRUCT_ONLY" }),
 	disabled: Property.bool(),
-})
+}) {
+	override get disabled(): boolean {
+		return this.options.includes("disabled")
+	}
+	override set disabled(_v: boolean) {
+		throw new Error("Remote::disabled cannot be set!")
+	}
 
-@GClass()
-export class Remote extends BaseRemote {
-	constructor(...params: ConstructorParameters<typeof BaseRemote>) {
-		super(...params)
-		this.disabled = this.options.includes("disabled")
+	async enable(enable_remote: boolean): Promise<void> {
+		if (!this.installation) throw new Error(`Remote '${this.name}' installation is null`)
+		const command: string[] = [
+			"flatpak",
+			"remote-modify",
+			this.installation.command_syntax,
+			this.name,
+			enable_remote ? "--enable" : "--disable",
+		]
+		await run_command_async_pkexec_on_fail(command, { run_on_host: true })
 	}
 }
 
