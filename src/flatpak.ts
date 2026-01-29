@@ -170,6 +170,7 @@ export class Remote extends from(GObject.Object, {
 			enable_remote ? "--enable" : "--disable",
 		]
 		await run_command_async_pkexec_on_fail(command, { run_on_host: true })
+		this.notify("disabled")
 	}
 }
 

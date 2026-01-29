@@ -4,6 +4,7 @@ using Adw 1;
 template $RemoteRow: Adw.ActionRow {
 	title: bind template.remote as <$Remote>.title;
 	subtitle: bind $_get_subtitle(template.remote as <$Remote>.installation as <$Installation>.title) as <string>;
+	disabled: bind $_get_disabled(template.remote as <$Remote>.disabled) as <bool>;
 
 	[suffix]
 	Label {
@@ -22,6 +23,19 @@ template $RemoteRow: Adw.ActionRow {
 	}
 
 	[suffix]
+	MenuButton {
+		icon-name: "warehouse:info-outline-symbolic";
+		visible: bind template.disabled;
+		tooltip-text: _("This remote is disabled...");
+		popover: disabled_info_popover;
+		valign: center;
+
+		styles [
+			"flat",
+		]
+	}
+
+	[suffix]
 	MenuButton more_menu {
 		valign: center;
 		icon-name: "warehouse:view-more-symbolic";
@@ -31,6 +45,19 @@ template $RemoteRow: Adw.ActionRow {
 			"flat",
 		]
 	}
+}
+
+Popover disabled_info_popover {
+	child: Label {
+		label: _("This remote is disabled. Any packages installed from this remote will not be updated, and new packages cannot be installed from this remote.");
+		wrap: true;
+		wrap-mode: word;
+		max-width-chars: 52;
+		margin-start: 6;
+		margin-end: 6;
+		margin-top: 6;
+		margin-bottom: 6;
+	};
 }
 
 $SimpleMenu {
