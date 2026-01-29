@@ -1,7 +1,25 @@
 using Gtk 4.0;
 using Adw 1;
 
+EveryFilter search_filter {
+	CustomFilter enabled_filter {}
+
+	AnyFilter {
+		StringFilter {
+			expression: expr item as <$Remote>.name;
+			search: bind template.search_text;
+		}
+
+		StringFilter {
+			expression: expr item as <$Remote>.title;
+			search: bind template.search_text;
+		}
+	}
+}
+
 SortListModel remotes_list {
+	items-changed => $_on_list_changed();
+
 	sorter: StringSorter {
 		expression: expr item as <$Installation>.title;
 	};
@@ -41,17 +59,21 @@ template $RemotesPage: $BasePage {
 					child: SearchEntry {
 						hexpand: true;
 						placeholder-text: _("Search Remotes");
+						search-changed => $_on_search_changed();
 					};
 				};
 			}
 
 			content: $SearchGroup {
+				no_results: bind template.no_results;
+
 				content: Adw.PreferencesPage {
 					Adw.PreferencesGroup current_group {
 						title: _("Current Remotes");
 						description: _("Remotes available on your system");
 
 						header-suffix: ToggleButton show_disabled_button {
+							active: bind template.show_disabled bidirectional;
 							valign: center;
 
 							child: Adw.ButtonContent {

@@ -54,7 +54,7 @@ export class Installation extends from(GObject.Object, {
 		const file: Gio.File = Gio.File.new_for_path(this.location_path).get_child("repo")
 		if (file.query_exists(null) && file.query_file_type(null, null) === Gio.FileType.DIRECTORY) {
 			this.#monitor = file.monitor_directory(Gio.FileMonitorFlags.NONE, null)
-			this.#monitor.connect("changed", () => this.#reload_remotes())
+			this.#monitor.connect("changed", () => this.#reload())
 		} else {
 			print(`Remote: '${this.title}' - '${this.name}' does not have as 'repo' directory!`)
 		}
@@ -69,16 +69,18 @@ export class Installation extends from(GObject.Object, {
 	}
 
 	@Debounce(200)
-	#reload_remotes(): void {
-		print("reloading reomtes for installation:", this.title)
+	#reload(): void {
 		get_remotes(this, this.remotes).catch(log)
+		get_packages(this, this.packages).catch(log)
 	}
 }
 
 export async function get_installations(list: Gio.ListStore): Promise<void> {
 	list.remove_all()
 	const raw_installations = new Set(
-		(await run_command_async(["flatpak", "--installations"], { run_on_host: true })).split("\n"),
+		(await run_command_async(["flatpak", "--installations"], { run_on_host: true }))
+		.split("\n")
+		.map((str) => str.normalize_path()),
 	)
 	if (SharedVars.CUSTOM_INSTALLATIONS_DIR.query_exists(null)) {
 		for (const file_info of SharedVars.CUSTOM_INSTALLATIONS_DIR.enumerate_children(
@@ -106,7 +108,7 @@ export async function get_installations(list: Gio.ListStore): Promise<void> {
 				}
 				let inst_path: string
 				try {
-					inst_path = keyfile.get_string(group, "Path")
+					inst_path = keyfile.get_string(group, "Path").normalize_path()
 				} catch (error) {
 					print(error)
 					continue
@@ -124,7 +126,7 @@ export async function get_installations(list: Gio.ListStore): Promise<void> {
 			}
 		}
 	}
-	if (raw_installations.size > 0) {
+	if (raw_installations.size === 1) {
 		const system_raw: string = [...raw_installations.values()][0]!
 		list.append(new Installation({
 			name: "system",
