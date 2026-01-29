@@ -3,7 +3,7 @@ import Adw from "gi://Adw?version=1"
 import Gio from "gi://Gio?version=2.0"
 import Pango from "gi://Pango?version=1.0"
 
-import { GClass, Child, Property, from } from "../gobjectify/gobjectify.js"
+import { GClass, Child, Property, from, Debounce } from "../gobjectify/gobjectify.js"
 import { Installation, get_installations } from "../flatpak.js"
 import { SidebarRow } from "./sidebar_row.js"
 import { BasePage } from "../widgets/base_page.js"
@@ -20,17 +20,21 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 	_view_stack: Child<Adw.ViewStack>(),
 }) {
 	readonly #settings = new Gio.Settings({ schema_id: pkg.app_id })
+	#custom_inst_watcher: Gio.FileMonitor | null = null
 
 	async _ready(): Promise<void> {
 		if (pkg.profile === "development") this.add_css_class("devel")
 		print(`Welcome to ${pkg.app_id}!`)
 
 		this.#setup_sidebar()
+		await this.#load_installations()
 
-		await get_installations(this._installations)
-		for (const inst of this._installations) {
-			await inst.load_remotes()
-			await inst.load_packages()
+		if (SharedVars.CUSTOM_INSTALLATIONS_DIR.query_exists(null)) {
+			this.#custom_inst_watcher = SharedVars.CUSTOM_INSTALLATIONS_DIR.monitor_directory(
+				Gio.FileMonitorFlags.NONE,
+				null,
+			)
+			this.#custom_inst_watcher.connect("changed", () => this.#refresh())
 		}
 	}
 
@@ -65,6 +69,21 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 		print(title)
 		print(message)
 		print("=====================")
+	}
+
+	async #load_installations(): Promise<void> {
+		await get_installations(this._installations)
+		for (const inst of this._installations) {
+			await inst.load_remotes()
+			await inst.load_packages()
+		}
+	}
+
+	@Debounce(200)
+	#refresh(): void {
+		this.#load_installations().catch((err) => {
+			this.add_error_toast(_("Could not load packages"), `${err}`)
+		})
 	}
 
 	#setup_sidebar(): void {

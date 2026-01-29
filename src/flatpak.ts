@@ -4,11 +4,10 @@ import GObject from "gi://GObject?version=2.0"
 import GLib from "gi://GLib?version=2.0"
 import Gio from "gi://Gio?version=2.0"
 
-import { GClass, Property, next_idle, from } from "./gobjectify/gobjectify.js"
+import { GClass, Property, next_idle, from, Debounce, timeout_ms } from "./gobjectify/gobjectify.js"
 import { run_command_async, run_command_async_pkexec_on_fail } from "./utils/helper_funcs.js"
 import { SharedVars } from "./utils/shared_vars.js"
 
-const CUSTOM_INSTALLATIONS_DIR = Gio.File.new_for_path("/run/host/etc/flatpak/installations.d")
 const REMOTES_LIST_COLUMN_ITEMS = {
 	columns: ["title", "comment", "description", "options", "name"] as const,
 	index_of(item: (typeof this.columns)[number]): number {
@@ -45,9 +44,20 @@ export class Installation extends from(GObject.Object, {
 }) {
 	readonly remotes = new Gio.ListStore<Remote>({ item_type: Remote.$gtype })
 	readonly packages = new Gio.ListStore<Package>({ item_type: Package.$gtype })
+	#monitor?: Gio.FileMonitor
 
 	get command_syntax(): string {
 		return this.location_tag === "other" ? `--installation=${this.name}` : `--${this.name}`
+	}
+
+	_ready(): void {
+		const file: Gio.File = Gio.File.new_for_path(this.location_path).get_child("repo")
+		if (file.query_exists(null) && file.query_file_type(null, null) === Gio.FileType.DIRECTORY) {
+			this.#monitor = file.monitor_directory(Gio.FileMonitorFlags.NONE, null)
+			this.#monitor.connect("changed", () => this.#reload_remotes())
+		} else {
+			print(`Remote: '${this.title}' - '${this.name}' does not have as 'repo' directory!`)
+		}
 	}
 
 	async load_remotes(): Promise<void> {
@@ -57,6 +67,12 @@ export class Installation extends from(GObject.Object, {
 	async load_packages(): Promise<void> {
 		return await get_packages(this, this.packages)
 	}
+
+	@Debounce(200)
+	#reload_remotes(): void {
+		print("reloading reomtes for installation:", this.title)
+		get_remotes(this, this.remotes).catch(log)
+	}
 }
 
 export async function get_installations(list: Gio.ListStore): Promise<void> {
@@ -64,13 +80,13 @@ export async function get_installations(list: Gio.ListStore): Promise<void> {
 	const raw_installations = new Set(
 		(await run_command_async(["flatpak", "--installations"], { run_on_host: true })).split("\n"),
 	)
-	if (CUSTOM_INSTALLATIONS_DIR.query_exists(null)) {
-		for (const file_info of CUSTOM_INSTALLATIONS_DIR.enumerate_children(
+	if (SharedVars.CUSTOM_INSTALLATIONS_DIR.query_exists(null)) {
+		for (const file_info of SharedVars.CUSTOM_INSTALLATIONS_DIR.enumerate_children(
 			"standard::*",
 			Gio.FileQueryInfoFlags.NONE,
 			null,
 		)) {
-			const path: string = `${CUSTOM_INSTALLATIONS_DIR.get_path()}/${file_info.get_name()}`
+			const path: string = `${SharedVars.CUSTOM_INSTALLATIONS_DIR.get_path()}/${file_info.get_name()}`
 			const keyfile = new GLib.KeyFile()
 			try {
 				keyfile.load_from_file(path, GLib.KeyFileFlags.NONE)
