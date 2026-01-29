@@ -20,7 +20,8 @@
 		"--filesystem=/var/lib/flatpak/:ro",
 		"--filesystem=~/.local/share/flatpak/:ro",
 		"--filesystem=~/.var/app/",
-		"--filesystem=host-etc"
+		"--filesystem=host-etc",
+		"--filesystem=host"
 	],
 	"cleanup": [
 		"/include",
