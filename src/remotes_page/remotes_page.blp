@@ -18,7 +18,8 @@ EveryFilter search_filter {
 }
 
 SortListModel remotes_list {
-	items-changed => $_on_list_changed();
+	items-changed => $_on_list_change_start();
+	items-changed => $_on_list_change_finish();
 
 	sorter: StringSorter {
 		expression: expr item as <$Installation>.title;
@@ -40,29 +41,31 @@ template $RemotesPage: $BasePage {
 	sidebar_title: _("Remotes");
 	icon_name: "warehouse:server-pick-symbolic";
 
-	child: $LoadingGroup {
-		content: Adw.ToolbarView {
-			[top]
-			Adw.HeaderBar {
-				[start]
-				$SearchButton search_button {
-					search_bar: search_bar;
-				}
+	child: Adw.ToolbarView {
+		[top]
+		Adw.HeaderBar {
+			[start]
+			$SearchButton search_button {
+				search_bar: search_bar;
 			}
+		}
 
-			[top]
-			Adw.Clamp {
-				child: SearchBar search_bar {
-					search-mode-enabled: bind search_button.active bidirectional;
-					key-capture-widget: template;
+		[top]
+		Adw.Clamp {
+			child: SearchBar search_bar {
+				search-mode-enabled: bind search_button.active bidirectional;
+				key-capture-widget: template;
 
-					child: SearchEntry {
-						hexpand: true;
-						placeholder-text: _("Search Remotes");
-						search-changed => $_on_search_changed();
-					};
+				child: SearchEntry {
+					hexpand: true;
+					placeholder-text: _("Search Remotes");
+					search-changed => $_on_search_changed();
 				};
-			}
+			};
+		}
+
+		content: $LoadingGroup {
+			is_loading: bind template.is_loading;
 
 			content: $SearchGroup {
 				no_results: bind template.no_results;
