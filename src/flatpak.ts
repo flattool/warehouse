@@ -124,7 +124,7 @@ export async function get_installations(list: Gio.ListStore): Promise<void> {
 			}
 		}
 	}
-	if (raw_installations.size === 1) {
+	if (raw_installations.size > 0) {
 		const system_raw: string = [...raw_installations.values()][0]!
 		list.append(new Installation({
 			name: "system",
