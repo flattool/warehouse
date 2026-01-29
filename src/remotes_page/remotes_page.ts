@@ -75,4 +75,8 @@ export class RemotesPage extends from(BasePage, {
 	protected _on_search_changed(entry: Gtk.SearchEntry): void {
 		this.search_text = entry.text
 	}
+
+	protected _get_disabled_button_icon(): string {
+		return this.show_disabled ? "warehouse:eye-open-negative-filled-symbolic" : "warehouse:eye-not-looking-symbolic"
+	}
 }

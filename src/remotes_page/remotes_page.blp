@@ -65,6 +65,8 @@ template $RemotesPage: $BasePage {
 		}
 
 		content: $LoadingGroup {
+			title: _("Loading Remotes");
+			description: _("This should only take a moment.");
 			is_loading: bind template.is_loading;
 
 			content: $SearchGroup {
@@ -80,7 +82,7 @@ template $RemotesPage: $BasePage {
 							valign: center;
 
 							child: Adw.ButtonContent {
-								icon-name: "eye-not-looking-symbolic";
+								icon-name: bind $_get_disabled_button_icon(template.show_disabled) as <string>;
 								label: _("Show Disabled");
 							};
 
