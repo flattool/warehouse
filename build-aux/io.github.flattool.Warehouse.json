@@ -18,6 +18,7 @@
 		"--socket=wayland",
 		"--talk-name=org.freedesktop.Flatpak",
 		"--filesystem=/var/lib/flatpak/:ro",
+		"--filesystem=/var/lib/flatpak/app/:ro",
 		"--filesystem=~/.local/share/flatpak/:ro",
 		"--filesystem=~/.var/app/",
 		"--filesystem=host-etc",
