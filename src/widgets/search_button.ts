@@ -20,6 +20,12 @@ export class SearchButton extends from(Gtk.ToggleButton, {
 		}
 	}
 
+	@OnSignal("notify::sensitive")
+	#on_sensitive_change(): void {
+		if (this.sensitive || !this.search_bar) return
+		this.search_bar.search_mode_enabled = false
+	}
+
 	protected _get_trigger(__: this, shortcut_str: string): Gtk.ShortcutTrigger {
 		return Gtk.ShortcutTrigger.parse_string(shortcut_str)
 	}

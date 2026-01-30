@@ -17,6 +17,7 @@ export class RemotesPage extends from(BasePage, {
 	show_disabled: Property.bool(),
 	is_loading: Property.bool(),
 	no_results: Property.bool(),
+	none_enabled: Property.bool(),
 	_search_filter: Child<Gtk.EveryFilter>(),
 	_enabled_filter: Child<Gtk.CustomFilter>(),
 	_remotes_list: Child<Gio.ListModel<Remote>>(),
@@ -25,7 +26,7 @@ export class RemotesPage extends from(BasePage, {
 	_current_group: Child<Adw.PreferencesGroup>(),
 }) implements BasePage {
 	async _ready(): Promise<void> {
-		this._only_remotes_filter.set_filter_func((_item) => false)// item instanceof Remote)
+		this._only_remotes_filter.set_filter_func((item) => item instanceof Remote)
 		this._map_model.set_map_func((item) => {
 			if (!(item instanceof Installation)) return item
 			return item.remotes
@@ -46,12 +47,16 @@ export class RemotesPage extends from(BasePage, {
 	@OnSignal("notify::search-text")
 	async #do_search(): Promise<void> {
 		let any_results = false
+		let total_enabled = 0
 		for (let i = 0; ; i += 1) {
 			await next_idle()
 			const row: Gtk.Widget | null = this._current_group.get_row(i)
 			if (!row) break
 			if (!(row instanceof RemoteRow) || !row.remote) continue
 			const remote: Remote = row.remote
+			if (!remote.disabled) {
+				total_enabled += 1
+			}
 			if (this._search_filter.match(remote)) {
 				any_results = true
 				row.visible = true
@@ -59,7 +64,8 @@ export class RemotesPage extends from(BasePage, {
 				row.visible = false
 			}
 		}
-		this.no_results = !any_results
+		this.none_enabled = total_enabled > 0
+		this.no_results = !any_results && this.search_text !== ""
 	}
 
 	@Debounce(200, { trigger: "leading" })
@@ -70,6 +76,10 @@ export class RemotesPage extends from(BasePage, {
 	@Debounce(200)
 	protected _on_list_change_finish(): void {
 		this.#do_search().then(() => this.is_loading = false)
+	}
+
+	protected _has_remotes(__: this, n_items: number): boolean {
+		return n_items > 0
 	}
 
 	protected _on_search_changed(entry: Gtk.SearchEntry): void {

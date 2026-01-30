@@ -57,6 +57,7 @@ template $RemotesPage: $BasePage {
 			[start]
 			$SearchButton search_button {
 				search_bar: search_bar;
+				sensitive: bind $_has_remotes(remotes_list.n-items) as <bool>;
 			}
 		}
 
@@ -82,27 +83,50 @@ template $RemotesPage: $BasePage {
 			content: $SearchGroup {
 				no_results: bind template.no_results;
 
-				content: Adw.PreferencesPage {
-					Adw.PreferencesGroup current_group {
-						title: _("Current Remotes");
-						description: _("Remotes available on your system");
+				content: ScrolledWindow {
+					child: Adw.Clamp {
+						child: Box {
+							Adw.PreferencesGroup current_group {
+								title: _("Current Remotes");
+								description: _("Remotes available on your system");
 
-						header-suffix: ToggleButton show_disabled_button {
-							active: bind template.show_disabled bidirectional;
-							valign: center;
+								header-suffix: ToggleButton show_disabled_button {
+									active: bind template.show_disabled bidirectional;
+									valign: center;
 
-							child: Adw.ButtonContent {
-								icon-name: bind $_get_disabled_button_icon(template.show_disabled) as <string>;
-								label: _("Show Disabled");
-							};
+									child: Adw.ButtonContent {
+										icon-name: bind $_get_disabled_button_icon(template.show_disabled) as <string>;
+										label: _("Show Disabled");
+									};
 
-							styles [
-								"flat",
-							]
+									styles [
+										"flat",
+									]
+								};
+							}
 						};
-					}
+					};
 				};
 			};
 		};
 	};
 }
+
+// Adw.ActionRow empty_row {
+// 	child: Box {
+// 		spacing: 6;
+// 		margin-start: 16;
+// 		margin-end: 16;
+// 		margin-top: 30;
+// 		margin-bottom: 30;
+// 		orientation: vertical;
+// 	};
+// 	Image {
+// 		icon-name: "warehouse:info-outline-symbolic";
+// 		pixel-size: 54;
+// 		margin-bottom: 6;
+// 	}
+// 	Label {
+// 		label: _("No Remotes found")
+// 	}
+// }
