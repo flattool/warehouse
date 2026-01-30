@@ -21,8 +21,18 @@ SortListModel remotes_list {
 	items-changed => $_on_list_change_start();
 	items-changed => $_on_list_change_finish();
 
-	sorter: StringSorter {
-		expression: expr item as <$Installation>.title;
+	sorter: MultiSorter {
+		NumericSorter {
+			expression: expr item as <$Remote>.disabled;
+		}
+
+		StringSorter {
+			expression: expr item as <$Remote>.title;
+		}
+
+		StringSorter {
+			expression: expr item as <$Remote>.name;
+		}
 	};
 
 	model: FilterListModel {

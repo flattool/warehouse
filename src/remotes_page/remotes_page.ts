@@ -25,7 +25,7 @@ export class RemotesPage extends from(BasePage, {
 	_current_group: Child<Adw.PreferencesGroup>(),
 }) implements BasePage {
 	async _ready(): Promise<void> {
-		this._only_remotes_filter.set_filter_func((item) => item instanceof Remote)
+		this._only_remotes_filter.set_filter_func((_item) => false)// item instanceof Remote)
 		this._map_model.set_map_func((item) => {
 			if (!(item instanceof Installation)) return item
 			return item.remotes
