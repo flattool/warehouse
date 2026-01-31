@@ -18,12 +18,15 @@ export class RemotesPage extends from(BasePage, {
 	is_loading: Property.bool(),
 	no_results: Property.bool(),
 	none_enabled: Property.bool(),
+	none_disabled: Property.bool(),
 	_search_filter: Child<Gtk.EveryFilter>(),
 	_enabled_filter: Child<Gtk.CustomFilter>(),
 	_remotes_list: Child<Gio.ListModel<Remote>>(),
 	_only_remotes_filter: Child<Gtk.CustomFilter>(),
 	_map_model: Child<Gtk.MapListModel<Gio.ListStore<Remote>>>(),
 	_current_group: Child<Adw.PreferencesGroup>(),
+	_empty_row: Child<Adw.ActionRow>(),
+	_none_enabled_row: Child<Adw.ActionRow>(),
 }) implements BasePage {
 	async _ready(): Promise<void> {
 		this._only_remotes_filter.set_filter_func((item) => item instanceof Remote)
@@ -39,8 +42,10 @@ export class RemotesPage extends from(BasePage, {
 		})
 		await timeout_ms(250)
 		if (this._remotes_list.get_n_items() === 0) {
-			this.is_loading = false
+			this.#all_after_list_change()
 		}
+		this._current_group.add(this._empty_row)
+		this._current_group.add(this._none_enabled_row)
 	}
 
 	@OnSignal("notify::show-disabled")
@@ -64,8 +69,17 @@ export class RemotesPage extends from(BasePage, {
 				row.visible = false
 			}
 		}
-		this.none_enabled = total_enabled > 0
+		this.none_enabled = total_enabled === 0
+		this.none_disabled = total_enabled === this._remotes_list.get_n_items()
 		this.no_results = !any_results && this.search_text !== ""
+	}
+
+	#all_after_list_change(): void {
+		if (this._remotes_list.get_n_items() === 0) {
+			this.none_enabled = true
+			this.none_disabled = true
+		}
+		this.is_loading = false
 	}
 
 	@Debounce(200, { trigger: "leading" })
@@ -75,11 +89,15 @@ export class RemotesPage extends from(BasePage, {
 
 	@Debounce(200)
 	protected _on_list_change_finish(): void {
-		this.#do_search().then(() => this.is_loading = false)
+		this.#do_search().then(() => this.#all_after_list_change())
 	}
 
 	protected _has_remotes(__: this, n_items: number): boolean {
 		return n_items > 0
+	}
+
+	protected _has_no_remotes(__: this, n_items: number): boolean {
+		return n_items === 0
 	}
 
 	protected _on_search_changed(entry: Gtk.SearchEntry): void {
@@ -88,5 +106,9 @@ export class RemotesPage extends from(BasePage, {
 
 	protected _get_disabled_button_icon(): string {
 		return this.show_disabled ? "warehouse:eye-open-negative-filled-symbolic" : "warehouse:eye-not-looking-symbolic"
+	}
+
+	protected _get_none_enabled_row_visible(__: this, none_enabled: boolean, show_disabled: boolean): boolean {
+		return none_enabled && !show_disabled
 	}
 }

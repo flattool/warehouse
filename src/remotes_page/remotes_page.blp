@@ -83,50 +83,114 @@ template $RemotesPage: $BasePage {
 			content: $SearchGroup {
 				no_results: bind template.no_results;
 
-				content: ScrolledWindow {
-					child: Adw.Clamp {
-						child: Box {
-							Adw.PreferencesGroup current_group {
-								title: _("Current Remotes");
-								description: _("Remotes available on your system");
+				content: Adw.PreferencesPage {
+					Adw.PreferencesGroup current_group {
+						title: _("Current Remotes");
+						description: _("Remotes available on your system");
 
-								header-suffix: ToggleButton show_disabled_button {
-									active: bind template.show_disabled bidirectional;
-									valign: center;
+						header-suffix: ToggleButton {
+							active: bind template.show_disabled bidirectional;
+							visible: bind template.none_disabled inverted;
+							valign: center;
 
-									child: Adw.ButtonContent {
-										icon-name: bind $_get_disabled_button_icon(template.show_disabled) as <string>;
-										label: _("Show Disabled");
-									};
+							child: Adw.ButtonContent {
+								icon-name: bind $_get_disabled_button_icon(template.show_disabled) as <string>;
+								label: _("Show Disabled");
+							};
 
-									styles [
-										"flat",
-									]
-								};
-							}
+							styles [
+								"flat",
+							]
 						};
-					};
+					}
 				};
 			};
 		};
 	};
 }
 
-// Adw.ActionRow empty_row {
-// 	child: Box {
-// 		spacing: 6;
-// 		margin-start: 16;
-// 		margin-end: 16;
-// 		margin-top: 30;
-// 		margin-bottom: 30;
-// 		orientation: vertical;
-// 	};
-// 	Image {
-// 		icon-name: "warehouse:info-outline-symbolic";
-// 		pixel-size: 54;
-// 		margin-bottom: 6;
-// 	}
-// 	Label {
-// 		label: _("No Remotes found")
-// 	}
-// }
+Adw.ActionRow empty_row {
+	visible: bind $_has_no_remotes(remotes_list.n-items) as <bool>;
+
+	child: Box {
+		spacing: 6;
+		margin-start: 16;
+		margin-end: 16;
+		margin-top: 30;
+		margin-bottom: 30;
+		orientation: vertical;
+
+		Image {
+			icon-name: "warehouse:info-outline-symbolic";
+			pixel-size: 54;
+			margin-bottom: 6;
+		}
+
+		Label {
+			margin-top: 7;
+			label: _("No Remotes Found");
+			wrap: true;
+
+			styles [
+				"heading",
+			]
+		}
+
+		Label {
+			label: _("Warehouse cannot see the current remotes or your system has no remotes added");
+			margin-start: 16;
+			margin-end: 16;
+			margin-bottom: 8;
+			justify: center;
+			halign: center;
+			wrap: true;
+		}
+	};
+
+	styles [
+		"error",
+	]
+}
+
+Adw.ActionRow none_enabled_row {
+	visible: bind $_get_none_enabled_row_visible(template.none_enabled, template.show_disabled) as <bool>;
+
+	child: Box {
+		spacing: 6;
+		margin-start: 16;
+		margin-end: 16;
+		margin-top: 30;
+		margin-bottom: 30;
+		orientation: vertical;
+
+		Image {
+			icon-name: "warehouse:info-outline-symbolic";
+			pixel-size: 54;
+			margin-bottom: 6;
+		}
+
+		Label {
+			margin-top: 7;
+			label: _("No Enabled Remotes");
+			wrap: true;
+
+			styles [
+				"heading",
+			]
+		}
+
+		Label {
+			label: _("You only have disabled remotes on this system");
+			margin-start: 16;
+			margin-end: 16;
+			margin-bottom: 8;
+			justify: center;
+			halign: center;
+			wrap: true;
+		}
+	};
+
+	styles [
+		"warning",
+	]
+}
