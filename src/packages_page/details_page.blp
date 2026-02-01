@@ -6,13 +6,17 @@ template $DetailsPage: Adw.NavigationPage {
 
 	child: Adw.ToolbarView {
 		[top]
-		Adw.HeaderBar {}
+		Adw.HeaderBar {
+			show-title: bind template.show_title;
+		}
 
 		content: Overlay {
-			child: Picture {
+			child: Picture background_picture {
 				paintable: bind template.paintable_icon;
 				content-fit: fill;
-				margin-bottom: 200;
+				halign: center;
+				valign: start;
+				visible: false;
 
 				styles [
 					"details-blurred",
@@ -20,7 +24,7 @@ template $DetailsPage: Adw.NavigationPage {
 			};
 
 			[overlay]
-			ScrolledWindow {
+			ScrolledWindow scrolled_window {
 				Box {
 					orientation: vertical;
 					spacing: 12;

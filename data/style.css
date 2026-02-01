@@ -8,20 +8,3 @@
 .drop-target-blurred {
 	filter: blur(6px);
 }
-
-/*.details-blurred {
-	filter: blur(200px);
-}*/
-
-@media (prefers-color-scheme: dark) {
-	.details-blurred {
-		opacity: 0.5;
-	}
-}
-
-@media (prefers-contrast: more) {
-	.details-blurred {
-		filter: none;
-		opacity: 1;
-	}
-}

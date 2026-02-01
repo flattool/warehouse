@@ -80,24 +80,12 @@ template $PackagesPage: $BasePage {
 						}
 
 						content: ScrolledWindow {
-							child: Adw.Clamp {
-								child: ListBox list_box {
-									row-activated => $_on_row_activated();
+							child: ListBox list_box {
+								row-activated => $_on_row_activated();
 
-									styles [
-										"navigation-sidebar",
-									]
-
-									Adw.ActionRow {
-										title: _("Test Row");
-										subtitle: _("This is a test row");
-									}
-
-									Adw.ActionRow {
-										title: _("Test Row Two");
-										subtitle: _("This is another test row");
-									}
-								};
+								styles [
+									"navigation-sidebar",
+								]
 							};
 						};
 					};
