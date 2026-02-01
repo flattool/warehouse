@@ -106,6 +106,13 @@ export class RemotesPage extends from(BasePage, {
 		this.#do_search().then(() => this.#all_after_list_change())
 	}
 
+	protected _add_repo_file(): void {
+		print("add repo file")
+	}
+	protected _add_custom_remote(): void {
+		print("add custom remote")
+	}
+
 	protected _has_remotes(__: this, n_items: number): boolean {
 		return n_items > 0
 	}

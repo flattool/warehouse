@@ -108,6 +108,34 @@ template $RemotesPage: $BasePage {
 						title: _("Add Popular Remotes");
 						description: _("Add new remotes to get more software");
 					}
+
+					Adw.PreferencesGroup {
+						title: _("Add Other Remotes");
+
+						Adw.ActionRow {
+							title: _("Add a Repo File");
+							subtitle: _("Open a downloaded repo file to add");
+							activatable: true;
+							activated => $_add_repo_file();
+
+							[suffix]
+							Image {
+								icon-name: "warehouse:plus-large-symbolic";
+							}
+						}
+
+						Adw.ActionRow {
+							title: _("Add a Custom Remote");
+							subtitle: _("Manually enter new remote details");
+							activatable: true;
+							activated => $_add_custom_remote();
+
+							[suffix]
+							Image {
+								icon-name: "warehouse:plus-large-symbolic";
+							}
+						}
+					}
 				};
 			};
 		};
