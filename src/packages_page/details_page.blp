@@ -1,0 +1,161 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $DetailsPage: Adw.NavigationPage {
+	title: _("Details");
+
+	child: Adw.ToolbarView {
+		[top]
+		Adw.HeaderBar {}
+
+		content: Overlay {
+			child: Picture {
+				paintable: bind template.paintable_icon;
+				content-fit: fill;
+				margin-bottom: 200;
+
+				styles [
+					"details-blurred",
+				]
+			};
+
+			[overlay]
+			ScrolledWindow {
+				Box {
+					orientation: vertical;
+					spacing: 12;
+					margin-start: 12;
+					margin-end: 12;
+					margin-top: 6;
+					margin-bottom: 12;
+
+					Image {
+						pixel-size: 100;
+						paintable: bind template.paintable_icon;
+						margin-bottom: 18;
+
+						styles [
+							"icon-dropshadow",
+						]
+					}
+
+					Label {
+						label: "Details";
+
+						styles [
+							"title-2",
+						]
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+
+					Label {
+						label: "Testing the blur :3";
+					}
+				}
+			}
+		};
+	};
+}

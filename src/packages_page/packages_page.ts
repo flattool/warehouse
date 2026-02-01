@@ -4,10 +4,11 @@ import type Gtk from "gi://Gtk?version=4.0"
 import { GClass, Debounce, Child, Property, from, timeout_ms, OnSignal, next_idle } from "../gobjectify/gobjectify.js"
 import { BasePage } from "../widgets/base_page.js"
 import { Installation, Package } from "../flatpak.js"
+import { PackageRow } from "./package_row.js"
+import { DetailsPage } from "./details_page.js"
 
 import "../widgets/search_group.js"
 import "../widgets/search_button.js"
-import { PackageRow } from "./package_row.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/packages_page.ui" })
 export class PackagesPage extends from(BasePage, {
@@ -18,6 +19,7 @@ export class PackagesPage extends from(BasePage, {
 	_only_packages_filter: Child<Gtk.CustomFilter>(),
 	_map_model: Child<Gtk.MapListModel<Gio.ListStore<Installation>>>(),
 	_list_box: Child<Gtk.ListBox>(),
+	_details_page: Child<DetailsPage>(),
 }) {
 	async _ready(): Promise<void> {
 		this._only_packages_filter.set_filter_func((item) => item instanceof Package)
@@ -58,6 +60,11 @@ export class PackagesPage extends from(BasePage, {
 		await this.#do_search()
 		await next_idle()
 		this.#all_after_list_change()
+	}
+
+	protected _on_row_activated(__: Gtk.ListBox, row: Gtk.ListBoxRow): void {
+		if (!(row instanceof PackageRow)) return
+		this._details_page.paintable_icon = row._app_icon.paintable
 	}
 
 	protected _get_visible_page(__: this, is_loading: boolean): "loading_page" | "content_page" {

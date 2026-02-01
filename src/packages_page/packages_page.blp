@@ -82,6 +82,8 @@ template $PackagesPage: $BasePage {
 						content: ScrolledWindow {
 							child: Adw.Clamp {
 								child: ListBox list_box {
+									row-activated => $_on_row_activated();
+
 									styles [
 										"navigation-sidebar",
 									]
@@ -100,6 +102,8 @@ template $PackagesPage: $BasePage {
 						};
 					};
 				};
+
+				content: $DetailsPage details_page {};
 			};
 		}
 	};
