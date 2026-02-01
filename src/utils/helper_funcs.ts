@@ -1,5 +1,6 @@
 import Gio from "gi://Gio"
 import GLib from "gi://GLib"
+import Adw from "gi://Adw?version=1"
 
 import { SharedVars } from "./shared_vars.js"
 
@@ -8,6 +9,30 @@ type RunCommandConfig = {
 	cancellable?: Gio.Cancellable,
 	on_stdout_line?: (line: string) => void,
 	on_stderr_line?: (line: string) => void,
+}
+
+export function ask_to_continue(
+	heading: string,
+	body: string,
+	continue_label: string,
+	response_appearance?: Adw.ResponseAppearance,
+): Promise<boolean> {
+	const CANCEL = "cancel"
+	const CONTINUE = "continue"
+	const dialog = new Adw.AlertDialog({ heading, body })
+	dialog.add_response(CANCEL, _("Cancel"))
+	dialog.add_response(CONTINUE, continue_label)
+	if (response_appearance !== undefined) {
+		dialog.set_response_appearance(CONTINUE, response_appearance)
+	}
+	dialog.present(SharedVars.main_window)
+	return new Promise((resolve, _reject) => {
+		let resolve_id = 0
+		resolve_id = dialog.connect("response", (__, response) => {
+			dialog.disconnect(resolve_id)
+			resolve(response === CONTINUE)
+		})
+	})
 }
 
 export async function run_command_async(

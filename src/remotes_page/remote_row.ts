@@ -1,8 +1,9 @@
 import Adw from "gi://Adw?version=1"
 
-import { GClass, OnSignal, Property, from } from "../gobjectify/gobjectify.js"
+import { GClass, Property, from } from "../gobjectify/gobjectify.js"
 import { Remote } from "../flatpak.js"
 import { SharedVars } from "../utils/shared_vars.js"
+import { ask_to_continue } from "../utils/helper_funcs.js"
 
 import "../widgets/simple_menu.js"
 import "../widgets/simple_menu_item.js"
@@ -62,7 +63,15 @@ export class RemoteRow extends from(Adw.ActionRow, {
 	}
 
 	protected async _disable(): Promise<void> {
-		this.#set_remote_enabled(false)
+		const ok: boolean = await ask_to_continue(
+			_("Disable %s?").format(this.remote!.title),
+			_("Any installed apps from %s will stop receiving updates").format(this.remote!.title),
+			_("Disable"),
+			Adw.ResponseAppearance.DESTRUCTIVE,
+		)
+		if (ok) {
+			this.#set_remote_enabled(false)
+		}
 	}
 
 	protected _remove(): void {
