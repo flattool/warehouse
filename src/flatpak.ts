@@ -7,6 +7,8 @@ import Gio from "gi://Gio?version=2.0"
 import { GClass, Property, next_idle, from, Debounce, timeout_ms } from "./gobjectify/gobjectify.js"
 import { run_command_async, run_command_async_pkexec_on_fail } from "./utils/helper_funcs.js"
 import { SharedVars } from "./utils/shared_vars.js"
+import Gdk from "gi://Gdk?version=4.0"
+import Gtk from "gi://Gtk?version=4.0"
 
 const REMOTES_LIST_COLUMN_ITEMS = {
 	columns: ["title", "comment", "description", "options", "name"] as const,
@@ -44,6 +46,7 @@ export class Installation extends from(GObject.Object, {
 }) {
 	readonly remotes = new Gio.ListStore<Remote>({ item_type: Remote.$gtype })
 	readonly packages = new Gio.ListStore<Package>({ item_type: Package.$gtype })
+	readonly icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default() ?? new Gdk.Display())
 	#monitor?: Gio.FileMonitor
 
 	get command_syntax(): string {
@@ -65,6 +68,7 @@ export class Installation extends from(GObject.Object, {
 	}
 
 	async load_packages(): Promise<void> {
+		this.icon_theme.add_search_path(`${this.location_path}/exports/share/icons`.normalize_path())
 		return await get_packages(this, this.packages)
 	}
 

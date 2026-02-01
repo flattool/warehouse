@@ -1,6 +1,7 @@
 import Gio from "gi://Gio?version=2.0"
 import Gdk from "gi://Gdk?version=4.0"
 import GLib from "gi://GLib?version=2.0"
+import Gtk from "gi://Gtk?version=4.0"
 
 import type { MainWindow } from "../window/main_window.js"
 

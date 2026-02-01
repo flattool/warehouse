@@ -61,7 +61,7 @@ template $PackagesPage: $BasePage {
 						Adw.HeaderBar {
 							[start]
 							$SearchButton search_button {
-								sensitive: bind template.no_packages inverted;
+								sensitive: bind $_has_any_packages(packages_list.n-items) as <bool>;
 							}
 						}
 
@@ -79,20 +79,24 @@ template $PackagesPage: $BasePage {
 							};
 						}
 
-						content: ListBox list_box {
-							styles [
-								"navigation-sidebar",
-							]
+						content: ScrolledWindow {
+							child: Adw.Clamp {
+								child: ListBox list_box {
+									styles [
+										"navigation-sidebar",
+									]
 
-							Adw.ActionRow {
-								title: _("Test Row");
-								subtitle: _("This is a test row");
-							}
+									Adw.ActionRow {
+										title: _("Test Row");
+										subtitle: _("This is a test row");
+									}
 
-							Adw.ActionRow {
-								title: _("Test Row Two");
-								subtitle: _("This is another test row");
-							}
+									Adw.ActionRow {
+										title: _("Test Row Two");
+										subtitle: _("This is another test row");
+									}
+								};
+							};
 						};
 					};
 				};

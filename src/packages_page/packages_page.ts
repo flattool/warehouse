@@ -7,12 +7,12 @@ import { Installation, Package } from "../flatpak.js"
 
 import "../widgets/search_group.js"
 import "../widgets/search_button.js"
+import { PackageRow } from "./package_row.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/packages_page.ui" })
 export class PackagesPage extends from(BasePage, {
 	is_loading: Property.bool(),
 	search_text: Property.string(),
-	no_packages: Property.bool(),
 	no_results: Property.bool(),
 	_packages_list: Child<Gio.ListModel<Package>>(),
 	_only_packages_filter: Child<Gtk.CustomFilter>(),
@@ -33,16 +33,10 @@ export class PackagesPage extends from(BasePage, {
 
 	@OnSignal("notify::search-text")
 	async #do_search(): Promise<void> {
-		for (let i = 0; i < this._packages_list.get_n_items(); i += 1) {
-			const flat_package = this._packages_list.get_item(i)!
-			print(flat_package.title, flat_package.origin)
-		}
+		print("doing search")
 	}
 
 	#all_after_list_change(): void {
-		if (this._packages_list.get_n_items() === 0) {
-			this.no_packages = true
-		}
 		this.is_loading = false
 	}
 
@@ -52,8 +46,18 @@ export class PackagesPage extends from(BasePage, {
 	}
 
 	@Debounce(200)
-	protected _on_list_change_finish(): void {
-		this.#do_search().then(() => this.#all_after_list_change())
+	protected async _on_list_change_finish(): Promise<void> {
+		this.is_loading = true
+		this._list_box.remove_all()
+		for (let i = 0; i < this._packages_list.get_n_items(); i += 1) {
+			await next_idle()
+			const flatpak: Package = this._packages_list.get_item(i)!
+			const row = new PackageRow({ flatpak })
+			this._list_box.append(row)
+		}
+		await this.#do_search()
+		await next_idle()
+		this.#all_after_list_change()
 	}
 
 	protected _get_visible_page(__: this, is_loading: boolean): "loading_page" | "content_page" {
@@ -62,5 +66,9 @@ export class PackagesPage extends from(BasePage, {
 
 	protected _on_search_changed(entry: Gtk.SearchEntry): void {
 		this.search_text = entry.text
+	}
+
+	protected _has_any_packages(__: this, n_items: number): boolean {
+		return n_items > 0
 	}
 }
