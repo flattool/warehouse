@@ -17,7 +17,7 @@ template $DetailsPage: Adw.NavigationPage {
 				valign: start;
 
 				child: Picture background_picture {
-					paintable: bind template.icon_paintable;
+					paintable: bind template.flatpak as <$Package>.icon_paintable;
 					content-fit: fill;
 					halign: center;
 					valign: start;
@@ -31,140 +31,383 @@ template $DetailsPage: Adw.NavigationPage {
 
 			[overlay]
 			ScrolledWindow scrolled_window {
-				Box {
-					orientation: vertical;
-					spacing: 12;
-					margin-start: 12;
-					margin-end: 12;
-					margin-top: 6;
-					margin-bottom: 12;
+				child: Adw.Clamp {
+					Box {
+						orientation: vertical;
+						spacing: 12;
+						margin-start: 12;
+						margin-end: 12;
+						margin-top: 6;
+						margin-bottom: 12;
 
-					Image {
-						pixel-size: 100;
-						paintable: bind template.icon_paintable;
-						margin-bottom: 18;
+						Image {
+							pixel-size: 100;
+							paintable: bind template.flatpak as <$Package>.icon_paintable;
+							margin-bottom: 18;
 
-						styles [
-							"icon-dropshadow",
-						]
+							styles [
+								"icon-dropshadow",
+							]
+						}
+
+						Label {
+							label: bind template.flatpak as <$Package>.title;
+							wrap: true;
+							wrap-mode: word_char;
+							justify: center;
+							margin-bottom: 12;
+							margin-start: 6;
+							margin-end: 6;
+						}
+
+						Label {
+							label: bind template.flatpak as <$Package>.description;
+							wrap: true;
+							wrap-mode: word_char;
+							justify: center;
+							margin-bottom: 12;
+							margin-start: 6;
+							margin-end: 6;
+						}
+
+						Box {
+							spacing: 6;
+							homogeneous: true;
+							margin-top: 18;
+							margin-bottom: 12;
+							halign: center;
+
+							Button {
+								can-shrink: true;
+								label: _("Open");
+
+								styles [
+									"suggested-action",
+									"pill",
+								]
+							}
+
+							Button {
+								can-shrink: true;
+								label: _("Uninstall");
+
+								styles [
+									"pill",
+								]
+							}
+						}
+
+						Box {
+							orientation: vertical;
+							spacing: 12;
+
+							Adw.PreferencesGroup {
+								Adw.ActionRow {
+									title: _("User Data");
+
+									styles [
+										"property",
+									]
+
+									[suffix]
+									Button open_data_button {
+										valign: center;
+										icon-name: "warehouse:folder-open-symbolic";
+										tooltip-text: _("Open User Data");
+
+										styles [
+											"flat",
+										]
+									}
+
+									[suffix]
+									Button trash_data_button {
+										valign: center;
+										icon-name: "warehouse:user-trash-symbolic";
+										tooltip-text: _("Trash User Data");
+
+										styles [
+											"flat",
+										]
+									}
+
+									[suffix]
+									Spinner data_spinner {
+										spinning: true;
+									}
+								}
+
+								Adw.ExpanderRow version_row {
+									title: _("Version");
+
+									styles [
+										"property",
+									]
+
+									[suffix]
+									Label mask_label {
+										label: _("Updates Disabled");
+
+										styles [
+											"warning",
+										]
+									}
+
+									Adw.ActionRow mask_row {
+										title: _("Disable Updates");
+										subtitle: _("Mask this package so it's never updated");
+										activatable: true;
+
+										Gtk.Switch mask_switch {
+											valign: center;
+											can-focus: false;
+											can-target: false;
+										}
+									}
+
+									Adw.ActionRow change_version_row {
+										title: _("Change Version");
+										subtitle: _("Upgrade or downgrade this package");
+										activatable: true;
+
+										Image {
+											icon-name: "warehouse:right-large-symbolic";
+										}
+									}
+								}
+
+								Adw.ActionRow installed_size_row {
+									styles [
+										"property",
+									]
+
+									title: _("Installed Size");
+									activatable: true;
+
+									Image {
+										icon-name: "warehouse:copy-symbolic";
+									}
+								}
+
+								Adw.ActionRow runtime_row {
+									styles [
+										"property",
+									]
+
+									title: _("Runtime");
+									activatable: true;
+
+									Image eol_package_package_status_icon {
+										icon-name: "warehouse:error-symbolic";
+										tooltip-text: _("This package is End Of Life, and will not receive any security updates");
+										margin-end: 6;
+
+										styles [
+											"error",
+										]
+									}
+
+									Image {
+										icon-name: "warehouse:right-large-symbolic";
+									}
+								}
+
+								Adw.ActionRow pin_row {
+									title: _("Disable Automatic Removal");
+									subtitle: _("Pin this runtime to keep it installed");
+									activatable: true;
+
+									Gtk.Switch pin_switch {
+										valign: center;
+										can-focus: false;
+										can-target: false;
+									}
+								}
+							}
+
+							Adw.PreferencesGroup package_info {
+								title: _("Package Information");
+
+								Adw.ActionRow id_row {
+									styles [
+										"property",
+									]
+
+									title: _("Application ID");
+									activatable: true;
+
+									Image {
+										icon-name: "warehouse:copy-symbolic";
+									}
+								}
+
+								Adw.ActionRow ref_row {
+									styles [
+										"property",
+									]
+
+									title: "Ref";
+									activatable: true;
+
+									Image {
+										icon-name: "warehouse:copy-symbolic";
+									}
+								}
+
+								Adw.ActionRow arch_row {
+									styles [
+										"property",
+									]
+
+									title: _("Architecture");
+									activatable: true;
+
+									Image {
+										icon-name: "warehouse:copy-symbolic";
+									}
+								}
+
+								Adw.ActionRow branch_row {
+									styles [
+										"property",
+									]
+
+									title: _("Branch");
+									activatable: true;
+
+									Image {
+										icon-name: "warehouse:copy-symbolic";
+									}
+								}
+
+								Adw.ActionRow license_row {
+									styles [
+										"property",
+									]
+
+									title: _("License");
+									activatable: true;
+
+									Image {
+										icon-name: "warehouse:copy-symbolic";
+									}
+								}
+							}
+
+							Adw.PreferencesGroup remote_info {
+								title: _("Installation Information");
+
+								Adw.ActionRow sdk_row {
+									styles [
+										"property",
+									]
+
+									title: "SDK";
+									activatable: true;
+
+									Image {
+										icon-name: "warehouse:copy-symbolic";
+									}
+								}
+
+								Adw.ActionRow origin_row {
+									styles [
+										"property",
+									]
+
+									title: _("Origin");
+									activatable: true;
+
+									Image {
+										icon-name: "warehouse:copy-symbolic";
+									}
+								}
+
+								Adw.ActionRow collection_row {
+									styles [
+										"property",
+									]
+
+									title: _("Collection");
+									activatable: true;
+
+									Image {
+										icon-name: "warehouse:copy-symbolic";
+									}
+								}
+
+								Adw.ActionRow installation_row {
+									styles [
+										"property",
+									]
+
+									title: _("Installation");
+									activatable: true;
+
+									Image {
+										icon-name: "warehouse:copy-symbolic";
+									}
+								}
+							}
+
+							Adw.PreferencesGroup commit_info {
+								title: _("Commit Information");
+
+								Adw.ActionRow commit_row {
+									styles [
+										"property",
+									]
+
+									title: "Commit";
+									activatable: true;
+
+									Image {
+										icon-name: "warehouse:copy-symbolic";
+									}
+								}
+
+								Adw.ActionRow parent_row {
+									styles [
+										"property",
+									]
+
+									title: _("Parent");
+									activatable: true;
+
+									Image {
+										icon-name: "warehouse:copy-symbolic";
+									}
+								}
+
+								Adw.ActionRow subject_row {
+									styles [
+										"property",
+									]
+
+									title: _("Subject");
+									activatable: true;
+
+									Image {
+										icon-name: "warehouse:copy-symbolic";
+									}
+								}
+
+								Adw.ActionRow date_row {
+									styles [
+										"property",
+									]
+
+									title: _("Date");
+									activatable: true;
+
+									Image {
+										icon-name: "warehouse:copy-symbolic";
+									}
+								}
+							}
+						}
 					}
-
-					Label {
-						label: "Details";
-
-						styles [
-							"title-2",
-						]
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-
-					Label {
-						label: "Testing the blur :3";
-					}
-				}
+				};
 			}
 		};
 	};

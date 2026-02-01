@@ -5,6 +5,7 @@ import GLib from "gi://GLib?version=2.0"
 
 import { GClass, Child, Property, from, OnSignal } from "../gobjectify/gobjectify.js"
 import { SharedVars } from "../utils/shared_vars.js"
+import { Package } from "../flatpak.js"
 
 const BACKGROUND_PICTURE_OFFSET = -80
 
@@ -32,8 +33,8 @@ function load_css_translation(y: number): void {
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/details_page.ui" })
 export class DetailsPage extends from(Adw.NavigationPage, {
+	flatpak: Property.gobject(Package),
 	show_title: Property.bool(),
-	icon_paintable: Property.gobject(Gtk.IconPaintable),
 	_background_picture: Child<Gtk.Picture>(),
 	_scrolled_window: Child<Gtk.ScrolledWindow>(),
 }) {
