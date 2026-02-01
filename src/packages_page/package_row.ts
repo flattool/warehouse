@@ -10,19 +10,19 @@ export class PackageRow extends from(Adw.ActionRow, {
 	_app_icon: Child<Gtk.Image>(),
 }) {
 	async _ready(): Promise<void> {
-		await this.#setup_icon()
+		// await this.#setup_icon()
 	}
 
-	async #setup_icon(): Promise<void> {
-		await next_idle()
-		if (!this.flatpak?.installation || this.flatpak.is_runtime) return
-		this._app_icon.paintable = this.flatpak.installation.icon_theme.lookup_icon(
-			this.flatpak.application,
-			null,
-			512,
-			1,
-			null,
-			Gtk.IconLookupFlags.FORCE_REGULAR,
-		)
-	}
+	// async #setup_icon(): Promise<void> {
+	// 	await next_idle()
+	// 	if (!this.flatpak?.installation || this.flatpak.is_runtime) return
+	// 	this._app_icon.paintable = this.flatpak.installation.icon_theme.lookup_icon(
+	// 		this.flatpak.application,
+	// 		["application-x-executable-symbolic"],
+	// 		512,
+	// 		1,
+	// 		null,
+	// 		Gtk.IconLookupFlags.FORCE_REGULAR,
+	// 	)
+	// }
 }

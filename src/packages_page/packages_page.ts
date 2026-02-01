@@ -64,7 +64,7 @@ export class PackagesPage extends from(BasePage, {
 
 	protected _on_row_activated(__: Gtk.ListBox, row: Gtk.ListBoxRow): void {
 		if (!(row instanceof PackageRow)) return
-		this._details_page.paintable_icon = row._app_icon.paintable
+		this._details_page.icon_paintable = row.flatpak?.icon_paintable ?? null
 	}
 
 	protected _get_visible_page(__: this, is_loading: boolean): "loading_page" | "content_page" {

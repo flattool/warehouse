@@ -3,17 +3,17 @@ import Gtk from "gi://Gtk?version=4.0"
 import Gdk from "gi://Gdk?version=4.0"
 import GLib from "gi://GLib?version=2.0"
 
-import { GClass, Child, Property, from } from "../gobjectify/gobjectify.js"
+import { GClass, Child, Property, from, OnSignal } from "../gobjectify/gobjectify.js"
 import { SharedVars } from "../utils/shared_vars.js"
 
-const BACKGROUND_PICTURE_OFFSET = -150
+const BACKGROUND_PICTURE_OFFSET = -80
 
 const css_provider = new Gtk.CssProvider()
 
 function load_css_translation(y: number): void {
 	css_provider.load_from_data(`
 		.details-blurred {
-			/* filter: blur(200px); */
+			filter: blur(200px);
 			transform: translateY(${y + BACKGROUND_PICTURE_OFFSET}px);
 		}
 		@media (prefers-color-scheme: dark) {
@@ -30,32 +30,15 @@ function load_css_translation(y: number): void {
 	`, -1)
 }
 
-const test_css = new Gtk.CssProvider()
-
-function load_test_css(url: string): void {
-	test_css.load_from_data(`
-		.blur-test::before {
-			background-image: url("${url}");
-			background-size: cover;
-			background-position: center;
-
-			filter: blur(200px);
-			z-index: -1;
-		}
-	`, -1)
-}
-
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/details_page.ui" })
 export class DetailsPage extends from(Adw.NavigationPage, {
 	show_title: Property.bool(),
-	paintable_icon: Property.gobject(Gdk.Paintable),
+	icon_paintable: Property.gobject(Gtk.IconPaintable),
 	_background_picture: Child<Gtk.Picture>(),
 	_scrolled_window: Child<Gtk.ScrolledWindow>(),
 }) {
-	icon_path = ""
-
 	_ready(): void {
-		// load_css_translation(0)
+		load_css_translation(0)
 		Gtk.StyleContext.add_provider_for_display(
 			Gdk.Display.get_default()!,
 			css_provider,
@@ -65,7 +48,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 		vadjustment.connect("value-changed", () => {
 			const value = vadjustment.value
 			this.show_title = value > 0
-			// load_css_translation(-value)
+			load_css_translation(-value)
 		})
 	}
 }

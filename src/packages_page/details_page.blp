@@ -11,16 +11,22 @@ template $DetailsPage: Adw.NavigationPage {
 		}
 
 		content: Overlay {
-			child: Picture background_picture {
-				paintable: bind template.paintable_icon;
-				content-fit: fill;
-				halign: center;
+			child: Adw.Clamp {
+				orientation: vertical;
+				maximum-size: 1;
 				valign: start;
-				visible: false;
 
-				styles [
-					"details-blurred",
-				]
+				child: Picture background_picture {
+					paintable: bind template.icon_paintable;
+					content-fit: fill;
+					halign: center;
+					valign: start;
+					height-request: 350;
+
+					styles [
+						"details-blurred",
+					]
+				};
 			};
 
 			[overlay]
@@ -35,7 +41,7 @@ template $DetailsPage: Adw.NavigationPage {
 
 					Image {
 						pixel-size: 100;
-						paintable: bind template.paintable_icon;
+						paintable: bind template.icon_paintable;
 						margin-bottom: 18;
 
 						styles [

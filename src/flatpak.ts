@@ -3,12 +3,12 @@
 import GObject from "gi://GObject?version=2.0"
 import GLib from "gi://GLib?version=2.0"
 import Gio from "gi://Gio?version=2.0"
+import Gdk from "gi://Gdk?version=4.0"
+import Gtk from "gi://Gtk?version=4.0"
 
 import { GClass, Property, next_idle, from, Debounce, timeout_ms } from "./gobjectify/gobjectify.js"
 import { run_command_async, run_command_async_pkexec_on_fail } from "./utils/helper_funcs.js"
 import { SharedVars } from "./utils/shared_vars.js"
-import Gdk from "gi://Gdk?version=4.0"
-import Gtk from "gi://Gtk?version=4.0"
 
 const REMOTES_LIST_COLUMN_ITEMS = {
 	columns: ["title", "comment", "description", "options", "name"] as const,
@@ -223,6 +223,7 @@ const BasePackage = from(GObject.Object, {
 	installation: Property.gobject(Installation, { flags: "CONSTRUCT_ONLY" }),
 	data_dir: Property.gobject(Gio.File),
 	is_runtime: Property.bool(),
+	icon_paintable: Property.gobject(Gtk.IconPaintable),
 })
 
 @GClass()
@@ -235,6 +236,25 @@ export class Package extends BasePackage {
 		if (!this.is_runtime) {
 			this.data_dir = Gio.File.new_for_path(`${Package.user_data_dir.get_path()}/${this.application}`)
 		}
+	}
+
+	_ready(): void {
+		this.icon_tryer().catch(log)
+	}
+
+	async icon_tryer(): Promise<void> {
+		const FALLBACK = "application-x-executable-symbolic"
+		await next_idle()
+		const icon_theme: Gtk.IconTheme | undefined = this.installation?.icon_theme
+		if (!icon_theme) return
+		this.icon_paintable = icon_theme.lookup_icon(
+			icon_theme.has_icon(this.application) ? this.application : FALLBACK,
+			null,
+			1024,
+			1,
+			null,
+			Gtk.IconLookupFlags.FORCE_REGULAR,
+		)
 	}
 }
 

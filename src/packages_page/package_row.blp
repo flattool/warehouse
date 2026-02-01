@@ -9,7 +9,7 @@ template $PackageRow: Adw.ActionRow {
 	[prefix]
 	Image app_icon {
 		icon-size: large;
-		icon-name: "application-x-executable-symbolic";
+		paintable: bind template.flatpak as <$Package>.icon_paintable;
 
 		styles [
 			"icon-dropshadow",
