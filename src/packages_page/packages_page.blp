@@ -1,18 +1,102 @@
 using Gtk 4.0;
 using Adw 1;
 
+SortListModel packages_list {
+	items-changed => $_on_list_change_start();
+	items-changed => $_on_list_change_finish();
+
+	sorter: StringSorter {
+		expression: expr item as <$Package>.title;
+	};
+
+	model: FilterListModel {
+		filter: CustomFilter only_packages_filter {};
+
+		model: FlattenListModel {
+			model: MapListModel map_model {
+				model: bind template.installations;
+			};
+		};
+	};
+}
+
 template $PackagesPage: $BasePage {
 	title: _("Manage Packages");
 	sidebar_title: _("Packages");
 	icon_name: "warehouse:flatpak-symbolic";
 
-	child: Adw.ToolbarView {
-		[top]
-		Adw.HeaderBar {}
+	child: Stack {
+		visible-child-name: bind $_get_visible_page(template.is_loading) as <string>;
 
-		content: Adw.StatusPage {
-			title: _("Packages");
-			description: _("Manage your packages teehee colon three");
-		};
+		StackPage loading_page {
+			name: "loading_page";
+
+			child: Adw.ToolbarView {
+				[top]
+				Adw.HeaderBar {}
+
+				content: Adw.StatusPage {
+					title: _("Loading Packages");
+					description: _("This should only take a moment.");
+
+					paintable: Adw.SpinnerPaintable {
+						widget: template;
+					};
+				};
+			};
+		}
+
+		StackPage content_page {
+			name: "content_page";
+
+			child: Adw.NavigationSplitView {
+				sidebar-width-fraction: 0.45;
+				max-sidebar-width: 999999999.0;
+
+				sidebar: Adw.NavigationPage {
+					title: bind template.title;
+
+					child: Adw.ToolbarView {
+						[top]
+						Adw.HeaderBar {
+							[start]
+							$SearchButton search_button {
+								sensitive: bind template.no_packages inverted;
+							}
+						}
+
+						[top]
+						Adw.Clamp {
+							child: SearchBar {
+								key-capture-widget: template;
+								search-mode-enabled: bind search_button.active bidirectional;
+
+								child: SearchEntry {
+									hexpand: true;
+									placeholder-text: _("Search Packages");
+									search-changed => $_on_search_changed();
+								};
+							};
+						}
+
+						content: ListBox list_box {
+							styles [
+								"navigation-sidebar",
+							]
+
+							Adw.ActionRow {
+								title: _("Test Row");
+								subtitle: _("This is a test row");
+							}
+
+							Adw.ActionRow {
+								title: _("Test Row Two");
+								subtitle: _("This is another test row");
+							}
+						};
+					};
+				};
+			};
+		}
 	};
 }
