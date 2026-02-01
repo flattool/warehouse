@@ -6,6 +6,7 @@ import { GClass, Property, Child, from, OnSignal, next_idle, Debounce, timeout_m
 import { Installation, Remote } from "../flatpak.js"
 import { RemoteRow } from "./remote_row.js"
 import { BasePage } from "../widgets/base_page.js"
+import { type PopularRemote, popular_remotes } from "../popular_remotes.js"
 
 import "../widgets/loading_group.js"
 import "../widgets/search_button.js"
@@ -25,10 +26,23 @@ export class RemotesPage extends from(BasePage, {
 	_only_remotes_filter: Child<Gtk.CustomFilter>(),
 	_map_model: Child<Gtk.MapListModel<Gio.ListStore<Remote>>>(),
 	_current_group: Child<Adw.PreferencesGroup>(),
+	_popular_remotes_group: Child<Adw.PreferencesGroup>(),
 	_empty_row: Child<Adw.ActionRow>(),
 	_none_enabled_row: Child<Adw.ActionRow>(),
 }) implements BasePage {
 	async _ready(): Promise<void> {
+		for (const popular of popular_remotes) {
+			const row = new Adw.ActionRow({
+				title: popular.title,
+				subtitle: popular.description,
+				activatable: true,
+			})
+			row.add_suffix(Gtk.Image.new_from_icon_name("warehouse:plus-large-symbolic"))
+			row.connect("activated", () => {
+				print(popular.name, popular.link)
+			})
+			this._popular_remotes_group.add(row)
+		}
 		this._only_remotes_filter.set_filter_func((item) => item instanceof Remote)
 		this._map_model.set_map_func((item) => {
 			if (!(item instanceof Installation)) return item
