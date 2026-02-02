@@ -139,6 +139,7 @@ template $DetailsPage: Adw.NavigationPage {
 
 								Adw.ExpanderRow version_row {
 									title: _("Version");
+									subtitle: bind template.flatpak as <$Package>.version;
 
 									styles [
 										"property",
@@ -153,16 +154,9 @@ template $DetailsPage: Adw.NavigationPage {
 										]
 									}
 
-									Adw.ActionRow mask_row {
+									Adw.SwitchRow mask_row {
 										title: _("Disable Updates");
 										subtitle: _("Mask this package so it's never updated");
-										activatable: true;
-
-										Gtk.Switch mask_switch {
-											valign: center;
-											can-focus: false;
-											can-target: false;
-										}
 									}
 
 									Adw.ActionRow change_version_row {
@@ -170,6 +164,7 @@ template $DetailsPage: Adw.NavigationPage {
 										subtitle: _("Upgrade or downgrade this package");
 										activatable: true;
 
+										[suffix]
 										Image {
 											icon-name: "warehouse:right-large-symbolic";
 										}
@@ -177,26 +172,30 @@ template $DetailsPage: Adw.NavigationPage {
 								}
 
 								Adw.ActionRow installed_size_row {
+									title: _("Installed Size");
+									subtitle: bind template.flatpak as <$Package>.size;
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: _("Installed Size");
-									activatable: true;
-
+									[suffix]
 									Image {
 										icon-name: "warehouse:copy-symbolic";
 									}
 								}
 
 								Adw.ActionRow runtime_row {
+									title: _("Runtime");
+									subtitle: bind template.flatpak as <$Package>.runtime;
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: _("Runtime");
-									activatable: true;
-
+									[suffix]
 									Image eol_package_package_status_icon {
 										icon-name: "warehouse:error-symbolic";
 										tooltip-text: _("This package is End Of Life, and will not receive any security updates");
@@ -207,21 +206,15 @@ template $DetailsPage: Adw.NavigationPage {
 										]
 									}
 
+									[suffix]
 									Image {
 										icon-name: "warehouse:right-large-symbolic";
 									}
 								}
 
-								Adw.ActionRow pin_row {
+								Adw.SwitchRow {
 									title: _("Disable Automatic Removal");
 									subtitle: _("Pin this runtime to keep it installed");
-									activatable: true;
-
-									Gtk.Switch pin_switch {
-										valign: center;
-										can-focus: false;
-										can-target: false;
-									}
 								}
 							}
 
@@ -229,65 +222,74 @@ template $DetailsPage: Adw.NavigationPage {
 								title: _("Package Information");
 
 								Adw.ActionRow id_row {
+									title: _("Application ID");
+									subtitle: bind template.flatpak as <$Package>.application;
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: _("Application ID");
-									activatable: true;
-
+									[suffix]
 									Image {
 										icon-name: "warehouse:copy-symbolic";
 									}
 								}
 
 								Adw.ActionRow ref_row {
+									title: "Ref";
+									subtitle: bind template.flatpak as <$Package>.app_ref;
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: "Ref";
-									activatable: true;
-
+									[suffix]
 									Image {
 										icon-name: "warehouse:copy-symbolic";
 									}
 								}
 
 								Adw.ActionRow arch_row {
+									title: _("Architecture");
+									subtitle: bind template.flatpak as <$Package>.arch;
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: _("Architecture");
-									activatable: true;
-
+									[suffix]
 									Image {
 										icon-name: "warehouse:copy-symbolic";
 									}
 								}
 
 								Adw.ActionRow branch_row {
+									title: _("Branch");
+									subtitle: bind template.flatpak as <$Package>.branch;
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: _("Branch");
-									activatable: true;
-
+									[suffix]
 									Image {
 										icon-name: "warehouse:copy-symbolic";
 									}
 								}
 
 								Adw.ActionRow license_row {
+									title: _("License");
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: _("License");
-									activatable: true;
-
+									[suffix]
 									Image {
 										icon-name: "warehouse:copy-symbolic";
 									}
@@ -298,52 +300,58 @@ template $DetailsPage: Adw.NavigationPage {
 								title: _("Installation Information");
 
 								Adw.ActionRow sdk_row {
+									title: "SDK";
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: "SDK";
-									activatable: true;
-
+									[suffix]
 									Image {
 										icon-name: "warehouse:copy-symbolic";
 									}
 								}
 
 								Adw.ActionRow origin_row {
+									title: _("Origin");
+									subtitle: bind template.flatpak as <$Package>.origin;
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: _("Origin");
-									activatable: true;
-
+									[suffix]
 									Image {
 										icon-name: "warehouse:copy-symbolic";
 									}
 								}
 
 								Adw.ActionRow collection_row {
+									title: _("Collection");
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: _("Collection");
-									activatable: true;
-
+									[suffix]
 									Image {
 										icon-name: "warehouse:copy-symbolic";
 									}
 								}
 
 								Adw.ActionRow installation_row {
+									title: _("Installation");
+									subtitle: bind template.flatpak as <$Package>.installation as <$Installation>.title;
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: _("Installation");
-									activatable: true;
-
+									[suffix]
 									Image {
 										icon-name: "warehouse:copy-symbolic";
 									}
@@ -354,52 +362,56 @@ template $DetailsPage: Adw.NavigationPage {
 								title: _("Commit Information");
 
 								Adw.ActionRow commit_row {
+									title: "Commit";
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: "Commit";
-									activatable: true;
-
+									[suffix]
 									Image {
 										icon-name: "warehouse:copy-symbolic";
 									}
 								}
 
 								Adw.ActionRow parent_row {
+									title: _("Parent");
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: _("Parent");
-									activatable: true;
-
+									[suffix]
 									Image {
 										icon-name: "warehouse:copy-symbolic";
 									}
 								}
 
 								Adw.ActionRow subject_row {
+									title: _("Subject");
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: _("Subject");
-									activatable: true;
-
+									[suffix]
 									Image {
 										icon-name: "warehouse:copy-symbolic";
 									}
 								}
 
 								Adw.ActionRow date_row {
+									title: _("Date");
+									activatable: true;
+
 									styles [
 										"property",
 									]
 
-									title: _("Date");
-									activatable: true;
-
+									[suffix]
 									Image {
 										icon-name: "warehouse:copy-symbolic";
 									}

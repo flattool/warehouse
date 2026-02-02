@@ -4,6 +4,7 @@ declare global {
 	interface String {
 		markup_escape_text(this: string): string
 		normalize_path(this: string): string
+		split_n_times(this: string, split_by: string, amount: number): string[]
 	}
 }
 
@@ -17,4 +18,10 @@ String.prototype.normalize_path = function (): string {
 		normalized = normalized.slice(0, -1)
 	}
 	return normalized
+}
+
+String.prototype.split_n_times = function (split_by: string, amount: number): string[] {
+	if (amount <= 0) return [this]
+	const parts = this.split(split_by)
+	return parts.length <= amount ? parts : [...parts.slice(0, amount), parts.slice(amount).join(split_by)]
 }

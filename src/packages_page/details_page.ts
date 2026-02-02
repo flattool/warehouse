@@ -6,6 +6,7 @@ import GLib from "gi://GLib?version=2.0"
 import { GClass, Child, Property, from, OnSignal } from "../gobjectify/gobjectify.js"
 import { SharedVars } from "../utils/shared_vars.js"
 import { Package } from "../flatpak.js"
+import { run_command_async } from "../utils/helper_funcs.js"
 
 const BACKGROUND_PICTURE_OFFSET = -80
 
@@ -31,6 +32,43 @@ function load_css_translation(y: number): void {
 	`, -1)
 }
 
+const CLI_INFO_KEYS = [
+	"License",
+	"Sdk",
+	"Collection",
+	"Commit",
+	"Parent",
+	"Subject",
+	"Date",
+] as const
+
+async function get_cli_info(flatpak: Package): Promise<Record<string, string>> {
+	const cmd = ["flatpak", "info"]
+	if (flatpak.installation) {
+		cmd.push(flatpak.installation.command_syntax)
+	}
+	cmd.push(flatpak.app_ref)
+	const lines: string[] = (await run_command_async(cmd, { run_on_host: true })).trim().split("\n")
+	const to_ret: Record<string, string> = {}
+	if (lines.length < 1) return to_ret
+	for (let line of lines) {
+		line = line.trim()
+		if (/^\s*$/.test(line)) {
+			// skip lines that are only whitespice or emtpy
+			continue
+		}
+		let [line_key, rest] = line.split_n_times(":", 1)
+		if (!line_key) continue
+		for (const key of CLI_INFO_KEYS) {
+			line_key = line_key.trim()
+			if (line_key === key) {
+				to_ret[key] = rest?.trim() || ""
+			}
+		}
+	}
+	return to_ret
+}
+
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/details_page.ui" })
 export class DetailsPage extends from(Adw.NavigationPage, {
 	flatpak: Property.gobject(Package),
@@ -51,5 +89,12 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 			this.show_title = value > 0
 			load_css_translation(-value)
 		})
+	}
+
+	@OnSignal("notify::flatpak")
+	async #on_flatpak_change(): Promise<void> {
+		if (!this.flatpak) return
+		const info = await get_cli_info(this.flatpak)
+		print(JSON.stringify(info))
 	}
 }

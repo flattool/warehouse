@@ -18,19 +18,19 @@ const REMOTES_LIST_COLUMN_ITEMS = {
 } as const
 const PACK_LIST_COLUMN_ITEMS = {
 	columns: [
-		"description",
 		"application",
+		"description",
 		"version",
 		"branch",
 		"arch",
 		"runtime",
-		"origin",
 		"ref",
 		"active",
 		"latest",
-		"size",
 		"options",
+		"size",
 		"name",
+		"origin",
 	] as const,
 	index_of(item: (typeof this.columns)[number]): number {
 		return this.columns.indexOf(item)
@@ -266,14 +266,16 @@ async function get_packages(
 	const columns: string = PACK_LIST_COLUMN_ITEMS.columns.join(",")
 	const raw_packs: string[] = (
 		await run_command_async(
-			["flatpak", "list", installation.command_syntax, `--columns=${columns}`],
+			["flatpak", "list", "--all", installation.command_syntax, `--columns=${columns}`],
 			{ run_on_host: true },
 		)
 	).split("\n")
 	for (const row of raw_packs) {
 		await next_idle()
 		const info: string[] = row.trim().split("\t")
-		if (info.length !== PACK_LIST_COLUMN_ITEMS.columns.length) continue
+		if (info.length !== PACK_LIST_COLUMN_ITEMS.columns.length) {
+			continue
+		}
 		const pack = new Package({
 			title: info[PACK_LIST_COLUMN_ITEMS.index_of("name")] ?? "",
 			description: info[PACK_LIST_COLUMN_ITEMS.index_of("description")] ?? "",
