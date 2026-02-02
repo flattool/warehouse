@@ -11,6 +11,14 @@ template $MainWindow: Adw.ApplicationWindow {
 	default-width: 1045;
 	default-height: 570;
 
+	Adw.Breakpoint {
+		condition ("max-width: 865")
+
+		setters {
+			split_view.collapsed: true;
+		}
+	}
+
 	content: Adw.ToastOverlay toast_overlay {
 		child: Adw.OverlaySplitView split_view {
 			sidebar: Adw.ToolbarView {
