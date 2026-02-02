@@ -51,23 +51,31 @@ template $DetailsPage: Adw.NavigationPage {
 						}
 
 						Label {
-							label: bind template.flatpak as <$Package>.title;
+							label: bind $_markup_escape(template.flatpak as <$Package>.title) as <string>;
 							wrap: true;
 							wrap-mode: word_char;
 							justify: center;
 							margin-bottom: 12;
 							margin-start: 6;
 							margin-end: 6;
+
+							styles [
+								"title-1",
+							]
 						}
 
 						Label {
-							label: bind template.flatpak as <$Package>.description;
+							label: bind $_markup_escape(template.flatpak as <$Package>.description) as <string>;
 							wrap: true;
 							wrap-mode: word_char;
 							justify: center;
 							margin-bottom: 12;
 							margin-start: 6;
 							margin-end: 6;
+
+							styles [
+								"title-4",
+							]
 						}
 
 						Box {
@@ -221,21 +229,23 @@ template $DetailsPage: Adw.NavigationPage {
 							Adw.PreferencesGroup package_info {
 								title: _("Package Information");
 
-								Adw.ActionRow id_row {
+								$InfoRow {
 									title: _("Application ID");
-									subtitle: bind template.flatpak as <$Package>.application;
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:copy-symbolic";
-									}
+									info: bind template.flatpak as <$Package>.application;
 								}
 
+								// Adw.ActionRow id_row {
+								// 	title: _("Application ID");
+								// 	subtitle: bind template.flatpak as <$Package>.application;
+								// 	activatable: true;
+								// 	styles [
+								// 		"property",
+								// 	]
+								// 	[suffix]
+								// 	Image {
+								// 		icon-name: "warehouse:copy-symbolic";
+								// 	}
+								// }
 								Adw.ActionRow ref_row {
 									title: "Ref";
 									subtitle: bind template.flatpak as <$Package>.app_ref;

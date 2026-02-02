@@ -1,15 +1,14 @@
 import Adw from "gi://Adw?version=1"
 import Gtk from "gi://Gtk?version=4.0"
 import Gdk from "gi://Gdk?version=4.0"
-import GLib from "gi://GLib?version=2.0"
 
 import { GClass, Child, Property, from, OnSignal } from "../gobjectify/gobjectify.js"
-import { SharedVars } from "../utils/shared_vars.js"
 import { Package } from "../flatpak.js"
 import { run_command_async } from "../utils/helper_funcs.js"
 
-const BACKGROUND_PICTURE_OFFSET = -80
+import "./info_row.js"
 
+const BACKGROUND_PICTURE_OFFSET = -80
 const css_provider = new Gtk.CssProvider()
 
 function load_css_translation(y: number): void {
@@ -96,5 +95,9 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 		if (!this.flatpak) return
 		const info = await get_cli_info(this.flatpak)
 		print(JSON.stringify(info))
+	}
+
+	protected _markup_escape(__: this, text: string): string {
+		return text.markup_escape_text()
 	}
 }

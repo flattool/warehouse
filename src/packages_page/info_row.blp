@@ -1,0 +1,18 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $InfoRow: Adw.ActionRow {
+	subtitle: bind $_markup_escape(template.info) as <string>;
+	activatable: true;
+	visible: bind $_should_be_visible(template.always_visible, template.info) as <bool>;
+	activated => $_on_activated();
+
+	styles [
+		"propert",
+	]
+
+	[suffix]
+	Image {
+		icon-name: "warehouse:copy-symbolic";
+	}
+}
