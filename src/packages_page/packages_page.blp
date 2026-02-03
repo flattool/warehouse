@@ -93,7 +93,7 @@ template $PackagesPage: $BasePage {
 
 							content: ScrolledWindow {
 								child: ListBox list_box {
-									row-activated => $_on_row_activated();
+									row-selected => $_on_row_selected();
 
 									styles [
 										"navigation-sidebar",

@@ -62,7 +62,7 @@ export class PackagesPage extends from(BasePage, {
 		this.#all_after_list_change()
 	}
 
-	protected _on_row_activated(__: Gtk.ListBox, row: Gtk.ListBoxRow): void {
+	protected _on_row_selected(__: Gtk.ListBox, row: Gtk.ListBoxRow): void {
 		if (!(row instanceof PackageRow)) return
 		this._details_page.flatpak = row.flatpak
 	}
