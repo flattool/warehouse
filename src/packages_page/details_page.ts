@@ -147,4 +147,8 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 	protected _markup_escape(__: this, text: string): string {
 		return text.markup_escape_text()
 	}
+
+	protected _bool_cast(__: this, item: unknown): boolean {
+		return Boolean(item)
+	}
 }

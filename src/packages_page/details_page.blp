@@ -50,8 +50,9 @@ template $DetailsPage: Adw.NavigationPage {
 									]
 								}
 
-								Label {
+								Label title_label {
 									label: bind $_markup_escape(template.flatpak as <$Package>.title) as <string>;
+									visible: bind $_bool_cast(title_label.label) as <bool>;
 									wrap: true;
 									wrap-mode: word_char;
 									justify: center;
@@ -64,8 +65,9 @@ template $DetailsPage: Adw.NavigationPage {
 									]
 								}
 
-								Label {
+								Label description_label {
 									label: bind $_markup_escape(template.flatpak as <$Package>.description) as <string>;
+									visible: bind $_bool_cast(description_label.label) as <bool>;
 									wrap: true;
 									wrap-mode: word_char;
 									justify: center;
@@ -85,7 +87,7 @@ template $DetailsPage: Adw.NavigationPage {
 									margin-bottom: 12;
 									halign: center;
 
-									Button {
+									Button open_button {
 										can-shrink: true;
 										label: _("Open");
 
@@ -95,7 +97,7 @@ template $DetailsPage: Adw.NavigationPage {
 										]
 									}
 
-									Button {
+									Button uninstall_button {
 										can-shrink: true;
 										label: _("Uninstall");
 
@@ -113,6 +115,7 @@ template $DetailsPage: Adw.NavigationPage {
 										Adw.ActionRow {
 											title: _("User Data");
 											subtitle: bind $_get_user_data_label(template.flatpak as <$Package>.size) as <string>;
+											visible: bind template.flatpak as <$Package>.is_app;
 
 											styles [
 												"property",
@@ -194,6 +197,7 @@ template $DetailsPage: Adw.NavigationPage {
 											title: _("Runtime");
 											subtitle: bind template.flatpak as <$Package>.runtime;
 											activatable: true;
+											visible: bind template.flatpak as <$Package>.is_app;
 											activated => $_show_runtime();
 
 											[suffix]

@@ -160,9 +160,7 @@ export class Remote extends from(GObject.Object, {
 	override get disabled(): boolean {
 		return this.options.includes("disabled")
 	}
-	override set disabled(_v: boolean) {
-		throw new Error("Remote::disabled cannot be set!")
-	}
+	override set disabled(_v: boolean) { throw new Error("Remote::disabled cannot be set!") }
 
 	async enable(enable_remote: boolean): Promise<void> {
 		if (!this.installation) throw new Error(`Remote '${this.name}' installation is null`)
@@ -223,6 +221,7 @@ const BasePackage = from(GObject.Object, {
 	installation: Property.gobject(Installation, { flags: "CONSTRUCT_ONLY" }),
 	data_dir: Property.gobject(Gio.File),
 	is_runtime: Property.bool(),
+	is_app: Property.bool(),
 	icon_paintable: Property.gobject(Gtk.IconPaintable),
 })
 
@@ -230,9 +229,19 @@ const BasePackage = from(GObject.Object, {
 export class Package extends BasePackage {
 	static readonly user_data_dir = Gio.File.new_for_path(GLib.get_home_dir() + "/.var/app")
 
+	private _is_runtime?: boolean
+	override get is_runtime(): boolean {
+		this._is_runtime ??= this.options.includes("runtime")
+		return this._is_runtime
+	}
+	override set is_runtime(_v: boolean) { throw new Error("Package::is_runtime cannot be set!") }
+	override get is_app(): boolean {
+		return !this.is_runtime
+	}
+	override set is_app(_v: boolean) { throw new Error("Package::is_app cannot be set!") }
+
 	constructor(...params: ConstructorParameters<typeof BasePackage>) {
 		super(...params)
-		this.is_runtime = this.options.includes("runtime")
 		if (!this.is_runtime) {
 			this.data_dir = Gio.File.new_for_path(`${Package.user_data_dir.get_path()}/${this.application}`)
 		}
