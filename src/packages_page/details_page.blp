@@ -4,433 +4,298 @@ using Adw 1;
 template $DetailsPage: Adw.NavigationPage {
 	title: _("Details");
 
-	child: Adw.ToolbarView {
-		[top]
-		Adw.HeaderBar {
-			show-title: bind template.show_title;
-		}
+	child: Adw.NavigationView nav_view {
+		Adw.NavigationPage {
+			title: bind template.title;
 
-		content: Overlay {
-			child: Adw.Clamp {
-				orientation: vertical;
-				maximum-size: 1;
-				valign: start;
+			child: Adw.ToolbarView {
+				[top]
+				Adw.HeaderBar {
+					show-title: bind template.show_title;
+				}
 
-				child: Picture background_picture {
-					paintable: bind template.flatpak as <$Package>.icon_paintable;
-					content-fit: fill;
-					halign: center;
-					valign: start;
-					height-request: 350;
-
-					styles [
-						"details-blurred",
-					]
-				};
-			};
-
-			[overlay]
-			ScrolledWindow scrolled_window {
-				child: Adw.Clamp {
-					Box {
+				content: Overlay {
+					child: Adw.Clamp {
 						orientation: vertical;
-						spacing: 12;
-						margin-start: 12;
-						margin-end: 12;
-						margin-top: 6;
-						margin-bottom: 12;
+						maximum-size: 1;
+						valign: start;
 
-						Image {
-							pixel-size: 100;
+						child: Picture background_picture {
 							paintable: bind template.flatpak as <$Package>.icon_paintable;
-							margin-bottom: 18;
-
-							styles [
-								"icon-dropshadow",
-							]
-						}
-
-						Label {
-							label: bind $_markup_escape(template.flatpak as <$Package>.title) as <string>;
-							wrap: true;
-							wrap-mode: word_char;
-							justify: center;
-							margin-bottom: 12;
-							margin-start: 6;
-							margin-end: 6;
-
-							styles [
-								"title-1",
-							]
-						}
-
-						Label {
-							label: bind $_markup_escape(template.flatpak as <$Package>.description) as <string>;
-							wrap: true;
-							wrap-mode: word_char;
-							justify: center;
-							margin-bottom: 12;
-							margin-start: 6;
-							margin-end: 6;
-
-							styles [
-								"title-4",
-							]
-						}
-
-						Box {
-							spacing: 6;
-							homogeneous: true;
-							margin-top: 18;
-							margin-bottom: 12;
+							content-fit: fill;
 							halign: center;
+							valign: start;
+							height-request: 350;
+						};
+					};
 
-							Button {
-								can-shrink: true;
-								label: _("Open");
+					[overlay]
+					ScrolledWindow scrolled_window {
+						child: Adw.Clamp {
+							Box {
+								orientation: vertical;
+								spacing: 12;
+								margin-start: 12;
+								margin-end: 12;
+								margin-top: 6;
+								margin-bottom: 12;
 
-								styles [
-									"suggested-action",
-									"pill",
-								]
-							}
-
-							Button {
-								can-shrink: true;
-								label: _("Uninstall");
-
-								styles [
-									"pill",
-								]
-							}
-						}
-
-						Box {
-							orientation: vertical;
-							spacing: 12;
-
-							Adw.PreferencesGroup {
-								Adw.ActionRow {
-									title: _("User Data");
+								Image {
+									pixel-size: 100;
+									paintable: bind template.flatpak as <$Package>.icon_paintable;
+									margin-bottom: 18;
 
 									styles [
-										"property",
+										"icon-dropshadow",
 									]
+								}
 
-									[suffix]
-									Button open_data_button {
-										valign: center;
-										icon-name: "warehouse:folder-open-symbolic";
-										tooltip-text: _("Open User Data");
+								Label {
+									label: bind $_markup_escape(template.flatpak as <$Package>.title) as <string>;
+									wrap: true;
+									wrap-mode: word_char;
+									justify: center;
+									margin-bottom: 12;
+									margin-start: 6;
+									margin-end: 6;
+
+									styles [
+										"title-1",
+									]
+								}
+
+								Label {
+									label: bind $_markup_escape(template.flatpak as <$Package>.description) as <string>;
+									wrap: true;
+									wrap-mode: word_char;
+									justify: center;
+									margin-bottom: 12;
+									margin-start: 6;
+									margin-end: 6;
+
+									styles [
+										"title-4",
+									]
+								}
+
+								Box {
+									spacing: 6;
+									homogeneous: true;
+									margin-top: 18;
+									margin-bottom: 12;
+									halign: center;
+
+									Button {
+										can-shrink: true;
+										label: _("Open");
 
 										styles [
-											"flat",
+											"suggested-action",
+											"pill",
 										]
 									}
 
-									[suffix]
-									Button trash_data_button {
-										valign: center;
-										icon-name: "warehouse:user-trash-symbolic";
-										tooltip-text: _("Trash User Data");
+									Button {
+										can-shrink: true;
+										label: _("Uninstall");
 
 										styles [
-											"flat",
+											"pill",
 										]
-									}
-
-									[suffix]
-									Spinner data_spinner {
-										spinning: true;
 									}
 								}
 
-								Adw.ExpanderRow version_row {
-									title: _("Version");
-									subtitle: bind template.flatpak as <$Package>.version;
+								Box {
+									orientation: vertical;
+									spacing: 12;
 
-									styles [
-										"property",
-									]
+									Adw.PreferencesGroup overview_group {
+										Adw.ActionRow {
+											title: _("User Data");
+											subtitle: bind $_get_user_data_label(template.flatpak as <$Package>.size) as <string>;
 
-									[suffix]
-									Label mask_label {
-										label: _("Updates Disabled");
+											styles [
+												"property",
+											]
 
-										styles [
-											"warning",
-										]
+											[suffix]
+											Button open_data_button {
+												valign: center;
+												icon-name: "warehouse:folder-open-symbolic";
+												tooltip-text: _("Open User Data");
+
+												styles [
+													"flat",
+												]
+											}
+
+											[suffix]
+											Button trash_data_button {
+												valign: center;
+												icon-name: "warehouse:user-trash-symbolic";
+												tooltip-text: _("Trash User Data");
+
+												styles [
+													"flat",
+												]
+											}
+
+											[suffix]
+											Spinner data_spinner {
+												spinning: true;
+											}
+										}
+
+										Adw.ExpanderRow version_row {
+											title: _("Version");
+											subtitle: bind template.flatpak as <$Package>.version;
+
+											styles [
+												"property",
+											]
+
+											[suffix]
+											Label mask_label {
+												label: _("Updates Disabled");
+
+												styles [
+													"warning",
+												]
+											}
+
+											Adw.SwitchRow mask_row {
+												title: _("Disable Updates");
+												subtitle: _("Mask this package so it's never updated");
+											}
+
+											Adw.ActionRow change_version_row {
+												title: _("Change Version");
+												subtitle: _("Upgrade or downgrade this package");
+												activatable: true;
+
+												[suffix]
+												Image {
+													icon-name: "warehouse:right-large-symbolic";
+												}
+											}
+										}
+
+										$InfoRow {
+											title: _("Branch");
+											info: bind template.flatpak as <$Package>.branch;
+										}
+
+										$InfoRow {
+											title: _("Installed Size");
+											info: bind template.flatpak as <$Package>.size;
+										}
+
+										Adw.ActionRow {
+											title: _("Runtime");
+											subtitle: bind template.flatpak as <$Package>.runtime;
+											activatable: true;
+											activated => $_show_runtime();
+
+											[suffix]
+											Image eol_package_package_status_icon {
+												icon-name: "warehouse:error-symbolic";
+												tooltip-text: _("This package is End Of Life, and will not receive any security updates");
+												margin-end: 6;
+
+												styles [
+													"error",
+												]
+											}
+
+											[suffix]
+											Image {
+												icon-name: "go-next-symbolic";
+											}
+										}
+
+										Adw.SwitchRow {
+											title: _("Disable Automatic Removal");
+											subtitle: _("Pin this runtime to keep it installed");
+										}
 									}
 
-									Adw.SwitchRow mask_row {
-										title: _("Disable Updates");
-										subtitle: _("Mask this package so it's never updated");
+									Adw.PreferencesGroup package_info {
+										title: _("Package Information");
+
+										$InfoRow {
+											title: _("Application ID");
+											info: bind template.flatpak as <$Package>.application;
+										}
+
+										$InfoRow {
+											title: _("Application Reference");
+											info: bind template.flatpak as <$Package>.app_ref;
+										}
+
+										$InfoRow {
+											title: _("Architecture");
+											info: bind template.flatpak as <$Package>.arch;
+										}
+
+										$InfoRow {
+											title: _("License");
+											info: bind template.info_license;
+										}
 									}
 
-									Adw.ActionRow change_version_row {
-										title: _("Change Version");
-										subtitle: _("Upgrade or downgrade this package");
-										activatable: true;
+									Adw.PreferencesGroup remote_info {
+										title: _("Installation Information");
 
-										[suffix]
-										Image {
-											icon-name: "warehouse:right-large-symbolic";
+										$InfoRow {
+											title: "SDK";
+											info: bind template.info_sdk;
+										}
+
+										$InfoRow {
+											title: _("Origin");
+											info: bind template.flatpak as <$Package>.origin;
+										}
+
+										$InfoRow {
+											title: _("Collection");
+											info: bind template.info_collection;
+										}
+
+										$InfoRow {
+											title: _("Installation");
+											subtitle: bind template.flatpak as <$Package>.installation as <$Installation>.title;
+										}
+									}
+
+									Adw.PreferencesGroup commit_info {
+										title: _("Commit Information");
+
+										$InfoRow {
+											title: "Commit";
+											info: bind template.info_commit;
+										}
+
+										$InfoRow {
+											title: _("Parent");
+											info: bind template.info_parent;
+										}
+
+										$InfoRow {
+											title: _("Subject");
+											info: bind template.info_subject;
+										}
+
+										$InfoRow date_row {
+											title: _("Date");
+											info: bind template.info_date;
 										}
 									}
 								}
-
-								Adw.ActionRow installed_size_row {
-									title: _("Installed Size");
-									subtitle: bind template.flatpak as <$Package>.size;
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:copy-symbolic";
-									}
-								}
-
-								Adw.ActionRow runtime_row {
-									title: _("Runtime");
-									subtitle: bind template.flatpak as <$Package>.runtime;
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image eol_package_package_status_icon {
-										icon-name: "warehouse:error-symbolic";
-										tooltip-text: _("This package is End Of Life, and will not receive any security updates");
-										margin-end: 6;
-
-										styles [
-											"error",
-										]
-									}
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:right-large-symbolic";
-									}
-								}
-
-								Adw.SwitchRow {
-									title: _("Disable Automatic Removal");
-									subtitle: _("Pin this runtime to keep it installed");
-								}
 							}
-
-							Adw.PreferencesGroup package_info {
-								title: _("Package Information");
-
-								$InfoRow {
-									title: _("Application ID");
-									info: bind template.flatpak as <$Package>.application;
-								}
-
-								// Adw.ActionRow id_row {
-								// 	title: _("Application ID");
-								// 	subtitle: bind template.flatpak as <$Package>.application;
-								// 	activatable: true;
-								// 	styles [
-								// 		"property",
-								// 	]
-								// 	[suffix]
-								// 	Image {
-								// 		icon-name: "warehouse:copy-symbolic";
-								// 	}
-								// }
-								Adw.ActionRow ref_row {
-									title: "Ref";
-									subtitle: bind template.flatpak as <$Package>.app_ref;
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:copy-symbolic";
-									}
-								}
-
-								Adw.ActionRow arch_row {
-									title: _("Architecture");
-									subtitle: bind template.flatpak as <$Package>.arch;
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:copy-symbolic";
-									}
-								}
-
-								Adw.ActionRow branch_row {
-									title: _("Branch");
-									subtitle: bind template.flatpak as <$Package>.branch;
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:copy-symbolic";
-									}
-								}
-
-								Adw.ActionRow license_row {
-									title: _("License");
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:copy-symbolic";
-									}
-								}
-							}
-
-							Adw.PreferencesGroup remote_info {
-								title: _("Installation Information");
-
-								Adw.ActionRow sdk_row {
-									title: "SDK";
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:copy-symbolic";
-									}
-								}
-
-								Adw.ActionRow origin_row {
-									title: _("Origin");
-									subtitle: bind template.flatpak as <$Package>.origin;
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:copy-symbolic";
-									}
-								}
-
-								Adw.ActionRow collection_row {
-									title: _("Collection");
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:copy-symbolic";
-									}
-								}
-
-								Adw.ActionRow installation_row {
-									title: _("Installation");
-									subtitle: bind template.flatpak as <$Package>.installation as <$Installation>.title;
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:copy-symbolic";
-									}
-								}
-							}
-
-							Adw.PreferencesGroup commit_info {
-								title: _("Commit Information");
-
-								Adw.ActionRow commit_row {
-									title: "Commit";
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:copy-symbolic";
-									}
-								}
-
-								Adw.ActionRow parent_row {
-									title: _("Parent");
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:copy-symbolic";
-									}
-								}
-
-								Adw.ActionRow subject_row {
-									title: _("Subject");
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:copy-symbolic";
-									}
-								}
-
-								Adw.ActionRow date_row {
-									title: _("Date");
-									activatable: true;
-
-									styles [
-										"property",
-									]
-
-									[suffix]
-									Image {
-										icon-name: "warehouse:copy-symbolic";
-									}
-								}
-							}
-						}
+						};
 					}
 				};
-			}
-		};
+			};
+		}
 	};
 }

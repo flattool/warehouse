@@ -1,14 +1,20 @@
 import Adw from "gi://Adw?version=1"
-import GObject from "gi://GObject?version=2.0"
+import type Gtk from "gi://Gtk?version=4.0"
 
-import { GClass, OnSignal, Property, from } from "../gobjectify/gobjectify.js"
+import { Child, GClass, OnSignal, Property, from } from "../gobjectify/gobjectify.js"
 import { SharedVars } from "../utils/shared_vars.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/info_row.ui" })
 export class InfoRow extends from(Adw.ActionRow, {
 	info: Property.string(),
 	always_visible: Property.bool(),
+	_copy_icon: Child<Gtk.Image>(),
 }) {
+	_ready(): void {
+		// This is done here so that it's the suffix added (making it the right-most)
+		this.add_suffix(this._copy_icon)
+	}
+
 	_on_activated(): void {
 		SharedVars.fancy_copy(_("Copied %s").format(this.title), this.info)
 	}
