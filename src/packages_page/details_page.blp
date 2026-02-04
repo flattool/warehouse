@@ -44,7 +44,7 @@ template $DetailsPage: Adw.NavigationPage {
 								Image {
 									pixel-size: 100;
 									paintable: bind template.flatpak as <$Package>.icon_paintable;
-									margin-bottom: 18;
+									margin-bottom: 6;
 
 									styles [
 										"icon-dropshadow",
@@ -57,7 +57,6 @@ template $DetailsPage: Adw.NavigationPage {
 									wrap: true;
 									wrap-mode: word_char;
 									justify: center;
-									margin-bottom: 12;
 									margin-start: 6;
 									margin-end: 6;
 
@@ -72,7 +71,6 @@ template $DetailsPage: Adw.NavigationPage {
 									wrap: true;
 									wrap-mode: word_char;
 									justify: center;
-									margin-bottom: 12;
 									margin-start: 6;
 									margin-end: 6;
 
@@ -83,28 +81,45 @@ template $DetailsPage: Adw.NavigationPage {
 
 								Box {
 									spacing: 6;
-									homogeneous: true;
 									margin-top: 18;
-									margin-bottom: 12;
 									halign: center;
 
-									Button open_button {
-										can-shrink: true;
-										label: _("Open");
-										visible: bind template.flatpak as <$Package>.is_app;
+									Box {
+										spacing: 6;
+										homogeneous: true;
 
-										styles [
-											"suggested-action",
-											"pill",
-										]
+										Button open_button {
+											can-shrink: true;
+											label: _("Open");
+											visible: bind template.flatpak as <$Package>.is_app;
+
+											styles [
+												"suggested-action",
+												"pill",
+											]
+										}
+
+										Button uninstall_button {
+											can-shrink: true;
+											label: _("Uninstall");
+
+											styles [
+												"pill",
+											]
+										}
 									}
 
-									Button uninstall_button {
-										can-shrink: true;
-										label: _("Uninstall");
+									MenuButton more_menu {
+										tooltip-text: _("More actions...");
+
+										child: Adw.ButtonContent {
+											margin-start: 14;
+											margin-end: 14;
+											icon-name: "warehouse:view-more-symbolic";
+										};
 
 										styles [
-											"pill",
+											"circular",
 										]
 									}
 								}
@@ -303,4 +318,26 @@ template $DetailsPage: Adw.NavigationPage {
 			};
 		}
 	};
+}
+
+$SimpleMenu {
+	menu_button: more_menu;
+
+	$SimpleMenuItem {
+		label: _("View Snapshots");
+		visible: bind template.flatpak as <$Package>.is_app;
+	}
+
+	$SimpleMenuItem {
+		label: _("Copy Launch Command");
+		visible: bind template.flatpak as <$Package>.is_app;
+	}
+
+	$SimpleMenuItem {
+		label: _("Show Details");
+	}
+
+	$SimpleMenuItem {
+		label: _("Reinstall");
+	}
 }

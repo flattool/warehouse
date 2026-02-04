@@ -16,7 +16,6 @@ export class PackagesPage extends from(BasePage, {
 	is_loading: Property.bool(),
 	search_text: Property.string(),
 	no_results: Property.bool(),
-	selected_package: Property.gobject(Package),
 	_split_view: Child<Adw.NavigationSplitView>(),
 	_packages_list: Child<Gio.ListModel<Package>>(),
 	_only_packages_filter: Child<Gtk.CustomFilter>(),
@@ -45,11 +44,6 @@ export class PackagesPage extends from(BasePage, {
 		this.is_loading = false
 	}
 
-	@OnSignal("notify::selected-package")
-	#on_selected_package_change(): void {
-		this._split_view.show_content = true
-	}
-
 	@Debounce(200, { trigger: "leading" })
 	protected _on_list_change_start(): void {
 		this.is_loading = true
@@ -72,8 +66,9 @@ export class PackagesPage extends from(BasePage, {
 
 	protected _on_row_chosen(__: Gtk.ListBox, row: Gtk.ListBoxRow): void {
 		if (!(row instanceof PackageRow)) return
-		this.selected_package = row.flatpak
 		this._details_page.pop_to_base_page()
+		this._details_page.flatpak = row.flatpak
+		this._split_view.show_content = true
 	}
 
 	protected _get_visible_page(__: this, is_loading: boolean): "loading_page" | "content_page" {
