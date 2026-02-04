@@ -112,9 +112,8 @@ template $DetailsPage: Adw.NavigationPage {
 									spacing: 12;
 
 									Adw.PreferencesGroup overview_group {
-										Adw.ActionRow {
+										Adw.ActionRow user_data_row {
 											title: _("User Data");
-											subtitle: bind $_get_user_data_label(template.flatpak as <$Package>.size) as <string>;
 											visible: bind template.flatpak as <$Package>.is_app;
 
 											styles [
@@ -151,7 +150,7 @@ template $DetailsPage: Adw.NavigationPage {
 
 										Adw.ExpanderRow version_row {
 											title: _("Version");
-											subtitle: bind template.flatpak as <$Package>.version;
+											subtitle: bind $_get_version_subtitle(template.flatpak as <$Package>.version) as <string>;
 
 											styles [
 												"property",

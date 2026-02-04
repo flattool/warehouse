@@ -4,7 +4,7 @@ import Gdk from "gi://Gdk?version=4.0"
 
 import { GClass, Child, Property, from, OnSignal, next_idle } from "../gobjectify/gobjectify.js"
 import { Package } from "../flatpak.js"
-import { run_command_async } from "../utils/helper_funcs.js"
+import { get_readable_file_size, run_command_async } from "../utils/helper_funcs.js"
 import { SharedVars } from "../utils/shared_vars.js"
 
 import "./info_row.js"
@@ -67,6 +67,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 	_nav_view: Child<Adw.NavigationView>(),
 	_background_picture: Child<Gtk.Picture>(),
 	_scrolled_window: Child<Gtk.ScrolledWindow>(),
+	_user_data_row: Child<Adw.ActionRow>(),
 }) {
 	readonly #css_provider = new Gtk.CssProvider()
 	readonly #css_class_name = `details-blur-${max_instances += 1}`
@@ -89,18 +90,25 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 
 	@OnSignal("notify::flatpak")
 	async #on_flatpak_change(): Promise<void> {
-		this._nav_view.pop()
-		let info: Record<string, string> = {}
-		if (this.flatpak) {
-			info = await get_cli_info(this.flatpak)
+		try {
+			this._nav_view.pop()
+			let info: Record<string, string> = {}
+			if (this.flatpak) {
+				info = await get_cli_info(this.flatpak)
+			}
+			this.info_license = info["license"] || ""
+			this.info_sdk = info["sdk"] || ""
+			this.info_commit = info["commit"] || ""
+			this.info_collection = info["collection"] || ""
+			this.info_parent = info["parent"] || ""
+			this.info_subject = info["subject"] || ""
+			this.info_date = info["date"] || ""
+			if (this.flatpak?.is_app) {
+				this._user_data_row.subtitle = await get_readable_file_size(this.flatpak.data_dir?.get_path() ?? "")
+			}
+		} catch (e) {
+			print("ERROR!!!!", e)
 		}
-		this.info_license = info["license"] || ""
-		this.info_sdk = info["sdk"] || ""
-		this.info_commit = info["commit"] || ""
-		this.info_collection = info["collection"] || ""
-		this.info_parent = info["parent"] || ""
-		this.info_subject = info["subject"] || ""
-		this.info_date = info["date"] || ""
 	}
 
 	protected async _show_runtime(): Promise<void> {
@@ -140,15 +148,15 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 		`, -1)
 	}
 
-	protected _get_user_data_label(__: this, data_size: string): string {
-		return data_size
-	}
-
 	protected _markup_escape(__: this, text: string): string {
 		return text.markup_escape_text()
 	}
 
 	protected _bool_cast(__: this, item: unknown): boolean {
 		return Boolean(item)
+	}
+
+	protected _get_version_subtitle(__: this, version_text: string): string {
+		return version_text || _("No version information found")
 	}
 }

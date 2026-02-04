@@ -35,6 +35,25 @@ export function ask_to_continue(
 	})
 }
 
+export async function get_file_size_bytes(path: string): Promise<number> {
+	const cmd: string[] = ["du", "-B1", "-s", path.normalize_path()]
+	const size: string | undefined = (await run_command_async(cmd)).split("\t")[0]
+	if (!size) return 0
+	return Number.parseFloat(size)
+}
+
+export async function get_readable_file_size(path: string): Promise<string> {
+	let size: number = await get_file_size_bytes(path)
+	const units: string[] = ["B", "KB", "MB", "GB", "TB"]
+	const base = 1000
+	let index: number = 0
+	while (size >= base && index < units.length - 1) {
+		size /= base
+		index += 1
+	}
+	return `${size.toFixed(2)} ${units[index]}`
+}
+
 export async function run_command_async(
 	command: string[],
 	config?: RunCommandConfig,
