@@ -6,6 +6,7 @@ template $DetailsPage: Adw.NavigationPage {
 
 	child: Adw.NavigationView nav_view {
 		Adw.NavigationPage {
+			tag: "base-page";
 			title: bind template.title;
 
 			child: Adw.ToolbarView {
@@ -90,6 +91,7 @@ template $DetailsPage: Adw.NavigationPage {
 									Button open_button {
 										can-shrink: true;
 										label: _("Open");
+										visible: bind template.flatpak as <$Package>.is_app;
 
 										styles [
 											"suggested-action",

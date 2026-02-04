@@ -8,6 +8,7 @@ import { get_readable_file_size, run_command_async } from "../utils/helper_funcs
 import { SharedVars } from "../utils/shared_vars.js"
 
 import "./info_row.js"
+import GLib from "gi://GLib?version=2.0"
 
 const BACKGROUND_PICTURE_OFFSET = -80
 
@@ -53,6 +54,7 @@ let max_instances = 0
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/details_page.ui" })
 export class DetailsPage extends from(Adw.NavigationPage, {
 	flatpak: Property.gobject(Package),
+	runtime: Property.gobject(Package),
 	show_title: Property.bool(),
 
 	// Extra CLI Info
@@ -71,6 +73,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 }) {
 	readonly #css_provider = new Gtk.CssProvider()
 	readonly #css_class_name = `details-blur-${max_instances += 1}`
+	#subpage?: DetailsPage
 
 	_ready(): void {
 		this._background_picture.add_css_class(this.#css_class_name)
@@ -86,46 +89,47 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 			this.show_title = value > 0
 			this.#load_css_translation(-value)
 		})
+		this.#on_flatpak_change().catch(log)
+	}
+
+	pop_to_base_page(): void {
+		this._nav_view.pop_to_tag("base-page")
 	}
 
 	@OnSignal("notify::flatpak")
 	async #on_flatpak_change(): Promise<void> {
-		try {
-			this._nav_view.pop()
-			let info: Record<string, string> = {}
-			if (this.flatpak) {
-				info = await get_cli_info(this.flatpak)
-			}
-			this.info_license = info["license"] || ""
-			this.info_sdk = info["sdk"] || ""
-			this.info_commit = info["commit"] || ""
-			this.info_collection = info["collection"] || ""
-			this.info_parent = info["parent"] || ""
-			this.info_subject = info["subject"] || ""
-			this.info_date = info["date"] || ""
-			if (this.flatpak?.is_app) {
-				this._user_data_row.subtitle = await get_readable_file_size(this.flatpak.data_dir?.get_path() ?? "")
-			}
-		} catch (e) {
-			print("ERROR!!!!", e)
+		this._nav_view.pop_to_tag("base-page")
+		let info: Record<string, string> = {}
+		if (this.flatpak) {
+			info = await get_cli_info(this.flatpak)
 		}
-	}
-
-	protected async _show_runtime(): Promise<void> {
-		if (!this.flatpak) return
+		this.info_license = info["license"] || ""
+		this.info_sdk = info["sdk"] || ""
+		this.info_commit = info["commit"] || ""
+		this.info_collection = info["collection"] || ""
+		this.info_parent = info["parent"] || ""
+		this.info_subject = info["subject"] || ""
+		this.info_date = info["date"] || ""
+		if (!this.flatpak || !this.flatpak.is_app) return
+		if (this.flatpak.data_dir?.query_exists(null)) {
+			this._user_data_row.subtitle = await get_readable_file_size(this.flatpak.data_dir?.get_path() ?? "")
+		}
 		const installations = SharedVars.main_window?._installations
 		if (!installations) return
 		for (const inst of installations) {
 			for (const pack of inst.packages) {
 				await next_idle()
 				if (pack.app_ref === this.flatpak.runtime) {
-					const subpage = new DetailsPage({})
-					subpage.flatpak = pack
-					this._nav_view.push(subpage)
-					return
+					this.runtime = pack
 				}
 			}
 		}
+	}
+
+	protected async _show_runtime(): Promise<void> {
+		this.#subpage ??= new DetailsPage({})
+		this.#subpage.flatpak = this.runtime
+		this._nav_view.push(this.#subpage)
 	}
 
 	#load_css_translation(y: number): void {

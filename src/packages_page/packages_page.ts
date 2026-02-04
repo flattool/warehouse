@@ -1,4 +1,5 @@
 import Gio from "gi://Gio?version=2.0"
+import Adw from "gi://Adw?version=1"
 import type Gtk from "gi://Gtk?version=4.0"
 
 import { GClass, Debounce, Child, Property, from, timeout_ms, OnSignal, next_idle } from "../gobjectify/gobjectify.js"
@@ -15,6 +16,8 @@ export class PackagesPage extends from(BasePage, {
 	is_loading: Property.bool(),
 	search_text: Property.string(),
 	no_results: Property.bool(),
+	selected_package: Property.gobject(Package),
+	_split_view: Child<Adw.NavigationSplitView>(),
 	_packages_list: Child<Gio.ListModel<Package>>(),
 	_only_packages_filter: Child<Gtk.CustomFilter>(),
 	_map_model: Child<Gtk.MapListModel<Gio.ListStore<Installation>>>(),
@@ -42,6 +45,11 @@ export class PackagesPage extends from(BasePage, {
 		this.is_loading = false
 	}
 
+	@OnSignal("notify::selected-package")
+	#on_selected_package_change(): void {
+		this._split_view.show_content = true
+	}
+
 	@Debounce(200, { trigger: "leading" })
 	protected _on_list_change_start(): void {
 		this.is_loading = true
@@ -62,9 +70,10 @@ export class PackagesPage extends from(BasePage, {
 		this.#all_after_list_change()
 	}
 
-	protected _on_row_selected(__: Gtk.ListBox, row: Gtk.ListBoxRow): void {
+	protected _on_row_chosen(__: Gtk.ListBox, row: Gtk.ListBoxRow): void {
 		if (!(row instanceof PackageRow)) return
-		this._details_page.flatpak = row.flatpak
+		this.selected_package = row.flatpak
+		this._details_page.pop_to_base_page()
 	}
 
 	protected _get_visible_page(__: this, is_loading: boolean): "loading_page" | "content_page" {

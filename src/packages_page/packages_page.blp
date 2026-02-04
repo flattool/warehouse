@@ -93,7 +93,8 @@ template $PackagesPage: $BasePage {
 
 							content: ScrolledWindow {
 								child: ListBox list_box {
-									row-selected => $_on_row_selected();
+									row-activated => $_on_row_chosen();
+									row-selected => $_on_row_chosen();
 
 									styles [
 										"navigation-sidebar",
@@ -103,7 +104,9 @@ template $PackagesPage: $BasePage {
 						};
 					};
 
-					content: $DetailsPage details_page {};
+					content: $DetailsPage details_page {
+						flatpak: bind template.selected_package;
+					};
 				};
 			}
 		};
