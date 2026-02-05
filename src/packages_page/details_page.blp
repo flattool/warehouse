@@ -1,8 +1,10 @@
 using Gtk 4.0;
 using Adw 1;
+using Gio 2.0;
 
 template $DetailsPage: Adw.NavigationPage {
 	title: _("Details");
+	monitor: bind $_get_monitor_for_package(template.flatpak as <$Package>.data_dir) as <Gio.FileMonitor>;
 
 	child: Adw.NavigationView nav_view {
 		Adw.NavigationPage {
@@ -13,6 +15,13 @@ template $DetailsPage: Adw.NavigationPage {
 				[top]
 				Adw.HeaderBar {
 					show-title: bind template.show_title;
+				}
+
+				[top]
+				Adw.Banner eol_banner {
+					title: _("This Package is End Of Life");
+					button-label: _("Details");
+					revealed: bind template.flatpak as <$Package>.is_eol;
 				}
 
 				content: Overlay {
@@ -185,6 +194,7 @@ template $DetailsPage: Adw.NavigationPage {
 									Adw.PreferencesGroup overview_group {
 										Adw.ActionRow user_data_row {
 											title: _("User Data");
+											subtitle: bind $_get_data_subtitle(template.data_size, template.loading_user_data) as <string>;
 											visible: bind template.flatpak as <$Package>.is_app;
 
 											styles [
@@ -196,6 +206,7 @@ template $DetailsPage: Adw.NavigationPage {
 												valign: center;
 												icon-name: "warehouse:folder-open-symbolic";
 												tooltip-text: _("Open User Data");
+												visible: bind template.has_user_data;
 
 												styles [
 													"flat",
@@ -207,6 +218,7 @@ template $DetailsPage: Adw.NavigationPage {
 												valign: center;
 												icon-name: "warehouse:user-trash-symbolic";
 												tooltip-text: _("Trash User Data");
+												visible: bind template.has_user_data;
 
 												styles [
 													"flat",
@@ -216,7 +228,13 @@ template $DetailsPage: Adw.NavigationPage {
 											[suffix]
 											Spinner data_spinner {
 												spinning: true;
+												visible: bind template.loading_user_data;
 											}
+										}
+
+										$InfoRow {
+											title: _("Installed Size");
+											info: bind template.flatpak as <$Package>.size;
 										}
 
 										Adw.ExpanderRow version_row {
@@ -258,11 +276,6 @@ template $DetailsPage: Adw.NavigationPage {
 											info: bind template.flatpak as <$Package>.branch;
 										}
 
-										$InfoRow {
-											title: _("Installed Size");
-											info: bind template.flatpak as <$Package>.size;
-										}
-
 										Adw.ActionRow {
 											title: _("Runtime");
 											subtitle: bind template.flatpak as <$Package>.runtime;
@@ -275,6 +288,7 @@ template $DetailsPage: Adw.NavigationPage {
 												icon-name: "warehouse:error-symbolic";
 												tooltip-text: _("This package is End Of Life, and will not receive any security updates");
 												margin-end: 6;
+												visible: bind template.runtime as <$Package>.is_eol;
 
 												styles [
 													"error",

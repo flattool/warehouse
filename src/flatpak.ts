@@ -222,6 +222,9 @@ const BasePackage = from(GObject.Object, {
 	data_dir: Property.gobject(Gio.File),
 	is_runtime: Property.bool(),
 	is_app: Property.bool(),
+	is_eol: Property.bool(),
+	// is_masked: Property.bool(),
+	// is_pinned: Property.bool(),
 	icon_paintable: Property.gobject(Gtk.IconPaintable),
 })
 
@@ -231,14 +234,19 @@ export class Package extends BasePackage {
 
 	private _is_runtime?: boolean
 	override get is_runtime(): boolean {
-		this._is_runtime ??= this.options.includes("runtime")
-		return this._is_runtime
+		return this._is_runtime ??= this.options.includes("runtime")
 	}
 	override set is_runtime(_v: boolean) { throw new Error("Package::is_runtime cannot be set!") }
 	override get is_app(): boolean {
 		return !this.is_runtime
 	}
 	override set is_app(_v: boolean) { throw new Error("Package::is_app cannot be set!") }
+
+	private _is_eol?: boolean
+	override get is_eol(): boolean {
+		return this._is_eol ??= this.options.includes("eol")
+	}
+	override set is_eol(_v: boolean) { throw new Error("Package::is_eol cannot be set!") }
 
 	constructor(...params: ConstructorParameters<typeof BasePackage>) {
 		super(...params)
