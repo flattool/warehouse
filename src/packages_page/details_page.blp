@@ -32,55 +32,59 @@ template $DetailsPage: Adw.NavigationPage {
 
 					[overlay]
 					ScrolledWindow scrolled_window {
-						child: Adw.Clamp {
-							Box {
-								orientation: vertical;
-								spacing: 12;
+						child: Box {
+							orientation: vertical;
+							spacing: 12;
+							margin-top: 6;
+							margin-bottom: 12;
+
+							Image {
+								pixel-size: 100;
+								paintable: bind template.flatpak as <$Package>.icon_paintable;
 								margin-start: 12;
 								margin-end: 12;
-								margin-top: 6;
-								margin-bottom: 12;
+								margin-bottom: 6;
 
-								Image {
-									pixel-size: 100;
-									paintable: bind template.flatpak as <$Package>.icon_paintable;
-									margin-bottom: 6;
+								styles [
+									"icon-dropshadow",
+								]
+							}
 
-									styles [
-										"icon-dropshadow",
-									]
-								}
+							Label title_label {
+								label: bind $_markup_escape(template.flatpak as <$Package>.title) as <string>;
+								visible: bind $_bool_cast(title_label.label) as <bool>;
+								wrap: true;
+								wrap-mode: word_char;
+								justify: center;
+								margin-start: 18;
+								margin-end: 18;
 
-								Label title_label {
-									label: bind $_markup_escape(template.flatpak as <$Package>.title) as <string>;
-									visible: bind $_bool_cast(title_label.label) as <bool>;
-									wrap: true;
-									wrap-mode: word_char;
-									justify: center;
-									margin-start: 6;
-									margin-end: 6;
+								styles [
+									"title-1",
+								]
+							}
 
-									styles [
-										"title-1",
-									]
-								}
+							Label description_label {
+								label: bind $_markup_escape(template.flatpak as <$Package>.description) as <string>;
+								visible: bind $_bool_cast(description_label.label) as <bool>;
+								wrap: true;
+								wrap-mode: word_char;
+								justify: center;
+								margin-start: 18;
+								margin-end: 18;
 
-								Label description_label {
-									label: bind $_markup_escape(template.flatpak as <$Package>.description) as <string>;
-									visible: bind $_bool_cast(description_label.label) as <bool>;
-									wrap: true;
-									wrap-mode: word_char;
-									justify: center;
-									margin-start: 6;
-									margin-end: 6;
+								styles [
+									"title-4",
+								]
+							}
 
-									styles [
-										"title-4",
-									]
-								}
+							Box {
+								orientation: vertical;
 
 								Box {
 									spacing: 6;
+									margin-start: 12;
+									margin-end: 12;
 									margin-top: 18;
 									halign: center;
 
@@ -109,7 +113,7 @@ template $DetailsPage: Adw.NavigationPage {
 										}
 									}
 
-									MenuButton more_menu {
+									ToggleButton more_menu {
 										tooltip-text: _("More actions...");
 
 										child: Adw.ButtonContent {
@@ -124,9 +128,59 @@ template $DetailsPage: Adw.NavigationPage {
 									}
 								}
 
-								Box {
+								Adw.Clamp {
+									child: Revealer {
+										transition-type: slide_up;
+										reveal-child: bind more_menu.active;
+
+										child: Revealer {
+											transition-type: crossfade;
+											reveal-child: bind more_menu.active;
+
+											child: Box {
+												orientation: vertical;
+												spacing: 12;
+												margin-start: 12;
+												margin-end: 12;
+												margin-top: 12;
+
+												Adw.PreferencesGroup {
+													separate-rows: true;
+
+													Adw.ButtonRow {
+														title: _("View Snapshots");
+														visible: bind template.flatpak as <$Package>.is_app;
+													}
+
+													Adw.ButtonRow {
+														title: _("Copy Launch Command");
+														visible: bind template.flatpak as <$Package>.is_app;
+													}
+
+													Adw.ButtonRow {
+														title: _("Show Details");
+													}
+
+													Adw.ButtonRow {
+														title: _("Reinstall");
+													}
+												}
+
+												Separator {
+													orientation: horizontal;
+												}
+											};
+										};
+									};
+								}
+							}
+
+							Adw.Clamp {
+								child: Box {
 									orientation: vertical;
 									spacing: 12;
+									margin-start: 12;
+									margin-end: 12;
 
 									Adw.PreferencesGroup overview_group {
 										Adw.ActionRow user_data_row {
@@ -310,7 +364,7 @@ template $DetailsPage: Adw.NavigationPage {
 											info: bind template.info_date;
 										}
 									}
-								}
+								};
 							}
 						};
 					}
@@ -318,26 +372,4 @@ template $DetailsPage: Adw.NavigationPage {
 			};
 		}
 	};
-}
-
-$SimpleMenu {
-	menu_button: more_menu;
-
-	$SimpleMenuItem {
-		label: _("View Snapshots");
-		visible: bind template.flatpak as <$Package>.is_app;
-	}
-
-	$SimpleMenuItem {
-		label: _("Copy Launch Command");
-		visible: bind template.flatpak as <$Package>.is_app;
-	}
-
-	$SimpleMenuItem {
-		label: _("Show Details");
-	}
-
-	$SimpleMenuItem {
-		label: _("Reinstall");
-	}
 }

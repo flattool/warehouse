@@ -8,7 +8,6 @@ import { get_readable_file_size, run_command_async } from "../utils/helper_funcs
 import { SharedVars } from "../utils/shared_vars.js"
 
 import "./info_row.js"
-import GLib from "gi://GLib?version=2.0"
 
 const BACKGROUND_PICTURE_OFFSET = -80
 
