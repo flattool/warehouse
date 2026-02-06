@@ -49,7 +49,7 @@ async function get_cli_info(flatpak: Package): Promise<Record<string, string>> {
 	return to_ret
 }
 
-let max_instances = 0
+let total_instances = 0
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/details_page.ui" })
 export class DetailsPage extends from(Adw.NavigationPage, {
@@ -76,7 +76,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 	_user_data_row: Child<Adw.ActionRow>(),
 }) {
 	readonly #css_provider = new Gtk.CssProvider()
-	readonly #css_class_name = `details-blur-${max_instances += 1}`
+	readonly #css_class_name = `details-blur-${total_instances += 1}`
 	#subpage?: DetailsPage
 
 	private _monitor: Gio.FileMonitor | null = null

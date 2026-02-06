@@ -43,6 +43,8 @@ export class Installation extends from(GObject.Object, {
 	title: Property.string({ flags: "CONSTRUCT_ONLY" }),
 	location_tag: Property.string({ flags: "CONSTRUCT_ONLY", default: "system" }).as<"system" | "user" | "other">(),
 	location_path: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	masked_ids: Property.string(),
+	pinned_refs: Property.string(),
 }) {
 	readonly remotes = new Gio.ListStore<Remote>({ item_type: Remote.$gtype })
 	readonly packages = new Gio.ListStore<Package>({ item_type: Package.$gtype })
@@ -69,13 +71,15 @@ export class Installation extends from(GObject.Object, {
 
 	async load_packages(): Promise<void> {
 		this.icon_theme.add_search_path(`${this.location_path}/exports/share/icons`.normalize_path())
+		this.masked_ids = await run_command_async(["flatpak", "mask", this.command_syntax], { run_on_host: true })
+		this.pinned_refs = await run_command_async(["flatpak", "pin", this.command_syntax], { run_on_host: true })
 		return await get_packages(this, this.packages)
 	}
 
 	@Debounce(200)
 	#reload(): void {
-		get_remotes(this, this.remotes).catch(log)
-		get_packages(this, this.packages).catch(log)
+		this.load_packages().catch(log)
+		this.load_remotes().catch(log)
 	}
 }
 
@@ -223,8 +227,8 @@ const BasePackage = from(GObject.Object, {
 	is_runtime: Property.bool(),
 	is_app: Property.bool(),
 	is_eol: Property.bool(),
-	// is_masked: Property.bool(),
-	// is_pinned: Property.bool(),
+	is_masked: Property.bool(),
+	is_pinned: Property.bool(),
 	icon_paintable: Property.gobject(Gtk.IconPaintable),
 })
 
@@ -247,6 +251,18 @@ export class Package extends BasePackage {
 		return this._is_eol ??= this.options.includes("eol")
 	}
 	override set is_eol(_v: boolean) { throw new Error("Package::is_eol cannot be set!") }
+
+	private _is_masked?: boolean
+	override get is_masked(): boolean {
+		return this._is_masked ??= this.installation?.masked_ids.includes(this.application) ?? false
+	}
+	override set is_masked(_v: boolean) { throw new Error("Package::is_masked cannot be set!") }
+
+	private _is_pinned?: boolean
+	override get is_pinned(): boolean {
+		return this._is_pinned ??= this.installation?.pinned_refs.includes(this.app_ref) ?? false
+	}
+	override set is_pinned(_v: boolean) { throw new Error("Package::is_pinned cannot be set!") }
 
 	constructor(...params: ConstructorParameters<typeof BasePackage>) {
 		super(...params)

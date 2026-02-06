@@ -248,6 +248,7 @@ template $DetailsPage: Adw.NavigationPage {
 											[suffix]
 											Label mask_label {
 												label: _("Updates Disabled");
+												visible: bind template.flatpak as <$Package>.is_masked;
 
 												styles [
 													"warning",
@@ -257,6 +258,7 @@ template $DetailsPage: Adw.NavigationPage {
 											Adw.SwitchRow mask_row {
 												title: _("Disable Updates");
 												subtitle: _("Mask this package so it's never updated");
+												active: bind template.flatpak as <$Package>.is_masked;
 											}
 
 											Adw.ActionRow change_version_row {
@@ -304,6 +306,7 @@ template $DetailsPage: Adw.NavigationPage {
 										Adw.SwitchRow {
 											title: _("Disable Automatic Removal");
 											subtitle: _("Pin this runtime to keep it installed");
+											active: bind template.flatpak as <$Package>.is_pinned;
 										}
 									}
 
