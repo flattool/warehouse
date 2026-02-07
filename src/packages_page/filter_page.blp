@@ -1,0 +1,109 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $FilterPage: Adw.NavigationPage {
+	title: _("Set Filters");
+
+	child: Adw.ToolbarView {
+		[top]
+		Adw.HeaderBar {
+			[start]
+			Button {
+				child: Adw.ButtonContent {
+					label: _("Reset");
+					icon-name: "warehouse:arrow-circular-top-right-symbolic";
+				};
+			}
+		}
+
+		content: ScrolledWindow scrolled_window {
+			propagate-natural-width: true;
+			propagate-natural-height: true;
+
+			child: Adw.Clamp {
+				margin-start: 12;
+				margin-end: 12;
+				margin-top: 6;
+				margin-bottom: 12;
+
+				child: Box {
+					orientation: vertical;
+					spacing: 24;
+
+					Adw.PreferencesGroup type_group {
+						title: _("Filter by Package Type");
+						description: _("Show packages of these types");
+
+						Adw.ActionRow {
+							title: _("Applications");
+							subtitle: _("Packages that can be opened");
+							activatable: true;
+							activatable-widget: check_one;
+
+							[suffix]
+							CheckButton check_one {
+								halign: center;
+							}
+						}
+
+						Adw.ActionRow {
+							title: _("Runtimes");
+							subtitle: _("Packages that applications depend on");
+							activatable: true;
+							activatable-widget: check_two;
+
+							[suffix]
+							CheckButton check_two {
+								halign: center;
+							}
+						}
+					}
+
+					Adw.PreferencesGroup remote_group {
+						title: _("Filter By Remotes");
+						description: _("Show packages from selected remotes");
+
+						header-suffix: Switch by_remotes_switch {
+							margin-start: 6;
+							valign: center;
+						};
+
+						Adw.ActionRow {
+							title: _("Example Remote");
+							subtitle: _("This is just a simple example row");
+							activatable: true;
+							activatable-widget: check_three;
+
+							[suffix]
+							CheckButton check_three {
+								halign: center;
+							}
+						}
+					}
+
+					Adw.PreferencesGroup runtime_group {
+						title: _("Filter By Runtimes");
+						description: _("Show apps using selected runtimes");
+
+						header-suffix: Switch by_runtime_switch {
+							margin-start: 6;
+							valign: center;
+						};
+
+						Adw.ActionRow {
+							title: _("Example Runtime");
+							subtitle: _("This is just a simple example row");
+							activatable: true;
+							activatable-widget: check_four;
+
+							[suffix]
+							CheckButton check_four {
+								halign: center;
+							}
+						}
+					}
+				};
+			};
+		};
+	};
+}

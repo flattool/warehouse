@@ -10,8 +10,6 @@ import { SharedVars } from "../utils/shared_vars.js"
 
 import "./info_row.js"
 
-const BACKGROUND_PICTURE_OFFSET = -80
-
 const CLI_INFO_KEYS = [
 	"License",
 	"Sdk",
@@ -49,6 +47,12 @@ async function get_cli_info(flatpak: Package): Promise<Record<string, string>> {
 	return to_ret
 }
 
+const BLUR_AMOUNT = 200
+const LIGHT_OPACTIY = 1.0
+const DARK_OPACITY = 0.5
+const BACKGROUND_PICTURE_OFFSET = -80
+const BACKGROUND_PICTURE_HEIGHT = 350
+
 let total_instances = 0
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/details_page.ui" })
@@ -71,13 +75,14 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 	monitor: Property.gobject(Gio.FileMonitor),
 
 	_nav_view: Child<Adw.NavigationView>(),
-	_background_picture: Child<Gtk.Picture>(),
+	_blur_target: Child<Adw.Bin>(),
 	_scrolled_window: Child<Gtk.ScrolledWindow>(),
 	_user_data_row: Child<Adw.ActionRow>(),
 }) {
 	readonly #css_provider = new Gtk.CssProvider()
 	readonly #css_class_name = `details-blur-${total_instances += 1}`
 	#subpage?: DetailsPage
+	#scroll_position = 0
 
 	private _monitor: Gio.FileMonitor | null = null
 	override get monitor(): Gio.FileMonitor | null { return this._monitor }
@@ -88,7 +93,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 	}
 
 	_ready(): void {
-		this._background_picture.add_css_class(this.#css_class_name)
+		this._blur_target.add_css_class(this.#css_class_name)
 		this.#load_css_translation(0)
 		Gtk.StyleContext.add_provider_for_display(
 			Gdk.Display.get_default()!,
@@ -97,9 +102,9 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 		)
 		const vadjustment: Gtk.Adjustment = this._scrolled_window.vadjustment
 		vadjustment.connect("value-changed", () => {
-			const value = vadjustment.value
-			this.show_title = value > 0
-			this.#load_css_translation(-value)
+			this.#scroll_position = vadjustment.value
+			this.show_title = this.#scroll_position > 0
+			this.#load_css_translation(-this.#scroll_position)
 		})
 		this.#on_flatpak_change().catch(log)
 	}
@@ -111,6 +116,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 	@OnSignal("notify::flatpak")
 	async #on_flatpak_change(): Promise<void> {
 		this._nav_view.pop_to_tag("base-page")
+		this.#load_css_translation(-this.#scroll_position)
 		this.has_user_data = false
 		this.loading_user_data = true
 		let info: Record<string, string> = {}
@@ -162,18 +168,24 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 	#load_css_translation(y: number): void {
 		this.#css_provider.load_from_data(`
 			.${this.#css_class_name} {
-				filter: blur(200px);
 				transform: translateY(${y + BACKGROUND_PICTURE_OFFSET}px);
+				margin-bottom: ${BACKGROUND_PICTURE_OFFSET}px;
+				background-image: url("file://${this.flatpak?.icon_paintable?.get_file()?.get_path()}");
+				background-repeat: no-repeat;
+				background-size: 100% ${BACKGROUND_PICTURE_HEIGHT}px;
+				background-position: 0px 0px;
+				filter: blur(${BLUR_AMOUNT}px);
 			}
 			@media (prefers-color-scheme: dark) {
 				.${this.#css_class_name} {
-					opacity: 0.5;
+					opacity: ${DARK_OPACITY};
 				}
 			}
 			@media (prefers-contrast: more) {
 				.${this.#css_class_name} {
+					background-image: none;
 					filter: none;
-					opacity: 1;
+					opacity: ${LIGHT_OPACTIY};
 				}
 			}
 		`, -1)

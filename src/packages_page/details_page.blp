@@ -25,18 +25,10 @@ template $DetailsPage: Adw.NavigationPage {
 				}
 
 				content: Overlay {
-					child: Adw.Clamp {
-						orientation: vertical;
-						maximum-size: 1;
-						valign: start;
-
-						child: Picture background_picture {
-							paintable: bind template.flatpak as <$Package>.icon_paintable;
-							content-fit: fill;
-							halign: center;
-							valign: start;
-							height-request: 350;
-						};
+					child: Adw.Bin blur_target {
+						vexpand: true;
+						valign: fill;
+						visible: true;
 					};
 
 					[overlay]

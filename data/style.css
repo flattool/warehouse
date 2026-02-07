@@ -8,3 +8,14 @@
 .drop-target-blurred {
 	filter: blur(6px);
 }
+/* end thanks */
+
+.margined-bottom-sheet sheet {
+	margin-left: 6px;
+	margin-right: 6px;
+}
+
+.margined-bottom-sheet .bottom-bar {
+	margin-left: 0px;
+	margin-right: 0px;
+}

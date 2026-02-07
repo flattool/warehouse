@@ -62,44 +62,76 @@ template $PackagesPage: $BasePage {
 				name: "content_page";
 
 				child: Adw.NavigationSplitView split_view {
-					sidebar-width-fraction: 0.45;
+					sidebar-width-fraction: 0.5;
 					max-sidebar-width: 999999999.0;
 
 					sidebar: Adw.NavigationPage {
 						title: bind template.title;
 
-						child: Adw.ToolbarView {
-							[top]
-							Adw.HeaderBar {
-								[start]
-								$SearchButton search_button {
-									sensitive: bind $_has_any_packages(packages_list.n-items) as <bool>;
+						child: Adw.BreakpointBin {
+							width-request: 1;
+							height-request: 1;
+
+							Adw.Breakpoint {
+								condition ("min-width: 650")
+
+								setters {
+									bottom_sheet.full-width: false;
+									bottom_sheet.modal: false;
+									filter-page.width-request: 400;
 								}
 							}
 
-							[top]
-							Adw.Clamp {
-								child: SearchBar {
-									key-capture-widget: template;
-									search-mode-enabled: bind search_button.active bidirectional;
+							child: Adw.BottomSheet bottom_sheet {
+								align: 0.95;
 
-									child: SearchEntry {
-										hexpand: true;
-										placeholder-text: _("Search Packages");
-										search-changed => $_on_search_changed();
+								styles [
+									"margined-bottom-sheet",
+								]
+
+								[content]
+								Adw.ToolbarView {
+									[top]
+									Adw.HeaderBar {
+										[start]
+										$SearchButton search_button {
+											sensitive: bind $_has_any_packages(packages_list.n-items) as <bool>;
+										}
+									}
+
+									[top]
+									Adw.Clamp {
+										child: SearchBar {
+											key-capture-widget: template;
+											search-mode-enabled: bind search_button.active bidirectional;
+
+											child: SearchEntry {
+												hexpand: true;
+												placeholder-text: _("Search Packages");
+												search-changed => $_on_search_changed();
+											};
+										};
+									}
+
+									content: ScrolledWindow {
+										child: ListBox list_box {
+											row-activated => $_on_row_chosen();
+											row-selected => $_on_row_chosen();
+
+											styles [
+												"navigation-sidebar",
+											]
+										};
 									};
-								};
-							}
+								}
 
-							content: ScrolledWindow {
-								child: ListBox list_box {
-									row-activated => $_on_row_chosen();
-									row-selected => $_on_row_chosen();
+								[sheet]
+								$FilterPage filter-page {}
 
-									styles [
-										"navigation-sidebar",
-									]
-								};
+								[bottom-bar]
+								Label {
+									label: "Bottom bar lol";
+								}
 							};
 						};
 					};
