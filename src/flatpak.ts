@@ -43,8 +43,8 @@ export class Installation extends from(GObject.Object, {
 	title: Property.string({ flags: "CONSTRUCT_ONLY" }),
 	location_tag: Property.string({ flags: "CONSTRUCT_ONLY", default: "system" }).as<"system" | "user" | "other">(),
 	location_path: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	masked_ids: Property.string(),
-	pinned_refs: Property.string(),
+	masked_ids: Property.jsobject().as<Set<string>>(),
+	pinned_refs: Property.jsobject().as<Set<string>>(),
 }) {
 	readonly remotes = new Gio.ListStore<Remote>({ item_type: Remote.$gtype })
 	readonly packages = new Gio.ListStore<Package>({ item_type: Package.$gtype })
@@ -71,8 +71,10 @@ export class Installation extends from(GObject.Object, {
 
 	async load_packages(): Promise<void> {
 		this.icon_theme.add_search_path(`${this.location_path}/exports/share/icons`.normalize_path())
-		this.masked_ids = await run_command_async(["flatpak", "mask", this.command_syntax], { run_on_host: true })
-		this.pinned_refs = await run_command_async(["flatpak", "pin", this.command_syntax], { run_on_host: true })
+		let response: string = await run_command_async(["flatpak", "mask", this.command_syntax], { run_on_host: true })
+		this.masked_ids = new Set(response.trim().split("\n").map((id) => id.trim()).filter(Boolean))
+		response = await run_command_async(["flatpak", "pin", this.command_syntax], { run_on_host: true })
+		this.pinned_refs = new Set(response.trim().split("\n").map((ref) => ref.trim()).filter(Boolean))
 		return await get_packages(this, this.packages)
 	}
 
@@ -254,13 +256,13 @@ export class Package extends BasePackage {
 
 	private _is_masked?: boolean
 	override get is_masked(): boolean {
-		return this._is_masked ??= this.installation?.masked_ids.includes(this.application) ?? false
+		return this._is_masked ??= this.installation?.masked_ids?.has(this.application) ?? false
 	}
 	override set is_masked(_v: boolean) { throw new Error("Package::is_masked cannot be set!") }
 
 	private _is_pinned?: boolean
 	override get is_pinned(): boolean {
-		return this._is_pinned ??= this.installation?.pinned_refs.includes(this.app_ref) ?? false
+		return this._is_pinned ??= this.installation?.pinned_refs?.has(this.app_ref) ?? false
 	}
 	override set is_pinned(_v: boolean) { throw new Error("Package::is_pinned cannot be set!") }
 
