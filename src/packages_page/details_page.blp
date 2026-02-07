@@ -25,10 +25,12 @@ template $DetailsPage: Adw.NavigationPage {
 				}
 
 				content: Overlay {
-					child: Adw.Bin blur_target {
-						vexpand: true;
-						valign: fill;
-						visible: true;
+					child: Adw.Clamp {
+						child: Adw.Bin blur_target {
+							vexpand: true;
+							valign: fill;
+							visible: true;
+						};
 					};
 
 					[overlay]
@@ -82,10 +84,10 @@ template $DetailsPage: Adw.NavigationPage {
 							Box {
 								orientation: vertical;
 
-								Box {
+								Box pillbox_group {
 									spacing: 6;
-									margin-start: 12;
-									margin-end: 12;
+									margin-start: 18;
+									margin-end: 18;
 									margin-top: 18;
 									halign: center;
 

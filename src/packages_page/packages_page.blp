@@ -77,13 +77,12 @@ template $PackagesPage: $BasePage {
 
 								setters {
 									bottom_sheet.full-width: false;
-									bottom_sheet.modal: false;
-									filter-page.width-request: 400;
+									filter-page.width-request: 420;
 								}
 							}
 
 							child: Adw.BottomSheet bottom_sheet {
-								align: 0.95;
+								align: 0.5;
 
 								styles [
 									"margined-bottom-sheet",
@@ -114,13 +113,25 @@ template $PackagesPage: $BasePage {
 									}
 
 									content: ScrolledWindow {
-										child: ListBox list_box {
-											row-activated => $_on_row_chosen();
-											row-selected => $_on_row_chosen();
+										styles [
+											"scrollbar-offset",
+										]
 
-											styles [
-												"navigation-sidebar",
-											]
+										child: Box {
+											orientation: vertical;
+
+											ListBox list_box {
+												row-activated => $_on_row_chosen();
+												row-selected => $_on_row_chosen();
+
+												styles [
+													"navigation-sidebar",
+												]
+											}
+
+											Adw.Bin {
+												height-request: bind bottom_sheet.bottom-bar-height;
+											}
 										};
 									};
 								}
@@ -129,8 +140,38 @@ template $PackagesPage: $BasePage {
 								$FilterPage filter-page {}
 
 								[bottom-bar]
-								Label {
-									label: "Bottom bar lol";
+								Box {
+									spacing: 12;
+									margin-top: 14;
+									margin-bottom: 14;
+									margin-start: 16;
+									margin-end: 16;
+
+									Image {
+										icon-name: "warehouse:funnel-outline-symbolic";
+									}
+
+									Label {
+										label: _("Set Filters");
+										ellipsize: end;
+										hexpand: true;
+										halign: start;
+
+										styles [
+											"heading",
+										]
+									}
+
+									Label {
+										label: "Showing 98 / 107";
+										ellipsize: middle;
+										hexpand: true;
+										halign: end;
+
+										styles [
+											"heading",
+										]
+									}
 								}
 							};
 						};

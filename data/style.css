@@ -11,11 +11,18 @@
 /* end thanks */
 
 .margined-bottom-sheet sheet {
-	margin-left: 6px;
-	margin-right: 6px;
+	margin-left: 12px;
+	margin-right: 12px;
 }
 
 .margined-bottom-sheet .bottom-bar {
-	margin-left: 0px;
-	margin-right: 0px;
+	border-radius: 18px 18px 0px 0px;
+}
+
+.margined-bottom-sheet .bottom-bar {
+	border-radius: 18px 18px 0px 0px;
+}
+
+.margined-bottom-sheet .bottom-bar button {
+	border-radius: 18px 18px 0px 0px;
 }

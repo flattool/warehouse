@@ -47,7 +47,7 @@ async function get_cli_info(flatpak: Package): Promise<Record<string, string>> {
 	return to_ret
 }
 
-const BLUR_AMOUNT = 200
+const BLUR_AMOUNT = 100
 const LIGHT_OPACTIY = 1.0
 const DARK_OPACITY = 0.5
 const BACKGROUND_PICTURE_OFFSET = -80
@@ -94,12 +94,12 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 
 	_ready(): void {
 		this._blur_target.add_css_class(this.#css_class_name)
-		this.#load_css_translation(0)
 		Gtk.StyleContext.add_provider_for_display(
 			Gdk.Display.get_default()!,
 			this.#css_provider,
 			Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
 		)
+		this.#load_css_translation(0)
 		const vadjustment: Gtk.Adjustment = this._scrolled_window.vadjustment
 		vadjustment.connect("value-changed", () => {
 			this.#scroll_position = vadjustment.value

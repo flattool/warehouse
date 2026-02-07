@@ -1,6 +1,7 @@
 import Gio from "gi://Gio?version=2.0"
+import Gdk from "gi://Gdk?version=4.0"
 import Adw from "gi://Adw?version=1"
-import type Gtk from "gi://Gtk?version=4.0"
+import Gtk from "gi://Gtk?version=4.0"
 
 import { GClass, Debounce, Child, Property, from, timeout_ms, OnSignal, next_idle } from "../gobjectify/gobjectify.js"
 import { BasePage } from "../widgets/base_page.js"
@@ -17,6 +18,7 @@ export class PackagesPage extends from(BasePage, {
 	is_loading: Property.bool(),
 	search_text: Property.string(),
 	no_results: Property.bool(),
+	_bottom_sheet: Child<Adw.BottomSheet>(),
 	_split_view: Child<Adw.NavigationSplitView>(),
 	_packages_list: Child<Gio.ListModel<Package>>(),
 	_only_packages_filter: Child<Gtk.CustomFilter>(),
@@ -24,6 +26,8 @@ export class PackagesPage extends from(BasePage, {
 	_list_box: Child<Gtk.ListBox>(),
 	_details_page: Child<DetailsPage>(),
 }) {
+	readonly #css_provider = new Gtk.CssProvider()
+
 	async _ready(): Promise<void> {
 		this._only_packages_filter.set_filter_func((item) => item instanceof Package)
 		this._map_model.set_map_func((item) => {
@@ -34,6 +38,13 @@ export class PackagesPage extends from(BasePage, {
 		if (this._packages_list.get_n_items() === 0) {
 			this.#all_after_list_change()
 		}
+		Gtk.StyleContext.add_provider_for_display(
+			Gdk.Display.get_default()!,
+			this.#css_provider,
+			Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+		)
+		this.#load_scrollbar_css()
+		this._bottom_sheet.connect("notify::bottom-bar-height", () => this.#load_scrollbar_css())
 	}
 
 	@OnSignal("notify::search-text")
@@ -43,6 +54,14 @@ export class PackagesPage extends from(BasePage, {
 
 	#all_after_list_change(): void {
 		this.is_loading = false
+	}
+
+	#load_scrollbar_css(): void {
+		this.#css_provider.load_from_data(`
+			.scrollbar-offset scrollbar {
+				margin-bottom: ${this._bottom_sheet.bottom_bar_height}px;
+			}
+		`, -1)
 	}
 
 	@Debounce(200, { trigger: "leading" })
