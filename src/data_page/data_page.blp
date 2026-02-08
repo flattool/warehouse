@@ -1,0 +1,54 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $DataPage: $BasePage {
+	title: _("Manage User Data");
+	sidebar_title: _("User Data");
+	icon_name: "warehouse:file-manager-symbolic";
+
+	child: Adw.ToolbarView {
+		[top]
+		Adw.HeaderBar {
+			[start]
+			$SearchButton search_button {
+				search_bar: search_bar;
+			}
+
+			title-widget: Adw.InlineViewSwitcher {
+				stack: stack;
+				display-mode: both;
+			};
+		}
+
+		[top]
+		Adw.Clamp {
+			child: SearchBar search_bar {
+				search-mode-enabled: bind search_button.active bidirectional;
+				key-capture-widget: template;
+
+				child: SearchEntry {
+					hexpand: true;
+					placeholder-text: _("Search Data");
+				};
+			};
+		}
+
+		content: Adw.ViewStack stack {
+			Adw.ViewStackPage {
+				title: _("Active Data");
+				icon-name: "warehouse:file-manager-symbolic";
+
+				child: $DataSubpage {};
+			}
+
+			Adw.ViewStackPage {
+				title: _("Leftover Data");
+				icon-name: "warehouse:folder-templates-symbolic";
+
+				child: $DataSubpage {
+					show_leftover: true;
+				};
+			}
+		};
+	};
+}

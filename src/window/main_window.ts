@@ -11,6 +11,7 @@ import { SharedVars } from "../utils/shared_vars.js"
 
 import "../packages_page/packages_page.js"
 import "../remotes_page/remotes_page.js"
+import "../data_page/data_page.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/window/main_window.ui" })
 export class MainWindow extends from(Adw.ApplicationWindow, {
