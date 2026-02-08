@@ -22,9 +22,7 @@ export class RemotesPage extends from(BasePage, {
 	none_disabled: Property.bool(),
 	_search_filter: Child<Gtk.EveryFilter>(),
 	_enabled_filter: Child<Gtk.CustomFilter>(),
-	_remotes_list: Child<Gio.ListModel<Remote>>(),
-	_only_remotes_filter: Child<Gtk.CustomFilter>(),
-	_map_model: Child<Gtk.MapListModel<Gio.ListStore<Remote>>>(),
+	_sorted_remotes_list: Child<Gio.ListModel<Remote>>(),
 	_current_group: Child<Adw.PreferencesGroup>(),
 	_popular_remotes_group: Child<Adw.PreferencesGroup>(),
 	_empty_row: Child<Adw.ActionRow>(),
@@ -38,24 +36,22 @@ export class RemotesPage extends from(BasePage, {
 				activatable: true,
 			})
 			row.add_suffix(Gtk.Image.new_from_icon_name("warehouse:plus-large-symbolic"))
-			row.connect("activated", () => {
-				print(popular.name, popular.link)
+			row.connect("activated", (popular_: PopularRemote = popular): void => {
+				print(popular_.name, popular_.link)
 			})
 			this._popular_remotes_group.add(row)
 		}
-		this._only_remotes_filter.set_filter_func((item) => item instanceof Remote)
-		this._map_model.set_map_func((item) => {
-			if (!(item instanceof Installation)) return item
-			return item.remotes
-		})
-		this._current_group.bind_model(this._remotes_list, (remote) => new RemoteRow({ remote: remote as Remote }))
+		this._current_group.bind_model(
+			this._sorted_remotes_list,
+			(remote) => new RemoteRow({ remote: remote as Remote }),
+		)
 		this._enabled_filter.set_filter_func((item) => {
 			const remote = item as Remote
 			if (this.show_disabled) return true
 			return !remote.disabled
 		})
 		await timeout_ms(250)
-		if (this._remotes_list.get_n_items() === 0) {
+		if (this._sorted_remotes_list.get_n_items() === 0) {
 			this.#all_after_list_change()
 		}
 		this._current_group.add(this._empty_row)
@@ -84,12 +80,12 @@ export class RemotesPage extends from(BasePage, {
 			}
 		}
 		this.none_enabled = total_enabled === 0
-		this.none_disabled = total_enabled === this._remotes_list.get_n_items()
+		this.none_disabled = total_enabled === this._sorted_remotes_list.get_n_items()
 		this.no_results = !any_results && this.search_text !== ""
 	}
 
 	#all_after_list_change(): void {
-		if (this._remotes_list.get_n_items() === 0) {
+		if (this._sorted_remotes_list.get_n_items() === 0) {
 			this.none_enabled = true
 			this.none_disabled = true
 		}

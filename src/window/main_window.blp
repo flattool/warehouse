@@ -67,14 +67,20 @@ template $MainWindow: Adw.ApplicationWindow {
 			content: Adw.ViewStack view_stack {
 				$PackagesPage packages_page {
 					installations: installations;
+					packages: packages_list;
+					remotes: remotes_list;
 				}
 
 				$RemotesPage remotes_page {
 					installations: installations;
+					packages: packages_list;
+					remotes: remotes_list;
 				}
 
 				$DataPage data_page {
 					installations: installations;
+					packages: packages_list;
+					remotes: remotes_list;
 				}
 			};
 		};

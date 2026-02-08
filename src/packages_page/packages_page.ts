@@ -20,24 +20,13 @@ export class PackagesPage extends from(BasePage, {
 	no_results: Property.bool(),
 	_bottom_sheet: Child<Adw.BottomSheet>(),
 	_split_view: Child<Adw.NavigationSplitView>(),
-	_packages_list: Child<Gio.ListModel<Package>>(),
-	_only_packages_filter: Child<Gtk.CustomFilter>(),
-	_map_model: Child<Gtk.MapListModel<Gio.ListStore<Installation>>>(),
+	_sorted_packages_list: Child<Gio.ListModel<Package>>(),
 	_list_box: Child<Gtk.ListBox>(),
 	_details_page: Child<DetailsPage>(),
 }) {
 	readonly #css_provider = new Gtk.CssProvider()
 
 	async _ready(): Promise<void> {
-		this._only_packages_filter.set_filter_func((item) => item instanceof Package)
-		this._map_model.set_map_func((item) => {
-			if (!(item instanceof Installation)) return item
-			return item.packages
-		})
-		await timeout_ms(250)
-		if (this._packages_list.get_n_items() === 0) {
-			this.#all_after_list_change()
-		}
 		Gtk.StyleContext.add_provider_for_display(
 			Gdk.Display.get_default()!,
 			this.#css_provider,
@@ -45,6 +34,11 @@ export class PackagesPage extends from(BasePage, {
 		)
 		this.#load_scrollbar_css()
 		this._bottom_sheet.connect("notify::bottom-bar-height", () => this.#load_scrollbar_css())
+
+		await timeout_ms(250)
+		if (this._sorted_packages_list.get_n_items() === 0) {
+			this.#all_after_list_change()
+		}
 	}
 
 	override grab_focus(): boolean {
@@ -78,9 +72,9 @@ export class PackagesPage extends from(BasePage, {
 	protected async _on_list_change_finish(): Promise<void> {
 		this.is_loading = true
 		this._list_box.remove_all()
-		for (let i = 0; i < this._packages_list.get_n_items(); i += 1) {
+		for (let i = 0; i < this._sorted_packages_list.get_n_items(); i += 1) {
 			await next_idle()
-			const flatpak: Package = this._packages_list.get_item(i)!
+			const flatpak: Package = this._sorted_packages_list.get_item(i)!
 			const row = new PackageRow({ flatpak })
 			this._list_box.append(row)
 		}

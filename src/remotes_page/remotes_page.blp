@@ -17,7 +17,7 @@ EveryFilter search_filter {
 	}
 }
 
-SortListModel remotes_list {
+SortListModel sorted_remotes_list {
 	items-changed => $_on_list_change_start();
 	items-changed => $_on_list_change_finish();
 
@@ -35,15 +35,7 @@ SortListModel remotes_list {
 		}
 	};
 
-	model: FilterListModel {
-		filter: CustomFilter only_remotes_filter {};
-
-		model: FlattenListModel {
-			model: MapListModel map_model {
-				model: bind template.installations;
-			};
-		};
-	};
+	model: bind template.remotes;
 }
 
 template $RemotesPage: $BasePage {
@@ -57,7 +49,7 @@ template $RemotesPage: $BasePage {
 			[start]
 			$SearchButton search_button {
 				search_bar: search_bar;
-				sensitive: bind $_has_remotes(remotes_list.n-items) as <bool>;
+				sensitive: bind $_has_remotes(sorted_remotes_list.n-items) as <bool>;
 			}
 		}
 
@@ -143,7 +135,7 @@ template $RemotesPage: $BasePage {
 }
 
 Adw.ActionRow empty_row {
-	visible: bind $_has_no_remotes(remotes_list.n-items) as <bool>;
+	visible: bind $_has_no_remotes(sorted_remotes_list.n-items) as <bool>;
 
 	child: Box {
 		spacing: 6;

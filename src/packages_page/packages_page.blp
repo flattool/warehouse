@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-SortListModel packages_list {
+SortListModel sorted_packages_list {
 	items-changed => $_on_list_change_start();
 	items-changed => $_on_list_change_finish();
 
@@ -9,15 +9,7 @@ SortListModel packages_list {
 		expression: expr item as <$Package>.title;
 	};
 
-	model: FilterListModel {
-		filter: CustomFilter only_packages_filter {};
-
-		model: FlattenListModel {
-			model: MapListModel map_model {
-				model: bind template.installations;
-			};
-		};
-	};
+	model: bind template.packages;
 }
 
 template $PackagesPage: $BasePage {
@@ -79,7 +71,7 @@ template $PackagesPage: $BasePage {
 								Adw.HeaderBar {
 									[start]
 									$SearchButton search_button {
-										sensitive: bind $_has_any_packages(packages_list.n-items) as <bool>;
+										sensitive: bind $_has_any_packages(sorted_packages_list.n-items) as <bool>;
 									}
 								}
 
