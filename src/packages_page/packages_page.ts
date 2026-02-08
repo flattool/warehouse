@@ -47,6 +47,11 @@ export class PackagesPage extends from(BasePage, {
 		this._bottom_sheet.connect("notify::bottom-bar-height", () => this.#load_scrollbar_css())
 	}
 
+	override grab_focus(): boolean {
+		this._list_box.get_row_at_index(0)?.grab_focus()
+		return true
+	}
+
 	@OnSignal("notify::search-text")
 	async #do_search(): Promise<void> {
 		print("doing search")

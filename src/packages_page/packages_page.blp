@@ -30,7 +30,7 @@ template $PackagesPage: $BasePage {
 		height-request: 1;
 
 		Adw.Breakpoint {
-			condition ("max-width: 550")
+			condition ("max-width: 621")
 
 			setters {
 				split_view.collapsed: true;
@@ -68,112 +68,96 @@ template $PackagesPage: $BasePage {
 					sidebar: Adw.NavigationPage {
 						title: bind template.title;
 
-						child: Adw.BreakpointBin {
-							width-request: 1;
-							height-request: 1;
+						child: Adw.BottomSheet bottom_sheet {
+							styles [
+								"margined-bottom-sheet",
+							]
 
-							Adw.Breakpoint {
-								condition ("min-width: 650")
-
-								setters {
-									bottom_sheet.full-width: false;
-									filter-page.width-request: 420;
+							[content]
+							Adw.ToolbarView {
+								[top]
+								Adw.HeaderBar {
+									[start]
+									$SearchButton search_button {
+										sensitive: bind $_has_any_packages(packages_list.n-items) as <bool>;
+									}
 								}
-							}
 
-							child: Adw.BottomSheet bottom_sheet {
-								align: 0.5;
+								[top]
+								Adw.Clamp {
+									child: SearchBar {
+										key-capture-widget: template;
+										search-mode-enabled: bind search_button.active bidirectional;
 
-								styles [
-									"margined-bottom-sheet",
-								]
-
-								[content]
-								Adw.ToolbarView {
-									[top]
-									Adw.HeaderBar {
-										[start]
-										$SearchButton search_button {
-											sensitive: bind $_has_any_packages(packages_list.n-items) as <bool>;
-										}
-									}
-
-									[top]
-									Adw.Clamp {
-										child: SearchBar {
-											key-capture-widget: template;
-											search-mode-enabled: bind search_button.active bidirectional;
-
-											child: SearchEntry {
-												hexpand: true;
-												placeholder-text: _("Search Packages");
-												search-changed => $_on_search_changed();
-											};
-										};
-									}
-
-									content: ScrolledWindow {
-										styles [
-											"scrollbar-offset",
-										]
-
-										child: Box {
-											orientation: vertical;
-
-											ListBox list_box {
-												row-activated => $_on_row_chosen();
-												row-selected => $_on_row_chosen();
-
-												styles [
-													"navigation-sidebar",
-												]
-											}
-
-											Adw.Bin {
-												height-request: bind bottom_sheet.bottom-bar-height;
-											}
+										child: SearchEntry {
+											hexpand: true;
+											placeholder-text: _("Search Packages");
+											search-changed => $_on_search_changed();
 										};
 									};
 								}
 
-								[sheet]
-								$FilterPage filter-page {}
+								content: ScrolledWindow {
+									styles [
+										"scrollbar-offset",
+									]
 
-								[bottom-bar]
-								Box {
-									spacing: 12;
-									margin-top: 14;
-									margin-bottom: 14;
-									margin-start: 16;
-									margin-end: 16;
+									child: Box {
+										orientation: vertical;
 
-									Image {
-										icon-name: "warehouse:funnel-outline-symbolic";
-									}
+										ListBox list_box {
+											row-activated => $_on_row_chosen();
+											row-selected => $_on_row_chosen();
 
-									Label {
-										label: _("Set Filters");
-										ellipsize: end;
-										hexpand: true;
-										halign: start;
+											styles [
+												"navigation-sidebar",
+											]
+										}
 
-										styles [
-											"heading",
-										]
-									}
+										Adw.Bin {
+											height-request: bind bottom_sheet.bottom-bar-height;
+										}
+									};
+								};
+							}
 
-									Label {
-										label: "Showing 98 / 107";
-										ellipsize: middle;
-										hexpand: true;
-										halign: end;
+							[sheet]
+							$FilterPage filter-page {}
 
-										styles [
-											"heading",
-										]
-									}
+							[bottom-bar]
+							Box {
+								spacing: 12;
+								margin-top: 14;
+								margin-bottom: 14;
+								margin-start: 16;
+								margin-end: 16;
+
+								Image {
+									icon-name: "warehouse:funnel-outline-symbolic";
 								}
-							};
+
+								Label {
+									label: _("Set Filters");
+									ellipsize: end;
+									hexpand: true;
+									halign: start;
+
+									styles [
+										"heading",
+									]
+								}
+
+								Label {
+									label: "Showing 98 / 107";
+									ellipsize: middle;
+									hexpand: true;
+									halign: end;
+
+									styles [
+										"heading",
+									]
+								}
+							}
 						};
 					};
 

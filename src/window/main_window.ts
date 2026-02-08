@@ -4,7 +4,7 @@ import Gio from "gi://Gio?version=2.0"
 import Pango from "gi://Pango?version=1.0"
 
 import { GClass, Child, Property, from, Debounce } from "../gobjectify/gobjectify.js"
-import { Installation, get_installations } from "../flatpak.js"
+import { Installation, Package, Remote, get_installations } from "../flatpak.js"
 import { SidebarRow } from "./sidebar_row.js"
 import { BasePage } from "../widgets/base_page.js"
 import { SharedVars } from "../utils/shared_vars.js"
@@ -15,6 +15,13 @@ import "../remotes_page/remotes_page.js"
 @GClass({ template: "resource:///io/github/flattool/Warehouse/window/main_window.ui" })
 export class MainWindow extends from(Adw.ApplicationWindow, {
 	_installations: Child<Gio.ListStore<Installation>>(),
+
+	_only_remotes_filter: Child<Gtk.CustomFilter>(),
+	_map_remotes_model: Child<Gtk.MapListModel>(),
+
+	_only_packages_filter: Child<Gtk.CustomFilter>(),
+	_map_packages_model: Child<Gtk.MapListModel>(),
+
 	_toast_overlay: Child<Adw.ToastOverlay>(),
 	_sidebar_list: Child<Gtk.ListBox>(),
 	_view_stack: Child<Adw.ViewStack>(),
@@ -25,6 +32,18 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 	async _ready(): Promise<void> {
 		if (pkg.profile === "development") this.add_css_class("devel")
 		print(`Welcome to ${pkg.app_id}!`)
+
+		this._only_remotes_filter.set_filter_func((item) => item instanceof Remote)
+		this._map_remotes_model.set_map_func((item) => {
+			if (!(item instanceof Installation)) return item
+			return item.remotes
+		})
+
+		this._only_packages_filter.set_filter_func((item) => item instanceof Package)
+		this._map_packages_model.set_map_func((item) => {
+			if (!(item instanceof Installation)) return item
+			return item.packages
+		})
 
 		this.#setup_sidebar()
 		await this.#load_installations()
@@ -95,14 +114,19 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 				text: ((item as Adw.ViewStackPage).child as BasePage).sidebar_title,
 			}),
 		)
+		this._sidebar_list.select_row(this._sidebar_list.get_row_at_index(0))
 	}
 
-	protected _on_row_selected(__: Gtk.ListBox, selected_row: Gtk.ListBoxRow): void {
+	@Debounce(10)
+	protected _on_row_chosen(__: Gtk.ListBox, selected_row: Gtk.ListBoxRow): void {
 		for (let i = 0; ; i += 1) {
-			switch (this._sidebar_list.get_row_at_index(i)) {
-				case null: return
-				case selected_row: this._view_stack.pages.select_item(i, true)
+			const row = this._sidebar_list.get_row_at_index(i)
+			if (!row) break
+			if (row === selected_row) {
+				this._view_stack.pages.select_item(i, true)
+				break
 			}
 		}
+		this._view_stack.child_focus(Gtk.DirectionType.RIGHT)
 	}
 }

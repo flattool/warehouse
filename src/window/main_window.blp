@@ -6,6 +6,26 @@ Gio.ListStore installations {
 	item-type: typeof<$Installation>;
 }
 
+FilterListModel remotes_list {
+	filter: CustomFilter only_remotes_filter {};
+
+	model: FlattenListModel {
+		model: MapListModel map_remotes_model {
+			model: installations;
+		};
+	};
+}
+
+FilterListModel packages_list {
+	filter: CustomFilter only_packages_filter {};
+
+	model: FlattenListModel {
+		model: MapListModel map_packages_model {
+			model: installations;
+		};
+	};
+}
+
 template $MainWindow: Adw.ApplicationWindow {
 	title: _("Warehouse");
 	default-width: 1045;
@@ -35,7 +55,8 @@ template $MainWindow: Adw.ApplicationWindow {
 
 				content: ListBox sidebar_list {
 					selection-mode: single;
-					row-selected => $_on_row_selected();
+					row-selected => $_on_row_chosen();
+					row-activated => $_on_row_chosen();
 
 					styles [
 						"navigation-sidebar",
