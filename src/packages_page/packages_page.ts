@@ -10,6 +10,7 @@ import { PackageRow } from "./package_row.js"
 import { DetailsPage } from "./details_page.js"
 
 import "./filter_page.js"
+import "../widgets/sidebar_button.js"
 import "../widgets/search_group.js"
 import "../widgets/search_button.js"
 

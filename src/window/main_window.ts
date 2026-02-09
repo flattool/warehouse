@@ -24,6 +24,7 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 	_map_packages_model: Child<Gtk.MapListModel>(),
 
 	_toast_overlay: Child<Adw.ToastOverlay>(),
+	_split_view: Child<Adw.OverlaySplitView>(),
 	_sidebar_list: Child<Gtk.ListBox>(),
 	_view_stack: Child<Adw.ViewStack>(),
 }) {
@@ -129,5 +130,8 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 			}
 		}
 		this._view_stack.child_focus(Gtk.DirectionType.RIGHT)
+		if (this._split_view.collapsed) {
+			this._split_view.show_sidebar = false
+		}
 	}
 }

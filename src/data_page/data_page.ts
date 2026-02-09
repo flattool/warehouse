@@ -3,6 +3,7 @@ import Adw from "gi://Adw?version=1"
 import { GClass, Property, from } from "../gobjectify/gobjectify.js"
 import { BasePage } from "../widgets/base_page.js"
 
+import "../widgets/sidebar_button.js"
 import "./data_subpage.js"
 import "../widgets/search_button.js"
 

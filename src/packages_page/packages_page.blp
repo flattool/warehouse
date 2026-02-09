@@ -70,6 +70,9 @@ template $PackagesPage: $BasePage {
 								[top]
 								Adw.HeaderBar {
 									[start]
+									$SidebarButton {}
+
+									[start]
 									$SearchButton search_button {
 										sensitive: bind $_has_any_packages(sorted_packages_list.n-items) as <bool>;
 									}

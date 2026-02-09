@@ -8,6 +8,7 @@ import { RemoteRow } from "./remote_row.js"
 import { BasePage } from "../widgets/base_page.js"
 import { type PopularRemote, popular_remotes } from "../popular_remotes.js"
 
+import "../widgets/sidebar_button.js"
 import "../widgets/loading_group.js"
 import "../widgets/search_button.js"
 import "../widgets/search_group.js"

@@ -47,6 +47,9 @@ template $RemotesPage: $BasePage {
 		[top]
 		Adw.HeaderBar {
 			[start]
+			$SidebarButton {}
+
+			[start]
 			$SearchButton search_button {
 				search_bar: search_bar;
 				sensitive: bind $_has_remotes(sorted_remotes_list.n-items) as <bool>;
