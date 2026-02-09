@@ -19,6 +19,11 @@
 .margined-bottom-sheet sheet {
 	margin-left: 12px;
 	margin-right: 12px;
+	border-radius: 18px 18px 0px 0px;
+}
+
+.margined-bottom-sheet .bottom-bar button {
+	border-radius: 18px 18px 0px 0px;
 }
 
 .margined-bottom-sheet .bottom-bar stack {
@@ -26,4 +31,8 @@
 	border-width: 1px;
 	border-style: solid;
 	border-color: #4c4c4f;
+}
+
+.navigation-no-top {
+	margin-top: -6px;
 }
