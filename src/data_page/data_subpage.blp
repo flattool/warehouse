@@ -1,4 +1,56 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $DataSubpage: Adw.Bin {}
+template $DataSubpage: Adw.BreakpointBin {
+	child: Box {
+		orientation: vertical;
+
+		Box header_box {
+			margin-start: 24;
+			margin-end: 24;
+			margin-bottom: 9;
+			spacing: 6;
+			// halign: fill;
+			// hexpand: true;
+			Label title {
+				label: bind $_get_title(template.show_leftover) as <string>;
+				halign: start;
+				hexpand: true;
+				wrap: true;
+				// justify: fill;
+				styles [
+					"title-1",
+				]
+			}
+
+			Box size_box {
+				Spinner spinner {
+					spinning: bind spinner.visible;
+					valign: center;
+					margin-top: 3;
+					margin-end: 6;
+				}
+
+				Label size_label {
+					label: "Loading size...";
+				}
+			}
+		}
+
+		ScrolledWindow {
+			child: Box {
+				orientation: vertical;
+				margin-start: 12;
+				margin-end: 12;
+				margin-bottom: 12;
+				spacing: 12;
+
+				Separator {
+					orientation: horizontal;
+				}
+
+				Adw.WrapBox {}
+			};
+		}
+	};
+}
