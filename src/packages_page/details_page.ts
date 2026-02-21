@@ -32,7 +32,7 @@ async function get_cli_info(flatpak: Package): Promise<Record<string, string>> {
 	for (let line of lines) {
 		line = line.trim()
 		if (/^\s*$/.test(line)) {
-			// skip lines that are only whitespice or emtpy
+			// skip lines that are only whitespace or empty
 			continue
 		}
 		let [line_key, rest] = line.split_n_times(":", 1)
