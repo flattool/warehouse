@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 16:52-0400\n"
-"PO-Revision-Date: 2024-06-13 18:33+0000\n"
-"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
+"PO-Revision-Date: 2026-04-01 04:20+0000\n"
+"Last-Translator: Ruben Verweij <ruben@kedara.nl>\n"
 "Language-Team: Dutch <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/nl/>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.14.3\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:3
@@ -38,6 +38,8 @@ msgid ""
 "Warehouse provides a simple UI to control complex Flatpak options, all "
 "without resorting to the command line."
 msgstr ""
+"Warehouse biedt een simpele interface om uitgebreide Flatpak opties te "
+"configureren, zonder het commando prompt te hoeven gebruiken."
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:12
 msgid "Features:"
@@ -46,10 +48,12 @@ msgstr "Eigenschappen:"
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:14
 msgid "Manage installed Flatpaks and view properties of any package"
 msgstr ""
+"Beheer geïnstalleerde Flatpak en bekijk de eigenschappen van alle pakketten"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:15
 msgid "Change versions of a Flatpak to rollback any unwanted updates"
 msgstr ""
+"Pas de versie van een Flatpak aan, om ongewenste updates terug te draaien"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:16
 msgid "Pin runtimes and mask Flatpaks"
@@ -57,52 +61,52 @@ msgstr ""
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:17
 msgid "Filter packages and sort data, to help find anything easily"
-msgstr ""
+msgstr "Filter en sorteer pakketten, om gemakkelijk het juiste te vinden"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:18
 msgid "See current app user data, and cleanup any unused data left behind"
 msgstr ""
+"Bekijk gebruikersdata voor de huidige apps en schoon ongebruikte data op"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:19
 msgid ""
 "Add popular Flatpak remotes with a few clicks or add custom remotes instead"
 msgstr ""
+"Voeg populaire of aangepaste Flatpak bibliotheken toe in een paar klikken"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:20
 msgid "Take snapshots of your apps' user data, saving your data"
 msgstr ""
+"Bewaar momentopnames van de gebruikersdata van de apps, om deze op te slaan"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:21
 msgid "Install new packages from any remote, or from your system"
 msgstr ""
+"Installeer nieuwe pakketten vanuit elke bibliotheek of vanuit jouw systeem"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:22
 msgid "Responsive UI to fit large and small screen sizes"
-msgstr ""
+msgstr "Schaalbare interface, geschikt voor grote en kleine schermen"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:46
 msgid "Manage Installed Packages in Three Pane UI"
-msgstr ""
+msgstr "Beheer geïnstalleerde pakketten in een venster met drie kolommen"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:50
 msgid "Properties Page in Narrow Window"
-msgstr ""
+msgstr "Eigenschappen pagina in een small venster"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:54
 msgid "Manage Installed Remotes and Add New Remotes"
-msgstr ""
+msgstr "Beheer geïnstalleerde bibliotheken en voeg nieuwe toe"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:58
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Manage Apps' User Data"
-msgstr "Gebruikersdata van geselecteerde applicatie in prullenbak gooien?"
+msgstr "Beheer gebruikersdata van deze applicatie"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:62
-#, fuzzy
-#| msgid "Trash Selected Apps' User Data?"
 msgid "Backup Apps' User Data"
-msgstr "Gebruikersdata van geselecteerde applicatie in prullenbak gooien?"
+msgstr "Gebruikersdata van geselecteerde applicatie als backup bewaren"
 
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:66
 msgid "Install New Packages from Files or Remotes"
@@ -192,22 +196,19 @@ msgstr ""
 "beveiligingsupdates zal krijgen"
 
 #: src/gtk/app_row.blp:21
-#, fuzzy
-#| msgid ""
-#| "{} has reached its End of Life and will not receive any security updates"
 msgid ""
 "This app's runtime is End Of Life, and will not receive any security updates"
 msgstr ""
-"{} is 'end-of-life' wat betekent dat niet meer bijgewerkt zal worden of "
-"beveiligingsupdates zal krijgen"
+"Deze applicatie is 'end-of-life', wat betekent dat deze niet meer bijgewerkt "
+"zal worden of beveiligingsupdates zal krijgen"
 
 #: src/gtk/app_row.blp:28
 msgid "This runtime will never be automatically removed"
-msgstr ""
+msgstr "Deze applicatie zal nooit automatisch worden verwijderd"
 
 #: src/gtk/app_row.blp:34
 msgid "Updates are disabled for this package"
-msgstr ""
+msgstr "Updates zijn uitgeschakeld voor dit pakket"
 
 #: src/gtk/attempt_install_dialog.blp:5
 #, fuzzy
@@ -216,12 +217,8 @@ msgid "Attempt an Install?"
 msgstr "Proberen te installeren?"
 
 #: src/gtk/attempt_install_dialog.blp:6
-#, fuzzy
-#| msgid "Warehouse will attempt to install apps matching the selected data."
 msgid "Warehouse will try to install the matching packages."
-msgstr ""
-"Warehouse zal proberen apps te installeren die overeenkomen met de "
-"geselecteerde gegevens."
+msgstr "Warehouse zal proberen de overeenkomende applicaties te installeren."
 
 #: src/gtk/attempt_install_dialog.blp:8 src/gtk/loading_status.blp:52
 #: src/packages_page/uninstall_dialog.py:41
@@ -247,35 +244,31 @@ msgid "Install"
 msgstr "Installeren"
 
 #: src/gtk/attempt_install_dialog.blp:12
-#, fuzzy
-#| msgid "Choose a Remote to Search"
 msgid "Choose a Remote"
-msgstr "Kies een bron om te zoeken"
+msgstr "Kies een bibliotheek"
 
 #: src/gtk/attempt_install_dialog.blp:13
 msgid "Select a remote to attempt to install from"
-msgstr ""
+msgstr "Kies de bibliotheek waaruit het pakket geïnstalleerd moet worden"
 
 #: src/gtk/attempt_install_dialog.py:22 src/packages_page/filters_page.py:128
 #: src/remotes_page/remote_row.py:155 src/install_page/pending_page.py:33
 #: src/install_page/select_page.py:35
-#, fuzzy
-#| msgid "Installation"
 msgid "Installation: {}"
-msgstr "Installatie"
+msgstr "Installatie: {}"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Can't find matching packages"
-msgstr ""
+msgstr "Kan geen overeenkomenstige pakketten vinden"
 
 #: src/gtk/attempt_install_dialog.py:79
 msgid "Your system has no remotes added"
-msgstr ""
+msgstr "Er zijn geen bibliotheken ingesteld op dit systeem"
 
 #. Extra Object Creation
 #: src/gtk/error_toast.py:16
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: src/gtk/error_toast.py:23 src/packages_page/packages_page.blp:135
 #: src/user_data_page/user_data_page.blp:90
@@ -297,10 +290,8 @@ msgid "Refresh"
 msgstr "Vernieuwen"
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Open Files"
-msgstr "Filters instellen"
+msgstr "Open bestanden"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
@@ -316,46 +307,36 @@ msgstr "Afsluiten"
 
 #: src/gtk/help-overlay.blp:32
 msgid "Navigation"
-msgstr ""
+msgstr "Navigatie"
 
 #: src/gtk/help-overlay.blp:34
 msgid "Show Packages Page"
-msgstr ""
+msgstr "Toon pakketten pagina"
 
 #: src/gtk/help-overlay.blp:38
-#, fuzzy
-#| msgid "No Remotes Found"
 msgid "Show Remotes Page"
-msgstr "Geen bronnen teruggevonden"
+msgstr "Toon bibliotheken pagina"
 
 #: src/gtk/help-overlay.blp:42
-#, fuzzy
-#| msgid "No User Data"
 msgid "Show User Data Page"
-msgstr "Geen gebruikersdata"
+msgstr "Toon gebruikersdata pagina"
 
 #: src/gtk/help-overlay.blp:46
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Show Snapshots Page"
-msgstr "Geen snapshots"
+msgstr "Toon snapshot pagina"
 
 #: src/gtk/help-overlay.blp:50
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show Install Page"
-msgstr "Uitgeschakeld tonen"
+msgstr "Toon installatie pagina"
 
 #: src/gtk/help-overlay.blp:55
 msgid "Packages Page"
-msgstr ""
+msgstr "Pakketten pagina"
 
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
-#, fuzzy
-#| msgid "Search"
 msgid "Search Mode"
-msgstr "Zoeken"
+msgstr "Zoekmodus"
 
 #: src/gtk/help-overlay.blp:61
 #, fuzzy
@@ -365,56 +346,40 @@ msgstr "Filters instellen"
 
 #: src/gtk/help-overlay.blp:65 src/gtk/help-overlay.blp:95
 #: src/gtk/help-overlay.blp:114
-#, fuzzy
-#| msgid "Toggle Selection Mode"
 msgid "Selection Mode"
-msgstr "Selectiemodus omschakelen"
+msgstr "Selectiemodus"
 
 #: src/gtk/help-overlay.blp:70
-#, fuzzy
-#| msgid "No Remotes"
 msgid "Remotes Page"
-msgstr "Geen bronnen"
+msgstr "Bibliotheken"
 
 #: src/gtk/help-overlay.blp:76
-#, fuzzy
-#| msgid "Show Disabled"
 msgid "Show or Hide Disabled Remotes"
-msgstr "Uitgeschakeld tonen"
+msgstr "Toon of verberg uitgeschakelde bibliotheken"
 
 #: src/gtk/help-overlay.blp:80
-#, fuzzy
-#| msgid "Add Remote"
 msgid "New Remote"
-msgstr "Bron toevoegen"
+msgstr "Bibliotheek toevoegen"
 
 #: src/gtk/help-overlay.blp:85
-#, fuzzy
-#| msgid "User Data"
 msgid "User Data Page"
-msgstr "Gebruikersdata"
+msgstr "Gebruikersdata pagina"
 
 #: src/gtk/help-overlay.blp:91
 msgid "Edit Sorting Modes"
-msgstr ""
+msgstr "Bewerk sorteermodus"
 
 #: src/gtk/help-overlay.blp:99
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Show Active Data"
-msgstr "Geen overgebleven data"
+msgstr "Toon actieve data"
 
 #: src/gtk/help-overlay.blp:103
-#, fuzzy
-#| msgid "No Leftover Data"
 msgid "Show Leftover Data"
-msgstr "Geen overgebleven data"
+msgstr "Toon overgebleven data"
 
 #: src/gtk/help-overlay.blp:108
-#, fuzzy
-#| msgid "Snapshot applied"
 msgid "Snapshots Page"
-msgstr "Snapshot teruggezet"
+msgstr "Snapshot pagina"
 
 #: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:206
 #, fuzzy
@@ -423,10 +388,8 @@ msgid "New Snapshots"
 msgstr "Nieuwe snapshot"
 
 #: src/gtk/installation_chooser.blp:5
-#, fuzzy
-#| msgid "Installation"
 msgid "Choose Installation"
-msgstr "Installatie"
+msgstr "Kies installatie"
 
 #: src/gtk/installation_chooser.blp:11
 msgid "User"
@@ -437,66 +400,52 @@ msgid "System"
 msgstr "Systeem"
 
 #: src/gtk/installation_chooser.blp:28
-#, fuzzy
-#| msgid "Installation"
 msgid "Custom installation"
-msgstr "Installatie"
+msgstr "Geavanceerde installatie"
 
 #: src/gtk/installation_chooser.blp:37
-#, fuzzy
-#| msgid "Installation"
 msgid "Other Installation"
-msgstr "Installatie"
+msgstr "Andere installatie"
 
 #: src/gtk/installation_chooser.blp:38
 msgid "Choose a custom installation"
-msgstr ""
+msgstr "Configureer de installatie"
 
 #: src/gtk/installation_chooser.py:31
-#, fuzzy
-#| msgid "The app will be available to only you"
 msgid "These {} will only be available to you"
-msgstr "De applicatie zal enkel voor jou beschikbaar zijn"
+msgstr "De {} zal enkel voor jou beschikbaar zijn"
 
 #: src/gtk/installation_chooser.py:32
-#, fuzzy
-#| msgid "The app will be available to every user on the system"
 msgid "These {} will be available to everyone"
-msgstr "De applicatie zal voor elke gebruiker op het systeem beschikbaar zijn"
+msgstr "De {} zal voor elke gebruiker op het systeem beschikbaar zijn"
 
 #: src/gtk/installation_chooser.py:33
 msgid "Choose how these {} will be installed"
-msgstr ""
+msgstr "Kies hoe deze {} worden geïnstalleerd"
 
 #: src/gtk/installation_chooser.py:35
-#, fuzzy
-#| msgid "The app will be available to only you"
 msgid "This {} will only be available to you"
-msgstr "De applicatie zal enkel voor jou beschikbaar zijn"
+msgstr "De {} zal enkel voor jou beschikbaar zijn"
 
 #: src/gtk/installation_chooser.py:36
-#, fuzzy
-#| msgid "The app will be available to every user on the system"
 msgid "This {} will be available to everyone"
-msgstr "De applicatie zal voor elke gebruiker op het systeem beschikbaar zijn"
+msgstr "De {} zal voor elke gebruiker op het systeem beschikbaar zijn"
 
 #: src/gtk/installation_chooser.py:37
 msgid "Choose how this {} will be installed"
-msgstr ""
+msgstr "Kies hoe de {} zal worden geïnstalleerd"
 
 #: src/gtk/sidebar_button.py:23
 msgid "Show Sidebar"
-msgstr ""
+msgstr "Toon zijbalk"
 
 #: src/main_window/window.blp:26
 msgid "Drop to Open"
 msgstr ""
 
 #: src/main_window/window.blp:27
-#, fuzzy
-#| msgid "Installed Remotes"
 msgid "Install Flatpaks or Add a Remote"
-msgstr "Geïnstalleerde bronnen"
+msgstr "Installeer Flatpaks of bibliotheken"
 
 #: src/main_window/window.blp:45
 msgid "Refresh List"
@@ -512,13 +461,11 @@ msgstr "Hoofdmenu"
 #: src/packages_page/packages_page.py:325
 #: src/install_page/file_install_dialog.py:41
 msgid "Packages"
-msgstr ""
+msgstr "Pakketten"
 
 #: src/main_window/window.blp:83
-#, fuzzy
-#| msgid "No Remotes"
 msgid "Remotes"
-msgstr "Geen bronnen"
+msgstr "Bibliotheken"
 
 #: src/main_window/window.blp:99 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
@@ -528,24 +475,18 @@ msgstr "Gebruikersdata"
 #: src/main_window/window.blp:114 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
 #: src/snapshot_page/snapshot_page.py:360
-#, fuzzy
-#| msgid "No Snapshots"
 msgid "Snapshots"
-msgstr "Geen snapshots"
+msgstr "Snapshots"
 
 #: src/main_window/window.blp:129 src/install_page/file_install_dialog.py:38
 #: src/install_page/install_page.blp:17 src/install_page/select_page.blp:5
 #: src/install_page/select_page.blp:10
-#, fuzzy
-#| msgid "Installing"
 msgid "Install Packages"
-msgstr "Aan het installeren"
+msgstr "Installeer pakketten"
 
 #: src/main_window/window.blp:161
-#, fuzzy
-#| msgid "Set Filters"
 msgid "_Open Files"
-msgstr "Filters instellen"
+msgstr "Bestanden _openen"
 
 #: src/main_window/window.blp:165
 msgid "_Keyboard Shortcuts"
@@ -557,69 +498,56 @@ msgstr "_Over Warehouse"
 
 #: src/main_window/window.py:139
 msgid "Unsupported Filetype"
-msgstr ""
+msgstr "Onbekend bestandstype"
 
 #: src/main_window/window.py:140
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
 msgstr ""
+"Alleen .flatpak, .flatpakref, en .flatpakrepo bestanden worden ondersteund."
 
 #: src/main_window/window.py:148
-#, fuzzy
-#| msgid "Set Filters"
 msgid "Mixed Filetypes"
-msgstr "Filters instellen"
+msgstr "Gemengde bestandstypen"
 
 #: src/main_window/window.py:149
 msgid "Flatpaks and remotes cannot be installed at the same time."
-msgstr ""
+msgstr "Flatpaks en bibliotheken kunnen niet gelijktijdig geïnstalleerd worden."
 
 #: src/main_window/window.py:158
-#, fuzzy
-#| msgid "Too Many Results"
 msgid "Too Many Remotes"
-msgstr "Te veel resultaten"
+msgstr "Teveel bibliotheken"
 
 #: src/main_window/window.py:159
 msgid "Only one remote at a time is supported."
-msgstr ""
+msgstr "Er kan maar één bibliotheek tegelijk worden gebruikt."
 
 #: src/main_window/window.py:177
-#, fuzzy
-#| msgid "Could not open folder"
 msgid "Could not open files"
-msgstr "Kon map niet openen"
+msgstr "Kon bestanden niet openen"
 
 #: src/packages_page/filters_page.blp:5 src/packages_page/packages_page.blp:70
-#, fuzzy
-#| msgid "Filter List"
 msgid "Filter Packages"
-msgstr "Lijst filteren"
+msgstr "Pakketten filteren"
 
 #: src/packages_page/filters_page.blp:20
-#, fuzzy
-#| msgid "Filter by Remotes"
 msgid "Filter by Package Type"
-msgstr "Op bron filteren"
+msgstr "Op pakket type filteren"
 
 #: src/packages_page/filters_page.blp:21
 msgid "Show packages of these types"
-msgstr ""
+msgstr "Toon pakketten van dit type"
 
 #: src/packages_page/filters_page.blp:23
-#, fuzzy
-#| msgid "Options"
 msgid "Applications"
-msgstr "Opties"
+msgstr "Applicaties"
 
 #: src/packages_page/filters_page.blp:24
 msgid "Packages that can be opened"
-msgstr ""
+msgstr "Pakketten die kunnen worden geopend"
 
 #: src/packages_page/filters_page.blp:29
-#, fuzzy
-#| msgid "Runtime"
 msgid "Runtimes"
-msgstr "Runtime"
+msgstr "Runtimes"
 
 #: src/packages_page/filters_page.blp:30
 msgid "Packages that applications depend on"
