@@ -206,10 +206,15 @@ class WarehouseApplication(Adw.Application):
 
 		if len(args) > 1:  # First arg is program name
 			files = []
-			for path in args[1:]:
-				gfile = Gio.File.new_for_path(path)
-				if gfile.query_exists():
+			for arg in args[1:]:
+				if arg.startswith("flatpak+https://") or arg.startswith("flatpak+http://"):
+					url = arg[len("flatpak+"):]
+					gfile = Gio.File.new_for_uri(url)
 					files.append(gfile)
+				else:
+					gfile = Gio.File.new_for_path(arg)
+					if gfile.query_exists():
+						files.append(gfile)
 
 			if files:
 				self.open(files, "")

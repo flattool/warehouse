@@ -129,9 +129,9 @@ class WarehouseWindow(Adw.ApplicationWindow):
 			paks = []
 			remotes = []
 			for file in value:
-				path = file.get_path()
+				path = file.get_path() or file.get_uri()
 				if path.endswith(".flatpak") or path.endswith(".flatpakref"):
-					paks.append(Gio.File.new_for_path(path))
+					paks.append(file)
 				elif path.endswith(".flatpakrepo"):
 					remotes.append(path)
 				else:

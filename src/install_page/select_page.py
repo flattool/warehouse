@@ -45,11 +45,12 @@ class SelectPage(Adw.NavigationPage):
 		requests = []
 		for file in file_names:
 			# sadly flatpak doesn't support multiple local installs in one command :(
+			file_ref = file.get_path() or file.get_uri()
 			requests.append(
 				{
 					"remote": "local_file",
 					"installation": installation,
-					"package_names": [file.get_path()],
+					"package_names": [file_ref],
 					"extra_flags": [],
 				}
 			)
