@@ -1,8 +1,6 @@
 .DS_Store
-.flatpak
+*.flatpak
 .flatpak-builder
-.vscode
-.zed
 __pycache__
 _build
 node_modules

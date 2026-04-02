@@ -167,9 +167,9 @@ export default defineConfig([
 			parser: eslintPluginJsonc,
 		},
 		rules: {
-			"jsonc/array-bracket-newline": "error",
+			"jsonc/array-bracket-newline": ["error", "consistent"],
 			"jsonc/array-bracket-spacing": ["error", "never"],
-			"jsonc/array-element-newline": ["error", { multiline: true }],
+			"jsonc/array-element-newline": ["error", "consistent"],
 			"jsonc/comma-style": "error",
 			"jsonc/indent": ["error", "tab"],
 			"jsonc/key-spacing": "error",

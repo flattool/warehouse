@@ -1,0 +1,6 @@
+[
+	{
+		"label": "Flatpak Build & Run",
+		"command": "./run.sh",
+	},
+]
