@@ -30,42 +30,58 @@ export class LineProcess {
 			this.process.init(this.#cancellable)
 			const stdout_lines: string[] = []
 			const stderr_lines: string[] = []
+
+			let process_done = false
+			let exit_status_result = -1
+			let cancelled_result = false
+			let streams_done = 0
+
+			const try_resolve = (): void => {
+				if (!process_done || streams_done < 2) return
+				resolve({
+					exit_status: exit_status_result,
+					stdout: stdout_lines,
+					stderr: stderr_lines,
+					cancelled: cancelled_result,
+				})
+			}
+
 			this.#pump_lines(this.process.get_stdout_pipe()!, (line) => {
-				if (!line) return
+				if (line === null) {
+					streams_done += 1
+					try_resolve()
+					return
+				}
 				stdout_lines.push(line)
 				this.on_stdout_line?.(line)
 			})
 			this.#pump_lines(this.process.get_stderr_pipe()!, (line) => {
-				if (!line) return
+				if (line === null) {
+					streams_done += 1
+					try_resolve()
+					return
+				}
 				stderr_lines.push(line)
 				this.on_stderr_line?.(line)
 			})
+
 			this.process.wait_async(this.#cancellable, (_process, res) => {
 				try {
 					this.process.wait_finish(res)
-					resolve({
-						exit_status: this.process.get_exit_status(),
-						stdout: stdout_lines,
-						stderr: stderr_lines,
-						cancelled: this.#cancellable.is_cancelled(),
-					})
+					exit_status_result = this.process.get_exit_status()
+					cancelled_result = this.#cancellable.is_cancelled()
 				} catch (e) {
 					if (e instanceof GLib.Error && e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
-						resolve({
-							exit_status: -1,
-							stdout: stdout_lines,
-							stderr: stderr_lines,
-							cancelled: true,
-						})
+						exit_status_result = -1
+						cancelled_result = true
 					} else {
 						console.error("Unexpected error while running process: " + e)
-						resolve({
-							exit_status: -1,
-							stdout: stdout_lines,
-							stderr: stderr_lines,
-							cancelled: false,
-						})
+						exit_status_result = -1
+						cancelled_result = false
 					}
+				} finally {
+					process_done = true
+					try_resolve()
 				}
 			})
 		})
