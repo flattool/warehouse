@@ -87,11 +87,10 @@ export class Installation extends from(GObject.Object, {
 }
 
 export async function get_installations(list: ArrayStore<Installation>): Promise<void> {
-	const raw_installations = new Set(
-		(await run_command_async(["flatpak", "--installations"], { run_on_host: true }))
-		.split("\n")
-		.map((str) => str.normalize_path()),
-	)
+	const raw_insts = new Set<string>()
+	const process = new LineProcess(["flatpak", "--installations"], true)
+	process.on_stdout_line = (line): void => void raw_insts.add(line.normalize_path())
+	await process.run()
 	const insts: Installation[] = []
 	if (SharedVars.CUSTOM_INSTALLATIONS_DIR.query_exists(null)) {
 		for (const file_info of SharedVars.CUSTOM_INSTALLATIONS_DIR.enumerate_children(
@@ -113,9 +112,10 @@ export async function get_installations(list: ArrayStore<Installation>): Promise
 				const name = group.replace('Installation "', "").replace('"', "")
 				let title: string
 				try {
-					title = keyfile.get_string(group, "DisplayName")
-				} catch {
-					title = name
+					title = keyfile.get_string(group, "Path").normalize_path()
+				} catch (error) {
+					print(error)
+					continue
 				}
 				let inst_path: string
 				try {
@@ -130,15 +130,15 @@ export async function get_installations(list: ArrayStore<Installation>): Promise
 					location_tag: "other",
 					location_path: inst_path,
 				})
-				if (inst_path && raw_installations.has(inst_path)) {
-					raw_installations.delete(inst_path)
+				if (inst_path && raw_insts.has(inst_path)) {
+					raw_insts.delete(inst_path)
 				}
 				insts.push(installation)
 			}
 		}
 	}
-	if (raw_installations.size === 1) {
-		const system_raw: string = [...raw_installations.values()][0]!
+	if (raw_insts.size === 1) {
+		const system_raw: string = [...raw_insts.values()][0]!
 		insts.push(new Installation({
 			name: "system",
 			title: _("System"),
@@ -189,17 +189,14 @@ async function get_remotes(
 	list: ArrayStore<Remote>,
 ): Promise<void> {
 	const columns: string = REMOTES_LIST_COLUMN_ITEMS.columns.join(",")
-	const raw_remotes: string[] = (
-		await run_command_async(
-			["flatpak", "remotes", installation.command_syntax, `--columns=${columns}`, "--show-disabled"],
-			{ run_on_host: true },
-		)
-	).split("\n")
 	const remotes: Remote[] = []
-	for (const row of raw_remotes) {
-		await next_idle()
-		const info: string[] = row.trim().split("\t")
-		if (info.length !== REMOTES_LIST_COLUMN_ITEMS.columns.length) continue
+	const process = new LineProcess(
+		["flatpak", "remotes", installation.command_syntax, `--columns=${columns}`, "--show-disabled"],
+		true,
+	)
+	process.on_stdout_line = (line): void => {
+		const info: string[] = line.trim().split("\t")
+		if (info.length !== REMOTES_LIST_COLUMN_ITEMS.columns.length) return
 		const remote = new Remote({
 			name: info[REMOTES_LIST_COLUMN_ITEMS.index_of("name")] ?? "",
 			title: info[REMOTES_LIST_COLUMN_ITEMS.index_of("title")] ?? "",
@@ -210,6 +207,7 @@ async function get_remotes(
 		})
 		remotes.push(remote)
 	}
+	await process.run()
 	list.swap_contents(remotes)
 }
 
@@ -296,23 +294,25 @@ export class Package extends BasePackage {
 	}
 }
 
+import { LineProcess } from "./utils/cli.js"
+
 async function get_packages(
 	installation: Installation,
 	list: ArrayStore<Package>,
 ): Promise<void> {
 	const columns: string = PACK_LIST_COLUMN_ITEMS.columns.join(",")
-	const raw_packs: string[] = (
-		await run_command_async(
-			["flatpak", "list", "--all", installation.command_syntax, `--columns=${columns}`],
-			{ run_on_host: true },
-		)
-	).split("\n")
 	const paks: Package[] = []
-	for (const row of raw_packs) {
-		await next_idle()
-		const info: string[] = row.trim().split("\t")
+	const process = new LineProcess(
+		["flatpak", "list", "--all", installation.command_syntax, `--columns=${columns}`],
+		true,
+	)
+	process.on_stdout_line = (line): void => {
+		const info: string[] = line.trim().split("\t")
 		if (info.length !== PACK_LIST_COLUMN_ITEMS.columns.length) {
-			continue
+			print("Skipping the following line:")
+			print(line)
+			print("")
+			return
 		}
 		const pack = new Package({
 			title: info[PACK_LIST_COLUMN_ITEMS.index_of("name")] ?? "",
@@ -332,5 +332,6 @@ async function get_packages(
 		})
 		paks.push(pack)
 	}
+	await process.run()
 	list.swap_contents(paks)
 }

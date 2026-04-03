@@ -3,7 +3,6 @@ import Gio from "gi://Gio?version=2.0"
 
 import { GClass, Property, from } from "../gobjectify/gobjectify.js"
 import { Installation, Package, Remote } from "../flatpak.js"
-import { ArrayStore } from "../utils/array_store.js"
 
 @GClass()
 export class BasePage extends from(Adw.NavigationPage, {
