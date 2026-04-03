@@ -6,9 +6,10 @@ import Gio from "gi://Gio?version=2.0"
 import Gdk from "gi://Gdk?version=4.0"
 import Gtk from "gi://Gtk?version=4.0"
 
-import { GClass, Property, next_idle, from, Debounce, timeout_ms } from "./gobjectify/gobjectify.js"
+import { GClass, Property, next_idle, from, Debounce } from "./gobjectify/gobjectify.js"
 import { run_command_async, run_command_async_pkexec_on_fail } from "./utils/helper_funcs.js"
 import { SharedVars } from "./utils/shared_vars.js"
+import { ArrayStore } from "./utils/array_store.js"
 
 const REMOTES_LIST_COLUMN_ITEMS = {
 	columns: ["title", "comment", "description", "options", "name"] as const,
@@ -46,8 +47,8 @@ export class Installation extends from(GObject.Object, {
 	masked_ids: Property.jsobject().as<Set<string>>(),
 	pinned_refs: Property.jsobject().as<Set<string>>(),
 }) {
-	readonly remotes = new Gio.ListStore<Remote>({ item_type: Remote.$gtype })
-	readonly packages = new Gio.ListStore<Package>({ item_type: Package.$gtype })
+	readonly remotes = new ArrayStore<Remote>({})
+	readonly packages = new ArrayStore<Package>({})
 	readonly icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default() ?? new Gdk.Display())
 	#monitor?: Gio.FileMonitor
 
@@ -85,13 +86,13 @@ export class Installation extends from(GObject.Object, {
 	}
 }
 
-export async function get_installations(list: Gio.ListStore): Promise<void> {
-	list.remove_all()
+export async function get_installations(list: ArrayStore<Installation>): Promise<void> {
 	const raw_installations = new Set(
 		(await run_command_async(["flatpak", "--installations"], { run_on_host: true }))
 		.split("\n")
 		.map((str) => str.normalize_path()),
 	)
+	const insts: Installation[] = []
 	if (SharedVars.CUSTOM_INSTALLATIONS_DIR.query_exists(null)) {
 		for (const file_info of SharedVars.CUSTOM_INSTALLATIONS_DIR.enumerate_children(
 			"standard::*",
@@ -132,25 +133,26 @@ export async function get_installations(list: Gio.ListStore): Promise<void> {
 				if (inst_path && raw_installations.has(inst_path)) {
 					raw_installations.delete(inst_path)
 				}
-				list.append(installation)
+				insts.push(installation)
 			}
 		}
 	}
 	if (raw_installations.size === 1) {
 		const system_raw: string = [...raw_installations.values()][0]!
-		list.append(new Installation({
+		insts.push(new Installation({
 			name: "system",
 			title: _("System"),
 			location_tag: "system",
 			location_path: system_raw,
 		}))
 	}
-	list.append(new Installation({
+	insts.push(new Installation({
 		name: "user",
 		title: _("User"),
 		location_tag: "user",
 		location_path: `${SharedVars.local_share_path}/flatpak`,
 	}))
+	list.swap_contents(insts)
 }
 
 @GClass()
@@ -184,9 +186,8 @@ export class Remote extends from(GObject.Object, {
 
 async function get_remotes(
 	installation: Installation,
-	list: Gio.ListStore<Remote>,
+	list: ArrayStore<Remote>,
 ): Promise<void> {
-	list.remove_all()
 	const columns: string = REMOTES_LIST_COLUMN_ITEMS.columns.join(",")
 	const raw_remotes: string[] = (
 		await run_command_async(
@@ -194,6 +195,7 @@ async function get_remotes(
 			{ run_on_host: true },
 		)
 	).split("\n")
+	const remotes: Remote[] = []
 	for (const row of raw_remotes) {
 		await next_idle()
 		const info: string[] = row.trim().split("\t")
@@ -206,8 +208,9 @@ async function get_remotes(
 			options: info[REMOTES_LIST_COLUMN_ITEMS.index_of("options")] ?? "",
 			installation,
 		})
-		list.append(remote)
+		remotes.push(remote)
 	}
+	list.swap_contents(remotes)
 }
 
 const BasePackage = from(GObject.Object, {
@@ -295,9 +298,8 @@ export class Package extends BasePackage {
 
 async function get_packages(
 	installation: Installation,
-	list: Gio.ListStore<Package>,
+	list: ArrayStore<Package>,
 ): Promise<void> {
-	list.remove_all()
 	const columns: string = PACK_LIST_COLUMN_ITEMS.columns.join(",")
 	const raw_packs: string[] = (
 		await run_command_async(
@@ -305,6 +307,7 @@ async function get_packages(
 			{ run_on_host: true },
 		)
 	).split("\n")
+	const paks: Package[] = []
 	for (const row of raw_packs) {
 		await next_idle()
 		const info: string[] = row.trim().split("\t")
@@ -327,6 +330,7 @@ async function get_packages(
 			options: info[PACK_LIST_COLUMN_ITEMS.index_of("options")] ?? "",
 			installation,
 		})
-		list.append(pack)
+		paks.push(pack)
 	}
+	list.swap_contents(paks)
 }

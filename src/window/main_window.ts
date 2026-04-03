@@ -8,6 +8,7 @@ import { Installation, Package, Remote, get_installations } from "../flatpak.js"
 import { SidebarRow } from "./sidebar_row.js"
 import { BasePage } from "../widgets/base_page.js"
 import { SharedVars } from "../utils/shared_vars.js"
+import { ArrayStore } from "../utils/array_store.js"
 
 import "../packages_page/packages_page.js"
 import "../remotes_page/remotes_page.js"
@@ -15,7 +16,7 @@ import "../data_page/data_page.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/window/main_window.ui" })
 export class MainWindow extends from(Adw.ApplicationWindow, {
-	_installations: Child<Gio.ListStore<Installation>>(),
+	_installations: Child<ArrayStore<Installation>>(),
 
 	_only_remotes_filter: Child<Gtk.CustomFilter>(),
 	_map_remotes_model: Child<Gtk.MapListModel>(),
