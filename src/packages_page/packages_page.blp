@@ -2,9 +2,6 @@ using Gtk 4.0;
 using Adw 1;
 
 SortListModel sorted_packages_list {
-	items-changed => $_on_list_change_start();
-	items-changed => $_on_list_change_finish();
-
 	sorter: StringSorter {
 		expression: expr item as <$Package>.title;
 	};
@@ -116,17 +113,7 @@ template $PackagesPage: $BasePage {
 
 									child: Box {
 										orientation: vertical;
-
-										ListBox list_box {
-											row-activated => $_on_row_chosen();
-											row-selected => $_on_row_chosen();
-
-											styles [
-												"navigation-sidebar",
-												"navigation-no-top",
-											]
-										}
-
+										// ListView goes here
 										Adw.Bin {
 											height-request: bind bottom_sheet.bottom-bar-height;
 										}

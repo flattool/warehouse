@@ -5,8 +5,9 @@ import Gio from "gi://Gio?version=2.0"
 
 import { GClass, Child, Property, from, OnSignal, next_idle, Debounce } from "../gobjectify/gobjectify.js"
 import { Package } from "../flatpak.js"
-import { get_readable_file_size, run_command_async } from "../utils/helper_funcs.js"
+import { get_readable_file_size } from "../utils/helper_funcs.js"
 import { SharedVars } from "../utils/shared_vars.js"
+import { LineProcess } from "../utils/cli.js"
 
 import "./info_row.js"
 
@@ -26,24 +27,25 @@ async function get_cli_info(flatpak: Package): Promise<Record<string, string>> {
 		cmd.push(flatpak.installation.command_syntax)
 	}
 	cmd.push(flatpak.app_ref)
-	const lines: string[] = (await run_command_async(cmd, { run_on_host: true })).trim().split("\n")
 	const to_ret: Record<string, string> = {}
-	if (lines.length < 1) return to_ret
-	for (let line of lines) {
-		line = line.trim()
-		if (/^\s*$/.test(line)) {
-			// skip lines that are only whitespace or empty
-			continue
-		}
-		let [line_key, rest] = line.split_n_times(":", 1)
-		if (!line_key) continue
-		for (const key of CLI_INFO_KEYS) {
-			line_key = line_key.trim()
-			if (line_key === key) {
-				to_ret[key.toLowerCase()] = rest?.trim() || ""
+	await LineProcess.run(cmd, {
+		run_on_host: true,
+		on_stdout_line(line) {
+			line = line.trim()
+			if (/^\s*$/.test(line)) {
+				// skip lines that are only whitespace or empty
+				return
 			}
-		}
-	}
+			let [line_key, rest] = line.split_n_times(":", 1)
+			if (!line_key) return
+			for (const key of CLI_INFO_KEYS) {
+				line_key = line_key.trim()
+				if (line_key === key) {
+					to_ret[key.toLowerCase()] = rest?.trim() || ""
+				}
+			}
+		},
+	})
 	return to_ret
 }
 

@@ -4,6 +4,24 @@ import GLib from "gi://GLib?version=2.0"
 import { SharedVars } from "./shared_vars.js"
 
 export class LineProcess {
+	static async run(
+		argv: string[],
+		options?: {
+			run_on_host?: boolean,
+			on_stdout_line?: (line: string) => void,
+			on_stderr_line?: (line: string) => void,
+		},
+	): Promise<{ exit_status: number, stdout: string[], stderr: string[], cancelled: boolean }> {
+		const process = new LineProcess(argv, options?.run_on_host)
+		if (options?.on_stdout_line) {
+			process.on_stdout_line = options.on_stdout_line
+		}
+		if (options?.on_stderr_line) {
+			process.on_stderr_line = options.on_stderr_line
+		}
+		return await process.run()
+	}
+
 	readonly process: Gio.Subprocess
 	readonly #cancellable = new Gio.Cancellable()
 

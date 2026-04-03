@@ -7,7 +7,8 @@ import Gdk from "gi://Gdk?version=4.0"
 import Gtk from "gi://Gtk?version=4.0"
 
 import { GClass, Property, next_idle, from, Debounce } from "./gobjectify/gobjectify.js"
-import { run_command_async, run_command_async_pkexec_on_fail } from "./utils/helper_funcs.js"
+// import { run_command_async, run_command_async_pkexec_on_fail } from "./utils/helper_funcs.js"
+import { LineProcess } from "./utils/cli.js"
 import { SharedVars } from "./utils/shared_vars.js"
 import { ArrayStore } from "./utils/array_store.js"
 
@@ -46,10 +47,13 @@ export class Installation extends from(GObject.Object, {
 	location_path: Property.string({ flags: "CONSTRUCT_ONLY" }),
 	masked_ids: Property.jsobject().as<Set<string>>(),
 	pinned_refs: Property.jsobject().as<Set<string>>(),
+	loading: Property.bool({ default: true }),
 }) {
 	readonly remotes = new ArrayStore<Remote>({})
 	readonly packages = new ArrayStore<Package>({})
 	readonly icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default() ?? new Gdk.Display())
+
+	readonly #items_loading = new Set<"remotes" | "packages">()
 	#monitor?: Gio.FileMonitor
 
 	get command_syntax(): string {
@@ -58,6 +62,7 @@ export class Installation extends from(GObject.Object, {
 
 	_ready(): void {
 		const file: Gio.File = Gio.File.new_for_path(this.location_path).get_child("repo")
+		this.icon_theme.add_search_path(`${this.location_path}/exports/share/icons`.normalize_path())
 		if (file.query_exists(null) && file.query_file_type(null, null) === Gio.FileType.DIRECTORY) {
 			this.#monitor = file.monitor_directory(Gio.FileMonitorFlags.NONE, null)
 			this.#monitor.connect("changed", () => this.#reload())
@@ -67,22 +72,51 @@ export class Installation extends from(GObject.Object, {
 	}
 
 	async load_remotes(): Promise<void> {
-		return await get_remotes(this, this.remotes)
+		this.#start_loading("remotes")
+		await get_remotes(this, this.remotes)
+		this.#stop_loading("remotes")
 	}
 
 	async load_packages(): Promise<void> {
-		this.icon_theme.add_search_path(`${this.location_path}/exports/share/icons`.normalize_path())
-		let response: string = await run_command_async(["flatpak", "mask", this.command_syntax], { run_on_host: true })
-		this.masked_ids = new Set(response.trim().split("\n").map((id) => id.trim()).filter(Boolean))
-		response = await run_command_async(["flatpak", "pin", this.command_syntax], { run_on_host: true })
-		this.pinned_refs = new Set(response.trim().split("\n").map((ref) => ref.trim()).filter(Boolean))
-		return await get_packages(this, this.packages)
+		this.#start_loading("packages")
+		const masked = new Set<string>()
+		await LineProcess.run(["flatpak", "mask", this.command_syntax], {
+			run_on_host: true,
+			on_stdout_line(line) {
+				line = line.trim()
+				if (!line) return
+				masked.add(line)
+			},
+		})
+		this.masked_ids = masked
+		const pinned = new Set<string>()
+		await LineProcess.run(["flatpak", "pin", this.command_syntax], {
+			run_on_host: true,
+			on_stdout_line(line) {
+				line = line.trim()
+				if (!line) return
+				pinned.add(line)
+			},
+		})
+		this.pinned_refs = pinned
+		await get_packages(this, this.packages)
+		this.#stop_loading("packages")
 	}
 
 	@Debounce(200)
 	#reload(): void {
 		this.load_packages().catch(log)
 		this.load_remotes().catch(log)
+	}
+
+	#start_loading(item: "remotes" | "packages"): void {
+		this.#items_loading.add(item)
+		this.loading = true
+	}
+
+	#stop_loading(item: "remotes" | "packages"): void {
+		this.#items_loading.delete(item)
+		this.loading = this.#items_loading.size > 0
 	}
 }
 
@@ -179,7 +213,10 @@ export class Remote extends from(GObject.Object, {
 			this.name,
 			enable_remote ? "--enable" : "--disable",
 		]
-		await run_command_async_pkexec_on_fail(command, { run_on_host: true })
+		if (this.installation.location_tag === "other") {
+			command.unshift("pkexec")
+		}
+		await LineProcess.run(command, { run_on_host: true })
 		this.notify("disabled")
 	}
 }
@@ -293,8 +330,6 @@ export class Package extends BasePackage {
 		)
 	}
 }
-
-import { LineProcess } from "./utils/cli.js"
 
 async function get_packages(
 	installation: Installation,

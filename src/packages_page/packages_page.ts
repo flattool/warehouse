@@ -22,7 +22,6 @@ export class PackagesPage extends from(BasePage, {
 	_bottom_sheet: Child<Adw.BottomSheet>(),
 	_split_view: Child<Adw.NavigationSplitView>(),
 	_sorted_packages_list: Child<Gio.ListModel<Package>>(),
-	_list_box: Child<Gtk.ListBox>(),
 	_details_page: Child<DetailsPage>(),
 }) {
 	readonly #css_provider = new Gtk.CssProvider()
@@ -42,10 +41,10 @@ export class PackagesPage extends from(BasePage, {
 		}
 	}
 
-	override grab_focus(): boolean {
-		this._list_box.get_row_at_index(0)?.grab_focus()
-		return true
-	}
+	// override grab_focus(): boolean {
+	// 	this._list_box.get_row_at_index(0)?.grab_focus()
+	// 	return true
+	// }
 
 	@OnSignal("notify::search-text")
 	async #do_search(): Promise<void> {
@@ -62,33 +61,6 @@ export class PackagesPage extends from(BasePage, {
 				margin-bottom: ${this._bottom_sheet.bottom_bar_height}px;
 			}
 		`, -1)
-	}
-
-	@Debounce(200, { trigger: "leading" })
-	protected _on_list_change_start(): void {
-		this.is_loading = true
-	}
-
-	@Debounce(200)
-	protected async _on_list_change_finish(): Promise<void> {
-		this.is_loading = true
-		this._list_box.remove_all()
-		for (let i = 0; i < this._sorted_packages_list.get_n_items(); i += 1) {
-			await next_idle()
-			const flatpak: Package = this._sorted_packages_list.get_item(i)!
-			const row = new PackageRow({ flatpak })
-			this._list_box.append(row)
-		}
-		await this.#do_search()
-		await next_idle()
-		this.#all_after_list_change()
-	}
-
-	protected _on_row_chosen(__: Gtk.ListBox, row: Gtk.ListBoxRow): void {
-		if (!(row instanceof PackageRow)) return
-		this._details_page.pop_to_base_page()
-		this._details_page.flatpak = row.flatpak
-		this._split_view.show_content = true
 	}
 
 	protected _get_visible_page(__: this, is_loading: boolean): "loading_page" | "content_page" {
