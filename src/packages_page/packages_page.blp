@@ -27,20 +27,26 @@ template $PackagesPage: $BasePage {
 		}
 
 		child: Stack {
-			// StackPage loading_page {
-			// 	name: "loading_page";
-			// 	child: Adw.ToolbarView {
-			// 		[top]
-			// 		Adw.HeaderBar {}
-			// 		content: Adw.StatusPage {
-			// 			title: _("Loading Packages");
-			// 			description: _("This should only take a moment.");
-			// 			paintable: Adw.SpinnerPaintable {
-			// 				widget: template;
-			// 			};
-			// 		};
-			// 	};
-			// }
+			visible-child-name: bind $_get_visible_page(template.loading) as <string>;
+
+			StackPage loading_page {
+				name: "loading_page";
+
+				child: Adw.ToolbarView {
+					[top]
+					Adw.HeaderBar {}
+
+					content: Adw.StatusPage {
+						title: _("Loading Packages");
+						description: _("This should only take a moment.");
+
+						paintable: Adw.SpinnerPaintable {
+							widget: template;
+						};
+					};
+				};
+			}
+
 			StackPage content_page {
 				name: "content_page";
 

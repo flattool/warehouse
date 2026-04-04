@@ -99,12 +99,6 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 		print("=====================")
 	}
 
-	@OnSignal("notify::loading")
-	on_loading_changed(): void {
-		if (this.loading) return
-		print("Loading changed!:", this.loading)
-	}
-
 	#on_inst_loading_changed(inst: Installation): void {
 		if (inst.loading) {
 			this.#installations_loading.add(inst.location_path)

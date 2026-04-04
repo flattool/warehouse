@@ -60,9 +60,9 @@ export class PackagesPage extends from(BasePage, {
 		this._details_page.flatpak = row?.flatpak ?? null
 	}
 
-	// protected _get_visible_page(__: this, n_items_loading: number): "loading_page" | "content_page" {
-	// 	return n_items_loading > 0 ? "loading_page" : "content_page"
-	// }
+	protected _get_visible_page(__: this): "loading_page" | "content_page" {
+		return this.loading ? "loading_page" : "content_page"
+	}
 
 	protected _on_search_changed(entry: Gtk.SearchEntry): void {
 		this.search_text = entry.text

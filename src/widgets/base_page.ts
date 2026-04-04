@@ -11,4 +11,5 @@ export class BasePage extends from(Adw.NavigationPage, {
 	remotes: Property.gobject(Gio.ListModel, { flags: "CONSTRUCT" }).as<Gio.ListModel<Remote>>(),
 	sidebar_title: Property.string(),
 	icon_name: Property.string(),
+	loading: Property.bool({ default: true }),
 }) {}

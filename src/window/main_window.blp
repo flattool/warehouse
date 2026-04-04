@@ -72,18 +72,21 @@ template $MainWindow: Adw.ApplicationWindow {
 					installations: installations;
 					packages: packages_list;
 					remotes: remotes_list;
+					loading: bind template.loading;
 				}
 
 				$RemotesPage remotes_page {
 					installations: installations;
 					packages: packages_list;
 					remotes: remotes_list;
+					loading: bind template.loading;
 				}
 
 				$DataPage data_page {
 					installations: installations;
 					packages: packages_list;
 					remotes: remotes_list;
+					loading: bind template.loading;
 				}
 			};
 		};
