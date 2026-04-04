@@ -41,6 +41,12 @@ template $MainWindow: Adw.ApplicationWindow {
 			sidebar: Adw.ToolbarView {
 				[top]
 				Adw.HeaderBar header_bar {
+					[start]
+					Button {
+						label: _("Test");
+						clicked => $_do_test();
+					}
+
 					[end]
 					MenuButton {
 						primary: true;

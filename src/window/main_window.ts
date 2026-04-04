@@ -3,7 +3,7 @@ import Adw from "gi://Adw?version=1"
 import Gio from "gi://Gio?version=2.0"
 import Pango from "gi://Pango?version=1.0"
 
-import { GClass, Child, Property, from, Debounce, next_idle } from "../gobjectify/gobjectify.js"
+import { GClass, Child, Property, from, Debounce, next_idle, OnSignal } from "../gobjectify/gobjectify.js"
 import { Installation, Package, Remote, get_installations } from "../flatpak.js"
 import { SidebarRow } from "./sidebar_row.js"
 import { BasePage } from "../widgets/base_page.js"
@@ -13,10 +13,11 @@ import { ArrayStore } from "../utils/array_store.js"
 import "../packages_page/packages_page.js"
 import "../remotes_page/remotes_page.js"
 import "../data_page/data_page.js"
-import GLib from "gi://GLib?version=2.0"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/window/main_window.ui" })
 export class MainWindow extends from(Adw.ApplicationWindow, {
+	loading: Property.bool({ default: true }),
+
 	_installations: Child<ArrayStore<Installation>>(),
 
 	_only_remotes_filter: Child<Gtk.CustomFilter>(),
@@ -32,6 +33,8 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 }) {
 	readonly #settings = new Gio.Settings({ schema_id: pkg.app_id })
 	#custom_inst_watcher: Gio.FileMonitor | null = null
+	#notify_loading_connects: number[] = []
+	#installations_loading = new Set<string>()
 
 	async _ready(): Promise<void> {
 		if (pkg.profile === "development") this.add_css_class("devel")
@@ -50,6 +53,8 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 		})
 
 		this.#setup_sidebar()
+		print("STARTING:", this.loading)
+
 		await this.#load_installations()
 
 		if (SharedVars.CUSTOM_INSTALLATIONS_DIR.query_exists(null)) {
@@ -94,10 +99,29 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 		print("=====================")
 	}
 
+	@OnSignal("notify::loading")
+	on_loading_changed(): void {
+		if (this.loading) return
+		print("Loading changed!:", this.loading)
+	}
+
+	#on_inst_loading_changed(inst: Installation): void {
+		if (inst.loading) {
+			this.#installations_loading.add(inst.location_path)
+			this.loading = true
+		} else {
+			this.#installations_loading.delete(inst.location_path)
+			this.loading = this.#installations_loading.size > 0
+		}
+	}
+
 	async #load_installations(): Promise<void> {
 		await get_installations(this._installations)
 		const to_await: Promise<unknown>[] = []
 		for (const inst of this._installations) {
+			this.#notify_loading_connects.push(
+				inst.connect("notify::loading", () => this.#on_inst_loading_changed(inst)),
+			)
 			to_await.push(Promise.all([
 				inst.load_packages(),
 				inst.load_remotes(),
@@ -108,6 +132,12 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 
 	@Debounce(200)
 	#refresh(): void {
+		let i = 0
+		for (const inst of this._installations) {
+			inst.disconnect(this.#notify_loading_connects[i]!)
+			i += 1
+		}
+		this.#notify_loading_connects.length = 0
 		this.#load_installations().catch((err) => {
 			this.add_error_toast(_("Could not load packages"), `${err}`)
 		})
@@ -123,6 +153,10 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 			}),
 		)
 		this._sidebar_list.select_row(this._sidebar_list.get_row_at_index(0))
+	}
+
+	protected _do_test(): void {
+		this.#refresh()
 	}
 
 	@Debounce(10)
