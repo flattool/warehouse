@@ -1,12 +1,10 @@
 using Gtk 4.0;
-using Adw 1;
 
-template $PackageRow: Adw.ActionRow {
-	title: bind template.flatpak as <$Package>.title;
-	subtitle: bind template.flatpak as <$Package>.application;
-	activatable: true;
+template $PackageRow: Box {
+	spacing: 12;
+	margin-start: 9;
+	margin-end: 9;
 
-	[prefix]
 	Image app_icon {
 		icon-size: large;
 		paintable: bind template.flatpak as <$Package>.icon_paintable;
@@ -16,50 +14,77 @@ template $PackageRow: Adw.ActionRow {
 		]
 	}
 
-	[suffix]
-	Image eol_package_status {
-		icon-name: "warehouse:error-symbolic";
-		tooltip-text: _("This package is End Of Life, and will not receive any security updates");
-		visible: false;
+	Box {
+		orientation: vertical;
+		hexpand: true;
+		margin-top: 9;
+		margin-bottom: 9;
 
-		styles [
-			"error",
-		]
-	}
+		Label title_label {
+			halign: start;
+			label: bind template.flatpak as <$Package>.title;
+		}
 
-	[suffix]
-	Image eol_runtime_status {
-		icon-name: "warehouse:error-symbolic";
-		tooltip-text: _("This app's runtime is End Of Life, and will not receive any security updates");
-		visible: false;
+		Label subtitle_label {
+			halign: start;
+			label: bind template.flatpak as <$Package>.application;
 
-		styles [
-			"error",
-		]
-	}
-
-	[suffix]
-	Image pinned_status_icon {
-		icon-name: "warehouse:pin-symbolic";
-		tooltip-text: _("This runtime will never be automatically removed");
-		visible: false;
-	}
-
-	[suffix]
-	Image masked_status_icon {
-		icon-name: "warehouse:software-update-urgent-symbolic";
-		tooltip-text: _("Updates are disabled for this package");
-		visible: false;
-	}
-
-	[suffix]
-	CheckButton check_button {
-		margin-start: 6;
-		valign: center;
-		visible: false;
-
-		styles [
-			"selection-mode",
-		]
+			styles [
+				"subtitle",
+			]
+		}
 	}
 }
+
+// Box {
+// 	title: bind template.flatpak as <$Package>.title;
+// 	subtitle: bind template.flatpak as <$Package>.application;
+// 	activatable: true;
+// 	[prefix]
+// 	Image app_icon {
+// 		icon-size: large;
+// 		paintable: bind template.flatpak as <$Package>.icon_paintable;
+// 		styles [
+// 			"icon-dropshadow",
+// 		]
+// 	}
+// 	[suffix]
+// 	Image eol_package_status {
+// 		icon-name: "warehouse:error-symbolic";
+// 		tooltip-text: _("This package is End Of Life, and will not receive any security updates");
+// 		visible: false;
+// 		styles [
+// 			"error",
+// 		]
+// 	}
+// 	[suffix]
+// 	Image eol_runtime_status {
+// 		icon-name: "warehouse:error-symbolic";
+// 		tooltip-text: _("This app's runtime is End Of Life, and will not receive any security updates");
+// 		visible: false;
+// 		styles [
+// 			"error",
+// 		]
+// 	}
+// 	[suffix]
+// 	Image pinned_status_icon {
+// 		icon-name: "warehouse:pin-symbolic";
+// 		tooltip-text: _("This runtime will never be automatically removed");
+// 		visible: false;
+// 	}
+// 	[suffix]
+// 	Image masked_status_icon {
+// 		icon-name: "warehouse:software-update-urgent-symbolic";
+// 		tooltip-text: _("Updates are disabled for this package");
+// 		visible: false;
+// 	}
+// 	[suffix]
+// 	CheckButton check_button {
+// 		margin-start: 6;
+// 		valign: center;
+// 		visible: false;
+// 		styles [
+// 			"selection-mode",
+// 		]
+// 	}
+// }

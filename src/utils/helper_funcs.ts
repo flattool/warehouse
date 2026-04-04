@@ -1,16 +1,9 @@
-import Gio from "gi://Gio"
-import GLib from "gi://GLib"
+import GObject from "gi://GObject?version=2.0"
+import Gtk from "gi://Gtk?version=4.0"
 import Adw from "gi://Adw?version=1"
 
 import { SharedVars } from "./shared_vars.js"
 import { LineProcess } from "./cli.js"
-
-type RunCommandConfig = {
-	run_on_host?: boolean,
-	cancellable?: Gio.Cancellable,
-	on_stdout_line?: (line: string) => void,
-	on_stderr_line?: (line: string) => void,
-}
 
 export function ask_to_continue(
 	heading: string,
@@ -34,6 +27,33 @@ export function ask_to_continue(
 			resolve(response === CONTINUE)
 		})
 	})
+}
+
+export function make_signal_factory<Widget extends Gtk.Widget, Data extends GObject.Object>(
+	widget_class: abstract new (...args: any[]) => Widget,
+	data_class: abstract new (...args: any[]) => Data,
+	callbacks: {
+		readonly setup: (item: Gtk.ListItem) => Widget,
+		readonly bind: (widget: Widget, data: Data, item: Gtk.ListItem) => void,
+		readonly unbind?: (widget: Widget, data: Data, item: Gtk.ListItem) => void,
+		readonly tear_down?: (widget: Widget) => void,
+	},
+): Gtk.SignalListItemFactory {
+	void widget_class, data_class
+	const factory = new Gtk.SignalListItemFactory()
+	factory.connect("setup", (__, list_item: Gtk.ListItem) => list_item.set_child(callbacks.setup(list_item)))
+	factory.connect("bind", (__, list_item: Gtk.ListItem) => callbacks.bind(
+		list_item.get_child() as Widget,
+		list_item.item as Data,
+		list_item,
+	))
+	factory.connect("unbind", (__, list_item: Gtk.ListItem) => callbacks.unbind?.(
+		list_item.get_child() as Widget,
+		list_item.item as Data,
+		list_item,
+	))
+	factory.connect("teardown", (__, list_item: Gtk.ListItem) => callbacks.tear_down?.(list_item.get_child() as Widget))
+	return factory
 }
 
 export async function get_file_size_bytes(path: string): Promise<number> {

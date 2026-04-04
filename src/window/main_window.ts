@@ -3,7 +3,7 @@ import Adw from "gi://Adw?version=1"
 import Gio from "gi://Gio?version=2.0"
 import Pango from "gi://Pango?version=1.0"
 
-import { GClass, Child, Property, from, Debounce } from "../gobjectify/gobjectify.js"
+import { GClass, Child, Property, from, Debounce, next_idle } from "../gobjectify/gobjectify.js"
 import { Installation, Package, Remote, get_installations } from "../flatpak.js"
 import { SidebarRow } from "./sidebar_row.js"
 import { BasePage } from "../widgets/base_page.js"
@@ -13,6 +13,7 @@ import { ArrayStore } from "../utils/array_store.js"
 import "../packages_page/packages_page.js"
 import "../remotes_page/remotes_page.js"
 import "../data_page/data_page.js"
+import GLib from "gi://GLib?version=2.0"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/window/main_window.ui" })
 export class MainWindow extends from(Adw.ApplicationWindow, {
@@ -95,10 +96,14 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 
 	async #load_installations(): Promise<void> {
 		await get_installations(this._installations)
+		const to_await: Promise<unknown>[] = []
 		for (const inst of this._installations) {
-			await inst.load_remotes()
-			await inst.load_packages()
+			to_await.push(Promise.all([
+				inst.load_packages(),
+				inst.load_remotes(),
+			]))
 		}
+		await Promise.all(to_await)
 	}
 
 	@Debounce(200)

@@ -27,26 +27,20 @@ template $PackagesPage: $BasePage {
 		}
 
 		child: Stack {
-			visible-child-name: bind $_get_visible_page(template.is_loading) as <string>;
-
-			StackPage loading_page {
-				name: "loading_page";
-
-				child: Adw.ToolbarView {
-					[top]
-					Adw.HeaderBar {}
-
-					content: Adw.StatusPage {
-						title: _("Loading Packages");
-						description: _("This should only take a moment.");
-
-						paintable: Adw.SpinnerPaintable {
-							widget: template;
-						};
-					};
-				};
-			}
-
+			// StackPage loading_page {
+			// 	name: "loading_page";
+			// 	child: Adw.ToolbarView {
+			// 		[top]
+			// 		Adw.HeaderBar {}
+			// 		content: Adw.StatusPage {
+			// 			title: _("Loading Packages");
+			// 			description: _("This should only take a moment.");
+			// 			paintable: Adw.SpinnerPaintable {
+			// 				widget: template;
+			// 			};
+			// 		};
+			// 	};
+			// }
 			StackPage content_page {
 				name: "content_page";
 
@@ -113,7 +107,17 @@ template $PackagesPage: $BasePage {
 
 									child: Box {
 										orientation: vertical;
-										// ListView goes here
+
+										ListView list_view {
+											model: SingleSelection {
+												model: sorted_packages_list;
+											};
+
+											styles [
+												"navigation-sidebar",
+											]
+										}
+
 										Adw.Bin {
 											height-request: bind bottom_sheet.bottom-bar-height;
 										}
