@@ -3,12 +3,11 @@ import Gdk from "gi://Gdk?version=4.0"
 import Adw from "gi://Adw?version=1"
 import Gtk from "gi://Gtk?version=4.0"
 
-import { GClass, Debounce, Child, Property, from, timeout_ms, OnSignal, next_idle } from "../gobjectify/gobjectify.js"
+import { GClass, Child, Property, from, OnSignal, Debounce } from "../gobjectify/gobjectify.js"
 import { BasePage } from "../widgets/base_page.js"
-import { Installation, Package } from "../flatpak.js"
+import { Package } from "../flatpak.js"
 import { PackageRow } from "./package_row.js"
 import { DetailsPage } from "./details_page.js"
-import { make_signal_factory } from "../utils/helper_funcs.js"
 
 import "./filter_page.js"
 import "../widgets/sidebar_button.js"
@@ -22,7 +21,7 @@ export class PackagesPage extends from(BasePage, {
 	_bottom_sheet: Child<Adw.BottomSheet>(),
 	_split_view: Child<Adw.NavigationSplitView>(),
 	_sorted_packages_list: Child<Gio.ListModel<Package>>(),
-	_list_view: Child<Gtk.ListView>(),
+	_list_box: Child<Gtk.ListBox>(),
 	_details_page: Child<DetailsPage>(),
 }) {
 	readonly #css_provider = new Gtk.CssProvider()
@@ -36,11 +35,7 @@ export class PackagesPage extends from(BasePage, {
 		this.#load_scrollbar_css()
 		this._bottom_sheet.connect("notify::bottom-bar-height", () => this.#load_scrollbar_css())
 
-		this._list_view.set_factory(make_signal_factory(PackageRow, Package, {
-			setup: () => new PackageRow({}),
-			bind: (row, pkg) => row.flatpak = pkg,
-			unbind: (row) => row.flatpak = null,
-		}))
+		this._list_box.bind_model(this._sorted_packages_list, (flatpak) => new PackageRow({ flatpak }))
 	}
 
 	// override grab_focus(): boolean {
@@ -59,6 +54,10 @@ export class PackagesPage extends from(BasePage, {
 				margin-bottom: ${this._bottom_sheet.bottom_bar_height}px;
 			}
 		`, -1)
+	}
+
+	protected _on_row_changed(__: this, row: PackageRow | null): void {
+		this._details_page.flatpak = row?.flatpak ?? null
 	}
 
 	// protected _get_visible_page(__: this, n_items_loading: number): "loading_page" | "content_page" {

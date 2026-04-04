@@ -108,10 +108,9 @@ template $PackagesPage: $BasePage {
 									child: Box {
 										orientation: vertical;
 
-										ListView list_view {
-											model: SingleSelection {
-												model: sorted_packages_list;
-											};
+										ListBox list_box {
+											row-activated => $_on_row_changed();
+											row-selected => $_on_row_changed();
 
 											styles [
 												"navigation-sidebar",

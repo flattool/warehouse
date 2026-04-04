@@ -78,6 +78,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 
 	_nav_view: Child<Adw.NavigationView>(),
 	_blur_target: Child<Adw.Bin>(),
+	_image: Child<Gtk.Image>(),
 	_scrolled_window: Child<Gtk.ScrolledWindow>(),
 	_user_data_row: Child<Adw.ActionRow>(),
 }) {
@@ -124,6 +125,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 		let info: Record<string, string> = {}
 		if (this.flatpak) {
 			info = await get_cli_info(this.flatpak)
+			this._image.set_from_file(this.flatpak.icon_path)
 		}
 		this.info_license = info["license"] || ""
 		this.info_sdk = info["sdk"] || ""
@@ -172,7 +174,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 			.${this.#css_class_name} {
 				transform: translateY(${y + BACKGROUND_PICTURE_OFFSET}px);
 				margin-bottom: ${BACKGROUND_PICTURE_OFFSET}px;
-				background-image: url("file://${this.flatpak?.icon_paintable?.get_file()?.get_path()}");
+				background-image: url("file://${this.flatpak?.icon_path}");
 				background-repeat: no-repeat;
 				background-size: 100% ${BACKGROUND_PICTURE_HEIGHT}px;
 				background-position: 0px 0px;

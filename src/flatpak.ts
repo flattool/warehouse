@@ -269,7 +269,7 @@ const BasePackage = from(GObject.Object, {
 	is_eol: Property.bool(),
 	is_masked: Property.bool(),
 	is_pinned: Property.bool(),
-	icon_paintable: Property.gobject(Gtk.IconPaintable),
+	icon_path: Property.string(),
 })
 
 @GClass()
@@ -309,25 +309,21 @@ export class Package extends BasePackage {
 		if (!this.is_runtime) {
 			this.data_dir = Gio.File.new_for_path(`${Package.user_data_dir.get_path()}/${this.application}`)
 		}
+		this.#icon_tryer()
 	}
 
-	_ready(): void {
-		this.icon_tryer().catch(log)
-	}
-
-	async icon_tryer(): Promise<void> {
+	#icon_tryer(): void {
 		const FALLBACK = "application-x-executable-symbolic"
-		await next_idle()
 		const icon_theme: Gtk.IconTheme | undefined = this.installation?.icon_theme
 		if (!icon_theme) return
-		this.icon_paintable = icon_theme.lookup_icon(
+		this.icon_path = icon_theme.lookup_icon(
 			icon_theme.has_icon(this.application) ? this.application : FALLBACK,
 			null,
 			1024,
 			1,
 			null,
 			Gtk.IconLookupFlags.FORCE_REGULAR,
-		)
+		).get_file()?.get_path() ?? ""
 	}
 }
 
