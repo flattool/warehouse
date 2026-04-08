@@ -81,7 +81,7 @@ template $PackagesPage: $BasePage {
 										key-capture-widget: template;
 										search-mode-enabled: bind search_button.active bidirectional;
 
-										child: SearchEntry {
+										child: SearchEntry search_enty {
 											hexpand: true;
 											placeholder-text: _("Search Packages");
 											search-changed => $_on_search_changed();
@@ -106,26 +106,30 @@ template $PackagesPage: $BasePage {
 									}
 								}
 
-								content: ScrolledWindow scrolled_window {
-									styles [
-										"scrollbar-offset",
-									]
+								content: $SearchGroup {
+									no_results: bind template.no_results;
 
-									child: Box {
-										orientation: vertical;
+									content: ScrolledWindow scrolled_window {
+										styles [
+											"scrollbar-offset",
+										]
 
-										ListBox list_box {
-											row-selected => $_on_row_selected();
-											row-activated => $_on_row_activated();
+										child: Box {
+											orientation: vertical;
 
-											styles [
-												"navigation-sidebar",
-											]
-										}
+											ListBox list_box {
+												row-selected => $_on_row_selected();
+												row-activated => $_on_row_activated();
 
-										Adw.Bin {
-											height-request: bind bottom_sheet.bottom-bar-height;
-										}
+												styles [
+													"navigation-sidebar",
+												]
+											}
+
+											Adw.Bin {
+												height-request: bind bottom_sheet.bottom-bar-height;
+											}
+										};
 									};
 								};
 							}
