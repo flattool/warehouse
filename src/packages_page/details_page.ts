@@ -173,7 +173,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 		this.#css_provider.load_from_data(`
 			.${this.#css_class_name} {
 				transform: translateY(${y + BACKGROUND_PICTURE_OFFSET}px);
-				margin-bottom: ${BACKGROUND_PICTURE_OFFSET}px;
+				margin-bottom: max(${BACKGROUND_PICTURE_OFFSET}px, 0px);
 				background-image: url("file://${this.flatpak?.icon_path}");
 				background-repeat: no-repeat;
 				background-size: 100% ${BACKGROUND_PICTURE_HEIGHT}px;
