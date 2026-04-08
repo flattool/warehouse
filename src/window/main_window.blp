@@ -25,11 +25,13 @@ FilterListModel packages_list {
 
 template $MainWindow: Adw.ApplicationWindow {
 	title: _("Warehouse");
-	default-width: 1045;
+	// default-width: 1045;
+	default-width: 450;
 	default-height: 570;
+	width-request: 370;
 
 	Adw.Breakpoint {
-		condition ("max-width: 865")
+		condition ("max-width: 950")
 
 		setters {
 			split_view.collapsed: true;

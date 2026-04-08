@@ -3,7 +3,7 @@ import Gdk from "gi://Gdk?version=4.0"
 import Adw from "gi://Adw?version=1"
 import Gtk from "gi://Gtk?version=4.0"
 
-import { GClass, Child, Property, from, OnSignal, Debounce } from "../gobjectify/gobjectify.js"
+import { GClass, Child, Property, from, OnSignal, Debounce, next_idle } from "../gobjectify/gobjectify.js"
 import { BasePage } from "../widgets/base_page.js"
 import { Package } from "../flatpak.js"
 import { PackageRow } from "./package_row.js"
@@ -21,6 +21,7 @@ export class PackagesPage extends from(BasePage, {
 	_bottom_sheet: Child<Adw.BottomSheet>(),
 	_split_view: Child<Adw.NavigationSplitView>(),
 	_sorted_packages_list: Child<Gio.ListModel<Package>>(),
+	_scrolled_window: Child<Gtk.ScrolledWindow>(),
 	_list_box: Child<Gtk.ListBox>(),
 	_details_page: Child<DetailsPage>(),
 }) {
@@ -38,14 +39,23 @@ export class PackagesPage extends from(BasePage, {
 		this._list_box.bind_model(this._sorted_packages_list, (flatpak) => new PackageRow({ flatpak }))
 	}
 
-	// override grab_focus(): boolean {
-	// 	this._list_box.get_row_at_index(0)?.grab_focus()
-	// 	return true
-	// }
+	override grab_focus(): boolean {
+		if (!this.visible) return false
+		return this._list_box.get_selected_row()?.grab_focus() || super.grab_focus()
+	}
 
 	@OnSignal("notify::search-text")
 	async #do_search(): Promise<void> {
 		print("doing search")
+	}
+
+	@OnSignal("notify::loading")
+	#on_loading_changed(): void {
+		if (this.loading) {
+			this.search_text = ""
+		} else {
+			this._list_box.select_row(this._list_box.get_row_at_index(0))
+		}
 	}
 
 	#load_scrollbar_css(): void {
@@ -56,8 +66,16 @@ export class PackagesPage extends from(BasePage, {
 		`, -1)
 	}
 
-	protected _on_row_changed(__: this, row: PackageRow | null): void {
+	protected _on_row_selected(__: this, row: PackageRow | null): void {
 		this._details_page.flatpak = row?.flatpak ?? null
+		if (!row) return
+		const maybe_viewport: Gtk.Widget | null = this._scrolled_window.get_child()
+		if (!(maybe_viewport instanceof Gtk.Viewport)) return
+		maybe_viewport.scroll_to(row, null)
+	}
+
+	protected _on_row_activated(__: this, _row: PackageRow | null): void {
+		this._split_view.show_content = true
 	}
 
 	protected _get_visible_page(__: this): "loading_page" | "content_page" {

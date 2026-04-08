@@ -19,7 +19,7 @@ template $PackagesPage: $BasePage {
 		height-request: 1;
 
 		Adw.Breakpoint {
-			condition ("max-width: 621")
+			condition ("max-width: 600")
 
 			setters {
 				split_view.collapsed: true;
@@ -106,7 +106,7 @@ template $PackagesPage: $BasePage {
 									}
 								}
 
-								content: ScrolledWindow {
+								content: ScrolledWindow scrolled_window {
 									styles [
 										"scrollbar-offset",
 									]
@@ -115,8 +115,8 @@ template $PackagesPage: $BasePage {
 										orientation: vertical;
 
 										ListBox list_box {
-											row-activated => $_on_row_changed();
-											row-selected => $_on_row_changed();
+											row-selected => $_on_row_selected();
+											row-activated => $_on_row_activated();
 
 											styles [
 												"navigation-sidebar",
