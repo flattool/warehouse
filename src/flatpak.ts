@@ -146,10 +146,9 @@ export async function get_installations(list: ArrayStore<Installation>): Promise
 				const name = group.replace('Installation "', "").replace('"', "")
 				let title: string
 				try {
-					title = keyfile.get_string(group, "Path").normalize_path()
+					title = keyfile.get_string(group, "DisplayName")
 				} catch (error) {
-					print(error)
-					continue
+					title = name
 				}
 				let inst_path: string
 				try {
