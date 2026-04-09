@@ -63,6 +63,7 @@ export class PackagesPage extends from(BasePage, {
 	}
 
 	protected _on_row_selected(__: this, row: PackageRow | null): void {
+		this._details_page.pop_to_base_page()
 		this._details_page.flatpak = row?.flatpak ?? null
 		if (!row) return
 		const maybe_viewport: Gtk.Widget | null = this._scrolled_window.get_child()
@@ -71,6 +72,7 @@ export class PackagesPage extends from(BasePage, {
 	}
 
 	protected _on_row_activated(__: this, _row: PackageRow | null): void {
+		this._details_page.pop_to_base_page()
 		this._split_view.show_content = true
 	}
 
