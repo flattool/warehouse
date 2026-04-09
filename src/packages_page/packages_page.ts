@@ -45,6 +45,11 @@ export class PackagesPage extends from(BasePage, {
 		return this._list_box.get_selected_row()?.grab_focus() || super.grab_focus()
 	}
 
+	@OnSignal("notify::search-text")
+	async #on_search_text_changed(): Promise<void> {
+		this._list_box.select_row(this._list_box.get_row_at_index(0))
+	}
+
 	@OnSignal("notify::loading")
 	#on_loading_changed(): void {
 		if (this.loading) {
