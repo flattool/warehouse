@@ -18,7 +18,8 @@ import "../widgets/search_button.js"
 export class PackagesPage extends from(BasePage, {
 	search_text: Property.string(),
 	no_results: Property.bool(),
-	_sorted_packages_list: Child<Gio.ListModel<Package>>(),
+	_filtered_packages_list: Child<Gio.ListModel<Package>>(),
+	// _sorted_packages_list: Child<Gio.ListModel<Package>>(),
 	_bottom_sheet: Child<Adw.BottomSheet>(),
 	_split_view: Child<Adw.NavigationSplitView>(),
 	_search_enty: Child<Gtk.SearchEntry>(),
@@ -36,27 +37,12 @@ export class PackagesPage extends from(BasePage, {
 		)
 		this.#load_scrollbar_css()
 		this._bottom_sheet.connect("notify::bottom-bar-height", () => this.#load_scrollbar_css())
-
-		this._list_box.bind_model(this._sorted_packages_list, (flatpak) => new PackageRow({ flatpak }))
-		this._list_box.set_filter_func((row: Gtk.ListBoxRow) => {
-			if (!(row instanceof PackageRow)) return false
-			const search: string = this.search_text.toLocaleLowerCase()
-			return (
-				row.title.toLocaleLowerCase().includes(search)
-				|| row.subtitle.toLocaleLowerCase().includes(search)
-			)
-		})
+		this._list_box.bind_model(this._filtered_packages_list, (flatpak) => new PackageRow({ flatpak }))
 	}
 
 	override grab_focus(): boolean {
 		if (!this.visible) return false
 		return this._list_box.get_selected_row()?.grab_focus() || super.grab_focus()
-	}
-
-	@OnSignal("notify::search-text")
-	#do_search(): void {
-		this._list_box.invalidate_filter()
-		print("Remember to show no results when needed!")
 	}
 
 	@OnSignal("notify::loading")
@@ -98,5 +84,9 @@ export class PackagesPage extends from(BasePage, {
 
 	protected _has_any_packages(__: this, n_items: number): boolean {
 		return n_items > 0
+	}
+
+	protected _has_no_packages(__: this, n_items: number): boolean {
+		return n_items <= 0
 	}
 }

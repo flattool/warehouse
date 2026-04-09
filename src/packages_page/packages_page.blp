@@ -1,12 +1,26 @@
 using Gtk 4.0;
 using Adw 1;
 
-SortListModel sorted_packages_list {
-	sorter: StringSorter {
-		expression: expr item as <$Package>.title;
+FilterListModel filtered_packages_list {
+	filter: AnyFilter {
+		StringFilter {
+			expression: expr item as <$Package>.title;
+			search: bind template.search_text;
+		}
+
+		StringFilter {
+			expression: expr item as <$Package>.application;
+			search: bind template.search_text;
+		}
 	};
 
-	model: bind template.packages;
+	model: SortListModel sorted_packages_list {
+		sorter: StringSorter {
+			expression: expr item as <$Package>.title;
+		};
+
+		model: bind template.packages;
+	};
 }
 
 template $PackagesPage: $BasePage {
@@ -107,7 +121,7 @@ template $PackagesPage: $BasePage {
 								}
 
 								content: $SearchGroup {
-									no_results: bind template.no_results;
+									no_results: bind $_has_no_packages(filtered_packages_list.n-items) as <bool>;
 
 									content: ScrolledWindow scrolled_window {
 										styles [
