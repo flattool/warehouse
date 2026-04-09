@@ -17,6 +17,7 @@
 		"--device=dri",
 		"--socket=wayland",
 		"--talk-name=org.freedesktop.Flatpak",
+		"--talk-name=com.github.tchx84.Flatseal",
 		"--filesystem=/var/lib/flatpak/:ro",
 		"--filesystem=/var/lib/flatpak/app/:ro",
 		"--filesystem=~/.local/share/flatpak/:ro",
