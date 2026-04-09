@@ -222,7 +222,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 		return version_text || _("No version information found")
 	}
 
-	protected _get_visible_page_name(): "content-page" | "nothing-selected-page" {
-		return this.flatpak ? "content-page" : "nothing-selected-page"
+	protected _get_visible_page_name(): "content_page" | "nothing_selected_page" {
+		return this.flatpak ? "content_page" : "nothing_selected_page"
 	}
 }

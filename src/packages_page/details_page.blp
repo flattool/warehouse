@@ -10,7 +10,7 @@ template $DetailsPage: Adw.NavigationPage {
 		visible-child-name: bind $_get_visible_page_name(template.flatpak) as <string>;
 
 		StackPage {
-			name: "nothing-selected-page";
+			name: "nothing_selected_page";
 
 			child: Adw.ToolbarView {
 				[top]
@@ -25,7 +25,7 @@ template $DetailsPage: Adw.NavigationPage {
 		}
 
 		StackPage {
-			name: "content-page";
+			name: "content_page";
 
 			child: Adw.NavigationView nav_view {
 				Adw.NavigationPage {
