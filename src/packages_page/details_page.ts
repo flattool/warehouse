@@ -106,7 +106,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 		const vadjustment: Gtk.Adjustment = this._scrolled_window.vadjustment
 		vadjustment.connect("value-changed", () => {
 			this.#scroll_position = vadjustment.value
-			this.show_title = this.#scroll_position > 0
+			this.show_title = this.#scroll_position > 135
 			this.#load_css_translation(-this.#scroll_position)
 		})
 		this.#on_flatpak_change().catch(log)
@@ -193,6 +193,10 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 				}
 			}
 		`, -1)
+	}
+
+	protected _get_titile(): string {
+		return this.flatpak?.title ?? _("Details")
 	}
 
 	protected async _show_runtime(): Promise<void> {

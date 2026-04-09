@@ -3,7 +3,7 @@ using Adw 1;
 using Gio 2.0;
 
 template $DetailsPage: Adw.NavigationPage {
-	title: _("Details");
+	title: bind $_get_titile(template.flatpak) as <string>;
 	monitor: bind $_get_monitor_for_package(template.flatpak as <$Package>.data_dir) as <Gio.FileMonitor>;
 
 	child: Stack {
@@ -14,7 +14,9 @@ template $DetailsPage: Adw.NavigationPage {
 
 			child: Adw.ToolbarView {
 				[top]
-				Adw.HeaderBar {}
+				Adw.HeaderBar {
+					show-title: false;
+				}
 
 				content: Adw.StatusPage {
 					icon-name: "warehouse:info-outline-symbolic";
@@ -35,7 +37,18 @@ template $DetailsPage: Adw.NavigationPage {
 					child: Adw.ToolbarView {
 						[top]
 						Adw.HeaderBar {
-							show-title: bind template.show_title;
+							title-widget: Revealer {
+								reveal-child: bind template.show_title;
+								transition-type: slide_up;
+
+								child: Label {
+									label: bind template.title;
+
+									styles [
+										"title",
+									]
+								};
+							};
 						}
 
 						[top]
