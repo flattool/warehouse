@@ -93,9 +93,10 @@ template $PackagesPage: $BasePage {
 						title: bind template.title;
 
 						child: Adw.BottomSheet bottom_sheet {
-							styles [
-								"margined-bottom-sheet",
-							]
+							reveal-bottom-bar: bind $_should_show_bottom_bar(template.in_selection_mode, sorted_packages_list.n-items) as <bool>;
+							// styles [
+							// 	"margined-bottom-sheet",
+							// ]
 
 							[content]
 							Adw.ToolbarView {
@@ -107,6 +108,14 @@ template $PackagesPage: $BasePage {
 									[start]
 									$SearchButton search_button {
 										sensitive: bind $_has_any_packages(sorted_packages_list.n-items) as <bool>;
+									}
+
+									[end]
+									ToggleButton {
+										tooltip-text: _("Select Packages");
+										icon-name: "warehouse:selection-mode-symbolic";
+										sensitive: bind $_has_any_packages(sorted_packages_list.n-items) as <bool>;
+										active: bind template.in_selection_mode bidirectional;
 									}
 								}
 
@@ -167,6 +176,17 @@ template $PackagesPage: $BasePage {
 										};
 									};
 								};
+
+								[bottom]
+								Revealer {
+									reveal-child: bind template.in_selection_mode;
+
+									child: ActionBar {
+										Button {
+											label: _("Action Button");
+										}
+									};
+								}
 							}
 
 							[sheet]

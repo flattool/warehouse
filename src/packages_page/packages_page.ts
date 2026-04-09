@@ -18,8 +18,9 @@ import "../widgets/search_button.js"
 export class PackagesPage extends from(BasePage, {
 	search_text: Property.string(),
 	no_results: Property.bool(),
+	in_selection_mode: Property.bool(),
 	_filtered_packages_list: Child<Gio.ListModel<Package>>(),
-	// _sorted_packages_list: Child<Gio.ListModel<Package>>(),
+	_sorted_packages_list: Child<Gio.ListModel<Package>>(),
 	_bottom_sheet: Child<Adw.BottomSheet>(),
 	_split_view: Child<Adw.NavigationSplitView>(),
 	_search_enty: Child<Gtk.SearchEntry>(),
@@ -65,6 +66,10 @@ export class PackagesPage extends from(BasePage, {
 				margin-bottom: ${this._bottom_sheet.bottom_bar_height}px;
 			}
 		`, -1)
+	}
+
+	protected _should_show_bottom_bar(): boolean {
+		return (!this.in_selection_mode) && (this._sorted_packages_list?.get_n_items() ?? 0) > 0
 	}
 
 	protected _on_row_selected(__: this, row: PackageRow | null): void {
