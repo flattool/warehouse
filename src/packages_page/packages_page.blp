@@ -41,14 +41,17 @@ template $PackagesPage: $BasePage {
 		}
 
 		child: Stack {
-			visible-child-name: bind $_get_visible_page(template.loading) as <string>;
+			visible-child-name: bind $_get_visible_page(template.loading, sorted_packages_list.n-items) as <string>;
 
 			StackPage loading_page {
 				name: "loading_page";
 
 				child: Adw.ToolbarView {
 					[top]
-					Adw.HeaderBar {}
+					Adw.HeaderBar {
+						[start]
+						$SidebarButton {}
+					}
 
 					content: Adw.StatusPage {
 						title: _("Loading Packages");
@@ -57,6 +60,24 @@ template $PackagesPage: $BasePage {
 						paintable: Adw.SpinnerPaintable {
 							widget: template;
 						};
+					};
+				};
+			}
+
+			StackPage no_packages_page {
+				name: "no_packages_page";
+
+				child: Adw.ToolbarView {
+					[top]
+					Adw.HeaderBar {
+						[start]
+						$SidebarButton {}
+					}
+
+					content: Adw.StatusPage {
+						icon-name: "warehouse:error-symbolic";
+						title: _("No Packages Found");
+						description: _("Warehouse cannot see the list of installed packages or your system has no packages installed");
 					};
 				};
 			}

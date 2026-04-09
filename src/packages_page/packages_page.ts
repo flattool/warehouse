@@ -74,8 +74,14 @@ export class PackagesPage extends from(BasePage, {
 		this._split_view.show_content = true
 	}
 
-	protected _get_visible_page(__: this): "loading_page" | "content_page" {
-		return this.loading ? "loading_page" : "content_page"
+	protected _get_visible_page(
+		__: this,
+		loading: boolean,
+		n_items: number,
+	): "loading_page" | "content_page" | "no_packages_page" {
+		if (loading) return "loading_page"
+		if (n_items > 0) return "content_page"
+		return "no_packages_page"
 	}
 
 	protected _on_search_changed(entry: Gtk.SearchEntry): void {
