@@ -221,4 +221,8 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 	protected _get_version_subtitle(__: this, version_text: string): string {
 		return version_text || _("No version information found")
 	}
+
+	protected _get_visible_page_name(): "content-page" | "nothing-selected-page" {
+		return this.flatpak ? "content-page" : "nothing-selected-page"
+	}
 }
