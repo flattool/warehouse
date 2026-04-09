@@ -3,6 +3,20 @@ import GLib from "gi://GLib?version=2.0"
 
 import { SharedVars } from "./shared_vars.js"
 
+export class ProcessError extends Error {
+	constructor(
+		readonly stdout: string[],
+		readonly stderr: string[],
+		cause?: unknown,
+	) {
+		super(`stdout:\n${stdout.join("\n")}\nstderr:\n${stderr.join("\n")}`)
+		this.name = "ProcessError"
+		if (cause) {
+			this.cause = cause
+		}
+	}
+}
+
 export class LineProcess {
 	static async run(
 		argv: string[],
@@ -44,18 +58,31 @@ export class LineProcess {
 	}
 
 	run(): Promise<{ exit_status: number, stdout: string[], stderr: string[], cancelled: boolean }> {
-		return new Promise((resolve, _reject) => {
-			this.process.init(this.#cancellable)
+		return new Promise((resolve, reject) => {
+			try {
+				this.process.init(this.#cancellable)
+			} catch (e) {
+				reject(e)
+				return
+			}
 			const stdout_lines: string[] = []
 			const stderr_lines: string[] = []
 
+			let rejected = false
 			let process_done = false
 			let exit_status_result = -1
 			let cancelled_result = false
 			let streams_done = 0
 
 			const try_resolve = (): void => {
-				if (!process_done || streams_done < 2) return
+				if (rejected || !process_done || streams_done < 2) return
+
+				if (exit_status_result !== 0 && !cancelled_result) {
+					rejected = true
+					reject(new ProcessError(stdout_lines, stderr_lines))
+					return
+				}
+
 				resolve({
 					exit_status: exit_status_result,
 					stdout: stdout_lines,
@@ -64,7 +91,15 @@ export class LineProcess {
 				})
 			}
 
-			this.#pump_lines(this.process.get_stdout_pipe()!, (line) => {
+			const on_stream_err = (e: unknown): void => {
+				if (rejected) return
+				rejected = true
+				this.#cancellable.cancel()
+				reject(new ProcessError(stdout_lines, stderr_lines, e))
+			}
+
+			this.#pump_lines(this.process.get_stdout_pipe()!, on_stream_err, (line) => {
+				if (rejected) return
 				if (line === null) {
 					streams_done += 1
 					try_resolve()
@@ -73,7 +108,8 @@ export class LineProcess {
 				stdout_lines.push(line)
 				this.on_stdout_line?.(line)
 			})
-			this.#pump_lines(this.process.get_stderr_pipe()!, (line) => {
+			this.#pump_lines(this.process.get_stderr_pipe()!, on_stream_err, (line) => {
+				if (rejected) return
 				if (line === null) {
 					streams_done += 1
 					try_resolve()
@@ -93,9 +129,14 @@ export class LineProcess {
 						exit_status_result = -1
 						cancelled_result = true
 					} else {
-						console.error("Unexpected error while running process: " + e)
-						exit_status_result = -1
+						exit_status_result = this.process.get_exit_status()
 						cancelled_result = false
+						rejected = true
+						reject(new ProcessError(
+							stdout_lines,
+							stderr_lines,
+							e,
+						))
 					}
 				} finally {
 					process_done = true
@@ -105,7 +146,7 @@ export class LineProcess {
 		})
 	}
 
-	#pump_lines(stream: Gio.InputStream, callback: (line: string | null) => void): void {
+	#pump_lines(stream: Gio.InputStream, on_err: (e: unknown) => void, callback: (line: string | null) => void): void {
 		const data_stream = new Gio.DataInputStream({ base_stream: stream })
 		const read_one = (): void => {
 			data_stream.read_line_async(GLib.PRIORITY_DEFAULT_IDLE, this.#cancellable, (_data_stream, res) => {
@@ -118,7 +159,7 @@ export class LineProcess {
 					callback(line)
 					read_one()
 				} catch (e) {
-					callback(null)
+					on_err(e)
 				}
 			})
 		}
