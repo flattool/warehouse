@@ -1,4 +1,6 @@
 import GObject from "gi://GObject?version=2.0"
+import GLib from "gi://GLib?version=2.0"
+import Gio from "gi://Gio?version=2.0"
 import Gtk from "gi://Gtk?version=4.0"
 import Adw from "gi://Adw?version=1"
 
@@ -73,4 +75,43 @@ export async function get_readable_file_size(path: string): Promise<string> {
 		index += 1
 	}
 	return `${size.toFixed(2)} ${units[index]}`
+}
+
+export async function is_dbus_name_present(bus_name: string): Promise<boolean> {
+	const command: string[] = [
+		"gdbus",
+		"call",
+		"--session",
+		"--dest",
+		"org.freedesktop.DBus",
+		"--object-path",
+		"/org/freedesktop/DBus",
+		"--method",
+		"org.freedesktop.DBus.ListActivatableNames",
+	]
+	try {
+		const response: string = (await LineProcess.run(command)).stdout.join("\n")
+		return response.includes(bus_name)
+	} catch (e) {
+		print(`Failed to check presence of DBus name '${bus_name}':`, e)
+		return false
+	}
+}
+
+export async function activate_flatseal(app_id: string): Promise<void> {
+	const command: string[] = [
+		"gdbus",
+		"call",
+		"--session",
+		"--dest",
+		"com.github.tchx84.Flatseal",
+		"--object-path",
+		"/com/github/tchx84/Flatseal",
+		"--method",
+		"org.gtk.Actions.Activate",
+		"show",
+		`[<string '${app_id}'>]`,
+		"{}",
+	]
+	await LineProcess.run(command)
 }

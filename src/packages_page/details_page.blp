@@ -184,6 +184,12 @@ template $DetailsPage: Adw.NavigationPage {
 															separate-rows: true;
 
 															Adw.ButtonRow {
+																title: _("Manage Permissions");
+																visible: bind $_can_edit_permissions(template.flatpak, template.flatseal_found) as <bool>;
+																activated => $_manage_permissions();
+															}
+
+															Adw.ButtonRow {
 																title: _("View Snapshots");
 																visible: bind template.flatpak as <$Package>.is_app;
 															}
@@ -381,7 +387,7 @@ template $DetailsPage: Adw.NavigationPage {
 
 												$InfoRow {
 													title: _("Installation");
-													subtitle: bind template.flatpak as <$Package>.installation as <$Installation>.title;
+													info: bind template.flatpak as <$Package>.installation as <$Installation>.title;
 												}
 											}
 

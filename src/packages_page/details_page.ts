@@ -5,7 +5,7 @@ import Gio from "gi://Gio?version=2.0"
 
 import { GClass, Child, Property, from, OnSignal, next_idle, Debounce } from "../gobjectify/gobjectify.js"
 import { Package } from "../flatpak.js"
-import { get_readable_file_size } from "../utils/helper_funcs.js"
+import { activate_flatseal, get_readable_file_size, is_dbus_name_present } from "../utils/helper_funcs.js"
 import { SharedVars } from "../utils/shared_vars.js"
 import { LineProcess } from "../utils/cli.js"
 
@@ -64,6 +64,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 	show_title: Property.bool(),
 	has_user_data: Property.bool(),
 	loading_user_data: Property.bool({ default: true }),
+	flatseal_found: Property.bool(),
 	data_size: Property.string(),
 
 	// Extra CLI Info
@@ -109,6 +110,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 			this.show_title = this.#scroll_position > 135
 			this.#load_css_translation(-this.#scroll_position)
 		})
+		is_dbus_name_present("com.github.tchx84.Flatseal").then((present) => this.flatseal_found = present).catch(log)
 		this.#on_flatpak_change().catch(log)
 	}
 
@@ -228,5 +230,22 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 
 	protected _get_visible_page_name(): "content_page" | "nothing_selected_page" {
 		return this.flatpak ? "content_page" : "nothing_selected_page"
+	}
+
+	protected _can_edit_permissions(__: this): boolean {
+		return this.flatseal_found && (this.flatpak?.is_app ?? false)
+	}
+
+	protected async _manage_permissions(): Promise<void> {
+		if (!this.flatpak) return
+		SharedVars.main_window?.add_toast(_("Opening Flatseal..."))
+		try {
+			await activate_flatseal(this.flatpak.application)
+		} catch (e) {
+			SharedVars.main_window?.add_error_toast(
+				_("Could not manage permissions"),
+				e instanceof Error ? e.message : `${e}`,
+			)
+		}
 	}
 }
