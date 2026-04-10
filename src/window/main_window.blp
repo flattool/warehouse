@@ -57,37 +57,47 @@ template $MainWindow: Adw.ApplicationWindow {
 					}
 				}
 
-				content: ListBox sidebar_list {
-					selection-mode: single;
-					row-selected => $_on_row_chosen();
-					row-activated => $_on_row_chosen();
-
-					styles [
-						"navigation-sidebar",
-					]
+				content: Adw.ViewSwitcherSidebar {
+					stack: view_stack;
+					activated => $_on_row_chosen();
 				};
 			};
 
 			content: Adw.ViewStack view_stack {
-				$PackagesPage packages_page {
-					installations: installations;
-					packages: packages_list;
-					remotes: remotes_list;
-					loading: bind template.loading;
+				Adw.ViewStackPage {
+					child: $PackagesPage packages_page {
+						installations: installations;
+						packages: packages_list;
+						remotes: remotes_list;
+						loading: bind template.loading;
+					};
+
+					icon-name: bind packages_page.icon_name;
+					title: bind packages_page.sidebar_title;
 				}
 
-				$RemotesPage remotes_page {
-					installations: installations;
-					packages: packages_list;
-					remotes: remotes_list;
-					loading: bind template.loading;
+				Adw.ViewStackPage {
+					child: $RemotesPage remotes_page {
+						installations: installations;
+						packages: packages_list;
+						remotes: remotes_list;
+						loading: bind template.loading;
+					};
+
+					icon-name: bind remotes_page.icon_name;
+					title: bind remotes_page.sidebar_title;
 				}
 
-				$DataPage data_page {
-					installations: installations;
-					packages: packages_list;
-					remotes: remotes_list;
-					loading: bind template.loading;
+				Adw.ViewStackPage {
+					child: $DataPage data_page {
+						installations: installations;
+						packages: packages_list;
+						remotes: remotes_list;
+						loading: bind template.loading;
+					};
+
+					icon-name: bind data_page.icon_name;
+					title: bind data_page.sidebar_title;
 				}
 			};
 		};

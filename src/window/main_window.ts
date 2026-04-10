@@ -5,8 +5,6 @@ import Pango from "gi://Pango?version=1.0"
 
 import { GClass, Child, Property, from, Debounce, next_idle, OnSignal } from "../gobjectify/gobjectify.js"
 import { Installation, Package, Remote, get_installations } from "../flatpak.js"
-import { SidebarRow } from "./sidebar_row.js"
-import { BasePage } from "../widgets/base_page.js"
 import { SharedVars } from "../utils/shared_vars.js"
 import { ArrayStore } from "../utils/array_store.js"
 
@@ -28,8 +26,6 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 
 	_toast_overlay: Child<Adw.ToastOverlay>(),
 	_split_view: Child<Adw.OverlaySplitView>(),
-	_sidebar_list: Child<Gtk.ListBox>(),
-	_view_stack: Child<Adw.ViewStack>(),
 }) {
 	readonly #settings = new Gio.Settings({ schema_id: pkg.app_id })
 	#custom_inst_watcher: Gio.FileMonitor | null = null
@@ -51,9 +47,6 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 			if (!(item instanceof Installation)) return item
 			return item.packages
 		})
-
-		this.#setup_sidebar()
-		print("STARTING:", this.loading)
 
 		await this.#load_installations()
 
@@ -137,33 +130,11 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 		})
 	}
 
-	#setup_sidebar(): void {
-		const base_list: Gtk.SelectionModel<Adw.ViewStackPage> = this._view_stack.pages
-		this._sidebar_list.bind_model(
-			base_list,
-			(item) => new SidebarRow({
-				icon_name: ((item as Adw.ViewStackPage).child as BasePage).icon_name,
-				text: ((item as Adw.ViewStackPage).child as BasePage).sidebar_title,
-			}),
-		)
-		this._sidebar_list.select_row(this._sidebar_list.get_row_at_index(0))
-	}
-
 	protected _do_test(): void {
 		this.#refresh()
 	}
 
-	@Debounce(10)
-	protected _on_row_chosen(__: Gtk.ListBox, selected_row: Gtk.ListBoxRow): void {
-		for (let i = 0; ; i += 1) {
-			const row = this._sidebar_list.get_row_at_index(i)
-			if (!row) break
-			if (row === selected_row) {
-				this._view_stack.pages.select_item(i, true)
-				break
-			}
-		}
-		this._view_stack.child_focus(Gtk.DirectionType.RIGHT)
+	protected _on_row_chosen(): void {
 		if (this._split_view.collapsed) {
 			this._split_view.show_sidebar = false
 		}
