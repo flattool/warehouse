@@ -85,6 +85,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 }) {
 	readonly #css_provider = new Gtk.CssProvider()
 	readonly #css_class_name = `details-blur-${total_instances += 1}`
+	readonly #gtk_settings = Gtk.Settings.get_default()
 	#subpage?: DetailsPage
 	#scroll_position = 0
 
@@ -172,29 +173,21 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 	}
 
 	#load_css_translation(y: number): void {
-		this.#css_provider.load_from_data(`
+		const is_dark: boolean = this.#gtk_settings?.gtk_interface_color_scheme === Gtk.InterfaceColorScheme.DARK
+		const prefers_contrast: boolean = this.#gtk_settings?.gtk_interface_contrast === Gtk.InterfaceContrast.MORE
+		const css_data = `
 			.${this.#css_class_name} {
 				transform: translateY(${y + BACKGROUND_PICTURE_OFFSET}px);
 				margin-bottom: max(${BACKGROUND_PICTURE_OFFSET}px, 0px);
-				background-image: url("file://${this.flatpak?.icon_path}");
+				background-image: ${prefers_contrast ? "none" : `url("file://${this.flatpak?.icon_path}")`};
 				background-repeat: no-repeat;
 				background-size: 100% ${BACKGROUND_PICTURE_HEIGHT}px;
 				background-position: 0px 0px;
-				filter: blur(${BLUR_AMOUNT}px);
+				filter: ${prefers_contrast ? "none" : `blur(${BLUR_AMOUNT}px)`};
+				opacity: ${is_dark ? DARK_OPACITY : LIGHT_OPACTIY};
 			}
-			@media (prefers-color-scheme: dark) {
-				.${this.#css_class_name} {
-					opacity: ${DARK_OPACITY};
-				}
-			}
-			@media (prefers-contrast: more) {
-				.${this.#css_class_name} {
-					background-image: none;
-					filter: none;
-					opacity: ${LIGHT_OPACTIY};
-				}
-			}
-		`, -1)
+		`
+		this.#css_provider.load_from_data(css_data, -1)
 	}
 
 	protected _get_titile(): string {

@@ -19,14 +19,20 @@ FilterListModel filtered_packages_list {
 			expression: expr item as <$Package>.title;
 		};
 
-		model: bind template.packages;
+		model: FilterListModel {
+			model: bind template.packages;
+
+			filter: BoolFilter {
+				expression: expr $_show_package_by_runtime(item as <$Package>.is_runtime, template.show_runtimes) as <bool>;
+			};
+		};
 	};
 }
 
 template $PackagesPage: $BasePage {
-	title: _("Manage Packages");
-	sidebar_title: _("Apps & Runtimes");
-	icon_name: "warehouse:flatpak-symbolic";
+	title: bind $_get_title(template.show_runtimes) as <string>;
+	sidebar_title: bind $_get_sidebar_title(template.show_runtimes) as <string>;
+	icon_name: bind $_get_icon_name(template.show_runtimes) as <string>;
 
 	child: Adw.BreakpointBin {
 		width-request: 1;
@@ -131,23 +137,6 @@ template $PackagesPage: $BasePage {
 											search-changed => $_on_search_changed();
 										};
 									};
-								}
-
-								[top]
-								Adw.ToggleGroup {
-									margin-start: 6;
-									margin-end: 6;
-									margin-top: 3;
-									margin-bottom: 3;
-									homogeneous: true;
-
-									Adw.Toggle {
-										label: "Applications";
-									}
-
-									Adw.Toggle {
-										label: "Runtimes";
-									}
 								}
 
 								content: $SearchGroup {
