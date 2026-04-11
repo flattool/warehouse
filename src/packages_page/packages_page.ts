@@ -17,12 +17,12 @@ import "../widgets/search_button.js"
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/packages_page.ui" })
 export class PackagesPage extends from(BasePage, {
 	show_runtimes: Property.bool(),
+	show_filter_page: Property.bool(),
 	search_text: Property.string(),
 	no_results: Property.bool(),
 	in_selection_mode: Property.bool(),
 	_filtered_packages_list: Child<Gio.ListModel<Package>>(),
 	_sorted_packages_list: Child<Gio.ListModel<Package>>(),
-	_bottom_sheet: Child<Adw.BottomSheet>(),
 	_split_view: Child<Adw.NavigationSplitView>(),
 	_search_enty: Child<Gtk.SearchEntry>(),
 	_scrolled_window: Child<Gtk.ScrolledWindow>(),
@@ -37,8 +37,6 @@ export class PackagesPage extends from(BasePage, {
 			this.#css_provider,
 			Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
 		)
-		this.#load_scrollbar_css()
-		this._bottom_sheet.connect("notify::bottom-bar-height", () => this.#load_scrollbar_css())
 		this._list_box.bind_model(this._filtered_packages_list, (flatpak) => new PackageRow({ flatpak }))
 	}
 
@@ -58,15 +56,16 @@ export class PackagesPage extends from(BasePage, {
 			this._search_enty.text = ""
 		} else {
 			this._list_box.select_row(this._list_box.get_row_at_index(0))
+			if (this._sorted_packages_list.get_n_items() < 1) {
+				this.show_filter_page = false
+			}
 		}
 	}
 
-	#load_scrollbar_css(): void {
-		this.#css_provider.load_from_data(`
-			.scrollbar-offset scrollbar {
-				margin-bottom: ${this._bottom_sheet.bottom_bar_height}px;
-			}
-		`, -1)
+	@OnSignal("notify::show-filter-page")
+	#on_show_filter_page_changed(): void {
+		if (!this.show_filter_page) return
+		this._split_view.show_content = true
 	}
 
 	protected _show_package_by_runtime(__: this, is_package_runtime: boolean, show_runtimes: boolean): boolean {
@@ -90,8 +89,9 @@ export class PackagesPage extends from(BasePage, {
 	}
 
 	protected _on_row_selected(__: this, row: PackageRow | null): void {
-		this._details_page.pop_to_base_page()
 		this._details_page.flatpak = row?.flatpak ?? null
+		this._details_page.pop_to_base_page()
+		this.show_filter_page = false
 		if (!row) return
 		const maybe_viewport: Gtk.Widget | null = this._scrolled_window.get_child()
 		if (!(maybe_viewport instanceof Gtk.Viewport)) return
@@ -100,6 +100,7 @@ export class PackagesPage extends from(BasePage, {
 
 	protected _on_row_activated(__: this, _row: PackageRow | null): void {
 		this._details_page.pop_to_base_page()
+		this.show_filter_page = false
 		this._split_view.show_content = true
 	}
 
@@ -123,5 +124,13 @@ export class PackagesPage extends from(BasePage, {
 
 	protected _has_no_packages(__: this, n_items: number): boolean {
 		return n_items <= 0
+	}
+
+	protected _get_details_stack_page_name(): "details_page" | "filter_page" {
+		return this.show_filter_page ? "filter_page" : "details_page"
+	}
+
+	protected _on_right_page_hidden(): void {
+		this.show_filter_page = false
 	}
 }

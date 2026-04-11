@@ -98,127 +98,97 @@ template $PackagesPage: $BasePage {
 					sidebar: Adw.NavigationPage {
 						title: bind template.title;
 
-						child: Adw.BottomSheet bottom_sheet {
-							reveal-bottom-bar: bind $_should_show_bottom_bar(template.in_selection_mode, sorted_packages_list.n-items) as <bool>;
-							// styles [
-							// 	"margined-bottom-sheet",
-							// ]
+						child: Adw.ToolbarView {
+							[top]
+							Adw.HeaderBar {
+								[start]
+								$SidebarButton {}
 
-							[content]
-							Adw.ToolbarView {
-								[top]
-								Adw.HeaderBar {
-									[start]
-									$SidebarButton {}
-
-									[start]
-									$SearchButton search_button {
-										sensitive: bind $_has_any_packages(sorted_packages_list.n-items) as <bool>;
-									}
-
-									[end]
-									ToggleButton {
-										tooltip-text: _("Select Packages");
-										icon-name: "warehouse:selection-mode-symbolic";
-										sensitive: bind $_has_any_packages(sorted_packages_list.n-items) as <bool>;
-										active: bind template.in_selection_mode bidirectional;
-									}
+								[start]
+								$SearchButton search_button {
+									sensitive: bind $_has_any_packages(sorted_packages_list.n-items) as <bool>;
 								}
 
-								[top]
-								Adw.Clamp {
-									child: SearchBar {
-										key-capture-widget: template;
-										search-mode-enabled: bind search_button.active bidirectional;
-
-										child: SearchEntry search_enty {
-											hexpand: true;
-											placeholder-text: _("Search Packages");
-											search-changed => $_on_search_changed();
-										};
-									};
+								[end]
+								ToggleButton {
+									tooltip-text: _("Change Filters");
+									icon-name: "warehouse:funnel-outline-symbolic";
+									sensitive: bind $_has_any_packages(sorted_packages_list.n-items) as <bool>;
+									active: bind template.show_filter_page bidirectional;
 								}
 
-								content: $SearchGroup {
-									no_results: bind $_has_no_packages(filtered_packages_list.n-items) as <bool>;
-
-									content: ScrolledWindow scrolled_window {
-										styles [
-											"scrollbar-offset",
-										]
-
-										child: Box {
-											orientation: vertical;
-
-											ListBox list_box {
-												row-selected => $_on_row_selected();
-												row-activated => $_on_row_activated();
-
-												styles [
-													"navigation-sidebar",
-												]
-											}
-
-											Adw.Bin {
-												height-request: bind bottom_sheet.bottom-bar-height;
-											}
-										};
-									};
-								};
-
-								[bottom]
-								Revealer {
-									reveal-child: bind template.in_selection_mode;
-
-									child: ActionBar {
-										Button {
-											label: _("Action Button");
-										}
-									};
+								[end]
+								ToggleButton {
+									tooltip-text: _("Select Packages");
+									icon-name: "warehouse:selection-mode-symbolic";
+									sensitive: bind $_has_any_packages(sorted_packages_list.n-items) as <bool>;
+									active: bind template.in_selection_mode bidirectional;
 								}
 							}
 
-							[sheet]
-							$FilterPage filter-page {}
+							[top]
+							Adw.Clamp {
+								child: SearchBar {
+									key-capture-widget: template;
+									search-mode-enabled: bind search_button.active bidirectional;
 
-							[bottom-bar]
-							Box {
-								spacing: 12;
-								margin-top: 14;
-								margin-bottom: 14;
-								margin-start: 16;
-								margin-end: 16;
+									child: SearchEntry search_enty {
+										hexpand: true;
+										placeholder-text: _("Search Packages");
+										search-changed => $_on_search_changed();
+									};
+								};
+							}
 
-								Image {
-									icon-name: "warehouse:funnel-outline-symbolic";
-								}
+							content: $SearchGroup {
+								no_results: bind $_has_no_packages(filtered_packages_list.n-items) as <bool>;
 
-								Label {
-									label: _("Set Filters");
-									ellipsize: end;
-									hexpand: true;
-									halign: start;
+								content: ScrolledWindow scrolled_window {
+									child: ListBox list_box {
+										row-selected => $_on_row_selected();
+										row-activated => $_on_row_activated();
 
-									styles [
-										"heading",
-									]
-								}
+										styles [
+											"navigation-sidebar",
+										]
+									};
+								};
+							};
 
-								Label {
-									label: "Showing 98 / 107";
-									ellipsize: middle;
-									hexpand: true;
-									halign: end;
+							[bottom]
+							Revealer {
+								reveal-child: bind template.in_selection_mode;
 
-									styles [
-										"heading",
-									]
-								}
+								child: ActionBar {
+									Button {
+										label: _("Action Button");
+									}
+								};
 							}
 						};
 					};
 
-					content: $DetailsPage details_page {};
+					content: Adw.NavigationPage {
+						title: bind right_stack.visible-child as <Adw.NavigationPage>.title;
+						hidden => $_on_right_page_hidden();
+
+						Stack right_stack {
+							visible-child-name: bind $_get_details_stack_page_name(template.show_filter_page) as <string>;
+							transition-type: slide_left_right;
+
+							StackPage {
+								name: "details_page";
+
+								child: $DetailsPage details_page {};
+							}
+
+							StackPage {
+								name: "filter_page";
+
+								child: $FilterPage filter_page {};
+							}
+						}
+					};
 				};
 			}
 		};
