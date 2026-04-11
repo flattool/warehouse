@@ -185,7 +185,37 @@ template $PackagesPage: $BasePage {
 							StackPage {
 								name: "filter_page";
 
-								child: $FilterPage filter_page {};
+								child: $FilterPage filter_page {
+									installations: SortListModel {
+										sorter: StringSorter {
+											expression: expr item as <$Installation>.title;
+										};
+
+										model: bind template.installations;
+									};
+
+									runtimes: FilterListModel {
+										filter: BoolFilter {
+											expression: expr item as <$Package>.is_runtime;
+										};
+
+										model: SortListModel {
+											sorter: StringSorter {
+												expression: expr item as <$Package>.title;
+											};
+
+											model: bind template.packages;
+										};
+									};
+
+									remotes: SortListModel {
+										sorter: StringSorter {
+											expression: expr item as <$Remote>.title;
+										};
+
+										model: bind template.remotes;
+									};
+								};
 							}
 						}
 					};
