@@ -147,6 +147,7 @@ template $PackagesPage: $BasePage {
 									child: ListBox list_box {
 										row-selected => $_on_row_selected();
 										row-activated => $_on_row_activated();
+										selection-mode: bind $_get_selection_mode(template.in_selection_mode) as <SelectionMode>;
 
 										styles [
 											"navigation-sidebar",

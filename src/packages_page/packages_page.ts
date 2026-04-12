@@ -56,6 +56,7 @@ export class PackagesPage extends from(BasePage, {
 			this._search_enty.text = ""
 		} else {
 			this._list_box.select_row(this._list_box.get_row_at_index(0))
+			this.in_selection_mode = false
 			if (this._sorted_packages_list.get_n_items() < 1) {
 				this.show_filter_page = false
 			}
@@ -66,6 +67,11 @@ export class PackagesPage extends from(BasePage, {
 	#on_show_filter_page_changed(): void {
 		if (!this.show_filter_page) return
 		this._split_view.show_content = true
+	}
+
+	@OnSignal("notify::in-selection-mode")
+	async #on_selection_mode_changed(): Promise<void> {
+		this._list_box.unselect_all()
 	}
 
 	protected _show_package_by_runtime(__: this, is_package_runtime: boolean, show_runtimes: boolean): boolean {
@@ -101,7 +107,13 @@ export class PackagesPage extends from(BasePage, {
 	protected _on_row_activated(__: this, _row: PackageRow | null): void {
 		this._details_page.pop_to_base_page()
 		this.show_filter_page = false
-		this._split_view.show_content = true
+		if (!this.in_selection_mode) {
+			this._split_view.show_content = true
+		}
+	}
+
+	protected _get_selection_mode(): Gtk.SelectionMode {
+		return this.in_selection_mode ? Gtk.SelectionMode.MULTIPLE : Gtk.SelectionMode.SINGLE
 	}
 
 	protected _get_visible_page(
