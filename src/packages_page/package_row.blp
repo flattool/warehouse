@@ -55,7 +55,8 @@ template $PackageRow: Adw.ActionRow {
 	CheckButton check_button {
 		margin-start: 6;
 		valign: center;
-		visible: false;
+		visible: bind template.in_selection_mode;
+		active: bind template.selected bidirectional;
 
 		styles [
 			"selection-mode",

@@ -29,6 +29,8 @@ FilterListModel filtered_packages_list {
 	};
 }
 
+$SelectionManager selection_manager {}
+
 template $PackagesPage: $BasePage {
 	title: bind $_get_title(template.show_runtimes) as <string>;
 	sidebar_title: bind $_get_sidebar_title(template.show_runtimes) as <string>;
@@ -163,6 +165,10 @@ template $PackagesPage: $BasePage {
 								child: ActionBar {
 									Button {
 										label: _("Action Button");
+									}
+
+									Label {
+										label: bind $_get_total_selected(selection_manager.total) as <string>;
 									}
 								};
 							}

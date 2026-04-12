@@ -7,6 +7,8 @@ import { Package } from "../flatpak.js"
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/package_row.ui" })
 export class PackageRow extends from(Adw.ActionRow, {
 	flatpak: Property.gobject(Package, { flags: "CONSTRUCT" }),
+	in_selection_mode: Property.bool(),
+	selected: Property.bool(),
 	_app_icon: Child<Gtk.Image>(),
 }) {
 	_ready(): void {

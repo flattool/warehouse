@@ -1,3 +1,4 @@
+import GObject from "gi://GObject?version=2.0"
 import Gio from "gi://Gio?version=2.0"
 import Gdk from "gi://Gdk?version=4.0"
 import Adw from "gi://Adw?version=1"
@@ -14,6 +15,27 @@ import "../widgets/sidebar_button.js"
 import "../widgets/search_group.js"
 import "../widgets/search_button.js"
 
+@GClass() class SelectionManager extends from(GObject.Object, {
+	total: Property.uint32(),
+}) {
+	readonly #selected = new Set<Package>()
+
+	reset(): void {
+		this.total = 0
+		this.#selected.clear()
+	}
+
+	select(pack: Package): void {
+		this.#selected.add(pack)
+		this.total = this.#selected.size
+	}
+
+	deselct(pack: Package): void {
+		this.#selected.delete(pack)
+		this.total = this.#selected.size
+	}
+}
+
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/packages_page.ui" })
 export class PackagesPage extends from(BasePage, {
 	show_runtimes: Property.bool(),
@@ -23,6 +45,7 @@ export class PackagesPage extends from(BasePage, {
 	in_selection_mode: Property.bool(),
 	_filtered_packages_list: Child<Gio.ListModel<Package>>(),
 	_sorted_packages_list: Child<Gio.ListModel<Package>>(),
+	_selection_manager: Child<SelectionManager>(),
 	_split_view: Child<Adw.NavigationSplitView>(),
 	_search_enty: Child<Gtk.SearchEntry>(),
 	_scrolled_window: Child<Gtk.ScrolledWindow>(),
@@ -37,7 +60,21 @@ export class PackagesPage extends from(BasePage, {
 			this.#css_provider,
 			Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
 		)
-		this._list_box.bind_model(this._filtered_packages_list, (flatpak) => new PackageRow({ flatpak }))
+		this._list_box.bind_model(this._filtered_packages_list, (flatpak) => {
+			const row = new PackageRow({ flatpak })
+			row.connect("activated", () => {
+				if (!this.in_selection_mode) return
+				row.selected = !row.selected
+			})
+			row.connect("notify::selected", () => {
+				if (row.selected) {
+					this._selection_manager.select(flatpak)
+				} else {
+					this._selection_manager.deselct(flatpak)
+				}
+			})
+			return row
+		})
 	}
 
 	override grab_focus(): boolean {
@@ -70,7 +107,15 @@ export class PackagesPage extends from(BasePage, {
 	}
 
 	@OnSignal("notify::in-selection-mode")
-	async #on_selection_mode_changed(): Promise<void> {
+	#on_selection_mode_changed(): void {
+		for (const row of this._list_box) {
+			if (!(row instanceof PackageRow)) continue
+			if (!this.in_selection_mode) {
+				row.selected = false
+			}
+			row.in_selection_mode = this.in_selection_mode
+		}
+		this._selection_manager.reset()
 		this._list_box.unselect_all()
 	}
 
@@ -113,7 +158,7 @@ export class PackagesPage extends from(BasePage, {
 	}
 
 	protected _get_selection_mode(): Gtk.SelectionMode {
-		return this.in_selection_mode ? Gtk.SelectionMode.MULTIPLE : Gtk.SelectionMode.SINGLE
+		return this.in_selection_mode ? Gtk.SelectionMode.NONE : Gtk.SelectionMode.SINGLE
 	}
 
 	protected _get_visible_page(
@@ -140,6 +185,10 @@ export class PackagesPage extends from(BasePage, {
 
 	protected _get_details_stack_page_name(): "details_page" | "filter_page" {
 		return this.show_filter_page ? "filter_page" : "details_page"
+	}
+
+	protected _get_total_selected(__: this, total: number): string {
+		return _("Total: %s").format(total)
 	}
 
 	protected _on_right_page_hidden(): void {
