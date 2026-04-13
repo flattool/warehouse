@@ -9,11 +9,14 @@ import { BasePage } from "../widgets/base_page.js"
 import { Package } from "../flatpak.js"
 import { PackageRow } from "./package_row.js"
 import { DetailsPage } from "./details_page.js"
+import { SharedVars } from "../utils/shared_vars.js"
 
 import "./filter_page.js"
 import "../widgets/sidebar_button.js"
 import "../widgets/search_group.js"
 import "../widgets/search_button.js"
+import "../widgets/simple_menu.js"
+import "../widgets/simple_menu_item.js"
 
 @GClass() class SelectionManager extends from(GObject.Object, {
 	total: Property.uint32(),
@@ -33,6 +36,10 @@ import "../widgets/search_button.js"
 	deselct(pack: Package): void {
 		this.#selected.delete(pack)
 		this.total = this.#selected.size
+	}
+
+	[Symbol.iterator](): IterableIterator<Package> {
+		return this.#selected[Symbol.iterator]()
 	}
 }
 
@@ -123,8 +130,9 @@ export class PackagesPage extends from(BasePage, {
 		return is_package_runtime === show_runtimes
 	}
 
-	protected _get_title(): string {
-		return this.show_runtimes ? _("Manage Runtimes") : _("Manage Applications")
+	protected _get_title(__: this, show_runtimes: boolean, in_selection_mode: boolean, total_selected: number): string {
+		if (in_selection_mode) return _("%s Selected").format(total_selected)
+		return show_runtimes ? _("Manage Runtimes") : _("Manage Applications")
 	}
 
 	protected _get_sidebar_title(): string {
@@ -187,11 +195,20 @@ export class PackagesPage extends from(BasePage, {
 		return this.show_filter_page ? "filter_page" : "details_page"
 	}
 
-	protected _get_total_selected(__: this, total: number): string {
-		return _("Total: %s").format(total)
-	}
-
 	protected _on_right_page_hidden(): void {
 		this.show_filter_page = false
+	}
+
+	protected _on_copy_titles(): void { this.#do_copy("Copied Titles", "title") }
+	protected _on_copy_ids(): void { this.#do_copy("Copied IDs", "application") }
+	protected _on_copy_refs(): void { this.#do_copy("Copied Refs", "app_ref") }
+
+	#do_copy(title: string, field: keyof Package): void {
+		if (this._selection_manager.total < 1) return
+		let out_arr: string[] = []
+		for (const pack of this._selection_manager) {
+			out_arr.push(`${pack[field]}`)
+		}
+		SharedVars.fancy_copy(title, out_arr.join("\n"))
 	}
 }
