@@ -218,6 +218,17 @@ export class Remote extends from(GObject.Object, {
 		await LineProcess.run(command, { run_on_host: true })
 		this.notify("disabled")
 	}
+
+	async remove(): Promise<void> {
+		if (!this.installation) throw new Error(`Remote '${this.name}' installation is null`)
+		const command: string[] = [
+			"flatpak",
+			"remote-delete",
+			this.installation.command_syntax,
+			this.name,
+		]
+		await LineProcess.run(command, { run_on_host: true })
+	}
 }
 
 async function get_remotes(

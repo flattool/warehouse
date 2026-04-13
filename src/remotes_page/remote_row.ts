@@ -4,6 +4,7 @@ import { GClass, Property, from } from "../gobjectify/gobjectify.js"
 import { Remote } from "../flatpak.js"
 import { SharedVars } from "../utils/shared_vars.js"
 import { ask_to_continue } from "../utils/helper_funcs.js"
+import { LineProcess } from "../utils/cli.js"
 
 import "../widgets/simple_menu.js"
 import "../widgets/simple_menu_item.js"
@@ -74,7 +75,39 @@ export class RemoteRow extends from(Adw.ActionRow, {
 		}
 	}
 
-	protected _remove(): void {
-		print("remove")
+	protected async _remove(): Promise<void> {
+		if (!this.remote || !this.remote.installation) {
+			SharedVars.main_window?.add_error_toast(_("Could not remove remote"), "Remote or its installation is null")
+			return
+		}
+		const command: string[] = ["flatpak", "list", this.remote.installation.command_syntax, "--columns=origin"]
+		try {
+			const response = await LineProcess.run(command, { run_on_host: true })
+			const origins: string = response.stdout.join("\n")
+			if (origins.includes(this.remote.name)) {
+				const dialog = new Adw.AlertDialog({
+					heading: _("Could not Remove %s").format(this.remote.title),
+					// eslint-disable-next-line
+					body: _("There are applications or runtimes on your system installed from this remote. This remote cannot be removed until all packages provided by it are uninstalled"),
+				})
+				dialog.add_response("ok", _("OK"))
+				dialog.present(SharedVars.main_window)
+				return
+			} else {
+				const should_remove: boolean = await ask_to_continue(
+					_("Remove %s?").format(this.remote.title),
+					_("You will no longer be able to install applications or runtimes from this remote."),
+					_("Remove"),
+					Adw.ResponseAppearance.DESTRUCTIVE,
+				)
+				if (!should_remove) return
+				await this.remote.remove()
+			}
+		} catch (e) {
+			SharedVars.main_window?.add_error_toast(
+				_("Could not remove remote"),
+				e instanceof Error ? e.message : `${e}`,
+			)
+		}
 	}
 }
