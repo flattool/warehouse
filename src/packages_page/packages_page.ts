@@ -68,7 +68,7 @@ export class PackagesPage extends from(BasePage, {
 			Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
 		)
 		this._list_box.bind_model(this._filtered_packages_list, (flatpak) => {
-			const row = new PackageRow({ flatpak })
+			const row = new PackageRow({ flatpak, in_selection_mode: this.in_selection_mode })
 			row.connect("activated", () => {
 				if (!this.in_selection_mode) return
 				row.selected = !row.selected
