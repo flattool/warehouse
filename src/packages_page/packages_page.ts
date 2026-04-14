@@ -112,14 +112,12 @@ export class PackagesPage extends from(BasePage, {
 
 	@OnSignal("notify::loading")
 	#on_loading_changed(): void {
-		if (this.loading) {
-			this._search_enty.text = ""
-		} else {
-			this._list_box.select_row(this._list_box.get_row_at_index(0))
-			this.in_selection_mode = false
-			if (this._sorted_packages_list.get_n_items() < 1) {
-				this.show_filter_page = false
-			}
+		if (this.loading) return
+		this._search_enty.text = ""
+		this._list_box.select_row(this._list_box.get_row_at_index(0))
+		this.in_selection_mode = false
+		if (this._sorted_packages_list.get_n_items() < 1) {
+			this.show_filter_page = false
 		}
 	}
 
