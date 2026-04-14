@@ -197,16 +197,20 @@ export class PackagesPage extends from(BasePage, {
 		this.search_text = entry.text
 	}
 
-	protected _has_any_packages(__: this, n_items: number): boolean {
-		return n_items > 0
-	}
-
 	protected _get_details_stack_page_name(): "details_page" | "filter_page" {
 		return this.show_filter_page ? "filter_page" : "details_page"
 	}
 
 	protected _on_right_page_hidden(): void {
 		this.show_filter_page = false
+	}
+
+	protected _on_select_all(): void {
+		if (!this.in_selection_mode) return
+		for (const row of this._list_box) {
+			if (!(row instanceof PackageRow) || !row.visible) continue
+			row.selected = true
+		}
 	}
 
 	protected _on_copy_titles(): void { this.#do_copy("Copied Titles", "title") }
@@ -220,5 +224,13 @@ export class PackagesPage extends from(BasePage, {
 			out_arr.push(`${pack[field]}`)
 		}
 		SharedVars.fancy_copy(title, out_arr.join("\n"))
+	}
+
+	protected _on_batch_uninstall(): void {
+		print("not implemented yet")
+	}
+
+	protected _is_greater(__: this, a: number, b: number): boolean {
+		return a > b
 	}
 }

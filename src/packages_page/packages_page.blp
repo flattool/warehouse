@@ -94,7 +94,7 @@ template $PackagesPage: $BasePage {
 
 								[start]
 								$SearchButton search_button {
-									sensitive: bind $_has_any_packages(sorted_packages_list.n-items) as <bool>;
+									sensitive: bind $_is_greater(sorted_packages_list.n-items, 0) as <bool>;
 									search_bar: search_bar;
 								}
 
@@ -102,7 +102,7 @@ template $PackagesPage: $BasePage {
 								ToggleButton {
 									tooltip-text: _("Change Filters");
 									icon-name: "warehouse:funnel-outline-symbolic";
-									sensitive: bind $_has_any_packages(sorted_packages_list.n-items) as <bool>;
+									sensitive: bind $_is_greater(sorted_packages_list.n-items, 0) as <bool>;
 									active: bind template.show_filter_page bidirectional;
 								}
 
@@ -110,7 +110,7 @@ template $PackagesPage: $BasePage {
 								ToggleButton {
 									tooltip-text: _("Select Packages");
 									icon-name: "warehouse:selection-mode-symbolic";
-									sensitive: bind $_has_any_packages(sorted_packages_list.n-items) as <bool>;
+									sensitive: bind $_is_greater(sorted_packages_list.n-items, 0) as <bool>;
 									active: bind template.in_selection_mode bidirectional;
 								}
 							}
@@ -149,26 +149,56 @@ template $PackagesPage: $BasePage {
 							Revealer {
 								reveal-child: bind template.in_selection_mode;
 
-								child: ActionBar {
+								child: Box {
+									homogeneous: true;
+									hexpand: true;
+									halign: fill;
+
+									styles [
+										"toolbar",
+									]
+
 									Button {
 										child: Adw.ButtonContent {
 											icon-name: "warehouse:selection-mode-symbolic";
 											label: _("Select All");
+											can-shrink: true;
 										};
+
+										clicked => $_on_select_all();
+
+										styles [
+											"raised",
+										]
 									}
 
 									MenuButton copy_button {
 										child: Adw.ButtonContent {
 											icon-name: "warehouse:copy-symbolic";
 											label: _("Copy...");
+											can-shrink: true;
 										};
+
+										sensitive: bind $_is_greater(selection_manager.total, 0) as <bool>;
+
+										styles [
+											"raised",
+										]
 									}
 
 									Button {
 										child: Adw.ButtonContent {
 											icon-name: "warehouse:user-trash-symbolic";
 											label: _("Uninstall");
+											can-shrink: true;
 										};
+
+										sensitive: bind $_is_greater(selection_manager.total, 0) as <bool>;
+										clicked => $_on_batch_uninstall();
+
+										styles [
+											"raised",
+										]
 									}
 								};
 							}
