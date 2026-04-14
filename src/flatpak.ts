@@ -63,7 +63,10 @@ export class Installation extends from(GObject.Object, {
 	_ready(): void {
 		const file: Gio.File = Gio.File.new_for_path(this.location_path).get_child("repo")
 		this.icon_theme.add_search_path(`${this.location_path}/exports/share/icons`.normalize_path())
-		if (file.query_exists(null) && file.query_file_type(null, null) === Gio.FileType.DIRECTORY) {
+		if (
+			file.query_exists(null)
+			&& file.query_file_type(Gio.FileQueryInfoFlags.NONE, null) === Gio.FileType.DIRECTORY
+		) {
 			this.#monitor = file.monitor_directory(Gio.FileMonitorFlags.NONE, null)
 			this.#monitor.connect("changed", () => this.#reload())
 		} else {
@@ -331,7 +334,7 @@ export class Package extends BasePackage {
 			null,
 			1024,
 			1,
-			null,
+			Gtk.TextDirection.NONE,
 			Gtk.IconLookupFlags.FORCE_REGULAR,
 		).get_file()?.get_path() ?? ""
 	}
