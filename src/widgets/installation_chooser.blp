@@ -1,0 +1,73 @@
+using Gtk 4.0;
+using Adw 1;
+
+SortListModel extra_installations {
+	sorter: StringSorter {
+		expression: expr item as <$Installation>.title;
+	};
+
+	model: FilterListModel {
+		filter: BoolFilter {
+			expression: expr $_is_extra_installation(item as <$Installation>.location_tag) as <bool>;
+		};
+
+		model: bind template.installations;
+	};
+}
+
+template $InstallationChooser: Adw.PreferencesGroup {
+	title: _("Choose Installation");
+	description: bind template.selected_installation as <$Installation>.title;
+
+	Adw.ActionRow user_row {
+		title: _("User");
+		subtitle: _("Applies to you");
+		activatable-widget: user_check;
+		visible: bind template.has_user;
+
+		[prefix]
+		CheckButton user_check {
+			toggled => $_on_selected();
+		}
+	}
+
+	Adw.ActionRow system_row {
+		title: _("System");
+		subtitle: _("Applies to all users");
+		activatable-widget: system_check;
+		visible: bind template.has_system;
+
+		[prefix]
+		CheckButton system_check {
+			group: user_check;
+			toggled => $_on_selected();
+		}
+	}
+
+	Adw.ActionRow single_extra_row {
+		subtitle: _("Custom Installation");
+		activatable-widget: single_check;
+		visible: bind $_equals(extra_installations.n-items, 1) as <bool>;
+
+		[prefix]
+		CheckButton single_check {
+			group: user_check;
+			toggled => $_on_selected();
+		}
+	}
+
+	Adw.ComboRow multi_extra_row {
+		title: _("Other Installation");
+		subtitle: _("Choose a custom Installation");
+		visible: bind $_greater_than(extra_installations.n-items, 1) as <bool>;
+		model: extra_installations;
+		expression: expr item as <$Installation>.title;
+		notify::css-classes => $_on_multi_row_css_change();
+
+		[prefix]
+		CheckButton multi_check {
+			group: user_check;
+			toggled => $_on_selected();
+		}
+	}
+}
