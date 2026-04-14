@@ -50,7 +50,6 @@ export class PackagesPage extends from(BasePage, {
 	search_text: Property.string(),
 	no_results: Property.bool(),
 	in_selection_mode: Property.bool(),
-	_filtered_packages_list: Child<Gio.ListModel<Package>>(),
 	_sorted_packages_list: Child<Gio.ListModel<Package>>(),
 	_selection_manager: Child<SelectionManager>(),
 	_split_view: Child<Adw.NavigationSplitView>(),
@@ -67,7 +66,7 @@ export class PackagesPage extends from(BasePage, {
 			this.#css_provider,
 			Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
 		)
-		this._list_box.bind_model(this._filtered_packages_list, (flatpak) => {
+		this._list_box.bind_model(this._sorted_packages_list, (flatpak) => {
 			const row = new PackageRow({ flatpak, in_selection_mode: this.in_selection_mode })
 			row.connect("activated", () => {
 				if (!this.in_selection_mode) return
@@ -90,8 +89,25 @@ export class PackagesPage extends from(BasePage, {
 	}
 
 	@OnSignal("notify::search-text")
-	async #on_search_text_changed(): Promise<void> {
-		this._list_box.select_row(this._list_box.get_row_at_index(0))
+	#on_search_text_changed(): void {
+		let any_matched = false
+		let first_visible: PackageRow | null = null
+		const search: string = this.search_text.toLocaleLowerCase()
+		for (const row of this._list_box) {
+			if (!(row instanceof PackageRow)) continue
+			const title: string = row.title.toLocaleLowerCase()
+			const subtitle: string = row.subtitle.toLocaleLowerCase()
+			if (row.visible = title.includes(search) || subtitle.includes(search)) {
+				any_matched = true
+				if (!first_visible) {
+					first_visible = row
+				}
+			}
+		}
+		this.no_results = !any_matched
+		if (this.search_text !== "" || this._list_box.get_selected_row() === null) {
+			this._list_box.select_row(first_visible)
+		}
 	}
 
 	@OnSignal("notify::loading")
@@ -185,10 +201,6 @@ export class PackagesPage extends from(BasePage, {
 
 	protected _has_any_packages(__: this, n_items: number): boolean {
 		return n_items > 0
-	}
-
-	protected _has_no_packages(__: this, n_items: number): boolean {
-		return n_items <= 0
 	}
 
 	protected _get_details_stack_page_name(): "details_page" | "filter_page" {
