@@ -11,6 +11,7 @@ import { GClass, Property, next_idle, from, Debounce } from "./gobjectify/gobjec
 import { LineProcess } from "./utils/cli.js"
 import { SharedVars } from "./utils/shared_vars.js"
 import { ArrayStore } from "./utils/array_store.js"
+import type { PopularRemote } from "./popular_remotes.js"
 
 const REMOTES_LIST_COLUMN_ITEMS = {
 	columns: ["title", "comment", "description", "options", "name"] as const,
@@ -104,6 +105,20 @@ export class Installation extends from(GObject.Object, {
 		this.pinned_refs = pinned
 		await get_packages(this, this.packages)
 		this.#stop_loading("packages")
+	}
+
+	async add_remote(remote: PopularRemote): Promise<void> {
+		const command = [
+			"flatpak",
+			"remote-add",
+			this.command_syntax,
+			"--if-not-exists",
+			`--title=${remote.title}`,
+			`--description=${remote.description}`,
+			remote.name,
+			remote.link,
+		]
+		await LineProcess.run(command, { run_on_host: true })
 	}
 
 	@Debounce(200)

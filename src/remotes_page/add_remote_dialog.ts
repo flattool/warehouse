@@ -1,7 +1,8 @@
 import Adw from "gi://Adw?version=1"
 import Gio from "gi://Gio?version=2.0"
+import GObject from "gi://GObject?version=2.0"
 
-import { Child, GClass, Property, from } from "../gobjectify/gobjectify.js"
+import { Child, GClass, Property, Signal, from } from "../gobjectify/gobjectify.js"
 import { Installation } from "../flatpak.js"
 import { InstallationChooser } from "../widgets/installation_chooser.js"
 import { iterate_list_model } from "../utils/helper_funcs.js"
@@ -19,6 +20,7 @@ const Base = from(Adw.Dialog, {
 })
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/remotes_page/add_remote_dialog.ui" })
+@Signal("remote-confirmed", { param_types: [GObject.TYPE_JSOBJECT, Installation.$gtype] })
 export class AddRemoteDialog extends Base {
 	static new_for(installations: Gio.ListModel<Installation>, remote?: PopularRemote): AddRemoteDialog {
 		const dialog = new AddRemoteDialog({ installations })
@@ -29,6 +31,7 @@ export class AddRemoteDialog extends Base {
 			dialog._title_row.editable = false
 			dialog._name_row.editable = false
 			dialog._url_row.editable = false
+			dialog.#remote_description = remote.description
 		}
 		return dialog
 	}
@@ -43,6 +46,7 @@ export class AddRemoteDialog extends Base {
 		[this._name_row, /^[a-zA-Z0-9\-._]+$/],
 		[this._url_row, /^[a-zA-Z0-9\-._~:/?#[\]@!$&\'()*+,;= ]+$/],
 	])
+	#remote_description: string = ""
 
 	constructor(...params: ConstructorParameters<typeof Base>) {
 		super(...params)
@@ -57,7 +61,18 @@ export class AddRemoteDialog extends Base {
 	}
 
 	protected _on_add(): void {
-		print("Add not implemented yet")
+		if (!this.valid) return
+		this.close()
+		this.emit(
+			"remote-confirmed",
+			{
+				title: this._title_row.text,
+				name: this._name_row.text,
+				link: this._url_row.text,
+				description: this.#remote_description,
+			} satisfies PopularRemote,
+			this.installation,
+		)
 	}
 
 	protected _on_row_edited(row: Adw.EntryRow): void {

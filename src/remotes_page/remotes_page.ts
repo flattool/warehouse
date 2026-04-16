@@ -3,7 +3,7 @@ import Adw from "gi://Adw?version=1"
 import Gio from "gi://Gio?version=2.0"
 
 import { GClass, Property, Child, from, OnSignal, next_idle, Debounce, timeout_ms } from "../gobjectify/gobjectify.js"
-import { Remote } from "../flatpak.js"
+import { Installation, Remote } from "../flatpak.js"
 import { RemoteRow } from "./remote_row.js"
 import { BasePage } from "../widgets/base_page.js"
 import { AddRemoteDialog } from "./add_remote_dialog.js"
@@ -15,6 +15,7 @@ import "../widgets/search_button.js"
 import "../widgets/search_group.js"
 import { SharedVars } from "../utils/shared_vars.js"
 
+// TODO: use BasePage loading property instead of is_loading
 @GClass({ template: "resource:///io/github/flattool/Warehouse/remotes_page/remotes_page.ui" })
 export class RemotesPage extends from(BasePage, {
 	search_text: Property.string(),
@@ -93,8 +94,26 @@ export class RemotesPage extends from(BasePage, {
 		this.is_loading = false
 	}
 
+	async #add_remote(remote: PopularRemote, installation: Installation): Promise<void> {
+		try {
+			this.is_loading = true
+			await installation.add_remote(remote)
+		} catch (e) {
+			this.is_loading = false
+			SharedVars.main_window?.add_error_toast(
+				_("Could not add remote"),
+				e instanceof Error ? e.message : `${e}`,
+			)
+		}
+	}
+
 	#add_popular_remote(remote: PopularRemote): void {
-		AddRemoteDialog.new_for(this.installations!, remote).present(this)
+		const dialog = AddRemoteDialog.new_for(this.installations!, remote)
+		dialog.connect(
+			"remote-confirmed",
+			(__: any, remote: PopularRemote, inst: Installation) => this.#add_remote(remote, inst),
+		)
+		dialog.present(this)
 	}
 
 	protected _add_repo_file(): void {
@@ -102,7 +121,12 @@ export class RemotesPage extends from(BasePage, {
 	}
 
 	protected _add_custom_remote(): void {
-		AddRemoteDialog.new_for(this.installations!).present(this)
+		const dialog = AddRemoteDialog.new_for(this.installations!)
+		dialog.connect(
+			"remote-confirmed",
+			(__: any, remote: PopularRemote, inst: Installation) => this.#add_remote(remote, inst),
+		)
+		dialog.present(this)
 	}
 
 	@Debounce(200, { trigger: "leading" })
