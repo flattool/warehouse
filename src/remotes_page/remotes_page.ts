@@ -139,14 +139,6 @@ export class RemotesPage extends from(BasePage, {
 		this.#do_search().then(() => this.#all_after_list_change())
 	}
 
-	protected _has_remotes(__: this, n_items: number): boolean {
-		return n_items > 0
-	}
-
-	protected _has_no_remotes(__: this, n_items: number): boolean {
-		return n_items === 0
-	}
-
 	protected _on_search_changed(entry: Gtk.SearchEntry): void {
 		this.search_text = entry.text
 	}
@@ -155,7 +147,20 @@ export class RemotesPage extends from(BasePage, {
 		return this.show_disabled ? "warehouse:eye-open-negative-filled-symbolic" : "warehouse:eye-not-looking-symbolic"
 	}
 
-	protected _get_none_enabled_row_visible(__: this, none_enabled: boolean, show_disabled: boolean): boolean {
-		return none_enabled && !show_disabled
+	protected _has_remotes(__: this, total_remotes: number): boolean {
+		return total_remotes > 0
+	}
+
+	protected _has_no_remotes(__: this, total_remotes: number): boolean {
+		return total_remotes === 0
+	}
+
+	protected _get_none_enabled_row_visible(
+		__: this,
+		total_remotes: number,
+		none_enabled: boolean,
+		show_disabled: boolean,
+	): boolean {
+		return total_remotes > 0 && none_enabled && !show_disabled
 	}
 }

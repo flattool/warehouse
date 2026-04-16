@@ -181,7 +181,7 @@ Adw.ActionRow empty_row {
 }
 
 Adw.ActionRow none_enabled_row {
-	visible: bind $_get_none_enabled_row_visible(template.none_enabled, template.show_disabled) as <bool>;
+	visible: bind $_get_none_enabled_row_visible(sorted_remotes_list.n-items, template.none_enabled, template.show_disabled) as <bool>;
 
 	child: Box {
 		spacing: 6;
