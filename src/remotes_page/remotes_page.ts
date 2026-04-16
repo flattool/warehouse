@@ -3,9 +3,10 @@ import Adw from "gi://Adw?version=1"
 import Gio from "gi://Gio?version=2.0"
 
 import { GClass, Property, Child, from, OnSignal, next_idle, Debounce, timeout_ms } from "../gobjectify/gobjectify.js"
-import { Installation, Remote } from "../flatpak.js"
+import { Remote } from "../flatpak.js"
 import { RemoteRow } from "./remote_row.js"
 import { BasePage } from "../widgets/base_page.js"
+import { AddRemoteDialog } from "./add_remote_dialog.js"
 import { type PopularRemote, popular_remotes } from "../popular_remotes.js"
 
 import "../widgets/sidebar_button.js"
@@ -106,8 +107,14 @@ export class RemotesPage extends from(BasePage, {
 	protected _add_repo_file(): void {
 		print("add repo file")
 	}
+
 	protected _add_custom_remote(): void {
 		print("add custom remote")
+		const dialog = new AddRemoteDialog({
+			installations: this.installations,
+		})
+		dialog.present(this)
+		// next_idle().then(() => dialog.present(this))
 	}
 
 	protected _has_remotes(__: this, n_items: number): boolean {

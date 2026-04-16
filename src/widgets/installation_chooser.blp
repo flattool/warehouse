@@ -1,23 +1,13 @@
 using Gtk 4.0;
 using Adw 1;
+using Gio 2.0;
 
-SortListModel extra_installations {
-	sorter: StringSorter {
-		expression: expr item as <$Installation>.title;
-	};
-
-	model: FilterListModel {
-		filter: BoolFilter {
-			expression: expr $_is_extra_installation(item as <$Installation>.location_tag) as <bool>;
-		};
-
-		model: bind template.installations;
-	};
+Gio.ListStore extra_installations {
+	item-type: typeof<$Installation>;
 }
 
 template $InstallationChooser: Adw.PreferencesGroup {
 	title: _("Choose Installation");
-	description: bind template.selected_installation as <$Installation>.title;
 
 	Adw.ActionRow user_row {
 		title: _("User");
@@ -60,9 +50,18 @@ template $InstallationChooser: Adw.PreferencesGroup {
 		title: _("Other Installation");
 		subtitle: _("Choose a custom Installation");
 		visible: bind $_greater_than(extra_installations.n-items, 1) as <bool>;
-		model: extra_installations;
+
+		model: SortListModel {
+			sorter: StringSorter {
+				expression: expr item as <$Installation>.title;
+			};
+
+			model: extra_installations;
+		};
+
 		expression: expr item as <$Installation>.title;
 		notify::css-classes => $_on_multi_row_css_change();
+		notify::selected-item => $_on_mutli_selected_item_changed();
 
 		[prefix]
 		CheckButton multi_check {

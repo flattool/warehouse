@@ -1,5 +1,4 @@
 import GObject from "gi://GObject?version=2.0"
-import GLib from "gi://GLib?version=2.0"
 import Gio from "gi://Gio?version=2.0"
 import Gtk from "gi://Gtk?version=4.0"
 import Adw from "gi://Adw?version=1"
@@ -56,6 +55,13 @@ export function make_signal_factory<Widget extends Gtk.Widget, Data extends GObj
 	))
 	factory.connect("teardown", (__, list_item: Gtk.ListItem) => callbacks.tear_down?.(list_item.get_child() as Widget))
 	return factory
+}
+
+export function *iterate_list_model<T extends GObject.Object>(model: Gio.ListModel<T>): Generator<T, void, unknown> {
+	for (let i = 0; i < model.get_n_items(); i += 1) {
+		const item: T | null = model.get_item(i)
+		if (item !== null) yield item
+	}
 }
 
 export async function get_file_size_bytes(path: string): Promise<number> {
