@@ -13,6 +13,7 @@ import "../widgets/sidebar_button.js"
 import "../widgets/loading_group.js"
 import "../widgets/search_button.js"
 import "../widgets/search_group.js"
+import { SharedVars } from "../utils/shared_vars.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/remotes_page/remotes_page.ui" })
 export class RemotesPage extends from(BasePage, {
@@ -38,9 +39,7 @@ export class RemotesPage extends from(BasePage, {
 				activatable: true,
 			})
 			row.add_suffix(Gtk.Image.new_from_icon_name("warehouse:plus-large-symbolic"))
-			row.connect("activated", (popular_: PopularRemote = popular): void => {
-				print(popular_.name, popular_.link)
-			})
+			row.connect("activated", () => this.#add_popular_remote(popular))
 			this._popular_remotes_group.add(row)
 		}
 		this._current_group.bind_model(
@@ -94,6 +93,18 @@ export class RemotesPage extends from(BasePage, {
 		this.is_loading = false
 	}
 
+	#add_popular_remote(remote: PopularRemote): void {
+		AddRemoteDialog.new_for(this.installations!, remote).present(this)
+	}
+
+	protected _add_repo_file(): void {
+		print("add repo file")
+	}
+
+	protected _add_custom_remote(): void {
+		AddRemoteDialog.new_for(this.installations!).present(this)
+	}
+
 	@Debounce(200, { trigger: "leading" })
 	protected _on_list_change_start(): void {
 		this.is_loading = true
@@ -102,19 +113,6 @@ export class RemotesPage extends from(BasePage, {
 	@Debounce(200)
 	protected _on_list_change_finish(): void {
 		this.#do_search().then(() => this.#all_after_list_change())
-	}
-
-	protected _add_repo_file(): void {
-		print("add repo file")
-	}
-
-	protected _add_custom_remote(): void {
-		print("add custom remote")
-		const dialog = new AddRemoteDialog({
-			installations: this.installations,
-		})
-		dialog.present(this)
-		// next_idle().then(() => dialog.present(this))
 	}
 
 	protected _has_remotes(__: this, n_items: number): boolean {
