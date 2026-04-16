@@ -1,4 +1,6 @@
 {
+	"js/ts.preferences.importModuleSpecifier": "relative",
+	"js/ts.preferences.importModuleSpecifierEnding": "js",
 	"[javascript]": {
 		"editor.defaultFormatter": "vscode.typescript-language-features",
 	},
