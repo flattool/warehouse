@@ -121,6 +121,10 @@ export class Installation extends from(GObject.Object, {
 		await LineProcess.run(command, { run_on_host: true })
 	}
 
+	async remove(): Promise<void> {
+		print("Installation removal not implemented yet")
+	}
+
 	@Debounce(200)
 	#reload(): void {
 		this.load_packages().catch(log)

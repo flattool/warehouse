@@ -5,6 +5,7 @@ import Gio from "gi://Gio?version=2.0"
 import { GClass, Child, Property, from } from "../gobjectify/gobjectify.js"
 import { BasePage } from "../widgets/base_page.js"
 import { Installation } from "../flatpak.js"
+import { InstallationRow } from "../installations_page/installation_row.js"
 
 import "../widgets/sidebar_button.js"
 import "../widgets/loading_group.js"
@@ -18,10 +19,10 @@ export class InstallationsPage extends from(BasePage, {
 	_inst_group: Child<Adw.PreferencesGroup>(),
 }) {
 	_ready(): void {
-		this._inst_group.bind_model(this._ui_installations, (inst) => new Adw.ActionRow({
-			title: (inst as Installation).title,
-			subtitle: (inst as Installation).location_path,
-		}))
+		this._inst_group.bind_model(
+			this._ui_installations,
+			(inst) => new InstallationRow({ installation: inst as Installation }),
+		)
 	}
 
 	protected _on_search_changed(entry: Gtk.SearchEntry): void {
