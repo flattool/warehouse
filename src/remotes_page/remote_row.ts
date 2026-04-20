@@ -80,7 +80,13 @@ export class RemoteRow extends from(Adw.ActionRow, {
 			SharedVars.main_window?.add_error_toast(_("Could not remove remote"), "Remote or its installation is null")
 			return
 		}
-		const command: string[] = ["flatpak", "list", this.remote.installation.command_syntax, "--columns=origin"]
+		const command: string[] = [
+			"flatpak",
+			"list",
+			"--all",
+			this.remote.installation.command_syntax,
+			"--columns=origin",
+		]
 		try {
 			const response = await LineProcess.run(command, { run_on_host: true })
 			const origins: string = response.stdout.join("\n")
