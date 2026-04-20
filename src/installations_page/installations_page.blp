@@ -1,0 +1,124 @@
+using Gtk 4.0;
+using Adw 1;
+
+FilterListModel ui_installations {
+	filter: AnyFilter {
+		StringFilter {
+			search: bind template.search_text;
+			expression: expr item as <$Installation>.title;
+		}
+
+		StringFilter {
+			search: bind template.search_text;
+			expression: expr item as <$Installation>.name;
+		}
+
+		StringFilter {
+			search: bind template.search_text;
+			expression: expr item as <$Installation>.location_path;
+		}
+	};
+
+	model: SortListModel sorted_installations {
+		sorter: StringSorter {
+			expression: expr item as <$Installation>.title;
+		};
+
+		model: bind template.installations;
+	};
+}
+
+template $InstallationsPage: $BasePage {
+	title: _("Manage Installations");
+	sidebar_title: _("Installations");
+	icon_name: "warehouse:raid-symbolic";
+
+	child: Adw.ToolbarView {
+		[top]
+		Adw.HeaderBar {
+			[start]
+			$SidebarButton {}
+
+			[start]
+			$SearchButton search_button {
+				search_bar: search_bar;
+				sensitive: bind $_greater_than(sorted_installations.n-items, 0) as <bool>;
+			}
+		}
+
+		[top]
+		Adw.Clamp {
+			child: SearchBar search_bar {
+				search-mode-enabled: bind search_button.active bidirectional;
+				key-capture-widget: template;
+
+				child: SearchEntry {
+					hexpand: true;
+					placeholder-text: _("Search Installations");
+					search-changed => $_on_search_changed();
+				};
+			};
+		}
+
+		content: Stack {
+			visible-child-name: bind $_get_visible_page_name(sorted_installations.n-items) as <string>;
+
+			StackPage {
+				name: "no_installations_page";
+
+				child: Adw.StatusPage {
+					icon-name: "warehouse:error-symbolic";
+					title: _("No Installations Found");
+					description: _("Warehouse cannot see the list of installations or your system has no installations");
+
+					child: Button {
+						halign: center;
+
+						styles [
+							"suggested-action",
+						]
+
+						child: Adw.ButtonContent {
+							icon-name: "warehouse:plus-large-symbolic";
+							label: _("New");
+						};
+					};
+				};
+			}
+
+			StackPage {
+				name: "content_page";
+
+				child: $LoadingGroup {
+					title: _("Loading Remotes");
+					description: _("This should only take a moment.");
+					is_loading: bind template.loading;
+
+					content: $SearchGroup {
+						no_results: bind $_is_equal(ui_installations.n-items, 0) as <bool>;
+
+						content: Adw.PreferencesPage {
+							Adw.PreferencesGroup inst_group {
+								title: _("Installations");
+								description: _("Locations where packages can be installed.");
+
+								header-suffix: Button {
+									valign: center;
+
+									child: Adw.ButtonContent {
+										icon-name: "warehouse:plus-large-symbolic";
+										label: _("New");
+									};
+
+									styles [
+										"flat",
+									]
+								};
+							}
+						};
+					};
+				};
+			}
+		};
+	};
+}

@@ -3,7 +3,7 @@ import Adw from "gi://Adw?version=1"
 import Gio from "gi://Gio?version=2.0"
 import Pango from "gi://Pango?version=1.0"
 
-import { GClass, Child, Property, from, Debounce, next_idle, OnSignal } from "../gobjectify/gobjectify.js"
+import { GClass, Child, Property, from, Debounce } from "../gobjectify/gobjectify.js"
 import { Installation, Package, Remote, get_installations } from "../flatpak.js"
 import { SharedVars } from "../utils/shared_vars.js"
 import { ArrayStore } from "../utils/array_store.js"
@@ -11,6 +11,7 @@ import { ArrayStore } from "../utils/array_store.js"
 import "../packages_page/packages_page.js"
 import "../remotes_page/remotes_page.js"
 import "../data_page/data_page.js"
+import "../installations_page/installations_page.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/window/main_window.ui" })
 export class MainWindow extends from(Adw.ApplicationWindow, {

@@ -112,6 +112,18 @@ template $MainWindow: Adw.ApplicationWindow {
 					icon-name: bind data_page.icon_name;
 					title: bind data_page.sidebar_title;
 				}
+
+				Adw.ViewStackPage {
+					child: $InstallationsPage installations_page {
+						installations: installations;
+						packages: packages_list;
+						remotes: remotes_list;
+						loading: bind template.loading;
+					};
+
+					icon-name: bind installations_page.icon_name;
+					title: bind installations_page.sidebar_title;
+				}
 			};
 		};
 	};
