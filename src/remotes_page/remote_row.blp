@@ -26,7 +26,7 @@ template $RemoteRow: Adw.ActionRow {
 	MenuButton {
 		icon-name: "warehouse:info-outline-symbolic";
 		visible: bind template.disabled;
-		tooltip-text: _("This remote is disabled...");
+		tooltip-text: _("Remote is disabled...");
 		popover: disabled_info_popover;
 		valign: center;
 
@@ -49,7 +49,7 @@ template $RemoteRow: Adw.ActionRow {
 
 Popover disabled_info_popover {
 	child: Label {
-		label: _("This remote is disabled. Any packages installed from this remote will not be updated, and new packages cannot be installed from this remote.");
+		label: _("Any packages installed from this remote will not be updated, and new packages cannot be installed from this remote.");
 		wrap: true;
 		wrap-mode: word;
 		max-width-chars: 52;
