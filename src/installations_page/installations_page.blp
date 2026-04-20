@@ -20,8 +20,12 @@ FilterListModel ui_installations {
 	};
 
 	model: SortListModel sorted_installations {
-		sorter: StringSorter {
-			expression: expr item as <$Installation>.title;
+		sorter: MultiSorter {
+			CustomSorter installation_tag_sorter {}
+
+			StringSorter {
+				expression: expr item as <$Installation>.title;
+			}
 		};
 
 		model: bind template.installations;

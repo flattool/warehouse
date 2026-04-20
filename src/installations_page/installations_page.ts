@@ -16,9 +16,15 @@ import "../widgets/search_group.js"
 export class InstallationsPage extends from(BasePage, {
 	search_text: Property.string(),
 	_ui_installations: Child<Gio.ListModel<Installation>>(),
+	_installation_tag_sorter: Child<Gtk.CustomSorter>(),
 	_inst_group: Child<Adw.PreferencesGroup>(),
 }) {
 	_ready(): void {
+		this._installation_tag_sorter.set_sort_func((a: Installation, b: Installation) => {
+			if (a.location_tag === b.location_tag) return 0 // same
+			if (a.location_tag === "other") return 1 // a should come after
+			return -1 // a should come before
+		})
 		this._inst_group.bind_model(
 			this._ui_installations,
 			(inst) => new InstallationRow({ installation: inst as Installation }),
