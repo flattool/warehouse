@@ -1,105 +1,64 @@
-import Gtk from "gi://Gtk?version=4.0"
 import Adw from "gi://Adw?version=1"
+import Gtk from "gi://Gtk?version=4.0"
 import Gio from "gi://Gio?version=2.0"
 
-import { GClass, Property, Child, from, OnSignal, next_idle, Debounce, timeout_ms } from "../gobjectify/gobjectify.js"
+import { GClass, Property, Child, from, OnSignal, connect_async } from "../gobjectify/gobjectify.js"
+import { BasePage } from "../widgets/base_page.js"
 import { Installation, Remote } from "../flatpak.js"
 import { RemoteRow } from "./remote_row.js"
-import { BasePage } from "../widgets/base_page.js"
 import { AddRemoteDialog } from "./add_remote_dialog.js"
 import { type PopularRemote, popular_remotes } from "../popular_remotes.js"
+import { SharedVars } from "../utils/shared_vars.js"
 
 import "../widgets/sidebar_button.js"
 import "../widgets/loading_group.js"
 import "../widgets/search_button.js"
 import "../widgets/search_group.js"
-import { SharedVars } from "../utils/shared_vars.js"
 
-// TODO: use BasePage loading property instead of is_loading
 @GClass({ template: "resource:///io/github/flattool/Warehouse/remotes_page/remotes_page.ui" })
 export class RemotesPage extends from(BasePage, {
 	search_text: Property.string(),
 	show_disabled: Property.bool(),
-	is_loading: Property.bool(),
-	no_results: Property.bool(),
-	none_enabled: Property.bool(),
-	none_disabled: Property.bool(),
-	_search_filter: Child<Gtk.EveryFilter>(),
-	_enabled_filter: Child<Gtk.CustomFilter>(),
-	_sorted_remotes_list: Child<Gio.ListModel<Remote>>(),
+	_disabled_list: Child<Gio.ListModel>(),
+	_disabled_filter: Child<Gtk.CustomFilter>(),
+	_searched_list: Child<Gio.ListModel<Remote>>(),
 	_current_group: Child<Adw.PreferencesGroup>(),
 	_popular_remotes_group: Child<Adw.PreferencesGroup>(),
 	_empty_row: Child<Adw.ActionRow>(),
 	_none_enabled_row: Child<Adw.ActionRow>(),
-}) implements BasePage {
-	async _ready(): Promise<void> {
-		for (const popular of popular_remotes) {
+}) {
+	_ready(): void {
+		for (const remote of popular_remotes) {
 			const row = new Adw.ActionRow({
-				title: popular.title,
-				subtitle: popular.description,
+				title: remote.title,
+				subtitle: remote.description,
 				activatable: true,
 			})
 			row.add_suffix(Gtk.Image.new_from_icon_name("warehouse:plus-large-symbolic"))
-			row.connect("activated", () => this.#add_popular_remote(popular))
+			row.connect("activated", () => this.#add_remote_via_dialog(remote).catch(log))
 			this._popular_remotes_group.add(row)
 		}
-		this._current_group.bind_model(
-			this._sorted_remotes_list,
-			(remote) => new RemoteRow({ remote: remote as Remote }),
-		)
-		this._enabled_filter.set_filter_func((item) => {
-			const remote = item as Remote
-			if (this.show_disabled) return true
-			return !remote.disabled
-		})
-		await timeout_ms(250)
-		if (this._sorted_remotes_list.get_n_items() === 0) {
-			this.#all_after_list_change()
-		}
-		this._current_group.add(this._empty_row)
-		this._current_group.add(this._none_enabled_row)
+		this._disabled_filter.set_filter_func((remote) => this.show_disabled || !(remote as Remote).disabled)
+		this._current_group.bind_model(this._searched_list, (remote) => new RemoteRow({ remote: remote as Remote }))
 	}
 
 	@OnSignal("notify::show-disabled")
-	@OnSignal("notify::search-text")
-	async #do_search(): Promise<void> {
-		let any_results = false
-		let total_enabled = 0
-		for (let i = 0; ; i += 1) {
-			await next_idle()
-			const row: Gtk.Widget | null = this._current_group.get_row(i)
-			if (!row) break
-			if (!(row instanceof RemoteRow) || !row.remote) continue
-			const remote: Remote = row.remote
-			if (!remote.disabled) {
-				total_enabled += 1
-			}
-			if (this._search_filter.match(remote)) {
-				any_results = true
-				row.visible = true
-			} else {
-				row.visible = false
-			}
-		}
-		this.none_enabled = total_enabled === 0
-		this.none_disabled = total_enabled === this._sorted_remotes_list.get_n_items()
-		this.no_results = !any_results && this.search_text !== ""
+	#on_show_disabled_changed(): void {
+		this._disabled_filter.changed(this.show_disabled ? Gtk.FilterChange.LESS_STRICT : Gtk.FilterChange.MORE_STRICT)
 	}
 
-	#all_after_list_change(): void {
-		if (this._sorted_remotes_list.get_n_items() === 0) {
-			this.none_enabled = true
-			this.none_disabled = true
-		}
-		this.is_loading = false
-	}
-
-	async #add_remote(remote: PopularRemote, installation: Installation): Promise<void> {
+	async #add_remote_via_dialog(maybe_remote?: PopularRemote): Promise<void> {
+		const dialog = AddRemoteDialog.new_for(this.installations!, maybe_remote)
+		dialog.present(this)
+		const [, remote, installation] = await connect_async<[any, PopularRemote, Installation]>(
+			dialog,
+			"remote-confirmed",
+		)
+		this.loading = true
 		try {
-			this.is_loading = true
 			await installation.add_remote(remote)
 		} catch (e) {
-			this.is_loading = false
+			this.loading = false
 			SharedVars.main_window?.add_error_toast(
 				_("Could not add remote"),
 				e instanceof Error ? e.message : `${e}`,
@@ -107,36 +66,12 @@ export class RemotesPage extends from(BasePage, {
 		}
 	}
 
-	#add_popular_remote(remote: PopularRemote): void {
-		const dialog = AddRemoteDialog.new_for(this.installations!, remote)
-		dialog.connect(
-			"remote-confirmed",
-			(__: any, remote: PopularRemote, inst: Installation) => this.#add_remote(remote, inst),
-		)
-		dialog.present(this)
-	}
-
 	protected _add_repo_file(): void {
 		print("add repo file")
 	}
 
 	protected _add_custom_remote(): void {
-		const dialog = AddRemoteDialog.new_for(this.installations!)
-		dialog.connect(
-			"remote-confirmed",
-			(__: any, remote: PopularRemote, inst: Installation) => this.#add_remote(remote, inst),
-		)
-		dialog.present(this)
-	}
-
-	@Debounce(200, { trigger: "leading" })
-	protected _on_list_change_start(): void {
-		this.is_loading = true
-	}
-
-	@Debounce(200)
-	protected _on_list_change_finish(): void {
-		this.#do_search().then(() => this.#all_after_list_change())
+		this.#add_remote_via_dialog().catch(log)
 	}
 
 	protected _on_search_changed(entry: Gtk.SearchEntry): void {
@@ -147,20 +82,23 @@ export class RemotesPage extends from(BasePage, {
 		return this.show_disabled ? "warehouse:eye-open-negative-filled-symbolic" : "warehouse:eye-not-looking-symbolic"
 	}
 
-	protected _has_remotes(__: this, total_remotes: number): boolean {
-		return total_remotes > 0
+	protected _get_no_results(__: this, search_text: string, total_remotes: number, total_results: number): boolean {
+		if (!search_text) return false
+		return total_results === 0 && total_remotes > 1
 	}
 
-	protected _has_no_remotes(__: this, total_remotes: number): boolean {
-		return total_remotes === 0
-	}
-
-	protected _get_none_enabled_row_visible(
+	protected _show_none_enabled_row(
 		__: this,
-		total_remotes: number,
-		none_enabled: boolean,
 		show_disabled: boolean,
+		total_remotes: number,
+		total_disabled: number,
 	): boolean {
-		return total_remotes > 0 && none_enabled && !show_disabled
+		return total_remotes > 0 && total_disabled === total_remotes && !show_disabled
+	}
+
+	protected _greater(__: this, a: number, b: number): boolean { return a > b }
+	protected _equals(__: this, a: unknown, b: unknown): boolean { return a === b }
+	protected _or(__: this, ...test: unknown[]): boolean {
+		return test.some(Boolean)
 	}
 }

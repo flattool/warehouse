@@ -8,3 +8,9 @@
 .drop-target-blurred {
 	filter: blur(6px);
 }
+
+/* end thanks */
+
+.remotes-page-status {
+	margin-top: -24px;
+}
