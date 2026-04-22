@@ -12,13 +12,109 @@ import { LineProcess } from "./utils/cli.js"
 import { SharedVars } from "./utils/shared_vars.js"
 import { ArrayStore } from "./utils/array_store.js"
 import type { PopularRemote } from "./popular_remotes.js"
+import { remove_host_prefix } from "./utils/helper_funcs.js"
 
-const REMOTES_LIST_COLUMN_ITEMS = {
-	columns: ["title", "comment", "description", "options", "name"] as const,
-	index_of(item: (typeof this.columns)[number]): number {
-		return this.columns.indexOf(item)
-	},
-} as const
+class CustomInstallationFile {
+	static async get_custom_installations(on_each_inst?: (inst: Installation) => void): Promise<Installation[]> {
+		const custom_dir: Gio.File = SharedVars.CUSTOM_INSTALLATIONS_DIR
+		const to_ret: Installation[] = []
+		if (!custom_dir.query_exists(null)) return to_ret
+		let enumerator: Gio.FileEnumerator
+		try {
+			enumerator = custom_dir.enumerate_children("standard::*", Gio.FileQueryInfoFlags.NONE, null)
+		} catch (e) {
+			print(e)
+			return to_ret
+		}
+		for (const file_info of enumerator) {
+			const path: string = `${SharedVars.CUSTOM_INSTALLATIONS_DIR.get_path()}/${file_info.get_name()}`
+			const keyfile = new GLib.KeyFile()
+			try {
+				const custom = new CustomInstallationFile(path, keyfile)
+				await custom.#get_installations((inst) => {
+					to_ret.push(inst)
+					on_each_inst?.(inst)
+				})
+			} catch (e) {
+				print(e)
+				continue
+			}
+		}
+		return to_ret
+	}
+
+	readonly path: string
+	readonly keyfile: GLib.KeyFile
+	readonly #installations: Installation[] = []
+
+	private constructor(path: string, keyfile: GLib.KeyFile) {
+		this.path = path
+		this.keyfile = keyfile
+		this.keyfile.load_from_file(this.path, GLib.KeyFileFlags.NONE)
+	}
+
+	async remove_installation(installation: Installation): Promise<void> {
+		const group = `Installation "${installation.name}"`
+		this.keyfile.remove_group(group)
+		await this.#save_or_delete()
+	}
+
+	async #save_or_delete(): Promise<void> {
+		if (!this.path || this.path == "/" || !this.path.includes(SharedVars.CUSTOM_INSTALLATIONS_DIR.get_path()!)) {
+			// eslint-disable-next-line
+			throw new Error(`Custom installation config path '${this.path}' empty, or not in custom installation config location '${SharedVars.CUSTOM_INSTALLATIONS_DIR}'`)
+		}
+
+		const command: string[] = []
+		if (this.keyfile.get_groups()[0].length > 0) {
+			// still has custom installations
+			const basename = Gio.File.new_for_path(this.path).get_basename()!
+			const temp_path = `${GLib.get_user_data_dir()}/__warehouse_temp_inst_config_${basename}__`
+			this.keyfile.save_to_file(temp_path)
+			command.push("pkexec", "mv", temp_path, remove_host_prefix(this.path))
+		} else {
+			// has no custom installations
+			command.push("pkexec", "rm", remove_host_prefix(this.path))
+		}
+		await LineProcess.run(command, { run_on_host: true })
+	}
+
+	async #get_installations(on_each_inst?: (inst: Installation) => void): Promise<readonly Installation[]> {
+		if (this.#installations.length > 0) {
+			return this.#installations
+		}
+		const to_ret: Installation[] = []
+		const groups: string[] = this.keyfile.get_groups()[0]
+		for (const group of groups) {
+			await next_idle()
+			const name = group.replace('Installation "', "").replace('"', "")
+			let title: string
+			try {
+				title = this.keyfile.get_string(group, "DisplayName")
+			} catch (error) {
+				title = name
+			}
+			let inst_path: string
+			try {
+				inst_path = this.keyfile.get_string(group, "Path").normalize_path()
+			} catch (error) {
+				print(error)
+				continue
+			}
+			const installation = new Installation({
+				name,
+				title,
+				location_tag: "other",
+				location_path: inst_path,
+				custom_file: this,
+			})
+			on_each_inst?.(installation)
+			to_ret.push(installation)
+		}
+		return to_ret
+	}
+}
+
 const PACK_LIST_COLUMN_ITEMS = {
 	columns: [
 		"application",
@@ -46,6 +142,7 @@ export class Installation extends from(GObject.Object, {
 	title: Property.string({ flags: "CONSTRUCT_ONLY" }),
 	location_tag: Property.string({ flags: "CONSTRUCT_ONLY", default: "system" }).as<"system" | "user" | "other">(),
 	location_path: Property.string({ flags: "CONSTRUCT_ONLY" }),
+	custom_file: Property.jsobject({ flags: "CONSTRUCT_ONLY" }).as<CustomInstallationFile>(),
 	masked_ids: Property.jsobject().as<Set<string>>(),
 	pinned_refs: Property.jsobject().as<Set<string>>(),
 	loading: Property.bool({ default: true }),
@@ -144,54 +241,13 @@ export class Installation extends from(GObject.Object, {
 
 export async function get_installations(list: ArrayStore<Installation>): Promise<void> {
 	const raw_insts = new Set<string>()
-	const process = new LineProcess(["flatpak", "--installations"], true)
-	process.on_stdout_line = (line): void => void raw_insts.add(line.normalize_path())
-	await process.run()
-	const insts: Installation[] = []
-	if (SharedVars.CUSTOM_INSTALLATIONS_DIR.query_exists(null)) {
-		for (const file_info of SharedVars.CUSTOM_INSTALLATIONS_DIR.enumerate_children(
-			"standard::*",
-			Gio.FileQueryInfoFlags.NONE,
-			null,
-		)) {
-			const path: string = `${SharedVars.CUSTOM_INSTALLATIONS_DIR.get_path()}/${file_info.get_name()}`
-			const keyfile = new GLib.KeyFile()
-			try {
-				keyfile.load_from_file(path, GLib.KeyFileFlags.NONE)
-			} catch (error) {
-				print(error)
-				continue
-			}
-			const groups: string[] = keyfile.get_groups()[0]
-			for (const group of groups) {
-				await next_idle()
-				const name = group.replace('Installation "', "").replace('"', "")
-				let title: string
-				try {
-					title = keyfile.get_string(group, "DisplayName")
-				} catch (error) {
-					title = name
-				}
-				let inst_path: string
-				try {
-					inst_path = keyfile.get_string(group, "Path").normalize_path()
-				} catch (error) {
-					print(error)
-					continue
-				}
-				const installation = new Installation({
-					name,
-					title,
-					location_tag: "other",
-					location_path: inst_path,
-				})
-				if (inst_path && raw_insts.has(inst_path)) {
-					raw_insts.delete(inst_path)
-				}
-				insts.push(installation)
-			}
-		}
-	}
+	await LineProcess.run(
+		["flatpak", "--installations"],
+		{ run_on_host: true, on_stdout_line: (line) => raw_insts.add(line.normalize_path()) },
+	)
+	const insts: Installation[] = await CustomInstallationFile.get_custom_installations(
+		(inst) => raw_insts.delete(inst.location_path),
+	)
 	if (raw_insts.size === 1) {
 		const system_raw: string = [...raw_insts.values()][0]!
 		insts.push(new Installation({
@@ -199,6 +255,7 @@ export async function get_installations(list: ArrayStore<Installation>): Promise
 			title: _("System"),
 			location_tag: "system",
 			location_path: system_raw,
+			custom_file: null,
 		}))
 	}
 	insts.push(new Installation({
@@ -206,9 +263,17 @@ export async function get_installations(list: ArrayStore<Installation>): Promise
 		title: _("User"),
 		location_tag: "user",
 		location_path: `${SharedVars.local_share_path}/flatpak`,
+		custom_file: null,
 	}))
 	list.swap_contents(insts)
 }
+
+const REMOTES_LIST_COLUMN_ITEMS = {
+	columns: ["title", "comment", "description", "options", "name"] as const,
+	index_of(item: (typeof this.columns)[number]): number {
+		return this.columns.indexOf(item)
+	},
+} as const
 
 @GClass()
 export class Remote extends from(GObject.Object, {

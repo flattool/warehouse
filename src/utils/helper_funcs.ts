@@ -64,6 +64,10 @@ export function *iterate_list_model<T extends GObject.Object>(model: Gio.ListMod
 	}
 }
 
+export function remove_host_prefix(path: string): string {
+	return path.startsWith(SharedVars.host_prefix) ? path.replace(SharedVars.host_prefix, "") : path
+}
+
 export async function get_file_size_bytes(path: string): Promise<number> {
 	const cmd: string[] = ["du", "-B1", "-s", path.normalize_path()]
 	const size: string | undefined = (await LineProcess.run(cmd)).stdout.join("\n").split("\t")[0]
