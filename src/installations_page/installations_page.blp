@@ -77,9 +77,11 @@ template $InstallationsPage: $BasePage {
 
 					child: Button {
 						halign: center;
+						clicked => $_on_new();
 
 						styles [
 							"suggested-action",
+							"pill",
 						]
 
 						child: Adw.ButtonContent {
@@ -108,6 +110,7 @@ template $InstallationsPage: $BasePage {
 
 								header-suffix: Button {
 									valign: center;
+									clicked => $_on_new();
 
 									child: Adw.ButtonContent {
 										icon-name: "warehouse:plus-large-symbolic";

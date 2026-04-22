@@ -2,10 +2,12 @@ import Gtk from "gi://Gtk?version=4.0"
 import Adw from "gi://Adw?version=1"
 import Gio from "gi://Gio?version=2.0"
 
-import { GClass, Child, Property, from } from "../gobjectify/gobjectify.js"
+import { GClass, Child, Property, from, connect_async } from "../gobjectify/gobjectify.js"
 import { BasePage } from "../widgets/base_page.js"
-import { Installation } from "../flatpak.js"
+import { CustomInstallationFile, Installation, type CustomInstallationCreationConfig } from "../flatpak.js"
 import { InstallationRow } from "../installations_page/installation_row.js"
+import { CreateInstallationDialog } from "./create_installation_dialog.js"
+import { SharedVars } from "../utils/shared_vars.js"
 
 import "../widgets/sidebar_button.js"
 import "../widgets/loading_group.js"
@@ -29,6 +31,23 @@ export class InstallationsPage extends from(BasePage, {
 			this._ui_installations,
 			(inst) => new InstallationRow({ installation: inst as Installation }),
 		)
+	}
+
+	protected async _on_new(): Promise<void> {
+		const dialog = new CreateInstallationDialog({ installations: this.installations })
+		dialog.present(this)
+		const [config] = await connect_async<[CustomInstallationCreationConfig]>(dialog, "installation-confirmed")
+		this.loading = true
+		try {
+			await CustomInstallationFile.create_installation(config)
+			SharedVars.main_window?.add_toast(_("Created installation"))
+		} catch (e) {
+			SharedVars.main_window?.add_error_toast(
+				_("Could not create installation"),
+				e instanceof Error ? e.message : `${e}`,
+			)
+		}
+		this.loading = false
 	}
 
 	protected _on_search_changed(entry: Gtk.SearchEntry): void {

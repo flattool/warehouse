@@ -6,7 +6,7 @@ import Gio from "gi://Gio?version=2.0"
 import Gdk from "gi://Gdk?version=4.0"
 import Gtk from "gi://Gtk?version=4.0"
 
-import { GClass, Property, next_idle, from, Debounce } from "./gobjectify/gobjectify.js"
+import { GClass, Property, next_idle, from, Debounce, dedent } from "./gobjectify/gobjectify.js"
 // import { run_command_async, run_command_async_pkexec_on_fail } from "./utils/helper_funcs.js"
 import { LineProcess } from "./utils/cli.js"
 import { SharedVars } from "./utils/shared_vars.js"
@@ -14,7 +14,13 @@ import { ArrayStore } from "./utils/array_store.js"
 import type { PopularRemote } from "./popular_remotes.js"
 import { remove_host_prefix } from "./utils/helper_funcs.js"
 
-class CustomInstallationFile {
+export type CustomInstallationCreationConfig = {
+	name: string,
+	title: string,
+	location_path: string,
+}
+
+export class CustomInstallationFile {
 	static async get_custom_installations(on_each_inst?: (inst: Installation) => void): Promise<Installation[]> {
 		const custom_dir: Gio.File = SharedVars.CUSTOM_INSTALLATIONS_DIR
 		const to_ret: Installation[] = []
@@ -41,6 +47,17 @@ class CustomInstallationFile {
 			}
 		}
 		return to_ret
+	}
+
+	static async create_installation(config: CustomInstallationCreationConfig): Promise<void> {
+		const { name, title, location_path } = config
+		let config_contents = dedent`
+			[Installation "${name}"]
+			DisplayName=${title}
+			Path=${location_path}
+		`
+		config_contents += "\n"
+		print("<<<" + config_contents + ">>>")
 	}
 
 	readonly path: string

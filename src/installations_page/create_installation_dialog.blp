@@ -1,0 +1,65 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CreateInstallationDialog: Adw.Dialog {
+	title: _("Create Installation");
+	follows-content-size: true;
+
+	child: Adw.ToolbarView {
+		[top]
+		Adw.HeaderBar {
+			show-start-title-buttons: false;
+			show-end-title-buttons: false;
+
+			[start]
+			Button {
+				label: _("Cancel");
+				clicked => $_on_cancel();
+			}
+
+			[end]
+			Button {
+				label: _("Create");
+				sensitive: bind $_get_validity(template.text_valid, template.name_and_path_unique) as <bool>;
+				clicked => $_on_create();
+
+				styles [
+					"suggested-action",
+				]
+			}
+		}
+
+		content: ScrolledWindow scrolled {
+			propagate-natural-width: true;
+			propagate-natural-height: true;
+
+			child: Box box {
+				orientation: vertical;
+				margin-start: 12;
+				margin-end: 12;
+				margin-top: 12;
+				margin-bottom: 12;
+
+				Adw.PreferencesGroup {
+					Adw.EntryRow title_row {
+						title: _("Title");
+						changed => $_on_row_edited();
+						entry-activated => $_on_create();
+					}
+
+					Adw.EntryRow name_row {
+						title: _("Name");
+						changed => $_on_row_edited();
+						entry-activated => $_on_create();
+					}
+
+					Adw.EntryRow path_row {
+						title: _("Location");
+						changed => $_on_row_edited();
+						entry-activated => $_on_create();
+					}
+				}
+			};
+		};
+	};
+}
