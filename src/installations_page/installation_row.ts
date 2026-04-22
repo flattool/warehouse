@@ -8,6 +8,7 @@ import { ask_to_continue } from "../utils/helper_funcs.js"
 
 import "../widgets/simple_menu.js"
 import "../widgets/simple_menu_item.js"
+import Gtk from "gi://Gtk?version=4.0"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/installations_page/installation_row.ui" })
 export class InstallationRow extends from(Adw.ActionRow, {
@@ -75,14 +76,29 @@ export class InstallationRow extends from(Adw.ActionRow, {
 				dialog.present(this)
 				return
 			} else {
+				const check = new Gtk.CheckButton({ active: true })
+
+				const row = new Adw.ActionRow({
+					title: _("Delete '%s'").format(this.installation.location_path),
+					subtitle: _("Permanently delete all metadata used by this installation."),
+					activatable: true,
+				})
+				row.add_prefix(check)
+				row.set_activatable_widget(check)
+
+				const listbox = new Gtk.ListBox({ selection_mode: Gtk.SelectionMode.NONE })
+				listbox.add_css_class("boxed-list")
+				listbox.append(row)
+
 				const should_remove: boolean = await ask_to_continue(
 					_("Remove %s?").format(this.installation.title),
 					_("You will no longer be able to install applications or runtimes to this installation."),
 					_("Remove"),
 					Adw.ResponseAppearance.DESTRUCTIVE,
+					listbox,
 				)
 				if (!should_remove) return
-				await this.installation.remove()
+				await this.installation.remove(check.active)
 			}
 		} catch (e) {
 			SharedVars.main_window?.add_error_toast(

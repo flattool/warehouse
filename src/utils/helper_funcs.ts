@@ -11,14 +11,18 @@ export function ask_to_continue(
 	body: string,
 	continue_label: string,
 	response_appearance?: Adw.ResponseAppearance,
+	extra_child?: Gtk.Widget,
 ): Promise<boolean> {
 	const CANCEL = "cancel"
 	const CONTINUE = "continue"
 	const dialog = new Adw.AlertDialog({ heading, body })
 	dialog.add_response(CANCEL, _("Cancel"))
 	dialog.add_response(CONTINUE, continue_label)
-	if (response_appearance !== undefined) {
+	if (response_appearance) {
 		dialog.set_response_appearance(CONTINUE, response_appearance)
+	}
+	if (extra_child) {
+		dialog.extra_child = extra_child
 	}
 	dialog.present(SharedVars.main_window)
 	return new Promise((resolve, _reject) => {

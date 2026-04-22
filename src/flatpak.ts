@@ -53,30 +53,31 @@ class CustomInstallationFile {
 		this.keyfile.load_from_file(this.path, GLib.KeyFileFlags.NONE)
 	}
 
-	async remove_installation(installation: Installation): Promise<void> {
-		const group = `Installation "${installation.name}"`
-		this.keyfile.remove_group(group)
-		await this.#save_or_delete()
-	}
-
-	async #save_or_delete(): Promise<void> {
+	async remove_installation(installation: Installation, remove_installation_location: boolean): Promise<void> {
 		if (!this.path || this.path == "/" || !this.path.includes(SharedVars.CUSTOM_INSTALLATIONS_DIR.get_path()!)) {
 			// eslint-disable-next-line
 			throw new Error(`Custom installation config path '${this.path}' empty, or not in custom installation config location '${SharedVars.CUSTOM_INSTALLATIONS_DIR}'`)
 		}
 
-		const command: string[] = []
+		const group = `Installation "${installation.name}"`
+		this.keyfile.remove_group(group)
+
+		let sub_command = ""
 		if (this.keyfile.get_groups()[0].length > 0) {
 			// still has custom installations
 			const basename = Gio.File.new_for_path(this.path).get_basename()!
 			const temp_path = `${GLib.get_user_data_dir()}/__warehouse_temp_inst_config_${basename}__`
 			this.keyfile.save_to_file(temp_path)
-			command.push("pkexec", "mv", temp_path, remove_host_prefix(this.path))
+			sub_command += `mv ${GLib.shell_quote(temp_path)} ${GLib.shell_quote(remove_host_prefix(this.path))}`
 		} else {
 			// has no custom installations
-			command.push("pkexec", "rm", remove_host_prefix(this.path))
+			sub_command += `rm ${GLib.shell_quote(remove_host_prefix(this.path))}`
 		}
-		await LineProcess.run(command, { run_on_host: true })
+		const inst_path = installation.location_path
+		if (remove_installation_location && inst_path != "/" && Gio.File.new_for_path(inst_path).query_exists(null)) {
+			sub_command += `&& rm -rf ${GLib.shell_quote(remove_host_prefix(inst_path))}`
+		}
+		await LineProcess.run(["pkexec", "sh", "-c", sub_command], { run_on_host: true })
 	}
 
 	async #get_installations(on_each_inst?: (inst: Installation) => void): Promise<readonly Installation[]> {
@@ -218,8 +219,16 @@ export class Installation extends from(GObject.Object, {
 		await LineProcess.run(command, { run_on_host: true })
 	}
 
-	async remove(): Promise<void> {
-		print("Installation removal not implemented yet")
+	async remove(remove_installation_location = false): Promise<void> {
+		try {
+			await this.custom_file!.remove_installation(this, remove_installation_location)
+			SharedVars.main_window?.add_toast(_("Removed %s").format(this.title))
+		} catch (e) {
+			SharedVars.main_window?.add_error_toast(
+				_("Could not remove installation"),
+				e instanceof Error ? e.message : `${e}`,
+			)
+		}
 	}
 
 	@Debounce(200)
