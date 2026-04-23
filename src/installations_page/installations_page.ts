@@ -13,6 +13,7 @@ import "../widgets/sidebar_button.js"
 import "../widgets/loading_group.js"
 import "../widgets/search_button.js"
 import "../widgets/search_group.js"
+import { iterate_list_model } from "../utils/helper_funcs.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/installations_page/installations_page.ui" })
 export class InstallationsPage extends from(BasePage, {
@@ -34,7 +35,8 @@ export class InstallationsPage extends from(BasePage, {
 	}
 
 	protected async _on_new(): Promise<void> {
-		const dialog = new CreateInstallationDialog({ installations: this.installations })
+		if (!this.installations) return
+		const dialog = new CreateInstallationDialog({ installations: iterate_list_model(this.installations) })
 		dialog.present(this)
 		const [config] = await connect_async<[CustomInstallationCreationConfig]>(dialog, "installation-confirmed")
 		this.loading = true

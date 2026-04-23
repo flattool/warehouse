@@ -288,7 +288,7 @@ export async function get_installations(list: ArrayStore<Installation>): Promise
 		name: "user",
 		title: _("User"),
 		location_tag: "user",
-		location_path: `${SharedVars.local_share_path}/flatpak`,
+		location_path: `${SharedVars.local_share_path.normalize_path()}/flatpak`,
 		custom_file: null,
 	}))
 	list.swap_contents(insts)

@@ -6,31 +6,35 @@ import Gio from "gi://Gio?version=2.0"
 import { GClass, Property, Child, Signal, from, Debounce, OnSignal } from "../gobjectify/gobjectify.js"
 import { Installation, type CustomInstallationCreationConfig } from "../flatpak.js"
 
-// TODO: ensure that name and path are unique!
-@GClass({ template: "resource:///io/github/flattool/Warehouse/installations_page/create_installation_dialog.ui" })
-@Signal("installation-confirmed", { param_types: [GObject.TYPE_JSOBJECT] }) // CustomInstallationCreationConfig
-export class CreateInstallationDialog extends from(Adw.Dialog, {
-	text_valid: Property.bool(),
-	name_and_path_unique: Property.bool({ default: true }),
-	installations: Property.gobject(Gio.ListModel, { flags: "CONSTRUCT_ONLY" }).as<Gio.ListModel<Installation>>(),
+const Base = from(Adw.Dialog, {
+	valid: Property.bool(),
 	_title_row: Child<Adw.EntryRow>(),
 	_name_row: Child<Adw.EntryRow>(),
 	_path_row: Child<Adw.EntryRow>(),
-}) {
+})
+
+const TITLE_REGEX = /^[^\n"'=]+$/
+const NAME_REGEX = /^(?!user|system)([a-zA-Z0-9_-]+)$/i
+const PATH_REGEX = /^\/[^\n]*[^\s\n]$/
+
+@GClass({ template: "resource:///io/github/flattool/Warehouse/installations_page/create_installation_dialog.ui" })
+@Signal("installation-confirmed", { param_types: [GObject.TYPE_JSOBJECT] }) // CustomInstallationCreationConfig
+export class CreateInstallationDialog extends Base {
+	readonly #installation_names = new Set<string>()
+	readonly #installation_paths = new Set<string>()
 	readonly #invalid_rows = new Set<Adw.EntryRow>([this._title_row, this._name_row, this._path_row])
-	readonly #row_regexes = new Map<Adw.EntryRow, RegExp>([
-		[this._title_row, /^[^\n"'=]+$/],
-		[this._name_row, /^(?!user|system)([a-zA-Z0-9_-]+)$/i],
-		[this._path_row, /^\/[^\n]*[^\s\n]$/],
-	])
 
-	@OnSignal("show")
-	#on_show(): void {
-		this._title_row.grab_focus()
-	}
-
-	protected _get_validity(): boolean {
-		return this.text_valid && this.name_and_path_unique
+	constructor(params: ConstructorParameters<typeof Base>[0] & {
+		installations?: Generator<Installation, void, undefined>,
+	}) {
+		const { installations, ...base_params } = params
+		super(base_params)
+		this.connect("show", () => this._title_row.grab_focus())
+		if (!installations) return
+		for (const inst of installations) {
+			this.#installation_names.add(inst.name.toLocaleLowerCase())
+			this.#installation_paths.add(inst.location_path)
+		}
 	}
 
 	protected _on_cancel(): void {
@@ -38,22 +42,29 @@ export class CreateInstallationDialog extends from(Adw.Dialog, {
 	}
 
 	protected _on_create(): void {
-		if (!this._get_validity()) return
+		if (!this.valid) return
 		this.close()
 		this.emit(
 			"installation-confirmed",
 			{
 				title: this._title_row.text,
 				name: this._name_row.text,
-				location_path: this._path_row.text,
+				location_path: this._path_row.text.normalize_path(),
 			} satisfies CustomInstallationCreationConfig,
 		)
 	}
 
 	protected _on_row_edited(row: Adw.EntryRow): void {
-		const regex: RegExp = this.#row_regexes.get(row)!
-		const text: string = row.get_text()
-		const valid: boolean = regex.test(text)
+		let text = row.text
+		let valid = false
+		if (row === this._title_row) {
+			valid = TITLE_REGEX.test(text)
+		} else if (row === this._name_row) {
+			valid = NAME_REGEX.test(text) && !this.#installation_names.has(text)
+		} else if (row === this._path_row) {
+			text = text.normalize_path()
+			valid = PATH_REGEX.test(text) && !this.#installation_paths.has(text)
+		}
 		if (valid) {
 			this.#invalid_rows.delete(row)
 		} else {
@@ -64,6 +75,6 @@ export class CreateInstallationDialog extends from(Adw.Dialog, {
 		} else {
 			row.add_css_class("error")
 		}
-		this.text_valid = this.#invalid_rows.size === 0
+		this.valid = this.#invalid_rows.size === 0
 	}
 }

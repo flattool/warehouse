@@ -20,7 +20,7 @@ template $CreateInstallationDialog: Adw.Dialog {
 			[end]
 			Button {
 				label: _("Create");
-				sensitive: bind $_get_validity(template.text_valid, template.name_and_path_unique) as <bool>;
+				sensitive: bind template.valid;
 				clicked => $_on_create();
 
 				styles [
