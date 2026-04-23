@@ -40,7 +40,13 @@ template $CreateInstallationDialog: Adw.Dialog {
 				margin-top: 12;
 				margin-bottom: 12;
 
-				Adw.PreferencesGroup {
+				ListBox group {
+					selection-mode: none;
+
+					styles [
+						"boxed-list",
+					]
+
 					Adw.EntryRow title_row {
 						title: _("Title");
 						changed => $_on_row_edited();
