@@ -50,7 +50,7 @@ export class RemotesPage extends from(BasePage, {
 	async #add_remote_via_dialog(maybe_remote?: PopularRemote): Promise<void> {
 		const dialog = AddRemoteDialog.new_for(this.installations!, maybe_remote)
 		dialog.present(this)
-		const [, remote, installation] = await connect_async<[any, PopularRemote, Installation]>(
+		const [remote, installation] = await connect_async<[PopularRemote, Installation]>(
 			dialog,
 			"remote-confirmed",
 		)
