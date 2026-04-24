@@ -12,6 +12,8 @@ const PATH_REGEX = /^\/[^\n]*[^\s\n]$/
 
 const Base = from(Adw.Dialog, {
 	valid: Property.bool(),
+	reused_name: Property.bool(),
+	reused_path: Property.bool(),
 	_group: Child<Gtk.ListBox>(),
 	_title_row: Child<Adw.EntryRow>(),
 	_name_row: Child<Adw.EntryRow>(),
@@ -71,10 +73,12 @@ export class CreateInstallationDialog extends Base {
 			if (!text) {
 				this.#can_replace_name = true
 			}
-			valid = NAME_REGEX.test(text) && !this.#installation_names.has(text)
+			this.reused_name = this.#installation_names.has(text)
+			valid = NAME_REGEX.test(text) && !this.reused_name
 		} else if (row === this._path_row) {
 			text = text.normalize_path()
-			valid = PATH_REGEX.test(text) && !this.#installation_paths.has(text)
+			this.reused_path = this.#installation_paths.has(text)
+			valid = PATH_REGEX.test(text) && !this.reused_path
 		}
 		if (valid) {
 			this.#invalid_rows.delete(row)

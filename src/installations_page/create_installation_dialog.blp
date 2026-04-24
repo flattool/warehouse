@@ -60,9 +60,67 @@ template $CreateInstallationDialog: Adw.Dialog {
 					}
 
 					Adw.EntryRow path_row {
-						title: _("Location");
+						title: _("Location Path");
 						changed => $_on_row_edited();
 						entry-activated => $_on_create();
+					}
+				}
+
+				Revealer {
+					reveal-child: bind template.reused_name;
+					transition-type: slide_down;
+
+					ListBox {
+						focusable: false;
+						selection-mode: none;
+						margin-top: 12;
+
+						styles [
+							"boxed-list",
+						]
+
+						Adw.ActionRow {
+							styles [
+								"error",
+							]
+
+							[prefix]
+							Image {
+								icon-name: "warehouse:error-symbolic";
+							}
+
+							title: _("Installation Name must be unique");
+							subtitle: _("Another installation is already using this name.");
+						}
+					}
+				}
+
+				Revealer {
+					reveal-child: bind template.reused_path;
+					transition-type: slide_down;
+
+					ListBox {
+						focusable: false;
+						selection-mode: none;
+						margin-top: 12;
+
+						styles [
+							"boxed-list",
+						]
+
+						Adw.ActionRow {
+							styles [
+								"error",
+							]
+
+							[prefix]
+							Image {
+								icon-name: "warehouse:error-symbolic";
+							}
+
+							title: _("Installation Location Path must be unique");
+							subtitle: _("Another installation is already using this location.");
+						}
 					}
 				}
 			};
