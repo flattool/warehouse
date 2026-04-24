@@ -63,6 +63,18 @@ template $CreateInstallationDialog: Adw.Dialog {
 						title: _("Location Path");
 						changed => $_on_row_edited();
 						entry-activated => $_on_create();
+
+						[suffix]
+						Button {
+							icon-name: "warehouse:folder-open-symbolic";
+							tooltip-text: _("Select Folder Location");
+							valign: center;
+							clicked => $_open_folder();
+
+							styles [
+								"flat",
+							]
+						}
 					}
 				}
 
@@ -123,7 +135,38 @@ template $CreateInstallationDialog: Adw.Dialog {
 						}
 					}
 				}
+
+				Revealer {
+					reveal-child: bind template.file_or_non_empty_folder;
+					transition-type: slide_down;
+
+					ListBox {
+						focusable: false;
+						selection-mode: none;
+						margin-top: 12;
+
+						styles [
+							"boxed-list",
+						]
+
+						Adw.ActionRow {
+							styles [
+								"error",
+							]
+
+							[prefix]
+							Image {
+								icon-name: "warehouse:error-symbolic";
+							}
+
+							title: _("Installation Location Path must be an empty folder");
+							subtitle: _("Path points to a file or to folder with items.");
+						}
+					}
+				}
 			};
 		};
 	};
 }
+
+FileDialog file_dialog {}

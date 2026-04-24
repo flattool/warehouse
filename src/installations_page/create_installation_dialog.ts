@@ -1,9 +1,13 @@
 import Adw from "gi://Adw?version=1"
 import Gtk from "gi://Gtk?version=4.0"
 import GObject from "gi://GObject?version=2.0"
+import Gio from "gi://Gio?version=2.0"
 
 import { GClass, Property, Child, Signal, from } from "../gobjectify/gobjectify.js"
 import { Installation, type CustomInstallationCreationConfig } from "../flatpak.js"
+import { SharedVars } from "../utils/shared_vars.js"
+
+Gio._promisify(Gtk.FileDialog.prototype, "select_folder", "select_folder_finish")
 
 const TITLE_REGEX = /^[^\n"'=/\\]+$/
 const NAME_REGEX = /^(?!user|system)([a-zA-Z0-9_-]+)$/i
@@ -14,10 +18,12 @@ const Base = from(Adw.Dialog, {
 	valid: Property.bool(),
 	reused_name: Property.bool(),
 	reused_path: Property.bool(),
+	file_or_non_empty_folder: Property.bool(),
 	_group: Child<Gtk.ListBox>(),
 	_title_row: Child<Adw.EntryRow>(),
 	_name_row: Child<Adw.EntryRow>(),
 	_path_row: Child<Adw.EntryRow>(),
+	_file_dialog: Child<Gtk.FileDialog>(),
 })
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/installations_page/create_installation_dialog.ui" })
@@ -78,7 +84,12 @@ export class CreateInstallationDialog extends Base {
 		} else if (row === this._path_row) {
 			text = text.normalize_path()
 			this.reused_path = this.#installation_paths.has(text)
-			valid = PATH_REGEX.test(text) && !this.reused_path
+			const file = Gio.File.new_for_path(text)
+			this.file_or_non_empty_folder = file.query_exists(null) && (
+				file.query_file_type(Gio.FileQueryInfoFlags.NONE, null) !== Gio.FileType.DIRECTORY
+				|| file.enumerate_children("standard::*", Gio.FileQueryInfoFlags.NONE, null).next_file(null) !== null
+			)
+			valid = PATH_REGEX.test(text) && !this.reused_path && !this.file_or_non_empty_folder
 		}
 		if (valid) {
 			this.#invalid_rows.delete(row)
@@ -91,5 +102,12 @@ export class CreateInstallationDialog extends Base {
 			row.add_css_class("error")
 		}
 		this.valid = this.#invalid_rows.size === 0
+	}
+
+	protected async _open_folder(): Promise<void> {
+		try {
+			const folder: Gio.File = await this._file_dialog.select_folder(SharedVars.main_window, null)
+			this._path_row.text = folder.get_path() ?? ""
+		} catch {}
 	}
 }
