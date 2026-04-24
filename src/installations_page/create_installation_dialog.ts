@@ -2,6 +2,7 @@ import Adw from "gi://Adw?version=1"
 import Gtk from "gi://Gtk?version=4.0"
 import GObject from "gi://GObject?version=2.0"
 import Gio from "gi://Gio?version=2.0"
+import GLib from "gi://GLib?version=2.0"
 
 import { GClass, Property, Child, Signal, from } from "../gobjectify/gobjectify.js"
 import { Installation, type CustomInstallationCreationConfig } from "../flatpak.js"
@@ -39,6 +40,7 @@ export class CreateInstallationDialog extends Base {
 	}) {
 		const { installations, ...base_params } = params
 		super(base_params)
+		this._file_dialog.initial_folder = Gio.File.new_for_path(GLib.get_home_dir())
 		this.connect("show", () => this._title_row.grab_focus())
 		if (!installations) return
 		for (const inst of installations) {
