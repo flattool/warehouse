@@ -65,28 +65,15 @@ template $MainWindow: Adw.ApplicationWindow {
 
 			content: Adw.ViewStack view_stack {
 				Adw.ViewStackPage {
-					child: $PackagesPage apps_page {
+					child: $PackagesPage packages_page {
 						installations: installations;
 						packages: packages_list;
 						remotes: remotes_list;
 						loading: bind template.loading;
 					};
 
-					icon-name: bind apps_page.icon_name;
-					title: bind apps_page.sidebar_title;
-				}
-
-				Adw.ViewStackPage {
-					child: $PackagesPage runtimes_page {
-						installations: installations;
-						packages: packages_list;
-						remotes: remotes_list;
-						loading: bind template.loading;
-						show_runtimes: true;
-					};
-
-					icon-name: bind runtimes_page.icon_name;
-					title: bind runtimes_page.sidebar_title;
+					icon-name: bind packages_page.icon_name;
+					title: bind packages_page.sidebar_title;
 				}
 
 				Adw.ViewStackPage {

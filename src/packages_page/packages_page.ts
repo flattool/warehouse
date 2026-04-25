@@ -45,7 +45,6 @@ import "../widgets/simple_menu_item.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/packages_page.ui" })
 export class PackagesPage extends from(BasePage, {
-	show_runtimes: Property.bool(),
 	show_filter_page: Property.bool(),
 	search_text: Property.string(),
 	no_results: Property.bool(),
@@ -138,23 +137,6 @@ export class PackagesPage extends from(BasePage, {
 		}
 		this._selection_manager.reset()
 		this._list_box.unselect_all()
-	}
-
-	protected _show_package_by_runtime(__: this, is_package_runtime: boolean, show_runtimes: boolean): boolean {
-		return is_package_runtime === show_runtimes
-	}
-
-	protected _get_title(__: this, show_runtimes: boolean, in_selection_mode: boolean, total_selected: number): string {
-		if (in_selection_mode) return _("%s Selected").format(total_selected)
-		return show_runtimes ? _("Manage Runtimes") : _("Manage Applications")
-	}
-
-	protected _get_sidebar_title(): string {
-		return this.show_runtimes ? _("Runtimes") : _("Applications")
-	}
-
-	protected _get_icon_name(): string {
-		return this.show_runtimes ? "warehouse:flatpak-symbolic" : "warehouse:toolbars-symbolic"
 	}
 
 	protected _should_show_bottom_bar(): boolean {

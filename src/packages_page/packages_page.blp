@@ -6,21 +6,15 @@ SortListModel sorted_packages_list {
 		expression: expr item as <$Package>.title;
 	};
 
-	model: FilterListModel {
-		model: bind template.packages;
-
-		filter: BoolFilter {
-			expression: expr $_show_package_by_runtime(item as <$Package>.is_runtime, template.show_runtimes) as <bool>;
-		};
-	};
+	model: bind template.packages;
 }
 
 $SelectionManager selection_manager {}
 
 template $PackagesPage: $BasePage {
-	title: bind $_get_title(template.show_runtimes, template.in_selection_mode, selection_manager.total) as <string>;
-	sidebar_title: bind $_get_sidebar_title(template.show_runtimes) as <string>;
-	icon_name: bind $_get_icon_name(template.show_runtimes) as <string>;
+	title: _("Apps & Runtimes");
+	sidebar_title: _("Packages");
+	icon_name: "warehouse:flatpak-symbolic";
 
 	child: Adw.BreakpointBin {
 		width-request: 1;
@@ -148,6 +142,7 @@ template $PackagesPage: $BasePage {
 							[bottom]
 							Revealer {
 								reveal-child: bind template.in_selection_mode;
+								transition-type: slide_up;
 
 								child: Box {
 									homogeneous: true;
