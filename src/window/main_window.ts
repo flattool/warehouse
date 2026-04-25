@@ -49,6 +49,11 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 			return item.packages
 		})
 
+		this.#settings.bind("window-width", this, "default-width", Gio.SettingsBindFlags.DEFAULT)
+		this.#settings.bind("window-height", this, "default-height", Gio.SettingsBindFlags.DEFAULT)
+		this.#settings.bind("is-maximized", this, "maximized", Gio.SettingsBindFlags.DEFAULT)
+		this.#settings.bind("is-fullscreen", this, "fullscreened", Gio.SettingsBindFlags.DEFAULT)
+
 		await this.#load_installations()
 
 		if (SharedVars.CUSTOM_INSTALLATIONS_DIR.query_exists(null)) {
