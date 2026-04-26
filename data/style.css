@@ -14,3 +14,12 @@
 .remotes-page-status {
 	margin-top: -24px;
 }
+
+.dropdown-button image {
+	transition: transform 200ms ease;
+	transform: rotate(-180deg);
+}
+
+.dropdown-button.expanded image {
+	transform: none;
+}

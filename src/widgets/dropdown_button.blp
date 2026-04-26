@@ -1,0 +1,22 @@
+using Gtk 4.0;
+
+template $DropdownButton: Button {
+	clicked => $_on_clicked();
+	notify::active => $_on_active_changed();
+
+	child: Box {
+		spacing: 6;
+
+		Label {
+			label: bind $_get_label(template.active, template.collapsed_text, template.expanded_text) as <string>;
+		}
+
+		Image {
+			icon-name: bind $_get_icon_name() as <string>;
+		}
+	};
+
+	styles [
+		"dropdown-button",
+	]
+}

@@ -1,0 +1,47 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $GroupHeading: Box {
+	margin-start: 6;
+	margin-end: 6;
+	margin-top: 3;
+	margin-bottom: 3;
+	spacing: 6;
+
+	Box label_box {
+		orientation: vertical;
+		hexpand: true;
+		margin-start: 6;
+		spacing: 6;
+
+		Label {
+			label: bind template.title;
+			halign: start;
+			wrap: true;
+			wrap-mode: word_char;
+
+			styles [
+				"heading",
+			]
+		}
+
+		Label {
+			label: bind template.subtitle;
+			halign: start;
+			wrap: true;
+			wrap-mode: word_char;
+
+			styles [
+				"dimmed",
+			]
+		}
+
+		Button {
+			label: _("test");
+		}
+	}
+
+	Adw.Bin {
+		child: bind template.header_child;
+	}
+}
