@@ -17,6 +17,8 @@ import "../widgets/search_group.js"
 import "../widgets/search_button.js"
 import "../widgets/simple_menu.js"
 import "../widgets/simple_menu_item.js"
+import "../widgets/group_heading.js"
+import "../widgets/dropdown_button.js"
 
 @GClass() class SelectionManager extends from(GObject.Object, {
 	total: Property.uint32(),

@@ -127,14 +127,44 @@ template $PackagesPage: $BasePage {
 								no_results: bind template.no_results;
 
 								content: ScrolledWindow scrolled_window {
-									child: ListBox list_box {
-										row-selected => $_on_row_selected();
-										row-activated => $_on_row_activated();
-										selection-mode: bind $_get_selection_mode(template.in_selection_mode) as <SelectionMode>;
+									child: Box {
+										orientation: vertical;
 
-										styles [
-											"navigation-sidebar",
-										]
+										$GroupHeading {
+											title: _("Applications");
+											subtitle: _("Packages you can open and run.");
+
+											header_child: $DropdownButton {
+												valign: center;
+
+												styles [
+													"flat",
+												]
+											};
+										}
+
+										ListBox list_box {
+											row-selected => $_on_row_selected();
+											row-activated => $_on_row_activated();
+											selection-mode: bind $_get_selection_mode(template.in_selection_mode) as <SelectionMode>;
+
+											styles [
+												"navigation-sidebar",
+											]
+										}
+
+										$GroupHeading {
+											title: _("Runtimes");
+											subtitle: _("Packages that applications depend on.");
+
+											header_child: $DropdownButton {
+												valign: center;
+
+												styles [
+													"flat",
+												]
+											};
+										}
 									};
 								};
 							};
