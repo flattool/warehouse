@@ -9,6 +9,22 @@ SortListModel sorted_packages_list {
 	model: bind template.packages;
 }
 
+FilterListModel apps_list {
+	filter: BoolFilter {
+		expression: expr item as <$Package>.is_app;
+	};
+
+	model: sorted_packages_list;
+}
+
+FilterListModel runtimes_list {
+	filter: BoolFilter {
+		expression: expr item as <$Package>.is_runtime;
+	};
+
+	model: sorted_packages_list;
+}
+
 $SelectionManager selection_manager {}
 
 template $PackagesPage: $BasePage {
@@ -133,9 +149,12 @@ template $PackagesPage: $BasePage {
 										$GroupHeading {
 											title: _("Applications");
 											subtitle: _("Packages you can open and run.");
+											visible: bind $_is_greater(apps_list.n-items, 0) as <bool>;
+											clicked => $_on_app_header_clicked();
 
-											header_child: $DropdownButton {
+											header_child: $DropdownButton app_dropdown {
 												valign: center;
+												active: bind template.show_apps bidirectional;
 
 												styles [
 													"flat",
@@ -143,25 +162,48 @@ template $PackagesPage: $BasePage {
 											};
 										}
 
-										ListBox list_box {
-											row-selected => $_on_row_selected();
-											row-activated => $_on_row_activated();
-											selection-mode: bind $_get_selection_mode(template.in_selection_mode) as <SelectionMode>;
+										Revealer {
+											reveal-child: bind app_dropdown.active;
+											visible: bind $_is_greater(apps_list.n-items, 0) as <bool>;
 
-											styles [
-												"navigation-sidebar",
-											]
+											child: ListBox apps_list_box {
+												row-selected => $_on_row_selected();
+												row-activated => $_on_row_activated();
+												selection-mode: bind $_get_selection_mode(template.in_selection_mode) as <SelectionMode>;
+
+												styles [
+													"navigation-sidebar",
+												]
+											};
 										}
 
 										$GroupHeading {
 											title: _("Runtimes");
 											subtitle: _("Packages that applications depend on.");
+											visible: bind $_is_greater(runtimes_list.n-items, 0) as <bool>;
+											clicked => $on_runtime_header_clicked();
 
-											header_child: $DropdownButton {
+											header_child: $DropdownButton runtime_dropdown {
 												valign: center;
+												active: bind template.show_runtimes bidirectional;
 
 												styles [
 													"flat",
+												]
+											};
+										}
+
+										Revealer {
+											reveal-child: bind runtime_dropdown.active;
+											visible: bind $_is_greater(runtimes_list.n-items, 0) as <bool>;
+
+											child: ListBox runtimes_list_box {
+												row-selected => $_on_row_selected();
+												row-activated => $_on_row_activated();
+												selection-mode: bind $_get_selection_mode(template.in_selection_mode) as <SelectionMode>;
+
+												styles [
+													"navigation-sidebar",
 												]
 											};
 										}

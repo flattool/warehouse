@@ -10,6 +10,7 @@ import { Package } from "../flatpak.js"
 import { PackageRow } from "./package_row.js"
 import { DetailsPage } from "./details_page.js"
 import { SharedVars } from "../utils/shared_vars.js"
+import { DropdownButton } from "../widgets/dropdown_button.js"
 
 import "./filter_page.js"
 import "../widgets/sidebar_button.js"
@@ -18,7 +19,6 @@ import "../widgets/search_button.js"
 import "../widgets/simple_menu.js"
 import "../widgets/simple_menu_item.js"
 import "../widgets/group_heading.js"
-import "../widgets/dropdown_button.js"
 
 @GClass() class SelectionManager extends from(GObject.Object, {
 	total: Property.uint32(),
@@ -51,12 +51,18 @@ export class PackagesPage extends from(BasePage, {
 	search_text: Property.string(),
 	no_results: Property.bool(),
 	in_selection_mode: Property.bool(),
-	_sorted_packages_list: Child<Gio.ListModel<Package>>(),
+	show_apps: Property.bool(),
+	show_runtimes: Property.bool(),
+	_apps_list: Child<Gio.ListModel<Package>>(),
+	_runtimes_list: Child<Gio.ListModel<Package>>(),
 	_selection_manager: Child<SelectionManager>(),
 	_split_view: Child<Adw.NavigationSplitView>(),
 	_search_enty: Child<Gtk.SearchEntry>(),
 	_scrolled_window: Child<Gtk.ScrolledWindow>(),
-	_list_box: Child<Gtk.ListBox>(),
+	// _app_dropdown: Child<DropdownButton>(),
+	_apps_list_box: Child<Gtk.ListBox>(),
+	// _runtime_dropdown: Child<DropdownButton>(),
+	_runtimes_list_box: Child<Gtk.ListBox>(),
 	_details_page: Child<DetailsPage>(),
 }) {
 	readonly #css_provider = new Gtk.CssProvider()
@@ -67,7 +73,7 @@ export class PackagesPage extends from(BasePage, {
 			this.#css_provider,
 			Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
 		)
-		this._list_box.bind_model(this._sorted_packages_list, (flatpak) => {
+		const row_creation_func = (flatpak: Package): PackageRow => {
 			const row = new PackageRow({ flatpak, in_selection_mode: this.in_selection_mode })
 			row.connect("activated", () => {
 				if (!this.in_selection_mode) return
@@ -81,12 +87,43 @@ export class PackagesPage extends from(BasePage, {
 				}
 			})
 			return row
-		})
+		}
+		this._apps_list_box.bind_model(this._apps_list, row_creation_func)
+		this._runtimes_list_box.bind_model(this._runtimes_list, row_creation_func)
 	}
 
 	override grab_focus(): boolean {
-		if (!this.visible) return false
-		return this._list_box.get_selected_row()?.grab_focus() || super.grab_focus()
+		return this.visible && (
+			this._apps_list_box.get_selected_row()?.grab_focus()
+			|| this._runtimes_list_box.get_selected_row()?.grab_focus()
+			|| super.grab_focus()
+		)
+	}
+
+	#select_first(): void {
+		const first_app_row = this._apps_list_box.get_row_at_index(0)
+		const first_runtime_row = this._runtimes_list_box.get_row_at_index(0)
+		if (first_app_row) {
+			this._apps_list_box.select_row(first_app_row)
+			this._runtimes_list_box.unselect_all()
+		} else if (first_runtime_row) {
+			this._runtimes_list_box.select_row(first_runtime_row)
+			this._apps_list_box.unselect_all()
+		}
+	}
+
+	#foreach_row(to_run: (row: PackageRow) => void): void {
+		for (let i = 0; ; i += 1) {
+			const app_row = this._apps_list_box.get_row_at_index(i)
+			const runtime_row = this._runtimes_list_box.get_row_at_index(i)
+			if (app_row instanceof PackageRow) {
+				to_run(app_row)
+			}
+			if (runtime_row instanceof PackageRow) {
+				to_run(runtime_row)
+			}
+			if (!app_row && !runtime_row) return
+		}
 	}
 
 	@OnSignal("notify::search-text")
@@ -94,8 +131,7 @@ export class PackagesPage extends from(BasePage, {
 		let any_matched = false
 		let first_visible: PackageRow | null = null
 		const search: string = this.search_text.toLocaleLowerCase()
-		for (const row of this._list_box) {
-			if (!(row instanceof PackageRow)) continue
+		this.#foreach_row((row) => {
 			const title: string = row.title.toLocaleLowerCase()
 			const subtitle: string = row.subtitle.toLocaleLowerCase()
 			if (row.visible = title.includes(search) || subtitle.includes(search)) {
@@ -104,10 +140,14 @@ export class PackagesPage extends from(BasePage, {
 					first_visible = row
 				}
 			}
-		}
+		})
 		this.no_results = !any_matched
-		if (this.search_text !== "" || this._list_box.get_selected_row() === null) {
-			this._list_box.select_row(first_visible)
+		if (
+			this.search_text !== ""
+			|| !this._apps_list_box.get_selected_row()
+			|| !this._runtimes_list_box.get_selected_row()
+		) {
+			this.#select_first()
 		}
 	}
 
@@ -115,9 +155,9 @@ export class PackagesPage extends from(BasePage, {
 	#on_loading_changed(): void {
 		if (this.loading) return
 		this._search_enty.text = ""
-		this._list_box.select_row(this._list_box.get_row_at_index(0))
+		this.#select_first()
 		this.in_selection_mode = false
-		if (this._sorted_packages_list.get_n_items() < 1) {
+		if (this._apps_list.get_n_items() < 1 && this._runtimes_list.get_n_items() < 1) {
 			this.show_filter_page = false
 		}
 	}
@@ -130,22 +170,28 @@ export class PackagesPage extends from(BasePage, {
 
 	@OnSignal("notify::in-selection-mode")
 	#on_selection_mode_changed(): void {
-		for (const row of this._list_box) {
-			if (!(row instanceof PackageRow)) continue
+		this.#foreach_row((row) => {
 			if (!this.in_selection_mode) {
 				row.selected = false
 			}
 			row.in_selection_mode = this.in_selection_mode
-		}
+		})
 		this._selection_manager.reset()
-		this._list_box.unselect_all()
+		this._apps_list_box.unselect_all()
+		this._runtimes_list_box.unselect_all()
 	}
 
 	protected _should_show_bottom_bar(): boolean {
-		return (!this.in_selection_mode) && (this._sorted_packages_list?.get_n_items() ?? 0) > 0
+		if (this.in_selection_mode) return false
+		return (this._apps_list?.get_n_items() ?? this._runtimes_list?.get_n_items() ?? 0) > 0
 	}
 
-	protected _on_row_selected(__: this, row: PackageRow | null): void {
+	protected _on_row_selected(box: Gtk.ListBox, row: PackageRow | null): void {
+		if (row && box === this._apps_list_box) {
+			this._runtimes_list_box.unselect_all()
+		} else if (row && box === this._runtimes_list_box) {
+			this._apps_list_box.unselect_all()
+		}
 		this._details_page.flatpak = row?.flatpak ?? null
 		this._details_page.pop_to_base_page()
 		this.show_filter_page = false
@@ -161,6 +207,14 @@ export class PackagesPage extends from(BasePage, {
 		if (!this.in_selection_mode) {
 			this._split_view.show_content = true
 		}
+	}
+
+	protected _on_app_header_clicked(): void {
+		this.show_apps = !this.show_apps
+	}
+
+	protected on_runtime_header_clicked(): void {
+		this.show_runtimes = !this.show_runtimes
 	}
 
 	protected _get_selection_mode(): Gtk.SelectionMode {
@@ -191,10 +245,7 @@ export class PackagesPage extends from(BasePage, {
 
 	protected _on_select_all(): void {
 		if (!this.in_selection_mode) return
-		for (const row of this._list_box) {
-			if (!(row instanceof PackageRow) || !row.visible) continue
-			row.selected = true
-		}
+		this.#foreach_row((row) => row.visible && (row.selected = true))
 	}
 
 	protected _on_copy_titles(): void { this.#do_copy("Copied Titles", "title") }
