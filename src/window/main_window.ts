@@ -34,7 +34,7 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 	#installations_loading = new Set<string>()
 
 	async _ready(): Promise<void> {
-		if (pkg.profile === "development") this.add_css_class("devel")
+		// if (pkg.profile === "development") this.add_css_class("devel")
 		print(`Welcome to ${pkg.app_id}!`)
 
 		this._only_remotes_filter.set_filter_func((item) => item instanceof Remote)
