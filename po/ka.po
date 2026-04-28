@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 16:52-0400\n"
-"PO-Revision-Date: 2026-04-26 08:23+0000\n"
+"PO-Revision-Date: 2026-04-28 06:03+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ka/>\n"
@@ -26,7 +26,7 @@ msgstr "საწყობი"
 
 #: data/io.github.flattool.Warehouse.desktop.in:10
 msgid "flatpak;packages;apps;remotes;snapshots;"
-msgstr ""
+msgstr "flatpak;packages;apps;remotes;snapshots;პაკეტები;აპები;დაშორებულები;"
 
 #: data/io.github.flattool.Warehouse.desktop.in:11
 #: data/io.github.flattool.Warehouse.metainfo.xml.in:9
@@ -330,7 +330,7 @@ msgstr ""
 
 #: src/gtk/help-overlay.blp:80
 msgid "New Remote"
-msgstr ""
+msgstr "ახალი დაშორებული"
 
 #: src/gtk/help-overlay.blp:85
 msgid "User Data Page"
@@ -350,15 +350,15 @@ msgstr ""
 
 #: src/gtk/help-overlay.blp:108
 msgid "Snapshots Page"
-msgstr ""
+msgstr "სწრაფი ასლების გვერდი"
 
 #: src/gtk/help-overlay.blp:118 src/snapshot_page/new_snapshot_dialog.py:206
 msgid "New Snapshots"
-msgstr ""
+msgstr "ახალი სწრაფი ასლები"
 
 #: src/gtk/installation_chooser.blp:5
 msgid "Choose Installation"
-msgstr ""
+msgstr "აირჩიეთ დაყენება"
 
 #: src/gtk/installation_chooser.blp:11
 msgid "User"
@@ -374,7 +374,7 @@ msgstr "დაყენების მორგება"
 
 #: src/gtk/installation_chooser.blp:37
 msgid "Other Installation"
-msgstr ""
+msgstr "სხვა დაყენება"
 
 #: src/gtk/installation_chooser.blp:38
 msgid "Choose a custom installation"
@@ -463,11 +463,11 @@ msgstr "_კლავიატურის მალსახმობები"
 
 #: src/main_window/window.blp:169
 msgid "_About Warehouse"
-msgstr ""
+msgstr "Warehouse-ის შეს_ახებ"
 
 #: src/main_window/window.py:139
 msgid "Unsupported Filetype"
-msgstr ""
+msgstr "მხარდაუჭერელი ფაილის ტიპი"
 
 #: src/main_window/window.py:140
 msgid "Only .flatpak, .flatpakref, and .flatpakrepo files are supported."
@@ -475,7 +475,7 @@ msgstr ""
 
 #: src/main_window/window.py:148
 msgid "Mixed Filetypes"
-msgstr ""
+msgstr "შერეული ფაილის ტიპები"
 
 #: src/main_window/window.py:149
 msgid "Flatpaks and remotes cannot be installed at the same time."
@@ -495,7 +495,7 @@ msgstr ""
 
 #: src/packages_page/filters_page.blp:5 src/packages_page/packages_page.blp:70
 msgid "Filter Packages"
-msgstr ""
+msgstr "პაკეტების გაფილტვრა"
 
 #: src/packages_page/filters_page.blp:20
 msgid "Filter by Package Type"
@@ -556,18 +556,18 @@ msgstr ""
 #: src/packages_page/filters_page.blp:113
 #: src/packages_page/packages_page.blp:97
 msgid "Reset Filters"
-msgstr ""
+msgstr "ფილტრების ჩამოყრა"
 
 #: src/packages_page/packages_page.blp:65
 #: src/packages_page/packages_page.blp:83 src/remotes_page/remotes_page.blp:30
 #: src/snapshot_page/snapshot_page.blp:35
 msgid "Search Packages"
-msgstr ""
+msgstr "პაკეტების ძებნა"
 
 #: src/packages_page/packages_page.blp:75
 #: src/snapshot_page/snapshot_page.blp:45
 msgid "Select Packages"
-msgstr ""
+msgstr "პაკეტების არჩევანი"
 
 #: src/packages_page/packages_page.blp:93
 msgid "No Packages Match Filters"
@@ -616,15 +616,15 @@ msgstr "წაშლა"
 
 #: src/packages_page/packages_page.blp:173
 msgid "Copy Names"
-msgstr ""
+msgstr "სახელების კოპირება"
 
 #: src/packages_page/packages_page.blp:177
 msgid "Copy IDs"
-msgstr ""
+msgstr "ID-ების კოპირება"
 
 #: src/packages_page/packages_page.blp:181
 msgid "Copy Refs"
-msgstr ""
+msgstr "მიმართვების კოპირება"
 
 #: src/packages_page/packages_page.py:156
 #: src/user_data_page/data_subpage.py:112
@@ -647,12 +647,12 @@ msgstr "ID-ები"
 
 #: src/packages_page/packages_page.py:252
 msgid "Refs"
-msgstr ""
+msgstr "მიმართვები"
 
 #: src/packages_page/packages_page.py:260
 #: src/properties_page/properties_page.py:293
 msgid "Copied {}"
-msgstr ""
+msgstr "{} დაკოპირდა"
 
 #: src/packages_page/packages_page.py:262
 msgid "Could not copy {}"
@@ -664,11 +664,11 @@ msgstr ""
 
 #: src/packages_page/packages_page.py:315
 msgid "Uninstalled Packages"
-msgstr ""
+msgstr "წაშლილი პაკეტები"
 
 #: src/packages_page/packages_page.py:373
 msgid "Loading Packages"
-msgstr ""
+msgstr "პაკეტების ჩატვირთვა"
 
 #: src/packages_page/packages_page.py:373
 #: src/packages_page/packages_page.py:374
@@ -682,11 +682,11 @@ msgstr ""
 
 #: src/packages_page/packages_page.py:374
 msgid "Uninstalling Packages"
-msgstr ""
+msgstr "პაკეტების წაშლა"
 
 #: src/packages_page/packages_page.py:376
 msgid "Reinstalling Package"
-msgstr ""
+msgstr "პაკეტების თავიდან დაყენება"
 
 #: src/packages_page/packages_page.py:376
 #: src/packages_page/packages_page.py:378
@@ -697,7 +697,7 @@ msgstr "ამას საკმაო დრო დასჭირდება
 
 #: src/packages_page/packages_page.py:378
 msgid "Changing Version"
-msgstr ""
+msgstr "ვერსიის ცვლილება"
 
 #: src/packages_page/uninstall_dialog.blp:8
 msgid "Keep"
@@ -721,7 +721,7 @@ msgstr ""
 
 #: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall {}?"
-msgstr ""
+msgstr "წაიშალოს {}?"
 
 #: src/packages_page/uninstall_dialog.py:35
 msgid "It will not be possible to use {} after removal"
@@ -729,7 +729,7 @@ msgstr ""
 
 #: src/packages_page/uninstall_dialog.py:37
 msgid "Uninstall Packages?"
-msgstr ""
+msgstr "წაიშალოს პაკეტები?"
 
 #: src/packages_page/uninstall_dialog.py:38
 msgid "It will not be possible to use these packages after removal"
@@ -767,12 +767,12 @@ msgstr "ვერსია"
 
 #: src/properties_page/properties_page.blp:143
 msgid "Updates Disabled"
-msgstr ""
+msgstr "განახლება გამორთულია"
 
 #: src/properties_page/properties_page.blp:147
 #: src/change_version_page/change_version_page.blp:50
 msgid "Disable Updates"
-msgstr ""
+msgstr "განახლებების გამორთვა"
 
 #: src/properties_page/properties_page.blp:148
 msgid "Mask this package so it's never updated"
