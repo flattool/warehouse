@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 16:52-0400\n"
-"PO-Revision-Date: 2026-04-28 06:03+0000\n"
+"PO-Revision-Date: 2026-05-05 09:44+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ka/>\n"
@@ -781,7 +781,7 @@ msgstr ""
 #: src/properties_page/properties_page.blp:157
 #: src/change_version_page/change_version_page.blp:23
 msgid "Change Version"
-msgstr ""
+msgstr "ვერსიის შეცვლა"
 
 #: src/properties_page/properties_page.blp:158
 msgid "Upgrade or downgrade this package"
@@ -825,7 +825,7 @@ msgstr "ლიცენზია"
 
 #: src/properties_page/properties_page.blp:244
 msgid "Installation Information"
-msgstr ""
+msgstr "დაყენების ინფორმაცია"
 
 #: src/properties_page/properties_page.blp:255
 msgid "Origin"
@@ -857,7 +857,7 @@ msgstr "თარიღი"
 
 #: src/properties_page/properties_page.py:83
 msgid "{} Properties"
-msgstr ""
+msgstr "{}-ის თვისებები"
 
 #: src/properties_page/properties_page.py:87
 msgid "Properties"
@@ -905,7 +905,7 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:209
 msgid "Trash Data"
-msgstr ""
+msgstr "მონაცემების გადატანა ნაგვის ყუთში"
 
 #: src/properties_page/properties_page.py:219
 msgid "Could not Disable Updates"
@@ -917,11 +917,11 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:225
 msgid "Disabled Updates"
-msgstr ""
+msgstr "გამორთული განახლებები"
 
 #: src/properties_page/properties_page.py:225
 msgid "Enabled Updates"
-msgstr ""
+msgstr "ჩართული განახლებები"
 
 #: src/properties_page/properties_page.py:238
 msgid "Could not Disable Autoremoval"
@@ -933,7 +933,7 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:243
 msgid "Disabled Autoremoval"
-msgstr ""
+msgstr "ავტოწაშლა გამორთულია"
 
 #: src/properties_page/properties_page.py:243
 msgid "Enabled Autoremoval"
