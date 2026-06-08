@@ -63,17 +63,23 @@ export class CustomInstallationFile {
 		`
 		config_contents += "\n"
 		if (!name || name.startsWith(".")) {
-			throw new Error("Cannot create installation with empty name or ")
+			throw new Error("Cannot create installation with empty name or a name starting with '.'")
 		}
-		const temp_path = `${GLib.get_user_data_dir()}/${name}.conf`
+		const temp_path = `${GLib.get_user_data_dir().normalize_path()}/${name}.conf`
 		if (!GLib.file_set_contents(temp_path, config_contents)) {
 			throw new Error(`Could not create temp file '${temp_path}' for new installation`)
 		}
-		const dest_path: string = remove_host_prefix(`${SharedVars.CUSTOM_INSTALLATIONS_DIR.get_path()}/${name}.conf`)
-		await LineProcess.run(
-			["pkexec", "mv", temp_path, dest_path],
-			{ run_on_host: true },
-		)
+		const host_custom_dir = remove_host_prefix(SharedVars.CUSTOM_INSTALLATIONS_DIR.get_path()!).normalize_path()
+		const dest_path: string = `${host_custom_dir}/${name}.conf`.normalize_path()
+		await LineProcess.run([
+			"/usr/bin/env",
+			"pkexec",
+			"/usr/bin/env",
+			"sh",
+			"-c",
+			`mkdir -p '${host_custom_dir}' && mv '${temp_path}' '${dest_path}'`,
+		], { run_on_host: true })
+		SharedVars.main_window?.refresh()
 	}
 
 	readonly path: string
