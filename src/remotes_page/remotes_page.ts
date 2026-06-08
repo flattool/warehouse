@@ -15,6 +15,7 @@ import "../widgets/loading_group.js"
 import "../widgets/search_button.js"
 import "../widgets/search_group.js"
 
+// TODO: Fix endless loading when adding new remotes to custom installations
 @GClass({ template: "resource:///io/github/flattool/Warehouse/remotes_page/remotes_page.ui" })
 export class RemotesPage extends from(BasePage, {
 	search_text: Property.readwrite.string(),
