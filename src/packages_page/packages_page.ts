@@ -21,7 +21,7 @@ import "../widgets/simple_menu_item.js"
 import "../widgets/group_heading.js"
 
 @GClass() class SelectionManager extends from(GObject.Object, {
-	total: Property.uint32(),
+	total: Property.readwrite.uint32(),
 }) {
 	readonly #selected = new Set<Package>()
 
@@ -47,12 +47,12 @@ import "../widgets/group_heading.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/packages_page.ui" })
 export class PackagesPage extends from(BasePage, {
-	show_filter_page: Property.bool(),
-	search_text: Property.string(),
-	no_results: Property.bool(),
-	in_selection_mode: Property.bool(),
-	show_apps: Property.bool(),
-	show_runtimes: Property.bool(),
+	show_filter_page: Property.readwrite.bool(),
+	search_text: Property.readwrite.string(),
+	no_results: Property.readwrite.bool(),
+	in_selection_mode: Property.readwrite.bool(),
+	show_apps: Property.readwrite.bool(),
+	show_runtimes: Property.readwrite.bool(),
 	_apps_list: Child<Gio.ListModel<Package>>(),
 	_runtimes_list: Child<Gio.ListModel<Package>>(),
 	_selection_manager: Child<SelectionManager>(),
@@ -67,7 +67,8 @@ export class PackagesPage extends from(BasePage, {
 }) {
 	readonly #css_provider = new Gtk.CssProvider()
 
-	async _ready(): Promise<void> {
+	constructor(params?: typeof PackagesPage.$params) {
+		super(params)
 		Gtk.StyleContext.add_provider_for_display(
 			Gdk.Display.get_default()!,
 			this.#css_provider,

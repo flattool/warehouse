@@ -1,21 +1,18 @@
 import Gtk from "gi://Gtk?version=4.0"
 
-import { GClass, Property, from } from "../gobjectify/gobjectify.js"
+import { GClass, PostInit, Property, from } from "../gobjectify/gobjectify.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/widgets/dropdown_button.ui" })
 export class DropdownButton extends from(Gtk.Button, {
-	collapsed_text: Property.string({ default: "Show" }),
-	expanded_text: Property.string({ default: "Hide" }),
-	active: Property.bool(),
+	collapsed_text: Property.readwrite.string("Show"),
+	expanded_text: Property.readwrite.string("Hide"),
+	active: Property.readwrite.bool(),
 }) {
-	_ready(): void {
-		this._on_active_changed()
-	}
-
 	protected _on_clicked(): void {
 		this.active = !this.active
 	}
 
+	@PostInit
 	protected _on_active_changed(): void {
 		if (this.active) {
 			this.add_css_class("expanded")

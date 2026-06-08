@@ -5,7 +5,7 @@ import Gio from "gi://Gio?version=2.0"
 import GLib from "gi://GLib?version=2.0"
 
 import { GClass, Property, Child, Signal, from } from "../gobjectify/gobjectify.js"
-import { Installation, type CustomInstallationCreationConfig } from "../flatpak.js"
+import { Installation, CustomInstallationCreationConfig } from "../flatpak.js"
 import { SharedVars } from "../utils/shared_vars.js"
 
 Gio._promisify(Gtk.FileDialog.prototype, "select_folder", "select_folder_finish")
@@ -15,29 +15,27 @@ const NAME_REGEX = /^(?!user|system)([a-zA-Z0-9_-]+)$/i
 const NAME_REPLACEMENT_REGEX = /[^a-zA-Z0-9_-]/g
 const PATH_REGEX = /^\/[^\n]*[^\s\n]$/
 
-const Base = from(Adw.Dialog, {
-	valid: Property.bool(),
-	reused_name: Property.bool(),
-	reused_path: Property.bool(),
-	file_or_non_empty_folder: Property.bool(),
+@GClass({ template: "resource:///io/github/flattool/Warehouse/installations_page/create_installation_dialog.ui" })
+export class CreateInstallationDialog extends from(Adw.Dialog, {
+	valid: Property.readwrite.bool(),
+	reused_name: Property.readwrite.bool(),
+	reused_path: Property.readwrite.bool(),
+	file_or_non_empty_folder: Property.readwrite.bool(),
+	installation_confirmed: Signal([CustomInstallationCreationConfig]),
 	_group: Child<Gtk.ListBox>(),
 	_title_row: Child<Adw.EntryRow>(),
 	_name_row: Child<Adw.EntryRow>(),
 	_path_row: Child<Adw.EntryRow>(),
 	_file_dialog: Child<Gtk.FileDialog>(),
-})
-
-@GClass({ template: "resource:///io/github/flattool/Warehouse/installations_page/create_installation_dialog.ui" })
-@Signal("installation-confirmed", { param_types: [GObject.TYPE_JSOBJECT] }) // CustomInstallationCreationConfig
-export class CreateInstallationDialog extends Base {
+}) {
 	readonly #installation_names = new Set<string>()
 	readonly #installation_paths = new Set<string>()
 	readonly #invalid_rows = new Set<Adw.EntryRow>([this._title_row, this._name_row, this._path_row])
 	#can_replace_name = true
 
-	constructor(params: ConstructorParameters<typeof Base>[0] & {
-		installations?: Generator<Installation, void, undefined>,
-	}) {
+	constructor(
+		params: { installations?: Generator<Installation, void, undefined> } & typeof CreateInstallationDialog.$params,
+	) {
 		const { installations, ...base_params } = params
 		super(base_params)
 		this._file_dialog.initial_folder = Gio.File.new_for_path(GLib.get_home_dir())
@@ -58,11 +56,11 @@ export class CreateInstallationDialog extends Base {
 		this.close()
 		this.emit(
 			"installation-confirmed",
-			{
+			new CustomInstallationCreationConfig({
 				title: this._title_row.text,
 				name: this._name_row.text,
 				location_path: this._path_row.text.normalize_path(),
-			} satisfies CustomInstallationCreationConfig,
+			}),
 		)
 	}
 

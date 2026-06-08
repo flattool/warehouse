@@ -12,7 +12,7 @@ import Gtk from "gi://Gtk?version=4.0"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/installations_page/installation_row.ui" })
 export class InstallationRow extends from(Adw.ActionRow, {
-	installation: Property.gobject(Installation),
+	installation: Property.readonly.gobject(Installation),
 }) {
 	protected _is_other_installation(): boolean {
 		return this.installation?.location_tag === "other"

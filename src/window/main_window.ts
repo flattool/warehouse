@@ -15,7 +15,7 @@ import "../installations_page/installations_page.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/window/main_window.ui" })
 export class MainWindow extends from(Adw.ApplicationWindow, {
-	loading: Property.bool({ default: true }),
+	loading: Property.readwrite.bool(true),
 
 	_installations: Child<ArrayStore<Installation>>(),
 
@@ -33,7 +33,8 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 	#notify_loading_connects: number[] = []
 	#installations_loading = new Set<string>()
 
-	async _ready(): Promise<void> {
+	constructor(params?: typeof MainWindow.$params) {
+		super(params)
 		// if (pkg.profile === "development") this.add_css_class("devel")
 		print(`Welcome to ${pkg.app_id}!`)
 
@@ -54,15 +55,14 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 		this.#settings.bind("is-maximized", this, "maximized", Gio.SettingsBindFlags.DEFAULT)
 		this.#settings.bind("is-fullscreen", this, "fullscreened", Gio.SettingsBindFlags.DEFAULT)
 
-		await this.#load_installations()
-
-		if (SharedVars.CUSTOM_INSTALLATIONS_DIR.query_exists(null)) {
+		this.#load_installations().then(() => {
+			if (!SharedVars.CUSTOM_INSTALLATIONS_DIR.query_exists(null)) return
 			this.#custom_inst_watcher = SharedVars.CUSTOM_INSTALLATIONS_DIR.monitor_directory(
 				Gio.FileMonitorFlags.NONE,
 				null,
 			)
 			this.#custom_inst_watcher.connect("changed", () => this.#refresh())
-		}
+		}).catch(log)
 	}
 
 	add_toast(title: string, params?: { button_label: string, on_clicked: () => void }): void {

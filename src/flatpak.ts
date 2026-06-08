@@ -14,10 +14,15 @@ import { ArrayStore } from "./utils/array_store.js"
 import type { PopularRemote } from "./popular_remotes.js"
 import { remove_host_prefix } from "./utils/helper_funcs.js"
 
-export type CustomInstallationCreationConfig = {
-	name: string,
-	title: string,
-	location_path: string,
+@GClass()
+export class CustomInstallationCreationConfig extends from(GObject.Object, {
+	name: Property.readonly.string(),
+	title: Property.readonly.string(),
+	location_path: Property.readonly.string(),
+}) {
+	constructor(params: Required<typeof CustomInstallationCreationConfig.$params>) {
+		super(params)
+	}
 }
 
 export class CustomInstallationFile {
@@ -167,14 +172,14 @@ const PACK_LIST_COLUMN_ITEMS = {
 
 @GClass()
 export class Installation extends from(GObject.Object, {
-	name: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	title: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	location_tag: Property.string({ flags: "CONSTRUCT_ONLY", default: "system" }).as<"system" | "user" | "other">(),
-	location_path: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	custom_file: Property.jsobject({ flags: "CONSTRUCT_ONLY" }).as<CustomInstallationFile>(),
-	masked_ids: Property.jsobject().as<Set<string>>(),
-	pinned_refs: Property.jsobject().as<Set<string>>(),
-	loading: Property.bool({ default: true }),
+	name: Property.readonly.string(),
+	title: Property.readonly.string(),
+	location_tag: Property.readonly.string("system").as<"system" | "user" | "other">(),
+	location_path: Property.readonly.string(),
+	custom_file: Property.readonly.jsobject().as<CustomInstallationFile>(),
+	masked_ids: Property.readwrite.jsobject().as<Set<string>>(),
+	pinned_refs: Property.readwrite.jsobject().as<Set<string>>(),
+	loading: Property.readwrite.bool(true),
 }) {
 	readonly remotes = new ArrayStore<Remote>({})
 	readonly packages = new ArrayStore<Package>({})
@@ -187,7 +192,8 @@ export class Installation extends from(GObject.Object, {
 		return this.location_tag === "other" ? `--installation=${this.name}` : `--${this.name}`
 	}
 
-	_ready(): void {
+	constructor(params?: typeof Installation.$params) {
+		super(params)
 		const file: Gio.File = Gio.File.new_for_path(this.location_path).get_child("repo")
 		this.icon_theme.add_search_path(`${this.location_path}/exports/share/icons`.normalize_path())
 		if (
@@ -197,7 +203,7 @@ export class Installation extends from(GObject.Object, {
 			this.#monitor = file.monitor_directory(Gio.FileMonitorFlags.NONE, null)
 			this.#monitor.connect("changed", () => this.#reload())
 		} else {
-			print(`Remote: '${this.title}' - '${this.name}' does not have as 'repo' directory!`)
+			print(`Remote: '${this.title}' - '${this.name}' does not have a 'repo' directory!`)
 		}
 	}
 
@@ -234,15 +240,16 @@ export class Installation extends from(GObject.Object, {
 	}
 
 	async add_remote(remote: PopularRemote): Promise<void> {
+		const { info } = remote
 		const command = [
 			"flatpak",
 			"remote-add",
 			this.command_syntax,
 			"--if-not-exists",
-			`--title=${remote.title}`,
-			`--description=${remote.description}`,
-			remote.name,
-			remote.link,
+			`--title=${info.title}`,
+			`--description=${info.description}`,
+			info.name,
+			info.link,
 		]
 		await LineProcess.run(command, { run_on_host: true })
 	}
@@ -314,18 +321,20 @@ const REMOTES_LIST_COLUMN_ITEMS = {
 
 @GClass()
 export class Remote extends from(GObject.Object, {
-	name: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	title: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	comment: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	description: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	options: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	installation: Property.gobject(Installation, { flags: "CONSTRUCT_ONLY" }),
-	disabled: Property.bool(),
+	name: Property.readonly.string(),
+	title: Property.readonly.string(),
+	comment: Property.readonly.string(),
+	description: Property.readonly.string(),
+	options: Property.readonly.string(),
+	installation: Property.readonly.gobject(Installation),
+	disabled: Property.readonly.bool(),
 }) {
-	override get disabled(): boolean {
-		return this.options.includes("disabled")
+	constructor(params?: typeof Remote.$params) {
+		if (params) {
+			params.disabled = params.options?.includes("disabled") ?? false
+		}
+		super(params)
 	}
-	override set disabled(_v: boolean) { throw new Error("Remote::disabled cannot be set!") }
 
 	async enable(enable_remote: boolean): Promise<void> {
 		if (!this.installation) throw new Error(`Remote '${this.name}' installation is null`)
@@ -382,82 +391,58 @@ async function get_remotes(
 	list.swap_contents(remotes)
 }
 
-const BasePackage = from(GObject.Object, {
-	title: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	description: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	application: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	version: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	branch: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	arch: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	runtime: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	origin: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	app_ref: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	active: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	latest: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	size: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	options: Property.string({ flags: "CONSTRUCT_ONLY" }),
-	installation: Property.gobject(Installation, { flags: "CONSTRUCT_ONLY" }),
-	data_dir: Property.gobject(Gio.File),
-	is_runtime: Property.bool(),
-	is_app: Property.bool(),
-	is_eol: Property.bool(),
-	is_masked: Property.bool(),
-	is_pinned: Property.bool(),
-	icon_path: Property.string(),
-})
-
 @GClass()
-export class Package extends BasePackage {
+export class Package extends from(GObject.Object, {
+	title: Property.readonly.string(),
+	description: Property.readonly.string(),
+	application: Property.readonly.string(),
+	version: Property.readonly.string(),
+	branch: Property.readonly.string(),
+	arch: Property.readonly.string(),
+	runtime: Property.readonly.string(),
+	origin: Property.readonly.string(),
+	app_ref: Property.readonly.string(),
+	active: Property.readonly.string(),
+	latest: Property.readonly.string(),
+	size: Property.readonly.string(),
+	options: Property.readonly.string(),
+	installation: Property.readonly.gobject(Installation),
+	data_dir: Property.readonly.gobject(Gio.File),
+	is_runtime: Property.readonly.bool(),
+	is_app: Property.readonly.bool(),
+	is_eol: Property.readonly.bool(),
+	is_masked: Property.readonly.bool(),
+	is_pinned: Property.readonly.bool(),
+	icon_path: Property.readonly.string(),
+}) {
 	static readonly user_data_dir = Gio.File.new_for_path(GLib.get_home_dir() + "/.var/app")
 
-	private _is_runtime?: boolean
-	override get is_runtime(): boolean {
-		return this._is_runtime ??= this.options.includes("runtime")
-	}
-	override set is_runtime(_v: boolean) { throw new Error("Package::is_runtime cannot be set!") }
-	override get is_app(): boolean {
-		return !this.is_runtime
-	}
-	override set is_app(_v: boolean) { throw new Error("Package::is_app cannot be set!") }
-
-	private _is_eol?: boolean
-	override get is_eol(): boolean {
-		return this._is_eol ??= this.options.includes("eol")
-	}
-	override set is_eol(_v: boolean) { throw new Error("Package::is_eol cannot be set!") }
-
-	private _is_masked?: boolean
-	override get is_masked(): boolean {
-		return this._is_masked ??= this.installation?.masked_ids?.has(this.application) ?? false
-	}
-	override set is_masked(_v: boolean) { throw new Error("Package::is_masked cannot be set!") }
-
-	private _is_pinned?: boolean
-	override get is_pinned(): boolean {
-		return this._is_pinned ??= this.installation?.pinned_refs?.has(this.app_ref) ?? false
-	}
-	override set is_pinned(_v: boolean) { throw new Error("Package::is_pinned cannot be set!") }
-
-	constructor(...params: ConstructorParameters<typeof BasePackage>) {
-		super(...params)
-		if (!this.is_runtime) {
-			this.data_dir = Gio.File.new_for_path(`${Package.user_data_dir.get_path()}/${this.application}`)
+	constructor(params: { application: string } & typeof Package.$params) {
+		params.is_runtime = params.options?.includes("runtime") ?? false
+		params.is_app = !params.is_runtime
+		params.is_eol = params.options?.includes("eol") ?? false
+		if (params.installation && params.app_ref) {
+			params.is_masked = params.installation!.masked_ids?.has(params.app_ref) ?? false
+			params.is_pinned = params.installation!.pinned_refs?.has(params.app_ref) ?? false
 		}
-		this.#icon_tryer()
-	}
+		if (params.is_app) {
+			params.data_dir = Gio.File.new_for_path(`${Package.user_data_dir.get_path()}/${params.application}`)
+		}
 
-	#icon_tryer(): void {
-		const FALLBACK = "application-x-executable-symbolic"
-		const icon_theme: Gtk.IconTheme | undefined = this.installation?.icon_theme
-		if (!icon_theme) return
-		this.icon_path = icon_theme.lookup_icon(
-			icon_theme.has_icon(this.application) ? this.application : FALLBACK,
-			null,
-			1024,
-			1,
-			Gtk.TextDirection.NONE,
-			Gtk.IconLookupFlags.FORCE_REGULAR,
-		).get_file()?.get_path() ?? ""
+		const icon_theme: Gtk.IconTheme | undefined = params.installation?.icon_theme
+		if (icon_theme) {
+			const FALLBACK = "application-x-executable-symbolic"
+			params.icon_path = icon_theme.lookup_icon(
+				icon_theme.has_icon(params.application) ? params.application : FALLBACK,
+				null,
+				1024,
+				1,
+				Gtk.TextDirection.NONE,
+				Gtk.IconLookupFlags.FORCE_REGULAR,
+			).get_file()?.get_path() ?? ""
+		}
+
+		super(params)
 	}
 }
 

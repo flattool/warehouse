@@ -6,32 +6,31 @@ import { Child, GClass, Property, Signal, from } from "../gobjectify/gobjectify.
 import { Installation } from "../flatpak.js"
 import { InstallationChooser } from "../widgets/installation_chooser.js"
 import { iterate_list_model } from "../utils/helper_funcs.js"
-import type { PopularRemote } from "../popular_remotes.js"
+import { PopularRemote } from "../popular_remotes.js"
 
-const Base = from(Adw.Dialog, {
-	valid: Property.bool(),
-	text_valid: Property.bool(),
-	installation: Property.gobject(Installation),
-	installations: Property.gobject(Gio.ListModel, { flags: "CONSTRUCT_ONLY" }).as<Gio.ListModel<Installation>>(),
+@GClass({ template: "resource:///io/github/flattool/Warehouse/remotes_page/add_remote_dialog.ui" })
+export class AddRemoteDialog extends from(Adw.Dialog, {
+	valid: Property.readwrite.bool(),
+	text_valid: Property.readwrite.bool(),
+	installation: Property.readwrite.gobject(Installation),
+	installations: Property.readonly.gobject(Gio.ListModel).as<Gio.ListModel<Installation>>(),
+	remote_confirmed: Signal([PopularRemote, Installation]),
 	_title_row: Child<Adw.EntryRow>(),
 	_name_row: Child<Adw.EntryRow>(),
 	_url_row: Child<Adw.EntryRow>(),
 	_chooser: Child<InstallationChooser>(),
-})
-
-@GClass({ template: "resource:///io/github/flattool/Warehouse/remotes_page/add_remote_dialog.ui" })
-@Signal("remote-confirmed", { param_types: [GObject.TYPE_JSOBJECT, Installation.$gtype] })
-export class AddRemoteDialog extends Base {
+}) {
 	static new_for(installations: Gio.ListModel<Installation>, remote?: PopularRemote): AddRemoteDialog {
 		const dialog = new AddRemoteDialog({ installations })
 		if (remote) {
-			dialog._title_row.text = remote.title
-			dialog._name_row.text = remote.name
-			dialog._url_row.text = remote.link
+			const { info } = remote
+			dialog._title_row.text = info.title
+			dialog._name_row.text = info.name
+			dialog._url_row.text = info.link
 			dialog._title_row.editable = false
 			dialog._name_row.editable = false
 			dialog._url_row.editable = false
-			dialog.#remote_description = remote.description
+			dialog.#remote_description = info.description
 		}
 		return dialog
 	}
@@ -48,8 +47,8 @@ export class AddRemoteDialog extends Base {
 	])
 	#remote_description: string = ""
 
-	constructor(...params: ConstructorParameters<typeof Base>) {
-		super(...params)
+	constructor(params: typeof AddRemoteDialog.$params) {
+		super(params)
 		this.connect("show", () => this._title_row.grab_focus())
 		if (this.installations) {
 			this._chooser.set_installations(iterate_list_model(this.installations))
@@ -65,12 +64,12 @@ export class AddRemoteDialog extends Base {
 		this.close()
 		this.emit(
 			"remote-confirmed",
-			{
+			new PopularRemote({
 				title: this._title_row.text,
 				name: this._name_row.text,
 				link: this._url_row.text,
 				description: this.#remote_description,
-			} satisfies PopularRemote,
+			}),
 			this.installation,
 		)
 	}

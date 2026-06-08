@@ -19,7 +19,8 @@ export class Application extends from(Adw.Application, {
 		SharedVars.main_window.present()
 	}
 
-	_ready(): void {
+	constructor(params?: typeof Application.$params) {
+		super(params)
 		this._quit.connect("activate", () => this.quit())
 	}
 

@@ -11,8 +11,8 @@ import "../widgets/simple_menu_item.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/remotes_page/remote_row.ui" })
 export class RemoteRow extends from(Adw.ActionRow, {
-	remote: Property.gobject(Remote, { flags: "CONSTRUCT" }),
-	disabled: Property.bool(),
+	remote: Property.readwrite.gobject(Remote),
+	disabled: Property.readwrite.bool(),
 }) {
 	async #set_remote_enabled(to_enable: boolean): Promise<void> {
 		const err_title: string = to_enable ? _("Could not enable remote") : _("Could not disable remote")

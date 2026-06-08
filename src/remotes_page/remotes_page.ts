@@ -2,7 +2,7 @@ import Adw from "gi://Adw?version=1"
 import Gtk from "gi://Gtk?version=4.0"
 import Gio from "gi://Gio?version=2.0"
 
-import { GClass, Property, Child, from, OnSignal, connect_async } from "../gobjectify/gobjectify.js"
+import { GClass, Property, Child, from, OnSignal } from "../gobjectify/gobjectify.js"
 import { BasePage } from "../widgets/base_page.js"
 import { Installation, Remote } from "../flatpak.js"
 import { RemoteRow } from "./remote_row.js"
@@ -17,8 +17,8 @@ import "../widgets/search_group.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/remotes_page/remotes_page.ui" })
 export class RemotesPage extends from(BasePage, {
-	search_text: Property.string(),
-	show_disabled: Property.bool(),
+	search_text: Property.readwrite.string(),
+	show_disabled: Property.readwrite.bool(),
 	_disabled_list: Child<Gio.ListModel>(),
 	_disabled_filter: Child<Gtk.CustomFilter>(),
 	_searched_list: Child<Gio.ListModel<Remote>>(),
@@ -27,11 +27,12 @@ export class RemotesPage extends from(BasePage, {
 	_empty_row: Child<Adw.ActionRow>(),
 	_none_enabled_row: Child<Adw.ActionRow>(),
 }) {
-	_ready(): void {
+	constructor(params?: typeof RemotesPage.$params) {
+		super(params)
 		for (const remote of popular_remotes) {
 			const row = new Adw.ActionRow({
-				title: remote.title,
-				subtitle: remote.description,
+				title: remote.info.title,
+				subtitle: remote.info.description,
 				activatable: true,
 			})
 			row.add_suffix(Gtk.Image.new_from_icon_name("warehouse:plus-large-symbolic"))
@@ -50,13 +51,10 @@ export class RemotesPage extends from(BasePage, {
 	async #add_remote_via_dialog(maybe_remote?: PopularRemote): Promise<void> {
 		const dialog = AddRemoteDialog.new_for(this.installations!, maybe_remote)
 		dialog.present(this)
-		const [remote, installation] = await connect_async<[PopularRemote, Installation]>(
-			dialog,
-			"remote-confirmed",
-		)
+		const [remote, installation] = await dialog.$connect_async("remote-confirmed")
 		this.loading = true
 		try {
-			await installation.add_remote(remote)
+			await installation!.add_remote(remote!)
 		} catch (e) {
 			this.loading = false
 			SharedVars.main_window?.add_error_toast(

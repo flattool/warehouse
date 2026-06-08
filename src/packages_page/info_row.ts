@@ -6,11 +6,12 @@ import { SharedVars } from "../utils/shared_vars.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/info_row.ui" })
 export class InfoRow extends from(Adw.ActionRow, {
-	info: Property.string(),
-	always_visible: Property.bool(),
+	info: Property.readwrite.string(),
+	always_visible: Property.readwrite.bool(),
 	_copy_icon: Child<Gtk.Image>(),
 }) {
-	_ready(): void {
+	constructor(params?: typeof InfoRow.$params) {
+		super(params)
 		// This is done here so that it's the suffix added (making it the right-most)
 		this.add_suffix(this._copy_icon)
 	}

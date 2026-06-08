@@ -5,10 +5,11 @@ import Gtk from "gi://Gtk?version=4.0"
 import { Child, GClass, Property, from } from "../gobjectify/gobjectify.js"
 import { Installation } from "../flatpak.js"
 
-const Base = from(Adw.PreferencesGroup, {
-	selected_installation: Property.gobject(Installation),
-	has_user: Property.bool(),
-	has_system: Property.bool(),
+@GClass({ template: "resource:///io/github/flattool/Warehouse/widgets/installation_chooser.ui" })
+export class InstallationChooser extends from(Adw.PreferencesGroup, {
+	selected_installation: Property.readwrite.gobject(Installation),
+	has_user: Property.readwrite.bool(),
+	has_system: Property.readwrite.bool(),
 	_extra_installations: Child<Gio.ListStore<Installation>>(),
 	_user_check: Child<Gtk.CheckButton>(),
 	_system_check: Child<Gtk.CheckButton>(),
@@ -16,14 +17,11 @@ const Base = from(Adw.PreferencesGroup, {
 	_multi_check: Child<Gtk.CheckButton>(),
 	_single_extra_row: Child<Adw.ActionRow>(),
 	_multi_extra_row: Child<Adw.ComboRow>(),
-})
-
-@GClass({ template: "resource:///io/github/flattool/Warehouse/widgets/installation_chooser.ui" })
-export class InstallationChooser extends Base {
+}) {
 	#checks_to_insts = new Map<Gtk.CheckButton, () => Installation>()
 
 	constructor(
-		params: { installations?: Generator<Installation, void, undefined> } & ConstructorParameters<typeof Base>[0],
+		params: { installations?: Generator<Installation, void, undefined> } & typeof InstallationChooser.$params,
 	) {
 		const { installations, ...base_params } = params
 		super(base_params)

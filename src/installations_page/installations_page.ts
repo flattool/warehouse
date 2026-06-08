@@ -2,9 +2,9 @@ import Gtk from "gi://Gtk?version=4.0"
 import Adw from "gi://Adw?version=1"
 import Gio from "gi://Gio?version=2.0"
 
-import { GClass, Child, Property, from, connect_async } from "../gobjectify/gobjectify.js"
+import { GClass, Child, Property, from } from "../gobjectify/gobjectify.js"
 import { BasePage } from "../widgets/base_page.js"
-import { CustomInstallationFile, Installation, type CustomInstallationCreationConfig } from "../flatpak.js"
+import { CustomInstallationFile, Installation } from "../flatpak.js"
 import { InstallationRow } from "../installations_page/installation_row.js"
 import { CreateInstallationDialog } from "./create_installation_dialog.js"
 import { SharedVars } from "../utils/shared_vars.js"
@@ -17,7 +17,7 @@ import { iterate_list_model } from "../utils/helper_funcs.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/installations_page/installations_page.ui" })
 export class InstallationsPage extends from(BasePage, {
-	search_text: Property.string(),
+	search_text: Property.readwrite.string(),
 	_ui_installations: Child<Gio.ListModel<Installation>>(),
 	_installation_tag_sorter: Child<Gtk.CustomSorter>(),
 	_inst_group: Child<Adw.PreferencesGroup>(),
@@ -38,10 +38,10 @@ export class InstallationsPage extends from(BasePage, {
 		if (!this.installations) return
 		const dialog = new CreateInstallationDialog({ installations: iterate_list_model(this.installations) })
 		dialog.present(this)
-		const [config] = await connect_async<[CustomInstallationCreationConfig]>(dialog, "installation-confirmed")
+		const [config] = await dialog.$connect_async("installation-confirmed")
 		this.loading = true
 		try {
-			await CustomInstallationFile.create_installation(config)
+			await CustomInstallationFile.create_installation(config!)
 			SharedVars.main_window?.add_toast(_("Created installation"))
 		} catch (e) {
 			SharedVars.main_window?.add_error_toast(

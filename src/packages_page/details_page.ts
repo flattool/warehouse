@@ -59,23 +59,23 @@ let total_instances = 0
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/packages_page/details_page.ui" })
 export class DetailsPage extends from(Adw.NavigationPage, {
-	flatpak: Property.gobject(Package),
-	runtime: Property.gobject(Package),
-	show_title: Property.bool(),
-	has_user_data: Property.bool(),
-	loading_user_data: Property.bool({ default: true }),
-	flatseal_found: Property.bool(),
-	data_size: Property.string(),
+	flatpak: Property.readwrite.gobject(Package),
+	runtime: Property.readwrite.gobject(Package),
+	show_title: Property.readwrite.bool(),
+	has_user_data: Property.readwrite.bool(),
+	loading_user_data: Property.readwrite.bool(true),
+	flatseal_found: Property.readwrite.bool(),
+	data_size: Property.readwrite.string(),
 
 	// Extra CLI Info
-	info_license: Property.string(),
-	info_sdk: Property.string(),
-	info_collection: Property.string(),
-	info_commit: Property.string(),
-	info_parent: Property.string(),
-	info_subject: Property.string(),
-	info_date: Property.string(),
-	monitor: Property.gobject(Gio.FileMonitor),
+	info_license: Property.readwrite.string(),
+	info_sdk: Property.readwrite.string(),
+	info_collection: Property.readwrite.string(),
+	info_commit: Property.readwrite.string(),
+	info_parent: Property.readwrite.string(),
+	info_subject: Property.readwrite.string(),
+	info_date: Property.readwrite.string(),
+	monitor: Property.computed.gobject(Gio.FileMonitor),
 
 	_nav_view: Child<Adw.NavigationView>(),
 	_blur_target: Child<Adw.Bin>(),
@@ -97,7 +97,8 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 		v?.connect("changed", () => this.#on_monitor_changed())
 	}
 
-	_ready(): void {
+	constructor(params?: typeof DetailsPage.$params) {
+		super(params)
 		this._blur_target.add_css_class(this.#css_class_name)
 		Gtk.StyleContext.add_provider_for_display(
 			Gdk.Display.get_default()!,
