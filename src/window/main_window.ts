@@ -16,20 +16,17 @@ import "../installations_page/installations_page.js"
 @GClass({ template: "resource:///io/github/flattool/Warehouse/window/main_window.ui" })
 export class MainWindow extends from(Adw.ApplicationWindow, {
 	loading: Property.readwrite.bool(true),
-
 	_installations: Child<ArrayStore<Installation>>(),
-
 	_only_remotes_filter: Child<Gtk.CustomFilter>(),
 	_map_remotes_model: Child<Gtk.MapListModel>(),
-
 	_only_packages_filter: Child<Gtk.CustomFilter>(),
 	_map_packages_model: Child<Gtk.MapListModel>(),
-
 	_toast_overlay: Child<Adw.ToastOverlay>(),
 	_split_view: Child<Adw.OverlaySplitView>(),
 }) {
 	readonly #settings = new Gio.Settings({ schema_id: pkg.app_id })
 	#custom_inst_watcher: Gio.FileMonitor | null = null
+	#custom_inst_watcher_connection = 0
 	#notify_loading_connects: number[] = []
 	#installations_loading = new Set<string>()
 
@@ -55,14 +52,7 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 		this.#settings.bind("is-maximized", this, "maximized", Gio.SettingsBindFlags.DEFAULT)
 		this.#settings.bind("is-fullscreen", this, "fullscreened", Gio.SettingsBindFlags.DEFAULT)
 
-		this.#load_installations().then(() => {
-			if (!SharedVars.CUSTOM_INSTALLATIONS_DIR.query_exists(null)) return
-			this.#custom_inst_watcher = SharedVars.CUSTOM_INSTALLATIONS_DIR.monitor_directory(
-				Gio.FileMonitorFlags.NONE,
-				null,
-			)
-			this.#custom_inst_watcher.connect("changed", () => this.#refresh())
-		}).catch(log)
+		this.#load_installations().catch(log)
 	}
 
 	add_toast(title: string, params?: { button_label: string, on_clicked: () => void }): void {
@@ -121,23 +111,31 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 			]))
 		}
 		await Promise.all(to_await)
+
+		if (!SharedVars.CUSTOM_INSTALLATIONS_DIR.query_exists(null)) return
+		this.#custom_inst_watcher = SharedVars.CUSTOM_INSTALLATIONS_DIR.monitor_directory(
+			Gio.FileMonitorFlags.NONE,
+			null,
+		)
+		this.#custom_inst_watcher_connection = this.#custom_inst_watcher.$connect("changed", () => this.refresh())
 	}
 
 	@Debounce(200)
-	#refresh(): void {
+	refresh(): void {
+		print("refreshing...")
 		let i = 0
 		for (const inst of this._installations) {
 			inst.disconnect(this.#notify_loading_connects[i]!)
 			i += 1
 		}
 		this.#notify_loading_connects.length = 0
-		this.#load_installations().catch((err) => {
-			this.add_error_toast(_("Could not load packages"), `${err}`)
-		})
+		this.#custom_inst_watcher?.disconnect(this.#custom_inst_watcher_connection)
+		this.#custom_inst_watcher = null
+		this.#load_installations().catch((err) => this.add_error_toast(_("Could not load packages"), `${err}`))
 	}
 
 	protected _do_test(): void {
-		this.#refresh()
+		this.refresh()
 	}
 
 	protected _on_row_chosen(): void {
