@@ -1,5 +1,5 @@
 /*!
- * GObjectify 1.0.1 - A type-safe, declarative TypeScript library for writing & interacting with GObject classes in GNOME JavaScript (GJS)
+ * GObjectify 1.0.2 - A type-safe, declarative TypeScript library for writing & interacting with GObject classes in GNOME JavaScript (GJS)
  * https://github.com/flattool/gobjectify
  *
  * MIT License
@@ -427,7 +427,7 @@ function Notify(target, context) {
 }
 function OnSignal(signal_name) {
     return (target, context) => context.addInitializer(function () {
-        this.connect(signal_name, target.bind(this));
+        this.connect(signal_name, (_self, ...args) => target.apply(this, args));
     });
 }
 function OnSimpleAction(action_name) {

@@ -1,5 +1,5 @@
 /*!
- * GObjectify 1.0.1 - A type-safe, declarative TypeScript library for writing & interacting with GObject classes in GNOME JavaScript (GJS)
+ * GObjectify 1.0.2 - A type-safe, declarative TypeScript library for writing & interacting with GObject classes in GNOME JavaScript (GJS)
  * https://github.com/flattool/gobjectify
  *
  * MIT License
@@ -408,8 +408,8 @@ type SignalsOf<T extends GObject.Object> = {
     [K in keyof T["$signals"]]: T["$signals"][K];
 };
 type SignalOverrides<T extends GObject.Object, D> = {
-    $connect<const Self extends GObject.Object, S extends keyof ExtractSignals<D> | keyof SignalsOf<T>>(signal_name: S, callback: SignalsOf<T>[S] extends (...args: infer Args) => infer Ret ? (self: Self, ...args: Args) => Ret : S extends keyof ExtractSignals<D> ? ExtractSignals<D>[S] extends SignalDescriptor<infer Args, infer Ret> ? (self: Self, ...args: UnwrapSignalArgs<Args>) => UnwrapSignalArg<Ret> : never : never): number;
-    $connect_after<const Self extends GObject.Object, S extends keyof ExtractSignals<D> | keyof SignalsOf<T>>(signal_name: S, callback: SignalsOf<T>[S] extends (...args: infer Args) => infer Ret ? (self: Self, ...args: Args) => Ret : S extends keyof ExtractSignals<D> ? ExtractSignals<D>[S] extends SignalDescriptor<infer Args, infer Ret> ? (self: Self, ...args: UnwrapSignalArgs<Args>) => UnwrapSignalArg<Ret> : never : never): number;
+    $connect<const Self extends GObject.Object, S extends keyof ExtractSignals<D> | keyof SignalsOf<T>>(this: Self, signal_name: S, callback: SignalsOf<T>[S] extends (...args: infer Args) => infer Ret ? (self: Self, ...args: Args) => Ret : S extends keyof ExtractSignals<D> ? ExtractSignals<D>[S] extends SignalDescriptor<infer Args, infer Ret> ? (self: Self, ...args: UnwrapSignalArgs<Args>) => UnwrapSignalArg<Ret> : never : never): number;
+    $connect_after<const Self extends GObject.Object, S extends keyof ExtractSignals<D> | keyof SignalsOf<T>>(this: Self, signal_name: S, callback: SignalsOf<T>[S] extends (...args: infer Args) => infer Ret ? (self: Self, ...args: Args) => Ret : S extends keyof ExtractSignals<D> ? ExtractSignals<D>[S] extends SignalDescriptor<infer Args, infer Ret> ? (self: Self, ...args: UnwrapSignalArgs<Args>) => UnwrapSignalArg<Ret> : never : never): number;
     $emit<S extends keyof ExtractSignals<D> | keyof SignalsOf<T>>(signal_name: S, ...args: SignalsOf<T>[S] extends (...args: infer Args) => any ? Args : S extends keyof ExtractSignals<D> ? ExtractSignals<D>[S] extends SignalDescriptor<infer Args, any> ? UnwrapSignalArgs<Args> : never : never): void;
     /**
      * Connects to a GObject signal and returns a Promise that resolves the first time the signal is emitted.
