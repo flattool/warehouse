@@ -23,6 +23,9 @@ export class InstallationsPage extends from(BasePage, {
 	_inst_group: Child<Adw.PreferencesGroup>(),
 }) {
 	constructor(params?: typeof InstallationsPage.$params) {
+		params ??= {}
+		params.icon_name = "warehouse:raid-symbolic"
+		params.sidebar_title = _("Installations")
 		super(params)
 		this._installation_tag_sorter.set_sort_func((a: Installation, b: Installation) => {
 			if (a.location_tag === b.location_tag) return 0 // same

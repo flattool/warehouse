@@ -8,4 +8,11 @@ import "./data_subpage.js"
 import "../widgets/search_button.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_page.ui" })
-export class DataPage extends from(BasePage, {}) {}
+export class DataPage extends from(BasePage, {}) {
+	constructor(params?: typeof DataPage.$params) {
+		params ??= {}
+		params.icon_name = "warehouse:file-manager-symbolic"
+		params.sidebar_title = _("User Data")
+		super(params)
+	}
+}

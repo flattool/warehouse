@@ -29,8 +29,6 @@ $SelectionManager selection_manager {}
 
 template $PackagesPage: $BasePage {
 	title: _("Apps & Runtimes");
-	sidebar_title: _("Packages");
-	icon_name: "warehouse:flatpak-symbolic";
 
 	child: Adw.BreakpointBin {
 		width-request: 1;
@@ -81,7 +79,9 @@ template $PackagesPage: $BasePage {
 					content: Adw.StatusPage {
 						icon-name: "warehouse:error-symbolic";
 						title: _("No Packages Found");
-						description: _("Warehouse cannot see the list of installed packages or your system has no packages installed");
+						description: _(
+							"Warehouse cannot see the list of installed packages or your system has no packages installed"
+						);
 					};
 				};
 			}
@@ -169,7 +169,9 @@ template $PackagesPage: $BasePage {
 											child: ListBox apps_list_box {
 												row-selected => $_on_row_selected();
 												row-activated => $_on_row_activated();
-												selection-mode: bind $_get_selection_mode(template.in_selection_mode) as <SelectionMode>;
+												selection-mode: bind $_get_selection_mode(
+													template.in_selection_mode
+													) as <SelectionMode>;
 
 												styles [
 													"navigation-sidebar",
@@ -200,7 +202,9 @@ template $PackagesPage: $BasePage {
 											child: ListBox runtimes_list_box {
 												row-selected => $_on_row_selected();
 												row-activated => $_on_row_activated();
-												selection-mode: bind $_get_selection_mode(template.in_selection_mode) as <SelectionMode>;
+												selection-mode: bind $_get_selection_mode(
+													template.in_selection_mode
+													) as <SelectionMode>;
 
 												styles [
 													"navigation-sidebar",
@@ -277,7 +281,9 @@ template $PackagesPage: $BasePage {
 						hidden => $_on_right_page_hidden();
 
 						Stack right_stack {
-							visible-child-name: bind $_get_details_stack_page_name(template.show_filter_page) as <string>;
+							visible-child-name: bind $_get_details_stack_page_name(
+								template.show_filter_page
+								) as <string>;
 							transition-type: slide_left_right;
 
 							StackPage {

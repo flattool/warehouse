@@ -34,8 +34,6 @@ FilterListModel ui_installations {
 
 template $InstallationsPage: $BasePage {
 	title: _("Manage Installations");
-	sidebar_title: _("Installations");
-	icon_name: "warehouse:raid-symbolic";
 
 	child: Adw.ToolbarView {
 		[top]
@@ -73,7 +71,9 @@ template $InstallationsPage: $BasePage {
 				child: Adw.StatusPage {
 					icon-name: "warehouse:error-symbolic";
 					title: _("No Installations Found");
-					description: _("Warehouse cannot see the list of installations or your system has no installations");
+					description: _(
+						"Warehouse cannot see the list of installations or your system has no installations"
+					);
 
 					child: Button {
 						halign: center;

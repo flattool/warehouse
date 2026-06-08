@@ -47,8 +47,6 @@ FilterListModel disabled_list {
 
 template $RemotesPage: $BasePage {
 	title: _("Manage Remotes");
-	sidebar_title: _("Remotes");
-	icon_name: "warehouse:server-pick-symbolic";
 
 	child: Adw.ToolbarView {
 		[top]
@@ -83,7 +81,11 @@ template $RemotesPage: $BasePage {
 			is_loading: bind template.loading;
 
 			content: $SearchGroup {
-				no_results: bind $_get_no_results(template.search_text, sorted_remotes_list.n-items, searched_list.n-items) as <bool>;
+				no_results: bind $_get_no_results(
+					template.search_text,
+					sorted_remotes_list.n-items,
+					searched_list.n-items
+					) as <bool>;
 
 				content: Adw.PreferencesPage {
 					Adw.PreferencesGroup current_group {
@@ -141,7 +143,9 @@ template $RemotesPage: $BasePage {
 								}
 
 								Label {
-									label: _("Warehouse cannot see the current remotes or your system has no remotes added");
+									label: _(
+										"Warehouse cannot see the current remotes or your system has no remotes added"
+									);
 									margin-start: 16;
 									margin-end: 16;
 									margin-bottom: 8;
@@ -157,7 +161,11 @@ template $RemotesPage: $BasePage {
 						}
 
 						Adw.ActionRow none_enabled_row {
-							visible: bind $_show_none_enabled_row(template.show_disabled, disabled_list.n-items, sorted_remotes_list.n-items) as <bool>;
+							visible: bind $_show_none_enabled_row(
+								template.show_disabled,
+								disabled_list.n-items,
+								sorted_remotes_list.n-items
+								) as <bool>;
 
 							child: Box {
 								spacing: 6;

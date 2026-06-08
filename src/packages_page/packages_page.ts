@@ -68,6 +68,9 @@ export class PackagesPage extends from(BasePage, {
 	readonly #css_provider = new Gtk.CssProvider()
 
 	constructor(params?: typeof PackagesPage.$params) {
+		params ??= {}
+		params.icon_name = "warehouse:flatpak-symbolic"
+		params.sidebar_title = _("Packages")
 		super(params)
 		Gtk.StyleContext.add_provider_for_display(
 			Gdk.Display.get_default()!,

@@ -28,6 +28,9 @@ export class RemotesPage extends from(BasePage, {
 	_none_enabled_row: Child<Adw.ActionRow>(),
 }) {
 	constructor(params?: typeof RemotesPage.$params) {
+		params ??= {}
+		params.icon_name = "warehouse:server-pick-symbolic"
+		params.sidebar_title = _("Remotes")
 		super(params)
 		for (const remote of popular_remotes) {
 			const row = new Adw.ActionRow({
