@@ -22,7 +22,8 @@ export class InstallationsPage extends from(BasePage, {
 	_installation_tag_sorter: Child<Gtk.CustomSorter>(),
 	_inst_group: Child<Adw.PreferencesGroup>(),
 }) {
-	_ready(): void {
+	constructor(params?: typeof InstallationsPage.$params) {
+		super(params)
 		this._installation_tag_sorter.set_sort_func((a: Installation, b: Installation) => {
 			if (a.location_tag === b.location_tag) return 0 // same
 			if (a.location_tag === "other") return 1 // a should come after
