@@ -121,7 +121,7 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 	}
 
 	@Debounce(200)
-	refresh(): void {
+	async refresh(): Promise<void> {
 		print("refreshing...")
 		let i = 0
 		for (const inst of this._installations) {
@@ -131,7 +131,11 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 		this.#notify_loading_connects.length = 0
 		this.#custom_inst_watcher?.disconnect(this.#custom_inst_watcher_connection)
 		this.#custom_inst_watcher = null
-		this.#load_installations().catch((err) => this.add_error_toast(_("Could not load packages"), `${err}`))
+		try {
+			await this.#load_installations()
+		} catch (err) {
+			this.add_error_toast(_("Could not load packages"), `${err}`)
+		}
 	}
 
 	protected _do_test(): void {

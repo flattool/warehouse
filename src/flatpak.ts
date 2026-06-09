@@ -6,8 +6,7 @@ import Gio from "gi://Gio?version=2.0"
 import Gdk from "gi://Gdk?version=4.0"
 import Gtk from "gi://Gtk?version=4.0"
 
-import { GClass, Property, next_idle, from, Debounce, dedent } from "./gobjectify/gobjectify.js"
-// import { run_command_async, run_command_async_pkexec_on_fail } from "./utils/helper_funcs.js"
+import { GClass, Property, next_idle, from, Debounce, dedent, timeout_ms } from "./gobjectify/gobjectify.js"
 import { LineProcess } from "./utils/cli.js"
 import { SharedVars } from "./utils/shared_vars.js"
 import { ArrayStore } from "./utils/array_store.js"
@@ -79,7 +78,8 @@ export class CustomInstallationFile {
 			"-c",
 			`mkdir -p '${host_custom_dir}' && mv '${temp_path}' '${dest_path}'`,
 		], { run_on_host: true })
-		SharedVars.main_window?.refresh()
+		await timeout_ms(200)
+		await SharedVars.main_window?.refresh()
 	}
 
 	readonly path: string
@@ -117,6 +117,8 @@ export class CustomInstallationFile {
 			sub_command += `&& rm -rf ${GLib.shell_quote(remove_host_prefix(inst_path))}`
 		}
 		await LineProcess.run(["pkexec", "sh", "-c", sub_command], { run_on_host: true })
+		await timeout_ms(200)
+		await SharedVars.main_window?.refresh()
 	}
 
 	async #get_installations(on_each_inst?: (inst: Installation) => void): Promise<readonly Installation[]> {
