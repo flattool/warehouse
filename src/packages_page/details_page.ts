@@ -128,8 +128,15 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 		this.loading_user_data = true
 		let info: Record<string, string> = {}
 		if (this.flatpak) {
-			info = await get_cli_info(this.flatpak)
-			this._image.set_from_file(this.flatpak.icon_path)
+			try {
+				info = await get_cli_info(this.flatpak)
+				this._image.set_from_file(this.flatpak.icon_path)
+			} catch (e) {
+				SharedVars.main_window?.add_error_toast(
+					_("Could not show details"),
+					e instanceof Error ? e.message : `${e}`,
+				)
+			}
 		}
 		this.info_license = info["license"] || ""
 		this.info_sdk = info["sdk"] || ""
