@@ -7,6 +7,7 @@ import { GClass, Child, Property, from, Debounce } from "../gobjectify/gobjectif
 import { Installation, Package, Remote, get_installations } from "../flatpak.js"
 import { SharedVars } from "../utils/shared_vars.js"
 import { ArrayStore } from "../utils/array_store.js"
+import { BasePage } from "../widgets/base_page.js"
 
 import "../packages_page/packages_page.js"
 import "../remotes_page/remotes_page.js"
@@ -23,6 +24,7 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 	_map_packages_model: Child<Gtk.MapListModel>(),
 	_toast_overlay: Child<Adw.ToastOverlay>(),
 	_split_view: Child<Adw.OverlaySplitView>(),
+	_view_stack: Child<Adw.ViewStack>(),
 }) {
 	readonly #settings = new Gio.Settings({ schema_id: pkg.app_id })
 	#custom_inst_watcher: Gio.FileMonitor | null = null
@@ -98,26 +100,39 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 		}
 	}
 
-	async #load_installations(): Promise<void> {
-		await get_installations(this._installations)
-		const to_await: Promise<unknown>[] = []
-		for (const inst of this._installations) {
-			this.#notify_loading_connects.push(
-				inst.connect("notify::loading", () => this.#on_inst_loading_changed(inst)),
-			)
-			to_await.push(Promise.all([
-				inst.load_packages(),
-				inst.load_remotes(),
-			]))
+	#set_pages_loading(is_loading: boolean): void {
+		for (const page of this._view_stack) {
+			if (!(page instanceof BasePage)) continue
+			page.loading = is_loading
 		}
-		await Promise.all(to_await)
+	}
 
-		if (!SharedVars.CUSTOM_INSTALLATIONS_DIR.query_exists(null)) return
-		this.#custom_inst_watcher = SharedVars.CUSTOM_INSTALLATIONS_DIR.monitor_directory(
-			Gio.FileMonitorFlags.NONE,
-			null,
-		)
-		this.#custom_inst_watcher_connection = this.#custom_inst_watcher.$connect("changed", () => this.refresh())
+	async #load_installations(): Promise<void> {
+		this.#set_pages_loading(true)
+		await get_installations(this._installations)
+		try {
+			const to_await: Promise<unknown>[] = []
+			for (const inst of this._installations) {
+				this.#notify_loading_connects.push(
+					inst.connect("notify::loading", () => this.#on_inst_loading_changed(inst)),
+				)
+				to_await.push(Promise.all([
+					inst.load_packages(),
+					inst.load_remotes(),
+				]))
+			}
+			await Promise.all(to_await)
+
+			if (!SharedVars.CUSTOM_INSTALLATIONS_DIR.query_exists(null)) return
+			this.#custom_inst_watcher = SharedVars.CUSTOM_INSTALLATIONS_DIR.monitor_directory(
+				Gio.FileMonitorFlags.NONE,
+				null,
+			)
+			this.#custom_inst_watcher_connection = this.#custom_inst_watcher.$connect("changed", () => this.refresh())
+		} catch (err) {
+			this.add_error_toast(_("Could not load packages"), `${err}`)
+		}
+		this.#set_pages_loading(false)
 	}
 
 	@Debounce(200)
@@ -131,11 +146,7 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 		this.#notify_loading_connects.length = 0
 		this.#custom_inst_watcher?.disconnect(this.#custom_inst_watcher_connection)
 		this.#custom_inst_watcher = null
-		try {
-			await this.#load_installations()
-		} catch (err) {
-			this.add_error_toast(_("Could not load packages"), `${err}`)
-		}
+		await this.#load_installations()
 	}
 
 	protected _do_test(): void {
