@@ -52,8 +52,8 @@ template $DataBox: Box {
 		Label size_label {
 			halign: start;
 			hexpand: true;
-			label: bind template.size;
-			visible: bind $_is_size_ready(template.size);
+			label: bind template.readable_size;
+			visible: bind $_is_size_ready(template.readable_size);
 		}
 
 		Box {

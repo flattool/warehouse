@@ -2,7 +2,7 @@ import Gtk from "gi://Gtk?version=4.0"
 import Gio from "gi://Gio?version=2.0"
 
 import { GClass, WatchProp, Property, from, Child, Signal, next_idle, PostInit } from "../gobjectify/gobjectify.js"
-import { get_readable_file_size } from "../utils/helper_funcs.js"
+import { get_file_size_bytes, get_readable_byte_size, get_readable_file_size } from "../utils/helper_funcs.js"
 
 // class OldParent {
 // 	constructor(
@@ -20,8 +20,9 @@ export class DataBox extends from(Gtk.Box, {
 	is_selected: Property.readwrite.bool(),
 	app_id: Property.readonly.string(),
 	folder: Property.readonly.gobject(Gio.File),
-	size: Property.readwrite.string(),
+	readable_size: Property.readwrite.string(),
 	is_warehouse: Property.readwrite.bool(),
+	size_reported: Signal([Number]),
 	_icon: Child<Gtk.Image>(),
 	_select_button: Child<Gtk.CheckButton>(),
 }) {
@@ -49,7 +50,9 @@ export class DataBox extends from(Gtk.Box, {
 		const path = this.folder?.get_path()
 		if (!path) return
 		try {
-			this.size = "~ " + await get_readable_file_size(path)
+			const size = await get_file_size_bytes(path)
+			this.readable_size = "~ " + get_readable_byte_size(size)
+			this.$emit("size-reported", size)
 		} catch (e) {
 			print("Failed to get readable size:", e)
 		}
@@ -88,6 +91,6 @@ export class DataBox extends from(Gtk.Box, {
 	}
 
 	protected _is_size_ready(): boolean {
-		return Boolean(this.size)
+		return Boolean(this.readable_size)
 	}
 }

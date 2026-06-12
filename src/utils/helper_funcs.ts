@@ -79,16 +79,19 @@ export async function get_file_size_bytes(path: string): Promise<number> {
 	return Number.parseFloat(size)
 }
 
-export async function get_readable_file_size(path: string): Promise<string> {
-	let size: number = await get_file_size_bytes(path)
+export function get_readable_byte_size(bytes: number): string {
 	const units: string[] = ["B", "KB", "MB", "GB", "TB"]
 	const base = 1000
 	let index: number = 0
-	while (size >= base && index < units.length - 1) {
-		size /= base
+	while (bytes >= base && index < units.length - 1) {
+		bytes /= base
 		index += 1
 	}
-	return `${size.toFixed(2)} ${units[index]}`
+	return `${bytes.toFixed(2)} ${units[index]}`
+}
+
+export async function get_readable_file_size(path: string): Promise<string> {
+	return get_readable_byte_size(await get_file_size_bytes(path))
 }
 
 export async function is_dbus_name_present(bus_name: string): Promise<boolean> {

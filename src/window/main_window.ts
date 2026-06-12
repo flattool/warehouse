@@ -100,15 +100,8 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 		}
 	}
 
-	#set_pages_loading(is_loading: boolean): void {
-		for (const page of this._view_stack) {
-			if (!(page instanceof BasePage)) continue
-			page.loading = is_loading
-		}
-	}
-
 	async #load_installations(): Promise<void> {
-		this.#set_pages_loading(true)
+		this.loading = true
 		await get_installations(this._installations)
 		try {
 			const to_await: Promise<unknown>[] = []
@@ -132,7 +125,7 @@ export class MainWindow extends from(Adw.ApplicationWindow, {
 		} catch (err) {
 			this.add_error_toast(_("Could not load packages"), `${err}`)
 		}
-		this.#set_pages_loading(false)
+		this.loading = false
 	}
 
 	@Debounce(200)

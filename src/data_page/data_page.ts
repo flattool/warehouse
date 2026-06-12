@@ -19,6 +19,7 @@ export class DataPage extends from(BasePage, {
 	selection_mode_enabled: Property.readwrite.bool(),
 	data_dir: Property.readonly.gobject(Gio.File),
 	request_selection_mode: SimpleAction(),
+	_files: Child<FileList>(),
 	_active_data: Child<Gio.ListModel<Gio.File>>(),
 	_active_filter: Child<Gtk.CustomFilter>(),
 	_leftover_data: Child<Gio.ListModel<Gio.File>>(),
@@ -59,6 +60,7 @@ export class DataPage extends from(BasePage, {
 	#on_loading_changed(): void {
 		if (this.loading) {
 			this.#seen_paths.clear()
+			this._files.refresh()
 		}
 		this.selection_mode_enabled = false
 	}

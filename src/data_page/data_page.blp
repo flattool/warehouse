@@ -64,6 +64,7 @@ template $DataPage: $BasePage {
 				child: $DataSubpage current {
 					selection_mode_enabled: bind template.selection_mode_enabled;
 					folders: active_data;
+					loading: bind template.loading;
 				};
 			}
 
@@ -75,6 +76,7 @@ template $DataPage: $BasePage {
 					show_leftover: true;
 					selection_mode_enabled: bind template.selection_mode_enabled;
 					folders: leftover_data;
+					loading: bind template.loading;
 				};
 			}
 		};

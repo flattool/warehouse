@@ -9,13 +9,17 @@ Gio._promisify(Gio.File.prototype, "enumerate_children_async")
 @GClass()
 export class FileList extends from(GObject.Object, {
 	directory: Property.readwrite.gobject(Gio.File),
-	change_started: Signal(),
 }, Gio.ListModel) implements Gio.ListModel.Interface {
 	get n_items(): number { return this.vfunc_get_n_items() }
 
 	#items: Gio.File[] = []
 	#monitor: Gio.FileMonitor | undefined
 	#connection: number | undefined
+
+	@Debounce(200)
+	refresh(): void {
+		this.#refresh_items().catch(console.error.bind(console))
+	}
 
 	@WatchProp("directory")
 	#set_up_monitor(): void {
@@ -24,23 +28,8 @@ export class FileList extends from(GObject.Object, {
 		}
 		this.#monitor?.cancel()
 		this.#monitor = this.directory?.monitor_directory(Gio.FileMonitorFlags.NONE, null)
-		this.#connection = this.#monitor?.$connect("changed", () => this.#on_monitor_notice())
-		this.#on_monitor_notice()
-	}
-
-	#on_monitor_notice(): void {
-		this.#emit_start_changing()
-		this.#debounced_refresh()
-	}
-
-	@Debounce(200, { trigger: "leading" })
-	#emit_start_changing(): void {
-		this.$emit("change-started")
-	}
-
-	@Debounce(200)
-	#debounced_refresh(): void {
-		this.#refresh_items().catch(console.error.bind(console))
+		this.#connection = this.#monitor?.$connect("changed", () => this.refresh())
+		this.refresh()
 	}
 
 	async #refresh_items(): Promise<void> {
