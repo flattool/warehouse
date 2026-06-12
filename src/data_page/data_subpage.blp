@@ -32,11 +32,12 @@ template $DataSubpage: Adw.BreakpointBin {
 
 				Label size_label {
 					label: bind template.readable_size;
+					justify: right;
 				}
 			}
 		}
 
-		ScrolledWindow {
+		ScrolledWindow scrolled_window {
 			vexpand: true;
 
 			child: Box {
@@ -58,6 +59,25 @@ template $DataSubpage: Adw.BreakpointBin {
 					styles [
 						"card-flowbox",
 					]
+				}
+			};
+		}
+
+		Revealer {
+			reveal-child: bind template.selection_mode_enabled;
+			transition-type: slide_up;
+
+			child: Box {
+				styles [
+					"toolbar",
+				]
+
+				Button {
+					label: _("One");
+				}
+
+				Button {
+					label: _("Two");
 				}
 			};
 		}

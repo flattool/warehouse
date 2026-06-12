@@ -20,64 +20,88 @@ FilterListModel leftover_data {
 template $DataPage: $BasePage {
 	title: _("Manage User Data");
 
-	child: Adw.ToolbarView {
-		[top]
-		Adw.HeaderBar {
-			[start]
-			$SidebarButton {}
+	child: Adw.BreakpointBin {
+		width-request: 1;
+		height-request: 1;
 
-			[start]
-			$SearchButton search_button {
-				search_bar: search_bar;
-			}
+		Adw.Breakpoint {
+			condition ("max-width: 550")
 
-			title-widget: Adw.InlineViewSwitcher {
-				stack: stack;
-				display-mode: both;
-			};
-
-			[end]
-			$SelectButton {
-				tooltip-text: _("Select App Data");
-				active: bind template.selection_mode_enabled bidirectional;
+			setters {
+				header_bar.title-widget: null;
+				bottom_switcher_bar.revealed: true;
 			}
 		}
 
-		[top]
-		Adw.Clamp {
-			child: SearchBar search_bar {
-				search-mode-enabled: bind search_button.active bidirectional;
-				key-capture-widget: template;
+		child: Adw.ToolbarView {
+			[top]
+			Adw.HeaderBar header_bar {
+				[start]
+				$SidebarButton {}
 
-				child: SearchEntry {
-					hexpand: true;
-					placeholder-text: _("Search Data");
+				[start]
+				$SearchButton search_button {
+					search_bar: search_bar;
+				}
+
+				title-widget: Adw.InlineViewSwitcher primary_switcher {
+					stack: stack;
+					display-mode: both;
 				};
-			};
-		}
 
-		content: Adw.ViewStack stack {
-			Adw.ViewStackPage {
-				title: _("Active Data");
-				icon-name: "warehouse:file-manager-symbolic";
+				[end]
+				$SelectButton {
+					tooltip-text: _("Select App Data");
+					active: bind template.selection_mode_enabled bidirectional;
+				}
+			}
 
-				child: $DataSubpage current {
-					selection_mode_enabled: bind template.selection_mode_enabled;
-					folders: active_data;
-					loading: bind template.loading;
+			[top]
+			Adw.Clamp {
+				child: SearchBar search_bar {
+					search-mode-enabled: bind search_button.active bidirectional;
+					key-capture-widget: template;
+
+					child: SearchEntry {
+						hexpand: true;
+						placeholder-text: _("Search Data");
+					};
 				};
 			}
 
-			Adw.ViewStackPage {
-				title: _("Leftover Data");
-				icon-name: "warehouse:folder-templates-symbolic";
+			content: Adw.ViewStack stack {
+				Adw.ViewStackPage {
+					title: _("Active Data");
+					icon-name: "warehouse:file-manager-symbolic";
 
-				child: $DataSubpage leftover {
-					show_leftover: true;
-					selection_mode_enabled: bind template.selection_mode_enabled;
-					folders: leftover_data;
-					loading: bind template.loading;
-				};
+					child: $DataSubpage current {
+						selection_mode_enabled: bind template.selection_mode_enabled;
+						folders: active_data;
+						loading: bind template.loading;
+					};
+				}
+
+				Adw.ViewStackPage {
+					title: _("Leftover Data");
+					icon-name: "warehouse:folder-templates-symbolic";
+
+					child: $DataSubpage leftover {
+						show_leftover: true;
+						selection_mode_enabled: bind template.selection_mode_enabled;
+						folders: leftover_data;
+						loading: bind template.loading;
+					};
+				}
+			};
+
+			[bottom]
+			ActionBar bottom_switcher_bar {
+				revealed: false;
+
+				[center]
+				Adw.ViewSwitcher {
+					stack: stack;
+				}
 			}
 		};
 	};

@@ -39,9 +39,10 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 	size: Property.readwrite.double(),
 	readable_size: Property.readwrite.string(),
 	_spinner: Child<Adw.Spinner>(),
+	_scrolled_window: Child<Gtk.ScrolledWindow>(),
 	_flow_box: Child<Gtk.FlowBox>(),
 }) {
-	#size_recorder = new SizeRecorder(this.#size_callback.bind(this))
+	readonly #size_recorder = new SizeRecorder(this.#size_callback.bind(this))
 
 	constructor(params?: typeof DataSubpage.$params) {
 		super(params)
@@ -57,7 +58,6 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 
 	#size_callback(): void {
 		if (this.#size_recorder.length !== (this.folders?.get_n_items() ?? 0)) return
-		print("size callback:", Date.now())
 		this._spinner.visible = false
 		this.size = this.#size_recorder.get_total()
 		this.readable_size = "~ " + get_readable_byte_size(this.size)
@@ -66,7 +66,6 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 	@WatchProp("loading")
 	#on_loading_changed(): void {
 		if (!this.loading) return
-		print("watch loading:", Date.now())
 		this.#size_recorder.reset()
 		this._spinner.visible = true
 		this.readable_size = _("Loading File Size...")
@@ -74,6 +73,11 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 
 	@WatchProp("selection_mode_enabled")
 	#on_selection_mode_changed(): void {
+		if (this.selection_mode_enabled) {
+			this._scrolled_window.add_css_class("undershoot-bottom")
+		} else {
+			this._scrolled_window.remove_css_class("undershoot-bottom")
+		}
 		for (const child of this._flow_box) {
 			if (!(child instanceof Gtk.FlowBoxChild) || !(child.child instanceof DataBox)) continue
 			child.child.selection_mode_enabled = this.selection_mode_enabled
