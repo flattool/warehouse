@@ -10,14 +10,13 @@ template $DataSubpage: Adw.BreakpointBin {
 			margin-end: 24;
 			margin-bottom: 9;
 			spacing: 6;
-			// halign: fill;
-			// hexpand: true;
+
 			Label title {
 				label: bind $_get_title(template.show_leftover) as <string>;
 				halign: start;
 				hexpand: true;
 				wrap: true;
-				// justify: fill;
+
 				styles [
 					"title-1",
 				]
@@ -38,6 +37,8 @@ template $DataSubpage: Adw.BreakpointBin {
 		}
 
 		ScrolledWindow {
+			vexpand: true;
+
 			child: Box {
 				orientation: vertical;
 				margin-start: 12;
@@ -49,7 +50,15 @@ template $DataSubpage: Adw.BreakpointBin {
 					orientation: horizontal;
 				}
 
-				Adw.WrapBox {}
+				FlowBox flow_box {
+					selection-mode: none;
+					column-spacing: 9;
+					row-spacing: 9;
+
+					styles [
+						"card-flowbox",
+					]
+				}
 			};
 		}
 	};

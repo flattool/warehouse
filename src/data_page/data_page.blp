@@ -1,6 +1,22 @@
 using Gtk 4.0;
 using Adw 1;
 
+$FileList files {
+	directory: bind template.data_dir;
+}
+
+FilterListModel active_data {
+	filter: CustomFilter active_filter {};
+
+	model: files;
+}
+
+FilterListModel leftover_data {
+	filter: CustomFilter leftover_filter {};
+
+	model: files;
+}
+
 template $DataPage: $BasePage {
 	title: _("Manage User Data");
 
@@ -19,6 +35,12 @@ template $DataPage: $BasePage {
 				stack: stack;
 				display-mode: both;
 			};
+
+			[end]
+			$SelectButton {
+				tooltip-text: _("Select App Data");
+				active: bind template.selection_mode_enabled bidirectional;
+			}
 		}
 
 		[top]
@@ -39,15 +61,20 @@ template $DataPage: $BasePage {
 				title: _("Active Data");
 				icon-name: "warehouse:file-manager-symbolic";
 
-				child: $DataSubpage {};
+				child: $DataSubpage current {
+					selection_mode_enabled: bind template.selection_mode_enabled;
+					folders: active_data;
+				};
 			}
 
 			Adw.ViewStackPage {
 				title: _("Leftover Data");
 				icon-name: "warehouse:folder-templates-symbolic";
 
-				child: $DataSubpage {
+				child: $DataSubpage leftover {
 					show_leftover: true;
+					selection_mode_enabled: bind template.selection_mode_enabled;
+					folders: leftover_data;
 				};
 			}
 		};

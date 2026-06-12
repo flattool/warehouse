@@ -23,3 +23,8 @@
 .dropdown-button.expanded image {
 	transform: none;
 }
+
+.card-flowbox flowboxchild {
+	color: rgba(0, 0, 0, 0);
+	padding: 0;
+}
