@@ -193,6 +193,7 @@ export class Installation extends from(GObject.Object, {
 	readonly packages = new ArrayStore<Package>({})
 	readonly icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default() ?? new Gdk.Display())
 
+	readonly #package_id_set = new Set<string>()
 	readonly #items_loading = new Set<"remotes" | "packages">()
 	#monitor?: Gio.FileMonitor
 
@@ -213,6 +214,10 @@ export class Installation extends from(GObject.Object, {
 		} else {
 			print(`Remote: '${this.title}' - '${this.name}' does not have a 'repo' directory!`)
 		}
+	}
+
+	has_package_by_id(id: string): boolean {
+		return this.#package_id_set.has(id)
 	}
 
 	async load_remotes(): Promise<void> {
@@ -243,7 +248,8 @@ export class Installation extends from(GObject.Object, {
 			},
 		})
 		this.pinned_refs = pinned
-		await get_packages(this, this.packages)
+		this.#package_id_set.clear()
+		await get_packages(this, this.packages, (pack) => this.#package_id_set.add(pack.application))
 		this.#stop_loading("packages")
 	}
 
@@ -457,6 +463,7 @@ export class Package extends from(GObject.Object, {
 async function get_packages(
 	installation: Installation,
 	list: ArrayStore<Package>,
+	foreach?: (pack: Package) => void,
 ): Promise<void> {
 	const columns: string = PACK_LIST_COLUMN_ITEMS.columns.join(",")
 	const paks: Package[] = []
@@ -488,6 +495,7 @@ async function get_packages(
 			options: info[PACK_LIST_COLUMN_ITEMS.index_of("options")] ?? "",
 			installation,
 		})
+		foreach?.(pack)
 		paks.push(pack)
 	}
 	await process.run()
