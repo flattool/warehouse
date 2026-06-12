@@ -1,0 +1,15 @@
+using Gtk 4.0;
+
+template $SelectButton: ToggleButton {
+	icon-name: "warehouse:selection-mode-symbolic";
+	active: bind template.selection_mode_enabled bidirectional;
+
+	ShortcutController {
+		scope: managed;
+
+		Shortcut {
+			trigger: bind $_get_trigger(template.keyboard_shortcut) as <Gtk.ShortcutTrigger>;
+			action: "signal(toggle-selection-mode)";
+		}
+	}
+}
