@@ -1,6 +1,7 @@
 .DS_Store
 *.flatpak
 .flatpak-builder
+.direnv
 __pycache__
 _build
 node_modules
