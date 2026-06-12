@@ -127,10 +127,11 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 		this.has_user_data = false
 		this.loading_user_data = true
 		let info: Record<string, string> = {}
-		if (this.flatpak) {
+		const pack = this.flatpak
+		if (pack) {
 			try {
-				info = await get_cli_info(this.flatpak)
-				this._image.set_from_file(this.flatpak.icon_path)
+				info = await get_cli_info(pack)
+				this._image.set_from_file(pack.icon_path)
 			} catch (e) {
 				SharedVars.main_window?.add_error_toast(
 					_("Could not show details"),
@@ -145,10 +146,10 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 		this.info_parent = info["parent"] || ""
 		this.info_subject = info["subject"] || ""
 		this.info_date = info["date"] || ""
-		if (!this.flatpak || !this.flatpak.is_app) return
-		this.has_user_data = this.flatpak.data_dir?.query_exists(null) ?? false
+		if (!pack || !pack.is_app) return
+		this.has_user_data = pack.data_dir?.query_exists(null) ?? false
 		if (this.has_user_data) {
-			this.data_size = await get_readable_file_size(this.flatpak.data_dir?.get_path() ?? "")
+			this.data_size = await get_readable_file_size(pack.data_dir?.get_path() ?? "")
 		} else {
 			this.data_size = _("No user data found")
 		}
@@ -158,7 +159,7 @@ export class DetailsPage extends from(Adw.NavigationPage, {
 		for (const inst of installations) {
 			for (const pack of inst.packages) {
 				await next_idle()
-				if (pack.app_ref === this.flatpak.runtime) {
+				if (pack.app_ref === pack.runtime) {
 					this.runtime = pack
 				}
 			}
