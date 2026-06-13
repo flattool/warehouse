@@ -1,105 +1,115 @@
 using Gtk 4.0;
+using Adw 1;
 
-template $DataBox: Box {
-	orientation: vertical;
-	spacing: 12;
+template $DataBox: Adw.Bin {
+	overflow: hidden;
 	is_selected: bind select_button.active bidirectional;
 
 	styles [
 		"card",
 	]
 
-	Box {
-		margin-start: 12;
-		margin-end: 12;
-		margin-top: 12;
-		spacing: 12;
-
-		Image icon {
-			icon-size: large;
-		}
-
-		Box {
+	child: Overlay overlay {
+		[overlay]
+		Box content_box {
 			orientation: vertical;
+			spacing: 12;
 
-			Label {
-				halign: start;
-				label: bind template.title;
+			Box {
+				margin-start: 12;
+				margin-end: 12;
+				margin-top: 12;
+				spacing: 12;
 
-				styles [
-					"title-4",
-				]
+				Image icon {
+					icon-size: large;
+				}
+
+				Box {
+					orientation: vertical;
+
+					Label {
+						halign: start;
+						label: bind template.title;
+						ellipsize: middle;
+
+						styles [
+							"title-4",
+						]
+					}
+
+					Label {
+						halign: start;
+						label: bind template.subtitle;
+						ellipsize: middle;
+					}
+				}
 			}
 
-			Label {
-				halign: start;
-				label: _("io.github.flattool.Warehouse");
+			Box {
+				margin-start: 12;
+				margin-end: 6;
+				margin-bottom: 6;
+				spacing: 6;
+
+				Spinner {
+					spinning: true;
+					visible: bind size_label.visible inverted;
+				}
+
+				Label size_label {
+					halign: start;
+					hexpand: true;
+					label: bind template.readable_size;
+					visible: bind $_is_size_ready(template.readable_size);
+				}
+
+				Box {
+					spacing: 6;
+
+					Button {
+						icon-name: "warehouse:copy-symbolic";
+						tooltip-text: _("Copy Path");
+						visible: bind template.selection_mode_enabled inverted;
+
+						styles [
+							"flat",
+							"circular",
+						]
+					}
+
+					Button {
+						icon-name: "warehouse:folder-open-symbolic";
+						tooltip-text: _("Open Data Folder");
+						visible: bind template.selection_mode_enabled inverted;
+
+						styles [
+							"flat",
+							"circular",
+						]
+					}
+
+					Button {
+						icon-name: "warehouse:user-trash-symbolic";
+						tooltip-text: _("Trash Data");
+						visible: bind template.selection_mode_enabled inverted;
+						sensitive: bind template.is_warehouse inverted;
+
+						styles [
+							"flat",
+							"circular",
+						]
+					}
+
+					CheckButton select_button {
+						visible: bind template.selection_mode_enabled;
+
+						styles [
+							"selection-mode",
+						]
+					}
+				}
 			}
 		}
-	}
-
-	Box {
-		margin-start: 12;
-		margin-end: 6;
-		margin-bottom: 6;
-		spacing: 6;
-
-		Spinner {
-			spinning: true;
-			visible: bind size_label.visible inverted;
-		}
-
-		Label size_label {
-			halign: start;
-			hexpand: true;
-			label: bind template.readable_size;
-			visible: bind $_is_size_ready(template.readable_size);
-		}
-
-		Box {
-			spacing: 6;
-
-			Button {
-				icon-name: "warehouse:copy-symbolic";
-				tooltip-text: _("Copy Path");
-				visible: bind template.selection_mode_enabled inverted;
-
-				styles [
-					"flat",
-					"circular",
-				]
-			}
-
-			Button {
-				icon-name: "warehouse:folder-open-symbolic";
-				tooltip-text: _("Open Data Folder");
-				visible: bind template.selection_mode_enabled inverted;
-
-				styles [
-					"flat",
-					"circular",
-				]
-			}
-
-			Button {
-				icon-name: "warehouse:user-trash-symbolic";
-				tooltip-text: _("Trash Data");
-				visible: bind template.selection_mode_enabled inverted;
-				sensitive: bind template.is_warehouse inverted;
-
-				styles [
-					"flat",
-					"circular",
-				]
-			}
-
-			CheckButton select_button {
-				visible: bind template.selection_mode_enabled;
-
-				styles [
-					"selection-mode",
-				]
-			}
-		}
-	}
+	};
 }

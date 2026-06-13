@@ -2,6 +2,19 @@ using Gtk 4.0;
 using Adw 1;
 
 template $DataSubpage: Adw.BreakpointBin {
+	width-request: 1;
+	height-request: 1;
+
+	Adw.Breakpoint {
+		condition ("max-width: 550")
+
+		setters {
+			header_box.orientation: vertical;
+			size_label.justify: left;
+			selection_label.justify: left;
+		}
+	}
+
 	child: Box {
 		orientation: vertical;
 
@@ -31,8 +44,23 @@ template $DataSubpage: Adw.BreakpointBin {
 				}
 
 				Label size_label {
+					visible: bind template.selection_mode_enabled inverted;
 					label: bind template.readable_size;
 					justify: right;
+
+					styles [
+						"title-4",
+					]
+				}
+
+				Label selection_label {
+					visible: bind template.selection_mode_enabled;
+					label: bind template.selection_text;
+					justify: right;
+
+					styles [
+						"title-4",
+					]
 				}
 			}
 		}
@@ -55,6 +83,7 @@ template $DataSubpage: Adw.BreakpointBin {
 					selection-mode: none;
 					column-spacing: 9;
 					row-spacing: 9;
+					homogeneous: true;
 
 					styles [
 						"card-flowbox",

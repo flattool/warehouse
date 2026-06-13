@@ -1,48 +1,65 @@
 import Gtk from "gi://Gtk?version=4.0"
 import Gio from "gi://Gio?version=2.0"
+import Gdk from "gi://Gdk?version=4.0"
 
 import { GClass, WatchProp, Property, from, Child, Signal, next_idle, PostInit } from "../gobjectify/gobjectify.js"
-import { get_file_size_bytes, get_readable_byte_size, get_readable_file_size } from "../utils/helper_funcs.js"
-
-// class OldParent {
-// 	constructor(
-// 		private readonly parent: Gtk.Widget,
-// 		private readonly focusable = parent.focusable,
-// 	) {}
-
-// 	apply(): void { this.parent.focusable = this.focusable }
-// }
+import { get_file_size_bytes, get_readable_byte_size } from "../utils/helper_funcs.js"
+import Graphene from "gi://Graphene?version=1.0"
+import Adw from "gi://Adw?version=1"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_box.ui" })
-export class DataBox extends from(Gtk.Box, {
+export class DataBox extends from(Adw.Bin, {
 	title: Property.readwrite.string(),
+	subtitle: Property.readwrite.string(),
 	selection_mode_enabled: Property.readwrite.bool(),
 	is_selected: Property.readwrite.bool(),
 	app_id: Property.readonly.string(),
 	folder: Property.readonly.gobject(Gio.File),
 	readable_size: Property.readwrite.string(),
+	is_leftover: Property.readonly.bool(),
 	is_warehouse: Property.readwrite.bool(),
 	size_reported: Signal([Number]),
+	_overlay: Child<Gtk.Overlay>(),
+	_content_box: Child<Gtk.Box>(),
 	_icon: Child<Gtk.Image>(),
 	_select_button: Child<Gtk.CheckButton>(),
 }) {
-	#click = new Gtk.GestureClick()
-	#long_press = new Gtk.GestureLongPress()
+	readonly #click = new Gtk.GestureClick()
+	readonly #long_press = new Gtk.GestureLongPress()
 	#is_pressed = false
-	// #old_parent_data?: OldParent
 
 	constructor(params?: typeof DataBox.$params) {
 		super(params)
+		this._overlay.set_measure_overlay(this._content_box, true)
 		this.add_controller(this.#click)
 		this.add_controller(this.#long_press)
 		this.#click.$connect("released", (_g, _n, x, y) => this.#on_clicked(x, y))
 		this.#long_press.$connect("pressed", () => this.#on_pressed())
-		if (this.folder) {
-			this.title = this.folder.get_basename()?.split(".").at(-1) || ""
-			const id = this.folder.get_basename() || ""
+		if (!this.folder) return
+
+		const theme = Gtk.IconTheme.get_for_display(this.get_display())
+		const id = this.folder.get_basename() || ""
+		this.title = id.split(".").at(-1) || ""
+		this.subtitle = id
+		this.is_warehouse = id === pkg.app_id
+
+		if (theme.has_icon(id)) {
 			this._icon.icon_name = id
-			this.is_warehouse = id === pkg.app_id
+		} else {
+			this._icon.icon_name = "warehouse:flatpak-symbolic"
+			return
 		}
+		if (this.is_leftover) {
+			return
+		}
+		this._overlay.child = new BlurBin({
+			icon_theme: theme,
+			icon_name: id,
+			light_opacity: 1.0,
+			dark_opacity: 0.5,
+			blur_px: 45,
+			css_class_name: `databox-${id.replaceAll(".", "-")}`,
+		})
 	}
 
 	@PostInit
@@ -92,5 +109,74 @@ export class DataBox extends from(Gtk.Box, {
 
 	protected _is_size_ready(): boolean {
 		return Boolean(this.readable_size)
+	}
+}
+
+@GClass() class BlurBin extends from(Adw.Bin, {
+	icon_theme: Property.readonly.gobject(Gtk.IconTheme),
+	icon_name: Property.readwrite.string(),
+	light_opacity: Property.readwrite.double(),
+	dark_opacity: Property.readwrite.double(),
+	blur_px: Property.readwrite.double(),
+	css_class_name: Property.readwrite.string(),
+}) {
+	readonly #paintable: Gtk.IconPaintable | undefined
+	readonly #settings = Gtk.Settings.get_default()
+	readonly #css_provider = new Gtk.CssProvider()
+	readonly #downscale = 2
+
+	constructor(params?: typeof BlurBin.$params) {
+		super(params)
+		this.#paintable = this.icon_theme?.lookup_icon(
+			this.icon_name,
+			null,
+			10,
+			1,
+			Gtk.TextDirection.NONE,
+			Gtk.IconLookupFlags.NONE,
+		)
+		this.#settings?.$connect("notify::gtk-interface-color-scheme", () => this.#apply_css())
+		this.#settings?.$connect("notify::gtk-interface-contrast", () => this.#apply_css())
+	}
+
+	@PostInit
+	#apply_css(): void {
+		const is_dark = this.#settings?.gtk_interface_color_scheme === Gtk.InterfaceColorScheme.DARK
+		const prefers_contrast = this.#settings?.gtk_interface_contrast === Gtk.InterfaceContrast.MORE
+		if (prefers_contrast) return
+		this.add_css_class(this.css_class_name)
+		Gtk.StyleContext.add_provider_for_display(
+			this.get_display(),
+			this.#css_provider,
+			Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+		)
+		this.#css_provider.load_from_data(`
+			.${this.css_class_name} {
+				filter: saturate(200%) blur(${this.blur_px}px);
+				transform: scale(${this.#downscale});
+				opacity: ${is_dark ? this.dark_opacity : this.light_opacity};
+			}
+		`, -1)
+	}
+
+	override vfunc_snapshot(snapshot: Gtk.Snapshot): void {
+		const prefers_contrast = this.#settings?.gtk_interface_contrast === Gtk.InterfaceContrast.MORE
+		if (!this.#paintable || prefers_contrast) {
+			super.vfunc_snapshot(snapshot)
+			return
+		}
+
+		const width = this.get_width()
+		const height = this.get_height()
+		const center = Math.min(width, height) / 2
+
+		snapshot.save()
+		snapshot.translate(new Graphene.Point({ x: center, y: center }))
+		snapshot.scale(1 / this.#downscale, 1 / this.#downscale)
+		snapshot.rotate(-90)
+		snapshot.translate(new Graphene.Point({ x: -center, y: -center }))
+		this.#paintable.snapshot(snapshot, height, width)
+		snapshot.restore()
+		super.vfunc_snapshot(snapshot)
 	}
 }
