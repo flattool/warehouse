@@ -1,4 +1,4 @@
-import Adw from "gi://Adw?version=1"
+import GLib from "gi://GLib?version=2.0"
 import Gtk from "gi://Gtk?version=4.0"
 import Gio from "gi://Gio?version=2.0"
 
@@ -19,11 +19,13 @@ export class DataPage extends from(BasePage, {
 	selection_mode_enabled: Property.readwrite.bool(),
 	data_dir: Property.readonly.gobject(Gio.File),
 	request_selection_mode: SimpleAction(),
+	sort: SimpleAction({ parameter_type: new GLib.VariantType("(sb)") }),
 	_files: Child<FileList>(),
 	_active_data: Child<Gio.ListModel<Gio.File>>(),
 	_active_filter: Child<Gtk.CustomFilter>(),
 	_leftover_data: Child<Gio.ListModel<Gio.File>>(),
 	_leftover_filter: Child<Gtk.CustomFilter>(),
+	_sort_button: Child<Gtk.MenuButton>(),
 	_current: Child<DataSubpage>(),
 	_leftover: Child<DataSubpage>(),
 }) {
@@ -50,6 +52,15 @@ export class DataPage extends from(BasePage, {
 			return true
 		})
 	}
+
+	// async #test(): Promise<void> {
+	// 	const menu: Gio.Menu = new Gio.Menu()
+	// 	menu.append("Request", "DataPage.request_selection_mode")
+	// 	const item = Gio.MenuItem.new("Sort", "DataPage.sort")
+	// 	item.set_attribute_value("target", new GLib.Variant("(sb)", ["name", false]))
+	// 	menu.append_item(item)
+	// 	this._sort_button.menu_model = menu
+	// }
 
 	@OnSimpleAction("request_selection_mode")
 	#on_request_selection_mode(): void {
