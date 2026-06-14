@@ -7,19 +7,37 @@ import { BasePage } from "../widgets/base_page.js"
 import { DataSubpage } from "./data_subpage.js"
 import { Package } from "../flatpak.js"
 import { FileList } from "../utils/file_list.js"
+import { iterate_list_model } from "../utils/helper_funcs.js"
+import { make_menu } from "../utils/menu_builder.js"
 
 import "../widgets/sidebar_button.js"
 import "./data_subpage.js"
 import "../widgets/search_button.js"
 import "../widgets/select_button.js"
-import { iterate_list_model } from "../utils/helper_funcs.js"
+
+const make_sort_menu = (): Gio.Menu => (
+	make_menu()
+	.section(
+		_("Sort"),
+		make_menu()
+		.item({ label: _("By Name"), action: "DataPage.sort::name" })
+		.item({ label: _("By ID"), action: "DataPage.sort::id" })
+		.item({ label: _("By Size"), action: "DataPage.sort::size" }),
+	).section(
+		null,
+		make_menu()
+		.item({ label: _("Ascending"), action: "DataPage.order::asc" })
+		.item({ label: _("Descending"), action: "DataPage.order::desc" }),
+	).build()
+)
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_page.ui" })
 export class DataPage extends from(BasePage, {
 	selection_mode_enabled: Property.readwrite.bool(),
 	data_dir: Property.readonly.gobject(Gio.File),
 	request_selection_mode: SimpleAction(),
-	sort: SimpleAction({ parameter_type: new GLib.VariantType("(sb)") }),
+	sort: SimpleAction({ parameter_type: new GLib.VariantType("s"), state: GLib.Variant.new_string("name") }),
+	order: SimpleAction({ parameter_type: new GLib.VariantType("s"), state: GLib.Variant.new_string("asc") }),
 	_files: Child<FileList>(),
 	_active_data: Child<Gio.ListModel<Gio.File>>(),
 	_active_filter: Child<Gtk.CustomFilter>(),
@@ -51,20 +69,23 @@ export class DataPage extends from(BasePage, {
 			}
 			return true
 		})
+		this._sort_button.menu_model = make_sort_menu()
 	}
-
-	// async #test(): Promise<void> {
-	// 	const menu: Gio.Menu = new Gio.Menu()
-	// 	menu.append("Request", "DataPage.request_selection_mode")
-	// 	const item = Gio.MenuItem.new("Sort", "DataPage.sort")
-	// 	item.set_attribute_value("target", new GLib.Variant("(sb)", ["name", false]))
-	// 	menu.append_item(item)
-	// 	this._sort_button.menu_model = menu
-	// }
 
 	@OnSimpleAction("request_selection_mode")
 	#on_request_selection_mode(): void {
 		this.selection_mode_enabled = true
+	}
+
+	@OnSimpleAction("sort")
+	@OnSimpleAction("order")
+	#on_sort(action: Gio.SimpleAction, value: GLib.Variant<"s">): void {
+		action.state = value
+
+		const sort_by = this.sort.get_state()!.get_string()[0] as "name" | "id" | "size"
+		const order = this.order.get_state()!.get_string()[0] as "asc" | "desc"
+
+		print(sort_by, order)
 	}
 
 	@WatchProp("loading")
