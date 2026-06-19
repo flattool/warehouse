@@ -35,6 +35,7 @@ const make_sort_menu = (): Gio.Menu => (
 export class DataPage extends from(BasePage, {
 	selection_mode_enabled: Property.readwrite.bool(),
 	data_dir: Property.readonly.gobject(Gio.File),
+	file_sorter: Property.readwrite.gobject(Gtk.Sorter),
 	request_selection_mode: SimpleAction(),
 	sort: SimpleAction({ parameter_type: new GLib.VariantType("s"), state: GLib.Variant.new_string("name") }),
 	order: SimpleAction({ parameter_type: new GLib.VariantType("s"), state: GLib.Variant.new_string("asc") }),
@@ -47,7 +48,31 @@ export class DataPage extends from(BasePage, {
 	_current: Child<DataSubpage>(),
 	_leftover: Child<DataSubpage>(),
 }) {
-	readonly #seen_paths = new Set<string>()
+	#ascending = true
+
+	#id_sorter = Gtk.CustomSorter.new((one, two) => {
+		if (one === two) return 0
+		if (!(one instanceof Gio.File)) return -1
+		if (!(two instanceof Gio.File)) return 1
+		const result = (
+			one.get_basename() ?? ""
+		).localeCompare(
+			two.get_basename() ?? "",
+		)
+		return this.#ascending ? result : -result
+	})
+
+	#name_sorter = Gtk.CustomSorter.new((one, two) => {
+		if (one === two) return 0
+		if (!(one instanceof Gio.File)) return -1
+		if (!(two instanceof Gio.File)) return 1
+		const result = (
+			one.get_basename()?.split(".").at(-1) ?? ""
+		).localeCompare(
+			two.get_basename()?.split(".").at(-1) ?? "",
+		)
+		return this.#ascending ? result : -result
+	})
 
 	constructor(params?: typeof DataPage.$params) {
 		params ??= {}
@@ -85,13 +110,13 @@ export class DataPage extends from(BasePage, {
 		const sort_by = this.sort.get_state()!.get_string()[0] as "name" | "id" | "size"
 		const order = this.order.get_state()!.get_string()[0] as "asc" | "desc"
 
+		this.#ascending = order === "asc"
 		print(sort_by, order)
 	}
 
 	@WatchProp("loading")
 	#on_loading_changed(): void {
 		if (this.loading) {
-			this.#seen_paths.clear()
 			this._files.refresh()
 		}
 		this.selection_mode_enabled = false

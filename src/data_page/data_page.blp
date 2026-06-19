@@ -1,8 +1,12 @@
 using Gtk 4.0;
 using Adw 1;
 
-$FileList files {
-	directory: bind template.data_dir;
+SortListModel sorted_files {
+	model: $FileList files {
+		directory: bind template.data_dir;
+	};
+
+	// sorter: bind template.file_sorter;
 }
 
 FilterListModel active_data {

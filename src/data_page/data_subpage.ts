@@ -48,22 +48,21 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 
 	constructor(params?: typeof DataSubpage.$params) {
 		super(params)
-		if (this.folders) {
-			this._flow_box.bind_model(this.folders, (folder) => {
-				const box = new DataBox({ folder, is_leftover: this.show_leftover })
-				box.$connect("size-reported", (__, size) => this.#size_recorder.add(size))
-				box.$connect("notify::is-selected", () => {
-					if (box.is_selected) {
-						this.#selected_folders.add(folder)
-					} else {
-						this.#selected_folders.delete(folder)
-					}
-					this.#selection_changed()
-				})
-				next_idle().then(() => box.parent.focusable = false)
-				return box
+		if (!this.folders) return
+		this._flow_box.bind_model(this.folders, (folder) => {
+			const box = new DataBox({ folder, is_leftover: this.show_leftover })
+			box.$connect("size-reported", (__, size) => this.#size_recorder.add(size))
+			box.$connect("notify::is-selected", () => {
+				if (box.is_selected) {
+					this.#selected_folders.add(folder)
+				} else {
+					this.#selected_folders.delete(folder)
+				}
+				this.#selection_changed()
 			})
-		}
+			next_idle().then(() => box.parent.focusable = false)
+			return box
+		})
 	}
 
 	@PostInit
