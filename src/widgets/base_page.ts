@@ -6,9 +6,9 @@ import { Installation, Package, Remote } from "../flatpak.js"
 
 @GClass()
 export class BasePage extends from(Adw.NavigationPage, {
-	installations: Property.readwrite.gobject(Gio.ListModel).as<Gio.ListModel<Installation>>(),
-	packages: Property.readwrite.gobject(Gio.ListModel).as<Gio.ListModel<Package>>(),
-	remotes: Property.readwrite.gobject(Gio.ListModel).as<Gio.ListModel<Remote>>(),
+	installations: Property.readonly.gobject(Gio.ListModel).as<Gio.ListModel<Installation>>(),
+	packages: Property.readonly.gobject(Gio.ListModel).as<Gio.ListModel<Package>>(),
+	remotes: Property.readonly.gobject(Gio.ListModel).as<Gio.ListModel<Remote>>(),
 	sidebar_title: Property.readwrite.string(),
 	icon_name: Property.readwrite.string(),
 	loading: Property.readwrite.bool(true),
