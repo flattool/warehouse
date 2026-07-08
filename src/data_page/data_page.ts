@@ -1,13 +1,23 @@
-import GLib from "gi://GLib?version=2.0"
 import Gtk from "gi://Gtk?version=4.0"
 import Gio from "gi://Gio?version=2.0"
 
-import { Child, GClass, OnSimplerAction, Property, SimplerAction, WatchProp, Menu, from } from "../gobjectify/gobjectify.js"
+import {
+	GClass,
+	Child,
+	OnSimplerAction,
+	Property,
+	SimplerAction,
+	WatchProp,
+	Menu,
+	from,
+	Debounce,
+} from "../gobjectify/gobjectify.js"
 import { BasePage } from "../widgets/base_page.js"
 import { DataSubpage } from "./data_subpage.js"
-import { Package } from "../flatpak.js"
+import { Package, type Installation } from "../flatpak.js"
 import { FileList } from "../utils/file_list.js"
 import { iterate_list_model } from "../utils/helper_funcs.js"
+import { ArrayStore } from "../utils/array_store.js"
 
 import "../widgets/sidebar_button.js"
 import "./data_subpage.js"
@@ -35,8 +45,8 @@ const make_sort_menu = (): Gio.Menu => Menu.build(
 			"order",
 			{ label: _("Ascending"), target: "asc" },
 			{ label: _("Descending"), target: "desc" },
-		)
-	)
+		),
+	),
 )
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_page.ui" })
@@ -47,11 +57,11 @@ export class DataPage extends from(BasePage, {
 	request_selection_mode: SimplerAction.void(),
 	sort: SimplerAction.state.string({ default: "name" }).as<SortKind>(),
 	order: SimplerAction.state.string({ default: "asc" }).as<OrderKind>(),
+	_active_data: Child<ArrayStore<Gio.File>>(),
+	_all_packages: Child<Gtk.FlattenListModel<Package>>(),
+	_installations_packages: Child<Gtk.MapListModel>(),
+	_leftover_data: Child<ArrayStore<Gio.File>>(),
 	_files: Child<FileList>(),
-	_active_data: Child<Gio.ListModel<Gio.File>>(),
-	_active_filter: Child<Gtk.CustomFilter>(),
-	_leftover_data: Child<Gio.ListModel<Gio.File>>(),
-	_leftover_filter: Child<Gtk.CustomFilter>(),
 	_sort_button: Child<Gtk.MenuButton>(),
 	_current: Child<DataSubpage>(),
 	_leftover: Child<DataSubpage>(),
@@ -82,27 +92,44 @@ export class DataPage extends from(BasePage, {
 		return this.#ascending ? result : -result
 	})
 
+	#package_ids = new Set<string>()
+
 	constructor(params?: typeof DataPage.$params) {
 		params ??= {}
 		params.icon_name = "warehouse:file-manager-symbolic"
 		params.sidebar_title = _("User Data")
 		params.data_dir = Package.user_data_dir
 		super(params)
-		this._active_filter.set_filter_func((item) => {
-			if (!(item instanceof Gio.File) || !this.installations) return false
-			for (const inst of iterate_list_model(this.installations)) {
-				if (inst.has_package_by_id(item.get_basename()!)) return true
-			}
-			return false
-		})
-		this._leftover_filter.set_filter_func((item) => {
-			if (!(item instanceof Gio.File) || !this.installations) return false
-			for (const inst of iterate_list_model(this.installations)) {
-				if (inst.has_package_by_id(item.get_basename()!)) return false
-			}
-			return true
-		})
+		this._installations_packages.set_map_func((inst) => (inst as Installation).packages)
+		this.#rebuild_package_ids()
+		this._all_packages.connect("items-changed", () => this.#rebuild_package_ids())
+		this._files.connect("items-changed", () => this.#rebuild_package_ids())
 		this._sort_button.menu_model = make_sort_menu()
+	}
+
+	@Debounce(200)
+	#rebuild_package_ids(): void {
+		const seen_active_ids = new Set<string>()
+		const active_dirs: Gio.File[] = []
+		this.#package_ids.clear()
+		for (const pkg of iterate_list_model(this._all_packages)) {
+			this.#package_ids.add(pkg.application)
+			if (!pkg.is_app || seen_active_ids.has(pkg.application) || !pkg.data_dir?.query_exists(null)) {
+				continue
+			}
+			seen_active_ids.add(pkg.application)
+			active_dirs.push(pkg.data_dir)
+		}
+		this._active_data.swap_contents(active_dirs)
+
+		const leftovers: Gio.File[] = []
+		for (const file of this._files) {
+			const id = file.get_basename()
+			if (id !== null && !this.#package_ids.has(id)) {
+				leftovers.push(file)
+			}
+		}
+		this._leftover_data.swap_contents(leftovers)
 	}
 
 	@OnSimplerAction("request_selection_mode")

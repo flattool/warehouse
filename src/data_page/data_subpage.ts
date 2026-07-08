@@ -4,7 +4,7 @@ import Gio from "gi://Gio?version=2.0"
 
 import { Child, GClass, PostInit, Property, WatchProp, from, next_idle } from "../gobjectify/gobjectify.js"
 import { DataBox } from "./data_box.js"
-import { get_readable_byte_size } from "../utils/helper_funcs.js"
+import { get_readable_byte_size, iterate_list_model } from "../utils/helper_funcs.js"
 
 class SizeRecorder {
 	readonly #sizes: number[] = []
@@ -49,6 +49,7 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 	constructor(params?: typeof DataSubpage.$params) {
 		super(params)
 		if (!this.folders) return
+		this.folders.connect("items-changed", () => this.#begin_size_load())
 		this._flow_box.bind_model(this.folders, (folder) => {
 			const box = new DataBox({ folder, is_leftover: this.show_leftover })
 			box.$connect("size-reported", (__, size) => this.#size_recorder.add(size))
@@ -65,6 +66,21 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 		})
 	}
 
+	#begin_size_load(): void {
+		this.#size_recorder.reset()
+		this._spinner.visible = true
+		this.readable_size = _("Loading File Size...")
+		if (!this.folders || this.folders.get_n_items() === 0) {
+			this.#apply_size(0)
+		}
+	}
+
+	#apply_size(total: number): void {
+		this._spinner.visible = false
+		this.size = total
+		this.readable_size = "~ " + get_readable_byte_size(total)
+	}
+
 	@PostInit
 	#selection_changed(): void {
 		this.selection_text = _("%s Selected").format(this.#selected_folders.size)
@@ -72,19 +88,15 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 
 	#size_callback(): void {
 		if (this.#size_recorder.length !== (this.folders?.get_n_items() ?? 0)) return
-		this._spinner.visible = false
-		this.size = this.#size_recorder.get_total()
-		this.readable_size = "~ " + get_readable_byte_size(this.size)
+		this.#apply_size(this.#size_recorder.get_total())
 	}
 
 	@WatchProp("loading")
 	#on_loading_changed(): void {
 		if (!this.loading) return
-		this.#size_recorder.reset()
 		this.#selected_folders.clear()
-		this._spinner.visible = true
-		this.readable_size = _("Loading File Size...")
 		this.#selection_changed()
+		this.#begin_size_load()
 	}
 
 	@WatchProp("selection_mode_enabled")

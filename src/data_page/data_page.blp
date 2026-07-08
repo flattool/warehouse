@@ -1,24 +1,18 @@
 using Gtk 4.0;
 using Adw 1;
 
-SortListModel sorted_files {
-	model: $FileList files {
-		directory: bind template.data_dir;
+$ArrayStore active_data {} // item-type: Gio.File
+
+FlattenListModel all_packages {
+	model: MapListModel installations_packages {
+		model: bind template.installations;
 	};
-
-	// sorter: bind template.file_sorter;
 }
 
-FilterListModel active_data {
-	filter: CustomFilter active_filter {};
+$ArrayStore leftover_data {} // item-type: Gio.File
 
-	model: files;
-}
-
-FilterListModel leftover_data {
-	filter: CustomFilter leftover_filter {};
-
-	model: files;
+$FileList files {
+	directory: bind template.data_dir;
 }
 
 template $DataPage: $BasePage {
