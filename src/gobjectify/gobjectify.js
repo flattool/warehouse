@@ -1,5 +1,5 @@
 /*!
- * GObjectify 1.0.2 - A type-safe, declarative TypeScript library for writing & interacting with GObject classes in GNOME JavaScript (GJS)
+ * GObjectify 1.1.1 - A type-safe, declarative TypeScript library for writing & interacting with GObject classes in GNOME JavaScript (GJS)
  * https://github.com/flattool/gobjectify
  *
  * MIT License
@@ -25,9 +25,9 @@
  * SOFTWARE.
  */
 import GObject from 'gi://GObject?version=2.0';
+import GLib from 'gi://GLib?version=2.0';
 import Gio from 'gi://Gio?version=2.0';
 import Gtk from 'gi://Gtk?version=4.0';
-import GLib from 'gi://GLib?version=2.0';
 
 const CHILD_SYMBOL = Symbol("Symbol for GObjectify Child descriptors");
 function Child() {
@@ -60,9 +60,9 @@ class ConstMap {
 const PROPERTY_SYMBOL = Symbol("Symbol for GObjectify Property descriptors");
 const FLAG_PRESETS = {
     readwrite: GObject.ParamFlags.CONSTRUCT | GObject.ParamFlags.READWRITE,
+    const: GObject.ParamFlags.READABLE,
     readonly: GObject.ParamFlags.CONSTRUCT | GObject.ParamFlags.READWRITE,
     computed: GObject.ParamFlags.READWRITE,
-    const: GObject.ParamFlags.READABLE,
 };
 const num_sizes_and_spec = new ConstMap(["int32", { min: GLib.MININT32, max: GLib.MAXINT32, spec: GObject.ParamSpec.int }], ["uint32", { min: 0, max: GLib.MAXUINT32, spec: GObject.ParamSpec.uint }], ["double", { min: -Number.MAX_VALUE, max: Number.MAX_VALUE, spec: GObject.ParamSpec.double }]);
 function make_numeric_factory(kind, flag) {
@@ -91,7 +91,7 @@ function make_numeric_factory(kind, flag) {
                     value = Math.trunc(value);
                 }
                 return value;
-            }
+            },
         };
     };
 }
@@ -127,7 +127,7 @@ const make_primitive_factories = (flag) => ({
             create: (name) => GObject.ParamSpec.enum(name, null, null, FLAG_PRESETS[flag], genum.$gtype, default_value),
             validate_value: (value, _spec) => value ?? default_value,
         };
-    }
+    },
 });
 const make_object_factories = (flag) => ({
     gobject: (kind) => ({
@@ -179,18 +179,224 @@ function is_signal_descriptor(item) {
     return item?.signal_symbol === SIGNAL_SYMBOL;
 }
 
-const ACTION_SYMBOL = Symbol("Symbol for GObjectify SimpleAction descriptors");
-function SimpleAction(params) {
-    const { accels, ...args } = params ?? {};
-    return {
-        args,
-        accels: accels ?? [],
+const ACTION_SYMBOL = Symbol("Symbol for GObjectify SimplerAction descriptors");
+const make_activate_for_descriptor = (detailed_name, descriptor) => {
+    if (descriptor.kind === "prop") {
+        return (origin, param) => origin.activate_action(detailed_name, descriptor.transformer(param));
+    }
+    else if (descriptor.kind === "void") {
+        return (origin) => origin.activate_action(detailed_name, null);
+    }
+    else {
+        return (origin, param) => origin.activate_action(detailed_name, new GLib.Variant(descriptor.format, param));
+    }
+};
+const make_static_descriptor = (prefix, name, descriptor) => {
+    const detailed_name = `${prefix}.${name}`;
+    const activate = make_activate_for_descriptor(detailed_name, descriptor);
+    return { ...descriptor, detailed_name, activate };
+};
+const resolve_action_prefix = (item) => {
+    if (item instanceof GObject.Object) {
+        if (item instanceof Gtk.ApplicationWindow)
+            return "win";
+        if (item instanceof Gio.Application)
+            return "app";
+        return item.constructor.name;
+    }
+    else {
+        if (item.prototype instanceof Gtk.ApplicationWindow)
+            return "win";
+        if (item.prototype instanceof Gio.Application)
+            return "app";
+        return item.name;
+    }
+};
+const make_param = (format, config) => ({
+    kind: "param",
+    accels: config?.accels ?? [],
+    action_symbol: ACTION_SYMBOL,
+    format,
+    initial_state: undefined,
+    as() { return this; },
+    create(prefix, name) {
+        const action = new Gio.SimpleAction({ name, parameter_type: new GLib.VariantType(this.format) });
+        const instance = Object.assign(Object.create(this), {
+            action,
+            detailed_name: `${prefix}.${name}`,
+            activate: (param) => action.activate(new GLib.Variant(this.format, param)),
+            on_activated: (callback) => (action.connect("activate", (_self, variant) => callback(instance, variant.unpack()))),
+            get enabled() { return action.get_enabled(); },
+            set enabled(v) { action.set_enabled(v); },
+        });
+        return instance;
+    },
+});
+const make_state = (format, initial_state, config) => ({
+    kind: "state",
+    format,
+    initial_state,
+    accels: config?.accels ?? [],
+    action_symbol: ACTION_SYMBOL,
+    create(prefix, name) {
+        const action = new Gio.SimpleAction({
+            name,
+            parameter_type: new GLib.VariantType(format),
+            state: new GLib.Variant(format, initial_state),
+        });
+        const instance = Object.assign(Object.create(this), {
+            action,
+            detailed_name: `${prefix}.${name}`,
+            activate: (new_state) => action.activate(new GLib.Variant(format, new_state)),
+            on_state_changed: (callback) => (action.connect("notify::state", () => callback(instance, action.state.unpack()))),
+            get enabled() { return action.get_enabled(); },
+            set enabled(v) { action.set_enabled(v); },
+            get state() { return this.action.get_state().unpack(); },
+            set state(v) { this.action.set_state(new GLib.Variant(format, v)); },
+        });
+        return instance;
+    },
+    as() { return this; },
+});
+const SimplerAction = {
+    void: (config) => ({
+        kind: "void",
+        format: "",
+        accels: config?.accels ?? [],
         action_symbol: ACTION_SYMBOL,
-    };
+        initial_state: undefined,
+        create(prefix, name) {
+            const action = new Gio.SimpleAction({ name });
+            const instance = Object.assign(Object.create(this), {
+                action,
+                detailed_name: `${prefix}.${name}`,
+                activate: () => action.activate(null),
+                on_activated: (callback) => action.connect("activate", (_self) => callback(instance)),
+                get enabled() { return action.get_enabled(); },
+                set enabled(v) { action.set_enabled(v); },
+            });
+            return instance;
+        },
+    }),
+    param: {
+        string: (config) => make_param("s", config),
+        bool: (config) => make_param("b", config),
+        int32: (config) => make_param("i", config),
+        uint32: (config) => make_param("u", config),
+        double: (config) => make_param("d", config),
+        variant: (format, config) => make_param(format, config),
+    },
+    state: {
+        string: (config) => make_state("s", config?.default ?? "", config),
+        bool: (config) => make_state("b", config?.default ?? false, config),
+        int32: (config) => make_state("i", config?.default ?? 0, config),
+        uint32: (config) => make_state("u", config?.default ?? 0, config),
+        double: (config) => make_state("d", config?.default ?? 0, config),
+        variant: (format, default_state, config) => make_state(format, default_state, config),
+    },
+    property: (field, transformer, config) => ({
+        kind: "prop",
+        format: "",
+        accels: config?.accels ?? [],
+        action_symbol: ACTION_SYMBOL,
+        initial_state: undefined,
+        transformer: transformer,
+        create(prefix, name, object) {
+            const action = new Gio.PropertyAction({ name, object, property_name: field });
+            const instance = Object.assign(Object.create(this), {
+                action,
+                detailed_name: `${prefix}.${name}`,
+                activate: (item) => action.activate(transformer(item)),
+                get enabled() { return action.get_enabled(); },
+            });
+            return instance;
+        },
+    }),
+};
+const is_action_descriptor = (item) => item.action_symbol === ACTION_SYMBOL;
+
+function initialize_menu_item(detailed_name, config, state_helper) {
+    const item = new Gio.MenuItem();
+    item.set_label(config.label);
+    item.set_detailed_action(detailed_name);
+    if ("target" in config) {
+        if (typeof state_helper === "string") {
+            item.set_attribute_value("target", new GLib.Variant(state_helper, config.target));
+        }
+        else if (typeof state_helper === "function") {
+            item.set_attribute_value("target", state_helper(config.target));
+        }
+    }
+    if (typeof config.icon === "string") {
+        item.set_icon(Gio.Icon.new_for_string(config.icon));
+    }
+    else if (config.icon) {
+        item.set_icon(config.icon);
+    }
+    if (config.hidden_when) {
+        item.set_attribute_value("hidden-when", GLib.Variant.new_string(config.hidden_when));
+    }
+    return item;
 }
-function is_action_descriptor(item) {
-    return item?.action_symbol === ACTION_SYMBOL;
+function item(klass, key, config) {
+    const static_desc = klass.$actions[key];
+    const state_helper = (static_desc.kind === "prop"
+        ? static_desc.transformer
+        : static_desc.format);
+    return initialize_menu_item(static_desc.detailed_name, typeof config === "string" ? { label: config } : config, state_helper);
 }
+function item_group(klass, key, ...configs) {
+    const static_desc = klass.$actions[key];
+    const state_helper = (static_desc.kind === "prop"
+        ? static_desc.transformer
+        : static_desc.format);
+    return configs.map((config) => initialize_menu_item(static_desc.detailed_name, config, state_helper));
+}
+function items_for(klass, input) {
+    const results = [];
+    for (const key in input) {
+        const value = input[key];
+        if (value === undefined)
+            continue;
+        if (Array.isArray(value)) {
+            results.push(...item_group(klass, key, ...value));
+        }
+        else {
+            results.push(item(klass, key, value));
+        }
+    }
+    return results;
+}
+function flatten_items(items) {
+    const flat = [];
+    items.forEach((item) => (Array.isArray(item)
+        ? flat.push(...item)
+        : flat.push(item)));
+    return flat;
+}
+function section(label, ...items) {
+    const inner = new Gio.Menu();
+    flatten_items(items).forEach((item) => inner.append_item(item));
+    return Gio.MenuItem.new_section(label, inner);
+}
+function submenu(label, ...items) {
+    const inner = new Gio.Menu();
+    flatten_items(items).forEach((item) => inner.append_item(item));
+    return Gio.MenuItem.new_submenu(label, inner);
+}
+function build(...items) {
+    const menu = new Gio.Menu();
+    flatten_items(items).forEach((item) => menu.append_item(item));
+    return menu;
+}
+const Menu = {
+    build,
+    section,
+    submenu,
+    item,
+    item_group,
+    items_for,
+};
 
 const GOBJECTIFY_FROM_SYMBOL = Symbol("GOBJECTIFY_FROM_SYMBOL");
 const ACTION_GROUP_SYMBOL = Symbol("GObjectify_Action_Group_Symbol");
@@ -262,6 +468,7 @@ function GClass(options) {
         const properties = {};
         const property_descriptors = {};
         const children = [];
+        const action_prefix = resolve_action_prefix(target);
         const actions = new Map();
         const signals = {};
         let implement = [];
@@ -281,8 +488,9 @@ function GClass(options) {
                     const spec = value.create(name);
                     properties[name] = spec;
                     const is_flagged_computed = value.flag === "computed";
-                    const has_get_or_set = (typeof (Object.getOwnPropertyDescriptor(prototype, name)?.get) === "function"
-                        || typeof (Object.getOwnPropertyDescriptor(prototype, name)?.set) === "function");
+                    const own_desc = Object.getOwnPropertyDescriptor(prototype, name);
+                    const has_get_or_set = (typeof own_desc?.get === "function"
+                        || typeof own_desc?.set === "function");
                     if (is_flagged_computed && !has_get_or_set) {
                         throw new Error(dedent `
 							GClass: ${target.name},
@@ -309,6 +517,13 @@ function GClass(options) {
                     children.push(name.replace("_", ""));
                 }
                 else if (is_action_descriptor(value)) {
+                    if (value.accels.length > 0
+                        && !(action_prefix === "win" || action_prefix === "app"))
+                        throw new Error(`
+						GClass: ${target.name},
+						Action '${name}' has keyboard accels despite this GClass not extend Gtk.Application or Gtk.ApplicationWindow.
+						Actions with accels are only allowed on Gtk.Application and Gtk.ApplicationWindow subcalsses.
+					`);
                     actions.set(name, value);
                 }
                 else if (is_signal_descriptor(value)) {
@@ -317,6 +532,10 @@ function GClass(options) {
             }
             Object.setPrototypeOf(prototype, real_base);
             Object.setPrototypeOf(target, maybe_metadata.extend);
+        }
+        target.$actions = {};
+        for (const [key, val] of actions) {
+            target.$actions[key] = make_static_descriptor(action_prefix, key, val);
         }
         for (const [name, spec] of Object.entries(options?.manual_properties ?? {})) {
             if (properties[name]) {
@@ -327,11 +546,16 @@ function GClass(options) {
         const original_init = prototype._init;
         prototype._init = function (...args) {
             const original_return_val = original_init?.apply?.(this, args);
-            if (is_base_metadata(maybe_metadata) && actions.size > 0) {
+            if (actions.size > 0) {
                 let action_addable;
                 let accel_setter;
                 if (this instanceof Gtk.ApplicationWindow) {
                     action_addable = this;
+                    accel_setter = (detailed_name, accels) => {
+                        if (accels.length < 1)
+                            return;
+                        next_idle().then(() => this.get_application()?.set_accels_for_action(detailed_name, accels));
+                    };
                 }
                 else if (this instanceof Gtk.Application) {
                     action_addable = this;
@@ -343,10 +567,10 @@ function GClass(options) {
                 }
                 if (action_addable !== undefined) {
                     for (const [name, value] of actions.entries()) {
-                        const action = new Gio.SimpleAction({ name, ...value.args });
-                        action_addable.add_action(action);
-                        accel_setter?.(`app.${name}`, value.accels);
-                        this[name] = action;
+                        const typed_action = value.create(action_prefix, name, this);
+                        action_addable.add_action(typed_action.action);
+                        accel_setter?.(typed_action.detailed_name, value.accels);
+                        this[name] = typed_action;
                     }
                 }
             }
@@ -363,7 +587,8 @@ function GClass(options) {
             ...(options?.gtype_flags && { GTypeFlags: options.gtype_flags }),
             ...(options?.template && { Template: options.template }),
         }, target);
-        for (const [key, spec] of Object.entries(properties)) {
+        for (const [key, prop] of Object.entries(property_descriptors)) {
+            const spec = properties[key];
             if (!(spec.flags & GObject.ParamFlags.WRITABLE)
                 || spec.flags & GObject.ParamFlags.CONSTRUCT_ONLY)
                 continue;
@@ -374,9 +599,6 @@ function GClass(options) {
 					Writeable custom GObject property '${key}' is missing a getter or a setter function.
 				`);
             }
-            const prop = property_descriptors[key];
-            if (!prop)
-                continue;
             const accessors = make_accessors(target.name, key, prop, desc, spec);
             Object.defineProperty(prototype, key, {
                 configurable: desc.configurable ?? true,
@@ -430,10 +652,19 @@ function OnSignal(signal_name) {
         this.connect(signal_name, (_self, ...args) => target.apply(this, args));
     });
 }
-function OnSimpleAction(action_name) {
-    return function (target, context) {
+function OnSimplerAction(action_name) {
+    return (target, context) => {
         context.addInitializer(function () {
-            this[action_name].connect("activate", target.bind(this));
+            const action = this[action_name];
+            if (action.kind === "state") {
+                action.on_state_changed((_a, state) => target.call(this, state));
+            }
+            else if (action.kind === "param") {
+                action.on_activated((_a, param) => target.call(this, param));
+            }
+            else if (action.kind === "void") {
+                action.on_activated(() => target.call(this));
+            }
         });
     };
 }
@@ -529,4 +760,4 @@ GObject.Object.prototype.$connect_async = function (resolve_signal, reject_signa
     });
 };
 
-export { Child, ConstMap, Debounce, GClass, Notify, OnSignal, OnSimpleAction, PostInit, Property, Signal, SimpleAction, WatchProp, dedent, from, next_idle, timeout_ms };
+export { Child, ConstMap, Debounce, GClass, Menu, Notify, OnSignal, OnSimplerAction, PostInit, Property, Signal, SimplerAction, WatchProp, dedent, from, next_idle, timeout_ms };

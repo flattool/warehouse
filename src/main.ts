@@ -3,7 +3,7 @@ import Gio from "gi://Gio?version=2.0"
 import Gtk from "gi://Gtk?version=4.0"
 import Adw from "gi://Adw?version=1"
 
-import { GClass, SimpleAction, OnSimpleAction, from, dedent } from "./gobjectify/gobjectify.js"
+import { GClass, SimplerAction, OnSimplerAction, from, dedent } from "./gobjectify/gobjectify.js"
 import { MainWindow } from "./window/main_window.js"
 import { SharedVars } from "./utils/shared_vars.js"
 
@@ -11,8 +11,8 @@ import "./mixins.js"
 
 @GClass({ manual_gtype_name: "Gjs_Application" })
 export class Application extends from(Adw.Application, {
-	_quit: SimpleAction({ accels: ["<primary>q"] }),
-	about: SimpleAction(),
+	_quit: SimplerAction.void({ accels: ["<primary>q"] }),
+	about: SimplerAction.void(),
 }) {
 	override vfunc_activate(): void {
 		SharedVars.main_window ??= new MainWindow({ application: this })
@@ -21,10 +21,10 @@ export class Application extends from(Adw.Application, {
 
 	constructor(params?: typeof Application.$params) {
 		super(params)
-		this._quit.connect("activate", () => this.quit())
+		this._quit.on_activated(() => this.quit())
 	}
 
-	@OnSimpleAction("about")
+	@OnSimplerAction("about")
 	#about(): void {
 		const gtk_version = `${Gtk.MAJOR_VERSION}.${Gtk.MINOR_VERSION}.${Gtk.MICRO_VERSION}`
 		const adw_version = `${Adw.MAJOR_VERSION}.${Adw.MINOR_VERSION}.${Adw.MICRO_VERSION}`

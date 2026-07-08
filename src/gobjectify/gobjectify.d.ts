@@ -1,5 +1,5 @@
 /*!
- * GObjectify 1.0.2 - A type-safe, declarative TypeScript library for writing & interacting with GObject classes in GNOME JavaScript (GJS)
+ * GObjectify 1.1.1 - A type-safe, declarative TypeScript library for writing & interacting with GObject classes in GNOME JavaScript (GJS)
  * https://github.com/flattool/gobjectify
  *
  * MIT License
@@ -26,9 +26,9 @@
  */
 // @ts-nocheck - Skip checking, to ensure this library wont cause issues for users with different TypeScript setups.
 import GObject from 'gi://GObject?version=2.0';
-import Gio from 'gi://Gio?version=2.0';
-import Gtk from 'gi://Gtk?version=4.0';
 import GLib from 'gi://GLib?version=2.0';
+import Gtk from 'gi://Gtk?version=4.0';
+import Gio from 'gi://Gio?version=2.0';
 
 declare const CHILD_SYMBOL: unique symbol;
 type ChildDescriptor<_TypeHolder extends GObject.Object> = {
@@ -54,7 +54,7 @@ type ExtractChildren<D> = {
  */
 declare function Child<ChildType extends GObject.Object>(): ChildDescriptor<ChildType>;
 
-type GClass$1<T extends GObject.Object = GObject.Object> = {
+type GClass$2<T extends GObject.Object = GObject.Object> = {
     $gtype: GObject.GType;
 } & (abstract new (...args: any[]) => T);
 type GEnum<T extends number = number> = {
@@ -63,9 +63,9 @@ type GEnum<T extends number = number> = {
 declare const PROPERTY_SYMBOL: unique symbol;
 declare const FLAG_PRESETS: {
     readonly readwrite: number;
+    readonly const: GObject.ParamFlags.READABLE;
     readonly readonly: number;
     readonly computed: GObject.ParamFlags.READWRITE;
-    readonly const: GObject.ParamFlags.READABLE;
 };
 type FlagStrings = keyof typeof FLAG_PRESETS;
 type PropDescriptor<T, F extends FlagStrings> = {
@@ -86,12 +86,11 @@ type PrimitiveCastable<Wide, Default, F extends FlagStrings> = {
      *
      * @example
      * ```ts
-     * Property.rw.string("user").as<"user" | "admin">() // This property now only allows "user" or "admin", instead of all strings
+     * // This property now only allows "user" or "admin", instead of all strings
+     * Property.rw.string("user").as<"user" | "admin">()
      * ```
      */
-    as<Narrow extends Wide>(): (Default extends Narrow ? PropDescriptor<Narrow, F> : [
-        never
-    ] & void);
+    as<Narrow extends Wide>(): (Default extends Narrow ? PropDescriptor<Narrow, F> : [never] & void);
 };
 type NarrowablePrimitiveDescriptor<T, Default, F extends FlagStrings> = (PropDescriptor<T, F> & PrimitiveCastable<T, Default, F>);
 type ExtractWriteableProps<D> = {
@@ -192,7 +191,7 @@ type ObjectFactories<F extends FlagStrings> = {
      *
      * @param kind The GObject class that this property will be typed to
      */
-    gobject<G extends GClass$1>(kind: G): PropDescriptor<InstanceType<G> | null, F> & {
+    gobject<G extends GClass$2>(kind: G): PropDescriptor<InstanceType<G> | null, F> & {
         /**
          * Type helper to allow narrowing of a property descriptor's type.
          * A default value is required to exist, and the default value must extend the narrowed value.
@@ -495,37 +494,384 @@ declare const Signal: <const A extends [] | SignalArgument[] = [], const R exten
 }) => ([] extends A ? void extends R ? SignalDescriptor<[], void> : SignalDescriptor<[], R> : void extends R ? SignalDescriptor<A, void> : SignalDescriptor<A, R>);
 
 declare const ACTION_SYMBOL: unique symbol;
-type ActionArgs = Omit<Partial<Gio.SimpleAction.ConstructorProps>, "name">;
-type ActionDescriptor = {
-    args: ActionArgs;
-    accels: string[];
-    action_symbol: typeof ACTION_SYMBOL;
+type ActionKind = "void" | "param" | "state" | "prop";
+type HandleActionFormat<S extends string | undefined> = (S extends string ? GLib.$ParseConstructorInput<S> : undefined);
+type ActionConfig = {
+    accels?: string[];
+};
+type StateActionConfig<T> = ActionConfig & {
+    default?: T;
+};
+type ActionDescriptor<K extends ActionKind, T, Default> = {
+    readonly kind: K;
+    readonly format: string;
+    readonly initial_state: K extends "state" ? Default : undefined;
+    readonly accels: readonly string[];
+    readonly action_symbol: typeof ACTION_SYMBOL;
+    readonly __$t_holder?: T;
+    create(prefix: string, name: string, obj: GObject.Object): TypedAction<K, T>;
+} & (K extends "prop" ? {
+    transformer(item: T): GLib.Variant;
+} : {});
+type ActionNarrowable<K extends ActionKind, T, Default> = (K extends "param" ? {
+    as<Narrow extends T>(): ActionDescriptor<K, Narrow, Narrow>;
+} : K extends "state" ? {
+    as<Narrow extends T>(): [Default] extends [Narrow] ? ActionDescriptor<K, Narrow, Default> : [never] & void;
+} : {});
+type NarrowableActionDescriptor<K extends ActionKind, T, Default> = (ActionDescriptor<K, T, Default> & ActionNarrowable<K, T, Default>);
+type MethodsFieldsForKind<K extends ActionKind, T> = (K extends "void" ? {
+    activate(): void;
+    on_activated(callback: (self: TypedAction<K, T>) => void): number;
+    enabled: boolean;
+} : K extends "param" ? {
+    activate(param: T): void;
+    on_activated(callback: (self: TypedAction<K, T>, param: T) => void): number;
+    enabled: boolean;
+} : K extends "state" ? {
+    activate(new_state: T): void;
+    on_state_changed(callback: (self: TypedAction<K, T>, new_state: T) => void): number;
+    state: T;
+    enabled: boolean;
+} : K extends "prop" ? {
+    activate(new_state: T): void;
+    readonly enabled: boolean;
+} : never);
+type TypedActionBase<K extends ActionKind, T> = {
+    readonly action: K extends "prop" ? Gio.PropertyAction : Gio.SimpleAction;
+    readonly detailed_name: string;
+} & MethodsFieldsForKind<K, T>;
+type TypedAction<K extends ActionKind, T> = Omit<ActionDescriptor<K, T, T>, "create" | "initial_state" | "action_symbol" | "__$t_holder"> & TypedActionBase<K, T>;
+type StaticActionDescriptor<K extends ActionKind, T, Default> = Omit<ActionDescriptor<K, T, Default>, "create" | "initial_state" | "action_symbol" | "__$t_holder"> & {
+    readonly detailed_name: string;
+} & (K extends "void" ? {
+    activate(origin: GObject.Object): boolean;
+} : K extends "param" ? {
+    activate(origin: GObject.Object, param: T): boolean;
+} : K extends "state" | "prop" ? {
+    activate(origin: GObject.Object, new_state: T): boolean;
+} : {});
+type ExtractActionDescriptors<D> = {
+    readonly [Key in keyof D as D[Key] extends ActionDescriptor<any, any, any> ? Key : never]: D[Key] extends ActionDescriptor<infer K, infer T, infer D> ? StaticActionDescriptor<K, T, D> : never;
 };
 type ExtractActions<D> = {
-    readonly [Key in keyof D as D[Key] extends ActionDescriptor ? Key : never]: Gio.SimpleAction;
+    readonly [Key in keyof D as D[Key] extends ActionDescriptor<any, any, any> ? Key : never]: D[Key] extends ActionDescriptor<infer K, infer T, infer Default> ? K extends "prop" ? Default extends `property::${infer F}` ? F extends keyof D ? D[F] extends PropDescriptor<infer PT, any> ? TypedAction<K, PT> : never : never : never : TypedAction<K, T> : never;
 };
-/**
- * Creates an **ActionDescriptor** for use with `from()` and `GClass`, describing a GioSimpleAction. This can only be
- * used if the resulting subclass is of a GtkApplication, GtkApplicationWindow, or a GtkWidget
- *
- * `from()` and `GClass` will see this descriptor and connect up the action to the instance on instantiation.
- *
- * @param params Optional parameters for the SimpleAction. See `new Gio.SimpleAction()` constructor parameters
- *
- * Note that `params.accels` is only used for classes extending Gtk.Application, it is ignored for all other base types.
- *
- * @example
- * ```ts
- * @GClass()
- * class MyBox extends from(Gtk.Box, {
- *     save_changes: SimpleAction({ accels: ["<Ctrl>S"] }),
- * }) {}
- * // MyBox instances now have a `save_changes` GioSimpleAction available
- * ```
- */
-declare function SimpleAction(params?: ActionArgs & {
-    accels?: string[];
-}): ActionDescriptor;
+declare const SimplerAction: {
+    /**
+     * Creates an **ActionDescriptor** for use with `from()` and `GClass`,
+     * describing a GioSimpleAction with no state and no parameter.
+     *
+     * `from()` and `GClass` will see this descriptor and connect up the action to the instance on instantiation.
+     *
+     * @param config Optional parameters for the SimplerAction.
+     * Accels can only be used on subclasses of GioApplication and GtkApplicationWindow.
+     */
+    readonly void: (config?: ActionConfig) => ActionDescriptor<"void", null, null>;
+    /**
+     * Options to create an **ActionDescriptor** for use with `from()` and `GClass`,
+     * describing a GioSimpleAction with a parameter of a chosen type, but no state.
+     *
+     * `from()` and `GClass` will see this descriptor and connect up the action to the instance on instantiation.
+     */
+    readonly param: {
+        /**
+         * Creates a SimplerAction descriptor with a string parameter.
+         *
+         * @param config Optional parameters for the SimplerAction.
+         * Accels can only be used on subclasses of GioApplication and GtkApplicationWindow.
+         */
+        readonly string: (config?: ActionConfig) => NarrowableActionDescriptor<"param", string, string>;
+        /**
+         * Creates a SimplerAction descriptor with a boolean parameter.
+         *
+         * @param config Optional parameters for the SimplerAction.
+         * Accels can only be used on subclasses of GioApplication and GtkApplicationWindow.
+         */
+        readonly bool: (config?: ActionConfig) => NarrowableActionDescriptor<"param", boolean, boolean>;
+        /**
+         * Creates a SimplerAction descriptor with a number parameter, known to GObject as an int32.
+         * The range is from MIN_INT32 to MAX_INT32.
+         *
+         * @param config Optional parameters for the SimplerAction.
+         * Accels can only be used on subclasses of GioApplication and GtkApplicationWindow.
+         */
+        readonly int32: (config?: ActionConfig) => NarrowableActionDescriptor<"param", number, number>;
+        /**
+         * Creates a SimplerAction descriptor with a number parameter, known to GObject as a uint32.
+         * The range is from 0 to MAX_UINT32.
+         *
+         * @param config Optional parameters for the SimplerAction.
+         * Accels can only be used on subclasses of GioApplication and GtkApplicationWindow.
+         */
+        readonly uint32: (config?: ActionConfig) => NarrowableActionDescriptor<"param", number, number>;
+        /**
+         * Creates a SimplerAction descriptor with a number parameter, known to GObject as a double.
+         * The range is from -Number.MAX_VALUE to Number.MAX_VALUE, the same as JS's number.
+         *
+         * @param config Optional parameters for the SimplerAction.
+         * Accels can only be used on subclasses of GioApplication and GtkApplicationWindow.
+         */
+        readonly double: (config?: ActionConfig) => NarrowableActionDescriptor<"param", number, number>;
+        /**
+         * Creates a SimplerAction descriptor with a parameter of the specified GLibVariant format type.
+         * The format for the variant is used to derive the backing variant from incoming TypeScript-native values.
+         * This allows specifying tuple-like stateful actions via `"(ss)"` being `[string, string]`.
+         *
+         * @param format The GLibVariant format string to derive variants and typing from.
+         * @param config Optional parameters for the SimplerAction.
+         * Accels can only be used on subclasses of GioApplication and GtkApplicationWindow.
+         */
+        readonly variant: <const S extends string>(format: S, config?: ActionConfig) => Omit<ActionDescriptor<"param", HandleActionFormat<S>, HandleActionFormat<S>>, "as">;
+    };
+    /**
+     * Options to create an **ActionDescriptor** for use with `from()` and `GClass`,
+     * describing a GioSimpleAction with a parameter of a chosen type, and a stored state of the same type.
+     *
+     * `from()` and `GClass` will see this descriptor and connect up the action to the instance on instantiation.
+     */
+    readonly state: {
+        /**
+         * Creates a SimplerAction descriptor with a string parameter and state.
+         *
+         * @param config Optional parameters for the SimplerAction.
+         * Accels can only be used on subclasses of GioApplication and GtkApplicationWindow.
+         * The default state is `""` (empty string) but can be set via the `default` config option.
+         */
+        readonly string: <const D extends string>(config?: StateActionConfig<D>) => NarrowableActionDescriptor<"state", string, D>;
+        /**
+         * Creates a SimplerAction descriptor with a boolean parameter and state.
+         *
+         * @param config Optional parameters for the SimplerAction.
+         * Accels can only be used on subclasses of GioApplication and GtkApplicationWindow.
+         * The default state is false but can be set via the `default` config option.
+         */
+        readonly bool: <const D extends boolean>(config?: StateActionConfig<D>) => NarrowableActionDescriptor<"state", boolean, D>;
+        /**
+         * Creates a SimplerAction descriptor with a number parameter and state, known to GObject as an int32.
+         * The range is from MIN_INT32 to MAX_INT32.
+         *
+         * @param config Optional parameters for the SimplerAction.
+         * Accels can only be used on subclasses of GioApplication and GtkApplicationWindow.
+         * The default state is 0 but can be set via the `default` config option.
+         */
+        readonly int32: <const D extends number>(config?: StateActionConfig<D>) => NarrowableActionDescriptor<"state", number, D>;
+        /**
+         * Creates a SimplerAction descriptor with a number parameter and state, known to GObject as a uint32.
+         * The range is from 0 to MAX_UINT32.
+         *
+         * @param config Optional parameters for the SimplerAction.
+         * Accels can only be used on subclasses of GioApplication and GtkApplicationWindow.
+         * The default state is 0 but can be set via the `default` config option.
+         */
+        readonly uint32: <const D extends number>(config?: StateActionConfig<D>) => NarrowableActionDescriptor<"state", number, D>;
+        /**
+         * Creates a SimplerAction descriptor with a number parameter and state, known to GObject as a double.
+         * The range is from -Number.MAX_VALUE to Number.MAX_VALUE, the same as JS's number.
+         * The default state is 0 but can be set via the `default` config option.
+         *
+         * @param config Optional parameters for the SimplerAction.
+         * Accels can only be used on subclasses of GioApplication and GtkApplicationWindow.
+         */
+        readonly double: <const D extends number>(config?: StateActionConfig<D>) => NarrowableActionDescriptor<"state", number, D>;
+        /**
+         * Creates a SimplerAction descriptor with a parameter and state of the specified GLibVariant format type.
+         * The format for the variant is used to derive the backing variant from incoming TypeScript-native values.
+         * This allows specifying tuple-like stateful actions via `"(ss)"` being `[string, string]`.
+         *
+         * @param format The GLibVariant format string to derive variants and typing from.
+         * @param default_state The default state of the action.
+         * @param config Optional parameters for the SimplerAction.
+         * Accels can only be used on subclasses of GioApplication and GtkApplicationWindow.
+         */
+        readonly variant: <const S extends string, const T extends HandleActionFormat<S>>(format: S, default_state: T, config?: ActionConfig) => Omit<ActionDescriptor<"state", HandleActionFormat<S>, T>, "as">;
+    };
+    /**
+     * Creates an **ActionDescriptor** for use with `from()` and `GClass`,
+     * describing a GioPropertyAction.
+     *
+     * `from()` and `GClass` will see this descriptor and connect up the action to the instance on instantiation.
+     *
+     * Fields allowed from this action must be properties of strings, numbers, or booleans, and must be readwrite.
+     * The 'state' of this action will be that of the current value of the property it derives from.
+     *
+     * This kind of property is mainly useful for GioMenus that change various options, instead of triggering events.
+     *
+     * @param field The field on the class which the action will derive from.
+     * @param transformer
+     * @param config Optional parameters for the SimplerAction.
+     * Accels can only be used on subclasses of GioApplication and GtkApplicationWindow.
+     *
+     * @example
+     * ```ts
+     * @GClass()
+     * class MyBox extends from(Gtk.Box, {
+     *     title: Property.string(),
+     *     title_act: SimplerAction.property("title", (s) => GLib.Variant.new_string(s))
+     * }) {
+     *     fn(): void { this.title_act.activate("Hello, World!") }
+     * }
+     */
+    readonly property: <const Field extends string, S extends string, T extends HandleActionFormat<S>>(field: Field, transformer: (item: T) => GLib.Variant<S>, config?: ActionConfig) => ActionDescriptor<"prop", T, `property::${Field}`>;
+};
+
+type GClass$1 = abstract new (...args: any[]) => GObject.Object;
+type ActionsOf$1<G extends GClass$1, Kinds extends ActionKind = ActionKind> = {
+    [Key in keyof InstanceType<G> as Key extends "with_implements" ? never : InstanceType<G>[Key] extends TypedAction<infer Kind, any> ? Kind extends Kinds ? Key : never : never]: InstanceType<G>[Key] extends TypedAction<any, any> ? InstanceType<G>[Key] : never;
+};
+type ParamStateTypeOf<D extends TypedAction<any, any>> = (D extends TypedAction<any, infer T> ? T : never);
+type KindOf<D extends TypedAction<any, any>> = (D extends TypedAction<infer Kind, any> ? Kind : never);
+type MenuItemConfig = {
+    label: string | null;
+    icon?: string | Gio.Icon;
+    hidden_when?: "action-disabled" | "action-missing" | "macos-menubar";
+};
+type MenuItemConfigTarget<T> = MenuItemConfig & {
+    target: T;
+};
+type MenuItemInput<T, K extends ActionKind> = (K extends "void" ? string | MenuItemConfig : MenuItemConfigTarget<T>);
+type GroupedItemInput<T> = MenuItemConfigTarget<T>[];
+declare function item<G extends GClass$1, K extends keyof ActionsOf$1<G>>(klass: G, key: K, config: MenuItemInput<ParamStateTypeOf<ActionsOf$1<G>[K]>, KindOf<ActionsOf$1<G>[K]>>): Gio.MenuItem;
+declare function item_group<G extends GClass$1, K extends keyof ActionsOf$1<G, "state" | "prop">>(klass: G, key: K, ...configs: GroupedItemInput<ParamStateTypeOf<ActionsOf$1<G, "state" | "prop">[K]>>): Gio.MenuItem[];
+type ItemsForInput<G extends GClass$1> = {
+    [Key in keyof ActionsOf$1<G>]?: (ActionsOf$1<G>[Key]["kind"] extends "state" ? (MenuItemInput<ParamStateTypeOf<ActionsOf$1<G>[Key]>, "state"> | GroupedItemInput<ParamStateTypeOf<ActionsOf$1<G>[Key]>>) : MenuItemInput<ParamStateTypeOf<ActionsOf$1<G>[Key]>, KindOf<ActionsOf$1<G>[Key]>>);
+};
+declare function items_for<G extends GClass$1>(klass: G, input: ItemsForInput<G>): Gio.MenuItem[];
+type MenuItemOrItems = (Gio.MenuItem | Gio.MenuItem[])[];
+declare function section(label: string | null, ...items: MenuItemOrItems): Gio.MenuItem;
+declare function submenu(label: string | null, ...items: MenuItemOrItems): Gio.MenuItem;
+declare function build(...items: MenuItemOrItems): Gio.Menu;
+declare const Menu: {
+    /**
+     * Assembles a top-level `Gio.Menu` from `Gio.MenuItem`s, sections, and submenus.
+     *
+     * Accepts any mix of individual `Gio.MenuItem`s and/or arrays of them
+     * (for example, the result of `item_group` or `items_for`).
+     *
+     * The resulting `Gio.Menu` can be attached anywhere a `Gio.MenuModel` is expected,
+     * such as a `Gtk.Popover`'s `menu_model` property.
+     *
+     * @param items A mix of menu items and arrays of menu items to include in the resulting menu.
+     *
+     * @example
+     * ```ts
+     * const menu = Menu.build(
+     *     Menu.item(MainWindow, "quit", "Quit"),
+     *     Menu.submenu(
+     *         "Edit",
+     *         Menu.item(MainWindow, "save_changes", "Save"),
+     *     ),
+     *     Menu.section(
+     *         "Theme",
+     *         Menu.item_group(MainWindow, "set-theme",
+     *             { label: "Light", target: "light" },
+     *             { label: "Dark", target: "dark" },
+     *         ),
+     *     ),
+     * )
+     * ```
+     */
+    readonly build: typeof build;
+    /**
+     * Groups items into a labeled (or unlabled) `Gio.MenuItem` section.
+     *
+     * Accepts any mix of individual `Gio.MenuItem`s and/or arrays of them
+     * (for example, the result of `item_group` or `items_for`).
+     *
+     * @param label The submenu's label, or `null` for an unlabled submenu.
+     * @param items A mix of menu items and arrays of menu items to include in the resulting section.
+     *
+     * @example
+     * ```ts
+     * Menu.section("Edit",
+     *     Menu.item(MainWindow, "save-changes", "Save"),
+     *     Menu.item(MainWindow, "discard-changes", "Discard"),
+     * )
+     * ```
+     */
+    readonly section: typeof section;
+    /**
+     * Groups items into a labeled (or unlabled) nested `Gio.MenuItem` submenu.
+     *
+     * Accepts any mix of individual `Gio.MenuItem`s and/or arrays of them
+     * (for example, the result of `item_group` or `items_for`).
+     *
+     * @param label The submenu's label, or `null` for an unlabled submenu.
+     * @param items A mix of menu items and arrays of menu items to include in the resulting submenu.
+     *
+     * @example
+     * ```ts
+     * Menu.submenu("Theme",
+     *     Menu.item_group(MainWindow, "set-theme",
+     *         { label: "Light", target: "light" },
+     *         { label: "Dark", target: "dark" },
+     *     ),
+     * )
+     * ```
+     */
+    readonly submenu: typeof submenu;
+    /**
+     * Creates a single `Gio.MenuItem` targeting one action declared on a `GClass`-decorated class.
+     *
+     * For `void` actions, `config` may be a plain string, used directly as the item's label.
+     * For `param` and `state` actions, `config` must include a `target` value, typed to match
+     * that action's parameter/state type.
+     *
+     * @param klass The class the action belongs to.
+     * @param key The name of the action field on `klass`.
+     * @param config The item's label/icon/etc, and a `target` value for `param`/`state` actions.
+     *
+     * @example
+     * ```ts
+     * Menu.item(MainWindow, "undo", "Undo")
+     * Menu.item(MainWindow, "save_changes", { label: "Save", icon: "document-save-symbolic" })
+     * Menu.item(MainWindow, "set_theme", { label: "Dark", target: "dark" })
+     * ```
+     */
+    readonly item: typeof item;
+    /**
+     * Creates several `Gio.MenuItem`s that all target the same `state` action with different `target` values.
+     * This achieves the standard pattern for radio-style menu selections, where activating any item sets the
+     * shared action's state.
+     *
+     * Only keys pointing to `state`-kind actions on `klass` are accepted.
+     *
+     * @param klass The class the action belongs to.
+     * @param key The key of the `state` action on `klass`.
+     *
+     * @example
+     * ```ts
+     * Menu.item_group(MainWindow, "sort_order",
+     *     { label: "Name", target: "name" },
+     *     { label: "Date", target: "date-created" },
+     *     { label: "Size", target: "size" },
+     * )
+     * ```
+     */
+    readonly item_group: typeof item_group;
+    /**
+     * Bulk-creates `Gio.MenuItem`s that all target a single class's actions.
+     *
+     * @param klass The class the actions belong to.
+     * @param input Partial record that maps action names to their menu item config(s).
+     *
+     * The item configs accepted in `input`s values are specific.
+     * `void` actions may be a simple string for a label, but `param` and `state` actions require
+     * an object that includes `label` and `target`. `state` actions may also receive an array of config objects,
+     * which allows specifying item groups for things like radio menus (see `item_group` for more info).
+     *
+     * @example
+     * ```ts
+     * Menu.items_for(MainWindow, {
+     *     save_changes: "Save",                      // void action
+     *     set_theme: [                               // state<string> action
+     *         { label: "Light", target: "light" },
+     *         { label: "Dark", target: "dark" },
+     *     ],
+     *     load: { label: "Reload", target: "base" }, // param<string> action
+     * })
+     */
+    readonly items_for: typeof items_for;
+};
 
 /**
  * A fully type-safe, and compile-time const Map. Using a regular Map under the hood, ConstMap ensures that values
@@ -561,8 +907,11 @@ type Final<T> = T & typeof no_override;
 type Finalize<D> = {
     [K in keyof D]: Final<D[K]>;
 };
+type PropsAllowedForPropAction<D> = keyof {
+    [Key in keyof D as D[Key] extends PropDescriptor<infer T, infer F> ? [T, F] extends [number | boolean | string, "readwrite"] ? Key : never : never]: Key;
+};
 type Descriptor<D, T extends GObject.Object> = {
-    [Key in keyof D as Key extends string ? Key : never]: Key extends keyof T ? never : (Key extends `_${string}` ? ChildDescriptor<GObject.Object> : Key extends keyof T["$signals"] ? PropDescriptor<any, any> : PropDescriptor<any, any> | SignalDescriptor<any[], any>) | (T extends Gtk.Application | Gtk.ApplicationWindow | Gtk.Widget ? ActionDescriptor : never);
+    [Key in keyof D as Key extends string ? Key : never]: Key extends keyof T ? never : (Key extends `_${string}` ? ChildDescriptor<GObject.Object> : Key extends keyof T["$signals"] ? PropDescriptor<any, any> : PropDescriptor<any, any> | SignalDescriptor<any[], any>) | (T extends Gtk.Application | Gtk.ApplicationWindow | Gtk.Widget ? (ActionDescriptor<"param" | "state" | "void", any, any> | ActionDescriptor<"prop", any, `property::${PropsAllowedForPropAction<D>}`>) : never);
 };
 type GClassFor<T extends GObject.Object> = new (...args: any[]) => T;
 type AbstractGClassFor<T extends GObject.Object> = abstract new (...args: any[]) => T;
@@ -571,11 +920,12 @@ type ValidConstructorProps<D> = {
 };
 type ResultingConstructorParamsObj<T extends AbstractGClassFor<GObject.Object>, D extends Descriptor<D, InstanceType<T>>> = ConstructorParameters<T> extends [] ? [ValidConstructorProps<D>] : ConstructorParameters<T> extends [(infer First)?, ...infer Rest] ? undefined extends ConstructorParameters<T>[0] ? [(ValidConstructorProps<D> & First)?, ...Rest] : [(ValidConstructorProps<D> & First), ...Rest] : never;
 type ResultingClass<T extends AbstractGClassFor<GObject.Object>, D extends Descriptor<D, InstanceType<T>>, I extends AbstractGClassFor<GObject.Object>[]> = {
-    $gtype: GObject.GType<InstanceType<T> & {
+    readonly $gtype: GObject.GType<InstanceType<T> & {
         readonly $unique: unique symbol;
     }>;
-    $params: ResultingConstructorParamsObj<T, D>[0];
-} & (abstract new (...args: ResultingConstructorParamsObj<T, D>) => (SignalOverrides<InstanceType<T>, D> & InstanceType<T> & ExtractWriteableProps<D> & ExtractReadonlyProps<D> & Finalize<ExtractChildren<D>> & Finalize<ExtractActions<D>> & Finalize<{
+    readonly $params: ResultingConstructorParamsObj<T, D>[0];
+    readonly $actions: ExtractActionDescriptors<D>;
+} & (abstract new (...args: ResultingConstructorParamsObj<T, D>) => (SignalOverrides<InstanceType<T>, D> & InstanceType<T> & ExtractWriteableProps<D> & ExtractReadonlyProps<D> & Finalize<ExtractChildren<D>> & ExtractActions<D> & Finalize<{
     with_implements: I extends [] ? never : Instances<I>;
 }>));
 type ClassDecoratorParams = {
@@ -754,18 +1104,21 @@ declare function Notify<T extends GObject.Object, U>(target: (this: T, arg0: U) 
  * handle_click is automatically called when "clicked" is emitted
  */
 declare function OnSignal<T extends GObject.Object, S extends keyof SignalsOf<T>>(signal_name: S): (target: (this: T, ...args: SignalsOf<T>[S] extends (...args: infer Args) => any ? Args : never) => SignalsOf<T>[S] extends (...args: any) => infer Ret ? Ret : never, context: ClassMethodDecoratorContext<T>) => void;
+type ActionsOf<O extends GObject.Object, K extends ActionKind> = {
+    [Key in keyof O as O[Key] extends TypedAction<K, any> ? Key : never]: O[Key];
+};
+type CallbackForAction<O, A> = (A extends TypedAction<"state" | "param", infer T> ? (this: O, param_or_state: T) => any : A extends TypedAction<"void", any> ? (this: O) => any : never);
 /**
- * Decorator that connects a method to a Gio simple action's event signal.
+ * Decorator that connects a method to a GObjectify SimplerAction event.
  *
- * This decorator expects a string for the name of the action, but this string is limited to action fields defined on
- * the instance type in the method's class. See `from` for info on how to easily add Simple Actions to
- * GObject subclasses.
+ * When applied to a class method, the `OnSimplerAction(action_name)` ensures that the method
+ * is automatically connected to the given action on the class. The decorated method is bound
+ * to the instance, so `this` always refers to the object that captures the action.
  *
- * @param action_name - Name of the field containing a GioSimpleAction to connect to.
+ * @param action_name The name of the GObjectify SimplerAction to connect to.
+ * @returns A decorator for instance methods.
  */
-declare function OnSimpleAction<T extends GObject.Object, K extends {
-    [Key in keyof T]: Key extends "with_implements" ? never : T[Key] extends Gio.SimpleAction ? Key : never;
-}[keyof T], U extends (((this: T) => any) | ((this: T, action: Gio.SimpleAction) => any) | ((this: T, action: Gio.SimpleAction, value: GLib.Variant) => any))>(action_name: K): (target: U, context: ClassMethodDecoratorContext<T>) => void;
+declare function OnSimplerAction<T extends GObject.Object, K extends keyof ActionsOf<T, Exclude<ActionKind, "prop">>, U extends CallbackForAction<T, T[K]>>(action_name: K): (target: U, context: ClassMethodDecoratorContext<T>) => void;
 /**
  * Decorator that connects a method to one or more GObject property change notifications.
  *
@@ -926,4 +1279,4 @@ declare module "gi://GObject?version=2.0" {
     }
 }
 
-export { Child, ConstMap, Debounce, GClass, Notify, OnSignal, OnSimpleAction, PostInit, Property, Signal, SimpleAction, WatchProp, dedent, from, next_idle, timeout_ms };
+export { Child, ConstMap, Debounce, GClass, Menu, Notify, OnSignal, OnSimplerAction, PostInit, Property, Signal, SimplerAction, WatchProp, dedent, from, next_idle, timeout_ms };
