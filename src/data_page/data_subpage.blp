@@ -38,14 +38,14 @@ template $DataSubpage: Adw.BreakpointBin {
 			Box size_box {
 				Spinner spinner {
 					spinning: bind spinner.visible;
+					visible: bind $_is_size_unknown(template.size);
 					valign: center;
-					margin-top: 3;
 					margin-end: 6;
 				}
 
 				Label size_label {
 					visible: bind template.selection_mode_enabled inverted;
-					label: bind template.readable_size;
+					label: bind $_get_readable_size(template.size);
 					justify: right;
 
 					styles [

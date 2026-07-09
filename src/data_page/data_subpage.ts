@@ -6,57 +6,24 @@ import { Child, GClass, PostInit, Property, Signal, WatchProp, from, next_idle }
 import { DataBox } from "./data_box.js"
 import { get_readable_byte_size, iterate_list_model } from "../utils/helper_funcs.js"
 
-class SizeRecorder {
-	readonly #sizes: number[] = []
-	readonly on_add: (size: number) => void
-
-	get length(): number { return this.#sizes.length }
-
-	constructor(on_add: typeof this.on_add) {
-		this.on_add = on_add
-	}
-
-	add(size: number): void {
-		this.#sizes.push(size)
-		this.on_add(size)
-	}
-
-	get_total(): number {
-		let total = 0
-		this.#sizes.forEach((size) => total += size)
-		return total
-	}
-
-	reset(): void { this.#sizes.length = 0 }
-}
-
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_subpage.ui" })
 export class DataSubpage extends from(Adw.BreakpointBin, {
-	folder_size_reported: Signal([Gio.File, Number]),
 	show_leftover: Property.readonly.bool(),
 	selection_mode_enabled: Property.readwrite.bool(),
 	folders: Property.readonly.gobject(Gio.ListModel).as<Gio.ListModel<Gio.File>>(),
 	loading: Property.readwrite.bool(),
-	size: Property.readwrite.double(),
-	readable_size: Property.readwrite.string(),
+	size: Property.readwrite.double(-1),
 	selection_text: Property.readwrite.string(),
-	_spinner: Child<Adw.Spinner>(),
 	_scrolled_window: Child<Gtk.ScrolledWindow>(),
 	_flow_box: Child<Gtk.FlowBox>(),
 }) {
-	readonly #size_recorder = new SizeRecorder(this.#size_callback.bind(this))
 	readonly #selected_folders = new Set<Gio.File>()
 
 	constructor(params?: typeof DataSubpage.$params) {
 		super(params)
 		if (!this.folders) return
-		this.folders.connect("items-changed", () => this.#begin_size_load())
 		this._flow_box.bind_model(this.folders, (folder) => {
 			const box = new DataBox({ folder, is_leftover: this.show_leftover })
-			box.$connect("size-reported", (__, size) => {
-				this.#size_recorder.add(size)
-				this.$emit("folder-size-reported", folder, size)
-			})
 			box.$connect("notify::is-selected", () => {
 				if (box.is_selected) {
 					this.#selected_folders.add(folder)
@@ -70,37 +37,17 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 		})
 	}
 
-	#begin_size_load(): void {
-		this.#size_recorder.reset()
-		this._spinner.visible = true
-		this.readable_size = _("Loading File Size...")
-		if (!this.folders || this.folders.get_n_items() === 0) {
-			this.#apply_size(0)
-		}
-	}
-
-	#apply_size(total: number): void {
-		this._spinner.visible = false
-		this.size = total
-		this.readable_size = "~ " + get_readable_byte_size(total)
-	}
-
 	@PostInit
 	#selection_changed(): void {
 		this.selection_text = _("%s Selected").format(this.#selected_folders.size)
 	}
 
-	#size_callback(): void {
-		if (this.#size_recorder.length !== (this.folders?.get_n_items() ?? 0)) return
-		this.#apply_size(this.#size_recorder.get_total())
-	}
-
 	@WatchProp("loading")
 	#on_loading_changed(): void {
 		if (!this.loading) return
+		this.size = -1
 		this.#selected_folders.clear()
 		this.#selection_changed()
-		this.#begin_size_load()
 	}
 
 	@WatchProp("selection_mode_enabled")
@@ -114,6 +61,14 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 			if (!(child instanceof Gtk.FlowBoxChild) || !(child.child instanceof DataBox)) continue
 			child.child.selection_mode_enabled = this.selection_mode_enabled
 		}
+	}
+
+	protected _get_readable_size(__: this, size: number): string {
+		return size >= 0 ? get_readable_byte_size(size) : _("Loading Size...")
+	}
+
+	protected _is_size_unknown(__: this, size: number): boolean {
+		return size < 0
 	}
 
 	protected _get_title(__: this, show_leftover: boolean): string {

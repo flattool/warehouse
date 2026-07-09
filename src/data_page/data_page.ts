@@ -1,5 +1,6 @@
 import Gtk from "gi://Gtk?version=4.0"
 import Gio from "gi://Gio?version=2.0"
+import GLib from "gi://GLib?version=2.0"
 
 import {
 	GClass,
@@ -18,12 +19,12 @@ import { Package, type Installation } from "../flatpak.js"
 import { FileList } from "../utils/file_list.js"
 import { iterate_list_model } from "../utils/helper_funcs.js"
 import { ArrayStore } from "../utils/array_store.js"
+import { DataBox } from "./data_box.js"
 
 import "../widgets/sidebar_button.js"
 import "./data_subpage.js"
 import "../widgets/search_button.js"
 import "../widgets/select_button.js"
-import GLib from "gi://GLib?version=2.0"
 
 type SortKind = "name" | "id" | "size"
 type OrderKind = "asc" | "desc"
@@ -62,13 +63,13 @@ export class DataPage extends from(BasePage, {
 	order_act: SimplerAction.property("order", (o: OrderKind) => GLib.Variant.new_string(o)),
 	request_selection_mode: SimplerAction.void(),
 	_active_data: Child<ArrayStore<Gio.File>>(),
-	_all_packages: Child<Gtk.FlattenListModel<Package>>(),
+	_all_apps: Child<Gtk.FlattenListModel<Package>>(),
 	_installations_packages: Child<Gtk.MapListModel>(),
 	_leftover_data: Child<ArrayStore<Gio.File>>(),
 	_files: Child<FileList>(),
 	_sort_button: Child<Gtk.MenuButton>(),
-	_current: Child<DataSubpage>(),
-	_leftover: Child<DataSubpage>(),
+	_active_page: Child<DataSubpage>(),
+	_leftover_page: Child<DataSubpage>(),
 }) {
 	readonly #id_sorter = Gtk.CustomSorter.new((one, two) => {
 		if (one === two) return 0
@@ -114,20 +115,10 @@ export class DataPage extends from(BasePage, {
 		params.data_dir = Package.user_data_dir
 		super(params)
 		this._installations_packages.set_map_func((inst) => (inst as Installation).packages)
-		this.#rebuild_package_ids()
-		this._all_packages.connect("items-changed", () => this.#rebuild_package_ids())
-		this._files.connect("items-changed", () => this.#rebuild_package_ids())
+		this.#refresh_lists()
+		this._all_apps.connect("items-changed", () => this.#refresh_lists())
+		this._files.connect("items-changed", () => this.#refresh_lists())
 		this._sort_button.menu_model = make_sort_menu()
-		this._current.$connect("folder-size-reported", this.#on_folder_size_reported.bind(this))
-		this._leftover.$connect("folder-size-reported", this.#on_folder_size_reported.bind(this))
-	}
-
-	#on_folder_size_reported(_page: unknown, folder: Gio.File | null, size: number): void {
-		if (!folder) return
-		const previous = this.#size_cache.get(folder)
-		this.#size_cache.set(folder, size)
-		if (previous === size || this.sort !== "size") return
-		this.#update_sorter()
 	}
 
 	@WatchProp("order")
@@ -151,15 +142,15 @@ export class DataPage extends from(BasePage, {
 	}
 
 	@Debounce(200)
-	#rebuild_package_ids(): void {
+	#refresh_lists(): void {
 		this.#package_ids.clear()
 		this.#size_cache.clear()
 
 		const seen_active_ids = new Set<string>()
 		const active_dirs: Gio.File[] = []
-		for (const pkg of iterate_list_model(this._all_packages)) {
+		for (const pkg of iterate_list_model(this._all_apps)) {
 			this.#package_ids.add(pkg.application)
-			if (!pkg.is_app || seen_active_ids.has(pkg.application) || !pkg.data_dir?.query_exists(null)) {
+			if (seen_active_ids.has(pkg.application) || !pkg.data_dir?.query_exists(null)) {
 				continue
 			}
 			seen_active_ids.add(pkg.application)

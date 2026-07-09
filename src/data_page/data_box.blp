@@ -54,14 +54,13 @@ template $DataBox: Adw.Bin {
 
 				Spinner {
 					spinning: true;
-					visible: bind size_label.visible inverted;
+					visible: bind $_is_size_unknown(template.size);
 				}
 
 				Label size_label {
 					halign: start;
 					hexpand: true;
-					label: bind template.readable_size;
-					visible: bind $_is_size_ready(template.readable_size);
+					label: bind $_get_readable_size(template.size);
 				}
 
 				Box {

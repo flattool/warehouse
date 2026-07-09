@@ -6,9 +6,15 @@ SortListModel sorted_active_data {
 	model: $ArrayStore active_data {}; // item-type: Gio.File
 }
 
-FlattenListModel all_packages {
-	model: MapListModel installations_packages {
-		model: bind template.installations;
+FilterListModel all_apps {
+	filter: BoolFilter {
+		expression: expr item as <$Package>.is_app;
+	};
+
+	model: FlattenListModel {
+		model: MapListModel installations_packages {
+			model: bind template.installations;
+		};
 	};
 }
 
@@ -85,7 +91,7 @@ template $DataPage: $BasePage {
 					title: _("Active Data");
 					icon-name: "warehouse:file-manager-symbolic";
 
-					child: $DataSubpage current {
+					child: $DataSubpage active_page {
 						selection_mode_enabled: bind template.selection_mode_enabled;
 						folders: sorted_active_data;
 						loading: bind template.loading;
@@ -96,7 +102,7 @@ template $DataPage: $BasePage {
 					title: _("Leftover Data");
 					icon-name: "warehouse:folder-templates-symbolic";
 
-					child: $DataSubpage leftover {
+					child: $DataSubpage leftover_page {
 						show_leftover: true;
 						selection_mode_enabled: bind template.selection_mode_enabled;
 						folders: sorted_leftover_data;
