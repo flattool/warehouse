@@ -65,14 +65,16 @@ export class DataBox extends from(Adw.Bin, {
 	@PostInit
 	async #load_size(): Promise<void> {
 		const path = this.folder?.get_path()
-		if (!path) return
-		try {
-			const size = await get_file_size_bytes(path)
-			this.readable_size = "~ " + get_readable_byte_size(size)
-			this.$emit("size-reported", size)
-		} catch (e) {
-			print("Failed to get readable size:", e)
+		let size = 0
+		if (path) {
+			try {
+				size = await get_file_size_bytes(path)
+			} catch (e) {
+				print("Failed to get readable size:", e)
+			}
 		}
+		this.readable_size = "~ " + get_readable_byte_size(size)
+		this.$emit("size-reported", size)
 	}
 
 	#on_clicked(x: number, y: number): void {

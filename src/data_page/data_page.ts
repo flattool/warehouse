@@ -124,10 +124,10 @@ export class DataPage extends from(BasePage, {
 
 	#on_folder_size_reported(_page: unknown, folder: Gio.File | null, size: number): void {
 		if (!folder) return
+		const previous = this.#size_cache.get(folder)
 		this.#size_cache.set(folder, size)
-		if (this.sort === "size") {
-			this.#update_sorter()
-		}
+		if (previous === size || this.sort !== "size") return
+		this.#update_sorter()
 	}
 
 	@WatchProp("order")
@@ -147,6 +147,7 @@ export class DataPage extends from(BasePage, {
 				case "size": return this.#size_sorter
 			}
 		})()
+		this.sorter?.changed(Gtk.SorterChange.DIFFERENT)
 	}
 
 	@Debounce(200)
