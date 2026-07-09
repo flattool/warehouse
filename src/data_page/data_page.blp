@@ -1,7 +1,10 @@
 using Gtk 4.0;
 using Adw 1;
 
-$ArrayStore active_data {} // item-type: Gio.File
+SortListModel sorted_active_data {
+	sorter: bind template.sorter;
+	model: $ArrayStore active_data {}; // item-type: Gio.File
+}
 
 FlattenListModel all_packages {
 	model: MapListModel installations_packages {
@@ -9,7 +12,10 @@ FlattenListModel all_packages {
 	};
 }
 
-$ArrayStore leftover_data {} // item-type: Gio.File
+SortListModel sorted_leftover_data {
+	sorter: bind template.sorter;
+	model: $ArrayStore leftover_data {}; // item-type: Gio.File
+}
 
 $FileList files {
 	directory: bind template.data_dir;
@@ -50,7 +56,8 @@ template $DataPage: $BasePage {
 
 				[end]
 				MenuButton sort_button {
-					// menu-model: sort_menu;
+					tooltip-text: _("Sort Data");
+					icon-name: "warehouse:funnel-outline-symbolic";
 				}
 
 				[end]
@@ -80,7 +87,7 @@ template $DataPage: $BasePage {
 
 					child: $DataSubpage current {
 						selection_mode_enabled: bind template.selection_mode_enabled;
-						folders: active_data;
+						folders: sorted_active_data;
 						loading: bind template.loading;
 					};
 				}
@@ -92,7 +99,7 @@ template $DataPage: $BasePage {
 					child: $DataSubpage leftover {
 						show_leftover: true;
 						selection_mode_enabled: bind template.selection_mode_enabled;
-						folders: leftover_data;
+						folders: sorted_leftover_data;
 						loading: bind template.loading;
 					};
 				}

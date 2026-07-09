@@ -2,7 +2,7 @@ import Gtk from "gi://Gtk?version=4.0"
 import Adw from "gi://Adw?version=1"
 import Gio from "gi://Gio?version=2.0"
 
-import { Child, GClass, PostInit, Property, WatchProp, from, next_idle } from "../gobjectify/gobjectify.js"
+import { Child, GClass, PostInit, Property, Signal, WatchProp, from, next_idle } from "../gobjectify/gobjectify.js"
 import { DataBox } from "./data_box.js"
 import { get_readable_byte_size, iterate_list_model } from "../utils/helper_funcs.js"
 
@@ -32,6 +32,7 @@ class SizeRecorder {
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_subpage.ui" })
 export class DataSubpage extends from(Adw.BreakpointBin, {
+	folder_size_reported: Signal([Gio.File, Number]),
 	show_leftover: Property.readonly.bool(),
 	selection_mode_enabled: Property.readwrite.bool(),
 	folders: Property.readonly.gobject(Gio.ListModel).as<Gio.ListModel<Gio.File>>(),
@@ -52,7 +53,10 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 		this.folders.connect("items-changed", () => this.#begin_size_load())
 		this._flow_box.bind_model(this.folders, (folder) => {
 			const box = new DataBox({ folder, is_leftover: this.show_leftover })
-			box.$connect("size-reported", (__, size) => this.#size_recorder.add(size))
+			box.$connect("size-reported", (__, size) => {
+				this.#size_recorder.add(size)
+				this.$emit("folder-size-reported", folder, size)
+			})
 			box.$connect("notify::is-selected", () => {
 				if (box.is_selected) {
 					this.#selected_folders.add(folder)
