@@ -8,6 +8,8 @@ import { DataBox } from "./data_box.js"
 import { get_file_size_bytes, get_readable_byte_size, iterate_list_model } from "../utils/helper_funcs.js"
 import { SizedFolder } from "./size_folder.js"
 
+import "../widgets/search_group.js"
+
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_subpage.ui" })
 export class DataSubpage extends from(Adw.BreakpointBin, {
 	show_leftover: Property.readonly.bool(),
@@ -16,6 +18,7 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 	loading: Property.readwrite.bool(),
 	size: Property.readwrite.double(-1),
 	selection_text: Property.readwrite.string(),
+	any_search_results: Property.readwrite.bool(true),
 	_scrolled_window: Child<Gtk.ScrolledWindow>(),
 	_flow_box: Child<Gtk.FlowBox>(),
 }) {
@@ -39,10 +42,6 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 				old_size = folder.size
 				this.size += folder.size
 			})
-			// get_file_size_bytes(folder.get_path() ?? "").then((size) => {
-			// 	box.size = size
-			// 	this.size = this.size < 0 ? size : this.size + size
-			// }).catch(log)
 			box.$connect("notify::is-selected", () => {
 				if (box.is_selected) {
 					this.#selected_folders.add(folder.folder!)
@@ -79,6 +78,23 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 			if (!(child instanceof Gtk.FlowBoxChild) || !(child.child instanceof DataBox)) continue
 			child.child.selection_mode_enabled = this.selection_mode_enabled
 		}
+	}
+
+	do_search(search_text: string): void {
+		if (!this.folders) return
+		let total_visible = 0
+		for (const box of this._flow_box) {
+			const data_box = (box as Gtk.FlowBoxChild).child as DataBox
+			box.visible = (
+				data_box.title.toLocaleLowerCase().includes(search_text)
+				|| data_box.subtitle.toLocaleLowerCase().includes(search_text)
+			)
+			if (box.visible) {
+				total_visible += 1
+			}
+		}
+		print(search_text)
+		this.any_search_results = !search_text || total_visible > 0
 	}
 
 	protected _get_readable_size(__: this, size: number): string {

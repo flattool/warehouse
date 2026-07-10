@@ -15,100 +15,104 @@ template $DataSubpage: Adw.BreakpointBin {
 		}
 	}
 
-	child: Box {
-		orientation: vertical;
+	child: $SearchGroup {
+		no_results: bind template.any_search_results inverted;
 
-		Box header_box {
-			margin-start: 24;
-			margin-end: 24;
-			margin-bottom: 9;
-			spacing: 6;
+		content: Box {
+			orientation: vertical;
 
-			Label title {
-				label: bind $_get_title(template.show_leftover) as <string>;
-				halign: start;
-				hexpand: true;
-				wrap: true;
+			Box header_box {
+				margin-start: 24;
+				margin-end: 24;
+				margin-bottom: 9;
+				spacing: 6;
 
-				styles [
-					"title-1",
-				]
+				Label title {
+					label: bind $_get_title(template.show_leftover) as <string>;
+					halign: start;
+					hexpand: true;
+					wrap: true;
+
+					styles [
+						"title-1",
+					]
+				}
+
+				Box size_box {
+					Spinner spinner {
+						spinning: bind spinner.visible;
+						visible: bind $_is_size_unknown(template.size);
+						valign: center;
+						margin-end: 6;
+					}
+
+					Label size_label {
+						visible: bind template.selection_mode_enabled inverted;
+						label: bind $_get_readable_size(template.size);
+						justify: right;
+
+						styles [
+							"title-4",
+						]
+					}
+
+					Label selection_label {
+						visible: bind template.selection_mode_enabled;
+						label: bind template.selection_text;
+						justify: right;
+
+						styles [
+							"title-4",
+						]
+					}
+				}
 			}
 
-			Box size_box {
-				Spinner spinner {
-					spinning: bind spinner.visible;
-					visible: bind $_is_size_unknown(template.size);
-					valign: center;
-					margin-end: 6;
-				}
+			ScrolledWindow scrolled_window {
+				vexpand: true;
 
-				Label size_label {
-					visible: bind template.selection_mode_enabled inverted;
-					label: bind $_get_readable_size(template.size);
-					justify: right;
+				child: Box {
+					orientation: vertical;
+					margin-start: 12;
+					margin-end: 12;
+					margin-bottom: 12;
+					spacing: 12;
 
-					styles [
-						"title-4",
-					]
-				}
+					Separator {
+						orientation: horizontal;
+					}
 
-				Label selection_label {
-					visible: bind template.selection_mode_enabled;
-					label: bind template.selection_text;
-					justify: right;
+					FlowBox flow_box {
+						selection-mode: none;
+						column-spacing: 9;
+						row-spacing: 9;
+						homogeneous: true;
 
-					styles [
-						"title-4",
-					]
-				}
+						styles [
+							"card-flowbox",
+						]
+					}
+				};
 			}
-		}
 
-		ScrolledWindow scrolled_window {
-			vexpand: true;
+			Revealer {
+				reveal-child: bind template.selection_mode_enabled;
+				transition-type: slide_up;
 
-			child: Box {
-				orientation: vertical;
-				margin-start: 12;
-				margin-end: 12;
-				margin-bottom: 12;
-				spacing: 12;
-
-				Separator {
-					orientation: horizontal;
-				}
-
-				FlowBox flow_box {
-					selection-mode: none;
-					column-spacing: 9;
-					row-spacing: 9;
-					homogeneous: true;
-
+				child: Box {
 					styles [
-						"card-flowbox",
+						"toolbar",
 					]
-				}
-			};
-		}
 
-		Revealer {
-			reveal-child: bind template.selection_mode_enabled;
-			transition-type: slide_up;
+					Button {
+						label: _("One");
+					}
 
-			child: Box {
-				styles [
-					"toolbar",
-				]
-
-				Button {
-					label: _("One");
-				}
-
-				Button {
-					label: _("Two");
-				}
-			};
-		}
+					Button {
+						label: _("Two");
+					}
+				};
+			}
+		};
 	};
 }

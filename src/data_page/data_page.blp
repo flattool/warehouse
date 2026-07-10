@@ -82,6 +82,7 @@ template $DataPage: $BasePage {
 					child: SearchEntry {
 						hexpand: true;
 						placeholder-text: _("Search Data");
+						search-changed => $_on_search_changed();
 					};
 				};
 			}

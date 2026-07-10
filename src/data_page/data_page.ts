@@ -107,6 +107,7 @@ export class DataPage extends from(BasePage, {
 	})
 
 	readonly #package_ids = new Set<string>()
+	#search_text = ""
 
 	constructor(params?: typeof DataPage.$params) {
 		params ??= {}
@@ -127,12 +128,14 @@ export class DataPage extends from(BasePage, {
 	#on_page_size_changed(): void {
 		if (this.sorter !== this.#size_sorter) return
 		this.sorter.changed(Gtk.SorterChange.DIFFERENT)
+		this._on_search_changed()
 	}
 
 	@WatchProp("order")
 	#update_sorter(): void {
 		this.selection_mode_enabled = false
 		this.sorter?.changed(Gtk.SorterChange.DIFFERENT)
+		this._on_search_changed()
 	}
 
 	@WatchProp("sort")
@@ -146,6 +149,7 @@ export class DataPage extends from(BasePage, {
 			}
 		})()
 		this.sorter?.changed(Gtk.SorterChange.DIFFERENT)
+		this._on_search_changed()
 	}
 
 	@Debounce(200)
@@ -175,6 +179,7 @@ export class DataPage extends from(BasePage, {
 
 		this._active_data.swap_contents(active_dirs)
 		this._leftover_data.swap_contents(leftovers)
+		this._on_search_changed()
 	}
 
 	@OnSimplerAction("request_selection_mode")
@@ -188,5 +193,13 @@ export class DataPage extends from(BasePage, {
 			this._files.refresh()
 		}
 		this.selection_mode_enabled = false
+	}
+
+	protected _on_search_changed(entry?: Gtk.SearchEntry): void {
+		if (entry) {
+			this.#search_text = entry.text.toLocaleLowerCase()
+		}
+		this._active_page.do_search(this.#search_text)
+		this._leftover_page.do_search(this.#search_text)
 	}
 }
