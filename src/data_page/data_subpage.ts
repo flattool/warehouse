@@ -4,7 +4,7 @@ import Gio from "gi://Gio?version=2.0"
 
 import { Child, GClass, PostInit, Property, Signal, WatchProp, from, next_idle } from "../gobjectify/gobjectify.js"
 import { DataBox } from "./data_box.js"
-import { get_readable_byte_size, iterate_list_model } from "../utils/helper_funcs.js"
+import { get_file_size_bytes, get_readable_byte_size, iterate_list_model } from "../utils/helper_funcs.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_subpage.ui" })
 export class DataSubpage extends from(Adw.BreakpointBin, {
@@ -24,6 +24,10 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 		if (!this.folders) return
 		this._flow_box.bind_model(this.folders, (folder) => {
 			const box = new DataBox({ folder, is_leftover: this.show_leftover })
+			get_file_size_bytes(folder.get_path() ?? "").then((size) => {
+				box.size = size
+				this.size = this.size < 0 ? size : this.size + size
+			}).catch(log)
 			box.$connect("notify::is-selected", () => {
 				if (box.is_selected) {
 					this.#selected_folders.add(folder)
@@ -45,7 +49,6 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 	@WatchProp("loading")
 	#on_loading_changed(): void {
 		if (!this.loading) return
-		this.size = -1
 		this.#selected_folders.clear()
 		this.#selection_changed()
 	}

@@ -99,14 +99,14 @@ export class DataPage extends from(BasePage, {
 		if (one === two) return 0
 		if (!(one instanceof Gio.File)) return -1
 		if (!(two instanceof Gio.File)) return 1
-		const size_one = this.#size_cache.get(one) ?? -1
-		const size_two = this.#size_cache.get(two) ?? -1
-		const result = size_one - size_two
-		return this.order === "asc" ? result : -result
+		return 0
+		// const size_one = this.#size_cache.get(one) ?? -1
+		// const size_two = this.#size_cache.get(two) ?? -1
+		// const result = size_one - size_two
+		// return this.order === "asc" ? result : -result
 	})
 
 	readonly #package_ids = new Set<string>()
-	readonly #size_cache = new Map<Gio.File, number>()
 
 	constructor(params?: typeof DataPage.$params) {
 		params ??= {}
@@ -144,7 +144,6 @@ export class DataPage extends from(BasePage, {
 	@Debounce(200)
 	#refresh_lists(): void {
 		this.#package_ids.clear()
-		this.#size_cache.clear()
 
 		const seen_active_ids = new Set<string>()
 		const active_dirs: Gio.File[] = []
