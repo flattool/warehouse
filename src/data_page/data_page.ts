@@ -130,13 +130,11 @@ export class DataPage extends from(BasePage, {
 
 	@WatchProp("order")
 	#update_sorter(): void {
-		this.selection_mode_enabled = false
 		this.sorter?.changed(Gtk.SorterChange.DIFFERENT)
 	}
 
 	@WatchProp("sort")
 	#on_sort_changed(): void {
-		this.selection_mode_enabled = false
 		this.sorter = ((): Gtk.CustomSorter => {
 			switch (this.sort) {
 				case "id": return this.#id_sorter

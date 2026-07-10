@@ -24,11 +24,12 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 	_scrolled_window: Child<Gtk.ScrolledWindow>(),
 	_flow_box: Child<Gtk.FlowBox>(),
 }) {
-	readonly #selected_folders = new Set<Gio.File>()
+	readonly #selected_folders = new Set<string>()
 
 	constructor(params?: typeof DataSubpage.$params) {
 		super(params)
 		this._flow_box.bind_model(this._searched_folders, (folder) => {
+			const path = folder.folder?.get_path() ?? ""
 			const box = new DataBox({ folder: folder.folder, is_leftover: this.show_leftover })
 			let old_size = folder.size
 			box.size = old_size
@@ -43,11 +44,15 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 				old_size = folder.size
 				this.size += folder.size
 			})
+			if (this.selection_mode_enabled) {
+				box.selection_mode_enabled = true
+				box.is_selected = this.#selected_folders.has(path)
+			}
 			box.$connect("notify::is-selected", () => {
 				if (box.is_selected) {
-					this.#selected_folders.add(folder.folder!)
+					this.#selected_folders.add(path)
 				} else {
-					this.#selected_folders.delete(folder.folder!)
+					this.#selected_folders.delete(path)
 				}
 				this.#selection_changed()
 			})
@@ -67,7 +72,6 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 
 	@WatchProp("search_text")
 	#on_search_text_changed(): void {
-		DataPage.$actions.change_selection_mode.activate(this, false)
 		this._search_filter.changed(Gtk.FilterChange.DIFFERENT)
 	}
 
@@ -105,5 +109,9 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 
 	protected _get_title(__: this, show_leftover: boolean): string {
 		return show_leftover ? _("Leftover Data") : _("Active Data")
+	}
+
+	protected _test_selection(): void {
+		this.#selected_folders.forEach((value) => print(value))
 	}
 }
