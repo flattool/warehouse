@@ -1,16 +1,18 @@
 import Gtk from "gi://Gtk?version=4.0"
 import Adw from "gi://Adw?version=1"
 import Gio from "gi://Gio?version=2.0"
+import GObject from "gi://GObject?version=2.0"
 
 import { Child, GClass, PostInit, Property, Signal, WatchProp, from, next_idle } from "../gobjectify/gobjectify.js"
 import { DataBox } from "./data_box.js"
 import { get_file_size_bytes, get_readable_byte_size, iterate_list_model } from "../utils/helper_funcs.js"
+import { SizedFolder } from "./size_folder.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_subpage.ui" })
 export class DataSubpage extends from(Adw.BreakpointBin, {
 	show_leftover: Property.readonly.bool(),
 	selection_mode_enabled: Property.readwrite.bool(),
-	folders: Property.readonly.gobject(Gio.ListModel).as<Gio.ListModel<Gio.File>>(),
+	folders: Property.readonly.gobject(Gio.ListModel).as<Gio.ListModel<SizedFolder>>(),
 	loading: Property.readwrite.bool(),
 	size: Property.readwrite.double(-1),
 	selection_text: Property.readwrite.string(),
@@ -23,20 +25,33 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 		super(params)
 		if (!this.folders) return
 		this._flow_box.bind_model(this.folders, (folder) => {
-			const box = new DataBox({ folder, is_leftover: this.show_leftover })
-			get_file_size_bytes(folder.get_path() ?? "").then((size) => {
-				box.size = size
-				this.size = this.size < 0 ? size : this.size + size
-			}).catch(log)
+			const box = new DataBox({ folder: folder.folder, is_leftover: this.show_leftover })
+			let old_size = folder.size
+			box.size = old_size
+			folder.$connect("notify::size", () => {
+				box.size = folder.size
+				if (folder.size === -1) return
+				if (this.size === -1) {
+					this.size = folder.size
+					return
+				}
+				this.size -= old_size
+				old_size = folder.size
+				this.size += folder.size
+			})
+			// get_file_size_bytes(folder.get_path() ?? "").then((size) => {
+			// 	box.size = size
+			// 	this.size = this.size < 0 ? size : this.size + size
+			// }).catch(log)
 			box.$connect("notify::is-selected", () => {
 				if (box.is_selected) {
-					this.#selected_folders.add(folder)
+					this.#selected_folders.add(folder.folder!)
 				} else {
-					this.#selected_folders.delete(folder)
+					this.#selected_folders.delete(folder.folder!)
 				}
 				this.#selection_changed()
 			})
-			next_idle().then(() => box.parent.focusable = false)
+			next_idle().then(() => box.get_parent()?.set_focusable(false))
 			return box
 		})
 	}

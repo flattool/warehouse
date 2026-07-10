@@ -17,9 +17,10 @@ import { BasePage } from "../widgets/base_page.js"
 import { DataSubpage } from "./data_subpage.js"
 import { Package, type Installation } from "../flatpak.js"
 import { FileList } from "../utils/file_list.js"
-import { iterate_list_model } from "../utils/helper_funcs.js"
+import { get_file_size_bytes, iterate_list_model } from "../utils/helper_funcs.js"
 import { ArrayStore } from "../utils/array_store.js"
 import { DataBox } from "./data_box.js"
+import { SizedFolder } from "./size_folder.js"
 
 import "../widgets/sidebar_button.js"
 import "./data_subpage.js"
@@ -62,10 +63,10 @@ export class DataPage extends from(BasePage, {
 	sort_act: SimplerAction.property("sort", (s: SortKind) => GLib.Variant.new_string(s)),
 	order_act: SimplerAction.property("order", (o: OrderKind) => GLib.Variant.new_string(o)),
 	request_selection_mode: SimplerAction.void(),
-	_active_data: Child<ArrayStore<Gio.File>>(),
+	_active_data: Child<ArrayStore<SizedFolder>>(),
 	_all_apps: Child<Gtk.FlattenListModel<Package>>(),
 	_installations_packages: Child<Gtk.MapListModel>(),
-	_leftover_data: Child<ArrayStore<Gio.File>>(),
+	_leftover_data: Child<ArrayStore<SizedFolder>>(),
 	_files: Child<FileList>(),
 	_sort_button: Child<Gtk.MenuButton>(),
 	_active_page: Child<DataSubpage>(),
@@ -73,37 +74,36 @@ export class DataPage extends from(BasePage, {
 }) {
 	readonly #id_sorter = Gtk.CustomSorter.new((one, two) => {
 		if (one === two) return 0
-		if (!(one instanceof Gio.File)) return -1
-		if (!(two instanceof Gio.File)) return 1
+		if (!(one instanceof SizedFolder)) return -1
+		if (!(two instanceof SizedFolder)) return 1
 		const result = (
-			one.get_basename() ?? ""
+			one.folder?.get_basename() ?? ""
 		).localeCompare(
-			two.get_basename() ?? "",
+			two.folder?.get_basename() ?? "",
 		)
 		return this.order === "asc" ? result : -result
 	})
 
 	readonly #name_sorter = Gtk.CustomSorter.new((one, two) => {
 		if (one === two) return 0
-		if (!(one instanceof Gio.File)) return -1
-		if (!(two instanceof Gio.File)) return 1
+		if (!(one instanceof SizedFolder)) return -1
+		if (!(two instanceof SizedFolder)) return 1
 		const result = (
-			one.get_basename()?.split(".").at(-1) ?? ""
+			one.folder?.get_basename()?.split(".").at(-1) ?? ""
 		).localeCompare(
-			two.get_basename()?.split(".").at(-1) ?? "",
+			two.folder?.get_basename()?.split(".").at(-1) ?? "",
 		)
 		return this.order === "asc" ? result : -result
 	})
 
 	readonly #size_sorter = Gtk.CustomSorter.new((one, two) => {
 		if (one === two) return 0
-		if (!(one instanceof Gio.File)) return -1
-		if (!(two instanceof Gio.File)) return 1
-		return 0
-		// const size_one = this.#size_cache.get(one) ?? -1
-		// const size_two = this.#size_cache.get(two) ?? -1
-		// const result = size_one - size_two
-		// return this.order === "asc" ? result : -result
+		if (!(one instanceof SizedFolder)) return -1
+		if (!(two instanceof SizedFolder)) return 1
+		const size_one = one.size
+		const size_two = two.size
+		const result = size_one - size_two
+		return this.order === "asc" ? result : -result
 	})
 
 	readonly #package_ids = new Set<string>()
@@ -119,10 +119,17 @@ export class DataPage extends from(BasePage, {
 		this._all_apps.connect("items-changed", () => this.#refresh_lists())
 		this._files.connect("items-changed", () => this.#refresh_lists())
 		this._sort_button.menu_model = make_sort_menu()
+		this._active_page.$connect("notify::size", () => this.#on_page_size_changed())
+		this._leftover_page.$connect("notify::size", () => this.#on_page_size_changed())
+	}
+
+	@Debounce(200)
+	#on_page_size_changed(): void {
+		if (this.sorter !== this.#size_sorter) return
+		this.sorter.changed(Gtk.SorterChange.DIFFERENT)
 	}
 
 	@WatchProp("order")
-	@Debounce(200)
 	#update_sorter(): void {
 		this.selection_mode_enabled = false
 		this.sorter?.changed(Gtk.SorterChange.DIFFERENT)
@@ -144,26 +151,29 @@ export class DataPage extends from(BasePage, {
 	@Debounce(200)
 	#refresh_lists(): void {
 		this.#package_ids.clear()
+		this._active_page.size = -1
+		this._leftover_page.size = -1
 
 		const seen_active_ids = new Set<string>()
-		const active_dirs: Gio.File[] = []
+		const active_dirs: SizedFolder[] = []
 		for (const pkg of iterate_list_model(this._all_apps)) {
 			this.#package_ids.add(pkg.application)
 			if (seen_active_ids.has(pkg.application) || !pkg.data_dir?.query_exists(null)) {
 				continue
 			}
 			seen_active_ids.add(pkg.application)
-			active_dirs.push(pkg.data_dir)
+			active_dirs.push(new SizedFolder({ folder: pkg.data_dir }))
 		}
-		this._active_data.swap_contents(active_dirs)
 
-		const leftovers: Gio.File[] = []
+		const leftovers: SizedFolder[] = []
 		for (const file of this._files) {
 			const id = file.get_basename()
 			if (id !== null && !this.#package_ids.has(id)) {
-				leftovers.push(file)
+				leftovers.push(new SizedFolder({ folder: file }))
 			}
 		}
+
+		this._active_data.swap_contents(active_dirs)
 		this._leftover_data.swap_contents(leftovers)
 	}
 
