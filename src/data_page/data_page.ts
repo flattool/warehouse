@@ -17,9 +17,8 @@ import { BasePage } from "../widgets/base_page.js"
 import { DataSubpage } from "./data_subpage.js"
 import { Package, type Installation } from "../flatpak.js"
 import { FileList } from "../utils/file_list.js"
-import { get_file_size_bytes, iterate_list_model } from "../utils/helper_funcs.js"
+import { iterate_list_model } from "../utils/helper_funcs.js"
 import { ArrayStore } from "../utils/array_store.js"
-import { DataBox } from "./data_box.js"
 import { SizedFolder } from "./size_folder.js"
 
 import "../widgets/sidebar_button.js"
@@ -62,7 +61,7 @@ export class DataPage extends from(BasePage, {
 	order: Property.readwrite.string("asc").as<OrderKind>(),
 	sort_act: SimplerAction.property("sort", (s: SortKind) => GLib.Variant.new_string(s)),
 	order_act: SimplerAction.property("order", (o: OrderKind) => GLib.Variant.new_string(o)),
-	request_selection_mode: SimplerAction.void(),
+	change_selection_mode: SimplerAction.param.bool(),
 	_active_data: Child<ArrayStore<SizedFolder>>(),
 	_all_apps: Child<Gtk.FlattenListModel<Package>>(),
 	_installations_packages: Child<Gtk.MapListModel>(),
@@ -107,7 +106,6 @@ export class DataPage extends from(BasePage, {
 	})
 
 	readonly #package_ids = new Set<string>()
-	#search_text = ""
 
 	constructor(params?: typeof DataPage.$params) {
 		params ??= {}
@@ -128,14 +126,12 @@ export class DataPage extends from(BasePage, {
 	#on_page_size_changed(): void {
 		if (this.sorter !== this.#size_sorter) return
 		this.sorter.changed(Gtk.SorterChange.DIFFERENT)
-		this._on_search_changed()
 	}
 
 	@WatchProp("order")
 	#update_sorter(): void {
 		this.selection_mode_enabled = false
 		this.sorter?.changed(Gtk.SorterChange.DIFFERENT)
-		this._on_search_changed()
 	}
 
 	@WatchProp("sort")
@@ -149,7 +145,6 @@ export class DataPage extends from(BasePage, {
 			}
 		})()
 		this.sorter?.changed(Gtk.SorterChange.DIFFERENT)
-		this._on_search_changed()
 	}
 
 	@Debounce(200)
@@ -179,12 +174,11 @@ export class DataPage extends from(BasePage, {
 
 		this._active_data.swap_contents(active_dirs)
 		this._leftover_data.swap_contents(leftovers)
-		this._on_search_changed()
 	}
 
-	@OnSimplerAction("request_selection_mode")
-	#on_request_selection_mode(): void {
-		this.selection_mode_enabled = true
+	@OnSimplerAction("change_selection_mode")
+	#on_request_selection_mode(change_to: boolean): void {
+		this.selection_mode_enabled = change_to
 	}
 
 	@WatchProp("loading")
@@ -195,11 +189,9 @@ export class DataPage extends from(BasePage, {
 		this.selection_mode_enabled = false
 	}
 
-	protected _on_search_changed(entry?: Gtk.SearchEntry): void {
-		if (entry) {
-			this.#search_text = entry.text.toLocaleLowerCase()
-		}
-		this._active_page.do_search(this.#search_text)
-		this._leftover_page.do_search(this.#search_text)
+	protected _on_search_changed(entry: Gtk.SearchEntry): void {
+		const text = entry.text.toLocaleLowerCase()
+		this._active_page.search_text = text
+		this._leftover_page.search_text = text
 	}
 }

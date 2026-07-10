@@ -1,6 +1,12 @@
 using Gtk 4.0;
 using Adw 1;
 
+FilterListModel searched_folders {
+	filter: CustomFilter search_filter {};
+
+	model: bind template.folders;
+}
+
 template $DataSubpage: Adw.BreakpointBin {
 	width-request: 1;
 	height-request: 1;
@@ -16,7 +22,7 @@ template $DataSubpage: Adw.BreakpointBin {
 	}
 
 	child: $SearchGroup {
-		no_results: bind template.any_search_results inverted;
+		no_results: bind $_get_no_results(template.search_text, searched_folders.n-items) as <bool>;
 
 		content: Box {
 			orientation: vertical;

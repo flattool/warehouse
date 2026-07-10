@@ -1,12 +1,10 @@
 import Gtk from "gi://Gtk?version=4.0"
 import Gio from "gi://Gio?version=2.0"
-
-import {
-	GClass, WatchProp, Property, from, Child, next_idle, PostInit, SimplerAction, OnSimplerAction,
-} from "../gobjectify/gobjectify.js"
-import { get_file_size_bytes, get_readable_byte_size } from "../utils/helper_funcs.js"
-import Graphene from "gi://Graphene?version=1.0"
 import Adw from "gi://Adw?version=1"
+import Graphene from "gi://Graphene?version=1.0"
+
+import { GClass, WatchProp, Property, from, Child, next_idle } from "../gobjectify/gobjectify.js"
+import { get_readable_byte_size } from "../utils/helper_funcs.js"
 import { DataPage } from "./data_page.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_box.ui" })
@@ -24,7 +22,6 @@ export class DataBox extends from(Adw.Bin, {
 	_content_box: Child<Gtk.Box>(),
 	_icon: Child<Gtk.Image>(),
 	_select_button: Child<Gtk.CheckButton>(),
-	testy: SimplerAction.void(),
 }) {
 	readonly #click = new Gtk.GestureClick()
 	readonly #long_press = new Gtk.GestureLongPress()
@@ -64,25 +61,6 @@ export class DataBox extends from(Adw.Bin, {
 		})
 	}
 
-	@OnSimplerAction("testy")
-	#on_testy(): void {
-		print("testy activated!")
-	}
-
-	// @PostInit
-	// async #load_size(): Promise<void> {
-	// 	const path = this.folder?.get_path()
-	// 	let size = 0
-	// 	if (path) {
-	// 		try {
-	// 			size = await get_file_size_bytes(path)
-	// 		} catch (e) {
-	// 			print("Failed to get readable size:", e)
-	// 		}
-	// 	}
-	// 	this.readable_size = "~ " + get_readable_byte_size(size)
-	// }
-
 	#on_clicked(x: number, y: number): void {
 		if (this.#is_pressed) { // The long_press gesture always triggers a click at the end
 			this.#is_pressed = false
@@ -100,7 +78,7 @@ export class DataBox extends from(Adw.Bin, {
 		if (this.selection_mode_enabled) {
 			this.is_selected = true
 		} else {
-			DataPage.$actions.request_selection_mode.activate(this)
+			DataPage.$actions.change_selection_mode.activate(this, true)
 			next_idle().then(() => this.is_selected = true)
 		}
 	}
@@ -149,9 +127,9 @@ export class DataBox extends from(Adw.Bin, {
 		)
 		this.#settings?.$connect("notify::gtk-interface-color-scheme", () => this.#apply_css())
 		this.#settings?.$connect("notify::gtk-interface-contrast", () => this.#apply_css())
+		this.#apply_css()
 	}
 
-	@PostInit
 	#apply_css(): void {
 		const is_dark = this.#settings?.gtk_interface_color_scheme === Gtk.InterfaceColorScheme.DARK
 		const prefers_contrast = this.#settings?.gtk_interface_contrast === Gtk.InterfaceContrast.MORE
