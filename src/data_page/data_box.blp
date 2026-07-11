@@ -65,11 +65,11 @@ template $DataBox: Adw.Bin {
 
 				Box {
 					spacing: 6;
+					visible: bind template.selection_mode_enabled inverted;
 
 					Button {
 						icon-name: "warehouse:copy-symbolic";
 						tooltip-text: _("Copy Path");
-						visible: bind template.selection_mode_enabled inverted;
 
 						styles [
 							"flat",
@@ -80,7 +80,17 @@ template $DataBox: Adw.Bin {
 					Button {
 						icon-name: "warehouse:folder-open-symbolic";
 						tooltip-text: _("Open Data Folder");
-						visible: bind template.selection_mode_enabled inverted;
+
+						styles [
+							"flat",
+							"circular",
+						]
+					}
+
+					Button {
+						icon-name: "warehouse:arrow-pointing-at-line-down-symbolic";
+						tooltip-text: _("Reinstall");
+						visible: bind template.is_leftover;
 
 						styles [
 							"flat",
@@ -91,7 +101,6 @@ template $DataBox: Adw.Bin {
 					Button {
 						icon-name: "warehouse:user-trash-symbolic";
 						tooltip-text: _("Trash Data");
-						visible: bind template.selection_mode_enabled inverted;
 						sensitive: bind template.is_warehouse inverted;
 
 						styles [
@@ -99,14 +108,14 @@ template $DataBox: Adw.Bin {
 							"circular",
 						]
 					}
+				}
 
-					CheckButton select_button {
-						visible: bind template.selection_mode_enabled;
+				CheckButton select_button {
+					visible: bind template.selection_mode_enabled;
 
-						styles [
-							"selection-mode",
-						]
-					}
+					styles [
+						"selection-mode",
+					]
 				}
 			}
 		}
