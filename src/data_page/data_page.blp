@@ -39,7 +39,7 @@ template $DataPage: $BasePage {
 
 			setters {
 				header_bar.title-widget: null;
-				bottom_switcher_bar.revealed: true;
+				bottom_switcher_bar.reveal: true;
 			}
 		}
 
@@ -119,13 +119,9 @@ template $DataPage: $BasePage {
 			};
 
 			[bottom]
-			ActionBar bottom_switcher_bar {
-				revealed: false;
-
-				[center]
-				Adw.ViewSwitcher {
-					stack: stack;
-				}
+			Adw.ViewSwitcherBar bottom_switcher_bar {
+				reveal: false;
+				stack: stack;
 			}
 		};
 	};

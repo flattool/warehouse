@@ -1,7 +1,9 @@
 import Gtk from "gi://Gtk?version=4.0"
 import Adw from "gi://Adw?version=1"
 
-import { Child, GClass, PostInit, Property, WatchProp, from, next_idle } from "../gobjectify/gobjectify.js"
+import {
+	Child, GClass, Menu, PostInit, Property, SimplerAction, WatchProp, from, next_idle,
+} from "../gobjectify/gobjectify.js"
 import { DataBox } from "./data_box.js"
 import { get_readable_byte_size } from "../utils/helper_funcs.js"
 import { SizedFolder } from "./size_folder.js"
@@ -17,10 +19,17 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 	size: Property.readwrite.double(-1),
 	selection_text: Property.readwrite.string(),
 	search_text: Property.readwrite.string(),
+
+	select_all: SimplerAction.void(),
+	copy_paths: SimplerAction.void(),
+	trash_selected: SimplerAction.void(),
+	attempt_install: SimplerAction.void(),
+
 	_searched_folders: Child<Gtk.FilterListModel<SizedFolder>>(),
 	_search_filter: Child<Gtk.CustomFilter>(),
 	_scrolled_window: Child<Gtk.ScrolledWindow>(),
 	_flow_box: Child<Gtk.FlowBox>(),
+	_more_menu: Child<Gtk.MenuButton>(),
 }) {
 	readonly #selected_folders = new Set<string>()
 
@@ -61,6 +70,10 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 			const folder = (item as SizedFolder).folder
 			return folder?.get_basename()?.toLocaleLowerCase().includes(this.search_text) ?? false
 		})
+		this._more_menu.menu_model = Menu.build(Menu.items_for(DataSubpage, {
+			attempt_install: _("Reinstall"),
+			trash_selected: _("Trash"),
+		}))
 	}
 
 	@PostInit
@@ -107,10 +120,6 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 
 	protected _get_title(__: this, show_leftover: boolean): string {
 		return show_leftover ? _("Leftover Data") : _("Active Data")
-	}
-
-	protected _test_selection(): void {
-		this.#selected_folders.forEach((value) => print(value))
 	}
 
 	protected _get_visible_page(__: this, n_folders: number): "no-data-page" | "content-page" {
