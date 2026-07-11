@@ -21,101 +21,120 @@ template $DataSubpage: Adw.BreakpointBin {
 		}
 	}
 
-	child: $SearchGroup {
-		no_results: bind $_get_no_results(template.search_text, searched_folders.n-items) as <bool>;
+	child: Stack {
+		visible-child-name: bind $_get_visible_page(template.folders as <Gtk.SortListModel>.n-items);
 
-		content: Box {
-			orientation: vertical;
+		StackPage {
+			name: "no-data-page";
 
-			Box header_box {
-				margin-start: 24;
-				margin-end: 24;
-				margin-bottom: 9;
-				spacing: 6;
+			child: Adw.StatusPage {
+				title: bind $_get_no_data_title(template.show_leftover);
+				description: bind $_get_no_data_description(template.show_leftover);
+				icon-name: bind $_get_no_data_icon(template.show_leftover);
+			};
+		}
 
-				Label title {
-					label: bind $_get_title(template.show_leftover) as <string>;
-					halign: start;
-					hexpand: true;
-					wrap: true;
+		StackPage {
+			name: "content-page";
 
-					styles [
-						"title-1",
-					]
-				}
+			child: $SearchGroup {
+				no_results: bind $_get_no_results(template.search_text, searched_folders.n-items) as <bool>;
 
-				Box size_box {
-					Spinner spinner {
-						spinning: bind spinner.visible;
-						visible: bind $_is_size_unknown(template.size);
-						valign: center;
-						margin-end: 6;
-					}
-
-					Label size_label {
-						visible: bind template.selection_mode_enabled inverted;
-						label: bind $_get_readable_size(template.size);
-						justify: right;
-
-						styles [
-							"title-4",
-						]
-					}
-
-					Label selection_label {
-						visible: bind template.selection_mode_enabled;
-						label: bind template.selection_text;
-						justify: right;
-
-						styles [
-							"title-4",
-						]
-					}
-				}
-			}
-
-			ScrolledWindow scrolled_window {
-				vexpand: true;
-
-				child: Box {
+				content: Box {
 					orientation: vertical;
-					margin-start: 12;
-					margin-end: 12;
-					margin-bottom: 12;
-					spacing: 12;
 
-					Separator {
-						orientation: horizontal;
+					Box header_box {
+						margin-start: 24;
+						margin-end: 24;
+						margin-bottom: 9;
+						spacing: 6;
+
+						Label title {
+							label: bind $_get_title(template.show_leftover) as <string>;
+							halign: start;
+							hexpand: true;
+							wrap: true;
+
+							styles [
+								"title-1",
+							]
+						}
+
+						Box size_box {
+							Spinner spinner {
+								spinning: bind spinner.visible;
+								visible: bind $_is_size_unknown(template.size);
+								valign: center;
+								margin-end: 6;
+							}
+
+							Label size_label {
+								visible: bind template.selection_mode_enabled inverted;
+								label: bind $_get_readable_size(template.size);
+								justify: right;
+
+								styles [
+									"title-4",
+								]
+							}
+
+							Label selection_label {
+								visible: bind template.selection_mode_enabled;
+								label: bind template.selection_text;
+								justify: right;
+
+								styles [
+									"title-4",
+								]
+							}
+						}
 					}
 
-					FlowBox flow_box {
-						selection-mode: none;
-						column-spacing: 9;
-						row-spacing: 9;
-						homogeneous: true;
+					ScrolledWindow scrolled_window {
+						vexpand: true;
 
-						styles [
-							"card-flowbox",
-						]
+						child: Box {
+							orientation: vertical;
+							margin-start: 12;
+							margin-end: 12;
+							margin-bottom: 12;
+							spacing: 12;
+
+							Separator {
+								orientation: horizontal;
+							}
+
+							FlowBox flow_box {
+								selection-mode: none;
+								column-spacing: 9;
+								row-spacing: 9;
+								homogeneous: true;
+
+								styles [
+									"card-flowbox",
+								]
+							}
+						};
+					}
+
+					Revealer {
+						reveal-child: bind template.selection_mode_enabled;
+						transition-type: slide_up;
+
+						child: Box {
+							styles [
+								"toolbar",
+							]
+
+							Button {
+								label: _("Test Selection");
+								clicked => $_test_selection();
+							}
+						};
 					}
 				};
-			}
+			};
+		}
 
-			Revealer {
-				reveal-child: bind template.selection_mode_enabled;
-				transition-type: slide_up;
-
-				child: Box {
-					styles [
-						"toolbar",
-					]
-
-					Button {
-						label: _("Test Selection");
-						clicked => $_test_selection();
-					}
-				};
-			}
-		};
 	};
 }

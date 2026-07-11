@@ -1,10 +1,8 @@
 import Gtk from "gi://Gtk?version=4.0"
 import Adw from "gi://Adw?version=1"
-import Gio from "gi://Gio?version=2.0"
 
 import { Child, GClass, PostInit, Property, WatchProp, from, next_idle } from "../gobjectify/gobjectify.js"
 import { DataBox } from "./data_box.js"
-import { DataPage } from "./data_page.js"
 import { get_readable_byte_size } from "../utils/helper_funcs.js"
 import { SizedFolder } from "./size_folder.js"
 
@@ -14,7 +12,7 @@ import "../widgets/search_group.js"
 export class DataSubpage extends from(Adw.BreakpointBin, {
 	show_leftover: Property.readonly.bool(),
 	selection_mode_enabled: Property.readwrite.bool(),
-	folders: Property.readonly.gobject(Gio.ListModel).as<Gio.ListModel<SizedFolder>>(),
+	folders: Property.readonly.gobject(Gtk.SortListModel).as<Gtk.SortListModel<SizedFolder>>(),
 	loading: Property.readwrite.bool(),
 	size: Property.readwrite.double(-1),
 	selection_text: Property.readwrite.string(),
@@ -113,5 +111,30 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 
 	protected _test_selection(): void {
 		this.#selected_folders.forEach((value) => print(value))
+	}
+
+	protected _get_visible_page(__: this, n_folders: number): "no-data-page" | "content-page" {
+		return n_folders > 0 ? "content-page" : "no-data-page"
+	}
+
+	protected _get_no_data_title(): string {
+		return (this.show_leftover
+			? _("No Leftover Data")
+			: _("No Active Data")
+		)
+	}
+
+	protected _get_no_data_description(): string {
+		return (this.show_leftover
+			? _("Warehouse cannot see any active user data or your system has no active user data present")
+			: _("There is no leftover user data")
+		)
+	}
+
+	protected _get_no_data_icon(): string {
+		return (this.show_leftover
+			? "warehouse:check-plain-symbolic"
+			: "warehouse:error-symbolic"
+		)
 	}
 }
