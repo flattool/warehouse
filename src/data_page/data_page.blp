@@ -87,29 +87,35 @@ template $DataPage: $BasePage {
 				};
 			}
 
-			content: Adw.ViewStack stack {
-				Adw.ViewStackPage {
-					title: _("Active Data");
-					icon-name: "warehouse:file-manager-symbolic";
+			content: $LoadingGroup {
+				is_loading: bind $_get_show_loading(template.loading, template.refreshing) as <bool>;
+				title: _("Loading Data");
+				description: _("This should only take a moment.");
 
-					child: $DataSubpage active_page {
-						selection_mode_enabled: bind template.selection_mode_enabled;
-						folders: sorted_active_data;
-						loading: bind template.loading;
-					};
-				}
+				content: Adw.ViewStack stack {
+					Adw.ViewStackPage {
+						title: _("Active Data");
+						icon-name: "warehouse:file-manager-symbolic";
 
-				Adw.ViewStackPage {
-					title: _("Leftover Data");
-					icon-name: "warehouse:folder-templates-symbolic";
+						child: $DataSubpage active_page {
+							selection_mode_enabled: bind template.selection_mode_enabled;
+							folders: sorted_active_data;
+							loading: bind template.loading;
+						};
+					}
 
-					child: $DataSubpage leftover_page {
-						show_leftover: true;
-						selection_mode_enabled: bind template.selection_mode_enabled;
-						folders: sorted_leftover_data;
-						loading: bind template.loading;
-					};
-				}
+					Adw.ViewStackPage {
+						title: _("Leftover Data");
+						icon-name: "warehouse:folder-templates-symbolic";
+
+						child: $DataSubpage leftover_page {
+							show_leftover: true;
+							selection_mode_enabled: bind template.selection_mode_enabled;
+							folders: sorted_leftover_data;
+							loading: bind template.loading;
+						};
+					}
+				};
 			};
 
 			[bottom]

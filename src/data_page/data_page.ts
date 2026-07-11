@@ -12,6 +12,7 @@ import {
 	Menu,
 	from,
 	Debounce,
+	next_idle,
 } from "../gobjectify/gobjectify.js"
 import { BasePage } from "../widgets/base_page.js"
 import { DataSubpage } from "./data_subpage.js"
@@ -59,6 +60,7 @@ export class DataPage extends from(BasePage, {
 	sorter: Property.readwrite.gobject(Gtk.CustomSorter),
 	sort: Property.readwrite.string("name").as<SortKind>(),
 	order: Property.readwrite.string("asc").as<OrderKind>(),
+	refreshing: Property.readwrite.bool(),
 	sort_act: SimplerAction.property("sort", (s: SortKind) => GLib.Variant.new_string(s)),
 	order_act: SimplerAction.property("order", (o: OrderKind) => GLib.Variant.new_string(o)),
 	change_selection_mode: SimplerAction.param.bool(),
@@ -114,9 +116,9 @@ export class DataPage extends from(BasePage, {
 		params.data_dir = Package.user_data_dir
 		super(params)
 		this._installations_packages.set_map_func((inst) => (inst as Installation).packages)
-		this.#refresh_lists()
-		this._all_apps.connect("items-changed", () => this.#refresh_lists())
-		this._files.connect("items-changed", () => this.#refresh_lists())
+		this.#request_refresh()
+		this._all_apps.connect("items-changed", () => this.#request_refresh())
+		this._files.connect("items-changed", () => this.#request_refresh())
 		this._sort_button.menu_model = make_sort_menu()
 		this._active_page.$connect("notify::size", () => this.#on_page_size_changed())
 		this._leftover_page.$connect("notify::size", () => this.#on_page_size_changed())
@@ -143,6 +145,11 @@ export class DataPage extends from(BasePage, {
 			}
 		})()
 		this.sorter?.changed(Gtk.SorterChange.DIFFERENT)
+	}
+
+	#request_refresh(): void {
+		this.refreshing = true
+		this.#refresh_lists()
 	}
 
 	@Debounce(200)
@@ -172,6 +179,9 @@ export class DataPage extends from(BasePage, {
 
 		this._active_data.swap_contents(active_dirs)
 		this._leftover_data.swap_contents(leftovers)
+
+		// this.refreshing = false
+		next_idle().then(() => this.refreshing = false)
 	}
 
 	@OnSimplerAction("change_selection_mode")
@@ -179,12 +189,8 @@ export class DataPage extends from(BasePage, {
 		this.selection_mode_enabled = change_to
 	}
 
-	@WatchProp("loading")
-	#on_loading_changed(): void {
-		if (this.loading) {
-			this._files.refresh()
-		}
-		this.selection_mode_enabled = false
+	protected _get_show_loading(): boolean {
+		return this.loading || this.refreshing
 	}
 
 	protected _on_search_changed(entry: Gtk.SearchEntry): void {
