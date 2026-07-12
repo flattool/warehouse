@@ -178,8 +178,8 @@ export class DataPage extends from(BasePage, {
 			}
 		}
 
-		this._active_data.swap_contents(Math.random() > 0.5 ? active_dirs : [])
-		this._leftover_data.swap_contents(Math.random() > 0.5 ? leftovers : [])
+		this._active_data.swap_contents(active_dirs)
+		this._leftover_data.swap_contents(leftovers)
 
 		next_idle().then(() => this.refreshing = false)
 	}

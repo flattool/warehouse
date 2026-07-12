@@ -5,6 +5,12 @@ import Adw from "gi://Adw?version=1"
 
 import { SharedVars } from "./shared_vars.js"
 import { LineProcess } from "./cli.js"
+import GLib from "gi://GLib?version=2.0"
+
+Gio._promisify(Gio.File.prototype, "trash_async", "trash_finish")
+Gio._promisify(Gio.File.prototype, "delete_async", "delete_finish")
+Gio._promisify(Gio.File.prototype, "query_info_async", "query_info_finish")
+Gio._promisify(Gio.File.prototype, "enumerate_children_async", "enumerate_children_finish")
 
 export function ask_to_continue(
 	heading: string,
@@ -131,4 +137,68 @@ export async function activate_flatseal(app_id: string): Promise<void> {
 		"{}",
 	]
 	await LineProcess.run(command)
+}
+
+async function delete_recrusive(file: Gio.File): Promise<void> {
+	if (!file.query_exists(null)) return
+	const info = await file.query_info_async(
+		"standard::type",
+		Gio.FileQueryInfoFlags.NONE,
+		GLib.PRIORITY_DEFAULT_IDLE,
+		null,
+	)
+	if (info.get_file_type() !== Gio.FileType.DIRECTORY) {
+		await file.delete_async(GLib.PRIORITY_DEFAULT_IDLE, null)
+		return
+	}
+	const enumerator = await file.enumerate_children_async(
+		"standard::*",
+		Gio.FileQueryInfoFlags.NONE,
+		GLib.PRIORITY_DEFAULT_IDLE,
+		null,
+	)
+	let child_info: Gio.FileInfo | null
+	while ((child_info = enumerator.next_file(null)) !== null) {
+		const child = enumerator.get_child(child_info)
+		await delete_recrusive(child)
+	}
+	enumerator.close(null)
+	await file.delete_async(GLib.PRIORITY_DEFAULT_IDLE, null)
+}
+
+export async function trash_fallback_delete(...files: Gio.File[]): Promise<void> {
+	const failed_trashes: (Gio.File | null)[] = []
+	for (const file of files) {
+		if (!file.query_exists(null)) continue
+		try {
+			await file.trash_async(GLib.PRIORITY_DEFAULT_IDLE, null)
+		} catch {
+			failed_trashes.push(file)
+		}
+	}
+	if (failed_trashes.length < 1) return
+	const should_delete = await ask_to_continue(
+		_("Trash Failed. Delete Files Instead?"),
+		_("Instead of moving to the trash, these files will be permanently deleted. This is not recoverable."),
+		_("Delete Files"),
+		Adw.ResponseAppearance.DESTRUCTIVE,
+	)
+	if (!should_delete) return
+	const failed_deletes: { path: string, error: unknown }[] = []
+	for (const file of failed_trashes) {
+		if (!file) return
+		try {
+			await delete_recrusive(file)
+		} catch (error) {
+			const path = file.get_path() ?? ""
+			failed_deletes.push({ path, error })
+		}
+	}
+	if (failed_deletes.length < 1) return
+	SharedVars.main_window?.add_error_toast(
+		_("Could not delete files"),
+		failed_deletes.map(
+			({ path, error }) => `${path}: ${error instanceof Error ? error.message : String(error)}`,
+		).join("\n"),
+	)
 }

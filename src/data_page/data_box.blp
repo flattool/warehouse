@@ -70,6 +70,7 @@ template $DataBox: Adw.Bin {
 					Button {
 						icon-name: "warehouse:copy-symbolic";
 						tooltip-text: _("Copy Path");
+						clicked => $_do_copy();
 
 						styles [
 							"flat",
@@ -80,6 +81,7 @@ template $DataBox: Adw.Bin {
 					Button {
 						icon-name: "warehouse:folder-open-symbolic";
 						tooltip-text: _("Open Data Folder");
+						clicked => $_do_open();
 
 						styles [
 							"flat",
@@ -102,6 +104,7 @@ template $DataBox: Adw.Bin {
 						icon-name: "warehouse:user-trash-symbolic";
 						tooltip-text: _("Trash Data");
 						sensitive: bind template.is_warehouse inverted;
+						clicked => $_do_trash();
 
 						styles [
 							"flat",

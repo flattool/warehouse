@@ -4,8 +4,9 @@ import Adw from "gi://Adw?version=1"
 import Graphene from "gi://Graphene?version=1.0"
 
 import { GClass, WatchProp, Property, from, Child, next_idle } from "../gobjectify/gobjectify.js"
-import { get_readable_byte_size } from "../utils/helper_funcs.js"
+import { ask_to_continue, get_readable_byte_size, trash_fallback_delete } from "../utils/helper_funcs.js"
 import { DataPage } from "./data_page.js"
+import { SharedVars } from "../utils/shared_vars.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_box.ui" })
 export class DataBox extends from(Adw.Bin, {
@@ -91,6 +92,53 @@ export class DataBox extends from(Adw.Bin, {
 			this.remove_css_class("activatable")
 			this.is_selected = false
 		}
+	}
+
+	#gaurd_path(
+		path: string | undefined | null,
+		failure_title: string,
+		callback: (path: string) => void,
+	): void {
+		const failure_message = "Folder path was null, undefined, or empty."
+		if (path) {
+			try {
+				callback(path)
+			} catch (e) {
+				SharedVars.main_window?.add_error_toast(failure_title, e instanceof Error ? e.message : String(e))
+			}
+		} else {
+			SharedVars.main_window?.add_error_toast(failure_title, failure_message)
+		}
+	}
+
+	protected _do_copy(): void {
+		this.#gaurd_path(
+			this.folder?.get_path(),
+			_("Could not copy path"),
+			(path) => SharedVars.fancy_copy(_("Copied path"), path),
+		)
+	}
+
+	protected _do_open(): void {
+		this.#gaurd_path(
+			this.folder?.get_path(),
+			_("Could not open folder"),
+			(path) => Gio.AppInfo.launch_default_for_uri(`file://${path}`, null),
+		)
+	}
+
+	protected async _do_trash(): Promise<void> {
+		if (!await ask_to_continue(
+			_("Trash %s Data?").format(this.title),
+			_("The app's data will be moved to the trash."),
+			_("Trash"),
+			Adw.ResponseAppearance.DESTRUCTIVE,
+		)) return
+		this.#gaurd_path(
+			this.folder?.get_path(),
+			_("Could not trash path"),
+			() => trash_fallback_delete(this.folder!),
+		)
 	}
 
 	protected _is_size_unknown(__: this, size: number): boolean {
