@@ -1,7 +1,7 @@
 import Gtk from "gi://Gtk?version=4.0"
 import GObject from "gi://GObject?version=2.0"
 
-import { from, GClass, OnSignal, Property, Signal } from "../gobjectify/gobjectify.js"
+import { from, GClass, OnSignal, Property, Signal, WatchProp } from "../gobjectify/gobjectify.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/widgets/search_button.ui" })
 export class SearchButton extends from(Gtk.ToggleButton, {
@@ -20,10 +20,12 @@ export class SearchButton extends from(Gtk.ToggleButton, {
 		}
 	}
 
-	@OnSignal("notify::sensitive")
+	@WatchProp("sensitive")
 	#on_sensitive_change(): void {
-		if (this.sensitive || !this.search_bar) return
-		this.search_bar.search_mode_enabled = false
+		this.search_bar?.set_sensitive(this.sensitive)
+		if (!this.sensitive) {
+			this.search_bar?.set_search_mode(false)
+		}
 	}
 
 	protected _get_trigger(__: this, shortcut_str: string): Gtk.ShortcutTrigger {

@@ -149,6 +149,7 @@ export class DataPage extends from(BasePage, {
 
 	#request_refresh(): void {
 		this.refreshing = true
+		this.selection_mode_enabled = false
 		this.#refresh_lists()
 	}
 
@@ -177,8 +178,8 @@ export class DataPage extends from(BasePage, {
 			}
 		}
 
-		this._active_data.swap_contents(active_dirs)
-		this._leftover_data.swap_contents(leftovers)
+		this._active_data.swap_contents(Math.random() > 0.5 ? active_dirs : [])
+		this._leftover_data.swap_contents(Math.random() > 0.5 ? leftovers : [])
 
 		next_idle().then(() => this.refreshing = false)
 	}
@@ -186,6 +187,17 @@ export class DataPage extends from(BasePage, {
 	@OnSimplerAction("change_selection_mode")
 	#on_request_selection_mode(change_to: boolean): void {
 		this.selection_mode_enabled = change_to
+	}
+
+	protected _get_header_buttons_sensitive(
+		__: this,
+		page: DataSubpage,
+		loading: boolean,
+		refreshing: boolean,
+		n_active: number,
+		n_leftover: number,
+	): boolean {
+		return !loading && !refreshing && page.show_leftover ? n_leftover > 0 : n_active > 0
 	}
 
 	protected _get_show_loading(): boolean {

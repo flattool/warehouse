@@ -2,13 +2,14 @@ import Gtk from "gi://Gtk?version=4.0"
 import Adw from "gi://Adw?version=1"
 
 import {
-	Child, GClass, Menu, PostInit, Property, SimplerAction, WatchProp, from, next_idle,
+	Child, GClass, Menu, OnSimplerAction, PostInit, Property, SimplerAction, WatchProp, from, next_idle,
 } from "../gobjectify/gobjectify.js"
 import { DataBox } from "./data_box.js"
 import { get_readable_byte_size } from "../utils/helper_funcs.js"
 import { SizedFolder } from "./size_folder.js"
 
 import "../widgets/search_group.js"
+import { DataPage } from "./data_page.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_subpage.ui" })
 export class DataSubpage extends from(Adw.BreakpointBin, {
@@ -103,6 +104,15 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 		for (const child of this._flow_box) {
 			if (!(child instanceof Gtk.FlowBoxChild) || !(child.child instanceof DataBox)) continue
 			child.child.selection_mode_enabled = this.selection_mode_enabled
+		}
+	}
+
+	@OnSimplerAction("select_all")
+	#on_select_all(): void {
+		DataPage.$actions.change_selection_mode.activate(this, true)
+		for (const box of this._flow_box) {
+			const data_box = (box as Gtk.FlowBoxChild).child as DataBox
+			data_box.is_selected = true
 		}
 	}
 

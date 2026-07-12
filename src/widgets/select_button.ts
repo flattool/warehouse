@@ -1,7 +1,7 @@
 import Gtk from "gi://Gtk?version=4.0"
 import GObject from "gi://GObject?version=2.0"
 
-import { GClass, Signal, Property, from, OnSignal } from "../gobjectify/gobjectify.js"
+import { GClass, Signal, Property, from, OnSignal, WatchProp } from "../gobjectify/gobjectify.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/widgets/select_button.ui" })
 export class SelectButton extends from(Gtk.ToggleButton, {
@@ -13,6 +13,12 @@ export class SelectButton extends from(Gtk.ToggleButton, {
 	#on_toggle_selection_mode(): void {
 		if (!this.sensitive) return
 		this.selection_mode_enabled = !this.selection_mode_enabled
+	}
+
+	@WatchProp("sensitive")
+	#on_sensitive_changed(): void {
+		if (this.sensitive) return
+		this.active = false
 	}
 
 	protected _get_trigger(__: this, shortcut_str: string): Gtk.ShortcutTrigger {

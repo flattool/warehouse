@@ -52,6 +52,7 @@ template $DataPage: $BasePage {
 				[start]
 				$SearchButton search_button {
 					search_bar: search_bar;
+					sensitive: bind $_get_header_buttons_sensitive(stack.visible-child, template.loading, template.refreshing, sorted_active_data.n-items, sorted_leftover_data.n-items) as <bool>;
 				}
 
 				title-widget: Adw.InlineViewSwitcher primary_switcher {
@@ -64,12 +65,14 @@ template $DataPage: $BasePage {
 				MenuButton sort_button {
 					tooltip-text: _("Sort Data");
 					icon-name: "warehouse:funnel-outline-symbolic";
+					sensitive: bind $_get_header_buttons_sensitive(stack.visible-child, template.loading, template.refreshing, sorted_active_data.n-items, sorted_leftover_data.n-items);
 				}
 
 				[end]
 				$SelectButton {
 					tooltip-text: _("Select App Data");
 					active: bind template.selection_mode_enabled bidirectional;
+					sensitive: bind $_get_header_buttons_sensitive(stack.visible-child, template.loading, template.refreshing, sorted_active_data.n-items, sorted_leftover_data.n-items) as <bool>;
 				}
 			}
 
