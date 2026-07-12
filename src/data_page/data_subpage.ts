@@ -11,6 +11,7 @@ import { SizedFolder } from "./size_folder.js"
 import "../widgets/search_group.js"
 import { DataPage } from "./data_page.js"
 import Gio from "gi://Gio?version=2.0"
+import { SharedVars } from "../utils/shared_vars.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_subpage.ui" })
 export class DataSubpage extends from(Adw.BreakpointBin, {
@@ -115,6 +116,20 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 			const data_box = (box as Gtk.FlowBoxChild).child as DataBox
 			data_box.is_selected = true
 		}
+	}
+
+	@OnSimplerAction("copy_paths")
+	#on_copy_paths(): void {
+		let to_copy = ""
+		for (const path of this.#selected_folders) {
+			to_copy += `${path}\n`
+		}
+		SharedVars.fancy_copy(_("Copied paths"), to_copy.trim())
+	}
+
+	@OnSimplerAction("attempt_install")
+	#on_attempt_install(): void {
+		print("Not implemented yet.")
 	}
 
 	@OnSimplerAction("trash_selected")
