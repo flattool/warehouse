@@ -5,11 +5,12 @@ import {
 	Child, GClass, Menu, OnSimplerAction, PostInit, Property, SimplerAction, WatchProp, from, next_idle,
 } from "../gobjectify/gobjectify.js"
 import { DataBox } from "./data_box.js"
-import { get_readable_byte_size } from "../utils/helper_funcs.js"
+import { ask_to_continue, get_readable_byte_size, trash_fallback_delete } from "../utils/helper_funcs.js"
 import { SizedFolder } from "./size_folder.js"
 
 import "../widgets/search_group.js"
 import { DataPage } from "./data_page.js"
+import Gio from "gi://Gio?version=2.0"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_subpage.ui" })
 export class DataSubpage extends from(Adw.BreakpointBin, {
@@ -114,6 +115,17 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 			const data_box = (box as Gtk.FlowBoxChild).child as DataBox
 			data_box.is_selected = true
 		}
+	}
+
+	@OnSimplerAction("trash_selected")
+	async #on_trash_selected(): Promise<void> {
+		if (!await ask_to_continue(
+			_("Trash Data?"),
+			_("The selected app data will be moved to the trash."),
+			_("Trash"),
+			Adw.ResponseAppearance.DESTRUCTIVE,
+		)) return
+		await trash_fallback_delete(...Array.from(this.#selected_folders, (path) => Gio.File.new_for_path(path)))
 	}
 
 	protected _get_no_results(__: this, search_text: string, n_searched: number): boolean {
