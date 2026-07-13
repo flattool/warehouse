@@ -123,7 +123,17 @@ export class DataBox extends from(Adw.Bin, {
 		this.#gaurd_path(
 			this.folder?.get_path(),
 			_("Could not open folder"),
-			(path) => Gio.AppInfo.launch_default_for_uri(`file://${path}`, null),
+			(path) => {
+				SharedVars.main_window?.add_toast(_("Opening folder..."))
+				try {
+					Gio.AppInfo.launch_default_for_uri(`file://${path}`, null)
+				} catch (e) {
+					SharedVars.main_window?.add_error_toast(
+						_("Could not open folder"),
+						e instanceof Error ? e.message : String(e),
+					)
+				}
+			},
 		)
 	}
 
