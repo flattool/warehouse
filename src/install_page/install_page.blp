@@ -1,0 +1,23 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $InstallPage: $BasePage {
+	title: _("Install Packages");
+
+	child: Adw.BreakpointBin {
+		width-request: 1;
+		height-request: 1;
+
+		Adw.Breakpoint {
+			condition ("max-width: 6000")
+
+			setters {
+				// multi_view.layout: skinny;
+			}
+		}
+
+		child: Adw.StatusPage {
+			title: bind template.title;
+		};
+	};
+}

@@ -13,6 +13,7 @@ import "../packages_page/packages_page.js"
 import "../remotes_page/remotes_page.js"
 import "../data_page/data_page.js"
 import "../installations_page/installations_page.js"
+import "../install_page/install_page.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/window/main_window.ui" })
 export class MainWindow extends from(Adw.ApplicationWindow, {
