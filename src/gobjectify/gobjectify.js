@@ -1,5 +1,5 @@
 /*!
- * GObjectify 1.1.1 - A type-safe, declarative TypeScript library for writing & interacting with GObject classes in GNOME JavaScript (GJS)
+ * GObjectify 1.1.2 - A type-safe, declarative TypeScript library for writing & interacting with GObject classes in GNOME JavaScript (GJS)
  * https://github.com/flattool/gobjectify
  *
  * MIT License
@@ -221,14 +221,15 @@ const make_param = (format, config) => ({
     as() { return this; },
     create(prefix, name) {
         const action = new Gio.SimpleAction({ name, parameter_type: new GLib.VariantType(this.format) });
-        const instance = Object.assign(Object.create(this), {
+        const instance = Object.create(this);
+        Object.defineProperties(instance, Object.getOwnPropertyDescriptors({
             action,
             detailed_name: `${prefix}.${name}`,
             activate: (param) => action.activate(new GLib.Variant(this.format, param)),
             on_activated: (callback) => (action.connect("activate", (_self, variant) => callback(instance, variant.unpack()))),
             get enabled() { return action.get_enabled(); },
             set enabled(v) { action.set_enabled(v); },
-        });
+        }));
         return instance;
     },
 });
@@ -244,7 +245,8 @@ const make_state = (format, initial_state, config) => ({
             parameter_type: new GLib.VariantType(format),
             state: new GLib.Variant(format, initial_state),
         });
-        const instance = Object.assign(Object.create(this), {
+        const instance = Object.create(this);
+        Object.defineProperties(instance, Object.getOwnPropertyDescriptors({
             action,
             detailed_name: `${prefix}.${name}`,
             activate: (new_state) => action.activate(new GLib.Variant(format, new_state)),
@@ -253,7 +255,7 @@ const make_state = (format, initial_state, config) => ({
             set enabled(v) { action.set_enabled(v); },
             get state() { return this.action.get_state().unpack(); },
             set state(v) { this.action.set_state(new GLib.Variant(format, v)); },
-        });
+        }));
         return instance;
     },
     as() { return this; },
@@ -267,14 +269,15 @@ const SimplerAction = {
         initial_state: undefined,
         create(prefix, name) {
             const action = new Gio.SimpleAction({ name });
-            const instance = Object.assign(Object.create(this), {
+            const instance = Object.create(this);
+            Object.defineProperties(instance, Object.getOwnPropertyDescriptors({
                 action,
                 detailed_name: `${prefix}.${name}`,
                 activate: () => action.activate(null),
                 on_activated: (callback) => action.connect("activate", (_self) => callback(instance)),
                 get enabled() { return action.get_enabled(); },
                 set enabled(v) { action.set_enabled(v); },
-            });
+            }));
             return instance;
         },
     }),
@@ -303,12 +306,13 @@ const SimplerAction = {
         transformer: transformer,
         create(prefix, name, object) {
             const action = new Gio.PropertyAction({ name, object, property_name: field });
-            const instance = Object.assign(Object.create(this), {
+            const instance = Object.create(this);
+            Object.defineProperties(instance, Object.getOwnPropertyDescriptors({
                 action,
                 detailed_name: `${prefix}.${name}`,
                 activate: (item) => action.activate(transformer(item)),
                 get enabled() { return action.get_enabled(); },
-            });
+            }));
             return instance;
         },
     }),
