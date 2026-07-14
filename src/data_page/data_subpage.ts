@@ -12,6 +12,7 @@ import "../widgets/search_group.js"
 import { DataPage } from "./data_page.js"
 import Gio from "gi://Gio?version=2.0"
 import { SharedVars } from "../utils/shared_vars.js"
+import { Package } from "../flatpak.js"
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/data_page/data_subpage.ui" })
 export class DataSubpage extends from(Adw.BreakpointBin, {
@@ -34,6 +35,8 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 	_flow_box: Child<Gtk.FlowBox>(),
 	_more_menu: Child<Gtk.MenuButton>(),
 }) {
+	static self_data_path = `${Package.user_data_dir.get_path()}/${pkg.app_id}`.normalize_path()
+
 	readonly #selected_folders = new Set<string>()
 
 	constructor(params?: typeof DataSubpage.$params) {
@@ -82,6 +85,11 @@ export class DataSubpage extends from(Adw.BreakpointBin, {
 	@PostInit
 	#selection_changed(): void {
 		this.selection_text = _("%s Selected").format(this.#selected_folders.size)
+		const any_selected = this.#selected_folders.size > 0
+		this.copy_paths.enabled = any_selected
+		this.attempt_install.enabled = any_selected
+		this.trash_selected.enabled = any_selected && !this.#selected_folders.has(DataSubpage.self_data_path)
+		this._more_menu.sensitive = this.attempt_install.enabled || this.trash_selected.enabled
 	}
 
 	@WatchProp("search_text")

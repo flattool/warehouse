@@ -3,11 +3,11 @@ import Gio from "gi://Gio?version=2.0"
 import Gtk from "gi://Gtk?version=4.0"
 import Adw from "gi://Adw?version=1"
 
+import "./mixins.js"
+
 import { GClass, SimplerAction, OnSimplerAction, from, dedent } from "./gobjectify/gobjectify.js"
 import { MainWindow } from "./window/main_window.js"
 import { SharedVars } from "./utils/shared_vars.js"
-
-import "./mixins.js"
 
 @GClass({ manual_gtype_name: "Gjs_Application" })
 export class Application extends from(Adw.Application, {
