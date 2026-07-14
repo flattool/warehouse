@@ -7,6 +7,10 @@ import Gtk from "gi://Gtk?version=4.0"
 import { from, GClass, Child, Property, Signal, SimplerAction } from "../gobjectify/gobjectify.js"
 import { BasePage } from "../widgets/base_page.js"
 
+import "./select_page.js"
+import "./pending_page.js"
+import "../widgets/sidebar_button.js"
+
 @GClass({ template: "resource:///io/github/flattool/Warehouse/install_page/install_page.ui" })
 export class InstallPage extends from(BasePage, {}) {
 	constructor(params?: typeof InstallPage.$params) {
