@@ -11,12 +11,23 @@ import "./select_page.js"
 import "./pending_page.js"
 import "../widgets/sidebar_button.js"
 
+type PageNamges = "installing-page" | "loading-page" | "content-page"
+
 @GClass({ template: "resource:///io/github/flattool/Warehouse/install_page/install_page.ui" })
-export class InstallPage extends from(BasePage, {}) {
+export class InstallPage extends from(BasePage, {
+	installing: Property.readwrite.bool(),
+}) {
 	constructor(params?: typeof InstallPage.$params) {
 		params ??= {}
 		params.icon_name = "warehouse:arrow-pointing-at-line-down-symbolic"
 		params.sidebar_title = _("Install Packages")
 		super(params)
+		this.remotes
+	}
+
+	protected _get_visible_page(__: this, loading: boolean, installing: boolean): PageNamges {
+		if (loading) return "loading-page"
+		if (installing) return "installing-page"
+		return "content-page"
 	}
 }

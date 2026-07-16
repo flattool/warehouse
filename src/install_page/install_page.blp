@@ -17,6 +17,8 @@ template $InstallPage: $BasePage {
 		}
 
 		child: Stack {
+			visible-child-name: bind $_get_visible_page(template.loading, template.installing);
+
 			StackPage {
 				name: "installing-page";
 
@@ -64,7 +66,7 @@ template $InstallPage: $BasePage {
 							max-sidebar-width: 999999999;
 
 							sidebar: Adw.NavigationPage {
-								title: _("Select Source");
+								title: bind template.title;
 
 								child: Adw.LayoutSlot {
 									id: "select-page";
@@ -87,14 +89,50 @@ template $InstallPage: $BasePage {
 								margin-bottom: bind bottom_sheet.bottom-bar-height;
 								id: "select-page";
 							};
+
 							sheet: Adw.LayoutSlot {
 								id: "pending-page";
+							};
+
+							bottom-bar: Revealer {
+								reveal-child: true;
+
+								Box {
+									margin-top: 12;
+									margin-bottom: 14;
+									spacing: 12;
+									halign: center;
+									valign: center;
+									
+									styles [
+										"flat"
+									]
+
+									[start]
+									Image {
+										icon-name: "warehouse:flatpak-symbolic";
+										icon-size: normal;
+									}
+
+									[center]
+									Label {
+										label: _("Pending Packages 3");
+									}
+
+									[end]
+									Image {
+										icon-name: "go-next-symbolic";
+										icon-size: normal;
+									}
+								}
 							};
 						};
 					}
 
 					[select-page]
-					$SelectPage {}
+					$SelectPage {
+						remotes: bind template.remotes;
+					}
 
 					[pending-page]
 					$PendingPage {}

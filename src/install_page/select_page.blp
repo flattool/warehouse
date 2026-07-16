@@ -1,4 +1,45 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $SelectPage: Adw.NavigationPage {}
+SortListModel sorted_remotes {
+	model: FilterListModel {
+		filter: BoolFilter {
+			expression: expr item as <$Remote>.disabled;
+			invert: true;
+		};
+
+		model: bind template.remotes;
+	};
+}
+
+template $SelectPage: Adw.Bin {
+	child: Adw.ToolbarView {
+		[top]
+		Adw.HeaderBar {}
+
+		[top]
+		SearchEntry {
+			margin-start: 6;
+			margin-end: 6;
+			hexpand: true;
+			placeholder-text: _("Search for New Packages");
+		}
+
+		content: Adw.PreferencesPage {
+			Adw.PreferencesGroup remotes_group {
+				title: _("Search in a Remote");
+				description: _("Choose a remote to search for new packages");
+			}
+
+			Adw.PreferencesGroup {
+				title: _("Add Packages");
+				description: _("Install packages from files on your system");
+
+				Adw.ButtonRow {
+					start-icon-name: "warehouse:folder-open-symbolic";
+					title: _("Open Files");
+				}
+			}
+		};
+	};
+}
