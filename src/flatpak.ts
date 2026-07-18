@@ -188,6 +188,8 @@ export class Installation extends from(GObject.Object, {
 	masked_ids: Property.readwrite.jsobject().as<Set<string>>(),
 	pinned_refs: Property.readwrite.jsobject().as<Set<string>>(),
 	loading: Property.readwrite.bool(true),
+	has_remotes: Property.computed.bool(),
+	has_packages: Property.computed.bool(),
 }) {
 	readonly remotes = new ArrayStore<Remote>({})
 	readonly packages = new ArrayStore<Package>({})
@@ -201,8 +203,16 @@ export class Installation extends from(GObject.Object, {
 		return this.location_tag === "other" ? `--installation=${this.name}` : `--${this.name}`
 	}
 
+	override get has_remotes(): boolean { return this.remotes.length > 0 }
+	override set has_remotes(_v: boolean) { throw new Error("Installation::has_remotes is not writeable") }
+
+	override get has_packages(): boolean { return this.packages.length > 0 }
+	override set has_packages(_v: boolean) { throw new Error("Installation::has_packages is not writeable") }
+
 	constructor(params?: typeof Installation.$params) {
 		super(params)
+		this.remotes.connect("items-changed", () => this.notify("has-remotes"))
+		this.packages.connect("items-changed", () => this.notify("has-packages"))
 		const file: Gio.File = Gio.File.new_for_path(this.location_path).get_child("repo")
 		this.icon_theme.add_search_path(`${this.location_path}/exports/share/icons`.normalize_path())
 		if (

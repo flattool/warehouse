@@ -2,6 +2,10 @@ using Gtk 4.0;
 using Adw 1;
 
 SortListModel sorted_remotes {
+	sorter: StringSorter {
+		expression: expr item as <$Remote>.title;
+	};
+
 	model: FilterListModel {
 		filter: BoolFilter {
 			expression: expr item as <$Remote>.disabled;
@@ -18,28 +22,45 @@ template $SelectPage: Adw.Bin {
 		Adw.HeaderBar {}
 
 		[top]
-		SearchEntry {
+		Box {
 			margin-start: 6;
 			margin-end: 6;
-			hexpand: true;
-			placeholder-text: _("Search for New Packages");
+
+			styles [
+				"linked",
+			]
+
+			SearchEntry {
+				hexpand: true;
+				placeholder-text: _("Search for New Packages");
+			}
+
+			DropDown remote_dropdown {
+				tooltip-text: _("Choose a Remote");
+				enable-search: true;
+				hexpand: true;
+				model: sorted_remotes;
+				expression: expr item as <$Remote>.title;
+
+				list-factory: SignalListItemFactory dropdown_factory {};
+
+				// list-factory: BuilderListItemFactory {
+				// 	template ListItem {
+				// 		child: $FilterableRemote {
+				// 			remote: bind template.item;
+				// 		};
+				// 	}
+				// };
+			}
+
+			// Image {
+			// 	icon-name: "warehouse:server-pick-symbolic";
+			// 	tooltip-text: _("Remotes are where packages come from.");
+			// }
 		}
 
-		content: Adw.PreferencesPage {
-			Adw.PreferencesGroup remotes_group {
-				title: _("Search in a Remote");
-				description: _("Choose a remote to search for new packages");
-			}
-
-			Adw.PreferencesGroup {
-				title: _("Add Packages");
-				description: _("Install packages from files on your system");
-
-				Adw.ButtonRow {
-					start-icon-name: "warehouse:folder-open-symbolic";
-					title: _("Open Files");
-				}
-			}
+		content: Adw.StatusPage {
+			title: _("Select Page");
 		};
 	};
 }
