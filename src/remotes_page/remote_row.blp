@@ -3,12 +3,12 @@ using Adw 1;
 
 template $RemoteRow: Adw.ActionRow {
 	title: bind template.remote as <$Remote>.title;
-	subtitle: bind $_get_subtitle(template.remote as <$Remote>.installation as <$Installation>.title) as <string>;
+	subtitle: bind template.remote as <$Remote>.name;
 	disabled: bind $_get_disabled(template.remote as <$Remote>.disabled) as <bool>;
 
 	[suffix]
 	Label {
-		label: bind template.remote as <$Remote>.name;
+		label: bind $_get_subtitle(template.remote as <$Remote>.installation as <$Installation>.title) as <string>;
 		margin-end: 6;
 		wrap: true;
 		wrap-mode: word_char;
