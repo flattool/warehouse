@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 set -euo pipefail
 
+rm -rf _build
+
 # Needed to escape weird envvars provided mainly by Nix flakes
 flatpak run \
 	--unset-env=GDK_PIXBUF_MODULE_FILE \
