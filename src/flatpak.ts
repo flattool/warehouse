@@ -511,3 +511,53 @@ async function get_packages(
 	await process.run()
 	list.swap_contents(paks)
 }
+
+const SEARCH_LIST_COLUMN_ITEMS = {
+	columns: ["name", "description", "application", "version", "branch", "remotes"] as const,
+	index_of(item: (typeof this.columns)[number]): number {
+		return this.columns.indexOf(item)
+	},
+} as const
+
+@GClass() export class SearchResults extends from(GObject.Object, {
+	name: Property.readonly.string(),
+	description: Property.readonly.string(),
+	application: Property.readonly.string(),
+	version: Property.readonly.string(),
+	branch: Property.readonly.string(),
+	remotes: Property.readonly.string(),
+}) {}
+
+export async function search_packages(
+	search_text: string,
+	installation: Installation,
+	remote_name?: string,
+): Promise<SearchResults[]> {
+	const columns = SEARCH_LIST_COLUMN_ITEMS.columns.join(",")
+	const results: SearchResults[] = []
+	const process = new LineProcess(
+		["flatpak", "search", installation.command_syntax, `--columns=${columns}`, search_text],
+		true,
+	)
+	process.on_stdout_line = (line): void => {
+		const info: string[] = line.trim().split("\t")
+		if (info.length !== SEARCH_LIST_COLUMN_ITEMS.columns.length) {
+			print("Skipping the following line:")
+			print(line)
+			print("")
+			return
+		}
+		const remotes = info[SEARCH_LIST_COLUMN_ITEMS.index_of("remotes")] ?? ""
+		if (remote_name && !remotes.includes(remote_name)) return
+		results.push(new SearchResults({
+			name: info[SEARCH_LIST_COLUMN_ITEMS.index_of("name")] ?? "",
+			description: info[SEARCH_LIST_COLUMN_ITEMS.index_of("description")] ?? "",
+			application: info[SEARCH_LIST_COLUMN_ITEMS.index_of("application")] ?? "",
+			version: info[SEARCH_LIST_COLUMN_ITEMS.index_of("version")] ?? "",
+			branch: info[SEARCH_LIST_COLUMN_ITEMS.index_of("branch")] ?? "",
+			remotes,
+		}))
+	}
+	await process.run()
+	return results
+}

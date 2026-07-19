@@ -32,9 +32,14 @@ template $SelectPage: Adw.Bin {
 				"linked",
 			]
 
-			SearchEntry {
+			SearchEntry search_entry {
 				hexpand: true;
 				placeholder-text: _("Search for New Packages");
+			}
+
+			Button {
+				label: _("Go");
+				clicked => $_do_test();
 			}
 
 			DropDown remote_dropdown {

@@ -4,7 +4,7 @@ import Gio from "gi://Gio?version=2.0"
 import GObject from "gi://GObject?version=2.0"
 
 import { Child, from, GClass, Property, WatchProp } from "../gobjectify/gobjectify.js"
-import { Installation, Remote } from "../flatpak.js"
+import { Installation, Remote, search_packages } from "../flatpak.js"
 import { ArrayStore } from "../utils/array_store.js"
 import { make_signal_factory } from "../utils/helper_funcs.js"
 import { SelectableRemote, SelectableRemoteBox } from "./selectable_remote.js"
@@ -14,6 +14,7 @@ export class SelectPage extends from(Adw.Bin, {
 	remotes: Property.readwrite.gobject(Gio.ListModel).as<Gio.ListModel<Remote>>(),
 	selected_remote: Property.readwrite.gobject(SelectableRemote),
 	_selectable_remotes: Child<Gtk.MapListModel<SelectableRemote>>(),
+	_search_entry: Child<Gtk.SearchEntry>(),
 	_remote_dropdown: Child<Gtk.DropDown>(),
 }) {
 	constructor(params?: typeof SelectPage.$params) {
@@ -24,6 +25,21 @@ export class SelectPage extends from(Adw.Bin, {
 			bind: (box, remote) => box.remote = remote,
 			unbind: (box) => box.remote = null,
 		})
+	}
+
+	protected async _do_test(): Promise<void> {
+		const search = this._search_entry.get_text().trim()
+		if (!search) return
+		const inst = this.selected_remote?.remote?.installation
+		if (!inst) return
+		const remote_name = this.selected_remote?.remote?.name
+		try {
+			for (const result of await search_packages(search, inst, remote_name)) {
+				print(result.name)
+			}
+		} catch (e) {
+			print(e instanceof Error ? e.message : e)
+		}
 	}
 
 	protected _remote_selected(): void {
