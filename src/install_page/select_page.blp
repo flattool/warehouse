@@ -1,20 +1,31 @@
 using Gtk 4.0;
 using Adw 1;
+using Gio 2.0;
 
-MapListModel selectable_remotes {
-	model: SortListModel {
-		sorter: StringSorter {
-			expression: expr item as <$Remote>.title;
-		};
+FlattenListModel selectable_remotes {
+	model: Gio.ListStore {
+		Gio.ListStore {
+			$SelectableRemote {
+				is_all: true;
+			}
+		}
 
-		model: FilterListModel {
-			filter: BoolFilter {
-				expression: expr item as <$Remote>.disabled;
-				invert: true;
+		MapListModel available_remotes {
+			model: SortListModel {
+				sorter: StringSorter {
+					expression: expr item as <$Remote>.title;
+				};
+
+				model: FilterListModel {
+					filter: BoolFilter {
+						expression: expr item as <$Remote>.disabled;
+						invert: true;
+					};
+
+					model: bind template.remotes;
+				};
 			};
-
-			model: bind template.remotes;
-		};
+		}
 	};
 }
 
@@ -29,32 +40,38 @@ SortListModel sorted_results {
 template $SelectPage: Adw.Bin {
 	child: Adw.ToolbarView {
 		[top]
-		Adw.HeaderBar {}
+		Adw.HeaderBar {
+			[start]
+			$SidebarButton {}
+		}
 
 		[top]
-		Box {
-			margin-start: 6;
-			margin-end: 6;
+		Adw.Clamp {
+			child: SearchBar {
+				search-mode-enabled: true;
 
-			styles [
-				"linked",
-			]
+				child: Box {
+					styles [
+						"linked",
+					]
 
-			SearchEntry search_entry {
-				hexpand: true;
-				placeholder-text: _("Search for New Packages");
-				search-changed => $_search_changed();
-			}
+					SearchEntry search_entry {
+						hexpand: true;
+						placeholder-text: _("Search for New Packages");
+						search-changed => $_search_changed();
+					}
 
-			DropDown remote_dropdown {
-				tooltip-text: _("Choose a Remote");
-				enable-search: true;
-				hexpand: true;
-				model: selectable_remotes;
-				expression: expr item as <$SelectableRemote>.remote as <$Remote>.title;
+					DropDown remote_dropdown {
+						tooltip-text: _("Choose a Remote");
+						enable-search: true;
+						hexpand: true;
+						model: selectable_remotes;
+						expression: expr item as <$SelectableRemote>.title;
 
-				notify::selected-item => $_remote_selected();
-			}
+						notify::selected-item => $_remote_selected();
+					}
+				};
+			};
 		}
 
 		content: $LoadingGroup {
@@ -88,6 +105,7 @@ template $SelectPage: Adw.Bin {
 								margin-top: 12;
 								margin-bottom: 12;
 								selection-mode: none;
+								valign: start;
 
 								styles [
 									"boxed-list",

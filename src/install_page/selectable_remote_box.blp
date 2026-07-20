@@ -5,7 +5,7 @@ template $SelectableRemoteBox: Box {
 
 	Image {
 		icon-name: "object-select-symbolic";
-		opacity: bind $_get_check_opacity(template.remote as <$SelectableRemote>.selected);
+		opacity: bind $_get_check_opacity(template.selectable_remote as <$SelectableRemote>.selected);
 	}
 
 	Box {
@@ -13,7 +13,7 @@ template $SelectableRemoteBox: Box {
 		orientation: vertical;
 
 		Label {
-			label: bind $_get_title_label(template.remote);
+			label: bind $_get_title_label(template.selectable_remote);
 			hexpand: true;
 			halign: start;
 
@@ -23,14 +23,15 @@ template $SelectableRemoteBox: Box {
 		}
 
 		Label {
-			label: bind $_get_name_label(template.remote);
+			label: bind $_get_name_label(template.selectable_remote);
 			hexpand: true;
 			halign: start;
+			visible: bind $_get_name_label_visible(template.selectable_remote);
 		}
 	}
 
 	Label {
-		label: bind $_get_installation_label(template.remote);
+		label: bind $_get_installation_label(template.selectable_remote);
 		hexpand: true;
 		halign: end;
 	}
