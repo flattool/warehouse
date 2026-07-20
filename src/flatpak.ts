@@ -519,7 +519,7 @@ const SEARCH_LIST_COLUMN_ITEMS = {
 	},
 } as const
 
-@GClass() export class SearchResults extends from(GObject.Object, {
+@GClass() export class SearchResult extends from(GObject.Object, {
 	name: Property.readonly.string(),
 	description: Property.readonly.string(),
 	application: Property.readonly.string(),
@@ -532,14 +532,16 @@ export async function search_packages(
 	search_text: string,
 	installation: Installation,
 	remote_name?: string,
-): Promise<SearchResults[]> {
+	cancellable?: Gio.Cancellable,
+): Promise<SearchResult[]> {
 	const columns = SEARCH_LIST_COLUMN_ITEMS.columns.join(",")
-	const results: SearchResults[] = []
+	const results: SearchResult[] = []
 	const process = new LineProcess(
 		["flatpak", "search", installation.command_syntax, `--columns=${columns}`, search_text],
 		true,
 	)
 	process.on_stdout_line = (line): void => {
+		if (cancellable?.is_cancelled()) return
 		const info: string[] = line.trim().split("\t")
 		if (info.length !== SEARCH_LIST_COLUMN_ITEMS.columns.length) {
 			print("Skipping the following line:")
@@ -549,7 +551,7 @@ export async function search_packages(
 		}
 		const remotes = info[SEARCH_LIST_COLUMN_ITEMS.index_of("remotes")] ?? ""
 		if (remote_name && !remotes.includes(remote_name)) return
-		results.push(new SearchResults({
+		results.push(new SearchResult({
 			name: info[SEARCH_LIST_COLUMN_ITEMS.index_of("name")] ?? "",
 			description: info[SEARCH_LIST_COLUMN_ITEMS.index_of("description")] ?? "",
 			application: info[SEARCH_LIST_COLUMN_ITEMS.index_of("application")] ?? "",
@@ -558,6 +560,7 @@ export async function search_packages(
 			remotes,
 		}))
 	}
+	cancellable?.$connect("cancelled", () => process.cancel())
 	await process.run()
 	return results
 }

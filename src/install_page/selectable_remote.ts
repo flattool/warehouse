@@ -8,7 +8,11 @@ import Gtk from "gi://Gtk?version=4.0"
 	remote: Property.readwrite.gobject(Remote),
 	selected: Property.readwrite.bool(),
 	is_all: Property.readwrite.bool(),
-}) {}
+}) {
+	set_selected(to: boolean): void {
+		this.selected = to
+	}
+}
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/install_page/selectable_remote_box.ui" })
 export class SelectableRemoteBox extends from(Gtk.Box, {

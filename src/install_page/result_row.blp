@@ -1,0 +1,46 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $ResultRow: Adw.ActionRow {
+	title: bind template.result as <$SearchResult>.name;
+	subtitle: bind template.result as <$SearchResult>.application;
+	tooltip-text: bind $_get_tooltip(template.kind);
+	activatable: true;
+	sensitive: bind $_get_sensitivity(template.kind);
+
+	[suffix]
+	Box {
+		orientation: vertical;
+		valign: center;
+		margin-end: 4;
+
+		Label {
+			label: bind template.result as <$SearchResult>.version;
+			justify: right;
+			halign: end;
+			hexpand: true;
+			wrap: true;
+
+			styles [
+				"subtitle",
+			]
+		}
+
+		Label {
+			label: bind template.result as <$SearchResult>.branch;
+			justify: right;
+			halign: end;
+			hexpand: true;
+			wrap: true;
+
+			styles [
+				"subtitle",
+			]
+		}
+	}
+
+	[suffix]
+	Image suffix_image {
+		icon-name: bind $_get_icon(template.kind);
+	}
+}

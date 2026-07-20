@@ -18,6 +18,14 @@ MapListModel selectable_remotes {
 	};
 }
 
+SortListModel sorted_results {
+	// sorter: StringSorter {
+	// 	expression: expr item as <$SearchResult>.name;
+	// };
+
+	model: bind template.search_results;
+}
+
 template $SelectPage: Adw.Bin {
 	child: Adw.ToolbarView {
 		[top]
@@ -35,11 +43,7 @@ template $SelectPage: Adw.Bin {
 			SearchEntry search_entry {
 				hexpand: true;
 				placeholder-text: _("Search for New Packages");
-			}
-
-			Button {
-				label: _("Go");
-				clicked => $_do_test();
+				search-changed => $_search_changed();
 			}
 
 			DropDown remote_dropdown {
@@ -50,24 +54,59 @@ template $SelectPage: Adw.Bin {
 				expression: expr item as <$SelectableRemote>.remote as <$Remote>.title;
 
 				notify::selected-item => $_remote_selected();
-
-				// list-factory: BuilderListItemFactory {
-				// 	template ListItem {
-				// 		child: $FilterableRemote {
-				// 			remote: bind template.item;
-				// 		};
-				// 	}
-				// };
 			}
-
-			// Image {
-			// 	icon-name: "warehouse:server-pick-symbolic";
-			// 	tooltip-text: _("Remotes are where packages come from.");
-			// }
 		}
 
-		content: Adw.StatusPage {
-			title: _("Select Page");
+		content: $LoadingGroup {
+			is_loading: bind template.is_searching;
+			title: _("Loading Results");
+
+			// TODO: figure out the proper wording for this
+			description: _("This can take a while.");
+
+			content: Stack {
+				visible-child-name: bind template.visible_stack_page;
+
+				StackPage {
+					name: "empty-search";
+
+					child: Adw.StatusPage {
+						icon-name: "warehouse:loupe-large-symbolic";
+						title: _("Search for Packages");
+						description: _("Search for packages to queue for installation.");
+					};
+				}
+
+				StackPage {
+					name: "results-list";
+
+					child: Adw.Clamp {
+						child: ScrolledWindow {
+							child: ListBox results_box {
+								margin-start: 12;
+								margin-end: 12;
+								margin-top: 12;
+								margin-bottom: 12;
+								selection-mode: none;
+
+								styles [
+									"boxed-list",
+								]
+							};
+						};
+					};
+				}
+
+				StackPage {
+					name: "no-results";
+
+					child: Adw.StatusPage {
+						icon-name: "warehouse:loupe-large-symbolic";
+						title: _("No Results Found");
+						description: _("Try a different search.");
+					};
+				}
+			};
 		};
 	};
 }
