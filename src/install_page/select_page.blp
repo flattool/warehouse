@@ -29,6 +29,16 @@ FlattenListModel selectable_remotes {
 	};
 }
 
+FilterListModel searchable_installations {
+	watch-items: true;
+
+	filter: BoolFilter {
+		expression: expr item as <$Installation>.has_remotes;
+	};
+
+	model: bind template.installations;
+}
+
 SortListModel sorted_results {
 	// sorter: StringSorter {
 	// 	expression: expr item as <$SearchResult>.name;

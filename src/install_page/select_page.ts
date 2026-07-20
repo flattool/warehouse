@@ -24,12 +24,13 @@ export class SelectPage extends from(Adw.Bin, {
 	is_searching: Property.readwrite.bool(),
 	visible_stack_page: Property.readwrite.string("empty-search").as<StackPages>(),
 	_available_remotes: Child<Gtk.MapListModel<SelectableRemote>>(),
+	_searchable_installations: Child<Gtk.FilterListModel<Installation>>(),
 	_sorted_results: Child<Gtk.SortListModel<SearchResult>>(),
 	_search_entry: Child<Gtk.SearchEntry>(),
 	_remote_dropdown: Child<Gtk.DropDown>(),
 	_results_box: Child<Adw.PreferencesGroup>(),
 }) {
-	readonly #search_task = new SwitchTask<SearchResult[]>((running) => this.is_searching = running)
+	readonly #search_task = new SwitchTask((running) => this.is_searching = running)
 
 	constructor(params?: typeof SelectPage.$params) {
 		super(params)
@@ -55,26 +56,19 @@ export class SelectPage extends from(Adw.Bin, {
 		}
 
 		const selected_inst = this.selected_remote?.remote?.installation
-		let insts: IterableIterator<Installation>
-		if (selected_inst) {
-			insts = [selected_inst][Symbol.iterator]()
-		} else if (this.installations) {
-			insts = iterate_list_model(this.installations)
-		} else {
-			insts = [][Symbol.iterator]()
-		}
+		const insts: Iterable<Installation> = (selected_inst
+			? [selected_inst]
+			: iterate_list_model(this._searchable_installations)
+		)
 
-		let results: SearchResult[] = []
+		const tasks: ((cancellable: Gio.Cancellable) => Promise<SearchResult[]>)[] = []
 		for (const inst of insts) {
-			const inst_result = await this.#search_task.run(
-				(cancellable) => search_packages(search, inst, this.selected_remote?.remote?.name, cancellable),
-			).catch(
-				(e) => print("Error when searching:", e),
-			)
-			if (!inst_result || inst_result.length < 1) continue
-			results.push(...inst_result)
+			tasks.push((cancellable) => search_packages(search, inst, this.selected_remote?.remote?.name, cancellable))
 		}
+		const batches = await this.#search_task.run_batch(tasks, (e) => print("Error when searching:", e))
 
+		if (!batches) return
+		const results = batches.flat()
 		this.search_results.swap_contents(results)
 		this.visible_stack_page = results.length > 0 ? "results-list" : "no-results"
 	}
