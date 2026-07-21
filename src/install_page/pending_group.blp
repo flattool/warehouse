@@ -1,0 +1,23 @@
+using Gtk 4.0;
+using Adw 1;
+
+$ArrayStore results {}
+
+template $PendingGroup: Adw.PreferencesGroup {
+	title: bind template.remote as <$Remote>.title;
+	description: bind $_get_installation_text(template.remote);
+
+	header-suffix: Button {
+		valign: center;
+		clicked => $remove_all();
+
+		styles [
+			"flat",
+		]
+
+		child: Adw.ButtonContent {
+			icon-name: "warehouse:list-remove-all-symbolic";
+			label: _("Remove All");
+		};
+	};
+}

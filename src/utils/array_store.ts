@@ -21,7 +21,7 @@ export class ArrayStore<T extends GObject.Object> extends from(
 	}
 
 	remove(position: number): boolean {
-		if (position > this.length) return false
+		if (position < 0 || position > this.length) return false
 		this.#items.splice(position, 1)
 		this.with_implements.items_changed(position, 1, 0)
 		return true

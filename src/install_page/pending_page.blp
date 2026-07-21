@@ -7,6 +7,8 @@ template $PendingPage: Adw.Bin {
 		Adw.HeaderBar {}
 
 		content: Stack {
+			visible-child-name: bind template.stack_page;
+
 			StackPage {
 				name: "none-pending";
 
@@ -20,7 +22,7 @@ template $PendingPage: Adw.Bin {
 			StackPage {
 				name: "some-pending";
 
-				child: Adw.PreferencesPage {};
+				child: Adw.PreferencesPage group_page {};
 			}
 		};
 
