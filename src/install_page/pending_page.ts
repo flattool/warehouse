@@ -11,6 +11,7 @@ const make_result_id_key = (result: SearchResult): string => `${result.installat
 @GClass({ template: "resource:///io/github/flattool/Warehouse/install_page/pending_page.ui" })
 export class PendingPage extends from(Adw.Bin, {
 	stack_page: Property.readwrite.string("none-pending").as<StackPages>(),
+	show_install_button: Property.readwrite.bool(),
 	queue_remove: Signal([SearchResult, Remote]),
 	_group_page: Child<Adw.PreferencesPage>(),
 }) {
@@ -48,6 +49,8 @@ export class PendingPage extends from(Adw.Bin, {
 	}
 
 	#on_groups_changed(): void {
-		this.stack_page = this.#remote_to_group.size > 0 ? "some-pending" : "none-pending"
+		const has_any = this.#remote_to_group.size > 0
+		this.stack_page = has_any ? "some-pending" : "none-pending"
+		this.show_install_button = has_any
 	}
 }
