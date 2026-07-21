@@ -42,6 +42,12 @@ export class InstallPage extends from(BasePage, {
 				row.kind = "added"
 			}
 		})
+		this._pending_page.$connect("queue-remove", (__, result) => {
+			const inst_name = result?.installation?.name
+			const app = result?.application
+			if (!inst_name || !app) return
+			this._select_page.result_deslected(inst_name, app)
+		})
 	}
 
 	// TODO: reset select and pending pages when the loading prop changes

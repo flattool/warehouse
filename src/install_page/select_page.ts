@@ -63,6 +63,20 @@ export class SelectPage extends from(Adw.Bin, {
 		this._remote_selected()
 	}
 
+	result_deslected(inst_name: string, application: string): void {
+		for (const row of this._results_box) {
+			if (!(row instanceof ResultRow)) continue
+			const result = row.result
+			const row_inst_name = result?.installation?.name
+			const app = result?.application
+			if (!result || !row_inst_name || !app) continue
+			if (row_inst_name === inst_name && app === application && row.kind === "added") {
+				row.kind = "addable"
+				break
+			}
+		}
+	}
+
 	@WatchProp("packages")
 	#on_packages_changed(): void {
 		this.packages?.connect("items-changed", () => this.#on_packages_items_changed())
