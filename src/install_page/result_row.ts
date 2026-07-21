@@ -1,7 +1,7 @@
 import Gtk from "gi://Gtk?version=4.0"
 import Adw from "gi://Adw?version=1"
 
-import { Child, from, GClass, Property, WatchProp } from "../gobjectify/gobjectify.js"
+import { Child, from, GClass, OnSignal, Property, Signal, WatchProp } from "../gobjectify/gobjectify.js"
 import { SearchResult } from "../flatpak.js"
 
 type RowKind = "addable" | "added" | "installed" | "removable"
@@ -10,8 +10,19 @@ type RowKind = "addable" | "added" | "installed" | "removable"
 export class ResultRow extends from(Adw.ActionRow, {
 	result: Property.readonly.gobject(SearchResult),
 	kind: Property.readwrite.string("addable").as<RowKind>(),
+	queue_add: Signal([SearchResult]),
+	queue_remove: Signal([SearchResult]),
 	_suffix_image: Child<Gtk.Image>(),
 }) {
+	@OnSignal("activated")
+	#on_activated(): void {
+		if (this.kind === "addable") {
+			this.$emit("queue-add", this.result)
+		} else if (this.kind === "removable") {
+			this.$emit("queue-remove", this.result)
+		}
+	}
+
 	protected _get_tooltip(): string {
 		switch (this.kind) {
 			case "addable": return _("Add Package to queue")
