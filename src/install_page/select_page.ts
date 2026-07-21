@@ -29,9 +29,15 @@ export class SelectPage extends from(Adw.Bin, {
 	_sorted_results: Child<Gtk.SortListModel<SearchResult>>(),
 	_search_entry: Child<Gtk.SearchEntry>(),
 	_remote_dropdown: Child<Gtk.DropDown>(),
+	_scrolled_window: Child<Gtk.ScrolledWindow>(),
 	_results_box: Child<Adw.PreferencesGroup>(),
 }) {
-	readonly #search_task = new SwitchTask((running) => this.is_searching = running)
+	readonly #search_task = new SwitchTask((running) => {
+		if (!running) {
+			this._scrolled_window.vadjustment.value = 0
+		}
+		this.is_searching = running
+	})
 	readonly #package_id_set = new Set<string>()
 
 	constructor(params?: typeof SelectPage.$params) {
@@ -42,13 +48,13 @@ export class SelectPage extends from(Adw.Bin, {
 			bind: (box, s_remote) => box.selectable_remote = s_remote,
 			unbind: (box) => box.selectable_remote = null,
 		})
-		this._results_box.bind_model(
-			this._sorted_results,
-			(item) => new ResultRow({
-				result: item as SearchResult,
-				kind: this.#package_id_set.has((item as SearchResult).application) ? "installed" : "addable",
-			}),
-		)
+		this._results_box.bind_model(this._sorted_results, (item) => {
+			const result = item as SearchResult
+			const kind = this.#package_id_set.has(result.application) ? "installed" : "addable"
+			const row = new ResultRow({ result, kind })
+			row.$connect("queue-add", () => print("add", row.result?.application))
+			return row
+		})
 		this._remote_selected()
 	}
 
