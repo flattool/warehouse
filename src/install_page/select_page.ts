@@ -2,8 +2,8 @@ import Adw from "gi://Adw?version=1"
 import Gtk from "gi://Gtk?version=4.0"
 import Gio from "gi://Gio?version=2.0"
 
-import { Child, from, GClass, Property, WatchProp } from "../gobjectify/gobjectify.js"
-import { Installation, Remote, search_packages, SearchResult } from "../flatpak.js"
+import { Child, Debounce, from, GClass, Property, WatchProp } from "../gobjectify/gobjectify.js"
+import { Installation, Package, Remote, search_packages, SearchResult } from "../flatpak.js"
 import { ArrayStore } from "../utils/array_store.js"
 import { iterate_list_model, make_signal_factory } from "../utils/helper_funcs.js"
 import { SelectableRemote, SelectableRemoteBox } from "./selectable_remote.js"
@@ -19,6 +19,7 @@ type StackPages = "empty-search" | "results-list" | "no-results"
 export class SelectPage extends from(Adw.Bin, {
 	installations: Property.readwrite.gobject(Gio.ListModel).as<Gio.ListModel<Installation>>(),
 	remotes: Property.readwrite.gobject(Gio.ListModel).as<Gio.ListModel<Remote>>(),
+	packages: Property.readwrite.gobject(Gio.ListModel).as<Gio.ListModel<Package>>(),
 	selected_remote: Property.readwrite.gobject(SelectableRemote),
 	search_results: Property.readwrite.gobject(ArrayStore<SearchResult>),
 	is_searching: Property.readwrite.bool(),
@@ -31,6 +32,7 @@ export class SelectPage extends from(Adw.Bin, {
 	_results_box: Child<Adw.PreferencesGroup>(),
 }) {
 	readonly #search_task = new SwitchTask((running) => this.is_searching = running)
+	readonly #package_id_set = new Set<string>()
 
 	constructor(params?: typeof SelectPage.$params) {
 		super(params)
@@ -40,8 +42,29 @@ export class SelectPage extends from(Adw.Bin, {
 			bind: (box, s_remote) => box.selectable_remote = s_remote,
 			unbind: (box) => box.selectable_remote = null,
 		})
-		this._results_box.bind_model(this._sorted_results, (item) => new ResultRow({ result: item as SearchResult }))
+		this._results_box.bind_model(
+			this._sorted_results,
+			(item) => new ResultRow({
+				result: item as SearchResult,
+				kind: this.#package_id_set.has((item as SearchResult).application) ? "installed" : "addable",
+			}),
+		)
 		this._remote_selected()
+	}
+
+	@Debounce(200)
+	#on_packages_items_changed(): void {
+		this.#package_id_set.clear()
+		if (!this.packages) return
+		for (const pack of iterate_list_model(this.packages)) {
+			this.#package_id_set.add(pack.application)
+		}
+	}
+
+	@WatchProp("packages")
+	#on_packages_changed(): void {
+		this.packages?.connect("items-changed", () => this.#on_packages_items_changed())
+		this.#on_packages_items_changed()
 	}
 
 	@WatchProp("selected_remote")
