@@ -24,15 +24,27 @@ export class InstallPage extends from(BasePage, {
 		params.icon_name = "warehouse:arrow-pointing-at-line-down-symbolic"
 		params.sidebar_title = _("Install Packages")
 		super(params)
-		this._select_page.$connect(
-			"queue-add",
-			(__, result, remotes) => {
-				const remote = remotes?.[0]
-				if (!result || !remote) return
-				this._pending_page.add(result, remote)
-			},
-		)
+		this._select_page.$connect("queue-add", (__, row, remotes) => {
+			const remote = remotes?.[0]
+			const result = row?.result
+			const installation = result?.installation
+			if (!result || !remote || !installation) return
+			this._pending_page.add(result, remote)
+			if (this._pending_page.has_result_by_id(installation, result.application)) {
+				row.kind = "added"
+			}
+		})
+		this._select_page.$connect("row-created", (__, row) => {
+			const result = row?.result
+			const installation = result?.installation
+			if (!row || !result || !installation) return
+			if (this._pending_page.has_result_by_id(installation, result.application)) {
+				row.kind = "added"
+			}
+		})
 	}
+
+	// TODO: reset select and pending pages when the loading prop changes
 
 	protected _get_visible_page(__: this, loading: boolean, installing: boolean): PageNamges {
 		if (loading) return "loading-page"

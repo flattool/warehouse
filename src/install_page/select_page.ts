@@ -25,7 +25,8 @@ export class SelectPage extends from(Adw.Bin, {
 	is_searching: Property.readwrite.bool(),
 	visible_stack_page: Property.readwrite.string("empty-search").as<StackPages>(),
 
-	queue_add: Signal([SearchResult, Array<Remote>]),
+	queue_add: Signal([ResultRow, Array<Remote>]),
+	row_created: Signal([ResultRow]),
 
 	_available_remotes: Child<Gtk.MapListModel<SelectableRemote>>(),
 	_searchable_installations: Child<Gtk.FilterListModel<Installation>>(),
@@ -55,7 +56,8 @@ export class SelectPage extends from(Adw.Bin, {
 			const result = item as SearchResult
 			const kind = this.#package_id_set.has(result.application) ? "installed" : "addable"
 			const row = new ResultRow({ result, kind })
-			row.$connect("queue-add", () => this.$emit("queue-add", result, result.get_remotes()))
+			this.$emit("row-created", row)
+			row.$connect("queue-add", () => this.$emit("queue-add", row, result.get_remotes()))
 			return row
 		})
 		this._remote_selected()

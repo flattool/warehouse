@@ -1,10 +1,12 @@
 import Adw from "gi://Adw?version=1"
 
 import { Child, from, GClass, Property, Signal } from "../gobjectify/gobjectify.js"
-import { Remote, SearchResult } from "../flatpak.js"
+import { Installation, Remote, SearchResult } from "../flatpak.js"
 import { PendingGroup } from "./pending_group.js"
 
 type StackPages = "none-pending" | "some-pending"
+
+const make_result_id_key = (result: SearchResult): string => `${result.installation?.name}::${result.application}`
 
 @GClass({ template: "resource:///io/github/flattool/Warehouse/install_page/pending_page.ui" })
 export class PendingPage extends from(Adw.Bin, {
@@ -13,12 +15,16 @@ export class PendingPage extends from(Adw.Bin, {
 	_group_page: Child<Adw.PreferencesPage>(),
 }) {
 	readonly #remote_to_group = new Map<Remote, PendingGroup>()
+	readonly #result_id_set = new Set<string>() // keys: `<installation.name::result.application>`
 
 	readonly #on_result_remove = (group: PendingGroup | null, result: SearchResult | null): void => {
 		if (!group) return
 		if (group.n_results < 1) {
 			group.remote && this.#remote_to_group.delete(group.remote)
 			this._group_page.remove(group)
+		}
+		if (result) {
+			this.#result_id_set.delete(make_result_id_key(result))
 		}
 		this.#on_groups_changed()
 		this.$emit("queue-remove", result, group.remote)
@@ -33,7 +39,12 @@ export class PendingPage extends from(Adw.Bin, {
 			this._group_page.add(group)
 		}
 		group.add_result(result)
+		this.#result_id_set.add(make_result_id_key(result))
 		this.#on_groups_changed()
+	}
+
+	has_result_by_id(installation: Installation, result_id: string): boolean {
+		return this.#result_id_set.has(`${installation.name}::${result_id}`)
 	}
 
 	#on_groups_changed(): void {
