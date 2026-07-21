@@ -196,6 +196,7 @@ export class Installation extends from(GObject.Object, {
 	readonly icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default() ?? new Gdk.Display())
 
 	readonly #package_id_set = new Set<string>()
+	readonly #remote_name_map = new Map<string, Remote>()
 	readonly #items_loading = new Set<"remotes" | "packages">()
 	#monitor?: Gio.FileMonitor
 
@@ -230,9 +231,18 @@ export class Installation extends from(GObject.Object, {
 		return this.#package_id_set.has(id)
 	}
 
+	has_remote_by_name(name: string): boolean {
+		return this.#remote_name_map.has(name)
+	}
+
+	get_remote_by_name(name: string): Remote | undefined {
+		return this.#remote_name_map.get(name)
+	}
+
 	async load_remotes(): Promise<void> {
 		this.#start_loading("remotes")
-		await get_remotes(this, this.remotes)
+		this.#remote_name_map.clear()
+		await get_remotes(this, this.remotes, (remote) => this.#remote_name_map.set(remote.name, remote))
 		this.#stop_loading("remotes")
 	}
 
@@ -391,6 +401,7 @@ export class Remote extends from(GObject.Object, {
 async function get_remotes(
 	installation: Installation,
 	list: ArrayStore<Remote>,
+	foreach?: (remote: Remote) => void,
 ): Promise<void> {
 	const columns: string = REMOTES_LIST_COLUMN_ITEMS.columns.join(",")
 	const remotes: Remote[] = []
@@ -409,6 +420,7 @@ async function get_remotes(
 			options: info[REMOTES_LIST_COLUMN_ITEMS.index_of("options")] ?? "",
 			installation,
 		})
+		foreach?.(remote)
 		remotes.push(remote)
 	}
 	await process.run()
@@ -525,8 +537,22 @@ const SEARCH_LIST_COLUMN_ITEMS = {
 	application: Property.readonly.string(),
 	version: Property.readonly.string(),
 	branch: Property.readonly.string(),
-	remotes: Property.readonly.string(),
-}) {}
+	remote_names: Property.readonly.string(),
+	installation: Property.readonly.gobject(Installation),
+}) {
+	#remotes: Remote[] | undefined
+
+	get_remotes(): Remote[] {
+		if (this.#remotes) return this.#remotes
+		this.#remotes = []
+		for (const name of this.remote_names.split(",")) {
+			const remote = this.installation?.get_remote_by_name(name)
+			if (!remote) continue
+			this.#remotes.push(remote)
+		}
+		return this.#remotes
+	}
+}
 
 export async function search_packages(
 	search_text: string,
@@ -549,15 +575,16 @@ export async function search_packages(
 			print("")
 			return
 		}
-		const remotes = info[SEARCH_LIST_COLUMN_ITEMS.index_of("remotes")] ?? ""
-		if (remote_name && !remotes.includes(remote_name)) return
+		const remote_names = info[SEARCH_LIST_COLUMN_ITEMS.index_of("remotes")] ?? ""
+		if (remote_name && !remote_names.includes(remote_name)) return
 		results.push(new SearchResult({
 			name: info[SEARCH_LIST_COLUMN_ITEMS.index_of("name")] ?? "",
 			description: info[SEARCH_LIST_COLUMN_ITEMS.index_of("description")] ?? "",
 			application: info[SEARCH_LIST_COLUMN_ITEMS.index_of("application")] ?? "",
 			version: info[SEARCH_LIST_COLUMN_ITEMS.index_of("version")] ?? "",
 			branch: info[SEARCH_LIST_COLUMN_ITEMS.index_of("branch")] ?? "",
-			remotes,
+			remote_names,
+			installation,
 		}))
 	}
 	cancellable?.$connect("cancelled", () => process.cancel())

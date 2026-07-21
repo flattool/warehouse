@@ -130,14 +130,14 @@ template $InstallPage: $BasePage {
 					}
 
 					[select-page]
-					$SelectPage {
+					$SelectPage select_page {
 						installations: bind template.installations;
 						remotes: bind template.remotes;
 						packages: bind template.packages;
 					}
 
 					[pending-page]
-					$PendingPage {}
+					$PendingPage pending_page {}
 				};
 			}
 		};

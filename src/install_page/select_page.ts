@@ -2,7 +2,7 @@ import Adw from "gi://Adw?version=1"
 import Gtk from "gi://Gtk?version=4.0"
 import Gio from "gi://Gio?version=2.0"
 
-import { Child, Debounce, from, GClass, Property, WatchProp } from "../gobjectify/gobjectify.js"
+import { Child, Debounce, from, GClass, Property, Signal, WatchProp } from "../gobjectify/gobjectify.js"
 import { Installation, Package, Remote, search_packages, SearchResult } from "../flatpak.js"
 import { ArrayStore } from "../utils/array_store.js"
 import { iterate_list_model, make_signal_factory } from "../utils/helper_funcs.js"
@@ -24,6 +24,9 @@ export class SelectPage extends from(Adw.Bin, {
 	search_results: Property.readwrite.gobject(ArrayStore<SearchResult>),
 	is_searching: Property.readwrite.bool(),
 	visible_stack_page: Property.readwrite.string("empty-search").as<StackPages>(),
+
+	queue_add: Signal([SearchResult, Array<Remote>]),
+
 	_available_remotes: Child<Gtk.MapListModel<SelectableRemote>>(),
 	_searchable_installations: Child<Gtk.FilterListModel<Installation>>(),
 	_sorted_results: Child<Gtk.SortListModel<SearchResult>>(),
@@ -52,10 +55,16 @@ export class SelectPage extends from(Adw.Bin, {
 			const result = item as SearchResult
 			const kind = this.#package_id_set.has(result.application) ? "installed" : "addable"
 			const row = new ResultRow({ result, kind })
-			row.$connect("queue-add", () => print("add", row.result?.application))
+			row.$connect("queue-add", () => this.$emit("queue-add", result, result.get_remotes()))
 			return row
 		})
 		this._remote_selected()
+	}
+
+	@WatchProp("packages")
+	#on_packages_changed(): void {
+		this.packages?.connect("items-changed", () => this.#on_packages_items_changed())
+		this.#on_packages_items_changed()
 	}
 
 	@Debounce(200)
@@ -65,12 +74,6 @@ export class SelectPage extends from(Adw.Bin, {
 		for (const pack of iterate_list_model(this.packages)) {
 			this.#package_id_set.add(pack.application)
 		}
-	}
-
-	@WatchProp("packages")
-	#on_packages_changed(): void {
-		this.packages?.connect("items-changed", () => this.#on_packages_items_changed())
-		this.#on_packages_items_changed()
 	}
 
 	@WatchProp("selected_remote")
