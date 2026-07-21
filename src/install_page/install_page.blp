@@ -95,7 +95,8 @@ template $InstallPage: $BasePage {
 							};
 
 							bottom-bar: Revealer {
-								reveal-child: true;
+								reveal-child: bind $_get_reveal_bottom_bar(pending_page.n_pending);
+								transition-type: slide_up;
 
 								Box {
 									margin-top: 12;
@@ -116,7 +117,7 @@ template $InstallPage: $BasePage {
 
 									[center]
 									Label {
-										label: _("Pending Packages 3");
+										label: bind $_get_pending_label(pending_page.n_pending);
 									}
 
 									[end]

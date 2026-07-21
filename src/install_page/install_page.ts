@@ -57,4 +57,12 @@ export class InstallPage extends from(BasePage, {
 		if (installing) return "installing-page"
 		return "content-page"
 	}
+
+	protected _get_reveal_bottom_bar(__: this, n_pending: number): boolean {
+		return n_pending > 0
+	}
+
+	protected _get_pending_label(__: this, n_pending: number): string {
+		return _("Pending Packages: %s").format(n_pending)
+	}
 }

@@ -7,7 +7,7 @@ template $PendingPage: Adw.Bin {
 		Adw.HeaderBar {}
 
 		content: Stack {
-			visible-child-name: bind template.stack_page;
+			visible-child-name: bind $_get_stack_page(template.n_pending);
 
 			StackPage {
 				name: "none-pending";
@@ -28,7 +28,7 @@ template $PendingPage: Adw.Bin {
 
 		[bottom]
 		ActionBar bar {
-			revealed: bind template.show_install_button;
+			revealed: bind $_show_install_button(template.n_pending);
 
 			[center]
 			Button {
