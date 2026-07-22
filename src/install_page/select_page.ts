@@ -15,6 +15,10 @@ import "../widgets/loading_group.js"
 
 type StackPages = "empty-search" | "results-list" | "no-results"
 
+const make_selected_results_keys = (
+	result: SearchResult,
+): string => `${result.installation?.name}::${result.application}`
+
 @GClass({ template: "resource:///io/github/flattool/Warehouse/install_page/select_page.ui" })
 export class SelectPage extends from(Adw.Bin, {
 	installations: Property.readwrite.gobject(Gio.ListModel).as<Gio.ListModel<Installation>>(),
@@ -43,6 +47,7 @@ export class SelectPage extends from(Adw.Bin, {
 		this.is_searching = running
 	})
 	readonly #package_id_set = new Set<string>()
+	readonly #selected_results = new Map<string, ResultRow>() // keys: `<installation.name>::<result.application>`
 
 	constructor(params?: typeof SelectPage.$params) {
 		super(params)
@@ -57,13 +62,19 @@ export class SelectPage extends from(Adw.Bin, {
 			const kind = this.#package_id_set.has(result.application) ? "installed" : "addable"
 			const row = new ResultRow({ result, kind })
 			this.$emit("row-created", row)
-			row.$connect("queue-add", () => this.$emit("queue-add", row, result.get_remotes()))
+			row.$connect("queue-add", () => {
+				this.#selected_results.set(make_selected_results_keys(result), row)
+				this.$emit("queue-add", row, result.get_remotes())
+			})
 			return row
 		})
 		this._remote_selected()
 	}
 
 	result_deslected(inst_name: string, application: string): void {
+		// const row = this.#selected_results.get(`${inst_name}::${application}`)
+		// if (row?.kind !== "added") return
+		// row.kind = "addable"
 		for (const row of this._results_box) {
 			if (!(row instanceof ResultRow)) continue
 			const result = row.result
@@ -95,6 +106,7 @@ export class SelectPage extends from(Adw.Bin, {
 	@WatchProp("selected_remote")
 	protected async _search_changed(): Promise<void> {
 		this.search_results = new ArrayStore()
+		this.#selected_results.clear()
 
 		const search = this._search_entry.get_text().trim()
 		if (!search || search.length < 4) {

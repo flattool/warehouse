@@ -27,7 +27,9 @@ export class PendingPage extends from(Adw.Bin, {
 		if (result) {
 			this.#result_id_set.delete(make_result_id_key(result))
 		}
-		this.n_pending -= 1
+		if (result) {
+			this.n_pending -= 1
+		}
 		this.$emit("queue-remove", result, group.remote)
 	}
 
