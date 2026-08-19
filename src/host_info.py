@@ -1,6 +1,6 @@
 from gi.repository import Gio, Gtk, GLib, Gdk
 from src.gtk.error_toast import ErrorToast
-import subprocess, os, pathlib
+import subprocess, os, pathlib, shutil, time, urllib.parse
 import gettext
 
 _ = gettext.gettext
@@ -8,6 +8,95 @@ home = f"{pathlib.Path.home()}"
 icon_theme = Gtk.IconTheme.new()
 icon_theme.add_search_path(f"{home}/.local/share/flatpak/exports/share/icons")
 direction = Gtk.Image().get_direction()
+
+
+def trash_path(path):
+	"""Send a path to the trash.
+
+	First asks the XDG desktop portal to trash it on the host (the sandbox-safe
+	way). If the portal is unavailable or fails, or if it acknowledges without
+	actually moving the path, fall back to implementing the XDG trash spec
+	directly at ~/.local/share/Trash, which the sandbox is granted access to.
+	"""
+	portal_error = None
+	try:
+		trash_via_portal(path)
+		if not os.path.lexists(path):
+			return
+	except Exception as e:
+		portal_error = e
+	try:
+		trash_xdg(path)
+	except Exception as e:
+		if portal_error is not None:
+			raise RuntimeError(
+				f"Could not trash '{path}': portal failed ({portal_error}); XDG fallback failed ({e})"
+			) from e
+		raise
+
+
+def trash_via_portal(path):
+	"""Ask the XDG desktop portal to trash a path on the host. Raises
+	GLib.GError if the portal is unavailable or rejects the request."""
+	proxy = Gio.DBusProxy.new_for_bus_sync(
+		Gio.BusType.SESSION,
+		Gio.DBusProxyFlags.NONE,
+		None,
+		"org.freedesktop.portal.Desktop",
+		"/org/freedesktop/portal/desktop",
+		"org.freedesktop.portal.Trash",
+		None,
+	)
+	# TrashFile takes a file descriptor, not a path string: the sandbox and the
+	# host have different path namespaces, so the portal resolves the file via
+	# the fd. O_PATH lets us reference directories (e.g. ~/.var/app/<id>), not
+	# just regular files.
+	fd = os.open(path, os.O_PATH)
+	fd_list = Gio.UnixFDList.new()
+	try:
+		fd_index = fd_list.append(fd)
+	finally:
+		os.close(fd)
+
+	proxy.call_with_unix_fd_list_sync(
+		"TrashFile",
+		GLib.Variant("(h)", (fd_index,)),
+		Gio.DBusCallFlags.NONE,
+		-1,
+		fd_list,
+		None,
+	)
+
+
+def trash_xdg(path):
+	"""Trash a path per the freedesktop.org trash spec: move it to
+	~/.local/share/Trash and write the matching .trashinfo metadata file."""
+	trash_dir = os.path.join(home, ".local", "share", "Trash")
+	files_dir = os.path.join(trash_dir, "files")
+	info_dir = os.path.join(trash_dir, "info")
+	os.makedirs(files_dir, exist_ok=True)
+	os.makedirs(info_dir, exist_ok=True)
+
+	name = os.path.basename(os.path.normpath(path))
+	base, ext = os.path.splitext(name)
+	target, i = name, 1
+	while os.path.lexists(os.path.join(files_dir, target)):
+		target = f"{base}.{i}{ext}"
+		i += 1
+
+	info = (
+		"[Trash Info]\n"
+		f"Path={urllib.parse.quote(os.path.abspath(path), safe='/')}\n"
+		f"DeletionDate={time.strftime('%Y-%m-%dT%H:%M:%S')}\n"
+	)
+	info_path = os.path.join(info_dir, f"{target}.trashinfo")
+	with open(info_path, "w") as f:
+		f.write(info)
+	try:
+		shutil.move(path, os.path.join(files_dir, target))
+	except Exception:
+		os.remove(info_path)
+		raise
 
 
 class Flatpak:
@@ -48,12 +137,7 @@ class Flatpak:
 		Gio.Task.new(None, None, on_done).run_in_thread(thread)
 
 	def trash_data(self, callback=None):
-		try:
-			subprocess.run(["gio", "trash", self.data_path], capture_output=True, text=True, check=True)
-		except subprocess.CalledProcessError as cpe:
-			raise cpe
-		except Exception as e:
-			raise e
+		trash_path(self.data_path)
 
 	def set_mask(self, should_mask, callback=None):
 		self.failed_mask = None
