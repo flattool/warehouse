@@ -129,7 +129,7 @@ class SnapshotPage(Adw.BreakpointBin):
 
 		for folder in bad_folders:
 			try:
-				subprocess.run(["gio", "trash", f"{HostInfo.snapshots_path}{folder}"])
+				subprocess.run(["flatpak-spawn", "--host", "gio", "trash", f"{HostInfo.snapshots_path}{folder}"])
 			except Exception:
 				pass
 
@@ -510,7 +510,7 @@ class SnapshotPage(Adw.BreakpointBin):
 				to_trash.append(f"{HostInfo.snapshots_path}{row.folder}")
 
 			try:
-				subprocess.run(["gio", "trash"] + to_trash, check=True, text=True, capture_output=True)
+				subprocess.run(["flatpak-spawn", "--host", "gio", "trash"] + to_trash, check=True, text=True, capture_output=True)
 				self.start_loading()
 				self.end_loading()
 				self.toast_overlay.add_toast(Adw.Toast(title=_("Trashed snapshots")))

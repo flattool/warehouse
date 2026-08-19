@@ -301,7 +301,7 @@ class PackagesPage(Adw.BreakpointBin):
 
 				if should_trash and len(to_trash) > 0:
 					try:
-						subprocess.run(["gio", "trash"] + to_trash, check=True, text=True, capture_output=True)
+						subprocess.run(["flatpak-spawn", "--host", "gio", "trash"] + to_trash, check=True, text=True, capture_output=True)
 					except subprocess.CalledProcessError as cpe:
 						error.append(cpe)
 
