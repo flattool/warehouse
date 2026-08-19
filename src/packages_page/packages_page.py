@@ -1,5 +1,5 @@
 from gi.repository import Adw, Gtk, GLib, Gio
-from src.host_info import HostInfo
+from src.host_info import HostInfo, trash_path
 from src.gtk.app_row import AppRow
 from src.gtk.error_toast import ErrorToast
 from src.properties_page.properties_page import PropertiesPage
@@ -300,10 +300,11 @@ class PackagesPage(Adw.BreakpointBin):
 						error.append(str(e))
 
 				if should_trash and len(to_trash) > 0:
-					try:
-						subprocess.run(["gio", "trash"] + to_trash, check=True, text=True, capture_output=True)
-					except subprocess.CalledProcessError as cpe:
-						error.append(cpe)
+					for data_path in to_trash:
+						try:
+							trash_path(data_path)
+						except Exception as e:
+							error.append(str(e))
 
 			def callback(*args):
 				self.main_window.refresh_handler()
