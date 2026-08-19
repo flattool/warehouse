@@ -196,8 +196,6 @@ class PropertiesPage(Adw.NavigationPage):
 				if not snapshot_list_package is None:
 					snapshot_list_page.set_snapshots(snapshot_list_package, True)
 
-			except subprocess.CalledProcessError as cpe:
-				self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), cpe.stderr).toast)
 			except Exception as e:
 				self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(e)).toast)
 
@@ -255,8 +253,6 @@ class PropertiesPage(Adw.NavigationPage):
 				try:
 					self.package.trash_data()
 					self.set_properties(self.package, refresh=True)
-				except subprocess.CalledProcessError as cpe:
-					self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), cpe.stderr).toast)
 				except Exception as e:
 					self.toast_overlay.add_toast(ErrorToast(_("Could not trash data"), str(e)).toast)
 
