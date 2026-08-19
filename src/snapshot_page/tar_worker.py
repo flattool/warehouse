@@ -42,7 +42,7 @@ class TarWorker:
 		try:
 			if os.path.exists(self.new_path):
 				subprocess.run(
-					["gio", "trash", self.new_path], capture_output=True, check=True
+					["flatpak-spawn", "--host", "gio", "trash", self.new_path], capture_output=True, check=True
 				)  # trash the current user data, because new data will go in its place
 
 			os.makedirs(self.new_path)  # create the new user data path
@@ -72,7 +72,7 @@ class TarWorker:
 		self.process.wait()
 		if len(self.files_to_trash_on_cancel) > 0:
 			try:
-				subprocess.run(["gio", "trash"] + self.files_to_trash_on_cancel, capture_output=True, check=True)
+				subprocess.run(["flatpak-spawn", "--host", "gio", "trash"] + self.files_to_trash_on_cancel, capture_output=True, check=True)
 
 			except Exception:
 				pass

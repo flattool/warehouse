@@ -83,7 +83,7 @@ class DataBox(Gtk.ListBox):
 
 		def thread(*args):
 			try:
-				subprocess.run(["gio", "trash", self.data_path], check=True, text=True, capture_output=True)
+				subprocess.run(["flatpak-spawn", "--host", "gio", "trash", self.data_path], check=True, text=True, capture_output=True)
 				properties_page = HostInfo.main_window.pages[HostInfo.main_window.packages_row].properties_page
 				properties_package = properties_page.package
 				if not properties_package is None:

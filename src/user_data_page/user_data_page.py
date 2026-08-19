@@ -162,7 +162,7 @@ class UserDataPage(Adw.BreakpointBin):
 		child = self.stack.get_visible_child()
 
 		def thread(path):
-			cmd = ["gio", "trash"] + path
+			cmd = ["flatpak-spawn", "--host", "gio", "trash"] + path
 			try:
 				subprocess.run(cmd, check=True, capture_output=True, text=True)
 				properties_page = HostInfo.main_window.pages[HostInfo.main_window.packages_row].properties_page

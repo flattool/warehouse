@@ -91,7 +91,7 @@ class SnapshotBox(Gtk.Box):
 
 		def thread(*args):
 			try:
-				subprocess.run(["gio", "trash", path], capture_output=True, text=True, check=True)
+				subprocess.run(["flatpak-spawn", "--host", "gio", "trash", path], capture_output=True, text=True, check=True)
 			except subprocess.CalledProcessError as cpe:
 				error[0] = cpe.stderr
 			except Exception as e:
