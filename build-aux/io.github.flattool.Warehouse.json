@@ -10,9 +10,11 @@
 		"--device=dri",
 		"--socket=wayland",
 		"--talk-name=org.freedesktop.Flatpak",
+		"--talk-name=org.freedesktop.portal.Desktop",
 		"--filesystem=/var/lib/flatpak/:ro",
 		"--filesystem=~/.local/share/flatpak/:ro",
 		"--filesystem=~/.var/app/",
+		"--filesystem=~/.local/share/Trash",
 		"--filesystem=host-etc"
 	],
 	"cleanup": [
