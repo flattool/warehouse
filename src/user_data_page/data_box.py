@@ -1,5 +1,5 @@
 from gi.repository import Adw, Gtk, GLib, Gio
-from src.host_info import HostInfo
+from src.host_info import HostInfo, trash_path
 from src.gtk.error_toast import ErrorToast
 from src.gtk.attempt_install_dialog import AttemptInstallDialog
 import subprocess
@@ -83,7 +83,7 @@ class DataBox(Gtk.ListBox):
 
 		def thread(*args):
 			try:
-				subprocess.run(["gio", "trash", self.data_path], check=True, text=True, capture_output=True)
+				trash_path(self.data_path)
 				properties_page = HostInfo.main_window.pages[HostInfo.main_window.packages_row].properties_page
 				properties_package = properties_page.package
 				if not properties_package is None:
@@ -94,8 +94,6 @@ class DataBox(Gtk.ListBox):
 				if not snapshot_list_package is None:
 					snapshot_list_page.set_snapshots(snapshot_list_package, True)
 
-			except subprocess.CalledProcessError as cpe:
-				self.failed_trash = cpe.stderr
 			except Exception as e:
 				self.failed_trash = e
 
