@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 16:52-0400\n"
-"PO-Revision-Date: 2026-08-22 08:07+0000\n"
+"PO-Revision-Date: 2026-08-22 16:59+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ka/>\n"
@@ -945,11 +945,11 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:270
 msgid "Uninstalled {}"
-msgstr ""
+msgstr "{} წაიშალა"
 
 #: src/properties_page/properties_page.py:282
 msgid "Opening {}…"
-msgstr ""
+msgstr "{}-ის გახსნა…"
 
 #: src/properties_page/properties_page.py:287
 msgid "Could not open {}"
@@ -957,11 +957,11 @@ msgstr "გახსნის შეცდომა: {}"
 
 #: src/properties_page/properties_page.py:302
 msgid "Reinstalled {}"
-msgstr ""
+msgstr "{} თავიდან დადგა"
 
 #: src/properties_page/properties_page.py:330
 msgid "Reinstall {}?"
-msgstr ""
+msgstr "მოხდეს {}-ის თავიდან დაყენება?"
 
 #: src/properties_page/properties_page.py:331
 msgid ""
@@ -988,11 +988,11 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:386
 msgid "Loading Properties"
-msgstr ""
+msgstr "თვისებების ჩატვირთვა"
 
 #: src/properties_page/properties_page.py:389
 msgid "View Snapshots"
-msgstr ""
+msgstr "სწრაფი ასლების ნახვა"
 
 #: src/properties_page/properties_page.py:390
 msgid "Copy Launch Command"
@@ -1004,7 +1004,7 @@ msgstr "დეტალების ჩვენება"
 
 #: src/change_version_page/change_version_page.blp:5
 msgid "Change Versions"
-msgstr ""
+msgstr "ვერსიების შეცვლა"
 
 #: src/change_version_page/change_version_page.blp:56
 msgid "Select a Release"
@@ -1030,7 +1030,7 @@ msgstr ""
 
 #: src/change_version_page/change_version_page.py:124
 msgid "{} Versions"
-msgstr ""
+msgstr "{}-ის ვერსიები"
 
 #: src/change_version_page/change_version_page.py:125
 msgid "Ensure that {} will never be updated to a newer version"
