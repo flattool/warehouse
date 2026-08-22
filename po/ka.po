@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 16:52-0400\n"
-"PO-Revision-Date: 2026-05-05 09:44+0000\n"
+"PO-Revision-Date: 2026-08-22 08:07+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://weblate.fyralabs.com/projects/flattool/"
 "warehouse/ka/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14.3\n"
+"X-Generator: Weblate 2026.6.1\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:3
@@ -937,7 +937,7 @@ msgstr "ავტოწაშლა გამორთულია"
 
 #: src/properties_page/properties_page.py:243
 msgid "Enabled Autoremoval"
-msgstr ""
+msgstr "ავტოწაშლა ჩართულია"
 
 #: src/properties_page/properties_page.py:266
 msgid "Could not uninstall"
