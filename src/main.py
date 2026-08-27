@@ -68,7 +68,7 @@ class WarehouseApplication(Adw.Application):
 
 		gtk_version = str(Gtk.MAJOR_VERSION) + "." + str(Gtk.MINOR_VERSION) + "." + str(Gtk.MICRO_VERSION)
 		adw_version = str(Adw.MAJOR_VERSION) + "." + str(Adw.MINOR_VERSION) + "." + str(Adw.MICRO_VERSION)
-		os_string = GLib.get_os_info("NAME") + " " + GLib.get_os_info("VERSION")
+		os_string = GLib.get_os_info("NAME") + " " + (GLib.get_os_info("VERSION") or "")
 		lang = GLib.environ_getenv(GLib.get_environ(), "LANG")
 
 		self.troubleshooting = self.troubleshooting.format(
