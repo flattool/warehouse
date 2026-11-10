@@ -8,13 +8,17 @@ msgstr ""
 "Project-Id-Version: io.github.flattool.heliguy.Warehouse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 16:52-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-11-10 03:23+0000\n"
+"Last-Translator: \"Omer I.S.\" <omeritzicschwartz@gmail.com>\n"
+"Language-Team: Hebrew <https://weblate.fyralabs.com/projects/flattool/"
+"warehouse/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
+"n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Weblate 2026.10.1\n"
 
 #. Translators: Do not translate the application name
 #: data/io.github.flattool.Warehouse.desktop.in:3
@@ -261,11 +265,11 @@ msgstr ""
 
 #: src/gtk/help-overlay.blp:15 src/install_page/select_page.blp:40
 msgid "Open Files"
-msgstr ""
+msgstr "פתיחת קבצים"
 
 #: src/gtk/help-overlay.blp:19
 msgid "Open Menu"
-msgstr ""
+msgstr "פתיחת תפריט"
 
 #: src/gtk/help-overlay.blp:23
 msgid "Show Shortcuts"
@@ -306,7 +310,7 @@ msgstr ""
 #: src/gtk/help-overlay.blp:57 src/gtk/help-overlay.blp:72
 #: src/gtk/help-overlay.blp:87 src/gtk/help-overlay.blp:110
 msgid "Search Mode"
-msgstr ""
+msgstr "מצב חיפוש"
 
 #: src/gtk/help-overlay.blp:61
 msgid "Edit Filters"
@@ -343,7 +347,7 @@ msgstr ""
 
 #: src/gtk/help-overlay.blp:103
 msgid "Show Leftover Data"
-msgstr ""
+msgstr "הצגת שאריות נתונים"
 
 #: src/gtk/help-overlay.blp:108
 msgid "Snapshots Page"
@@ -436,7 +440,7 @@ msgstr ""
 #: src/main_window/window.blp:99 src/properties_page/properties_page.blp:114
 #: src/user_data_page/user_data_page.blp:20
 msgid "User Data"
-msgstr ""
+msgstr "נתוני משתמש"
 
 #: src/main_window/window.blp:114 src/snapshot_page/snapshot_page.blp:18
 #: src/snapshot_page/snapshot_page.blp:26
@@ -559,7 +563,7 @@ msgstr ""
 #: src/packages_page/packages_page.blp:83 src/remotes_page/remotes_page.blp:30
 #: src/snapshot_page/snapshot_page.blp:35
 msgid "Search Packages"
-msgstr ""
+msgstr "חיפוש חבילות"
 
 #: src/packages_page/packages_page.blp:75
 #: src/snapshot_page/snapshot_page.blp:45
@@ -596,7 +600,7 @@ msgstr ""
 #: src/snapshot_page/new_snapshot_dialog.blp:68
 #: src/snapshot_page/snapshot_page.blp:59
 msgid "Try a different search"
-msgstr ""
+msgstr "נא לנסות חיפוש אחר"
 
 #: src/packages_page/packages_page.blp:127
 #: src/user_data_page/user_data_page.blp:81
@@ -609,7 +613,7 @@ msgstr ""
 #: src/packages_page/uninstall_dialog.py:42
 #: src/properties_page/properties_page.blp:88
 msgid "Uninstall"
-msgstr ""
+msgstr "הסרה"
 
 #: src/packages_page/packages_page.blp:173
 msgid "Copy Names"
@@ -657,7 +661,7 @@ msgstr ""
 
 #: src/packages_page/packages_page.py:313
 msgid "Errors occurred while uninstalling"
-msgstr ""
+msgstr "אירעו שגיאות במהלך ההסרה"
 
 #: src/packages_page/packages_page.py:315
 msgid "Uninstalled Packages"
@@ -679,7 +683,7 @@ msgstr ""
 
 #: src/packages_page/packages_page.py:374
 msgid "Uninstalling Packages"
-msgstr ""
+msgstr "החבילות בהסרה"
 
 #: src/packages_page/packages_page.py:376
 msgid "Reinstalling Package"
@@ -690,7 +694,7 @@ msgstr ""
 #: src/change_version_page/change_version_page.py:126
 #: src/snapshot_page/snapshot_page.py:553 src/install_page/install_page.py:94
 msgid "This could take a while"
-msgstr ""
+msgstr "זה עשוי לקחת זמן"
 
 #: src/packages_page/packages_page.py:378
 msgid "Changing Version"
@@ -718,7 +722,7 @@ msgstr ""
 
 #: src/packages_page/uninstall_dialog.py:34
 msgid "Uninstall {}?"
-msgstr ""
+msgstr "להסיר את {}?"
 
 #: src/packages_page/uninstall_dialog.py:35
 msgid "It will not be possible to use {} after removal"
@@ -726,7 +730,7 @@ msgstr ""
 
 #: src/packages_page/uninstall_dialog.py:37
 msgid "Uninstall Packages?"
-msgstr ""
+msgstr "להסיר את החבילות?"
 
 #: src/packages_page/uninstall_dialog.py:38
 msgid "It will not be possible to use these packages after removal"
@@ -746,7 +750,7 @@ msgstr ""
 
 #: src/properties_page/properties_page.blp:83
 msgid "Open"
-msgstr ""
+msgstr "פתיחה"
 
 #: src/properties_page/properties_page.blp:122
 #: src/user_data_page/data_box.blp:62
@@ -756,7 +760,7 @@ msgstr ""
 #: src/properties_page/properties_page.blp:130
 #: src/user_data_page/data_box.blp:73
 msgid "Trash User Data"
-msgstr ""
+msgstr "מחיקת נתוני המשתמש"
 
 #: src/properties_page/properties_page.blp:139
 msgid "Version"
@@ -864,11 +868,11 @@ msgstr ""
 #: src/properties_page/properties_page.py:124
 #: src/user_data_page/user_data_page.py:300
 msgid "Loading User Data"
-msgstr ""
+msgstr "נתוני המשתמש נטענים"
 
 #: src/properties_page/properties_page.py:134
 msgid "No User Data"
-msgstr ""
+msgstr "אין נתוני משתמש"
 
 #: src/properties_page/properties_page.py:144
 #: src/properties_page/properties_page.py:164
@@ -938,7 +942,7 @@ msgstr ""
 
 #: src/properties_page/properties_page.py:266
 msgid "Could not uninstall"
-msgstr ""
+msgstr "לא היה ניתן להסיר"
 
 #: src/properties_page/properties_page.py:270
 msgid "Uninstalled {}"
@@ -1115,7 +1119,7 @@ msgstr ""
 
 #: src/remotes_page/remote_row.blp:53 src/remotes_page/remotes_page.py:197
 msgid "Remove"
-msgstr ""
+msgstr "הסרה"
 
 #: src/remotes_page/remote_row.py:28 src/remotes_page/remote_row.py:49
 msgid "Could not enable remote"
@@ -1168,7 +1172,7 @@ msgstr ""
 
 #: src/remotes_page/remotes_page.blp:40
 msgid "Search Remotes"
-msgstr ""
+msgstr "חיפוש מאגרים מרוחקים"
 
 #: src/remotes_page/remotes_page.blp:47
 msgid "Current Remotes"
@@ -1257,7 +1261,7 @@ msgstr ""
 
 #: src/remotes_page/remotes_page.py:178
 msgid "Could not remove remote"
-msgstr ""
+msgstr "לא היה ניתן להסיר את המאגר המרוחק"
 
 #: src/remotes_page/remotes_page.py:185
 msgid "Removed {}"
@@ -1265,7 +1269,7 @@ msgstr ""
 
 #: src/remotes_page/remotes_page.py:194
 msgid "Remove {}?"
-msgstr ""
+msgstr "להסיר את {}?"
 
 #: src/remotes_page/remotes_page.py:231 src/remotes_page/remotes_page.py:241
 #: src/remotes_page/remotes_page.py:243
@@ -1343,16 +1347,16 @@ msgstr ""
 
 #: src/user_data_page/data_subpage.py:261
 msgid "No Leftover Data"
-msgstr ""
+msgstr "אין שאריות נתונים"
 
 #: src/user_data_page/data_subpage.py:262
 msgid "There is no leftover user data"
-msgstr ""
+msgstr "אין שאריות נתוני משתמש"
 
 #: src/user_data_page/user_data_page.blp:43
 #: src/user_data_page/user_data_page.blp:64
 msgid "Search User Data"
-msgstr ""
+msgstr "חיפוש נתוני משתמש"
 
 #: src/user_data_page/user_data_page.blp:49
 msgid "Sort User Data"
@@ -1421,12 +1425,12 @@ msgstr ""
 #: src/user_data_page/user_data_page.py:251
 #: src/user_data_page/user_data_page.py:279
 msgid "Leftover Data"
-msgstr ""
+msgstr "שאריות נתונים"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:21
 #: src/snapshot_page/new_snapshot_dialog.blp:37
 msgid "Search Apps"
-msgstr ""
+msgstr "חיפוש יישומים"
 
 #: src/snapshot_page/new_snapshot_dialog.blp:26
 msgid "Create"
@@ -1723,7 +1727,7 @@ msgstr ""
 
 #: src/install_page/pending_page.py:38
 msgid "Remove All"
-msgstr ""
+msgstr "להסיר הכול"
 
 #: src/install_page/result_row.blp:8 src/install_page/result_row.py:46
 msgid "Add Package to Queue"
@@ -1735,7 +1739,7 @@ msgstr ""
 
 #: src/install_page/result_row.py:54
 msgid "Remove Package from Queue"
-msgstr ""
+msgstr "הסרת החבילה מהתור"
 
 #: src/install_page/result_row.py:58
 msgid "This Package is Already Installed"
@@ -1743,16 +1747,16 @@ msgstr ""
 
 #: src/install_page/results_page.blp:5
 msgid "Search a Remote"
-msgstr ""
+msgstr "חיפוש מאגר מרוחק"
 
 #. hexpand: true;
 #: src/install_page/results_page.blp:20
 msgid "Search for Packages"
-msgstr ""
+msgstr "חיפוש חבילות"
 
 #: src/install_page/results_page.blp:26
 msgid "Search for Flatpaks"
-msgstr ""
+msgstr "חיפוש חבילות Flatpak"
 
 #: src/install_page/results_page.blp:27
 msgid "Search for Flatpaks you want to install"
@@ -1772,11 +1776,11 @@ msgstr ""
 
 #: src/install_page/results_page.py:51
 msgid "Search {}"
-msgstr ""
+msgstr "חיפוש {}"
 
 #: src/install_page/results_page.py:138
 msgid "Searching"
-msgstr ""
+msgstr "בחיפוש"
 
 #: src/install_page/select_page.blp:19
 msgid "Search in a Remote"
